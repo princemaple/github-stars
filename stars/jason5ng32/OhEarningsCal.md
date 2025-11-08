@@ -1,6 +1,6 @@
 ---
 project: OhEarningsCal
-stars: 463
+stars: 462
 description: 使用日历软件订阅美股的财报日期
 url: https://github.com/jason5ng32/OhEarningsCal
 ---

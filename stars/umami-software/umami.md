@@ -1,6 +1,6 @@
 ---
 project: umami
-stars: 31377
+stars: 32251
 description: Umami is a modern, privacy-focused alternative to Google Analytics.
 url: https://github.com/umami-software/umami
 ---
@@ -25,7 +25,7 @@ A detailed getting started guide can be found at umami.is/docs.
 ### Requirements
 
 -   A server with Node.js version 18.18 or newer
--   A database. Umami supports MariaDB (minimum v10.5), MySQL (minimum v8.0) and PostgreSQL (minimum v12.14) databases.
+-   A database. Umami supports PostgreSQL (minimum v12.14) databases.
 
 ### Get the Source Code and Install Packages
 
@@ -42,7 +42,6 @@ DATABASE\_URL=connection-url
 The connection URL format:
 
 postgresql://username:mypassword@localhost:5432/mydb
-mysql://username:mypassword@localhost:3306/mydb
 
 ### Build the Application
 
@@ -67,16 +66,16 @@ docker compose up -d
 
 Alternatively, to pull just the Umami Docker image with PostgreSQL support:
 
-docker pull docker.umami.is/umami-software/umami:postgresql-latest
-
-Or with MySQL support:
-
-docker pull docker.umami.is/umami-software/umami:mysql-latest
+docker pull docker.umami.is/umami-software/umami:latest
 
 * * *
 
 🔄 Getting Updates
 ------------------
+
+Warning
+
+If you are updating from Umami V2, image "postgresql-latest" is deprecated. You must change it to "latest". e.g., rename `docker.umami.is/umami-software/umami:postgresql-latest` to `docker.umami.is/umami-software/umami:latest`.
 
 To get the latest features, simply do a pull, install any new dependencies, and rebuild:
 

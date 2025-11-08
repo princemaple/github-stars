@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70107
+stars: 70156
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -44,7 +44,7 @@ Table of Contents
     -   Reinforcement Learning
     -   Advanced Machine Learning
     -   Natural Language Processing
-    -   Generative AI
+    -   Generative AI and LLMs
     -   Computer Vision
     -   Time Series Analysis
     -   Optimization
@@ -664,19 +664,25 @@ Courses
     -   Natural Language Processing (CMSC 470)
     -   Stanford CS25 - Transformers United 2023
     -   Natural Language Processing (IN2361) - TUM
-    -   CS 886: Recent Advances on Foundation Models Winter 2024 - University of Waterloo
-    -   UC Berkeley CS 194/294-196 Large Language Model Agents Fall 2024, by Dawn Song & Xinyun Chen (YouTube playlist)
-    -   UC Berkeley CS 194/294-267 Understanding Large Language Models Foundations and Safety spring 2024, by Dawn Song & Dan Hendrycks
-    -   Introduction to Large Language Models (LLMs), IIT Delhi
     -   Natural Language Processing (Spring 2024) - University of Utah
     -   Multilingual NLP 2020 - CMU
-    -   Introduction to large language models - IIT Madras
     -   Speech Technology - IIT Madras
--   #### **Generative AI**
+-   #### **Generative AI and LLMs**
     
     -   Stanford CS236: Deep Generative Models I 2023 I Stefano Ermon
     -   CS 6785 - Deep Generative Models - Cornell Tech, Spring 2023)
     -   MIT 6.S184 Flow Matching and Diffusion Models, 2025
+    -   Course on Diffusion Models for Generative AI - UT Austin
+    -   Stanford CS336 Language Modeling from Scratch I 2025 - Stanford
+    -   Stanford CME295 Transformers & LLMs - Autumn 2025 - Stanford
+    -   Introduction to large language models - IIT Madras
+    -   Build a Large Language Model (From Scratch) by Sebastian Raschka
+    -   Reinforcement Learning of Large Language Models - UCLA
+    -   WING NUS CS6101 Large Language Models (T2310)
+    -   CS 886: Recent Advances on Foundation Models Winter 2024 - University of Waterloo
+    -   UC Berkeley CS 194/294-196 Large Language Model Agents Fall 2024, by Dawn Song & Xinyun Chen (YouTube playlist)
+    -   UC Berkeley CS 194/294-267 Understanding Large Language Models Foundations and Safety spring 2024, by Dawn Song & Dan Hendrycks
+    -   Introduction to Large Language Models (LLMs), IIT Delhi
 -   #### **Computer Vision**
     
     -   CS 231n - Convolutional Neural Networks for Visual Recognition, Stanford University
@@ -767,6 +773,7 @@ Courses
     -   Machine Learning for Physicists, Spring 2019, FAU (Spring 2017)
     -   CSCE 585 - Machine Learning Systems, University of South Carolina (YouTube-2020)
     -   CS-E4740 - Federated Learning, Spring 2023, Aalto University
+    -   Uncertainty Modeling in AI | National University of Singapore
 
 * * *
 
@@ -1225,6 +1232,7 @@ Courses
 -   Diagnostic Medical Image Processing - Fall 2014 - FAU (Fall 2011) (Fall 2010) (Fall 2009)
 -   Interventional Medical Image Processing - Spring 2016 - FAU (Spring 2015) (Spring 2012) (Spring 2011) (Spring 2009)
 -   Advances in Computer Vision - MIT
+-   3D Computer Vision | National University of Singapore
 
 * * *
 

@@ -1,6 +1,6 @@
 ---
 project: electric
-stars: 9395
+stars: 9414
 description: Real-time sync for Postgres.
 url: https://github.com/electric-sql/electric
 ---
@@ -95,6 +95,70 @@ asdf plugin add erlang
 asdf install
 
 You'll probably need to fiddle with your bash/zsh/etc rc file to load the right tool into your environment.
+
+### Running Tests
+
+Electric has comprehensive test suites for both Elixir and TypeScript components.
+
+#### Prerequisites
+
+Install dependencies (if not already done):
+
+asdf install
+pnpm install
+
+Then start the test Postgres database:
+
+cd packages/sync-service
+mix start\_dev
+
+This starts a Docker Compose setup with Postgres configured for logical replication on port 54321.
+
+To stop the database:
+
+mix stop\_dev
+
+#### Elixir Tests
+
+**Sync Service:**
+
+cd packages/sync-service
+mix test
+
+For coverage reports:
+
+mix coveralls.html
+
+**Elixir Client:**
+
+cd packages/elixir-client
+mix test
+
+#### TypeScript Tests
+
+TypeScript tests require both the database and a running sync service.
+
+In a separate terminal, start the sync service:
+
+cd packages/sync-service
+iex -S mix
+
+Then run the tests:
+
+**Individual Package:**
+
+cd packages/typescript-client  # or any other TS package
+pnpm test
+
+**All TypeScript Packages:**
+
+From the root directory:
+
+pnpm -r test
+
+For coverage:
+
+pnpm coverage
 
 Contributing
 ------------

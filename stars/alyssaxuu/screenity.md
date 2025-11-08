@@ -1,12 +1,18 @@
 ---
 project: screenity
-stars: 17501
+stars: 17539
 description: The free and privacy-friendly screen recorder with no limits 🎥
 url: https://github.com/alyssaxuu/screenity
 ---
 
 Screenity
 =========
+
+> _✨ Screenity's open source work is sponsored by_
+> 
+> ### Recall.ai - API for desktop recording
+> 
+> If you’re looking for a hosted desktop recording API, consider checking out Recall.ai, an API that records Zoom, Google Meet, Microsoft Teams, in-person meetings, and more.
 
 The free and privacy-friendly screen recorder with no limits 🎥
 

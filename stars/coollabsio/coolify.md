@@ -1,7 +1,7 @@
 ---
 project: coolify
-stars: 46828
-description: An open-source & self-hostable Heroku / Netlify / Vercel alternative.
+stars: 47026
+description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
 
@@ -81,7 +81,6 @@ Big Sponsors
 -   Dade2 - IT Consulting, Cloud Solutions & System Integration
 -   Formbricks - The open source feedback platform
 -   GoldenVM - Premium virtual machine hosting solutions
--   Gozunga - Seriously Simple Cloud Infrastructure
 -   Hetzner - Server, cloud, hosting, and data center solutions
 -   Hostinger - Web hosting and VPS solutions
 -   JobsCollider - 30,000+ remote jobs for developers

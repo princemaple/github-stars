@@ -1,19 +1,17 @@
 ---
 project: claude-code-router
-stars: 20669
+stars: 21168
 description: Use Claude Code as the foundation for coding infrastructure, allowing you to decide how to interact with the model while enjoying updates from Anthropic.
 url: https://github.com/musistudio/claude-code-router
 ---
 
 * * *
 
-> I am currently seeking **Agent development related job opportunities**, either **based in Hangzhou** or **remote**. If you are interested in my projects or have suitable opportunities, feel free to reach out! 📧 Email: m@musiiot.top
+> This project is sponsored by Z.ai, supporting us with their GLM CODING PLAN.  
+> GLM CODING PLAN is a subscription service designed for AI coding, starting at just $3/month. It provides access to their flagship GLM-4.6 model across 10+ popular AI coding tools (Claude Code, Cline, Roo Code, etc.), offering developers top-tier, fast, and stable coding experiences.  
+> Get 10% OFF GLM CODING PLAN：https://z.ai/subscribe?ic=8JVLJQFSKB
 
 > A powerful tool to route Claude Code requests to different models and customize any request.
-
-> Now you can use models such as `GLM-4.5`, `Kimi-K2`, `Qwen3-Coder-480B-A35B`, and `DeepSeek v3.1` for free through the iFlow Platform.  
-> You can use the `ccr ui` command to directly import the `iflow` template in the UI. It’s worth noting that iFlow limits each user to a concurrency of 1, which means you’ll need to route background requests to other models.  
-> If you’d like a better experience, you can try iFlow CLI.
 
 ✨ Features
 ----------
@@ -602,5 +600,6 @@ A huge thank you to all our sponsors for their generous support!
 -   @苗大
 -   @\*呢
 -   @\\d\*u
+-   @crizcraig
 
 (If your name is masked, please contact me via my homepage email to update it with your GitHub username.)

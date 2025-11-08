@@ -1,6 +1,6 @@
 ---
 project: nimble_parsec
-stars: 857
+stars: 859
 description: A simple and fast library for text-based parser combinators
 url: https://github.com/dashbitco/nimble_parsec
 ---

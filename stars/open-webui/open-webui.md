@@ -1,6 +1,6 @@
 ---
 project: open-webui
-stars: 113952
+stars: 114629
 description: User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
 url: https://github.com/open-webui/open-webui
 ---
@@ -63,15 +63,6 @@ Key Features of Open WebUI ⭐
     
 
 Want to learn more about Open WebUI's features? Check out our Open WebUI documentation for a comprehensive overview!
-
-Sponsors 🙌
------------
-
-#### Emerald
-
-Tailscale • Connect self-hosted AI to any device with Tailscale
-
-Warp • The intelligent terminal for developers
 
 * * *
 

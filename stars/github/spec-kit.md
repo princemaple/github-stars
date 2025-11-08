@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 44138
+stars: 46184
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---

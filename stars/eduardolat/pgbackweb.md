@@ -1,6 +1,6 @@
 ---
 project: pgbackweb
-stars: 2308
+stars: 2331
 description: 🐘 Effortless PostgreSQL backups with a user-friendly web interface! 🌐💾
 url: https://github.com/eduardolat/pgbackweb
 ---

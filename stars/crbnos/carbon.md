@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1591
+stars: 1593
 description: Carbon is a modern ERP/MES/QMS. Perfect for complex assembly, job shops, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---

@@ -1,6 +1,6 @@
 ---
 project: bodyguard
-stars: 786
+stars: 787
 description: Simple authorization conventions for Phoenix apps
 url: https://github.com/schrockwell/bodyguard
 ---

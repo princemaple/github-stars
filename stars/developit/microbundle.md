@@ -1,6 +1,6 @@
 ---
 project: microbundle
-stars: 8141
+stars: 8139
 description: 📦 Zero-configuration bundler for tiny modules.
 url: https://github.com/developit/microbundle
 ---

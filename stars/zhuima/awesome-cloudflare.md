@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 12106
+stars: 12153
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -993,6 +993,14 @@ Edgebin
 类似与 httpbin 的 HTTP 测试服务
 
 https://edgebin.liujiacai.net
+
+有效中
+
+CF-TOOLS
+
+整合常用开发工具，AI 助手等。
+
+https://cf-tools.tianyao.qzz.io/
 
 有效中
 

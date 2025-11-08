@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 162
+stars: 163
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---
@@ -10,7 +10,7 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL (& Extension) Package Manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 13~17 along with 423 extensions on (`amd64` / `arm64`) with native OS package manager
+Install PostgreSQL 13~18 along with 423 extensions on (`amd64` / `arm64`) with native OS package manager
 
 > Blog: The idea way to deliver PostgreSQL extensions
 
@@ -113,7 +113,7 @@ pig repo cache                   # cache repo as offline package
 pig build repo                   # init build repo (=repo set -ru)
 pig build tool  \[mini|full|...\]  # init build toolset
 pig build proxy \[id@host:port \]  # init build proxy (optional)
-pig build rust  \[-v <pgrx\_ver\>\]  # init rustc & pgrx (0.13.1)
+pig build rust  \[-v <pgrx\_ver\>\]  # init rustc & pgrx (0.16.1)
 pig build spec                   # init build spec repo
 pig build get   \[all|std|..\]     # get ext code tarball with prefixes
 pig build dep   \[extname...\]     # install extension build deps
@@ -364,7 +364,7 @@ You can use the `pig sty` subcommand to bootstrap pigsty on current node.
 Compatibility
 -------------
 
-`pig` runs on: RHEL 8/9, Ubuntu 22.04/24.04, and Debian 12 and compatible OS
+`pig` runs on: RHEL 8/9/10, Ubuntu 22.04/24.04, and Debian 12/13 and compatible OS
 
 Code
 
@@ -378,46 +378,44 @@ Distribution
 
 RHEL 9 / Rocky9 / Alma9 / ...
 
-PG 17 - 13
+PG 18 - 13
 
-PG 17 - 13
+PG 18 - 13
 
 **el8**
 
 RHEL 8 / Rocky8 / Alma8 / ...
 
-PG 17 - 13
+PG 18 - 13
 
-PG 17 - 13
+PG 18 - 13
 
 **u24**
 
 Ubuntu 24.04 (`noble`)
 
-PG 17 - 13
+PG 18 - 13
 
-PG 17 - 13
+PG 18 - 13
 
 **u22**
 
 Ubuntu 22.04 (`jammy`)
 
-PG 17 - 13
+PG 18 - 13
 
-PG 17 - 13
+PG 18 - 13
 
 **d12**
 
 Debian 12 (`bookworm`)
 
-PG 17 - 13
+PG 18 - 13
 
-PG 17 - 13
+PG 18 - 13
 
 Here are some bad cases and limitations for above Linux distros:
 
--   `pg_duckdb` `el8:*:*`
--   `pg_mooncake` `el8:*:*`
 -   `pljava`: `el8:*:*`
 -   `pllua`: `el8:arm:13,14,15`
 -   `h3`: `el8.amd.pg17`

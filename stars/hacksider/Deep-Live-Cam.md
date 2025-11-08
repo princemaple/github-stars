@@ -1,6 +1,6 @@
 ---
 project: Deep-Live-Cam
-stars: 74712
+stars: 75446
 description: real time face swap and one-click video deepfake with only a single image
 url: https://github.com/hacksider/Deep-Live-Cam
 ---
@@ -309,11 +309,13 @@ Press
 -   _"Alright look look look, now look chat, we can do any face we want to look like chat"_ - IShowSpeed
 -   _"They do a pretty good job matching poses, expression and even the lighting"_ - TechLinked (LTT)
 -   _"Als Sean Connery an der Redaktionskonferenz teilnahm"_ - Golem.de (German)
+-   _"What the F_\*\*! Why do I look like Vinny Jr? I look exactly like Vinny Jr!? No, this shit is crazy! Bro This is F\*\*\* Crazy! "\* - IShowSpeed
 
 Credits
 -------
 
 -   ffmpeg: for making video-related operations easy
+-   Henry: One of the major contributor in this repo
 -   deepinsight: for their insightface project which provided a well-made library and models. Please be reminded that the use of the model is for non-commercial research purposes only.
 -   havok2-htwo: for sharing the code for webcam
 -   GosuDRM: for the open version of roop

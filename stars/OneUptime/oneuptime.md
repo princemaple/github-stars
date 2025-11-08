@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 6119
+stars: 6145
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -54,6 +54,37 @@ OneUptime Cloud is the easiest and fastest way to monitor your website uptime an
 By using OneUptime Cloud, you also support the development of OneUptime open source project, which is a powerful and flexible tool for website monitoring. You can find more information about OneUptime open source project on GitHub. The code of OneUptime is completely open source, which means you can access, modify, and distribute it freely. You can also contribute to the project by reporting issues, suggesting features, or submitting pull requests.
 
 If you need advanced features, such as API Access, Advanced Workflows, or Advanced Access Control, you can upgrade to a paid plan anytime. You can compare the different plans and pricing on OneUptime Pricing page.
+
+Community vs. Enterprise Editions
+---------------------------------
+
+Edition
+
+Ideal For
+
+Highlights
+
+Requirements
+
+Community Edition
+
+Self-hosters getting started with the open-source stack
+
+Full OneUptime feature set with the standard security posture; community-driven support channels; rapid updates via public releases
+
+None
+
+Enterprise Edition
+
+Regulated teams that need hardened deployments and premium support
+
+Hardened container images with additional security controls;  
+Custom features and roadmap input;  
+Dedicated engineer with 1-hour priority phone support;  
+Custom data residency and retention options;  
+Deploy on private cloud or SaaS with annual invoicing
+
+Valid enterprise license (contact `sales@oneuptime.com`)
 
 Installation
 ------------

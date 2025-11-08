@@ -1,6 +1,6 @@
 ---
 project: docker-registry-ui
-stars: 3157
+stars: 3170
 description: The simplest and most complete UI for your private docker registry v2 and v3
 url: https://github.com/Joxit/docker-registry-ui
 ---
@@ -121,11 +121,13 @@ Some env options are available for use this interface for **only one server** (w
 -   `THEME_*`: See table in Theme options section (see #283). Since 2.4.0
 -   `TAGLIST_ORDER`: Set the default order for the taglist page, could be `num-asc;alpha-asc`, `num-desc;alpha-asc`, `num-asc;alpha-desc`, `num-desc;alpha-desc`, `alpha-asc;num-asc`, `alpha-asc;num-desc`, `alpha-desc;num-asc` or `alpha-desc;num-desc` (see #307). (default: `alpha-asc;num-desc`). Since 2.5.0
 -   `CATALOG_DEFAULT_EXPANDED`: Expand by default all repositories in catalog (see #302). (default: `false`). Since 2.5.0
--   `CATALOG_MIN_BRANCHES`: Set the minimum repository/namespace to expand (e.g. `joxit/docker-registry-ui` `joxit/` is the repository/namespace). Can be 0 to disable branching. (see #319). (default: `1`). Since 2.5.0
--   `CATALOG_MAX_BRANCHES`: Set the maximum repository/namespace to expand (e.g. `joxit/docker-registry-ui` `joxit/` is the repository/namespace). Can be 0 to disable branching. (see #319). (default: `1`). Since 2.5.0
+-   `CATALOG_MIN_BRANCHES`: Set the minimum repository/namespace to expand (e.g. `joxit/docker-registry-ui` `joxit/` is the repository/namespace). Branching can be disabled if min and max are set to 0. (see #319). (default: `1`). Since 2.5.0
+-   `CATALOG_MAX_BRANCHES`: Set the maximum repository/namespace to expand (e.g. `joxit/docker-registry-ui` `joxit/` is the repository/namespace). Branching can be disabled if min and max are set to 0. (see #319). (default: `1`). Since 2.5.0
 -   `TAGLIST_PAGE_SIZE`: Set the number of tags to display in one page. (default: `100`). Since 2.5.0
 -   `REGISTRY_SECURED`: By default, the UI will check on every requests if your registry is secured or not (you will see `401` responses in your console). Set to `true` if your registry uses Basic Authentication and divide by two the number of call to your registry. (default `false`). Since 2.5.0
 -   `SHOW_TAG_HISTORY`: Whether to show the tag history feature or not. Allows to simplify the user interface by hiding it form the tag list if set to `false`. (default: `true`). There are some examples with docker-compose and docker-registry-ui as proxy here or docker-registry-ui as standalone here.
+-   `DOCKER_REGISTRY_UI_TITLE`: Set a custom title displayed in the header bar. (default: `Docker Registry UI`).
+-   `ENABLE_VERSION_NOTIFICATION`: Display notification when a new version of Docker Registry UI is available. This is a weekly check. (default: `true`).
 
 ### Theme options
 

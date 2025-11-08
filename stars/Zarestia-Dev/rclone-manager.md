@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 389
+stars: 415
 description: Rclone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -116,7 +116,9 @@ Install Command
 
 **Flathub**
 
-`flatpak install flathub xxxxxxxxxxxxxxxxxxxxx`
+`flatpak install io.github.zarestia_dev.rclone-manager`
+
+> **Note:** For Linux installation instructions and troubleshooting, check the installation guide: Installation - Linux
 
 #### 🍎 macOS
 
@@ -155,8 +157,6 @@ Install Command
 `winget install RClone-Manager.rclone-manager`
 
 **Direct Download**
-
-> 💡 **More package managers coming soon!** We have submissions under review for Flathub, Homebrew, Scoop, and Winget.
 
 * * *
 
@@ -285,7 +285,7 @@ You are free to use, modify, and distribute this software under the terms of the
 
 -   💬 GitHub Discussions – Ask questions and chat with the community
 -   🐛 Issue Tracker – Report bugs or request features
--   📖 Documentation – Guides and tutorials (coming soon)
+-   📖 Documentation – Guides and tutorials
 
 ### Stay Updated
 

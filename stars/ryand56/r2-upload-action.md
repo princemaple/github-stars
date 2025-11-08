@@ -1,6 +1,6 @@
 ---
 project: r2-upload-action
-stars: 80
+stars: 81
 description: GitHub Action to upload files or directories to a Cloudflare R2 bucket (or another S3 compatible API), built on top of @aws-sdk/client-s3 in TypeScript.
 url: https://github.com/ryand56/r2-upload-action
 ---

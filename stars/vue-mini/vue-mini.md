@@ -1,6 +1,6 @@
 ---
 project: vue-mini
-stars: 2007
+stars: 2014
 description: 基于 Vue 3 的小程序框架。简单，强大，高性能。
 url: https://github.com/vue-mini/vue-mini
 ---

@@ -1,6 +1,6 @@
 ---
 project: face_recognition
-stars: 55673
+stars: 55709
 description: The world's simplest facial recognition api for Python and the command line
 url: https://github.com/ageitgey/face_recognition
 ---

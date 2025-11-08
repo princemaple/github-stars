@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 28418
+stars: 28528
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -1454,7 +1454,7 @@ A default can be substituted for an empty environment variable value with the `|
 
 set unstable
 
-foo := env('FOO') || 'DEFAULT\_VALUE'
+foo := env('FOO', '') || 'DEFAULT\_VALUE'
 
 #### Executables
 

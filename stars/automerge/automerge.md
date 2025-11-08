@@ -1,6 +1,6 @@
 ---
 project: automerge
-stars: 5625
+stars: 5658
 description: A JSON-like data structure (a CRDT) that can be modified concurrently by different users, and merged again automatically. 
 url: https://github.com/automerge/automerge
 ---

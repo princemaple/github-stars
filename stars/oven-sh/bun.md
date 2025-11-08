@@ -1,6 +1,6 @@
 ---
 project: bun
-stars: 81924
+stars: 82061
 description: Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one
 url: https://github.com/oven-sh/bun
 ---

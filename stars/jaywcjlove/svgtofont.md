@@ -5,6 +5,10 @@ description: Read a set of SVG icons and ouput a TTF/EOT/WOFF/WOFF2/SVG font.
 url: https://github.com/jaywcjlove/svgtofont
 ---
 
+Using my app is also a way to support me:  
+
+* * *
+
 Free Font
 
 Read a set of SVG icons and ouput a TTF/EOT/WOFF/WOFF2/SVG font, Generator of fonts from SVG icons.
@@ -15,7 +19,7 @@ Install · Usage · Command · Font Usage · API · options · npm · License
 
 -   Supported font formats: `WOFF2`, `WOFF`, `EOT`, `TTF` and `SVG`.
 -   Support SVG Symbol file.
--   Support `React`, `ReactNative` & `TypeScript`.
+-   Support `React`, `ReactNative`, `Vue` & `TypeScript`.
 -   Support `Less`/`Sass`/`Stylus`.
 -   Allows to use custom templates (example `css`, `less` and etc).
 -   Automatically generate a preview site.
@@ -256,6 +260,42 @@ export const RangeIconFont \= props \=> {
     {icons\[name\]}
   </Text\>);
 };
+
+### outSVGVue
+
+> Type: `Boolean`  
+> Default value: `false`
+
+Output `./dist/vue/`, SVG generates `vue` components.
+
+git/git.svg
+
+// ↓↓↓↓↓↓↓↓↓↓
+
+import { defineComponent, h } from 'vue';
+
+export const Git \= defineComponent({
+  name: 'Git',
+  props: {
+    class: {
+      type: String,
+      default: ''
+    }
+  },
+  setup(props, { attrs }) {
+    return () \=> h(
+      'svg',
+      {
+        viewBox: '0 0 20 20',
+        width: undefined,
+        height: undefined,
+        class: \`svgtofont ${props.class}\`,
+        ...attrs
+      },
+      \[<path d\="m2.6 10.59l5.78-5.79 1.69 1.7c-0.24 0.85 0.15 1.78 0.93 2.23v5.54c-0.6 0.34-1 0.99-1 1.73a2 2 0 0 0 2 2 2 2 0 0 0 2 -2c0-0.74-0.4-1.39-1-1.73v-4.86l2.07 2.09c-0.07 0.15-0.07 0.32-0.07 0.5a2 2 0 0 0 2 2 2 2 0 0 0 2 -2 2 2 0 0 0 -2 -2c-0.18 0-0.35 0-0.5 0.07l-2.57-2.57c0.26-0.93-0.22-1.95-1.15-2.34-0.43-0.16-0.88-0.2-1.28-0.09l-1.7-1.69 0.79-0.78c0.78-0.79 2.04-0.79 2.82 0l7.99 7.99c0.79 0.78 0.79 2.04 0 2.82l-7.99 7.99c-0.78 0.79-2.04 0.79-2.82 0l-7.99-7.99c-0.79-0.78-0.79-2.04 0-2.82z" fillRule\="evenodd" />\]
+    );
+  }
+});
 
 ### outSVGPath
 
@@ -752,6 +792,19 @@ export interface SvgToFontProps extends Omit<TextStyle, 'fontFamily' | 'fontStyl
 }
 
 export declare const SvgToFont: (props: SvgToFontProps) \=> JSX.Element;
+
+### Using with Vue
+
+Icons are used as components. `v3+` support.
+
+<script setup lang="ts">
+  import { Adobe, Alipay } from '@uiw/icons';
+</script\>
+
+<template\>
+  <Abobe :style\="{fill: red}" />
+  <Alipay :height\="36" />
+</template\>
 
 Contributors
 ------------

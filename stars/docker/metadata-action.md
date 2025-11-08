@@ -1,6 +1,6 @@
 ---
 project: metadata-action
-stars: 1052
+stars: 1053
 description: GitHub Action to extract metadata (tags, labels) from Git reference and GitHub events for Docker
 url: https://github.com/docker/metadata-action
 ---
@@ -75,7 +75,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       -
         name: Docker meta
         id: meta
@@ -160,7 +160,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       -
         name: Docker meta
         id: meta
@@ -424,6 +424,12 @@ Docker image version
 String
 
 Docker tags
+
+`tag-names`
+
+String
+
+Docker tag names without image base name
 
 `labels`
 

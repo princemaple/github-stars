@@ -1,17 +1,18 @@
 ---
 project: trzsz-ssh
-stars: 2284
+stars: 2291
 description: trzsz-ssh ( tssh ) is an ssh client designed as a drop-in replacement for the openssh client. It aims to provide complete compatibility with openssh, mirroring all its features, while also offering additional useful features. Such as login prompt, batch login, remember password, automated interaction, trzsz, zmodem(rz/sz), udp mode like mosh, etc.
 url: https://github.com/trzsz/trzsz-ssh
 ---
 
-trzsz-ssh ( tssh ) - an openssh client alternative
-==================================================
+trzsz-ssh ( tssh ) - an ssh client alternative that meets your needs
+--------------------------------------------------------------------
 
 trzsz-ssh ( tssh ) is an ssh client designed as a drop-in replacement for the openssh client. It aims to provide complete compatibility with openssh, mirroring all its features, while also offering additional useful features not found in the openssh client.
 
-Basic Features
---------------
+trzsz-ssh ( tssh ) with tsshd also supports intermittent connectivity, allows roaming, and can be used on high-latency links such as cellular data connections, unstable Wi-Fi, etc.
+
+### Basic Features
 
 trzsz-ssh ( tssh ) works exactly like the openssh client. The following common features have been implemented:
 
@@ -67,8 +68,7 @@ Port Forward
 
 `-g` `-f` `-N` `-L` `-R` `-D` `LocalForward` `RemoteForward` `DynamicForward` `GatewayPorts` `ClearAllForwardings`
 
-Extra Features
---------------
+### Extra Features
 
 trzsz-ssh ( tssh ) offers additional useful features:
 
@@ -116,6 +116,10 @@ Comments of Config
 
 配置注释
 
+Wayland Integration
+
+Wayland 集成
+
 Clipboard Integration
 
 剪贴板集成
@@ -124,12 +128,11 @@ Other Features
 
 其他功能
 
-UDP Mode
+UDP Mode ( mosh )
 
-UDP 模式
+UDP 模式 ( mosh )
 
-Installation
-------------
+### Installation
 
 -   Install with scoop / winget / choco on Windows
     
@@ -141,11 +144,10 @@ Installation
     
     choco install tssh
     
--   Install with homebrew on MacOS
+-   Install with Homebrew on MacOS
     
     `brew install trzsz-ssh`
     
-    brew update
     brew install trzsz-ssh
     
 -   Install with apt on Ubuntu
@@ -198,6 +200,12 @@ Installation
     yay -Syu
     yay -S tssh
     
+-   Install with Chromebrew on ChromeOS
+    
+    `crew install tssh`
+    
+    crew install tssh
+    
 -   Install with Go ( Requires go 1.25 or later )
     
     `go install github.com/trzsz/trzsz-ssh/cmd/tssh@latest`
@@ -218,8 +226,7 @@ Installation
 -   Download from the GitHub Releases, unzip and add to `PATH` environment.
     
 
-Development
------------
+### Development
 
 The `github.com/trzsz/trzsz-ssh/tssh` can be used as a library, for example:
 
@@ -255,8 +262,7 @@ func main() {
 	os.Exit(code)
 }
 
-Contributing
-------------
+### Contributing
 
 Welcome and thank you for considering contributing. We appreciate all forms of support, from coding and testing to documentation and CI/CD improvements.
 
@@ -269,15 +275,12 @@ Welcome and thank you for considering contributing. We appreciate all forms of s
 -   Once you are happy with your changes, please submit a pull request.
     
 
-Screenshot
-----------
+### Screenshot
 
-Contact
--------
+### Contact
 
 Feel free to email the author lonnywong@qq.com, or create an issue. Welcome to join the QQ group: 318578930.
 
-Sponsor
--------
+### Sponsor
 
 ❤️ Sponsor trzsz ❤️, buy the author a drink 🍺 ? Thank you for your support!

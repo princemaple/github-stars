@@ -1,11 +1,11 @@
 ---
 project: shaka-player
-stars: 7778
+stars: 7793
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
 
-Shaka Player is an open-source JavaScript library for adaptive media. It plays adaptive media formats (such as DASH, HLS and MSS) in a browser, without using plugins or Flash. Instead, Shaka Player uses the open web standards MediaSource Extensions and Encrypted Media Extensions.
+Shaka Player is an open-source JavaScript library for adaptive media. It plays adaptive media formats (such as DASH and HLS) in a browser, without using plugins or Flash. Instead, Shaka Player uses the open web standards MediaSource Extensions and Encrypted Media Extensions.
 
 Shaka Player also supports offline storage and playback of media using IndexedDB. Content can be stored on any browser. Storage of licenses depends on browser support.
 
@@ -389,16 +389,6 @@ HLS
 
 \-
 
-MSS
-
-**Y**
-
-\-
-
-\-
-
-\-
-
 You can also create a manifest parser plugin to support custom manifest formats.
 
 DASH features
@@ -510,21 +500,6 @@ MPEG-5 Part2 LCEVC Support
     
 -   More on MPEG-5 Part2 LCEVC
     
-
-MSS features
-------------
-
-MSS features supported:
-
--   VOD
--   AAC and H.264
--   Encrypted content (PlayReady)
--   TTML/DFXP
--   Only supported with codem-isoboxer
-
-MSS features **not** supported:
-
--   Live
 
 DRM support matrix
 ------------------
@@ -767,18 +742,6 @@ HLS
 
 **Y**
 
-MSS
-
-\-
-
-**Y**
-
-\-
-
-\-
-
-\-
-
 NOTES:
 
 -   ¹: By default, FairPlay is handled using Apple's native HLS player, when on Safari. We do support FairPlay through MSE/EME, however. See the `streaming.useNativeHlsForFairPlay` configuration value.
@@ -792,7 +755,6 @@ Shaka Player supports:
     -   Depends on browser support for the container via MediaSource
     -   Can parse "sidx" box for DASH's SegmentBase@indexRange and SegmentTemplate@index
     -   Can find and parse "tfdt" box to find segment start time in HLS
-    -   For MSS, codem-isoboxer v0.3.7+ is required
 -   WebM
     -   Depends on browser support for the container via MediaSource
     -   Can parse cueing data elements for DASH's SegmentBase@indexRange and SegmentTemplate@index
@@ -817,12 +779,6 @@ Shaka Player supports:
 -   Raw EC-3
     -   Supported in raw EC-3 container and transmuxing to EC-3 in MP4 container (depends on browser support via MediaSource).
 -   SubRip (SRT)
-    -   UTF-8 encoding only
--   LyRiCs (LRC)
-    -   UTF-8 encoding only
--   SubStation Alpha (SSA, ASS)
-    -   UTF-8 encoding only
--   SubViewer (SBV)
     -   UTF-8 encoding only
 
 Subtitles are rendered by the browser by default. Applications can create a text display plugin for customer rendering to go beyond browser-supported attributes.
@@ -976,3 +932,6 @@ Shaka + Angular integration:
 -   https://github.com/PatrickKalkman/shaka-player-angular
 
 If you have published Shaka Integration code/tutorials, please feel free to submit PRs to add them to this list, we will gladly approve!
+
+Maintained by
+-------------

@@ -15,11 +15,18 @@ A nushell plugin for interacting with the clipboard, allowing you to copy/paste 
 
 -   **`clipboard copy`**: Copies input text to the clipboard.
     
-    -   **Daemon Mode** (Linux only): Since version **0.105.2**, using env variables will try to detect display server. If there is any issue with copy/paste command This config will override this behavior. If you need to override this, please file an issue:
+    -   **Daemon Mode** (Linux only): Since version **0.105.2**, plugin will try to detect display server using env variables. If there is any issue with copy/paste command This config will override this behavior. If you need to override this, please file an issue:
         
-        $env.config.plugins.clipboard.NO\_DAEMON = true
+        $env.config.plugins.clipboard.NO\_DAEMON = true # or false
         
-    -   To make this setting permanent, add it to your `config env`.
+    -   **Silent Copy**: Added support for silent copying (requested in #23).  
+        You can disable echoing of copied content globally with:
+        
+        $env.config.plugins.clipboard.SILENT\_COPY = true
+        
+        or per invocation using `--silent (-s)` flag
+        
+    -   To make these settings permanent, add it to your env vars using `config env`.
         
 -   **`clipboard paste`**: Retrieves the current clipboard content.
     

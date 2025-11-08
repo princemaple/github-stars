@@ -1,6 +1,6 @@
 ---
 project: partisan
-stars: 991
+stars: 994
 description: High-performance, high-scalability distributed computing for the BEAM.
 url: https://github.com/lasp-lang/partisan
 ---

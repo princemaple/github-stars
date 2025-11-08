@@ -1,6 +1,6 @@
 ---
 project: LLaMA-Factory
-stars: 61559
+stars: 62094
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LLaMA-Factory
 ---
@@ -636,6 +636,8 @@ yuan
 Note
 
 For the "base" models, the `template` argument can be chosen from `default`, `alpaca`, `vicuna` etc. But make sure to use the **corresponding template** for the "instruct/chat" models.
+
+If the model has both reasoning and non-reasoning versions, please use the `_nothink` suffix to distinguish between them. For example, `qwen3` and `qwen3_nothink`.
 
 Remember to use the **SAME** template in training and inference.
 

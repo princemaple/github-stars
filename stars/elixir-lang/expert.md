@@ -1,6 +1,6 @@
 ---
 project: expert
-stars: 1609
+stars: 1624
 description: Official Elixir Language Server Protocol implementation
 url: https://github.com/elixir-lang/expert
 ---
@@ -29,7 +29,7 @@ Then point your editor to the downloaded binary.
 
 ### Building from source
 
-To build Expert from source, you need Zig `0.14.1` installed on your system. Later versions will not work.
+To build Expert from source, you need Zig `0.15.2` installed on your system. Later versions will not work.
 
 Then you can run the following command or follow the instructions in the Installation Instructions:
 

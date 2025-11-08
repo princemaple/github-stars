@@ -1,6 +1,6 @@
 ---
 project: burrito
-stars: 1224
+stars: 1232
 description: Wrap your application in a BEAM Burrito!
 url: https://github.com/burrito-elixir/burrito
 ---
@@ -175,7 +175,7 @@ We support _targeting_ Windows (x86\_64) from MacOS and Linux, we _do not_ offic
 
 You must have the following installed and in your PATH:
 
--   Zig (0.15.1) -- `zig`
+-   Zig (0.15.2) -- `zig`
 -   XZ -- `xz`
 -   7z -- `7z` (For Windows Targets)
 
@@ -198,6 +198,7 @@ You must have the following installed and in your PATH:
           burrito: \[
             targets: \[
               macos: \[os: :darwin, cpu: :x86\_64\],
+              macos\_silicon: \[os: :darwin, cpu: :aarch64\],
               linux: \[os: :linux, cpu: :x86\_64\],
               windows: \[os: :windows, cpu: :x86\_64\]
             \]
@@ -218,8 +219,14 @@ def project do
   \]
 end
 
-1.  To build a release for all the targets defined in your `mix.exs` file: `MIX_ENV=prod mix release`
+1.  To build a release for all the targets defined in your `mix.exs` file:
+    
+    MIX\_ENV=prod mix release
+    
+    Per-target binaries are now available in the `burrito_out/` folder.
+    
 2.  You can also build a single target by setting the `BURRITO_TARGET` environment variable to the alias for that target (e.g. Setting `BURRITO_TARGET=macos` builds only the `macos` target defined above.)
+    
 
 NOTE: In order to speed up iteration times during development, if the Mix environment is not set to `prod`, the binary will always extract its payload, even if that version of the application has already been unpacked on the target machine.
 

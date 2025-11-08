@@ -1,6 +1,6 @@
 ---
 project: btop
-stars: 27748
+stars: 28069
 description: A monitor of resources
 url: https://github.com/aristocratos/btop
 ---
@@ -23,6 +23,7 @@ Index
 -   Compilation FreeBSD
 -   Compilation NetBSD
 -   Compilation OpenBSD
+-   Testing
 -   GPU compatibility
 -   Installing the snap
 -   Configurability
@@ -1160,7 +1161,9 @@ Note that GNU make (`gmake`) is required to compile on OpenBSD.
     
     Enables link time optimization (ON by default)
     
-    | `-DCMAKE_INSTALL_PREFIX=<path>` | The installation prefix ('/usr/local' by default) |
+    `-DCMAKE_INSTALL_PREFIX=<path>`
+    
+    The installation prefix ('/usr/local' by default)
     
     To force any other compiler, run `CXX=<compiler> cmake -B build -G Ninja`
     
@@ -1182,6 +1185,13 @@ Note that GNU make (`gmake`) is required to compile on OpenBSD.
     
     cmake --build build -t clean
     
+
+Testing
+-------
+
+Testing requires CMake. Tests are build by default and can be run with `ctest --test-dir <build>`.
+
+If you want to disable building tests, pass `-DBUILD_TESTING=OFF` to the configure step.
 
 Installing the snap
 -------------------

@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 17869
+stars: 17900
 description: 🕵️‍♂️ Collect a dossier on a person by username from thousands of sites
 url: https://github.com/soxoj/maigret
 ---

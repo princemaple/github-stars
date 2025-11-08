@@ -1,6 +1,6 @@
 ---
 project: srs
-stars: 27929
+stars: 27959
 description: SRS is a simple, high-efficiency, real-time media server supporting RTMP, WebRTC, HLS, HTTP-FLV, HTTP-TS, SRT, MPEG-DASH, and GB28181.
 url: https://github.com/ossrs/srs
 ---
@@ -44,7 +44,7 @@ If you'd like to use WebRTC, convert RTMP to WebRTC, or convert WebRTC to RTMP, 
 
 To learn more about RTMP, HLS, HTTP-FLV, SRT, MPEG-DASH, WebRTC protocols, clustering, HTTP API, DVR, and transcoding, please check the documents in English or Chinese.
 
-If you want to use an IDE, VSCode is recommanded. VSCode supports macOS, and Linux platforms. The settings are ready. All you need to do is open the folder with VSCode and enjoy the efficiency brought by the IDE. See VSCode README for details.
+If you want to use an IDE, VSCode is recommended. VSCode supports macOS, and Linux platforms. The settings are ready. All you need to do is open the folder with VSCode and enjoy the efficiency brought by the IDE. See VSCode README for details.
 
 Sponsor
 -------
@@ -91,6 +91,7 @@ SRS is licenced under MIT, and some third-party libraries are distributed under 
 Releases
 --------
 
+-   2025-11-03, Release v6.0-b3, v6.0-b3, 6.0 beta3, v6.0.183, 170957 lines.
 -   2025-10-16, Release v6.0-b2, v6.0-b2, 6.0 beta2, v6.0.181, 170948 lines.
 -   2025-09-15, Release v6.0-b1, v6.0-b1, 6.0 beta1, v6.0.177, 170611 lines.
 -   2025-08-12, Release v6.0-b0, v6.0-b0, 6.0 beta0, v6.0.172, 170417 lines.

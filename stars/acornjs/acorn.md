@@ -1,6 +1,6 @@
 ---
 project: acorn
-stars: 11172
+stars: 11180
 description: A small, fast, JavaScript-based JavaScript parser
 url: https://github.com/acornjs/acorn
 ---

@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 14451
+stars: 14693
 description: The glamourous AI coding agent for your favourite terminal 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -241,7 +241,7 @@ Crush runs great with no configuration. That said, if you do need or want to cus
 
 1.  `.crush.json`
 2.  `crush.json`
-3.  `$HOME/.config/crush/crush.json` (Windows: `%USERPROFILE%\AppData\Local\crush\crush.json`)
+3.  `$HOME/.config/crush/crush.json`
 
 Configuration itself is stored as a JSON object:
 
@@ -300,11 +300,11 @@ Crush also supports Model Context Protocol (MCP) servers through three transport
     },
     "github": {
       "type": "http",
-      "url": "https://example.com/mcp/",
+      "url": "https://api.githubcopilot.com/mcp/",
       "timeout": 120,
       "disabled": false,
       "headers": {
-        "Authorization": "$(echo Bearer $EXAMPLE\_MCP\_TOKEN)"
+        "Authorization": "Bearer $GH\_PAT"
       }
     },
     "streaming-service": {

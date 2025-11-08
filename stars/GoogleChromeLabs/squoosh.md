@@ -1,6 +1,6 @@
 ---
 project: squoosh
-stars: 23980
+stars: 24007
 description: Make images smaller using best-in-class codecs, right in the browser.
 url: https://github.com/GoogleChromeLabs/squoosh
 ---

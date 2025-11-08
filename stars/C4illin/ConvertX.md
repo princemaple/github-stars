@@ -1,6 +1,6 @@
 ---
 project: ConvertX
-stars: 9343
+stars: 9486
 description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 url: https://github.com/C4illin/ConvertX
 ---

@@ -1,6 +1,6 @@
 ---
 project: monaco-editor
-stars: 44467
+stars: 44534
 description: A browser based code editor
 url: https://github.com/microsoft/monaco-editor
 ---
@@ -30,6 +30,15 @@ You will get:
 -   `monaco.d.ts`: this specifies the API of the editor (this is what is actually versioned, everything else is considered private and might break with any release).
 
 ⚠️ The monaco editor also ships an `AMD` build for backwards-compatibility reasons, but the `AMD` support is deprecated and will be removed in future versions.
+
+Localization
+------------
+
+To load the editor in a specific language, make sure that the corresponding nls script file is loaded before the main monaco editor script. For example, to load the editor in German, include the following script tag:
+
+<script src\="path/to/monaco-editor/esm/nls.messages.de.js"\></script\>
+
+Check the sources for available languages.
 
 Concepts
 --------

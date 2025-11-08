@@ -1,6 +1,6 @@
 ---
 project: mox
-stars: 5238
+stars: 5248
 description: modern full-featured open source secure mail server for low-maintenance self-hosted email
 url: https://github.com/mjl-/mox
 ---
@@ -79,7 +79,7 @@ The URL above always resolves to the latest release for linux/amd64 built with t
 Compiling
 =========
 
-You can easily (cross) compile mox yourself. You need a recent Go toolchain installed. Run `go version`, it must be >= 1.23. Download the latest version from https://go.dev/dl/ or see https://go.dev/doc/manage-install.
+You can easily (cross) compile mox yourself. You need a recent Go toolchain installed. Run `go version`, it must be >= 1.24. Download the latest version from https://go.dev/dl/ or see https://go.dev/doc/manage-install.
 
 To download the source code of the latest release, and compile it to binary "mox":
 

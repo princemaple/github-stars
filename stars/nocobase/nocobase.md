@@ -1,13 +1,13 @@
 ---
 project: nocobase
-stars: 17072
+stars: 18909
 description: NocoBase is the most extensible AI-powered no-code/low-code platform for building business applications and enterprise solutions.
 url: https://github.com/nocobase/nocobase
 ---
 
 English | 中文 | 日本語
 
-nocobase-2-main-1080p-en-v2.mp4
+Meet-Your-AI-Employee-EN.mp4
 
 What is NocoBase
 ----------------
@@ -89,3 +89,9 @@ NocoBase supports three installation methods:
 -   Installing from Git source code
     
     If you want to experience the latest unreleased version, or want to participate in the contribution, you need to make changes and debug on the source code, it is recommended to choose this installation method, which requires a high level of development skills, and if the code has been updated, you can git pull the latest code.
+    
+
+How NocoBase works
+------------------
+
+nocobase-2-main-1080p-en-v2.mp4

@@ -1,6 +1,6 @@
 ---
 project: nushell
-stars: 37123
+stars: 37185
 description: A new type of shell
 url: https://github.com/nushell/nushell
 ---
@@ -196,7 +196,7 @@ Please submit an issue or PR to be added to this list.
 -   Direnv
 -   x-cmd
 -   vfox
--   nushell
+-   Windmill
 
 Contributing
 ------------

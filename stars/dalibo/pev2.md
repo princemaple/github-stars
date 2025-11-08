@@ -1,6 +1,6 @@
 ---
 project: pev2
-stars: 3190
+stars: 3200
 description: Postgres Explain Visualizer 2
 url: https://github.com/dalibo/pev2
 ---
@@ -31,10 +31,10 @@ Integrated in a web application
 
 ### Without building tools
 
-<script src\="https://unpkg.com/vue@3.2.45/dist/vue.global.prod.js"\></script\>
+<script src\="https://unpkg.com/vue@3/dist/vue.global.prod.js"\></script\>
 <script src\="https://unpkg.com/pev2/dist/pev2.umd.js"\></script\>
 <link
-  href\="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  href\="https://unpkg.com/bootstrap@5/dist/css/bootstrap.min.css"
   rel\="stylesheet"
 />
 <link rel\="stylesheet" href\="https://unpkg.com/pev2/dist/pev2.css" />
@@ -46,7 +46,10 @@ Integrated in a web application
 <script\>
   const { createApp } \= Vue
 
-  const plan \= "Seq Scan on foo  (cost=0.00..155.00 rows=10000 width=4)"
+  const plan \= \`
+    Aggregate  (cost=12.50..12.51 rows=1 width=8)
+      ->  Seq Scan on employees  (cost=0.00..10.00 rows=1000 width=0)
+  \`;
 
   const app \= createApp({
     data() {
@@ -98,7 +101,7 @@ Then add the `PEV2` component to your template:
 `PEV2` requires `Bootstrap (CSS)` to work so don't forget to add the following in you header (or load them with your favorite bundler).
 
 <link
-  href\="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  href\="https://unpkg.com/bootstrap@5/dist/css/bootstrap.min.css"
   rel\="stylesheet"
 />
 

@@ -1,6 +1,6 @@
 ---
 project: analytics
-stars: 23643
+stars: 23680
 description: Simple, open source, lightweight and privacy-friendly web analytics alternative to Google Analytics.
 url: https://github.com/plausible/analytics
 ---
@@ -25,10 +25,10 @@ Here's what makes Plausible a great Google Analytics alternative and why we're t
 -   **Lightweight**: Plausible Analytics works by loading a script on your website, like Google Analytics. Our script is small, making your website quicker to load. You can also send events directly to our events API.
 -   **Email or Slack reports**: Keep an eye on your traffic with weekly and/or monthly email or Slack reports. You can also get traffic spike notifications.
 -   **Invite team members and share stats**: You have the option to be transparent and open your web analytics to everyone. Your website stats are private by default but you can choose to make them public so anyone with your custom link can view them. You can invite team members and assign user roles too.
--   **Define key goals and track conversions**: Create custom events with custom dimensions to track conversions and attribution to understand and identify the trends that matter. Track ecommerce revenue, outbound link clicks, file downloads and 404 error pages. Increase conversions using funnel analysis.
+-   **Define key goals and track conversions**: Create custom events with custom dimensions to track conversions and attribution to understand and identify the trends that matter. Track ecommerce revenue, outbound link clicks, form completions, file downloads and 404 error pages. Increase conversions using funnel analysis.
 -   **Search keywords**: Integrate your dashboard with Google Search Console to get the most accurate reporting on your search keywords.
 -   **SPA support**: Plausible is built with modern web frameworks in mind and it works automatically with any pushState based router on the frontend. We also support frameworks that use the URL hash for routing. See our documentation.
--   **Smooth transition from Google Analytics**: There's a realtime dashboard, entry pages report and integration with Search Console. You can track your paid campaigns and conversions. You can invite team members. You can even import your historical Google Analytics stats. Learn how to get the most out of your Plausible experience and join thousands who have already migrated from Google Analytics.
+-   **Smooth transition from Google Analytics**: There's a realtime dashboard, entry pages report and integration with Search Console. You can track your paid campaigns and conversions. You can invite team members. You can even import your historical Google Analytics stats and there's a Google Tag Manager template too. Learn how to get the most out of your Plausible experience and join thousands who have already migrated from Google Analytics.
 
 Interested to learn more? Read more on our website, learn more about the team and the goals of the project on our about page or explore the documentation.
 
@@ -76,7 +76,7 @@ It's a long term release published twice per year so latest features and improve
 
 All features available as listed in our pricing plans.
 
-Premium features (marketing funnels, ecommerce revenue goals and sites API) are not available in order to help support the project's long-term sustainability.
+Premium features (marketing funnels, ecommerce revenue goals, SSO and sites API) are not available in order to help support the project's long-term sustainability.
 
 **Bot filtering**
 
@@ -94,7 +94,7 @@ You have full control and can host your instance on any server in any country th
 
 You see all your site stats and metrics on our modern-looking, simple to use and fast loading dashboard. You can only see the stats aggregated in the dashboard. You can download the stats using the CSV export, stats API or the Looker Studio Connector.
 
-Do you want access to the raw data? Self-hosting gives you that option. You can take the data directly from the ClickHouse database.
+Do you want access to the raw data? Self-hosting gives you that option. You can take the data directly from the ClickHouse database. The Looker Studio Connector is not available.
 
 **Premium support**
 

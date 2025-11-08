@@ -1,6 +1,6 @@
 ---
 project: gyroflow
-stars: 7908
+stars: 7938
 description: Video stabilization using gyroscope data
 url: https://github.com/gyroflow/gyroflow
 ---
@@ -61,6 +61,7 @@ Supported gyro sources
 -   DJI (Avata, Avata 2, O3 Air Unit, Action 2/4/5, Neo)
 -   Blackmagic RAW (\*.braw)
 -   RED RAW (V-Raptor, KOMODO) (\*.r3d)
+-   Canon (C50, C80, C400) (\*.mp4, \*.mov, \*.mxf)
 -   Freefly (Ember)
 -   Betaflight blackbox (\*.bfl, \*.bbl, \*.csv)
 -   ArduPilot logs (\*.bin, \*.log)

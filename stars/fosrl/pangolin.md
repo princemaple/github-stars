@@ -1,7 +1,7 @@
 ---
 project: pangolin
-stars: 15869
-description: Identity-Aware Tunneled Reverse Proxy Server with Dashboard UI
+stars: 16005
+description: Identity-based, multi-site remote access platform using WireGuard®
 url: https://github.com/fosrl/pangolin
 ---
 
@@ -75,3 +75,7 @@ Contributions
 -------------
 
 Please see CONTRIBUTING in the repository for guidelines and best practices.
+
+* * *
+
+WireGuard® is a registered trademark of Jason A. Donenfeld.

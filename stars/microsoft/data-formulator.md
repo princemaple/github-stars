@@ -1,21 +1,53 @@
 ---
 project: data-formulator
-stars: 14040
+stars: 14083
 description: 🪄 Create rich visualizations with AI 
 url: https://github.com/microsoft/data-formulator
 ---
 
-**Data Formulator: Create Rich Visualizations with AI**
-=======================================================
+**Data Formulator: Vibe with data, in control**
+===============================================
 
      
 
-Transform data and create rich visualizations iteratively with AI 🪄. Try Data Formulator now!
+🪄 Turn data into insights with AI Agents, with the exploration paths you choose. Try Data Formulator now!
 
-Any questions? Ask on the Discord channel!
+-   🤖 New in v0.5: agent model + interative control (video)
+-   🔥🔥🔥 Try our online demo at https://data-formulator.ai
+-   Any questions, thoughts? Discuss in the Discord channel!
+
+data-formulator-v0.5-4k-mini.mp4
 
 News 🔥🔥🔥
 -----------
+
+\[11-07-2025\] Data Formulator 0.5: Vibe with your data, in control
+
+-   📊 **Load (almost) any data**: load structured data, extract data from screenshots, from messy text blocks, or connect to databases.
+-   🤖 **Explore data with AI agents**:
+    -   In agent mode, provide a high-level goal and ask agents to explore data for you.
+    -   To stay in control, directly interact with agents: ask for recommendations or specify chart designs with UI + NL inputs, and AI agents will formulate data to realize your design.
+    -   Use data threads to control branching exploration paths: backtrack, branch, or follow up.
+-   ✅ **Verify AI generated results**: interact with charts and inspect data, formulas, explanations, and code.
+-   📝 **Create reports to share insights**: choose charts you want to share, and ask agents to create reports grounded in data formulated throughout exploration.
+
+Previous Updates
+----------------
+
+Here are milestones that lead to the current design:
+
+-   **v0.2.2** (Demo): Goal-driven exploration with agent recommendations and performance improvements
+-   **v0.2.1.3/4** (Readme | Demo): External data loaders (MySQL, PostgreSQL, MSSQL, Azure Data Explorer, S3, Azure Blob)
+-   **v0.2** (Demos): Large data support with DuckDB integration
+-   **v0.1.7** (Demos): Dataset anchoring for cleaner workflows
+-   **v0.1.6** (Demo): Multi-table support with automatic joins
+-   **Model Support**: OpenAI, Azure, Ollama, Anthropic via LiteLLM (feedback)
+-   **Python Package**: Easy local installation (try it)
+-   **Visualization Challenges**: Test your skills (challenges)
+-   **Data Extraction**: Parse data from images and text (demo)
+-   **Initial Release**: Blog | Video
+
+**View detailed update history**
 
 -   \[07-10-2025\] Data Formulator 0.2.2: Start with an analysis goal
     
@@ -70,9 +102,9 @@ News 🔥🔥🔥
 Overview
 --------
 
-**Data Formulator** is an application from Microsoft Research that uses large language models to transform data, expediting the practice of data visualization.
+**Data Formulator** is an application from Microsoft Research that uses AI agents to make it easier to turn data into insights.
 
-Data Formulator is an AI-powered tool for analysts to iteratively create rich visualizations. Unlike most chat-based AI tools where users need to describe everything in natural language, Data Formulator combines _user interface interactions (UI)_ and _natural language (NL) inputs_ for easier interaction. This blended approach makes it easier for users to describe their chart designs while delegating data transformation to AI.
+Data Formulator is an AI-powered tool for analysts to iteratively explore and visualize data. Started with data in any format (screenshot, text, csv, or database), users can work with AI agents with a novel blended interface that combines _user interface interactions (UI)_ and _natural language (NL) inputs_ to communicate their intents, control branching exploration directions, and create reports to share their insights.
 
 Get Started
 -----------
@@ -86,15 +118,12 @@ Play with Data Formulator with one of the following options:
     # install data\_formulator
     pip install data\_formulator
     
-    # start data\_formulator
-    data\_formulator 
-    
-    # alternatively, you can run data formulator with this command
+    # Run data formulator with this command
     python -m data\_formulator
     
     Data Formulator will be automatically opened in the browser at http://localhost:5000.
     
-    _Update: you can specify the port number (e.g., 8080) by `python -m data_formulator --port 8080` if the default port is occupied._
+    _you can specify the port number (e.g., 8080) by `python -m data_formulator --port 8080` if the default port is occupied._
     
 -   **Option 2: Codespaces (5 minutes)**
     
@@ -102,41 +131,44 @@ Play with Data Formulator with one of the following options:
     
 -   **Option 3: Working in the developer mode**
     
-    You can build Data Formulator locally if you prefer full control over your development environment and the ability to customize the setup to your specific needs. For detailed instructions, refer to DEVELOPMENT.md.
+    You can build Data Formulator locally if you prefer full control over your development environment and develop your own version on top. For detailed instructions, refer to DEVELOPMENT.md.
     
 
 Using Data Formulator
 ---------------------
 
-Once you've completed the setup using either option, follow these steps to start using Data Formulator:
+### Load Data
 
-### The basics of data visualization
+Besides uploading csv, tsv or xlsx files that contain structured data, you can ask Data Formulator to extract data from screenshots, text blocks or websites, or load data from databases use connectors. Then you are ready to explore.
 
--   Provide OpenAI keys and select a model (GPT-4o suggested) and choose a dataset.
--   Choose a chart type, and then drag-and-drop data fields to chart properties (x, y, color, ...) to specify visual encodings.
+### Explore Data
 
-renewable.mp4
+There are four levels to explore data based depending on whether you want more vibe or more control:
 
-### Create visualization beyond the initial dataset (powered by 🤖)
+-   Level 1 (most control): Create charts with UI via drag-and-drop, if all fields to be visualized are already in the data.
+-   Level 2: Specify chart designs with natural language + NL. Describe how new fields should be visualized in your chart, AI will automatically transform data to realize the design.
+-   Level 3: Get recommendations: Ask AI agents to recommend charts directly from NL descriptions, or even directly ask for exploration ideas.
+-   Level 4 (most vibe): In agent mode, provide a high-level goal and let AI agents automatically plan and explore data in multiple turns. Exploration threads will be created automatically.
 
--   You can type names of **fields that do not exist in current data** in the encoding shelf:
-    -   this tells Data Formulator that you want to create visualizations that require computation or transformation from existing data,
-    -   you can optionally provide a natural language prompt to explain and clarify your intent (not necessary when field names are self-explanatory).
--   Click the **Formulate** button.
-    -   Data Formulator will transform data and instantiate the visualization based on the encoding and prompt.
--   Inspect the data, chart and code.
--   To create a new chart based on existing ones, follow up in natural language:
-    -   provide a follow up prompt (e.g., _\`\`show only top 5!''_),
-    -   you may also update visual encodings for the new chart.
+data-formulator-tutorial.mp4
 
-renewable-pct.mp4 renewable-rank.mp4
+-   Level 5: In practice, leverage all of them to keep up with both vibe and control!
 
-Repeat this process as needed to explore and understand your data. Your explorations are trackable in the **Data Threads** panel.
+### Create Reports
+
+Use the report builder to compose a report of the style you like, based on selected charts. Then share the reports to others!
 
 Developers' Guide
 -----------------
 
 Follow the developers' instructions to build your new data analysis tools on top of Data Formulator.
+
+Help wanted:
+
+-   Add more database connectors (#156)
+-   Scaling up messy data extractor: more document types and larger files.
+-   Adding more chart templates (e.g., maps).
+-   other ideas?
 
 Research Papers
 ---------------

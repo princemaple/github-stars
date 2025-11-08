@@ -1,6 +1,6 @@
 ---
 project: mkcert
-stars: 57000
+stars: 57082
 description: A simple zero-config tool to make locally trusted development certificates with any names you'd like.
 url: https://github.com/FiloSottile/mkcert
 ---

@@ -1,6 +1,6 @@
 ---
 project: Nimbus
-stars: 1820
+stars: 1830
 description: The future of file storage
 url: https://github.com/nimbusdotstorage/Nimbus
 ---
@@ -252,16 +252,8 @@ Make sure you have configured the Google OAuth credentials in your `.env` file a
 
 If you want to contribute, please refer to the contributing guide
 
-### 9\. Tests
-
-Vitest and MinIO via Docker are used for testing. To run tests, use must use `bun run test` becasuse `bun test` is reserved for `bun` (just like `bun build` etc).
-
-Tests **require** the `docker-compose.test.yml` to be running.
-
-Look at the scripts in `package.json` for all the `test:*` options.
-
-Deploying Docker images (ex. Coolify) or Cloudflare
----------------------------------------------------
+Deploying Docker images (ex. Coolify)
+-------------------------------------
 
 Follow the DEPLOYMENT.md file for instructions on how to deploy with Coolify.
 

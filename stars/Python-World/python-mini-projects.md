@@ -1,6 +1,6 @@
 ---
 project: python-mini-projects
-stars: 17065
+stars: 17105
 description: A collection of simple python mini projects to enhance your python skills
 url: https://github.com/Python-World/python-mini-projects
 ---

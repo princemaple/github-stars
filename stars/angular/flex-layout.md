@@ -1,6 +1,6 @@
 ---
 project: flex-layout
-stars: 5867
+stars: 5866
 description: Provides HTML UI layout for Angular applications; using Flexbox and a Responsive API 
 url: https://github.com/angular/flex-layout
 ---

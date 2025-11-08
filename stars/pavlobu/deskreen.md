@@ -1,12 +1,14 @@
 ---
 project: deskreen
-stars: 19666
+stars: 19737
 description: Deskreen turns any device with a web browser into a secondary screen for your computer. ⭐️ Star to support our work!
 url: https://github.com/pavlobu/deskreen
 ---
 
 Deskreen CE (Community Edition)
 ===============================
+
+(Over 2M downloads during 5 years since launch)
 
 Deskreen turns any device with a web browser into a secondary screen for your computer
 --------------------------------------------------------------------------------------
@@ -30,87 +32,6 @@ Deskreen Frequently Asked Questions
 
 * * *
 
-Deskreen Github Discussion Threads
-----------------------------------
-
-\[Read and Respect our Contributor Covenant Code of Conduct When Writing in our Discussion Threads.\](CODE\_OF\_CONDUCT.m
-
-### Announcements Channel in Discussions
-
-Some progress and updates on Deskreen can be found here.
-
-* * *
-
--   Q&A General - for general questions about Deskreen.
-
-* * *
-
--   Bugs General - for general bug reports if you don't know dev environment details. Please include Deskreen version! If you saw a bug and know your dev environment, and how to reproduce it, please consider opening a new Issue labeled as Bug and provide full details.
-
-* * *
-
--   General Discussion - for general discussion. For example how did you find out about Deskreen? Or send cheers and thanks to anyone in Deskreen's community members. 🎉
-
-* * *
-
--   Use Cases for Deskreen - let our community know how you use Deskreen in this thread.
-
-* * *
-
--   Enhancements and New Features for Deskreen - share your ideas of what improvements can be done to Deskreen. Issues created with enhancement tag should be related to some concrete example of change in UI, Security patch, Performance improvement with some concrete notes on how you think the problem should be approached. Otherwise for general improvements with short paragraphs post your thoughts here.
-
-* * *
-
--   Virtual Display Drivers Knowledge Base | Getting Rid From Virtual Display Plugs - share your knowledge or useful links on how to create a virtual display for any operating system. Links to source code are highly appreciated.
-
-* * *
-
--   Cast Audio with Video when screen sharing using WebRTC in Electron | Drivers to pipe audio output as an audio input source that can be read by ElectronJS WebRTC and streamed to client along with video - this feature has been requested multiple times, but it has a long way to go. Share your knowledge or useful links on how to get built in system audio output and put it to WebRTC stream so that client viewing device will be able to play it along with the video stream.
-
-* * *
-
-  
-  
-
-NOTE: We are looking for a solution to get rid from Dummy Display Plugs while using Deskreen as a second screen. Your code support is highly valuable and welcome in Deskreen!
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Display Dummy Plugs are good temporary solution, but it is not that good for everyone. If you are a seasoned Windows or Linux or MacOS hacker with a knowledge of low level tweaks and tricks, you can help us to make Deskreen better! On a long run Deskreen seeks for getting rid of Display Dummy Plugs, because most people don't like using them. Sometimes they can't use them because all available display ports are already taken. **So we need to have native drivers for Win / Mac / Linux that will help to enable virtual display without Dummy Display Plugs.** There are already working commercial solutions out there with their own drivers which they don't disclose, but this task is doable with a help of entire community. The goal of Deskreen is to enable community power and knowledge to overcome these technical challenges and make it a go-to second screen solution that everyone will benefit from!
-
-We plan on making virtual display driver support for each of three main operating systems and place all OS related codes in **`./drivers`** subdirectory of this project. You can find brief requirements for driver API in **`./drivers/README.md`**.
-
-Share your valuable knowledge on how to create virtual desktop **without a Dummy Display Plug in this discussion thread.**
-
-Thank you in advance!
-
-Installing with binaries
-------------------------
-
-### Windows
-
--   Get the .msi or .exe file from Releases
-
-### Mac
-
--   Get the .dmg file from Releases
-    
--   Or get from Homebrew: `brew install --cask deskreen`
-    
-
-### Linux
-
--   Debian and Ubuntu based distributions (deb)
-    
--   Enterprise Linux based distributions (rpm)
-    
--   Arch Linux AUR Package
-    
--   AppImage for other distributions
-    
-
-Get Started for Developers
---------------------------
-
 ### Prerequisites
 
 You will need to have `node>=v23` `pnpm>=v10.20.0` installed.
@@ -121,6 +42,51 @@ You will need to have `node>=v23` `pnpm>=v10.20.0` installed.
 4.  `pnpm clean && pnpm build && pnpm start` -- run in prod like mode
 
 #### for more pnpm commands look at `package.json`
+
+Starting with Custom Local IP
+-----------------------------
+
+You can start Deskreen CE with a custom local IP address using the `--local-ip` or `--ip` CLI flag. This is useful when you want to specify a particular network interface IP address.
+
+### macOS
+
+# Using open command (recommended)
+open -a "Deskreen CE" --args --ip 192.168.1.100
+
+# Or using the executable directly
+/Applications/Deskreen\\ CE.app/Contents/MacOS/Deskreen\\ CE --ip 192.168.1.100
+
+# Get your IP automatically and launch
+open -a "Deskreen CE" --args --ip "192.168.1.100"
+
+### Windows
+
+# Using Start-Process (PowerShell)
+Start-Process "Deskreen CE" \-ArgumentList "\--ip", "192.168.1.100"
+
+# Or using the executable directly
+"C:\\Program Files\\Deskreen CE\\Deskreen CE.exe" \--ip 192.168.1.100
+
+# Or from Command Prompt
+start "" "C:\\Program Files\\Deskreen CE\\Deskreen CE.exe" \--ip 192.168.1.100
+
+### Linux
+
+# If installed via AppImage
+./Deskreen\\ CE-\*.AppImage --ip 192.168.1.100
+
+# If installed via .deb/.rpm package (usually in /usr/bin or /opt)
+deskreen-ce --ip 192.168.1.100
+
+# Or using full path
+/opt/Deskreen\\ CE/deskreen-ce --ip 192.168.1.100
+
+**Note:** Replace `192.168.1.100` with your actual local IP address. You can find your IP using:
+
+-   **macOS/Linux:** `ipconfig getifaddr en0` or `ifconfig | grep "inet "`
+-   **Windows:** `ipconfig` (look for IPv4 Address)
+
+When using the `--ip` or `--local-ip` flag, the app will use the specified IP for QR codes and connection URLs, while still monitoring the actual network interface status for WiFi connection detection.
 
 Maintainer
 ----------
@@ -135,11 +101,13 @@ AGPL-3.0 License © Pavlo (Paul) Buidenkov
 Copyright
 ---------
 
-Electron-Vite MIT License © electron-vite-react
+Electron-Vite MIT License © electron-vite
 
 React MIT License © Facebook, Inc. and its affiliates
 
 Vite MIT License © Vite.js
+
+Electron Builder MIT License © electron-builder contributors
 
 Apache 2.0 © blueprintjs
 

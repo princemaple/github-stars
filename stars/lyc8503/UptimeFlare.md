@@ -1,6 +1,6 @@
 ---
 project: UptimeFlare
-stars: 2959
+stars: 2980
 description: ✔ Free and serverless uptime monitoring / status page on Cloudflare Workers, with Geo-specific checks
 url: https://github.com/lyc8503/UptimeFlare
 ---
@@ -49,6 +49,11 @@ Please refer to Wiki
 
 Get the latest features right away with simple upgrade process
 
+⚙️Docs for developer
+--------------------
+
+To contribute new features or customize your deployment furthermore, see here.
+
 New features (TODOs)
 --------------------
 
@@ -69,7 +74,7 @@ New features (TODOs)
 -   Known issue: `fetch` doesn't support non-standard port (resolved after CF update)
 -   Compatibility date update
 -   Scheduled Maintenance
--   Update wiki/README and add docs for dev
+-   Add docs for dev
 -   Migration to Terraform Cloudflare provider version 5.x
 -   Cloudflare D1 database
 -   Scheduled maintenances (via IIFE)
@@ -79,3 +84,5 @@ New features (TODOs)
 -   i18n...? (maybe)
 -   ICMP via proxy?
 -   Add default UA
+-   Customizable footer
+-   New header logo

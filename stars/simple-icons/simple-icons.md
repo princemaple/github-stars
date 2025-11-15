@@ -1,6 +1,6 @@
 ---
 project: simple-icons
-stars: 23774
+stars: 23805
 description: SVG icons for popular brands
 url: https://github.com/simple-icons/simple-icons
 ---
@@ -129,6 +129,10 @@ echo file\_get\_contents('path/to/package/icons/simpleicons.svg');
 
 // <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">...</svg>
 ?>
+
+### Font Usage
+
+See simple-icons-font to learn how to use our font distribution.
 
 Third-Party Extensions
 ----------------------

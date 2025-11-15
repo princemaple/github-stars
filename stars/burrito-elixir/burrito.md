@@ -1,6 +1,6 @@
 ---
 project: burrito
-stars: 1232
+stars: 1251
 description: Wrap your application in a BEAM Burrito!
 url: https://github.com/burrito-elixir/burrito
 ---

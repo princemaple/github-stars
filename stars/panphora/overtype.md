@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3234
+stars: 3244
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -850,7 +850,7 @@ Special thanks to:
 -   kbhomes - Fixed text selection desynchronization during overscroll (#17)
 -   Kristián Kostecký - Fixed toolbar option being ignored in reinit() (#62)
 -   Lyric Wai - Fixed double-escaping of links (#64), reported code block alignment issues (#65)
--   kozi - Reported link tooltip issues in Firefox (#68) and toolbar positioning (#69)
+-   kozi - Reported link tooltip issues in Firefox (#68), toolbar positioning (#69), theme synchronization issues (#70, #71)
 
 ### TypeScript & Framework Support
 

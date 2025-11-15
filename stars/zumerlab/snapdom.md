@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 6852
+stars: 6908
 description: SnapDOM is a next-generation DOM capture engine that transforms HTML into almost any format all powered by a flexible plugin system
 url: https://github.com/zumerlab/snapdom
 ---

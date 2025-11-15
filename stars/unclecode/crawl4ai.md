@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 55544
+stars: 55835
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -458,6 +458,10 @@ async def test\_news\_crawl():
         
         print(f"Successfully crawled {url}")
         print(f"Content length: {len(result.markdown)}")
+
+* * *
+
+> **💡 Tip:** Some websites may use **CAPTCHA** based verification mechanisms to prevent automated access. If your workflow encounters such challenges, you may optionally integrate a third-party CAPTCHA-handling service such as **CapSolver**. They support reCAPTCHA v2/v3, Cloudflare Turnstile, Challenge, AWS WAF, and more. Please ensure that your usage complies with the target website’s terms of service and applicable laws.
 
 ✨ Recent Updates
 ----------------

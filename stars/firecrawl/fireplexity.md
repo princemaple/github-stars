@@ -1,6 +1,6 @@
 ---
 project: fireplexity
-stars: 1720
+stars: 1727
 description: 🔥 Open Source Perplexity like AI search engine with real-time citations, streaming responses, and live data powered by Firecrawl 
 url: https://github.com/firecrawl/fireplexity
 ---

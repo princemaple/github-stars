@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 43277
+stars: 43352
 description: 🤱🏻 Turn any webpage into a desktop app with one command. 一键打包网页生成轻量桌面应用
 url: https://github.com/tw93/Pake
 ---
@@ -243,6 +243,9 @@ Pake's development can not be without these Hackers. They contributed a lot of c
 
   
 **Ayaka Neko**
+
+  
+**Claude**
 
   
 **Dengju Deng**

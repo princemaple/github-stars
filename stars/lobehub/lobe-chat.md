@@ -1,6 +1,6 @@
 ---
 project: lobe-chat
-stars: 67545
+stars: 67744
 description: 🤯 LobeHub - an open-source, modern design AI Agent Workspace. Supports multiple AI providers, Knowledge Base (file upload / RAG ), one click install MCP Marketplace and Artifacts / Thinking. One-click FREE deployment of your private AI Agent application.
 url: https://github.com/lobehub/lobe-chat
 ---
@@ -224,6 +224,12 @@ Recent Submits
 
 Description
 
+SEO  
+By **orrenprunckun** on **2025-11-14**
+
+Enter any URL and keyword and get an On-Page SEO analysis & insights!  
+`seo`
+
 Shopping tools  
 By **shoppingtools** on **2025-10-27**
 
@@ -241,12 +247,6 @@ By **Proghit** on **2025-01-24**
 
 Smart web search that reads and analyzes pages to deliver comprehensive answers from Google results.  
 `web` `search`
-
-Bing\_websearch  
-By **FineHow** on **2024-12-22**
-
-Search for information from the internet base BingApi  
-`bingsearch`
 
 > 📊 Total plugins: **42**
 

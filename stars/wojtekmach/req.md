@@ -1,6 +1,6 @@
 ---
 project: req
-stars: 1270
+stars: 1271
 description: Req is a batteries-included HTTP client for Elixir.
 url: https://github.com/wojtekmach/req
 ---

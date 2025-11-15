@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 125545
+stars: 125725
 description: Microsoft PowerToys is a collection of utilities that help you customize Windows and streamline everyday tasks
 url: https://github.com/microsoft/PowerToys
 ---
@@ -8,12 +8,17 @@ url: https://github.com/microsoft/PowerToys
 Microsoft PowerToys
 ===================
 
-### Installation . Documentation . Blog . Release notes
+Microsoft PowerToys is a collection of utilities that help you customize Windows and streamline everyday tasks.
+
+### Installation · Documentation · Blog · Release notes
 
   
   
-Microsoft PowerToys is a collection of utilities that help you customize Windows and streamline everyday tasks.  
-  
+
+🔨 Utilities
+------------
+
+PowerToys includes over 25 utilities to help you customize and optimize your Windows experience:
 
 Advanced Paste
 
@@ -74,21 +79,13 @@ ZoomIt
 📋 Installation
 ---------------
 
-For detailed installation instructions, visit the installation docs.
+For detailed installation instructions and system requirements, visit the installation docs.
 
-Before you begin, make sure your device meets the system requirements:
+But to get started quickly, choose one of the installation methods below:  
+  
 
-Note
-
--   Windows 11 or Windows 10 version 2004 (20H1 / build 19041) or newer
--   64-bit processor: x64 or ARM64
--   Latest stable version of Microsoft Edge WebView2 Runtime is installed via the bootstrapper during setup
-
-Choose one of the installation methods below:
-
-Download .exe from GitHub
-
-Go to the PowerToys GitHub releases, click Assets to reveal the downloads, and choose the installer that matches your architecture and install scope. For most devices, that's the x64 per-user installer.
+**Download .exe from GitHub**  
+Go to the \[PowerToys GitHub releases\]\[github-release-link\], click Assets to reveal the downloads, and choose the installer that matches your architecture and install scope. For most devices, that's the x64 per-user installer.
 
 Description
 
@@ -110,11 +107,11 @@ Machine wide - ARM64
 
 PowerToysSetup-0.95.1-arm64.exe
 
-Microsoft Store You can easily install PowerToys from the Microsoft Store:
+**Microsoft Store**  
+You can easily install PowerToys from the Microsoft Store:
 
-WinGet
-
-Download PowerToys from WinGet. Updating PowerToys via winget will respect the current PowerToys installation scope. To install PowerToys, run the following command from the command line / PowerShell:
+**WinGet**  
+Download PowerToys from \[WinGet\]\[winget-link\]. Updating PowerToys via winget will respect the current PowerToys installation scope. To install PowerToys, run the following command from the command line / PowerShell:
 
 _User scope installer \[default\]_
 
@@ -124,9 +121,8 @@ _Machine-wide scope installer_
 
 winget install \--scope machine Microsoft.PowerToys \-s winget
 
-Other methods
-
-There are community driven install methods such as Chocolatey and Scoop. If these are your preferred install solutions, you can find the install instructions there.
+**Other methods**  
+There are \[community driven install methods\](./doc/unofficialInstallMethods.md) such as Chocolatey and Scoop. If these are your preferred install solutions, you can find the install instructions there.
 
 ✨ What's new
 ------------

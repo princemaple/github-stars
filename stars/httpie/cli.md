@@ -1,6 +1,6 @@
 ---
 project: cli
-stars: 36960
+stars: 37018
 description: 🥧 HTTPie CLI  — modern, user-friendly command-line HTTP client for the API era. JSON support, colors, sessions, downloads, plugins & more.
 url: https://github.com/httpie/cli
 ---

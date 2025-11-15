@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 46184
+stars: 48641
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -57,7 +57,7 @@ Then use the tool directly:
 specify init <PROJECT\_NAME\>
 specify check
 
-To upgrade specify run:
+To upgrade Specify, see the Upgrade Guide for detailed instructions. Quick upgrade:
 
 uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
 
@@ -180,6 +180,10 @@ Amp
 
 ✅
 
+SHAI (OVHcloud)
+
+✅
+
 🔧 Specify CLI Reference
 ------------------------
 
@@ -197,7 +201,7 @@ Initialize a new Specify project from the latest template
 
 `check`
 
-Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`)
+Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `shai`)
 
 ### `specify init` Arguments & Options
 
@@ -217,7 +221,7 @@ Name for your new project directory (optional if using `--here`, or use `.` for 
 
 Option
 
-AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, or `q`
+AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, or `q`
 
 `--script`
 
@@ -284,6 +288,9 @@ specify init my-project --ai windsurf
 # Initialize with Amp support
 specify init my-project --ai amp
 
+# Initialize with SHAI support
+specify init my-project --ai shai
+
 # Initialize with PowerShell scripts (Windows/cross-platform)
 specify init my-project --ai copilot --script ps
 
@@ -294,7 +301,7 @@ specify init --here --ai copilot
 
 # Force merge into current (non-empty) directory without confirmation
 specify init . --force --ai copilot
-# or 
+# or
 specify init --here --force --ai copilot
 
 # Skip git initialization

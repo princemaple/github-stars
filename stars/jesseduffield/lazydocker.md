@@ -1,6 +1,6 @@
 ---
 project: lazydocker
-stars: 47436
+stars: 47632
 description: The lazier way to manage everything docker
 url: https://github.com/jesseduffield/lazydocker
 ---
@@ -59,7 +59,7 @@ Memorising docker commands is hard. Memorising aliases is slightly less hard. Ke
 Requirements
 ------------
 
--   Docker >= **1.13** (API >= **1.25**)
+-   Docker >= **29.0.0** (API >= **1.24**)
 -   Docker-Compose >= **1.23.2** (optional)
 
 Installation

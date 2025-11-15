@@ -1,6 +1,6 @@
 ---
 project: tridactyl
-stars: 5934
+stars: 5949
 description: A Vim-like interface for Firefox, inspired by Vimperator/Pentadactyl.
 url: https://github.com/tridactyl/tridactyl
 ---
@@ -301,7 +301,7 @@ Contributing
 
 ### Donations
 
-We gratefully accept donations via GitHub Sponsors (we receive 100% of your donation), PayPal (about 70% of your donation makes it to our bank account after fees) and Patreon (about 70% of your donation makes it to our account). If you can, please make this a monthly donation as it makes it much easier to plan. People who donate more than 10USD a month via GitHub or Patreon get a special monthly "tips and tricks" newsletter - see an example here. All GitHub and Patreon donors get a quarterly newsletter on Tridactyl development.
+We gratefully accept donations via GitHub Sponsors (we receive 100% of your donation), Liberapay (about 95% of your donation makes it to our account), PayPal (about 70% of your donation makes it to our bank account after fees) and Patreon (about 70% of your donation makes it to our account). If you can, please make this a monthly donation as it makes it much easier to plan. People who donate more than 10USD a month via GitHub or Patreon get a special monthly "tips and tricks" newsletter - see an example here. All GitHub and Patreon donors get a quarterly newsletter on Tridactyl development.
 
 Funds currently ensure that bovine3dom can afford to work on Tridactyl about one day a week.
 

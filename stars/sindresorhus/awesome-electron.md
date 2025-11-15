@@ -1,6 +1,6 @@
 ---
 project: awesome-electron
-stars: 26769
+stars: 26787
 description: Useful resources for creating apps with Electron
 url: https://github.com/sindresorhus/awesome-electron
 ---
@@ -21,9 +21,9 @@ Electron is an open-source framework for creating desktop apps using web technol
 
 Check out my macOS app  
 
-Menu Bar Spacing  
-Customize the gap between menu bar items on macOS
---------------------------------------------------------------------
+Text Lens  
+Copy unselectable text on screen
+--------------------------------------------
 
   
   

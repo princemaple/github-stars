@@ -1,6 +1,6 @@
 ---
 project: dockmon
-stars: 786
+stars: 877
 description: DockMon - Modern Docker container monitoring with auto-restart and alerts
 url: https://github.com/darthnorse/dockmon
 ---
@@ -106,12 +106,14 @@ See the Migration Guide for detailed instructions.
 Contributing
 ------------
 
-Contributions are welcome! Here's how you can help:
+Contributions are welcome! **No CLA required** - just submit a PR!
 
 -   Report bugs via GitHub Issues
 -   Suggest features in Discussions
 -   Improve documentation (edit the Wiki)
 -   Submit pull requests (see Contributing Guide)
+
+By contributing, you agree your contributions are licensed under the same BSL 1.1 terms as the project.
 
 Development
 -----------
@@ -128,7 +130,44 @@ See Development Setup for:
 License
 -------
 
-MIT License - see LICENSE file for details.
+**Business Source License 1.1** - see LICENSE file for full details.
+
+### What this means:
+
+✅ **You can use DockMon:**
+
+-   For internal use in your company (any size)
+-   For personal projects
+-   To monitor your clients' infrastructure as part of consulting/MSP services
+-   Fork, modify, and customize for your own use
+-   Contribute improvements back to the project
+
+❌ **You cannot:**
+
+-   Offer DockMon as a SaaS product to third parties
+-   Embed DockMon in a commercial monitoring platform sold to others
+-   Provide DockMon hosting as a standalone commercial service
+
+### Future Open Source:
+
+After 2 years (Change Date: 2027-01-01), each version automatically converts to **Apache License 2.0**, becoming fully permissive open source with explicit patent grants.
+
+### Commercial Licensing:
+
+Need to use DockMon in a way not permitted by BSL? Contact us for commercial licensing:
+
+-   Open an Issue
+-   Describe your use case
+-   We'll work with you on licensing terms
+
+### Why BSL?
+
+BSL protects the project from direct commercial competition while remaining contributor-friendly:
+
+-   **No CLAs required** - standard GitHub workflow
+-   **Eventually becomes open source** - builds community trust
+-   **Allows all legitimate uses** - only blocks competitive SaaS offerings
+-   Used successfully by Sentry, CockroachDB, MariaDB, and other major projects
 
 Author
 ------

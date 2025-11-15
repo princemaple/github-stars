@@ -1,6 +1,6 @@
 ---
 project: motion
-stars: 30223
+stars: 30298
 description: A modern animation library for React and JavaScript
 url: https://github.com/motiondivision/motion
 ---
@@ -104,9 +104,11 @@ Motion is sustainable thanks to the kind support of its sponsors.
 
 Become a sponsor
 
-### Partner
+### Partners
 
-Motion powers Framer animations, the web builder for creative pros. Design and ship your dream site. Zero code, maximum speed.
+Motion powers the animations for all websites built with Framer, the web builder for creative pros. The Motion website itself is built on Framer, for its delightful canvas-based editing and powerful CMS features.
+
+Motion drives the animations on the Cursor homepage, and is working with Cursor to bring powerful AI workflows to the Motion examples and docs.
 
 ### Platinum
 

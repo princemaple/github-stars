@@ -1,6 +1,6 @@
 ---
 project: coze-loop
-stars: 5072
+stars: 5097
 description: Next-generation AI Agent Optimization Platform: Cozeloop addresses challenges in AI agent development by providing full-lifecycle management capabilities from development, debugging, and evaluation to monitoring.  
 url: https://github.com/coze-dev/coze-loop
 ---
@@ -34,14 +34,14 @@ Feature list
 
 Prompt debugging
 
-\* Playground debugging and comparison  
-\* Prompt version management
+_Playground debugging and comparison  
+_Prompt version management
 
 Evaluation
 
-\* Manage evaluation sets  
+_Manage evaluation sets  
 Management evaluator  
-\* Manage experiments
+_Manage experiments
 
 Observation
 
@@ -69,7 +69,7 @@ Procedure:
     git clone https://github.com/coze-dev/coze-loop.git
     
     # Enter the coze-loop directory
-    cd coze-loop 
+    cd coze-loop
     
 2.  Configure a model.
     
@@ -82,7 +82,7 @@ Procedure:
     
     # Start the service (default: development mode)
     # Run in the coze-loop/ directory
-    make compose-up 
+    make compose-up
     
 4.  Access the Coze Loop open-source version through your browser `http://localhost:8082`.
     

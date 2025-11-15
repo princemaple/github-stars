@@ -1,6 +1,6 @@
 ---
 project: netvisor
-stars: 1376
+stars: 1827
 description: Automatically discover and visually document network infrastructure.
 url: https://github.com/mayanayza/netvisor
 ---
@@ -10,9 +10,12 @@ NetVisor
 
 **Automatically discover and visually document network infrastructure.**
 
-NetVisor scans your network, identifies hosts and services, and generates an interactive visualization showing how everything connects, letting you easily create and maintain network documentation.
+NetVisor scans your network, identifies hosts and services, and generates an interactive visualization showing how everything connects, letting you easily create and maintain network documentation.  
+  
+  
+  
 
-> 💡 **Prefer not to self-host?** Join the waitlist for NetVisor Cloud
+> 💡 **Prefer not to self-host, or want to use this for your business?** Get early access to NetVisor Cloud
 
 Why NetVisor?
 -------------
@@ -61,7 +64,7 @@ Why NetVisor?
 
 * * *
 
-**Want hosted NetVisor without the setup?** Join the waitlist for our upcoming cloud service at netvisor.io
+**Want hosted NetVisor without the setup?** Get early access to our upcoming cloud service at netvisor.io
 
 * * *
 
@@ -115,11 +118,6 @@ Refer to Configuration for more setup options.
 
 ### 0\. ✅ Install Requirements
 
-#### Daemon
-
--   **Linux**: Docker with host networking support, OR binary installation
--   **Mac**: Binary installation only (Docker Desktop does not support host networking)
-
 #### Server (Docker - Recommended)
 
 -   Docker
@@ -130,9 +128,18 @@ Refer to Configuration for more setup options.
 -   Rust 1.90 or later
 -   Node.js 20 or later
 
+#### Running on Proxmox
+
+You can use this helper script to create a NetVisor LXC on your Proxmox host.
+
+#### Additional Daemons (Optional)
+
+-   **Linux**: Docker with host networking support, OR binary installation
+-   **Mac**: Binary installation only (Docker Desktop does not support host networking)
+
 ### 1\. 🚀 Start the Server
 
-**Note**: The default docker compose includes a daemon which assumes your default Docker bridge network is `172.17.0.1`. If this is not the case, update the address in the `NETVISOR_INTEGRATED_DAEMON_URL` environment variable. If you are running in an LXC environment, you may need to change the `NETVISOR_INTEGRATED_DAEMON_URL` to `172.31.0.1`.
+**Note**: The default docker compose includes a daemon which assumes your default Docker bridge network is `172.17.0.1`. If this is not the case, update the address in the `NETVISOR_INTEGRATED_DAEMON_URL` environment variable.
 
 curl -O https://raw.githubusercontent.com/mayanayza/netvisor/refs/heads/main/docker-compose.yml && docker compose up -d
 
@@ -166,9 +173,10 @@ You can deploy additional daemons at any time after setting up your first networ
     
 2.  **Create your account**: On first load, you'll see the registration page
     
-    -   Enter a username
+    -   Enter an email
     -   Enter a password (minimum 12 characters with uppercase, lowercase, number, and special character)
     -   Click **Register** to create your account
+    -   Alternatively: NetVisor supports OIDC. Go to OIDC Setup for more details.
 
 1.  **Automatic initialization**: After registration, NetVisor automatically:
     
@@ -604,7 +612,7 @@ Concurrent Scans
 
 `concurrent_scans`
 
-`15`
+\-
 
 Maximum number of hosts to scan in parallel during discovery
 
@@ -656,16 +664,40 @@ The configuration file persists runtime state (daemon ID, host ID, last heartbea
 
 #### Concurrent Scans
 
-The `CONCURRENT_SCANS` setting controls how many hosts the daemon scans in parallel during network discovery. Higher values complete scans faster but use more system resources.
-
-**Recommended ranges**:
-
--   **Low-resource systems** (Raspberry Pi): 5-10
--   **Developer laptops**: 15-20
--   **Docker containers**: 10-30 (depends on container memory limits)
--   **Dedicated servers**: 25-50
+By default, the daemon automaticaly determines how many hosts to scan in parallel based on available system resources. However, if you encounter an error saying that CONCURRENT\_SCANS is too high for the system, you can set it manually.
 
 If set too high, the daemon may exhaust system resources and fail with an error. Monitor daemon logs and adjust as needed for your hardware.
+
+#### Running as a System Service (Linux)
+
+After installing the binary, you can run the daemon as a systemd service:
+
+1.  Create the service file:
+
+sudo curl -o /etc/systemd/system/netvisor-daemon.service \\
+  https://raw.githubusercontent.com/mayanayza/netvisor/main/netvisor-daemon.service
+
+1.  Edit the service file to add your configuration:
+
+sudo nano /etc/systemd/system/netvisor-daemon.service
+
+Add your daemon arguments to the `ExecStart` line:
+
+ExecStart\=/usr/local/bin/netvisor-daemon --server-target YOUR\_SERVER\_IP\_OR\_HOSTNAME --server-port YOUR\_SERVER\_PORT --network-id YOUR\_NETWORK\_ID --daemon-api-key YOUR\_API\_KEY
+
+1.  Enable and start the service:
+
+sudo systemctl daemon-reload
+sudo systemctl enable netvisor-daemon
+sudo systemctl start netvisor-daemon
+
+1.  Check status:
+
+sudo systemctl status netvisor-daemon
+
+1.  View logs:
+
+sudo journalctl -u netvisor-daemon -f
 
 ### Server Configuration
 
@@ -751,66 +783,109 @@ Disable Registration
 
 Flag to disable new user registration
 
+OIDC Issuer URL
+
+`--oidc-issuer-url`
+
+`NETVISOR_OIDC_ISSUER_URL`
+
+\-
+
+The OIDC provider's issuer URL (must end with `/`). Example: `https://authentik.company.com/application/o/netvisor/`
+
+OIDC Client ID
+
+`--oidc-client-id`
+
+`NETVISOR_OIDC_CLIENT_ID`
+
+\-
+
+OAuth2 client ID from your OIDC provider
+
+OIDC Client Secret
+
+`--oidc-client-secret`
+
+`NETVISOR_OIDC_CLIENT_SECRET`
+
+\-
+
+OAuth2 client secret from your OIDC provider
+
+OIDC Provider Name
+
+`--oidc-provider-name`
+
+`NETVISOR_OIDC_PROVIDER_NAME`
+
+\-
+
+Display name shown in the UI (e.g., `Authentik`, `Keycloak`, `Auth0`)
+
+OIDC Redirect URL
+
+`--oidc-redirect-url`
+
+`NETVISOR_OIDC_REDIRECT_URL`
+
+\-
+
+URL from OIDC provider that NetVisor should send user to when using OIDC auth
+
 #### Session Cookie Security
 
 **Important**: Set `NETVISOR_USE_SECURE_SESSION_COOKIES=true` when running NetVisor behind HTTPS (reverse proxy or direct TLS). This ensures session cookies are marked as secure and only transmitted over HTTPS.
 
 For internal networks without HTTPS, keep this setting as `false` (default).
 
+#### OIDC Setup
+
+To use OIDC, you'll need to set the following:
+
+NETVISOR\_OIDC\_ISSUER\_URL=https://your-provider.com/application/o/netvisor/  
+NETVISOR\_OIDC\_CLIENT\_ID=  
+NETVISOR\_OIDC\_CLIENT\_SECRET=  
+NETVISOR\_OIDC\_PROVIDER\_NAME=  
+NETVISOR\_OIDC\_REDIRECT\_URL=  
+
+When configuring your OIDC provider, use this callback URL:
+
+```
+http://your-netvisor-domain:60072/api/auth/oidc/callback
+```
+
 ### UI Configuration
 
-The UI supports the following configuration options for API connectivity:
+The UI automatically uses the hostname and port from your browser's address bar.
 
-Parameter
+**Advanced: API on different domain**
 
-Environment Variable
+If your API server is on a different hostname than where the UI is served (rare), rebuild the Docker image with:
 
-Default
-
-Description
-
-Server Hostname
-
-`PUBLIC_SERVER_HOSTNAME`
-
-`default`
-
-Hostname for API requests. Use `default` to automatically use the browser's hostname (recommended for most setups, including reverse proxies). Set to a specific hostname only when the API is on a different domain.
-
-Server Port
-
-`PUBLIC_SERVER_PORT`
-
-`60072`
-
-Port for API requests. Only used when `PUBLIC_SERVER_HOSTNAME` is set to a specific hostname (not `default`). Omit this variable when using a reverse proxy on standard ports.
-
-**Configuration Examples**:
-
-1.  **Direct access (development/internal)**: Use default settings
-
-environment:
-  PUBLIC\_SERVER\_HOSTNAME: default
-  PUBLIC\_SERVER\_PORT: 60072
-
-1.  **Reverse proxy (production)**: Use default hostname, omit port
-
-environment:
-  PUBLIC\_SERVER\_HOSTNAME: default
-  # PUBLIC\_SERVER\_PORT not needed - uses browser's port
-
-1.  **API on different domain**: Specify both hostname and port
-
-environment:
-  PUBLIC\_SERVER\_HOSTNAME: api.example.com
-  PUBLIC\_SERVER\_PORT: 8080
-
-**How it works**: When `PUBLIC_SERVER_HOSTNAME=default`, the UI uses relative URLs that automatically inherit the protocol, hostname, and port from your browser's address bar. This works seamlessly with reverse proxies and different deployment configurations.
+docker build \\
+  --build-arg PUBLIC\_SERVER\_HOSTNAME=api.example.com \\
+  --build-arg PUBLIC\_SERVER\_PORT=8080 \\
+  -f backend/Dockerfile \\
+  -t netvisor-server:custom .
 
 * * *
 
 🔧 Troubleshooting
 ------------------
+
+### Proxmox Host and LXC Issues
+
+-   If you are running containerized NetVisor directly on a Proxmox Host and encounter `could not create any Unix-domain sockets`, add the following line to the compose for both Postgres and Netvisor.
+
+```
+security_opt:
+  - apparmor:unconfined
+```
+
+Refer to #87 for more details
+
+-   If you are running in an LXC environment, you may need to change the `NETVISOR_INTEGRATED_DAEMON_URL` to \`172.31.0.1.
 
 ### Error: CONCURRENT\_SCANS is too high for this system
 

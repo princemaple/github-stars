@@ -1,6 +1,6 @@
 ---
 project: ququ
-stars: 1668
+stars: 1697
 description: 开源免费的 Wispr Flow 替代方案 | 集成FunASR本地模型和可配置大语言模型的下一代中文桌面语音工作流
 url: https://github.com/yan5xu/ququ
 ---

@@ -1,6 +1,6 @@
 ---
 project: filebrowser
-stars: 31882
+stars: 31963
 description: 📂 Web File Browser
 url: https://github.com/filebrowser/filebrowser
 ---
@@ -15,15 +15,12 @@ Documentation on how to install, configure, and contribute to this project is ho
 Project Status
 --------------
 
-Warning
-
-This project is currently on **maintenance-only** mode, and is looking for new maintainers. For more information, please read the discussion #4906. Therefore, please note the following:
+This project is a finished product which fulfills its goal: be a single binary web File Browser which can be run by anyone anywhere. That means that File Browser is currently on **maintenance-only** mode. Therefore, please note the following:
 
 -   It can take a while until someone gets back to you. Please be patient.
--   Issues are only being used to track bugs. Any unrelated issues will be converted into a discussion.
--   No new features will be implemented until further notice. The priority is on triaging issues and merge bug fixes.
-
-If you're interested in maintaining this project, please reach out via the discussion above.
+-   Issues are meant to track bugs. Unrelated issues will be converted into discussions.
+-   No new features will be implemented by maintainers. Pull requests for new features will be reviewed on a case by case basis.
+-   The priority is triaging issues, addressing security issues and reviewing pull requests meant to solve bugs.
 
 Contributing
 ------------

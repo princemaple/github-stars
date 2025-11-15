@@ -1,6 +1,6 @@
 ---
 project: LLaMA-Factory
-stars: 62094
+stars: 62530
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LLaMA-Factory
 ---
@@ -25,16 +25,23 @@ Available for MacOS, Linux, & Windows
 
 train\_en.mp4
 
-Choose your path:
+Start local training:
+
+-   Please refer to usage
+
+Start cloud training:
+
+-   **Colab (free)**: https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing
+-   **PAI-DSW (free trial)**: https://gallery.pai-ml.com/#/preview/deepLearning/nlp/llama\_factory
+-   **LLaMA Factory Online**: https://www.llamafactory.com.cn/?utm\_source=LLaMA-Factory
+-   **Alaya NeW (cloud GPU deal)**: https://docs.alayanew.com/docs/documents/useGuide/LLaMAFactory/mutiple/?utm\_source=LLaMA-Factory
+
+Read technical notes:
 
 -   **Documentation (WIP)**: https://llamafactory.readthedocs.io/en/latest/
 -   **Documentation (AMD GPU)**: https://rocm.docs.amd.com/projects/ai-developer-hub/en/latest/notebooks/fine\_tune/llama\_factory\_llama3.html
--   **Colab (free)**: https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing
--   **Local machine**: Please refer to usage
--   **PAI-DSW (free trial)**: https://gallery.pai-ml.com/#/preview/deepLearning/nlp/llama\_factory
--   **Alaya NeW (cloud GPU deal)**: https://docs.alayanew.com/docs/documents/useGuide/LLaMAFactory/mutiple/?utm\_source=LLaMA-Factory
+-   **Official Blog**: https://blog.llamafactory.net/en/
 -   **Official Course**: https://www.lab4ai.cn/course/detail?id=7c13e60f6137474eb40f6fd3983c0f46&utm\_source=LLaMA-Factory
--   **LLaMA Factory Online**: https://www.llamafactory.com.cn/?utm\_source=LLaMA-Factory
 
 Note
 
@@ -95,6 +102,12 @@ Llama 3 / GLM-4 / Mistral Small / PaliGemma2 / Llama 4
 
 Blogs
 -----
+
+Tip
+
+Now we have a dedicated blog for LLaMA Factory!
+
+Website: https://blog.llamafactory.net/en/
 
 -   💡 Easy Dataset × LLaMA Factory: Enabling LLMs to Efficiently Learn Domain Knowledge (English)
 -   Fine-tune a mental health LLM using LLaMA-Factory (Chinese)
@@ -879,7 +892,7 @@ Preference datasets
 
 Some datasets require confirmation before using them, so we recommend logging in with your Hugging Face account using these commands.
 
-pip install --upgrade huggingface\_hub
+pip install "huggingface\_hub<1.0.0"
 huggingface-cli login
 
 Requirement

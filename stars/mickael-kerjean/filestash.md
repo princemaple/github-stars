@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 13000
+stars: 13043
 description: :file_folder: The Dropbox like web client for SFTP, S3, FTP, WebDAV, Git, Minio, LDAP, CalDAV, CardDAV, Mysql, Backblaze, ...
 url: https://github.com/mickael-kerjean/filestash
 ---

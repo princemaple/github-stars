@@ -1,6 +1,6 @@
 ---
 project: self-hosted
-stars: 478
+stars: 482
 description: Self-hosted version of webtor.io implemented as an all-in-one Docker image
 url: https://github.com/webtor-io/self-hosted
 ---
@@ -92,3 +92,4 @@ Other Custom Variables
 ----------------------
 
 -   **WAIT\_FOR\_VPN** - waits for VPN to start (in case you are using Gluetun)
+-   **REQUEST\_URL\_MAPPINGS** - custom mappings for request urls

@@ -1,6 +1,6 @@
 ---
 project: tflearn
-stars: 9618
+stars: 9619
 description: Deep learning library featuring a higher-level API for TensorFlow.
 url: https://github.com/tflearn/tflearn
 ---

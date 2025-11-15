@@ -1,6 +1,6 @@
 ---
 project: Speedy
-stars: 12825
+stars: 13064
 description: 🎮 An open-source game speed modifier.[一款开源的游戏变速器]
 url: https://github.com/game1024/Speedy
 ---
@@ -37,7 +37,7 @@ OpenSpeedy is an open-source and free game speed tool that helps you break frame
 winget install openspeedy
 
 # open a new terminal, you can run openspeedy by following command
-openspeedy
+speedy
 
 📥 **Method2: Manual Download**
 

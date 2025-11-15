@@ -1,6 +1,6 @@
 ---
 project: Unique3D
-stars: 3492
+stars: 3493
 description: [NeurIPS 2024] Unique3D: High-Quality and Efficient 3D Mesh Generation from a Single Image
 url: https://github.com/AiuniAI/Unique3D
 ---

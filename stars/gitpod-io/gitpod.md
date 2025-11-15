@@ -1,6 +1,6 @@
 ---
 project: gitpod
-stars: 13523
+stars: 13529
 description: The developer platform for on-demand cloud development environments to create software faster and more securely.
 url: https://github.com/gitpod-io/gitpod
 ---

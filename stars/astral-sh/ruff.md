@@ -1,6 +1,6 @@
 ---
 project: ruff
-stars: 43648
+stars: 43790
 description: An extremely fast Python linter and code formatter, written in Rust.
 url: https://github.com/astral-sh/ruff
 ---
@@ -114,8 +114,8 @@ curl -LsSf https://astral.sh/ruff/install.sh | sh
 powershell -c "irm https://astral.sh/ruff/install.ps1 | iex"
 
 # For a specific version.
-curl -LsSf https://astral.sh/ruff/0.14.4/install.sh | sh
-powershell -c "irm https://astral.sh/ruff/0.14.4/install.ps1 | iex"
+curl -LsSf https://astral.sh/ruff/0.14.5/install.sh | sh
+powershell -c "irm https://astral.sh/ruff/0.14.5/install.ps1 | iex"
 
 You can also install Ruff via Homebrew, Conda, and with a variety of other package managers.
 
@@ -141,7 +141,7 @@ Ruff can also be used as a pre-commit hook via `ruff-pre-commit`:
 
 \- repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev: v0.14.4
+  rev: v0.14.5
   hooks:
     # Run the linter.
     - id: ruff-check
@@ -414,6 +414,7 @@ Ruff is used by a number of major open-source projects and companies, including:
 -   PyTorch
 -   Pydantic
 -   Pylint
+-   PyScripter
 -   PyVista
 -   Reflex
 -   River

@@ -1,6 +1,6 @@
 ---
 project: elixir-hl7
-stars: 122
+stars: 123
 description: An Elixir library for working with HL7 v2.x healthcare data 
 url: https://github.com/HCA-Healthcare/elixir-hl7
 ---

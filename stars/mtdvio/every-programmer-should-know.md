@@ -1,6 +1,6 @@
 ---
 project: every-programmer-should-know
-stars: 94064
+stars: 94192
 description: A collection of (mostly) technical things every software developer should know about
 url: https://github.com/mtdvio/every-programmer-should-know
 ---
@@ -42,6 +42,7 @@ _P.P.S. Contributions are welcome!_
 -   🎥 Map of Computer Science
 -   🎥 40 Key Computer Science Concepts Explained In Layman’s Terms
 -   📄 Computer Science Roadmap
+-   📄 Community-driven Roadmaps for Developers
 
 ### Falsehoods
 
@@ -58,6 +59,7 @@ _P.P.S. Contributions are welcome!_
 
 ### Data Structures
 
+-   📖 Hello Algo
 -   🎥 UC Berkeley, Data Structures Course
 -   Foundations of Data Structures - EDX
 -   Data Structures - Coursera
@@ -102,10 +104,15 @@ _P.P.S. Contributions are welcome!_
 -   📄 Jepsen: how different databases behave under partition
 -   📜 Fallacies of Distributed Computing Explained
 
+### Machine Learning
+
+-   🏫 Andrew NG Machine Learning Specification Class
+
 ### RegExp
 
--   RegexHQ
--   Learn regex the easy way
+-   🔗 RegexHQ
+-   🔗 Learn regex the easy way
+-   🔗 Regex Crossword
 
 ### Security
 
@@ -308,6 +315,14 @@ _P.P.S. Contributions are welcome!_
 -   🔗 Codemia
 -   🔗 LabEx
 -   🔗 Codebattle
+
+### Learning through entertainment:
+
+-   Robocode
+-   Elevatorsaga
+-   Untrusted
+-   CSS Diner
+-   CodingGame
 
 ### Platform Engineering
 

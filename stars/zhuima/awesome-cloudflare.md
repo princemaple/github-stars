@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 12153
+stars: 12203
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -1003,6 +1003,12 @@ CF-TOOLS
 https://cf-tools.tianyao.qzz.io/
 
 有效中
+
+subpool-worker
+
+轻量级订阅池服务，用于管理和分发代理订阅链接
+
+维护中
 
 教程
 --

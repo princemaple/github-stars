@@ -1,6 +1,6 @@
 ---
 project: telemetry_ui
-stars: 240
+stars: 241
 description: Telemetry based metrics UI. Take your telemetry metrics and display them in a web page.
 url: https://github.com/mirego/telemetry_ui
 ---
@@ -32,6 +32,9 @@ It comes with a Postgres backend, powered by Ecto, to quickly (and efficiently) 
 -   Shareable metrics page (secured, cacheable, without external requests)
 -   Slack digest with rendered images
 -   Multiple metrics dashboard living in the same app
+-   Hot-reloading configuration without restarting your application
+-   Dynamic configuration via functions for runtime flexibility
+-   Hidden pages and custom styling per page
 
 Checkout the Guides for more informations.
 
@@ -49,7 +52,7 @@ def deps do
   \]
 end
 
-Configure TelemetryUI for test.
+Configure TelemetryUI for test. This disables all TelemetryUI processes during testing.
 
 \# config/test.exs
 config :telemetry\_ui, disabled: true
@@ -117,7 +120,7 @@ defp telemetry\_config do
   \]
 end
 
-Since the config is read once at startup, you need to restart the server of you add new metrics to track.
+Since the config is read once at startup, you need to restart the server if you add new metrics to track. Alternatively, you can use the hot-reload feature (see guides/hot-reload.md).
 
 To see the rendered metrics, you need to add a route to your router.
 
@@ -155,7 +158,48 @@ end
 
 def enable\_telemetry\_ui(conn, \_), do: assign(conn, :telemetry\_ui\_allowed, true)
 
-That’s it! You can declare as many metrics as you want and they will render in HTML on your page!
+That's it! You can declare as many metrics as you want and they will render in HTML on your page!
+
+Configuration
+-------------
+
+### Dynamic Configuration
+
+Instead of passing configuration directly, you can pass a function that returns the configuration. This enables dynamic configuration that can be reloaded at runtime:
+
+\# Using anonymous function
+{TelemetryUI, config: fn \-> telemetry\_config() end}
+
+\# Using module and function tuple
+{TelemetryUI, config: {MyApp.Telemetry, :config}}
+
+This is particularly useful with the hot-reload feature (see guides/hot-reload.md).
+
+### Named Instances
+
+When running multiple TelemetryUI instances (e.g., for different dashboards with different permissions), you must give each instance a unique name:
+
+\# lib/my\_app/application.ex
+children \= \[
+  {TelemetryUI, telemetry\_config() ++ \[name: :admin\]},
+  {TelemetryUI, user\_config() ++ \[name: :user\_dashboard\]}
+\]
+
+Then reference the name in your router:
+
+get("/admin/metrics", TelemetryUI.Web, \[\], \[assigns: %{telemetry\_ui\_allowed: true, telemetry\_ui\_name: :admin}\])
+get("/user/metrics", TelemetryUI.Web, \[\], \[assigns: %{telemetry\_ui\_allowed: true, telemetry\_ui\_name: :user\_dashboard}\])
+
+See guides/multi-metrics-endpoints.md for a complete example.
+
+### Disabling TelemetryUI
+
+You can disable all TelemetryUI processes (useful for testing):
+
+\# config/test.exs
+config :telemetry\_ui, disabled: true
+
+For all configuration options, see guides/configuration-reference.md.
 
 License
 -------

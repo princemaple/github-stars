@@ -1,6 +1,6 @@
 ---
 project: FreeDomain
-stars: 116251
+stars: 118888
 description: DigitalPlat FreeDomain: Free Domain For Everyone
 url: https://github.com/DigitalPlatDev/FreeDomain
 ---
@@ -15,8 +15,6 @@ With FreeDomain, you’re free to register a unique domain and host it with your
 ### ✔️ Why Free Domains?
 
 At **DigitalPlat FreeDomain**, we’re on a mission to make the web more accessible. We believe that the cost of a domain shouldn’t hold anyone back from creating a website. Our goal is to make the internet an open space where everyone can have their own place online, regardless of budget.
-
-DigitalPlat is fiscally sponsored by The Hack Foundation, a 501(c)(3) nonprofit (EIN: 81-2908499).
 
 * * *
 
@@ -56,16 +54,6 @@ Check FAQ Page
 ### 🤝 Join Our Community!
 
 🆕 Join the official DigitalPlat FreeDomain Telegram group, Discord server or GitHub Discussion today! Be the first to know about the latest updates and happenings! Got questions? Facing challenges? Or simply want to show off your awesome builds? Don’t wait—become part of our community now! 🚀
-
-* * *
-
-### 💰 Help Us Keep Domains Free
-
-DigitalPlat is a nonprofit, and every little bit helps us keep offering free domains to more people. If you’d like to support us, even a $1 donation makes a difference!
-
-All donations are handled by The Hack Foundation and used strictly for nonprofit purposes, following US IRS regulations under section 501(c)(3). Your support helps us keep the internet open and accessible for everyone.
-
-Donate Us Today! (Tax exemption in the US)
 
 * * *
 

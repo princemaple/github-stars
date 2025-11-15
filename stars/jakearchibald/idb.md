@@ -1,6 +1,6 @@
 ---
 project: idb
-stars: 7100
+stars: 7114
 description: IndexedDB, but with promises
 url: https://github.com/jakearchibald/idb
 ---

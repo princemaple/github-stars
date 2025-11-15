@@ -1,6 +1,6 @@
 ---
 project: elixir-dns
-stars: 115
+stars: 116
 description: DNS library for Elixir
 url: https://github.com/tungd/elixir-dns
 ---

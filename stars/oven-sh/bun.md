@@ -1,6 +1,6 @@
 ---
 project: bun
-stars: 82061
+stars: 82185
 description: Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one
 url: https://github.com/oven-sh/bun
 ---
@@ -216,7 +216,7 @@ Guides
 -   Ecosystem
     
     -   Use React and JSX
-    -   Use EdgeDB with Bun
+    -   Use Gel with Bun
     -   Use Prisma with Bun
     -   Add Sentry to a Bun app
     -   Create a Discord bot

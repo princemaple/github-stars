@@ -1,6 +1,6 @@
 ---
 project: postgresus
-stars: 2159
+stars: 2401
 description: PostgreSQL backup tool
 url: https://github.com/RostislavDugin/postgresus
 ---
@@ -24,13 +24,13 @@ Features • Installation • Usage • License • Contributing
 -   **Precise timing**: run backups at specific times (e.g., 4 AM during low traffic)
 -   **Smart compression**: 4-8x space savings with balanced compression (~20% overhead)
 
-### 🗄️ **Multiple Storage Destinations**
+### 🗄️ **Multiple Storage Destinations** (docs)
 
 -   **Local storage**: Keep backups on your VPS/server
 -   **Cloud storage**: S3, Cloudflare R2, Google Drive, NAS, Dropbox and more
 -   **Secure**: All data stays under your control
 
-### 📱 **Smart Notifications**
+### 📱 **Smart Notifications** (docs)
 
 -   **Multiple channels**: Email, Telegram, Slack, Discord, webhooks
 -   **Real-time updates**: Success and failure notifications
@@ -38,9 +38,16 @@ Features • Installation • Usage • License • Contributing
 
 ### 🐘 **PostgreSQL Support**
 
--   **Multiple versions**: PostgreSQL 13, 14, 15, 16, 17 and 18
+-   **Multiple versions**: PostgreSQL 12, 13, 14, 15, 16, 17 and 18
 -   **SSL support**: Secure connections available
 -   **Easy restoration**: One-click restore from any backup
+
+### 👥 **Suitable for Teams** (docs)
+
+-   **Workspaces**: Group databases, notifiers and storages for different projects or teams
+-   **Access management**: Control who can view or manage specific databases with role-based permissions
+-   **Audit logs**: Track all system activities and changes made by users
+-   **User roles**: Assign viewer, member, admin or owner roles within workspaces
 
 ### 🐳 **Self-Hosted & Secure**
 
@@ -48,7 +55,7 @@ Features • Installation • Usage • License • Contributing
 -   **Privacy-first**: All your data stays on your infrastructure
 -   **Open source**: Apache 2.0 licensed, inspect every line of code
 
-### 📦 Installation
+### 📦 Installation (docs)
 
 You have three ways to install Postgresus:
 
@@ -96,8 +103,6 @@ This single command will:
 
 Create a `docker-compose.yml` file with the following configuration:
 
-version: "3"
-
 services:
   postgresus:
     container\_name: postgresus
@@ -125,9 +130,9 @@ docker compose up -d
 6.  **Add notifications** (optional): Configure email, Telegram, Slack, or webhook notifications
 7.  **Save and start**: Postgresus will validate settings and begin the backup schedule
 
-### 🔑 Resetting Admin Password
+### 🔑 Resetting Password (docs)
 
-If you need to reset the admin password, you can use the built-in password reset command:
+If you need to reset the password, you can use the built-in password reset command:
 
 docker exec -it postgresus ./main --new-password="YourNewSecurePassword123" --email="admin"
 

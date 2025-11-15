@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1593
+stars: 1601
 description: Carbon is a modern ERP/MES/QMS. Perfect for complex assembly, job shops, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -308,7 +308,23 @@ Edge Functions
 
 http://localhost:54321/functions/v1/
 
-### Notes
+### Commands
+
+To add an edge function
+
+$ npm run db:function:new <name\>
+
+To add a database migration
+
+$ npm run db:migrate:new <name\>
+
+To add an AI agent
+
+$ npm run agent:new <name\>
+
+To add an AI tool
+
+$ npm run tool:new <name\>
 
 To kill the database containers in a non-recoverable way, you can run:
 

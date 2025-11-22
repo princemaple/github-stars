@@ -1,6 +1,6 @@
 ---
 project: pytorch
-stars: 95082
+stars: 95292
 description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
 url: https://github.com/pytorch/pytorch
 ---
@@ -260,8 +260,13 @@ python tools/amd\_build/build\_amd.py
 
 Install PyTorch
 
+# the CMake prefix for conda environment
 export CMAKE\_PREFIX\_PATH="${CONDA\_PREFIX:-'$(dirname $(which conda))/../'}:${CMAKE\_PREFIX\_PATH}"
 python -m pip install --no-build-isolation -v -e .
+
+# the CMake prefix for non-conda environment, e.g. Python venv
+# call following after activating the venv
+export CMAKE\_PREFIX\_PATH="${VIRTUAL\_ENV}:${CMAKE\_PREFIX\_PATH}"
 
 **On macOS**
 

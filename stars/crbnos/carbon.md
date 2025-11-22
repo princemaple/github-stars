@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1601
+stars: 1607
 description: Carbon is a modern ERP/MES/QMS. Perfect for complex assembly, job shops, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -341,6 +341,18 @@ For example, to run test command in the `@carbon/react` package you can run:
 ```
 $ npm run test -w @carbon/react
 ```
+
+To restore a production database locally:
+
+1.  Download the production database as a .backup file
+2.  Rename the `migrations` folder to `_migrations`
+3.  Restore the database with the following command:
+
+$ npm run db:build # this should error out at the seed step
+$ PGPASSWORD=postgres psql -h localhost -p 54322 -U supabase\_admin -d postgres < ~/Downloads/db\_cluster-17-11-2025@09-03-36.backup
+$ npm run dev
+
+1.  Rename the `_migraitons` folder back to `migrations`
 
 API
 ---

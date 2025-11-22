@@ -1,6 +1,6 @@
 ---
 project: javascript-algorithms
-stars: 194091
+stars: 194206
 description: 📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings
 url: https://github.com/trekhleb/javascript-algorithms
 ---

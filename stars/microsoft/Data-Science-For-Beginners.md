@@ -1,6 +1,6 @@
 ---
 project: Data-Science-For-Beginners
-stars: 31313
+stars: 31380
 description: 10 Weeks, 20 Lessons, Data Science for All!
 url: https://github.com/microsoft/Data-Science-For-Beginners
 ---
@@ -425,6 +425,6 @@ Getting Help
 
 **Encountering issues?** Check our Troubleshooting Guide for solutions to common problems.
 
-If you get stuck or have any questions about building AI apps, join:
+If you get stuck or have any questions about building AI apps. Join fellow learners and experienced developers in discussions about MCP. It's a supportive community where questions are welcome and knowledge is shared freely.
 
 If you have product feedback or errors while building visit:

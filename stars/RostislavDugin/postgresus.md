@@ -1,6 +1,6 @@
 ---
 project: postgresus
-stars: 2401
+stars: 2517
 description: PostgreSQL backup tool
 url: https://github.com/RostislavDugin/postgresus
 ---
@@ -24,13 +24,13 @@ Features • Installation • Usage • License • Contributing
 -   **Precise timing**: run backups at specific times (e.g., 4 AM during low traffic)
 -   **Smart compression**: 4-8x space savings with balanced compression (~20% overhead)
 
-### 🗄️ **Multiple Storage Destinations** (docs)
+### 🗄️ **Multiple Storage Destinations** (view supported)
 
 -   **Local storage**: Keep backups on your VPS/server
 -   **Cloud storage**: S3, Cloudflare R2, Google Drive, NAS, Dropbox and more
 -   **Secure**: All data stays under your control
 
-### 📱 **Smart Notifications** (docs)
+### 📱 **Smart Notifications** (view supported)
 
 -   **Multiple channels**: Email, Telegram, Slack, Discord, webhooks
 -   **Real-time updates**: Success and failure notifications
@@ -41,6 +41,13 @@ Features • Installation • Usage • License • Contributing
 -   **Multiple versions**: PostgreSQL 12, 13, 14, 15, 16, 17 and 18
 -   **SSL support**: Secure connections available
 -   **Easy restoration**: One-click restore from any backup
+
+### 🔒 **Enterprise-grade security** (docs)
+
+-   **AES-256-GCM encryption**: Enterprise-grade protection for backup files
+-   **Zero-trust storage**: Backups are encrypted and they are useless to attackers, so you can keep them in shared storages like S3, Azure Blob Storage, etc.
+-   **Encryption for secrets**: Any sensitive data is encrypted and never exposed, even in logs or error messages
+-   **Read-only user**: Postgresus uses by default a read-only user for backups and never stores anything that can change your data
 
 ### 👥 **Suitable for Teams** (docs)
 

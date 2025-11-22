@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 49790
+stars: 49843
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---

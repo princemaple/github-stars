@@ -1,6 +1,6 @@
 ---
 project: open-lovable
-stars: 21959
+stars: 22385
 description: 🔥 Clone and recreate any website as a modern React app in seconds
 url: https://github.com/firecrawl/open-lovable
 ---
@@ -29,9 +29,9 @@ FIRECRAWL\_API\_KEY\=your\_firecrawl\_api\_key    # https://firecrawl.dev
 # =================================================================
 # AI PROVIDER - Choose your LLM
 # =================================================================
+GEMINI\_API\_KEY\=your\_gemini\_api\_key        # https://aistudio.google.com/app/apikey
 ANTHROPIC\_API\_KEY\=your\_anthropic\_api\_key  # https://console.anthropic.com
 OPENAI\_API\_KEY\=your\_openai\_api\_key        # https://platform.openai.com
-GEMINI\_API\_KEY\=your\_gemini\_api\_key        # https://aistudio.google.com/app/apikey
 GROQ\_API\_KEY\=your\_groq\_api\_key            # https://console.groq.com
 
 # =================================================================

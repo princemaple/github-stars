@@ -1,6 +1,6 @@
 ---
 project: tempus
-stars: 26
+stars: 27
 description: Easy handling of time periods, like business days, holidays, etc.
 url: https://github.com/am-kantox/tempus
 ---

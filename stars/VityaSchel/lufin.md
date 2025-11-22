@@ -1,6 +1,6 @@
 ---
 project: lufin
-stars: 187
+stars: 189
 description: Read-only mirror of https://git.hloth.dev/hloth/lufin
 url: https://github.com/VityaSchel/lufin
 ---

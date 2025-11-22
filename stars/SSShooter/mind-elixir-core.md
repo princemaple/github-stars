@@ -1,6 +1,6 @@
 ---
 project: mind-elixir-core
-stars: 2820
+stars: 2828
 description: ⚗ Mind Elixir is a JavaScript, framework-agnostic mind map core.
 url: https://github.com/SSShooter/mind-elixir-core
 ---
@@ -130,7 +130,7 @@ let options \= {
   toolBar: true, // default true
   nodeMenu: true, // default true
   keypress: true, // default true
-  locale: 'en', // \[zh\_CN,zh\_TW,en,ja,pt,ru\] waiting for PRs
+  locale: 'en', // \[zh\_CN,zh\_TW,en,ja,pt,ru,ro\] waiting for PRs
   overflowHidden: false, // default false
   mainLinkStyle: 2, // \[1,2\] default 1
   mouseSelectionButton: 0, // 0 for left button, 2 for right button, default 0

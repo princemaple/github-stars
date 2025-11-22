@@ -1,6 +1,6 @@
 ---
 project: pgbackweb
-stars: 2351
+stars: 2365
 description: 🐘 Effortless PostgreSQL backups with a user-friendly web interface! 🌐💾
 url: https://github.com/eduardolat/pgbackweb
 ---
@@ -17,6 +17,17 @@ Note
 PG Back Web is becoming **UFO Backup**! The new name reflects a future where the project expands beyond PostgreSQL, making powerful backups simple and accessible for everyone
 
 Curious about the roadmap or want to shape the project's future? Join the community to discuss ideas and influence decisions, everyone's input is welcome!
+
+Sponsors
+--------
+
+Thank you to the following sponsors for supporting PG Back Web! Your contributions help keep the project running and growing! 🚀
+
+  
+Become a sponsor
+
+  
+FetchGoat - Simplifying Logistics
 
 Why PG Back Web?
 ----------------
@@ -119,8 +130,8 @@ In this link you can see a list of features that have been confirmed for future 
 
 Next steps ⏭️
 
-Sponsors
---------
+Become a Sponsor
+----------------
 
 🙏 Thank you to the incredible sponsors for supporting this project! Your contributions help keep PG Back Web running and growing. If you'd like to join and become a sponsor, please visit the sponsorship page and be part of something great! 🚀
 
@@ -129,10 +140,10 @@ Sponsors
   
 Become a gold sponsor
 
-### 🥈 Silver Sponsors
-
   
 FetchGoat - Simplifying Logistics
+
+### 🥈 Silver Sponsors
 
   
 Become a silver sponsor

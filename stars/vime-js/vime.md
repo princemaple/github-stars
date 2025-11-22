@@ -1,6 +1,6 @@
 ---
 project: vime
-stars: 2831
+stars: 2833
 description: Customizable, extensible, accessible and framework agnostic media player. Modern alternative to Video.js and Plyr. Supports HTML5, HLS, Dash, YouTube, Vimeo, Dailymotion...
 url: https://github.com/vime-js/vime
 ---

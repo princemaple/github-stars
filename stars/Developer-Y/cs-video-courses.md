@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70203
+stars: 70211
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -288,13 +288,12 @@ Courses
 -   Fundamentals of Database Systems - IIT Kanpur
 -   Principles of Database Management, Bart Baesens
 -   FIT9003 Database Systems Design - Monash University
--   15-445 - Introduction to Database Systems, CMU (YouTube-2017, YouTube-2018, YouTube-2019, YouTube-2021, YouTube-2022)
--   15-721 - Database Systems, CMU (YouTube-2017, YouTube-2016)
--   15-721 Advanced Database Systems (Spring 2019) - CMU
+-   15-445 - Introduction to Database Systems, CMU (YouTube-2017), (YouTube-2018),(YouTube-2019), (YouTube-2021), (YouTube-2022),(YouTube-2023),(YouTube-2024),(YouTube-2025)
+-   15-721 - Advanced Database Systems, CMU (YouTube-2024, YouTube-2023, YouTube-2022)
 -   CS122 - Relational Database System Implementation, Winter 2014-2015 - Caltech
 -   CS 186 - Database Systems, UC Berkeley, Spring 2015
 -   CS 6530 - Graduate-level Database Systems, Fall 2016, University of Utah (Lectures - YouTube)
--   6.830/6.814 - Database Systems \[Fall 2014\]
+-   6.830/6.814 - Database Systems Fall 2014
 -   Informatics 1 - Data & Analysis 2014/15- University of Edinburgh
 -   Database Management Systems, Aduni
 -   D4M - Signal Processing on Databases

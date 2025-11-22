@@ -1,6 +1,6 @@
 ---
 project: black
-stars: 41141
+stars: 41162
 description: The uncompromising Python code formatter
 url: https://github.com/psf/black
 ---
@@ -29,7 +29,7 @@ Installation and usage
 
 ### Installation
 
-_Black_ can be installed by running `pip install black`. It requires Python 3.9+ to run. If you want to format Jupyter Notebooks, install with `pip install "black[jupyter]"`.
+_Black_ can be installed by running `pip install black`. It requires Python 3.10+ to run. If you want to format Jupyter Notebooks, install with `pip install "black[jupyter]"`.
 
 ### Usage
 

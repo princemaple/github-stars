@@ -1,6 +1,6 @@
 ---
 project: LLaMA-Factory
-stars: 62530
+stars: 62894
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LLaMA-Factory
 ---
@@ -81,7 +81,7 @@ Features
 -   **Integrated methods**: (Continuous) pre-training, (multimodal) supervised fine-tuning, reward modeling, PPO, DPO, KTO, ORPO, etc.
 -   **Scalable resources**: 16-bit full-tuning, freeze-tuning, LoRA and 2/3/4/5/6/8-bit QLoRA via AQLM/AWQ/GPTQ/LLM.int8/HQQ/EETQ.
 -   **Advanced algorithms**: GaLore, BAdam, APOLLO, Adam-mini, Muon, OFT, DoRA, LongLoRA, LLaMA Pro, Mixture-of-Depths, LoRA+, LoftQ and PiSSA.
--   **Practical tricks**: FlashAttention-2, Unsloth, Liger Kernel, RoPE scaling, NEFTune and rsLoRA.
+-   **Practical tricks**: FlashAttention-2, Unsloth, Liger Kernel, KTransformers, RoPE scaling, NEFTune and rsLoRA.
 -   **Wide tasks**: Multi-turn dialogue, tool using, image understanding, visual grounding, video recognition, audio understanding, etc.
 -   **Experiment monitors**: LlamaBoard, TensorBoard, Wandb, MLflow, SwanLab, etc.
 -   **Faster inference**: OpenAI-style API, Gradio UI and CLI with vLLM worker or SGLang worker.
@@ -109,6 +109,7 @@ Now we have a dedicated blog for LLaMA Factory!
 
 Website: https://blog.llamafactory.net/en/
 
+-   💡 KTransformers Fine-Tuning × LLaMA Factory: Fine-tuning 1000 Billion models with 2 4090-GPU + CPU (English)
 -   💡 Easy Dataset × LLaMA Factory: Enabling LLMs to Efficiently Learn Domain Knowledge (English)
 -   Fine-tune a mental health LLM using LLaMA-Factory (Chinese)
 -   Fine-tune GPT-OSS for Role-Playing using LLaMA-Factory (Chinese)

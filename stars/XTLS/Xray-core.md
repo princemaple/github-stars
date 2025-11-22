@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 32486
+stars: 32647
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -12,11 +12,21 @@ Project X originates from XTLS protocol, providing a set of network tools such a
 
 README is open, so feel free to submit your project here.
 
+Sponsors
+--------
+
+**Sponsor Xray-core**
+
 Donation & NFTs
 ---------------
 
 ### Collect a Project X NFT to support the development of Project X!
 
+-   **TRX(Tron)/USDT/USDC: `TNrDh5VSfwd4RPrwsohr6poyNTfFefNYan`**
+-   **TON: `UQApeV-u2gm43aC1uP76xAC1m6vCylstaN1gpfBmre_5IyTH`**
+-   **BTC: `1JpqcziZZuqv3QQJhZGNGBVdCBrGgkL6cT`**
+-   **XMR: `4ABHQZ3yJZkBnLoqiKvb3f8eqUnX4iMPb6wdant5ZLGQELctcerceSGEfJnoCk6nnyRZm73wrwSgvZ2WmjYLng6R7sR67nq`**
+-   **SOL/USDT/USDC: `3x5NuXHzB5APG6vRinPZcsUv5ukWUY1tBGRSJiEJWtZa`**
 -   **ETH/USDT/USDC: `0xDc3Fe44F0f25D13CACb1C4896CD0D321df3146Ee`**
 -   **Project X NFT: https://opensea.io/item/ethereum/0x5ee362866001613093361eb8569d59c4141b76d1/1**
 -   **VLESS NFT: https://opensea.io/collection/vless**
@@ -55,9 +65,9 @@ Installation
     -   teddysun/xray
     -   wulabing/xray\_docker
 -   Web Panel - **WARNING: Please DO NOT USE plain HTTP panels like 3X-UI**, as they are believed to be bribed by Iran GFW for supporting plain HTTP by default and refused to change (#3884 (comment)), which has already put many users' data security in danger in the past few years. **If you are already using 3X-UI, please switch to the following panels, which are verified to support HTTPS and SSH port forwarding only:**
+    -   Remnawave
     -   X-Panel
     -   PasarGuard
-    -   Remnawave
     -   Marzban
     -   Xray-UI
     -   Hiddify
@@ -121,12 +131,14 @@ GUI Clients
     -   OneXray
     -   GoXRay
     -   AnyPortal
+    -   v2rayN
 -   Linux
     -   v2rayA
     -   Furious
     -   GorzRay
     -   GoXRay
     -   AnyPortal
+    -   v2rayN
 
 Others that support VLESS, XTLS, REALITY, XUDP, PLUX...
 -------------------------------------------------------

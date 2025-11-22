@@ -1,11 +1,11 @@
 ---
 project: fil-c
-stars: 2273
+stars: 2539
 description: Fil-C: completely compatible memory safety for C and C++
 url: https://github.com/pizlonator/fil-c
 ---
 
-Fil-C 0.674
+Fil-C 0.675
 ===========
 
 Fil-C is a fanatically compatible memory-safe implementation of C and C++. Lots of software compiles and runs with Fil-C with zero or minimal changes. All memory safety errors are caught as Fil-C panics. Fil-C achieves this using a combination of concurrent garbage collection and invisible capabilities (each pointer in memory has a corresponding capability, not visible to the C address space). Every fundamental C operation (as seen in LLVM IR) is checked against the capability. Fil-C has no `unsafe` statement and only limited FFI to unsafe code.
@@ -26,7 +26,7 @@ License
 
 The compiler (clang + LLVM) is covered by LLVM-LICENSE.txt. The runtime is covered by PAS-LICENSE.txt (see libpas/LICENSE.txt in the source distribution). In the case of the classic musl-based Fil-C distribution, the musl libc is covered by MUSL-LICENSE.txt (see projects/yolomusl/COPYRIGHT and projects/usermusl/COPYRIGHT in the source distribution). In the case of the /opt/fil distribution, glibc is covered by glibc-LICENSE.txt, and all other included programs are covered by the respective -LICENSE.txt files. The C++ libraries (libc++/libc++abi) are covered by LLVM-LICENSE.txt.
 
-You can fetch the source for the compiler, runtime, libc++/libc++abi, libc (musl and glibc), and all included programs from https://github.com/pizlonator/fil-c. The source distribution also includes many additional programs that have been ported to Fil-C in the projects/ and pizlix/ directories, and they have a variety of licenses.
+You can fetch the source for the compiler, runtime, libc++/libc++abi, libc (musl and glibc), and all included programs from github. The source distribution also includes many additional programs that have been ported to Fil-C in the `projects/` and `pizlix/` directories, and they have a variety of licenses. The /opt/fil distribution includes builds of a variety of additional programs and their licenses are in `additional-licenses/` in that distribution.
 
 Requirements
 ------------
@@ -46,9 +46,9 @@ If you downloaded Fil-C binaries, run:
 
 This has a different effect depending on which binary distribution you selected:
 
--   In case of the classic musl-based distribution (`filc-0.674-linux-x86_64.tar.xz`), this sets up Fil-C to run in the current directory.
+-   In case of the classic musl-based distribution (`filc-0.675-linux-x86_64.tar.xz`), this sets up Fil-C to run in the current directory.
     
--   In case of the /opt/fil glibc-based distribution (`optfil-0.674-linux-x86_64.tar.xz`), this sets up Fil-C in `/opt/fil`.
+-   In case of the /opt/fil glibc-based distribution (`optfil-0.675-linux-x86_64.tar.xz`), this sets up Fil-C in `/opt/fil`.
     
 
 If you downloaded Fil-C source, run:

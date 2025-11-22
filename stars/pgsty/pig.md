@@ -10,7 +10,7 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL (& Extension) Package Manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 13 ~ 18 along with 431 extensions on (`amd64` / `arm64`) with native OS package manager
+Install PostgreSQL 13 ~ 18 along with 473 extensions on (`amd64` / `arm64`) with native OS package manager
 
 Also check the **PGEXT.CLOUD** to get details about the package manager, repository and extension catalog.
 
@@ -67,7 +67,7 @@ sudo yum makecache; sudo yum install -y pig
 `pig` has self-update feature, you can update pig itself to the latest version with:
 
 pig update                  # self-update to the latest version
-pig update -v 0.7.1         # self-update to the specific version
+pig update -v 0.7.2         # self-update to the specific version
 pig ext reload              # update extension catalog metadata only
 
 * * *
@@ -209,7 +209,7 @@ pig ext install pg\_duckdb -p /usr/lib/postgresql/16/bin/pg\_config    # specify
 
 You can also install PostgreSQL kernel packages with:
 
-pig ext install pgvector=0.7.1 # install pgvector 0.7.1
+pig ext install pgvector=0.7.2 # install pgvector 0.7.2
 pig ext install pg16=16.5      # install PostgreSQL 16 with a specific minor version
 
 > Beware the **APT** repo may only have the latest minor version for its software (and require the full version string)

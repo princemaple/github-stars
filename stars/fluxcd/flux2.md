@@ -1,6 +1,6 @@
 ---
 project: flux2
-stars: 7598
+stars: 7615
 description: Open and extensible continuous delivery solution for Kubernetes. Powered by GitOps Toolkit.
 url: https://github.com/fluxcd/flux2
 ---

@@ -1,6 +1,6 @@
 ---
 project: syn
-stars: 676
+stars: 685
 description: A scalable global Process Registry and Process Group manager for Erlang and Elixir.
 url: https://github.com/ostinelli/syn
 ---

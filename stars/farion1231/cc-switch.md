@@ -1,16 +1,18 @@
 ---
 project: cc-switch
-stars: 4307
-description: A cross-platform desktop app for managing and switching provider configurations & MCP servers for Claude Code and Codex.
+stars: 4880
+description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
 
-Claude Code & Codex Provider Switcher
-=====================================
+All-in-One Assistant for Claude Code, Codex & Gemini CLI
+========================================================
 
 English | 中文 | Changelog
 
-A desktop application for managing and switching between different provider configurations & MCP for Claude Code and Codex.
+**From Provider Switcher to All-in-One AI CLI Management Platform**
+
+Unified management for Claude Code, Codex & Gemini CLI provider configurations, MCP servers, Skills extensions, and system prompts.
 
 ❤️Sponsor
 ---------
@@ -25,6 +27,8 @@ Get 10% OFF the GLM CODING PLAN with this link!
 
 Thanks to PackyCode for sponsoring this project! PackyCode is a reliable and efficient API relay service provider, offering relay services for Claude Code, Codex, Gemini, and more. PackyCode provides special discounts for our software users: register using this link and enter the "cc-switch" promo code during recharge to get 10% off.
 
+Thanks to ShanDianShuo for sponsoring this project! ShanDianShuo is a local-first AI voice input: Millisecond latency, data stays on device, 4x faster than typing, AI-powered correction, Privacy-first, completely free. Doubles your coding efficiency with Claude Code! Free download for Mac/Win
+
 Screenshots
 -----------
 
@@ -35,12 +39,50 @@ Add Provider
 Features
 --------
 
-### Current Version: v3.6.2 | Full Changelog
+### Current Version: v3.7.0 | Full Changelog | 📋 Release Notes
+
+**v3.7.0 Major Update (2025-11-19)**
+
+**Six Core Features, 18,000+ Lines of New Code**
+
+-   **Gemini CLI Integration**
+    
+    -   Third supported AI CLI (Claude Code / Codex / Gemini)
+    -   Dual-file configuration support (`.env` + `settings.json`)
+    -   Complete MCP server management
+    -   Presets: Google Official (OAuth) / PackyCode / Custom
+-   **Claude Skills Management System**
+    
+    -   Auto-scan skills from GitHub repositories (3 pre-configured curated repos)
+    -   One-click install/uninstall to `~/.claude/skills/`
+    -   Custom repository support + subdirectory scanning
+    -   Complete lifecycle management (discover/install/update)
+-   **Prompts Management System**
+    
+    -   Multi-preset system prompt management (unlimited presets, quick switching)
+    -   Cross-app support (Claude: `CLAUDE.md` / Codex: `AGENTS.md` / Gemini: `GEMINI.md`)
+    -   Markdown editor (CodeMirror 6 + real-time preview)
+    -   Smart backfill protection, preserves manual modifications
+-   **MCP v3.7.0 Unified Architecture**
+    
+    -   Single panel manages MCP servers across three applications
+    -   New SSE (Server-Sent Events) transport type
+    -   Smart JSON parser + Codex TOML format auto-correction
+    -   Unified import/export + bidirectional sync
+-   **Deep Link Protocol**
+    
+    -   `ccswitch://` protocol registration (all platforms)
+    -   One-click import provider configs via shared links
+    -   Security validation + lifecycle integration
+-   **Environment Variable Conflict Detection**
+    
+    -   Auto-detect cross-app configuration conflicts (Claude/Codex/Gemini/MCP)
+    -   Visual conflict indicators + resolution suggestions
+    -   Override warnings + backup before changes
 
 **Core Capabilities**
 
 -   **Provider Management**: One-click switching between Claude Code, Codex, and Gemini API configurations
--   **MCP Integration**: Centralized MCP server management with stdio/http support and real-time sync
 -   **Speed Testing**: Measure API endpoint latency with visual quality indicators
 -   **Import/Export**: Backup and restore configs with auto-rotation (keep 10 most recent)
 -   **i18n Support**: Complete Chinese/English localization (UI, errors, tray)
@@ -53,7 +95,6 @@ Features
 -   Granular model configuration (4-tier: Haiku/Sonnet/Opus/Custom)
 -   WSL environment support with auto-sync on directory change
 -   100% hooks test coverage & complete architecture refactoring
--   New presets: DMXAPI, Azure Codex, AnyRouter, AiHubMix, MiniMax
 
 **System Features**
 
@@ -92,6 +133,12 @@ Download `CC-Switch-v{version}-macOS.zip` from the Releases page and extract to 
 
 > **Note**: Since the author doesn't have an Apple Developer account, you may see an "unidentified developer" warning on first launch. Please close it first, then go to "System Settings" → "Privacy & Security" → click "Open Anyway", and you'll be able to open it normally afterwards.
 
+### ArchLinux 用户
+
+**Install via paru (Recommended)**
+
+paru -S cc-switch-bin
+
 ### Linux Users
 
 Download the latest `CC-Switch-v{version}-Linux.deb` package or `CC-Switch-v{version}-Linux.AppImage` from the Releases page.
@@ -111,9 +158,36 @@ Quick Start
 ### MCP Management
 
 -   **Location**: Click "MCP" button in top-right corner
--   **Add Server**: Use built-in templates (mcp-fetch, mcp-filesystem) or custom config
+-   **Add Server**:
+    -   Use built-in templates (mcp-fetch, mcp-filesystem, etc.)
+    -   Support stdio / http / sse transport types
+    -   Configure independent MCP servers for different apps
 -   **Enable/Disable**: Toggle switches to control which servers sync to live config
--   **Sync**: Enabled servers auto-sync to `~/.claude.json` (Claude) or `~/.codex/config.toml` (Codex)
+-   **Sync**: Enabled servers auto-sync to each app's live files
+-   **Import/Export**: Import existing MCP servers from Claude/Codex/Gemini config files
+
+### Skills Management (v3.7.0 New)
+
+-   **Location**: Click "Skills" button in top-right corner
+-   **Discover Skills**:
+    -   Auto-scan pre-configured GitHub repositories (Anthropic official, ComposioHQ, community, etc.)
+    -   Add custom repositories (supports subdirectory scanning)
+-   **Install Skills**: Click "Install" to one-click install to `~/.claude/skills/`
+-   **Uninstall Skills**: Click "Uninstall" to safely remove and clean up state
+-   **Manage Repositories**: Add/remove custom GitHub repositories
+
+### Prompts Management (v3.7.0 New)
+
+-   **Location**: Click "Prompts" button in top-right corner
+-   **Create Presets**:
+    -   Create unlimited system prompt presets
+    -   Use Markdown editor to write prompts (syntax highlighting + real-time preview)
+-   **Switch Presets**: Select preset → Click "Activate" to apply immediately
+-   **Sync Mechanism**:
+    -   Claude: `~/.claude/CLAUDE.md`
+    -   Codex: `~/.codex/AGENTS.md`
+    -   Gemini: `~/.gemini/GEMINI.md`
+-   **Protection Mechanism**: Auto-save current prompt content before switching, preserves manual modifications
 
 ### Configuration Files
 
@@ -127,17 +201,19 @@ Quick Start
 
 -   Live config: `~/.codex/auth.json` (required) + `config.toml` (optional)
 -   API key field: `OPENAI_API_KEY` in `auth.json`
--   MCP servers: `~/.codex/config.toml` → `[mcp.servers]`
+-   MCP servers: `~/.codex/config.toml` → `[mcp_servers]` tables
 
 **Gemini**
 
--   Live config: `~/.gemini/.env` (API key) + `~/.gemini/settings.json` (auth type for quick switching)
--   API key field: `GEMINI_API_KEY` inside `.env`
--   Tray quick switch: each provider switch rewrites `~/.gemini/.env` so the Gemini CLI picks up the new credentials immediately
+-   Live config: `~/.gemini/.env` (API key) + `~/.gemini/settings.json` (auth mode)
+-   API key field: `GEMINI_API_KEY` or `GOOGLE_GEMINI_API_KEY` in `.env`
+-   Environment variables: Support `GOOGLE_GEMINI_BASE_URL`, `GEMINI_MODEL`, etc.
+-   MCP servers: `~/.gemini/settings.json` → `mcpServers`
+-   Tray quick switch: Each provider switch rewrites `~/.gemini/.env`, no need to restart Gemini CLI
 
 **CC Switch Storage**
 
--   Main config (SSOT): `~/.cc-switch/config.json`
+-   Main config (SSOT): `~/.cc-switch/config.json` (includes providers, MCP, Prompts presets, etc.)
 -   Settings: `~/.cc-switch/settings.json`
 -   Backups: `~/.cc-switch/backups/` (auto-rotate, keep 10)
 

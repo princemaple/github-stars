@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 15004
+stars: 15205
 description: The glamourous AI coding agent for your favourite terminal 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -198,23 +198,23 @@ Groq
 
 `AWS_ACCESS_KEY_ID`
 
-AWS Bedrock (Claude)
+Amazon Bedrock (Claude)
 
 `AWS_SECRET_ACCESS_KEY`
 
-AWS Bedrock (Claude)
+Amazon Bedrock (Claude)
 
 `AWS_REGION`
 
-AWS Bedrock (Claude)
+Amazon Bedrock (Claude)
 
 `AWS_PROFILE`
 
-AWS Bedrock (Custom Profile)
+Amazon Bedrock (Custom Profile)
 
 `AWS_BEARER_TOKEN_BEDROCK`
 
-AWS Bedrock
+Amazon Bedrock
 
 `AZURE_OPENAI_API_ENDPOINT`
 
@@ -371,9 +371,9 @@ By default, Crush adds attribution information to Git commits and pull requests 
   }
 }
 
--   `trailer_style`: Controls the attribution trailer added to commit messages (default: `co-authored-by`)
+-   `trailer_style`: Controls the attribution trailer added to commit messages (default: `assisted-by`)
+    -   `assisted-by`: Adds `Assisted-by: [Model Name] via Crush <crush@charm.land>` (includes the model name)
     -   `co-authored-by`: Adds `Co-Authored-By: Crush <crush@charm.land>`
-    -   `assisted-by`: Adds `Assisted-by: [Model Name] via Crush` (includes the model name)
     -   `none`: No attribution trailer
 -   `generated_with`: When true (default), adds `💘 Generated with Crush` line to commit messages and PR descriptions
 

@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 91953
+stars: 92167
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -32,6 +32,10 @@ The key features are:
 
 Sponsors
 --------
+
+### Keystone Sponsor
+
+### Gold and Silver Sponsors
 
 Other sponsors
 
@@ -359,6 +363,46 @@ For a more complete example including more features, see the Tutorial - User Gui
     -   **CORS**
     -   **Cookie Sessions**
     -   ...and more.
+
+### Deploy your app (optional)
+
+You can optionally deploy your FastAPI app to FastAPI Cloud, go and join the waiting list if you haven't. 🚀
+
+If you already have a **FastAPI Cloud** account (we invited you from the waiting list 😉), you can deploy your application with one command.
+
+Before deploying, make sure you are logged in:
+
+$ fastapi login
+
+You are logged in to FastAPI Cloud 🚀
+
+Then deploy your app:
+
+$ fastapi deploy
+
+Deploying to FastAPI Cloud...
+
+✅ Deployment successful!
+
+🐔 Ready the chicken! Your app is ready at https://myapp.fastapicloud.dev
+
+That's it! Now you can access your app at that URL. ✨
+
+#### About FastAPI Cloud
+
+**FastAPI Cloud** is built by the same author and team behind **FastAPI**.
+
+It streamlines the process of **building**, **deploying**, and **accessing** an API with minimal effort.
+
+It brings the same **developer experience** of building apps with FastAPI to **deploying** them to the cloud. 🎉
+
+FastAPI Cloud is the primary sponsor and funding provider for the _FastAPI and friends_ open source projects. ✨
+
+#### Deploy to other cloud providers
+
+FastAPI is open source and based on standards. You can deploy FastAPI apps to any cloud provider you choose.
+
+Follow your cloud provider's guides to deploy FastAPI apps with them. 🤓
 
 Performance
 -----------

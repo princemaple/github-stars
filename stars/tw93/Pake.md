@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 43352
+stars: 43460
 description: 🤱🏻 Turn any webpage into a desktop app with one command. 一键打包网页生成轻量桌面应用
 url: https://github.com/tw93/Pake
 ---
@@ -142,7 +142,7 @@ First-time packaging requires environment setup and may be slower, subsequent bu
 Development
 -----------
 
-Requires Rust `>=1.89` and Node `>=22`. For detailed installation guide, see Tauri documentation. If unfamiliar with development environment, use the CLI tool instead.
+Requires Rust `>=1.85` and Node `>=22`. For detailed installation guide, see Tauri documentation. If unfamiliar with development environment, use the CLI tool instead.
 
 # Install dependencies
 pnpm i
@@ -159,147 +159,6 @@ Developers
 ----------
 
 Pake's development can not be without these Hackers. They contributed a lot of capabilities for Pake. Also, welcome to follow them! ❤️
-
-  
-**Tw93**
-
-  
-**Tlntin**
-
-  
-**Santree**
-
-  
-**Pan93412**
-
-  
-**Данил Бизимов**
-
-  
-**Volare**
-
-  
-**Bryan Lee**
-
-  
-**Essesoul**
-
-  
-**Jerry Zhou**
-
-  
-**Aiello**
-
-  
-**Horus**
-
-  
-**Pake Actions**
-
-  
-**GoodbyeNJN**
-
-  
-**Ikko Eltociear Ashimine**
-
-  
-**Kittizz**
-
-  
-**Matt Bajorek**
-
-  
-**Srinivas Vaddi**
-
-  
-**Steam**
-
-  
-**Qitianjia**
-
-  
-**Yi Xin**
-
-  
-**Yue Yang**
-
-  
-**Kieran**
-
-  
-**孟世博**
-
-  
-**2nthony**
-
-  
-**Null**
-
-  
-**Abu Taher Siddik**
-
-  
-**An Li**
-
-  
-**Ayaka Neko**
-
-  
-**Claude**
-
-  
-**Dengju Deng**
-
-  
-**Fabien**
-
-  
-**Fechin**
-
-  
-**Imgbot**
-
-  
-**Jiaqi Gu**
-
-  
-**Johannlai**
-
-  
-**Luminall**
-
-  
-**Milo**
-
-  
-**Po Chen**
-
-  
-**Xie Ruiqi**
-
-  
-**Null**
-
-  
-**Null**
-
-  
-**Hyzhao**
-
-  
-**Null**
-
-  
-**Liudonghua**
-
-  
-**Liusishan**
-
-  
-**Ranger**
-
-  
-**贺天卓**
 
 Support
 -------

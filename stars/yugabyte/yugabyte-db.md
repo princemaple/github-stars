@@ -1,6 +1,6 @@
 ---
 project: yugabyte-db
-stars: 9893
+stars: 9914
 description: YugabyteDB - the cloud native distributed SQL database for mission-critical applications.
 url: https://github.com/yugabyte/yugabyte-db
 ---

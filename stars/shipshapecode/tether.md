@@ -1,6 +1,6 @@
 ---
 project: tether
-stars: 8502
+stars: 8503
 description:  A positioning engine to make overlays, tooltips and dropdowns better
 url: https://github.com/shipshapecode/tether
 ---

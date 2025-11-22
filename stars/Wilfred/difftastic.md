@@ -1,6 +1,6 @@
 ---
 project: difftastic
-stars: 23576
+stars: 23598
 description: a structural diff that understands syntax 🟥🟩
 url: https://github.com/Wilfred/difftastic
 ---
@@ -14,7 +14,7 @@ Difftastic is a structural diff tool that compares files based on their syntax.
 Examples
 --------
 
-^ Difftastic understands exactly which pieces of syntax has changed, and can highlight them in context.
+^ Difftastic understands exactly which pieces of syntax have changed, and can highlight them in context.
 
 ^ Difftastic understands when whitespace matters, and when it's just an indentation change.
 

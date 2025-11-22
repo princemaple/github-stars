@@ -1,6 +1,6 @@
 ---
 project: bumblebee
-stars: 1550
+stars: 1553
 description: Pre-trained Neural Network models in Axon (+ 🤗 Models integration)
 url: https://github.com/elixir-nx/bumblebee
 ---

@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 28236
+stars: 28281
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---

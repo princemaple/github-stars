@@ -1,6 +1,6 @@
 ---
 project: nphysics
-stars: 1641
+stars: 1642
 description: 2 and 3-dimensional rigid body physics engine for Rust.
 url: https://github.com/dimforge/nphysics
 ---

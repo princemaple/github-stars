@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 31996
+stars: 32056
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -210,6 +210,24 @@ croc --curve p521 <codephrase\>
 For faster hashing, use the `imohash` algorithm:
 
 croc send --hash imohash SOMEFILE
+
+#### Clipboard Options
+
+By default, the code phrase is copied to your clipboard. To disable this:
+
+croc send --disable-clipboard \[filename\]
+
+To copy the full command with the secret as an environment variable (useful on Linux/macOS):
+
+croc send --extended-clipboard \[filename\]
+
+This copies the full command like `CROC_SECRET="code-phrase" croc` (including any relay/pass flags).
+
+#### Quiet Mode
+
+To suppress all output (useful for scripts and automation):
+
+croc --quiet send \[filename\]
 
 #### Self-host Relay
 

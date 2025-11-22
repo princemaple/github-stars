@@ -1,6 +1,6 @@
 ---
 project: svgtofont
-stars: 688
+stars: 690
 description: Read a set of SVG icons and ouput a TTF/EOT/WOFF/WOFF2/SVG font.
 url: https://github.com/jaywcjlove/svgtofont
 ---

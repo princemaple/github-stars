@@ -1,6 +1,6 @@
 ---
 project: drawnix-seedream
-stars: 252
+stars: 254
 description: Drawnix whiteboard application - open source collaborative drawing tool with mind maps, flowcharts, and free drawing capabilities
 url: https://github.com/joeseesun/drawnix-seedream
 ---

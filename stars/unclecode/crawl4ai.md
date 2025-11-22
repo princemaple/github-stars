@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 55835
+stars: 56231
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -10,13 +10,13 @@ url: https://github.com/unclecode/crawl4ai
 
 Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
 
-✨ Check out latest update v0.7.6
+✨ Check out latest update v0.7.7
 
-✨ **New in v0.7.6**: Complete Webhook Infrastructure for Docker Job Queue API! Real-time notifications for both `/crawl/job` and `/llm/job` endpoints with exponential backoff retry, custom headers, and flexible delivery modes. No more polling! Release notes →
+✨ **New in v0.7.7**: Complete Self-Hosting Platform with Real-time Monitoring! Enterprise-grade monitoring dashboard, comprehensive REST API, WebSocket streaming, smart browser pool management, and production-ready observability. Full visibility and control over your crawling infrastructure. Release notes →
 
-✨ Recent v0.7.5: Docker Hooks System with function-based API for pipeline customization, Enhanced LLM Integration with custom providers, HTTPS Preservation, and multiple community-reported bug fixes. Release notes →
+✨ Recent v0.7.6: Complete Webhook Infrastructure for Docker Job Queue API! Real-time notifications for both `/crawl/job` and `/llm/job` endpoints with exponential backoff retry, custom headers, and flexible delivery modes. No more polling! Release notes →
 
-✨ Previous v0.7.4: Revolutionary LLM Table Extraction with intelligent chunking, enhanced concurrency fixes, memory management refactor, and critical stability improvements. Release notes →
+✨ Previous v0.7.5: Docker Hooks System with function-based API for pipeline customization, Enhanced LLM Integration with custom providers, HTTPS Preservation, and multiple community-reported bug fixes. Release notes →
 
 🤓 **My Personal Story**
 
@@ -237,6 +237,7 @@ pip install -e ".\[all\]"             # Install all optional features
 
 The new Docker implementation includes:
 
+-   **Real-time Monitoring Dashboard** with live system metrics and browser pool visibility
 -   **Browser pooling** with page pre-warming for faster response times
 -   **Interactive playground** to test and generate request code
 -   **MCP integration** for direct connection to AI tools like Claude Code
@@ -250,7 +251,8 @@ The new Docker implementation includes:
 docker pull unclecode/crawl4ai:latest
 docker run -d -p 11235:11235 --name crawl4ai --shm-size=1g unclecode/crawl4ai:latest
 
-# Visit the playground at http://localhost:11235/playground
+# Visit the monitoring dashboard at http://localhost:11235/dashboard
+# Or the playground at http://localhost:11235/playground
 
 ### Quick Test
 
@@ -276,7 +278,7 @@ else:
     print(f"Crawl job submitted. Task ID:: {task\_id}")
     result \= requests.get(f"http://localhost:11235/task/{task\_id}")
 
-For more examples, see our Docker Examples. For advanced configuration, environment variables, and usage examples, see our Docker Deployment Guide.
+For more examples, see our Docker Examples. For advanced configuration, monitoring features, and production deployment, see our Self-Hosting Guide.
 
 * * *
 
@@ -465,6 +467,58 @@ async def test\_news\_crawl():
 
 ✨ Recent Updates
 ----------------
+
+**Version 0.7.7 Release Highlights - The Self-Hosting & Monitoring Update**
+
+-   **📊 Real-time Monitoring Dashboard**: Interactive web UI with live system metrics and browser pool visibility
+    
+    \# Access the monitoring dashboard
+    \# Visit: http://localhost:11235/dashboard
+    
+    \# Real-time metrics include:
+    \# - System health (CPU, memory, network, uptime)
+    \# - Active and completed request tracking
+    \# - Browser pool management (permanent/hot/cold)
+    \# - Janitor cleanup events
+    \# - Error monitoring with full context
+    
+-   **🔌 Comprehensive Monitor API**: Complete REST API for programmatic access to all monitoring data
+    
+    import httpx
+    
+    async with httpx.AsyncClient() as client:
+        \# System health
+        health \= await client.get("http://localhost:11235/monitor/health")
+    
+        \# Request tracking
+        requests \= await client.get("http://localhost:11235/monitor/requests")
+    
+        \# Browser pool status
+        browsers \= await client.get("http://localhost:11235/monitor/browsers")
+    
+        \# Endpoint statistics
+        stats \= await client.get("http://localhost:11235/monitor/endpoints/stats")
+    
+-   **⚡ WebSocket Streaming**: Real-time updates every 2 seconds for custom dashboards
+    
+-   **🔥 Smart Browser Pool**: 3-tier architecture (permanent/hot/cold) with automatic promotion and cleanup
+    
+-   **🧹 Janitor System**: Automatic resource management with event logging
+    
+-   **🎮 Control Actions**: Manual browser management (kill, restart, cleanup) via API
+    
+-   **📈 Production Metrics**: 6 critical metrics for operational excellence with Prometheus integration
+    
+-   **🐛 Critical Bug Fixes**:
+    
+    -   Fixed async LLM extraction blocking issue (#1055)
+    -   Enhanced DFS deep crawl strategy (#1607)
+    -   Fixed sitemap parsing in AsyncUrlSeeder (#1598)
+    -   Resolved browser viewport configuration (#1495)
+    -   Fixed CDP timing with exponential backoff (#1528)
+    -   Security update for pyOpenSSL (>=25.3.0)
+
+Full v0.7.7 Release Notes →
 
 **Version 0.7.5 Release Highlights - The Docker Hooks & Security Update**
 
@@ -884,9 +938,13 @@ About
 
 Sponsorship Tier
 
-AI-powered Captcha solving service. Supports all major Captcha types, including reCAPTCHA, Cloudflare, and more
+Scrapeless is the best full-stack web scraping toolkit offering Scraping API, Scraping Browser, Web Unlocker, Captcha Solver, and Proxies, designed to handle all your data collection needs.
 
 🥈 Silver
+
+AI-powered Captcha solving service. Supports all major Captcha types, including reCAPTCHA, Cloudflare, and more
+
+🥉 Bronze
 
 Helps engineers and buyers find, compare, and source electronic & industrial parts in seconds, with specs, pricing, lead times & alternatives.
 

@@ -1,6 +1,6 @@
 ---
 project: FastSend
-stars: 1169
+stars: 1182
 description: FastSend 是一个基于 WebRTC 技术的点对点文件传输工具，支持快速的目录同步和文件传输。通过浏览器即可实现安全、高效的文件共享。
 url: https://github.com/ShouChenICU/FastSend
 ---

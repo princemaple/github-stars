@@ -1,6 +1,6 @@
 ---
 project: shell360
-stars: 864
+stars: 877
 description: Shell360 is a cross-platform SSH and SFTP client.
 url: https://github.com/nashaofu/shell360
 ---
@@ -11,6 +11,22 @@ Shell360
 English | 简体中文
 
 Shell360 is a cross-platform SSH & SFTP client supporting Windows, macOS, Linux, Android, and iOS. Whether it's remote development, server management, or secure file transfer, Shell360 provides you with a consistent, smooth, and secure user experience.
+
+Quick install
+-------------
+
+-   macOS
+    
+    ```
+    brew install --cask shell360
+    ```
+    
+-   Windows
+    
+    ```
+    winget install nashaofu.shell360
+    ```
+    
 
 Download
 --------

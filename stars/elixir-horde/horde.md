@@ -1,7 +1,7 @@
 ---
 project: horde
-stars: 1431
-description: Horde is a distributed Supervisor and Registry backed by DeltaCrdt
+stars: 1442
+description: Horde is a distributed Supervisor and Registry backed by Postgres
 url: https://github.com/elixir-horde/horde
 ---
 

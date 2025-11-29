@@ -1,6 +1,6 @@
 ---
 project: Detectron
-stars: 26393
+stars: 26395
 description: FAIR's research platform for object detection research, implementing popular algorithms like Mask R-CNN and RetinaNet.
 url: https://github.com/facebookresearch/Detectron
 ---

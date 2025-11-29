@@ -1,6 +1,6 @@
 ---
 project: UptimeFlare
-stars: 3034
+stars: 3057
 description: ✔ Free and serverless uptime monitoring / status page on Cloudflare Workers, with Geo-specific checks
 url: https://github.com/lyc8503/UptimeFlare
 ---

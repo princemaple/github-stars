@@ -1,6 +1,6 @@
 ---
 project: polyfill-service
-stars: 7168
+stars: 7169
 description: Automatic polyfill service.
 url: https://github.com/polyfillpolyfill/polyfill-service
 ---

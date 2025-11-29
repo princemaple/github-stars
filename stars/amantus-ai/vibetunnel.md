@@ -1,9 +1,12 @@
 ---
 project: vibetunnel
-stars: 2457
+stars: 2475
 description: Turn any browser into your terminal & command your agents on the go.
 url: https://github.com/amantus-ai/vibetunnel
 ---
+
+VibeTunnel 🚇 - Turn any browser into your terminal; command agents from the road (vt.sh)
+=========================================================================================
 
 **Turn any browser into your Mac terminal.**  
 VibeTunnel proxies your terminals right into the browser, so you can vibe-code anywhere.

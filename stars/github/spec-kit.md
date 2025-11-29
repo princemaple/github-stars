@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 50605
+stars: 52106
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -122,54 +122,6 @@ Support
 
 Notes
 
-Claude Code
-
-✅
-
-GitHub Copilot
-
-✅
-
-Gemini CLI
-
-✅
-
-Cursor
-
-✅
-
-Qwen Code
-
-✅
-
-opencode
-
-✅
-
-Windsurf
-
-✅
-
-Kilo Code
-
-✅
-
-Auggie CLI
-
-✅
-
-CodeBuddy CLI
-
-✅
-
-Roo Code
-
-✅
-
-Codex CLI
-
-✅
-
 Amazon Q Developer CLI
 
 ⚠️
@@ -180,7 +132,65 @@ Amp
 
 ✅
 
+Auggie CLI
+
+✅
+
+Claude Code
+
+✅
+
+CodeBuddy CLI
+
+✅
+
+Codex CLI
+
+✅
+
+Cursor
+
+✅
+
+Gemini CLI
+
+✅
+
+GitHub Copilot
+
+✅
+
+IBM Bob
+
+✅
+
+IDE-based agent with slash command support
+
+Jules
+
+✅
+
+Kilo Code
+
+✅
+
+opencode
+
+✅
+
+Qwen Code
+
+✅
+
+Roo Code
+
+✅
+
 SHAI (OVHcloud)
+
+✅
+
+Windsurf
 
 ✅
 
@@ -221,7 +231,7 @@ Name for your new project directory (optional if using `--here`, or use `.` for 
 
 Option
 
-AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, or `q`
+AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `q`, or `bob`
 
 `--script`
 
@@ -290,6 +300,9 @@ specify init my-project --ai amp
 
 # Initialize with SHAI support
 specify init my-project --ai shai
+
+# Initialize with IBM Bob support
+specify init my-project --ai bob
 
 # Initialize with PowerShell scripts (Windows/cross-platform)
 specify init my-project --ai copilot --script ps

@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 56231
+stars: 56532
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -938,7 +938,7 @@ About
 
 Sponsorship Tier
 
-Scrapeless is the best full-stack web scraping toolkit offering Scraping API, Scraping Browser, Web Unlocker, Captcha Solver, and Proxies, designed to handle all your data collection needs.
+Scrapeless provides production-grade infrastructure for Crawling, Automation, and AI Agents, offering Scraping Browser, 4 Proxy Types and Universal Scraping API.
 
 🥈 Silver
 

@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 21571
+stars: 21767
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---
@@ -40,7 +40,7 @@ See Getting started for more options.
 
 $ curl https://mise.run | sh
 $ ~/.local/bin/mise --version
-2025.11.7 macos-arm64 (a1b2d3e 2025-11-20)
+2025.11.10 macos-arm64 (a1b2d3e 2025-11-27)
 
 Hook mise into your shell (pick the right one for your shell):
 
@@ -53,15 +53,15 @@ echo '~/.local/bin/mise activate pwsh | Out-String | Invoke-Expression' >> ~/.co
 
 ### Execute commands with specific tools
 
-$ mise exec node@22 -- node -v
-mise node@22.x.x ✓ installed
-v22.x.x
+$ mise exec node@24 -- node -v
+mise node@24.x.x ✓ installed
+v24.x.x
 
 ### Install tools
 
-$ mise use --global node@22 go@1
+$ mise use --global node@24 go@1
 $ node -v
-v22.x.x
+v24.x.x
 $ go version
 go version go1.x.x macos/arm64
 

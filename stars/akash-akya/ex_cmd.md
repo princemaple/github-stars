@@ -1,6 +1,6 @@
 ---
 project: ex_cmd
-stars: 86
+stars: 87
 description: ExCmd is an Elixir library to run external programs and to communicate with back pressure
 url: https://github.com/akash-akya/ex_cmd
 ---

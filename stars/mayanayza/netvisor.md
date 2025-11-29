@@ -1,6 +1,6 @@
 ---
 project: netvisor
-stars: 2015
+stars: 2081
 description: Automatically discover and visually document network infrastructure.
 url: https://github.com/mayanayza/netvisor
 ---
@@ -15,7 +15,7 @@ NetVisor scans your network, identifies hosts and services, and generates an int
   
   
 
-> 💡 **Prefer not to self-host, or want to use this for your business?** Get early access to NetVisor Cloud
+> 💡 **Prefer not to self-host?** Get early access to NetVisor Cloud
 
 ✨ Key Features
 --------------
@@ -29,6 +29,67 @@ NetVisor scans your network, identifies hosts and services, and generates an int
 -   **Scheduled Discovery**: Automated scanning to keep documentation current
 -   **Export & Share**: Download topology diagrams as PNG images
 
+📋 Licensing & Deployment Options
+---------------------------------
+
+Choose the right option for your use case:
+
+Use Case
+
+License
+
+Cost
+
+Best For
+
+**Personal/Home Use**
+
+AGPL-3.0
+
+Free
+
+Home labs, personal networks, learning
+
+**Commercial Use**
+
+Commercial License
+
+Contact Us
+
+Businesses, MSPs, proprietary integrations
+
+**Hosted Solution**
+
+NetVisor Cloud
+
+Subscription
+
+Individuals and teams wanting NetVisor with zero infrastructure management
+
+### License Selection Guide
+
+**Use AGPL-3.0 (free) if:**
+
+-   Using NetVisor for personal/home network documentation
+-   Comfortable with self-hosting and maintenance
+-   OK with AGPL copyleft obligations (making modifications public if running as a service)
+
+**Need a Commercial License if:**
+
+-   Using NetVisor for business/company networks
+-   Providing NetVisor as a service to clients (MSPs, consultants)
+-   Integrating NetVisor into proprietary software
+-   Don't want to disclose modifications or comply with AGPL requirements
+
+For commercial licensing inquiries: **licensing@netvisor.io**
+
+**Choose NetVisor Cloud if:**
+
+-   Want a fully managed solution without infrastructure setup
+-   Prefer subscription pricing over self-hosting
+
+**Get NetVisor Cloud Early Access →**
+
 🎯 Perfect For
 --------------
 
@@ -37,12 +98,6 @@ NetVisor scans your network, identifies hosts and services, and generates an int
 -   **System Administrators**: Visualize complex multi-VLAN environments
 -   **DevOps Teams**: Map containerized services and their dependencies
 -   **MSPs**: Manage multiple client networks with separate organizations
-
-* * *
-
-**Want hosted NetVisor without the setup?** Get early access to our upcoming cloud service at netvisor.io
-
-* * *
 
 📚 Documentation
 ----------------
@@ -171,14 +226,6 @@ Typically 5-10+ minutes depending on network size, subnet masks, and concurrent 
 **Can I customize the topology layout?**
 
 Yes! Extensive customization options including network filters, service category hiding, Docker grouping, edge type filters, manual node positioning, and subnet resizing. See Topology Visualization.
-
-📄 License
-----------
-
-NetVisor is dual-licensed:
-
--   **Open Source**: AGPL-3.0 - Free for self-hosted, open source use
--   **Commercial**: Commercial licensing available for organizations that need to use NetVisor without AGPL requirements
 
 * * *
 

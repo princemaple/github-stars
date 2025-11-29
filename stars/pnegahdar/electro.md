@@ -1,6 +1,6 @@
 ---
 project: electro
-stars: 79
+stars: 80
 description: ⚡️ Personal Github pages lite. Share prototypes with teammates. Host static sites. Share documents.
 url: https://github.com/pnegahdar/electro
 ---

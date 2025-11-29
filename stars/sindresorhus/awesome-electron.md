@@ -1,6 +1,6 @@
 ---
 project: awesome-electron
-stars: 26805
+stars: 26823
 description: Useful resources for creating apps with Electron
 url: https://github.com/sindresorhus/awesome-electron
 ---
@@ -138,6 +138,7 @@ Made with Electron.
 -   Ostara - Monitor and interact with Spring Boot apps via Actuator.
 -   PikaTorrent - BitTorrent client.
 -   Wave Terminal - Open-source terminal with AI integration.
+-   Signal Desktop - Companion desktop app for Signal mobile app.
 
 ### Closed Source
 
@@ -188,6 +189,7 @@ Made with Electron.
 -   Lotus - Keep up with GitHub notifications without stress.
 -   RunJS - Playground for JavaScript and TypeScript.
 -   OpenSFTP - Integrated SSH and SFTP workspace client.
+-   Obsidian - Extensible Markdown note taking and knowledge management.
 
 ### Samples
 

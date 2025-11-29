@@ -1,6 +1,6 @@
 ---
 project: Stirling-PDF
-stars: 70156
+stars: 70500
 description: #1 Locally hosted web application that allows you to perform various operations on PDF files
 url: https://github.com/Stirling-Tools/Stirling-PDF
 ---
@@ -32,6 +32,7 @@ Features
 
 #### Organise
 
+-   **PDF Multi Tool**: Access merge, rotate, rearrange, split and delete actions from a single dashboard
 -   **Merge**: Combine multiple PDFs into one
 -   **Split**: Divide PDFs into multiple files
 -   **Extract page(s)**: Extract specific pages from PDF
@@ -47,6 +48,7 @@ Features
 
 -   **Image to PDF**: Convert images to PDF format
 -   **Convert file to PDF**: Convert various common file types to PDF
+-   **URL/Website to PDF**: Capture live webpages as PDFs
 -   **HTML to PDF**: Transform HTML documents to PDF
 -   **Markdown to PDF**: Convert Markdown files to PDF
 -   **CBZ to PDF**: Convert comic book archives
@@ -69,6 +71,7 @@ Features
 -   **PDF to CBZ**: Convert to comic book archive
 -   **PDF to CBR**: Convert to comic book rar archive
 -   **PDF to Vector Image**: Convert PDF to vector image (EPS, PS, PCL, XPS) format
+-   **PDF to Video Slideshow**: Export pages as an automated video presentation
 
 #### Sign & Security
 
@@ -90,6 +93,7 @@ Features
 -   **OCR / Cleanup scans**: Optical Character Recognition
 -   **Add Image**: Insert images into PDF
 -   **Extract Images**: Extract embedded images
+-   **Extract Attachments**: Retrieve embedded attachments
 -   **Change Metadata**: Edit PDF metadata
 -   **Get ALL Info on PDF**: Comprehensive PDF analysis
 -   **Advanced Colour options**: Colour manipulation (various options for colour inversion, CMYK conversion)

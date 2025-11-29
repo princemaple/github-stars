@@ -1,6 +1,6 @@
 ---
 project: mind-elixir-core
-stars: 2828
+stars: 2839
 description: ⚗ Mind Elixir is a JavaScript, framework-agnostic mind map core.
 url: https://github.com/SSShooter/mind-elixir-core
 ---
@@ -65,6 +65,7 @@ Table of Contents
     -   Markdown Support
     -   Operation Guards
 -   Export as a Image
+    -   Deprecated API
 -   Theme
 -   Shortcuts
 -   Who's using
@@ -273,20 +274,23 @@ let mind \= new MindElixir({
 Export as a Image
 -----------------
 
-Install `@ssshooter/modern-screenshot`, then:
+Install `@zumer/snapdom`, then:
 
-import { domToPng } from '@ssshooter/modern-screenshot'
+import { snapdom } from '@zumer/snapdom'
 
 const download \= async () \=> {
-  const dataUrl \= await domToPng(mind.nodes, {
-    padding: 300,
-    quality: 1,
-  })
-  const link \= document.createElement('a')
-  link.download \= 'screenshot.png'
-  link.href \= dataUrl
-  link.click()
+  const result \= await snapdom(mind.nodes)
+  await result.download({ format: 'jpg', filename: 'my-capture' })
 }
+
+For other export formats and advanced options, see the Mind Elixir documentation.
+
+### Deprecated API
+
+> ⚠️ **Deprecated**: The `mind.exportSvg()` method is deprecated and will be removed in a future version.
+
+// DEPRECATED - Do not use in new projects
+const svgData \= await mind.exportSvg()
 
 Theme
 -----

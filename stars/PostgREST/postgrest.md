@@ -1,6 +1,6 @@
 ---
 project: postgrest
-stars: 26128
+stars: 26152
 description: REST API for any Postgres database
 url: https://github.com/PostgREST/postgrest
 ---
@@ -66,7 +66,7 @@ This project uses HTTP to communicate other metadata as well. For instance the n
 Data Integrity
 --------------
 
-Rather than relying on an Object Relational Mapper and custom imperative coding, this system requires you put declarative constraints directly into your database. Hence no application can corrupt your data (including your API server).
+Rather than relying on an Object Relational Mapper and custom imperative coding, this system requires you to put declarative constraints directly into your database. Hence no application can corrupt your data (including your API server).
 
 The PostgREST exposes HTTP interface with safeguards to prevent surprises, such as enforcing idempotent PUT requests.
 

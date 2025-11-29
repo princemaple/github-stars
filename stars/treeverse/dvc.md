@@ -1,8 +1,8 @@
 ---
 project: dvc
-stars: 15120
+stars: 15145
 description: 🦉 Data Versioning and ML Experiments
-url: https://github.com/iterative/dvc
+url: https://github.com/treeverse/dvc
 ---
 
 Website • Docs • Blog • Tutorial • Related Technologies • How DVC works • VS Code Extension • Installation • Contributing • Community and Support
@@ -126,7 +126,7 @@ Depending on the remote storage type you plan to use to keep and share your data
 
 To install the development version, run:
 
-pip install git+git://github.com/iterative/dvc
+pip install "dvc @ git+https://github.com/treeverse/dvc"
 
 ### Package (Platform-specific)
 

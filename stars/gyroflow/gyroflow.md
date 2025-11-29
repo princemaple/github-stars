@@ -1,6 +1,6 @@
 ---
 project: gyroflow
-stars: 7981
+stars: 7998
 description: Video stabilization using gyroscope data
 url: https://github.com/gyroflow/gyroflow
 ---
@@ -58,10 +58,10 @@ Supported gyro sources
 -   GoPro (HERO 5 and later)
 -   Sony (a1, a7c, a7r V, a7 IV, a7s III, a9 II, a9 III, FX3, FX6, FX9, RX0 II, RX100 VII, ZV1, ZV-E10, ZV-E10 II, ZV-E1, a6700)
 -   Insta360 (OneR, OneRS, SMO 4k, Go, GO2, GO3, GO3S, GOUltra, Caddx Peanut, Ace, Ace Pro)
--   DJI (Avata, Avata 2, O3 Air Unit, Action 2/4/5, Neo)
+-   DJI (Avata, Avata 2, O3/O4 Air Unit, Action 2/4/5/6/Nano, Neo, Neo2)
 -   Blackmagic RAW (\*.braw)
 -   RED RAW (V-Raptor, KOMODO) (\*.r3d)
--   Canon (C50, C80, C400) (\*.mp4, \*.mov, \*.mxf)
+-   Canon (C50, C80, C400, R6 Mk3, R5 Mk2) (\*.mp4, \*.mov, \*.mxf)
 -   Freefly (Ember)
 -   Betaflight blackbox (\*.bfl, \*.bbl, \*.csv)
 -   ArduPilot logs (\*.bin, \*.log)

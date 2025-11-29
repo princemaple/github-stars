@@ -1,6 +1,6 @@
 ---
 project: firecracker
-stars: 31140
+stars: 31208
 description: Secure and fast microVMs for serverless computing.
 url: https://github.com/firecracker-microvm/firecracker
 ---
@@ -78,6 +78,8 @@ The **API endpoint** can be used to:
 -   `[BETA]` Configure the data tree of the guest-facing metadata service. The service is only available to the guest if this resource is configured.
 -   Add a vsock socket to the microVM.
 -   Add a entropy device to the microVM.
+-   Add a pmem device to the microVM.
+-   Configure and manage memory hotplugging.
 -   Start the microVM using a given kernel image, root file system, and boot arguments.
 -   \[x86\_64 only\] Stop the microVM.
 

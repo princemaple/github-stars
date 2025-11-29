@@ -1,6 +1,6 @@
 ---
 project: ChatTTS
-stars: 38181
+stars: 38231
 description: A generative speech model for daily dialogue.
 url: https://github.com/2noise/ChatTTS
 ---
@@ -21,7 +21,8 @@ This repo contains the algorithm infrastructure and some simple examples.
 
 Tip
 
-For the extended end-user products, please refer to the index repo Awesome-ChatTTS maintained by the community.
+For the extended end-user products, please refer to the index repo Awesome-ChatTTS maintained by the community.  
+You can find a diagram visualization of the codebase here.
 
 ChatTTS is a text-to-speech model designed specifically for dialogue scenarios such as LLM assistant.
 

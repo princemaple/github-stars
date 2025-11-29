@@ -1,6 +1,6 @@
 ---
 project: trzsz-ssh
-stars: 2305
+stars: 2315
 description: trzsz-ssh ( tssh ) is an ssh client designed as a drop-in replacement for the openssh client. It aims to provide complete compatibility with openssh, mirroring all its features, while also offering additional useful features. Such as login prompt, batch login, remember password, automated interaction, trzsz, zmodem(rz/sz), udp mode like mosh, etc.
 url: https://github.com/trzsz/trzsz-ssh
 ---
@@ -42,7 +42,7 @@ Multiplexing
 
 Command
 
-`RemoteCommand`, `LocalCommand`, `PermitLocalCommand`
+`-s` `RemoteCommand` `LocalCommand` `PermitLocalCommand`
 
 X11 Forward
 
@@ -68,6 +68,10 @@ Port Forward
 
 `-g` `-f` `-N` `-L` `-R` `-D` `LocalForward` `RemoteForward` `DynamicForward` `GatewayPorts` `ClearAllForwardings`
 
+Others
+
+`EscapeChar`
+
 ### Extra Features
 
 trzsz-ssh ( tssh ) offers additional useful features:
@@ -84,13 +88,17 @@ Custom Theme
 
 主题风格
 
-trzsz ( trz / tsz )
+Trzsz ( trz / tsz )
 
-trzsz ( trz / tsz )
+支持 trz tsz
 
-zmodem ( rz / sz )
+Zmodem ( rz / sz )
 
-zmodem ( rz / sz )
+支持 rz sz
+
+Support scp sftp
+
+支持 scp sftp
 
 Batch Login
 
@@ -123,6 +131,10 @@ Wayland 集成
 Clipboard Integration
 
 剪贴板集成
+
+SSH Console
+
+SSH 控制台
 
 Other Features
 
@@ -223,7 +235,21 @@ UDP 模式 ( mosh )
     make
     sudo make install
     
--   Download from the GitHub Releases, unzip and add to `PATH` environment.
+-   Download from the GitHub Releases and install locally
+    
+    `download and install locally`
+    
+    sudo apt install /tmp/tssh\_\*.deb
+    
+    sudo dpkg -i /tmp/tssh\_\*.deb
+    
+    sudo dnf install /tmp/tssh\_\*.rpm
+    
+    sudo yum install /tmp/tssh\_\*.rpm
+    
+    sudo rpm -i /tmp/tssh\_\*.rpm
+    
+    tar zxvf tssh\_\*.tar.gz && sudo cp tssh\_\*/tssh /usr/bin/
     
 
 ### Development

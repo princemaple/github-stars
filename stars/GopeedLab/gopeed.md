@@ -1,6 +1,6 @@
 ---
 project: gopeed
-stars: 21843
+stars: 21924
 description: A modern download manager that supports all platforms.  Built with Golang and Flutter.
 url: https://github.com/GopeedLab/gopeed
 ---
@@ -181,6 +181,11 @@ go install github.com/GopeedLab/gopeed/cmd/gopeed@latest
 --------------------
 
 Gopeed also provides a browser extension to take over browser downloads, supporting browsers such as Chrome, Edge, Firefox, etc., please refer to: https://github.com/GopeedLab/browser-extension
+
+📱 WeChat Official Account
+--------------------------
+
+Follow our WeChat Official Account to get the latest updates and news.
 
 💝 Donate
 ---------

@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 20599
+stars: 20652
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -291,13 +291,17 @@ Propagates document updates peer-to-peer using WebRTC. The peers exchange signal
 
 Liveblocks Yjs provides a fully hosted WebSocket infrastructure and persisted data store for Yjs documents. No configuration or maintenance is required. It also features Yjs webhook events, REST API to read and update Yjs documents, and a browser DevTools extension.
 
-y-sweet ⭐
-
-A standalone yjs server with persistence to S3 or filesystem. They offer a cloud service as well.
-
 Hocuspocus ⭐
 
 A standalone extensible yjs server with sqlite persistence, webhooks, auth and more.
+
+teleportal
+
+Build your own Y.js sync server: any storage, any JS runtime, any transport.
+
+y-sweet
+
+A standalone yjs server with persistence to S3 or filesystem. They offer a cloud service as well.
 
 @superviz/yjs
 

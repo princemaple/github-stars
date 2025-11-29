@@ -1,6 +1,6 @@
 ---
 project: postgresus
-stars: 2517
+stars: 2612
 description: PostgreSQL backup tool
 url: https://github.com/RostislavDugin/postgresus
 ---
@@ -55,6 +55,12 @@ Features • Installation • Usage • License • Contributing
 -   **Access management**: Control who can view or manage specific databases with role-based permissions
 -   **Audit logs**: Track all system activities and changes made by users
 -   **User roles**: Assign viewer, member, admin or owner roles within workspaces
+
+### 🎨 **UX-Friendly**
+
+-   **Designer-polished UI**: Clean, intuitive interface crafted with attention to detail
+-   **Dark & light themes**: Choose the look that suits your workflow
+-   **Mobile adaptive**: Check your backups from anywhere on any device
 
 ### 🐳 **Self-Hosted & Secure**
 

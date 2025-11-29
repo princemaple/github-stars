@@ -1,6 +1,6 @@
 ---
 project: fzf
-stars: 75259
+stars: 75414
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---
@@ -87,6 +87,7 @@ Table of Contents
     -   fzf Theme Playground
 -   Related projects
 -   License
+-   Goods
 -   Sponsors ❤️
 
 Installation
@@ -926,6 +927,13 @@ License
 The MIT License (MIT)
 
 Copyright (c) 2013-2025 Junegunn Choi
+
+Goods
+-----
+
+Grab fzf T-shirts, mugs, and stickers here: https://commitgoods.com/collections/fzf
+
+> _Everything in the shop is 15% off through Cyber Monday with the code `COMMITGOODSLAUNCH`_
 
 Sponsors ❤️
 -----------

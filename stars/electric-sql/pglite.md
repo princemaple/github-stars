@@ -1,6 +1,6 @@
 ---
 project: pglite
-stars: 13224
+stars: 13260
 description: Embeddable Postgres with real-time, reactive bindings.
 url: https://github.com/electric-sql/pglite
 ---
@@ -135,6 +135,13 @@ Acknowledgments
 ---------------
 
 PGlite builds on the work of Stas Kelvich of Neon in this Postgres fork.
+
+Sponsors
+--------
+
+Big shoutout to everybody supporting us!
+
+### Blacksmith
 
 License
 -------

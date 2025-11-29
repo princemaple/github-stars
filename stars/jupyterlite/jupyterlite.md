@@ -1,6 +1,6 @@
 ---
 project: jupyterlite
-stars: 4651
+stars: 4664
 description: Wasm powered Jupyter running in the browser 💡
 url: https://github.com/jupyterlite/jupyterlite
 ---
@@ -15,18 +15,18 @@ JupyterLite is a JupyterLab distribution that **runs entirely in the browser** b
 
 Although JupyterLite is currently being developed by core Jupyter developers, the project is still _unofficial_.
 
-Not all the usual features available in JupyterLab and the Classic Notebook will work with JupyterLite, but many already do!
+Not all the features available in JupyterLab and the Classic Notebook will work with JupyterLite, but many do!
 
 Don't hesitate to check out the documentation for more information and project updates.
 
 ✨ Try it in your browser ✨
 --------------------------
 
-JupyterLite works with both JupyterLab and Jupyter Notebook.
+JupyterLite works with both the JupyterLab and Jupyter Notebook interfaces.
 
-Try it with JupyterLab!
+Try it with JupyterLab
 
-Try it with Jupyter Notebook!
+Try it with Jupyter Notebook
 
 🏗️ Build your own JupyterLite 🏗️
 ----------------------------------
@@ -39,9 +39,10 @@ See the documentation for more details.
 
 JupyterLite is all about accessible browser-based interactive computing:
 
--   Python kernel backed by Pyodide running in a Web Worker
-    -   Initial support for interactive visualization libraries such as `altair`, `bqplot`, `ipywidgets`, `matplotlib`, and `plotly`
--   JavaScript kernel running in a Web Worker
+-   Python kernels running in a Web Worker:
+    -   Pyodide : jupyterlite-pyodide-kernel
+    -   Xeus Python : jupyterlite-xeus
+-   Support for interactive visualization libraries such as `altair`, `bqplot`, `ipywidgets`, `matplotlib`, and `plotly`
 -   View hosted example Notebooks and other files, then edit, save, and download from the browser's `IndexDB` (or `localStorage`)
 -   Support for saving settings for JupyterLab/Lite core and federated extensions
 -   Basic session and kernel management to have multiple kernels running at the same time
@@ -52,20 +53,78 @@ JupyterLite is all about accessible browser-based interactive computing:
 -   Served via well-cacheable, static HTTP(S), locally or on most static web hosts
 -   Embeddable within larger applications
 -   Requires no dedicated _application server_ much less a container orchestrator
--   Fine-grained configurability of page settings, including reuse of federated extensions
+-   Fine-grained configurability of page settings, including reuse of federated JupyterLab extensions
 
-Showcase
---------
+Version Compatibility
+---------------------
 
-### Jupyter Interactive Widgets
+The table below shows the versions of JupyterLab and Jupyter Notebook bundled with each JupyterLite core release.
 
-### JupyterLab Mimerender Extensions
+jupyterlite-core
 
-### Matplotlib Figures
+jupyterlab
 
-### Altair
+notebook
 
-### Plotly
+supported
+
+0.7.0
+
+4.5.0
+
+7.5.0
+
+✅
+
+0.6.0
+
+4.4.3
+
+7.4.3
+
+✅
+
+0.5.0
+
+4.3.4
+
+7.3.2
+
+❌
+
+0.4.0
+
+4.2.4
+
+7.2.0
+
+❌
+
+0.3.0
+
+4.1.1
+
+7.1.0
+
+❌
+
+0.2.0
+
+4.0.7
+
+7.0.6
+
+❌
+
+0.1.0
+
+3.5.3
+
+\-
+
+❌
+
+> **Note:** Only the last two releases are actively supported.
 
 Development install
 -------------------

@@ -1,6 +1,6 @@
 ---
 project: self-hosted
-stars: 485
+stars: 494
 description: Self-hosted version of webtor.io implemented as an all-in-one Docker image
 url: https://github.com/webtor-io/self-hosted
 ---
@@ -33,6 +33,8 @@ Quick Setup
     
 3.  Access the UI at http://localhost:8080.
 4.  You're all set!
+
+You can run your Webtor instance on ElfHosted!
 
 Setting a Custom Domain
 -----------------------
@@ -87,6 +89,12 @@ Configuring Transcoding
 -----------------------
 
 -   **DISABLE\_VIDEO\_TRANSCODING** - disables video transcoding
+
+Disable UI Features
+-------------------
+
+-   **DISABLE\_WEBDAV** - disables WebDAV interface
+-   **DISABLE\_EMBED** - disables embeds support
 
 Other Custom Variables
 ----------------------

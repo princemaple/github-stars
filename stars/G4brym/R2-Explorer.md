@@ -1,6 +1,6 @@
 ---
 project: R2-Explorer
-stars: 466
+stars: 471
 description: A Google Drive Interface for your Cloudflare R2 Buckets!
 url: https://github.com/G4brym/R2-Explorer
 ---
@@ -41,6 +41,7 @@ Key Features
     -   Multi-part upload for large files
     -   Right-click context menu for advanced options
     -   HTTP/Custom metadata editing
+    -   **Sharable Links** - Create secure, public URLs for files with optional password protection, expiration times, and download limits
 -   **👀 File Handling**
     
     -   In-browser file preview

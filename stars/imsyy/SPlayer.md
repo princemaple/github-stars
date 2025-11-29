@@ -1,6 +1,6 @@
 ---
 project: SPlayer
-stars: 5620
+stars: 5673
 description: 🎉 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐 | A minimalist music player
 url: https://github.com/imsyy/SPlayer
 ---
@@ -102,6 +102,8 @@ Important
 
 可以通过 `GitHub Actions` 工作流获取最新的开发版，目前开发版仅提供 `Win` 版本
 
+> 如需其他平台的开发版构建，请自行 Fork 本项目并参考 `.github/workflows/release.yml` 创建相应的工作流
+
 Dev Workflow
 
 Snap Store
@@ -200,6 +202,8 @@ docker run -d --name SPlayer -p 25884:25884 imsyy/splayer:latest
 5.  复制 `/.env.example` 文件并重命名为 `/.env` 并修改配置
     
 6.  打包客户端，请依据你的系统类型来选择，打包成功后，会输出安装包或可执行文件在 `/dist` 目录中，可自行安装
+    
+    > 默认情况下，构建命令仅会构建当前系统架构的版本。如需构建特定架构（如 x64 + arm64），请在命令后追加参数，例如：`pnpm build:win -- --x64 --arm64`
     
     命令
     

@@ -1,6 +1,6 @@
 ---
 project: exceljs
-stars: 14915
+stars: 14937
 description: Excel Workbook Manager
 url: https://github.com/exceljs/exceljs
 ---

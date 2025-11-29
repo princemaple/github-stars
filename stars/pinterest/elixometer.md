@@ -1,6 +1,6 @@
 ---
 project: elixometer
-stars: 826
+stars: 827
 description: A light Elixir wrapper around exometer.
 url: https://github.com/pinterest/elixometer
 ---

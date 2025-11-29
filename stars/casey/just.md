@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 28780
+stars: 28888
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -485,6 +485,10 @@ The zed-just extension by jackTabsCode is avilable on the Zed extensions page.
 
 Feel free to send me the commands necessary to get syntax highlighting working in your editor of choice so that I may include them here.
 
+### Language Server Protocol
+
+just-lsp provides a language server protocol implementation, enabling features such as go-to-definition, inline diagnostics, and code completion.
+
 ### Model Context Protocol
 
 just-mcp provides a model context protocol adapter to allow LLMs to query the contents of `justfiles` and run recipes.
@@ -619,10 +623,10 @@ $ cat foo.just
 mod bar
 $ cat bar.just
 baz:
-$ just foo bar
+$ just --list foo bar
 Available recipes:
     baz
-$ just foo::bar
+$ just --list foo::bar
 Available recipes:
     baz
 ```

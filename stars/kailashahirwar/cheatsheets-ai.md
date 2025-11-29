@@ -1,6 +1,6 @@
 ---
 project: cheatsheets-ai
-stars: 15375
+stars: 15377
 description: Essential Cheat Sheets for deep learning and machine learning researchers https://medium.com/@kailashahirwar/essential-cheat-sheets-for-machine-learning-and-deep-learning-researchers-efb6a8ebd2e5
 url: https://github.com/kailashahirwar/cheatsheets-ai
 ---

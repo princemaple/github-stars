@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 15205
+stars: 15396
 description: The glamourous AI coding agent for your favourite terminal 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -617,13 +617,6 @@ Or by setting the following in your config:
 }
 
 Crush also respects the `DO_NOT_TRACK` convention which can be enabled via `export DO_NOT_TRACK=1`.
-
-A Note on Claude Max and GitHub Copilot
----------------------------------------
-
-Crush only supports model providers through official, compliant APIs. We do not support or endorse any methods that rely on personal Claude Max and GitHub Copilot accounts or OAuth workarounds, which violate Anthropic and Microsoft’s Terms of Service.
-
-We’re committed to building sustainable, trusted integrations with model providers. If you’re a provider interested in working with us, reach out.
 
 Contributing
 ------------

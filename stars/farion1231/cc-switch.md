@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 4880
+stars: 5359
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -8,7 +8,7 @@ url: https://github.com/farion1231/cc-switch
 All-in-One Assistant for Claude Code, Codex & Gemini CLI
 ========================================================
 
-English | 中文 | Changelog
+English | 中文 | 日本語 | Changelog
 
 **From Provider Switcher to All-in-One AI CLI Management Platform**
 
@@ -39,9 +39,43 @@ Add Provider
 Features
 --------
 
-### Current Version: v3.7.0 | Full Changelog | 📋 Release Notes
+### Current Version: v3.8.0 | Full Changelog | Release Notes
 
-**v3.7.0 Major Update (2025-11-19)**
+**v3.8.0 Major Update (2025-11-28)**
+
+**Persistence Architecture Upgrade & Brand New UI**
+
+-   **SQLite + JSON Dual-layer Architecture**
+    
+    -   Migrated from JSON file storage to SQLite + JSON dual-layer structure
+    -   Syncable data (providers, MCP, Prompts, Skills) stored in SQLite
+    -   Device-level data (window state, local paths) stored in JSON
+    -   Lays the foundation for future cloud sync functionality
+    -   Schema version management for database migrations
+-   **Brand New User Interface**
+    
+    -   Completely redesigned interface layout
+    -   Unified component styles and smoother animations
+    -   Optimized visual hierarchy
+    -   Tailwind CSS downgraded from v4 to v3.4 for better browser compatibility
+-   **Japanese Language Support**
+    
+    -   Added Japanese interface support (now supports Chinese/English/Japanese)
+-   **Auto Launch on Startup**
+    
+    -   One-click enable/disable in settings
+    -   Platform-native APIs (Registry/LaunchAgent/XDG autostart)
+-   **Skills Recursive Scanning**
+    
+    -   Support for multi-level directory structures
+    -   Allow same-named skills from different repositories
+-   **Critical Bug Fixes**
+    
+    -   Fixed custom endpoints lost when updating providers
+    -   Fixed Gemini configuration write issues
+    -   Fixed Linux WebKitGTK rendering issues
+
+**v3.7.0 Highlights**
 
 **Six Core Features, 18,000+ Lines of New Code**
 
@@ -211,10 +245,10 @@ Quick Start
 -   MCP servers: `~/.gemini/settings.json` → `mcpServers`
 -   Tray quick switch: Each provider switch rewrites `~/.gemini/.env`, no need to restart Gemini CLI
 
-**CC Switch Storage**
+**CC Switch Storage (v3.8.0 New Architecture)**
 
--   Main config (SSOT): `~/.cc-switch/config.json` (includes providers, MCP, Prompts presets, etc.)
--   Settings: `~/.cc-switch/settings.json`
+-   Database (SSOT): `~/.cc-switch/cc-switch.db` (SQLite, stores providers, MCP, Prompts, Skills)
+-   Local settings: `~/.cc-switch/settings.json` (device-level settings)
 -   Backups: `~/.cc-switch/backups/` (auto-rotate, keep 10)
 
 ### Cloud Sync Setup
@@ -251,11 +285,12 @@ Architecture Overview
 
 **Core Design Patterns**
 
--   **SSOT** (Single Source of Truth): All provider configs stored in `~/.cc-switch/config.json`
+-   **SSOT** (Single Source of Truth): All data stored in `~/.cc-switch/cc-switch.db` (SQLite)
+-   **Dual-layer Storage**: SQLite for syncable data, JSON for device-level settings
 -   **Dual-way Sync**: Write to live files on switch, backfill from live when editing active provider
 -   **Atomic Writes**: Temp file + rename pattern prevents config corruption
--   **Concurrency Safe**: RwLock with scoped guards avoids deadlocks
--   **Layered Architecture**: Clear separation (Commands → Services → Models)
+-   **Concurrency Safe**: Mutex-protected database connection avoids race conditions
+-   **Layered Architecture**: Clear separation (Commands → Services → DAO → Database)
 
 **Key Components**
 

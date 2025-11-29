@@ -1,6 +1,6 @@
 ---
 project: wax
-stars: 208
+stars: 209
 description: WebAuthn for Elixir
 url: https://github.com/tanguilp/wax
 ---

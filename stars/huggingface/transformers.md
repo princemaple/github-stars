@@ -1,6 +1,6 @@
 ---
 project: transformers
-stars: 152854
+stars: 153167
 description: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. 
 url: https://github.com/huggingface/transformers
 ---
@@ -78,7 +78,7 @@ To chat with a model, the usage pattern is the same. The only difference is you 
 
 Tip
 
-You can also chat with a model directly from the command line.
+You can also chat with a model directly from the command line, as long as `transformers serve` is running.
 
 transformers chat Qwen/Qwen2.5-0.5B-Instruct
 

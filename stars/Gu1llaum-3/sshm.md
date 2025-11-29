@@ -1,6 +1,6 @@
 ---
 project: sshm
-stars: 848
+stars: 864
 description: SSHM is a beautiful command-line tool that transforms how you manage and connect to your SSH hosts. Built with Go and featuring an intuitive TUI interface, it makes SSH connection management effortless and enjoyable.
 url: https://github.com/Gu1llaum-3/sshm
 ---

@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 28281
+stars: 28335
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---
@@ -470,10 +470,10 @@ Also you can open and build/debug the project in a C++ IDE. For example, in Qt C
 
 #### Compile-time
 
--   Qt >= 6.0
+-   Qt >= 6.2.4 (available by default on Ubuntu Jammy)
     -   Development tools
--   GCC >= 7.4
--   CMake >= 3.29
+-   GCC >= 11
+-   CMake >= 3.22
 
 #### Run-time
 
@@ -520,9 +520,21 @@ pacman -S qt6-svg
 # Optional
 pacman -S openssl ca-certificates qt6-imageformats
 
-#### NixOS
+#### Nix
 
+Development Shell:
+
+# Without flakes:
 nix-shell
+
+# With flakes:
+nix develop
+
+# Build flameshot
+nix build
+
+# Build and run flameshot
+nix run
 
 #### macOS
 

@@ -1,6 +1,6 @@
 ---
 project: nebular
-stars: 8133
+stars: 8134
 description: :boom: Customizable Angular UI Library based on Eva Design System :new_moon_with_face::sparkles:Dark Mode
 url: https://github.com/akveo/nebular
 ---

@@ -1,12 +1,17 @@
 ---
 project: coolify
-stars: 47593
+stars: 47849
 description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
 
+Coolify
+=======
+
+An open-source & self-hostable Heroku / Netlify / Vercel alternative.
+
 About the Project
-=================
+-----------------
 
 Coolify is an open-source & self-hostable alternative to Heroku / Netlify / Vercel / etc.
 
@@ -19,7 +24,7 @@ No vendor lock-in, which means that all the configurations for your applications
 For more information, take a look at our landing page at coolify.io.
 
 Installation
-============
+------------
 
 curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
 
@@ -30,12 +35,12 @@ Note
 Please refer to the docs for more information about the installation.
 
 Support
-=======
+-------
 
 Contact us at coolify.io/docs/contact.
 
 Cloud
-=====
+-----
 
 If you do not want to self-host Coolify, there is a paid cloud version available: app.coolify.io
 
@@ -54,7 +59,7 @@ By subscribing to the cloud version, you get the Coolify server for the same pri
 -   Less maintenance for you
 
 Donations
-=========
+---------
 
 To stay completely free and open-source, with no feature behind the paywall and evolve the project, we need your help. If you like Coolify, please consider donating to help us fund the project's future development.
 
@@ -62,8 +67,7 @@ coolify.io/sponsorships
 
 Thank you so much!
 
-Big Sponsors
-------------
+### Big Sponsors
 
 -   23M - Your experts for high-availability hosting solutions!
 -   Algora - Open source contribution platform
@@ -99,23 +103,22 @@ Big Sponsors
 -   Tolgee - The open source localization platform
 -   Ubicloud - Open source cloud infrastructure platform
 
-Small Sponsors
---------------
+### Small Sponsors
 
 ...and many more at GitHub Sponsors
 
 Recognitions
-============
+------------
 
 Core Maintainers
-================
+----------------
 
 Andras Bacsai
 
 🏔️ Peak
 
 Repo Activity
-=============
+-------------
 
 Star History
-============
+------------

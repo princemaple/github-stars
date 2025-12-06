@@ -1,6 +1,6 @@
 ---
 project: netvisor
-stars: 2081
+stars: 2143
 description: Automatically discover and visually document network infrastructure.
 url: https://github.com/mayanayza/netvisor
 ---
@@ -72,7 +72,7 @@ Individuals and teams wanting NetVisor with zero infrastructure management
 
 -   Using NetVisor for personal/home network documentation
 -   Comfortable with self-hosting and maintenance
--   OK with AGPL copyleft obligations (making modifications public if running as a service)
+-   OK with AGPL copyleft obligations
 
 **Need a Commercial License if:**
 

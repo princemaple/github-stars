@@ -1,111 +1,465 @@
 ---
 project: spacedrive
-stars: 35694
+stars: 35937
 description: Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.
 url: https://github.com/spacedriveapp/spacedrive
 ---
 
-**Spacedrive**
-==============
+Spacedrive
+==========
 
-A file explorer from the future.  
-**spacedrive.com »**  
-  
-**Download for** macOS (Apple Silicon | Intel) · Windows · Linux · iOS · Android  
-_~ Links for iOS & Android will be added once a release is available. ~_
+A file manager built on a virtual distributed filesystem  
+**spacedrive.com** · **v2 Documentation** · **Discord**
 
-Spacedrive is an open source cross-platform file manager, powered by a virtual distributed filesystem (VDFS) written in Rust.  
-  
+Spacedrive is an open source cross-platform file manager, powered by a virtual distributed filesystem (VDFS) written in Rust.
+
+Organize files across multiple devices, clouds, and platforms from a single interface. Tag once, access everywhere. Never lose track of where your files are.
 
 Important
 
-We regret to inform our valued Spacedrive community that we must temporarily pause our development roadmap beyond our latest update. Due to current funding constraints and related challenges, we cannot deliver new features or updates for the foreseeable future.
+Hi, Jamie here! This is Spacedrive v2 (December 2025)—a complete ground-up rewrite.
 
-While this was a tough decision, our team remains committed to Spacedrive's vision and will explore options to resume development when circumstances allow. We deeply appreciate your understanding and continued support during this challenging period.
+After development of the original alpha version stopped in January this year, left with the hard lessons of the incomplete alpha, I set out to completely rebuild Spacedrive from the ground up. The first release **2.0.0-pre.1** is coming before Christmas.
 
-The Spacedrive Team
+For now I am open sourcing the code, with complete history from my private fork intact for early testing and preparation for an actual release.
 
-Organize files across many devices in one place. From cloud services to offline hard drives, Spacedrive combines the storage capacity and processing power of your devices into one personal distributed cloud, that is both secure and intuitive to use.
+If you're looking for the previous version, see the v1 branch.
 
-For independent creatives, hoarders and those that want to own their digital footprint, Spacedrive provides a free file management experience like no other.
+The Problem
+-----------
 
-  
-  
-  
+Computing was designed for a single-device world. The file managers we use today—Finder, Explorer, Files—were built when your data lived in one place: the computer in front of you.
 
-What is a VDFS?
-===============
+The shift to multi-device computing forced us into cloud ecosystems. Want your files everywhere? Upload them to someone else's servers. The convenience came at a cost: **data ownership**. This wasn't accidental—centralization was the path of least resistance for solving multi-device sync.
 
-A VDFS (virtual distributed filesystem) is a filesystem designed to work across a variety of storage layers. With a uniform API to manipulate and access content across many devices, VDFS is not restricted to a single machine. It achieves this by maintaining a virtual index of all storage locations, synchronizing the database between clients in realtime. This implementation also uses CAS (Content-addressable storage) to uniquely identify files, while keeping record of logical file paths relative to the storage locations.
+Now AI is accelerating this trend. Cloud services offer intelligent file analysis and semantic search, but only if you upload your data to their infrastructure. As we generate more data and AI becomes more capable, we're giving away more and more to access basic computing conveniences.
 
-The first implementation of a VDFS can be found in this UC Berkeley paper by Haoyuan Li. This paper describes its use for cloud computing, however the underlying concepts can be translated to open consumer software.
+**The current system isn't built for a world where:**
 
-Motivation
-==========
+-   You own multiple devices with underutilized compute and storage
+-   Local AI models are becoming competitive with cloud alternatives
+-   Privacy and data sovereignty matter
+-   You shouldn't have to choose between convenience and control
 
-Many of us have multiple cloud accounts, drives that aren’t backed up and data at risk of loss. We depend on cloud services like Google Photos and iCloud, but are locked in with limited capacity and almost zero interoperability between services and operating systems. Photo albums shouldn’t be stuck in a device ecosystem, or harvested for advertising data. They should be OS agnostic, permanent and personally owned. Data we create is our legacy, that will long outlive us—open source technology is the only way to ensure we retain absolute control over the data that defines our lives, at unlimited scale.
+The Vision
+----------
 
-Roadmap
-=======
+Spacedrive is infrastructure for the next era of computing. It's an architecture designed for multi-device environments from the ground up—not cloud services retrofitted with offline support, but local-first sync that scales to the cloud when you want it.
 
-View a list of our planned features here: spacedrive.com/roadmap
+As local AI models improve, Spacedrive becomes the fabric that enables the same insights cloud services offer today, but running on hardware you already own, on data that never leaves your control. This is a long-term project correcting computing's trajectory toward centralization.
 
-Developer Guide
-===============
+The file explorer interface is deliberate. Everyone understands it. It's seen the least innovation in decades. And it has the most potential when you bake distributed computing, content awareness, and local AI into something universally familiar.
 
-Please refer to the contributing guide for how to install Spacedrive from sources.
+How It Works
+------------
 
-Security Policy
-===============
+Spacedrive treats files as **first-class objects with content identity**, not paths. A photo on your laptop and the same photo on your NAS are recognized as one piece of content. This enables:
 
-Please refer to the security policy for details and information on how to responsibly report a security vulnerability or issue.
+-   **Content-aware deduplication** - Track redundancy across all devices
+-   **Semantic search** - Find files in under 100ms across millions of entries
+-   **Transactional operations** - Preview conflicts, space savings, and outcomes before execution
+-   **Peer-to-peer sync** - No servers, no consensus protocols, no single point of failure
+-   **Offline-first** - Full functionality without internet, syncs when devices reconnect
+
+Files stay where they are. Spacedrive just makes them universally addressable with rich metadata and cross-device intelligence.
+
+* * *
 
 Architecture
-============
+------------
 
-This project is using what I'm calling the **"PRRTT"** stack (Prisma, Rust, React, TypeScript, Tauri).
+Spacedrive is built on four core principles:
 
--   Prisma on the front-end? 🤯 Made possible thanks to prisma-client-rust, developed by Brendonovich. Gives us access to the powerful migration CLI in development, along with the Prisma syntax for our schema. The application bundles with the Prisma query engine and codegen for a beautiful Rust API. Our lightweight migration runner is custom built for a desktop app context.
--   Tauri allows us to create a pure Rust native OS webview, without the overhead of your average Electron app. This brings the bundle size and average memory usage down dramatically. It also contributes to a more native feel, especially on macOS due to Safari's close integration with the OS.
--   We also use rspc, created by Oscar Beaumont, which allows us to define functions in Rust and call them on the TypeScript frontend in a completely typesafe manner.
--   The core (`sdcore`) is written in pure Rust.
+### 1\. Virtual Distributed Filesystem (VDFS)
 
-Monorepo structure:
--------------------
+Files and folders become first-class objects with rich metadata, independent of their physical location. Every file gets a universal address (`SdPath`) that works across devices. Content-aware addressing means you can reference files by what they contain, not just where they live.
 
-### Apps:
+### 2\. Content Identity System
 
--   `desktop`: A Tauri app.
--   `mobile`: A React Native app.
--   `web`: A React webapp.
--   `landing`: A React app using Next.js.
--   `server`: A Rust server for the webapp.
--   `cli`: A Rust command line interface. (planned)
--   `storybook`: A React storybook for the UI components.
+Adaptive hashing (BLAKE3 with strategic sampling for large files) creates a unique fingerprint for every piece of content. This enables:
 
-### Core:
+-   **Deduplication**: Recognize identical files across devices
+-   **Redundancy tracking**: Know where your backups are
+-   **Content-based operations**: "Copy this file from wherever it's available"
 
--   `core`: The Rust core, referred to internally as `sdcore`. Contains filesystem, database and networking logic. Can be deployed in a variety of host applications.
--   `crates`: Shared Rust libraries used by the core and other Rust applications.
+### 3\. Transactional Actions
 
-### Interface:
+Every file operation can be previewed before execution. See exactly what will happen—space savings, conflicts, estimated time—then approve or cancel. Operations become durable jobs that survive network interruptions and device restarts.
 
--   `interface`: The complete user interface in React (used by apps `desktop`, `web`)
+### 4\. Leaderless Sync
 
-### Packages:
+Peer-to-peer synchronization without central coordinators. Device-specific data (your filesystem index) uses state replication. Shared metadata (tags, ratings) uses a lightweight HLC-ordered log with deterministic conflict resolution. No leader election, no single point of failure.
 
--   `assets`: Shared assets (images, fonts, etc).
-    
--   `client`: A TypeScript client library to handle dataflow via RPC between UI and the Rust core.
-    
--   `config`: `eslint` configurations (includes `eslint-config-next`, `eslint-config-prettier` and all `tsconfig.json` configs used throughout the monorepo).
-    
--   `ui`: A React Shared component library.
-    
--   `macos`: A Swift Native binary for MacOS system extensions (planned).
-    
--   `ios`: A Swift Native binary (planned).
-    
--   `windows`: A C# Native binary (planned).
-    
--   `android`: A Kotlin Native binary (planned).
+* * *
+
+Core Features
+-------------
+
+Feature
+
+Description
+
+**Cross-Platform**
+
+macOS, Windows, Linux, iOS, Android
+
+**Multi-Device Index**
+
+Unified view of files across all your devices
+
+**Content Addressing**
+
+Find optimal file copies automatically (local-first, then LAN, then cloud)
+
+**Smart Deduplication**
+
+Identify identical files regardless of name or location
+
+**Cloud Integration**
+
+Index S3, Google Drive, Dropbox as first-class volumes
+
+**P2P Networking**
+
+Direct device connections with automatic NAT traversal (Iroh + QUIC)
+
+**Semantic Tags**
+
+Graph-based tagging with hierarchies, aliases, and contextual disambiguation
+
+**Action Preview**
+
+Simulate any operation before execution
+
+**Offline-First**
+
+Full functionality without internet, syncs when devices reconnect
+
+**Local Backup**
+
+P2P backup between your own devices (iOS photo backup available now)
+
+**Extension System**
+
+WASM-based plugins for domain-specific functionality
+
+* * *
+
+Tech Stack
+----------
+
+**Core**
+
+-   **Rust** - Entire VDFS implementation (~183k lines)
+-   **SQLite + SeaORM** - Local-first database with type-safe queries
+-   **Iroh** - P2P networking with QUIC transport and hole-punching
+-   **BLAKE3** - Fast cryptographic hashing for content identity
+-   **WASM** - Sandboxed extension runtime
+
+**Apps**
+
+-   **CLI** - Command-line interface
+-   **Server** - Headless daemon for Docker deployment
+-   **Tauri** - Cross-platform desktop (macOS, Windows, Linux) with React frontend
+-   **Web** - Web interface and shared UI components
+-   **Mobile** - Cross-platform mobile React Native mobile app (coming soon)
+-   **Prototypes** - Native Swift apps (iOS, macOS) and GPUI media viewer for exploration
+
+**Architecture Patterns**
+
+-   Event-driven design with centralized EventBus
+-   CQRS: Actions (mutations) and Queries (reads) with preview-commit-verify
+-   Durable jobs with MessagePack serialization
+-   Domain-separated sync with clear data ownership boundaries
+
+* * *
+
+Project Structure
+-----------------
+
+```
+spacedrive/
+├── core/              # Rust VDFS implementation
+│   ├── src/
+│   │   ├── domain/    # Core models (Entry, Library, Device, Tag)
+│   │   ├── ops/       # CQRS operations (actions & queries)
+│   │   ├── infra/     # Infrastructure (DB, events, jobs, sync)
+│   │   ├── service/   # High-level services (network, file sharing)
+│   │   ├── location/  # Location management and indexing
+│   │   ├── library/   # Library lifecycle and operations
+│   │   └── volume/    # Volume detection and fingerprinting
+├── apps/
+│   ├── cli/           # CLI for managing libraries and running daemon
+│   ├── server/        # Headless server daemon
+│   ├── tauri/         # Cross-platform desktop app (macOS, Windows, Linux)
+│   ├── ios/           # Native prototype (private)
+│   ├── macos/         # Native prototype (private)
+│   └── gpui-photo-grid/  # GPUI media viewer prototype
+├── extensions/        # WASM extensions
+├── crates/            # Shared Rust utilities
+└── docs/              # Architecture documentation
+```
+
+* * *
+
+Extensions
+----------
+
+Spacedrive's WASM-based extension system enables specialized functionality while maintaining security and portability.
+
+Note: This is a heavy WIP, but will be complete in the first 2.0.0-pre.1 release.
+
+### Professional Extensions
+
+Extension
+
+Purpose
+
+Key Features
+
+Status
+
+**Photos**
+
+AI-powered photo management
+
+Face recognition, place identification, moments, scene classification
+
+In Progress
+
+**Chronicle**
+
+Research & knowledge management
+
+Document analysis, knowledge graphs, AI summaries
+
+In Progress
+
+**Atlas**
+
+Dynamic CRM & team knowledge
+
+Runtime schemas, contact tracking, deal pipelines
+
+In Progress
+
+**Studio**
+
+Digital asset management
+
+Scene detection, transcription, proxy generation
+
+Planned
+
+**Ledger**
+
+Financial intelligence
+
+Receipt OCR, expense tracking, tax preparation
+
+Planned
+
+**Guardian**
+
+Backup & redundancy monitoring
+
+Content identity tracking, zero-redundancy alerts, smart backup suggestions
+
+Planned
+
+**Cipher**
+
+Security & encryption
+
+Password manager, file encryption, breach alerts
+
+Planned
+
+### Open Source Archive Extensions
+
+Extension
+
+Purpose
+
+Provides Data For
+
+Status
+
+**Email Archive**
+
+Gmail/Outlook backup
+
+Atlas, Ledger, Chronicle
+
+Planned
+
+**Chrome History**
+
+Browsing history backup
+
+Chronicle
+
+Planned
+
+**Spotify Archive**
+
+Listening history
+
+Analytics
+
+Planned
+
+**GPS Tracker**
+
+Location timeline
+
+Photos, Analytics
+
+Planned
+
+**Tweet Archive**
+
+Twitter backup
+
+Chronicle, Analytics
+
+Planned
+
+**GitHub Tracker**
+
+Repository tracking
+
+Chronicle
+
+Planned
+
+* * *
+
+Getting Started
+---------------
+
+### Prerequisites
+
+-   **Rust** 1.81+ (rustup)
+-   **Bun** 1.3+ (bun.sh) - For Tauri desktop app
+
+### Quick Start with Desktop App (Tauri)
+
+Spacedrive runs as a daemon (`sd-daemon`) that manages your libraries and P2P connections. The Tauri desktop app can launch its own daemon instance, or connect to a daemon started by the CLI.
+
+# Clone the repository
+git clone https://github.com/spacedriveapp/spacedrive
+cd spacedrive
+
+# Install dependencies
+bun install
+cargo run -p xtask -- setup  # generates .cargo/config.toml with aliases
+cargo build # builds all core and apps (including the daemon and cli)
+
+# Run the desktop app (automatically starts daemon)
+cd apps/tauri
+bun run tauri:dev
+
+### Quick Start with CLI
+
+The CLI can manage libraries and run a persistent daemon that other apps connect to:
+
+# Build and run the CLI
+cargo run -p sd-cli -- --help
+
+# Start the daemon (runs in background)
+cargo run -p sd-cli -- daemon start
+
+# Create a library
+cargo run -p sd-cli -- library create "My Library"
+
+# Add a location to index
+cargo run -p sd-cli -- location add ~/Documents
+
+# Search indexed files
+cargo run -p sd-cli -- search .
+
+# Now launch Tauri app - it will connect to the running daemon
+
+### Native Prototypes
+
+Experimental native apps are available in `apps/ios/`, `apps/macos/`, and `apps/gpui-photo-grid/` but are not documented for public use. These prototypes explore platform-specific optimizations and alternative UI approaches.
+
+### Running Tests
+
+Spacedrive has a comprehensive test suite covering single-device operations and multi-device networking scenarios.
+
+# Run all tests
+cargo test --workspace
+
+# Run specific test
+cargo test test\_device\_pairing --nocapture
+
+# Run with detailed logging
+RUST\_LOG=debug cargo test test\_name --nocapture
+
+# Run core tests only
+cargo test -p sd-core
+
+See the Testing Guide for detailed documentation on:
+
+-   Integration test framework
+-   Multi-device subprocess testing
+-   Event monitoring patterns
+-   Test helpers and utilities
+
+All integration tests are in `core/tests/` including device pairing, sync, file transfer, and job execution tests.
+
+### Development Commands
+
+# Run all tests
+cargo test
+
+# Run tests for specific package
+cargo test -p sd-core
+
+# Build CLI in release mode
+cargo build -p sd-cli --release
+
+# Format code
+cargo fmt
+
+# Run lints
+cargo clippy
+
+* * *
+
+Privacy & Security
+------------------
+
+Spacedrive is **local-first**. Your data stays on your devices.
+
+-   **End-to-End Encryption**: All P2P traffic encrypted via QUIC/TLS
+-   **At-Rest Encryption**: Libraries can be encrypted on disk (SQLCipher)
+-   **No Telemetry**: Zero tracking or analytics in the open source version
+-   **Self-Hostable**: Run your own relay servers and cloud cores
+-   **Data Sovereignty**: You control where your data lives
+
+Optional cloud integration (Spacedrive Cloud) is available for backup and remote access, but it's never required. The cloud service runs unmodified Spacedrive core as a standard P2P device—no special privileges, no custom APIs.
+
+* * *
+
+Documentation
+-------------
+
+-   **v2 Documentation** - Complete guides and API reference
+-   **Whitepaper** - Technical architecture (work in progress)
+-   **Contributing Guide** - How to contribute
+-   **Architecture Docs** - Detailed system design
+-   **Extension SDK** - Build your own extensions
+
+* * *
+
+Get Involved
+------------
+
+-   **Star the repo** to support the project
+-   **Join Discord** to chat with developers and community
+-   **Read the v2 Documentation** for guides and API reference
+-   **Read the Whitepaper** for the full technical vision
+-   **Build an Extension** - Check out the SDK docs

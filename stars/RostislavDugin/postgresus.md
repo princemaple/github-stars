@@ -1,6 +1,6 @@
 ---
 project: postgresus
-stars: 2612
+stars: 2710
 description: PostgreSQL backup tool
 url: https://github.com/RostislavDugin/postgresus
 ---
@@ -129,6 +129,36 @@ services:
 Then run:
 
 docker compose up -d
+
+### Option 4: Kubernetes with Helm
+
+For Kubernetes deployments, install directly from the OCI registry.
+
+**With ClusterIP + port-forward (development/testing):**
+
+helm install postgresus oci://ghcr.io/rostislavdugin/charts/postgresus \\
+  -n postgresus --create-namespace
+
+kubectl port-forward svc/postgresus-service 4005:4005 -n postgresus
+# Access at http://localhost:4005
+
+**With LoadBalancer (cloud environments):**
+
+helm install postgresus oci://ghcr.io/rostislavdugin/charts/postgresus \\
+  -n postgresus --create-namespace \\
+  --set service.type=LoadBalancer
+
+kubectl get svc postgresus-service -n postgresus
+# Access at http://<EXTERNAL-IP>:4005
+
+**With Ingress (domain-based access):**
+
+helm install postgresus oci://ghcr.io/rostislavdugin/charts/postgresus \\
+  -n postgresus --create-namespace \\
+  --set ingress.enabled=true \\
+  --set ingress.hosts\[0\].host=backup.example.com
+
+For more options (NodePort, TLS, HTTPRoute for Gateway API), see the Helm chart README.
 
 * * *
 

@@ -1,6 +1,6 @@
 ---
 project: biome
-stars: 22435
+stars: 22572
 description: A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.
 url: https://github.com/biomejs/biome
 ---
@@ -80,7 +80,7 @@ Biome offers enterprise support, where Core Contributors can be employed to work
 Sponsors
 --------
 
-### Gold Sponsors
+### Platinum Sponsors
 
 ### Silver Sponsors
 

@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70232
+stars: 70257
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -421,6 +421,8 @@ Courses
     -   CMS 165 Foundations of Machine Learning and Statistical Inference - 2020 - Caltech
     -   Microsoft Research - Machine Learning Course
     -   CS 446 - Machine Learning, Fall 2016, UIUC
+    -   CS 582 - Machine Learning for Bioinformatics, Fall 2024, UIUC
+    -   ECE 364 - Programming Methods for Machine Learning, Spring 2025, UIUC
     -   undergraduate machine learning at UBC 2012, Nando de Freitas
     -   CS 229 - Machine Learning - Stanford University (Autumn 2018)
     -   CS 189/289A Introduction to Machine Learning, Prof Jonathan Shewchuk - UCBerkeley
@@ -588,6 +590,7 @@ Courses
     -   Foundations of Deep Learning - UMD
     -   TUM IN2346 Introduction to Deep Learning Fall 2024, by Daniel Cremers (Summer 2023)
     -   UT Austin - Advances in Deep Learning
+    -   HKU - Data 8014 Principles of Deep Representation Learning Fall 2025, by Yi Ma
 -   #### **Reinforcement Learning**
     
     -   CS234: Reinforcement Learning - Spring 2024 - Stanford University (Winter 2019)

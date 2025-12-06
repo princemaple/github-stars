@@ -1,6 +1,6 @@
 ---
 project: simple-icons
-stars: 23888
+stars: 23925
 description: SVG icons for popular brands
 url: https://github.com/simple-icons/simple-icons
 ---
@@ -26,13 +26,13 @@ Icons can be downloaded as SVGs directly from simpleicons.org - simply click the
 
 Icons can be served from a CDN such as jsDelivr or unpkg. Simply use the `simple-icons` npm package and specify a version in the URL like the following:
 
-<img height\="32" width\="32" src\="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/\[ICON SLUG\].svg" />
-<img height\="32" width\="32" src\="https://unpkg.com/simple-icons@v15/icons/\[ICON SLUG\].svg" />
+<img height\="32" width\="32" src\="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/\[ICON SLUG\].svg" />
+<img height\="32" width\="32" src\="https://unpkg.com/simple-icons@v16/icons/\[ICON SLUG\].svg" />
 
 Where `[ICON SLUG]` is replaced by the slug of the icon you want to use, for example:
 
-<img height\="32" width\="32" src\="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/simpleicons.svg" />
-<img height\="32" width\="32" src\="https://unpkg.com/simple-icons@v15/icons/simpleicons.svg" />
+<img height\="32" width\="32" src\="https://cdn.jsdelivr.net/npm/simple-icons@v16/icons/simpleicons.svg" />
+<img height\="32" width\="32" src\="https://unpkg.com/simple-icons@v16/icons/simpleicons.svg" />
 
 These examples use the latest major version. This means you won't receive any updates following the next major release. You can use `@latest` instead to receive updates indefinitely. However, this will result in a `404` error if the icon is removed.
 

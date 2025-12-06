@@ -34,7 +34,7 @@ A basic demo Phoenix project is available here.
       defp deps do
         \[
           \# ...
-          {:site\_encrypt, "~> 0.6"}
+          {:site\_encrypt, "~> 0.7"}
         \]
       end
     end

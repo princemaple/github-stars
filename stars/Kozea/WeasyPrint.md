@@ -1,6 +1,6 @@
 ---
 project: WeasyPrint
-stars: 8392
+stars: 8414
 description: The awesome document factory
 url: https://github.com/Kozea/WeasyPrint
 ---
@@ -14,7 +14,7 @@ From a technical point of view, WeasyPrint is a visual rendering engine for HTML
 It is based on various libraries but _not_ on a full rendering engine like WebKit or Gecko. The CSS layout engine is written in Python, designed for pagination, and meant to be easy to hack on.
 
 -   Free software: BSD license
--   For Python 3.9+, tested on CPython and PyPy
+-   For Python 3.10+, tested on CPython and PyPy
 -   Documentation: https://doc.courtbouillon.org/weasyprint
 -   Examples: https://weasyprint.org/#samples
 -   Changelog: https://github.com/Kozea/WeasyPrint/releases

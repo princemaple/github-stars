@@ -1,6 +1,6 @@
 ---
 project: observer_cli
-stars: 1481
+stars: 1482
 description: Visualize Erlang/Elixir Nodes On The Command Line
 url: https://github.com/zhongwencool/observer_cli
 ---

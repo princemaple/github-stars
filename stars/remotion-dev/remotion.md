@@ -1,6 +1,6 @@
 ---
 project: remotion
-stars: 24775
+stars: 24877
 description: 🎥      Make videos programmatically with React
 url: https://github.com/remotion-dev/remotion
 ---

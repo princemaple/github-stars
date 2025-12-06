@@ -1,11 +1,9 @@
 ---
 project: documenso
-stars: 11972
+stars: 12001
 description: The Open Source DocuSign Alternative.
 url: https://github.com/documenso/documenso
 ---
-
-> 🚨 🚨 🚨 Documenso 2.0.0 is live on Product Hunt 🎉 Join us to celebrate the best Documenso yet 🪩
 
 The Open Source DocuSign Alternative.  
 **Learn more »**  
@@ -132,9 +130,11 @@ git clone https://github.com/<your-username\>/documenso
     -   NEXT\_PRIVATE\_SMTP\_FROM\_ADDRESS
 4.  Create the database schema by running `npm run prisma:migrate-dev`
     
-5.  Run `npm run dev` in the root directory to start
+5.  Run `npm run translate:compile` in the root directory to compile lingui
     
-6.  Register a new user at http://localhost:3000/signup
+6.  Run `npm run dev` in the root directory to start
+    
+7.  Register a new user at http://localhost:3000/signup
     
 
 * * *

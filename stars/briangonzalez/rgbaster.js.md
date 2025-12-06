@@ -1,6 +1,6 @@
 ---
 project: rgbaster.js
-stars: 1750
+stars: 1751
 description: 🎨 A simple library for extracting dominant colors from images.
 url: https://github.com/briangonzalez/rgbaster.js
 ---

@@ -30,6 +30,9 @@ Zichen Liu\*,1,2, Yue Yu\*,1,2, Hao Ouyang2, Qiuyu Wang2, Ka Leong Cheng1,2, Wen
     -   Acknowledgement
     -   Note
 
+MagicQuillV2 has been released!!! Check it out ;)
+-------------------------------------------------
+
 TODO List
 ---------
 
@@ -48,6 +51,7 @@ Update Log
 -   \[2024.12.16\] 🎉 Exciting News: MagicQuill is also available at Modelscope. Thanks for their amazing support and infrastructure.
 -   \[2025.01.02\] 🎉 Exciting News: MagicQuill docker container is now available. You can now build & run your own image in a cleaner, isolated environment. Thanks gbudge for his contribution.
 -   \[2025.02.27\] 🎉 Exciting News: MagicQuill has been accepted to CVPR 2025! Looking forward to meeting everyone in Tennessee!
+-   \[2025.12.03\] 🎉 Exciting News: MagicQuillV2 has been released! Check it out ;), give us a star if you are interested.
 
 To update the latest features, pull the latest code and re-install the gradio\_magicquill:
 

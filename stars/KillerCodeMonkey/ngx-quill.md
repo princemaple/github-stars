@@ -28,7 +28,7 @@ supported
 
 v21
 
-29.x
+\>= 29.x
 
 until May, 2027
 
@@ -76,8 +76,6 @@ Installation
 @import '~quill/dist/quill.bubble.css';
 // or
 @import '~quill/dist/quill.snow.css';
-
--   currently forces zone.js change detection
 
 ### For standard webpack, angular-cli and tsc builds
 

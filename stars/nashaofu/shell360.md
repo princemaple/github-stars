@@ -98,3 +98,6 @@ License
 This project is licensed under the terms of the GNU General Public License v3.0 (GPLv3). See the LICENSE file for details.
 
 SPDX-License-Identifier: GPL-3.0-or-later
+
+Star History
+------------

@@ -1,6 +1,6 @@
 ---
 project: ex_ray
-stars: 58
+stars: 57
 description: An Elixir OpenTracing library based on Otter
 url: https://github.com/derailed/ex_ray
 ---

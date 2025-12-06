@@ -1,6 +1,6 @@
 ---
 project: idb-keyval
-stars: 3099
+stars: 3104
 description: A super-simple-small promise-based keyval store implemented with IndexedDB
 url: https://github.com/jakearchibald/idb-keyval
 ---

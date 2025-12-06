@@ -1,6 +1,6 @@
 ---
 project: fil-c
-stars: 2623
+stars: 2718
 description: Fil-C: completely compatible memory safety for C and C++
 url: https://github.com/pizlonator/fil-c
 ---

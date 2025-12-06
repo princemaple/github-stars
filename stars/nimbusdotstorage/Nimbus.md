@@ -1,6 +1,6 @@
 ---
 project: Nimbus
-stars: 1961
+stars: 1967
 description: The future of file storage
 url: https://github.com/nimbusdotstorage/Nimbus
 ---

@@ -1,6 +1,6 @@
 ---
 project: pev2
-stars: 3224
+stars: 3233
 description: Postgres Explain Visualizer 2
 url: https://github.com/dalibo/pev2
 ---

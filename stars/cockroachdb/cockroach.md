@@ -1,6 +1,6 @@
 ---
 project: cockroach
-stars: 31528
+stars: 31548
 description: CockroachDB — the cloud native, distributed SQL database designed for high availability, effortless scale, and control over data placement.
 url: https://github.com/cockroachdb/cockroach
 ---
@@ -95,7 +95,7 @@ For an in-depth discussion of the CockroachDB architecture, see our Architecture
 Licensing
 ---------
 
-All versions released after November 18, 2024, including patch fixes for prior versions 23.1 onward, are published under the CockroachDB Software License (CSL). Source code in a given file is licensed under the CSL and the copyright belongs to The Cockroach Authors unless otherwise noted in the file or in a LICENSE or README file located in the same or parent directory of the file.
+All versions released on or after November 18, 2024 (specifically, major version series v24.3 and later, and patch fixes for v23.1.29+, v23.2.16+, v24.1.7+, and v24.2.5+) are published under the CockroachDB Software License (CSL). Source code in a given file is licensed under the CSL and the copyright belongs to The Cockroach Authors unless otherwise noted in the file or in a LICENSE or README file located in the same or a parent directory of the file.
 
 Comparison with Other Databases
 -------------------------------

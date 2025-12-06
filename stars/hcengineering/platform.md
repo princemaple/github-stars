@@ -1,6 +1,6 @@
 ---
 project: platform
-stars: 23787
+stars: 23843
 description: Huly — All-in-One Project Management Platform (alternative to Linear, Jira, Slack, Notion, Motion)
 url: https://github.com/hcengineering/platform
 ---
@@ -35,6 +35,29 @@ Changelog
 
 For detailed information about changes, improvements, and bug fixes in each version, see our Changelog.
 
+Versions
+--------
+
+The Huly Platform uses two types of version tags to distinguish between production-ready and development releases:
+
+-   **Production Versions (`v*`)** - Stable releases for end users
+    
+    -   Example: `v0.7.310`, `v0.7.307`, `v0.6.501`
+    -   These versions are recommended for production deployments
+    -   Suitable for self-hosted installations
+    -   Published with release notes on GitHub Releases
+-   **Development Versions (`s*`)** - Pre-release builds for developers
+    
+    -   Example: `s0.7.313`, `s0.7.292`, `s0.7.288`
+    -   Used for development and testing purposes
+    -   May contain experimental features or bug fixes
+    -   Not recommended for production use
+
+Architecture
+------------
+
+For detailed information about the platform architecture, services, and their interactions, see our Architecture Overview.
+
 Table of Contents
 -----------------
 
@@ -44,6 +67,8 @@ Table of Contents
     -   Activity
     -   API Client
     -   Changelog
+    -   Versions
+    -   Architecture
     -   Table of Contents
     -   Pre-requisites
     -   Verification

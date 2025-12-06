@@ -1,6 +1,6 @@
 ---
 project: umami
-stars: 33849
+stars: 33969
 description: Umami is a modern, privacy-focused analytics platform. An open-source alternative to Google Analytics, Mixpanel and Amplitude.
 url: https://github.com/umami-software/umami
 ---
@@ -24,10 +24,10 @@ A detailed getting started guide can be found at umami.is/docs.
 
 ### Requirements
 
--   A server with Node.js version 18.18 or newer
--   A database. Umami supports PostgreSQL (minimum v12.14) databases.
+-   A server with Node.js version 18.18+.
+-   A PostgreSQL database version v12.14+.
 
-### Get the Source Code and Install Packages
+### Get the source code and install packages
 
 git clone https://github.com/umami-software/umami.git
 cd umami
@@ -47,41 +47,39 @@ postgresql://username:mypassword@localhost:5432/mydb
 
 pnpm run build
 
-_The build step will create tables in your database if you are installing for the first time. It will also create a login user with username **admin** and password **umami**._
+The build step will create tables in your database if you are installing for the first time. It will also create a login user with username **admin** and password **umami**.
 
 ### Start the Application
 
 pnpm run start
 
-_By default, this will launch the application on `http://localhost:3000`. You will need to either proxy requests from your web server or change the port to serve the application directly._
+By default, this will launch the application on `http://localhost:3000`. You will need to either proxy requests from your web server or change the port to serve the application directly.
 
 * * *
 
 🐳 Installing with Docker
 -------------------------
 
-To build the Umami container and start up a Postgres database, run:
+Umami provides Docker images as well as a Docker compose file for easy deployment.
 
-docker compose up -d
-
-Alternatively, to pull just the Umami Docker image with PostgreSQL support:
+Docker image:
 
 docker pull docker.umami.is/umami-software/umami:latest
+
+Docker compose (Runs Umami with a PostgreSQL database):
+
+docker compose up -d
 
 * * *
 
 🔄 Getting Updates
 ------------------
 
-Warning
-
-If you are updating from Umami V2, image "postgresql-latest" is deprecated. You must change it to "latest". e.g., rename `docker.umami.is/umami-software/umami:postgresql-latest` to `docker.umami.is/umami-software/umami:latest`.
-
 To get the latest features, simply do a pull, install any new dependencies, and rebuild:
 
 git pull
 pnpm install
-pnpm run build
+pnpm build
 
 To update the Docker image, simply pull the new images and rebuild:
 

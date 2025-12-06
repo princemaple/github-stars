@@ -1,6 +1,6 @@
 ---
 project: karakeep
-stars: 21540
+stars: 21703
 description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 url: https://github.com/karakeep-app/karakeep
 ---
@@ -13,6 +13,7 @@ Features
 -   🔗 Bookmark links, take simple notes and store images and pdfs.
 -   ⬇️ Automatic fetching for link titles, descriptions and images.
 -   📋 Sort your bookmarks into lists.
+-   👥 Collaborate with others on the same list.
 -   🔎 Full text search of all the content stored.
 -   ✨ AI-based (aka chatgpt) automatic tagging and summarization. With supports for local models using ollama!
 -   🤖 Rule-based engine for customized management.

@@ -1,14 +1,20 @@
 ---
 project: SoniTranslate
-stars: 1265
+stars: 1272
 description: Synchronized Translation for Videos. Video dubbing
 url: https://github.com/R3gm/SoniTranslate
 ---
+
+Recall.ai - API for meeting transcription
+=========================================
+
+If you’re looking for a meeting transcription API, consider checking out Recall.ai, an API that records Zoom, Google Meet, Microsoft Teams, in-person meetings, and more.
 
 🎥 SoniTranslate 🈷️
 ====================
 
 🎬 Video Translation with Synchronized Audio 🌐
+-----------------------------------------------
 
 SonyTranslate is a powerful and user-friendly web application that allows you to easily translate videos into different languages. This repository hosts the code for the SonyTranslate web UI, which is built with the Gradio library to provide a seamless and interactive user experience.
 

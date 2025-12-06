@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 28888
+stars: 29022
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -1340,6 +1340,8 @@ y := """
 
 Similar to unindented strings, indented double-quoted strings process escape sequences, and indented single-quoted strings ignore escape sequences. Escape sequence processing takes place after unindentation. The unindentation algorithm does not take escape-sequence produced whitespace or newlines into account.
 
+#### Shell-expanded strings
+
 Strings prefixed with `x` are shell expanded1.27.0:
 
 foobar := x'~/$FOO/${BAR}'
@@ -1369,6 +1371,19 @@ Leading `~USER`
 path to `USER`'s home directory
 
 This expansion is performed at compile time, so variables from `.env` files and exported `just` variables cannot be used. However, this allows shell expanded strings to be used in places like settings and import paths, which cannot depend on `just` variables and `.env` files.
+
+#### Format strings
+
+Strings prefixed with `f` are format stringsmaster:
+
+name := "world"
+message := f'Hello, {name}!'
+
+Format strings may contain interpolations delimited with `{…}` that contain expressions. Format strings evaluate to the concatenated string fragments and evaluated expressions.
+
+Use `{{` to include a literal `{` in a format string:
+
+foo := f'I {{LOVE} curly braces!'
 
 ### Ignoring Errors
 
@@ -2567,8 +2582,6 @@ Recipes with a `[script(COMMAND)]`1.32.0 attribute are run as scripts interprete
 Recipes with an empty `[script]` attribute are executed with the value of `set script-interpreter := […]`1.33.0, defaulting to `sh -eu`, and _not_ the value of `set shell`.
 
 The body of the recipe is evaluated, written to disk in the temporary directory, and run by passing its path as an argument to `COMMAND`.
-
-The `[script(…)]` attribute is unstable, so you'll need to use `set unstable`, set the `JUST_UNSTABLE` environment variable, or pass `--unstable` on the command line.
 
 ### Script and Shebang Recipe Temporary Files
 

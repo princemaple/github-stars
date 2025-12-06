@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 482
+stars: 491
 description: Rclone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -43,7 +43,7 @@ Job Watcher
 
 Serve Control
 
-Responsive
+Dark Mode
 
 _Seamlessly switches between light and dark modes to match your system preferences._
 

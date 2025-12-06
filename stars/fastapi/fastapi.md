@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 92485
+stars: 92779
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -28,7 +28,7 @@ The key features are:
 -   **Robust**: Get production-ready code. With automatic interactive documentation.
 -   **Standards-based**: Based on (and fully compatible with) the open standards for APIs: OpenAPI (previously known as Swagger) and JSON Schema.
 
-\* estimation based on tests on an internal development team, building production applications.
+\* estimation based on tests conducted by an internal development team, building production applications.
 
 Sponsors
 --------

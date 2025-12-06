@@ -1,6 +1,6 @@
 ---
 project: zx
-stars: 44876
+stars: 44909
 description: A tool for writing better scripts
 url: https://github.com/google/zx
 ---
@@ -50,6 +50,12 @@ Compatibility
     -   GraalVM Node.js
 -   Some kind of bash or PowerShell
 -   Both CJS or ESM modules in JS or TS
+
+See also
+--------
+
+-   srf — a tiny, dependency-free static file server for Node.js
+-   fx — a JSON cli tool and terminal JSON viewer
 
 License
 -------

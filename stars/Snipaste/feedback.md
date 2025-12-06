@@ -1,6 +1,6 @@
 ---
 project: feedback
-stars: 3409
+stars: 3415
 description: Feedback & wiki for Snipaste https://snipaste.com
 url: https://github.com/Snipaste/feedback
 ---

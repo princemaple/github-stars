@@ -1,6 +1,6 @@
 ---
 project: coze-loop
-stars: 5126
+stars: 5142
 description: Next-generation AI Agent Optimization Platform: Cozeloop addresses challenges in AI agent development by providing full-lifecycle management capabilities from development, debugging, and evaluation to monitoring.  
 url: https://github.com/coze-dev/coze-loop
 ---

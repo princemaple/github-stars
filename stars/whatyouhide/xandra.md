@@ -1,6 +1,6 @@
 ---
 project: xandra
-stars: 427
+stars: 428
 description: Fast, simple, and robust Cassandra/ScyllaDB driver for Elixir.
 url: https://github.com/whatyouhide/xandra
 ---

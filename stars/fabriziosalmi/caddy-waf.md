@@ -1,6 +1,6 @@
 ---
 project: caddy-waf
-stars: 670
+stars: 676
 description: Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
 url: https://github.com/fabriziosalmi/caddy-waf
 ---
@@ -14,7 +14,7 @@ A robust, highly customizable, and feature-rich **Web Application Firewall (WAF)
 --------------------
 
 -   **Regex-Based Filtering:** Deep URL, data & header inspection using powerful regex rules.
--   **Blacklisting:** Blocks malicious IPs, domains & optionally TOR exit nodes.
+-   **Blacklisting:** Blocks malicious IPs, domains, ASNs & optionally TOR exit nodes.
 -   **Geo-Blocking:** Restricts access by country using GeoIP.
 -   **Rate Limiting:** Prevents abuse via customizable IP request limits.
 -   **Anomaly Scoring:** Dynamically blocks requests based on cumulative rule matches.
@@ -25,9 +25,18 @@ A robust, highly customizable, and feature-rich **Web Application Firewall (WAF)
 -   **Dynamic Config Reloads:** Seamless updates without restarts.
 -   **File Watchers:** Automatic reloads on rule/blacklist changes.
 -   **Observability:** Seamless integration with ELK stack and Prometheus.
--   **Rules generator**: powered by custom GPT, try it here
+-   **Rules generator**: available here
 
 _Simple at a glance UI :)_
+
+Security & Performance (SOTA)
+-----------------------------
+
+-   **Zero-Copy Networking**: Uses `unsafe.String` to eliminate memory allocations during request body inspection.
+-   **Wait-Free Concurrency**: Atomic counters ensure accurate metrics and rule hit counting without lock contention.
+-   **Circuit Breaker**: `geoip_fail_open` prevents database failures from causing service outages.
+-   **DoS Protection**: `io.LimitReader` enforces strict request body limits to prevent memory exhaustion.
+-   **ReDoS Safety**: Built on top of Go's `regexp` (RE2), guaranteeing linear time execution for all regex rules.
 
 🚀 Quick Start
 --------------
@@ -61,6 +70,12 @@ curl -fsSL -H "Pragma: no-cache" https://raw.githubusercontent.com/fabriziosalmi
 
 🚀 Installation
 ---------------
+
+### Prerequisites
+
+-   Go **1.25** or higher
+-   Caddy **v2.10.x** or higher (for building with this plugin)
+-   xcaddy (for building Caddy with plugins)
 
 # Step 1: Clone the caddy-waf repository from GitHub
 git clone https://github.com/fabriziosalmi/caddy-waf.git
@@ -183,7 +198,7 @@ If You like my projects, you may also like these ones:
 -   proxmox-vm-autoscale Automatically scale virtual machines resources on Proxmox hosts
 -   UglyFeed Retrieve, aggregate, filter, evaluate, rewrite and serve RSS feeds using Large Language Models for fun, research and learning purposes
 -   proxmox-lxc-autoscale Automatically scale LXC containers resources on Proxmox hosts
--   DevGPT Code togheter, right now! GPT powered code assistant to build project in minutes
+-   DevAssistant Code together, right now! AI powered code assistant to build project in minutes
 -   websites-monitor Websites monitoring via GitHub Actions (expiration, security, performances, privacy, SEO)
 -   caddy-mib Track and ban client IPs generating repetitive errors on Caddy
 -   zonecontrol Cloudflare Zones Settings Automation using GitHub Actions

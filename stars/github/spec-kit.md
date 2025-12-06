@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 52106
+stars: 53752
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -54,7 +54,15 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 Then use the tool directly:
 
+# Create new project
 specify init <PROJECT\_NAME\>
+
+# Or initialize in existing project
+specify init . --ai claude
+# or
+specify init --here --ai claude
+
+# Check installed tools
 specify check
 
 To upgrade Specify, see the Upgrade Guide for detailed instructions. Quick upgrade:
@@ -121,6 +129,10 @@ Agent
 Support
 
 Notes
+
+Qoder CLI
+
+✅
 
 Amazon Q Developer CLI
 
@@ -211,7 +223,7 @@ Initialize a new Specify project from the latest template
 
 `check`
 
-Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `shai`)
+Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `shai`, `qoder`)
 
 ### `specify init` Arguments & Options
 
@@ -231,7 +243,7 @@ Name for your new project directory (optional if using `--here`, or use `.` for 
 
 Option
 
-AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `q`, or `bob`
+AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `q`, `bob`, or `qoder`
 
 `--script`
 
@@ -291,6 +303,9 @@ specify init my-project --ai claude
 
 # Initialize with Cursor support
 specify init my-project --ai cursor-agent
+
+# Initialize with Qoder support
+specify init my-project --ai qoder
 
 # Initialize with Windsurf support
 specify init my-project --ai windsurf
@@ -521,7 +536,7 @@ specify init . --force --ai claude
 # or
 specify init --here --force --ai claude
 
-The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, or Amazon Q Developer CLI installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, or Amazon Q Developer CLI installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
 
 specify init <project\_name\> --ai claude --ignore-agent-tools
 

@@ -1,6 +1,6 @@
 ---
 project: self-hosted
-stars: 494
+stars: 496
 description: Self-hosted version of webtor.io implemented as an all-in-one Docker image
 url: https://github.com/webtor-io/self-hosted
 ---
@@ -88,16 +88,16 @@ Configring Stremio Addon Access
 Configuring Transcoding
 -----------------------
 
--   **DISABLE\_VIDEO\_TRANSCODING** - disables video transcoding
+-   **DISABLE\_VIDEO\_TRANSCODING** - disables video transcoding (default: false)
 
 Disable UI Features
 -------------------
 
--   **DISABLE\_WEBDAV** - disables WebDAV interface
--   **DISABLE\_EMBED** - disables embeds support
+-   **DISABLE\_WEBDAV** - disables WebDAV interface (default: false)
+-   **DISABLE\_EMBED** - disables embeds support (default: false)
 
 Other Custom Variables
 ----------------------
 
--   **WAIT\_FOR\_VPN** - waits for VPN to start (in case you are using Gluetun)
+-   **WAIT\_FOR\_VPN** - waits for VPN to start (in case you are using Gluetun) (default: false)
 -   **REQUEST\_URL\_MAPPINGS** - custom mappings for request urls

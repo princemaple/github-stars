@@ -1,6 +1,6 @@
 ---
 project: BroadcastChannel
-stars: 1888
+stars: 1904
 description: Turn your Telegram Channel into a MicroBlog.
 url: https://github.com/miantiao-me/BroadcastChannel
 ---
@@ -79,8 +79,8 @@ BroadcastChannel supports deployment on serverless platforms like Cloudflare, Ne
 
 ### Docker
 
-1.  `docker pull ghcr.io/ccbikai/broadcastchannel:main`
-2.  `docker run -d --name broadcastchannel -p 4321:4321 -e CHANNEL=miantiao_me ghcr.io/ccbikai/broadcastchannel:main`
+1.  `docker pull ghcr.io/miantiao-me/broadcastchannel:main`
+2.  `docker run -d --name broadcastchannel -p 4321:4321 -e CHANNEL=miantiao_me ghcr.io/miantiao-me/broadcastchannel:main`
 
 ### Serverless
 
@@ -103,9 +103,9 @@ LOCALE\=en
 TIMEZONE\=America/New\_York
 
 #\# Social media usernames
-TELEGRAM\=ccbikai
-TWITTER\=ccbikai
-GITHUB\=ccbikai
+TELEGRAM\=miantiao-me
+TWITTER\=miantiao-me
+GITHUB\=miantiao-me
 MASTODON\=mastodon.social/@Mastodon
 BLUESKY\=bsky.app
 

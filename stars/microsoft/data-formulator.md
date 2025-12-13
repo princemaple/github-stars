@@ -1,25 +1,28 @@
 ---
 project: data-formulator
-stars: 14465
+stars: 14510
 description: 🪄 Create rich visualizations with AI 
 url: https://github.com/microsoft/data-formulator
 ---
 
-**Data Formulator: Vibe with data, in control**
-===============================================
+  Data Formulator: AI-powered Data Visualization
+================================================
 
-     
+🪄 Explore data with visualizations, powered by AI agents.
 
-🪄 Turn data into insights with AI Agents, with the exploration paths you choose. Try Data Formulator now!
+ 
 
--   🤖 New in v0.5: agent model + interative control (video)
--   🔥🔥🔥 Try our online demo at https://data-formulator.ai
--   Any questions, thoughts? Discuss in the Discord channel!
-
-data-formulator-v0.5-4k-mini.mp4
+       
 
 News 🔥🔥🔥
 -----------
+
+\[12-08-2025\] **Data Formulator 0.5.1** — Connect more, visualize more, move faster
+
+-   🔌 **Community data loaders**: Google BigQuery, MySQL, Postgres, MongoDB
+-   📊 **New chart types**: US Map & Pie Chart (more to be added soon)
+-   ✏️ **Editable reports**: Refine generated reports with Chartifact in markdown style. demo
+-   ⚡ **Snappier UI**: Noticeably faster interactions across the board
 
 \[11-07-2025\] Data Formulator 0.5: Vibe with your data, in control
 
@@ -102,9 +105,9 @@ Here are milestones that lead to the current design:
 Overview
 --------
 
-**Data Formulator** is an application from Microsoft Research that uses AI agents to make it easier to turn data into insights.
+**Data Formulator** is a Microsoft Research prototype for data exploration with visualizations powered by AI agents.
 
-Data Formulator is an AI-powered tool for analysts to iteratively explore and visualize data. Started with data in any format (screenshot, text, csv, or database), users can work with AI agents with a novel blended interface that combines _user interface interactions (UI)_ and _natural language (NL) inputs_ to communicate their intents, control branching exploration directions, and create reports to share their insights.
+Data Formulator enables analysts to iteratively explore and visualize data. Started with data in any format (screenshot, text, csv, or database), users can work with AI agents with a novel blended interface that combines _user interface interactions (UI)_ and _natural language (NL) inputs_ to communicate their intents, control branching exploration directions, and create reports to share their insights.
 
 Get Started
 -----------

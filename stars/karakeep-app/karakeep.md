@@ -1,6 +1,6 @@
 ---
 project: karakeep
-stars: 21703
+stars: 21837
 description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 url: https://github.com/karakeep-app/karakeep
 ---
@@ -87,21 +87,31 @@ Alternatives
 -   mymind: Mymind is the closest alternative to this project and from where I drew a lot of inspirations. It's a commercial product though.
 -   raindrop: A polished open source bookmark manager that supports links, images and files. It's not self-hostable though.
 -   Bookmark managers (mostly focused on bookmarking links):
-    -   Pocket: Pocket is what hooked me into the whole idea of read-it-later apps. I used it a lot. However, I recently got into home-labbing and became obsessed with the idea of running my services in my home server. Karakeep is meant to be a self-hosting first app.
+    -   Pocket (Dead): Pocket is what hooked me into the whole idea of read-it-later apps. I used it a lot. However, I recently got into home-labbing and became obsessed with the idea of running my services in my home server. Karakeep is meant to be a self-hosting first app. Mozilla recently announced that it's shutting down pocket.
     -   Linkwarden: An open-source self-hostable bookmark manager that I ran for a bit in my homelab. It's focused mostly on links and supports collaborative collections.
-    -   Omnivore: Omnivore is pretty cool open source read-it-later app. Unfortunately, it's heavily dependent on google cloud infra which makes self-hosting it quite hard. They published a blog post on how to run a minimal omnivore but it was lacking a lot of stuff. Self-hosting doesn't really seem to be a high priority for them, and that's something I care about, so I decided to build an alternative.
-    -   Wallabag: Wallabag is a well-established open source read-it-later app written in php and I think it's the common recommendation on reddit for such apps. To be honest, I didn't give it a real shot, and the UI just felt a bit dated for my liking. Honestly, it's probably much more stable and feature complete than this app, but where's the fun in that?
-    -   Shiori: Shiori is meant to be an open source pocket clone written in Go. It ticks all the marks but doesn't have my super sophisticated AI-based tagging. (JK, I only found about it after I decided to build my own app, so here we are 🤷).
+    -   Wallabag: Wallabag is a well-established open source read-it-later app written in php.
+    -   Shiori: Shiori is meant to be an open source pocket clone written in Go.
 
 Translations
 ------------
 
 Karakeep uses Weblate for managing translations. If you want to help translate Karakeep, you can do so here.
 
+Karakeep Cloud ☁️
+-----------------
+
+If you're not comfortable with self-hosting, you can use our managed Karakeep cloud at cloud.karakeep.app. Cloud subscriptions support the development of Karakeep.
+
 Support
 -------
 
 If you're enjoying using Karakeep, drop a ⭐️ on the repo!
+
+Community Channels
+------------------
+
+-   Join us on Discord.
+-   Follow us on Twitter: @karakeep\_app.
 
 License
 -------

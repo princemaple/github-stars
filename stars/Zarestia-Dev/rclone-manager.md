@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 491
+stars: 514
 description: Rclone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -19,7 +19,12 @@ _Built with Angular 20 + Tauri 2 · Linux • Windows • macOS • ARM Support_
 
 **RClone Manager** is a **modern, cross-platform GUI** that makes managing Rclone remotes effortless. Whether you're syncing files across cloud storage providers, mounting remote drives, or performing complex file operations, RClone Manager provides an intuitive interface that simplifies even the most advanced Rclone features.
 
-> ⚠️ **Actively developed** – Regular updates with new features and improvements. Check out our roadmap to see what's coming next!
+> ### 🌐 **Looking for Headless Mode?**
+> 
+> Check out **RClone Manager Headless** – Run as a web server on Linux servers without a GUI!  
+> Perfect for NAS, VPS, and remote systems. Access from any browser. 🚀
+
+> Regular updates with new features and improvements. Check out our roadmap to see what's coming next!
 
 * * *
 
@@ -95,8 +100,8 @@ _Seamlessly switches between light and dark modes to match your system preferenc
 
 * * *
 
-📦 Installation & Downloads
----------------------------
+📦 Downloads
+------------
 
 ### 📦 Package Manager Availability
 

@@ -1,6 +1,6 @@
 ---
 project: jupyterlite
-stars: 4676
+stars: 4691
 description: Wasm powered Jupyter running in the browser 💡
 url: https://github.com/jupyterlite/jupyterlite
 ---
@@ -13,7 +13,7 @@ JupyterLite is a JupyterLab distribution that **runs entirely in the browser** b
 ⚡ Status ⚡
 ----------
 
-Although JupyterLite is currently being developed by core Jupyter developers, the project is still _unofficial_.
+JupyterLite is part of the Project Jupyter Frontends subproject.
 
 Not all the features available in JupyterLab and the Classic Notebook will work with JupyterLite, but many do!
 

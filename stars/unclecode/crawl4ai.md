@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 56853
+stars: 57125
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -8,15 +8,26 @@ url: https://github.com/unclecode/crawl4ai
 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper.
 ==============================================================
 
+* * *
+
+#### 🚀 Crawl4AI Cloud API — Closed Beta (Launching Soon)
+
+Reliable, large-scale web extraction, now built to be _**drastically more cost-effective**_ than any of the existing solutions.
+
+👉 **Apply here for early access**  
+_We’ll be onboarding in phases and working closely with early users. Limited slots._
+
+* * *
+
 Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
 
-✨ Check out latest update v0.7.7
+✨ Check out latest update v0.7.8
 
-✨ **New in v0.7.7**: Complete Self-Hosting Platform with Real-time Monitoring! Enterprise-grade monitoring dashboard, comprehensive REST API, WebSocket streaming, smart browser pool management, and production-ready observability. Full visibility and control over your crawling infrastructure. Release notes →
+✨ **New in v0.7.8**: Stability & Bug Fix Release! 11 bug fixes addressing Docker API issues (ContentRelevanceFilter, ProxyConfig, cache permissions), LLM extraction improvements (configurable backoff, HTML input format), URL handling fixes, and dependency updates (pypdf, Pydantic v2). Release notes →
 
-✨ Recent v0.7.6: Complete Webhook Infrastructure for Docker Job Queue API! Real-time notifications for both `/crawl/job` and `/llm/job` endpoints with exponential backoff retry, custom headers, and flexible delivery modes. No more polling! Release notes →
+✨ Recent v0.7.7: Complete Self-Hosting Platform with Real-time Monitoring! Enterprise-grade monitoring dashboard, comprehensive REST API, WebSocket streaming, smart browser pool management, and production-ready observability. Release notes →
 
-✨ Previous v0.7.5: Docker Hooks System with function-based API for pipeline customization, Enhanced LLM Integration with custom providers, HTTPS Preservation, and multiple community-reported bug fixes. Release notes →
+✨ Previous v0.7.6: Complete Webhook Infrastructure for Docker Job Queue API! Real-time notifications for both `/crawl/job` and `/llm/job` endpoints with exponential backoff retry, custom headers, and flexible delivery modes. Release notes →
 
 🤓 **My Personal Story**
 
@@ -467,6 +478,53 @@ async def test\_news\_crawl():
 
 ✨ Recent Updates
 ----------------
+
+**Version 0.7.8 Release Highlights - Stability & Bug Fix Release**
+
+This release focuses on stability with 11 bug fixes addressing issues reported by the community. No new features, but significant improvements to reliability.
+
+-   **🐳 Docker API Fixes**:
+    
+    -   Fixed `ContentRelevanceFilter` deserialization in deep crawl requests (#1642)
+    -   Fixed `ProxyConfig` JSON serialization in `BrowserConfig.to_dict()` (#1629)
+    -   Fixed `.cache` folder permissions in Docker image (#1638)
+-   **🤖 LLM Extraction Improvements**:
+    
+    -   Configurable rate limiter backoff with new `LLMConfig` parameters (#1269):
+        
+        from crawl4ai import LLMConfig
+        
+        config \= LLMConfig(
+            provider\="openai/gpt-4o-mini",
+            backoff\_base\_delay\=5,           \# Wait 5s on first retry
+            backoff\_max\_attempts\=5,          \# Try up to 5 times
+            backoff\_exponential\_factor\=3     \# Multiply delay by 3 each attempt
+        )
+        
+    -   HTML input format support for `LLMExtractionStrategy` (#1178):
+        
+        from crawl4ai import LLMExtractionStrategy
+        
+        strategy \= LLMExtractionStrategy(
+            llm\_config\=config,
+            instruction\="Extract table data",
+            input\_format\="html"  \# Now supports: "html", "markdown", "fit\_markdown"
+        )
+        
+    -   Fixed raw HTML URL variable - extraction strategies now receive `"Raw HTML"` instead of HTML blob (#1116)
+-   **🔗 URL Handling**:
+    
+    -   Fixed relative URL resolution after JavaScript redirects (#1268)
+    -   Fixed import statement formatting in extracted code (#1181)
+-   **📦 Dependency Updates**:
+    
+    -   Replaced deprecated PyPDF2 with pypdf (#1412)
+    -   Pydantic v2 ConfigDict compatibility - no more deprecation warnings (#678)
+-   **🧠 AdaptiveCrawler**:
+    
+    -   Fixed query expansion to actually use LLM instead of hardcoded mock data (#1621)
+
+Full v0.7.8 Release Notes →
 
 **Version 0.7.7 Release Highlights - The Self-Hosting & Monitoring Update**
 

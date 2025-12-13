@@ -1,6 +1,6 @@
 ---
 project: angular-grid-layout
-stars: 509
+stars: 510
 description: Responsive grid with draggable and resizable items for Angular applications.
 url: https://github.com/katoid/angular-grid-layout
 ---

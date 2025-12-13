@@ -1,6 +1,6 @@
 ---
 project: midday
-stars: 13335
+stars: 13374
 description: Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant made for Freelancers
 url: https://github.com/midday-ai/midday
 ---
@@ -63,7 +63,6 @@ App Architecture
 -   OpenPanel (Events and Analytics)
 -   Polar (Payment processing)
 -   Typesense (Search)
--   Mistral
 -   Gemini
 -   OpenAI
 

@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 10677
+stars: 11100
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -130,8 +130,6 @@ Here are the key features we have implemented:
 
 NOTE: There are hundreds of Web APIs. Developing a browser (even just for headless mode) is a huge task. Coverage will increase over time.
 
-You can also follow the progress of our Javascript support in our dedicated zig-js-runtime project.
-
 Build from sources
 ------------------
 
@@ -139,9 +137,9 @@ Build from sources
 
 Lightpanda is written with Zig `0.15.2`. You have to install it with the right version in order to build the project.
 
-Lightpanda also depends on zig-js-runtime (with v8), Libcurl, Netsurf libs and Mimalloc.
+Lightpanda also depends on zig-v8-fork, Libcurl, Brotli, Netsurf libs and Mimalloc.
 
-To be able to build the v8 engine for zig-js-runtime, you have to install some libs:
+To be able to build the v8 engine, you have to install some libs:
 
 For Debian/Ubuntu based Linux:
 
@@ -212,22 +210,6 @@ make install-mimalloc
 For dev env, use `make install-mimalloc-dev`.
 
 Note: when Mimalloc is built in dev mode, you can dump memory stats with the env var `MIMALLOC_SHOW_STATS=1`. See https://microsoft.github.io/mimalloc/environment.html.
-
-**v8**
-
-First, get the tools necessary for building V8, as well as the V8 source code:
-
-```
-make get-v8
-```
-
-Next, build v8. This build task is very long and cpu consuming, as you will build v8 from sources.
-
-```
-make build-v8
-```
-
-For dev env, use `make build-v8-dev`.
 
 Test
 ----

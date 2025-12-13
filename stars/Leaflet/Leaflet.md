@@ -1,11 +1,11 @@
 ---
 project: Leaflet
-stars: 44077
+stars: 44102
 description: 🍃 JavaScript library for mobile-friendly interactive maps 🇺🇦
 url: https://github.com/Leaflet/Leaflet
 ---
 
-Leaflet was created 14 years ago by Volodymyr Agafonkin, a Ukrainian citizen living in Kyiv.
+Leaflet was created in September 2010, 15 years ago, by Volodymyr Agafonkin, a Ukrainian citizen living in Kyiv.
 
 Russian bombs are now falling over Volodymyr's hometown. His family, his friends, his neighbours, thousands and thousands of absolutely wonderful people, are either seeking refuge or fighting for their lives.
 

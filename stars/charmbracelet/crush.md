@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 15635
+stars: 15923
 description: The glamourous AI coding agent for your favourite terminal 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -294,6 +294,7 @@ Crush also supports Model Context Protocol (MCP) servers through three transport
       "args": \["/path/to/mcp-server.js"\],
       "timeout": 120,
       "disabled": false,
+      "disabled\_tools": \["some-tool-name"\],
       "env": {
         "NODE\_ENV": "production"
       }
@@ -303,6 +304,7 @@ Crush also supports Model Context Protocol (MCP) servers through three transport
       "url": "https://api.githubcopilot.com/mcp/",
       "timeout": 120,
       "disabled": false,
+      "disabled\_tools": \["create\_issue", "create\_pull\_request"\],
       "headers": {
         "Authorization": "Bearer $GH\_PAT"
       }
@@ -343,6 +345,22 @@ By default, Crush will ask you for permission before running tool calls. If you'
 }
 
 You can also skip all permission prompts entirely by running Crush with the `--yolo` flag. Be very, very careful with this feature.
+
+### Disabling Built-In Tools
+
+If you'd like to prevent Crush from using certain built-in tools entirely, you can disable them via the `options.disabled_tools` list. Disabled tools are completely hidden from the agent.
+
+{
+  "$schema": "https://charm.land/crush.json",
+  "options": {
+    "disabled\_tools": \[
+      "bash",
+      "sourcegraph"
+    \]
+  }
+}
+
+To disable tools from MCP servers, see the MCP config section.
 
 ### Initialization
 

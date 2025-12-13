@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1097
+stars: 1100
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -300,6 +300,7 @@ Mods (Require **Steamodded**)
 -   JellyMod - A pack of 17 Jokers and 22 new "reverse" tarot cards. by @JamestheJellyfish
 -   Joker Evolution | discord - Gives a few jokers strong evolutions! by @SDM\_0
 -   Joker Fusions - Adds fused Jokers to the game, encountered via owning two compatible Jokers. by `@Numbuh214`
+-   LobotomyCorp - A Balatro mod. Face the Fear, Build the Future. by @Mysthaps
 -   LushMod - Pack with 9 jokers with some interesting effects. by @lusciousdev
 -   Lynverse Jokers - A pack of 15 Jokers based on some lovely ladies! by @AlexyoTheFirst
 -   Milatro - Adds 30 new vanilla inspired Jokers to allow for new builds and synergies. by @MilanKapitein

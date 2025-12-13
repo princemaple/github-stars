@@ -1,6 +1,6 @@
 ---
 project: pytudes
-stars: 24101
+stars: 24128
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
@@ -31,6 +31,18 @@ Run
 Year
 
 New
+
+C D M N S
+
+2025
+
+Advent of Code 2025
+
+C D M N S
+
+2025
+
+Advent of Code 2025: AI LLM edition
 
 C D M N S
 
@@ -199,6 +211,18 @@ Run
 Year
 
 Advent of Code
+
+C D M N S
+
+2025
+
+AoC 2025: AI LLM edition
+
+C D M N S
+
+2025
+
+Advent of Code 2025
 
 C D M N S
 

@@ -1,6 +1,6 @@
 ---
 project: domainstack.io
-stars: 129
+stars: 175
 description: 📚 All-in-one domain name intelligence tool
 url: https://github.com/jakejarvis/domainstack.io
 ---
@@ -17,8 +17,8 @@ Domainstack is an all-in-one app for exploring domain names. Search any domain (
 -   **SEO insights**: Extract titles, meta tags, social previews, canonical data, and `robots.txt` signals.
 -   **Screenshots & favicons**: Server-side screenshots and favicon extraction, cached in Postgres with Vercel Blob storage.
 -   **Fast, private, no sign-up required for reports**: Live fetches with intelligent multi-layer caching.
--   **Domain tracking dashboard**: Sign in with GitHub to track domains you own, verify ownership, and receive expiration alerts.
--   **Pro tier subscriptions**: Upgrade via Polar for expanded domain tracking limits (50 vs 5 domains).
+-   **Domain tracking dashboard**: Sign in to track domains you own, verify ownership, and receive expiration alerts.
+-   **Pro tier subscriptions**: Upgrade via Polar for expanded domain tracking limits (100 vs 5 domains).
 -   **Email notifications**: Configurable alerts for domain expiration, SSL certificate expiration, subscription lifecycle, and verification status changes.
 -   **Reliable data pipeline**: Postgres persistence with per-table TTLs (Drizzle) and event-driven background revalidation (Inngest).
 -   **Advanced dashboard**: Domain filtering by status/health/TLD, URL-persisted filters, bulk archive/delete actions, and sortable table/grid views.
@@ -31,8 +31,8 @@ Domainstack is an all-in-one app for exploring domain names. Search any domain (
 -   **Tailwind CSS v4** + **shadcn/ui** components
 -   **tRPC** API with **TanStack Query** for data fetching and optimistic updates
 -   **TanStack Table** for sortable dashboard table view
--   **Vercel Postgres** + **Drizzle ORM** with connection pooling
--   **Better Auth** for authentication with GitHub OAuth
+-   **PlanetScale Postgres** + **Drizzle ORM** with connection pooling
+-   **Better Auth** for authentication via OAuth
 -   **Polar** for subscription payments and customer portal (Pro tier)
 -   **Inngest** for event-driven background jobs (revalidation, expiry checks, domain re-verification)
 -   **Resend** + **React Email** for transactional email notifications
@@ -42,7 +42,6 @@ Domainstack is an all-in-one app for exploring domain names. Search any domain (
 -   **Puppeteer** (with `@sparticuz/chromium` on Vercel) for server-side screenshots
 -   **Mapbox** for IP geolocation maps
 -   **PostHog** for analytics and error tracking with sourcemap uploads and reverse proxy
--   **OpenTelemetry** via `@vercel/otel` for distributed tracing
 -   **Vitest** with React Testing Library and **Biome** for lint/format
 
 🌱 Getting Started
@@ -76,13 +75,20 @@ This single command boots:
 
 -   **Postgres** on `localhost:5432`
 -   **Inngest dev server** on `http://localhost:8288`
+-   **ngrok tunnel** with public HTTPS URL (for webhooks) and web UI on `http://localhost:4040`
 -   **Next.js dev server** on `http://localhost:3000`
 
 Open http://localhost:3000. Press `Ctrl+C` to stop all services at once.
 
 Note
 
-On Linux, if `host.docker.internal` isn't available, add `extra_hosts` to the Inngest service in `docker-compose.yml`:
+The ngrok URL can be used for testing public endpoints (like sandboxed Polar webhooks) during local development.
+
+**For persistent ngrok URLs:** Set both `NGROK_AUTHTOKEN` and `NGROK_URL` in `.env.local`. Get your auth token and create a free static domain at https://dashboard.ngrok.com/domains. This ensures the same URL every time you restart services.
+
+Note
+
+On Linux, if `host.docker.internal` isn't available, add `extra_hosts` to the services in `docker-compose.yml`:
 
 extra\_hosts: \["host.docker.internal:host-gateway"\]
 

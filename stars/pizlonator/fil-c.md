@@ -1,11 +1,11 @@
 ---
 project: fil-c
-stars: 2718
+stars: 2751
 description: Fil-C: completely compatible memory safety for C and C++
 url: https://github.com/pizlonator/fil-c
 ---
 
-Fil-C 0.675
+Fil-C 0.676
 ===========
 
 Fil-C is a fanatically compatible memory-safe implementation of C and C++. Lots of software compiles and runs with Fil-C with zero or minimal changes. All memory safety errors are caught as Fil-C panics. Fil-C achieves this using a combination of concurrent garbage collection and invisible capabilities (each pointer in memory has a corresponding capability, not visible to the C address space). Every fundamental C operation (as seen in LLVM IR) is checked against the capability. Fil-C has no `unsafe` statement and only limited FFI to unsafe code.
@@ -46,9 +46,9 @@ If you downloaded Fil-C binaries, run:
 
 This has a different effect depending on which binary distribution you selected:
 
--   In case of the classic musl-based distribution (`filc-0.675-linux-x86_64.tar.xz`), this sets up Fil-C to run in the current directory.
+-   In case of the classic musl-based distribution (`filc-0.676-linux-x86_64.tar.xz`), this sets up Fil-C to run in the current directory.
     
--   In case of the /opt/fil glibc-based distribution (`optfil-0.675-linux-x86_64.tar.xz`), this sets up Fil-C in `/opt/fil`.
+-   In case of the /opt/fil glibc-based distribution (`optfil-0.676-linux-x86_64.tar.xz`), this sets up Fil-C in `/opt/fil`.
     
 
 If you downloaded Fil-C source, run:

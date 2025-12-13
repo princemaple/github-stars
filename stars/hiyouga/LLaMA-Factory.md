@@ -1,6 +1,6 @@
 ---
 project: LLaMA-Factory
-stars: 63605
+stars: 63917
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LLaMA-Factory
 ---
@@ -359,11 +359,11 @@ GLM-4.1V
 
 glm4v
 
-GLM-4.5/GLM-4.5V
+GLM-4.5/GLM-4.5(6)V
 
-106B/355B
+9B/106B/355B
 
-glm4\_moe/glm4v\_moe
+glm4\_moe/glm4\_5v
 
 GPT-2
 
@@ -497,11 +497,11 @@ MiniCPM-o-2.6/MiniCPM-V-2.6
 
 minicpm\_o/minicpm\_v
 
-Ministral/Mistral-Nemo
+Ministral(3)/Mistral-Nemo
 
-8B/12B
+3B/8B/12B/14B
 
-ministral
+ministral/ministral3
 
 Mistral/Mixtral
 

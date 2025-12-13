@@ -1,6 +1,6 @@
 ---
 project: ToolJet
-stars: 37023
+stars: 37041
 description: ToolJet is the open-source foundation of ToolJet AI - the AI-native platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀
 url: https://github.com/ToolJet/ToolJet
 ---
@@ -72,7 +72,7 @@ AWS S3 Browser
 Documentation
 -------------
 
-Documentation is available at https://docs.tooljet.ai.
+Documentation is available at https://docs.tooljet.com.
 
 -   Getting Started  
     

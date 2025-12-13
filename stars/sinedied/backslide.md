@@ -1,6 +1,6 @@
 ---
 project: backslide
-stars: 780
+stars: 782
 description: :sweat_drops: CLI tool for making HTML presentations with Remark.js using Markdown
 url: https://github.com/sinedied/backslide
 ---

@@ -1,6 +1,6 @@
 ---
 project: lobe-chat
-stars: 68672
+stars: 69033
 description: 🤯 LobeHub - an open-source, modern design AI Agent Workspace. Supports multiple AI providers, Knowledge Base (file upload / RAG ), one click install MCP Marketplace and Artifacts / Thinking. One-click FREE deployment of your private AI Agent application.
 url: https://github.com/lobehub/lobe-chat
 ---
@@ -224,6 +224,12 @@ Recent Submits
 
 Description
 
+AladinBooks  
+By **azurewebsites** on **2025-12-08**
+
+Search for books on Aladin.  
+`book` `search`
+
 PortfolioMeta  
 By **portfoliometa** on **2025-11-28**
 
@@ -242,13 +248,7 @@ By **shoppingtools** on **2025-10-27**
 Search for products on eBay & AliExpress, find eBay events & coupons. Get prompt examples.  
 `shopping` `e-bay` `ali-express` `coupons`
 
-Web  
-By **Proghit** on **2025-01-24**
-
-Smart web search that reads and analyzes pages to deliver comprehensive answers from Google results.  
-`web` `search`
-
-> 📊 Total plugins: **41**
+> 📊 Total plugins: **37**
 
 ### Agent Market (GPTs)
 
@@ -272,17 +272,17 @@ By **CSY2022** on **2025-06-19**
 A turtle soup host needs to provide the scenario, the complete story (truth of the event), and the key point (the condition for guessing correctly).  
 `turtle-soup` `reasoning` `interaction` `puzzle` `role-playing`
 
-Gourmet Reviewer🍟  
-By **renhai-lab** on **2025-06-17**
-
-Food critique expert  
-`gourmet` `review` `writing`
-
 Academic Writing Assistant  
 By **swarfte** on **2025-06-17**
 
 Expert in academic research paper writing and formal documentation  
 `academic-writing` `research` `formal-style`
+
+Gourmet Reviewer🍟  
+By **renhai-lab** on **2025-06-17**
+
+Food critique expert  
+`gourmet` `review` `writing`
 
 Minecraft Senior Developer  
 By **iamyuuk** on **2025-06-17**

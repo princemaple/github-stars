@@ -1,8 +1,8 @@
 ---
 project: netvisor
-stars: 2143
+stars: 2279
 description: Automatically discover and visually document network infrastructure.
-url: https://github.com/mayanayza/netvisor
+url: https://github.com/netvisor-io/netvisor
 ---
 
 NetVisor
@@ -14,8 +14,10 @@ NetVisor scans your network, identifies hosts and services, and generates an int
   
   
   
+  
+  
 
-> 💡 **Prefer not to self-host?** Get early access to NetVisor Cloud
+> 💡 **Prefer not to self-host?** Get a free trial of NetVisor Cloud
 
 ✨ Key Features
 --------------
@@ -88,7 +90,7 @@ For commercial licensing inquiries: **licensing@netvisor.io**
 -   Want a fully managed solution without infrastructure setup
 -   Prefer subscription pricing over self-hosting
 
-**Get NetVisor Cloud Early Access →**
+**NetVisor Cloud Free Trial →**
 
 🎯 Perfect For
 --------------
@@ -121,7 +123,7 @@ For commercial licensing inquiries: **licensing@netvisor.io**
     
     **Docker Compose**
     
-    curl -O https://raw.githubusercontent.com/mayanayza/netvisor/refs/heads/main/docker-compose.yml && docker compose up -d
+    curl -O https://raw.githubusercontent.com/netvisor-io/netvisor/refs/heads/main/docker-compose.yml && docker compose up -d
     
     **Proxmox**
     

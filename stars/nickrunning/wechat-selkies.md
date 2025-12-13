@@ -1,6 +1,6 @@
 ---
 project: wechat-selkies
-stars: 2086
+stars: 2220
 description: 基于Selkies的Linux网页版微信/QQ，支持本地中文输入法，支持AMD64和ARM64。
 url: https://github.com/nickrunning/wechat-selkies
 ---
@@ -89,14 +89,15 @@ docker run -it -p 3001:3001 -v ./config:/config --device /dev/dri:/dev/dri nickr
          devices:
            - /dev/dri:/dev/dri # optional, for hardware acceleration
          environment:
-           - PUID=1000                    # user ID
-           - PGID=100                     # group ID
-           - TZ=Asia/Shanghai             # timezone
-           - LC\_ALL=zh\_CN.UTF-8           # locale
+           - PUID=1000                    # user ID, set according to your system
+           - PGID=100                     # group ID, set according to your system
+           - TZ=Asia/Shanghai             # timezone, set according to your timezone
+           - LC\_ALL=zh\_CN.UTF-8           # locale, set according to your needs
            - AUTO\_START\_WECHAT=true       # default is true
            - AUTO\_START\_QQ=false          # default is false
            # - CUSTOM\_USER=<Your Name>      # recommended to set a custom user name
            # - PASSWORD=<Your Password>     # recommended to set a password for selkies web ui
+         shm\_size: "1gb"                  # recommended, will improve performance
     
 3.  **启动服务**
     

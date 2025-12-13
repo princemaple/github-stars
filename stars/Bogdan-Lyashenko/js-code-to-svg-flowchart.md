@@ -1,6 +1,6 @@
 ---
 project: js-code-to-svg-flowchart
-stars: 7111
+stars: 7110
 description: js2flowchart - a visualization library to convert any JavaScript code into beautiful SVG flowchart. Learn other’s code. Design your code. Refactor code. Document code. Explain code.
 url: https://github.com/Bogdan-Lyashenko/js-code-to-svg-flowchart
 ---

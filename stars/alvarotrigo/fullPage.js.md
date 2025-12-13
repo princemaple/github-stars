@@ -1,6 +1,6 @@
 ---
 project: fullPage.js
-stars: 35484
+stars: 35481
 description: fullPage plugin by Alvaro Trigo. Create full screen pages fast and simple
 url: https://github.com/alvarotrigo/fullPage.js
 ---
@@ -405,7 +405,7 @@ new fullpage('#fullpage', {
 
 ### anchors
 
-(default `[]`) Defines the anchor links (#example) to be shown on the URL for each section. Anchors value should be unique. The position of the anchors in the array will define to which sections the anchor is applied. (second position for second section and so on). Using anchors forward and backward navigation will also be possible through the browser. This option also allows users to bookmark a specific section or slide. **Be careful!** anchors can not have the same value as any ID element on the site (or NAME element for IE). Now anchors can be defined directly in the HTML structure by using the attribute `data-anchor` as explained here.
+(default `[]`) Defines the anchor links (#example) to be shown on the URL for each section. Anchors value should be unique. The position of the anchors in the array will define to which sections the anchor is applied. (second position for second section and so on). Using anchors forward and backward navigation will also be possible through the browser. This option also allows users to bookmark a specific section or slide. **Be careful!** anchors can not have the same value as any ID element on the site (or NAME element for IE). Anchors can be defined directly in the HTML structure by using the attribute `data-anchor` as explained here.
 
 ### lockAnchors
 
@@ -1192,11 +1192,6 @@ Who is using fullPage.js
 -   http://www.boxreload.com/
 -   http://boxx.hk/
 -   http://www.villareginateodolinda.it
-
-Donations
----------
-
-Donations would be more than welcome :)
 
 Sponsors
 --------

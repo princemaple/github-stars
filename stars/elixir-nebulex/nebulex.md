@@ -1,6 +1,6 @@
 ---
 project: nebulex
-stars: 1365
+stars: 1369
 description: In-memory and distributed caching toolkit for Elixir.
 url: https://github.com/elixir-nebulex/nebulex
 ---
@@ -38,7 +38,7 @@ def deps do
     {:nebulex, "~> 3.0.0-rc.2"},
     {:nebulex\_local, "~> 3.0.0-rc.2"}, \# Generational local cache adapter
     {:decorator, "~> 1.4"},            \# Required for caching decorators
-    {:telemetry, "~> 1.2"}             \# Required for telemetry events
+    {:telemetry, "~> 1.3"}             \# Required for telemetry events
   \]
 end
 

@@ -1,6 +1,6 @@
 ---
 project: postgresus
-stars: 2710
+stars: 2995
 description: PostgreSQL backup tool
 url: https://github.com/RostislavDugin/postgresus
 ---
@@ -62,6 +62,15 @@ Features • Installation • Usage • License • Contributing
 -   **Dark & light themes**: Choose the look that suits your workflow
 -   **Mobile adaptive**: Check your backups from anywhere on any device
 
+### ☁️ **Works with Self-Hosted & Cloud Databases**
+
+Postgresus works seamlessly with both self-hosted PostgreSQL and cloud-managed databases:
+
+-   **Cloud support**: AWS RDS, Google Cloud SQL, Azure Database for PostgreSQL
+-   **Self-hosted**: Any PostgreSQL instance you manage yourself
+-   **Why no PITR?**: Cloud providers already offer native PITR, and external PITR backups cannot be restored to managed cloud databases — making them impractical for cloud-hosted PostgreSQL
+-   **Practical granularity**: Hourly and daily backups are sufficient for 99% of projects without the operational complexity of WAL archiving
+
 ### 🐳 **Self-Hosted & Secure**
 
 -   **Docker-based**: Easy deployment and management
@@ -70,7 +79,7 @@ Features • Installation • Usage • License • Contributing
 
 ### 📦 Installation (docs)
 
-You have three ways to install Postgresus:
+You have several ways to install Postgresus:
 
 -   Script (recommended)
 -   Simple Docker run
@@ -87,7 +96,7 @@ You have three ways to install Postgresus: automated script (recommended), simpl
 
 The installation script will:
 
--   ✅ Install Docker with Docker Compose(if not already installed)
+-   ✅ Install Docker with Docker Compose (if not already installed)
 -   ✅ Set up Postgresus
 -   ✅ Configure automatic startup on system reboot
 
@@ -186,11 +195,11 @@ Replace `admin` with the actual email address of the user whose password you wan
 📝 License
 ----------
 
-This project is licensed under the Apache 2.0 License - see the LICENSE file for details.
+This project is licensed under the Apache 2.0 License - see the LICENSE file for details
 
 * * *
 
 🤝 Contributing
 ---------------
 
-Contributions are welcome! Read contributing guide for more details, prioerities and rules are specified there. If you want to contribute, but don't know what and how - message me on Telegram @rostislav\_dugin
+Contributions are welcome! Read contributing guide for more details, priorities and rules are specified there. If you want to contribute, but don't know what and how - message me on Telegram @rostislav\_dugin

@@ -1,6 +1,6 @@
 ---
 project: elixir-socket
-stars: 691
+stars: 692
 description: Socket wrapping for Elixir.
 url: https://github.com/meh/elixir-socket
 ---

@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3258
+stars: 3262
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -8,7 +8,7 @@ url: https://github.com/panphora/overtype
 OverType
 ========
 
-A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~93KB minified with all features.
+A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~95KB minified with all features.
 
 Live Examples
 -------------
@@ -30,7 +30,7 @@ Features
 -   ⌨️ **Keyboard shortcuts** - Common markdown shortcuts (Cmd/Ctrl+B for bold, etc.)
 -   📱 **Mobile optimized** - Responsive design with mobile-specific styles
 -   🔄 **DOM persistence aware** - Recovers from existing DOM (perfect for HyperClay and similar platforms)
--   🚀 **Lightweight** - ~93KB minified
+-   🚀 **Lightweight** - ~95KB minified
 -   🎯 **Optional toolbar** - Clean, minimal toolbar with all essential formatting
 -   ✨ **Smart shortcuts** - Keyboard shortcuts with selection preservation
 -   📝 **Smart list continuation** - GitHub-style automatic list continuation on Enter
@@ -58,7 +58,7 @@ EasyMDE
 
 **Size**
 
-~93KB
+~95KB
 
 364.02 KB
 
@@ -616,10 +616,21 @@ OverType.setTheme('solar', { h1: '#custom' })  // Override specific colors
 OverType.setCodeHighlighter((code, lang) \=> highlightedHTML)
 OverType.setCodeHighlighter(null)  // Disable global highlighting
 
+// Extend parsing with custom syntax (footnotes, directives, etc.)
+// IMPORTANT: You must maintain 1-to-1 character alignment - wrap text, don't change it
+// See: https://panphora.github.io/overtype/examples/custom-syntax.html
+OverType.setCustomSyntax((html) \=> {
+  return html.replace(/\\\[\\^(\\w+)\\\]/g, '<span class="footnote">$&</span>');
+})
+
 // Note: Instance methods override global settings
 
 // Initialize multiple editors (same as constructor)
 OverType.init(target, options)
+
+// Initialize with per-element config via data-ot-\* attributes
+// Uses kebab-case: data-ot-show-stats="true" → showStats: true
+OverType.initFromData('.editor', { /\* defaults \*/ })
 
 // Get instance from element
 OverType.getInstance(element)
@@ -839,6 +850,25 @@ OverType uses a unique invisible textarea overlay approach:
     -   Textarea content drives everything
     -   One-way data flow: textarea → parser → preview
 
+Data Attribute Configuration
+----------------------------
+
+Use `OverType.initFromData()` to configure multiple editors via HTML data attributes:
+
+<div class\="editor" data-ot-toolbar\="true" data-ot-theme\="cave"\></div\>
+<div class\="editor" data-ot-auto-resize\="true" data-ot-min-height\="200px"\></div\>
+<div class\="editor" data-ot-show-stats\="true" data-ot-placeholder\="Write here..."\></div\>
+
+<script\>
+  OverType.initFromData('.editor', { fontSize: '14px' }); // defaults
+</script\>
+
+Uses kebab-case attributes that convert to camelCase options (e.g., `data-ot-show-stats` → `showStats`).
+
+**Supported:** `toolbar`, `theme`, `value`, `placeholder`, `autofocus`, `auto-resize`, `min-height`, `max-height`, `font-size`, `line-height`, `show-stats`, `smart-lists`, `show-active-line-raw`
+
+**Not supported (use JS):** `toolbarButtons`, `textareaProps`, `onChange`, `onKeydown`, `statsFormatter`, `codeHighlighter`, `colors`, `mobile`
+
 Contributors
 ------------
 
@@ -851,6 +881,9 @@ Special thanks to:
 -   Kristián Kostecký - Fixed toolbar option being ignored in reinit() (#62)
 -   Lyric Wai - Fixed double-escaping of links (#64), reported code block alignment issues (#65)
 -   kozi - Reported link tooltip issues in Firefox (#68), toolbar positioning (#69), theme synchronization issues (#70, #71)
+-   1951FDG - Reported list rendering issues (#74), suggested showStats refresh (#77)
+-   nodesocket - Reported toolbarButtons global access (#73, #78)
+-   Travis Bell - Reported keyboard shortcuts not working (#80)
 
 ### TypeScript & Framework Support
 
@@ -863,6 +896,8 @@ Special thanks to:
 -   Yukai Huang - Syntax highlighting support (under review) (#35)
 -   Rognoni - Suggested custom toolbar button API (#61)
 -   Deyan Gigov - Reported checkbox rendering issue in preview mode (#60)
+-   GregJohnStewart - Suggested data attribute configuration (#76)
+-   boris-glumpler - Suggested custom syntax/directive highlighting (#79)
 
 ### Developer Experience
 

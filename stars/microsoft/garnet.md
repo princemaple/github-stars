@@ -1,6 +1,6 @@
 ---
 project: garnet
-stars: 11613
+stars: 11618
 description: Garnet is a remote cache-store from Microsoft Research that offers strong performance (throughput and latency), scalability, storage, recovery, cluster sharding, key migration, and replication features. Garnet can work with existing Redis clients.
 url: https://github.com/microsoft/garnet
 ---
@@ -16,6 +16,8 @@ Garnet is a new remote cache-store from Microsoft Research, that offers several 
 -   Based on the latest .NET technology, Garnet is cross-platform, extensible, and modern. It is designed to be easy to develop for and evolve, without sacrificing performance in the common case. We leveraged the rich library ecosystem of .NET for API breadth, with open opportunities for optimization. Thanks to our careful use of .NET, Garnet achieves state-of-the-art performance on both Linux and Windows.
 
 This repo contains the code to build and run Garnet. For more information and documentation, check out our website at https://microsoft.github.io/garnet.
+
+**Looking for a fully managed service?** Azure Cosmos DB Garnet Cache provides Garnet as a fully managed, enterprise-ready caching solution with built-in high availability, performance guarantees and zero infrastructure management.
 
 Feature Summary
 ---------------

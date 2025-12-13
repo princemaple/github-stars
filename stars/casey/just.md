@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 29022
+stars: 29184
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -169,6 +169,14 @@ pkg
 just
 
 `pkg install just`
+
+OpenBSD
+
+pkg\_\*
+
+just
+
+`pkg_add just`
 
 #### Linux
 
@@ -1374,16 +1382,16 @@ This expansion is performed at compile time, so variables from `.env` files and 
 
 #### Format strings
 
-Strings prefixed with `f` are format stringsmaster:
+Strings prefixed with `f` are format strings1.44.0:
 
 name := "world"
-message := f'Hello, {name}!'
+message := f'Hello, {{name}}!'
 
-Format strings may contain interpolations delimited with `{…}` that contain expressions. Format strings evaluate to the concatenated string fragments and evaluated expressions.
+Format strings may contain interpolations delimited with `{{…}}` that contain expressions. Format strings evaluate to the concatenated string fragments and evaluated expressions.
 
-Use `{{` to include a literal `{` in a format string:
+Use `{{{{` to include a literal `{{` in a format string:
 
-foo := f'I {{LOVE} curly braces!'
+foo := f'I {{{{LOVE} curly braces!'
 
 ### Ignoring Errors
 
@@ -2162,8 +2170,6 @@ Conditionals can be used inside of recipes:
 bar foo:
   echo {{ if foo \== "bar" { "hello" } else { "goodbye" } }}
 
-Note the space after the final `}`! Without the space, the interpolation will be prematurely closed.
-
 Multiple conditionals can be chained:
 
 foo := if "hello" \== "goodbye" {
@@ -2396,6 +2402,22 @@ Parameters prefixed with a `$` will be exported as environment variables:
 
 foo $bar:
   echo $bar
+
+Parameters may be constrained to match regular expression patterns using the `[arg("name", pattern="pattern")]` attribute1.45.0:
+
+\[arg('n', pattern='\\d+')\]
+double n:
+  echo $(({{n}} \* 2))
+
+A leading `^` and trailing `$` are added to the pattern, so it must match the entire argument value.
+
+You may constrain the pattern to a number of alternatives using the `|` operator:
+
+\[arg('flag', pattern='\--help|--version')\]
+info flag:
+  just {{flag}}
+
+Regular expressions are provided by the Rust `regex` crate. See the syntax documentation for usage examples.
 
 ### Dependencies
 

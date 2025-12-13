@@ -1,7 +1,7 @@
 ---
 project: pangolin
-stars: 16609
-description: Identity-Aware Tunneled Reverse Proxy Server with Dashboard UI
+stars: 16964
+description: Identity-aware VPN and proxy for remote access to anything, anywhere.
 url: https://github.com/fosrl/pangolin
 ---
 
@@ -9,7 +9,7 @@ url: https://github.com/fosrl/pangolin
 
 **Start testing Pangolin at app.pangolin.net**
 
-Pangolin is a self-hosted tunneled reverse proxy server with identity and context aware access control, designed to easily expose and protect applications running anywhere. Pangolin acts as a central hub and connects isolated networks — even those behind restrictive firewalls — through encrypted tunnels, enabling easy access to remote services without opening ports or requiring a VPN.
+Pangolin is an open-source, identity-based remote access platform built on WireGuard that enables secure, seamless connectivity to private and public resources. Pangolin combines reverse proxy and VPN capabilities into one platform, providing browser-based access to web applications and client-based access to any private resources, all with zero-trust security and granular access control.
 
 Installation
 ------------
@@ -37,23 +37,30 @@ Fully managed service with instant setup and pay-as-you-go pricing — no infras
 Key Features
 ------------
 
-Pangolin packages everything you need for seamless application access and exposure into one cohesive platform.
-
-**Manage applications in one place**  
+**Connect remote networks with sites**  
   
-Pangolin provides a unified dashboard where you can monitor, configure, and secure all of your services regardless of where they are hosted.
+Pangolin's lightweight site connectors create secure tunnels from remote networks without requiring public IP addresses or open ports. Sites make any network anywhere available for authorized access.
 
-**Reverse proxy across networks anywhere**  
+**Browser-based reverse proxy access**  
   
-Route traffic via tunnels to any private network. Pangolin works like a reverse proxy that spans multiple networks and handles routing, load balancing, health checking, and more to the right services on the other end.
+Expose web applications through identity and context-aware tunneled reverse proxies. Pangolin handles routing, load balancing, health checking, and automatic SSL certificates without exposing your network directly to the internet. Users access applications through any web browser with authentication and granular access control.
 
-**Enforce identity and context aware rules**  
+**Client-based private resource access**  
   
-Protect your applications with identity and context aware rules such as SSO, OIDC, PIN, password, temporary share links, geolocation, IP, and more.
+Access private resources like SSH servers, databases, RDP, and entire network ranges through Pangolin clients. Intelligent NAT traversal enables connections even through restrictive firewalls, while DNS aliases provide friendly names and fast connections to resources across all your sites.
 
-**Quickly connect Pangolin sites**  
+**Zero-trust granular access**  
   
-Pangolin's lightweight Newt client runs in userspace and can run anywhere. Use it as a site connector to route traffic to backends across all of your environments.
+Grant users access to specific resources, not entire networks. Unlike traditional VPNs that expose full network access, Pangolin's zero-trust model ensures users can only reach the applications and services you explicitly define, reducing security risk and attack surface.
+
+Download Clients
+----------------
+
+Download the Pangolin client for your platform:
+
+-   Mac
+-   Windows
+-   Linux
 
 Get Started
 -----------

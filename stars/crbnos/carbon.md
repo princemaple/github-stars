@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1618
+stars: 1620
 description: Carbon is a modern ERP/MES/QMS. Perfect for complex assembly, job shops, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -116,10 +116,6 @@ Starter
 Package Name
 
 Description
-
-`eslint-config-carbon`
-
-Shared, extendable eslint configuration for apps and packages
 
 `@carbon/database`
 
@@ -307,6 +303,21 @@ http://localhost:54324
 Edge Functions
 
 http://localhost:54321/functions/v1/
+
+### Code Formatting
+
+This project uses Biome for code formatting and linting. To set up automatic formatting on save in VS Code:
+
+1.  Install the Biome VS Code extension
+    
+2.  Add the following to your VS Code settings (`.vscode/settings.json` or global settings):
+    
+
+"editor.codeActionsOnSave": {
+  "source.organizeImports.biome": "explicit",
+  "source.fixAll.biome": "explicit"
+},
+"editor.defaultFormatter": "biomejs.biome"
 
 ### Commands
 

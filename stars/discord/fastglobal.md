@@ -1,6 +1,6 @@
 ---
 project: fastglobal
-stars: 1177
+stars: 1174
 description: Fast no copy globals for Elixir & Erlang.
 url: https://github.com/discord/fastglobal
 ---

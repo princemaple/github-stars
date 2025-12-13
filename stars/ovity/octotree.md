@@ -1,6 +1,6 @@
 ---
 project: octotree
-stars: 23114
+stars: 23112
 description: GitHub on steroids
 url: https://github.com/ovity/octotree
 ---

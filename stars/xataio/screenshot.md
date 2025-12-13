@@ -1,6 +1,6 @@
 ---
 project: screenshot
-stars: 863
+stars: 864
 description: A zero-dependency browser-native way to take screenshots powered by the native web MediaDevices API.
 url: https://github.com/xataio/screenshot
 ---

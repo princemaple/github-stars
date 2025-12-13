@@ -1,6 +1,6 @@
 ---
 project: detectron2
-stars: 33783
+stars: 33810
 description: Detectron2 is a platform for object detection, segmentation and other visual recognition tasks.
 url: https://github.com/facebookresearch/detectron2
 ---

@@ -1,6 +1,6 @@
 ---
 project: sing-box
-stars: 28669
+stars: 28857
 description: The universal proxy platform
 url: https://github.com/SagerNet/sing-box
 ---

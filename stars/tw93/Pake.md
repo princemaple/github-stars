@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 43721
+stars: 43838
 description: 🤱🏻 Turn any webpage into a desktop app with one command. 一键打包网页生成轻量桌面应用
 url: https://github.com/tw93/Pake
 ---
@@ -105,12 +105,6 @@ Ctrl + \-
 
 Zoom out the page
 
-⌘ + +
-
-Ctrl + +
-
-Zoom in the page
-
 ⌘ + \=
 
 Ctrl + \=
@@ -123,7 +117,31 @@ Ctrl + 0
 
 Reset the page zoom
 
-In addition, double-click the title bar to switch to full-screen mode. For Mac users, you can also use the gesture to go to the previous or next page and drag the title bar to move the window.
+⌘ + L
+
+Ctrl + L
+
+Copy Current Page URL
+
+⌘ + ⇧ + H
+
+Ctrl + Shift + H
+
+Go to Home Page
+
+⌘ + ⌥ + I
+
+Ctrl + Shift + I
+
+Toggle Developer Tools (Debug Only)
+
+⌘ + ⇧ + ⌫
+
+Ctrl + Shift + Del
+
+Clear Cache & Restart
+
+In addition, double-click the title bar to switch to full-screen mode. For Mac users, you can also use the gesture to go to the previous or next page and drag the title bar to move the window. The new menu also offers options for navigation, zoom, and window controls.
 
 Command-Line Packaging
 ----------------------

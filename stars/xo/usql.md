@@ -1,6 +1,6 @@
 ---
 project: usql
-stars: 9680
+stars: 9711
 description: Universal command-line interface for SQL databases
 url: https://github.com/xo/usql
 ---
@@ -320,7 +320,7 @@ ChaiSQL
 
 `ci`, `genji`, `chaisql`
 
-github.com/chaisql/chai/driver
+github.com/chaisql/chai
 
 Couchbase
 
@@ -360,7 +360,7 @@ DuckDB
 
 `dk`, `ddb`, `duck`, `file`
 
-github.com/marcboeker/go-duckdb/v2 †
+github.com/duckdb/duckdb-go/v2 †
 
 DynamoDb
 

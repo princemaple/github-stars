@@ -1,6 +1,6 @@
 ---
 project: ToolJet
-stars: 37041
+stars: 37058
 description: ToolJet is the open-source foundation of ToolJet AI - the AI-native platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀
 url: https://github.com/ToolJet/ToolJet
 ---

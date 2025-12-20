@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1620
+stars: 1624
 description: Carbon is a modern ERP/MES/QMS. Perfect for complex assembly, job shops, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -58,7 +58,7 @@ Technical highlights:
 Techstack
 ---------
 
--   Remix – framework
+-   React Router – framework
 -   Typescript – language
 -   Tailwind – styling
 -   Radix UI - behavior

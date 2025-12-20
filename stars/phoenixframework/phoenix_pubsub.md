@@ -1,6 +1,6 @@
 ---
 project: phoenix_pubsub
-stars: 738
+stars: 739
 description: Distributed PubSub and Presence platform for the Phoenix Framework
 url: https://github.com/phoenixframework/phoenix_pubsub
 ---

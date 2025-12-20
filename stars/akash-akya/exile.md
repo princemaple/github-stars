@@ -1,6 +1,6 @@
 ---
 project: exile
-stars: 176
+stars: 177
 description: Alternative to ports for running external programs. It provides back-pressure, non-blocking io, and solves port related issues
 url: https://github.com/akash-akya/exile
 ---

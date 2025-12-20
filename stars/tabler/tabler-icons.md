@@ -1,6 +1,6 @@
 ---
 project: tabler-icons
-stars: 19870
+stars: 19911
 description: A set of over 5800 free MIT-licensed high-quality SVG icons for you to use in your web projects.
 url: https://github.com/tabler/tabler-icons
 ---
@@ -8,7 +8,7 @@ url: https://github.com/tabler/tabler-icons
 Tabler Icons
 ============
 
-A set of 5963 free MIT-licensed high-quality SVG icons for you to use in your web projects. Each icon is designed on a 24x24 grid and a 2px stroke.
+A set of 5984 free MIT-licensed high-quality SVG icons for you to use in your web projects. Each icon is designed on a 24x24 grid and a 2px stroke.
 
 **Browse at tabler.io/icons →**
 
@@ -25,7 +25,7 @@ Browser testing via:
 Preview
 -------
 
-### Outline version (4964 icons)
+### Outline version (4985 icons)
 
 ### Filled version (999 icons)
 
@@ -184,7 +184,7 @@ After importing the _IconsModule_ in your feature or shared module, use the icon
 
 For more usage documentation refer to the official documentation.
 
-### Svelte
+### Svelte 4 and below
 
 Svelte components available through `@tabler/icons-svelte` package.
 
@@ -195,6 +195,20 @@ Svelte components available through `@tabler/icons-svelte` package.
 <main\>
   <IconHeart size\={48} stroke\={1} />
   <IconHeart size\="32" stroke\="1.5" /\>
+  <IconHeart color\="crimson" class\="p-1" size\="96" stroke\="2" />
+</main\>
+
+### Svelte 5
+
+Svelte 5 components available through `@tabler/icons-svelte-runes` package.
+
+<script lang\="ts"\>
+  import { IconHeart } from '@tabler/icons-svelte-runes';
+</script\>
+
+<main\>
+  <IconHeart size\={48} stroke\={1} />
+  <IconHeart size\="32" stroke\={1.5} /\>
   <IconHeart color\="crimson" class\="p-1" size\="96" stroke\="2" />
 </main\>
 

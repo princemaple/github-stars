@@ -1,6 +1,6 @@
 ---
 project: mjml_eex
-stars: 110
+stars: 122
 description: Create emails that WOW your customers using MJML and EEx
 url: https://github.com/akoutmos/mjml_eex
 ---
@@ -25,7 +25,7 @@ Available in Hex, the package can be installed by adding `mjml_eex` to your list
 
 def deps do
   \[
-    {:mjml\_eex, "~> 0.12.0"}
+    {:mjml\_eex, "~> 0.13.0"}
   \]
 end
 
@@ -49,8 +49,6 @@ Using MJML EEx
 
 ### Basic Usage
 
-Add `{:mjml_eex, "~> 0.7.0"}` to your `mix.exs` file and run `mix deps.get`. After you have that in place, you can go ahead and create a template module like so:
-
 defmodule BasicTemplate do
   use MjmlEEx, mjml\_template: "basic\_template.mjml.eex"
 end
@@ -62,7 +60,9 @@ And the accompanying MJML EEx template `basic_template.mjml.eex` (note that the 
     <mj-section\>
       <mj-column\>
         <mj-divider border-color\="#F45E43"\></mj-divider\>
-        <mj-text font-size\="20px" color\="#F45E43"\> Hello <%= @first\_name %\> <%= @last\_name %\>! </mj-text\>
+        <mj-text font-size\="20px" color\="#F45E43"\>
+          Hello <%= @first\_name %\> <%= @last\_name %\>!
+        </mj-text\>
       </mj-column\>
     </mj-section\>
   </mj-body\>
@@ -89,7 +89,9 @@ In conjunction with the following template:
     <mj-section\>
       <mj-column\>
         <mj-divider border-color\="#F45E43"\></mj-divider\>
-        <mj-text font-size\="20px" color\="#F45E43"\> Hello <%= generate\_full\_name(@first\_name, @last\_name) %\>! </mj-text\>
+        <mj-text font-size\="20px" color\="#F45E43"\>
+          Hello <%= generate\_full\_name(@first\_name, @last\_name) %\>!
+        </mj-text\>
       </mj-column\>
     </mj-section\>
   </mj-body\>
@@ -130,7 +132,9 @@ And the following template:
     <mj-section\>
       <mj-column\>
         <mj-divider border-color\="#F45E43"\></mj-divider\>
-        <mj-text font-size\="20px" color\="#F45E43"\> Hello <%= generate\_full\_name(@first\_name, @last\_name) %\>! </mj-text\>
+        <mj-text font-size\="20px" color\="#F45E43"\>
+          Hello <%= generate\_full\_name(@first\_name, @last\_name) %\>!
+        </mj-text\>
       </mj-column\>
     </mj-section\>
   </mj-body\>
@@ -153,8 +157,12 @@ def MyTemplate.CtaComponent do
   def render(assigns) do
     """
     <mj-column>
-      <mj-text font-size="20px" color="#F45E43">#{assigns\[:call\_to\_action\_text\]}</mj-text>
-      <mj-button align="center" inner-padding="12px 20px">#{assigns\[:call\_to\_action\_link\]}</mj-button>
+      <mj-text font-size="20px" color="#F45E43">
+        #{assigns\[:call\_to\_action\_text\]}
+      </mj-text>
+      <mj-button align="center" inner-padding="12px 20px">
+        #{assigns\[:call\_to\_action\_link\]}
+      </mj-button>
     </mj-column>
     """
   end

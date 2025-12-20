@@ -1,6 +1,6 @@
 ---
 project: sentry-elixir
-stars: 671
+stars: 672
 description: The official Elixir SDK for Sentry (sentry.io)
 url: https://github.com/getsentry/sentry-elixir
 ---
@@ -18,14 +18,15 @@ Getting Started
 
 To use Sentry in your project, add it as a dependency in your `mix.exs` file.
 
-Sentry does not install a JSON library nor an HTTP client by itself. Sentry will default to the built-in `JSON` for JSON and Hackney for HTTP requests, but can be configured to use other ones. To use the default ones, do:
+Sentry does not install a JSON library nor an HTTP client by itself. Sentry will default to the built-in `JSON` for JSON and Finch for HTTP requests, but can be configured to use other ones. To use the default ones, do:
 
 defp deps do
   \[
     \# ...
 
     {:sentry, "~> 11.0"},
-    {:hackney, "~> 1.20"}
+    {:jason, "~> 1.4"},
+    {:finch, "~> 0.17.0"}
   \]
 end
 

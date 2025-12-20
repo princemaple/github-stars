@@ -1,14 +1,21 @@
 ---
 project: filestash
-stars: 13178
-description: :file_folder: The Dropbox like web client for SFTP, S3, FTP, WebDAV, Git, Minio, LDAP, CalDAV, CardDAV, Mysql, Backblaze, ...
+stars: 13228
+description: :file_folder: What Dropbox should have been if it was based on SFTP, S3, FTP, WebDAV, Git, and more
 url: https://github.com/mickael-kerjean/filestash
 ---
 
-A Dropbox-like file manager that let you manage your data anywhere it is located:  
+A Dropbox-like file manager that works with every storage protocol:  
 FTP • FTPS • SFTP • WebDAV • Git • S3 • NFS • SMB • Artifactory • LDAP • Mysql  
-Storj • CardDAV • CalDAV • Backblaze B2 • Minio  
-Dropbox • Google Drive
+Sharepoint • Azure • CalDAV • Backblaze B2 • Minio • Storj  
+IPFS • Dropbox • Google Drive • ...
+
+What / Why ?
+============
+
+Familiar with the infamous comment from Dropbox's launch on HN? It went like this:
+
+Once we had a great user interface for FTP, we extended the idea to virtually every storage protocol and added gateways to expose Dropbox itself as an SFTP server, closing the infamous loop, while also adding all the features we always wished Dropbox had.
 
 Key Features
 ============
@@ -16,9 +23,8 @@ Key Features
 -   Sleek, Speedy, Snappy, works great on Desktop and Mobile
 -   Extensible / Customisable / Hackable via a rich ecosystem of plugins and a Workflow engine to enable automation
 -   Shared Links which you can mount locally as network drives
--   Manage your files not only from your browser but also via SFTP and S3 through third party tools
 -   Builtin Music, Video, Image viewers with optional transcoding and Chromecast support
--   API and LLM integration via MCP
+-   API and LLM integration via MCP with support for other S3 and SFTP Gateways.
 -   Themes replicating the UX of dropbox, gdrive, github, ibm, onedrive, and more
 -   ... and much much much more
 

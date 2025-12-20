@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 15923
+stars: 16137
 description: The glamourous AI coding agent for your favourite terminal 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -257,6 +257,13 @@ $HOME/.local/share/crush/crush.json
 
 # Windows
 %LOCALAPPDATA%\\crush\\crush.json
+
+Tip
+
+You can override the user and data config locations by setting:
+
+-   `CRUSH_GLOBAL_CONFIG`
+-   `CRUSH_GLOBAL_DATA`
 
 ### LSPs
 

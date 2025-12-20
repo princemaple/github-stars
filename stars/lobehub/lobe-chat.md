@@ -1,6 +1,6 @@
 ---
 project: lobe-chat
-stars: 69033
+stars: 69266
 description: 🤯 LobeHub - an open-source, modern design AI Agent Workspace. Supports multiple AI providers, Knowledge Base (file upload / RAG ), one click install MCP Marketplace and Artifacts / Thinking. One-click FREE deployment of your private AI Agent application.
 url: https://github.com/lobehub/lobe-chat
 ---
@@ -224,31 +224,31 @@ Recent Submits
 
 Description
 
-AladinBooks  
-By **azurewebsites** on **2025-12-08**
-
-Search for books on Aladin.  
-`book` `search`
-
-PortfolioMeta  
-By **portfoliometa** on **2025-11-28**
-
-Analyze stocks and get comprehensive real-time investment data and analytics.  
-`stock`
-
-SEO  
-By **orrenprunckun** on **2025-11-14**
-
-Enter any URL and keyword and get an On-Page SEO analysis & insights!  
-`seo`
-
 Shopping tools  
-By **shoppingtools** on **2025-10-27**
+By **shoppingtools** on **2025-12-17**
 
 Search for products on eBay & AliExpress, find eBay events & coupons. Get prompt examples.  
 `shopping` `e-bay` `ali-express` `coupons`
 
-> 📊 Total plugins: **37**
+SEO Assistant  
+By **webfx** on **2025-12-17**
+
+The SEO Assistant can generate search engine keyword information in order to aid the creation of content.  
+`seo` `keyword`
+
+Video Captions  
+By **maila** on **2025-12-13**
+
+Convert Youtube links into transcribed text, enable asking questions, create chapters, and summarize its content.  
+`video-to-text` `youtube`
+
+WeatherGPT  
+By **steven-tey** on **2025-12-13**
+
+Get current weather information for a specific location.  
+`weather`
+
+> 📊 Total plugins: **40**
 
 ### Agent Market (GPTs)
 

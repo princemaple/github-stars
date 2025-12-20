@@ -1,6 +1,6 @@
 ---
 project: chatterbox
-stars: 15013
+stars: 16507
 description: SoTA open-source TTS
 url: https://github.com/resemble-ai/chatterbox
 ---
@@ -10,45 +10,76 @@ Chatterbox TTS
 
 \_Made with ♥️ by
 
-We're excited to introduce **Chatterbox Multilingual**, Resemble AI's first production-grade open source TTS model supporting **23 languages** out of the box. Licensed under MIT, Chatterbox has been benchmarked against leading closed-source systems like ElevenLabs, and is consistently preferred in side-by-side evaluations.
+**Chatterbox** is a family of three state-of-the-art, open-source text-to-speech models by Resemble AI.
 
-Whether you're working on memes, videos, games, or AI agents, Chatterbox brings your content to life across languages. It's also the first open source TTS model to support **emotion exaggeration control** with robust **multilingual zero-shot voice cloning**. Try the english only version now on our English Hugging Face Gradio app.. Or try the multilingual version on our Multilingual Hugging Face Gradio app..
+We are excited to introduce **Chatterbox-Turbo**, our most efficient model yet. Built on a streamlined 350M parameter architecture, **Turbo** delivers high-quality speech with less compute and VRAM than our previous models. We have also distilled the speech-token-to-mel decoder, previously a bottleneck, reducing generation from 10 steps to just **one**, while retaining high-fidelity audio output.
+
+**Paralinguistic tags** are now native to the Turbo model, allowing you to use `[cough]`, `[laugh]`, `[chuckle]`, and more to add distinct realism. While Turbo was built primarily for low-latency voice agents, it excels at narration and creative workflows.
 
 If you like the model but need to scale or tune it for higher accuracy, check out our competitively priced TTS service (link). It delivers reliable performance with ultra-low latency of sub 200ms—ideal for production use in agents, applications, or interactive media.
 
-Key Details
-===========
+### ⚡ Model Zoo
 
--   Multilingual, zero-shot TTS supporting 23 languages
--   SoTA zeroshot English TTS
--   0.5B Llama backbone
--   Unique exaggeration/intensity control
--   Ultra-stable with alignment-informed inference
--   Trained on 0.5M hours of cleaned data
--   Watermarked outputs
--   Easy voice conversion script
--   Outperforms ElevenLabs
+Choose the right model for your application.
 
-Supported Languages
-===================
+Model
 
-Arabic (ar) • Danish (da) • German (de) • Greek (el) • English (en) • Spanish (es) • Finnish (fi) • French (fr) • Hebrew (he) • Hindi (hi) • Italian (it) • Japanese (ja) • Korean (ko) • Malay (ms) • Dutch (nl) • Norwegian (no) • Polish (pl) • Portuguese (pt) • Russian (ru) • Swedish (sv) • Swahili (sw) • Turkish (tr) • Chinese (zh)
+Size
 
-Tips
-====
+Languages
 
--   **General Use (TTS and Voice Agents):**
-    
-    -   Ensure that the reference clip matches the specified language tag. Otherwise, language transfer outputs may inherit the accent of the reference clip’s language. To mitigate this, set `cfg_weight` to `0`.
-    -   The default settings (`exaggeration=0.5`, `cfg_weight=0.5`) work well for most prompts across all languages.
-    -   If the reference speaker has a fast speaking style, lowering `cfg_weight` to around `0.3` can improve pacing.
--   **Expressive or Dramatic Speech:**
-    
-    -   Try lower `cfg_weight` values (e.g. `~0.3`) and increase `exaggeration` to around `0.7` or higher.
-    -   Higher `exaggeration` tends to speed up speech; reducing `cfg_weight` helps compensate with slower, more deliberate pacing.
+Key Features
+
+Best For
+
+🤗
+
+Examples
+
+**Chatterbox-Turbo**
+
+**350M**
+
+**English**
+
+Paralinguistic Tags (`[laugh]`), Lower Compute and VRAM
+
+Zero-shot voice agents, Production
+
+Demo
+
+Listen
+
+Chatterbox-Multilingual (Language list)
+
+500M
+
+23+
+
+Zero-shot cloning, Multiple Languages
+
+Global applications, Localization
+
+Demo
+
+Listen
+
+Chatterbox (Tips and Tricks)
+
+500M
+
+English
+
+CFG & Exaggeration tuning
+
+General zero-shot TTS with creative controls
+
+Demo
+
+Listen
 
 Installation
-============
+------------
 
 pip install chatterbox-tts
 
@@ -64,7 +95,26 @@ pip install -e .
 We developed and tested Chatterbox on Python 3.11 on Debian 11 OS; the versions of the dependencies are pinned in `pyproject.toml` to ensure consistency. You can modify the code or dependencies in this installation mode.
 
 Usage
-=====
+-----
+
+##### Chatterbox-Turbo
+
+import torchaudio as ta
+import torch
+from chatterbox.tts\_turbo import ChatterboxTurboTTS
+
+\# Load the Turbo model
+model \= ChatterboxTurboTTS.from\_pretrained(device\="cuda")
+
+\# Generate with Paralinguistic Tags
+text \= "Hi there, Sarah here from MochaFone calling you back \[chuckle\], have you got one minute to chat about the billing issue?"
+
+\# Generate audio (requires a reference clip for voice cloning)
+wav \= model.generate(text, audio\_prompt\_path\="your\_10s\_ref\_clip.wav")
+
+ta.save("test-turbo.wav", wav, model.sr)
+
+##### Chatterbox and Chatterbox-Multilingual
 
 import torchaudio as ta
 from chatterbox.tts import ChatterboxTTS
@@ -95,17 +145,26 @@ ta.save("test-2.wav", wav, model.sr)
 
 See `example_tts.py` and `example_vc.py` for more examples.
 
-Acknowledgements
-================
+Supported Languages
+-------------------
 
--   Cosyvoice
--   Real-Time-Voice-Cloning
--   HiFT-GAN
--   Llama 3
--   S3Tokenizer
+Arabic (ar) • Danish (da) • German (de) • Greek (el) • English (en) • Spanish (es) • Finnish (fi) • French (fr) • Hebrew (he) • Hindi (hi) • Italian (it) • Japanese (ja) • Korean (ko) • Malay (ms) • Dutch (nl) • Norwegian (no) • Polish (pl) • Portuguese (pt) • Russian (ru) • Swedish (sv) • Swahili (sw) • Turkish (tr) • Chinese (zh)
+
+Original Chatterbox Tips
+------------------------
+
+-   **General Use (TTS and Voice Agents):**
+    
+    -   Ensure that the reference clip matches the specified language tag. Otherwise, language transfer outputs may inherit the accent of the reference clip’s language. To mitigate this, set `cfg_weight` to `0`.
+    -   The default settings (`exaggeration=0.5`, `cfg_weight=0.5`) work well for most prompts across all languages.
+    -   If the reference speaker has a fast speaking style, lowering `cfg_weight` to around `0.3` can improve pacing.
+-   **Expressive or Dramatic Speech:**
+    
+    -   Try lower `cfg_weight` values (e.g. `~0.3`) and increase `exaggeration` to around `0.7` or higher.
+    -   Higher `exaggeration` tends to speed up speech; reducing `cfg_weight` helps compensate with slower, more deliberate pacing.
 
 Built-in PerTh Watermarking for Responsible AI
-==============================================
+----------------------------------------------
 
 Every audio file generated by Chatterbox includes Resemble AI's Perth (Perceptual Threshold) Watermarker - imperceptible neural watermarks that survive MP3 compression, audio editing, and common manipulations while maintaining nearly 100% detection accuracy.
 
@@ -131,12 +190,21 @@ print(f"Extracted watermark: {watermark}")
 \# Output: 0.0 (no watermark) or 1.0 (watermarked)
 
 Official Discord
-================
+----------------
 
 👋 Join us on Discord and let's build something awesome together!
 
+Acknowledgements
+----------------
+
+-   Cosyvoice
+-   Real-Time-Voice-Cloning
+-   HiFT-GAN
+-   Llama 3
+-   S3Tokenizer
+
 Citation
-========
+--------
 
 If you find this model useful, please consider citing.
 
@@ -151,6 +219,6 @@ If you find this model useful, please consider citing.
 ```
 
 Disclaimer
-==========
+----------
 
 Don't use this model to do bad things. Prompts are sourced from freely available data on the internet.

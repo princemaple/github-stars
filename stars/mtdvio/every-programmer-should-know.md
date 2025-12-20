@@ -1,35 +1,29 @@
 ---
 project: every-programmer-should-know
-stars: 96312
+stars: 96717
 description: A collection of (mostly) technical things every software developer should know about
 url: https://github.com/mtdvio/every-programmer-should-know
 ---
 
-Special thanks to:  
-  
+### Measure your Software Developer level against a cross-industry benchmark FOR FREE!
 
-### Tuple, the premier screen sharing app for developers
-
-Available for MacOS & Windows  
-
-* * *
-
-Want to become a Senior Engineer sooner?
-
-Join a waitlist for repo author's course
-
-* * *
+Take a quiz and get instant results  
 
 Every Programmer Should Know 🤔
 ===============================
 
 A collection of (mostly) technical things every software developer should know.
 
-☝️ _These are resources I can recommend to every programmer regardless of their skill level or tech stack_
+_These are resources I can recommend to every programmer regardless of their skill level or tech stack_
 
 Highly opinionated 💣. Not backed by science. Comes in no particular order ♻️
 
-U like it? ⭐ it and share with a friendly developer! U don't like it? Watch the doggo 🐶
+  
+
+### ⭐ it and share with a friendly developer!
+
+  
+  
 
 _P.S. You don't need to know all of that by heart to be a programmer. But knowing the stuff will help you become better! 💪_
 

@@ -1,6 +1,6 @@
 ---
 project: BroadcastChannel
-stars: 1904
+stars: 1907
 description: Turn your Telegram Channel into a MicroBlog.
 url: https://github.com/miantiao-me/BroadcastChannel
 ---
@@ -120,6 +120,9 @@ HEADER\_INJECT\=HEADER\_INJECT
 #\# SEO configuration options, can prevent search engines from indexing content
 NO\_FOLLOW\=false
 NO\_INDEX\=false
+
+#\# Hide Telegram channel description
+HIDE\_DESCRIPTION\=false
 
 #\# Sentry configuration options, collect server-side errors
 SENTRY\_AUTH\_TOKEN\=SENTRY\_AUTH\_TOKEN

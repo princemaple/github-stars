@@ -1,6 +1,6 @@
 ---
 project: urllib3
-stars: 3980
+stars: 3981
 description: urllib3 is a user-friendly HTTP client library for Python
 url: https://github.com/urllib3/urllib3
 ---
@@ -9,7 +9,7 @@ url: https://github.com/urllib3/urllib3
 
   
 
-urllib3 is a powerful, _user-friendly_ HTTP client for Python. Much of the Python ecosystem already uses urllib3 and you should too. urllib3 brings many critical features that are missing from the Python standard libraries:
+urllib3 is a powerful, _user-friendly_ HTTP client for Python. urllib3 brings many critical features that are missing from the Python standard libraries:
 
 -   Thread safety.
 -   Connection pooling.
@@ -20,14 +20,9 @@ urllib3 is a powerful, _user-friendly_ HTTP client for Python. Much of the Pytho
 -   Proxy support for HTTP and SOCKS.
 -   100% test coverage.
 
-urllib3 is powerful and easy to use:
+... and many more features, but most importantly: Our maintainers have a 15+ year track record of maintaining urllib3 with the highest code standards and attention to security and safety.
 
-\>\>> import urllib3
-\>\>> resp \= urllib3.request("GET", "http://httpbin.org/robots.txt")
-\>\>> resp.status
-200
-\>\>> resp.data
-b"User-agent: \*\\nDisallow: /deny\\n"
+Much of the Python ecosystem already uses urllib3 and you should too.
 
 Installing
 ----------
@@ -42,8 +37,17 @@ $ git clone https://github.com/urllib3/urllib3.git
 $ cd urllib3
 $ pip install .
 
-Documentation
--------------
+Getting Started
+---------------
+
+urllib3 is easy to use:
+
+\>\>> import urllib3
+\>\>> resp \= urllib3.request("GET", "http://httpbin.org/robots.txt")
+\>\>> resp.status
+200
+\>\>> resp.data
+b"User-agent: \*\\nDisallow: /deny\\n"
 
 urllib3 has usage and reference documentation at urllib3.readthedocs.io.
 
@@ -65,7 +69,9 @@ To report a security vulnerability, please use the Tidelift security contact. Ti
 Maintainers
 -----------
 
--   Lead: @illia-v (Illia Volochii)
+Meet our maintainers since 2008:
+
+-   Current Lead: @illia-v (Illia Volochii)
 -   @sethmlarson (Seth M. Larson)
 -   @pquentin (Quentin Pradet)
 -   @theacodes (Thea Flowers)

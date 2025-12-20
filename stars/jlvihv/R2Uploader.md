@@ -1,6 +1,6 @@
 ---
 project: R2Uploader
-stars: 135
+stars: 136
 description: 易用的文件上传工具，专为多文件和大文件处理而优化，可以将文件轻松上传到 Cloudflare R2 存储。
 url: https://github.com/jlvihv/R2Uploader
 ---

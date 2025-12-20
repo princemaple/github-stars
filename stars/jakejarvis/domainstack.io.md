@@ -1,6 +1,6 @@
 ---
 project: domainstack.io
-stars: 175
+stars: 187
 description: 📚 All-in-one domain name intelligence tool
 url: https://github.com/jakejarvis/domainstack.io
 ---
@@ -28,7 +28,7 @@ Domainstack is an all-in-one app for exploring domain names. Search any domain (
 --------------
 
 -   **Next.js 16** (App Router) + **React 19** + **TypeScript**
--   **Tailwind CSS v4** + **shadcn/ui** components
+-   **Tailwind CSS v4** + **shadcn/ui** components (of the Base UI variety)
 -   **tRPC** API with **TanStack Query** for data fetching and optimistic updates
 -   **TanStack Table** for sortable dashboard table view
 -   **PlanetScale Postgres** + **Drizzle ORM** with connection pooling

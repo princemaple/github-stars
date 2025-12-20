@@ -1,6 +1,6 @@
 ---
 project: fzf
-stars: 75716
+stars: 76069
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---
@@ -40,6 +40,7 @@ Table of Contents
 
 -   Installation
     -   Using Homebrew
+    -   Using Mise
     -   Linux packages
     -   Windows packages
     -   Using git
@@ -104,6 +105,12 @@ Important
 To set up shell integration (key bindings and fuzzy completion), see the instructions below.
 
 fzf is also available via MacPorts: `sudo port install fzf`
+
+### Using Mise
+
+You can use mise to install fzf.
+
+mise use -g fzf@latest
 
 ### Linux packages
 
@@ -496,6 +503,8 @@ Screenshot
 `minimal`
 
 Here's an example based on the `full` preset:
+
+Details
 
 git ls-files | fzf --style full \\
     --border --padding 1,2 \\

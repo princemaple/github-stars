@@ -1,6 +1,6 @@
 ---
 project: chinese-xinhua
-stars: 11415
+stars: 11422
 description: :orange_book: 中华新华字典数据库。包括歇后语，成语，词语，汉字。
 url: https://github.com/pwxcoo/chinese-xinhua
 ---

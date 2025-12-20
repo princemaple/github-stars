@@ -1,6 +1,6 @@
 ---
 project: gyroflow
-stars: 8040
+stars: 8058
 description: Video stabilization using gyroscope data
 url: https://github.com/gyroflow/gyroflow
 ---
@@ -59,6 +59,7 @@ Supported gyro sources
 -   Sony (a1, a7c, a7r V, a7 IV, a7s III, a9 II, a9 III, FX3, FX6, FX9, RX0 II, RX100 VII, ZV1, ZV-E10, ZV-E10 II, ZV-E1, a6700)
 -   Insta360 (OneR, OneRS, SMO 4k, Go, GO2, GO3, GO3S, GOUltra, Caddx Peanut, Ace, Ace Pro)
 -   DJI (Avata, Avata 2, O3/O4 Air Unit, Action 2/4/5/6/Nano, Neo, Neo2)
+-   XTRA (Edge, Edge Pro)
 -   Blackmagic RAW (\*.braw)
 -   RED RAW (V-Raptor, KOMODO) (\*.r3d)
 -   Canon (C50, C80, C400, R6 Mk3, R5 Mk2) (\*.mp4, \*.mov, \*.mxf)
@@ -122,7 +123,7 @@ Minimum system requirements:
 
 -   Windows 10 64-bit (1809 or later)
     -   If you have Windows "N" install, go to `Settings` -> `Apps` -> `Optional features` -> `Add a feature` -> enable `Media Feature Pack`
--   macOS 10.14 or later (both Intel and Apple Silicon are supported natively)
+-   macOS 10.15 or later (both Intel and Apple Silicon are supported natively)
 -   Linux:
     -   `.tar.gz` package (recommended): Debian 10+, Ubuntu 18.10+, CentOS 8.2+, openSUSE 15.3+. Other distros require glibc 2.28+ (`ldd --version` to check)
     -   `.AppImage` should work everywhere

@@ -1,6 +1,6 @@
 ---
 project: jaxon
-stars: 203
+stars: 204
 description: Streaming JSON parser for Elixir
 url: https://github.com/boudra/jaxon
 ---

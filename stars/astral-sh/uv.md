@@ -1,6 +1,6 @@
 ---
 project: uv
-stars: 74825
+stars: 75339
 description: An extremely fast Python package and project manager, written in Rust.
 url: https://github.com/astral-sh/uv
 ---
@@ -27,7 +27,7 @@ Highlights
 -   ⏬ Installable without Rust or Python via `curl` or `pip`.
 -   🖥️ Supports macOS, Linux, and Windows.
 
-uv is backed by Astral, the creators of Ruff.
+uv is backed by Astral, the creators of Ruff and ty.
 
 Installation
 ------------
@@ -216,16 +216,6 @@ Installed 43 packages in 208ms
 
 See the pip interface documentation to get started.
 
-Platform support
-----------------
-
-See uv's platform support document.
-
-Versioning policy
------------------
-
-See uv's versioning policy document.
-
 Contributing
 ------------
 
@@ -241,6 +231,14 @@ It's pronounced as "you - vee" (`/juː viː/`)
 #### How should I stylize uv?
 
 Just "uv", please. See the style guide for details.
+
+#### What platforms does uv support?
+
+See uv's platform support document.
+
+#### Is uv ready for production?
+
+Yes, uv is stable and widely used in production. See uv's versioning policy document for details.
 
 Acknowledgements
 ----------------

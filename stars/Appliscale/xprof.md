@@ -1,6 +1,6 @@
 ---
 project: xprof
-stars: 282
+stars: 281
 description: A visual tracer and profiler for Erlang and Elixir.
 url: https://github.com/Appliscale/xprof
 ---

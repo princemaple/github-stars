@@ -1,6 +1,6 @@
 ---
 project: ConvertX
-stars: 10325
+stars: 12711
 description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 url: https://github.com/C4illin/ConvertX
 ---
@@ -250,7 +250,11 @@ The address to the root path setting this to "/convert" will serve the website o
 
 FFMPEG\_ARGS
 
-Arguments to pass to ffmpeg, e.g. `-preset veryfast`
+Arguments to pass to the input file of ffmpeg, e.g. `-hwaccel vaapi`. See #190 for more info about hw-acceleration.
+
+FFMPEG\_OUTPUT\_ARGS
+
+Arguments to pass to the output of ffmpeg, e.g. `-preset veryfast`
 
 HIDE\_HISTORY
 

@@ -1,6 +1,6 @@
 ---
 project: cobalt
-stars: 37567
+stars: 37673
 description: best way to save what you love
 url: https://github.com/imputnet/cobalt
 ---
@@ -18,16 +18,6 @@ cobalt.tools
 cobalt is a media downloader that doesn't piss you off. it's friendly, efficient, and doesn't have ads, trackers, paywalls or other nonsense.
 
 paste the link, get the file, move on. that simple, just how it should be.
-
-### sponsors
-
-special thanks to Warp for sponsoring the development of cobalt  
-
-### Warp, built for coding with multiple AI agents
-
-#### RoyaleHosting
-
-cobalt is sponsored by royalehosting.net, and a part of our infrastructure is hosted on their network. we really appreciate their kindness and support!
 
 ### cobalt monorepo
 
@@ -53,6 +43,10 @@ cobalt is in no way a piracy tool and cannot be used as such. it can only downlo
 ### contributing
 
 if you're considering contributing to cobalt, first of all, thank you! check the contribution guidelines here before getting started, they'll help you do your best right away.
+
+### thank you
+
+cobalt is sponsored by royalehosting.net. a part of our infrastructure is hosted on their network. we really appreciate their kindness and support!
 
 ### licenses
 

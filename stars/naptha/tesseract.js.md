@@ -1,6 +1,6 @@
 ---
 project: tesseract.js
-stars: 37577
+stars: 37616
 description: Pure Javascript OCR for more than 100 Languages 📖🎉🖥
 url: https://github.com/naptha/tesseract.js
 ---
@@ -40,7 +40,7 @@ Alternatively, an ESM build (used with `import` syntax) can be found at `https:/
 
 ### Node.js
 
-**Requires Node.js v14 or higher**
+**Tesseract.js v7 requires Node.js v16 or newer.** (Tesseract.js v6 requires Node.js v14 or newer.)
 
 # For latest version
 npm install tesseract.js

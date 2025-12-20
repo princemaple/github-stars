@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3262
+stars: 3282
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -877,35 +877,35 @@ Special thanks to:
 ### Core Features & Fixes
 
 -   Josh Doman - Fixed inline code formatting preservation (#6), improved code fence detection (#19)
--   kbhomes - Fixed text selection desynchronization during overscroll (#17)
+-   kbhomes - Fixed text selection desync during overscroll (#17)
 -   Kristián Kostecký - Fixed toolbar option being ignored in reinit() (#62)
--   Lyric Wai - Fixed double-escaping of links (#64), reported code block alignment issues (#65)
--   kozi - Reported link tooltip issues in Firefox (#68), toolbar positioning (#69), theme synchronization issues (#70, #71)
--   1951FDG - Reported list rendering issues (#74), suggested showStats refresh (#77)
--   nodesocket - Reported toolbarButtons global access (#73, #78)
--   Travis Bell - Reported keyboard shortcuts not working (#80)
+-   Lyric Wai - Fixed double-escaping of links (#64), shared code block alignment fix (#65)
+-   kozi - Reported Firefox link tooltip bug (#68), toolbar positioning (#69), theme CSS variable issues (#70, #71)
+-   1951FDG - Reported unordered list rendering bug (#74), suggested showStats() API improvement (#77)
+-   nodesocket - Reported toolbarButtons export issues (#73, #78)
+-   Travis Bell - Reported keyboard shortcuts bug in ESM build (#80)
 
 ### TypeScript & Framework Support
 
--   merlinz01 - Initial TypeScript definitions implementation (#20)
--   ChasLui - Web component implementation (under review) (#40)
+-   merlinz01 - Contributed TypeScript declaration file (#20)
+-   ChasLui - Web component implementation (#40)
 
 ### New Features & Enhancements
 
--   davidlazar - Suggested view mode feature for toggling overlay and preview modes (#24)
--   Yukai Huang - Syntax highlighting support (under review) (#35)
+-   davidlazar - Suggested view mode feature (#24)
+-   Yukai Huang - Contributed syntax highlighting implementation (#35)
 -   Rognoni - Suggested custom toolbar button API (#61)
--   Deyan Gigov - Reported checkbox rendering issue in preview mode (#60)
+-   Deyan Gigov - Reported checkbox rendering bug in preview mode (#60)
 -   GregJohnStewart - Suggested data attribute configuration (#76)
--   boris-glumpler - Suggested custom syntax/directive highlighting (#79)
+-   boris-glumpler - Suggested custom syntax highlighting API (#79)
 
 ### Developer Experience
 
--   Ned Twigg - Browser extension developer feedback, gitcasso extension (#59)
--   Victor - Suggested exporting MarkdownParser for standalone use (#58)
--   Bernhard Weichel - Reported mode switching scroll sync bug (#52)
--   Colin Devroe - Reported theme API confusion (#54)
--   Max Bernstein - Fixed typo in website (#11)
+-   Ned Twigg - Built gitcasso browser extension using OverType (#59)
+-   Victor - Suggested exportable MarkdownParser (#58)
+-   Bernhard Weichel - Reported preview/edit mode sync bug (#52)
+-   Colin Devroe - Reported setTheme() API bug (#54)
+-   Max Bernstein - Fixed typo on website (#11)
 
 License
 -------

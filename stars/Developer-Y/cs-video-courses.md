@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70382
+stars: 70420
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -1338,6 +1338,7 @@ Courses
 
 -   ROB 101: Computational Linear Algebra - University of Michigan (Youtube - Fall 2021)
 -   ROB 102: Introduction to AI and Programming - University of Michigan
+-   Robotics 201: Calculus for the Modern Engineer - University of Michigan
 -   ROB 311: How to Build Robots and Make Them Move - University of Michigan
 -   ROB 320: Robot Operating Systems - University of Michigan
 -   ROB 501: Mathematics for Robotics - University of Michigan (Youtube)
@@ -1414,6 +1415,8 @@ Courses
 -   Evolutionary robotics course. Spring 2025
 -   Robotics: Basics and Selected Advanced - IISC Bangalore
 -   Nonlinear Control Design Jan 2024 - IIT Bombay
+-   Intelligent Control of Robotic Systems - IIT Roorkee
+-   Mobile Robot Systems Course - Amanda Prorok, University of Cambridge
 
 * * *
 

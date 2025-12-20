@@ -1,6 +1,6 @@
 ---
 project: qrcode
-stars: 67
+stars: 68
 description: 进击的二维码 QR Code in Elixir.
 url: https://github.com/sunboshan/qrcode
 ---

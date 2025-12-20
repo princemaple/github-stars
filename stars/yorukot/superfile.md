@@ -1,6 +1,6 @@
 ---
 project: superfile
-stars: 15996
+stars: 16072
 description: Pretty fancy and modern terminal file manager
 url: https://github.com/yorukot/superfile
 ---
@@ -12,7 +12,7 @@ Special thanks to:
 
 ### Warp, the AI terminal for developers
 
-Available for MacOS, Linux, & Windows  
+Available for macOS, Linux, & Windows  
 
 * * *
 
@@ -43,7 +43,7 @@ Content
 Installation
 ------------
 
-### MacOS and Linux
+### macOS and Linux
 
 bash -c "$(curl -sLo- https://superfile.dev/install.sh)"
 
@@ -92,7 +92,7 @@ Enter the downloaded directory:
 
 cd superfile
 
-### For MacOS/Linux
+### For macOS/Linux
 
 Run the `build.sh` file:
 
@@ -117,7 +117,7 @@ Supported Systems
 -----------------
 
 -   Linux
--   MacOS
+-   macOS
 -   Windows (Not fully supported yet)
 
 Tutorial
@@ -159,9 +159,9 @@ Troubleshooting
 Uninstalling
 ------------
 
-### MacOS and Linux
+### macOS and Linux
 
-On MacOS and Linux, you can uninstall superfile by simply removing the binary. If you installed superfile with sudo, runw
+On macOS and Linux, you can uninstall superfile by simply removing the binary. If you installed superfile with sudo, runw
 
 sudo rm /usr/local/bin/spf
 

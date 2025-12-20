@@ -1,6 +1,6 @@
 ---
 project: streisand
-stars: 23693
+stars: 23699
 description: Streisand sets up a new server running your choice of WireGuard, OpenConnect, OpenSSH, OpenVPN, Shadowsocks, sslh, Stunnel, or a Tor bridge. It also generates custom instructions for all of these services. At the end of the run you are given an HTML file with instructions that can be shared with friends, family members, and fellow activists.
 url: https://github.com/StreisandEffect/streisand
 ---

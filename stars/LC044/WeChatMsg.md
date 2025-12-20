@@ -1,6 +1,6 @@
 ---
 project: WeChatMsg
-stars: 40219
+stars: 40258
 description: null
 url: https://github.com/LC044/WeChatMsg
 ---
@@ -40,6 +40,8 @@ https://github.com/LC044/AnnualReport
 
 🏆致谢
 ====
+
+Details
 
 -   PC微信工具:https://github.com/xaoyaoo/PyWxDump
 -   PyQt组件库:https://github.com/PyQt5/CustomWidgets

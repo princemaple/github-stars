@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 6309
+stars: 6322
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -102,10 +102,10 @@ By using OneUptime Cloud, you also support the continued development of the open
 
 ### Self-Hosted Installation
 
--   **Kubernetes with Helm** — Recommended for production
--   **Docker Compose** — Single-node install (not recommended for production)
--   **Local Development** — For contributors
--   **Upgrade Guide** — Upgrade existing installations
+-   **Kubernetes with Helm** - Recommended for production
+-   **Docker Compose** - Single-node install (not recommended for production)
+-   **Local Development** - For contributors
+-   **Upgrade Guide** - Upgrade existing installations
 
 * * *
 
@@ -196,9 +196,9 @@ Open new issues with feature requests
 
 If you find OneUptime useful, consider supporting its development:
 
--   ⭐ **Star this repo** — It helps others discover OneUptime
--   💵 **Sponsor us** — Every dollar goes to shipping new features
--   🛍️ **Shop merch** — All revenue supports open-source development
+-   ⭐ **Star this repo** - It helps others discover OneUptime
+-   💵 **Sponsor us** - Every dollar goes to shipping new features
+-   🛍️ **Shop merch** - All revenue supports open-source development
 
 * * *
 

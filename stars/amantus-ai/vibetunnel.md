@@ -1,6 +1,6 @@
 ---
 project: vibetunnel
-stars: 2518
+stars: 2541
 description: Turn any browser into your terminal & command your agents on the go.
 url: https://github.com/amantus-ai/vibetunnel
 ---
@@ -63,7 +63,7 @@ Quick Start
 
 **macOS App**: Requires an Apple Silicon Mac (M1+). Intel Macs are not supported for the native app.
 
-**npm Package**: Works on any system with Node.js 20+, including Intel Macs and Linux. Windows is not yet supported (#252).
+**npm Package**: Works on any system with Node.js 22.12+, including Intel Macs and Linux. Windows is not yet supported (#252).
 
 ### 1\. Download & Install
 
@@ -164,7 +164,7 @@ VibeTunnel consists of three main components:
 
 1.  **macOS Menu Bar App** - Native Swift application that manages the server lifecycle
 2.  **Node.js Server** - High-performance TypeScript server handling terminal sessions
-3.  **Web Frontend** - Modern web interface using Lit components and xterm.js
+3.  **Web Frontend** - Modern web interface using Lit components and ghostty-web
 
 The server runs as a standalone Node.js executable with embedded modules, providing excellent performance and minimal resource usage.
 
@@ -418,7 +418,7 @@ yarn global add vibetunnel
 # Or with pnpm
 pnpm add -g vibetunnel
 
-**Requirements**: Node.js 20.0.0 or higher
+**Requirements**: Node.js 22.12.0 or higher
 
 ### Running the VibeTunnel Server
 
@@ -667,8 +667,8 @@ npm run build:npm
 
 This creates prebuilt binaries for:
 
--   macOS (x64, arm64) - Node.js 20, 22, 23, 24
--   Linux (x64, arm64) - Node.js 20, 22, 23, 24
+-   macOS (x64, arm64) - Node.js 22, 23, 24
+-   Linux (x64, arm64) - Node.js 22, 23, 24
 
 #### Build Options
 
@@ -696,7 +696,7 @@ Building from Source
 
 -   macOS 14.0+ (Sonoma) on Apple Silicon (M1+)
 -   Xcode 16.0+
--   Node.js 20+ (minimum supported version)
+-   Node.js 22.12+ (minimum supported version)
 
 ### Build Steps
 

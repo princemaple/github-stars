@@ -20,7 +20,7 @@ Available in Hex, the package can be installed as:
 Add `openid_connect` to your list of dependencies in `mix.exs`:
 
 def deps do
-  \[{:openid\_connect, "~> 1.0.0"}\]
+  \[{:openid\_connect, "~> 1.0.1"}\]
 end
 
 Getting Started

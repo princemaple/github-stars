@@ -1,6 +1,6 @@
 ---
 project: OpenList
-stars: 18795
+stars: 19014
 description: A new AList Fork to Anti Trust Crisis
 url: https://github.com/OpenListTeam/OpenList
 ---

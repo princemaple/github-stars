@@ -1,6 +1,6 @@
 ---
 project: goaccess
-stars: 20053
+stars: 20066
 description: GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 url: https://github.com/allinurl/goaccess
 ---

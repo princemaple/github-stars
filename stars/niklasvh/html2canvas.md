@@ -1,6 +1,6 @@
 ---
 project: html2canvas
-stars: 31698
+stars: 31704
 description: Screenshots with JavaScript
 url: https://github.com/niklasvh/html2canvas
 ---

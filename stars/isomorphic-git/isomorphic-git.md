@@ -1,6 +1,6 @@
 ---
 project: isomorphic-git
-stars: 7996
+stars: 8005
 description: A pure JavaScript implementation of git for node and browsers!
 url: https://github.com/isomorphic-git/isomorphic-git
 ---
@@ -253,6 +253,8 @@ git clone https://github.com/isomorphic-git/isomorphic-git
 cd isomorphic-git
 npm install
 npm test
+
+The new relase happen automatically after every PR merge. We use sematic release.
 
 Check out the `CONTRIBUTING` document for more instructions.
 

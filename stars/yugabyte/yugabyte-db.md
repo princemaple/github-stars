@@ -1,6 +1,6 @@
 ---
 project: yugabyte-db
-stars: 9958
+stars: 9976
 description: YugabyteDB - the cloud native distributed SQL database for mission-critical applications.
 url: https://github.com/yugabyte/yugabyte-db
 ---
@@ -14,7 +14,7 @@ YugabyteDB is a PostgreSQL-compatible, high-performance, cloud-native, distribut
 
 -   Core Features
 -   Get Started
--   Build Apps
+-   Build Applications
 -   Current Roadmap
 -   Recent features
 -   Architecture
@@ -49,7 +49,7 @@ Get Started
 -   Quick Start
 -   Try running a real-world demo application:
     -   Microservices-oriented e-commerce app
-    -   Streaming IoT app with Kafka and Spark Streaming
+    -   Lodging Recommendation Service With OpenAI and pgvector
 
 Can't find what you're looking for? Have a question? Post your questions or comments on our Community Slack or Forum.
 
@@ -100,10 +100,43 @@ Refer to roadmap tracker for the list of all items in the current roadmap.
 Recently released features
 ==========================
 
-v2025.1 (Stable) - July, 2025
------------------------------
+v2025.2 (Stable) - December 2025
+--------------------------------
 
-**v2025.1** is the current stable release. Stable releases undergo rigorous testing for a longer period of time and are ready for production use. For the full list of features and improvements in this release, see Release notes - v2025.1. Here are some of the prominent features.
+**v2025.2** is the current stable release. Stable releases undergo rigorous testing for a longer period of time and are ready for production use. For the full list of features and improvements in this release, see Release notes - v2025.2. Here are some of the prominent features.
+
+### PostgreSQL features enabled by default on new universes\*\*
+
+For new universes running v2025.2 or later, the following YSQL features are now enabled by default when you deploy using yugabyted, YugabyteDB Anywhere, or YugabyteDB Aeon (coming soon to the Early Access track):
+
+-   Read committed
+-   Cost-based optimizer
+-   Auto Analyze
+-   YugabyteDB bitmap scan
+-   Parallel append
+
+In addition, if you upgrade to v2025.2 and the universe already has cost-based optimizer enabled, the following features are enabled by default:
+
+-   Auto Analyze
+-   YugabyteDB bitmap scan
+-   Parallel append
+
+Note that, apart from the exceptions noted, upgrading existing universes does not change the defaults for any of these features.
+
+For more information on PostgreSQL features developed in YugabyteDB for enhanced compatibility, refer to Enhanced PostgreSQL Compatibility Mode.
+
+### Table-level locking for concurrent DDL and DML
+
+Added Table-level locks to support concurrent DDL and DML operations across sessions, improving workload concurrency and reducing conflicts during schema changes.
+
+### Improved time synchronization across nodes
+
+Time synchronization across nodes has been enhanced through the use of the ClockBound library, which is an open source daemon that allows you to compare timestamps to determine order for events and transactions, independent of an instance's geographic location; it improves clock accuracy by several orders of magnitude.
+
+v2025.1 (Stable) - July 2025
+----------------------------
+
+For the full list of features and improvements in this release, see Release notes - v2025.1. Here are some of the prominent features.
 
 ### PostgreSQL 15 compatible YugabyteDB clusters
 
@@ -137,10 +170,10 @@ The CBO leverages YugabyteDB's distributed storage architecture and advanced que
 
 Combine multiple indexes for more efficient scans.
 
-v2.25 (Preview) - Jan, 2025
----------------------------
+v2.25 (Preview) - January 2025
+------------------------------
 
-**v2.25** is the current Preview release. This includes features under active development and is recommended for development and testing only. For the full list of features and improvements in this release, see Release notes - v2.25. Here are some of the prominent features.
+**v2.25** is the most recent Preview release. This includes features under active development and is recommended for development and testing only. For the full list of features and improvements in this release, see Release notes - v2.25. Here are some of the prominent features.
 
 ### PostgreSQL 15 Support
 

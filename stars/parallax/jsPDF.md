@@ -1,6 +1,6 @@
 ---
 project: jsPDF
-stars: 30881
+stars: 30902
 description: Client-side JavaScript PDF generation for everyone.
 url: https://github.com/parallax/jsPDF
 ---
@@ -25,7 +25,7 @@ yarn add jspdf
 
 Alternatively, load it from a CDN:
 
-<script src\="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.4/jspdf.umd.min.js"\></script\>
+<script src\="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/jspdf.umd.min.js"\></script\>
 
 Or always get latest version via unpkg
 
@@ -91,6 +91,32 @@ const doc \= new jsPDF();
 doc.text("Hello world!", 10, 10);
 doc.save("a4.pdf");
 
+Security
+--------
+
+We strongly advise you to sanitize user input before passing it to jsPDF!
+
+For reporting security vulnerabilities, please see SECURITY.md.
+
+### Reading files from the local file system on node
+
+When running under Node.js, jsPDF will restrict reading files from the local file system by default.
+
+Strongly recommended: use Node's permission flags so the runtime enforces access:
+
+node --permission --allow-fs-read=... ./scripts/generate.js
+
+See Node's documentation for details. Note that you need to include all imported JavaScript files (including all dependencies) in the `--allow-fs-read` flag.
+
+Fallback (not recommended): you can allow jsPDF to read specific files by setting `jsPDF.allowFsRead` in your script.
+
+import { jsPDF } from "jspdf";
+
+const doc \= new jsPDF();
+doc.allowFsRead \= \["./fonts/\*", "./images/logo.png"\]; // allow everything under ./fonts and a single file
+
+Warning: We strongly recommend the Node flags over `jsPDF.allowFsRead`, as the flags are enforced by the runtime and offer stronger security.
+
 ### Optional dependencies
 
 Some functions of jsPDF require optional dependencies. E.g. the `html` method, which depends on `html2canvas` and, when supplied with a string HTML document, `dompurify`. JsPDF loads them dynamically when required (using the respective module format, e.g. dynamic imports). Build tools like Webpack will automatically create separate chunks for each of the optional dependencies. If your application does not use any of the optional dependencies, you can prevent Webpack from generating the chunks by defining them as external dependencies:
@@ -132,7 +158,7 @@ import "jspdf/dist/polyfills.es.js";
 
 Alternatively, you can load the prebundled polyfill file. This is not recommended, since you might end up loading polyfills multiple times. Might still be nifty for small applications or quick POCs.
 
-<script src\="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.4/polyfills.umd.js"\></script\>
+<script src\="https://cdnjs.cloudflare.com/ajax/libs/jspdf/4.0.0/polyfills.umd.js"\></script\>
 
 Use of Unicode Characters / UTF-8:
 ----------------------------------

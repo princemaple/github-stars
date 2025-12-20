@@ -1,6 +1,6 @@
 ---
 project: LLaMA-Factory
-stars: 63917
+stars: 64268
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LLaMA-Factory
 ---
@@ -622,6 +622,12 @@ TeleChat2
 3B/7B/35B/115B
 
 telechat2
+
+VibeThinker-1.5B
+
+1.5B
+
+qwen3
 
 XVERSE
 

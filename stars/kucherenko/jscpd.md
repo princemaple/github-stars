@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 5102
+stars: 5107
 description: Copy/paste detector for programming source code.
 url: https://github.com/kucherenko/jscpd
 ---

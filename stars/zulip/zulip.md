@@ -1,6 +1,6 @@
 ---
 project: zulip
-stars: 23992
+stars: 24027
 description: Zulip server and web application. Open-source team chat that helps teams stay productive and focused.
 url: https://github.com/zulip/zulip
 ---

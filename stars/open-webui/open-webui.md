@@ -1,6 +1,6 @@
 ---
 project: open-webui
-stars: 118308
+stars: 119085
 description: User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
 url: https://github.com/open-webui/open-webui
 ---
@@ -172,12 +172,6 @@ If you're experiencing connection issues, it’s often due to the WebUI docker c
 docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA\_BASE\_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
 
 ### Keeping Your Docker Installation Up-to-Date
-
-In case you want to update your local Docker installation to the latest version, you can do it with Watchtower:
-
-docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once open-webui
-
-In the last part of the command, replace `open-webui` with your container name if it is different.
 
 Check our Updating Guide available in our Open WebUI Documentation.
 

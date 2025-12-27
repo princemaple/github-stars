@@ -1,7 +1,7 @@
 ---
 project: domainstack.io
-stars: 187
-description: 📚 All-in-one domain name intelligence tool
+stars: 192
+description: 🧰 All-in-one domain name intelligence
 url: https://github.com/jakejarvis/domainstack.io
 ---
 
@@ -19,7 +19,7 @@ Domainstack is an all-in-one app for exploring domain names. Search any domain (
 -   **Fast, private, no sign-up required for reports**: Live fetches with intelligent multi-layer caching.
 -   **Domain tracking dashboard**: Sign in to track domains you own, verify ownership, and receive expiration alerts.
 -   **Pro tier subscriptions**: Upgrade via Polar for expanded domain tracking limits (100 vs 5 domains).
--   **Email notifications**: Configurable alerts for domain expiration, SSL certificate expiration, subscription lifecycle, and verification status changes.
+-   **Email notifications**: Configurable alerts for domain expiration, SSL certificate expiration, critical record changes, subscription lifecycle, and verification status changes.
 -   **Reliable data pipeline**: Postgres persistence with per-table TTLs (Drizzle) and event-driven background revalidation (Inngest).
 -   **Advanced dashboard**: Domain filtering by status/health/TLD, URL-persisted filters, bulk archive/delete actions, and sortable table/grid views.
 -   **Dynamic configuration**: Vercel Edge Config for runtime-adjustable domain suggestions and tier limits without redeployment.

@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 172
+stars: 174
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---
@@ -67,7 +67,7 @@ sudo yum makecache; sudo yum install -y pig
 `pig` has self-update feature, you can update pig itself to the latest version with:
 
 pig update                  # self-update to the latest version
-pig update -v 0.8.0         # self-update to the specific version
+pig update -v 0.8.1         # self-update to the specific version
 pig ext reload              # update extension catalog metadata only
 
 * * *
@@ -148,22 +148,22 @@ pig ext link 17               # create /usr/pgsql -> /usr/pgsql-17 or /usr/lib/p
 
 You can also use other package aliases, it will translate to corresponding package on your OS distro and the `$v` will be replaced with the active or given pg version number, such as `17`, `16`, etc...
 
-pgsql:        "postgresql$v postgresql$v-server postgresql$v-libs postgresql$v-contrib postgresql$v-plperl postgresql$v-plpython3 postgresql$v-pltcl postgresql$v-llvmjit"
-pg18:         "postgresql18 postgresql18-server postgresql18-libs postgresql18-contrib postgresql18-plperl postgresql18-plpython3 postgresql18-pltcl postgresql18-llvmjit"
+pgsql:        "postgresql$v postgresql$v-server postgresql$v-libs postgresql$v-contrib postgresql$v-plperl postgresql$v-plpython3 postgresql$v-pltcl"
+pg18:         "postgresql18 postgresql18-server postgresql18-libs postgresql18-contrib postgresql18-plperl postgresql18-plpython3 postgresql18-pltcl"
 pg17-client:  "postgresql17"
 pg17-server:  "postgresql17-server postgresql17-libs postgresql17-contrib"
 pg17-devel:   "postgresql17-devel"
-pg17-basic:   "pg\_repack\_17\* wal2json\_17\* pgvector\_17\*"
+pg17-basic:   "pg\_repack\_17 wal2json\_17 pgvector\_17"
 pg16-mini:    "postgresql16 postgresql16-server postgresql16-libs postgresql16-contrib"
 pg15-full:    "postgresql15 postgresql15-server postgresql15-libs postgresql15-contrib postgresql15-plperl postgresql15-plpython3 postgresql15-pltcl postgresql15-llvmjit postgresql15-test postgresql15-devel"
-pg14-main:    "postgresql14 postgresql14-server postgresql14-libs postgresql14-contrib postgresql14-plperl postgresql14-plpython3 postgresql14-pltcl postgresql14-llvmjit pg\_repack\_14\* wal2json\_14\* pgvector\_14\*"
+pg14-main:    "postgresql14 postgresql14-server postgresql14-libs postgresql14-contrib postgresql14-plperl postgresql14-plpython3 postgresql14-pltcl postgresql14-llvmjit pg\_repack\_14 wal2json\_14 pgvector\_14"
 pg13-core:    "postgresql13 postgresql13-server postgresql13-libs postgresql13-contrib postgresql13-plperl postgresql13-plpython3 postgresql13-pltcl postgresql13-llvmjit"
 
 More Alias
 
 Take el for examples:
 
-"postgresql":          "postgresql$v\*",
+"postgresql":          "postgresql$v postgresql$v-server postgresql$v-libs postgresql$v-contrib postgresql$v-plperl postgresql$v-plpython3 postgresql$v-pltcl",
 "pgsql-common":        "patroni patroni-etcd pgbouncer pgbackrest pg\_exporter pgbackrest\_exporter vip-manager",
 "patroni":             "patroni patroni-etcd",
 "pgbouncer":           "pgbouncer",
@@ -227,7 +227,7 @@ citus           avail  13.2.0   OLAP  -dsl--  AGPL-3.0      PIGSTY   14-17  post
 citus\_columnar  avail  13.2.0   OLAP  -ds---  AGPL-3.0      PIGSTY   14-17  postgresql-17-citus         Citus columnar storage engine
 columnar        n/a    1.1.2    OLAP  -ds---  AGPL-3.0      PIGSTY   13-16  postgresql-17-hydra         Hydra Columnar extension
 pg\_analytics    avail  0.3.7    OLAP  -ds-t-  PostgreSQL    PIGSTY   14-17  postgresql-17-pg-analytics  Postgres for analytics, powered by DuckDB
-pg\_duckdb       added  1.1.0    OLAP  -dsl--  MIT           PIGSTY   14-18  postgresql-17-pg-duckdb     DuckDB Embedded in Postgres
+pg\_duckdb       added  1.1.1    OLAP  -dsl--  MIT           PIGSTY   14-18  postgresql-17-pg-duckdb     DuckDB Embedded in Postgres
 pg\_mooncake     added  0.2.0    OLAP  -d----  MIT           PIGSTY   14-18  postgresql-17-pg-mooncake   Columnstore Table in Postgres
 duckdb\_fdw      avail  1.1.2    OLAP  -ds--r  MIT           PIGSTY   13-17  postgresql-17-duckdb-fdw    DuckDB Foreign Data Wrapper
 pg\_parquet      avail  0.5.1    OLAP  -dslt-  PostgreSQL    PIGSTY   14-18  postgresql-17-pg-parquet    copy data between Postgres and Parquet
@@ -256,7 +256,7 @@ $ pig ext info pg\_duckdb
 │ Lead Ext  : pg\_duckdb                                                      │
 │ Category  : OLAP                                                           │
 │ State     : available                                                      │
-│ Version   : 1.1.0                                                          │
+│ Version   : 1.1.1                                                          │
 │ License   : MIT                                                            │
 │ Website   : https://github.com/duckdb/pg\_duckdb                            │
 │ Details   : https://pgext.cloud/e/pg\_duckdb                                │
@@ -283,17 +283,17 @@ $ pig ext info pg\_duckdb
 ├────────────────────────────────────────────────────────────────────────────┤
 │ Repository     │  PIGSTY                                                   │
 │ Package        │  pg\_duckdb\_$v\*                                            │
-│ Version        │  1.1.0                                                    │
+│ Version        │  1.1.1                                                    │
 │ Availability   │  18, 17, 16, 15, 14                                       │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ DEB Package                                                                │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ Repository     │  PIGSTY                                                   │
 │ Package        │  postgresql-$v\-pg-duckdb                                  │
-│ Version        │  1.1.0                                                    │
+│ Version        │  1.1.1                                                    │
 │ Availability   │  18, 17, 16, 15, 14                                       │
 ├────────────────────────────────────────────────────────────────────────────┤
-│ Source: pg\_duckdb-1.1.0.tar.gz                                             │
+│ Source: pg\_duckdb-1.1.1.tar.gz                                             │
 ├────────────────────────────────────────────────────────────────────────────┤
 │ Additional Comments                                                        │
 ├────────────────────────────────────────────────────────────────────────────┤

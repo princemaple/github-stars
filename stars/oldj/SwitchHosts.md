@@ -1,13 +1,22 @@
 ---
 project: SwitchHosts
-stars: 26015
+stars: 26095
 description: Switch hosts quickly!
 url: https://github.com/oldj/SwitchHosts
 ---
 
+Special thanks to:  
+
+### Warp, the intelligent terminal for developers
+
+Available for MacOS, Linux, & Windows  
+
+* * *
+
 SwitchHosts
 ===========
 
+-   Polski
 -   简体中文
 -   繁體中文
 

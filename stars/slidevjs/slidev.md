@@ -1,6 +1,6 @@
 ---
 project: slidev
-stars: 43316
+stars: 43379
 description: Presentation Slides for Developers
 url: https://github.com/slidevjs/slidev
 ---

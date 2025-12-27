@@ -10,10 +10,31 @@ Curio
 
 Curio is a coroutine-based library for concurrent Python systems programming using async/await. It provides standard programming abstractions such as tasks, sockets, files, locks, and queues as well as some advanced features such as support for structured concurrency. It works on Unix and Windows and has zero dependencies. You'll find it to be familiar, small, fast, and fun.
 
-Important Notice: October 25, 2022
-----------------------------------
+So Long, And Thanks for All of the Fish: December 21, 2025
+----------------------------------------------------------
 
-The Curio project is no longer making package releases. I'm more than happy to accept bug reports and may continue to work on it from time to time as the mood strikes. If you want the absolute latest version, you should vendor the source code from here. Curio has no dependencies other than the Python standard library. --Dave
+After ten years, I've decided to abandon the Curio project. No further maintenance is expected.
+
+The primary goal of Curio was one of education and exploration related to asynchronous programming in Python. Much of this work can be found in various PyCon talks given over a five year period from 2015-2019.
+
+-   Python Concurrency from the Ground Up (LIVE), talk by David Beazley at PyCon 2015.
+-   Topics of Interest (Async), Keynote talk by David Beazley at Python Brasil 2015.
+-   Fear and Awaiting in Async, Keynote talk by David Beazley at PyOhio 2016.
+-   The Other Async (Threads + Asyncio = Love), Keynote talk by David Beazley at PyGotham, 2017.
+-   Die Threads, Keynote talk by David Beazley at EuroPython, 2018.
+-   Build Your Own Async, Workshop talk by David Beazley at PyCon India, 2019.
+
+Despite all of this work with async, if I look at my own day-to-day coding in 2025, I continue to program concurrency with threads. Simply stated, you can get a lot done by embracing the actor model and organizing code around message queues.
+
+In designing applications, there are a lot of good ideas related to layering and abstraction that can be applied to make code more general purpose. For example, the Sans-IO page has a lot of good ideas that can be applied to other application domains such as the implementation of state machines and event-driven systems. I'd also recommend Gary Bernhardt's talks about Boundaries and Functional Core, Imperative Shell.
+
+Although it would nice to provide some kind of retrospective on lessons learned from Curio, I don't really see myself doing that except to say that if I had to code it again, I'd probably leave task cancellation out it.
+
+Again, thanks for your support.
+
+Cheers, Dave
+
+(legacy website content follows below)
 
 Curio is Different
 ------------------

@@ -1,6 +1,6 @@
 ---
 project: vibetunnel
-stars: 2541
+stars: 2578
 description: Turn any browser into your terminal & command your agents on the go.
 url: https://github.com/amantus-ai/vibetunnel
 ---
@@ -106,10 +106,6 @@ vt pnpm run dev
 vt npm test
 vt python script.py
 
-# Monitor AI agents with automatic activity tracking
-vt claude --dangerously-skip-permissions
-vt --title-mode dynamic claude    # See real-time Claude status
-
 # Use your shell aliases
 vt gs              # Your 'git status' alias works!
 vt claude-danger   # Custom aliases are resolved
@@ -145,7 +141,7 @@ Features
 -   **🌐 Browser-Based Access** - Control your Mac terminal from any device with a web browser
 -   **🚀 Zero Configuration** - No SSH keys, no port forwarding, no complexity
 -   **🤖 AI Agent Friendly** - Perfect for monitoring Claude Code, ChatGPT, or any terminal-based AI tools
--   **📊 Dynamic Terminal Titles** - Real-time activity tracking shows what's happening in each session
+-   **📊 Session Activity Indicators** - Real-time activity tracking shows which sessions are active or idle
 -   **🔄 Git Follow Mode** - Terminal automatically follows your IDE's branch switching
 -   **⌨️ Smart Keyboard Handling** - Intelligent shortcut routing with toggleable capture modes. When capture is active, use Cmd+1...9/0 (Mac) or Ctrl+1...9/0 (Linux) to quickly switch between sessions
 -   **🔒 Secure by Design** - Multiple authentication modes, localhost-only mode, or secure tunneling via Tailscale/ngrok
@@ -177,7 +173,7 @@ Tailscale creates a secure peer-to-peer VPN network between your devices. It's t
 
 **How it works**: Tailscale creates an encrypted WireGuard tunnel between your devices, allowing them to communicate as if they were on the same local network, regardless of their physical location.
 
-**Setup Guide**:
+#### Basic Setup
 
 1.  Install Tailscale on your Mac: Download from Mac App Store or Direct Download
 2.  Install Tailscale on your remote device:
@@ -185,15 +181,75 @@ Tailscale creates a secure peer-to-peer VPN network between your devices. It's t
     -   **Android**: Download from Google Play
     -   **Other platforms**: All Downloads
 3.  Sign in to both devices with the same account
-4.  Find your Mac's Tailscale hostname in the Tailscale menu bar app (e.g., `my-mac.tailnet-name.ts.net`)
-5.  Access VibeTunnel at `http://[your-tailscale-hostname]:4020`
+4.  If using VibeTunnel's Tailscale Serve integration, ensure Tailscale Serve is enabled in your tailnet settings
+5.  Find your Mac's Tailscale hostname in the Tailscale menu bar app (e.g., `my-mac.tailnet-name.ts.net`)
+6.  Access VibeTunnel at `http://[your-tailscale-hostname]:4020`
+
+#### Enhanced Tailscale Features
+
+VibeTunnel now supports advanced Tailscale integration with **Private** and **Public** access modes:
+
+##### Private Mode (Default)
+
+-   **What it does**: Provides secure HTTPS access within your Tailscale network only
+-   **Access URL**: `https://[your-machine-name].[tailnet-name].ts.net`
+-   **Security**: Traffic stays within your private tailnet
+-   **Best for**: Personal use, accessing your terminals from your own devices
+
+##### Public Mode (Tailscale Funnel)
+
+-   **What it does**: Exposes VibeTunnel to the public internet via Tailscale Funnel
+-   **Access URL**: Same as Private mode but accessible from anywhere
+-   **Security**: Still uses HTTPS encryption, but accessible without Tailscale login
+-   **Best for**: Sharing terminal sessions with colleagues, temporary public access
+-   **Requirements**: Funnel must be enabled on your tailnet (see configuration below)
+
+#### Configuring Tailscale Funnel
+
+To use Public mode, you need to enable Funnel on your tailnet:
+
+1.  **Enable Funnel for your tailnet** by adding this ACL policy in the Tailscale Admin Console:
+    
+    "nodeAttrs": \[
+        {
+            "target": \["autogroup:member"\], // All members of your tailnet
+            "attr":   \["funnel"\], 
+        },
+    \],
+    
+2.  **Switch between modes** in VibeTunnel:
+    
+    -   Open VibeTunnel Settings → Remote Access
+    -   Toggle between "Private (Tailnet Only)" and "Public (Internet)"
+    -   The UI will show the transition status and confirm when the mode is active
+
+#### HTTPS Support
+
+Both Private and Public modes automatically provide **HTTPS access**:
+
+-   Tailscale Serve creates an HTTPS proxy to VibeTunnel's local server
+-   SSL certificates are managed automatically by Tailscale
+-   No manual certificate configuration needed
+-   WebSocket connections work seamlessly over HTTPS/WSS
 
 **Benefits**:
 
--   End-to-end encrypted traffic
--   No public internet exposure
--   Works behind NAT and firewalls
--   Zero configuration after initial setup
+-   **End-to-end encrypted** traffic
+-   **Automatic HTTPS** with valid certificates
+-   **Works behind NAT** and firewalls
+-   **Zero configuration** after initial setup
+-   **Flexible access control** - choose between private tailnet or public internet access
+-   **No port forwarding** required
+
+#### Troubleshooting
+
+**"Tailscale Serve unavailable - using fallback mode"**: This is normal if you don't have Tailscale admin permissions. VibeTunnel will work perfectly using direct HTTP access at `http://[your-tailscale-hostname]:4020`.
+
+**"Applying mode configuration..."**: When switching between Private and Public modes, it may take a few seconds for Tailscale to reconfigure. This is normal.
+
+**"Funnel requires admin permissions"**: You need to be a tailnet admin to enable Funnel. Contact your tailnet admin or create your own tailnet if needed.
+
+**WebSocket connections fail**: Make sure you're using the HTTPS URL when accessing VibeTunnel through Tailscale Serve. The WebSocket authentication tokens are automatically handled.
 
 ### Option 2: ngrok
 
@@ -298,30 +354,19 @@ For more advanced Git worktree workflows, see our detailed worktree documentatio
 Terminal Title Management
 -------------------------
 
-VibeTunnel provides intelligent terminal title management to help you track what's happening in each session:
+VibeTunnel provides terminal title management to help you track sessions:
 
 ### Title Modes
 
--   **Dynamic Mode** (default for web UI): Shows working directory, command, and real-time activity
-    
-    -   Generic activity: `~/projects — npm — •`
-    -   Claude status: `~/projects — claude — ✻ Crafting (45s, ↑2.1k)`
 -   **Static Mode**: Shows working directory and command
-    
     -   Example: `~/projects/app — npm run dev`
 -   **Filter Mode**: Blocks all title changes from applications
-    
     -   Useful when you have your own terminal management system
 -   **None Mode**: No title management - applications control their own titles
-    
 
 ### Activity Detection
 
-Dynamic mode includes real-time activity detection:
-
--   Shows `•` when there's terminal output within 5 seconds
--   Claude commands show specific status (Crafting, Transitioning, etc.)
--   Extensible system for future app-specific detectors
+Activity indicators are based on recent input/output and drive active/idle UI states.
 
 Authentication
 --------------
@@ -420,6 +465,17 @@ pnpm add -g vibetunnel
 
 **Requirements**: Node.js 22.12.0 or higher
 
+### One-shot (no install)
+
+# Start local server (no auth)
+npx -y vibetunnel --no-auth
+
+# Quick remote share (ngrok)
+npx -y vibetunnel --no-auth --ngrok
+
+# One-shot vt wrapper
+npx -y --package vibetunnel vt npm test
+
 ### Running the VibeTunnel Server
 
 #### Basic Usage
@@ -446,11 +502,6 @@ vibetunnel --no-auth
 
 The `vt` command wrapper makes it easy to forward terminal sessions:
 
-# Monitor AI agents with automatic activity tracking
-vt claude
-vt claude --dangerously-skip-permissions
-vt --title-mode dynamic claude    # See real-time Claude status
-
 # Run any command and see it in the browser
 vt npm test
 vt python script.py
@@ -461,9 +512,8 @@ vt --shell
 vt -i  # short form
 
 # Control terminal titles
-vt --title-mode static npm run dev    # Shows path and command
-vt --title-mode dynamic python app.py  # Shows path, command, and activity
-vt --title-mode filter vim            # Blocks vim from changing title
+vt --title-mode static npm run dev     # Shows path and command
+vt --title-mode filter vim             # Blocks vim from changing title
 
 # Control output verbosity
 vt -q npm test         # Quiet mode - no console output
@@ -493,7 +543,6 @@ vt \[options\] <command\> \[args...\]
     -   `none` - No title management, apps control their own titles (default)
     -   `filter` - Block all title changes from applications
     -   `static` - Show working directory and command in title
-    -   `dynamic` - Show directory, command, and live activity status (auto-enabled for Claude)
 
 **Verbosity Control:**
 
@@ -585,9 +634,8 @@ vt -vvv python debug.py     # Full debug output
 vt --log-file debug.log npm run dev  # Write logs to custom file
 
 # Terminal title management
-vt --title-mode static npm run dev    # Fixed title showing command
-vt --title-mode dynamic claude         # Live activity updates
-vt --title-mode filter vim            # Prevent vim from changing title
+vt --title-mode static npm run dev     # Fixed title showing command
+vt --title-mode filter vim             # Prevent vim from changing title
 
 # Shell handling
 vt --shell                  # Open interactive shell
@@ -604,13 +652,10 @@ vt -S /usr/bin/python      # Run python directly without shell
 #### Environment Variables
 
 -   `VIBETUNNEL_LOG_LEVEL` - Set default verbosity level (silent, error, warn, info, verbose, debug)
--   `VIBETUNNEL_TITLE_MODE` - Set default title mode (none, filter, static, dynamic)
+-   `VIBETUNNEL_TITLE_MODE` - Set default title mode (none, filter, static)
 -   `VIBETUNNEL_DEBUG` - Legacy debug flag, equivalent to `VIBETUNNEL_LOG_LEVEL=debug`
--   `VIBETUNNEL_CLAUDE_DYNAMIC_TITLE` - Force dynamic title mode for Claude commands
 
 #### Special Features
-
-**Automatic Claude Detection**: When running Claude AI, `vt` automatically enables dynamic title mode to show real-time activity status (thinking, writing, idle).
 
 **Shell Alias Support**: Your shell aliases and functions work transparently through `vt`:
 

@@ -1,6 +1,6 @@
 ---
 project: dockmon
-stars: 990
+stars: 1001
 description: DockMon - Modern Docker container monitoring with auto-restart and alerts
 url: https://github.com/darthnorse/dockmon
 ---
@@ -14,6 +14,7 @@ Key Features
 ------------
 
 -   **Multi-Host Monitoring** - Monitor containers across unlimited Docker hosts (local and remote)
+-   **Agent-Based Remote Monitoring** - Lightweight Go agent for secure remote Docker monitoring without exposing Docker ports. Runs as a container or systemd service
 -   **Real-Time Dashboard** - Drag-and-drop customizable widgets with WebSocket updates
 -   **Real-Time Statistics** - Live CPU, memory, network metrics
 -   **Real-Time Container Logs** - View logs from multiple containers simultaneously with live updates

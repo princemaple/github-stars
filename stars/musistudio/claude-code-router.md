@@ -1,6 +1,6 @@
 ---
 project: claude-code-router
-stars: 23739
+stars: 24108
 description: Use Claude Code as the foundation for coding infrastructure, allowing you to decide how to interact with the model while enjoying updates from Anthropic.
 url: https://github.com/musistudio/claude-code-router
 ---
@@ -8,12 +8,10 @@ url: https://github.com/musistudio/claude-code-router
 * * *
 
 > This project is sponsored by Z.ai, supporting us with their GLM CODING PLAN.  
-> GLM CODING PLAN is a subscription service designed for AI coding, starting at just $3/month. It provides access to their flagship GLM-4.6 model across 10+ popular AI coding tools (Claude Code, Cline, Roo Code, etc.), offering developers top-tier, fast, and stable coding experiences.  
+> GLM CODING PLAN is a subscription service designed for AI coding, starting at just $3/month. It provides access to their flagship GLM-4.7 model across 10+ popular AI coding tools (Claude Code, Cline, Roo Code, etc.), offering developers top-tier, fast, and stable coding experiences.  
 > Get 10% OFF GLM CODING PLAN：https://z.ai/subscribe?ic=8JVLJQFSKB
 
 > A powerful tool to route Claude Code requests to different models and customize any request.
-
-> GLM-4.6 Supports Reasoning and Interleaved Thinking
 
 ✨ Features
 ----------
@@ -633,5 +631,9 @@ A huge thank you to all our sponsors for their generous support!
 -   \*勤
 -   \*\*锟
 -   \*涛
+-   \*\*明
+-   \*知
+-   \*语
+-   \*瓜
 
 (If your name is masked, please contact me via my homepage email to update it with your GitHub username.)

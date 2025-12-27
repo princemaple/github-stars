@@ -1,6 +1,6 @@
 ---
 project: faceswap
-stars: 54800
+stars: 54820
 description: Deepfakes Software For All
 url: https://github.com/deepfakes/faceswap
 ---
@@ -76,7 +76,7 @@ How To setup and run the project
 
 FaceSwap is a Python program that will run on multiple Operating Systems including Windows, Linux, and MacOS.
 
-See INSTALL.md for full installation instructions. You will need a modern GPU with CUDA support for best performance. Many AMD GPUs are supported through DirectML (Windows) and ROCm (Linux).
+See INSTALL.md for full installation instructions. You will need a modern GPU with CUDA support for best performance. Many AMD GPUs are supported through ROCm (Linux).
 
 Overview
 ========

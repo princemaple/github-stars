@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 93272
+stars: 93476
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -85,6 +85,11 @@ Ines Montani - Matthew Honnibal - **Explosion AI founders - spaCy creators** (re
 Deon Pillsbury - **Cisco** (ref)
 
 * * *
+
+FastAPI mini documentary
+------------------------
+
+There's a FastAPI mini documentary released at the end of 2025, you can watch it online:
 
 **Typer**, the FastAPI of CLIs
 ------------------------------

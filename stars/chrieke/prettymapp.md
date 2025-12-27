@@ -1,6 +1,6 @@
 ---
 project: prettymapp
-stars: 2655
+stars: 2656
 description: 🖼️ Create beautiful maps from OpenStreetMap data in a streamlit webapp
 url: https://github.com/chrieke/prettymapp
 ---
@@ -30,8 +30,8 @@ You can use the webapp directly under prettymapp.streamlit.app or run it locally
 
 git clone https://github.com/chrieke/prettymapp.git
 cd prettymapp
-pip install -r streamlit-prettymapp/requirements.txt
-streamlit run streamlit-prettymapp/app.py
+uv sync --extra streamlit
+uv run streamlit run streamlit-prettymapp/app.py
 
 Python package
 --------------

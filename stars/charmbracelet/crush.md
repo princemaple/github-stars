@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 16137
+stars: 16418
 description: The glamourous AI coding agent for your favourite terminal 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -368,6 +368,40 @@ If you'd like to prevent Crush from using certain built-in tools entirely, you c
 }
 
 To disable tools from MCP servers, see the MCP config section.
+
+### Agent Skills
+
+Crush supports the Agent Skills open standard for extending agent capabilities with reusable skill packages. Skills are folders containing a `SKILL.md` file with instructions that Crush can discover and activate on demand.
+
+Skills are discovered from:
+
+-   `~/.config/crush/skills/` on Unix (default, can be overridden with `CRUSH_SKILLS_DIR`)
+-   `%LOCALAPPDATA%\crush\skills\` on Windows (default, can be overridden with `CRUSH_SKILLS_DIR`)
+-   Additional paths configured via `options.skills_paths`
+
+{
+  "$schema": "https://charm.land/crush.json",
+  "options": {
+    "skills\_paths": \[
+      "~/.config/crush/skills", // Windows: "%LOCALAPPDATA%\\\\crush\\\\skills",
+      "./project-skills"
+    \]
+  }
+}
+
+You can get started with example skills from anthropics/skills:
+
+# Unix
+mkdir -p ~/.config/crush/skills
+cd ~/.config/crush/skills
+git clone https://github.com/anthropics/skills.git \_temp
+mv \_temp/skills/\* . && rm -rf \_temp
+
+# Windows (PowerShell)
+mkdir \-Force "$env:LOCALAPPDATA\\crush\\skills"
+cd "$env:LOCALAPPDATA\\crush\\skills"
+git clone https://github.com/anthropics/skills.git \_temp
+mv \_temp/skills/\* . ; rm \-r \-force \_temp
 
 ### Initialization
 

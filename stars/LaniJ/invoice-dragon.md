@@ -1,6 +1,6 @@
 ---
 project: invoice-dragon
-stars: 716
+stars: 715
 description: Open source application for creating free invoices and receipts
 url: https://github.com/LaniJ/invoice-dragon
 ---

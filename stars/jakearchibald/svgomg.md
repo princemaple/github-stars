@@ -1,6 +1,6 @@
 ---
 project: svgomg
-stars: 6079
+stars: 6082
 description: Web GUI for SVGO
 url: https://github.com/jakearchibald/svgomg
 ---

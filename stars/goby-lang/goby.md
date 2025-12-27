@@ -1,6 +1,6 @@
 ---
 project: goby
-stars: 3514
+stars: 3513
 description: Goby - Yet another programming language written in Go
 url: https://github.com/goby-lang/goby
 ---

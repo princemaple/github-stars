@@ -1,6 +1,6 @@
 ---
 project: ConvertX
-stars: 12711
+stars: 13118
 description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 url: https://github.com/C4illin/ConvertX
 ---
@@ -170,6 +170,14 @@ VTracer
 Raster to vector
 
 8
+
+1
+
+Markitdown
+
+Documents
+
+6
 
 1
 

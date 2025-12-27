@@ -1,6 +1,6 @@
 ---
 project: mua
-stars: 12
+stars: 13
 description: SMTP client in Elixir
 url: https://github.com/ruslandoga/mua
 ---

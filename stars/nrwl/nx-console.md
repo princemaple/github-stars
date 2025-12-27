@@ -1,6 +1,6 @@
 ---
 project: nx-console
-stars: 1390
+stars: 1391
 description: Nx Console is the user interface for Nx & Lerna.
 url: https://github.com/nrwl/nx-console
 ---

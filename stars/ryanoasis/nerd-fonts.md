@@ -1,6 +1,6 @@
 ---
 project: nerd-fonts
-stars: 60917
+stars: 60985
 description: Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more
 url: https://github.com/ryanoasis/nerd-fonts
 ---
@@ -229,7 +229,7 @@ ComicShannsMono Nerd Font
 
 Comic Shanns Mono
 
-1.3.1
+1.3.2
 
 NO
 

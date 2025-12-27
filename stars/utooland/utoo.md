@@ -1,6 +1,6 @@
 ---
 project: utoo
-stars: 2259
+stars: 2272
 description: An unified toolchain for web development.
 url: https://github.com/utooland/utoo
 ---
@@ -44,6 +44,7 @@ Run anywhere: Local, CI, or Browser (via WASM).
 
 -   **`utoo`** (alias **`ut`**): High-performance Rust package manager (Fast, Parallel, `npm` compatible).
 -   **`@utoo/pack`**: Next-gen bundler powered by **Turbopack** (HMR, TS/JSX, Less/Sass, and more).
+-   **`@utoo/pack-cli`**: Command-line interface for the bundler (dev server, build). A lightweight wrapper to run `up` commands — `up` is a shortcut alias for `utoopack`.
 -   **`@utoo/web`**: Web-compatible version of the toolchain (WASM, Browser-based bundling).
 
 🚀 Quick Start
@@ -55,24 +56,24 @@ Run anywhere: Local, CI, or Browser (via WASM).
 npm install -g utoo
 
 # Install the bundler (optional)
-npm install -g @utoo/pack
+ut install @utoo/pack --save
 
 # Install the web version (optional)
-npm install @utoo/web
+ut install @utoo/web --save
 
 ### 2\. Use
 
 #### Package Management
 
-utoo install          # Install dependencies (or use \`ut install\`)
-utoo add lodash       # Add a package (or use \`ut add\`)
-utoo x create-react   # Execute a package (npx style, or use \`ut x\`)
+ut install          # Install dependencies (or use \`ut install\`)
+ut add lodash       # Add a package (or use \`ut add\`)
+ut x create-react   # Execute a package (npx style, or use \`ut x\`)
 
 #### Bundling
 
-utoopack dev          # Start dev server with HMR
-utoopack build        # Production build
-utoopack build --webpack # Build using webpack.config.js
+up dev          # Start dev server with HMR
+up build        # Production build
+up build --webpack # Build using webpack.config.js
 
 ✨ Key Features
 --------------
@@ -82,16 +83,6 @@ utoopack build --webpack # Build using webpack.config.js
 -   🔌 **Webpack Friendly**: Partial support for existing Webpack configurations.
 -   📦 **Monorepo First**: Built-in workspace management.
 -   🌐 **Web Ready**: Run the entire toolchain in the browser via WASM.
-
-🗺️ Roadmap
------------
-
-We are actively working on expanding Utoo's capabilities:
-
--   **Persistent Caching**: Disk-based caching for even faster restarts.
--   **SSR & RSC**: Full support for modern React architectures.
--   **Plugin System**: Extensible hooks for custom build logic.
--   **Mobile Support**: Unified tooling for mobile frontend development.
 
 📂 Project Structure
 --------------------

@@ -1,6 +1,6 @@
 ---
 project: sonic
-stars: 21075
+stars: 21079
 description: 🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM.
 url: https://github.com/valeriansaliou/sonic
 ---
@@ -196,6 +196,8 @@ You can find below a list of Sonic integrations provided by the community (many 
     -   **jsonic** by @alohaking
 -   **Deno**:
     -   **deno-sonic** by @erfanium
+-   **Bun**:
+    -   **sonic-bun** by @emilianscheel
 -   **Elixir**:
     -   **sonix** by @imerkle
 -   **Crystal**:

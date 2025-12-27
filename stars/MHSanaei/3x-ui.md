@@ -1,6 +1,6 @@
 ---
 project: 3x-ui
-stars: 27516
+stars: 27838
 description: Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit (Vmess, Vless, Trojan, ShadowSocks, Wireguard, Tunnel, Mixed, HTTP) 
 url: https://github.com/MHSanaei/3x-ui
 ---

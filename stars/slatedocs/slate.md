@@ -1,6 +1,6 @@
 ---
 project: slate
-stars: 36165
+stars: 36164
 description: Beautiful static documentation for your API
 url: https://github.com/slatedocs/slate
 ---

@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 2501
+stars: 3250
 description: Clean network diagrams. One-time setup, zero upkeep.
 url: https://github.com/scanopy/scanopy
 ---
@@ -64,7 +64,7 @@ For detailed setup options and configuration, see the Installation Guide.
 📚 Documentation
 ----------------
 
-Full documentation at **scanopy.net/docs**
+**scanopy.net/docs**
 
 🖼️ Examples
 ------------

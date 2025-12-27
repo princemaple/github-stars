@@ -1,6 +1,6 @@
 ---
 project: LLaMA-Factory
-stars: 64268
+stars: 64563
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LLaMA-Factory
 ---
@@ -275,23 +275,11 @@ Model size
 
 Template
 
-Baichuan 2
-
-7B/13B
-
-baichuan2
-
 BLOOM/BLOOMZ
 
 560M/1.1B/1.7B/3B/7.1B/176B
 
 \-
-
-ChatGLM3
-
-6B
-
-chatglm3
 
 Command R
 
@@ -299,13 +287,13 @@ Command R
 
 cohere
 
-DeepSeek (Code/MoE)
+DeepSeek (LLM/Code/MoE)
 
 7B/16B/67B/236B
 
 deepseek
 
-DeepSeek 2.5/3
+DeepSeek 3-3.2
 
 236B/671B
 
@@ -323,17 +311,11 @@ ERNIE-4.5
 
 ernie/ernie\_nothink
 
-Falcon
+Falcon/Falcon H1
 
-7B/11B/40B/180B
+0.5B/1.5B/3B/7B/11B/34B/40B/180B
 
-falcon
-
-Falcon-H1
-
-0.5B/1.5B/3B/7B/34B
-
-falcon\_h1
+falcon/falcon\_h1
 
 Gemma/Gemma 2/CodeGemma
 
@@ -353,12 +335,6 @@ GLM-4/GLM-4-0414/GLM-Z1
 
 glm4/glmz1
 
-GLM-4.1V
-
-9B
-
-glm4v
-
 GLM-4.5/GLM-4.5(6)V
 
 9B/106B/355B
@@ -375,31 +351,19 @@ GPT-OSS
 
 20B/120B
 
-gpt
+gpt\_oss
 
-Granite 3.0-3.3
+Granite 3-4
 
-1B/2B/3B/8B
+1B/2B/3B/7B/8B
 
-granite3
-
-Granite 4
-
-7B
-
-granite4
+granite3/granite4
 
 Hunyuan (MT)
 
 7B
 
 hunyuan
-
-Index
-
-1.9B
-
-index
 
 InternLM 2-3
 
@@ -481,9 +445,9 @@ llava\_next\_video
 
 MiMo
 
-7B
+7B/309B
 
-mimo
+mimo/mimo\_v2
 
 MiniCPM 1-4.1
 
@@ -497,23 +461,17 @@ MiniCPM-o-2.6/MiniCPM-V-2.6
 
 minicpm\_o/minicpm\_v
 
-Ministral(3)/Mistral-Nemo
+Ministral 3
 
-3B/8B/12B/14B
+3B/8B/14B
 
-ministral/ministral3
+ministral3
 
 Mistral/Mixtral
 
 7B/8x7B/8x22B
 
 mistral
-
-Mistral Small
-
-24B
-
-mistral\_small
 
 OLMo
 
@@ -526,12 +484,6 @@ PaliGemma/PaliGemma2
 3B/10B/28B
 
 paligemma
-
-Phi-1.5/Phi-2
-
-1.3B/2.7B
-
-\-
 
 Phi-3/Phi-3.5
 
@@ -605,23 +557,11 @@ Seed (OSS/Coder)
 
 seed\_oss/seed\_coder
 
-Skywork o1
-
-8B
-
-skywork\_o1
-
 StarCoder 2
 
 3B/7B/15B
 
 \-
-
-TeleChat2
-
-3B/7B/35B/115B
-
-telechat2
 
 VibeThinker-1.5B
 
@@ -629,23 +569,11 @@ VibeThinker-1.5B
 
 qwen3
 
-XVERSE
-
-7B/13B/65B
-
-xverse
-
 Yi/Yi-1.5 (Code)
 
 1.5B/6B/9B/34B
 
 yi
-
-Yi-VL
-
-6B/34B
-
-yi\_vl
 
 Yuan 2
 
@@ -1110,9 +1038,11 @@ Installation is mandatory.
 
 git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
 cd LLaMA-Factory
-pip install -e ".\[torch,metrics\]" --no-build-isolation
+pip install -e ".\[metrics\]" --no-build-isolation
 
-Extra dependencies available: torch, torch-npu, metrics, deepspeed, liger-kernel, bitsandbytes, hqq, eetq, gptq, aqlm, vllm, sglang, galore, apollo, badam, adam-mini, qwen, minicpm\_v, openmind, swanlab, dev
+Optional dependencies available: `metrics`, `deepspeed`. Install with: `pip install -e ".[metrics,deepspeed]"`
+
+Additional dependencies for specific features are available in `examples/requirements/`.
 
 #### Install from Docker Image
 
@@ -1128,11 +1058,7 @@ Setting up a virtual environment with **uv**
 
 Create an isolated Python environment with uv:
 
-uv sync --extra torch --extra metrics --prerelease=allow
-
-Run LLaMA-Factory in the isolated environment:
-
-uv run --prerelease=allow llamafactory-cli train examples/train\_lora/llama3\_lora\_pretrain.yaml
+uv run llamafactory-cli webui
 
 For Windows users
 
@@ -1160,7 +1086,7 @@ To enable FlashAttention-2 on the Windows platform, please use the script from f
 
 For Ascend NPU users
 
-To install LLaMA Factory on Ascend NPU devices, please upgrade Python to version 3.10 or higher and specify extra dependencies: `pip install -e ".[torch-npu,metrics]"`. Additionally, you need to install the **Ascend CANN Toolkit and Kernels**. Please follow the installation tutorial or use the following commands:
+To install LLaMA Factory on Ascend NPU devices, please upgrade Python to version 3.10 or higher: `pip install -e . torch-npu==2.7.1`. Additionally, you need to install the **Ascend CANN Toolkit and Kernels**. Please follow the installation tutorial or use the following commands:
 
 # replace the url according to your CANN version and devices
 # install CANN Toolkit
@@ -1190,13 +1116,13 @@ torch
 
 2.1.0
 
-2.4.0
+2.7.1
 
 torch-npu
 
 2.1.0
 
-2.4.0.post2
+2.7.1
 
 deepspeed
 
@@ -1306,7 +1232,6 @@ For CUDA users:
 
 docker build -f ./docker/docker-cuda/Dockerfile \\
     --build-arg PIP\_INDEX=https://pypi.org/simple \\
-    --build-arg EXTRAS=metrics \\
     -t llamafactory:latest .
 
 docker run -dit --ipc=host --gpus=all \\
@@ -1321,7 +1246,6 @@ For Ascend NPU users:
 
 docker build -f ./docker/docker-npu/Dockerfile \\
     --build-arg PIP\_INDEX=https://pypi.org/simple \\
-    --build-arg EXTRAS=torch-npu,metrics \\
     -t llamafactory:latest .
 
 docker run -dit --ipc=host \\
@@ -1344,7 +1268,6 @@ For AMD ROCm users:
 
 docker build -f ./docker/docker-rocm/Dockerfile \\
     --build-arg PIP\_INDEX=https://pypi.org/simple \\
-    --build-arg EXTRAS=metrics \\
     -t llamafactory:latest .
 
 docker run -dit --ipc=host \\

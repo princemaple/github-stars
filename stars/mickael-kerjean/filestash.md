@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 13228
+stars: 13255
 description: :file_folder: What Dropbox should have been if it was based on SFTP, S3, FTP, WebDAV, Git, and more
 url: https://github.com/mickael-kerjean/filestash
 ---

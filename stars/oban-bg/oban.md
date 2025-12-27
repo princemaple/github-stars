@@ -1,6 +1,6 @@
 ---
 project: oban
-stars: 3720
+stars: 3722
 description: 💎 Robust job processing in Elixir, backed by modern PostgreSQL, SQLite3, and MySQL
 url: https://github.com/oban-bg/oban
 ---

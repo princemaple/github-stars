@@ -1,6 +1,6 @@
 ---
 project: local-cluster
-stars: 235
+stars: 236
 description: Easy local cluster creation for Elixir to aid in unit testing
 url: https://github.com/whitfin/local-cluster
 ---

@@ -1,6 +1,6 @@
 ---
 project: spacedrive
-stars: 36170
+stars: 36285
 description: Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.
 url: https://github.com/spacedriveapp/spacedrive
 ---
@@ -17,11 +17,13 @@ Organize files across multiple devices, clouds, and platforms from a single inte
 
 Important
 
-Hi, Jamie here! This is Spacedrive v2 (December 2025)—a complete ground-up rewrite.
+**v2.0.0-alpha.1 Released: December 26, 2025**
 
-After development of the original alpha version stopped in January this year, left with the hard lessons of the incomplete alpha, I set out to completely rebuild Spacedrive from the ground up. The first release **2.0.0-pre.1** is coming before Christmas.
+This is Spacedrive v2—a complete ground-up rewrite. After development of the original alpha version stopped in January this year, I rebuilt Spacedrive from scratch with the hard lessons learned.
 
-For now I am open sourcing the code, with complete history from my private fork intact for early testing and preparation for an actual release.
+**Current status:** Alpha release for macOS and Linux. Windows support coming in alpha.2. Mobile apps (iOS/Android) coming soon.
+
+**Download Release** · Visit v2.spacedrive.com for complete documentation and guides.
 
 If you're looking for the previous version, see the v1 branch.
 
@@ -158,11 +160,11 @@ Tech Stack
 
 **Apps**
 
--   **CLI** - Command-line interface
--   **Server** - Headless daemon for Docker deployment
--   **Tauri** - Cross-platform desktop (macOS, Windows, Linux) with React frontend
--   **Web** - Web interface and shared UI components
--   **Mobile** - Cross-platform mobile React Native mobile app (coming soon)
+-   **CLI** - Command-line interface (available now)
+-   **Server** - Headless daemon for Docker deployment (available now)
+-   **Tauri** - Cross-platform desktop with React frontend (macOS and Linux now, Windows in alpha.2)
+-   **Web** - Web interface and shared UI components (available now)
+-   **Mobile** - React Native mobile app (iOS and Android coming soon)
 -   **Prototypes** - Native Swift apps (iOS, macOS) and GPUI media viewer for exploration
 
 **Architecture Patterns**
@@ -207,7 +209,9 @@ Extensions
 
 Spacedrive's WASM-based extension system enables specialized functionality while maintaining security and portability.
 
-Note: This is a heavy WIP, but will be complete in the first 2.0.0-pre.1 release.
+Note
+
+The extension system is under active development. A stable SDK API will be available in a future release.
 
 ### Professional Extensions
 

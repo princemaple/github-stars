@@ -1,6 +1,6 @@
 ---
 project: lexical
-stars: 22658
+stars: 22686
 description: Lexical is an extensible text editor framework that provides excellent reliability, accessibility and performance.
 url: https://github.com/facebook/lexical
 ---
@@ -62,24 +62,24 @@ Development
 -----------
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start playground dev server
-npm run start
+pnpm run start
 
 # Run tests
-npm run test-unit
-npm run test-e2e-chromium
+pnpm run test-unit
+pnpm run test-e2e-chromium
 
 # Lint and type check
-npm run ci-check
+pnpm run ci-check
 
 See CONTRIBUTING.md for detailed development guidelines.
 
 Documentation
 -------------
 
--   **User Guide**: lexical.dev/docs
+-   **User Guide**: lexical.dev/docs/intro
 -   **API Reference**: lexical.dev/docs/api
 -   **Developer Guide**: AGENTS.md - Architecture and development workflows
 -   **Examples**: examples/ - Sample implementations

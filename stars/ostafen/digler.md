@@ -1,6 +1,6 @@
 ---
 project: digler
-stars: 929
+stars: 986
 description: Digler is a tool for forensic disk analysis and file recovery. It's designed to help you unearth lost or deleted data from various disk images and raw devices.
 url: https://github.com/ostafen/digler
 ---

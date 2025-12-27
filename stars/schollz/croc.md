@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 33340
+stars: 33549
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -118,7 +118,7 @@ conda install --channel conda-forge croc
 
 Add the following one-liner function to your ~/.profile (works with any POSIX-compliant shell):
 
-croc() { \[ $# \-eq 0 \] && set -- ""; docker run --rm -it --user "$(id -u):$(id -g)" -v "$(pwd):/c" -v "$HOME/.config/croc:/.config/croc" -w /c -e CROC\_SECRET schollz/croc "$@"; }
+croc() { \[ $# \-eq 0 \] && set -- ""; mkdir -p "$HOME/.config/croc"; docker run --rm -it --user "$(id -u):$(id -g)" -v "$(pwd):/c" -v "$HOME/.config/croc:/.config/croc" -w /c -e CROC\_SECRET docker.io/schollz/croc "$@"; }
 
 You can also just paste it in the terminal for current session. On first run Docker will pull the image. `croc` via Docker will only work within the current directory and its subdirectories.
 
@@ -193,6 +193,18 @@ To send URLs or short text, use:
 
 croc send --text "hello world"
 
+#### Send Multiple Files
+
+You can send multiple files directly by listing the files and/or folders:
+
+croc send \[file1\] \[file2\] \[file3\] \[folder1\] \[folder2\]
+
+#### Show QR Code
+
+To show QR code (for mobile devices), use:
+
+croc send --qr \[file(s)-or-folder\]
+
 #### Use a Proxy
 
 You can send files via a proxy by adding `--socks5`:
@@ -215,11 +227,11 @@ croc send --hash imohash SOMEFILE
 
 By default, the code phrase is copied to your clipboard. To disable this:
 
-croc send --disable-clipboard \[filename\]
+croc --disable-clipboard send \[filename\]
 
 To copy the full command with the secret as an environment variable (useful on Linux/macOS):
 
-croc send --extended-clipboard \[filename\]
+croc --extended-clipboard send \[filename\]
 
 This copies the full command like `CROC_SECRET="code-phrase" croc` (including any relay/pass flags).
 
@@ -245,7 +257,7 @@ croc --relay "myrelay.example.com:9009" send \[filename\]
 
 You can also run a relay with Docker:
 
-docker run -d -p 9009-9013:9009-9013 -e CROC\_PASS='YOURPASSWORD' schollz/croc
+docker run -d -p 9009-9013:9009-9013 -e CROC\_PASS='YOURPASSWORD' docker.io/schollz/croc
 
 To send files using your custom relay:
 

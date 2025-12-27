@@ -1,6 +1,6 @@
 ---
 project: libvips
-stars: 10942
+stars: 10960
 description: A fast image processing library with low memory needs.
 url: https://github.com/libvips/libvips
 ---

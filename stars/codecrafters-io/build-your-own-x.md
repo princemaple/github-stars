@@ -1,6 +1,6 @@
 ---
 project: build-your-own-x
-stars: 450466
+stars: 452407
 description: Master programming by recreating your favorite technologies from scratch.
 url: https://github.com/codecrafters-io/build-your-own-x
 ---
@@ -138,7 +138,8 @@ Tutorials
 -   **C#**: _Build Your Own Database_
 -   **Clojure**: _An Archaeology-Inspired Database_
 -   **Crystal**: _Why you should build your own NoSQL Database_
--   **Go**: _Build Your Own Database from Scratch: Persistence, Indexing, Concurrency_
+-   **Go**: _Build Your Own Database from Scratch: From B+Tree To SQL in 3000 Lines_
+-   **Go**: _Code a database in 45 steps: a series of test-driven small coding puzzles_
 -   **Go**: _Build Your Own Redis from Scratch_
 -   **JavaScript**: _Dagoba: an in-memory graph database_
 -   **Python**: _DBDB: Dog Bed Database_

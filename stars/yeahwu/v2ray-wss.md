@@ -1,11 +1,11 @@
 ---
 project: v2ray-wss
-stars: 2987
+stars: 3036
 description: A proxy script with multiple protocols.
 url: https://github.com/yeahwu/v2ray-wss
 ---
 
-搭建 Shadowsocks-rust， V2ray+ Nginx + WebSocket 和 Reality, Hysteria2, https 正向代理脚本，支持 Debian、Ubuntu、Centos，并支持甲骨文ARM平台。
+搭建 Shadowsocks-rust， V2ray+ Nginx + WebSocket 和 Reality(xtls-rprx-vision), Hysteria2, https 正向代理脚本，支持 Debian、Ubuntu、Centos，并支持甲骨文ARM平台。
 
 简单点讲，没域名的用户可以安装 Reality 和 hy2 代理，有域名的可以安装 V2ray+wss 和 https 正向代理，各取所需。
 
@@ -19,7 +19,7 @@ wget git.io/tcp-wss.sh && bash tcp-wss.sh
 
 已测试系统如下：
 
-Debian 9, 10, 11, 12
+Debian 9, 10, 11, 12, 13
 
 Ubuntu 16.04, 18.04, 20.04, 22.04
 

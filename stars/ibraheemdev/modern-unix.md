@@ -1,6 +1,6 @@
 ---
 project: modern-unix
-stars: 32656
+stars: 32673
 description: A collection of modern/faster/saner alternatives to common unix commands.
 url: https://github.com/ibraheemdev/modern-unix
 ---

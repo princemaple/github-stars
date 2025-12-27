@@ -1,6 +1,6 @@
 ---
 project: Speedy
-stars: 13841
+stars: 13949
 description: 🎮 An open-source game speed modifier.[一款开源的游戏变速器]
 url: https://github.com/game1024/Speedy
 ---
@@ -149,6 +149,10 @@ Description
 365VPN
 
 uses dedicated lines to connect worldwide, offering speeds of up to 10Gbps. Download now to start surfing for free🏄: https://ref.365tz87989.com/?r=RWQVZD
+
+Github Sponsor
+
+https://github.com/sponsors/game1024
 
 Sponsors
 ========

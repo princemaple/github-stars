@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 14278
+stars: 14314
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.13. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -69,7 +69,7 @@ The latest version is recommended, but not required. On the other hand, there is
 
 #### Python
 
-**Python 2** (2.6, 2.7) and **Python 3** (3.4 — 3.13) are supported. If at any moment, there is a stable Python release that is not in this list, rest assured it is being worked on and will be added.
+**Python 2** (2.6, 2.7) and **Python 3** (3.4 - 3.13) are supported. If at any moment, there is a stable Python release that is not in this list, rest assured it is being worked on and will be added.
 
 Important
 
@@ -218,7 +218,7 @@ You may also try `--mode=onefile` which creates a single executable file. Howeve
 
 ### Use Cases
 
-#### Use Case 1 — Program compilation with all modules embedded
+#### Use Case 1 - Program compilation with all modules embedded
 
 If you want to compile a whole program recursively, and not only the single file that is the main program, do it like this:
 
@@ -248,7 +248,7 @@ The resulting binary still depends on CPython and used C extension modules being
 
 If you want to be able to copy it to another machine, use `--mode=standalone` and copy the created `program.dist` directory and execute the `program.exe` (Windows) or `program` (other platforms) put inside.
 
-#### Use Case 2 — Extension Module compilation
+#### Use Case 2 - Extension Module compilation
 
 If you want to compile a single extension module, all you have to do is this:
 
@@ -276,7 +276,7 @@ Note
 
 The resulting extension module can only be loaded into a CPython of the same version and doesn't include other extension modules.
 
-#### Use Case 3 — Package compilation
+#### Use Case 3 - Package compilation
 
 If you need to compile a whole package and embed all modules, that is also feasible, use Nuitka like this:
 
@@ -290,7 +290,7 @@ Note
 
 Data files located inside the package will not be embedded by this process, you need to copy them yourself with this approach. Alternatively, you can use the file embedding of Nuitka commercial.
 
-#### Use Case 4 — Program Distribution
+#### Use Case 4 - Program Distribution
 
 For distribution to other systems, there is the standalone mode, which produces a folder for which you can specify `--mode=standalone`.
 
@@ -505,7 +505,7 @@ For disabling output and stderr with `--force-stdout-spec` and `--force-stderr-s
 
 With `{NONE}`, you may e.g. get `RuntimeError: lost sys.stdout` in case it does get used; with `{NULL}` that never happens. However, some libraries handle this as input for their logging mechanism, and on Windows this is how you are compatible with `pythonw.exe` which is behaving like `{NONE}`.
 
-#### Use Case 5 — Setuptools Wheels
+#### Use Case 5 - Setuptools Wheels
 
 If you have a `setup.py`, `setup.cfg` or `pyproject.toml` driven creation of wheels for your software in place, putting Nuitka to use is extremely easy.
 
@@ -605,7 +605,7 @@ Note
 
 Whatever approach you take, data files in these wheels are not handled by Nuitka at all, but by setuptools. You can, however, use the data file embedding of Nuitka commercial. In that case, you actually would embed the files inside the extension module itself, and not as a file in the wheel.
 
-#### Use Case 6 — Multidist
+#### Use Case 6 - Multidist
 
 If you have multiple programs, that each should be executable, in the past you had to compile multiple times, and deploy all of these. With standalone mode, this, of course, meant that you were fairly wasteful, as sharing the folders could be done, but wasn't really supported by Nuitka.
 
@@ -621,7 +621,7 @@ This feature is still experimental. Use with care and report your findings shoul
 
 This mode works with standalone, onefile, and mere acceleration. It does not work with module mode.
 
-#### Use Case 7 — Building with GitHub Workflows
+#### Use Case 7 - Building with GitHub Workflows
 
 For integration with GitHub workflows there is this Nuitka-Action that you should use that makes it really easy to integrate. You ought to start with a local compilation though, but this will be easiest for cross platform compilation with Nuitka.
 
@@ -1194,7 +1194,7 @@ CPython
 
 2022
 
-3.11
+3.11-3.14
 
 14.2
 

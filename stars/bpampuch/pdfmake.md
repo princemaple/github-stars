@@ -1,6 +1,6 @@
 ---
 project: pdfmake
-stars: 12185
+stars: 12189
 description: Client/server side PDF printing in pure JavaScript
 url: https://github.com/bpampuch/pdfmake
 ---
@@ -11,8 +11,6 @@ pdfmake
 PDF document generation library for server-side and client-side in pure JavaScript.
 
 Check out the playground and examples.
-
-#### This is unstable master branch for version 0.3.x, for stable use version 0.2.x see branch 0.2 or older version 0.1.x see branch 0.1.
 
 ### Features
 

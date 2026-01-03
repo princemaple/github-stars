@@ -1,6 +1,6 @@
 ---
 project: mind-elixir-core
-stars: 2877
+stars: 2883
 description: ⚗ Mind Elixir is a JavaScript, framework-agnostic mind map core.
 url: https://github.com/SSShooter/mind-elixir-core
 ---
@@ -71,13 +71,11 @@ Table of Contents
 -   Who's using
 -   Ecosystem
 -   Development
--   Thanks
+-   Acknowledgments
 -   Contributors
 
 Try now
 -------
-
-https://mind-elixir.com/
 
 ### Playground
 
@@ -244,7 +242,7 @@ let mind \= new MindElixir({
 
 // Use custom markdown parser
 let mind \= new MindElixir({
-  markdown: (text) \=> {
+  markdown: text \=> {
     // Your custom markdown implementation
     return text
       .replace(/\\\*\\\*(.\*?)\\\*\\\*/g, '<strong>$1</strong>')
@@ -256,7 +254,7 @@ let mind \= new MindElixir({
 // Use any markdown library (e.g., marked, markdown-it, etc.)
 import { marked } from 'marked'
 let mind \= new MindElixir({
-  markdown: (text) \=> marked(text),
+  markdown: text \=> marked(text),
 })
 
 ### Operation Guards
@@ -379,8 +377,8 @@ pnpm doc:md
 
 Use DeepWiki to learn more about Mind Elixir
 
-Thanks
-------
+Acknowledgments
+---------------
 
 -   @viselect/vanilla
 

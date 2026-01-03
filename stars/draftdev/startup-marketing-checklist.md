@@ -1,6 +1,6 @@
 ---
 project: startup-marketing-checklist
-stars: 5559
+stars: 5560
 description: A checklist of tactics for marketing your startup.
 url: https://github.com/draftdev/startup-marketing-checklist
 ---

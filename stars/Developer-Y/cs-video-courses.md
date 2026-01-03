@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70468
+stars: 70499
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -562,6 +562,7 @@ Courses
     -   6.S094: Deep Learning for Self-Driving Cars - MIT
     -   CS294-129 Designing, Visualizing and Understanding Deep Neural Networks (YouTube)
     -   CS230: Deep Learning - Autumn 2018 - Stanford University
+    -   CS230: Deep Learning - Autumn 2025 - Stanford University
     -   STAT-157 Deep Learning 2019 - UC Berkeley
     -   Deep Learning, Stanford University
     -   MOOC - Neural Networks for Machine Learning, Geoffrey Hinton 2016 - Coursera
@@ -673,6 +674,7 @@ Courses
     
     -   Stanford CS236: Deep Generative Models I 2023 I Stefano Ermon
     -   CS 6785 - Deep Generative Models - Cornell Tech, Spring 2023)
+    -   ECE 498 / 598 - Deep Generative Models - UIUC, Fall 2025)
     -   MIT 6.S184 Flow Matching and Diffusion Models, 2025
     -   Course on Diffusion Models for Generative AI - UT Austin
     -   Stanford CS336 Language Modeling from Scratch I 2025 - Stanford
@@ -826,6 +828,7 @@ Courses
     -   Vector Calculus for Engineers - HKUST
 -   **Discrete Math**
     -   6.042J - Mathematics for Computer Science, MIT OCW
+    -   18.200 - Principles of Discrete Applied Mathematics, MIT OCW
     -   Computer Science 70, 001 - Spring 2015
     -   CSE 547 Discrete Mathematics, Prof Skiena, University of Stony Brook
     -   Discrete Structures (Summer 2011) - Rutgers, The State University of New Jersey
@@ -926,6 +929,7 @@ Courses
 -   TUe Numerical Linear Algebra 2021, by Martijn Anthonissen
 -   Numerical Linear Algebra fall 2018, by Jaegul Choo
 -   MIT 6.S955 Applied Numerical Algorithms fall 2023, by Justin Solomon
+-   MIT 6.7350 Numerical Algorithms for Computing and Machine Learning fall 2025, by Justin Solomon
 -   UC Berkeley Math 54 Linear Algebra & Differential Equations spring 2022, by Alexander Paulin (Summer 2021, by Peter Koroteev) (Summer 2020, by Luvreet Sangha) (Spring 2018, by Alexander Paulin)
 -   UC Berkeley Math 55 Discrete Mathematics fall 2021, by Nikhil Srivastava
 -   UC Berkeley Math 56 Linear Algebra fall 2023, by Alexander Paulin

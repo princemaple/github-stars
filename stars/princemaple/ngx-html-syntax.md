@@ -1,6 +1,6 @@
 ---
 project: ngx-html-syntax
-stars: 17
+stars: 18
 description: Ngx (Angular2+) HTML Syntax for SublimeText
 url: https://github.com/princemaple/ngx-html-syntax
 ---

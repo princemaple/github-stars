@@ -1,6 +1,6 @@
 ---
 project: bloop
-stars: 9494
+stars: 9500
 description: bloop is a fast code search engine written in Rust.
 url: https://github.com/BloopAI/bloop
 ---

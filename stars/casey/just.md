@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 29480
+stars: 29579
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -962,6 +962,10 @@ Which is equivalent to:
 
 set NAME := true
 
+Non-boolean settings can be set to both strings and expressions.1.46.0
+
+However, because settings affect the behavior of backticks and many functions, those expressions may not contain backticks or function calls, directly or transitively via reference.
+
 #### Allow Duplicate Recipes
 
 If `allow-duplicate-recipes` is set to `true`, defining multiple recipes with the same name is not an error and the last definition is used. Defaults to `false`.
@@ -1848,6 +1852,36 @@ Type
 
 Description
 
+`[arg(ARG, help="HELP")]`1.46.0
+
+recipe
+
+Print help string `HELP` for `ARG` in usage messages.
+
+`[arg(ARG, long="LONG")]`1.46.0
+
+recipe
+
+Require values of argument `ARG` to be passed as `--LONG` option.
+
+`[arg(ARG, short="S")]`1.46.0
+
+recipe
+
+Require values of argument `ARG` to be passed as short `-S` option.
+
+`[arg(ARG, value="VALUE")]`1.46.0
+
+recipe
+
+Makes option `ARG` a flag which does not take a value.
+
+`[arg(ARG, pattern="PATTERN")]`1.45.0
+
+recipe
+
+Require values of argument `ARG` to match regular expression `PATTERN`.
+
 `[confirm]`1.17.0
 
 recipe
@@ -2418,6 +2452,101 @@ info flag:
   just {{flag}}
 
 Regular expressions are provided by the Rust `regex` crate. See the syntax documentation for usage examples.
+
+Usage information for a recipe may be printed with the `--usage` subcommand1.46.0:
+
+$ just --usage foo
+Usage: just foo \[OPTIONS\] bar
+
+Arguments:
+  bar
+
+Help strings may be added to arguments using the `[arg(ARG, help=HELP)]` attribute:
+
+\[arg("bar", help="hello")\]
+foo bar:
+
+$ just --usage foo
+Usage: just foo bar
+
+Arguments:
+  bar hello
+
+#### Recipe Flags and Options
+
+Recipe parameters are positional by default.
+
+In this `justfile`:
+
+@foo bar:
+  echo bar={{bar}}
+
+The parameter `bar` is positional:
+
+$ just foo hello
+bar=hello
+
+The `[arg(ARG, long=OPTION)]`1.46.0 attribute can be used to make a parameter a long option.
+
+In this `justfile`:
+
+\[arg("bar", long="bar")\]
+foo bar:
+
+The parameter `bar` is given with the `--bar` option:
+
+$ just foo --bar hello
+bar=hello
+
+Options may also be passed with `--name=value` syntax:
+
+$ just foo --bar=hello
+bar=hello
+
+The value of `long` can be omitted, in which case the option defaults to the name of the parameter:
+
+\[arg("bar", long)\]
+foo bar:
+
+The `[arg(ARG, short=OPTION)]`1.46.0 attribute can be used to make a parameter a short option.
+
+In this `justfile`:
+
+\[arg("bar", short="b")\]
+foo bar:
+
+The parameter `bar` is given with the `-b` option:
+
+$ just foo -b hello
+bar=hello
+
+If a parameter has both a long and short option, it may be passed using either.
+
+Variadic `+` and `?` parameters cannot be options.
+
+The `[arg(ARG, value=VALUE, …)]`1.46.0 attribute can be used with `long` or `short` to make a parameter a flag which does not take a value.
+
+In this `justfile`:
+
+\[arg("bar", long="bar", value="hello")\]
+foo bar:
+
+The parameter `bar` is given with the `--bar` option, but does not take a value, and instead takes the value given in the `[arg]` attribute:
+
+$ just foo --bar
+bar=hello
+
+This is useful for unconditionally requiring a flag like `--force` on dangerous commands.
+
+A flag is optional if its parameter has a default:
+
+\[arg("bar", long="bar", value="hello")\]
+foo bar\="goodbye":
+
+Causing it to receive the default when not passed in the invocation:
+
+$ just foo
+bar=goodbye
 
 ### Dependencies
 

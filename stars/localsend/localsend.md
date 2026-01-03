@@ -1,6 +1,6 @@
 ---
 project: localsend
-stars: 72307
+stars: 72668
 description: An open-source cross-platform alternative to AirDrop
 url: https://github.com/localsend/localsend
 ---

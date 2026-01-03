@@ -1,6 +1,6 @@
 ---
 project: brotli-webpack-plugin
-stars: 214
+stars: 213
 description: Prepare Brotli-compressed versions of assets to serve them with Content-Encoding: br
 url: https://github.com/mynameiswhm/brotli-webpack-plugin
 ---

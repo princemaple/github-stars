@@ -1,6 +1,6 @@
 ---
 project: dune
-stars: 191
+stars: 192
 description: A sandbox for Elixir to safely evaluate untrusted code from user input
 url: https://github.com/functional-rewire/dune
 ---

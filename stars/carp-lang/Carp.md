@@ -1,6 +1,6 @@
 ---
 project: Carp
-stars: 5780
+stars: 5786
 description: A statically typed lisp, without a GC, for real-time applications.
 url: https://github.com/carp-lang/Carp
 ---

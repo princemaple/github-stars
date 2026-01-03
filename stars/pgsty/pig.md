@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 174
+stars: 175
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---
@@ -67,7 +67,7 @@ sudo yum makecache; sudo yum install -y pig
 `pig` has self-update feature, you can update pig itself to the latest version with:
 
 pig update                  # self-update to the latest version
-pig update -v 0.8.1         # self-update to the specific version
+pig update -v 0.9.0         # self-update to the specific version
 pig ext reload              # update extension catalog metadata only
 
 * * *

@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 6327
+stars: 6337
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -137,10 +137,8 @@ Hardened images • Priority support • Custom features • Data residency opti
 🛠️ Installation
 ----------------
 
-# Quick start with Docker Compose
-git clone https://github.com/OneUptime/oneuptime.git
-cd oneuptime
-npm run start
+# Quick start with one command
+curl https://oneuptime.com/install.sh | bash
 
 For detailed installation guides, see:
 

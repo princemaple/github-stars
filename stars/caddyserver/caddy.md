@@ -1,6 +1,6 @@
 ---
 project: caddy
-stars: 68801
+stars: 68923
 description: Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
 url: https://github.com/caddyserver/caddy
 ---
@@ -94,13 +94,16 @@ username ALL=(ALL:ALL) NOPASSWD: /usr/sbin/setcap
 
 replacing `username` with your actual username. Please be careful and only do this if you know what you are doing! We are only qualified to document how to use Caddy, not Go tooling or your computer, and we are providing these instructions for convenience only; please learn how to use your own computer at your own risk and make any needful adjustments.
 
+Then you can run the tests in all modules or a specific one:
+
+$ go test ./...
+$ go test ./modules/caddyhttp/tracing/
+
 ### With version information and/or plugins
 
 Using our builder tool, `xcaddy`...
 
-```
 $ xcaddy build
-```
 
 ...the following steps are automated:
 

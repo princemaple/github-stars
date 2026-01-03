@@ -1,13 +1,14 @@
 ---
 project: every-programmer-should-know
-stars: 97092
+stars: 97284
 description: A collection of (mostly) technical things every software developer should know about
 url: https://github.com/mtdvio/every-programmer-should-know
 ---
 
-### Measure your Software Developer level against a cross-industry benchmark FOR FREE!
+### Measure your Software Developer level against a cross-industry benchmark in 10 minutes!
 
-Take a quiz and get instant results  
+Take a FREE quiz and get instant results - no email submission required  
+_Created by this repo author_
 
 Every Programmer Should Know 🤔
 ===============================

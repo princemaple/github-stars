@@ -1,11 +1,11 @@
 ---
 project: Pake
-stars: 44309
+stars: 44458
 description: 🤱🏻 Turn any webpage into a desktop app with one command.
 url: https://github.com/tw93/Pake
 ---
 
-#### **English** | 简体中文 | 日本語
+#### **English** | 简体中文
 
 Pake
 ====

@@ -1,6 +1,6 @@
 ---
 project: plate
-stars: 15668
+stars: 15701
 description: Rich-text editor with AI, MCP, and shadcn/ui
 url: https://github.com/udecode/plate
 ---

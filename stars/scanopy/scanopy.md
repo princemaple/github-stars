@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 3250
+stars: 3508
 description: Clean network diagrams. One-time setup, zero upkeep.
 url: https://github.com/scanopy/scanopy
 ---
@@ -37,10 +37,17 @@ Scanopy scans your network, identifies hosts and services, and generates an inte
 -   **IT Professionals**: Maintain accurate network inventory without manual spreadsheets
 -   **System Administrators**: Visualize complex multi-VLAN environments
 -   **DevOps Teams**: Map containerized services and their dependencies
--   **MSPs**: Manage multiple client networks with separate organizations
+-   **MSPs**: Manage multiple client networks with your team
 
-🚀 Quick Start
---------------
+📋 Licensing
+------------
+
+**Self-hosted (AGPL-3.0):** Free for all use. Requires source disclosure for network services and copyleft compliance.  
+**Self-hosted (Commercial license):** For those who cannot comply with AGPL-3.0 terms. Contact licensing@scanopy.net  
+**Hosted Solution:** **Scanopy Cloud** subscription for zero infrastructure management
+
+🚀 Quick Start for Self Hosting
+-------------------------------
 
 **Docker Compose**
 
@@ -54,6 +61,8 @@ Use this helper script to create a Scanopy LXC.
 **Unraid**
 
 Available as an Unraid community app.
+
+> 💡 **Prefer not to self-host?** Get a free trial of Scanopy Cloud
 
 * * *
 
@@ -70,13 +79,6 @@ For detailed setup options and configuration, see the Installation Guide.
 ------------
 
 **scanopy.net/showcase**
-
-📋 Licensing
-------------
-
-**Self-hosted (AGPL-3.0):** Free for all use. Requires source disclosure for network services and copyleft compliance.  
-**Self-hosted (Commercial license):** For those who cannot comply with AGPL-3.0 terms. Contact licensing@scanopy.net  
-**Hosted Solution:** Scanopy Cloud subscription for zero infrastructure management
 
 🤝 Contributing
 ---------------

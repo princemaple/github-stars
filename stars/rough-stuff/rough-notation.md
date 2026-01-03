@@ -1,6 +1,6 @@
 ---
 project: rough-notation
-stars: 9372
+stars: 9383
 description: Create and animate hand-drawn annotations on a web page
 url: https://github.com/rough-stuff/rough-notation
 ---

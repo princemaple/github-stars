@@ -1,6 +1,6 @@
 ---
 project: domainstack.io
-stars: 192
+stars: 197
 description: 🧰 All-in-one domain name intelligence
 url: https://github.com/jakejarvis/domainstack.io
 ---
@@ -19,7 +19,7 @@ Domainstack is an all-in-one app for exploring domain names. Search any domain (
 -   **Fast, private, no sign-up required for reports**: Live fetches with intelligent multi-layer caching.
 -   **Domain tracking dashboard**: Sign in to track domains you own, verify ownership, and receive expiration alerts.
 -   **Pro tier subscriptions**: Upgrade via Polar for expanded domain tracking limits (100 vs 5 domains).
--   **Email notifications**: Configurable alerts for domain expiration, SSL certificate expiration, critical record changes, subscription lifecycle, and verification status changes.
+-   **Multi-channel notifications**: Configurable alerts via Email and In-App notifications for domain expiry, certificate expiry, and critical record changes.
 -   **Reliable data pipeline**: Postgres persistence with per-table TTLs (Drizzle) and event-driven background revalidation (Inngest).
 -   **Advanced dashboard**: Domain filtering by status/health/TLD, URL-persisted filters, bulk archive/delete actions, and sortable table/grid views.
 -   **Dynamic configuration**: Vercel Edge Config for runtime-adjustable domain suggestions and tier limits without redeployment.
@@ -28,21 +28,22 @@ Domainstack is an all-in-one app for exploring domain names. Search any domain (
 --------------
 
 -   **Next.js 16** (App Router) + **React 19** + **TypeScript**
--   **Tailwind CSS v4** + **shadcn/ui** components (of the Base UI variety)
+-   **Tailwind CSS v4** + **shadcn/ui** components (of the **Base UI** variety)
 -   **tRPC** API with **TanStack Query** for data fetching and optimistic updates
 -   **TanStack Table** for sortable dashboard table view
+-   **rdapper** for RDAP lookups with WHOIS fallback
 -   **PlanetScale Postgres** + **Drizzle ORM** with connection pooling
 -   **Better Auth** for authentication via OAuth
--   **Polar** for subscription payments and customer portal (Pro tier)
--   **Inngest** for event-driven background jobs (revalidation, expiry checks, domain re-verification)
+-   **Polar** for subscription payments
+-   **Inngest** for scheduled and event-driven background jobs
 -   **Resend** + **React Email** for transactional email notifications
--   **Vercel Edge Config** for runtime configuration (domain suggestions, tier limits)
--   **Vercel Blob** for favicon/screenshot storage with Postgres metadata caching
--   **rdapper** for RDAP lookups with WHOIS fallback
--   **Puppeteer** (with `@sparticuz/chromium` on Vercel) for server-side screenshots
--   **Mapbox** for IP geolocation maps
--   **PostHog** for analytics and error tracking with sourcemap uploads and reverse proxy
--   **Vitest** with React Testing Library and **Biome** for lint/format
+-   **Vercel Edge Config** for runtime configuration (domain suggestions, tier limits, and other safeguards)
+-   **Vercel Blob** for media storage
+-   **PostHog** for analytics and error tracking
+-   **mapcn** with **CARTO Basemaps** for beautiful IP geolocation maps
+-   **Logo.dev** for provider icons
+-   **Puppeteer** for on-demand screenshots
+-   **Biome** for linting/formatting and **Vitest** (Browser Mode w/ Playwright) for E2E testing
 
 🌱 Getting Started
 ------------------
@@ -59,11 +60,9 @@ Create `.env.local` and populate required variables:
 
 cp .env.example .env.local
 
-### 3\. Run Drizzle database migrations & seeds
+### 3\. Apply Drizzle database migrations to local Postgres database
 
-pnpm db:generate   # generate SQL from schema
-pnpm db:migrate    # apply migrations to local Postgres
-pnpm db:seed       # seed database (if needed)
+pnpm db:migrate
 
 ### 4\. Start development
 
@@ -73,10 +72,10 @@ pnpm dev
 
 This single command boots:
 
--   **Postgres** on `localhost:5432`
--   **Inngest dev server** on `http://localhost:8288`
--   **ngrok tunnel** with public HTTPS URL (for webhooks) and web UI on `http://localhost:4040`
 -   **Next.js dev server** on `http://localhost:3000`
+-   **Inngest dev server** on `http://localhost:8288`
+-   **Postgres** on `localhost:5432`
+-   **ngrok tunnel** with public HTTPS URL (for webhook testing) and web UI on `http://localhost:4040`
 
 Open http://localhost:3000. Press `Ctrl+C` to stop all services at once.
 
@@ -103,7 +102,6 @@ pnpm format        # apply Biome formatting
 pnpm typecheck     # tsc --noEmit
 pnpm test          # Vitest (watch mode)
 pnpm test:run      # Vitest (single run)
-pnpm test:ui       # Vitest UI
 pnpm test:coverage # Vitest with coverage report
 
 # Drizzle
@@ -111,7 +109,6 @@ pnpm db:generate   # generate SQL migrations from schema
 pnpm db:push       # push the current schema to the database
 pnpm db:migrate    # apply migrations to the database
 pnpm db:studio     # open Drizzle Studio
-pnpm db:seed       # run seed script (scripts/db/seed.ts)
 
 📜 License
 ----------

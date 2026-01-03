@@ -1,6 +1,6 @@
 ---
 project: UptimeFlare
-stars: 3172
+stars: 3197
 description: ✔ Free and serverless uptime monitoring / status page on Cloudflare Workers, with Geo-specific checks
 url: https://github.com/lyc8503/UptimeFlare
 ---
@@ -9,6 +9,10 @@ url: https://github.com/lyc8503/UptimeFlare
 ============
 
 A more advanced, serverless, and free uptime monitoring & status page solution, powered by Cloudflare Workers, complete with a user-friendly interface.
+
+🎉 **\[UPDATE 2026/01/03\]** I have just migrated UptimeFlare from KV to D1 Database. I also updated the Terraform Cloudflare provider to v5 and improved the deployment process. The data structure has been optimized to resolve long-standing performance issues.
+
+New users can deploy directly, while existing users can have a simple auto migration process (upgrade docs below)! Feel free to open an issue if you run into any trouble deploying.
 
 ⭐Features
 ---------
@@ -88,4 +92,4 @@ New features (TODOs)
 -   Customizable footer
 -   New header logo
 -   Improve CPU time usage
--   Local deployment
+-   Local deployment (docs WIP)

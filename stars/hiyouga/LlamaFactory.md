@@ -1,8 +1,8 @@
 ---
-project: LLaMA-Factory
-stars: 64563
+project: LlamaFactory
+stars: 64812
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
-url: https://github.com/hiyouga/LLaMA-Factory
+url: https://github.com/hiyouga/LlamaFactory
 ---
 
 ### Used by Amazon, NVIDIA, Aliyun, etc.
@@ -461,6 +461,12 @@ MiniCPM-o-2.6/MiniCPM-V-2.6
 
 minicpm\_o/minicpm\_v
 
+MiniMax-M1/MiniMax-M2
+
+229B/456B
+
+minimax1/minimax2
+
 Ministral 3
 
 3B/8B/14B
@@ -801,6 +807,7 @@ Supervised fine-tuning datasets
 -   Chinese-DeepSeek-R1-Distill (zh)
 -   LLaVA mixed (en&zh)
 -   Pokemon-gpt4o-captions (en&zh)
+-   DLR-Web (en)
 -   Open Assistant (de)
 -   Dolly 15k (de)
 -   Alpaca GPT4 (de)
@@ -1038,7 +1045,7 @@ Installation is mandatory.
 
 git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
 cd LLaMA-Factory
-pip install -e ".\[metrics\]" --no-build-isolation
+pip install -e ".\[metrics\]"
 
 Optional dependencies available: `metrics`, `deepspeed`. Install with: `pip install -e ".[metrics,deepspeed]"`
 
@@ -1184,11 +1191,11 @@ You can also use **Easy Dataset**, **DataFlow** and **GraphGen** to create synth
 
 ### Quickstart
 
-Use the following 3 commands to run LoRA **fine-tuning**, **inference** and **merging** of the Llama3-8B-Instruct model, respectively.
+Use the following 3 commands to run LoRA **fine-tuning**, **inference** and **merging** of the Qwen3-4B-Instruct model, respectively.
 
-llamafactory-cli train examples/train\_lora/llama3\_lora\_sft.yaml
-llamafactory-cli chat examples/inference/llama3\_lora\_sft.yaml
-llamafactory-cli export examples/merge\_lora/llama3\_lora\_sft.yaml
+llamafactory-cli train examples/train\_lora/qwen3\_lora\_sft.yaml
+llamafactory-cli chat examples/inference/qwen3\_lora\_sft.yaml
+llamafactory-cli export examples/merge\_lora/qwen3\_lora\_sft.yaml
 
 See examples/README.md for advanced usage (including distributed training).
 
@@ -1292,7 +1299,7 @@ When building the Docker image, use `-v ./hf_cache:/root/.cache/huggingface` arg
 
 ### Deploy with OpenAI-style API and vLLM
 
-API\_PORT=8000 llamafactory-cli api examples/inference/llama3.yaml infer\_backend=vllm vllm\_enforce\_eager=true
+API\_PORT=8000 llamafactory-cli api examples/inference/qwen3.yaml infer\_backend=vllm vllm\_enforce\_eager=true
 
 Tip
 

@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 7859
+stars: 8787
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---

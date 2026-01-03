@@ -1,6 +1,6 @@
 ---
 project: plexy
-stars: 160
+stars: 161
 description: A toolkit for building excellent APIs with Elixir
 url: https://github.com/heroku/plexy
 ---

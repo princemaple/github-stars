@@ -1,6 +1,6 @@
 ---
 project: langextract
-stars: 19491
+stars: 20050
 description: A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.
 url: https://github.com/google/langextract
 ---
@@ -87,6 +87,8 @@ examples \= \[
         \]
     )
 \]
+
+> **Note:** Examples drive model behavior. Each `extraction_text` should ideally be verbatim from the example's `text` (no paraphrasing), listed in order of appearance. LangExtract raises `Prompt alignment` warnings by default if examples don't follow this pattern—resolve these for best results.
 
 ### 2\. Run the Extraction
 

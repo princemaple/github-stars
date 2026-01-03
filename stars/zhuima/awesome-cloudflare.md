@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 12543
+stars: 12588
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -592,9 +592,9 @@ cf-files-sharing
 
 CloudPaste
 
-基于Cloudflare的在线文本/大文件分享平台，支持多种语法 Markdown 渲染、阅后即焚、S3聚合存储、密码保护等功能，可作为WebDav挂载，支持Docker部署。
+基于Cloudflare的在线文本/大文件分享平台，支持多种语法 Markdown 渲染、阅后即焚、S3/WebDav/TG/OneDrive等多存储聚合、密码保护等功能，可作为WebDav挂载，支持Docker部署。
 
-https://copy.730888.xyz/paste/demo
+https://doc.cloudpaste.qzz.io/
 
 维护中
 

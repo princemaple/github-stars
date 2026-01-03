@@ -1,6 +1,6 @@
 ---
 project: uid
-stars: 667
+stars: 668
 description: A tiny (130B to 205B) and fast utility to generate random IDs of fixed length
 url: https://github.com/lukeed/uid
 ---

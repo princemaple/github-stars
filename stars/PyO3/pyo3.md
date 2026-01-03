@@ -1,6 +1,6 @@
 ---
 project: pyo3
-stars: 15054
+stars: 15095
 description: Rust bindings for the Python interpreter
 url: https://github.com/PyO3/pyo3
 ---
@@ -184,6 +184,7 @@ Examples
 -   deltalake-python _Native Delta Lake Python binding based on delta-rs with Pandas integration._
 -   fastbloom _A fast bloom filter | counting bloom filter implemented by Rust for Rust and Python!_
 -   fastuuid _Python bindings to Rust's UUID library._
+-   fast-paseto _High-performance PASETO (Platform-Agnostic Security Tokens) implementation with Python bindings._
 -   feos _Lightning fast thermodynamic modeling in Rust with fully developed Python interface._
 -   finalytics _Investment Analysis library in Rust | Python._
 -   forust _A lightweight gradient boosted decision tree library written in Rust._
@@ -215,6 +216,7 @@ Examples
 -   tiktoken _A fast BPE tokeniser for use with OpenAI's models._
 -   tokenizers _Python bindings to the Hugging Face tokenizers (NLP) written in Rust._
 -   tzfpy _A fast package to convert longitude/latitude to timezone name._
+-   toml-rs _A High-Performance TOML v1.0.0 and v1.1.0 parser for Python written in Rust._
 -   utiles _Fast Python web-map tile utilities_
 
 Articles and other media

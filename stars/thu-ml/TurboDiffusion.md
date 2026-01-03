@@ -1,6 +1,6 @@
 ---
 project: TurboDiffusion
-stars: 2632
+stars: 2984
 description: TurboDiffusion: 100–200× Acceleration for Video Diffusion Models
 url: https://github.com/thu-ml/TurboDiffusion
 ---
@@ -357,7 +357,7 @@ We implement white-box SLA training by aligning the predictions of the SLA-enabl
 
 Single-node training example:
 
-WORKDIR="/your/path/to/turbodiffusion"
+WORKDIR="/path/to/TurboDiffusion"
 cd $WORKDIR
 export PYTHONPATH=turbodiffusion
 
@@ -374,7 +374,7 @@ registry=registry\_sla
 experiment=wan2pt1\_1pt3B\_res480p\_t2v\_SLA
 
 torchrun --nproc\_per\_node=8 \\
-    -m scripts.train --config=rcm/configs/${registry}.py -- experiment=${experiment} \\
+    -m scripts.train --config=turbodiffusion/rcm/configs/${registry}.py -- experiment=${experiment} \\
         model.config.teacher\_ckpt=${CHECKPOINT\_ROOT}/Wan2.1-T2V-1.3B.dcp \\
         model.config.tokenizer.vae\_pth=${CHECKPOINT\_ROOT}/Wan2.1\_VAE.pth \\
         model.config.text\_encoder\_path=${CHECKPOINT\_ROOT}/models\_t5\_umt5-xxl-enc-bf16.pth \\
@@ -398,7 +398,7 @@ Roadmap
 We're actively working on the following features and improvements:
 
 -   Organize and release training code
--   Optimize infrastructure for better parallel
+-   Optimize infrastructure to support flattened context parallel
 -   vLLM-Omni integration
 -   Support for more video generation models
 -   Support for autoregressive video generation models

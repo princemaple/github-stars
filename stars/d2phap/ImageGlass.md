@@ -1,6 +1,6 @@
 ---
 project: ImageGlass
-stars: 11874
+stars: 11934
 description: 🏞 A lightweight, versatile image viewer
 url: https://github.com/d2phap/ImageGlass
 ---
@@ -8,12 +8,10 @@ url: https://github.com/d2phap/ImageGlass
 ImageGlass - A lightweight, versatile image viewer
 ==================================================
 
-ImageGlass is a lightweight software designed for seamless viewing of images in a clean and intuitive interface. With support for over 88 common image formats including `WEBP`, `GIF`, `SVG`, `PNG`, `JXL`, `HEIC`,... ImageGlass also offers advanced features that cater to the needs of both regular users and designers, making it the excellent tool to enhance workflow efficiency.
+ImageGlass is a lightweight software designed for seamless viewing of images in a clean and intuitive interface. With support for over 90 common image formats including `WEBP`, `GIF`, `SVG`, `PNG`, `JXL`, `HEIC`,... ImageGlass also offers advanced features that cater to the needs of both regular users and designers, making it the excellent tool to enhance workflow efficiency.
 
 📥 Download
 -----------
-
-  
 
 ### ImageGlass on Microsoft Store!
 
@@ -81,7 +79,7 @@ Hotfix update
 -----------------
 
 -   Windows 11
--   Visual Studio 2022
+-   Visual Studio 2026
 
 The `develop` branch contains the latest commits while the `prod` branch is for the final stable release.
 
@@ -102,12 +100,11 @@ ImageGlass is free for both personal and commercial use, except the Store versio
 
 For more information about ImageGlass, go to ImageGlass Docs.
 
-🤼 Community and Support
-------------------------
+🧑‍🤝‍🧑 Community and Support
+------------------------------
 
 -   GitHub issues
 -   ImageGlass Discord
--   Google forum
 
 💖 This project needs your help!
 --------------------------------

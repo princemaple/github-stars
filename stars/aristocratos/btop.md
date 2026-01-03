@@ -1,6 +1,6 @@
 ---
 project: btop
-stars: 29234
+stars: 29373
 description: A monitor of resources
 url: https://github.com/aristocratos/btop
 ---
@@ -215,6 +215,20 @@ The `make install` command places the default themes in `[$PREFIX or /usr/local]
 Use the `--themes-dir` command-line option to specify a custom themes directory. When specified, this directory takes priority over the default search paths.
 
 Let me know if you want to contribute with new themes.
+
+The new Process list pausing and Process following features introduce a few new theme attributes. These attributes still need to be added to all of the existing themes (except the default one).
+
+Process list banner attributes:
+
+-   proc\_pause\_bg: background color of the banner when the list is paused.
+-   proc\_follow\_bg: background color of the banner when the process following feature is active.
+-   proc\_banner\_bg: background color of the banner when the process following feature is active AND the list is paused.
+-   proc\_banner\_fg: foreground (text) color of the banner
+
+Process following attributes:
+
+-   followed\_bg: background color of the followed process in the list.
+-   followed\_fg: foreground color of the followed process in the list.
 
 Support and funding
 -------------------
@@ -1329,6 +1343,9 @@ proc\_left = false
 
 #\* (Linux) Filter processes tied to the Linux kernel(similar behavior to htop).
 proc\_filter\_kernel = false
+
+#\* Should the process list follow the selected process when detailed view is open.
+proc\_follow\_detailed = true
 
 #\* In tree-view, always accumulate child process resources in the parent process.
 proc\_aggregate = false

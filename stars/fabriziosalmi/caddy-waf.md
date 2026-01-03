@@ -1,6 +1,6 @@
 ---
 project: caddy-waf
-stars: 701
+stars: 704
 description: Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
 url: https://github.com/fabriziosalmi/caddy-waf
 ---
@@ -29,8 +29,8 @@ A robust, highly customizable, and feature-rich **Web Application Firewall (WAF)
 
 _Simple at a glance UI :)_
 
-Security & Performance (SOTA)
------------------------------
+Security & Performance
+----------------------
 
 -   **Zero-Copy Networking**: Uses `unsafe.String` to eliminate memory allocations during request body inspection.
 -   **Wait-Free Concurrency**: Atomic counters ensure accurate metrics and rule hit counting without lock contention.

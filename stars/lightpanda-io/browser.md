@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 11284
+stars: 11378
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -112,13 +112,14 @@ Lightpanda is in Beta and currently a work in progress. Stability and coverage a
 
 Here are the key features we have implemented:
 
--   HTTP loader (based on Libcurl)
--   HTML parser and DOM tree (based on Netsurf libs)
+-   HTTP loader (Libcurl)
+-   HTML parser (html5ever)
+-   DOM tree
 -   Javascript support (v8)
 -   DOM APIs
 -   Ajax
     -   XHR API
-    -   Fetch API (polyfill)
+    -   Fetch API
 -   DOM dump
 -   CDP/websockets server
 -   Click
@@ -130,6 +131,8 @@ Here are the key features we have implemented:
 
 NOTE: There are hundreds of Web APIs. Developing a browser (even just for headless mode) is a huge task. Coverage will increase over time.
 
+You can also follow the progress of our Javascript support in our dedicated zig-js-runtime project.
+
 Build from sources
 ------------------
 
@@ -137,41 +140,32 @@ Build from sources
 
 Lightpanda is written with Zig `0.15.2`. You have to install it with the right version in order to build the project.
 
-Lightpanda also depends on zig-v8-fork, Libcurl, Brotli, Netsurf libs and Mimalloc.
+Lightpanda also depends on zig-js-runtime (with v8), Libcurl and html5ever.
 
-To be able to build the v8 engine, you have to install some libs:
+To be able to build the v8 engine for zig-js-runtime, you have to install some libs:
 
-For Debian/Ubuntu based Linux:
+For **Debian/Ubuntu based Linux**:
 
 ```
-sudo apt install xz-utils \
-    python3 ca-certificates git \
-    pkg-config libglib2.0-dev \
-    gperf libexpat1-dev unzip rsync \
-    cmake clang
+sudo apt install xz-utils ca-certificates \
+    clang make curl git
 ```
 
-For systems with Nix, you can use the devShell:
+You also need to install Rust.
+
+For systems with **Nix**, you can use the devShell:
 
 ```
 nix develop
 ```
 
-For MacOS, you need Xcode and the following pacakges from homebrew:
+For **MacOS**, you need cmake and Rust.
 
 ```
-brew install cmake pkgconf
+brew install cmake
 ```
 
-### Install and build dependencies
-
-#### All in one build
-
-You can run `make install` to install deps all in one (or `make install-dev` if you need the development versions).
-
-Be aware that the build task is very long and cpu consuming, as you will build from sources all dependencies, including the v8 Javascript engine.
-
-#### Step by step build dependency
+### Install Git submodules
 
 The project uses git submodules for dependencies.
 
@@ -181,35 +175,31 @@ To init or update the submodules in the `vendor/` directory:
 make install-submodule
 ```
 
-**iconv**
+This is an alias for `git submodule init && git submodule update`.
 
-libiconv is an internationalization library used by Netsurf.
+### Build and run
 
-```
-make install-libiconv
-```
+You an build the entire browser with `make build` or `make build-dev` for debug env.
 
-**Netsurf libs**
+But you can directly use the zig command: `zig build run`.
 
-Netsurf libs are used for HTML parsing and DOM tree generation.
+#### Embed v8 snapshot
 
-```
-make install-netsurf
-```
+Lighpanda uses v8 snapshot. By default, it is created on startup but you can embed it by using the following commands:
 
-For dev env, use `make install-netsurf-dev`.
-
-**Mimalloc**
-
-Mimalloc is used as a C memory allocator.
+Generate the snapshot.
 
 ```
-make install-mimalloc
+zig build snapshot_creator -- src/snapshot.bin
 ```
 
-For dev env, use `make install-mimalloc-dev`.
+Build using the snapshot binary.
 
-Note: when Mimalloc is built in dev mode, you can dump memory stats with the env var `MIMALLOC_SHOW_STATS=1`. See https://microsoft.github.io/mimalloc/environment.html.
+```
+zig build -Dsnapshot_path=../../snapshot.bin
+```
+
+See #1279 for more details.
 
 Test
 ----

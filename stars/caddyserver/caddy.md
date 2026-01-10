@@ -1,6 +1,6 @@
 ---
 project: caddy
-stars: 68923
+stars: 69063
 description: Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
 url: https://github.com/caddyserver/caddy
 ---
@@ -15,10 +15,22 @@ url: https://github.com/caddyserver/caddy
 
 Caddy is an extensible server platform that uses TLS by default.
 
-  
-  
-
 Releases · Documentation · Get Help
+
+         
+ 
+
+**Powered by**  
+
+* * *
+
+Special thanks to:  
+
+### Warp, built for coding with multiple AI agents
+
+Available for MacOS, Linux, & Windows  
+
+* * *
 
 ### Menu
 
@@ -32,8 +44,6 @@ Releases · Documentation · Get Help
 -   Full documentation
 -   Getting help
 -   About
-
-**Powered by**  
 
 Features
 --------

@@ -1,6 +1,6 @@
 ---
 project: caddy-waf
-stars: 704
+stars: 706
 description: Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
 url: https://github.com/fabriziosalmi/caddy-waf
 ---
@@ -71,7 +71,24 @@ curl -fsSL -H "Pragma: no-cache" https://raw.githubusercontent.com/fabriziosalmi
 🚀 Installation
 ---------------
 
-### Prerequisites
+### Option 1: Using `caddy add-package` (Recommended)
+
+If you already have Caddy installed, you can add this plugin directly using the `caddy add-package` command:
+
+caddy add-package github.com/fabriziosalmi/caddy-waf
+
+This command will:
+
+-   Download a new Caddy binary with the WAF module included
+-   Keep your existing modules intact
+-   Safely replace your current Caddy binary
+-   Create a backup of your previous binary (use `--keep-backup` to retain it)
+
+**Note:** This is an experimental Caddy feature. The command uses Caddy's remote build service to compile and download a custom binary with the module included.
+
+### Option 2: Build from Source
+
+#### Prerequisites
 
 -   Go **1.25** or higher
 -   Caddy **v2.10.x** or higher (for building with this plugin)
@@ -165,19 +182,20 @@ For complete documentation, including configuration options, rule format details
 ### 📑 Table of Contents
 
 1.  **Installation** - _Instructions for installing the Caddy WAF middleware._
-2.  **Configuration Options** - _Detailed explanation of all available configuration settings._
-3.  **Rules Format (`rules.json`)** - _A comprehensive guide to defining custom rules using the JSON format._
-4.  **Blacklist Formats** - _Documentation of the formats used for defining IP and DNS blacklists._
-5.  **Rate Limiting** - _How to configure rate limiting, including parameters and usage._
-6.  **Country Blocking and Whitelisting** - _Details on how to configure country-based blocking and whitelisting._
-7.  **Protected Attack Types** - _An overview of the wide range of web-based threats that the Caddy WAF is designed to protect against._
-8.  **Dynamic Updates** - _How to dynamically update the WAF rules and other settings without downtime._
-9.  **Metrics** - _Details about the WAF's metrics endpoint and the different metrics collected._
-10.  **Prometheus Metrics** - _Instructions on how to expose WAF metrics using the Prometheus format._
-11.  **ELK Observability** - _Instructions on how to configure caddy-waf ELK stack observability._
-12.  **Rule/Blacklist Population Scripts** - _Documentation on the provided scripts to automatically fetch, update and generate rules and blacklists._
-13.  **Testing** - _Guidance on how to test the WAF's effectiveness using the provided testing tools._
-14.  **Docker Support** - _Instructions on how to build and run the WAF using Docker._
+2.  **Using `caddy add-package`** - _Quick guide for installing with the `caddy add-package` command._
+3.  **Configuration Options** - _Detailed explanation of all available configuration settings._
+4.  **Rules Format (`rules.json`)** - _A comprehensive guide to defining custom rules using the JSON format._
+5.  **Blacklist Formats** - _Documentation of the formats used for defining IP and DNS blacklists._
+6.  **Rate Limiting** - _How to configure rate limiting, including parameters and usage._
+7.  **Country Blocking and Whitelisting** - _Details on how to configure country-based blocking and whitelisting._
+8.  **Protected Attack Types** - _An overview of the wide range of web-based threats that the Caddy WAF is designed to protect against._
+9.  **Dynamic Updates** - _How to dynamically update the WAF rules and other settings without downtime._
+10.  **Metrics** - _Details about the WAF's metrics endpoint and the different metrics collected._
+11.  **Prometheus Metrics** - _Instructions on how to expose WAF metrics using the Prometheus format._
+12.  **ELK Observability** - _Instructions on how to configure caddy-waf ELK stack observability._
+13.  **Rule/Blacklist Population Scripts** - _Documentation on the provided scripts to automatically fetch, update and generate rules and blacklists._
+14.  **Testing** - _Guidance on how to test the WAF's effectiveness using the provided testing tools._
+15.  **Docker Support** - _Instructions on how to build and run the WAF using Docker._
 
 * * *
 

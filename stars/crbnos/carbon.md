@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1642
+stars: 1653
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, job shops, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -231,7 +231,7 @@ $ cp ./.env.example ./.env
 -   `UPSTASH_REDIS_REST_URL=[UPSTASH_REDIS_REST_URL]`
 -   `UPSTASH_REDIS_REST_TOKEN=[UPSTASH_REDIS_REST_TOKEN]`
 
-1.  Navigate to the project you created in https://cloud.trigger.dev/ and copy the following from the `Environments & API Keys` section:
+1.  Navigate to the project you created in https://cloud.trigger.dev and copy the following from the `Environments & API Keys` section:
 
 -   `TRIGGER_SECRET_KEY=[Private 'dev' API Key, starting 'tr_dev_*']`
 -   `TRIGGER_API_URL="https://api.trigger.dev"`

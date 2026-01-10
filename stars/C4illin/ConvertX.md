@@ -1,6 +1,6 @@
 ---
 project: ConvertX
-stars: 13353
+stars: 14218
 description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 url: https://github.com/C4illin/ConvertX
 ---
@@ -323,6 +323,8 @@ These are written by other people, and may be outdated, incorrect or wrong.
 Tutorial in french: https://belginux.com/installer-convertx-avec-docker/
 
 Tutorial in chinese: https://xzllll.com/24092901/
+
+Tutorial in polish: https://www.kreatywnyprogramista.pl/convertx-lokalny-konwerter-plikow
 
 Screenshots
 -----------

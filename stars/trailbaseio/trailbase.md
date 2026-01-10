@@ -1,6 +1,6 @@
 ---
 project: trailbase
-stars: 4344
+stars: 4368
 description: A blazingly fast, open-source application server with type-safe APIs, built-in WebAssembly runtime, realtime, auth, and admin UI built on Rust, SQLite & Wasmtime.
 url: https://github.com/trailbaseio/trailbase
 ---

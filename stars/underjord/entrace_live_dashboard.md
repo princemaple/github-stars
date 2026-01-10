@@ -1,6 +1,6 @@
 ---
 project: entrace_live_dashboard
-stars: 35
+stars: 36
 description: Tracing experiments with live dashboard
 url: https://github.com/underjord/entrace_live_dashboard
 ---

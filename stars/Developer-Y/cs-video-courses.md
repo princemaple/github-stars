@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70499
+stars: 70535
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -225,6 +225,9 @@ Courses
 -   #### **Operating Systems**
     
     -   ECS 150 - Operating Systems and Systems Programming - Fall 2020 - Joël Porquet-Lupine - UC Davis
+    -   ECE 344 - Operating Systems - Fall 2024 - Jon Eyolfson - University of Toronto (Fall 2024 Section 2) (Fall 2023) (Fall 2022)
+    -   ECE 353 - Systems Software - Winter 2025 - Jon Eyolfson - University of Toronto (Winter 2024) (Winter 2023)
+    -   ECE 454 - Computer Systems Programming - Fall 2024 - Jon Eyolfson - University of Toronto
     -   CS124 Operating Systems - California Institute of Technology, Fall 2018 - Youtube
     -   CS 162 Operating Systems and Systems Programming, Spring 2015 - University of California, Berkeley (Fall 2020 - YouTube)
     -   CS 4414 - Operating Systems, University of Virginia (rust-class)
@@ -568,7 +571,7 @@ Courses
     -   MOOC - Neural Networks for Machine Learning, Geoffrey Hinton 2016 - Coursera
     -   Stat 946 Deep Learning - University of Waterloo
     -   EECS 298 Theory of Computational Neural Networks and Machine Learning (Fall 2020) - UC Irvine (YouTube)
-    -   ECE 1508 Applied Deep Learning - University of Toronto (Winter 2025) (Fall 2024)
+    -   ECE 1508 Applied Deep Learning - University of Toronto (Fall 2025) (Winter 2025) (Fall 2024)
     -   Neural networks class - Université de Sherbrooke (YouTube)
     -   DLCV - Deep Learning for Computer Vision - UPC Barcelona
     -   DLAI - Deep Learning for Artificial Intelligence @ UPC Barcelona
@@ -577,7 +580,7 @@ Courses
     -   Deep Learning - Winter 2020-21 - Tübingen Machine Learning
     -   Geometric Deep Learning - AMMI
     -   Math for Deep Learning — Andreas Geiger
-    -   Applied Deep Learning 2022 - TU Wien
+    -   Applied Deep Learning 2025 - TU Wien (2024) (2023) (2022) (2021) (2020)
     -   Neural Networks: Zero to Hero - Andrej Karpathy
     -   CIS 522 - Deep Learning - U Penn
     -   UVA DEEP LEARNING COURSE
@@ -586,6 +589,7 @@ Courses
     -   Mathematics of Deep Learning (2021) - FAU
     -   CS7015 - Deep Learning - Prof. Mitesh M. Khapra - IIT Madras
     -   ETH Zürich | Deep Learning in Scientific Computing 2023
+    -   Deep Learning François Fleuret
     -   Applied Deep Learning Maziar Raissi
     -   UC Berkeley CS 182 / 282a Deep Learning spring 2023, by Anant Sahai
     -   Foundations of Deep Learning - UMD
@@ -602,6 +606,7 @@ Courses
     -   Reinforcement Learning - IIT Madras (TA - Manav Mishra, TA - Prabhleen Kukreja, TA - Sandarbh Yadav , TA - Avik Kar)
     -   Special topics in ML (Reinforcement Learning) IIT madras
     -   CS885 Reinforcement Learning - Spring 2018 - University of Waterloo
+    -   CS 224R - Deep Reinforcement Learning- Stanford (YouTube)
     -   CS 285 - Deep Reinforcement Learning- UC Berkeley
     -   CS 294 112 - Reinforcement Learning
     -   NUS CS 6101 - Deep Reinforcement Learning
@@ -683,6 +688,7 @@ Courses
     -   Build a Large Language Model (From Scratch) by Sebastian Raschka
     -   Reinforcement Learning of Large Language Models - UCLA
     -   WING NUS CS6101 Large Language Models (T2310)
+    -   CS 839: Foundation Models Fall 2025 - UW Madison (YouTube playlists)
     -   CS 886: Recent Advances on Foundation Models Winter 2024 - University of Waterloo
     -   UC Berkeley CS 194/294-196 Large Language Model Agents Fall 2024, by Dawn Song & Xinyun Chen (YouTube playlist)
     -   UC Berkeley CS 194/294-267 Understanding Large Language Models Foundations and Safety spring 2024, by Dawn Song & Dan Hendrycks
@@ -702,6 +708,7 @@ Courses
     -   CAP5415 Computer Vision - UCF Fall 2023
     -   CAP6412 Advanced Computer Vision - UCF Spring 2024 (Youtube)
     -   Advanced Deep Learning for Computer vision (ADL4CV) (IN2364) - TU Munich (Youtube)
+    -   Advanced Deep Learning for Physics (ADL4P) - TU Munich
     -   Computer Vision III: Detection, Segmentation and Tracking (CV3DST) (IN2375) - TU Munich
 -   #### **Time Series Analysis**
     
@@ -829,7 +836,7 @@ Courses
 -   **Discrete Math**
     -   6.042J - Mathematics for Computer Science, MIT OCW
     -   18.200 - Principles of Discrete Applied Mathematics, MIT OCW
-    -   Computer Science 70, 001 - Spring 2015
+    -   UC Berkeley Computer Science 70, Discrete Mathematics and Probability Theory - Fall 2025 (YouTube)
     -   CSE 547 Discrete Mathematics, Prof Skiena, University of Stony Brook
     -   Discrete Structures (Summer 2011) - Rutgers, The State University of New Jersey
     -   Discrete Mathematics and Mathematical Reasoning 2015/16 - University of Edinburgh
@@ -1355,6 +1362,7 @@ Courses
 -   CS 287 - Advanced Robotics, Fall 2011, UC Berkeley (Videos)
 -   CMU 16-715 Robot Dynamics 2022 - CMU
 -   CMU 16-745 Optimal Control 2024 - CMU (Lecture notebooks) (YouTube-2023) (YouTube-2022)
+-   CMU 16-745 Optimal Control Recitations 2024 - CMU (YouTube-2023)
 -   CS235 - Applied Robot Design for Non-Robot-Designers - Stanford University
 -   Lecture: Visual Navigation for Flying Robots (YouTube)
 -   CS 205A: Mathematical Methods for Robotics, Vision, and Graphics (Fall 2013)
@@ -1430,7 +1438,8 @@ Courses
 -   Computational Finance Course - Prof Grzelak
 -   Financial Engineering Course: Interest Rates and xVA - Prof Grzelak
 -   MOOC - Mathematical Methods for Quantitative Finance, University of Washington/Coursera)
--   18.S096 Topics in Mathematics with Applications in Finance, MIT OCW
+-   18.S096 Topics in Mathematics with Applications in Finance, Fall 2013 MIT OCW
+-   18.642 Topics in Mathematics with Applications in Finance, Fall 2024 MIT OCW
 -   Computational Finance - Universität Leipzig
 -   Machine Learning for Trading | Udacity
 -   ACT 460 / STA 2502 – Stochastic Methods for Actuarial Science - University of Toronto

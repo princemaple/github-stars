@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 13364
+stars: 13426
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern Rest API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -106,12 +106,13 @@ And there's an ever-growing list of plugins and integrations:
 
 The following frameworks have chosen Scalar API Reference as their default OpenAPI documentation UI, recognizing its developer-friendly features and modern design:
 
+-   Effect
 -   ElysiaJS
 -   HappyX
 -   Litestar
 -   Nitro
--   Platformatic
 -   oRPC
+-   Platformatic
 
   
 
@@ -208,6 +209,10 @@ Scalar OpenAPI Parser
 
 Parse OpenAPI documents
 
+Scalar OpenAPI to Markdown
+
+OpenAPI > Markdown/HTML
+
 Scalar OpenAPI Upgrader
 
 Upgrade OpenAPI documents
@@ -296,16 +301,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **liamdscalar**
 
   
-**ivanagas**
-
-  
 **Mason-Little**
 
   
-**RemcoGoy**
+**ivanagas**
 
   
 **adjsky**
+
+  
+**RemcoGoy**
 
   
 **mcollina**
@@ -338,13 +343,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ATREAY**
 
   
+**soulchild**
+
+  
 **yshrsmz**
 
   
 **hex0id**
-
-  
-**soulchild**
 
   
 **horpto**
@@ -377,13 +382,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **handrews**
 
   
-**gsmcdonald**
-
-  
 **WDaan**
 
   
 **Duncanma**
+
+  
+**gsmcdonald**
 
   
 **rpmccarter**
@@ -425,7 +430,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **stratosblue**
 
   
-**yokeTH**
+**Huliiiiii**
 
   
 **hrynevychroman**
@@ -473,7 +478,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **luke-hagar-sp**
 
   
-**Huliiiiii**
+**diegolopes**
 
   
 **unnoq**
@@ -560,7 +565,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **thibaultleouay**
 
   
-**diegolopes**
+**yokeTH**
 
   
 **untiny**
@@ -581,7 +586,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **danjohnson95**
 
   
-**yungwarlock**
+**damiansan239**
 
   
 **ClanEver**
@@ -626,6 +631,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **arthurfiorette**
 
   
+**thisisarko**
+
+  
 **arashsheyda**
 
   
@@ -660,6 +668,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **kyllian**
+
+  
+**KevSlashNull**
 
   
 **jlnslv**

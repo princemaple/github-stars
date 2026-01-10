@@ -1,7 +1,7 @@
 ---
 project: LunaTV
-stars: 7215
-description: 【停止更新】本项目采用 CC BY-NC-SA 协议，禁止任何商业化行为，任何衍生项目必须保留本项目地址并以相同协议开源
+stars: 7392
+description: 本项目采用 CC BY-NC-SA 协议，禁止任何商业化行为，任何衍生项目必须保留本项目地址并以相同协议开源
 url: https://github.com/MoonTechLab/LunaTV
 ---
 

@@ -1,6 +1,6 @@
 ---
 project: mquickjs_ex
-stars: 34
+stars: 41
 description: Embedded JS runtime for Elixir based on MQuickJS
 url: https://github.com/Valian/mquickjs_ex
 ---
@@ -395,16 +395,29 @@ Acknowledgments
 
 This project builds on MQuickJS by Fabrice Bellard and Charlie Gordon - a remarkable minimal JavaScript engine that makes embedding JS in resource-constrained environments possible.
 
-**Inspiration:**
+**Based on tv-labs/lua:**
 
--   tv-labs/lua - Ergonomic Elixir API for Luerl; influenced our public API design
+The Elixir API design and significant portions of the macro system are derived from tv-labs/lua by TV Labs Ltd. Specifically:
+
+-   The `MquickjsEx.API` module with its `defjs` macro is adapted from `Lua.API` and `deflua`
+-   The public API patterns (`new`, `eval`, `get`, `set`, `load_api`, private storage) follow tv-labs/lua's design
+-   The exception handling structure is adapted from `Lua.RuntimeException`
+
+We are grateful to the tv-labs/lua maintainers for creating such an ergonomic interface pattern for embedding scripting languages in Elixir.
+
+**Other inspiration:**
+
 -   livebook-dev/pythonx - Demonstrated embedding another language runtime directly in the BEAM
 
 License
 -------
 
-MIT
+Apache 2.0 - see LICENSE and NOTICE for details.
 
 ### Third-Party Code
 
-This library includes vendored code from MQuickJS (Micro QuickJS JavaScript Engine) by Fabrice Bellard and Charlie Gordon, licensed under the MIT License. See `c_src/vendor/LICENSE` for details.
+This library includes:
+
+-   Vendored code from MQuickJS (Micro QuickJS JavaScript Engine) by Fabrice Bellard and Charlie Gordon, licensed under the MIT License. See `c_src/vendor/LICENSE` for details.
+    
+-   Code derived from tv-labs/lua by TV Labs Ltd, licensed under the Apache License 2.0. See NOTICE for attribution details.

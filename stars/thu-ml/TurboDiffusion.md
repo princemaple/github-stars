@@ -1,6 +1,6 @@
 ---
 project: TurboDiffusion
-stars: 2984
+stars: 3146
 description: TurboDiffusion: 100–200× Acceleration for Video Diffusion Models
 url: https://github.com/thu-ml/TurboDiffusion
 ---
@@ -13,7 +13,9 @@ TurboDiffusion primarily uses SageAttention, SLA (Sparse-Linear Attention) for a
 
 Paper: TurboDiffusion: Accelerating Video Diffusion Models by 100-200 Times
 
-**Note**: the checkpoints and paper are not finalized, and will be updated later to improve quality.
+**Note**: The current models are only trained on **long English prompts**. If you use other types of prompts, please augment them to get better performance.
+
+The checkpoints and paper are not finalized, and will be updated later to improve quality.
 
 Original, E2E Time: 184s
 

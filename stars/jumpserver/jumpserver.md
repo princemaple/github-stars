@@ -1,6 +1,6 @@
 ---
 project: jumpserver
-stars: 29319
+stars: 29394
 description: JumpServer is an open-source Privileged Access Management (PAM) platform that provides DevOps and IT teams with on-demand and secure access to SSH, RDP, Kubernetes, Database and RemoteApp endpoints through a web browser.
 url: https://github.com/jumpserver/jumpserver
 ---
@@ -106,7 +106,7 @@ Welcome to submit PR to contribute. Please refer to CONTRIBUTING.md for guidelin
 License
 -------
 
-Copyright (c) 2014-2025 FIT2CLOUD, All rights reserved.
+Copyright (c) 2014-2026 FIT2CLOUD, All rights reserved.
 
 Licensed under The GNU General Public License version 3 (GPLv3) (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

@@ -1,6 +1,6 @@
 ---
 project: nerd-fonts
-stars: 61085
+stars: 61188
 description: Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more
 url: https://github.com/ryanoasis/nerd-fonts
 ---
@@ -906,6 +906,25 @@ Patching the font of your own choosing:
     
     ```
     docker run --rm -v /path/to/fonts:/in:Z -v /path/for/output:/out:Z -e "PN=10" nerdfonts/patcher [OPTIONS]
+    ```
+    
+    -   Update docker image
+    
+    ```
+    docker pull nerdfonts/patcher
+    ```
+    
+    -   Run interatively to get full control of `font-patcher` invocation and all debug output and error messages:
+    
+    ```
+    docker run -it -v /path/to/fonts:/in:Z --entrypoint=/bin/sh nerdfonts/patcher
+    ```
+    
+    And then in the container for example:
+    
+    ```
+    / # cd /in
+    /in # fontforge --script ../nerd/font-patcher [OPTIONS] your_font.ttf
     ```
     
 

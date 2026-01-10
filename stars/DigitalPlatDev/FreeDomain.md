@@ -1,12 +1,12 @@
 ---
 project: FreeDomain
-stars: 136946
+stars: 139199
 description: DigitalPlat FreeDomain: Free Domain For Everyone
 url: https://github.com/DigitalPlatDev/FreeDomain
 ---
 
-🌐 Say Goodbye to Domain Fees
------------------------------
+🌐 Welcome to DigitalPlat Domain
+--------------------------------
 
 Welcome to **DigitalPlat FreeDomain**, where we believe everyone deserves a digital identity. Whether you're an individual, or an organization, we’re offering free domain names to bring your ideas to life – no strings attached!
 
@@ -35,13 +35,13 @@ Jump in and register your domain by visiting our site:
 
 ➡️ DigitalPlat FreeDomain Dashboard
 
-📝 Read our full tutorial (work in progress)
+📝 Read our tutorial
 
 * * *
 
 ### 🌟 Trusted by Thousands
 
-With over 350,000 domains already registered, DigitalPlat FreeDomain is a trusted choice for individuals and organizations alike. Join our growing community and claim your own free domain today!
+With over 400,000 domains already registered, DigitalPlat FreeDomain is a trusted choice for individuals and organizations alike. Join our growing community and claim your own free domain today!
 
 * * *
 
@@ -53,7 +53,7 @@ Check FAQ Page
 
 ### 🤝 Join Our Community!
 
-🆕 Join the official DigitalPlat FreeDomain Telegram group, Discord server or GitHub Discussion today! Be the first to know about the latest updates and happenings! Got questions? Facing challenges? Or simply want to show off your awesome builds? Don’t wait—become part of our community now! 🚀
+🆕 Join the official DigitalPlat FreeDomain Telegram group, Discord server today! Be the first to know about the latest updates and happenings! Got questions? Facing challenges? Or simply want to show off your awesome builds? Don’t wait—become part of our community now! 🚀
 
 * * *
 
@@ -69,4 +69,4 @@ We might introduce more domain options and free hosting in the future to help as
 
 We take domain name abuse seriously and are committed to maintaining a safer and more open internet. Every report is carefully reviewed, and response times may vary from a few hours to several days, depending on the complexity of the case.
 
-Email: abusereport@digitalplat.org Report Form: Abuse Report Form
+Email: abusereport@digitalplat.org

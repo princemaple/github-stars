@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 16636
+stars: 17425
 description: The glamourous AI coding agent for your favourite terminal 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -43,6 +43,9 @@ yay -S crush-bin
 # Nix
 nix run github:numtide/nix-ai-tools#crush
 
+# FreeBSD
+pkg install crush
+
 Windows users:
 
 # Winget
@@ -54,9 +57,9 @@ scoop install crush
 
 **Nix (NUR)**
 
-Crush is available via NUR in `nur.repos.charmbracelet.crush`.
+Crush is available via the offical Charm NUR in `nur.repos.charmbracelet.crush`, which is the most up-to-date way to get Crush in Nix.
 
-You can also try out Crush via `nix-shell`:
+You can also try out Crush via the NUR with `nix-shell`:
 
 # Add the NUR channel.
 nix-channel --add https://github.com/nix-community/NUR/archive/main.tar.gz nur

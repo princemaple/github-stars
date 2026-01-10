@@ -1,6 +1,6 @@
 ---
 project: v2ray-agent
-stars: 18197
+stars: 18290
 description: Xray、Tuic、hysteria2、sing-box 八合一一键脚本
 url: https://github.com/mack-a/v2ray-agent
 ---

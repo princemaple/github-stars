@@ -1,6 +1,6 @@
 ---
 project: shimmy
-stars: 3524
+stars: 3528
 description: ⚡ Python-free Rust inference server — OpenAI-API compatible. GGUF + SafeTensors, hot model swap, auto-discovery, single binary. FREE now, FREE forever.
 url: https://github.com/Michael-A-Kuykendall/shimmy
 ---
@@ -28,7 +28,9 @@ The Lightweight OpenAI API Server
 Drop-in OpenAI API Replacement for Local LLMs
 ---------------------------------------------
 
-Shimmy is a **4.8MB single-binary** that provides **100% OpenAI-compatible endpoints** for GGUF models. Point your existing AI tools to Shimmy and they just work — locally, privately, and free.
+Shimmy is a **single-binary** that provides **100% OpenAI-compatible endpoints** for GGUF models. Point your existing AI tools to Shimmy and they just work — locally, privately, and free.
+
+**🎉 NEW in v1.9.0**: One download, all GPU backends included! No compilation, no backend confusion - just download and run.
 
 Developer Tools
 ---------------
@@ -37,12 +39,21 @@ Whether you're forking Shimmy or integrating it as a service, we provide complet
 
 ### Try it in 30 seconds
 
-# 1) Install + run
-cargo install shimmy --features huggingface
-shimmy serve &
+# 1) Download pre-built binary (includes all GPU backends)
+# Windows:
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-windows-x86\_64.exe -o shimmy.exe
+./shimmy.exe serve &
+
+# Linux:
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-linux-x86\_64 -o shimmy && chmod +x shimmy
+./shimmy serve &
+
+# macOS (Apple Silicon):
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-macos-arm64 -o shimmy && chmod +x shimmy
+./shimmy serve &
 
 # 2) See models and pick one
-shimmy list
+./shimmy list
 
 # 3) Smoke test the OpenAI API
 curl -s http://127.0.0.1:11435/v1/chat/completions \\
@@ -139,95 +150,196 @@ Quick Start (30 seconds)
 
 ### Installation
 
-#### **🪟 Windows**
+**✨ v1.9.0 NEW**: Download pre-built binaries with ALL GPU backends included!
 
-# RECOMMENDED: Use pre-built binary (no build dependencies required)
-curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy.exe -o shimmy.exe
+#### **📥 Pre-Built Binaries (Recommended - Zero Dependencies)**
 
-# OR: Install from source with MOE support
-# First install build dependencies:
-winget install LLVM.LLVM
-# Then install shimmy with MOE:
-cargo install shimmy --features moe
+Pick your platform and download - no compilation needed:
 
-# For CUDA + MOE hybrid processing:
-cargo install shimmy --features llama-cuda,moe
+# Windows x64 (includes CUDA + Vulkan + OpenCL)
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-windows-x86\_64.exe -o shimmy.exe
 
-> **⚠️ Windows Notes**:
-> 
-> -   **Pre-built binary recommended** to avoid build dependency issues
-> -   **MSVC compatibility**: Uses `shimmy-llama-cpp-2` packages for better Windows support
-> -   If Windows Defender flags the binary, add an exclusion or use `cargo install`
-> -   For `cargo install`: Install LLVM first to resolve `libclang.dll` errors
+# Linux x86\_64 (includes CUDA + Vulkan + OpenCL)
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-linux-x86\_64 -o shimmy && chmod +x shimmy
 
-#### **🍎 macOS / 🐧 Linux**
+# macOS ARM64 (includes MLX for Apple Silicon)
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-macos-arm64 -o shimmy && chmod +x shimmy
 
-# Install from crates.io
+# macOS Intel (CPU-only)
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-macos-intel -o shimmy && chmod +x shimmy
+
+# Linux ARM64 (CPU-only)
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-linux-aarch64 -o shimmy && chmod +x shimmy
+
+**That's it!** Your GPU will be detected automatically at runtime.
+
+#### **🛠️ Build from Source (Advanced)**
+
+Want to customize or contribute?
+
+# Basic installation (CPU only)
 cargo install shimmy --features huggingface
+
+# Kitchen Sink builds (what pre-built binaries use):
+# Windows/Linux x64:
+cargo install shimmy --features huggingface,llama,llama-cuda,llama-vulkan,llama-opencl,vision
+
+# macOS ARM64:
+cargo install shimmy --features huggingface,llama,mlx,vision
+
+# CPU-only (any platform):
+cargo install shimmy --features huggingface,llama,vision
+
+> **⚠️ Build Notes**:
+> 
+> -   **Windows**: Install LLVM first for libclang.dll
+> -   **Recommended**: Use pre-built binaries to avoid dependency issues
+> -   **Advanced users only**: Building from source requires C++ compiler + CUDA/Vulkan SDKs
 
 ### GPU Acceleration
 
-Shimmy supports multiple GPU backends for accelerated inference:
+**✨ NEW in v1.9.0**: One binary per platform with automatic GPU detection!
 
-#### **🖥️ Available Backends**
+> **⚠️ IMPORTANT - Vision Feature Performance**:  
+> CPU-based vision inference (MiniCPM-V) is **5-10x slower** than GPU acceleration.  
+> **CPU**: 15-45 seconds per image | **GPU (CUDA/Vulkan)**: 2-8 seconds per image  
+> **For production vision workloads, GPU acceleration is strongly recommended.**
 
-Backend
+#### **📥 Download Pre-Built Binaries (Recommended)**
 
-Hardware
+No compilation needed! Each binary includes ALL GPU backends for your platform:
 
-Installation
+Platform
 
-**CUDA**
+Download
 
-NVIDIA GPUs
+GPU Support
 
-`cargo install shimmy --features llama-cuda`
+Auto-Detects
 
-**CUDA + MOE**
+**Windows x64**
 
-NVIDIA GPUs + CPU
+shimmy-windows-x86\_64.exe
 
-`cargo install shimmy --features llama-cuda,moe`
+CUDA + Vulkan + OpenCL
 
-**Vulkan**
+✅
 
-Cross-platform GPUs
+**Linux x86\_64**
 
-`cargo install shimmy --features llama-vulkan`
+shimmy-linux-x86\_64
 
-**OpenCL**
+CUDA + Vulkan + OpenCL
 
-AMD/Intel/Others
+✅
 
-`cargo install shimmy --features llama-opencl`
+**macOS ARM64**
 
-**MLX**
+shimmy-macos-arm64
 
-Apple Silicon
+MLX (Apple Silicon)
 
-`cargo install shimmy --features mlx`
+✅
 
-**MOE Hybrid**
+**macOS Intel**
 
-Any GPU + CPU
+shimmy-macos-intel
 
-`cargo install shimmy --features moe`
+CPU only
 
-**All Features**
+N/A
 
-Everything
+**Linux ARM64**
 
-`cargo install shimmy --features gpu,moe`
+shimmy-linux-aarch64
+
+CPU only
+
+N/A
+
+**How it works**: Download one file, run it. Shimmy automatically detects and uses your GPU!
+
+# Windows example
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-windows-x86\_64.exe -o shimmy.exe
+./shimmy.exe serve --gpu-backend auto  # Auto-detects CUDA/Vulkan/OpenCL
+
+# Linux example  
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-linux-x86\_64 -o shimmy
+chmod +x shimmy
+./shimmy serve --gpu-backend auto  # Auto-detects CUDA/Vulkan/OpenCL
+
+# macOS ARM64 example
+curl -L https://github.com/Michael-A-Kuykendall/shimmy/releases/latest/download/shimmy-macos-arm64 -o shimmy
+chmod +x shimmy  
+./shimmy serve  # Auto-detects MLX on Apple Silicon
+
+#### **🎯 GPU Auto-Detection**
+
+Shimmy uses intelligent GPU detection with this priority order:
+
+1.  **CUDA** (NVIDIA GPUs via nvidia-smi)
+2.  **Vulkan** (Cross-platform GPUs via vulkaninfo)
+3.  **OpenCL** (AMD/Intel GPUs via clinfo)
+4.  **MLX** (Apple Silicon via system detection)
+5.  **CPU** (Fallback if no GPU detected)
+
+**No manual configuration needed!** Just run with `--gpu-backend auto` (default).
+
+#### **🔧 Manual Backend Override**
+
+Want to force a specific backend? Use the `--gpu-backend` flag:
+
+# Auto-detect (default - recommended)
+shimmy serve --gpu-backend auto
+
+# Force CPU (for testing or compatibility)
+shimmy serve --gpu-backend cpu
+
+# Force CUDA (NVIDIA GPUs only)
+shimmy serve --gpu-backend cuda
+
+# Force Vulkan (AMD/Intel/Cross-platform)
+shimmy serve --gpu-backend vulkan
+
+# Force OpenCL (AMD/Intel alternative)
+shimmy serve --gpu-backend opencl
+
+**🛡️ Error Handling & Robustness**: If you force an unavailable backend (e.g., `--gpu-backend cuda` on AMD GPU), Shimmy will:
+
+1.  ✅ Display clear error message explaining the issue
+2.  ✅ Automatically fallback to next available backend in priority order
+3.  ✅ Log which backend was actually used (check with `--verbose`)
+4.  ✅ Continue serving requests (graceful degradation, no crashes)
+5.  ✅ Support environment variable override: `SHIMMY_GPU_BACKEND=cuda`
+
+**Common scenarios**:
+
+-   `--gpu-backend cuda` on non-NVIDIA → Falls back to Vulkan or OpenCL
+-   `--gpu-backend vulkan` without drivers → Falls back to OpenCL or CPU
+-   `--gpu-backend invalid` → Clear error + fallback to auto-detection
+-   No GPU detected → Runs on CPU with performance warning
+
+**Environment Variable**: Set `SHIMMY_GPU_BACKEND=cuda` to override default without CLI flags.
 
 #### **🔍 Check GPU Support**
 
 # Show detected GPU backends
 shimmy gpu-info
 
-#### **⚡ Usage Notes**
+# Check which backend is being used
+shimmy serve --gpu-backend auto --verbose
 
--   GPU backends are **automatically detected** at runtime
--   Falls back to CPU if GPU is unavailable
+#### **⚡ Binary Sizes**
+
+-   **GPU-enabled binaries** (Windows/Linux x64, macOS ARM64): ~40-50MB
+-   **CPU-only binaries** (macOS Intel, Linux ARM64): ~20-30MB
+
+Trade-off: Slightly larger binaries for zero compilation and automatic GPU detection.
+
+#### **🛠️ Build from Source (Advanced)**
+
+Want to customize or contribute? Build from source:
+
 -   Multiple backends can be compiled in, best one selected automatically
 -   Use `--gpu-backend <backend>` to force specific backend
 

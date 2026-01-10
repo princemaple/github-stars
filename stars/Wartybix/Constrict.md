@@ -1,6 +1,6 @@
 ---
 project: Constrict
-stars: 390
+stars: 398
 description: Compress videos to target sizes.
 url: https://github.com/Wartybix/Constrict
 ---

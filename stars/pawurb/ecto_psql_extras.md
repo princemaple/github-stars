@@ -1,6 +1,6 @@
 ---
 project: ecto_psql_extras
-stars: 393
+stars: 392
 description: Ecto PostgreSQL database performance insights. Locks, index usage, buffer cache hit ratios, vacuum stats and more.
 url: https://github.com/pawurb/ecto_psql_extras
 ---

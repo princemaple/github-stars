@@ -1,7 +1,7 @@
 ---
 project: filestash
-stars: 13297
-description: :file_folder: What Dropbox should have been if it was based on SFTP, S3, FTP, WebDAV, Git, and more
+stars: 13382
+description: :file_folder: What Dropbox should have been if it was based on SFTP, S3, FTP, SMB, NFS, WebDAV, Git, and more
 url: https://github.com/mickael-kerjean/filestash
 ---
 
@@ -73,7 +73,7 @@ There are 2 major pieces of work currently underway:
     -   music: mid, midi, gp4 and gp5
     -   GIS: geojson, shp, gpx, wms and dbf
     -   data engineering: parquet, arrow, feather, avro, orc, hdf5, h5, netcdf, nc, rds, rda and rdata
-    -   dev: a, so, o, dylib, dll, har, cap, pcap, pcapng and sqlite
+    -   dev: a, so, o, dylib, dll, tar, tgz, zip, har, cap, pcap, pcapng and sqlite
     -   creative work: svg, psd, ai, sketch, cdr, woff, woff2, ttf, otf, eot, exr, tga, pgm, ppm, dds, ktx, dpx, pcx, xpm, pnm, xbm, aai, xwd, cin, pbm, pcd, sgi, wbmp and rgb
     -   biomedical: dicom, sam, bam, cif, pdb, xyz, sdf, mol, mol2 and mmtf
     -   autodesk: dwg and dxf

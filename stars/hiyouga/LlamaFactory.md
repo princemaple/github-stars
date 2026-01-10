@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 64812
+stars: 65380
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -77,7 +77,7 @@ Table of Contents
 Features
 --------
 
--   **Various models**: LLaMA, LLaVA, Mistral, Mixtral-MoE, Qwen, Qwen2-VL, DeepSeek, Yi, Gemma, ChatGLM, Phi, etc.
+-   **Various models**: LLaMA, LLaVA, Mistral, Mixtral-MoE, Qwen3, Qwen3-VL, DeepSeek, Gemma, GLM, Phi, etc.
 -   **Integrated methods**: (Continuous) pre-training, (multimodal) supervised fine-tuning, reward modeling, PPO, DPO, KTO, ORPO, etc.
 -   **Scalable resources**: 16-bit full-tuning, freeze-tuning, LoRA and 2/3/4/5/6/8-bit QLoRA via AQLM/AWQ/GPTQ/LLM.int8/HQQ/EETQ.
 -   **Advanced algorithms**: GaLore, BAdam, APOLLO, Adam-mini, Muon, OFT, DoRA, LongLoRA, LLaMA Pro, Mixture-of-Depths, LoRA+, LoftQ and PiSSA.
@@ -281,12 +281,6 @@ BLOOM/BLOOMZ
 
 \-
 
-Command R
-
-35B/104B
-
-cohere
-
 DeepSeek (LLM/Code/MoE)
 
 7B/16B/67B/236B
@@ -309,7 +303,7 @@ ERNIE-4.5
 
 0.3B/21B/300B
 
-ernie/ernie\_nothink
+ernie\_nothink
 
 Falcon/Falcon H1
 
@@ -377,7 +371,7 @@ InternVL 2.5-3.5
 
 intern\_vl
 
-InternLM/Intern-S1-mini
+Intern-S1-mini
 
 8B
 
@@ -394,6 +388,12 @@ Ling 2.0 (mini/flash)
 16B/100B
 
 bailing\_v2
+
+LFM 2.5 (VL)
+
+1.2B/1.6B
+
+lfm2/lfm2\_vl
 
 Llama
 
@@ -449,11 +449,11 @@ MiMo
 
 mimo/mimo\_v2
 
-MiniCPM 1-4.1
+MiniCPM 4
 
-0.5B/1B/2B/4B/8B
+0.5B/8B
 
-cpm/cpm3/cpm4
+cpm4
 
 MiniCPM-o-2.6/MiniCPM-V-2.6
 
@@ -479,12 +479,6 @@ Mistral/Mixtral
 
 mistral
 
-OLMo
-
-1B/7B
-
-\-
-
 PaliGemma/PaliGemma2
 
 3B/10B/28B
@@ -503,11 +497,11 @@ Phi-3-small
 
 phi\_small
 
-Phi-4
+Phi-4-mini/Phi-4
 
-14B
+3.8B/14B
 
-phi4
+phi4\_mini/phi4
 
 Pixtral
 
@@ -515,7 +509,7 @@ Pixtral
 
 pixtral
 
-Qwen (1-2.5) (Code/Math/MoE/QwQ)
+Qwen2 (Code/Math/MoE/QwQ)
 
 0.5B/1.5B/3B/7B/14B/32B/72B/110B
 
@@ -568,18 +562,6 @@ StarCoder 2
 3B/7B/15B
 
 \-
-
-VibeThinker-1.5B
-
-1.5B
-
-qwen3
-
-Yi/Yi-1.5 (Code)
-
-1.5B/6B/9B/34B
-
-yi
 
 Yuan 2
 
@@ -1043,11 +1025,12 @@ Installation is mandatory.
 
 #### Install from Source
 
-git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
-cd LLaMA-Factory
-pip install -e ".\[metrics\]"
+git clone --depth 1 https://github.com/hiyouga/LlamaFactory.git
+cd LlamaFactory
+pip install -e .
+pip install -r requirements/metrics.txt
 
-Optional dependencies available: `metrics`, `deepspeed`. Install with: `pip install -e ".[metrics,deepspeed]"`
+Optional dependencies available: `metrics`, `deepspeed`. Install with: `pip install -e . && pip install -r requirements/metrics.txt -r requirements/deepspeed.txt`
 
 Additional dependencies for specific features are available in `examples/requirements/`.
 
@@ -1093,61 +1076,17 @@ To enable FlashAttention-2 on the Windows platform, please use the script from f
 
 For Ascend NPU users
 
-To install LLaMA Factory on Ascend NPU devices, please upgrade Python to version 3.10 or higher: `pip install -e . torch-npu==2.7.1`. Additionally, you need to install the **Ascend CANN Toolkit and Kernels**. Please follow the installation tutorial or use the following commands:
+To install LLaMA Factory on Ascend NPU devices, please upgrade Python to version 3.10 or higher: `pip install -r requirements/npu.txt`. Additionally, you need to install the **Ascend CANN Toolkit and Kernels**. Please follow the installation tutorial.
 
-# replace the url according to your CANN version and devices
-# install CANN Toolkit
-wget https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/Milan-ASL/Milan-ASL%20V100R001C20SPC702/Ascend-cann-toolkit\_8.0.0.alpha002\_linux-"$(uname -i)".run
-bash Ascend-cann-toolkit\_8.0.0.alpha002\_linux-"$(uname -i)".run --install
+You can also download the pre-built Docker images:
 
-# install CANN Kernels
-wget https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/Milan-ASL/Milan-ASL%20V100R001C20SPC702/Ascend-cann-kernels-910b\_8.0.0.alpha002\_linux-"$(uname -i)".run
-bash Ascend-cann-kernels-910b\_8.0.0.alpha002\_linux-"$(uname -i)".run --install
+# Docker Hub
+docker pull hiyouga/llamafactory:latest-npu-a2
+docker pull hiyouga/llamafactory:latest-npu-a3
 
-# set env variables
-source /usr/local/Ascend/ascend-toolkit/set\_env.sh
-
-Requirement
-
-Minimum
-
-Recommend
-
-CANN
-
-8.0.RC1
-
-8.0.0.alpha002
-
-torch
-
-2.1.0
-
-2.7.1
-
-torch-npu
-
-2.1.0
-
-2.7.1
-
-deepspeed
-
-0.13.2
-
-0.13.2
-
-vllm-ascend
-
-\-
-
-0.7.3
-
-Remember to use `ASCEND_RT_VISIBLE_DEVICES` instead of `CUDA_VISIBLE_DEVICES` to specify the device to use.
-
-If you cannot infer model on NPU devices, try setting `do_sample: false` in the configurations.
-
-Download the pre-built Docker images: 32GB | 64GB
+# quay.io
+docker pull quay.io/ascend/llamafactory:latest-npu-a2
+docker pull quay.io/ascend/llamafactory:latest-npu-a3
 
 #### Install BitsAndBytes
 

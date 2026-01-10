@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 3508
+stars: 3670
 description: Clean network diagrams. One-time setup, zero upkeep.
 url: https://github.com/scanopy/scanopy
 ---
@@ -70,8 +70,8 @@ Access the UI at `http://<your-server-ip>:60072`, create your account, and wait 
 
 For detailed setup options and configuration, see the Installation Guide.
 
-📚 Documentation
-----------------
+📚 Documentation + API
+----------------------
 
 **scanopy.net/docs**
 

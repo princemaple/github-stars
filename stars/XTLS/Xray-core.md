@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 33864
+stars: 34030
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -64,13 +64,15 @@ Installation
     -   ghcr.io/xtls/xray-core (**Official**)
     -   teddysun/xray
     -   wulabing/xray\_docker
--   Web Panel - **WARNING: Please DO NOT USE plain HTTP panels like 3X-UI**, as they are believed to be bribed by Iran GFW for supporting plain HTTP by default and refused to change (#3884 (comment)), which has already put many users' data security in danger in the past few years. **If you are already using 3X-UI, please switch to the following panels, which are verified to support HTTPS and SSH port forwarding only:**
+-   Web Panel
     -   Remnawave
-    -   X-Panel
+    -   3X-UI
     -   PasarGuard
-    -   Marzban
     -   Xray-UI
+    -   X-Panel
+    -   Marzban
     -   Hiddify
+    -   TX-UI
 -   One Click
     -   Xray-REALITY, xray-reality, reality-ezpz
     -   Xray\_bash\_onekey, XTool, VPainLess

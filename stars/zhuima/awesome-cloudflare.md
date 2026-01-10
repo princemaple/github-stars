@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 12588
+stars: 12653
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -110,7 +110,7 @@ cloudflare-worker-image
 
 tgState
 
-使用Telegram作为存储的文件外链系统，不限制文件大小和格式。
+使用Telegram作为存储的外链系统，不限制大小和格式。
 
 https://tgstate.vercel.app
 
@@ -491,7 +491,7 @@ Cloudflared-web 是一个 docker 镜像，它打包了 cloudflared cli 和简单
 
 gh-proxy
 
-github release、archive以及项目文件的加速项目，支持clone，有Cloudflare Workers无服务器版本以及Python版本。
+github release、archive以及项目的加速项目，支持clone，有Cloudflare Workers无服务器版本以及Python版本。
 
 https://gh.api.99988866.xyz/
 
@@ -601,6 +601,12 @@ https://doc.cloudpaste.qzz.io/
 cf-drop
 
 一个「文件传输助手」，运行在 Cloudflare Worker + R2 + D1。具备PWA移动端优化、支持多线程文件下载、访问密码、打包下载tarball 等功能。界面简单易用，可放到浏览器侧栏，或者添加到手机桌面上快速使用。
+
+维护中
+
+serverless-webdav
+
+基于 Cloudflare Workers 和 Cloudflare D1 数据库 构建的轻量级、可扩展的 WebDAV 服务器实现。
 
 维护中
 
@@ -1013,6 +1019,14 @@ subpool-worker
 AWS-AccessBridge
 
 AWS 多账号管理和登录服务
+
+维护中
+
+Cloudflare-Clist
+
+基于cloudflare worker的类alist聚合存储管理服务
+
+https://down.ohyraw.qzz.io
 
 维护中
 

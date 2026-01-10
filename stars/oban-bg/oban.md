@@ -1,6 +1,6 @@
 ---
 project: oban
-stars: 3728
+stars: 3730
 description: 💎 Robust job processing in Elixir, backed by modern PostgreSQL, SQLite3, and MySQL
 url: https://github.com/oban-bg/oban
 ---
@@ -83,16 +83,20 @@ Oban is fundamentally different from other background job processing tools becau
 
 An official set of extensions, plugins, and workers that expand what Oban is capable of is available as a licensed package. It includes features like:
 
--   🖇️ Workflows
--   🎨 Decorators
--   ⛓️ Chains
--   🏗️ Structured Jobs
--   🪝 Worker Hooks
--   🌎 Global Limits
--   🔪 Queue Partitioning
--   🎢 Dynamic Queues
+-   **Smart Engine** — Enables global concurrency, global rate limiting, queue partitioning, and auto insert batching for truly distributed job processing.
+    
+-   **Pro Worker** — Extends workers with execution hooks, structured args, output recording, encrypted args at rest, and chained execution.
+    
+-   **Workflows** — Compose jobs with arbitrary dependencies for sequential, fan-out, and fan-in execution patterns.
+    
+-   **Batches** — Process related jobs while tracking overall progress across all nodes and executing optional callbacks.
+    
+-   **Dynamic Plugins** — Runtime configuration of cron schedules, queues, job priorities, and automatic scaling—ideal for applications that manage jobs dynamically.
+    
+-   **Decorator** — Build and insert jobs directly from regular functions without defining worker modules.
+    
 
-Plus much more. Learn more about Oban Pro
+Learn more about Oban Pro →
 
 Engines
 -------

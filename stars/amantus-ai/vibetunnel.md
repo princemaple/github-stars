@@ -1,6 +1,6 @@
 ---
 project: vibetunnel
-stars: 2777
+stars: 2870
 description: Turn any browser into your terminal & command your agents on the go.
 url: https://github.com/amantus-ai/vibetunnel
 ---

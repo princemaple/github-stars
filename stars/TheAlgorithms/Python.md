@@ -1,6 +1,6 @@
 ---
 project: Python
-stars: 216441
+stars: 216719
 description: All Algorithms implemented in Python
 url: https://github.com/TheAlgorithms/Python
 ---

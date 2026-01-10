@@ -1,6 +1,6 @@
 ---
 project: dev-browser
-stars: 2189
+stars: 2550
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
@@ -58,9 +58,14 @@ The Chrome extension allows Dev Browser to control your existing Chrome browser 
 3.  Open Chrome and go to `chrome://extensions`
 4.  Enable "Developer mode" (toggle in top right)
 5.  Click "Load unpacked" and select the unzipped extension folder
-6.  Click the extension icon in Chrome toolbar and toggle it to "Active"
 
-When active, the extension connects to Dev Browser's server and allows automation of your current Chrome tabs. Tell your agent to "use the extension" or "use my existing Chrome" to use it instead of the built-in browser.
+**Using the extension:**
+
+1.  Click the Dev Browser extension icon in Chrome's toolbar
+2.  Toggle it to "Active" - this enables browser control
+3.  Ask Claude to connect to your browser (e.g., "connect to my Chrome" or "use the extension")
+
+When active, Claude can control your existing Chrome tabs with all your logged-in sessions, cookies, and extensions intact.
 
 Permissions
 -----------

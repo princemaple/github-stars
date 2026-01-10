@@ -1,6 +1,6 @@
 ---
 project: spark-joy
-stars: 9716
+stars: 9718
 description: ✨😂 2000+ ways to add design flair, user delight, and whimsy to your product.
 url: https://github.com/swyxio/spark-joy
 ---
@@ -1124,6 +1124,7 @@ Linear gradients can be "eased" to be smoother: https://css-tricks.com/easing-li
 
 -   https://meshgradient.com/ swirly backgrounds like apple
 -   https://meshgradient.in/ generate mesh gradient backgrounds
+    -   https://shaders.paper.design/ paper texture gradients
 -   noise textures https://x.com/kubadesign/status/1883884665448325356/photo/1
 
 #### Background Patterns

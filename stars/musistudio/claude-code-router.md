@@ -1,6 +1,6 @@
 ---
 project: claude-code-router
-stars: 24529
+stars: 25248
 description: Use Claude Code as the foundation for coding infrastructure, allowing you to decide how to interact with the model while enjoying updates from Anthropic.
 url: https://github.com/musistudio/claude-code-router
 ---
@@ -10,6 +10,8 @@ url: https://github.com/musistudio/claude-code-router
 > This project is sponsored by Z.ai, supporting us with their GLM CODING PLAN.  
 > GLM CODING PLAN is a subscription service designed for AI coding, starting at just $3/month. It provides access to their flagship GLM-4.7 model across 10+ popular AI coding tools (Claude Code, Cline, Roo Code, etc.), offering developers top-tier, fast, and stable coding experiences.  
 > Get 10% OFF GLM CODING PLAN：https://z.ai/subscribe?ic=8JVLJQFSKB
+
+> Progressive Disclosure of Agent Tools from the Perspective of CLI Tool Style
 
 > A powerful tool to route Claude Code requests to different models and customize any request.
 
@@ -243,7 +245,45 @@ This command provides an interactive interface to:
 
 The CLI tool validates all inputs and provides helpful prompts to guide you through the configuration process, making it easy to manage complex setups without editing JSON files manually.
 
-### 6\. Activate Command (Environment Variables Setup)
+### 6\. Presets Management
+
+Presets allow you to save, share, and reuse configurations easily. You can export your current configuration as a preset and install presets from files or URLs.
+
+# Export current configuration as a preset
+ccr preset export my-preset
+
+# Export with metadata
+ccr preset export my-preset --description "My OpenAI config" --author "Your Name" --tags "openai,production"
+
+# Install a preset from local directory
+ccr preset install /path/to/preset
+
+# List all installed presets
+ccr preset list
+
+# Show preset information
+ccr preset info my-preset
+
+# Delete a preset
+ccr preset delete my-preset
+
+**Preset Features:**
+
+-   **Export**: Save your current configuration as a preset directory (with manifest.json)
+-   **Install**: Install presets from local directories
+-   **Sensitive Data Handling**: API keys and other sensitive data are automatically sanitized during export (marked as `{{field}}` placeholders)
+-   **Dynamic Configuration**: Presets can include input schemas for collecting required information during installation
+-   **Version Control**: Each preset includes version metadata for tracking updates
+
+**Preset File Structure:**
+
+```
+~/.claude-code-router/presets/
+├── my-preset/
+│   └── manifest.json    # Contains configuration and metadata
+```
+
+### 7\. Activate Command (Environment Variables Setup)
 
 The `activate` command allows you to set up environment variables globally in your shell, enabling you to use the `claude` command directly or integrate Claude Code Router with applications built using the Agent SDK.
 

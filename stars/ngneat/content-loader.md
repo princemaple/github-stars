@@ -1,6 +1,6 @@
 ---
 project: content-loader
-stars: 730
+stars: 731
 description: ⚪️ SVG component to create placeholder loading, like Facebook cards loading. 
 url: https://github.com/ngneat/content-loader
 ---

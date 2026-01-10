@@ -1,6 +1,6 @@
 ---
 project: setup-bun
-stars: 642
+stars: 643
 description: Set up your GitHub Actions workflow with a specific version of Bun
 url: https://github.com/oven-sh/setup-bun
 ---
@@ -12,6 +12,16 @@ Download, install, and setup Bun in GitHub Actions.
 
 Usage
 -----
+
+\- uses: oven-sh/setup-bun@v2
+
+By default, if no version is specified, the action will:
+
+1.  Check `package.json` for the `packageManager` field (e.g., `"packageManager": "bun@1.0.25"`)
+2.  If `packageManager` doesn't exist, check `package.json` for `engines.bun`
+3.  If neither exists or `package.json` is not found, use `latest`
+
+You can also explicitly specify a version:
 
 \- uses: oven-sh/setup-bun@v2
   with:
@@ -98,9 +108,9 @@ Examples
 
 The version of Bun to download and install.
 
-`latest`
+Version from `package.json`, or `latest`
 
-`canary`, `1.0.0`
+`canary`, `1.0.0`, `1.0.x`
 
 `bun-version-file`
 
@@ -129,6 +139,22 @@ Scope for private packages.
 `undefined`
 
 `"@foo"`, `"@orgname"`
+
+`no-cache`
+
+Disable caching of the downloaded executable.
+
+`false`
+
+`true`, `false`
+
+`token`
+
+Personal access token (PAT) used to fetch tags from the `oven-sh/bun` repository.
+
+`${{ github.token }}`
+
+`${{ secrets.GITHUB_TOKEN }}`
 
 Outputs
 -------

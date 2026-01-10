@@ -1,6 +1,6 @@
 ---
 project: dust
-stars: 11023
+stars: 11069
 description: A more intuitive version of du in rust
 url: https://github.com/bootandy/dust
 ---
@@ -17,6 +17,17 @@ Because I want an easy way to see where my disk is being used.
 
 Demo
 ====
+
+Study the above picture.
+
+-   We see `target` has 1.8G
+-   `target/debug` is the same size as `target` - so we know nearly all the disk usage of the 1.8G is in this folder
+-   `target/debug/deps` this is 1.2G - Note the bar jumps down to 70% to indicate that most disk usage is here but not all.
+-   `target/debug/deps/dust-e78c9f87a17f24f3` - This is the largest file in this folder, but it is only 46M - Note the bar jumps down to 3% to indicate the file is small.
+
+From here we can conclude:
+
+-   `target/debug/deps` takes the majority of the space in `target` and that `target/debug/deps` has a large number of relatively small files.
 
 Install
 -------
@@ -75,6 +86,8 @@ Dust is meant to give you an instant overview of which directories are using dis
 Dust will list a slightly-less-than-the-terminal-height number of the biggest subdirectories or files and will smartly recurse down the tree to find the larger ones. There is no need for a '-d' flag or a '-h' flag. The largest subdirectories will be colored.
 
 The different colors on the bars: These represent the combined tree hierarchy & disk usage. The shades of grey are used to indicate which parent folder a subfolder belongs to. For instance, look at the above screenshot. `.steam` is a folder taking 44% of the space. From the `.steam` bar is a light grey line that goes up. All these folders are inside `.steam` so if you delete `.steam` all that stuff will be gone too.
+
+If you are new to the tool I recommend to try tweaking the `-n` parameter. `dust -n 10`, `dust -n 50`.
 
 Usage
 -----
@@ -135,4 +148,13 @@ Alternatives
 -   dirstat-rs
 -   `du -d 1 -h | sort -h`
 
-Note: Apparent-size is calculated slightly differently in dust to gdu. In dust each hard link is counted as using file\_length space. In gdu only the first entry is counted.
+Why to use Dust over the Alternatives
+-------------------------------------
+
+Dust simply Does The Right Thing when handling lots of small files & directories. Dust keeps the output simple by only showing large entries.
+
+Tools like ncdu & baobab, give you a view of directory sizes but you have no idea where the largest files are. For example directory A could have a size larger than directory B, but in fact the largest file is in B and not A. Finding this out via these other tools is not trivial whereas Dust will show the large file clearly in the tree hierarchy
+
+Dust will not count hard links multiple times (unless you want to `-s`).
+
+Typing `dust -n 90` will show you your 90 largest entries. `-n` is not quite like `head -n` or `tail -n`, dust is intelligent and chooses the largest entries

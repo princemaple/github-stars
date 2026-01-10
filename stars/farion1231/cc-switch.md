@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 8787
+stars: 10409
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -23,6 +23,8 @@ Thanks to AIGoCode for sponsoring this project! AIGoCode is an all-in-one platfo
 
 Thanks to DMXAPI for sponsoring this project! DMXAPI provides global large model API services to 200+ enterprise users. One API key for all global models. Features include: instant invoicing, unlimited concurrency, starting from $0.15, 24/7 technical support. GPT/Claude/Gemini all at 32% off, domestic models 20-50% off, Claude Code exclusive models at 66% off! Register here
 
+Thanks to Cubence for sponsoring this project! Cubence is a reliable and efficient API relay service provider, offering relay services for Claude Code, Codex, Gemini, and more with flexible billing options including pay-as-you-go and monthly plans. Cubence provides special discounts for CC Switch users: register using this link and enter the "CCSWITCH" promo code during recharge to get 10% off every top-up!
+
 Screenshots
 -----------
 
@@ -33,7 +35,7 @@ Add Provider
 Features
 --------
 
-### Current Version: v3.8.3 | Full Changelog | Release Notes
+### Current Version: v3.9.1 | Full Changelog | Release Notes
 
 **v3.8.0 Major Update (2025-11-28)**
 
@@ -169,7 +171,17 @@ paru -S cc-switch-bin
 
 ### Linux Users
 
-Download the latest `CC-Switch-v{version}-Linux.deb` package or `CC-Switch-v{version}-Linux.AppImage` from the Releases page.
+Download the latest Linux build from the Releases page:
+
+-   `CC-Switch-v{version}-Linux.deb` (Debian/Ubuntu)
+-   `CC-Switch-v{version}-Linux.rpm` (Fedora/RHEL/openSUSE)
+-   `CC-Switch-v{version}-Linux.AppImage` (Universal)
+-   `CC-Switch-v{version}-Linux.flatpak` (Flatpak)
+
+Flatpak install & run:
+
+flatpak install --user ./CC-Switch-v{version}-Linux.flatpak
+flatpak run com.ccswitch.desktop
 
 Quick Start
 -----------

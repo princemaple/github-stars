@@ -1,6 +1,6 @@
 ---
 project: sshm
-stars: 923
+stars: 929
 description: SSHM is a beautiful command-line tool that transforms how you manage and connect to your SSH hosts. Built with Go and featuring an intuitive TUI interface, it makes SSH connection management effortless and enjoyable.
 url: https://github.com/Gu1llaum-3/sshm
 ---
@@ -39,7 +39,7 @@ _🖱️ Click on the image to view in full size_
 -   **🔄 Automatic Conversion** - Seamlessly converts between command-line and config formats
 -   **🔄 Automatic Backups** - Backup configurations automatically before changes
 -   **✅ Validation** - Prevent configuration errors with built-in validation
--   **🔗 ProxyJump Support** - Secure connection tunneling through bastion hosts
+-   **🔗 ProxyJump/ProxyCommand Support** - Secure connection tunneling through bastion hosts
 -   **⌨️ Keyboard Shortcuts** - Power user navigation with vim-like shortcuts
 -   **🌐 Cross-platform** - Supports Linux, macOS (Intel & Apple Silicon), and Windows
 -   **⚡ Lightweight** - Single binary with no dependencies, zero configuration required
@@ -123,6 +123,7 @@ The interactive forms will guide you through configuration:
 -   **Port** - SSH port (default: 22)
 -   **Identity File** - Private key path
 -   **ProxyJump** - Jump server for connection tunneling
+-   **ProxyCommand** - Jump command for connection tunneling
 -   **SSH Options** - Additional SSH options in `-o` format (e.g., `-o Compression=yes -o ServerAliveInterval=60`)
 -   **Tags** - Comma-separated tags for organization
 
@@ -222,6 +223,15 @@ sshm
 # Connect directly to a specific host (with history tracking)
 sshm my-server
 
+# Execute a command on a remote host
+sshm my-server uptime
+
+# Execute command with arguments
+sshm my-server ls -la /var/log
+
+# Force TTY allocation for interactive commands
+sshm -t my-server sudo systemctl restart nginx
+
 # Launch TUI with custom SSH config file
 sshm -c /path/to/custom/ssh\_config
 
@@ -258,6 +268,47 @@ sshm --version
 # Show help and available commands
 sshm --help
 
+### Shell Completion
+
+SSHM supports shell completion for host names, making it easy to connect to hosts without typing full names:
+
+sshm <TAB\>           # Lists all available hosts
+sshm pro<TAB\>        # Completes to hosts starting with "pro" (e.g., prod-server)
+
+**Setup Instructions:**
+
+**Bash:**
+
+# Enable for current session
+source <(sshm completion bash)
+
+# Enable permanently (add to ~/.bashrc)
+echo 'source <(sshm completion bash)' \>> ~/.bashrc
+
+**Zsh:**
+
+# Enable for current session
+source <(sshm completion zsh)
+
+# Enable permanently (add to ~/.zshrc)
+echo 'source <(sshm completion zsh)' \>> ~/.zshrc
+
+**Fish:**
+
+# Enable for current session
+sshm completion fish | source
+
+# Enable permanently
+sshm completion fish \> ~/.config/fish/completions/sshm.fish
+
+**PowerShell:**
+
+# Enable for current session
+sshm completion powershell | Out-String | Invoke-Expression
+
+# Enable permanently (add to your PowerShell profile)
+Add-Content $PROFILE 'sshm completion powershell | Out-String | Invoke-Expression'
+
 ### Direct Host Connection
 
 SSHM supports direct connection to hosts via the command line, making it easy to integrate into your existing workflow:
@@ -276,6 +327,32 @@ sshm web-01
 -   **History tracking** - All connections are recorded with timestamps
 -   **Error handling** - Clear messages if host doesn't exist or configuration issues
 -   **Config file support** - Works with custom config files using `-c` flag
+
+### Remote Command Execution
+
+Execute commands on remote hosts without opening an interactive shell:
+
+# Execute a single command
+sshm prod-server uptime
+
+# Execute command with arguments
+sshm prod-server ls -la /var/log
+
+# Check disk usage
+sshm prod-server df -h
+
+# View logs (pipe to local commands)
+sshm prod-server 'cat /var/log/nginx/access.log' | grep 404
+
+# Force TTY allocation for interactive commands (sudo, vim, etc.)
+sshm -t prod-server sudo systemctl restart nginx
+
+**Features:**
+
+-   **Exit code propagation** - Remote command exit codes are passed through
+-   **TTY support** - Use `-t` flag for commands requiring terminal interaction
+-   **Pipe-friendly** - Output can be piped to local commands for processing
+-   **History tracking** - Command executions are recorded in connection history
 
 ### Backup Configuration
 
@@ -507,6 +584,7 @@ Host backend-prod
     User app
     Port 22
     ProxyJump bastion.company.com
+    ProxyCommand ssh -W %h:%p Jumphost
     IdentityFile ~/.ssh/production_key
     Compression yes
     ServerAliveInterval 300
@@ -524,6 +602,7 @@ SSHM supports all standard SSH configuration options:
 -   `Port` - SSH port number
 -   `IdentityFile` - Path to private key file
 -   `ProxyJump` - Jump server for connection tunneling (e.g., `user@jumphost:port`)
+-   `ProxyCommand` - Jump command for connection tunneling (e.g, `ssh -W %h:%p Jumphost`)
 -   `Tags` - Custom tags (SSHM extension)
 
 **Additional SSH Options:** You can add any valid SSH option using the "SSH Options" field in the interactive forms. Enter them in command-line format (e.g., `-o Compression=yes -o ServerAliveInterval=60`) and SSHM will automatically convert them to the proper SSH config format.

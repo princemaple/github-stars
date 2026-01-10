@@ -1,6 +1,6 @@
 ---
 project: bumblebee
-stars: 1569
+stars: 1570
 description: Pre-trained Neural Network models in Axon (+ 🤗 Models integration)
 url: https://github.com/elixir-nx/bumblebee
 ---
@@ -123,6 +123,17 @@ Bumblebee relies on the Rust implementations (through bindings to Tokenizers) an
 First, if the repository is clearly a fine-tuned version of another model, you can look for `tokenizer.json` in the original model repository. For example, `textattack/bert-base-uncased-yelp-polarity` only includes `tokenizer_config.json`, but it is a fine-tuned version of `bert-base-uncased`, which does include `tokenizer.json`. Consequently, you can safely load the model from `textattack/bert-base-uncased-yelp-polarity` and tokenizer from `bert-base-uncased`.
 
 Otherwise, the Transformers library includes conversion rules to load a "slow tokenizer" and convert it to a corresponding "fast tokenizer", which is possible in most cases. You can generate the `tokenizer.json` file using this tool. Once successful, you can follow the steps to submit a PR adding `tokenizer.json` to the model repository. Note that you do not have to wait for the PR to be merged, instead you can copy commit SHA from the PR and load the tokenizer with `Bumblebee.load_tokenizer({:hf, "model-repo", revision: "..."})`.
+
+Global configuration
+--------------------
+
+You can configure the progress bar displayed during model downloads:
+
+\# Update every 10% instead of every 1%
+config :bumblebee, :progress\_bar\_step, 10
+
+\# Disable progress bar entirely
+config :bumblebee, :progress\_bar\_enabled, false
 
 Contributing
 ------------

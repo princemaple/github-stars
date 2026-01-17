@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 53117
+stars: 53440
 description: The all-in-one Desktop & Docker AI application with built-in RAG, AI agents, No-code agent builder, MCP compatibility,  and more.
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -78,6 +78,7 @@ Cool features of AnythingLLM
 -   Moonshot AI
 -   Microsoft Foundry Local
 -   CometAPI (chat models)
+-   Docker Model Runner
 
 **Embedder models:**
 

@@ -1,6 +1,6 @@
 ---
 project: BroadcastChannel
-stars: 1939
+stars: 1952
 description: Turn your Telegram Channel into a MicroBlog.
 url: https://github.com/miantiao-me/BroadcastChannel
 ---
@@ -141,6 +141,9 @@ TAGS\=tag1,tag2,tag3
 
 #\# Show comments
 COMMENTS\=true
+
+#\# Show reactions
+REACTIONS\=true
 
 #\# List of links in the Links page, Separate using commas and semicolons
 LINKS\=Title1,URL1;Title2,URL3;Title3,URL3;

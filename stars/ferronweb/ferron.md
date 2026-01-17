@@ -1,6 +1,6 @@
 ---
 project: ferron
-stars: 1797
+stars: 1807
 description: A fast, memory-safe web server written in Rust.
 url: https://github.com/ferronweb/ferron
 ---
@@ -34,6 +34,7 @@ Ferron also consists of:
 -   **`ferron-dns-builtin`** - built-in Ferron DNS providers.
 -   **`ferron-load-modules`** - functions for loading Ferron modules.
 -   **`ferron-modules-builtin`** - built-in Ferron modules.
+-   **`ferron-observability-builtin`** - built-in Ferron observability backend support.
 -   **`ferron-yaml2kdl-core`** - the core library behind the `ferron-yaml2kdl` tool.
 
 Building Ferron from source

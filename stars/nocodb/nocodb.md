@@ -1,16 +1,16 @@
 ---
 project: nocodb
-stars: 61260
+stars: 61520
 description: 🔥 🔥 🔥 Open Source Airtable Alternative
 url: https://github.com/nocodb/nocodb
 ---
 
   
-The Open Source Airtable Alternative  
+  
 
 
 
-==============================================
+==========
 
 NocoDB is the fastest and easiest way to build databases online.
 
@@ -148,12 +148,12 @@ Most internet businesses equip themselves with either spreadsheet or a database 
 Our Mission
 ===========
 
-Our mission is to provide the most powerful no-code interface for databases that is open source to every single internet business in the world. This would not only democratise access to a powerful computing tool but also bring forth a billion+ people who will have radical tinkering-and-building abilities on the internet.
+Our mission is to provide the most powerful no-code interface for databases, accessible to every internet business across the world. By making this capability broadly available under a fair and sustainable model, we aim to democratise access to powerful computing tools and enable a billion-plus people to develop radical tinkering and building abilities on the internet.
 
 License
 =======
 
-This project is licensed under AGPLv3.
+This project is licensed under Sustainable Use License.
 
 Contributors
 ============

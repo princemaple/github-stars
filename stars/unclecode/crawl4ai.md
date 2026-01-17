@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 58382
+stars: 58663
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -21,13 +21,13 @@ _We’ll be onboarding in phases and working closely with early users. Limited s
 
 Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
 
-✨ Check out latest update v0.7.8
+✨ Check out latest update v0.8.0
 
-✨ **New in v0.7.8**: Stability & Bug Fix Release! 11 bug fixes addressing Docker API issues (ContentRelevanceFilter, ProxyConfig, cache permissions), LLM extraction improvements (configurable backoff, HTML input format), URL handling fixes, and dependency updates (pypdf, Pydantic v2). Release notes →
+✨ **New in v0.8.0**: Crash Recovery & Prefetch Mode! Deep crawl crash recovery with `resume_state` and `on_state_change` callbacks for long-running crawls. New `prefetch=True` mode for 5-10x faster URL discovery. Critical security fixes for Docker API (hooks disabled by default, file:// URLs blocked). Release notes →
 
-✨ Recent v0.7.7: Complete Self-Hosting Platform with Real-time Monitoring! Enterprise-grade monitoring dashboard, comprehensive REST API, WebSocket streaming, smart browser pool management, and production-ready observability. Release notes →
+✨ Recent v0.7.8: Stability & Bug Fix Release! 11 bug fixes addressing Docker API issues, LLM extraction improvements, URL handling fixes, and dependency updates. Release notes →
 
-✨ Previous v0.7.6: Complete Webhook Infrastructure for Docker Job Queue API! Real-time notifications for both `/crawl/job` and `/llm/job` endpoints with exponential backoff retry, custom headers, and flexible delivery modes. Release notes →
+✨ Previous v0.7.7: Complete Self-Hosting Platform with Real-time Monitoring! Enterprise-grade monitoring dashboard, comprehensive REST API, WebSocket streaming, and smart browser pool management. Release notes →
 
 🤓 **My Personal Story**
 
@@ -478,6 +478,43 @@ async def test\_news\_crawl():
 
 ✨ Recent Updates
 ----------------
+
+**Version 0.8.0 Release Highlights - Crash Recovery & Prefetch Mode**
+
+This release introduces crash recovery for deep crawls, a new prefetch mode for fast URL discovery, and critical security fixes for Docker deployments.
+
+-   **🔄 Deep Crawl Crash Recovery**:
+    
+    -   `on_state_change` callback fires after each URL for real-time state persistence
+    -   `resume_state` parameter to continue from a saved checkpoint
+    -   JSON-serializable state for Redis/database storage
+    -   Works with BFS, DFS, and Best-First strategies
+    
+    from crawl4ai.deep\_crawling import BFSDeepCrawlStrategy
+    
+    strategy \= BFSDeepCrawlStrategy(
+        max\_depth\=3,
+        resume\_state\=saved\_state,  \# Continue from checkpoint
+        on\_state\_change\=save\_to\_redis,  \# Called after each URL
+    )
+    
+-   **⚡ Prefetch Mode for Fast URL Discovery**:
+    
+    -   `prefetch=True` skips markdown, extraction, and media processing
+    -   5-10x faster than full processing
+    -   Perfect for two-phase crawling: discover first, process selectively
+    
+    config \= CrawlerRunConfig(prefetch\=True)
+    result \= await crawler.arun("https://example.com", config\=config)
+    \# Returns HTML and links only - no markdown generation
+    
+-   **🔒 Security Fixes (Docker API)**:
+    
+    -   Hooks disabled by default (`CRAWL4AI_HOOKS_ENABLED=false`)
+    -   `file://` URLs blocked on API endpoints to prevent LFI
+    -   `__import__` removed from hook execution sandbox
+
+Full v0.8.0 Release Notes →
 
 **Version 0.7.8 Release Highlights - Stability & Bug Fix Release**
 

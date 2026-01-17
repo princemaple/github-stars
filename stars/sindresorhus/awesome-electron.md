@@ -1,6 +1,6 @@
 ---
 project: awesome-electron
-stars: 26897
+stars: 26922
 description: Useful resources for creating apps with Electron
 url: https://github.com/sindresorhus/awesome-electron
 ---
@@ -263,6 +263,7 @@ Tools
 -   pluggable-electron - Build apps that can be extended through plugins.
 -   Hydraulic Conveyor - CLI tool that deploys apps without needing any special update servers, multi-platform CI, or code changes.
 -   Aptabase - Analytics for apps. Open source, privacy-friendly, and simple.
+-   electron-webauthn-mac - Native WebAuthn/Passkey support for macOS apps via Apple's AuthenticationServices framework.
 
 ### Using Electron
 

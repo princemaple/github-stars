@@ -1,6 +1,6 @@
 ---
 project: superfile
-stars: 16283
+stars: 16384
 description: Pretty fancy and modern terminal file manager
 url: https://github.com/yorukot/superfile
 ---
@@ -38,6 +38,7 @@ Content
     -   Support
     -   Core maintainer
     -   Contributors
+    -   Powered by
     -   Star History
 
 Installation
@@ -161,11 +162,11 @@ Uninstalling
 
 ### macOS and Linux
 
-On macOS and Linux, you can uninstall superfile by simply removing the binary. If you installed superfile with sudo, runw
+On macOS and Linux, you can uninstall superfile by simply removing the binary. If you installed superfile with sudo, run:
 
 sudo rm /usr/local/bin/spf
 
-If you installed superfile without sudo, run
+If you installed superfile without sudo, run:
 
 rm ~/.local/bin/spf
 
@@ -202,6 +203,10 @@ Thanks
 ### Contributors
 
 **Thanks to all the contributors for making this project even greater!**
+
+### Powered by
+
+Thanks to JetBrains team for providing open-source licenses to support the maintenance of superfile.
 
 ### Star History
 

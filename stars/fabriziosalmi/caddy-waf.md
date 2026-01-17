@@ -1,6 +1,6 @@
 ---
 project: caddy-waf
-stars: 706
+stars: 711
 description: Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
 url: https://github.com/fabriziosalmi/caddy-waf
 ---
@@ -71,22 +71,21 @@ curl -fsSL -H "Pragma: no-cache" https://raw.githubusercontent.com/fabriziosalmi
 🚀 Installation
 ---------------
 
-### Option 1: Using `caddy add-package` (Recommended)
+### Option 1: Quick Script (Recommended)
 
-If you already have Caddy installed, you can add this plugin directly using the `caddy add-package` command:
+The fastest way to get started:
 
-caddy add-package github.com/fabriziosalmi/caddy-waf
+curl -fsSL -H "Pragma: no-cache" https://raw.githubusercontent.com/fabriziosalmi/caddy-waf/refs/heads/main/install.sh | bash
 
-This command will:
+### Option 2: Build with xcaddy
 
--   Download a new Caddy binary with the WAF module included
--   Keep your existing modules intact
--   Safely replace your current Caddy binary
--   Create a backup of your previous binary (use `--keep-backup` to retain it)
+# Install xcaddy if you don't have it
+go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 
-**Note:** This is an experimental Caddy feature. The command uses Caddy's remote build service to compile and download a custom binary with the module included.
+# Build Caddy with the WAF module
+xcaddy build --with github.com/fabriziosalmi/caddy-waf
 
-### Option 2: Build from Source
+### Option 3: Build from Source
 
 #### Prerequisites
 

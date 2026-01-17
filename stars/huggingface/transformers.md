@@ -1,6 +1,6 @@
 ---
 project: transformers
-stars: 154870
+stars: 155278
 description: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. 
 url: https://github.com/huggingface/transformers
 ---
@@ -147,7 +147,7 @@ Why should I use Transformers?
     -   Share trained models instead of training from scratch.
     -   Reduce compute time and production costs.
     -   Dozens of model architectures with 1M+ pretrained checkpoints across all modalities.
-3.  Choose the right framework for every part of a models lifetime:
+3.  Choose the right framework for every part of a model's lifetime:
     
     -   Train state-of-the-art models in 3 lines of code.
     -   Move a single model between PyTorch/JAX/TF2.0 frameworks at will.

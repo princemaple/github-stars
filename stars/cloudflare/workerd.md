@@ -1,6 +1,6 @@
 ---
 project: workerd
-stars: 7405
+stars: 7425
 description: The JavaScript / Wasm runtime that powers Cloudflare Workers
 url: https://github.com/cloudflare/workerd
 ---
@@ -102,6 +102,10 @@ You may then build `workerd` at the command-line with:
 
 bazel build //src/workerd/server:workerd
 
+You can pass `--config=release` to compile in release mode:
+
+bazel build //src/workerd/server:workerd --config=release
+
 You can also build from within Visual Studio Code using the instructions in docs/vscode.md.
 
 The compiled binary will be located at `bazel-bin/src/workerd/server/workerd`.
@@ -119,6 +123,25 @@ The cache will now be cleaned and you can try building again.
 If you have a fairly recent clang packages installed you can build a more performant release version of workerd:
 
 bazel build --config=thin-lto //src/workerd/server:workerd
+
+### Code Coverage (Linux only)
+
+Code coverage is only supported on Linux. To generate code coverage reports, you need LLVM coverage tools (`llvm-profdata` and `llvm-cov`) installed:
+
+sudo apt-get install llvm
+
+If your distribution installs versioned binaries (e.g., `llvm-profdata-19`), create symlinks:
+
+sudo ln -sf /usr/bin/llvm-profdata-19 /usr/local/bin/llvm-profdata
+sudo ln -sf /usr/bin/llvm-cov-19 /usr/local/bin/llvm-cov
+
+Then run coverage with:
+
+bazel coverage //...
+
+Or use the just command which also generates an HTML report:
+
+just coverage
 
 ### Configuring `workerd`
 
@@ -184,7 +207,7 @@ Prebuilt binaries are distributed via `npm`. Run `npx workerd ...` to use these.
 You can use Wrangler (v3.0 or greater) to develop Cloudflare Workers locally, using `workerd`. First, run the following command to configure Miniflare to use this build of `workerd`.
 
 ```
-$ export MINIFLARE_WORKERD_PATH="<WORKERD_REPO_DIR>/bazel-bin/src/workerd/server/workerd"
+export MINIFLARE_WORKERD_PATH="<WORKERD_REPO_DIR>/bazel-bin/src/workerd/server/workerd"
 ```
 
 Then, run:

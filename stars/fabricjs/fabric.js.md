@@ -1,6 +1,6 @@
 ---
 project: fabric.js
-stars: 30786
+stars: 30829
 description: Javascript Canvas Library, SVG-to-Canvas (& canvas-to-SVG) Parser
 url: https://github.com/fabricjs/fabric.js
 ---

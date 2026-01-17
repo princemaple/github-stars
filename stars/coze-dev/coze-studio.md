@@ -1,6 +1,6 @@
 ---
 project: coze-studio
-stars: 19394
+stars: 19495
 description: An AI agent development platform with all-in-one visual tools, simplifying agent creation, debugging, and deployment like never before. Coze your way to AI Agent creation.
 url: https://github.com/coze-dev/coze-studio
 ---
@@ -83,7 +83,7 @@ Deployment steps:
     # for macOS or Linux
     make web  
     # for windows
-    cp .env.example .env
+    cp ./docker/.env.example ./docker/.env
     docker compose -f ./docker/docker-compose.yml up
     
     For common startup failure issues, **please refer to the FAQ**.

@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 127796
+stars: 128012
 description: Microsoft PowerToys is a collection of utilities that help you customize Windows and streamline everyday tasks
 url: https://github.com/microsoft/PowerToys
 ---
@@ -85,7 +85,7 @@ But to get started quickly, choose one of the installation methods below:
   
 
 **Download .exe from GitHub**  
-Go to the \[PowerToys GitHub releases\]\[github-release-link\], click Assets to reveal the downloads, and choose the installer that matches your architecture and install scope. For most devices, that's the x64 per-user installer.
+Go to the PowerToys GitHub releases, click Assets to reveal the downloads, and choose the installer that matches your architecture and install scope. For most devices, that's the x64 per-user installer.
 
 Description
 
@@ -111,7 +111,7 @@ PowerToysSetup-0.96.1-arm64.exe
 You can easily install PowerToys from the Microsoft Store:
 
 **WinGet**  
-Download PowerToys from \[WinGet\]\[winget-link\]. Updating PowerToys via winget will respect the current PowerToys installation scope. To install PowerToys, run the following command from the command line / PowerShell:
+Download PowerToys from WinGet. Updating PowerToys via winget will respect the current PowerToys installation scope. To install PowerToys, run the following command from the command line / PowerShell:
 
 _User scope installer \[default\]_
 
@@ -122,7 +122,7 @@ _Machine-wide scope installer_
 winget install \--scope machine Microsoft.PowerToys \-s winget
 
 **Other methods**  
-There are \[community driven install methods\](./doc/unofficialInstallMethods.md) such as Chocolatey and Scoop. If these are your preferred install solutions, you can find the install instructions there.
+There are community driven install methods such as Chocolatey and Scoop. If these are your preferred install solutions, you can find the install instructions there.
 
 ✨ What's new
 ------------

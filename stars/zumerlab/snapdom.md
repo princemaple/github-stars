@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7358
+stars: 7393
 description: SnapDOM: DOM Capture Engine – Fast and Accurate HTML Conversion
 url: https://github.com/zumerlab/snapdom
 ---
@@ -160,7 +160,7 @@ const result \= await snapdom(el);
 const img \= await result.toPng();
 document.body.appendChild(img);
 
-await result.download({ format: 'jpg', filename: 'my-capture' });
+await result.download({ format: 'jpg', filename: 'my-capture.jpg' });
 
 ### One-step shortcuts
 
@@ -228,10 +228,68 @@ Returns a WebP image
 
 Triggers a download
 
+### Exporter-specific options
+
+Some exporters accept a small set of **export-only options** in addition to the global capture options.
+
+#### `download()`
+
+Option
+
+Type
+
+Default
+
+Description
+
+`filename`
+
+`string`
+
+`snapdom`
+
+Download name.
+
+`format`
+
+`"png" | "jpeg" | "jpg" | "webp" | "svg"`
+
+`"png"`
+
+Output format for the downloaded file.
+
+**Example:**
+
+await result.download({
+  format: 'jpg',
+  quality: 0.92,
+  filename: 'my-capture'
+});
+
+#### `toBlob()`
+
+Option
+
+Type
+
+Default
+
+Description
+
+`type`
+
+`"svg" | "png" | "jpeg" | "jpg" | "webp"`
+
+`"svg"`
+
+Blob type to generate.
+
+**Example:**
+
+const blob \= await result.toBlob({ type: 'jpeg', quality: 0.92 });
+
 Options
 -------
-
-> ✅ **Note:** Style compression is now always on internally. The `compress` option has been removed.
 
 All capture methods accept an `options` object:
 
@@ -338,14 +396,6 @@ string
 `''`
 
 Proxy base for CORS fallbacks
-
-`type`
-
-string
-
-`svg`
-
-Default Blob type (`svg`|`png`|`jpg`|`webp`)
 
 `exclude`
 

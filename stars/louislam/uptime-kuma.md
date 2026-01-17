@@ -1,6 +1,6 @@
 ---
 project: uptime-kuma
-stars: 81069
+stars: 81532
 description: A fancy self-hosted monitoring tool
 url: https://github.com/louislam/uptime-kuma
 ---
@@ -162,7 +162,7 @@ Contributions
 
 ### Create Pull Requests
 
-We DO NOT accept all types of pull requests and do not want to waste your time. Please be sure that you have read and follow pull request rules: CONTRIBUTING.md#can-i-create-a-pull-request-for-uptime-kuma
+Pull requests are awesome. To keep reviews fast and effective, please make sure you’ve read our pull request guidelines.
 
 ### Test Pull Requests
 

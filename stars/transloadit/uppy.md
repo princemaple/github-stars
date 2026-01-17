@@ -1,6 +1,6 @@
 ---
 project: uppy
-stars: 30557
+stars: 30571
 description: The next open source file uploader for web browsers :dog: 
 url: https://github.com/transloadit/uppy
 ---
@@ -84,7 +84,7 @@ Alternatively, you can also use a pre-built bundle from Transloadit’s CDN: Sma
 
 <!-- 1. Add CSS to \`<head>\` -->
 <link
-  href\="https://releases.transloadit.com/uppy/v5.2.1/uppy.min.css"
+  href\="https://releases.transloadit.com/uppy/v5.2.2/uppy.min.css"
   rel\="stylesheet"
 />
 
@@ -95,7 +95,7 @@ Alternatively, you can also use a pre-built bundle from Transloadit’s CDN: Sma
     Uppy,
     Dashboard,
     Tus,
-  } from 'https://releases.transloadit.com/uppy/v5.2.1/uppy.min.mjs'
+  } from 'https://releases.transloadit.com/uppy/v5.2.2/uppy.min.mjs'
 
   const uppy \= new Uppy()
   uppy.use(Dashboard, { target: '#files-drag-drop' })

@@ -1,6 +1,6 @@
 ---
 project: lobe-chat
-stars: 69983
+stars: 70229
 description: 🤯 LobeHub - an open-source, modern design AI Agent Workspace. Supports multiple AI providers, Knowledge Base (file upload / RAG ), one click install MCP Marketplace and Artifacts / Thinking. One-click FREE deployment of your private AI Agent application.
 url: https://github.com/lobehub/lobe-chat
 ---
@@ -225,13 +225,13 @@ Recent Submits
 Description
 
 Shopping tools  
-By **shoppingtools** on **2025-12-17**
+By **shoppingtools** on **2026-01-12**
 
 Search for products on eBay & AliExpress, find eBay events & coupons. Get prompt examples.  
 `shopping` `e-bay` `ali-express` `coupons`
 
 SEO Assistant  
-By **webfx** on **2025-12-17**
+By **webfx** on **2026-01-12**
 
 The SEO Assistant can generate search engine keyword information in order to aid the creation of content.  
 `seo` `keyword`

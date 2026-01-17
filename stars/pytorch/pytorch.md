@@ -1,6 +1,6 @@
 ---
 project: pytorch
-stars: 96505
+stars: 96697
 description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
 url: https://github.com/pytorch/pytorch
 ---
@@ -288,7 +288,7 @@ Note on OpenMP: The desired OpenMP implementation is Intel OpenMP (iomp). In ord
 
 In this mode PyTorch computations will leverage your GPU via CUDA for faster number crunching
 
-NVTX is needed to build Pytorch with CUDA. NVTX is a part of CUDA distributive, where it is called "Nsight Compute". To install it onto an already installed CUDA run CUDA installation once again and check the corresponding checkbox. Make sure that CUDA with Nsight Compute is installed after Visual Studio.
+NVTX is needed to build PyTorch with CUDA. NVTX is a part of CUDA distributive, where it is called "Nsight Compute". To install it onto an already installed CUDA run CUDA installation once again and check the corresponding checkbox. Make sure that CUDA with Nsight Compute is installed after Visual Studio.
 
 Currently, VS 2017 / 2019, and Ninja are supported as the generator of CMake. If `ninja.exe` is detected in `PATH`, then Ninja will be used as the default generator, otherwise, it will use VS 2017 / 2019.  
 If Ninja is selected as the generator, the latest MSVC will get selected as the underlying toolchain.
@@ -485,7 +485,7 @@ We appreciate all contributions. If you are planning to contribute back bug-fixe
 
 If you plan to contribute new features, utility functions, or extensions to the core, please first open an issue and discuss the feature with us. Sending a PR without discussion might end up resulting in a rejected PR because we might be taking the core in a different direction than you might be aware of.
 
-To learn more about making a contribution to Pytorch, please see our Contribution page. For more information about PyTorch releases, see Release page.
+To learn more about making a contribution to PyTorch, please see our Contribution page. For more information about PyTorch releases, see Release page.
 
 The Team
 --------

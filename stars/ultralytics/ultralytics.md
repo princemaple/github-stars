@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 50951
+stars: 51891
 description: Ultralytics YOLO 🚀
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -36,8 +36,8 @@ Usage
 
 You can use Ultralytics YOLO directly from the Command Line Interface (CLI) with the `yolo` command:
 
-# Predict using a pretrained YOLO model (e.g., YOLO11n) on an image
-yolo predict model=yolo11n.pt source='https://ultralytics.com/images/bus.jpg'
+# Predict using a pretrained YOLO model (e.g., YOLO26n) on an image
+yolo predict model=yolo26n.pt source='https://ultralytics.com/images/bus.jpg'
 
 The `yolo` command supports various tasks and modes, accepting additional arguments like `imgsz=640`. Explore the YOLO CLI Docs for more examples.
 
@@ -47,8 +47,8 @@ Ultralytics YOLO can also be integrated directly into your Python projects. It a
 
 from ultralytics import YOLO
 
-\# Load a pretrained YOLO11n model
-model \= YOLO("yolo11n.pt")
+\# Load a pretrained YOLO26n model
+model \= YOLO("yolo26n.pt")
 
 \# Train the model on the COCO8 dataset for 100 epochs
 train\_results \= model.train(
@@ -73,7 +73,7 @@ Discover more examples in the YOLO Python Docs.
 ✨ Models
 --------
 
-Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO11. The tables below showcase YOLO11 models pretrained on the COCO dataset for Detection, Segmentation, and Pose Estimation. Additionally, Classification models pretrained on the ImageNet dataset are available. Tracking mode is compatible with all Detection, Segmentation, and Pose models. All Models are automatically downloaded from the latest Ultralytics release upon first use.
+Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on the COCO dataset for Detection, Segmentation, and Pose Estimation. Additionally, Classification models pretrained on the ImageNet dataset are available. Tracking mode is compatible with all Detection, Segmentation, and Pose models. All Models are automatically downloaded from the latest Ultralytics release upon first use.
 
   
   
@@ -89,6 +89,9 @@ size
 mAPval  
 50-95
 
+mAPval  
+50-95(e2e)
+
 Speed  
 CPU ONNX  
 (ms)
@@ -103,75 +106,85 @@ params
 FLOPs  
 (B)
 
-YOLO11n
+YOLO26n
 
 640
 
-39.5
+40.9
 
-56.1 ± 0.8
+40.1
 
-1.5 ± 0.0
+38.9 ± 0.7
 
-2.6
+1.7 ± 0.0
 
-6.5
+2.4
 
-YOLO11s
+5.4
+
+YOLO26s
 
 640
 
-47.0
+48.6
 
-90.0 ± 1.2
+47.8
+
+87.2 ± 0.9
 
 2.5 ± 0.0
 
-9.4
+9.5
 
-21.5
+20.7
 
-YOLO11m
+YOLO26m
 
 640
 
-51.5
+53.1
 
-183.2 ± 2.0
+52.5
+
+220.0 ± 1.4
 
 4.7 ± 0.1
 
-20.1
+20.4
 
-68.0
+68.2
 
-YOLO11l
-
-640
-
-53.4
-
-238.6 ± 1.4
-
-6.2 ± 0.1
-
-25.3
-
-86.9
-
-YOLO11x
+YOLO26l
 
 640
 
-54.7
+55.0
 
-462.8 ± 6.7
+54.4
 
-11.3 ± 0.2
+286.2 ± 2.0
+
+6.2 ± 0.2
+
+24.8
+
+86.4
+
+YOLO26x
+
+640
+
+57.5
 
 56.9
 
-194.9
+525.8 ± 4.0
+
+11.8 ± 0.2
+
+55.7
+
+193.9
 
 -   **mAPval** values refer to single-model single-scale performance on the COCO val2017 dataset. See YOLO Performance Metrics for details.  
     Reproduce with `yolo val detect data=coco.yaml device=0`
@@ -188,10 +201,10 @@ size
 (pixels)
 
 mAPbox  
-50-95
+50-95(e2e)
 
 mAPmask  
-50-95
+50-95(e2e)
 
 Speed  
 CPU ONNX  
@@ -207,85 +220,85 @@ params
 FLOPs  
 (B)
 
-YOLO11n-seg
+YOLO26n-seg
 
 640
 
-38.9
+39.6
 
-32.0
+33.9
 
-65.9 ± 1.1
+53.3 ± 0.5
 
-1.8 ± 0.0
+2.1 ± 0.0
 
-2.9
+2.7
 
-9.7
+9.1
 
-YOLO11s-seg
-
-640
-
-46.6
-
-37.8
-
-117.6 ± 4.9
-
-2.9 ± 0.0
-
-10.1
-
-33.0
-
-YOLO11m-seg
+YOLO26s-seg
 
 640
 
-51.5
+47.3
 
-41.5
+40.0
 
-281.6 ± 1.2
+118.4 ± 0.9
 
-6.3 ± 0.1
+3.3 ± 0.0
 
-22.4
+10.4
 
-113.2
+34.2
 
-YOLO11l-seg
-
-640
-
-53.4
-
-42.9
-
-344.2 ± 3.2
-
-7.8 ± 0.2
-
-27.6
-
-132.2
-
-YOLO11x-seg
+YOLO26m-seg
 
 640
 
-54.7
+52.5
 
-43.8
+44.1
 
-664.5 ± 3.2
+328.2 ± 2.4
 
-15.8 ± 0.7
+6.7 ± 0.1
 
-62.1
+23.6
 
-296.4
+121.5
+
+YOLO26l-seg
+
+640
+
+54.4
+
+45.5
+
+387.0 ± 3.7
+
+8.0 ± 0.1
+
+28.0
+
+139.8
+
+YOLO26x-seg
+
+640
+
+56.5
+
+47.0
+
+787.0 ± 6.8
+
+16.4 ± 0.1
+
+62.8
+
+313.5
 
 -   **mAPval** values are for single-model single-scale on the COCO val2017 dataset. See YOLO Performance Metrics for details.  
     Reproduce with `yolo val segment data=coco.yaml device=0`
@@ -321,13 +334,13 @@ params
 FLOPs  
 (B) at 224
 
-YOLO11n-cls
+YOLO26n-cls
 
 224
 
-70.0
+71.4
 
-89.4
+90.1
 
 5.0 ± 0.3
 
@@ -337,13 +350,13 @@ YOLO11n-cls
 
 0.5
 
-YOLO11s-cls
+YOLO26s-cls
 
 224
 
-75.4
+76.0
 
-92.7
+92.9
 
 7.9 ± 0.2
 
@@ -353,13 +366,13 @@ YOLO11s-cls
 
 1.6
 
-YOLO11m-cls
+YOLO26m-cls
 
 224
 
-77.3
+78.1
 
-93.9
+94.2
 
 17.2 ± 0.4
 
@@ -369,13 +382,13 @@ YOLO11m-cls
 
 4.9
 
-YOLO11l-cls
+YOLO26l-cls
 
 224
 
-78.3
+79.0
 
-94.3
+94.6
 
 23.2 ± 0.3
 
@@ -385,13 +398,13 @@ YOLO11l-cls
 
 6.2
 
-YOLO11x-cls
+YOLO26x-cls
 
 224
 
-79.5
+79.9
 
-94.9
+95.0
 
 41.4 ± 0.9
 
@@ -416,10 +429,10 @@ size
 (pixels)
 
 mAPpose  
-50-95
+50-95(e2e)
 
 mAPpose  
-50
+50(e2e)
 
 Speed  
 CPU ONNX  
@@ -435,85 +448,85 @@ params
 FLOPs  
 (B)
 
-YOLO11n-pose
+YOLO26n-pose
 
 640
 
-50.0
+57.2
 
-81.0
+83.3
 
-52.4 ± 0.5
+40.3 ± 0.5
 
-1.7 ± 0.0
+1.8 ± 0.0
 
 2.9
 
-7.4
+7.5
 
-YOLO11s-pose
-
-640
-
-58.9
-
-86.3
-
-90.5 ± 0.6
-
-2.6 ± 0.0
-
-9.9
-
-23.1
-
-YOLO11m-pose
+YOLO26s-pose
 
 640
 
-64.9
+63.0
 
-89.4
+86.6
 
-187.3 ± 0.8
+85.3 ± 0.9
 
-4.9 ± 0.1
+2.7 ± 0.0
 
-20.9
+10.4
 
-71.4
+23.9
 
-YOLO11l-pose
-
-640
-
-66.1
-
-89.9
-
-247.7 ± 1.1
-
-6.4 ± 0.1
-
-26.1
-
-90.3
-
-YOLO11x-pose
+YOLO26m-pose
 
 640
 
-69.5
+68.8
 
-91.1
+89.6
 
-488.0 ± 13.9
+218.0 ± 1.5
 
-12.1 ± 0.2
+5.0 ± 0.1
 
-58.8
+21.5
 
-202.8
+73.1
+
+YOLO26l-pose
+
+640
+
+70.4
+
+90.5
+
+275.4 ± 2.4
+
+6.5 ± 0.1
+
+25.9
+
+91.3
+
+YOLO26x-pose
+
+640
+
+71.6
+
+91.6
+
+565.4 ± 3.0
+
+12.2 ± 0.2
+
+57.6
+
+201.7
 
 -   **mAPval** values are for single-model single-scale on the COCO Keypoints val2017 dataset. See YOLO Performance Metrics for details.  
     Reproduce with `yolo val pose data=coco-pose.yaml device=0`
@@ -530,7 +543,10 @@ size
 (pixels)
 
 mAPtest  
-50
+50-95(e2e)
+
+mAPtest  
+50(e2e)
 
 Speed  
 CPU ONNX  
@@ -546,75 +562,85 @@ params
 FLOPs  
 (B)
 
-YOLO11n-obb
+YOLO26n-obb
 
 1024
 
-78.4
+52.4
 
-117.6 ± 0.8
+78.9
 
-4.4 ± 0.0
+97.7 ± 0.9
 
-2.7
+2.8 ± 0.0
 
-16.8
+2.5
 
-YOLO11s-obb
+14.0
 
-1024
-
-79.5
-
-219.4 ± 4.0
-
-5.1 ± 0.0
-
-9.7
-
-57.1
-
-YOLO11m-obb
+YOLO26s-obb
 
 1024
+
+54.8
 
 80.9
 
-562.8 ± 2.9
+218.0 ± 1.4
 
-10.1 ± 0.4
+4.9 ± 0.1
 
-20.9
+9.8
 
-182.8
+55.1
 
-YOLO11l-obb
+YOLO26m-obb
 
 1024
+
+55.3
 
 81.0
 
-712.5 ± 5.0
+579.2 ± 3.8
 
-13.5 ± 0.6
+10.2 ± 0.3
 
-26.1
+21.2
 
-231.2
+183.3
 
-YOLO11x-obb
+YOLO26l-obb
 
 1024
 
-81.3
+56.2
 
-1408.6 ± 7.7
+81.6
 
-28.6 ± 1.0
+735.6 ± 3.1
 
-58.8
+13.0 ± 0.2
 
-519.1
+25.6
+
+230.0
+
+YOLO26x-obb
+
+1024
+
+56.7
+
+81.7
+
+1485.7 ± 11.5
+
+30.5 ± 0.9
+
+57.6
+
+516.5
 
 -   **mAPtest** values are for single-model multiscale performance on the DOTAv1 test set.  
     Reproduce by `yolo val obb data=DOTAv1.yaml device=0 split=test` and submit merged results to the DOTA evaluation server.
@@ -629,7 +655,7 @@ Our key integrations with leading AI platforms extend the functionality of Ultra
   
   
 
-Ultralytics HUB 🌟
+Ultralytics Platform 🌟
 
 Weights & Biases
 
@@ -637,18 +663,13 @@ Comet
 
 Neural Magic
 
-Streamline YOLO workflows: Label, train, and deploy effortlessly with Ultralytics HUB. Try now!
+Streamline YOLO workflows: Label, train, and deploy effortlessly with Ultralytics Platform. Try now!
 
 Track experiments, hyperparameters, and results with Weights & Biases.
 
 Free forever, Comet ML lets you save YOLO models, resume training, and interactively visualize predictions.
 
 Run YOLO inference up to 6x faster with Neural Magic DeepSparse.
-
-🌟 Ultralytics HUB
-------------------
-
-Experience seamless AI with Ultralytics HUB, the all-in-one platform for data visualization, training YOLO models, and deployment—no coding required. Transform images into actionable insights and bring your AI visions to life effortlessly using our cutting-edge platform and user-friendly Ultralytics App. Start your journey for **Free** today!
 
 🤝 Contribute
 -------------

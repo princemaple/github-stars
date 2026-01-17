@@ -1,6 +1,6 @@
 ---
 project: directus
-stars: 33941
+stars: 33982
 description: The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.
 url: https://github.com/directus/directus
 ---

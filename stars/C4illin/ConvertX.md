@@ -1,6 +1,6 @@
 ---
 project: ConvertX
-stars: 14218
+stars: 15044
 description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 url: https://github.com/C4illin/ConvertX
 ---
@@ -112,6 +112,14 @@ Documents
 msgconvert
 
 Outlook
+
+1
+
+1
+
+VCF to CSV
+
+Contacts
 
 1
 

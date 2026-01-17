@@ -1,6 +1,6 @@
 ---
 project: wkhtmltopdf
-stars: 14488
+stars: 14492
 description: Convert HTML to PDF using Webkit (QtWebKit)
 url: https://github.com/wkhtmltopdf/wkhtmltopdf
 ---

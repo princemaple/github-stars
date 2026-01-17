@@ -1,6 +1,6 @@
 ---
 project: gopeed
-stars: 22360
+stars: 22414
 description: A modern download manager that supports all platforms.  Built with Golang and Flutter.
 url: https://github.com/GopeedLab/gopeed
 ---
@@ -212,7 +212,7 @@ This project is divided into two parts, the front end uses `flutter`, the back e
 
 ### 🌍 Environment
 
-1.  Golang 1.23+
+1.  Golang 1.24+
 2.  Flutter 3.24+
 
 ### 📋 Clone

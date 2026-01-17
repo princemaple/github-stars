@@ -1,6 +1,6 @@
 ---
 project: feather
-stars: 25777
+stars: 25784
 description: Simply beautiful open-source icons
 url: https://github.com/feathericons/feather
 ---

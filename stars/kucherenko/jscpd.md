@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 5172
+stars: 5198
 description: Copy/paste detector for programming source code.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -24,6 +24,10 @@ description
 jscpd
 
 main package for jscpd (cli and API for detections included)
+
+jscpd-server
+
+jscpd server application
 
 @jscpd/core
 
@@ -68,6 +72,32 @@ or
 $ jscpd --pattern "src/\*\*/\*.js"
 
 More information about cli here.
+
+JSCPD Server
+------------
+
+JSCPD Server is a standalone application that provides an API for detecting code duplication. It can be used to integrate duplication detection into your services or tools.
+
+### Installation
+
+$ npm install -g jscpd-server
+
+### Usage
+
+Start the server:
+
+$ jscpd-server
+
+Check code for duplication:
+
+$ curl -X POST http://localhost:3000/api/check \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "code": "console.log(\\"hello\\");\\nconsole.log(\\"world\\");",
+    "format": "javascript"
+  }'
+
+More information about server here.
 
 Programming API
 ---------------

@@ -1,6 +1,6 @@
 ---
 project: rexbug
-stars: 259
+stars: 260
 description: A thin Elixir wrapper for the redbug Erlang tracing debugger.
 url: https://github.com/nietaki/rexbug
 ---

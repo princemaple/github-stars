@@ -1,6 +1,6 @@
 ---
 project: livestreamer
-stars: 3872
+stars: 3874
 description: Command-line utility that extracts streams from various services and pipes them into a video player of choice. No longer maintained, use streamlink or youtube-dl instead.
 url: https://github.com/chrippa/livestreamer
 ---

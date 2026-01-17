@@ -1,6 +1,6 @@
 ---
 project: dockmon
-stars: 1100
+stars: 1155
 description: DockMon - Modern Docker container monitoring with auto-restart and alerts
 url: https://github.com/darthnorse/dockmon
 ---
@@ -23,7 +23,7 @@ Key Features
 -   **Advanced Alerting** - Discord, Slack, Telegram, Pushover, Gotify, SMTP with customizable templates
 -   **Container Tagging** - Automatic tag derivation from Docker labels with user-defined tags
 -   **Bulk Operations** - Start, stop, restart multiple containers simultaneously with progress tracking
--   **Container Deployments** - Deploy containers to local and remote hosts. Supports Docker Run style deployments as well as Docker Compose, including the ability to create templates for repeated deployments
+-   **Stack Management** - Create, edit, and deploy Docker Compose stacks to local and remote hosts. Import existing stacks from running containers or host filesystems, with real-time deployment progress and layer-by-layer image pull tracking
 -   **Automatic Updates** - Detect and execute container image updates on schedule
 -   **HTTP/HTTPS Health Checks** - Custom endpoint monitoring with auto-restart on failure
 -   **Blackout Windows** - Schedule maintenance periods to suppress alerts

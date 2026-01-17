@@ -1,72 +1,25 @@
 ---
 project: filestash
-stars: 13382
-description: :file_folder: What Dropbox should have been if it was based on SFTP, S3, FTP, SMB, NFS, WebDAV, Git, and more
+stars: 13436
+description: :file_folder: Universal Data Access Gateway / File Management Platform (without FUSE)
 url: https://github.com/mickael-kerjean/filestash
 ---
 
-A Dropbox-like file manager that works with every storage protocol:  
-FTP • FTPS • SFTP • WebDAV • Git • S3 • NFS • SMB • Artifactory • LDAP • Mysql  
-Sharepoint • Azure • CalDAV • Backblaze B2 • Minio • Storj  
-IPFS • Dropbox • Google Drive • ...
+What is this?
+=============
 
-What / Why ?
-============
+It started as a storage agnostic Dropbox-like file manager that works with every storage protocol: FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more.
 
-Familiar with the infamous comment from Dropbox's launch on HN? It went like this:
-
-Once we had a great user interface for FTP, we extended the idea to virtually every storage protocol and added gateways to expose Dropbox itself as an SFTP server, closing the infamous loop, while also adding all the features we always wished Dropbox had.
+It grew into a universal data access platform with virtual filesystem capabilities, APIs, and Gateways to expose your data over SFTP, S3, and MCP to give LLMs a limited view of your data:
 
 Key Features
 ============
 
--   Sleek, Speedy, Snappy, works great on Desktop and Mobile
--   Extensible / Customisable / Hackable via a rich ecosystem of plugins and a Workflow engine to enable automation
--   Shared Links which you can mount locally as network drives
--   Builtin Music, Video, Image viewers with optional transcoding and Chromecast support
--   API and LLM integration via MCP with support for other S3 and SFTP Gateways.
--   Themes replicating the UX of dropbox, gdrive, github, ibm, onedrive, and more
--   ... and much much much more
-
-Documentation
-=============
-
--   Getting started
--   Installation
--   API and MCP
--   Plugins Inventory
--   Hardening Guide
-
-Vision & Philosophy
-===================
-
-Our goal is simple: **to build the best file management platform ever made. Period.** But "best" means different things to different people, and making Filestash modular is the only sane model to accomplish that. Anything that isn't a fundamental truth of the universe and might spark a debate belongs in a plugin.
-
-This modularity is made possible by the magic of programming interfaces. For example, if you want a Dropbox-like frontend for FTP, you will find out the FTP plugin simply implements this interface:
-
-type IBackend interface {
-	Ls(path string) (\[\]os.FileInfo, error)           // list files in a folder
-	Cat(path string) (io.ReadCloser, error)          // download a file
-	Mkdir(path string) error                         // create a folder
-	Rm(path string) error                            // remove something
-	Mv(from string, to string) error                 // rename something
-	Save(path string, file io.Reader) error          // save a file
-	Touch(path string) error                         // create a file
-
-	// I have omitted 2 other methods, a first one to enable connections reuse and
-	// another one to declare what should the login form be like.
-}
-
-There are interfaces you can implement for every key component of Filestash: from storage, to authentication, authorisation, custom apps, search, thumbnailing, frontend patches, middleware, endpoint creation and a few others.
-
-To see what's currently installed in your instance, head over to /about. The inventory of plugins is documented here.
-
-Roadmap
-=======
-
-There are 2 major pieces of work currently underway:
-
-1.  Making Filestash able to open virtually anything. Thanks to plugin, we're adding support for files your browser has never heard of, from astrophysics to embroidery patterns. Concretly we have added support for:
+-   A plugin based architecture with a minimal core that can be extended and customized through a rich ecosystem of plugins.
+-   An awesome web client to access your data, built in vanilla JS, sleek, speedy, snappy, and infinitely customizable through our dynamic patch plugins.
+-   A Workflow engine to enable automation and tons of integrations capabilities
+-   Integrations with almost every storage system and authentication provider, with the explicit goal of supporting 100% of storage and auth technologies on the market (including unconventional ones like using WordPress as an IdP).
+-   The frontend can open virtually any file format using xdg-open plugins that add renderers and additional buttons for formats not natively supported by browsers, from astronomy to embroidery and everything in between like:
     -   photography: heif, nef, raf, tiff, raw, arw, sr2, srf, nrw, cr2, crw, x3f, pef, rw2, orf, mrw, mdc, mef, mos, dcr, kdc, 3fr, erf and srw
     -   astronomy: fits, xisf
     -   science: with latex, plantuml & pandoc compilers
@@ -80,8 +33,42 @@ There are 2 major pieces of work currently underway:
     -   adobe: psd, ai, xd, dng, postscript, aco, ase, swf
     -   3d: fbx, gltf, obj, stl, step, mesh, ifc, dae
     -   embroidery: dgt, dst, dsb, dsz, edr, exp, 10o, col, hus, inf, jef, ksm, pcm, pcs, pes, sew, shv, sst, tap, u01, vip, vp3 and xxx
-    -   there is more to come as we stumbled upon new niches and spend time talking to real people.
-2.  Getting to v1.0. Filestash is already rock solid, it has been in active development for over 8 years. But the bar for v1.0 will be reached when Filestash is objectively better than Dropbox, Google Drive, and Box by every single measurable metric we care about. That's the mission.
+-   Themes:  
+    
+-   ... and much much more (chromecast support, on demand video transcoding, mounting shared links as network drive, public site, antivirus, versioning, audit, quota, ....)  
+    As a rule of thumb, if your problem involves files, we either already have a plugin for it or can make a plugin for it
+
+Getting Started
+===============
+
+To install Filestash, head to the Getting started guide.
+
+If you want to leverage plugins, head over to the inventory, or learn about developing your own plugins
+
+Vision & Philosophy
+===================
+
+Our goal is simple: **to build the best file management platform ever made. Period.** But "best" means different things to different people, and making Filestash modular is the only sane model to accomplish that. Anything that isn't a fundamental truth of the universe and might spark a debate belongs in a plugin. Literally every piece listed in the key features is a plugin you can swap for another implementation or remove entirely.
+
+This modularity is made possible by the magic of programming interfaces. For example, if you want a Dropbox-like frontend for FTP, you will find out the FTP plugin simply implements this interface:
+
+type IBackend interface {
+	Ls(path string) (\[\]os.FileInfo, error)           // list files in a folder
+	Stat(path string) (os.FileInfo, error)           // file stat
+	Cat(path string) (io.ReadCloser, error)          // download a file
+	Mkdir(path string) error                         // create a folder
+	Rm(path string) error                            // remove something
+	Mv(from string, to string) error                 // rename something
+	Save(path string, file io.Reader) error          // save a file
+	Touch(path string) error                         // create a file
+
+	// I have omitted 2 other methods, a first one to enable connections reuse and
+	// another one to declare what should the login form be like.
+}
+
+There are interfaces you can implement for every key component of Filestash: from storage, to authentication, authorisation, custom apps, search, thumbnailing, frontend patches, middleware, endpoint creation and a few others documented in the plugin development guide.
+
+To see what's currently installed in your instance, head over to /about. The inventory of plugins is documented here
 
 Support
 =======

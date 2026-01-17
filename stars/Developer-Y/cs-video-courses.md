@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70535
+stars: 70569
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -138,7 +138,7 @@ Courses
 -   CS 473 - Algorithms - University of Illinois at Urbana-Champaign (Notes - Jeff Erickson) (YouTube)
 -   COMP300E - Programming Challenges, Prof Skiena, Hong Kong University of Science and Technology - 2009
 -   16s-4102 - Algorithms, University of Virginia (Youtube)
--   CS 61B - Data Structures (Java) - UC Berkeley(Youtube)
+-   CS 61B - Data Structures (Java) - UC Berkeley(Discussion 2022)
 -   CS 170 Algorithms - UCBerkeley Fall 2019, Youtube Fall 2018, Youtube Fall 2018,Bilibili 2013 Bilibili
 -   CS 159 Data-Driven Algorithm Design - Caltech Spring 2020, Youtube
 -   ECS 122A - Algorithm Design and Analysis, UC Davis
@@ -224,6 +224,7 @@ Courses
 -   CS110: Principles of Computer Systems - Stanford
 -   #### **Operating Systems**
     
+    -   APS 105 - Computer Fundamentals - Winter 2025 - Jon Eyolfson - University of Toronto (Winter 2024)
     -   ECS 150 - Operating Systems and Systems Programming - Fall 2020 - Joël Porquet-Lupine - UC Davis
     -   ECE 344 - Operating Systems - Fall 2024 - Jon Eyolfson - University of Toronto (Fall 2024 Section 2) (Fall 2023) (Fall 2022)
     -   ECE 353 - Systems Software - Winter 2025 - Jon Eyolfson - University of Toronto (Winter 2024) (Winter 2023)
@@ -425,6 +426,7 @@ Courses
     -   Microsoft Research - Machine Learning Course
     -   CS 446 - Machine Learning, Fall 2016, UIUC
     -   CS 582 - Machine Learning for Bioinformatics, Fall 2024, UIUC
+    -   CMPUT 267 Machine Learning - Fall 2024 - University of Alberta (Youtube)
     -   ECE 364 - Programming Methods for Machine Learning, Spring 2025, UIUC
     -   undergraduate machine learning at UBC 2012, Nando de Freitas
     -   CS 229 - Machine Learning - Stanford University (Autumn 2018)
@@ -514,7 +516,7 @@ Courses
     -   CSE519 - Data Science Fall 2016 - Skiena, SBU
     -   CS 109 Data Science, Harvard University (YouTube)
     -   6.0002 Introduction to Computational Thinking and Data Science - MIT OCW
-    -   Data 100: Principles and Techniques of Data Science - UC Berkeley (Fall 24) (Spring 24) (Summer 19)
+    -   Data 100: Principles and Techniques of Data Science - UC Berkeley (Fall 25) (Fall 24) (Spring 24) (Summer 19)
     -   Data 102 - Spring 21- UC Berkeley (YouTube)
     -   Distributed Data Analytics (WT 2017/18) - HPI University of Potsdam
     -   Data Profiling and Data Cleansing (WS 2014/15) - HPI University of Potsdam
@@ -552,6 +554,7 @@ Courses
     -   NYU Deep Learning Spring 2020
     -   NYU Deep Learning Spring 2021
     -   6.S191: Introduction to Deep Learning - MIT
+    -   15.773: Hands-On Deep Learning Spring 2024 - MIT
     -   Intro to Deep Learning and Generative Models Course - Prof Sebastian Raschka
     -   Deep Learning CMU
     -   CS231n Deep Learning for Computer Vision - Stanford University (Spring 2025) (Winter 2016 Andrej Karpathy)
@@ -682,6 +685,7 @@ Courses
     -   ECE 498 / 598 - Deep Generative Models - UIUC, Fall 2025)
     -   MIT 6.S184 Flow Matching and Diffusion Models, 2025
     -   Course on Diffusion Models for Generative AI - UT Austin
+    -   CS 492(C) Diffusion and Flow Models - Fall 2025 - KAIST (YouTube)
     -   Stanford CS336 Language Modeling from Scratch I 2025 - Stanford
     -   Stanford CME295 Transformers & LLMs - Autumn 2025 - Stanford
     -   Introduction to large language models - IIT Madras
@@ -707,6 +711,7 @@ Courses
     -   Computer Vision - FAU Spring 2021 (Spring 2018)
     -   CAP5415 Computer Vision - UCF Fall 2023
     -   CAP6412 Advanced Computer Vision - UCF Spring 2024 (Youtube)
+    -   CU Boulder CSCI 5722 Computer Vision - CU Boulder Spring 2025 (Youtube)
     -   Advanced Deep Learning for Computer vision (ADL4CV) (IN2364) - TU Munich (Youtube)
     -   Advanced Deep Learning for Physics (ADL4P) - TU Munich
     -   Computer Vision III: Detection, Segmentation and Tracking (CV3DST) (IN2375) - TU Munich
@@ -1153,7 +1158,7 @@ Courses
 -   6.1600 Foundations of Computer Security - MIT Fall 2023
 -   6.858 Computer Systems Security - MIT OCW
 -   CS 253 Web Security - Stanford University
--   CS 161: Computer Security, UC Berkeley (Videos) (Spring 2025)
+-   CS 161: Computer Security, UC Berkeley (Videos - Fall 2023) (Videos - Fall 2025) (Spring 2025)
 -   6.875 - Cryptography - Fall 2021 - MIT (Spring 2018)
 -   CSEP590A - Practical Aspects of Modern Cryptography, Winter 2011 - University of Washington (Videos)
 -   CS461/ECE422 - Computer Security - University of Illinois at Urbana-Champaign (Videos)
@@ -1429,6 +1434,8 @@ Courses
 -   Nonlinear Control Design Jan 2024 - IIT Bombay
 -   Intelligent Control of Robotic Systems - IIT Roorkee
 -   Mobile Robot Systems Course - Amanda Prorok, University of Cambridge
+-   Robot Academy - Peter Corke
+-   ENAE 788M: Hands On Autonomous Aerial Robotics - University of Maryland
 
 * * *
 

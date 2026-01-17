@@ -1,6 +1,6 @@
 ---
 project: observer_cli
-stars: 1492
+stars: 1493
 description: Visualize Erlang/Elixir Nodes On The Command Line
 url: https://github.com/zhongwencool/observer_cli
 ---
@@ -10,7 +10,7 @@ url: https://github.com/zhongwencool/observer_cli
 observer\_cli
 =============
 
-Observer CLI is a library to be dropped into any beam nodes, to be used to assist DevOps people diagnose problems in production nodes. Based on recon.
+Observer CLI is a library to be dropped into any BEAM nodes, to be used to help DevOps people diagnose problems in production nodes. Based on recon.
 
 -   Provide a high-performance tool usable both in development and production settings.
 -   Focus on important and detailed information about real-time running system.
@@ -26,7 +26,7 @@ Installation
 %% rebar.config
 {deps, \[observer\_cli\]}
 %% erlang.mk
-dep\_observer\_cli \= hex 1.8.5
+dep\_observer\_cli \= hex 1.8.6
 
 ### Elixir
 
@@ -45,6 +45,8 @@ How-To
 %% rebar3 project
 rebar3 shell
 1\> observer\_cli:start().
+
+Tip: CI uses `rebar3 as ci compile` (warnings are treated as errors).
 
 ### Elixir
 
@@ -68,7 +70,7 @@ iex(1)\> :observer\_cli.start(:'target@host', :'magic\_cookie')
 
 > #### exclamation {: .info}
 > 
-> **ensure observer\_cli application been loaded on target node.**
+> **ensure the observer\_cli application has been loaded on the target node.**
 
 > #### tip {: .tip}
 > 
@@ -87,7 +89,7 @@ Features
 
 The Home panel provides a comprehensive overview of your Erlang node:
 
-`erlang:system_info/1` returns specified information about the current system by below item. When the ratio is greater than 85%, it becomes red.
+`erlang:system_info/1` returns specified information about the current system in the items below. When the ratio is greater than 85%, it becomes red.
 
 Metric
 
@@ -106,7 +108,7 @@ Atom Count
 atom\_count/atom\_limit
 
 -   **process\_limit**: `erl +P Number` sets the maximum number of simultaneously existing processes for this system if a Number is passed as value. Valid range for Number is \[1024-134217727\]. The default value is 262144.
--   **port\_limit**: `erl +Q Number` sets the maximum number of simultaneously existing ports for this system if a Number is passed as value. Valid range for Number is \[1024-134217727\]. The default value used is normally 65536. However, if the runtime system is able to determine maximum amount of file descriptors that it is allowed to open and this value is larger than 65536, the chosen value will increased to a value larger or equal to the maximum amount of file descriptors that can be opened.
+-   **port\_limit**: `erl +Q Number` sets the maximum number of simultaneously existing ports for this system if a Number is passed as value. Valid range for Number is \[1024-134217727\]. The default value used is normally 65536. However, if the runtime system is able to determine maximum amount of file descriptors that it is allowed to open and this value is larger than 65536, the chosen value will be increased to a value larger than or equal to the maximum amount of file descriptors that can be opened.
 -   **atom\_limit**: `erl +t size` sets the maximum number of atoms the virtual machine can handle. Defaults to 1,048,576.
 
 `ps` reports a snapshot of the BEAM OS process and feeds the system panel. Observer CLI samples four columns:
@@ -177,7 +179,7 @@ When looking for high memory usage, for example it's interesting to be able to l
 
 `recon:proc_count/2` and `recon:proc_window/3` are to be used when you require information about processes in a larger sense: biggest consumers of given process `memory`, `reductions`, `binary`, `total_heap_size`, `message_queue_len`, either absolutely or over a sliding time window, respectively.
 
-More detail about sliding time windows see `recon:proc_window/3`
+For more detail about sliding time windows, see `recon:proc_window/3`
 
 When an abnormal process is found, enter the suspected process sequence(Integer) then press `Enter` will use `erlang:process_info/2` to show a lot of information available (which is safe to use in production) about processes.
 

@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 65380
+stars: 65932
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -353,11 +353,11 @@ Granite 3-4
 
 granite3/granite4
 
-Hunyuan (MT)
+Hunyuan/Hunyuan1.5 (MT)
 
-7B
+0.5B/1.8B/4B/7B/13B
 
-hunyuan
+hunyuan/hunyuan\_small
 
 InternLM 2-3
 

@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 10409
+stars: 11929
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -163,7 +163,7 @@ Download `CC-Switch-v{version}-macOS.zip` from the Releases page and extract to 
 
 > **Note**: Since the author doesn't have an Apple Developer account, you may see an "unidentified developer" warning on first launch. Please close it first, then go to "System Settings" → "Privacy & Security" → click "Open Anyway", and you'll be able to open it normally afterwards.
 
-### ArchLinux 用户
+### Arch Linux Users
 
 **Install via paru (Recommended)**
 

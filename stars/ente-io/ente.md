@@ -1,6 +1,6 @@
 ---
 project: ente
-stars: 23808
+stars: 23938
 description: 🔥 End-to-end encrypted cloud for everything.
 url: https://github.com/ente-io/ente
 ---

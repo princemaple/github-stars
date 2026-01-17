@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 34030
+stars: 34203
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -122,11 +122,11 @@ GUI Clients
     -   SimpleXray
     -   AnyPortal
 -   iOS & macOS arm64 & tvOS
-    -   Happ (tvOS)
+    -   Happ | Happ RU | Happ tvOS
     -   Streisand
     -   OneXray
 -   macOS arm64 & x64
-    -   Happ
+    -   Happ | Happ RU
     -   V2rayU
     -   V2RayXS
     -   Furious

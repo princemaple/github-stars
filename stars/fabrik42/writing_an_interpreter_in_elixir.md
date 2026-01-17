@@ -1,6 +1,6 @@
 ---
 project: writing_an_interpreter_in_elixir
-stars: 144
+stars: 145
 description: Elixir implementation of an interpreter for the Monkey programming language
 url: https://github.com/fabrik42/writing_an_interpreter_in_elixir
 ---

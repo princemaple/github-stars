@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 29699
+stars: 29814
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -210,25 +210,6 @@ apt
 
 just
 
-`apt install just`
-
-Debian and Ubuntu derivatives
-
-MPR
-
-just
-
-`git clone https://mpr.makedeb.org/just`  
-`cd just`  
-`makedeb -si`
-
-Debian and Ubuntu derivatives
-
-Prebuilt-MPR
-
-just
-
-**You must have the Prebuilt-MPR set up on your system in order to run this command.**  
 `apt install just`
 
 Fedora

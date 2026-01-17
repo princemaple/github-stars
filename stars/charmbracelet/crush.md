@@ -1,7 +1,7 @@
 ---
 project: crush
-stars: 17425
-description: The glamourous AI coding agent for your favourite terminal 💘
+stars: 18275
+description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
 
@@ -24,7 +24,8 @@ Features
 -   **Session-Based:** maintain multiple work sessions and contexts per project
 -   **LSP-Enhanced:** Crush uses LSPs for additional context, just like you do
 -   **Extensible:** add capabilities via MCPs (`http`, `stdio`, and `sse`)
--   **Works Everywhere:** first-class support in every terminal on macOS, Linux, Windows (PowerShell and WSL), FreeBSD, OpenBSD, and NetBSD
+-   **Works Everywhere:** first-class support in every terminal on macOS, Linux, Windows (PowerShell and WSL), Android, FreeBSD, OpenBSD, and NetBSD
+-   **Industrial Grade:** built on the Charm ecosystem, powering 25k+ applications, from leading open source projects to business-critical infrastructure
 
 Installation
 ------------
@@ -57,7 +58,7 @@ scoop install crush
 
 **Nix (NUR)**
 
-Crush is available via the offical Charm NUR in `nur.repos.charmbracelet.crush`, which is the most up-to-date way to get Crush in Nix.
+Crush is available via the official Charm NUR in `nur.repos.charmbracelet.crush`, which is the most up-to-date way to get Crush in Nix.
 
 You can also try out Crush via the NUR with `nix-shell`:
 

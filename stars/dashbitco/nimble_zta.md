@@ -1,6 +1,6 @@
 ---
 project: nimble_zta
-stars: 48
+stars: 49
 description: Add Zero Trust Auth (ZTA) to web apps running in your private cloud
 url: https://github.com/dashbitco/nimble_zta
 ---

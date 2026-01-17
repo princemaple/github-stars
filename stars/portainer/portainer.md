@@ -1,6 +1,6 @@
 ---
 project: portainer
-stars: 36139
+stars: 36234
 description: Making Docker and Kubernetes management easy.
 url: https://github.com/portainer/portainer
 ---
@@ -53,7 +53,7 @@ Reporting bugs and contributing
 Security
 --------
 
--   Here at Portainer, we believe in responsible disclosure of security issues. If you have found a security issue, please report it to security@portainer.io.
+For information about reporting security vulnerabilities, please see our Security Policy.
 
 Work for us
 -----------

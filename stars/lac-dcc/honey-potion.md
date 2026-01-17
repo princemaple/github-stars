@@ -96,12 +96,12 @@ end
 
 For detailed documentation and examples, see:
 
--   `docs/Language.md`
--   Example programs in `/examples/lib`:
-    -   `HelloWorld.ex`
-    -   `Maps.ex`
-    -   `CountSysCalls.ex`
-    -   `Forcekill.ex`
+-   `Language`
+-   Example programs in `/examples`:
+    -   `hello_world`
+    -   `maps`
+    -   `count_syscalls`
+    -   `force_kill`
 
 Or watch the YouTube tutorial.
 

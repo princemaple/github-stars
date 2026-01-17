@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 13426
+stars: 13505
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern Rest API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -313,13 +313,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **RemcoGoy**
 
   
-**mcollina**
-
-  
 **mpminardi**
 
   
 **TheVaan**
+
+  
+**mcollina**
 
   
 **si-net**
@@ -343,28 +343,31 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ATREAY**
 
   
-**soulchild**
-
-  
-**yshrsmz**
-
-  
-**hex0id**
-
-  
-**horpto**
-
-  
-**x-delfino**
-
-  
-**ykdojo**
+**ledgersteve**
 
   
 **timheuer**
 
   
-**ledgersteve**
+**ykdojo**
+
+  
+**x-delfino**
+
+  
+**horpto**
+
+  
+**jpjpjp**
+
+  
+**hex0id**
+
+  
+**yshrsmz**
+
+  
+**soulchild**
 
   
 **SebastianBienert**
@@ -377,6 +380,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **luc122c**
+
+  
+**luke-hagar-sp**
 
   
 **handrews**
@@ -415,6 +421,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ventocis**
 
   
+**SamyPesse**
+
+  
 **dotfortun**
 
   
@@ -427,9 +436,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **sinh117801**
 
   
-**stratosblue**
-
-  
 **Huliiiiii**
 
   
@@ -439,10 +445,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **rbange**
 
   
+**robert-dean**
+
+  
 **rickihastings**
 
   
 **rhuanbarreto**
+
+  
+**philsturgeon**
 
   
 **petercinibulk**
@@ -475,12 +487,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **MarioGK**
 
   
-**luke-hagar-sp**
-
-  
-**diegolopes**
-
-  
 **unnoq**
 
   
@@ -503,9 +509,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **kwaichanz**
-
-  
-**jpjpjp**
 
   
 **g-airey**
@@ -566,6 +569,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **yokeTH**
+
+  
+**stratosblue**
+
+  
+**diegolopes**
 
   
 **untiny**

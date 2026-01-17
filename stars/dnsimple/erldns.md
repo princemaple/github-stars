@@ -1,6 +1,6 @@
 ---
 project: erldns
-stars: 458
+stars: 459
 description: DNS server, in Erlang.
 url: https://github.com/dnsimple/erldns
 ---
@@ -112,6 +112,5 @@ This runs the following:
 -   xref
 -   dialyzer
 -   ExDoc
--   EUnit
 -   Common Tests
 -   Coverage

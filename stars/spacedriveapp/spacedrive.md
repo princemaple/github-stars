@@ -1,6 +1,6 @@
 ---
 project: spacedrive
-stars: 36508
+stars: 36662
 description: Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.
 url: https://github.com/spacedriveapp/spacedrive
 ---
@@ -161,7 +161,7 @@ Tech Stack
 **Apps**
 
 -   **CLI** - Command-line interface (available now)
--   **Server** - Headless daemon for Docker deployment (available now)
+-   **Server** - Headless daemon for Docker deployment (self-hosting guide)
 -   **Tauri** - Cross-platform desktop with React frontend (macOS and Linux now, Windows in alpha.2)
 -   **Web** - Web interface and shared UI components (available now)
 -   **Mobile** - React Native mobile app (iOS and Android coming soon)
@@ -456,6 +456,7 @@ Documentation
 -------------
 
 -   **v2 Documentation** - Complete guides and API reference
+-   **Self-Hosting Guide** - Deploy Spacedrive server
 -   **Whitepaper** - Technical architecture (work in progress)
 -   **Contributing Guide** - How to contribute
 -   **Architecture Docs** - Detailed system design

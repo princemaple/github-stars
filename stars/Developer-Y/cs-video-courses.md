@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70569
+stars: 70620
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -575,6 +575,7 @@ Courses
     -   Stat 946 Deep Learning - University of Waterloo
     -   EECS 298 Theory of Computational Neural Networks and Machine Learning (Fall 2020) - UC Irvine (YouTube)
     -   ECE 1508 Applied Deep Learning - University of Toronto (Fall 2025) (Winter 2025) (Fall 2024)
+    -   ECE 1508 Reinforcement Learning - Fall 2025 - University of Toronto
     -   Neural networks class - Université de Sherbrooke (YouTube)
     -   DLCV - Deep Learning for Computer Vision - UPC Barcelona
     -   DLAI - Deep Learning for Artificial Intelligence @ UPC Barcelona
@@ -595,7 +596,7 @@ Courses
     -   Deep Learning François Fleuret
     -   Applied Deep Learning Maziar Raissi
     -   UC Berkeley CS 182 / 282a Deep Learning spring 2023, by Anant Sahai
-    -   Foundations of Deep Learning - UMD
+    -   CMSC 828W Foundations of Deep Learning (Fall 2020) - UMD (YouTube)
     -   TUM IN2346 Introduction to Deep Learning Fall 2024, by Daniel Cremers (Summer 2023)
     -   UT Austin - Advances in Deep Learning
     -   HKU - Data 8014 Principles of Deep Representation Learning Fall 2025, by Yi Ma
@@ -683,6 +684,9 @@ Courses
     -   Stanford CS236: Deep Generative Models I 2023 I Stefano Ermon
     -   CS 6785 - Deep Generative Models - Cornell Tech, Spring 2023)
     -   ECE 498 / 598 - Deep Generative Models - UIUC, Fall 2025)
+    -   Mathematical Foundations of Generative AI - IIT Madras
+    -   Deep Generative Models - IISC
+    -   A Course on Generative AI - Diffusion Models - Israel Institute of Technology
     -   MIT 6.S184 Flow Matching and Diffusion Models, 2025
     -   Course on Diffusion Models for Generative AI - UT Austin
     -   CS 492(C) Diffusion and Flow Models - Fall 2025 - KAIST (YouTube)
@@ -1059,6 +1063,7 @@ Courses
 -   ECE 4760 Designing with Microcontrollers Fall 2016, Cornell University (Lectures - Youtube)
 -   ECE 5760 - Advanced Microcontroller Design and system-on-chip, Spring 2016 - Cornell University
 -   Internet of Things by Prof. Dr.-Ing. Dietmar P. F. Möller
+-   18 642 - Embedded Software Engineering, Fall 2021 - CMU
 -   CSE 351 - The Hardware/Software Interface, Spring 16 - University of Washington (Coursera)
 -   ECE 5030 - Electronic Bioinstrumentation, Spring 2014 - Cornell University
 -   ECE/CS 5780/6780 - Embedded Systems Design, Spring 14 - University of Utah
@@ -1125,6 +1130,7 @@ Courses
     -   CS 267 Applications of Parallel Computers, Spring 18 - UC Berkeley (YouTube-Spring 18) (Notes-Spring 16) (YouTube-Spring 16)
     -   MOOC - Heterogeneous Parallel Programming - Coursera
     -   ECE 498AL - Programming Massively Parallel Processors
+    -   ECE 1756 - Reconfigurable Computing and FPGA Architecture - University of Toronto - Fall 2020 (YouTube-Fall 2022)
     -   Parallel Computing - IIT Delhi
     -   Parallel Architectures 2012/13- University of Edinburgh
 -   **Digital Systems Design**
@@ -1231,6 +1237,10 @@ Courses
 -   Digital Signal Processing - RPI
 -   UC Berkeley EE 123 Digital Signal Processing fall 2003, by Avideh Zakhor
 -   UC Berkeley EE 225B Digital Image Processing spring 2006, by Avideh Zakhor
+-   Gatech ECE 2026 Introduction to Signal Processing spring 2025, by Aaron Lanterman (YouTube)
+-   Gatech ECE 4270 Digital Signal Processing Fundamentals spring 2021, by David Anderson (YouTube)
+-   Gatech ECE 6250 Advanced Digital Signal Processing summer 2020, by David Anderson (YouTube)
+-   Gatech ECE 6271 Adaptive Signal Processing winter 2023, by David Anderson (YouTube)
 -   Advanced Vision 2014 - University of Edinburgh
 -   Photogrammetry Course - 2015/16 - University of Bonn, Germany
 -   MOOC - Introduction to Computer Vision - Udacity
@@ -1309,7 +1319,7 @@ Courses
 -   Statistical Models in Computational Biology
 -   ETH Zürich Statistical Models in Computational Biology spring 2018, by Niko Beerenwinkel
 -   UC Berkeley CS 198-96 Introduction to Neurotechnology fall 2020
--   MLCB24 - Machine Learning in Computational Biology Fall 2024
+-   MLCB24 - Machine Learning in Computational Biology Fall 2024 (Fall 2018) (Fall 2019)
 -   Introduction to Neural Computation - MIT OCW
 -   Data Science for Biologists - Steve Brunton
 -   Big Data and Biological Networks IIT Madras
@@ -1371,6 +1381,7 @@ Courses
 -   CS235 - Applied Robot Design for Non-Robot-Designers - Stanford University
 -   Lecture: Visual Navigation for Flying Robots (YouTube)
 -   CS 205A: Mathematical Methods for Robotics, Vision, and Graphics (Fall 2013)
+-   Optimization and Learning for Robot Control - University of Trento, Italy (YouTube-2025)
 -   Robotics 1, Prof. De Luca, Università di Roma (YouTube)
 -   Robotics 2, Prof. De Luca, Università di Roma (YouTube)
 -   Robot Mechanics and Control, SNU

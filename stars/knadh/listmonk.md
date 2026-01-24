@@ -1,6 +1,6 @@
 ---
 project: listmonk
-stars: 18752
+stars: 18826
 description: High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app.
 url: https://github.com/knadh/listmonk
 ---

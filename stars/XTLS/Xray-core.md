@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 34203
+stars: 34387
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -110,6 +110,7 @@ GUI Clients
     -   luci-app-xray (openwrt-xray)
 -   Asuswrt-Merlin
     -   XRAYUI
+    -   fancyss
 -   Windows
     -   v2rayN
     -   Furious

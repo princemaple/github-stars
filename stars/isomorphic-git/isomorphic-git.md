@@ -1,6 +1,6 @@
 ---
 project: isomorphic-git
-stars: 8045
+stars: 8055
 description: A pure JavaScript implementation of git for node and browsers!
 url: https://github.com/isomorphic-git/isomorphic-git
 ---
@@ -254,7 +254,7 @@ cd isomorphic-git
 npm install
 npm test
 
-The new relase happen automatically after every PR merge. We use sematic release.
+The new release happens automatically after every PR merge. We use semantic release.
 
 Check out the `CONTRIBUTING` document for more instructions.
 
@@ -669,6 +669,10 @@ Thanks goes to these wonderful people (emoji key):
   
 **xiaoboost**  
 💻 📖 ⚠️
+
+  
+**Mateusz Burzyński**  
+💻 ⚠️
 
 This project follows the all-contributors specification. Contributions of any kind welcome!
 

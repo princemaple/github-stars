@@ -10,7 +10,7 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL (& Extension) Package Manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 13 ~ 18 along with 473 extensions on (`amd64` / `arm64`) with native OS package manager
+Install PostgreSQL 13 ~ 18 along with 444 extensions on (`amd64` / `arm64`) with native OS package manager
 
 Also check the **PGEXT.CLOUD** to get details about the package manager, repository and extension catalog.
 
@@ -29,7 +29,7 @@ $ pig repo add pigsty pgdg -u       # add pgdg & pigsty repo, then update repo c
 $ pig ext install pg18              # install PostgreSQL 18 kernels with native PGDG packages
 $ pig ext install pg\_duckdb -v 18   # install the pg\_duckdb extension (for current pg18)
 
-That's it, All set! Check the advanced usage for details and the full list 430+ available extensions.
+That's it, All set! Check the advanced usage for details and the full list 444 available extensions.
 
 * * *
 
@@ -67,7 +67,7 @@ sudo yum makecache; sudo yum install -y pig
 `pig` has self-update feature, you can update pig itself to the latest version with:
 
 pig update                  # self-update to the latest version
-pig update -v 0.9.0         # self-update to the specific version
+pig update -v 1.0.0         # self-update to the specific version
 pig ext reload              # update extension catalog metadata only
 
 * * *
@@ -83,15 +83,17 @@ pig ext  status               # show pg extensions status
 
 **Extension Management**
 
-pig ext list    \[query\]       # list & search extension      
+pig ext list    \[query\]       # list & search extension
 pig ext info    \[ext...\]      # get information of a specific extension
-pig ext status  \[-v\]          # show installed extension and pg status
+pig ext avail   \[ext...\]      # show extension availability matrix
+pig ext status  \[-c\]          # show installed extension and pg status
+pig ext scan                  # scan installed extensions for active pg
 pig ext add     \[ext...\]      # install extension for current pg version
 pig ext rm      \[ext...\]      # remove extension for current pg version
 pig ext update  \[ext...\]      # update extension to the latest version
 pig ext import  \[ext...\]      # download extension to local repo
 pig ext link    \[ext...\]      # link postgres installation to path
-pig ext upgrade               # fetch the latest extension catalog
+pig ext reload                # reload the latest extension catalog
 
 **Repo Management**
 
@@ -105,6 +107,7 @@ pig repo update                  # update repo pkg cache
 pig repo create                  # create repo on current system
 pig repo boot                    # boot repo from offline package
 pig repo cache                   # cache repo as offline package
+pig repo reload                  # reload repo catalog to latest version
 
 **Build Management**
 
@@ -156,8 +159,8 @@ pg17-devel:   "postgresql17-devel"
 pg17-basic:   "pg\_repack\_17 wal2json\_17 pgvector\_17"
 pg16-mini:    "postgresql16 postgresql16-server postgresql16-libs postgresql16-contrib"
 pg15-full:    "postgresql15 postgresql15-server postgresql15-libs postgresql15-contrib postgresql15-plperl postgresql15-plpython3 postgresql15-pltcl postgresql15-llvmjit postgresql15-test postgresql15-devel"
-pg14-main:    "postgresql14 postgresql14-server postgresql14-libs postgresql14-contrib postgresql14-plperl postgresql14-plpython3 postgresql14-pltcl postgresql14-llvmjit pg\_repack\_14 wal2json\_14 pgvector\_14"
-pg13-core:    "postgresql13 postgresql13-server postgresql13-libs postgresql13-contrib postgresql13-plperl postgresql13-plpython3 postgresql13-pltcl postgresql13-llvmjit"
+pg14-main:    "postgresql14 postgresql14-server postgresql14-libs postgresql14-contrib postgresql14-plperl postgresql14-plpython3 postgresql14-pltcl pg\_repack\_14 wal2json\_14 pgvector\_14"
+pg13-core:    "postgresql13 postgresql13-server postgresql13-libs postgresql13-contrib postgresql13-plperl postgresql13-plpython3 postgresql13-pltcl"
 
 More Alias
 
@@ -197,6 +200,11 @@ Take el for examples:
 "restic":              "restic",
 "rclone":              "rclone",
 "genai-toolbox":       "genai-toolbox",
+"tigerbeetle":         "tigerbeetle",
+"clickhouse":          "clickhouse-server clickhouse-client clickhouse-common-static",
+"victoria":            "victoria-metrics victoria-metrics-cluster vmutils grafana-victoriametrics-ds victoria-logs vlogscil vlagent grafana-victorialogs-ds",
+"vmetrics":            "victoria-metrics victoria-metrics-cluster vmutils grafana-victoriametrics-ds",
+"vlogs":               "victoria-logs vlogscil vlagent grafana-victorialogs-ds",
 
 **Install for another PG**
 
@@ -219,86 +227,140 @@ pig ext install pg16=16.5      # install PostgreSQL 16 with a specific minor ver
 You can perform fuzzy search on extension name, description, and category.
 
 $ pig ext ls olap
+INFO\[14:04:25\] found 14 extensions matching 'olap':
+Name            Status     Version  Cate  Flags   License       Repo     PGVer  Package               Description
+----            ------     -------  ----  ------  -------       ------   -----  ------------          ---------------------
+citus           installed  14.0.0   OLAP  -dsl--  AGPL-3.0      PIGSTY   16-18  citus\_18              Distributed PostgreSQL as an extension
+citus\_columnar  installed  14.0.0   OLAP  -ds---  AGPL-3.0      PIGSTY   16-18  citus\_18              Citus columnar storage engine
+columnar        not avail  1.1.2    OLAP  -ds---  AGPL-3.0      PIGSTY   13-16  hydra\_18              Hydra Columnar extension
+pg\_analytics    not avail  0.3.7    OLAP  -ds-t-  PostgreSQL    PIGSTY   14-17  pg\_analytics\_18       Postgres for analytics, powered by DuckDB
+pg\_duckdb       installed  1.1.1    OLAP  -dsl--  MIT           PIGSTY   14-18  pg\_duckdb\_18          DuckDB Embedded in Postgres
+pg\_mooncake     installed  0.2.0    OLAP  -d-l--  MIT           PIGSTY   14-18  pg\_mooncake\_18        Columnstore Table in Postgres
+pg\_clickhouse   available  0.1.2    OLAP  -ds---  Apache-2.0    PIGSTY   13-18  pg\_clickhouse\_18      Interfaces to query ClickHouse databases from PostgreSQL
+duckdb\_fdw      available  1.1.2    OLAP  -ds--r  MIT           PIGSTY   13-17  duckdb\_fdw\_18         DuckDB Foreign Data Wrapper
+pg\_parquet      installed  0.5.1    OLAP  -dslt-  PostgreSQL    PIGSTY   14-18  pg\_parquet\_18         copy data between Postgres and Parquet
+pg\_fkpart       available  1.7.0    OLAP  -d----  GPL-2.0       PIGSTY   13-18  pg\_fkpart\_18          Table partitioning by foreign key utility
+pg\_partman      available  5.4.0    OLAP  -ds---  PostgreSQL    PGDG     13-18  pg\_partman\_18         Extension to manage partitioned tables by time or ID
+plproxy         available  2.11.0   OLAP  -ds---  BSD 0-Clause  PGDG     13-18  plproxy\_18            Database partitioning implemented as procedural language
+pg\_strom        not avail  6.0      OLAP  -ds--x  PostgreSQL    PGDG     13-17  pg\_strom\_18           PG-Strom - big-data processing acceleration using GPU and NVME
+tablefunc       installed  1.0      OLAP  -ds-tx  PostgreSQL    CONTRIB  13-18  postgresql18-contrib  functions that manipulate whole tables, including crosstab
 
-found 13 extensions matching 'olap':
-Name            State  Version  Cate  Flags   License       Repo     PGVer  Package                     Description
-----            -----  -------  ----  ------  -------       ------   -----  ------------                ---------------------
-citus           avail  13.2.0   OLAP  -dsl--  AGPL-3.0      PIGSTY   14-17  postgresql-17-citus         Distributed PostgreSQL as an extension
-citus\_columnar  avail  13.2.0   OLAP  -ds---  AGPL-3.0      PIGSTY   14-17  postgresql-17-citus         Citus columnar storage engine
-columnar        n/a    1.1.2    OLAP  -ds---  AGPL-3.0      PIGSTY   13-16  postgresql-17-hydra         Hydra Columnar extension
-pg\_analytics    avail  0.3.7    OLAP  -ds-t-  PostgreSQL    PIGSTY   14-17  postgresql-17-pg-analytics  Postgres for analytics, powered by DuckDB
-pg\_duckdb       added  1.1.1    OLAP  -dsl--  MIT           PIGSTY   14-18  postgresql-17-pg-duckdb     DuckDB Embedded in Postgres
-pg\_mooncake     added  0.2.0    OLAP  -d----  MIT           PIGSTY   14-18  postgresql-17-pg-mooncake   Columnstore Table in Postgres
-duckdb\_fdw      avail  1.1.2    OLAP  -ds--r  MIT           PIGSTY   13-17  postgresql-17-duckdb-fdw    DuckDB Foreign Data Wrapper
-pg\_parquet      avail  0.5.1    OLAP  -dslt-  PostgreSQL    PIGSTY   14-18  postgresql-17-pg-parquet    copy data between Postgres and Parquet
-pg\_fkpart       avail  1.7.0    OLAP  -d----  GPL-2.0       PIGSTY   13-17  postgresql-17-pg-fkpart     Table partitioning by foreign key utility
-pg\_partman      avail  5.3.1    OLAP  -ds---  PostgreSQL    PGDG     13-18  postgresql-17-partman       Extension to manage partitioned tables by time or ID
-plproxy         avail  2.11.0   OLAP  -ds---  BSD 0-Clause  PGDG     13-18  postgresql-17-plproxy       Database partitioning implemented as procedural language
-pg\_strom        n/a    6.0      OLAP  -ds--x  PostgreSQL             n/a                                PG-Strom - big-data processing acceleration using GPU and NVME
-tablefunc       added  1.0      OLAP  -ds-tx  PostgreSQL    CONTRIB  13-18  postgresql-17               functions that manipulate whole tables, including crosstab
-
-(13 Rows) (State: added|avail|n/a, Flags: b = HasBin, d = HasDDL, s = HasLib, l = NeedLoad, t = Trusted, r = Relocatable, x = Unknown)
+(14 Rows) (Status: installed, available, not avail | Flags: b = HasBin, d = HasDDL, s = HasLib, l = NeedLoad, t = Trusted, r = Relocatable, x = Unknown)
 
 You can use the `-v 16` or `-p /path/to/pg_config` to find extension availability for other PostgreSQL installation.
+
+**Extension Availability Matrix**
+
+You can check the availability matrix for extensions across different OS/Arch/PG combinations:
+
+$ pig ext avail pg\_duckdb            # show availability matrix for pg\_duckdb
+$ pig ext avail postgis pgvector     # show matrix for multiple extensions
+$ pig ext avail                      # show all packages availability on current OS
 
 **Print Extension Summary**
 
 You can get extension metadata with `pig ext info` subcommand:
 
 $ pig ext info pg\_duckdb
-╭────────────────────────────────────────────────────────────────────────────╮
-│ pg\_duckdb                                                                  │
-├────────────────────────────────────────────────────────────────────────────┤
-│ DuckDB Embedded in Postgres                                                │
-├────────────────────────────────────────────────────────────────────────────┤
-│ Extension : pg\_duckdb                                                      │
-│ Package   : pg\_duckdb                                                      │
-│ Lead Ext  : pg\_duckdb                                                      │
-│ Category  : OLAP                                                           │
-│ State     : available                                                      │
-│ Version   : 1.1.1                                                          │
-│ License   : MIT                                                            │
-│ Website   : https://github.com/duckdb/pg\_duckdb                            │
-│ Details   : https://pgext.cloud/e/pg\_duckdb                                │
-├────────────────────────────────────────────────────────────────────────────┤
-│ Extension Properties                                                       │
-├────────────────────────────────────────────────────────────────────────────┤
-│ PostgreSQL Ver │  Available on: 18, 17, 16, 15, 14                         │
-│ Contrib :  No  │  Lead Ext :  Yes │  Has Binary :  No                      │
-│ CREATE  :  Yes │  CREATE EXTENSION pg\_duckdb;                              │
-│ DYLOAD  :  Yes │  SET shared\_preload\_libraries = 'pg\_duckdb'               │
-│ TRUST   :  No  │  require database superuser to install                    │
-│ Reloc   :  No  │  Schemas: \[\]                                              │
-│ Depend  :  No  │                                                           │
-├────────────────────────────────────────────────────────────────────────────┤
-│ Required By                                                                │
-├────────────────────────────────────────────────────────────────────────────┤
-│ - pg\_mooncake                                                              │
-├────────────────────────────────────────────────────────────────────────────┤
-│ See Also                                                                   │
-├────────────────────────────────────────────────────────────────────────────┤
-│ pg\_mooncake, duckdb\_fdw, pg\_analytics, columnar, citus, citus\_columnar     │
-├────────────────────────────────────────────────────────────────────────────┤
-│ RPM Package                                                                │
-├────────────────────────────────────────────────────────────────────────────┤
-│ Repository     │  PIGSTY                                                   │
-│ Package        │  pg\_duckdb\_$v\*                                            │
-│ Version        │  1.1.1                                                    │
-│ Availability   │  18, 17, 16, 15, 14                                       │
-├────────────────────────────────────────────────────────────────────────────┤
-│ DEB Package                                                                │
-├────────────────────────────────────────────────────────────────────────────┤
-│ Repository     │  PIGSTY                                                   │
-│ Package        │  postgresql-$v\-pg-duckdb                                  │
-│ Version        │  1.1.1                                                    │
-│ Availability   │  18, 17, 16, 15, 14                                       │
-├────────────────────────────────────────────────────────────────────────────┤
-│ Source: pg\_duckdb-1.1.1.tar.gz                                             │
-├────────────────────────────────────────────────────────────────────────────┤
-│ Additional Comments                                                        │
-├────────────────────────────────────────────────────────────────────────────┤
-│ conflict with duckdb\_fdw                                                   │
-╰────────────────────────────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────────────────────────────────────────────────╮
+│ pg\_duckdb                                                                                    │
+├──────────────────────────────────────────────────────────────────────────────────────────────┤
+│ DuckDB Embedded in Postgres                                                                  │
+├──────────────┬───────────────────────────────────────────────────────────────────────────────┤
+│ Extension    │ pg\_duckdb                                                                     │
+│ Package      │ pg\_duckdb                                                                     │
+│ Leading Ext  │ pg\_duckdb                                                                     │
+│ Category     │ OLAP                                                                          │
+│ License      │ MIT                                                                           │
+│ Language     │ C++                                                                           │
+│ Website      │ https://github.com/duckdb/pg\_duckdb                                           │
+│ Details      │ https://pgext.cloud/e/pg\_duckdb                                               │
+│ Source       │ pg\_duckdb-1.1.1.tar.gz                                                        │
+├──────────────┴───────────────────────────────────────────────────────────────────────────────┤
+│ Properties                                                                                   │
+├──────────────┬────────────┬─────────────┬───────────┬────────────┬─────────────┬─────────────┤
+│  Attributes  │ Has Binary │ Has Library │ Need Load │ Create DDL │ Relocatable │   Trusted   │
+├──────────────┼────────────┼─────────────┼───────────┼────────────┼─────────────┼─────────────┤
+│    -dsl--    │     No     │     Yes     │    Yes    │    Yes     │     No      │     No      │
+├──────────────┴────────────┴─────────────┴───────────┴────────────┴─────────────┴─────────────┤
+│ Relationship                                                                                 │
+├──────────────┬───────────────────────────────────────────────────────────────────────────────┤
+│ Requires:    │                                                                               │
+│ Required By: │ pg\_mooncake                                                                   │
+│ See Also:    │ pg\_mooncake, duckdb\_fdw, pg\_analytics, pg\_parquet, columnar, citus, citus\_... │
+├──────────────┴───────────────────────────────────────────────────────────────────────────────┤
+│ EXT Summary                                                                                  │
+├──────────────┬───────────────────────────────────────────────────────────────────────────────┤
+│ Repository   │ PIGSTY                                                                        │
+│ Version      │ 1.1.1                                                                         │
+│ PG Version   │ 18, 17, 16, 15, 14                                                            │
+│ Schemas      │                                                                               │
+├──────────────┴───────────────────────────────────────────────────────────────────────────────┤
+│ RPM Package                                                                                  │
+├──────────────┬───────────────────────────────────────────────────────────────────────────────┤
+│ Package      │ pg\_duckdb\_$v                                                                  │
+│ Repository   │ PIGSTY                                                                        │
+│ Version      │ 1.1.1                                                                         │
+│ PG Version   │ 18, 17, 16, 15, 14                                                            │
+├──────────────┴───────────────────────────────────────────────────────────────────────────────┤
+│ DEB Package                                                                                  │
+├──────────────┬───────────────────────────────────────────────────────────────────────────────┤
+│ Package      │ postgresql-$v\-pg-duckdb                                                       │
+│ Repository   │ PIGSTY                                                                        │
+│ Version      │ 1.1.1                                                                         │
+│ PG Version   │ 18, 17, 16, 15, 14                                                            │
+├──────────────┴───────────────────────────────────────────────────────────────────────────────┤
+│ Operation                                                                                    │
+├──────────────┬───────────────────────────────────────────────────────────────────────────────┤
+│ INSTALL      │ pig ext add pg\_duckdb                                                         │
+│ CONFIG       │ shared\_preload\_libraries = 'pg\_duckdb'                                        │
+│ CREATE       │ CREATE EXTENSION pg\_duckdb;                                                   │
+│ BUILD        │ pig build pkg pg\_duckdb;  # build rpm / deb                                   │
+├──────────────┴───────────────────────────────────────────────────────────────────────────────┤
+│ Comment: conflict with duckdb\_fdw                                                            │
+╰──────────────────────────────────────────────────────────────────────────────────────────────╯
+
+**Print Extension Availability**
+
+You can get extension package availability with `pig ext avail` subcommand:
+
+$ pig ext avail citus
+
+citus (citus) - Distributed PostgreSQL as an extension
+Latest: 14.0.0 | 70/84 avail, PG16, PG17, PG18
+Details: https://pgext.cloud/e/citus  (green = PIGSTY, blue = PGDG)
+
+╭──────────────┬──────────────┬──────────────┬──────────────┬──────────────┬──────────────┬──────────────╮
+│ OS \\ PG      │      18      │      17      │      16      │      15      │      14      │      13      │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ el8.x86\_64   │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │    11.3.0    │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ el8.aarch64  │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │    11.3.0    │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ el9.x86\_64   │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │    11.3.0    │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ el9.aarch64  │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │    11.3.0    │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ el10.x86\_64  │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │              │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ el10.aarch64 │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │              │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ d12.x86\_64   │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ d12.aarch64  │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ d13.x86\_64   │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │              │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ d13.aarch64  │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │              │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ u22.x86\_64   │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ u22.aarch64  │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ u24.x86\_64   │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │              │
+├──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┼──────────────┤
+│ u24.aarch64  │    14.0.0    │    14.0.0    │    14.0.0    │    13.2.0    │    13.0.0    │              │
+╰──────────────┴──────────────┴──────────────┴──────────────┴──────────────┴──────────────┴──────────────╯
 
 **List Repo**
 
@@ -352,7 +414,7 @@ The **pig** can also be used as a cli tool for Pigsty — the battery-include fr
 pig sty init     # install pigsty to ~/pigsty 
 pig sty boot     # install ansible and other pre-deps 
 pig sty conf     # auto-generate pigsty.yml config file
-pig sty install  # run the install.yml playbook
+pig sty deploy   # run the deploy.yml playbook
 
 You can use the `pig sty` subcommand to bootstrap pigsty on current node.
 

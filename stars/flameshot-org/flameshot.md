@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 28656
+stars: 28706
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---
@@ -27,7 +27,7 @@ Index
     -   Local
     -   Global
         -   On KDE Plasma desktop
-        -   On Ubuntu
+        -   On Gnome (Ubuntu, Fedora and more)
         -   On XFCE 4
         -   On Fluxbox
 -   Considerations
@@ -332,19 +332,19 @@ Steps for using the configuration:
     ln -s /var/lib/flatpak/exports/bin/org.flameshot.Flameshot ~/.local/bin/flameshot
     
 
-#### On Ubuntu (Tested 22.04)
+#### On Gnome (Ubuntu, Fedora and more)
 
-To use Flameshot instead of the default screenshot application in Ubuntu we need to remove the binding on Prt Sc key, and then create a new binding for `/usr/bin/flameshot gui` (adapted from Pavel's answer on AskUbuntu).
+To use Flameshot instead of the default screenshot application in Gnome we need to remove the binding on Prt Sc key, and then create a new binding for `flameshot gui` (adapted from Pavel's answer on AskUbuntu).
 
 1.  Remove the binding on Prt Sc:
     
-    Ubuntu 22.04: Go to _Settings_ > _Keyboard_ > _View and Customise Shortcuts_ > _Screenshots_ > _Take a screenshot interactively_ and press `backspace`
+    Go to _Settings_ > _Keyboard_ > _View and Customise Shortcuts_ > _Screenshots_ > _Take a screenshot interactively_ and press `backspace`
     
 2.  Add custom binding on Prt Sc:
     
-    Ubuntu 22.04: Go to _Settings_ > _Keyboard_ > _View and Customise Shortcuts_ > _Custom shortcuts_ and press the '+' button at the bottom.
+    Go to _Settings_ > _Keyboard_ > _View and Customise Shortcuts_ > _Custom shortcuts_ and press the '+' button at the bottom.
     
-3.  Name the command as you like it, e.g. `flameshot`. And in the command insert `/usr/bin/flameshot gui`.
+3.  Name the command as you like it, e.g. `flameshot`. And in the command insert `/usr/bin/flameshot gui` or `flatpak run org.flameshot.Flameshot gui` if installed via flatpak.
     
 4.  Then click "_Set Shortcut.._" and press Prt Sc. This will show as "_print_".
     

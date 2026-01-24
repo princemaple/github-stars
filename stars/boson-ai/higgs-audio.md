@@ -1,12 +1,24 @@
 ---
 project: higgs-audio
-stars: 7858
+stars: 7878
 description: Text-audio foundation model from Boson AI
 url: https://github.com/boson-ai/higgs-audio
 ---
 
-Higgs Audio V2: Redefining Expressiveness in Audio Generation
-=============================================================
+Higgs Audio: Redefining Expressiveness in Audio Generation
+==========================================================
+
+NEWS！
+-----
+
+We are proud to launch **Higgs-Audio V2.5**, the latest iteration of Boson AI’s Audio model, designed to bring high-fidelity generation into production environments. Building on Higgs-Audio V2, this release combines improved efficiency with the stability required for real-world deployment.
+
+With V2.5, we condensed the model architecture to 1B parameters while surpassing speed and accuracy of the prior 3B model. The result is achieved through a new alignment strategy using Group Relative Policy Optimization (GRPO) on our curated Voice Bank dataset, combined with improved voice cloning and finer-grained style control.
+
+For detailed model performance, key improvements, and usage, please check our blog.
+
+Higgs Audio V2
+--------------
 
 We are open-sourcing Higgs Audio v2, a powerful audio foundation model pretrained on over 10 million hours of audio data and a diverse set of text data. Despite having no post-training or fine-tuning, Higgs Audio v2 excels in expressive audio generation, thanks to its deep language and acoustic understanding.
 

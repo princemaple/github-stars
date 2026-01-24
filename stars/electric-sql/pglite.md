@@ -1,6 +1,6 @@
 ---
 project: pglite
-stars: 14413
+stars: 14495
 description: Embeddable Postgres with real-time, reactive bindings.
 url: https://github.com/electric-sql/pglite
 ---

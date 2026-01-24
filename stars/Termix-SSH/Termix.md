@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 9654
+stars: 9799
 description: Termix is a web-based server management platform with SSH terminal, tunneling, and file editing capabilities.
 url: https://github.com/Termix-SSH/Termix
 ---

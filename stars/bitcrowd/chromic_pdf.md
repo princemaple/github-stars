@@ -62,16 +62,6 @@ Debian Buster
 
 9.27
 
-1.11.4
-
-22.3.4.26
-
-Debian Buster
-
-90.0.4430.212-1
-
-9.27
-
 Installation
 ------------
 

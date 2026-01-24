@@ -1,6 +1,6 @@
 ---
 project: dvc
-stars: 15282
+stars: 15304
 description: 🦉 Data Versioning and ML Experiments
 url: https://github.com/treeverse/dvc
 ---

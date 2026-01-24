@@ -1,11 +1,55 @@
 ---
 project: opensource.builders
-stars: 1287
+stars: 1293
 description: Find and build open-source alternatives
 url: https://github.com/junaid33/opensource.builders
 ---
 
-This is a Next.js project bootstrapped with `create-next-app`.
+Opensource.Builders
+===================
+
+Find open-source alternatives to popular software, compare features side-by-side, and generate skills with code references that help AI build those features in your project.
+
+Features
+--------
+
+-   **Browse Alternatives** - Discover open-source alternatives to proprietary applications
+-   **Compare Applications** - See feature-by-feature comparisons between apps
+-   **Skill Builder** - Generate AI coding agent skills from curated features with implementation details and code references
+-   **Multi-Agent Support** - Install skills in Claude Code, Cursor, Droid, or Codex CLI
+
+Skill Builder
+-------------
+
+The Skill Builder lets you select features from multiple open-source projects and generates a skill - a guide with specific code references that your AI coding agent can use to build those features in your project. Each skill includes:
+
+-   Feature descriptions and implementation notes
+-   Links to reference code in GitHub repositories
+-   Documentation URLs for deeper context
+
+### Installing Skills
+
+After generating a skill, you can install it in your preferred AI coding agent:
+
+**Claude Code**
+
+# Save the skill file to your project
+mkdir -p .claude/skills && cp ~/Downloads/SKILL.md .claude/skills/
+
+**Cursor**
+
+# Add the skill content to your rules file
+cat ~/Downloads/SKILL.md \>> .cursor/rules/skill.mdc
+
+**Droid**
+
+# Save to your project's skills directory
+mkdir -p .factory/skills && cp ~/Downloads/SKILL.md .factory/skills/
+
+**Codex CLI**
+
+# Add to your agents instructions
+cat ~/Downloads/SKILL.md \>> codex.md
 
 Getting Started
 ---------------
@@ -22,26 +66,27 @@ bun dev
 
 Open http://localhost:3000 with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses `next/font` to automatically optimize and load Geist, a new font family for Vercel.
-
-Learn More
+Tech Stack
 ----------
 
-To learn more about Next.js, take a look at the following resources:
+-   Next.js - React framework
+-   Keystone - Headless CMS
+-   PostgreSQL - Database
+-   Tailwind CSS - Styling
 
--   Next.js Documentation - learn about Next.js features and API.
--   Learn Next.js - an interactive Next.js tutorial.
+Contributing
+------------
 
-You can check out the Next.js GitHub repository - your feedback and contributions are welcome!
+See CONTRIBUTING\_TO\_OSB.md for guidelines on adding applications, capabilities, and improving the platform.
 
-Deploy on Vercel
-----------------
+Deploy
+------
 
-The easiest way to deploy your Next.js app is to use the Vercel Platform from the creators of Next.js.
+### Vercel
 
-Check out our Next.js deployment documentation for more details.
+### Railway
 
-Deploy on Railway
------------------
+License
+-------
+
+MIT

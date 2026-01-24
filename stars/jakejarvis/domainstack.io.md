@@ -18,9 +18,10 @@ Features
 -   **Fast & private**: No sign-up required for reports.
 -   **Notifications & calendar sync**: Email/In-app alerts plus iCal feeds for expirations.
 -   **Advanced dashboard**: Filtering, sorting, bulk actions, and multiple view modes.
+-   **AI chat assistant**: Ask questions about any domain in natural language; powered by durable streaming with automatic reconnection.
 -   **MCP server**: AI-assisted domain lookups via Model Context Protocol.
 -   **Pro subscription**: Paid plan via Polar for higher tracking limits.
--   **Reliable backend**: Event-driven revalidation and TTL-based persistence.
+-   **Reliable backend**: SWR caching with cron-based cache warming.
 
 Tech Stack
 ----------
@@ -31,15 +32,16 @@ Tech Stack
 -   **Postgres** (PlanetScale) + **Drizzle ORM** + **Upstash Redis** (rate limiting)
 -   **Better Auth** (OAuth)
 -   **Polar** (subscriptions)
--   **Inngest** + **Workflow DevKit** (background jobs)
+-   **Workflow DevKit** (background jobs)
+-   **AI SDK** + **AI Gateway**
 -   **Resend** + **React Email**
 -   **Vercel** (Edge Config, Blob Storage)
 -   **mapcn** + **CARTO Basemaps**
 -   **Logo.dev**
 -   **IPLocate.io**
 -   **PostHog** (analytics)
--   **Puppeteer** (screenshots)
--   **Vitest** + **Playwright**, **Biome**
+-   **Turborepo** (monorepo)
+-   **Vitest** + **Playwright** (testing), **Biome** (linting)
 
 Development
 -----------
@@ -52,9 +54,9 @@ pnpm install
 
 ### 2\. Configure environment variables
 
-Create `.env.local` and populate required variables:
+Create `.env.local` in the `apps/web` directory and populate required variables:
 
-cp .env.example .env.local
+cp apps/web/.env.example apps/web/.env.local
 
 At minimum, you'll need `DATABASE_URL` pointing to a Postgres database.
 

@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3814
+stars: 3820
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -281,6 +281,24 @@ Optional
 
 Restrict pull requests included in the release notes to only the pull requests that modified any of the paths in this array. Supports files and directories. Default: `[]`
 
+`pull-request-limit`
+
+Optional
+
+Limit for associatedPullRequests API call. Use this when working with long-lived non-default branches. See #1354. Default: `5`
+
+`history-limit`
+
+Optional
+
+Size of the pagination window when walking the repo. Can avoid erratic 502s from Github. Default: `15`
+
+`initial-commits-since`
+
+Optional
+
+When drafting your first release, limit the amount of scanned commits. Expects an ISO 8601 date, ex: `"2025-06-18T10:29:51Z"`. Default: `""` (unlimited)
+
 Release Drafter also supports Probot Config, if you want to store your configuration files in a central repository. This allows you to share configurations between projects, and create a organization-wide configuration file by creating a repository named `.github` with the file `.github/release-drafter.yml`.
 
 Template Variables
@@ -436,7 +454,7 @@ The head name of the head Ref associated with the pull request e.g. `my-bug-fix`
 References
 ----------
 
-**Note**: This is only revelant for GitHub app users as `references` is ignored when running as GitHub action due to GitHub workflows more powerful `on` conditions
+**Note**: This is only relevant for GitHub app users as `references` is ignored when running as GitHub action due to GitHub workflows more powerful `on` conditions
 
 References takes an list and accepts strings and regex. If none are specified, we default to the repository’s default branch usually master.
 
@@ -602,6 +620,18 @@ A string that would be added before the template body.
 
 A string that would be added after the template body.
 
+`initial-commits-since`
+
+When drafting your first release, limit the amount of scanned commits. Expects an ISO 8601 date, ex: `"2025-06-18T10:29:51Z"`. Default: `""` (unlimited)
+
+`disable-releaser`
+
+A boolean indicating whether the releaser mode is disabled.
+
+`disable-autolabeler`
+
+A boolean indicating whether the autolabeler mode is disabled.
+
 Action Outputs
 --------------
 
@@ -657,13 +687,13 @@ Developing
 If you have Node v10+ installed locally, you can run the tests, and a local app, using the following commands:
 
 # Install dependencies
-yarn install
+npm install
 
 # Run the tests
-yarn test
+npm run test
 
 # Run the app locally
-yarn test:watch
+npm run test:watch
 
 Once you've started the app, visit `localhost:3000` and you'll get step-by-step instructions for installing it in your GitHub account so you can start pushing commits and testing it locally.
 

@@ -1,6 +1,6 @@
 ---
 project: OpenCut
-stars: 45083
+stars: 45253
 description: The open-source CapCut alternative
 url: https://github.com/OpenCut-app/OpenCut
 ---

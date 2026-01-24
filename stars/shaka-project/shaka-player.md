@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 7890
+stars: 7905
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -496,7 +496,7 @@ Features supported:
 
 -   Media over QUIC Transport draft-14
 -   MOQT Streaming Format draft-01
--   Audio and Video
+-   Audio, Video and Text
 -   ABR (only navigator.connection change event)
 -   Encrypted content with PSSH in the initData
 -   MP4 / CMAF support

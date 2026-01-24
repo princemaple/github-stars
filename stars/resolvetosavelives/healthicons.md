@@ -1,6 +1,6 @@
 ---
 project: healthicons
-stars: 783
+stars: 786
 description: A collection of open source icons for public health projects.
 url: https://github.com/resolvetosavelives/healthicons
 ---

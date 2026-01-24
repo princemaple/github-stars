@@ -1,6 +1,6 @@
 ---
 project: simple-icons
-stars: 24182
+stars: 24239
 description: SVG icons for popular brands
 url: https://github.com/simple-icons/simple-icons
 ---
@@ -57,7 +57,7 @@ Where `[COLOR]` is optional, and can be replaced by the hex colors or CSS keywor
 <img height\="32" width\="32" src\="https://cdn.simpleicons.org/simpleicons/\_/eee" />
 <img height\="32" width\="32" src\="https://cdn.simpleicons.org/simpleicons/eee/\_" />
 
-You can use a `viewbox=auto` parameter to get a auto-sized viewbox. This is useful if you want all icons rendered with consistent size:
+You can use a `viewbox=auto` parameter to get an auto-sized viewbox. This is useful if you want all icons rendered with consistent size:
 
 <img height\="20" src\="https://cdn.simpleicons.org/github?viewbox=auto" />
 <img height\="20" src\="https://cdn.simpleicons.org/simpleicons?viewbox=auto" />

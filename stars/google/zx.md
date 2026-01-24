@@ -1,6 +1,6 @@
 ---
 project: zx
-stars: 45057
+stars: 45081
 description: A tool for writing better scripts
 url: https://github.com/google/zx
 ---

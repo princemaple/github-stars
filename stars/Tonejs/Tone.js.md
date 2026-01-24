@@ -1,6 +1,6 @@
 ---
 project: Tone.js
-stars: 14650
+stars: 14663
 description: A Web Audio framework for making interactive music in the browser.
 url: https://github.com/Tonejs/Tone.js
 ---

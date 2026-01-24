@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 335
+stars: 356
 description: A high-performance web-based DWG/DXF viewer without requiring any backend server
 url: https://github.com/mlightcad/cad-viewer
 ---

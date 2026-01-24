@@ -1,6 +1,6 @@
 ---
 project: gltf-compressor
-stars: 324
+stars: 327
 description: The easiest way to compress glTF files!
 url: https://github.com/Shopify/gltf-compressor
 ---
@@ -23,7 +23,7 @@ It offers a simple but powerful workflow that we frequently use at Shopify to op
 
 To achieve that, the tool exposes all the textures of your glTF file and allows you to change their:
 
--   Image format (JPEG, PNG and WebP).
+-   Image format (JPEG, PNG, WebP and KTX2).
 -   Resolution.
 -   Quality.
 
@@ -55,7 +55,7 @@ Controls
 Acknowledgments
 ---------------
 
-This tool relies heavily on Don McCurdy's fantastic glTF Transform library.
+This tool relies heavily on Don McCurdy's fantastic glTF Transform library and Hu Song's KTX2-Encoder library.
 
 It also borrows ideas and snippets of code from pmndrs' glTF to JSX converter and various other pmndrs libraries like drei.
 

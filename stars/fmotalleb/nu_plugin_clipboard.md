@@ -1,6 +1,6 @@
 ---
 project: nu_plugin_clipboard
-stars: 85
+stars: 84
 description: A nushell plugin to copy text into clipboard or get text from it. supports json<->object/table conversion out of box
 url: https://github.com/fmotalleb/nu_plugin_clipboard
 ---

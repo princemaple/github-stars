@@ -1,7 +1,7 @@
 ---
 project: pgdog
-stars: 3016
-description: Horizontal scaling for PostgreSQL with automatic sharding.
+stars: 3096
+description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
 

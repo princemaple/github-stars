@@ -1,6 +1,6 @@
 ---
 project: git.limo
-stars: 507
+stars: 508
 description: A Git source code management tool powered by Elixir with easy installation & high extensibility.
 url: https://github.com/redrabbit/git.limo
 ---

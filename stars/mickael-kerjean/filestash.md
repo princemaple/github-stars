@@ -1,7 +1,7 @@
 ---
 project: filestash
-stars: 13436
-description: :file_folder: Universal Data Access Gateway / File Management Platform (without FUSE)
+stars: 13483
+description: :file_folder: File Management Platform / Universal Data Access Gateway (without FUSE)
 url: https://github.com/mickael-kerjean/filestash
 ---
 

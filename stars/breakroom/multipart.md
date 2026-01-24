@@ -19,8 +19,8 @@ Features
 Requirements
 ============
 
--   Elixir >= 1.10
--   Erlang/OTP >= 21
+-   Elixir >= 1.16
+-   Erlang/OTP >= 26
 
 Installation
 ------------
@@ -29,7 +29,7 @@ Add `multipart` to your list of dependencies in `mix.exs`:
 
 def deps do
   \[
-    {:multipart, "~> 0.1.0"}
+    {:multipart, "~> 0.6"}
   \]
 end
 

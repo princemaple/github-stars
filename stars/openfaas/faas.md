@@ -1,6 +1,6 @@
 ---
 project: faas
-stars: 26034
+stars: 26045
 description: OpenFaaS - Serverless Functions Made Simple
 url: https://github.com/openfaas/faas
 ---

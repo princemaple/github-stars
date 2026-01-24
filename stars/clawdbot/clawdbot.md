@@ -1,7 +1,7 @@
 ---
 project: clawdbot
-stars: 4871
-description: Your own personal AI assistant. Any OS. Any Platform. The lobser way. 🦞 
+stars: 8448
+description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/clawdbot/clawdbot
 ---
 
@@ -10,7 +10,7 @@ url: https://github.com/clawdbot/clawdbot
 
 **EXFOLIATE! EXFOLIATE!**
 
-**Clawdbot** is a _personal AI assistant_ you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Signal, iMessage, Microsoft Teams, WebChat), can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
+**Clawdbot** is a _personal AI assistant_ you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
@@ -57,10 +57,19 @@ clawdbot gateway --port 18789 --verbose
 # Send a message
 clawdbot message send --to +1234567890 --message "Hello from Clawdbot"
 
-# Talk to the assistant (optionally deliver back to WhatsApp/Telegram/Slack/Discord/Microsoft Teams)
+# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)
 clawdbot agent --message "Ship checklist" --thinking high
 
 Upgrading? Updating guide (and run `clawdbot doctor`).
+
+Development channels
+--------------------
+
+-   **stable**: tagged releases (`vYYYY.M.D` or `vYYYY.M.D-<patch>`), npm dist-tag `latest`.
+-   **beta**: prerelease tags (`vYYYY.M.D-beta.N`), npm dist-tag `beta` (macOS app may be missing).
+-   **dev**: moving head of `main`, npm dist-tag `dev` (when published).
+
+Switch channels (git + npm): `clawdbot update --channel stable|beta|dev`. Details: Development channels.
 
 From source (development)
 -------------------------
@@ -100,7 +109,7 @@ Highlights
 ----------
 
 -   **Local-first Gateway** — single control plane for sessions, channels, tools, and events.
--   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Signal, iMessage, Microsoft Teams, WebChat, macOS, iOS/Android.
+-   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Signal, iMessage, BlueBubbles, Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
 -   **Multi-agent routing** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
 -   **Voice Wake + Talk Mode** — always-on speech for macOS/iOS/Android with ElevenLabs.
 -   **Live Canvas** — agent-driven visual workspace with A2UI.
@@ -124,7 +133,7 @@ Everything we built so far
 
 ### Channels
 
--   Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Signal (signal-cli), iMessage (imsg), Microsoft Teams (Bot Framework), WebChat.
+-   Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Signal (signal-cli), iMessage (imsg), BlueBubbles (extension), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat.
 -   Group routing: mention gating, reply tags, per-channel chunking and routing. Channel rules: Channels.
 
 ### Apps + nodes
@@ -160,7 +169,7 @@ How it works (short)
 --------------------
 
 ```
-WhatsApp / Telegram / Slack / Discord / Signal / iMessage / Microsoft Teams / WebChat
+WhatsApp / Telegram / Slack / Discord / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat
                │
                ▼
 ┌───────────────────────────────┐
@@ -257,7 +266,7 @@ Send these in WhatsApp/Telegram/Slack/Microsoft Teams/WebChat (group commands ar
 -   `/compact` — compact session context (summary)
 -   `/think <level>` — off|minimal|low|medium|high|xhigh (GPT-5.2 + Codex models only)
 -   `/verbose on|off`
--   `/cost on|off` — append per-response token/cost usage lines
+-   `/usage off|tokens|full` — per-response usage footer
 -   `/restart` — restart the gateway (owner-only in groups)
 -   `/activation mention|always` — group activation toggle (groups only)
 
@@ -266,10 +275,7 @@ Apps (optional)
 
 The Gateway alone delivers a great experience. All apps are optional and add extra features.
 
-If you plan to build/run companion apps, initialize submodules first:
-
-git submodule update --init --recursive
-./scripts/restart-mac.sh
+If you plan to build/run companion apps, follow the platform runbooks below.
 
 ### macOS (Clawdbot.app) (optional)
 
@@ -478,10 +484,6 @@ Community
 See CONTRIBUTING.md for guidelines, maintainers, and how to submit PRs.  
 AI/vibe-coded PRs welcome! 🤖
 
-Special thanks to @andrewting19 for the Anthropic OAuth tool-name fix.
-
-Core contributors:
-
--   @cpojer — Telegram onboarding UX + docs
+Special thanks to Mario Zechner for his support and for pi-mono.
 
 Thanks to all clawtributors:

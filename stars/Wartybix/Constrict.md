@@ -1,7 +1,7 @@
 ---
 project: Constrict
-stars: 550
-description: Compress videos to target sizes. ⚠️ TRANSLATORS: Pull requests for translations can no longer be accepted. Inclusion into https://l10n.gnome.org is pending. ⚠️
+stars: 559
+description: Read-only mirror of https://gitlab.gnome.org/World/Constrict
 url: https://github.com/Wartybix/Constrict
 ---
 

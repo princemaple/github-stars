@@ -1,6 +1,6 @@
 ---
 project: ZLocation
-stars: 611
+stars: 612
 description: ZLocation is the new Jump-Location
 url: https://github.com/vors/ZLocation
 ---

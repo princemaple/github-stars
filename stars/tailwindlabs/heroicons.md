@@ -1,6 +1,6 @@
 ---
 project: heroicons
-stars: 23255
+stars: 23280
 description: A set of free MIT-licensed high-quality SVG icons for UI development.
 url: https://github.com/tailwindlabs/heroicons
 ---

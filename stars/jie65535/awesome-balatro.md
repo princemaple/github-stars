@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1125
+stars: 1131
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -78,6 +78,7 @@ Tools
 -   Balatro Modpack Manager - Install, update, and customize modpacks in one streamlined tool. by \[@Dimserene\]
 -   Balatro Seed Oracle - Balatro Seed Searcher with visual drag&drop filter builder coded in C# and AvaloniaUI. by @OptimusPi
 -   Balatro Ultimate Speedup Mod - A mod that speeds up the entire game. Doesn't need a mod loader. (Windows only) by @sse2
+-   balatro-completionist-plus-plus-tracker - Browser‑based Completionist++ tracker. by @blackfan321
 -   balatro-save-loader - A simple save loader/modder for balatro. by @WilsontheWolf
 -   balatro-sprites-i18n - Internationalization toolchain to translate Balatro's sprites. by @Signez
 -   Balatro.antihypertensive - Save Manager for Balatro, macOS only. by @miku1958

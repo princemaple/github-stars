@@ -1,11 +1,11 @@
 ---
 project: trailbase
-stars: 4392
-description: A blazingly fast, open-source application server with type-safe APIs, built-in WebAssembly runtime, realtime, auth, and admin UI built on Rust, SQLite & Wasmtime.
+stars: 4433
+description: An open, sub-millisecond, single-executable Firebase alternative with type-safe APIs, built-in WebAssembly runtime, realtime subscriptions, auth, and admin UI built on Rust, SQLite & Wasmtime.
 url: https://github.com/trailbaseio/trailbase
 ---
 
-An open, blazingly fast, single-executable Firebase alternative with type-safe REST & realtime APIs, built-in WebAssembly runtime, SSR, auth and admin UI built on Rust, SQLite & Wasmtime.
+An open, sub-millisecond, single-executable Firebase alternative with type-safe REST APIs, realtime subscriptions, built-in WebAssembly runtime, SSR, auth and admin UI built on Rust, SQLite & Wasmtime.
 
 Simplify with fewer moving parts: an easy to self-host, single-executable, extensible backend for your mobile, web or desktop application. Sub-millisecond latencies eliminate the need for dedicated caches, no more stale or inconsistent data.
 

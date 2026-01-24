@@ -1,6 +1,6 @@
 ---
 project: hugging-chat-api
-stars: 935
+stars: 936
 description: HuggingChat Python API🤗
 url: https://github.com/Soulter/hugging-chat-api
 ---

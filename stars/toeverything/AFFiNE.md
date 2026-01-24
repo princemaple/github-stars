@@ -1,6 +1,6 @@
 ---
 project: AFFiNE
-stars: 61918
+stars: 62161
 description: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. 
 url: https://github.com/toeverything/AFFiNE
 ---

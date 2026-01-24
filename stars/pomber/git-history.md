@@ -1,6 +1,6 @@
 ---
 project: git-history
-stars: 13677
+stars: 13681
 description: Quickly browse the history of a file from any git repository
 url: https://github.com/pomber/git-history
 ---

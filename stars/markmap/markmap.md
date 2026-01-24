@@ -1,6 +1,6 @@
 ---
 project: markmap
-stars: 12317
+stars: 12350
 description: Build mindmaps with plain text
 url: https://github.com/markmap/markmap
 ---

@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 19899
+stars: 20253
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -208,9 +208,17 @@ The RustFS container runs as a non-root user `rustfs` (UID `10001`). If you run 
  # Using specific version
  docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-alpha.76
 
+If you use podman instead of docker, you can install the RustFS with the below command
+
+ podman run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
+
 You can also use Docker Compose. Using the `docker-compose.yml` file in the root directory:
 
 docker compose --profile observability up -d
+
+Similarly, you can run the command with podman
+
+podman compose --profile observability up -d
 
 **NOTE**: We recommend reviewing the `docker-compose.yaml` file before running. It defines several services including Grafana, Prometheus, and Jaeger, which are helpful for RustFS observability. If you wish to start Redis or Nginx containers, you can specify the corresponding profiles.
 

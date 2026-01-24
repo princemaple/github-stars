@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 14367
+stars: 14419
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.13. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -23,7 +23,7 @@ Table of Contents
 -   Performance
 -   Unsupported functionality
 
-Nuitka is **the** Python compiler. It is written in Python. It is a seamless replacement or extension to the Python interpreter and compiles **every** construct that Python 2 (2.6, 2.7) and Python 3 (3.4 - 3.13) have, when itself run with that Python version.
+Nuitka is **the** Python compiler. It is written in Python. It is a seamless replacement or extension to the Python interpreter and compiles **every** construct that Python 2 (2.6, 2.7) and Python 3 (3.4 - 3.14) have, when itself run with that Python version.
 
 It then executes uncompiled code and compiled code together in an extremely compatible manner.
 
@@ -69,7 +69,7 @@ The latest version is recommended, but not required. On the other hand, there is
 
 #### Python
 
-**Python 2** (2.6, 2.7) and **Python 3** (3.4 - 3.13) are supported. If at any moment, there is a stable Python release that is not in this list, rest assured it is being worked on and will be added.
+**Python 2** (2.6, 2.7) and **Python 3** (3.4 - 3.14) are supported. If at any moment, there is a stable Python release that is not in this list, rest assured it is being worked on and will be added.
 
 Important
 

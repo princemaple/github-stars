@@ -1,6 +1,6 @@
 ---
 project: tailwindcss
-stars: 92976
+stars: 93148
 description: A utility-first CSS framework for rapid UI development.
 url: https://github.com/tailwindlabs/tailwindcss
 ---

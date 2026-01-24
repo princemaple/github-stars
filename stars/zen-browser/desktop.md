@@ -1,6 +1,6 @@
 ---
 project: desktop
-stars: 39561
+stars: 39694
 description: Welcome to a calmer internet
 url: https://github.com/zen-browser/desktop
 ---

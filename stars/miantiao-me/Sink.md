@@ -1,6 +1,6 @@
 ---
 project: Sink
-stars: 6119
+stars: 6156
 description: ⚡ A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.
 url: https://github.com/miantiao-me/Sink
 ---
@@ -109,6 +109,7 @@ FAQs
 1.  **Cloudflare**
 2.  **NuxtHub**
 3.  **Astroship**
+4.  **Tailark**
 
 ☕ Sponsor
 ---------

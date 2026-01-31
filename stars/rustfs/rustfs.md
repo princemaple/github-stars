@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 20253
+stars: 20703
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -238,7 +238,12 @@ For developers who want to build RustFS Docker images from source with multi-arc
 # Build for custom registry
 ./docker-buildx.sh --registry your-registry.com --namespace yourname --push
 
-The `docker-buildx.sh` script supports: - **Multi-architecture builds**: `linux/amd64`, `linux/arm64` - **Automatic version detection**: Uses git tags or commit hashes - **Registry flexibility**: Supports Docker Hub, GitHub Container Registry, etc. - **Build optimization**: Includes caching and parallel builds
+The `docker-buildx.sh` script supports:
+
+-   **Multi-architecture builds**: `linux/amd64`, `linux/arm64`
+-   **Automatic version detection**: Uses git tags or commit hashes
+-   **Registry flexibility**: Supports Docker Hub, GitHub Container Registry, etc.
+-   **Build optimization**: Includes caching and parallel builds
 
 You can also use Make targets for convenience:
 

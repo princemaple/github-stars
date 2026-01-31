@@ -1,6 +1,6 @@
 ---
 project: signoz
-stars: 25430
+stars: 25518
 description: SigNoz is an open-source observability platform native to OpenTelemetry with logs, traces and metrics in a single application. An open-source alternative to DataDog, NewRelic, etc. 🔥 🖥.   👉  Open source Application Performance Monitoring (APM) & Observability tool
 url: https://github.com/SigNoz/signoz
 ---
@@ -43,6 +43,14 @@ Ingest metrics from your infrastructure or applications and create customized da
 Create queries on your metrics data quickly with an easy-to-use metrics query builder. Add multiple queries and combine those queries with formulae to create really complex queries quickly.
 
 Read more.
+
+### LLM Observability
+
+Monitor and debug your LLM applications with comprehensive observability. Track LLM calls, analyze token usage, monitor performance, and gain insights into your AI application's behavior in production.
+
+SigNoz LLM observability helps you understand how your language models are performing, identify issues with prompts and responses, track token usage and costs, and optimize your AI applications for better performance and reliability.
+
+Get started with LLM Observability →
 
 ### Alerts
 

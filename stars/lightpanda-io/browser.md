@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 11663
+stars: 11718
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -148,6 +148,7 @@ For **Debian/Ubuntu based Linux**:
 
 ```
 sudo apt install xz-utils ca-certificates \
+    pkg-config libglib2.0-dev \
     clang make curl git
 ```
 

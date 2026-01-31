@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 13570
+stars: 13647
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern Rest API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -268,10 +268,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **geoffgscott**
 
   
-**tmastrom**
+**marcalexiei**
 
   
-**marcalexiei**
+**tmastrom**
 
   
 **inyourtime**
@@ -388,13 +388,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **handrews**
 
   
-**WDaan**
-
-  
 **Duncanma**
 
   
+**WDaan**
+
+  
 **gsmcdonald**
+
+  
+**MarioGK**
 
   
 **hrynevychroman**
@@ -436,58 +439,55 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **soGit**
 
   
-**sinh117801**
-
-  
-**rbange**
-
-  
-**robert-dean**
-
-  
-**rickihastings**
-
-  
-**rhuanbarreto**
-
-  
-**philsturgeon**
-
-  
-**petercinibulk**
-
-  
-**pkucmus**
-
-  
-**Olexandr88**
-
-  
-**Lazialize**
-
-  
-**malinbranduse**
-
-  
-**mvt147**
-
-  
-**MaxBreida**
-
-  
-**MatteoH2O1999**
-
-  
-**tinchoz49**
+**Huliiiiii**
 
   
 **not-my-profile**
 
   
-**MarioGK**
+**tinchoz49**
 
   
-**Huliiiiii**
+**MatteoH2O1999**
+
+  
+**maxehmookau**
+
+  
+**MaxBreida**
+
+  
+**mvt147**
+
+  
+**malinbranduse**
+
+  
+**Lazialize**
+
+  
+**Olexandr88**
+
+  
+**pkucmus**
+
+  
+**petercinibulk**
+
+  
+**philsturgeon**
+
+  
+**rhuanbarreto**
+
+  
+**rickihastings**
+
+  
+**robert-dean**
+
+  
+**rbange**
 
   
 **unnoq**
@@ -575,6 +575,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **stratosblue**
+
+  
+**sinh117801**
+
+  
+**DmitriiKhudiakov**
 
   
 **diegolopes**
@@ -742,7 +748,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **GreyXor**
 
   
+**galah92**
+
+  
 **Fdawgs**
+
+  
+**flovouin**
 
   
 **filiabel**
@@ -758,6 +770,3 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **elliotnash**
-
-  
-**DmitriiKhudiakov**

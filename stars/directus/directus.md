@@ -1,6 +1,6 @@
 ---
 project: directus
-stars: 34049
+stars: 34106
 description: The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.
 url: https://github.com/directus/directus
 ---
@@ -33,6 +33,17 @@ Directus Cloud allows you to create projects, hosted by the Directus team, from 
 -   Select your desired region and provision a new project in ~90 seconds.
 
 **Create a Directus Cloud Project**
+
+  
+
+⚡ One-Click Deployment Options
+------------------------------
+
+Deploy Directus with a single click via Railway—complete infrastructure without the complexity.
+
+### Deploy on Railway
+
+Fully provisioned — one click to deploy Directus with PostgreSQL database, Redis cache, and S3-compatible bucket storage, all connected via Railway's private network for secure, zero-egress communication.
 
   
 

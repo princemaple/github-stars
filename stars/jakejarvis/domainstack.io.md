@@ -1,6 +1,6 @@
 ---
 project: domainstack.io
-stars: 211
+stars: 215
 description: 🧰 All-in-one domain name intelligence as a service
 url: https://github.com/jakejarvis/domainstack.io
 ---
@@ -27,7 +27,7 @@ Tech Stack
 ----------
 
 -   **Next.js 16** (App Router), **React 19**, **TypeScript**
--   **Tailwind CSS v4** + **shadcn/ui** + **Base UI**
+-   **Tailwind CSS v4** + **Base UI**
 -   **tRPC** + **TanStack Query** & **TanStack Table**
 -   **Postgres** (PlanetScale) + **Drizzle ORM** + **Upstash Redis** (rate limiting)
 -   **Better Auth** (OAuth)
@@ -42,6 +42,25 @@ Tech Stack
 -   **PostHog** (analytics)
 -   **Turborepo** (monorepo)
 -   **Vitest** + **Playwright** (testing), **Biome** (linting)
+
+Project Structure
+-----------------
+
+This is a **Turborepo monorepo**:
+
+```
+domainstack.io/
+├── apps/
+│   └── web/                 # Next.js application
+├── packages/
+│   ├── constants/           # Shared constants (enums, TTLs, validation)
+│   ├── types/               # Shared TypeScript types
+│   ├── typescript-config/   # Shared TypeScript configs
+│   └── ui/                  # Shared UI primitives
+├── turbo.json               # Turborepo task configuration
+├── pnpm-workspace.yaml      # pnpm workspace definition
+└── biome.json               # Linting/formatting config
+```
 
 Development
 -----------

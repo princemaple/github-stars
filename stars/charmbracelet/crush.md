@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 18811
+stars: 19255
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -13,8 +13,8 @@ Crush
 Your new coding bestie, now available in your favourite terminal.  
 Your tools, your code, and your workflows, wired into your LLM of choice.
 
-你的新编程伙伴，现在就在你最爱的终端中。  
-你的工具、代码和工作流，都与您选择的 LLM 模型紧密相连。
+终端里的编程新搭档，  
+无缝接入你的工具、代码与工作流，全面兼容主流 LLM 模型。
 
 Features
 --------

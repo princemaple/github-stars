@@ -1,6 +1,6 @@
 ---
 project: texthero
-stars: 2917
+stars: 2916
 description: Text preprocessing, representation and visualization from zero to hero.
 url: https://github.com/jbesomi/texthero
 ---

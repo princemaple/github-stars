@@ -1,6 +1,6 @@
 ---
 project: mind-elixir-core
-stars: 2909
+stars: 2930
 description: ⚗ Mind Elixir is a JavaScript, framework-agnostic mind map core.
 url: https://github.com/SSShooter/mind-elixir-core
 ---
@@ -129,7 +129,6 @@ import example from 'mind-elixir/dist/example1'
 let options \= {
   el: '#map', // or HTMLDivElement
   direction: MindElixir.LEFT,
-  draggable: true, // default true
   toolBar: true, // default true
   nodeMenu: true, // default true
   keypress: true, // default true
@@ -341,6 +340,8 @@ Who's using
 -----------
 
 -   Mind Elixir Desktop
+-   ebook-to-mindmap
+-   M10C-Video-Summary
 
 Ecosystem
 ---------

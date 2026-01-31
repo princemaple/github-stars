@@ -1,6 +1,6 @@
 ---
 project: wekan
-stars: 20805
+stars: 20818
 description: The Open Source kanban, built with Meteor. New English strings for new features at imports/i18n/data/en.i18n.json . Non-English translations at https://app.transifex.com/wekan/wekan only.
 url: https://github.com/wekan/wekan
 ---

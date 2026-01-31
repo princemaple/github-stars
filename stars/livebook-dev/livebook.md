@@ -1,6 +1,6 @@
 ---
 project: livebook
-stars: 5670
+stars: 5680
 description: Automate code & data workflows with interactive Elixir notebooks
 url: https://github.com/livebook-dev/livebook
 ---
@@ -54,7 +54,7 @@ We provide several methods for running Livebook, pick the one that best fits you
     
 -   Latest stable builds: Mac (Universal), Windows
     
--   Nightly builds: Mac (Universal), Windows
+-   Nightly builds: macOS (arm64), macOS (x64), Windows, Linux (arm64), Linux (x64)
     
 -   Builds for particular Livebook version are available on our GitHub releases.
     

@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 12731
+stars: 12814
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -703,6 +703,14 @@ deploy-mcp
 https://deploy-mcp.io
 
 有效中
+
+What Broke Today
+
+AI 驱动的宕机聚合器，追踪 100+ 云服务（包括 Cloudflare）的状态，提供实时 Telegram 警报、RSS 订阅和 JSON API。
+
+https://whatbroke.today/
+
+维护中
 
 文章
 ==

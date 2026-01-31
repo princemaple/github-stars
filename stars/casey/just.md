@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 29938
+stars: 30351
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -63,7 +63,7 @@ Installation
 
 #### Windows
 
-On Windows, `just` works with the `sh` provided by Git for Windows, GitHub Desktop, or Cygwin. After installation, `sh` must be available in the `PATH` of the shell you want to to invoke `just` from.
+On Windows, `just` works with the `sh` provided by Git for Windows, GitHub Desktop, or Cygwin. After installation, `sh` must be available in the `PATH` of the shell you want to invoke `just` from.
 
 If you'd rather not install `sh`, you can use the `shell` setting to use the shell of your choice.
 

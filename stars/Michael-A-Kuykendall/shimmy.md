@@ -1,6 +1,6 @@
 ---
 project: shimmy
-stars: 3575
+stars: 3599
 description: ⚡ Python-free Rust inference server — OpenAI-API compatible. GGUF + SafeTensors, hot model swap, auto-discovery, single binary. FREE now, FREE forever.
 url: https://github.com/Michael-A-Kuykendall/shimmy
 ---

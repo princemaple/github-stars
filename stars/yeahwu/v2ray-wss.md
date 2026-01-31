@@ -1,6 +1,6 @@
 ---
 project: v2ray-wss
-stars: 3200
+stars: 3271
 description: A proxy script with multiple protocols.
 url: https://github.com/yeahwu/v2ray-wss
 ---

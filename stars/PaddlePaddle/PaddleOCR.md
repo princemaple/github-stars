@@ -1,6 +1,6 @@
 ---
 project: PaddleOCR
-stars: 68717
+stars: 69571
 description: Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages.
 url: https://github.com/PaddlePaddle/PaddleOCR
 ---
@@ -26,6 +26,8 @@ The Beta version of the PaddleOCR official website is now live, offering a more 
 
 ### PaddleOCR 3.0 Core Features
 
+-   **PaddleOCR-VL-1.5: 0.9B VLM for Real-World Document Parsing and Text Spotting** A SOTA and resource-efficient model designed for real-world document parsing and text spotting tasks. It achieves comprehensive leadership across six major scenarios: normal, skew, warping, scanning, varied lighting, and screen photography in document parsing task. It introduces the leading new capabilities for text spotting and seal recognition, strengthens the parsing of complex elements (such as text, tables, formulas, and charts), and expands language support to 111 languages—all while maintaining extremely low resource consumption.
+    
 -   **PaddleOCR-VL - Multilingual Document Parsing via a 0.9B VLM**  
     **The SOTA and resource-efficient model tailored for document parsing**, that supports 109 languages and excels in recognizing complex elements (e.g., text, tables, formulas, and charts), while maintaining minimal resource consumption.
     
@@ -46,7 +48,19 @@ In addition to providing an outstanding model library, PaddleOCR 3.0 also offers
 📣 Recent updates
 -----------------
 
-### 🔥🔥 2025.10.16: PaddleOCR 3.3.0 released, includes:
+### 🔥🔥 2026.1.29: PaddleOCR 3.4.0 released, includes:
+
+-   Released PaddleOCR-VL-1.5:
+    -   **Model Introduction:**
+        -   PaddleOCR-VL-1.5 is a new version of PaddleOCR-VL, with a heightened focus on document parsing capabilities in real-world scenarios and the expansion of new functionalities. Powered by the innovative **PP-DocLayoutV3** algorithm for irregular shape positioning, it achieves precise layout analysis across natural document scenarios involving skew, warping, scanning, varied lighting, and screen photography. The compact multi-modal model, **PaddleOCR-VL-1.5-0.9B**, maintains its original parameter count while expanding its leading capabilities in text spotting, and seal recognition. Language support has been extended to **111 languages**, and element recognition in complex scenarios has been significantly strengthened. The model is now available on HuggingFace. You can also experience it online or call the API via the PaddleOCR Official Website.
+    -   **Core Features:**
+        -   **SOTA Performance in Document Parsing:** PaddleOCR-VL-1.5 achieved a high precision of **94.5%** on the OmniDocBench v1.5 benchmark, surpassing top-tier global general large models and specialized document parsing models.
+        -   **SOTA Performance Across 5 Real-World Scenarios:** Introducing an innovative document parsing approach, it is the first to support irregular document layout positioning. It outperforms open-source and closed-source models across all the five real-world scenarios: skew, warping, scanning, varied lighting, and screen photography.
+        -   **Capability Expansion Based on a 0.9B Compact Model:** With a parameter size of just 0.9B, PaddleOCR-VL-1.5 has expanded its scope to include text spotting, and seal recognition, setting new SOTA results across these related tasks.
+        -   **Enhanced Multi-Element Recognition:** The model features improved recognition performance for specific scenarios and multi-language content, including special symbols, ancient texts, multi-language tables, underlines, and checkboxes. Language coverage has been expanded to include **Tibetan and Bengali**.
+        -   **Long Document Cross-Page Parsing:** The model supports automatic merging of cross-page tables and the identification of cross-page paragraph headings, effectively solving the issue of content fragmentation in long document parsing.
+
+**2025.10.16: Release of PaddleOCR 3.3.0**
 
 -   Released PaddleOCR-VL:
     

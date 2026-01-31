@@ -1,6 +1,6 @@
 ---
 project: maptoposter
-stars: 7381
+stars: 8700
 description: Transform your favorite cities into beautiful, minimalist designs. MapToPoster lets you create and export visually striking map posters with code.
 url: https://github.com/originalankur/maptoposter
 ---
@@ -84,14 +84,57 @@ emerald
 Installation
 ------------
 
+### With uv (Recommended)
+
+Make sure uv is installed. Running the script by prepending `uv run` automatically creates and manages a virtual environment.
+
+# First run will automatically install dependencies
+uv run ./create\_map\_poster.py --city "Paris" --country "France"
+
+# Or sync dependencies explicitly first (using locked versions)
+uv sync --locked
+uv run ./create\_map\_poster.py --city "Paris" --country "France"
+
+### With pip + venv
+
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate
 pip install -r requirements.txt
 
 Usage
 -----
 
+### Generate Poster
+
+If you're using `uv`:
+
+uv run ./create\_map\_poster.py --city <city\> --country <country\> \[options\]
+
+Otherwise (pip + venv):
+
 python create\_map\_poster.py --city <city\> --country <country\> \[options\]
 
-### Options
+### Required Options
+
+Option
+
+Short
+
+Description
+
+`--city`
+
+`-c`
+
+City name (used for geocoding)
+
+`--country`
+
+`-C`
+
+Country name (used for geocoding)
+
+### Optional Flags
 
 Option
 
@@ -101,29 +144,21 @@ Description
 
 Default
 
-`--city`
+**OPTIONAL:** `--latitude`
 
-`-c`
+`-lat`
 
-City name
+Override latitude center point (use with --longitude)
 
-required
+**OPTIONAL:** `--longitude`
 
-`--country`
+`-long`
 
-`-C`
-
-Country name
-
-required
-
-**OPTIONAL:** `--name`
-
-Override display name (city display on poster)
+Override longitude center point (use with --latitude)
 
 **OPTIONAL:** `--country-label`
 
-Override display country (country display on poster)
+Override country text displayed on poster
 
 **OPTIONAL:** `--theme`
 
@@ -131,7 +166,7 @@ Override display country (country display on poster)
 
 Theme name
 
-feature\_based
+terracotta
 
 **OPTIONAL:** `--distance`
 
@@ -139,7 +174,7 @@ feature\_based
 
 Map radius in meters
 
-29000
+18000
 
 **OPTIONAL:** `--list-themes`
 
@@ -155,7 +190,7 @@ Generate posters for all available themes
 
 Image width in inches
 
-12
+12 (max: 20)
 
 **OPTIONAL:** `--height`
 
@@ -163,7 +198,46 @@ Image width in inches
 
 Image height in inches
 
-16
+16 (max: 20)
+
+### Multilingual Support - i18n
+
+Display city and country names in your language with custom fonts from google fonts:
+
+Option
+
+Short
+
+Description
+
+`--display-city`
+
+`-dc`
+
+Custom display name for city (e.g., "東京")
+
+`--display-country`
+
+`-dC`
+
+Custom display name for country (e.g., "日本")
+
+`--font-family`
+
+Google Fonts family name (e.g., "Noto Sans JP")
+
+**Examples:**
+
+# Japanese
+python create\_map\_poster.py -c "Tokyo" -C "Japan" -dc "東京" -dC "日本" --font-family "Noto Sans JP"
+
+# Korean
+python create\_map\_poster.py -c "Seoul" -C "South Korea" -dc "서울" -dC "대한민국" --font-family "Noto Sans KR"
+
+# Arabic
+python create\_map\_poster.py -c "Dubai" -C "UAE" -dc "دبي" -dC "الإمارات" --font-family "Cairo"
+
+**Note**: Fonts are automatically downloaded from Google Fonts and cached locally in `fonts/cache/`.
 
 ### Resolution Guide (300 DPI)
 
@@ -205,7 +279,39 @@ Inches (-W / -H)
 
 8.3 x 11.7
 
-### Examples
+### Usage Examples
+
+#### Basic Examples
+
+# Simple usage with default theme
+python create\_map\_poster.py -c "Paris" -C "France"
+
+# With custom theme and distance
+python create\_map\_poster.py -c "New York" -C "USA" -t noir -d 12000
+
+#### Multilingual Examples (Non-Latin Scripts)
+
+Display city names in their native scripts:
+
+# Japanese
+python create\_map\_poster.py -c "Tokyo" -C "Japan" -dc "東京" -dC "日本" --font-family "Noto Sans JP" -t japanese\_ink
+
+# Korean
+python create\_map\_poster.py -c "Seoul" -C "South Korea" -dc "서울" -dC "대한민국" --font-family "Noto Sans KR" -t midnight\_blue
+
+# Thai
+python create\_map\_poster.py -c "Bangkok" -C "Thailand" -dc "กรุงเทพมหานคร" -dC "ประเทศไทย" --font-family "Noto Sans Thai" -t sunset
+
+# Arabic
+python create\_map\_poster.py -c "Dubai" -C "UAE" -dc "دبي" -dC "الإمارات" --font-family "Cairo" -t terracotta
+
+# Chinese (Simplified)
+python create\_map\_poster.py -c "Beijing" -C "China" -dc "北京" -dC "中国" --font-family "Noto Sans SC"
+
+# Khmer
+python create\_map\_poster.py -c "Phnom Penh" -C "Cambodia" -dc "ភ្នំពេញ" -dC "កម្ពុជា" --font-family "Noto Sans Khmer"
+
+#### Advanced Examples
 
 # Iconic grid patterns
 python create\_map\_poster.py -c "New York" -C "USA" -t noir -d 12000           # Manhattan grid
@@ -233,6 +339,9 @@ python create\_map\_poster.py -c "Mumbai" -C "India" -t contrast\_zones -d 18000
 # River cities
 python create\_map\_poster.py -c "London" -C "UK" -t noir -d 15000              # Thames curves
 python create\_map\_poster.py -c "Budapest" -C "Hungary" -t copper\_patina -d 8000  # Danube split
+
+# Override center coordinates
+python create\_map\_poster.py --city "New York" --country "USA" -lat 40.776676 -long -73.971321 -t noir
 
 # List available themes
 python create\_map\_poster.py --list-themes
@@ -266,10 +375,6 @@ Themes
 Theme
 
 Style
-
-`feature_based`
-
-Classic black & white with road hierarchy
 
 `gradient_roads`
 
@@ -374,10 +479,13 @@ Project Structure
 
 ```
 map_poster/
-├── create_map_poster.py          # Main script
-├── themes/               # Theme JSON files
-├── fonts/                # Roboto font files
-├── posters/              # Generated posters
+├── create_map_poster.py    # Main script
+├── font_management.py      # Font loading and Google Fonts integration
+├── themes/                 # Theme JSON files
+├── fonts/                  # Font files
+│   ├── Roboto-*.ttf        # Default Roboto fonts
+│   └── cache/              # Downloaded Google Fonts (auto-generated)
+├── posters/                # Generated posters
 └── README.md
 ```
 
@@ -385,6 +493,14 @@ Hacker's Guide
 --------------
 
 Quick reference for contributors who want to extend or modify the script.
+
+### Contributors Guide
+
+-   Bug fixes are welcomed
+-   Don't submit user interface (web/desktop)
+-   Don't Dockerize for now
+-   If you vibe code any fix please test it and see before and after version of poster
+-   Before embarking on a big feature please ask in Discussions/Issue if it will be merged
 
 ### Architecture Overview
 
@@ -445,6 +561,18 @@ JSON theme → dict
 
 Adding new theme properties
 
+`is_latin_script()`
+
+Detects script for typography
+
+Supporting new scripts
+
+`load_fonts()`
+
+Load custom/default fonts
+
+Changing font loading logic
+
 ### Rendering Layers (z-order)
 
 ```
@@ -464,6 +592,15 @@ trunk, primary              → Thick (1.0)
 secondary                   → Medium (0.8)
 tertiary                    → Thin (0.6)
 residential, living\_street  → Thinnest (0.4), lightest
+
+### Typography & Script Detection
+
+The script automatically detects text scripts to apply appropriate typography:
+
+-   **Latin scripts** (English, French, Spanish, etc.): Letter spacing applied for elegant "P A R I S" effect
+-   **Non-Latin scripts** (Japanese, Arabic, Thai, Korean, etc.): Natural spacing for "東京" (no gaps between characters)
+
+Script detection uses Unicode ranges (U+0000-U+024F for Latin). If >80% of alphabetic characters are Latin, spacing is applied.
 
 ### Adding New Features
 
@@ -490,7 +627,7 @@ if railways is not None and not railways.empty:
 All text uses `transform=ax.transAxes` (0-1 normalized coordinates):
 
 ```
-y=0.14  City name (spaced letters)
+y=0.14  City name (spaced letters for Latin scripts)
 y=0.125 Decorative line
 y=0.10  Country name
 y=0.07  Coordinates

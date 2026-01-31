@@ -1,6 +1,6 @@
 ---
 project: happy
-stars: 8850
+stars: 9936
 description: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured
 url: https://github.com/slopus/happy
 ---
@@ -49,9 +49,9 @@ On your computer, run `happy` instead of `claude` or `happy codex` instead of `c
 📦 Project Components
 ---------------------
 
--   **happy UI** - Web UI + mobile client (Expo)
--   **happy-cli** - Command-line interface for Claude Code and Codex
--   **happy-server** - Backend server for encrypted sync
+-   **Happy App** - Web UI + mobile client (Expo)
+-   **Happy CLI** - Command-line interface for Claude Code and Codex
+-   **Happy Server** - Backend server for encrypted sync
 
 🏠 Who We Are
 -------------

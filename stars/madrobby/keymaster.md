@@ -1,6 +1,6 @@
 ---
 project: keymaster
-stars: 6523
+stars: 6522
 description: A simple micro-library for defining and  dispatching keyboard shortcuts. It has no dependencies.
 url: https://github.com/madrobby/keymaster
 ---

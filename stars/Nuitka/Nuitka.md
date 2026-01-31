@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 14419
+stars: 14452
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.13. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -151,9 +151,9 @@ Notice for integration with GitHub workflows there is this Nuitka-Action that yo
 
 #### License
 
-Nuitka is licensed under the Apache License, Version 2.0; you may not use it except in compliance with the License.
+Nuitka is licensed under the GNU Affero General Public License, Version 3; you may not use it except in compliance with the License in "LICENSE.txt" and the runtime exception granted in "LICENSE-RUNTIME.txt".
 
-You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+You may obtain a copy of the License at https://www.gnu.org/licenses/agpl-3.0.html
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
@@ -358,25 +358,25 @@ Create Nuitka Package configuration for those, with `dll` section for the packag
 
 `.dylib`
 
-These are ignored, since they macOS extension modules or DLLs.
+These are ignored, since they are macOS extension modules or DLLs.
 
 Need to add configuration with `dll` section or `depends` that are missing
 
 `.so`
 
-These are ignored, since they Linux, BSD, etc. extension modules or DLLs.
+These are ignored, since they are Linux, BSD, etc. extension modules or DLLs.
 
 Need to add configuration with `dll` section or `depends` that are missing
 
 `.exe`
 
-The are binaries to Windows.
+They are binaries to Windows.
 
 You can add Nuitka Package configuration to include those as DLLs and mark them as `executable: yes`
 
 `.bin`
 
-The are binaries to non-Windows, otherwise same as `.exe`.
+They are binaries to non-Windows, otherwise same as `.exe`.
 
  
 

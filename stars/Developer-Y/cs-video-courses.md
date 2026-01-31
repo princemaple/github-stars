@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70620
+stars: 70658
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -959,6 +959,8 @@ Courses
 -   Beginning Scientific Computing - Steve Brunton
 -   Jadavpur University: Foundation\_Math\_forML\_Autumn23
 -   FAU: Inverse Problems Autumn21
+-   EdX 1st Course on SparseLand by Michael Elad - Theory
+-   EdX 2nd Course on SparseLand by Michael Elad - Practice
 
 * * *
 

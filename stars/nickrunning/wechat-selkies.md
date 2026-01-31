@@ -1,6 +1,6 @@
 ---
 project: wechat-selkies
-stars: 2447
+stars: 2466
 description: 基于Selkies的Linux网页版微信/QQ，支持本地中文输入法，支持AMD64和ARM64。
 url: https://github.com/nickrunning/wechat-selkies
 ---

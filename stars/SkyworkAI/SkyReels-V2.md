@@ -1,6 +1,6 @@
 ---
 project: SkyReels-V2
-stars: 5953
+stars: 6123
 description: SkyReels-V2: Infinite-length Film Generative model
 url: https://github.com/SkyworkAI/SkyReels-V2
 ---
@@ -17,6 +17,8 @@ Welcome to the **SkyReels V2** repository! Here, you'll find the model weights a
 🔥🔥🔥 News!!
 -------------
 
+-   Jan 29, 2026: 🎉 We launched the API for the SkyReels-V3 models on the apifree.ai.
+-   Jan 29, 2026: 🎉 We release the inference code and model weights of SkyReels-V3.
 -   Jun 1, 2025: 🎉 We published the technical report, SkyReels-Audio: Omni Audio-Conditioned Talking Portraits in Video Diffusion Transformers.
 -   May 16, 2025: 🔥 We release the inference code for video extension and start/end frame control in diffusion forcing model.
 -   Apr 24, 2025: 🔥 We release the 720P models, SkyReels-V2-DF-14B-720P and SkyReels-V2-I2V-14B-720P. The former facilitates infinite-length autoregressive video generation, and the latter focuses on Image2Video synthesis.

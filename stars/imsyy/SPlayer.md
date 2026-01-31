@@ -1,6 +1,6 @@
 ---
 project: SPlayer
-stars: 6189
+stars: 6253
 description: 🎉 一个简约的音乐播放器，支持逐字歌词，评论区，音乐云盘及本地音乐管理，流媒体 Jellyfin / Navidrome / Emby 播放，音乐频谱，移动端适配 | A minimalist music player featuring word-by-word lyrics, comments, music cloud storage, and local library management, streaming, audio spectrum visualization, and more
 url: https://github.com/imsyy/SPlayer
 ---

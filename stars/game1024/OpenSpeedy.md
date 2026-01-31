@@ -1,6 +1,6 @@
 ---
 project: OpenSpeedy
-stars: 14568
+stars: 14762
 description: 🎮 An open-source game speed modifier.[一款开源的游戏变速器]
 url: https://github.com/game1024/OpenSpeedy
 ---
@@ -10,6 +10,8 @@ OpenSpeedy
 
 OpenSpeedy is an open-source and free game speed tool that helps you break frame rate limitations and provides a smoother, silkier gaming acceleration experience.
 
+Offcial Website  
+  
   
   
   

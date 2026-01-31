@@ -1,6 +1,6 @@
 ---
 project: OpenCut
-stars: 45253
+stars: 45397
 description: The open-source CapCut alternative
 url: https://github.com/OpenCut-app/OpenCut
 ---
@@ -14,7 +14,7 @@ Why?
 ----
 
 -   **Privacy**: Your videos stay on your device
--   **Free features**: Every basic feature of CapCut is paywalled now
+-   **Free features**: Most basic CapCut features are now paywalled
 -   **Simple**: People want editors that are easy to use - CapCut proved that
 
 Features
@@ -104,7 +104,7 @@ Development Setup
     **Required Variables:**
     
     # Database (matches docker-compose.yaml)
-    DATABASE\_URL="postgresql://opencut:opencutthegoat@localhost:5432/opencut"
+    DATABASE\_URL="postgresql://opencut:opencut@localhost:5432/opencut"
     
     # Generate a secure secret for Better Auth
     BETTER\_AUTH\_SECRET="your-generated-secret-here"
@@ -160,6 +160,8 @@ See our Contributing Guide for detailed setup instructions, development guidelin
 
 Sponsors
 --------
+
+Thanks to Vercel and fal.ai for their support of open-source software.
 
 * * *
 

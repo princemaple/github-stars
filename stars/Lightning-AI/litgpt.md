@@ -1,6 +1,6 @@
 ---
 project: litgpt
-stars: 13119
+stars: 13134
 description: 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.
 url: https://github.com/Lightning-AI/litgpt
 ---

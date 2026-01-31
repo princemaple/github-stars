@@ -1,6 +1,6 @@
 ---
 project: WeasyPrint
-stars: 8556
+stars: 8587
 description: The awesome document factory
 url: https://github.com/Kozea/WeasyPrint
 ---

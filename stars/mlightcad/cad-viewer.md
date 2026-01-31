@@ -1,7 +1,7 @@
 ---
 project: cad-viewer
-stars: 356
-description: A high-performance web-based DWG/DXF viewer without requiring any backend server
+stars: 375
+description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
 
@@ -10,12 +10,13 @@ CAD-Viewer
 
 简体中文
 
-CAD-Viewer is a **high-performance**, modern, web-based CAD editor inspired by AutoCAD. It enables users to view and edit DWG/DXF files **entirely in the browser without requiring any backend server**, providing exceptional rendering speed and smooth interactions. The project is modular and designed for seamless integration with other applications.
+cad-viewer is `the first web-based DXF/DWG viewer and editor in the world that operates entirely in browser, without relying on any backend services`. By performing DWG/DXF parsing, geometry processing, and rendering directly in the browser, cad-viewer enables true serverless CAD viewing and editing, ideal for cloud apps, offline usage, and privacy-sensitive workflows.
 
 -   **🌐 Live Demo**
 -   **🌐 API Docs**
 -   **🌐 Wiki**
 -   X (Twitter): @mlightcad
+-   YouTube: @mlightcad
 -   Medium: @mlightcad
 -   Juejin(稀土掘金): @mlightcad
 
@@ -39,6 +40,7 @@ How to Use
 -   **Select**: Left-click on entities
 -   **Zoom in/out**: Scroll mouse wheel up/down
 -   **Pan**: Hold middle mouse button and drag
+-   **Erase**: Select entities and press `Del` key
 
 ### Pad/Mobile Browser Operations
 
@@ -68,7 +70,9 @@ CAD-Viewer has some known limitations that users should be aware of:
 -   **Unsupported Entities**:
     -   **Tables** (DWG files only): Table entities are not currently supported in DWG files because LibreDWG is used to read DWG files and it doesn't support table entity yet. If one table is created by line and polyline entities, definitely it is supported.
     -   **XRefs**: External references (XRefs) are not supported and will not be displayed.
--   **DWG File Compatibility**: Some DWG drawings may fail to open due to bugs in the underlying LibreDWG library. This is a known limitation of the current DWG parsing implementation. If you find those issues, please log one issue on CAD-Viewer issues page or LibreDWG issues page.
+-   **DWG File Compatibility**:
+    -   Some DWG drawings may fail to open due to bugs in the underlying LibreDWG library. This is a known limitation of the current DWG parsing implementation. If you find those issues, please log one issue on CAD-Viewer issues page or LibreDWG issues page.
+    -   In the Chinese architecture and construction industry, CAD drawings are widely created using Tianzheng software. However, many entities in Tianzheng drawings are proprietary custom objects, and no public APIs are provided to access or parse their internal data. As a result, before opening such drawings with CAD-Viewer, they must first be converted to T3 format using Tianzheng. After conversion, the drawings can be correctly opened and viewed in CAD-Viewer.
 
 These issues are being tracked and will be addressed in future releases.
 
@@ -88,7 +92,7 @@ Legend:
 #### File Support
 
 -   DXF loading
--   DWG loading (via RealDWG / compatible backend)
+-   DWG loading
 -   Large file streaming / incremental loading
 -   ⏳ File version compatibility (R12–Latest)
 

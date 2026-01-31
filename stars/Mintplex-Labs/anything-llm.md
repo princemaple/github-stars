@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 53774
+stars: 54032
 description: The all-in-one Desktop & Docker AI application with built-in RAG, AI agents, No-code agent builder, MCP compatibility,  and more.
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -79,6 +79,8 @@ Cool features of AnythingLLM
 -   Microsoft Foundry Local
 -   CometAPI (chat models)
 -   Docker Model Runner
+-   PrivateModeAI (chat models)
+-   SambaNova Cloud (chat models)
 
 **Embedder models:**
 
@@ -211,7 +213,7 @@ You can verify these claims by finding all locations `Telemetry.sendTelemetry` i
 
 We take privacy very seriously, and we hope you understand that we want to learn how our tool is used, without using annoying popup surveys, so we can build something worth using. The anonymous data is _never_ shared with third parties, ever.
 
-View all telemetry events in source code
+\[View all telemetry events in source code\](https://github.com/search?q=repo%3AMintplex-Labs%2Fanything-llm%20.sendTelemetry(&type=code)
 
 👋 Contributing
 ---------------

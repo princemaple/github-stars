@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 3898
+stars: 3986
 description: Clean network diagrams. One-time setup, zero upkeep.
 url: https://github.com/scanopy/scanopy
 ---

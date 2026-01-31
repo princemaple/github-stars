@@ -1,6 +1,6 @@
 ---
 project: litestream
-stars: 13097
+stars: 13131
 description: Streaming replication for SQLite.
 url: https://github.com/benbjohnson/litestream
 ---
@@ -10,7 +10,7 @@ Litestream
 
 Litestream is a standalone disaster recovery tool for SQLite. It runs as a background process and safely replicates changes incrementally to another file or S3. Litestream only communicates with SQLite through the SQLite API so it will not corrupt your database.
 
-If you need support or have ideas for improving Litestream, please join the Litestream Slack or visit the GitHub Discussions. Please visit the Litestream web site for installation instructions and documentation.
+If you need support or have ideas for improving Litestream, please visit GitHub Issues. Please visit the Litestream web site for installation instructions and documentation.
 
 If you find this project interesting, please consider starring the project on GitHub.
 

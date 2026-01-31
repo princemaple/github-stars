@@ -1,6 +1,6 @@
 ---
 project: ra
-stars: 915
+stars: 916
 description: A Multi-Raft implementation for Erlang and Elixir that strives to be efficient and make it easier to use multiple Raft clusters in a single system.
 url: https://github.com/rabbitmq/ra
 ---
@@ -294,13 +294,6 @@ wal\_compute\_checksums
 Indicate whether the wal should compute and validate checksums. Default: \`true\`
 
 Boolean
-
-wal\_write\_strategy
-
--   `default`: used by default. `write(2)` system calls are delayed until a buffer is due to be flushed. Then it writes all the data in a single call then `fsync`s. Fastest option but incurs some additional memory use.
--   `o_sync`: Like default but will try to open the file with O\_SYNC and thus won't need the additional `fsync(2)` system call. If it fails to open the file with this flag this mode falls back to default.
-
-Enumeration: `default` | `o_sync`
 
 wal\_sync\_method
 

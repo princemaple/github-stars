@@ -1,6 +1,6 @@
 ---
 project: dive
-stars: 53188
+stars: 53241
 description: A tool for exploring each layer in a docker image
 url: https://github.com/wagoodman/dive
 ---

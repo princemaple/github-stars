@@ -1,6 +1,6 @@
 ---
 project: smiley-sans
-stars: 14177
+stars: 14193
 description: 得意黑 Smiley Sans：一款在人文观感和几何特征中寻找平衡的中文黑体
 url: https://github.com/atelier-anchor/smiley-sans
 ---

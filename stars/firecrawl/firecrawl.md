@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 77139
+stars: 78742
 description: 🔥 The Web Data API for AI - Turn entire websites into LLM-ready markdown or structured data
 url: https://github.com/firecrawl/firecrawl
 ---

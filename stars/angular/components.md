@@ -1,6 +1,6 @@
 ---
 project: components
-stars: 24982
+stars: 24985
 description: Component infrastructure and Material Design components for Angular
 url: https://github.com/angular/components
 ---
@@ -13,6 +13,12 @@ The Angular team builds and maintains both common UI components and tools to hel
 Package
 
 Description
+
+Docs
+
+`@angular/aria`
+
+Collection of headless, accessible directives that implement common WAI-ARIA patterns
 
 Docs
 

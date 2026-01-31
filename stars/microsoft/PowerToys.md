@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 128346
+stars: 128716
 description: Microsoft PowerToys is a collection of utilities that help you customize Windows and streamline everyday tasks
 url: https://github.com/microsoft/PowerToys
 ---
@@ -93,19 +93,19 @@ Filename
 
 Per user - x64
 
-PowerToysUserSetup-0.97.0-x64.exe
+PowerToysUserSetup-0.97.1-x64.exe
 
 Per user - ARM64
 
-PowerToysUserSetup-0.97.0-arm64.exe
+PowerToysUserSetup-0.97.1-arm64.exe
 
 Machine wide - x64
 
-PowerToysSetup-0.97.0-x64.exe
+PowerToysSetup-0.97.1-x64.exe
 
 Machine wide - ARM64
 
-PowerToysSetup-0.97.0-arm64.exe
+PowerToysSetup-0.97.1-arm64.exe
 
 **Microsoft Store**  
 You can easily install PowerToys from the Microsoft Store:
@@ -127,19 +127,45 @@ There are community driven install methods such as Chocolatey and Scoop. If thes
 ✨ What's new
 ------------
 
-**Version 0.97 (January 2026)**
+**Version 0.97.1 (January 2026)**
 
-For an in-depth look at the latest changes, visit the Windows Command Line blog.
+This patch release fixes several important stability issues identified in v0.97.0 based on incoming reports. Check out the v0.97.0 notes for the full list of changes.
 
-**✨ Highlights**
+**Highlights**
 
--   **Command Palette**: Major expansion with PowerToys extension (Windows 11 only), Remote Desktop built-in extension, theme customization, drag-and-drop support, fallback ranking controls, sections/separators for pages, pinyin Chinese matching, and many UX refinements.
--   **Settings**: Quick Access flyout is now a standalone process for significantly faster startup, theme-adaptive tray icon, AOT serialization, and multiple UI/accessibility fixes
--   **CursorWrap (New!)**: New mouse utility that lets your cursor wrap around screen edges, making multi-monitor navigation faster and more seamless.
--   **Advanced Paste**: Image input for AI, color detection in clipboard history, Foundry Local improvements, Azure AI icons, and multiple bug fixes
--   **CLI Support Expanded**: FancyZones, Image Resizer, and File Locksmith can now be controlled from the command line for layout management, batch image resizing, and file lock inspection.
--   **LightSwitch**: Added support for automatically following Windows Night Light mode.
--   **Release Experience & Quality**: Refreshed "What’s new" dialog, plus many performance improvements, stability fixes, and refinements across PowerToys.
+### Advanced Paste
+
+-   #44862: Fixed Settings UI advanced paste page crash by using correct settings repository for null checking.
+
+### Command Palette
+
+-   #44886: Fixed personalization section not appearing by using latest MSIX for installation.
+-   #44938: Fixed loading of icons from internet shortcuts. Thanks @jiripolasek!
+-   #45076: Fixed potential deadlock from lazy-loading AppListItem details. Thanks @jiripolasek!
+
+### Cursor Wrap
+
+-   #44936: Added improved multi-monitor support; Added laptop lid close detection for dynamic monitor topology updates. Thanks @mikehall-ms!
+-   #44936: Added new settings dropdown to constrain wrapping to horizontal-only, vertical-only, or both directions. Thanks @mikehall-ms!
+
+### Peek
+
+-   #44995: Fixed Space key triggering Peek during file rename, search, or address bar typing.
+
+### PowerRename
+
+-   #44944: Fixed regex `$` not working, preventing users from adding text at the end of filenames.
+
+### Runner
+
+-   #44931: Monochrome tray icon now adapts to Windows system theme instead of app theme.
+-   #44982: Fixed right-click menu to dynamically update based on Quick Access enabled/disabled state.
+
+### GPO / Enterprise
+
+-   #45028: Added CursorWrap policy definition to ADMX templates. Thanks @htcfreek!
+
+For the full list of v0.97 changes, visit the Windows Command Line blog.
 
 Advanced Paste
 --------------
@@ -334,7 +360,7 @@ Development
 🛣️ Roadmap
 -----------
 
-We are planning some nice new features and improvements for the next releases – PowerDisplay, Command Palette improvements and a brand-new Shortcut Guide experience! Stay tuned for v0.97!
+We are planning some nice new features and improvements for the next releases – PowerDisplay, Command Palette improvements and a brand-new Shortcut Guide experience! Stay tuned for v0.98!
 
 ❤️ PowerToys Community
 ----------------------

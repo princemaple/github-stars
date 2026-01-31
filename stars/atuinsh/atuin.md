@@ -1,6 +1,6 @@
 ---
 project: atuin
-stars: 28030
+stars: 28110
 description: ✨ Magical shell history
 url: https://github.com/atuinsh/atuin
 ---
@@ -55,6 +55,7 @@ Supported Shells
 -   fish
 -   nushell
 -   xonsh
+-   powershell (tier 2 support)
 
 Community
 ---------

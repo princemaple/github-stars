@@ -1,22 +1,22 @@
 ---
-project: clawdbot
-stars: 8448
+project: openclaw
+stars: 131867
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
-url: https://github.com/clawdbot/clawdbot
+url: https://github.com/openclaw/openclaw
 ---
 
-🦞 Clawdbot — Personal AI Assistant
+🦞 OpenClaw — Personal AI Assistant
 ===================================
 
 **EXFOLIATE! EXFOLIATE!**
 
-**Clawdbot** is a _personal AI assistant_ you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
+**OpenClaw** is a _personal AI assistant_ you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
-Website · Docs · Getting Started · Updating · Showcase · FAQ · Wizard · Nix · Docker · Discord
+Website · Docs · DeepWiki · Getting Started · Updating · Showcase · FAQ · Wizard · Nix · Docker · Discord
 
-Preferred setup: run the onboarding wizard (`clawdbot onboard`). It walks through gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**. Works with npm, pnpm, or bun. New install? Start here: Getting started
+Preferred setup: run the onboarding wizard (`openclaw onboard`). It walks through gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**. Works with npm, pnpm, or bun. New install? Start here: Getting started
 
 **Subscriptions (OAuth):**
 
@@ -36,10 +36,10 @@ Install (recommended)
 
 Runtime: **Node ≥22**.
 
-npm install -g clawdbot@latest
-# or: pnpm add -g clawdbot@latest
+npm install -g openclaw@latest
+# or: pnpm add -g openclaw@latest
 
-clawdbot onboard --install-daemon
+openclaw onboard --install-daemon
 
 The wizard installs the Gateway daemon (launchd/systemd user service) so it stays running.
 
@@ -50,17 +50,17 @@ Runtime: **Node ≥22**.
 
 Full beginner guide (auth, pairing, channels): Getting started
 
-clawdbot onboard --install-daemon
+openclaw onboard --install-daemon
 
-clawdbot gateway --port 18789 --verbose
+openclaw gateway --port 18789 --verbose
 
 # Send a message
-clawdbot message send --to +1234567890 --message "Hello from Clawdbot"
+openclaw message send --to +1234567890 --message "Hello from OpenClaw"
 
-# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)
-clawdbot agent --message "Ship checklist" --thinking high
+# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)
+openclaw agent --message "Ship checklist" --thinking high
 
-Upgrading? Updating guide (and run `clawdbot doctor`).
+Upgrading? Updating guide (and run `openclaw doctor`).
 
 Development channels
 --------------------
@@ -69,47 +69,47 @@ Development channels
 -   **beta**: prerelease tags (`vYYYY.M.D-beta.N`), npm dist-tag `beta` (macOS app may be missing).
 -   **dev**: moving head of `main`, npm dist-tag `dev` (when published).
 
-Switch channels (git + npm): `clawdbot update --channel stable|beta|dev`. Details: Development channels.
+Switch channels (git + npm): `openclaw update --channel stable|beta|dev`. Details: Development channels.
 
 From source (development)
 -------------------------
 
 Prefer `pnpm` for builds from source. Bun is optional for running TypeScript directly.
 
-git clone https://github.com/clawdbot/clawdbot.git
-cd clawdbot
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
 
 pnpm install
 pnpm ui:build # auto-installs UI deps on first run
 pnpm build
 
-pnpm clawdbot onboard --install-daemon
+pnpm openclaw onboard --install-daemon
 
 # Dev loop (auto-reload on TS changes)
 pnpm gateway:watch
 
-Note: `pnpm clawdbot ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `clawdbot` binary.
+Note: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary.
 
 Security defaults (DM access)
 -----------------------------
 
-Clawdbot connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
+OpenClaw connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
 
 Full security guide: Security
 
-Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Slack:
+Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:
 
 -   **DM pairing** (`dmPolicy="pairing"` / `channels.discord.dm.policy="pairing"` / `channels.slack.dm.policy="pairing"`): unknown senders receive a short pairing code and the bot does not process their message.
--   Approve with: `clawdbot pairing approve <channel> <code>` (then the sender is added to a local allowlist store).
+-   Approve with: `openclaw pairing approve <channel> <code>` (then the sender is added to a local allowlist store).
 -   Public inbound DMs require an explicit opt-in: set `dmPolicy="open"` and include `"*"` in the channel allowlist (`allowFrom` / `channels.discord.dm.allowFrom` / `channels.slack.dm.allowFrom`).
 
-Run `clawdbot doctor` to surface risky/misconfigured DM policies.
+Run `openclaw doctor` to surface risky/misconfigured DM policies.
 
 Highlights
 ----------
 
 -   **Local-first Gateway** — single control plane for sessions, channels, tools, and events.
--   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Signal, iMessage, BlueBubbles, Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
+-   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, BlueBubbles, Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
 -   **Multi-agent routing** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
 -   **Voice Wake + Talk Mode** — always-on speech for macOS/iOS/Android with ElevenLabs.
 -   **Live Canvas** — agent-driven visual workspace with A2UI.
@@ -133,7 +133,7 @@ Everything we built so far
 
 ### Channels
 
--   Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Signal (signal-cli), iMessage (imsg), BlueBubbles (extension), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat.
+-   Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google Chat (Chat API), Signal (signal-cli), iMessage (imsg), BlueBubbles (extension), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat.
 -   Group routing: mention gating, reply tags, per-channel chunking and routing. Channel rules: Channels.
 
 ### Apps + nodes
@@ -145,7 +145,7 @@ Everything we built so far
 
 ### Tools + automation
 
--   Browser control: dedicated clawd Chrome/Chromium, snapshots, actions, uploads, profiles.
+-   Browser control: dedicated openclaw Chrome/Chromium, snapshots, actions, uploads, profiles.
 -   Canvas: A2UI push/reset, eval, snapshot.
 -   Nodes: camera snap/clip, screen record, location.get, notifications.
 -   Cron + wakeups; webhooks; Gmail Pub/Sub.
@@ -169,7 +169,7 @@ How it works (short)
 --------------------
 
 ```
-WhatsApp / Telegram / Slack / Discord / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat
+WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat
                │
                ▼
 ┌───────────────────────────────┐
@@ -179,7 +179,7 @@ WhatsApp / Telegram / Slack / Discord / Signal / iMessage / BlueBubbles / Micros
 └──────────────┬────────────────┘
                │
                ├─ Pi agent (RPC)
-               ├─ CLI (clawdbot …)
+               ├─ CLI (openclaw …)
                ├─ WebChat UI
                ├─ macOS app
                └─ iOS / Android nodes
@@ -190,7 +190,7 @@ Key subsystems
 
 -   **Gateway WebSocket network** — single WS control plane for clients, tools, and events (plus ops: Gateway runbook).
 -   **Tailscale exposure** — Serve/Funnel for the Gateway dashboard + WS (remote access: Remote).
--   **Browser control** — clawd‑managed Chrome/Chromium with CDP control.
+-   **Browser control** — openclaw‑managed Chrome/Chromium with CDP control.
 -   **Canvas + A2UI** — agent‑driven visual workspace (A2UI host: Canvas/A2UI).
 -   **Voice Wake + Talk Mode** — always‑on speech and continuous conversation.
 -   **Nodes** — Canvas, camera snap/clip, screen record, `location.get`, notifications, plus macOS‑only `system.run`/`system.notify`.
@@ -198,7 +198,7 @@ Key subsystems
 Tailscale access (Gateway dashboard)
 ------------------------------------
 
-Clawdbot can auto-configure Tailscale **Serve** (tailnet-only) or **Funnel** (public) while the Gateway stays bound to loopback. Configure `gateway.tailscale.mode`:
+OpenClaw can auto-configure Tailscale **Serve** (tailnet-only) or **Funnel** (public) while the Gateway stays bound to loopback. Configure `gateway.tailscale.mode`:
 
 -   `off`: no Tailscale automation (default).
 -   `serve`: tailnet-only HTTPS via `tailscale serve` (uses Tailscale identity headers by default).
@@ -206,7 +206,7 @@ Clawdbot can auto-configure Tailscale **Serve** (tailnet-only) or **Funnel** (pu
 
 Notes:
 
--   `gateway.bind` must stay `loopback` when Serve/Funnel is enabled (Clawdbot enforces this).
+-   `gateway.bind` must stay `loopback` when Serve/Funnel is enabled (OpenClaw enforces this).
 -   Serve can be forced to require a password by setting `gateway.auth.mode: "password"` or `gateway.auth.allowTailscale: false`.
 -   Funnel refuses to start unless `gateway.auth.mode: "password"` is set.
 -   Optional: `gateway.tailscale.resetOnExit` to undo Serve/Funnel on shutdown.
@@ -249,17 +249,17 @@ Agent to Agent (sessions\_\* tools)
 
 Details: Session tools
 
-Skills registry (ClawdHub)
---------------------------
+Skills registry (ClawHub)
+-------------------------
 
-ClawdHub is a minimal skill registry. With ClawdHub enabled, the agent can search for skills automatically and pull in new ones as needed.
+ClawHub is a minimal skill registry. With ClawHub enabled, the agent can search for skills automatically and pull in new ones as needed.
 
-ClawdHub
+ClawHub
 
 Chat commands
 -------------
 
-Send these in WhatsApp/Telegram/Slack/Microsoft Teams/WebChat (group commands are owner-only):
+Send these in WhatsApp/Telegram/Slack/Google Chat/Microsoft Teams/WebChat (group commands are owner-only):
 
 -   `/status` — compact session status (model + tokens, cost when available)
 -   `/new` or `/reset` — reset the session
@@ -277,7 +277,7 @@ The Gateway alone delivers a great experience. All apps are optional and add ext
 
 If you plan to build/run companion apps, follow the platform runbooks below.
 
-### macOS (Clawdbot.app) (optional)
+### macOS (OpenClaw.app) (optional)
 
 -   Menu bar control for the Gateway and health.
 -   Voice Wake + push-to-talk overlay.
@@ -290,7 +290,7 @@ Note: signed builds required for macOS permissions to stick across rebuilds (see
 
 -   Pairs as a node via the Bridge.
 -   Voice trigger forwarding + Canvas surface.
--   Controlled via `clawdbot nodes …`.
+-   Controlled via `openclaw nodes …`.
 
 Runbook: iOS connect.
 
@@ -303,19 +303,19 @@ Runbook: iOS connect.
 Agent workspace + skills
 ------------------------
 
--   Workspace root: `~/clawd` (configurable via `agents.defaults.workspace`).
+-   Workspace root: `~/.openclaw/workspace` (configurable via `agents.defaults.workspace`).
 -   Injected prompt files: `AGENTS.md`, `SOUL.md`, `TOOLS.md`.
--   Skills: `~/clawd/skills/<skill>/SKILL.md`.
+-   Skills: `~/.openclaw/workspace/skills/<skill>/SKILL.md`.
 
 Configuration
 -------------
 
-Minimal `~/.clawdbot/clawdbot.json` (model + defaults):
+Minimal `~/.openclaw/openclaw.json` (model + defaults):
 
 {
   agent: {
-    model: "anthropic/claude-opus-4-5"
-  }
+    model: "anthropic/claude-opus-4-5",
+  },
 }
 
 Full configuration reference (all keys + examples).
@@ -331,7 +331,7 @@ Details: Security guide · Docker + sandboxing · Sandbox config
 
 ### WhatsApp
 
--   Link the device: `pnpm clawdbot channels login` (stores creds in `~/.clawdbot/credentials`).
+-   Link the device: `pnpm openclaw channels login` (stores creds in `~/.openclaw/credentials`).
 -   Allowlist who can talk to the assistant via `channels.whatsapp.allowFrom`.
 -   If `channels.whatsapp.groups` is set, it becomes a group allowlist; include `"*"` to allow all.
 
@@ -343,9 +343,9 @@ Details: Security guide · Docker + sandboxing · Sandbox config
 {
   channels: {
     telegram: {
-      botToken: "123456:ABCDEF"
-    }
-  }
+      botToken: "123456:ABCDEF",
+    },
+  },
 }
 
 ### Slack
@@ -360,9 +360,9 @@ Details: Security guide · Docker + sandboxing · Sandbox config
 {
   channels: {
     discord: {
-      token: "1234abcd"
-    }
-  }
+      token: "1234abcd",
+    },
+  },
 }
 
 ### Signal
@@ -388,9 +388,8 @@ Browser control (optional):
 {
   browser: {
     enabled: true,
-    controlUrl: "http://127.0.0.1:18791",
-    color: "#FF4500"
-  }
+    color: "#FF4500",
+  },
 }
 
 Docs
@@ -466,24 +465,23 @@ Platform internals
 Email hooks (Gmail)
 -------------------
 
--   docs.clawd.bot/gmail-pubsub
+-   docs.openclaw.ai/gmail-pubsub
 
-Clawd
+Molty
 -----
 
-Clawdbot was built for **Clawd**, a space lobster AI assistant. 🦞  
-by Peter Steinberger and the community.
+OpenClaw was built for **Molty**, a space lobster AI assistant. 🦞 by Peter Steinberger and the community.
 
--   clawd.me
+-   openclaw.ai
 -   soul.md
 -   steipete.me
+-   @openclaw
 
 Community
 ---------
 
-See CONTRIBUTING.md for guidelines, maintainers, and how to submit PRs.  
-AI/vibe-coded PRs welcome! 🤖
+See CONTRIBUTING.md for guidelines, maintainers, and how to submit PRs. AI/vibe-coded PRs welcome! 🤖
 
-Special thanks to Mario Zechner for his support and for pi-mono.
+Special thanks to Mario Zechner for his support and for pi-mono. Special thanks to Adam Doppelt for lobster.bot.
 
 Thanks to all clawtributors:

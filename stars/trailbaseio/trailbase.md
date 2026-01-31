@@ -1,6 +1,6 @@
 ---
 project: trailbase
-stars: 4433
+stars: 4518
 description: An open, sub-millisecond, single-executable Firebase alternative with type-safe APIs, built-in WebAssembly runtime, realtime subscriptions, auth, and admin UI built on Rust, SQLite & Wasmtime.
 url: https://github.com/trailbaseio/trailbase
 ---
@@ -110,9 +110,9 @@ We're not sure yet what the best setup or exact license is for compatibility bet
 License
 -------
 
-TrailBase is free software under the terms of the Open Software License 3.0 (OSL-3.0).
+TrailBase is free software under the terms of the Open Software License 3.0 (OSL-3.0). Its client libraries are dual licensed under the permissive Apache-2.0.
 
-We chose the OSL-3.0 over other, better known copyleft licenses due to its narrower definition of "derivative work" that **only** covers modifications to TrailBase itself. This means that your application's original code is **not** subject to the OSL-3.0's copyleft provisions. This is true whether you connect over the network (e.g. web, mobile, other services, etc.), you're serving static assets, using the runtime to write custom server-side logic or using TrailBase as a framework.
+We chose OSL-3.0 over other, better known copyleft licenses due to its narrower definition of "derivative work" that **only** covers modifications to TrailBase itself. This means that your application's original code is **not** subject to the OSL-3.0's copyleft provisions. This is true whether you connect over the network (e.g. web, mobile, other services, etc.), you're serving static assets, using the runtime to write custom server-side logic or using TrailBase as a framework.
 
 This limited scope is similar to the GPL's classpath or the LGPL's linking exception. The goal is to allow building on top and around of TrailBase without any provisions rubbing off onto your original work, while making sure that fixes and improvements find their way back to the community. These are our intentions - we felt the need to spell them out explicitly because licensing is tricky and we ain't lawyers. Graciously, the license's author provides some more explanations. If you have any concerns, please reach out.
 

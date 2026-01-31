@@ -1,6 +1,6 @@
 ---
 project: node-vibrant
-stars: 2392
+stars: 2396
 description: 🎨 Extract prominent colors from an image
 url: https://github.com/Vibrant-Colors/node-vibrant
 ---

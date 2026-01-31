@@ -1,6 +1,6 @@
 ---
 project: ruff
-stars: 45350
+stars: 45495
 description: An extremely fast Python linter and code formatter, written in Rust.
 url: https://github.com/astral-sh/ruff
 ---

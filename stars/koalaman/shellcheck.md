@@ -1,6 +1,6 @@
 ---
 project: shellcheck
-stars: 38919
+stars: 38950
 description: ShellCheck, a static analysis tool for shell scripts
 url: https://github.com/koalaman/shellcheck
 ---
@@ -275,7 +275,7 @@ To run ShellCheck via pre-commit, add the hook to your `.pre-commit-config.yaml`
 ```
 repos:
 -   repo: https://github.com/koalaman/shellcheck-precommit
-    rev: v0.7.2
+    rev: v0.11.0
     hooks:
     -   id: shellcheck
 #       args: ["--severity=warning"]  # Optionally only show errors and warnings

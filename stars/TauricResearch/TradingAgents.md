@@ -1,6 +1,6 @@
 ---
 project: TradingAgents
-stars: 28834
+stars: 29454
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
@@ -13,6 +13,12 @@ Deutsch | Español | français | 日本語 | 한국어 | Português | Русск
 
 TradingAgents: Multi-Agents LLM Financial Trading Framework
 ===========================================================
+
+News
+----
+
+-   \[2026-02\] **TradingAgents v0.2.0** released with multi-provider LLM support (GPT-5.x, Gemini 3.x, Claude 4.x, Grok 4.x) and improved system architecture.
+-   \[2026-01\] **Trading-R1** Technical Report released, with Terminal expected to land soon.
 
 > 🎉 **TradingAgents** officially released! We have received numerous inquiries about the work, and we would like to express our thanks for the enthusiasm in our community.
 > 
@@ -70,17 +76,20 @@ pip install -r requirements.txt
 
 ### Required APIs
 
-You will need the OpenAI API for all the agents, and Alpha Vantage API for fundamental and news data (default configuration).
+TradingAgents supports multiple LLM providers. Set the API key for your chosen provider:
 
-export OPENAI\_API\_KEY=$YOUR\_OPENAI\_API\_KEY
-export ALPHA\_VANTAGE\_API\_KEY=$YOUR\_ALPHA\_VANTAGE\_API\_KEY
+export OPENAI\_API\_KEY=...          # OpenAI (GPT)
+export GOOGLE\_API\_KEY=...          # Google (Gemini)
+export ANTHROPIC\_API\_KEY=...       # Anthropic (Claude)
+export XAI\_API\_KEY=...             # xAI (Grok)
+export OPENROUTER\_API\_KEY=...      # OpenRouter
+export ALPHA\_VANTAGE\_API\_KEY=...   # Alpha Vantage
 
-Alternatively, you can create a `.env` file in the project root with your API keys (see `.env.example` for reference):
+For local models, configure Ollama with `llm_provider: "ollama"` in your config.
+
+Alternatively, copy `.env.example` to `.env` and fill in your keys:
 
 cp .env.example .env
-# Edit .env with your actual API keys
-
-**Note:** We are happy to partner with Alpha Vantage to provide robust API support for TradingAgents. You can get a free AlphaVantage API here, TradingAgents-sourced requests also have increased rate limits to 60 requests per minute with no daily limits. Typically the quota is sufficient for performing complex tasks with TradingAgents thanks to Alpha Vantage’s open-source support program. If you prefer to use OpenAI for these data sources instead, you can modify the data vendor settings in `tradingagents/default_config.py`.
 
 ### CLI Usage
 
@@ -97,7 +106,7 @@ TradingAgents Package
 
 ### Implementation Details
 
-We built TradingAgents with LangGraph to ensure flexibility and modularity. We utilize `o1-preview` and `gpt-4o` as our deep thinking and fast thinking LLMs for our experiments. However, for testing purposes, we recommend you use `o4-mini` and `gpt-4.1-mini` to save on costs as our framework makes **lots of** API calls.
+We built TradingAgents with LangGraph to ensure flexibility and modularity. The framework supports multiple LLM providers: OpenAI, Google, Anthropic, xAI, OpenRouter, and Ollama.
 
 ### Python Usage
 
@@ -109,7 +118,7 @@ from tradingagents.default\_config import DEFAULT\_CONFIG
 ta \= TradingAgentsGraph(debug\=True, config\=DEFAULT\_CONFIG.copy())
 
 \# forward propagate
-\_, decision \= ta.propagate("NVDA", "2024-05-10")
+\_, decision \= ta.propagate("NVDA", "2026-01-15")
 print(decision)
 
 You can also adjust the default configuration to set your own choice of LLMs, debate rounds, etc.
@@ -117,30 +126,17 @@ You can also adjust the default configuration to set your own choice of LLMs, de
 from tradingagents.graph.trading\_graph import TradingAgentsGraph
 from tradingagents.default\_config import DEFAULT\_CONFIG
 
-\# Create a custom config
 config \= DEFAULT\_CONFIG.copy()
-config\["deep\_think\_llm"\] \= "gpt-4.1-nano"  \# Use a different model
-config\["quick\_think\_llm"\] \= "gpt-4.1-nano"  \# Use a different model
-config\["max\_debate\_rounds"\] \= 1  \# Increase debate rounds
+config\["llm\_provider"\] \= "openai"        \# openai, google, anthropic, xai, openrouter, ollama
+config\["deep\_think\_llm"\] \= "gpt-5.2"     \# Model for complex reasoning
+config\["quick\_think\_llm"\] \= "gpt-5-mini" \# Model for quick tasks
+config\["max\_debate\_rounds"\] \= 2
 
-\# Configure data vendors (default uses yfinance and Alpha Vantage)
-config\["data\_vendors"\] \= {
-    "core\_stock\_apis": "yfinance",           \# Options: yfinance, alpha\_vantage, local
-    "technical\_indicators": "yfinance",      \# Options: yfinance, alpha\_vantage, local
-    "fundamental\_data": "alpha\_vantage",     \# Options: openai, alpha\_vantage, local
-    "news\_data": "alpha\_vantage",            \# Options: openai, alpha\_vantage, google, local
-}
-
-\# Initialize with custom config
 ta \= TradingAgentsGraph(debug\=True, config\=config)
-
-\# forward propagate
-\_, decision \= ta.propagate("NVDA", "2024-05-10")
+\_, decision \= ta.propagate("NVDA", "2026-01-15")
 print(decision)
 
-> The default configuration uses yfinance for stock price and technical data, and Alpha Vantage for fundamental and news data. For production use or if you encounter rate limits, consider upgrading to Alpha Vantage Premium for more stable and reliable data access. For offline experimentation, there's a local data vendor option that uses our **Tauric TradingDB**, a curated dataset for backtesting, though this is still in development. We're currently refining this dataset and plan to release it soon alongside our upcoming projects. Stay tuned!
-
-You can view the full list of configurations in `tradingagents/default_config.py`.
+See `tradingagents/default_config.py` for all configuration options.
 
 Contributing
 ------------

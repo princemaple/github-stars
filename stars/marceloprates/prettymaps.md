@@ -1,6 +1,6 @@
 ---
 project: prettymaps
-stars: 12111
+stars: 12162
 description: Draw pretty maps from OpenStreetMap data! Built with osmnx +matplotlib + shapely
 url: https://github.com/marceloprates/prettymaps
 ---

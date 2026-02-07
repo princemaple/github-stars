@@ -1,6 +1,6 @@
 ---
 project: nomnoml
-stars: 2815
+stars: 2816
 description: The sassy UML diagram renderer
 url: https://github.com/skanaar/nomnoml
 ---

@@ -1,6 +1,6 @@
 ---
 project: ngx-markdown
-stars: 1166
+stars: 1167
 description: Angular markdown component/directive/pipe/service to parse static, dynamic or remote content to HTML with syntax highlight and more...
 url: https://github.com/jfcere/ngx-markdown
 ---
@@ -195,7 +195,7 @@ Optionally, to automatically present some lines as output without providing the 
 
 To add Emoji-Toolkit library to your `package.json` use the following command.
 
-npm install emoji-toolkit@^9.0.0 --save
+npm install emoji-toolkit@^10.0.0 --save
 
 To activate Emoji-Toolkit for emoji suppport you will need to include...
 

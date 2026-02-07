@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 29134
+stars: 29241
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---
@@ -447,7 +447,7 @@ After following all those steps above, `flameshot` will open without problems in
 
 ### Windows
 
--   Chocolatey
+-   Scoop: `scoop install flameshot`
 
 Expand this section to see what distros are using an up to date version of flameshot
 

@@ -1,6 +1,6 @@
 ---
 project: workerd
-stars: 7468
+stars: 7490
 description: The JavaScript / Wasm runtime that powers Cloudflare Workers
 url: https://github.com/cloudflare/workerd
 ---

@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 94669
+stars: 94884
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -124,8 +124,6 @@ Example
 
 Create a file `main.py` with:
 
-from typing import Union
-
 from fastapi import FastAPI
 
 app \= FastAPI()
@@ -135,14 +133,12 @@ def read\_root():
     return {"Hello": "World"}
 
 @app.get("/items/{item\_id}")
-def read\_item(item\_id: int, q: Union\[str, None\] \= None):
+def read\_item(item\_id: int, q: str | None \= None):
     return {"item\_id": item\_id, "q": q}
 
 Or use `async def`...
 
 If your code uses `async` / `await`, use `async def`:
-
-from typing import Union
 
 from fastapi import FastAPI
 
@@ -153,7 +149,7 @@ async def read\_root():
     return {"Hello": "World"}
 
 @app.get("/items/{item\_id}")
-async def read\_item(item\_id: int, q: Union\[str, None\] \= None):
+async def read\_item(item\_id: int, q: str | None \= None):
     return {"item\_id": item\_id, "q": q}
 
 **Note**:
@@ -227,8 +223,6 @@ Now modify the file `main.py` to receive a body from a `PUT` request.
 
 Declare the body using standard Python types, thanks to Pydantic.
 
-from typing import Union
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -237,14 +231,14 @@ app \= FastAPI()
 class Item(BaseModel):
     name: str
     price: float
-    is\_offer: Union\[bool, None\] \= None
+    is\_offer: bool | None \= None
 
 @app.get("/")
 def read\_root():
     return {"Hello": "World"}
 
 @app.get("/items/{item\_id}")
-def read\_item(item\_id: int, q: Union\[str, None\] \= None):
+def read\_item(item\_id: int, q: str | None \= None):
     return {"item\_id": item\_id, "q": q}
 
 @app.put("/items/{item\_id}")

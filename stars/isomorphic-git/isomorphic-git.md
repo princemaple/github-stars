@@ -1,6 +1,6 @@
 ---
 project: isomorphic-git
-stars: 8066
+stars: 8076
 description: A pure JavaScript implementation of git for node and browsers!
 url: https://github.com/isomorphic-git/isomorphic-git
 ---

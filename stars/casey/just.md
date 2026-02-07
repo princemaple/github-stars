@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 30351
+stars: 31030
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -1887,6 +1887,12 @@ module, recipe
 
 Set recipe or module's documentation comment to `DOC`.
 
+`[env(ENV_VAR, VALUE)]` master
+
+recipe
+
+Set environment variables for recipe.
+
 `[extension(EXT)]`1.32.0
 
 recipe
@@ -1897,7 +1903,7 @@ Set shebang recipe script's file extension to `EXT`. `EXT` should include a peri
 
 module, recipe
 
-Put recipe or module in in group `NAME`.
+Put recipe or module in group `NAME`.
 
 `[linux]`1.8.0
 
@@ -2264,6 +2270,13 @@ test:
 Parameters prefixed with a `$` will be exported as environment variables:
 
 test $RUST\_BACKTRACE\="1":
+  \# will print a stack trace if it crashes
+  cargo test
+
+You can also use the `[env(NAME, VALUE)]` attribute to export environment variables to a specific recipe:
+
+\[env("RUST\_BACKTRACE", "1")\]
+test:
   \# will print a stack trace if it crashes
   cargo test
 

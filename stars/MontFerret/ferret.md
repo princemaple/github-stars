@@ -1,6 +1,6 @@
 ---
 project: ferret
-stars: 5913
+stars: 5910
 description: Declarative web scraping
 url: https://github.com/MontFerret/ferret
 ---
@@ -24,6 +24,26 @@ Read the introductory blog post about Ferret here!
 -   Support of both static and dynamic web pages
 -   Embeddable
 -   Extensible
+
+Installation
+------------
+
+### CLI
+
+Install the Ferret CLI using Go:
+
+go install github.com/MontFerret/cli/ferret@latest
+
+Make sure your `$GOPATH/bin` is in your `PATH`.
+
+### As a Library
+
+Add Ferret to your Go project:
+
+go get github.com/MontFerret/ferret
+
+Documentation
+-------------
 
 Documentation is available at our website.
 

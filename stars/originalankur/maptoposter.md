@@ -1,6 +1,6 @@
 ---
 project: maptoposter
-stars: 8700
+stars: 9886
 description: Transform your favorite cities into beautiful, minimalist designs. MapToPoster lets you create and export visually striking map posters with code.
 url: https://github.com/originalankur/maptoposter
 ---

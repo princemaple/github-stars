@@ -1,6 +1,6 @@
 ---
 project: livebook
-stars: 5680
+stars: 5690
 description: Automate code & data workflows with interactive Elixir notebooks
 url: https://github.com/livebook-dev/livebook
 ---

@@ -1,6 +1,6 @@
 ---
 project: pytudes
-stars: 24263
+stars: 24268
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
@@ -34,6 +34,12 @@ New
 
 C D M N S
 
+2026
+
+Truncatable Primes
+
+C D M N S
+
 2025
 
 Advent of Code 2025
@@ -42,7 +48,7 @@ C D M N S
 
 2025
 
-Advent of Code 2025: AI LLM edition
+Advent of Code 2025: AI LLM Edition
 
 C D M N S
 
@@ -85,30 +91,6 @@ C D M N S
 2024
 
 The Languages of English, Math, and Programming
-
-C D M N S
-
-2023
-
-Advent of Code 2023
-
-C D M N S
-
-2023
-
-Docstring Fixpoint Theory
-
-C D M N S
-
-2023
-
-One Letter Off
-
-C D M N S
-
-2023
-
-The Diamond Game: A Probability Puzzle
 
 Run
 
@@ -216,7 +198,7 @@ C D M N S
 
 2025
 
-AoC 2025: AI LLM edition
+Advent of Code 2025: AI LLM Edition
 
 C D M N S
 
@@ -721,6 +703,12 @@ C D M N S
 2018
 
 Traveling Salesperson Problem
+
+C D M N S
+
+2026
+
+Truncatable Primes
 
 Index of Python Files
 =====================

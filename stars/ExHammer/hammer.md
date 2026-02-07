@@ -1,6 +1,6 @@
 ---
 project: hammer
-stars: 895
+stars: 896
 description: An Elixir rate-limiter with pluggable backends
 url: https://github.com/ExHammer/hammer
 ---
@@ -9,14 +9,6 @@ Hammer
 ======
 
 **Hammer** is a rate-limiter for Elixir with pluggable storage backends. Hammer enables users to set limits on actions performed within specified time intervals, applying per-user or global limits on API requests, file uploads, and more.
-
-* * *
-
-Note
-
-This README is for the unreleased master branch, please reference the official documentation on hexdocs for the latest stable release.
-
-* * *
 
 Installation
 ------------

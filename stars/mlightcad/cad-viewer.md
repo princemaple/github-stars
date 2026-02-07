@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 375
+stars: 387
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -102,7 +102,7 @@ Legend:
 -   Layer table support
 -   Block / insert structure
 -   ⏳ Handle & object ID management: currently objectId is same as handle and represented as one string instead of bigint (int64).
--   XData / extension dictionary support
+-   ⏳ XData / extension dictionary support
 -   Proxy entity handling
 
 ### Rendering & Performance
@@ -156,7 +156,7 @@ Legend:
 
 -   ⏳ Endpoint: Now working for INSERT entity yet.
 -   Midpoint
--   Center
+-   ⏳ Center
 -   Intersection
 -   Perpendicular / tangent
 -   ⏳ Nearest
@@ -246,13 +246,13 @@ Legend:
 
 -   Plugin API
 -   Custom entity support
--   Custom command injection
+-   Custom command
 
 ### Offline & Online Editing
 
 #### Offline Editor
 
--   Local editing in browser
+-   ⏳ Local editing in browser
 -   Save to DXF
 -   Save change set / diff
 -   IndexedDB persistence

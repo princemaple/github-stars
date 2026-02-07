@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 131867
+stars: 173808
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -23,7 +23,7 @@ Preferred setup: run the onboarding wizard (`openclaw onboard`). It walks throug
 -   **Anthropic** (Claude Pro/Max)
 -   **OpenAI** (ChatGPT/Codex)
 
-Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.5** for long‑context strength and better prompt‑injection resistance. See Onboarding.
+Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See Onboarding.
 
 Models (selection + auth)
 -------------------------
@@ -109,7 +109,7 @@ Highlights
 ----------
 
 -   **Local-first Gateway** — single control plane for sessions, channels, tools, and events.
--   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, BlueBubbles, Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
+-   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
 -   **Multi-agent routing** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
 -   **Voice Wake + Talk Mode** — always-on speech for macOS/iOS/Android with ElevenLabs.
 -   **Live Canvas** — agent-driven visual workspace with A2UI.
@@ -133,7 +133,7 @@ Everything we built so far
 
 ### Channels
 
--   Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google Chat (Chat API), Signal (signal-cli), iMessage (imsg), BlueBubbles (extension), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat.
+-   Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google Chat (Chat API), Signal (signal-cli), BlueBubbles (iMessage, recommended), iMessage (legacy imsg), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat.
 -   Group routing: mention gating, reply tags, per-channel chunking and routing. Channel rules: Channels.
 
 ### Apps + nodes
@@ -314,7 +314,7 @@ Minimal `~/.openclaw/openclaw.json` (model + defaults):
 
 {
   agent: {
-    model: "anthropic/claude-opus-4-5",
+    model: "anthropic/claude-opus-4-6",
   },
 }
 
@@ -338,7 +338,7 @@ Details: Security guide · Docker + sandboxing · Sandbox config
 ### Telegram
 
 -   Set `TELEGRAM_BOT_TOKEN` or `channels.telegram.botToken` (env wins).
--   Optional: set `channels.telegram.groups` (with `channels.telegram.groups."*".requireMention`); when set, it is a group allowlist (include `"*"` to allow all). Also `channels.telegram.allowFrom` or `channels.telegram.webhookUrl` as needed.
+-   Optional: set `channels.telegram.groups` (with `channels.telegram.groups."*".requireMention`); when set, it is a group allowlist (include `"*"` to allow all). Also `channels.telegram.allowFrom` or `channels.telegram.webhookUrl` + `channels.telegram.webhookSecret` as needed.
 
 {
   channels: {
@@ -369,9 +369,15 @@ Details: Security guide · Docker + sandboxing · Sandbox config
 
 -   Requires `signal-cli` and a `channels.signal` config section.
 
-### iMessage
+### BlueBubbles (iMessage)
 
--   macOS only; Messages must be signed in.
+-   **Recommended** iMessage integration.
+-   Configure `channels.bluebubbles.serverUrl` + `channels.bluebubbles.password` and a webhook (`channels.bluebubbles.webhookPath`).
+-   The BlueBubbles server runs on macOS; the Gateway can run on macOS or elsewhere.
+
+### iMessage (legacy)
+
+-   Legacy macOS-only integration via `imsg` (Messages must be signed in).
 -   If `channels.imessage.groups` is set, it becomes a group allowlist; include `"*"` to allow all.
 
 ### Microsoft Teams

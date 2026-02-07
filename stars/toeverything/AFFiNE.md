@@ -1,6 +1,6 @@
 ---
 project: AFFiNE
-stars: 62424
+stars: 62635
 description: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. 
 url: https://github.com/toeverything/AFFiNE
 ---
@@ -17,13 +17,6 @@ One hyper-fused platform for wildly creative minds.
 
   
   
-  
-  
-
-  
-
-_Special thanks to Blaze for their support of this project. They provide high-performance Apple Silicon macOS and Linux (AMD64 & ARM64) runners for GitHub Actions, greatly reducing our automated build times._
-
   
   
 
@@ -98,7 +91,7 @@ Submit a feature request
 
 Check GitHub Discussion
 
-Vist the AFFiNE Community
+Visit the AFFiNE Community
 
 Something isn't working as expected
 
@@ -174,15 +167,27 @@ Upstreams
 We would also like to give thanks to open-source projects that make AFFiNE possible:
 
 -   Blocksuite - 💠 BlockSuite is the open-source collaborative editor project behind AFFiNE.
+    
+-   y-octo - 🐙 y-octo is a native, high-performance, thread-safe YJS CRDT implementation, serving as the core engine enabling the AFFiNE Client/Server to achieve "local-first" functionality.
+    
 -   OctoBase - 🐙 OctoBase is the open-source database behind AFFiNE, local-first, yet collaborative. A light-weight, scalable, data engine written in Rust.
--   yjs - Fundamental support of CRDTs for our implementation on state management and data sync.
+    
+-   yjs - Fundamental support of CRDTs for our implementation on state management and data sync on web.
+    
 -   electron - Build cross-platform desktop apps with JavaScript, HTML, and CSS.
+    
 -   React - The library for web and native user interfaces.
+    
 -   napi-rs - A framework for building compiled Node.js add-ons in Rust via Node-API.
+    
 -   Jotai - Primitive and flexible state management for React.
+    
 -   async-call-rpc - A lightweight JSON RPC client & server.
+    
 -   Vite - Next generation frontend tooling.
+    
 -   Other upstream dependencies.
+    
 
 Thanks a lot to the community for providing such powerful and simple libraries, so that we can focus more on the implementation of the product logic, and we hope that in the future our projects will also provide a more easy-to-use knowledge base for everyone.
 
@@ -221,11 +226,6 @@ Contributing
 ------------
 
 We welcome contributions from everyone. See docs/contributing/tutorial.md for details.
-
-Thanks
-------
-
-Thanks to Chromatic for providing the visual testing platform that helps us review UI changes and catch visual regressions.
 
 License
 -------

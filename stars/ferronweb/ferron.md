@@ -1,21 +1,23 @@
 ---
 project: ferron
-stars: 1842
+stars: 1847
 description: A fast, memory-safe web server written in Rust.
 url: https://github.com/ferronweb/ferron
 ---
 
-**Ferron** - a fast, memory-safe web server written in Rust
+**Ferron** - a fast, modern, and easily configurable web server with automatic TLS
 
 * * *
 
-Features
---------
+Why Ferron?
+-----------
 
--   **High performance** - built with Rust’s async capabilities for optimal speed.
--   **Memory-safe** - built with Rust, which is a programming language offering memory safety.
+-   **High performance** - thoroughly optimized for speed with support for high concurrency.
+-   **Memory-safe** - built with Rust, which is a programming language that can offer strong memory safety guarantees.
+-   **Automatic TLS** - automatic SSL/TLS certificate acquisition and renewal with Let's Encrypt integration.
+-   **Easy configuration** - simple, intuitive configuration with sensible, secure defaults and comprehensive documentation.
 -   **Extensibility** - modular architecture for easy customization.
--   **Secure** - focus on robust security practices and safe concurrency.
+-   **Powerful reverse proxy** - advanced reverse proxy capabilities with support for load balancing and health checks.
 
 Components
 ----------
@@ -36,6 +38,42 @@ Ferron also consists of:
 -   **`ferron-modules-builtin`** - built-in Ferron modules.
 -   **`ferron-observability-builtin`** - built-in Ferron observability backend support.
 -   **`ferron-yaml2kdl-core`** - the core library behind the `ferron-yaml2kdl` tool.
+
+Installing Ferron from pre-built binaries
+-----------------------------------------
+
+The easiest way to install Ferron is installing it from pre-built binaries.
+
+Below are the different ways to install Ferron:
+
+-   Installer (GNU/Linux)
+-   Installer (Windows Server)
+-   Package managers (Debian/Ubuntu)
+-   Package managers (RHEL/Fedora)
+-   Docker
+-   Package managers (community)
+-   Manual installation
+
+Configuration examples
+----------------------
+
+### Basic static file serving
+
+// Example configuration with static file serving. Replace "example.com" with your domain name.
+example.com {
+    root "/var/www/html" // Replace "/var/www/html" with the directory containing your static files
+}
+
+### Basic reverse proxying
+
+// Example configuration with reverse proxy. Replace "example.com" with your domain name.
+example.com {
+    proxy "http://localhost:3000/" // Replace "http://localhost:3000" with the backend server URL
+}
+
+### More examples
+
+You can find more configuration examples for common use cases in the Ferron documentation.
 
 Building Ferron from source
 ---------------------------

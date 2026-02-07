@@ -1,6 +1,6 @@
 ---
 project: docker-android
-stars: 14189
+stars: 14237
 description: Android in docker solution with noVNC supported and video recording
 url: https://github.com/budtmo/docker-android
 ---
@@ -195,7 +195,11 @@ Microsoft - Advanced settings configuration in WSL
     ```
     [boot]
     command = /bin/bash -c 'chown -v root:kvm /dev/kvm && chmod 660 /dev/kvm'
+    ```
     
+    Then, using PowerShell, open a notepad on `notepad $env:USERPROFILE\.wslconfig`. Inside, put these other flags:
+    
+    ```
     [wsl2]
     nestedVirtualization=true
     ```
@@ -210,6 +214,8 @@ Microsoft - Advanced settings configuration in WSL
 `command = /bin/bash -c 'chown -v root:kvm /dev/kvm && chmod 660 /dev/kvm'` sets `/dev/kvm` to `kvm` usergroup rather than the default `root` usergroup on WSL2 startup.
 
 `nestedVirtualization` flag is only available to Windows 11.
+
+If this setup does not work, you may have an old WSL version. In that case, ignore `\.wslconfig` and put everything on `/etc/wsl.conf`, including the `[wsl2]` flag.
 
 Use-Cases
 ---------

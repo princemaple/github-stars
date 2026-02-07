@@ -1,7 +1,7 @@
 ---
 project: SPlayer
-stars: 6253
-description: 🎉 一个简约的音乐播放器，支持逐字歌词，评论区，音乐云盘及本地音乐管理，流媒体 Jellyfin / Navidrome / Emby 播放，音乐频谱，移动端适配 | A minimalist music player featuring word-by-word lyrics, comments, music cloud storage, and local library management, streaming, audio spectrum visualization, and more
+stars: 6316
+description: 🎉 支持逐字歌词，音乐云盘及本地音乐管理，流媒体 Jellyfin / Navidrome / Emby 播放，音乐频谱，移动端适配 | A minimalist music player featuring word-by-word lyrics, comments, music cloud storage, and local library management, streaming, audio spectrum visualization, and more
 url: https://github.com/imsyy/SPlayer
 ---
 
@@ -55,17 +55,13 @@ Important
 -   🌚 Light / Dark / Auto 模式自动切换
 -   📁 本地歌曲管理及分类（建议先使用 音乐标签 进行匹配后再使用）
 -   📁 本地音乐标签编辑及封面修改
--   🎵 **支持播放部分无版权歌曲（可能会与原曲不匹配，客户端独占功能）**
--   ⬇️ 下载歌曲 / 批量下载（ 最高支持 Hi-Res，需具有相应会员账号 ）
 -   ➕ 新建歌单及歌单编辑
 -   ❤️ 收藏 / 取消收藏歌单或歌手
--   🎶 每日推荐歌曲
--   📻 私人 FM
 -   ☁️ 云盘音乐上传
 -   📂 云盘内歌曲播放
 -   🔄 云盘内歌曲纠正
 -   🗑️ 云盘歌曲删除
--   🌐 支持 Subsonic / Navidrome 流媒体服务（多服务器支持、自动连接）
+-   🌐 支持 Subsonic / Navidrome 等流媒体服务（多服务器支持、自动连接）
 -   📝 支持逐字歌词
 -   🔄 歌词滚动以及歌词翻译
 -   📹 MV 与视频播放

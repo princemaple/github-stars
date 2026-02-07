@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 3986
+stars: 4039
 description: Clean network diagrams. One-time setup, zero upkeep.
 url: https://github.com/scanopy/scanopy
 ---
@@ -85,7 +85,10 @@ For detailed setup options and configuration, see the Installation Guide.
 
 We welcome contributions! See our contributing guide for details.
 
-Great first contribution: adding service definitions
+Great first contributions:
+
+-   Adding service definitions
+-   Translating Scanopy into your language
 
 💬 Community & Support
 ----------------------
@@ -95,5 +98,7 @@ Great first contribution: adding service definitions
 -   **Discussions**: GitHub Discussions
 
 * * *
+
+**Translations powered by Weblate**
 
 **Built with ❤️ in NYC**

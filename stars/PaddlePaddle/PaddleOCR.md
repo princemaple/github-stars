@@ -1,6 +1,6 @@
 ---
 project: PaddleOCR
-stars: 69571
+stars: 70364
 description: Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages.
 url: https://github.com/PaddlePaddle/PaddleOCR
 ---

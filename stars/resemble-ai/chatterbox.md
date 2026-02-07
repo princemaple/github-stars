@@ -1,6 +1,6 @@
 ---
 project: chatterbox
-stars: 22095
+stars: 22418
 description: SoTA open-source TTS
 url: https://github.com/resemble-ai/chatterbox
 ---
@@ -194,9 +194,25 @@ Official Discord
 
 👋 Join us on Discord and let's build something awesome together!
 
+Evaluation
+----------
+
+Chatterbox Turbo was evaluated using Podonos, a platform for reproducible subjective speech evaluation.
+
+We compared Chatterbox Turbo to competitive TTS systems using Podonos' standardized evaluation suite, focusing on overall preference, naturalness, and expressiveness.
+
+Evaluation reports:
+
+-   Chatterbox Turbo vs ElevenLabs Turbo v2.5
+-   Chatterbox Turbo vs Cartesia Sonic 3
+-   Chatterbox Turbo vs VibeVoice 7B
+
+These evaluations were conducted under identical conditions and are publicly accessible via Podonos.
+
 Acknowledgements
 ----------------
 
+-   Podonos — for supporting reproducible subjective speech evaluation
 -   Cosyvoice
 -   Real-Time-Voice-Cloning
 -   HiFT-GAN

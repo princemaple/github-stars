@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 66676
+stars: 67019
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -455,9 +455,9 @@ MiniCPM 4
 
 cpm4
 
-MiniCPM-o-2.6/MiniCPM-V-2.6
+MiniCPM-o/MiniCPM-V 4.5
 
-8B
+8B/9B
 
 minicpm\_o/minicpm\_v
 
@@ -562,6 +562,12 @@ StarCoder 2
 3B/7B/15B
 
 \-
+
+TeleChat 2-2.5
+
+3B/7B/35B/115B
+
+telechat2
 
 Yuan 2
 
@@ -1395,7 +1401,7 @@ License
 
 This repository is licensed under the Apache-2.0 License.
 
-Please follow the model licenses to use the corresponding model weights: Baichuan 2 / BLOOM / ChatGLM3 / Command R / DeepSeek / Falcon / Gemma / GLM-4 / GPT-2 / Granite / Index / InternLM / Llama / Llama 2 / Llama 3 / Llama 4 / MiniCPM / Mistral/Mixtral/Pixtral / OLMo / Phi-1.5/Phi-2 / Phi-3/Phi-4 / Qwen / Skywork / StarCoder 2 / TeleChat2 / XVERSE / Yi / Yi-1.5 / Yuan 2
+Please follow the model licenses to use the corresponding model weights: BLOOM / DeepSeek / Falcon / Gemma / GLM-4 / GPT-2 / Granite / InternLM / Llama / Llama 2 / Llama 3 / Llama 4 / MiniCPM / Mistral/Mixtral/Pixtral / Phi-3/Phi-4 / Qwen / StarCoder 2 / TeleChat2 / Yuan 2
 
 Citation
 --------

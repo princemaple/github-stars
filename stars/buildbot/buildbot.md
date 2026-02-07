@@ -1,6 +1,6 @@
 ---
 project: buildbot
-stars: 5426
+stars: 5427
 description: Python-based continuous integration testing framework; your pull requests are more than welcome!
 url: https://github.com/buildbot/buildbot
 ---
@@ -14,6 +14,8 @@ The Continuous Integration Framework
 Buildbot is based on original work from Brian Warner, and currently maintained by the Botherders.
 
 Visit us on http://buildbot.net !
+
+You can also find us on Discord at https://discord.gg/AMXBDUBTZV
 
 Buildbot consists of several components:
 

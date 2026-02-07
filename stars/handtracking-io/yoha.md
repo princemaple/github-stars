@@ -1,6 +1,6 @@
 ---
 project: yoha
-stars: 2109
+stars: 2111
 description: A practical hand tracking engine.
 url: https://github.com/handtracking-io/yoha
 ---

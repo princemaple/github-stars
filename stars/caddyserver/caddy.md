@@ -1,6 +1,6 @@
 ---
 project: caddy
-stars: 69533
+stars: 69695
 description: Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
 url: https://github.com/caddyserver/caddy
 ---
@@ -182,6 +182,6 @@ Matthew Holt began developing Caddy in 2014 while studying computer science at B
 -   _Project on X: @caddyserver_
 -   _Author on X: @mholt6_
 
-Caddy is a project of ZeroSSL, a Stack Holdings company.
+Caddy is a project of ZeroSSL, an HID Global company.
 
 Debian package repository hosting is graciously provided by Cloudsmith. Cloudsmith is the only fully hosted, cloud-native, universal package management solution, that enables your organization to create, store and share packages in any format, to any place, with total confidence.

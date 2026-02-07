@@ -1,6 +1,6 @@
 ---
 project: btop
-stars: 30049
+stars: 30189
 description: A monitor of resources
 url: https://github.com/aristocratos/btop
 ---

@@ -1,6 +1,6 @@
 ---
 project: geolix
-stars: 193
+stars: 194
 description: IP information lookup provider
 url: https://github.com/elixir-geolix/geolix
 ---

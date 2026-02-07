@@ -1,6 +1,6 @@
 ---
 project: Sink
-stars: 6255
+stars: 6279
 description: ⚡ A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.
 url: https://github.com/miantiao-me/Sink
 ---
@@ -15,12 +15,19 @@ url: https://github.com/miantiao-me/Sink
 ✨ Features
 ----------
 
--   **URL Shortening:** Compress your URLs to their minimal length.
--   **Analytics:** Monitor link analytics and gather insightful statistics.
--   **Serverless:** Deploy without the need for traditional servers.
--   **Customizable Slug:** Support for personalized slugs and case sensitivity.
+-   **🔗 URL Shortening:** Compress your URLs to their minimal length.
+-   **📈 Analytics:** Monitor link analytics and gather insightful statistics.
+-   **☁️ Serverless:** Deploy without the need for traditional servers.
+-   **🎨 Customizable Slug:** Support for personalized slugs and case sensitivity.
 -   **🪄 AI Slug:** Leverage AI to generate slugs.
--   **Link Expiration:** Set expiration dates for your links.
+-   **⏰ Link Expiration:** Set expiration dates for your links.
+-   **📱 Device Routing:** Redirect iOS/Android users to different URLs (App Store links).
+-   **🖼️ OpenGraph Preview:** Custom social media previews with title, description, and image.
+-   **📊 Real-time Analytics:** Live 3D globe visualization and real-time event logs.
+-   **🔲 QR Code:** Generate QR codes for your short links.
+-   **📦 Import/Export:** Bulk migration via JSON/CSV files.
+-   **🌍 Multi-language:** Full i18n support for the dashboard.
+-   **🌙 Dark Mode:** Light, dark, and system theme support.
 
 🪧 Demo
 -------
@@ -73,6 +80,13 @@ Configuration Docs
 
 API Docs
 
+🤖 AI Skills
+------------
+
+Install Sink AI Skills for enhanced coding assistance:
+
+npx skills add miantiao-me/sink
+
 🧰 MCP
 ------
 
@@ -92,7 +106,7 @@ We currently do not support native MCP Server, but we have OpenAPI documentation
       "env": {
         "OPENAPI\_SPEC\_URL": "https://sink.cool/\_docs/openapi.json",
         "API\_KEY": "SinkCool",
-        "TOOL\_WHITELIST": "/api/link/create"
+        "TOOL\_WHITELIST": "/api/link"
       }
     }
   }

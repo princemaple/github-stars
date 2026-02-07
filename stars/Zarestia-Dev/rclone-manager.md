@@ -1,12 +1,14 @@
 ---
 project: rclone-manager
-stars: 602
+stars: 628
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
 
 RClone Manager
 ==============
+
+🇺🇸 English • 🇹🇷 Türkçe • Help to translate
 
 **A powerful, cross-platform GUI for managing Rclone remotes with style and ease.**  
 _Built with Angular 20 + Tauri · Linux • Windows • macOS • ARM Support_
@@ -18,19 +20,14 @@ Overview
 
 **RClone Manager** is a **modern, cross-platform GUI** that makes managing Rclone remotes effortless. Whether you're syncing files across cloud storage providers, mounting remote drives, or performing complex file operations, RClone Manager provides an intuitive interface that simplifies even the most advanced Rclone features.
 
-> ### 🌐 **Looking for Headless Mode?**
-> 
-> Check out **RClone Manager Headless** – Run as a web server on Linux servers without a GUI!  
-> Perfect for NAS, VPS, and remote systems. Access from any browser. 🚀
+> Big `RC` comes from `Rclone RC`.
 
-> Regular updates with new features and improvements. Check out our roadmap to see what's coming next!
+### 🌐 **Looking for Headless Mode?**
 
-* * *
+Check out **RClone Manager Headless** – Run as a web server on Linux servers without a GUI!  
+Perfect for NAS, VPS, and remote systems. Access from any browser. 🚀
 
-🎨 Design Philosophy
---------------------
-
-A unique blend of **GTK styling**, **Angular Material**, and **FontAwesome icons** creates a clean, minimalist interface that feels at home on any platform while maintaining a modern, responsive experience.
+Regular updates with new features and improvements. Check out our roadmap to see what's coming next!
 
 * * *
 
@@ -49,41 +46,14 @@ Serve Control
 
 Dark Mode
 
-_Seamlessly switches between light and dark modes to match your system preferences._
-
-* * *
-
-🚀 Features
------------
-
-### 🎯 Core
-
--   🛠 Manage remotes end-to-end (add/edit/delete/clone) with OAuth or interactive config
--   🔑 Secure by default (keyring storage, encrypted exports) plus scheduled jobs and quick import/export
--   📡 Works with all major clouds (Drive, OneDrive, Dropbox, S3, iCloud, Wasabi, B2, …)
-
-### ⚡ Operations
-
--   📁 Mount and serve remotes; sync, copy, move and bisync between any two locations
--   🎯 One-tap primary actions per remote; monitor jobs live with speeds and progress
-
-### 🎨 Experience
-
--   🌗 Adaptive light/dark theming with GTK-inspired Material UI
--   🖥 Tray controls, smart notifications, and full VFS/flag tuning when you need it
-
-### 🌍 Platforms
-
--   Linux, Windows, macOS; responsive layout for desktop and mobile
-
 * * *
 
 📦 Downloads
 ------------
 
-Install RClone Manager from your favorite package manager.
+Install RClone Manager from your favorite package manager or download directly.
 
-#### Linux
+### Linux
 
 Repository
 
@@ -99,15 +69,16 @@ Install Command
 
 `yay -S rclone-manager-git`
 
-**Direct Download**
-
 **Flathub**
 
 `flatpak install io.github.zarestia_dev.rclone-manager`
 
-> **Note:** For Linux installation instructions and troubleshooting, check the installation guide: Installation - Linux
+**Direct Download**
 
-#### macOS
+> 📚 **Detailed Guide:** Wiki: Installation - Linux  
+> _Covers Flatpak troubleshooting._
+
+### macOS
 
 Repository
 
@@ -117,13 +88,14 @@ Install Command
 
 **Homebrew**
 
-`brew install --cask xxxxxxxxxxxxxxxxxxxxxx`
+_Coming Soon_
 
 **Direct Download**
 
-> **Note:** For macOS app launch instructions and troubleshooting, check the installation guide: Installation - macOS
+> 📚 **Detailed Guide:** Wiki: Installation - macOS  
+> _Important: Read this for the "App is Damaged" fix and macFUSE setup._
 
-#### Windows
+### Windows
 
 Repository
 
@@ -145,51 +117,41 @@ Install Command
 
 **Direct Download**
 
+> 📚 **Detailed Guide:** Wiki: Installation - Windows  
+> _Includes instructions for WinFsp (required for mounting) and SmartScreen._
+
 * * *
 
-### 🛠️ Runtime Requirements
+🛠️ System Requirements
+-----------------------
 
-**RClone Manager** will guide you through installing any missing dependencies on first run. However, you can pre-install:
+RClone Manager handles most dependencies automatically.
 
-#### Required
-
--   **Rclone** – The core tool for remote management (can be installed via the app)
-
-#### Optional (for mounting)
-
--   **Linux/macOS:** FUSE – Usually pre-installed on most distributions
--   **Windows:** WinFsp – Automatically prompted for installation if missing
--   **macOS:** FUSE (macFUSE or FUSE-T) – Automatically installed by the app when needed
+-   **Rclone:** The app will download it for you if missing.
+-   **Mounting (Optional):** Requires **WinFsp** (Windows), **macFUSE** (macOS), or **FUSE3** (Linux).
+-   **Details:** See **Wiki: System Requirements** for full compatibility notes.
 
 * * *
 
 🛠️ Development
 ---------------
 
-For detailed building instructions, please refer to our Wiki.
+For building from source (Desktop, Headless, Docker, or Flatpak), please refer to the **Building Guide**.
 
 ### Linting & Formatting
 
--   See **LINTING.md** for detailed instructions on linting and formatting the codebase.
+-   See **LINTING.md** for instructions on maintaining code quality.
 
 * * *
 
-🐞 Known Issues
----------------
+🐞 Troubleshooting
+------------------
 
-Known bugs and technical limitations are tracked in two places:
+Encountering an issue?
 
--   📄 See **ISSUES.md** for detailed explanations of platform-specific issues (e.g. MacOS App Damaged)
--   📌 Visit our **GitHub Project Board** for open bugs and upcoming fixes
-
-* * *
-
-🗺️ Roadmap
------------
-
-We organize development on our **GitHub Project Board** — track features, bugs, and long-term goals.
-
-> 🧠 **Want to influence the direction?** Star the repo, watch the project board, and share your ideas in Discussions or Issues!
+1.  Check the **Troubleshooting Wiki** for common fixes (Mount errors, Permissions, App Launch issues).
+2.  Check **ISSUES.md** for platform-specific known limitations.
+3.  Visit the **GitHub Project Board** to see what we are working on.
 
 * * *
 
@@ -198,11 +160,11 @@ We organize development on our **GitHub Project Board** — track features, bugs
 
 We welcome contributions! Here's how you can help:
 
+-   🌍 **Help Translate** – Check the Add Translations Guide
 -   🐛 **Report Bugs** – Open a bug report
 -   💡 **Suggest Features** – Share your ideas
 -   📖 **Improve Docs** – Help make our documentation clearer
--   🔧 **Submit PRs** – Fix bugs or implement features (see development setup above)
--   🌍 **Translate** – Help localize RClone Manager (coming soon)
+-   🔧 **Submit PRs** – Check the CONTRIBUTING.md
 -   💬 **Discuss** – Join GitHub Discussions
 
 * * *

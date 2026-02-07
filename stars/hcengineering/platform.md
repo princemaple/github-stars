@@ -1,6 +1,6 @@
 ---
 project: platform
-stars: 24286
+stars: 24342
 description: Huly — All-in-One Project Management Platform (alternative to Linear, Jira, Slack, Notion, Motion)
 url: https://github.com/hcengineering/platform
 ---
@@ -198,7 +198,10 @@ sh ./scripts/build.sh
 
 By default, Docker volumes named dev\_db, dev\_elastic, and dev\_files will be created for the MongoDB, Elasticsearch, and MinIO instances.
 
-Add the following line to your /etc/hosts file
+Add the following lines to your hosts file:
+
+-   **macOS / Linux:** `/etc/hosts`
+-   **Windows:** `C:\Windows\System32\drivers\etc\hosts`
 
 ```
 127.0.0.1 huly.local

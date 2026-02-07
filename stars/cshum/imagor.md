@@ -1,6 +1,6 @@
 ---
 project: imagor
-stars: 3878
+stars: 3883
 description: Fast, secure image processing server and Go library, using libvips
 url: https://github.com/cshum/imagor
 ---
@@ -43,13 +43,13 @@ http://localhost:8000/unsafe/fit-in/200x150/filters:fill(yellow):watermark(raw.g
 imagor endpoint is a series of URL parts which defines the image operations, followed by the image URI:
 
 ```
-/HASH|unsafe/trim/AxB:CxD/fit-in/stretch/-Ex-F/GxH:IxJ/HALIGN/VALIGN/smart/filters:NAME(ARGS):NAME(ARGS):.../IMAGE
+/HASH|unsafe/trim/AxB:CxD/(adaptive-)(full-)fit-in/stretch/-Ex-F/GxH:IxJ/HALIGN/VALIGN/smart/filters:NAME(ARGS):NAME(ARGS):.../IMAGE
 ```
 
 -   `HASH` is the URL signature hash, or `unsafe` if unsafe mode is used
 -   `trim` removes surrounding space in images using top-left pixel color
 -   `AxB:CxD` means manually crop the image at left-top point `AxB` and right-bottom point `CxD`. Coordinates can also be provided as float values between 0 and 1 (percentage of image dimensions)
--   `fit-in` means that the generated image should not be auto-cropped and otherwise just fit in an imaginary box specified by `ExF`
+-   `fit-in` means that the generated image should not be auto-cropped and otherwise just fit in an imaginary box specified by `ExF`. If `full-fit-in` is specified, then the largest size is used for cropping (width instead of height, or the other way around). If `adaptive-fit-in` is specified, it inverts requested width and height if it would get a better image definition
 -   `stretch` means resize the image to `ExF` without keeping its aspect ratios
 -   `-Ex-F` means resize the image to be `ExF` of width per height size. The minus signs mean flip horizontally and vertically
 -   `GxH:IxJ` add left-top padding `GxH` and right-bottom padding `IxJ`
@@ -96,6 +96,23 @@ imagor supports the following filters:
 -   `grayscale()` changes the image to grayscale
 -   `hue(angle)` increases or decreases the image hue
     -   `angle` the angle in degree to increase or decrease the hue rotation
+-   `image(imagorpath, x, y[, alpha])` composites a processed image onto the current image with full imagor transformation support, enabling recursive image composition:
+    -   `imagorpath` - an imagor path with transformations e.g. `/200x200/filters:grayscale()/photo.jpg`
+        -   The nested path supports all imagor operations: resizing, cropping, filters, etc.
+        -   Enables recursive nesting - images can load other processed images
+    -   `x` - horizontal position (defaults to 0 if not specified):
+        -   Positive number indicates position from the left, negative from the right
+        -   Number followed by `p` e.g. `20p` means percentage of image width
+        -   `left`, `right`, `center` for alignment
+        -   `repeat` to tile horizontally
+        -   Float between 0-1 represents percentage e.g. `0.5` for center
+    -   `y` - vertical position (defaults to 0 if not specified):
+        -   Positive number indicates position from the top, negative from the bottom
+        -   Number followed by `p` e.g. `20p` means percentage of image height
+        -   `top`, `bottom`, `center` for alignment
+        -   `repeat` to tile vertically
+        -   Float between 0-1 represents percentage e.g. `0.5` for center
+    -   `alpha` - transparency level, 0 (fully opaque) to 100 (fully transparent)
 -   `label(text, x, y, size, color[, alpha[, font]])` adds a text label to the image. It can be positioned inside the image with the alignment specified, color and transparency support:
     -   `text` text label, also support url encoded text.
     -   `x` horizontal position that the text label will be in:
@@ -589,6 +606,43 @@ Prepending `/params` to the existing endpoint returns the endpoint attributes in
 
 curl 'http://localhost:8000/params/g5bMqZvxaQK65qFPaP1qlJOTuLM=/fit-in/500x400/0x20/filters:fill(white)/raw.githubusercontent.com/cshum/imagor/master/testdata/gopher.png'
 
+### VIPS Performance Tuning
+
+imagor uses libvips for image processing. libvips provides several configuration options to tune performance and resource usage:
+
+#### Concurrency
+
+`VIPS_CONCURRENCY` controls the number of threads libvips uses for image operations:
+
+VIPS\_CONCURRENCY\=1    # Single-threaded (default)
+VIPS\_CONCURRENCY\=\-1   # Use all available CPU cores
+VIPS\_CONCURRENCY\=4    # Use 4 threads
+
+**Important:** `VIPS_CONCURRENCY` is a **global setting** that controls threading **within each image operation**, not the number of concurrent requests.
+
+-   **Default (1)**: Single-threaded processing. Recommended for most deployments where you handle concurrency at the application level (multiple imagor processes/containers).
+-   **\-1 (auto)**: Uses all CPU cores. Can improve performance for individual large images but may cause resource contention under high request concurrency.
+-   **Custom value**: Set to a specific number of threads for fine-tuned control.
+
+For high-traffic deployments, it's generally better to scale horizontally (more imagor instances) rather than increasing `VIPS_CONCURRENCY`.
+
+#### Operation Cache
+
+libvips caches recently used operations to improve performance when processing similar images. These settings control the cache behavior:
+
+VIPS\_MAX\_CACHE\_MEM\=50000000     # Max memory for operation cache (bytes)
+VIPS\_MAX\_CACHE\_SIZE\=100         # Max number of operations to cache
+VIPS\_MAX\_CACHE\_FILES\=0          # Max number of file descriptors to cache
+
+**When to adjust:**
+
+-   **Web servers** (many different images, few operations each): Keep defaults low or disable caching entirely (set to 0). The operation cache is less useful when each request processes a unique image.
+-   **Batch processing** (few images, many operations): Increase cache limits to reuse operations across multiple transformations of the same images.
+
+**Default behavior:** libvips uses small cache limits suitable for web serving. For most imagor deployments, the defaults are appropriate.
+
+See libvips operation cache documentation for more details.
+
 ### POST Upload Endpoint
 
 imagor supports POST uploads for direct image processing and transformation.
@@ -904,6 +958,14 @@ Usage of imagor:
   -gcloud-storage-path-prefix string
         Base path prefix for Google Cloud Storage
         
+  -vips-concurrency int
+        VIPS concurrency. Set -1 to be the number of CPU cores (default 1)
+  -vips-max-cache-files int
+        VIPS max cache files (default 0)
+  -vips-max-cache-mem int
+        VIPS max cache mem in bytes (default 0)
+  -vips-max-cache-size int
+        VIPS max cache size (default 0)
   -vips-max-animation-frames int
         VIPS maximum number of animation frames to be loaded. Set 1 to disable animation, -1 for unlimited
   -vips-disable-blur

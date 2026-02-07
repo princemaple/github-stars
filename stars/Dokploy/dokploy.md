@@ -1,6 +1,6 @@
 ---
 project: dokploy
-stars: 29683
+stars: 30041
 description: Open Source Alternative to Vercel, Netlify and Heroku.
 url: https://github.com/Dokploy/dokploy
 ---
@@ -11,13 +11,6 @@ url: https://github.com/Dokploy/dokploy
 Join us on Discord for help, feedback, and discussions!
 
   
-
-Special thanks to:  
-  
-
-### Tuple, the premier screen sharing app for developers
-
-Available for MacOS & Windows  
 
 Dokploy is a free, self-hostable Platform as a Service (PaaS) that simplifies the deployment and management of applications and databases.
 
@@ -51,75 +44,7 @@ curl -sSL https://dokploy.com/install.sh | sh
 
 For detailed documentation, visit docs.dokploy.com.
 
-♥️ Sponsors
------------
-
-🙏 We're deeply grateful to all our sponsors who make Dokploy possible! Your support helps cover the costs of hosting, testing, and developing new features.
-
-Dokploy Open Collective
-
 Github Sponsors
-
-Sponsors
---------
-
-Sponsor
-
-Logo
-
-Supporter Level
-
-Hostinger
-
-🎖 Hero Sponsor
-
-LX Aer
-
-🎖 Hero Sponsor
-
-LinkDR
-
-🎖 Hero Sponsor
-
-LambdaTest
-
-🎖 Hero Sponsor
-
-Awesome Tools
-
-🎖 Hero Sponsor
-
-Supafort
-
-🥇 Premium Supporter
-
-Agentdock
-
-🥇 Premium Supporter
-
-AmericanCloud
-
-🥈 Elite Contributor
-
-Tolgee
-
-🥈 Elite Contributor
-
-Cloudblast
-
-🥉 Supporting Member
-
-Synexa
-
-🥉 Supporting Member
-
-### Community Backers 🤝
-
-#### Organizations:
-
-Sponsors on Open Collective
-
-#### Individuals:
 
 ### Contributors 🤝
 

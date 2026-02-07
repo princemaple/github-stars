@@ -1,6 +1,6 @@
 ---
 project: my-tv-0
-stars: 4680
+stars: 4682
 description: 我的電視·〇 電視視頻播放軟件，可以自定義視頻源
 url: https://github.com/lizongying/my-tv-0
 ---

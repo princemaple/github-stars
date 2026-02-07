@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 19255
+stars: 19592
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -187,6 +187,10 @@ Synthetic
 `ZAI_API_KEY`
 
 Z.ai
+
+`MINIMAX_API_KEY`
+
+MiniMax
 
 `HF_TOKEN`
 

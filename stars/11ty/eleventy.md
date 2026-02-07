@@ -1,6 +1,6 @@
 ---
 project: eleventy
-stars: 19297
+stars: 19332
 description: A simpler site generator. Transforms a directory of templates (of varying types) into HTML.
 url: https://github.com/11ty/eleventy
 ---

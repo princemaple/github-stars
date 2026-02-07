@@ -1,6 +1,6 @@
 ---
 project: nerd-fonts
-stars: 61483
+stars: 61586
 description: Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more
 url: https://github.com/ryanoasis/nerd-fonts
 ---
@@ -935,27 +935,27 @@ The resulting font's family (aka font name) will be set to the original family a
 Full options follow, see also **page explaining all options**:
 
 ```
-Nerd Fonts Patcher v3.4.0-5 (4.20.3) (ff 20230101)
+Nerd Fonts Patcher v3.4.0-91 (4.22.1) (ff 20230101)
 usage: font-patcher [--careful] [--debug [{0,1,2,3}]] [--extension EXTENSION]
                     [--help] [--makegroups [{-1,0,1,2,3,4,5,6}]] [--mono]
                     [--outputdir OUTPUTDIR] [--quiet] [--single-width-glyphs]
-                    [--variable-width-glyphs] [--version] [--complete]
-                    [--codicons] [--fontawesome] [--fontawesomeext]
-                    [--fontlogos] [--material] [--octicons] [--pomicons]
-                    [--powerline] [--powerlineextra] [--powersymbols]
-                    [--weather] [--adjust-line-height] [--boxdrawing]
-                    [--cell CELLOPT] [--configfile CONFIGFILE]
-                    [--custom CUSTOM] [--dry] [--glyphdir GLYPHDIR]
-                    [--has-no-italic] [--metrics {HHEA,TYPO,WIN}]
-                    [--name FORCE_NAME] [--postprocess POSTPROCESS]
-                    [--removeligs] [--xavgcharwidth [XAVGWIDTH]]
-                    [--progressbars | --no-progressbars]
+                    [--variable-width-glyphs] [--version]
+                    [--braille [{rectangle,circle,gapless}]] [--complete]
+                    [--codicons] [--fontawesome] [--fontawesomeext] [--fontlogos]
+                    [--material] [--octicons] [--pomicons] [--powerline]
+                    [--powerlineextra] [--powersymbols] [--weather]
+                    [--adjust-line-height] [--boxdrawing] [--cell CELLOPT]
+                    [--configfile CONFIGFILE] [--custom CUSTOM] [--dry]
+                    [--glyphdir GLYPHDIR] [--has-no-italic]
+                    [--metrics {HHEA,TYPO,WIN}] [--name FORCE_NAME]
+                    [--postprocess POSTPROCESS] [--removeligs]
+                    [--xavgcharwidth [XAVGWIDTH]] [--progressbars | --no-progressbars]
                     font
 
 Nerd Fonts Font Patcher: patches a given font with programming and development related glyphs
 
 * Website: https://www.nerdfonts.com
-* Version: 3.4.0-5
+* Version: 3.4.0-88
 * Development Website: https://github.com/ryanoasis/nerd-fonts
 * Changelog: https://github.com/ryanoasis/nerd-fonts/blob/-/changelog.md
 
@@ -965,13 +965,13 @@ positional arguments:
 options:
   --careful             Do not overwrite existing glyphs if detected
   --debug [{0,1,2,3}]   Verbose mode (optional: 1=just to file; 2*=just to terminal; 3=display and file)
-  --extension EXTENSION, -ext EXTENSION
+  --extension, -ext EXTENSION
                         Change font file type to create (e.g., ttf, otf)
   --help, -h            Show this help message and exit
   --makegroups [{-1,0,1,2,3,4,5,6}]
                         Use alternative method to name patched fonts (default=1)
   --mono, -s            Create monospaced font, existing and added glyphs are single-width (implies --single-width-glyphs)
-  --outputdir OUTPUTDIR, -out OUTPUTDIR
+  --outputdir, -out OUTPUTDIR
                         The directory to output the patched font file to
   --quiet, -q           Do not generate verbose output
   --single-width-glyphs
@@ -981,6 +981,8 @@ options:
   --version, -v         Show program's version number and exit
 
 Symbol Fonts:
+  --braille [{rectangle,circle,gapless}]
+                        Add Braille Glyphs, can pass a string to control style (optional: *rectangle, circle, gapless)
   --complete, -c        Add all available Glyphs
   --codicons            Add Codicons Glyphs (https://github.com/microsoft/vscode-codicons)
   --fontawesome         Add Font Awesome Glyphs (http://fontawesome.io/)

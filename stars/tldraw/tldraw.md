@@ -1,6 +1,6 @@
 ---
 project: tldraw
-stars: 44983
+stars: 45115
 description: very good whiteboard infinite canvas SDK
 url: https://github.com/tldraw/tldraw
 ---
@@ -56,22 +56,6 @@ Start the local development server:
 yarn dev
 
 Open the example project at `localhost:5420`.
-
-Tips for AIs
-------------
-
-**Are you an AI agent?** If so, this monorepo has special `CONTEXT.md` files found throughout the repository that you can use to quickly build context while you work. Use your own tools to find and read these files, or use our helpful `context` script to locate and log the contents of the most relevant files.
-
-To get started quickly, run:
-
-yarn context
-
-This will find and display the nearest CONTEXT.md file to help you understand the codebase. The `context` script supports several options:
-
--   `yarn context` - Show path to nearest CONTEXT.md from current directory
--   `yarn context ./foo/bar/baz.ts` - Show path to nearest CONTEXT.md for a specific file or directory
--   `yarn context -v` or `--verbose` - Show full content of nearest CONTEXT.md
--   `yarn context -r` or `--recursive` - Find all CONTEXT.md files in the repository
 
 License
 -------

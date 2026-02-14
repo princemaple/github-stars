@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 68246
+stars: 69713
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -206,6 +206,10 @@ Windsurf
 
 ✅
 
+Antigravity (agy)
+
+✅
+
 🔧 Specify CLI Reference
 ------------------------
 
@@ -243,7 +247,7 @@ Name for your new project directory (optional if using `--here`, or use `.` for 
 
 Option
 
-AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `q`, `bob`, or `qoder`
+AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `q`, `agy`, `bob`, or `qoder`
 
 `--script`
 

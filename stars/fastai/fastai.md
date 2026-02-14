@@ -1,6 +1,6 @@
 ---
 project: fastai
-stars: 27831
+stars: 27839
 description: The fastai deep learning library
 url: https://github.com/fastai/fastai
 ---
@@ -14,6 +14,8 @@ Installing
 You can use fastai without any installation by using Google Colab. In fact, every page of this documentation is also available as an interactive notebook - click “Open in colab” at the top of any page to open it (be sure to change the Colab runtime to “GPU” to have it run fast!) See the fast.ai documentation on Using Colab for more information.
 
 You can install fastai on your own machines with: `pip install fastai`.
+
+To ensure that you have the best available version of PyTorch on your machine, recommend installing that first.
 
 If you plan to develop fastai yourself, or want to be on the cutting edge, you can use an editable install (if you do this, you should also use an editable install of fastcore to go with it.) First install PyTorch, and then:
 

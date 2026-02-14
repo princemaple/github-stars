@@ -1,6 +1,6 @@
 ---
 project: pythonx
-stars: 295
+stars: 297
 description: Python interpreter embedded in Elixir
 url: https://github.com/livebook-dev/pythonx
 ---

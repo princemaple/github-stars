@@ -1,6 +1,6 @@
 ---
 project: pgmp
-stars: 50
+stars: 51
 description: Erlang/OTP 25+ PostgreSQL client
 url: https://github.com/shortishly/pgmp
 ---

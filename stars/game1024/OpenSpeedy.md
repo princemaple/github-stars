@@ -1,6 +1,6 @@
 ---
 project: OpenSpeedy
-stars: 14954
+stars: 15112
 description: 🎮 An open-source game speed modifier.[一款开源的游戏变速器]
 url: https://github.com/game1024/OpenSpeedy
 ---
@@ -154,7 +154,7 @@ uses dedicated lines to connect worldwide, offering speeds of up to 10Gbps. Down
 
 Patreon
 
-https://patreon.com/fiofioCN
+https://patreon.com/game1024
 
 Sponsors
 ========

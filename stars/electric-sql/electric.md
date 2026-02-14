@@ -1,6 +1,6 @@
 ---
 project: electric
-stars: 9859
+stars: 9886
 description: Read-path sync engine for Postgres that handles partial replication, data delivery and fan-out.
 url: https://github.com/electric-sql/electric
 ---

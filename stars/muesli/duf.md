@@ -1,6 +1,6 @@
 ---
 project: duf
-stars: 14731
+stars: 14760
 description: Disk Usage/Free Utility - a better 'df' alternative
 url: https://github.com/muesli/duf
 ---

@@ -1,6 +1,6 @@
 ---
 project: dataset-viewer
-stars: 618
+stars: 619
 description: A sleek dataset viewer built entirely by AI Agent. Supports streaming large files from WebDAV, S3, SSH, Local or Hugging Face.
 url: https://github.com/stardustai/dataset-viewer
 ---

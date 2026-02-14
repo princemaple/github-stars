@@ -1,6 +1,6 @@
 ---
 project: atuin
-stars: 28186
+stars: 28275
 description: ✨ Magical shell history
 url: https://github.com/atuinsh/atuin
 ---
@@ -63,6 +63,10 @@ Community
 ### Forum
 
 Atuin has a community forum, please ask here for help and support: https://forum.atuin.sh/
+
+### IRC
+
+We're also available via #atuin on libera.chat
 
 ### Discord
 

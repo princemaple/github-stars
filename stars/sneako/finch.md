@@ -1,6 +1,6 @@
 ---
 project: finch
-stars: 1349
+stars: 1348
 description: Elixir HTTP client, focused on performance
 url: https://github.com/sneako/finch
 ---
@@ -43,7 +43,75 @@ children \= \[
 
 Pools will be started for each configured `{scheme, host, port}` when Finch is started. For any unconfigured `{scheme, host, port}`, the pool will be started the first time it is requested using the `:default` configuration. This means given the pool configuration above each origin/`{scheme, host, port}` will launch 2 (`:count`) new pool processes. So, if you encountered 10 separate combinations, that'd be 20 pool processes.
 
+### Pool Tagging
+
+Finch supports pool tagging, which allows you to create separate pools for the same `{scheme, host, port}` combination or Unix socket. This is useful when you need different configurations or want to isolate traffic for different purposes (e.g., API vs web requests, tenants, JWT tokens, etc).
+
+You can configure tagged pools using `Finch.Pool.new/2`:
+
+children \= \[
+  {Finch,
+   name: MyTaggedFinch,
+   pools: %{
+     Finch.Pool.new("https://api.example.com") \=> \[size: 50, count: 4\],
+     Finch.Pool.new("https://api.example.com", tag: :web) \=> \[size: 20, count: 2\],
+     Finch.Pool.new("http+unix:///tmp/api.sock", tag: :api) \=> \[size: 30, count: 2\],
+     Finch.Pool.new("http+unix:///tmp/api.sock", tag: :web) \=> \[size: 10, count: 1\],
+     :default \=> \[size: 10, count: 1\]
+   }}
+\]
+
+When making requests, you can specify which pool to use by setting the `:pool_tag` option:
+
+\# Uses the :api tagged pool
+request \= Finch.build(:get, "https://api.example.com/users", \[\], nil, pool\_tag: :api)
+Finch.request(request, MyTaggedFinch)
+
+\# Uses the :web tagged pool
+request \= Finch.build(:get, "https://api.example.com/users", \[\], nil, pool\_tag: :web)
+Finch.request(request, MyTaggedFinch)
+
+\# Uses :default tag (or falls back to default config)
+request \= Finch.build(:get, "https://api.example.com/users")
+Finch.request(request, MyTaggedFinch)
+
+\# Tagged Unix socket pool
+request \=
+  Finch.build(
+    :get,
+    "http://localhost/",
+    \[\],
+    nil,
+    unix\_socket: "/tmp/api.sock",
+    pool\_tag: :api
+  )
+Finch.request(request, MyTaggedFinch)
+
+When making a request with a specific `:pool_tag`, the tag must exist in your pool configuration. If it doesn't exist, the request will use the `:default` configuration. This allows you to have specific configurations for tagged pools while maintaining sensible defaults for untagged requests.
+
 Note pools are not automatically terminated by default, if you need to terminate them after some idle time, use the `pool_max_idle_time` option (available only for HTTP1 pools).
+
+### User-managed pools
+
+You can start pools under your own supervision tree using `Finch.Pool.child_spec/1`. The Finch instance must be started first. User-managed pools integrate with `Finch.request/2`, `Finch.stop_pool/2`, `Finch.get_pool_status/2`, and `Finch.find_pool/2`:
+
+children \= \[
+  {Finch, name: MyFinch},
+  {Finch.Pool, finch: MyFinch, pool: Finch.Pool.new("https://api.internal", tag: :api), size: 10},
+  {Finch.Pool, finch: MyFinch, pool: Finch.Pool.new("https://node-2.internal", tag: :node2), size: 10}
+\]
+Supervisor.start\_link(children, strategy: :one\_for\_one)
+
+To add pools dynamically under Finch's internal supervisor, use `Finch.start_pool/3`:
+
+Finch.start\_pool(MyFinch, Finch.Pool.new("https://api.example.com", tag: :api), size: 10)
+
+Use `Finch.find_pool/2` to check if a pool exists:
+
+case Finch.find\_pool(MyFinch, Finch.Pool.new("https://api.internal", tag: :api)) do
+  {:ok, \_pid} \-> \# Pool exists
+  :error \-\> \# Pool not found
+end
 
 Telemetry
 ---------

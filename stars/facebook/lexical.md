@@ -1,6 +1,6 @@
 ---
 project: lexical
-stars: 22913
+stars: 22945
 description: Lexical is an extensible text editor framework that provides excellent reliability, accessibility and performance.
 url: https://github.com/facebook/lexical
 ---
@@ -21,7 +21,7 @@ Features
 -   **Collaborative Editing** - Real-time collaboration via Yjs integration
 -   **Serialization** - Import/export from JSON, Markdown, and HTML
 -   **Rich Content** - Support for tables, lists, code blocks, images, and custom nodes
--   **Cross-browser** - Firefox 52+, Chrome 49+, Safari 11+, Edge 79+
+-   **Cross-browser** - Firefox 115+, Safari 15+, Chrome 86+ (see Supported Browsers)
 -   **Type Safe** - Written in TypeScript with comprehensive type definitions
 
 Quick Start
@@ -100,19 +100,19 @@ Version
 
 Chrome
 
-49+
+86+
 
 Firefox
 
-52+
+115+
 
 Safari
 
-11+
+15+
 
 Edge
 
-79+
+86+
 
 Contributors
 ------------

@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 31030
+stars: 31269
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -224,11 +224,9 @@ Gentoo
 
 Portage
 
-guru/dev-build/just
+dev-build/just
 
-`eselect repository enable guru`  
-`emerge --sync guru`  
-`emerge dev-build/just`
+`emerge -av dev-build/just`
 
 NixOS
 

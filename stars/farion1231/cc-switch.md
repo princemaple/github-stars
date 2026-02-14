@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 16716
+stars: 18174
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex, OpenCode & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -13,11 +13,13 @@ English | 中文 | 日本語 | Changelog
 ❤️Sponsor
 ---------
 
-This project is sponsored by Z.ai, supporting us with their GLM CODING PLAN.GLM CODING PLAN is a subscription service designed for AI coding, starting at just $3/month. It provides access to their flagship GLM-4.6 model across 10+ popular AI coding tools (Claude Code, Cline, Roo Code, etc.), offering developers top-tier, fast, and stable coding experiences.Get 10% OFF the GLM CODING PLAN with this link!
+MiniMax-M2.5 is a SOTA large language model designed for real-world productivity. Trained in a diverse range of complex real-world digital working environments, M2.5 builds upon the coding expertise of M2.1 to extend into general office work, reaching fluency in generating and operating Word, Excel, and Powerpoint files, context switching between diverse software environments, and working across different agent and human teams. Scoring 80.2% on SWE-Bench Verified, 51.3% on Multi-SWE-Bench, and 76.3% on BrowseComp, M2.5 is also more token efficient than previous generations, having been trained to optimize its actions and output through planning.
+
+Click to get an exclusive 12% off the MiniMax Coding Plan!
 
 * * *
 
-Thanks to PackyCode for sponsoring this project! PackyCode is a reliable and efficient API relay service provider, offering relay services for Claude Code, Codex, Gemini, and more. PackyCode provides special discounts for our software users: register using this link and enter the "cc-switch" promo code during recharge to get 10% off.
+Thanks to PackyCode for sponsoring this project! PackyCode is a reliable and efficient API relay service provider, offering relay services for Claude Code, Codex, Gemini, and more. PackyCode provides special discounts for our software users: register using this link and enter the "cc-switch" promo code during first recharge to get 10% off.
 
 Thanks to AIGoCode for sponsoring this project! AIGoCode is an all-in-one platform that integrates Claude Code, Codex, and the latest Gemini models, providing you with stable, efficient, and highly cost-effective AI coding services. The platform offers flexible subscription plans, zero risk of account suspension, direct access with no VPN required, and lightning-fast responses. AIGoCode has prepared a special benefit for CC Switch users: if you register via this link, you'll receive an extra 10% bonus credit on your first top-up!
 
@@ -27,7 +29,11 @@ Thanks to Cubence for sponsoring this project! Cubence is a reliable and efficie
 
 Thanks to DMXAPI for sponsoring this project! DMXAPI provides global large model API services to 200+ enterprise users. One API key for all global models. Features include: instant invoicing, unlimited concurrency, starting from $0.15, 24/7 technical support. GPT/Claude/Gemini all at 32% off, domestic models 20-50% off, Claude Code exclusive models at 66% off! Register here
 
+Thank you to Right Code for sponsoring this project! Right Code reliably provides routing services for models such as Claude Code, Codex, and Gemini. It features a highly cost-effective Codex monthly subscription plan and **supports quota rollovers—unused quota from one day can be carried over and used the next day.** Invoices are available upon top-up. Enterprise and team users can receive dedicated one-on-one support. Right Code also offers an exclusive discount for CC Switch users: register via this link, and with every top-up you will receive pay-as-you-go credit equivalent to 25% of the amount paid.
+
 Thanks to AICoding.sh for sponsoring this project! AICoding.sh — Global AI Model API Relay Service at Unbeatable Prices! Claude Code at 19% of original price, GPT at just 1%! Trusted by hundreds of enterprises for cost-effective AI services. Supports Claude Code, GPT, Gemini and major domestic models, with enterprise-grade high concurrency, fast invoicing, and 24/7 dedicated technical support. CC Switch users who register via this link get 10% off their first top-up!
+
+Thanks to Crazyrouter for sponsoring this project! Crazyrouter is a high-performance AI API aggregation platform — one API key for 300+ models including Claude Code, Codex, Gemini CLI, GPT, and more. All through a single OpenAI-compatible endpoint with zero code changes. Features include auto-failover, smart routing, unlimited concurrency, and global low-latency access. Register here to get started.
 
 Screenshots
 -----------

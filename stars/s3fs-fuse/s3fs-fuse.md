@@ -1,6 +1,6 @@
 ---
 project: s3fs-fuse
-stars: 9680
+stars: 9687
 description: FUSE-based file system backed by Amazon S3
 url: https://github.com/s3fs-fuse/s3fs-fuse
 ---

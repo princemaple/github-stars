@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 182
+stars: 183
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---
@@ -10,16 +10,16 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL (& Extension) Package Manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 13 ~ 18 along with 444 extensions on (`amd64` / `arm64`) with native OS package manager
+Install PostgreSQL 13 ~ 18 along with 451 extensions on (`amd64` / `arm64`) with native OS package manager
 
-Also check the **PGEXT.CLOUD** to get details about the package manager, repository and extension catalog.
+All commands support structured output (`-o yaml/json`) with self-describing schema, making it an **Agent-Friendly** PostgreSQL CLI tool. Also check the **PGEXT.CLOUD** to get details about the available extensions.
 
 * * *
 
 Get Started
 -----------
 
-Install the `pig` package first, (you can also use the `apt` / `yum` or just copy the binary)
+**Install** the `pig` package first, (you can also use the `apt` / `yum` or just copy the binary)
 
 curl -fsSL https://repo.pigsty.io/pig | bash
 
@@ -29,7 +29,7 @@ $ pig repo add pigsty pgdg -u       # add pgdg & pigsty repo, then update repo c
 $ pig ext install pg18              # install PostgreSQL 18 kernels with native PGDG packages
 $ pig ext install pg\_duckdb -v 18   # install the pg\_duckdb extension (for current pg18)
 
-That's it, All set! Check the advanced usage for details and the full list 444 available extensions.
+That's it, All set! Check the advanced usage for details and the full list 451 available extensions.
 
 * * *
 
@@ -67,7 +67,7 @@ sudo yum makecache; sudo yum install -y pig
 `pig` has self-update feature, you can update pig itself to the latest version with:
 
 pig update                  # self-update to the latest version
-pig update -v 1.0.0         # self-update to the specific version
+pig update -v 1.1.1         # self-update to the specific version
 pig ext reload              # update extension catalog metadata only
 
 * * *
@@ -320,6 +320,10 @@ $ pig ext info pg\_duckdb
 │ Comment: conflict with duckdb\_fdw                                                            │
 ╰──────────────────────────────────────────────────────────────────────────────────────────────╯
 
+# Print in JSON format
+$ pig ext info pg\_duckdb -o json
+{"success":true,"code":0,"message":"Extension: pg\_duckdb","data":{"name":"pg\_duckdb","pkg":"pg\_duckdb","lead\_ext":"pg\_duckdb","category":"OLAP","license":"MIT","language":"C++","version":"1.1.1","url":"https://github.com/duckdb/pg\_duckdb","source":"pg\_duckdb-1.1.1.tar.gz","description":"DuckDB Embedded in Postgres","zh\_desc":"在PostgreSQL中的嵌入式DuckDB扩展","properties":{"has\_bin":false,"has\_lib":true,"need\_load":true,"need\_ddl":true,"relocatable":"f","trusted":"f"},"required\_by":\["pg\_mooncake"\],"see\_also":\["pg\_mooncake","duckdb\_fdw","pg\_analytics","pg\_parquet","columnar","citus","citus\_columnar","orioledb"\],"pg\_ver":\["18","17","16","15","14"\],"rpm\_package":{"package":"pg\_duckdb\_$v","repository":"PIGSTY","version":"1.1.1","pg\_ver":\["18","17","16","15","14"\]},"deb\_package":{"package":"postgresql-$v-pg-duckdb","repository":"PIGSTY","version":"1.1.1","pg\_ver":\["18","17","16","15","14"\]},"operations":{"install":"pig ext add pg\_duckdb","config":"shared\_preload\_libraries = 'pg\_duckdb'","create":"CREATE EXTENSION pg\_duckdb;","build":"pig build pkg pg\_duckdb;  # build rpm / deb"},"comment":"conflict with duckdb\_fdw"}}
+
 **Print Extension Availability**
 
 You can get extension package availability with `pig ext avail` subcommand:
@@ -390,7 +394,8 @@ repo\_modules:   # Available Modules: 20
   - pigsty    : pigsty-infra, pigsty-pgsql
   - pgdg      : pgdg
   - node      : base, updates, extras, epel, centos-sclo, centos-sclo-rh, baseos, appstream, powertools, crb, security, backports
-  - infra     : pigsty-infra, nginx, docker-ce
+  - infra     : pigsty-infra, nginx
+  - docker    : docker-ce
   - pgsql     : pigsty-pgsql, pgdg-common, pgdg-el8fix, pgdg-el9fix, pgdg13, pgdg14, pgdg15, pgdg16, pgdg17, pgdg18, pgdg
   - extra     : pgdg-extras, pgdg13-nonfree, pgdg14-nonfree, pgdg15-nonfree, pgdg16-nonfree, pgdg17-nonfree, timescaledb, citus
   - mssql     : wiltondb
@@ -409,7 +414,7 @@ repo\_modules:   # Available Modules: 20
 
 **Pigsty Management**
 
-The **pig** can also be used as a cli tool for Pigsty — the battery-include free PostgreSQL RDS. Which brings HA, PITR, Monitoring, IaC, and all the extensions to your PostgreSQL cluster.
+The **pig** can also be used as a **CLI** tool for PostgreSQL & Pigsty — the battery-include free PostgreSQL RDS. Which brings HA, PITR, Monitoring, IaC, and all the extensions to your PostgreSQL cluster.
 
 pig sty init     # install pigsty to ~/pigsty 
 pig sty boot     # install ansible and other pre-deps 

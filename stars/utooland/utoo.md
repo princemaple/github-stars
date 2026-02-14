@@ -5,8 +5,6 @@ description: A unified toolchain for web development
 url: https://github.com/utooland/utoo
 ---
 
-> 🌖 **Notice**: We are building a next-generation toolchain on top of Turbopack. Check out our progress.
-
 Utoo
 ====
 

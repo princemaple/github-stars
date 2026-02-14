@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70685
+stars: 70719
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -120,6 +120,9 @@ Courses
 -   ECS 36C - Data Structures and Algorithms (C++) - Spring 2020 - Joël Porquet-Lupine - UC Davis
 -   Programming and Data Structures with Python, 2021-2022, Sem I - by Prof. Madhavan Mukund, CMI
 -   Graph Algorithms - Robert Sedgewick - Princeton University
+-   EECS 477 - Introduction to Algorithms, Winter 2023, UMichigan
+-   EECS 498 / 598 - Advanced Graph Algorithms: Graph Algorithms via Graph Decomposition, Fall 2025, UMichigan
+-   EECS 498 / 598 - Advanced Graph Algorithms: Expanders and Fast Graph Algorithms, Fall 2021, UMichigan
 -   6.006 - Introduction to Algorithms, MIT OCW
 -   MIT 6.006 Introduction to Algorithms, Spring 2020
 -   Algorithms: Design and Analysis 1 - Stanford University
@@ -555,6 +558,7 @@ Courses
     -   NYU Deep Learning Spring 2021
     -   6.S191: Introduction to Deep Learning - MIT
     -   15.773: Hands-On Deep Learning Spring 2024 - MIT
+    -   6.7960: Deep Learning Fall 2024 - MIT
     -   Intro to Deep Learning and Generative Models Course - Prof Sebastian Raschka
     -   Deep Learning CMU
     -   CS231n Deep Learning for Computer Vision - Stanford University (Spring 2025) (Winter 2016 Andrej Karpathy)
@@ -1123,7 +1127,8 @@ Courses
     -   Computer Architecture - IIT Kanpur
     -   Computer Architecture - IIT Madras
     -   High Performance Computer Architecture - IIT Kharagpur
-    -   BE5B35APO - Computer Architectures, Spring 2022, CTU - FEE (YouTube - Spring 2022) (RISC-V simulator - QtRvSim)
+    -   BE5B35APO - Computer Architectures, Spring 2025, CTU - FEE (RISC-V simulator - QtRvSim), (YouTube - Spring 2025), (YouTube - Spring 2022)
+    -   BE4M35PAP - Advanced Computer Architectures, Winter 2025, CTU - FEE (VHSky.cz - Winter 2025)
     -   CS773: Computer Architecture for Performance and Security - IIT Bombay
     -   COL718 - Architecture of High Performance Computers - IIT Delhi
     -   CS 695: Virtualization and Cloud Computing - IIT Bombay -Spring 2021

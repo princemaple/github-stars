@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 173808
+stars: 194266
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -16,7 +16,7 @@ If you want a personal, single-user assistant that feels local, fast, and always
 
 Website · Docs · DeepWiki · Getting Started · Updating · Showcase · FAQ · Wizard · Nix · Docker · Discord
 
-Preferred setup: run the onboarding wizard (`openclaw onboard`). It walks through gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**. Works with npm, pnpm, or bun. New install? Start here: Getting started
+Preferred setup: run the onboarding wizard (`openclaw onboard`) in your terminal. The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**. Works with npm, pnpm, or bun. New install? Start here: Getting started
 
 **Subscriptions (OAuth):**
 

@@ -1,6 +1,6 @@
 ---
 project: kepler.gl
-stars: 11553
+stars: 11566
 description: Kepler.gl is a powerful open source geospatial analysis tool for large-scale data sets.
 url: https://github.com/keplergl/kepler.gl
 ---
@@ -10,7 +10,7 @@ kepler.gl | Website | Demo App | Docs
 
 Kepler.gl is a data-agnostic, high-performance web-based application for visual exploration of large-scale geolocation data sets. Built on top of MapLibre GL and deck.gl, kepler.gl can render millions of points representing thousands of trips and perform spatial aggregations on the fly.
 
-Kepler.gl is also a React component that uses Redux to manage its state and data flow. It can be embedded into other React-Redux applications and is highly customizable. For information on how to embed kepler.gl in your app take a look at this step-by-step tutorial on vis.academy.
+Kepler.gl is also a React component that uses Redux to manage its state and data flow. It can be embedded into other React-Redux applications and is highly customizable. For information on how to embed kepler.gl in your app take a look at the documentation.
 
 Links
 -----
@@ -21,7 +21,7 @@ Links
 -   Get Started
 -   App User Guide
 -   Jupyter Widget User Guide
--   Tutorial
+-   Documentation
 -   Stack Overflow
 -   Contribution Guidelines
 -   Api Reference

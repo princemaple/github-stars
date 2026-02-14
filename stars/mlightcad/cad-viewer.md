@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 387
+stars: 397
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---

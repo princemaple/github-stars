@@ -1,6 +1,6 @@
 ---
 project: ToolJet
-stars: 37396
+stars: 37425
 description: ToolJet is the open-source foundation of ToolJet AI - the AI-native platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀
 url: https://github.com/ToolJet/ToolJet
 ---
@@ -17,7 +17,7 @@ Features
 -   **Visual App Builder:** 60+ responsive components (Tables, Charts, Forms, Lists, Progress Bars, and more).
 -   **ToolJet Database:** Built-in no-code database.
 -   **Multi-page Apps & Multiplayer Editing:** Build complex apps collaboratively.
--   **75+ Data Sources:** Connect to databases, APIs, cloud storage, and SaaS tools.
+-   **80+ Data Sources:** Connect to databases, APIs, cloud storage, and SaaS tools.
 -   **Flexible Deployment:** Self-host with Docker, Kubernetes, AWS, GCP, Azure, and more.
 -   **Collaboration Tools:** Inline comments, mentions, and granular access control.
 -   **Extensibility:** Create plugins and connectors with the ToolJet CLI.

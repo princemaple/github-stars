@@ -1,6 +1,6 @@
 ---
 project: trzsz-ssh
-stars: 2435
+stars: 2443
 description: trzsz-ssh ( tssh ) is an ssh client designed as a drop-in replacement for the openssh client. It aims to provide complete compatibility with openssh, mirroring all its features, while also offering additional useful features. Such as login prompt, batch login, remember password, automated interaction, trzsz, zmodem(rz/sz), udp mode like mosh, etc.
 url: https://github.com/trzsz/trzsz-ssh
 ---
@@ -143,6 +143,10 @@ Other Features
 UDP Mode ( mosh )
 
 UDP 模式 ( mosh )
+
+UDP Port Forwarding
+
+UDP 端口转发
 
 ### Installation
 

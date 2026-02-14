@@ -1,6 +1,6 @@
 ---
 project: pyo3
-stars: 15287
+stars: 15323
 description: Rust bindings for the Python interpreter
 url: https://github.com/PyO3/pyo3
 ---
@@ -69,7 +69,7 @@ name = "string\_sum"
 crate-type = \["cdylib"\]
 
 \[dependencies\]
-pyo3 = "0.28.0"
+pyo3 = "0.28.1"
 
 **`src/lib.rs`**
 
@@ -124,7 +124,7 @@ To install the Python shared library on RPM based distributions (e.g. Fedora, Re
 Start a new project with `cargo new` and add `pyo3` to the `Cargo.toml` like this:
 
 \[dependencies.pyo3\]
-version = "0.28.0"
+version = "0.28.1"
 # Enabling this cargo feature will cause PyO3 to start a Python interpreter on first call to \`Python::attach\`
 features = \["auto-initialize"\]
 
@@ -168,6 +168,7 @@ Tools and libraries
 Examples
 --------
 
+-   anise _A modern, high-performance toolkit for spacecraft mission design, notably used to help softly land Firefly Blue Ghost on the Moon on 02 Feb 2025._
 -   arro3 _A minimal Python library for Apache Arrow, connecting to the Rust arrow crate._
     -   arro3-compute _`arro3-compute`_
     -   arro3-core _`arro3-core`_
@@ -191,6 +192,7 @@ Examples
 -   geo-index _A Rust crate and Python library for packed, immutable, zero-copy spatial indexes._
 -   granian _A Rust HTTP server for Python applications._
 -   haem _A Python library for working on Bioinformatics problems._
+-   hifitime _A high fidelity time management library for engineering and scientific applications where general relativity and time dilation matter._
 -   html2text-rs _Python library for converting HTML to markup or plain text._
 -   html-py-ever _Using html5ever through kuchiki to speed up html parsing and css-selecting._
 -   hudi-rs _The native Rust implementation for Apache Hudi, with C++ & Python API bindings._

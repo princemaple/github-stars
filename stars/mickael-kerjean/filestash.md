@@ -1,7 +1,7 @@
 ---
 project: filestash
-stars: 13545
-description: :file_folder: File Management Platform / Universal Data Access Gateway (without FUSE)
+stars: 13618
+description: :file_folder: File Management Platform / Universal Data Access Layer (without FUSE)
 url: https://github.com/mickael-kerjean/filestash
 ---
 
@@ -10,7 +10,7 @@ What is this?
 
 It started as a storage agnostic Dropbox-like file manager that works with every storage protocol: FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more.
 
-It grew into a universal data access platform with virtual filesystem capabilities, APIs, and Gateways to expose your data over SFTP, S3, and MCP to give LLMs a limited view of your data:
+It grew into a universal data access platform with virtual filesystem capabilities, APIs, RBAC, Gateways to expose your data over SFTP, S3, and MCP to give LLMs a limited view of your data:
 
 Key Features
 ============
@@ -35,6 +35,7 @@ Key Features
     -   embroidery: dgt, dst, dsb, dsz, edr, exp, 10o, col, hus, inf, jef, ksm, pcm, pcs, pes, sew, shv, sst, tap, u01, vip, vp3 and xxx
 -   Themes:  
     
+-   Splashy AI features for search and smart folders
 -   ... and much much more (chromecast support, on demand video transcoding, mounting shared links as network drive, public site, antivirus, versioning, audit, quota, ....)  
     As a rule of thumb, if your problem involves files, we either already have a plugin for it or can make a plugin for it
 

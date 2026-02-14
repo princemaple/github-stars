@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 19592
+stars: 19950
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -204,6 +204,10 @@ Cerebras
 
 OpenRouter
 
+`IONET_API_KEY`
+
+io.net
+
 `GROQ_API_KEY`
 
 Groq
@@ -247,6 +251,15 @@ Azure OpenAI models (optional when using Entra ID)
 `AZURE_OPENAI_API_VERSION`
 
 Azure OpenAI models
+
+### Subscriptions
+
+If you prefer subscription-based usage, here are some plans that work well in Crush:
+
+-   Synthetic
+-   GLM Coding Plan
+-   Kimi Code
+-   MiniMax Coding Plan
 
 ### By the Way
 

@@ -1,6 +1,6 @@
 ---
 project: wezterm
-stars: 23970
+stars: 24141
 description: A GPU-accelerated cross-platform terminal emulator and multiplexer written by @wez and implemented in Rust
 url: https://github.com/wezterm/wezterm
 ---

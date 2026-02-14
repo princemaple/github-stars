@@ -1,6 +1,6 @@
 ---
 project: floating-ui
-stars: 32402
+stars: 32429
 description: A JavaScript library to position floating elements and create interactions for them.
 url: https://github.com/floating-ui/floating-ui
 ---
@@ -16,8 +16,8 @@ It offers two main features:
 1.  **Anchor positioning**: Anchor a floating element (such as a tooltip) to another element (such as a button) while simultaneously ensuring it stays in view as best as possible by avoiding collisions. This feature is available for all platforms.
 2.  **User interactions for React**: Hooks and components for composing interactions to create accessible floating UI components.
 
-README Contributors
--------------------
+Sponsors
+--------
 
 You can support Floating UI in a variety of ways on Open Collective.
 

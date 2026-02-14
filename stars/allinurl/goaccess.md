@@ -1,6 +1,6 @@
 ---
 project: goaccess
-stars: 20201
+stars: 20230
 description: GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 url: https://github.com/allinurl/goaccess
 ---
@@ -11,7 +11,9 @@ GoAccess
 What is it?
 -----------
 
-GoAccess is an open source **real-time web log analyzer** and interactive viewer that runs in a **terminal** on \*nix systems or through your **browser**. It provides **fast** and valuable HTTP statistics for system administrators that require a visual server report on the fly. More info at: https://goaccess.io.
+GoAccess is an open source, real-time web log analyzer and interactive viewer that runs in a terminal on \*nix systems or directly in your browser. Designed with system administrators, DevOps engineers, and security professionals in mind, it delivers fast, actionable HTTP statistics and visual server reports on the fly. GoAccess parses your web server logs in real time and presents the data directly in the terminal or via a live HTML dashboard, making it easy to monitor traffic, detect anomalies, and troubleshoot issues instantly.
+
+More info at: https://goaccess.io.
 
 Features
 --------
@@ -79,6 +81,8 @@ Why GoAccess?
 
 GoAccess was designed to be a fast, terminal-based log analyzer. Its core idea is to quickly analyze and view web server statistics in real time without needing to use your browser (_great if you want to do a quick analysis of your access log via SSH, or if you simply love working in the terminal_).
 
+It also serves as a practical tool for security monitoring, making it easy to spot suspicious activity, unusual traffic patterns, brute-force attempts, scanners, bots, and anomalous requests directly from your logs.
+
 While the terminal output is the default output, it has the capability to generate a complete, self-contained, real-time **`HTML`** report, as well as a **`JSON`**, and **`CSV`** report.
 
 You can see it more of a monitor command tool than anything else.
@@ -93,10 +97,10 @@ GoAccess can be compiled and used on \*nix systems.
 Download, extract and compile GoAccess with:
 
 ```
-$ wget https://tar.goaccess.io/goaccess-1.9.4.tar.gz
-$ tar -xzvf goaccess-1.9.4.tar.gz
-$ cd goaccess-1.9.4/
-$ ./configure --enable-utf8 --enable-geoip=mmdb
+$ wget https://tar.goaccess.io/goaccess-1.10.tar.gz
+$ tar -xzvf goaccess-1.10.tar.gz
+$ cd goaccess-1.10/
+$ ./configure --enable-utf8 --enable-geoip=mmdb --with-zlib
 $ make
 # make install
 ```
@@ -523,7 +527,7 @@ Also, it is worth pointing out that if we want to run GoAccess at lower priority
 and if you don't want to install it on your server, you can still run it from your local machine!
 
 ```
-# ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -
+# ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess - --log-format=COMBINED
 ```
 
 **Note:** SSH requires `-n` so GoAccess can read from stdin. Also, make sure to use SSH keys for authentication as it won't work if a passphrase is required.

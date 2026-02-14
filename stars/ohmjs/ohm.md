@@ -1,6 +1,6 @@
 ---
 project: ohm
-stars: 5448
+stars: 5453
 description: A library and language for building parsers, interpreters, compilers, etc.
 url: https://github.com/ohmjs/ohm
 ---
@@ -25,13 +25,6 @@ Some awesome things people have built using Ohm:
 -   A browser-based tool that turns written _Konnakkol_ (a South Indian vocal percussion art) into audio.
 -   Wildcard, a browser extension that empowers anyone to modify websites to meet their own specific needs, uses Ohm for its spreadsheet formulas.
 
-Sponsors
---------
-
-Since 2017, Ohm has been maintained by @pdubroy on an unpaid basis. Please consider becoming a sponsor!
-
-### Diamond 💎
-
 Getting Started
 ---------------
 
@@ -47,7 +40,7 @@ The easiest way to get started with Ohm is to use the interactive editor. Altern
 -   Examples
 -   Documentation
 -   For community support and discussion, join us on Discord, GitHub Discussions, or the ohm-discuss mailing list.
--   For updates, follow @\_ohmjs on Twitter.
+-   For updates, follow on Bluesky or Mastodon.
 
 ### Installation
 

@@ -1,6 +1,6 @@
 ---
 project: FreeCAD
-stars: 28502
+stars: 28585
 description: Official source code of FreeCAD, a free and opensource multiplatform 3D parametric modeler.
 url: https://github.com/FreeCAD/FreeCAD
 ---
@@ -41,12 +41,7 @@ Other options are described on the wiki Download page.
 Compiling
 ---------
 
-FreeCAD requires several dependencies to correctly compile for development and production builds. The following pages contain updated build instructions for their respective platforms:
-
--   Linux
--   Windows
--   macOS
--   MinGW
+See the Developers Handbook – Getting Started for build instructions.
 
 Reporting Issues
 ----------------

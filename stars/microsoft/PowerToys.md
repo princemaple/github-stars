@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 129102
+stars: 129788
 description: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows
 url: https://github.com/microsoft/PowerToys
 ---
@@ -127,9 +127,52 @@ There are community driven install methods such as Chocolatey and Scoop. If thes
 ✨ What's new
 ------------
 
-**Version 0.97.1 (January 2026)**
+**Version 0.97.2 (Feb 2026)**
 
 This patch release fixes several important stability issues identified in v0.97.0 based on incoming reports. Check out the v0.97.0 notes for the full list of changes.
+
+Advanced Paste
+--------------
+
+-   #45207 Fixed a crash in the Advanced Paste settings page caused by null values during JSON deserialization.
+
+Color Picker
+------------
+
+-   #45367 Fixed contrast issue in Color picker UI.
+
+Command Palette
+---------------
+
+-   #45194 Fixed an issue where some Command Palette PowerToys Extension strings were not localised.
+
+Cursor Wrap
+-----------
+
+-   #45210 Fixed "Automatically activate on utility startup" setting not persisting when disabled. Thanks @ThanhNguyxn!
+-   #45303 Added option to disable Cursor Wrapping when only a single monitor is connected. Thanks @mikehall-ms!
+
+Image Resizer
+-------------
+
+-   #45184 Fixed Image Resizer not working after upgrading PowerToys on Windows 10 by properly cleaning up legacy sparse app packages.
+
+LightSwitch
+-----------
+
+-   #45304 Fixed Light Switch startup logic to correctly apply the appropriate theme on launch.
+
+Workspaces
+----------
+
+-   #45183 Fixed overlay positioning issue in workspace snapshot draw caused by DPI-aware coordinate mismatch.
+
+Quick Access and Measure Tool
+-----------------------------
+
+-   #45443 Fixed crash related to `IsShownInSwitchers` property when Explorer is not running.
+
+**Version 0.97.1 (January 2026)**
 
 **Highlights**
 

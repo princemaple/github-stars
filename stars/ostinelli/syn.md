@@ -1,6 +1,6 @@
 ---
 project: syn
-stars: 692
+stars: 691
 description: A scalable global Process Registry and Process Group manager for Erlang and Elixir.
 url: https://github.com/ostinelli/syn
 ---
@@ -67,7 +67,7 @@ Installation
 Add it to your deps:
 
 defp deps do
-  \[{:syn, "~> 3.3"}\]
+  \[{:syn, "~> 3.4"}\]
 end
 
 #### Erlang
@@ -75,13 +75,13 @@ end
 If you're using rebar3, add `syn` as a dependency in your project's `rebar.config` file:
 
 {deps, \[
-  {syn, {git, "git://github.com/ostinelli/syn.git", {tag, "3.3.0"}}}
+  {syn, {git, "git://github.com/ostinelli/syn.git", {tag, "3.4.0"}}}
 \]}.
 
 Or, if you're using Hex.pm as package manager (with the rebar3\_hex plugin):
 
 {deps, \[
-  {syn, "3.3.0"}
+  {syn, "3.4.0"}
 \]}.
 
 Ensure that `syn` is started with your application, for example by adding it in your `.app` file to the list of `applications`:
@@ -191,7 +191,7 @@ $ make test
 License
 -------
 
-Copyright (c) 2015-2022 Roberto Ostinelli and Neato Robotics, Inc.
+Copyright (c) 2015-2026 Roberto Ostinelli and Neato Robotics, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

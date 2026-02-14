@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 10593
+stars: 10792
 description: Termix is a web-based server management platform with SSH terminal, tunneling, and file editing capabilities.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -44,7 +44,7 @@ Features
 -   **Command History** - Auto-complete and view previously ran SSH commands
 -   **Quick Connect** - Connect to a server without having to save the connection data
 -   **Command Palette** - Double tap left shift to quickly access SSH connections with your keyboard
--   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, password autofill, etc.
+-   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, host key verification, password autofill, OPKSSH, etc.
 -   **Network Graph** - Customize your Dashboard to visualize your homelab based off your SSH connections with status support
 
 Planned Features

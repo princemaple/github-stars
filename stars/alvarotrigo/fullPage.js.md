@@ -1,6 +1,6 @@
 ---
 project: fullPage.js
-stars: 35492
+stars: 35491
 description: fullPage plugin by Alvaro Trigo. Create full screen pages fast and simple
 url: https://github.com/alvarotrigo/fullPage.js
 ---

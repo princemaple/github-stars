@@ -1,6 +1,6 @@
 ---
 project: ivideo
-stars: 11864
+stars: 11858
 description: 一个可以观看国内主流视频平台所有视频的客户端（Mac、Windows、Linux） A client that can watch video of domestic(China) mainstream video platform
 url: https://github.com/phobal/ivideo
 ---

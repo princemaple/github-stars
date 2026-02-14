@@ -1,21 +1,18 @@
 ---
 project: minio
-stars: 60137
+stars: 60266
 description: MinIO is a high-performance, S3 compatible object store, open sourced under GNU AGPLv3 license.
 url: https://github.com/minio/minio
 ---
 
-Maintenance Mode
-================
+Note
 
-**This project is currently under maintenance and is not accepting new changes.**
+**THIS REPOSITORY IS NO LONGER MAINTAINED.**
 
-**Alternate Options:**
+**Alternatives:**
 
--   **AIStor Free**: Fully featured, standalone version of AIStor for community use. Download a free license key from Free license download
--   **AIStor Enterprise**: Fully featured, Distributed version of AIStor for commercial enterprise use. Subscription
-
-Learn more about subscription tiers
+-   **AIStor Free** — Full-featured, standalone edition for community use (free license)
+-   **AIStor Enterprise** — Distributed edition with commercial support
 
 * * *
 
@@ -74,7 +71,7 @@ go install github.com/minio/minio@latest
 You can alternatively run `go build` and use the `GOOS` and `GOARCH` environment variables to control the OS and architecture target. For example:
 
 ```
-env GOOS=linux GOARCh=arm64 go build
+env GOOS=linux GOARCH=arm64 go build
 ```
 
 Start MinIO by running `minio server PATH` where `PATH` is any empty folder on your local filesystem.
@@ -90,7 +87,7 @@ See Test using MinIO Client `mc` for more information on using the `mc` commandl
 
 Note
 
-Production environments using compiled-from-source MinIO binaries do so at their own risk. The AGPLv3 license provides no warranties nor liabilites for any such usage.
+Production environments using compiled-from-source MinIO binaries do so at their own risk. The AGPLv3 license provides no warranties nor liabilities for any such usage.
 
 Build Docker Image
 ------------------

@@ -1,6 +1,6 @@
 ---
 project: transformers
-stars: 156198
+stars: 156466
 description: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. 
 url: https://github.com/huggingface/transformers
 ---
@@ -185,12 +185,12 @@ Expand each modality below to see a few example models for various use cases.
 
 Audio
 
--   Audio classification with Whisper
--   Automatic speech recognition with Moonshine
+-   Audio classification with CLAP
+-   Automatic speech recognition with Parakeet, Whisper, GLM-ASR and Moonshine-Streaming
 -   Keyword spotting with Wav2Vec2
 -   Speech to speech generation with Moshi
 -   Text to audio with MusicGen
--   Text to speech with Bark
+-   Text to speech with CSM
 
 Computer vision
 
@@ -206,7 +206,7 @@ Computer vision
 
 Multimodal
 
--   Audio or text to text with Qwen2-Audio
+-   Audio or text to text with Voxtral, Audio Flamingo
 -   Document question answering with LayoutLMv3
 -   Image or text to text with Qwen-VL
 -   Image captioning BLIP-2

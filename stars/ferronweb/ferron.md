@@ -1,6 +1,6 @@
 ---
 project: ferron
-stars: 1847
+stars: 1861
 description: A fast, memory-safe web server written in Rust.
 url: https://github.com/ferronweb/ferron
 ---
@@ -18,26 +18,6 @@ Why Ferron?
 -   **Easy configuration** - simple, intuitive configuration with sensible, secure defaults and comprehensive documentation.
 -   **Extensibility** - modular architecture for easy customization.
 -   **Powerful reverse proxy** - advanced reverse proxy capabilities with support for load balancing and health checks.
-
-Components
-----------
-
-Ferron consists of multiple components:
-
--   **`ferron`** - the main web server.
--   **`ferron-passwd`** - a tool for generating hashed passwords, which can be copied into the web server's configuration file.
--   **`ferron-precompress`** - a tool for precompressing static files for Ferron.
--   **`ferron-yaml2kdl`** - a tool for attempting to convert the Ferron 1.x YAML configuration to Ferron 2.x KDL configuration.
-
-Ferron also consists of:
-
--   **`build-prepare`** - internal tool for preparation when building Ferron with modules.
--   **`ferron-common`** - code common for Ferron and its modules.
--   **`ferron-dns-builtin`** - built-in Ferron DNS providers.
--   **`ferron-load-modules`** - functions for loading Ferron modules.
--   **`ferron-modules-builtin`** - built-in Ferron modules.
--   **`ferron-observability-builtin`** - built-in Ferron observability backend support.
--   **`ferron-yaml2kdl-core`** - the core library behind the `ferron-yaml2kdl` tool.
 
 Installing Ferron from pre-built binaries
 -----------------------------------------
@@ -85,12 +65,12 @@ cd ferron
 
 You can then build and run the web server using Cargo:
 
-cargo run --manifest-path build-prepare/Cargo.toml
-cd build-workspace
+cargo run --manifest-path build/prepare/Cargo.toml
+cd build/workspace
 cargo update # If you experience crate conflicts
-cargo build -r --target-dir ../target
+cargo build -r --target-dir ../../target
 cd ..
-cp ferron-test.kdl ferron.kdl
+cp configs/ferron.test.kdl ferron.kdl
 target/release/ferron
 
 You can also, for convenience, use `make`:

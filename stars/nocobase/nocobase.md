@@ -1,6 +1,6 @@
 ---
 project: nocobase
-stars: 21519
+stars: 21560
 description: NocoBase is the most extensible AI-powered no-code/low-code platform for building business applications and enterprise solutions.
 url: https://github.com/nocobase/nocobase
 ---

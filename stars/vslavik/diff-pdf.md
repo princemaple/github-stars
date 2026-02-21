@@ -1,6 +1,6 @@
 ---
 project: diff-pdf
-stars: 4179
+stars: 4182
 description: A simple tool for visually comparing two PDF files
 url: https://github.com/vslavik/diff-pdf
 ---

@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 398412
+stars: 399395
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -50,6 +50,28 @@ Fixer is a simple and lightweight API for current and historical foreign exchang
 Aviationstack
 
 Free, real-time flight status and global Aviation data API
+
+Zenserp
+
+Fast, Accurate Google Search Data Built for Developers
+
+Screenshotlayer
+
+Capture highly customizable screenshots of any website
+
+Documentation
+
+Exchangerate Host
+
+Real-time current and historical foreign exchange and crypto rates
+
+Documentation
+
+Mailboxlayer
+
+Email Validation & Verification JSON API for Developers
+
+Documentation
 
   
 

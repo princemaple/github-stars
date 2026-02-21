@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 18174
+stars: 19148
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex, OpenCode & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -33,7 +33,9 @@ Thank you to Right Code for sponsoring this project! Right Code reliably provide
 
 Thanks to AICoding.sh for sponsoring this project! AICoding.sh — Global AI Model API Relay Service at Unbeatable Prices! Claude Code at 19% of original price, GPT at just 1%! Trusted by hundreds of enterprises for cost-effective AI services. Supports Claude Code, GPT, Gemini and major domestic models, with enterprise-grade high concurrency, fast invoicing, and 24/7 dedicated technical support. CC Switch users who register via this link get 10% off their first top-up!
 
-Thanks to Crazyrouter for sponsoring this project! Crazyrouter is a high-performance AI API aggregation platform — one API key for 300+ models including Claude Code, Codex, Gemini CLI, GPT, and more. All through a single OpenAI-compatible endpoint with zero code changes. Features include auto-failover, smart routing, unlimited concurrency, and global low-latency access. Register here to get started.
+Thanks to Crazyrouter for sponsoring this project! Crazyrouter is a high-performance AI API aggregation platform — one API key for 300+ models including Claude Code, Codex, Gemini CLI, and more. All models at 55% of official pricing with auto-failover, smart routing, and unlimited concurrency. Crazyrouter offers an exclusive deal for CC Switch users: register via this link to get **$2 free credit** instantly, plus enter promo code \`CCSWITCH\` on your first top-up for an extra **30% bonus credit**!
+
+Thanks to SSSAiCode for sponsoring this project! SSSAiCode is a stable and reliable API relay service, dedicated to providing stable, reliable, and affordable Claude and Codex model services, **offering high cost-effective official Claude service at just ¥0.5/$ equivalent**, supporting monthly and pay-as-you-go billing plans with same-day fast invoicing. SSSAiCode offers a special deal for CC Switch users: register via this link to enjoy $10 extra credit on every top-up!
 
 Screenshots
 -----------

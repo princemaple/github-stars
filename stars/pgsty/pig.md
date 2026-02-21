@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 183
+stars: 184
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---

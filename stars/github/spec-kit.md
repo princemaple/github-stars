@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 69713
+stars: 71011
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -29,7 +29,6 @@ Table of Contents
 -   📖 Learn More
 -   📋 Detailed Process
 -   🔍 Troubleshooting
--   👥 Maintainers
 -   💬 Support
 -   🙏 Acknowledgements
 -   📄 License
@@ -210,6 +209,12 @@ Antigravity (agy)
 
 ✅
 
+Generic
+
+✅
+
+Bring your own agent — use `--ai generic --ai-commands-dir <path>` for unsupported agents
+
 🔧 Specify CLI Reference
 ------------------------
 
@@ -227,7 +232,7 @@ Initialize a new Specify project from the latest template
 
 `check`
 
-Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `shai`, `qoder`)
+Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `shai`, `qodercli`)
 
 ### `specify init` Arguments & Options
 
@@ -247,7 +252,13 @@ Name for your new project directory (optional if using `--here`, or use `.` for 
 
 Option
 
-AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `q`, `agy`, `bob`, or `qoder`
+AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `q`, `agy`, `bob`, `qodercli`, or `generic` (requires `--ai-commands-dir`)
+
+`--ai-commands-dir`
+
+Option
+
+Directory for agent command files (required with `--ai generic`, e.g. `.myagent/commands/`)
 
 `--script`
 
@@ -297,6 +308,12 @@ Option
 
 GitHub token for API requests (or set GH\_TOKEN/GITHUB\_TOKEN env variable)
 
+`--ai-skills`
+
+Flag
+
+Install Prompt.MD templates as agent skills in agent-specific `skills/` directory (requires `--ai`)
+
 ### Examples
 
 # Basic project initialization
@@ -309,7 +326,7 @@ specify init my-project --ai claude
 specify init my-project --ai cursor-agent
 
 # Initialize with Qoder support
-specify init my-project --ai qoder
+specify init my-project --ai qodercli
 
 # Initialize with Windsurf support
 specify init my-project --ai windsurf
@@ -322,6 +339,9 @@ specify init my-project --ai shai
 
 # Initialize with IBM Bob support
 specify init my-project --ai bob
+
+# Initialize with an unsupported agent (generic / bring your own agent)
+specify init my-project --ai generic --ai-commands-dir .myagent/commands/
 
 # Initialize with PowerShell scripts (Windows/cross-platform)
 specify init my-project --ai copilot --script ps
@@ -344,6 +364,12 @@ specify init my-project --ai claude --debug
 
 # Use GitHub token for API requests (helpful for corporate environments)
 specify init my-project --ai claude --github-token ghp\_your\_token\_here
+
+# Install agent skills with the project
+specify init my-project --ai claude --ai-skills
+
+# Initialize in current directory with agent skills
+specify init --here --ai gemini --ai-skills
 
 # Check system requirements
 specify check
@@ -783,12 +809,6 @@ echo "Configuring Git to use GCM..."
 git config --global credential.helper manager
 echo "Cleaning up..."
 rm gcm-linux\_amd64.2.6.1.deb
-
-👥 Maintainers
---------------
-
--   Den Delimarsky (@localden)
--   John Lam (@jflam)
 
 💬 Support
 ----------

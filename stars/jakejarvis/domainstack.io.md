@@ -5,7 +5,7 @@ description: 🧰 All-in-one domain name intelligence as a service
 url: https://github.com/jakejarvis/domainstack.io
 ---
 
-**Domainstack**: Domain Intelligence Made Easy
+**Domainstack** — Domain Intelligence Made Easy
 
 Features
 --------

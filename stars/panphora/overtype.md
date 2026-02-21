@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3426
+stars: 3438
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -8,7 +8,7 @@ url: https://github.com/panphora/overtype
 OverType
 ========
 
-A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~95KB minified with all features.
+A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~117KB minified with all features.
 
 Live Examples
 -------------
@@ -30,7 +30,7 @@ Features
 -   ⌨️ **Keyboard shortcuts** - Common markdown shortcuts (Cmd/Ctrl+B for bold, etc.)
 -   📱 **Mobile optimized** - Responsive design with mobile-specific styles
 -   🔄 **DOM persistence aware** - Recovers from existing DOM (perfect for HyperClay and similar platforms)
--   🚀 **Lightweight** - ~95KB minified
+-   🚀 **Lightweight** - ~117KB minified
 -   🎯 **Optional toolbar** - Clean, minimal toolbar with all essential formatting
 -   ✨ **Smart shortcuts** - Keyboard shortcuts with selection preservation
 -   📝 **Smart list continuation** - GitHub-style automatic list continuation on Enter
@@ -58,7 +58,7 @@ EasyMDE
 
 **Size**
 
-~95KB
+~117KB
 
 364.02 KB
 
@@ -156,7 +156,7 @@ Classic editing
 
 -   Tiny bundle size (10x smaller than alternatives)
 -   Zero dependencies - single file that works immediately
--   Perfect native browser features (undo/redo, mobile keyboards, spellcheck)
+-   Perfect native browser features (undo/redo, mobile keyboards, optional spellcheck)
 -   Dead-simple integration without build tools
 -   Easy to understand, modify, and extend
 -   Excellent mobile support with visible markdown syntax
@@ -179,7 +179,7 @@ npm install overtype
 
 ### CDN
 
-<script src\="https://unpkg.com/overtype/dist/overtype.min.js"\></script\>
+<script src\="https://cdn.jsdelivr.net/npm/overtype@latest/dist/overtype.min.js"\></script\>
 
 Quick Start
 -----------
@@ -547,7 +547,10 @@ new OverType(target, options)
 
   // Smart lists
   smartLists: true,       // Enable GitHub-style list continuation on Enter
-  
+
+  // Spellcheck
+  spellcheck: false,      // Enable browser spellcheck (disabled by default)
+
   // Stats bar
   showStats: false,       // Enable/disable stats bar
   statsFormatter: (stats) \=> {  // Custom stats format
@@ -882,22 +885,32 @@ Special thanks to:
 -   Lyric Wai - Fixed double-escaping of links (#64), shared code block alignment fix (#65)
 -   kozi - Reported Firefox link tooltip bug (#68), toolbar positioning (#69), theme CSS variable issues (#70, #71)
 -   1951FDG - Reported unordered list rendering bug (#74), suggested showStats() API improvement (#77)
--   nodesocket - Reported toolbarButtons export issues (#73, #78)
+-   nodesocket - Reported toolbarButtons export issues (#73, #78), suggested image toolbar button (#89)
 -   Travis Bell - Reported keyboard shortcuts bug in ESM build (#80)
+-   fab2713 - Reported italic rendering in lists (#81), reinit maxHeight (#82), placeholder visibility (#83), suggested auto theme (#84), relative URL prefix (#85), minification improvements (#94)
+-   oooo-ps - Reported remote script loading issue (#86)
+-   ddarfantasy - Reported text misalignment on longer lines (#91)
+-   milen-yordanov - Reported code block colors ignoring theme in preview mode (#97)
+-   asalimian - Reported spellcheck being disabled (#98)
 
 ### TypeScript & Framework Support
 
 -   merlinz01 - Contributed TypeScript declaration file (#20)
 -   ChasLui - Web component implementation (#40)
+-   pscanf - Added performAction type definition (#99)
 
 ### New Features & Enhancements
 
 -   davidlazar - Suggested view mode feature (#24)
 -   Yukai Huang - Contributed syntax highlighting implementation (#35)
 -   Rognoni - Suggested custom toolbar button API (#61)
--   Deyan Gigov - Reported checkbox rendering bug in preview mode (#60)
--   GregJohnStewart - Suggested data attribute configuration (#76)
+-   Deyan Gigov - Reported checkbox rendering bug in preview mode (#60), contributed auto theme implementation (#100)
+-   GregJohnStewart - Suggested data attribute configuration (#76), reported initFromData array nesting bug (#93), suggested DOM element init (#92)
 -   boris-glumpler - Suggested custom syntax highlighting API (#79)
+-   sorokya - Contributed file upload support (#87)
+-   aaronmyatt - Contributed show/hide toolbar methods (#95)
+-   rouilj - Suggested progressive textarea enhancement (#90)
+-   inklesspen - Suggested autocompletion popups (#96)
 
 ### Developer Experience
 

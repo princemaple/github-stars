@@ -1,6 +1,6 @@
 ---
 project: ex_vision
-stars: 63
+stars: 62
 description: null
 url: https://github.com/software-mansion-labs/ex_vision
 ---

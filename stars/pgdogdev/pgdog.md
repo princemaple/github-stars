@@ -1,6 +1,6 @@
 ---
 project: pgdog
-stars: 3345
+stars: 3365
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
@@ -21,6 +21,13 @@ Helm chart is **here**. To install it, run:
 
 helm repo add pgdogdev https://helm.pgdog.dev
 helm install pgdog pgdogdev/pgdog
+
+### AWS
+
+If you're using AWS RDS, you can deploy PgDog using one of two supported methods:
+
+1.  Helm chart with EKS, or a self-hosted Kubernetes cluster
+2.  Terraform module to deploy PgDog on ECS
 
 ### Try in Docker
 

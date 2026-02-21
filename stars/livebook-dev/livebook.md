@@ -1,6 +1,6 @@
 ---
 project: livebook
-stars: 5699
+stars: 5707
 description: Automate code & data workflows with interactive Elixir notebooks
 url: https://github.com/livebook-dev/livebook
 ---
@@ -122,7 +122,7 @@ You can run latest Livebook directly from source.
 
 git clone https://github.com/livebook-dev/livebook.git
 cd livebook
-mix deps.get --only prod
+mix setup.prod
 
 # Run the Livebook server
 MIX\_ENV=prod mix phx.server

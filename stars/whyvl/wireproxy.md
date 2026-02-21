@@ -1,6 +1,6 @@
 ---
 project: wireproxy
-stars: 5383
+stars: 5389
 description: Wireguard client that exposes itself as a socks5 proxy
 url: https://github.com/whyvl/wireproxy
 ---

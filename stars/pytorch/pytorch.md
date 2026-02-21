@@ -1,6 +1,6 @@
 ---
 project: pytorch
-stars: 97412
+stars: 97658
 description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
 url: https://github.com/pytorch/pytorch
 ---
@@ -39,6 +39,7 @@ Our trunk health (Continuous Integration signals) can be found at hud.pytorch.or
         -   Using pre-built images
         -   Building the image yourself
     -   Building the Documentation
+        -   Troubleshooting CI Errors
         -   Building a PDF
     -   Previous Versions
 -   Getting Started
@@ -154,6 +155,8 @@ If you are installing from source, you will need:
 -   Python 3.10 or later
 -   A compiler that fully supports C++17, such as clang or gcc (gcc 9.4.0 or newer is required, on Linux)
 -   Visual Studio or Visual Studio Build Tool (Windows only)
+-   At least 10 GB of free disk space
+-   30-60 minutes for the initial build (subsequent rebuilds are much faster)
 
 \* PyTorch CI uses Visual C++ BuildTools, which come with Visual Studio Enterprise, Professional, or Community Editions. You can also install the build tools from https://visualstudio.microsoft.com/visual-cpp-build-tools/. The build tools _do not_ come with Visual Studio Code by default.
 
@@ -365,7 +368,7 @@ Please note that PyTorch uses shared memory to share data between processes, so 
 
 #### Building the image yourself
 
-**NOTE:** Must be built with a docker version > 18.06
+**NOTE:** Must be built with a Docker version > 18.06
 
 The `Dockerfile` is supplied to build images with CUDA 11.1 support and cuDNN v8. You can pass `PYTHON_VERSION=x.y` make variable to specify which Python version is to be used by Miniconda, or leave it unset to use the default.
 
@@ -378,7 +381,7 @@ make -f docker.Makefile
 
 ### Building the Documentation
 
-To build documentation in various formats, you will need Sphinx and the pytorch\_sphinx\_theme2.
+To build documentation in various formats, you will need Sphinx and the `pytorch_sphinx_theme2`.
 
 Before you build the documentation locally, ensure `torch` is installed in your environment. For small fixes, you can install the nightly version as described in Getting Started.
 
@@ -395,17 +398,39 @@ If you get a katex error run `npm install katex`. If it persists, try `npm insta
 
 Note
 
-If you installed `nodejs` with a different package manager (e.g., `conda`) then `npm` will probably install a version of `katex` that is not compatible with your version of `nodejs` and doc builds will fail. A combination of versions that is known to work is `node@6.13.1` and `katex@0.13.18`. To install the latter with `npm` you can run `npm install -g katex@0.13.18`
-
-Note
-
 If you see a numpy incompatibility error, run:
 
 ```
 pip install 'numpy<2'
 ```
 
-When you make changes to the dependencies run by CI, edit the `.ci/docker/requirements-docs.txt` file.
+#### Troubleshooting CI Errors
+
+Your build may show errors you didn't have locally - here's how to find the errors relevant to the docs.
+
+If the build has any errors, you will see something like this on the PR:
+
+Any doc-related errors will occur in jobs that include "doc" somewhere in the title. It doesn't look like any of these jobs are relevant to our docs.
+
+Let's take a look anyway. Click on the job to see the logs:
+
+And we can be sure that this job does not involve docs.
+
+Looking at this build, we can see these jobs are relevant to our docs - and they didn't have any errors:
+
+You might also see a comment on the PR like this:
+
+We can see that some of these issues are relevant to our docs.
+
+Open the logs by clicking on the `gh` link:
+
+And here we can see there is a doc-related error:
+
+You can always find the relevant doc builds by going to the `Checks` tab on your PR, and scrolling down to `pull`.
+
+You can either click through or toggle the accordion to see all of the jobs here, where you can see the docs jobs highlighted:
+
+If you click through, youi'll see the doc jobs at the bottom, like this:
 
 #### Building a PDF
 

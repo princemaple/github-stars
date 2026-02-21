@@ -1,6 +1,6 @@
 ---
 project: fzf
-stars: 77777
+stars: 78052
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---
@@ -979,7 +979,7 @@ License
 
 The MIT License (MIT)
 
-Copyright (c) 2013-2025 Junegunn Choi
+Copyright (c) 2013-2026 Junegunn Choi
 
 Goods
 -----

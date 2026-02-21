@@ -1,6 +1,6 @@
 ---
 project: svg-spinners
-stars: 6919
+stars: 6926
 description: A collection of 24 x 24 dp SVG spinners! (CSS & SMIL)
 url: https://github.com/n3r4zzurr0/svg-spinners
 ---

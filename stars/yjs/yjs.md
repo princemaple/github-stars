@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 21211
+stars: 21264
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -287,13 +287,17 @@ y-webrtc
 
 Propagates document updates peer-to-peer using WebRTC. The peers exchange signaling data over signaling servers. Publicly available signaling servers are available. Communication over the signaling servers can be encrypted by providing a shared secret, keeping the connection information and the shared document private.
 
-@liveblocks/yjs 🌟
-
-Liveblocks Yjs provides a fully hosted WebSocket infrastructure and persisted data store for Yjs documents. No configuration or maintenance is required. It also features Yjs webhook events, REST API to read and update Yjs documents, and a browser DevTools extension.
-
-Hocuspocus ⭐
+Hocuspocus 🌟
 
 A standalone extensible yjs server with sqlite persistence, webhooks, auth and more.
+
+Velt YJs ⭐
+
+Velt A managed Yjs backend with realtime WebSocket sync and persistent storage - no server setup required. Includes offline support with automatic reconnection, version history, end-to-end custom encryption. Additionally it also provides Yjs webhook events, REST API to read and update Yjs documents, and a browser DevTools extension.
+
+@liveblocks/yjs ⭐
+
+Liveblocks Yjs provides a fully hosted WebSocket infrastructure and persisted data store for Yjs documents. No configuration or maintenance is required. It also features Yjs webhook events, REST API to read and update Yjs documents, and a browser DevTools extension.
 
 teleportal
 
@@ -394,6 +398,7 @@ Yjs persistence provider for op-sqlite
 -   y-sweet debugger
 -   liveblocks devtools
 -   Yjs inspector
+-   velt devtools
 
 ### Ports
 

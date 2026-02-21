@@ -1,6 +1,6 @@
 ---
 project: dust
-stars: 11248
+stars: 11277
 description: A more intuitive version of du in rust
 url: https://github.com/bootandy/dust
 ---
@@ -31,6 +31,12 @@ From here we can conclude:
 
 Install
 -------
+
+### Quick Install (Linux, macOS, Windows)
+
+curl -sSfL https://raw.githubusercontent.com/bootandy/dust/refs/heads/master/install.sh | sh
+
+### Cargo
 
 #### Cargo
 

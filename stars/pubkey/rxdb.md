@@ -1,6 +1,6 @@
 ---
 project: rxdb
-stars: 23034
+stars: 23047
 description: A fast, local first, reactive Database for JavaScript Applications https://rxdb.info/
 url: https://github.com/pubkey/rxdb
 ---
@@ -23,7 +23,7 @@ url: https://github.com/pubkey/rxdb
 ---------------
 
 RxDB (short for **R**eactive **D**ata**b**ase) is a local-first, NoSQL-database for JavaScript Applications like Websites, hybrid Apps, Electron-Apps, Progressive Web Apps, Deno and Node.js. Reactive means that you can not only query the current state, but **subscribe** to all state changes like the result of a query or even a single field of a document. This is great for UI-based **realtime** applications in a way that makes it easy to develop and also has great performance benefits but can also be used to create fast backends in Node.js.  
-RxDB provides an easy to implement protocol for realtime **replication** with your existing infrastructure or one of the plugins for HTTP, GraphQL, CouchDB, Websocket, WebRTC, Supabase, Firestore, NATS.  
+RxDB provides an easy to implement protocol for realtime **replication** with your existing infrastructure or one of the plugins for HTTP, GraphQL, CouchDB, Websocket, WebRTC, Supabase, Firestore, NATS, Google Drive.  
 RxDB is based on a storage interface that enables you to swap out the underlying storage engine. This increases **code reuse** because you can use the same database code for different JavaScript environments by just switching out the storage settings.
 
 Use the quickstart, read the documentation or explore the example projects.

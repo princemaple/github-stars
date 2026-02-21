@@ -1,6 +1,6 @@
 ---
 project: pdfmake
-stars: 12227
+stars: 12236
 description: Client/server side PDF printing in pure JavaScript
 url: https://github.com/bpampuch/pdfmake
 ---
@@ -21,6 +21,7 @@ Check out the playground and examples.
     -   auto/fixed/star-sized widths,
     -   col-spans and row-spans,
     -   headers automatically repeated in case of a page-break,
+    -   snaking columns (newspaper-style layout where content flows column-to-column),
 -   images and vector graphics,
 -   convenient styling and style inheritance,
 -   page headers and footers:

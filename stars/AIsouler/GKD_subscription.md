@@ -1,6 +1,6 @@
 ---
 project: GKD_subscription
-stars: 10982
+stars: 11051
 description: GKD 第三方订阅规则
 url: https://github.com/AIsouler/GKD_subscription
 ---

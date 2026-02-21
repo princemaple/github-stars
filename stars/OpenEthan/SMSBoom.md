@@ -1,6 +1,6 @@
 ---
 project: SMSBoom
-stars: 15302
+stars: 15300
 description: SMSBoom - Deprecate: Due to judicial reasons, the repository has been suspended!
 url: https://github.com/OpenEthan/SMSBoom
 ---

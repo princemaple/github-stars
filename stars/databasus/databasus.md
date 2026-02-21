@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 5527
+stars: 5633
 description: Databases backup tool (PostgreSQL, MySQL, MongoDB)
 url: https://github.com/databasus/databasus
 ---
@@ -33,6 +33,13 @@ Features • Installation • Usage • License • Contributing
 -   **Precise timing**: run backups at specific times (e.g., 4 AM during low traffic)
 -   **Smart compression**: 4-8x space savings with balanced compression (~20% overhead)
 
+### 🗑️ **Retention policies**
+
+-   **Time period**: Keep backups for a fixed duration (e.g., 7 days, 3 months, 1 year)
+-   **Count**: Keep a fixed number of the most recent backups (e.g., last 30)
+-   **GFS (Grandfather-Father-Son)**: Layered retention — keep hourly, daily, weekly, monthly and yearly backups independently for fine-grained long-term history (enterprises requirement)
+-   **Size limits**: Set per-backup and total storage size caps to control storage usage
+
 ### 🗄️ **Multiple storage destinations** (view supported)
 
 -   **Local storage**: Keep backups on your VPS/server
@@ -51,6 +58,8 @@ Features • Installation • Usage • License • Contributing
 -   **Zero-trust storage**: Backups are encrypted and remain useless to attackers, so you can safely store them in shared storage like S3, Azure Blob Storage, etc.
 -   **Encryption for secrets**: Any sensitive data is encrypted and never exposed, even in logs or error messages
 -   **Read-only user**: Databasus uses a read-only user by default for backups and never stores anything that can modify your data
+
+It is also important for Databasus that you are able to decrypt and restore backups from storages (local, S3, etc.) without Databasus itself. To do so, read our guide on how to recover directly from storage. We avoid "vendor lock-in" even to open source tool!
 
 ### 👥 **Suitable for teams** (docs)
 
@@ -183,8 +192,9 @@ For more options (NodePort, TLS, HTTPRoute for Gateway API), see the Helm chart 
 3.  **Configure schedule**: Choose from hourly, daily, weekly, monthly or cron intervals
 4.  **Set database connection**: Enter your database credentials and connection details
 5.  **Choose storage**: Select where to store your backups (local, S3, Google Drive, etc.)
-6.  **Add notifications** (optional): Configure email, Telegram, Slack, or webhook notifications
-7.  **Save and start**: Databasus will validate settings and begin the backup schedule
+6.  **Configure retention policy**: Choose time period, count or GFS to control how long backups are kept
+7.  **Add notifications** (optional): Configure email, Telegram, Slack, or webhook notifications
+8.  **Save and start**: Databasus will validate settings and begin the backup schedule
 
 ### 🔑 Resetting password (docs)
 
@@ -194,6 +204,10 @@ docker exec -it databasus ./main --new-password="YourNewSecurePassword123" --ema
 
 Replace `admin` with the actual email address of the user whose password you want to reset.
 
+### 💾 Backuping Databasus itself
+
+After installation, it is also recommended to backup your Databasus itself or, at least, to copy secret key used for encryption (30 seconds is needed). So you are able to restore from your encrypted backups if you lose access to the server with Databasus or it is corrupted.
+
 * * *
 
 📝 License
@@ -201,52 +215,12 @@ Replace `admin` with the actual email address of the user whose password you wan
 
 This project is licensed under the Apache 2.0 License - see the LICENSE file for details
 
-* * *
-
 🤝 Contributing
 ---------------
 
 Contributions are welcome! Read the contributing guide for more details, priorities and rules. If you want to contribute but don't know where to start, message me on Telegram @rostislav\_dugin
 
 Also you can join our large community of developers, DBAs and DevOps engineers on Telegram @databasus\_community.
-
-\--
-
-📖 Migration guide
-------------------
-
-Databasus is the new name for Postgresus. You can stay with latest version of Postgresus if you wish. If you want to migrate - follow installation steps for Databasus itself.
-
-Just renaming an image is not enough as Postgresus and Databasus use different data folders and internal database naming.
-
-You can put a new Databasus image with updated volume near the old Postgresus and run it (stop Postgresus before):
-
-```
-services:
-  databasus:
-    container_name: databasus
-    image: databasus/databasus:latest
-    ports:
-      - "4005:4005"
-    volumes:
-      - ./databasus-data:/databasus-data
-    restart: unless-stopped
-```
-
-Then manually move databases from Postgresus to Databasus.
-
-### Why was Postgresus renamed to Databasus?
-
-Databasus has been developed since 2023. It was internal tool to backup production and home projects databases. In start of 2025 it was released as open source project on GitHub. By the end of 2025 it became popular and the time for renaming has come in December 2025.
-
-It was an important step for the project to grow. Actually, there are a couple of reasons:
-
-1.  Postgresus is no longer a little tool that just adds UI for pg\_dump for little projects. It became a tool both for individual users, DevOps, DBAs, teams, companies and even large enterprises. Tens of thousands of users use Postgresus every day. Postgresus grew into a reliable backup management tool. Initial positioning is no longer suitable: the project is not just a UI wrapper, it's a solid backup management system now (despite it's still easy to use).
-    
-2.  New databases are supported: although the primary focus is PostgreSQL (with 100% support in the most efficient way) and always will be, Databasus added support for MySQL, MariaDB and MongoDB. Later more databases will be supported.
-    
-3.  Trademark issue: "postgres" is a trademark of PostgreSQL Inc. and cannot be used in the project name. So for safety and legal reasons, we had to rename the project.
-    
 
 AI disclaimer
 -------------

@@ -1,6 +1,6 @@
 ---
 project: monaco-editor
-stars: 45580
+stars: 45622
 description: A browser based code editor
 url: https://github.com/microsoft/monaco-editor
 ---

@@ -1,6 +1,6 @@
 ---
 project: posthog
-stars: 31248
+stars: 31698
 description: 🦔 PostHog is an all-in-one developer platform for building successful products. We offer product analytics, web analytics, session replay, error tracking, feature flags, experimentation, surveys, data warehouse, a CDP, and an AI product assistant to help debug your code, ship features faster, and keep all your usage and customer data in one stack.
 url: https://github.com/PostHog/posthog
 ---
@@ -113,6 +113,8 @@ We <3 contributions big and small:
 -   Vote on features or get early access to beta functionality in our roadmap
 -   Open a PR (see our instructions on developing PostHog locally)
 -   Submit a feature request or bug report
+
+For an overview of the codebase structure, see monorepo layout and products.
 
 Open-source vs. paid
 --------------------

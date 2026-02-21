@@ -1,6 +1,6 @@
 ---
 project: build-your-own-x
-stars: 465959
+stars: 467755
 description: Master programming by recreating your favorite technologies from scratch.
 url: https://github.com/codecrafters-io/build-your-own-x
 ---
@@ -15,6 +15,7 @@ This repository is a compilation of well-written, step-by-step guides for re-cre
 It's a great way to learn.
 
 -   3D Renderer
+-   AI Model
 -   Augmented Reality
 -   BitTorrent Client
 -   Blockchain / Cryptocurrency
@@ -26,10 +27,12 @@ It's a great way to learn.
 -   Front-end Framework / Library
 -   Game
 -   Git
+-   Memory Allocator
 -   Network Stack
 -   Neural Network
 -   Operating System
 -   Physics Engine
+-   Processor
 -   Programming Language
 -   Regex Engine
 -   Search Engine
@@ -45,6 +48,10 @@ It's a great way to learn.
 Tutorials
 ---------
 
+#### Build your own `Distributed Systems`
+
+-   **Java**: _Building Your Own Kafka-like System From Scratch: A Step-by-Step Guide_
+
 #### Build your own `3D Renderer`
 
 -   **C++**: _Introduction to Ray Tracing: a Simple Method for Creating 3D Images_
@@ -58,6 +65,12 @@ Tutorials
 -   **Java**: _How to create your own simple 3D render engine in pure Java_
 -   **JavaScript / Pseudocode**: _Computer Graphics from scratch_
 -   **Python**: _A 3D Modeller_
+
+#### Build your own `AI Model`
+
+-   **Python**: _A Large Language Model (LLM)_
+-   **Python**: _Diffusion Models for Image Generation_
+-   **Python**: _RAG for Document Search_
 
 #### Build your own `Augmented Reality`
 
@@ -79,7 +92,6 @@ Tutorials
 #### Build your own `Blockchain / Cryptocurrency`
 
 -   **ATS**: _Functional Blockchain_
--   **C#**: _Programming The Blockchain in C#_
 -   **Crystal**: _Write your own blockchain and PoW algorithm using Crystal_
 -   **Go**: _Building Blockchain in Go_
 -   **Go**: _Code your own blockchain in less than 200 lines of Go_
@@ -236,6 +248,10 @@ Tutorials
 -   **Python**: _ugit: Learn Git Internals by Building Git Yourself_
 -   **Ruby**: _Rebuilding Git in Ruby_
 
+#### Build your own `Memory Allocator`
+
+-   **C**: _Malloc is not magic -- Implementing your own memory allocator_
+
 #### Build your own `Network Stack`
 
 -   **C**: _Beej's Guide to Network Programming_
@@ -246,7 +262,8 @@ Tutorials
 #### Build your own `Neural Network`
 
 -   **C#**: _Neural Network OCR_
--   **F#**: _Building Neural Networks in F#_
+-   **F#**: _Building Neural Networks in F#: Part 1_
+-   **F#**: _Building Neural Networks in F#: Part 2_
 -   **Go**: _Build a multilayer perceptron with Golang_
 -   **Go**: _How to build a simple artificial neural network with Go_
 -   **Go**: _Building a Neural Net from Scratch in Go_
@@ -259,6 +276,7 @@ Tutorials
 -   **Python**: _Generate Music using LSTM Neural Network in Keras_
 -   **Python**: _An Introduction to Convolutional Neural Networks_
 -   **Python**: _Neural Networks: Zero to Hero_
+-   **Python**: _SlowTorch: Implementation of PyTorch from the ground up in 100% pure Python_
 
 #### Build your own `Operating System`
 
@@ -291,6 +309,10 @@ Tutorials
 -   **JavaScript**: _How Physics Engines Work_
 -   **JavaScript**: _Broad Phase Collision Detection Using Spatial Partitioning_
 -   **JavaScript**: _Build a simple 2D physics engine for JavaScript games_
+
+#### Build your own `Processor`
+
+-   **Verilog**: _From Blinker to RISC-V_
 
 #### Build your own `Programming Language`
 
@@ -454,6 +476,7 @@ Tutorials
 -   **Node.js**: _Building A Simple Single Sign On(SSO) Server And Solution From Scratch In Node.js._
 -   **Node.js**: _How to create a real-world Node CLI app with Node_
 -   **Node.js**: _Build a DNS Server in Node.js_
+-   **Node.js**: _Build a Synchronization Engine with Node.js and Y.js_
 -   **PHP**: _Write your own MVC from scratch in PHP_
 -   **PHP**: _Make your own blog_
 -   **PHP**: _Modern PHP Without a Framework_

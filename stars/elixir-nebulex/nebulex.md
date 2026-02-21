@@ -1,6 +1,6 @@
 ---
 project: nebulex
-stars: 1372
+stars: 1373
 description: In-memory and distributed caching toolkit for Elixir.
 url: https://github.com/elixir-nebulex/nebulex
 ---
@@ -214,13 +214,7 @@ Contributions to Nebulex are very welcome and appreciated!
 
 Use the issue tracker for bug reports or feature requests. Open a pull request when you're ready to contribute.
 
-When submitting a pull request:
-
--   **Do not update** the CHANGELOG.md
--   **Ensure** you test your changes thoroughly
--   **Include** unit tests alongside new or changed code
-
-Before submitting a PR, it is highly recommended to run `mix test.ci` and ensure all checks run successfully.
+Please read CONTRIBUTING.md for the full contribution workflow, PR expectations, commit message conventions, and validation steps.
 
 * * *
 

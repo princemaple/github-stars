@@ -1,6 +1,6 @@
 ---
 project: elixir-raknet
-stars: 230
+stars: 231
 description: An Elixir client for the core of the RakNet networking protocol, useful for games and other latency-sensitive applications that typically rely on UDP
 url: https://github.com/X-Plane/elixir-raknet
 ---

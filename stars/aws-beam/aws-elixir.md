@@ -1,6 +1,6 @@
 ---
 project: aws-elixir
-stars: 590
+stars: 592
 description: AWS clients for Elixir
 url: https://github.com/aws-beam/aws-elixir
 ---

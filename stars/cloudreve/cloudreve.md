@@ -1,6 +1,6 @@
 ---
 project: cloudreve
-stars: 26903
+stars: 26969
 description: 🌩 Self-hosted file management and sharing system, supports multiple storage providers
 url: https://github.com/cloudreve/cloudreve
 ---

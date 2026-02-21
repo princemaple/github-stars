@@ -1,6 +1,6 @@
 ---
 project: signoz
-stars: 25733
+stars: 25827
 description: SigNoz is an open-source observability platform native to OpenTelemetry with logs, traces and metrics in a single application. An open-source alternative to DataDog, NewRelic, etc. 🔥 🖥.   👉  Open source Application Performance Monitoring (APM) & Observability tool
 url: https://github.com/SigNoz/signoz
 ---
@@ -186,34 +186,6 @@ Contributing
 We ❤️ contributions big or small. Please read CONTRIBUTING.md to get started with making contributions to SigNoz.
 
 Not sure how to get started? Just ping us on `#contributing` in our slack community
-
-### Project maintainers
-
-#### Backend
-
--   Ankit Nayan
--   Nityananda Gohain
--   Srikanth Chekuri
--   Vishal Sharma
--   Shivanshu Raj Shrivastava
--   Ekansh Gupta
--   Aniket Agarwal
-
-#### Frontend
-
--   Yunus M
--   Vikrant Gupta
--   Sagar Rajput
--   Shaheer Kochai
--   Amlan Kumar Nandy
--   Sahil Khan
--   Aditya Singh
--   Abhi Kumar
-
-#### DevOps
-
--   Prashant Shahi
--   Vibhu Pandey
 
   
   

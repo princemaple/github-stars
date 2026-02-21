@@ -5,7 +5,7 @@ description: The next generation Javascript WYSIWYG HTML Editor.
 url: https://github.com/froala/wysiwyg-editor
 ---
 
-Froala Editor V4
+Froala Editor V5
 ================
 
 Froala WYSIWYG HTML Editor is one of the most powerful JavaScript rich text editors ever.

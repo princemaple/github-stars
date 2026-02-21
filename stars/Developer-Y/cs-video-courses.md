@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 70719
+stars: 74393
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -227,6 +227,7 @@ Courses
 -   CS110: Principles of Computer Systems - Stanford
 -   #### **Operating Systems**
     
+    -   Gatech CS6200 Intro to OS
     -   APS 105 - Computer Fundamentals - Winter 2025 - Jon Eyolfson - University of Toronto (Winter 2024)
     -   ECS 150 - Operating Systems and Systems Programming - Fall 2020 - Joël Porquet-Lupine - UC Davis
     -   ECE 344 - Operating Systems - Fall 2024 - Jon Eyolfson - University of Toronto (Fall 2024 Section 2) (Fall 2023) (Fall 2022)
@@ -271,6 +272,7 @@ Courses
     -   Distributed Systems lecture series - Martin Kleppmann
     -   Distributed Algorithms - Jukka Suomela
     -   Programming Parallel Computers - Jukka Suomela
+    -   Gatech CS7210 Distributed Computing
 -   #### **Real-Time Systems**
     
     -   CPCS 663 - Real-Time Systems: Video Material - TAMU
@@ -511,6 +513,7 @@ Courses
     -   UCLA Stats 21 Python and Other Technologies for Data Science spring 2024, by Miles Chen (Spring 2021)
     -   UCLA Stats C161/C261 Introduction to Pattern Recognition and Machine Learning winter 2024, by Arash Amini (Winter 2023)
     -   UCLA Stats 231C Theories of Machine Learning spring 2022, by Arash Amini
+    -   Princeton COS 511 Theoretical Machine Learning spring 2026, by Elad Hazan
     -   MSU Machine Learning
     -   Data Science for Dynamical Systems, by Oliver Wallscheid & Sebastian Peitz (YouTube)
     -   Cambridge Statistical Learning in Practice 2021, by Alberto J. Coca
@@ -604,6 +607,7 @@ Courses
     -   TUM IN2346 Introduction to Deep Learning Fall 2024, by Daniel Cremers (Summer 2023)
     -   UT Austin - Advances in Deep Learning
     -   HKU - Data 8014 Principles of Deep Representation Learning Fall 2025, by Yi Ma
+    -   Local Explanations for Deep Learning Models (Fall 2023)
 -   #### **Reinforcement Learning**
     
     -   CS234: Reinforcement Learning - Spring 2024 - Stanford University (Winter 2019)
@@ -705,6 +709,17 @@ Courses
     -   UC Berkeley CS 194/294-196 Large Language Model Agents Fall 2024, by Dawn Song & Xinyun Chen (YouTube playlist)
     -   UC Berkeley CS 194/294-267 Understanding Large Language Models Foundations and Safety spring 2024, by Dawn Song & Dan Hendrycks
     -   Introduction to Large Language Models (LLMs), IIT Delhi
+    -   CMU 10799 S26: Diffusion & Flow Matching
+    -   6.S183: A Practical Introduction to Diffusion Models - MIT (YouTube, 2025 lectures)
+    -   The Principles of Diffusion Models - Vizuara
+    -   Building LLMs from scratch - Vizuara
+    -   Build DeepSeek from Scratch - Vizuara
+    -   Reasoning LLMs from Scratch - Vizuara
+    -   KAIST CS492(C): Diffusion and Flow Models (Fall 2025) (2024)
+    -   Mathematics of Generative Modelling (Spring 2024) - IIIT Hyderabad (2023)
+    -   NYCU Deep Generative Models 2025
+    -   COMPSCI 690L | Deep Generative Models | 2024 | Sajjad Amini
+    -   ECE1508: Deep Generative Models - Summer 2025 - UofT
 -   #### **Computer Vision**
     
     -   CS 231n - Convolutional Neural Networks for Visual Recognition, Stanford University
@@ -735,12 +750,14 @@ Courses
     -   UT Dallas CS 7301 Advanced Topics in Optimization for Machine Learning spring 2021, by Rishabh Iyer (YouTube)
     -   Convex Analysis, Summer 2021 - TU Braunschweig (YouTube)
     -   EE364a: Convex Optimization I - Stanford University
+    -   EE364b: Convex Optimization II - Stanford University (YouTube)
     -   10-725 Convex Optimization, Spring 2015 - CMU
     -   10-725 Convex Optimization: Fall 2016 - CMU
     -   10-725 Optimization Fall 2012 - CMU
     -   10-801 Advanced Optimization and Randomized Methods - CMU (YouTube)
     -   AM 207 - Stochastic Methods for Data Analysis, Inference and Optimization, Harvard University
     -   MIT 6.S098 Applied Convex Optimization IAP 2022, by Alexandre Amice, Benoit Legat (YouTube)
+    -   UVic Math 428 / 529 Discrete Optimization fall 2025, by Jonathan A. Noel (YouTube)
     -   University of Twente Discrete Optimization, by Marc Uetz (Fall 2020)
     -   UC Davis MAT 168 Optimization winter 2024, by Matthias Köppe
     -   Purdue University CHE 597 Computational Optimization spring 2025, by Can Li
@@ -750,6 +767,7 @@ Courses
     -   University of Wisconsin-Madison ISyE/Math/CS/Stat 525 Linear Optimization fall 2021, by Alberto Del Pia
     -   University of Wisconsin-Madison ISyE/Math/CS 728 Integer Optimization (second part of the course) spring 2020
     -   Columbia IEOR E4007 Optimization Models and Methods 2005, by Garud Iyengar
+    -   UC Berkeley EECS 127 / 227A Optimization Models in Engineering (Spring 2024 lectures)
 -   #### **Unsupervised Learning**
     
     -   CS294 Deep Unsupervised Learning Spring 2024
@@ -1151,6 +1169,7 @@ Courses
 -   Introduction to ARM - Open SecurityTraining
 -   Intro x86 (32 bit) - Open SecurityTraining
 -   Intermediate x86 (32 bit) - Open SecurityTraining
+-   EECS 151 / 251A Introduction to Digital Design and Integrated Circuits - UC Berkeley - Fall 2025
 -   Design of Digital Circuits - ETH Zürich - Spring 2019
 -   Onur Mutlu @ TU Wien 2019 - Memory Systems
 -   Memory Systems Course - Technion, Summer 2018

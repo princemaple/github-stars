@@ -1,6 +1,6 @@
 ---
 project: lobehub
-stars: 72288
+stars: 72467
 description: The ultimate space for work and life — to find, build, and collaborate with agent teammates that grow with you. We are taking agent harness to the next level — enabling multi-agent collaboration, effortless agent team design, and introducing agents as the unit of work interaction.
 url: https://github.com/lobehub/lobehub
 ---

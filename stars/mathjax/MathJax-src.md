@@ -1,6 +1,6 @@
 ---
 project: MathJax-src
-stars: 2329
+stars: 2333
 description: MathJax source code for version 3 and beyond
 url: https://github.com/mathjax/MathJax-src
 ---
@@ -62,7 +62,7 @@ await MathJax.init({
   loader: {load: \['input/tex', 'output/svg'\]}
 });
 const svg \= await MathJax.tex2svgPromise('\\\\frac{1}{x^2-1}', {display: true});
-console.log(MathJax.startup.adaptor.outerHTML(svg));
+console.log(MathJax.startup.adaptor.serializeXML(svg));
 
 Alternatively, in an ES5 node application, you can use
 
@@ -76,7 +76,7 @@ MathJax.init({
   loader: {load: \['input/tex', 'output/svg'\]}
 }).then(() \=> {
   const svg \= MathJax.tex2svg('\\\\frac{1}{x^2-1}', {display: true});
-  console.log(MathJax.startup.adaptor.outerHTML(svg));
+  console.log(MathJax.startup.adaptor.serializeXML(svg));
 }).catch((err) \=> console.log(err.message));
 
 **Note:** the technique in the two examples above is for node-based application only, not for browser applications. This method sets up an alternative DOM implementation, which you don't need in the browser, and it depends on node and the local file system in other ways. This setup will not work properly in the browser, even if you webpack it or use some other bundler.

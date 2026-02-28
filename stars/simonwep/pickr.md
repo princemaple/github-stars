@@ -1,6 +1,6 @@
 ---
 project: pickr
-stars: 4467
+stars: 4469
 description: 🎨 Pickr - A simple, multi-themed, responsive and hackable Color-Picker library. No dependencies, no jQuery. Compatible with all CSS Frameworks e.g. Bootstrap, Materialize. Supports alpha channel, rgba, hsla, hsva and more!
 url: https://github.com/simonwep/pickr
 ---

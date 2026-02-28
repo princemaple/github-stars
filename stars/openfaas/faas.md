@@ -1,6 +1,6 @@
 ---
 project: faas
-stars: 26094
+stars: 26100
 description: OpenFaaS - Serverless Functions Made Simple
 url: https://github.com/openfaas/faas
 ---
@@ -30,6 +30,23 @@ OpenFaaS® makes it easy for developers to deploy event-driven functions and mic
 -   Integrate with Istio or Linkerd with Featured Tutorials
 -   Deploy to Kubernetes or OpenShift
 
+OpenFaaS Tiers and Pricing
+--------------------------
+
+This repository is part of OpenFaaS Community Edition (CE), which is licensed for non-commercial use by individuals, and a time-limited trial for commercial Proof Of Concepts (PoC). Internal use within a company or business requires a license.
+
+OpenFaaS CE:
+
+-   has usage restrictions, which you can learn about in the OpenFaaS CE EULA
+-   has basic or primitive features and capabilities compared to the commercial versions
+-   is not licensed for commercial use of any kind beyond an initial trial period
+
+OpenFaaS Standard and OpenFaaS for Enterprises are full and distinct commercial products.
+
+They are maintained and developed independently, by a full-time team, with commercial support, and active maintenance for CVEs, and updates in the Kubernetes and Cloud Native ecosystem.
+
+Learn more about the tiers at https://www.openfaas.com/pricing/
+
 Overview of OpenFaaS (Serverless Functions Made Simple)
 -------------------------------------------------------
 
@@ -37,11 +54,13 @@ Overview of OpenFaaS (Serverless Functions Made Simple)
 
 ### Code samples
 
-You can generate new functions using the `faas-cli` and built-in templates or use any binary for Windows or Linux in a container.
+You can scaffold a new function using the `faas-cli new` command passing in the name of the function and the language template you want to use i.e. `faas-cli new --lang node20 stripe-webhooks`.
 
 Official templates exist for many popular languages and are easily extensible with Dockerfiles.
 
--   Node.js (`node12`) example:
+Learn about OpenFaaS templates in the docs
+
+-   Node.js (`node20`) example:
     
     "use strict"
     
@@ -57,37 +76,37 @@ Official templates exist for many popular languages and are easily extensible wi
     
     _handler.js_
     
--   Python 3 example:
+-   Python 3 example (`python3-http`):
     
-    import requests
-    
-    def handle(req):
-        r \=  requests.get(req, timeout \= 1)
-        return "{} => {:d}".format(req, r.status\_code)
+    def handle(event, context):
+        return {
+            "statusCode": 200,
+            "body": "Hello from OpenFaaS!"
+        }
     
     _handler.py_
     
--   Golang example (`golang-http`)
+-   Golang example (`golang-middleware`)
     
     package function
     
     import (
-        "fmt"
-        "net/http"
-    
-        handler "github.com/openfaas/templates-sdk/go-http"
+     	"fmt"
+     	"io"
+     	"net/http"
     )
     
-    // Handle a function invocation
-    func Handle(req handler.Request) (handler.Response, error) {
-        var err error
-    
-        message := fmt.Sprintf("Body: %s", string(req.Body))
-    
-        return handler.Response{
-            Body:       \[\]byte(message),
-            StatusCode: http.StatusOK,
-        }, err
+    func Handle(w http.ResponseWriter, r \*http.Request) {
+        var input \[\]byte
+        
+       	if r.Body != nil {
+        		defer r.Body.Close()
+        		body, \_ := io.ReadAll(r.Body)
+        		input \= body
+       	}
+        
+       	w.WriteHeader(http.StatusOK)
+       	w.Write(\[\]byte(fmt.Sprintf("Body: %s", string(input))))
     }
     
 
@@ -117,18 +136,13 @@ Everyday Go is a practical, hands-on guide to writing CLIs, web pages, and micro
 -   Read the documentation: docs.openfaas.com
 -   Read latest news and tutorials on the Official Blog
 
-Community Sponsorship
----------------------
-
-OpenFaaS users can subscribe to a weekly Community Newsletter called Insiders Updates, to keep up to date with new features, bug fixes, events, tutorials and security patches. Insiders Updates are written by the project founder and distributed via GitHub Sponsors.
-
--   Get a Community Subscription
-
 ### Quickstart
 
 > Here is a screenshot of the OpenFaaS Community Edition UI which was designed for ease of use. The inception function is being run which is available on the in the store.
 
 Deploy OpenFaaS to Kubernetes, OpenShift, or faasd now with a deployment guide
+
+OpenFaaS Standard and OpenFaaS for Enterprises have their own, brand new dashboard with multi-tenancy support, learn more about the OpenFaaS Dashboard.
 
 ### Video presentations
 
@@ -163,27 +177,15 @@ An alternative community dashboard is available here
 
 ### Press / Branding / Website Sponsorship
 
--   Individual Sponsorships 🍻
-    
-    Users and contributors are encouraged to join their peers in supporting the OpenFaaS project through GitHub Sponsors.
-    
--   OpenFaaS Pro for Production
-    
-    OpenFaaS Pro (Standard and For Enterprises) is built for production, the Community Edition (CE) is suitable for a Proof of Concept (PoC), for experimentation, and some limited internal use.
-    
-    Learn more about OpenFaaS editions
-    
 -   Website Sponsorship 🌎
     
-    Companies and brands are welcome to sponsor openfaas.com, the Gold and Platinum tiers come with a homepage logo, see costs and tiers. Website sponsorships are payable by invoice.
+    If you'd like to gain visibility by displaying your logon on the openfaas.com homepage, feel free to reach out via email or browse the tiers via GitHub Sponsors.
     
--   Press / Branding 📸
+-   Press / Analysts
     
-    For information on branding, the press-kit, registered entities and sponsorship head over to the openfaas/media repo. You can also order custom SWAG or take part in the weekly Twitter contest #FaaSFriday
+    Looking at these repositories for commit counts and activity? All public repositories are part of OpenFaaS CE, a limited version of OpenFaaS aimed at giving people a low-barrier trial experience without having to sign up with a credit card. OpenFaaS CE is maintained on a best effort basis, but is not "OpenFaaS" itself. All OpenFaaS product development is done in private repositories, and cannot be tracked by third parties or by simply browsing GitHub.
     
-    Looking for statistics? This project does not use a mono-repo, but is split across several components. Use Ken Fukuyama's dashboard to gather accurate counts on contributors, stars and forks across the GitHub organisation.
-    
-    > Note: any statistics you gather about the openfaas/faas repository will be invalid, the faas repo is not representative of the project's activity.
+    How are GitHub Stars and Forks counted? OpenFaaS CE is not a mono-repo, you cannot simply look at one repository and say "ah that's the count" - statistics are gathered from the whole GitHub organisation.
     
 
 ### Governance
@@ -195,5 +197,3 @@ OpenFaaS is hosted by OpenFaaS Ltd (registration: 11076587), a company which als
 ### Users
 
 View a selection of end-user companies who have given permission to have their logo listed at openfaas.com.
-
-If you're using OpenFaaS please let us know on this thread. In addition, you are welcome to request to have your logo listed on the homepage. Thank you for your support.

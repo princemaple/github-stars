@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1150
+stars: 1153
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -490,6 +490,7 @@ Mods (Require **Lovely**)
 
 ### Functional
 
+-   Advanced Screen Shake - Advanced Screen Shake is a mod that allows you to set the level of your screenshake unreasonably high. by @DeveloperRowan
 -   Brainstorm | discord - Brainstorm allows for super-fast rerolling through the use of an in-game key bind. by @OceanRamen
 -   Talisman | discord - Talisman is a mod for Balatro that increases the score cap from ~10^308 to ~10^10^308, allowing for endless runs to go past "naneinf" and Ante 39. by @MathIsFun\_
 -   typist - typist is an implementation of fully keyboard-driven UX for Balatro and includes a lot of QoL shortcuts as well. by @kasimeka

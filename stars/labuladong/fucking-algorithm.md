@@ -1,386 +1,394 @@
 ---
 project: fucking-algorithm
-stars: 132731
-description: 刷算法全靠套路，认准 labuladong 就够了！English version supported! Crack LeetCode, not only how, but also why. 
+stars: 132848
+description: Crack LeetCode, not only how, but also why. 
 url: https://github.com/labuladong/fucking-algorithm
 ---
 
-English version is on labuladong.online too. Just enjoy：)
+labuladong Algo Notes
+=====================
 
-labuladong 的算法笔记
-================
+This repository contains 60+ original articles based on LeetCode problems, covering all problem types and techniques. The goal is to help you **think algorithmically** — not just memorize solutions.
 
-本仓库总共 60 多篇原创文章，都是基于 LeetCode 的题目，涵盖了所有题型和技巧，而且一定要做到**举一反三，通俗易懂**，绝不是简单的代码堆砌，后面有目录。
+When it comes to LeetCode, what matters is not the answer itself, but the **thought process** behind it. A repository full of raw code without explanation isn't very useful. The real value lies in understanding the frameworks and patterns that let you solve new problems on your own.
 
-我先吐槽几句。**刷题刷题，刷的是题，培养的是思维，本仓库的目的就是传递这种算法思维**。我要是只写一个包含 LeetCode 题目代码的仓库，有个锤子用？没有思路解释，没有思维框架，顶多写个时间复杂度，那玩意一眼就能看出来。
+Most people grind LeetCode to land a job, not to compete in programming contests. So the focus here is on **clarity and practical understanding** — building reusable mental frameworks that make algorithm problems approachable and solvable.
 
-只想要答案的话很容易，题目评论区五花八门的答案，动不动就秀 python 一行代码解决，有那么多人点赞。问题是，你去做算法题，是去学习编程语言的奇技淫巧的，还是学习算法思维的呢？你的快乐，到底源自复制别人的一行代码通过测试，已完成题目 +1，还是源自自己通过逻辑推理和算法框架不看答案写出解法？
+Before You Start
+----------------
 
-网上总有大佬喷我，说我写的东西太基础，要么说不能借助框架思维来学习算法。我只能说大家刷算法就是找工作吃饭的，不是打竞赛的，我也是一路摸爬滚打过来的，我们要的是清楚明白有所得，不是故弄玄虚无所指。
+**1\. Give this repo a star** if you find it helpful — it keeps me motivated to write more.
 
-不想办法做到通俗易懂，难道要上来先把《算法导论》吹上天，然后把人家都心怀敬仰地劝退？
+**2\. I recommend studying on my website, where each article links to the corresponding LeetCode problems so you can read and practice side by side. The site covers 500+ problems with step-by-step guidance:**
 
-**做啥事情做多了，都能发现套路的，我把各种算法套路框架总结出来，相信可以帮助其他人少走弯路**。我这个纯靠自学的小童鞋，花了一年时间刷题和总结，自己写了一份算法小抄，后面有目录，这里就不废话了。
+https://labuladong.online/en/algo/
 
-在开始学习之前
--------
+Table of Contents
+-----------------
 
-**1、先给本仓库点个 star，满足一下我的虚荣心**，文章质量绝对值你一个 star。我还在继续创作，给我一点继续写文的动力，感谢。
-
-**2、建议收藏我的在线网站，每篇文章开头都有对应的力扣题目链接，可以边看文章边刷题，一共可以手把手带你刷 500 道题目**：
-
-2024 最新地址：https://labuladong.online/algo/
-
-GitHub Pages 地址：https://labuladong.online/algo/
-
-Gitee Pages 地址：https://labuladong.gitee.io/algo/
-
-labuladong 刷题全家桶简介
-------------------
-
-### 一、算法可视化面板
-
-我的算法网站、所有配套插件都集成了一个算法可视化工具，可以对数据结构和递归过程进行可视化，大幅降低理解算法的难度。几乎每道题目的解法代码都有对应的可视化面板，具体参见下方介绍。
-
-### 二、学习网站
-
-内容当然是我的系列算法教程中最核心的部分，我的算法教程都发布在网站 labuladong.online 上，相信你会未来会在这里花费大量的学习时间，而不是仅仅加入收藏夹~
-
-### 三、Chrome 插件
-
-**主要功能**：Chrome 插件可以在中文版力扣或英文版 LeetCode 上快捷查看我的「题解」或「思路」，并添加了题目和算法技巧之间的引用关系，可以和我的网站/公众号/课程联动，给我的读者提供最丝滑的刷题体验。安装使用手册见下方目录。
-
-### 四、vscode 插件
-
-**主要功能**：和 Chrome 插件功能基本相同，习惯在 vscode 上刷题的读者可以使用该插件。安装使用手册见下方目录。
-
-### 五、Jetbrains 插件
-
-**主要功能**：和 Chrome 插件功能基本相同，习惯在 Jetbrains 家的 IDE（PyCharm/Intellij/Goland 等）上刷题的读者可以使用该插件。安装使用手册见下方目录。
-
-最后祝大家学习愉快，在题海中自在遨游！
-
-文章目录
-====
-
-### 本站简介
-
-### 配套插件及算法可视化
-
--   配套 Chrome 刷题插件
--   配套 vscode 刷题插件
--   配套 JetBrains 刷题插件
--   算法可视化面板使用说明
--   本站付费会员
-
-### 针对初学和速成的学习规划
-
--   算法刷题的重点和坑
--   初学者学习规划
--   速成学习规划
--   习题章节的练习/复习方法
--   算法可视化速查页
-
-### 入门：编程语言基础及练习
-
--   本章导读
--   C++ 语言基础
--   Java 语言基础
--   Golang 语言基础
--   Python 语言基础
--   JavaScript 语言基础
--   力扣/LeetCode 解题须知
--   编程语言刷题实践
-
-### 基础：数据结构及排序精讲
-
--   本章导读
+-   Introduction
     
--   时间空间复杂度入门
+-   Study Plans for Beginners and Quick Mastery
     
--   手把手带你实现动态数组
+    -   Fast-Track Learning Plan
+    -   Complete Learning Plan
+    -   How to Learn Algorithms Efficiently
+    -   How to Practice
+-   Tools and Algorithm Visualization
     
-    -   数组（顺序存储）基本原理
-    -   动态数组代码实现
--   手把手带你实现单/双链表
+    -   AI Assistant for Questions
+    -   Algorithm Visualization Introduction
+    -   Algorithm Game Introduction
+    -   Chrome Extension for LeetCode
+    -   vscode/cursor Plugin for LeetCode
+    -   JetBrains Plugin for LeetCode
+    -   Subscribe to Pro
+-   Programming Language Basics
     
-    -   链表（链式存储）基本原理
-    -   链表代码实现
--   手把手带你实现队列/栈
+    -   Chapter Introduction
+    -   C++ Basics
+    -   Java Basics
+    -   Golang Basics
+    -   Python Basics
+    -   JavaScript Basics
+    -   LeetCode Guide
+    -   Let's Have Fun with LeetCode
+    -   ACM Mode Code Template
+-   Getting Started: Data Structures and Sorting
     
-    -   队列/栈基本原理
-    -   用链表实现队列/栈
-    -   环形数组技巧
-    -   用数组实现队列/栈
-    -   双端队列（Deque）原理及实现
--   哈希表的原理及实现
+    -   Chapter Introduction
+        
+    -   Basic Time Complexity
+        
+    -   Implement Dynamic Arrays
+        
+        -   Array (Sequential Storage)
+        -   Dynamic Array Code Implementation
+    -   Implement Single/Double Linked List
+        
+        -   Linked List (Chain Storage)
+        -   Linked List Code Implementation
+        -   Implement Snake Game
+    -   Array and LinkedList Variations
+        
+        -   Circular Array Technique and Implementation
+        -   Skip List Basics
+        -   BitMap Principles and Implementation
+    -   Implement Queue and Stack
+        
+        -   Queue/Stack Basic
+        -   Implement Queue/Stack with Linked List
+        -   Implement Queue/Stack with Array
+        -   Deque Implementation
+    -   Implement HashMap
+        
+        -   Basic Concept of HashMap
+        -   Implement HashMap with Separate Chaining
+        -   Key Points to Implement Linear Probing
+        -   Two Implementations of Linear Probing
+        -   Hash Set Basic and Implementation
+    -   Hash Table Variations
+        
+        -   Use Linked List to Enhance Hash Table (LinkedHashMap)
+        -   Use Array to Enhance Hash Table (ArrayHashMap)
+        -   Bloom Filter Implementation
+    -   Binary Tree Structure and Traversal
+        
+        -   Binary Tree Basic and Common Types
+        -   Binary Tree Recursive/Level Traversal
+        -   Use cases of DFS and BFS
+        -   N-ary Tree Recursive/Level Traversal
+    -   Binary Tree Variations
+        
+        -   TreeMap Structure and Visualization
+        -   Red-Black Trees Basics and Visualization
+        -   Trie, Digital Tree, Prefix Tree Basics and Visualization
+        -   Basic Concept of Binary Heap
+        -   Binary Heap/Priority Queue Code Implementation
+        -   Segment Tree Basics and Visualization
+        -   Data Compression and Huffman Tree
+        -   Updating
+    -   Graph Structure and Algorithm Overview
+        
+        -   Basic Terminology in Graph Theory
+        -   Graph Structure Code Implementation
+        -   Graph Structure DFS/BFS Traversal
+        -   Eulerian Graph and One-Stroke Game
+        -   Graph Shortest Path Algorithms Overview
+        -   Minimum Spanning Tree Algorithms Overview
+        -   Basic Concept of Union Find Algorithm
+        -   Updating
+    -   Implement and Visualize 10 Sorting Algorithms
+        
+        -   Chapter Introduction
+        -   Key Metrics of Sorting Algorithms
+        -   Explore Selection Sort in Depth
+        -   Bubble Sort with Stability
+        -   Insertion Sort with Reverse Thinking
+        -   Shell Sort - Better than O(N^2)
+        -   Quick Sort and Binary Tree Preorder
+        -   Merge Sort and Binary Tree Postorder
+        -   Heap Sort and Binary Heap
+        -   Counting Sort: A New Pespective on Sorting
+        -   Bucket Sort
+        -   Radix Sort
+    -   Updating
+        
+-   Chapter 0. Classic Problem Solving Templates
     
-    -   哈希表核心原理
-    -   用拉链法实现哈希表
-    -   线性探查法的两个难点
-    -   线性探查法的两种代码实现
-    -   哈希集合的原理及代码实现
--   哈希表结构的种种变换
+    -   Chapter Introduction
+    -   How to Think About Data Structure and Algorithm
+    -   Two Pointer Techniques for Linked List Problems
+    -   Two Pointer Techniques for Array Problems
+    -   Sliding Window Algorithm Code Template
+    -   Thinking Recursion Algorithms from Binary Tree Perspective
+    -   One Perspective + Two Thinking Patterns to Master Recursion
+    -   Dynamic Programming Common Patterns and Code Template
+    -   Backtracking Algorithm Common Patterns and Code Template
+    -   BFS Algorithm Common Patterns and Code Template
+    -   Backtracking Algorithm to Solve All Permutation/Combination/Subset Problems
+    -   Greedy Algorithms Principles and Techniques
+    -   Divide and Conquer Principles and Techniques
+    -   Time and Space Complexity Analysis Practical Guide
+-   Chapter 1. Data Structure Algorithms
     
-    -   用链表加强哈希表（LinkedHashMap）
-    -   用数组加强哈希表（ArrayHashMap）
--   二叉树结构及遍历
+    -   Linked List Algorithm
+        
+        -   Two Pointer Techniques for Linked List Problems
+        -   Exercise: Two Pointer Techniques for Linked List
+        -   Tricks to Reverse a Linked List Recursively
+        -   How to Determine a Palindrome Linked List
+    -   Array Algorithm
+        
+        -   Two Pointer Techniques for Array Problems
+        -   Match Three Game
+        -   Tricks to Traverse a 2D Array
+        -   Exercise: Two Pointer Techniques for Array
+        -   Game of Life
+        -   One Trick to Solve All N-Sum Problems
+        -   Prefix Sum Array Technique
+        -   Exercise: Prefix Sum Techniques
+        -   Difference Array Technique
+        -   Sliding Window Algorithm Code Template
+        -   Exercise: Sliding Window In Action
+        -   Sliding Window: Rabin Karp Algorithm
+        -   Binary Search Algorithm Code Template
+        -   Binary Search Follow-up
+        -   Binary Search in Action
+        -   Exercise: Binary Search Algorithm
+        -   Weighted Random Selection Algorithm
+        -   Advantage Shuffle Algorithm
+    -   Stack/Queue Algorithm
+        
+        -   Implement Stack with Queue, Implement Queue with Stack
+        -   Exercise: Stack Problems on LeetCode
+        -   Exercise: Bracket Problems on LeetCode
+        -   Exercise: Queue Problems on LeetCode
+        -   Monotonic Stack Code Template
+        -   Exercise: Monotonic Stack Problems on LeetCode
+        -   Monotonic Queue to Solve Sliding Window Problems
+        -   Exercise: Monotonic Queue Implementation and Leetcode Problems
+    -   Binary Tree Algorithm
+        
+        -   Thinking Recursion Algorithms from Binary Tree Perspective
+        -   Binary Tree in Action (Traversal)
+        -   Binary Tree in Action (Construction)
+        -   Binary Tree in Action (Post-order)
+        -   Binary Tree in Action (Serialization)
+        -   Binary Search Tree in Action (In-order)
+        -   Binary Search Tree in Action (Basic Operations)
+        -   Binary Search Tree in Action (Construction)
+        -   Binary Search Tree in Action (Post-order)
+    -   Master Binary Tree Problems
+        
+        -   Chapter Introduction
+        -   Exercise: Binary Tree Traversal I
+        -   Exercise: Binary Tree Traversal II
+        -   Exercise: Binary Tree Traversal III
+        -   Exercise: Binary Tree Divide and Conquer I
+        -   Exercise: Binary Tree Divide and Conquer II
+        -   Exercise: Binary Tree Combine Two Views
+        -   Exercise: Binary Tree Post-order I
+        -   Exercise: Binary Tree Post-order II
+        -   Exercise: Binary Tree Post-order III
+        -   Exercise: Binary Tree Level I
+        -   Exercise: Binary Tree Level II
+        -   Exercise: Binary Search Tree I
+        -   Exercise: Binary Search Tree II
+    -   Binary Tree Follow-up
+        
+        -   Lowest Common Ancestor All in One
+        -   Trick: How to Count Nodes in a Complete Binary Tree
+        -   Trick: Lazy Expansion of a Multiway Tree
+        -   Follow-up: Merge Sort Implementation and Applications
+        -   Follow-up: Quick Sort Implementation and Applications
+        -   Trick: Traverse Binary Tree with Stack
+    -   Design Data Structures
+        
+        -   Implementing LRU Cache like Building a Lego
+        -   Implementing LFU Cache like Building a Lego
+        -   How to Deleting Array Element in O(1) Time
+        -   Exercise: Hash Table Problems on LeetCode
+        -   Exercise: Priority Queue Problems on LeetCode
+        -   Implementing TreeMap/TreeSet
+        -   Basic Segment Tree Implementation
+        -   Dynamic Segment Tree Implementation
+        -   Lazy Update Segment Tree Implementation
+        -   Exercise: Segment Tree Problems
+        -   Implementing Trie Tree
+        -   Exercise: Trie Problems on LeetCode
+        -   Designing an Exam Room Algorithm
+        -   Exercise: Classic Design Problems on LeetCode
+        -   Implement Huffman Coding Compression
+        -   Implement Consistent Hashing Algorithm
+        -   How to Implement a Calculator
+        -   Implementing Median Algorithm with Two Binary Heaps
+        -   Removing Duplicates from an Array (Hard Version)
+    -   Graph Algorithm
+        
+        -   How to Determine a Bipartite Graph
+        -   Hierholzer Algorithm to Find Eulerian Path
+        -   Exercise: Eulerian Path
+        -   Cycle Detection Algorithm
+        -   Topological Sort Algorithm
+        -   Union-Find Algorithm
+        -   Exercise: Union-Find Problems on LeetCode
+        -   Dijkstra Algorithm
+        -   Dijkstra Algorithm with Restrictions
+        -   Exercise: Dijkstra Problems
+        -   A\* Algorithm
+        -   Kruskal Minimum Spanning Tree Algorithm
+        -   Prim Minimum Spanning Tree Algorithm
+-   Chapter 2. Brute Force Search
     
-    -   二叉树基础及常见类型
-    -   二叉树的递归/层序遍历
-    -   多叉树的递归/层序遍历
--   二叉树结构的种种变换
+    -   DFS and Backtracking Algorithm
+        
+        -   Backtracking Algorithm Common Patterns and Code Template
+        -   Backtracking in Action: Sudoku and N-Queens
+        -   Implement Sudoku Cheat
+        -   Backtracking Algorithm to Solve All Permutation/Combination/Subset Problems
+        -   Some Questions About Backtracking and DFS Algorithms
+        -   Solve All Island Problems with DFS
+        -   Minesweeper Game II
+        -   Ball and Box: Two Perspectives of Backtracking Enumeration
+        -   Backtracking Algorithm Practice: Generating Valid Parentheses
+        -   Backtracking Algorithm Practice: Partitioning k Subsets
+        -   Exercise: Backtracking Problems on LeetCode I
+        -   Exercise: Backtracking Problems on LeetCode II
+        -   Exercise: Backtracking Problems on LeetCode III
+    -   BFS Algorithm
+        
+        -   BFS Algorithm Common Patterns and Code Template
+        -   Solve Maze Game
+        -   Huarong Road Game
+        -   Connect Two Game
+        -   Exercise: BFS Problems on LeetCode I
+        -   Exercise: BFS Problems on LeetCode II
+-   Chapter 3. Dynamic Programming Algorithms
     
-    -   二叉搜索树的应用及可视化
-    -   红黑树的完美平衡及可视化
-    -   Trie/字典树/前缀树原理及可视化
-    -   二叉堆核心原理及可视化
-    -   二叉堆/优先级队列代码实现
-    -   线段树核心原理及可视化
-    -   正在更新 ing
--   图论数据结构及遍历
+    -   Basic DP Techniques
+        
+        -   Dynamic Programming Common Patterns and Code Template
+        -   How to Design Transition Equations
+        -   How to Determine the Base Case and Initial Values for Memoization?
+        -   Two Perspectives of Dynamic Programming Enumeration
+        -   How to Convert Backtracking to Dynamic Programming
+        -   Optimize Space Complexity for Dynamic Programming
+        -   Clarifying Some Questions About Dynamic Programming
+    -   Subsequence Problems
+        
+        -   Classic DP: Edit Distance
+        -   DP Design: Maximum Subarray
+        -   Classic DP: Longest Common Subsequence
+        -   Subsequence Problem Patterns for DP
+    -   Knapsack Problems
+        
+        -   Classic DP: 0-1 Knapsack Problem
+        -   Classic DP: Subset Knapsack Problem
+        -   Classic DP: Unbounded Knapsack Problem
+        -   A Variant of the Knapsack Problem: Target Sum
+    -   Dynamic Programming Game
+        
+        -   Classic DP: Minimum Path Sum
+        -   Play Dungeon Game with DP
+        -   Play Freedom Trail with DP
+        -   Save Money on Your Trip: Weighted Shortest Path
+        -   Multi-source shortest path: Floyd algorithm
+        -   Classic DP: Regular Expression Matching
+        -   Classic DP: Egg Drop
+        -   Classic DP: Burst Balloons
+        -   Classic DP: Game Theory
+        -   One Method to Solve All House Robber Problems on LeetCode
+        -   One Method to Solve all Stock Problems on LeetCode
+    -   Dynamic Programming ProblemSet
+        
+        -   Exercise: Rob House Pattern
+        -   Exercise: Knapsack Problems
+        -   Exercise: Dynamic Programming Problems I
+        -   Exercise: Dynamic Programming Problems II
+    -   Greedy
+        
+        -   Greedy Algorithms Principles and Techniques
+        -   Two Approaches for Gas Station Problem
+        -   Greedy Algorithm for Interval Scheduling Problem
+        -   Scan Line Technique: Scheduling Meeting Rooms
+        -   Cut Video with a Greedy Algorithm
+-   Chapter 4. Other Common Techniques
     
-    -   图结构基础及通用代码实现
-    -   图结构的 DFS/BFS 遍历
-    -   Union Find 并查集原理
-    -   正在更新 ing
--   十大排序算法原理及可视化
+    -   Mathematical Techniques
+        
+        -   LeetCode Problems with One Line Solution
+        -   Common Bit Manipulation Techniques
+        -   Essential Math Techniques
+        -   Minesweeper Game I
+        -   Random Algorithms in Games
+        -   Two Classic Factorial Problems on LeetCode
+        -   How to Efficiently Count Prime Numbers
+        -   How to Find Missing and Duplicate Elements
+        -   Interesting Probability Problems
+        -   Exercise: Math Tricks
+    -   Classic Interview Problems
+        
+        -   How to Efficiently Solve the Trapping Rain Water Problem
+        -   One Article to Solve All Ugly Number Problems on LeetCode
+        -   One Method to Solve Three Interval Problems on LeetCode
+        -   Split Array into Consecutive Subsequences
+        -   Pancake Sorting Algorithm
+        -   String Multiplication Calculation
+        -   How to Determine if a Rectangle is Perfect
+-   More Topics
     
-    -   本章导读
-    -   排序算法的关键指标
-    -   选择排序所面临的问题
-    -   拥有稳定性：冒泡排序
-    -   运用逆向思维：插入排序
-    -   突破 O(N^2)：希尔排序
-    -   妙用二叉树前序位置：快速排序
-    -   妙用二叉树后序位置：归并排序
-    -   二叉堆结构的运用：堆排序
-    -   全新的排序原理：计数排序
-    -   博采众长：桶排序
-    -   基数排序（Radix Sort）
--   正在更新 ing
-    
-
-### 第零章、核心刷题框架汇总
-
--   本章导读
--   学习数据结构和算法的框架思维
--   双指针技巧秒杀七道链表题目
--   双指针技巧秒杀七道数组题目
--   滑动窗口算法核心代码模板
--   二分搜索算法核心代码模板
--   动态规划解题套路框架
--   回溯算法解题套路框架
--   BFS 算法解题套路框架
--   二叉树系列算法核心纲领
--   回溯算法秒杀所有排列/组合/子集问题
--   贪心算法解题套路框架
--   分治算法解题套路框架
--   算法时空复杂度分析实用指南
-
-### 第一章、经典数据结构算法
-
--   手把手刷链表算法
-    
-    -   双指针技巧秒杀七道链表题目
-    -   【强化练习】链表双指针经典习题
-    -   单链表的花式反转方法汇总
-    -   如何判断回文链表
--   手把手刷数组算法
-    
-    -   双指针技巧秒杀七道数组题目
-    -   二维数组的花式遍历技巧
-    -   一个方法团灭 nSum 问题
-    -   【强化练习】数组双指针经典习题
-    -   小而美的算法技巧：前缀和数组
-    -   【强化练习】前缀和技巧经典习题
-    -   小而美的算法技巧：差分数组
-    -   滑动窗口算法核心代码模板
-    -   【强化练习】滑动窗口算法经典习题
-    -   滑动窗口延伸：Rabin Karp 字符匹配算法
-    -   二分搜索算法核心代码模板
-    -   实际运用二分搜索时的思维框架
-    -   【强化练习】二分搜索算法经典习题
-    -   带权重的随机选择算法
-    -   田忌赛马背后的算法决策
--   手把手刷二叉树算法
-    
-    -   二叉树系列算法核心纲领
-    -   二叉树心法（思路篇）
-    -   二叉树心法（构造篇）
-    -   二叉树心法（后序篇）
-    -   二叉树心法（序列化篇）
-    -   二叉搜索树心法（特性篇）
-    -   二叉搜索树心法（基操篇）
-    -   二叉搜索树心法（构造篇）
-    -   二叉搜索树心法（后序篇）
--   套模板解决 100 道二叉树习题
-    
-    -   本章导读
-    -   【强化练习】用「遍历」思维解题 I
-    -   【强化练习】用「遍历」思维解题 II
-    -   【强化练习】用「遍历」思维解题 III
-    -   【强化练习】用「分解问题」思维解题 I
-    -   【强化练习】用「分解问题」思维解题 II
-    -   【强化练习】同时运用两种思维解题
-    -   【强化练习】利用后序位置解题 I
-    -   【强化练习】利用后序位置解题 II
-    -   【强化练习】利用后序位置解题 III
-    -   【强化练习】运用层序遍历解题 I
-    -   【强化练习】运用层序遍历解题 II
-    -   【强化练习】二叉搜索树经典例题 I
-    -   【强化练习】二叉搜索树经典例题 II
--   二叉树的拓展延伸
-    
-    -   拓展：最近公共祖先系列解题框架
-    -   拓展：如何计算完全二叉树的节点数
-    -   拓展：惰性展开多叉树
-    -   拓展：归并排序详解及应用
-    -   拓展：快速排序详解及应用
-    -   拓展：用栈模拟递归迭代遍历二叉树
--   手把手设计数据结构
-    
-    -   队列实现栈以及栈实现队列
-    -   【强化练习】栈的经典习题
-    -   【强化练习】括号类问题汇总
-    -   【强化练习】队列的经典习题
-    -   单调栈算法模板解决三道例题
-    -   【强化练习】单调栈的几种变体及经典习题
-    -   单调队列结构解决滑动窗口问题
-    -   【强化练习】单调队列的通用实现及经典习题
-    -   算法就像搭乐高：手撸 LRU 算法
-    -   算法就像搭乐高：手撸 LFU 算法
-    -   常数时间删除/查找数组中的任意元素
-    -   【强化练习】哈希表更多习题
-    -   【强化练习】优先级队列经典习题
-    -   TreeMap/TreeSet 代码实现
-    -   SegmentTree 线段树代码实现
-    -   Trie/字典树/前缀树代码实现
-    -   【强化练习】Trie 树算法习题
-    -   设计朋友圈时间线功能
-    -   设计考场座位分配算法
-    -   【强化练习】更多经典设计习题
-    -   拓展：如何实现一个计算器
-    -   拓展：两个二叉堆实现中位数算法
-    -   拓展：数组去重问题（困难版）
--   手把手刷图算法
-    
-    -   环检测及拓扑排序算法
-    -   众里寻他千百度：名流问题
-    -   二分图判定算法
-    -   Union-Find 并查集算法
-    -   【强化练习】并查集经典习题
-    -   Kruskal 最小生成树算法
-    -   Prim 最小生成树算法
-    -   Dijkstra 算法模板及应用
-    -   【强化练习】Dijkstra 算法经典习题
-
-### 第二章、经典暴力搜索算法
-
--   DFS/回溯算法
-    
-    -   回溯算法解题套路框架
-    -   回溯算法实践：数独和 N 皇后问题
-    -   回溯算法秒杀所有排列/组合/子集问题
-    -   球盒模型：回溯算法穷举的两种视角
-    -   解答回溯算法/DFS算法的若干疑问
-    -   一文秒杀所有岛屿题目
-    -   回溯算法实践：括号生成
-    -   回溯算法实践：集合划分
-    -   【强化练习】回溯算法经典习题 I
-    -   【强化练习】回溯算法经典习题 II
-    -   【强化练习】回溯算法经典习题 III
--   BFS 算法
-    
-    -   BFS 算法解题套路框架
-    -   【强化练习】BFS 经典习题 I
-    -   【强化练习】BFS 经典习题 II
-    -   正在更新 ing
-
-### 第三章、经典动态规划算法
-
--   动态规划基本技巧
-    
-    -   动态规划解题套路框架
-    -   动态规划设计：最长递增子序列
-    -   base case 和备忘录的初始值怎么定？
-    -   动态规划穷举的两种视角
-    -   动态规划和回溯算法的思维转换
-    -   对动态规划进行降维打击
-    -   最优子结构原理和 dp 数组遍历方向
--   子序列类型问题
-    
-    -   经典动态规划：编辑距离
-    -   动态规划设计：最大子数组
-    -   经典动态规划：最长公共子序列
-    -   动态规划之子序列问题解题模板
--   背包类型问题
-    
-    -   经典动态规划：0-1 背包问题
-    -   经典动态规划：子集背包问题
-    -   经典动态规划：完全背包问题
-    -   背包问题的变体：目标和
--   用动态规划玩游戏
-    
-    -   动态规划之最小路径和
-    -   动态规划帮我通关了《魔塔》
-    -   动态规划帮我通关了《辐射4》
-    -   旅游省钱大法：加权最短路径
-    -   经典动态规划：正则表达式
-    -   经典动态规划：高楼扔鸡蛋
-    -   经典动态规划：戳气球
-    -   经典动态规划：博弈问题
-    -   一个方法团灭 LeetCode 打家劫舍问题
-    -   一个方法团灭 LeetCode 股票买卖问题
--   贪心类型问题
-    
-    -   贪心算法解题套路框架
-    -   老司机加油算法
-    -   贪心算法之区间调度问题
-    -   扫描线技巧：安排会议室
-    -   剪视频剪出一个贪心算法
-
-### 第四章、其他常见算法技巧
-
--   数学运算技巧
-    
-    -   一行代码就能解决的算法题
-    -   常用的位操作
-    -   谈谈游戏中的随机算法
-    -   讲两道常考的阶乘算法题
-    -   如何高效寻找素数
-    -   如何高效进行模幂运算
-    -   如何同时寻找缺失和重复的元素
-    -   几个反直觉的概率问题
-    -   【强化练习】数学技巧相关习题
--   经典面试题
-    
-    -   算法笔试「骗分」套路
-    -   如何高效解决接雨水问题
-    -   一文秒杀所有丑数系列问题
-    -   一个方法解决三道区间问题
-    -   谁能想到，斗地主也能玩出算法
-    -   烧饼排序算法
-    -   字符串乘法计算
-    -   如何判定完美矩形
-
-### 附录
-
--   labuladong.online 更新日志
--   可视化面板更新日志
--   Chrome 刷题插件更新日志
--   vscode 刷题插件更新日志
--   Jetbrain 刷题插件更新日志
--   网站/插件问题反馈
-
-感谢如下大佬参与翻译
-==========
-
-按照昵称字典序排名：
-
-ABCpril, andavid, bryceustc, build2645, CarrieOn, cooker, Dong Wang, ExcaliburEX, floatLig, ForeverSolar, Fulin Li, Funnyyanne, GYHHAHA, Hi\_archer, Iruze, Jieyixia, Justin, Kevin, Lrc123, lriy, Lyjeeq, MasonShu, Master-cai, miaoxiaozui2017, natsunoyoru97, nettee, PaperJets, qy-yang, realism0331, SCUhzs, Seaworth, shazi4399, ShuozheLi, sinjoywong, sunqiuming526, Tianhao Zhou, timmmGZ, tommytim0515, ucsk, wadegrc, walsvid, warmingkkk, Wonderxie, wsyzxxxx, xiaodp, youyun, yx-tan, Zero, Ziming
-
-Donate
-======
-
-如果本仓库对你有帮助，可以请作者喝杯速溶咖啡
+    -   Computer Science
+        
+        -   Frontend Development Introduction for AI Era
+        -   Introduction to Modern Encryption
+        -   Understand Session and Cookie
+        -   Understanding JSON Web Token (JWT)
+        -   Authentication vs. Authorization
+        -   Understanding OAuth 2.0 Authorization Framework
+        -   OAuth 2.0 and OIDC Authentication
+        -   OAuth 2.0 and PKCE
+        -   Understanding Single Sign-On (SSO)
+        -   Certificate and CA
+        -   TLS Key Exchange
+        -   Mutual TLS Authentication
+        -   Introduction to Linux File System
+        -   Linux Processes, Threads and File Descriptors
+        -   Pitfalls of Linux Pipeline
+        -   Linux Shell Tips
+        -   LSM Tree in Storage System
+        -   Updating
+    -   Design Pattern
+        
+        -   Design Pattern: Singleton
+        -   Design Pattern: Factory Method
+        -   Design Pattern: Abstract Factory
+        -   Design Pattern: Builder
+        -   Design Pattern: Prototype
+        -   Design Pattern: Adapter
+        -   Design Pattern: Composite
+        -   Design Pattern: Decorator
+        -   Design Pattern: Bridge
+        -   Design Pattern: Observer
+        -   Design Pattern: Strategy
+        -   Updating

@@ -1,15 +1,11 @@
 ---
 project: ludwig
-stars: 11647
+stars: 11653
 description: Low-code framework for building custom LLMs, neural networks, and other AI models
 url: https://github.com/ludwig-ai/ludwig
 ---
 
 _Declarative deep learning framework built for scale and efficiency._
-
-Important
-
-Our community has moved to Discord -- please join us there!
 
 📖 What is Ludwig?
 ==================
@@ -26,10 +22,12 @@ Key features:
 
 Ludwig is hosted by the Linux Foundation AI & Data.
 
+**Tech stack:** Python 3.12 | PyTorch 2.6 | Pydantic 2 | Transformers 5 | Ray 2.54
+
 💾 Installation
 ===============
 
-Install from PyPi. Be aware that Ludwig requires Python 3.8+.
+Install from PyPI. Be aware that Ludwig requires Python 3.12+.
 
 pip install ludwig
 
@@ -42,9 +40,9 @@ Please see contributing for more detailed installation instructions.
 🚂 Getting Started
 ==================
 
-Want to take a quick peek at some of the Ludwig 0.8 features? Check out this Colab Notebook 🚀
+Want to take a quick peek at some of Ludwig's features? Check out this Colab Notebook 🚀
 
-Looking to fine-tune Llama-2 or Mistral? Check out these notebooks:
+Looking to fine-tune LLMs? Check out these notebooks:
 
 1.  Fine-Tune Llama-2-7b:
 2.  Fine-Tune Llama-2-13b:
@@ -55,12 +53,12 @@ For a full tutorial, check out the official getting started guide, or take a loo
 Large Language Model Fine-Tuning
 --------------------------------
 
-Let's fine-tune a pretrained LLaMA-2-7b large language model to follow instructions like a chatbot ("instruction tuning").
+Let's fine-tune a pretrained LLM to follow instructions like a chatbot ("instruction tuning").
 
 ### Prerequisites
 
 -   HuggingFace API Token
--   Access approval to Llama2-7b-hf
+-   Access approval to your chosen base model (e.g., Llama-3.1-8B)
 -   GPU with at least 12 GiB of VRAM (in our tests, we used an Nvidia T4)
 
 ### Running
@@ -98,7 +96,7 @@ Michelle Obama is an inspirational woman who r...
 Create a YAML config file named `model.yaml` with the following:
 
 model\_type: llm
-base\_model: meta-llama/Llama-2-7b-hf
+base\_model: meta-llama/Llama-3.1-8B
 
 quantization:
   bits: 4
@@ -361,6 +359,6 @@ Star History
 ===================
 
 -   Discord
--   X
+-   X (Twitter)
 -   Medium
 -   GitHub Issues

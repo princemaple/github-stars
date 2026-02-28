@@ -1,6 +1,6 @@
 ---
 project: tinyauth
-stars: 6981
+stars: 7013
 description: The simplest way to protect your apps with a login screen.
 url: https://github.com/steveiliop56/tinyauth
 ---
@@ -17,6 +17,10 @@ Tinyauth is a simple authentication middleware that adds a simple login screen o
 Warning
 
 Tinyauth is in active development and configuration may change often. Please make sure to carefully read the release notes before updating.
+
+Note
+
+This is the main development branch. For the latest stable release, see the documentation or the latest stable tag.
 
 Getting Started
 ---------------

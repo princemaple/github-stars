@@ -1,12 +1,18 @@
 ---
 project: nu_plugin_clipboard
-stars: 87
+stars: 88
 description: A nushell plugin to copy text into clipboard or get text from it. supports json<->object/table conversion out of box
 url: https://github.com/fmotalleb/nu_plugin_clipboard
 ---
 
-📋 nu\_plugin\_clipboard
-========================
+📋 nu\_plugin\_clipboard (deprecated)
+=====================================
+
+Since 0.111.0 it will be included in the nushell itself and the plugin wont receive further updates. There are some changes in the commands:
+
+`clipboard copy` -> `clip copy` # does not passes the input to the output by default anymore. `clipboard paste` -> `clip paste`
+
+Importing `std/clip` shadows this implementation.
 
 A nushell plugin for interacting with the clipboard, allowing you to copy/paste text, objects, and tables.
 

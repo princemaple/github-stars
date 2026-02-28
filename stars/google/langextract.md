@@ -1,6 +1,6 @@
 ---
 project: langextract
-stars: 33437
+stars: 34009
 description: A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.
 url: https://github.com/google/langextract
 ---

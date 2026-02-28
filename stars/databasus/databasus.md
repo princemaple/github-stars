@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 5633
+stars: 5730
 description: Databases backup tool (PostgreSQL, MySQL, MongoDB)
 url: https://github.com/databasus/databasus
 ---

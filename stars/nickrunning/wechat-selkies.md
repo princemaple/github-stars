@@ -1,7 +1,7 @@
 ---
 project: wechat-selkies
-stars: 2535
-description: 基于Selkies的Linux网页版微信/QQ，支持本地中文输入法，支持AMD64和ARM64。
+stars: 2579
+description: 基于Selkies的Linux网页版微信/QQ/Telegram，支持本地中文输入法，支持三方应用，支持AMD64和ARM64。
 url: https://github.com/nickrunning/wechat-selkies
 ---
 
@@ -35,6 +35,7 @@ WeChat Selkies
 -   🔧 **硬件加速**：可选的 GPU 硬件加速支持
 -   🪟 **窗口切换器**：左上角增加切换悬浮窗，方便切换到后台窗口，为后续添加其它功能做基础
 -   🤖 **自动启动**：可配置自动启动微信和QQ客户端（可选）
+-   📋 **桌面快捷方式集成**：自动扫描 `~/Desktop/` 下的 `.desktop` 文件并添加到右键菜单，方便启动第三方应用（如通过 proot-apps 安装的应用）
 
 截图展示
 ----
@@ -207,6 +208,20 @@ Web UI 访问密码（推荐设置）
 -   `./config:/config`: 微信配置和数据持久化目录
 
 > **注意：** 如果升级后右键菜单缺少 `WeChat` 相关选项，请先清空本地挂载目录下的openbox目录(如`./config/.config/openbox`)。
+
+安装第三方应用（如 Telegram）
+-------------------
+
+本项目支持通过 proot-apps 安装第三方 Linux 应用。以 Telegram 为例：
+
+1.  在浏览器中打开容器桌面
+2.  点击左侧 **侧边栏** → **应用程序**（Applications）
+3.  在应用列表中找到 **Telegram**
+4.  点击 **安装**（Install）按钮，等待安装完成
+
+安装完成后，应用快捷方式会自动出现在 `~/Desktop/` 目录下，**右键菜单会自动刷新**，无需重启容器即可从菜单中启动该应用。
+
+> **提示：** 如需卸载应用，同样通过侧边栏 → 应用程序，选中对应应用后点击 **卸载**（Uninstall）即可，右键菜单会自动更新。
 
 高级配置
 ----

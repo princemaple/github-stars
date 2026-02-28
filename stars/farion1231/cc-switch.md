@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 19148
+stars: 21783
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex, OpenCode & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -47,7 +47,7 @@ Add Provider
 Features
 --------
 
-### Current Version: v3.10.2 | Full Changelog | Release Notes
+### Current Version: v3.11.1 | Full Changelog | Release Notes
 
 **v3.8.0 Major Update (2025-11-28)**
 
@@ -125,6 +125,7 @@ Features
 **Core Capabilities**
 
 -   **Provider Management**: One-click switching between Claude Code, Codex, and Gemini API configurations
+-   **AWS Bedrock Support**: Built-in AWS Bedrock provider presets with AKSK and API Key authentication, cross-region inference support (global/us/eu/apac), covering Claude Code and OpenCode
 -   **Speed Testing**: Measure API endpoint latency with visual quality indicators
 -   **Import/Export**: Backup and restore configs with auto-rotation (keep 10 most recent)
 -   **i18n Support**: Complete Chinese/English localization (UI, errors, tray)

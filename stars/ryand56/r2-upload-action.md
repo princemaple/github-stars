@@ -1,6 +1,6 @@
 ---
 project: r2-upload-action
-stars: 89
+stars: 90
 description: GitHub Action to upload files or directories to a Cloudflare R2 bucket (or another S3 compatible API), built on top of @aws-sdk/client-s3 in TypeScript.
 url: https://github.com/ryand56/r2-upload-action
 ---
@@ -39,6 +39,7 @@ In this example, `source-dir` is stored in the root of the bucket. Change `desti
     r2-access-key-id: ${{ secrets.R2\_ACCESS\_KEY\_ID }}
     r2-secret-access-key: ${{ secrets.R2\_SECRET\_ACCESS\_KEY }}
     r2-bucket: ${{ secrets.R2\_BUCKET }}
+    r2-jurisdiction: eu # Add if the bucket location is different from the default one
     source-dir: src
     destination-dir: artifacts # Can be anything as long as it is an actual path
     output-file-url: true # defaults to true
@@ -81,6 +82,12 @@ _N/A_
 **(Required)** Your Cloudflare R2 bucket name.
 
 _N/A_
+
+`r2-jurisdiction`
+
+(Optional) The location of the bucket
+
+Empty string
 
 `source-dir`
 

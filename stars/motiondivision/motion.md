@@ -1,6 +1,6 @@
 ---
 project: motion
-stars: 31045
+stars: 31102
 description: A modern animation library for React and JavaScript
 url: https://github.com/motiondivision/motion
 ---
@@ -121,4 +121,3 @@ Motion drives the animations on the Cursor homepage, and is working with Cursor 
 -   OlegWock
 -   Lambert Weller
 -   Jake LeBoeuf
--   Han Lee

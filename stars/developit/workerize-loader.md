@@ -1,6 +1,6 @@
 ---
 project: workerize-loader
-stars: 2316
+stars: 2315
 description: 🏗️ Automatically move a module into a Web Worker (Webpack loader)
 url: https://github.com/developit/workerize-loader
 ---

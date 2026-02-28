@@ -1,6 +1,6 @@
 ---
 project: imagor
-stars: 3898
+stars: 3908
 description: Fast, secure image processing server and Go library, using libvips
 url: https://github.com/cshum/imagor
 ---
@@ -765,6 +765,8 @@ Usage of imagor:
         imagor disable /params endpoint
   -imagor-disable-error-body
         imagor disable response body on error
+  -imagor-response-raw-on-error
+        imagor response with a raw unprocessed and unchecked source image on error
 
   -server-address string
         Server address

@@ -1,6 +1,6 @@
 ---
 project: ChessCoach
-stars: 520
+stars: 519
 description: Neural network-based chess engine capable of natural language commentary
 url: https://github.com/chrisbutner/ChessCoach
 ---

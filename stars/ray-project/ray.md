@@ -1,6 +1,6 @@
 ---
 project: ray
-stars: 41417
+stars: 41524
 description: Ray is an AI compute engine. Ray consists of a core distributed runtime and a set of AI Libraries for accelerating ML workloads.
 url: https://github.com/ray-project/ray
 ---

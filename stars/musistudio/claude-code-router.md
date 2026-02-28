@@ -1,6 +1,6 @@
 ---
 project: claude-code-router
-stars: 28130
+stars: 28630
 description: Use Claude Code as the foundation for coding infrastructure, allowing you to decide how to interact with the model while enjoying updates from Anthropic.
 url: https://github.com/musistudio/claude-code-router
 ---

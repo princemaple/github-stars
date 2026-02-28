@@ -1,6 +1,6 @@
 ---
 project: bun
-stars: 87537
+stars: 87733
 description: Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one
 url: https://github.com/oven-sh/bun
 ---
@@ -31,7 +31,7 @@ bunx cowsay 'Hello, world!'   # execute a package
 Install
 -------
 
-Bun supports Linux (x64 & arm64), macOS (x64 & Apple Silicon) and Windows (x64).
+Bun supports Linux (x64 & arm64), macOS (x64 & Apple Silicon) and Windows (x64 & arm64).
 
 > **Linux users** — Kernel version 5.6 or higher is strongly recommended, but the minimum is 5.1.
 

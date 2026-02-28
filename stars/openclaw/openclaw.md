@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 216153
+stars: 240274
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -25,9 +25,10 @@ OpenAI
 
 Blacksmith
 
+Convex
+
 **Subscriptions (OAuth):**
 
--   **Anthropic** (Claude Pro/Max)
 -   **OpenAI** (ChatGPT/Codex)
 
 Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See Onboarding.

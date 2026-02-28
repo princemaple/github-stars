@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 54819
+stars: 55199
 description: The all-in-one Desktop & Docker AI application with built-in RAG, AI agents, No-code agent builder, MCP compatibility,  and more.
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -81,6 +81,7 @@ Cool features of AnythingLLM
 -   Docker Model Runner
 -   PrivateModeAI (chat models)
 -   SambaNova Cloud (chat models)
+-   Lemonade by AMD
 
 **Embedder models:**
 

@@ -1,6 +1,6 @@
 ---
 project: livebook_tools
-stars: 111
+stars: 113
 description: Powertools for livebook.dev — AI Code Editing, MCP Servers, and Running Livebooks from the CLI
 url: https://github.com/thmsmlr/livebook_tools
 ---

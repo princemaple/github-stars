@@ -1,6 +1,6 @@
 ---
 project: xh
-stars: 7597
+stars: 7614
 description: Friendly and fast tool for sending HTTP requests
 url: https://github.com/ducaale/xh
 ---
@@ -135,7 +135,7 @@ Winget
 
 `winget add ducaale.xh`
 
-\* Make sure that you have Rust 1.83 or later installed
+\* Make sure that you have Rust 1.85 or later installed
 
 \*\* You will need to install the MMRL CLI
 

@@ -1,6 +1,6 @@
 ---
 project: AFFiNE
-stars: 63130
+stars: 63334
 description: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. 
 url: https://github.com/toeverything/AFFiNE
 ---
@@ -91,7 +91,7 @@ Submit a feature request
 
 Check GitHub Discussion
 
-Visit the AFFiNE Community
+Visit the AFFiNE's Discord
 
 Something isn't working as expected
 
@@ -107,11 +107,9 @@ Calling all developers, testers, tech writers and more! Contributions of all typ
 
 For **bug reports**, **feature requests** and other **suggestions** you can also create a new issue and choose the most appropriate template for your feedback.
 
-For **translation** and **language support** you can visit our i18n General Space.
+For **translation** and **language support** you can visit our Discord.
 
-Looking for **other ways to contribute** and wondering where to start? Check out the AFFiNE Ambassador program, we work closely with passionate community members and provide them with a wide range of support and resources.
-
-If you have questions, you are welcome to contact us. One of the best places to get more info and learn more is in the AFFiNE Community where you can engage with other like-minded individuals.
+If you have questions, you are welcome to contact us. One of the best places to get more info and learn more is in the Discord where you can engage with other like-minded individuals.
 
 Templates
 ---------
@@ -201,22 +199,17 @@ Self-Host
 
 Begin with Docker to deploy your own feature-rich, unrestricted version of AFFiNE. Our team is diligently updating to the latest version. For more information on how to self-host AFFiNE, please refer to our documentation.
 
-Hiring
-------
-
-Some amazing companies, including AFFiNE, are looking for developers! Are you interested in joining AFFiNE or its partners? Check out our Discord channel for some of the latest jobs available.
-
 Feature Request
 ---------------
 
-For feature requests, please see community.affine.pro.
+For feature requests, please see discussions.
 
 Building
 --------
 
 ### Codespaces
 
-From the GitHub repo main page, click the green "Code" button and select "Create codespace on master". This will open a new Codespace with the (supposedly auto-forked AFFiNE repo cloned, built, and ready to go.
+From the GitHub repo main page, click the green "Code" button and select "Create codespace on master". This will open a new Codespace with the (supposedly auto-forked AFFiNE repo cloned, built, and ready to go).
 
 ### Local
 

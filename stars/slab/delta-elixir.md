@@ -1,6 +1,6 @@
 ---
 project: delta-elixir
-stars: 374
+stars: 373
 description: Elixir implementation of Delta, the JSON format for describing rich-text content and their changes
 url: https://github.com/slab/delta-elixir
 ---

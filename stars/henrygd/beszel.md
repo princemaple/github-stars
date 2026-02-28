@@ -1,6 +1,6 @@
 ---
 project: beszel
-stars: 19535
+stars: 19681
 description: Lightweight server monitoring hub with historical data, docker stats, and alerts.
 url: https://github.com/henrygd/beszel
 ---
@@ -52,7 +52,7 @@ Supported metrics
 -   **GPU usage / power draw** - Nvidia, AMD, and Intel.
 -   **Battery** - Host system battery charge.
 -   **Containers** - Status and metrics of all running Docker / Podman containers.
--   **S.M.A.R.T.** - Host system disk health (includes eMMC wear/EOL via Linux sysfs when available).
+-   **S.M.A.R.T.** - Host system disk health (includes eMMC wear/EOL and Linux mdraid array health via sysfs when available).
 
 Help and discussion
 -------------------

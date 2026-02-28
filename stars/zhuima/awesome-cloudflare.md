@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 12913
+stars: 12938
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -51,6 +51,7 @@ Contents
     -   文件分享
     -   测速
     -   监控
+    -   开发者工具
 -   文章
     -   其他
     -   教程
@@ -322,6 +323,14 @@ https://comment.joyance.page/area/test-4
 
 维护中
 
+Gins-Blog
+
+一个高性能、Agentic-First 的博客平台。完全基于 Cloudflare 生态 (Workers, Pages, D1, KV, R2, Vectorize)。内置 MCP 协议，支持通过 OpenClaw 零人工自动部署。
+
+https://blog.ichimarugin728.com
+
+维护中
+
 脚手架
 ===
 
@@ -472,6 +481,14 @@ https://counterscale.dev/
 HanAnalytics
 
 一个部署在Cloudflare Pages上的简单的网络分析跟踪器和仪表板，是umami的精简版，它支持设备查看、来源查看、国家地区及设备OS等数据查看分析，支持密码访问，域名白名单等功能。
+
+维护中
+
+PageGuard
+
+免费网站健康扫描器，基于 Cloudflare Workers + D1 + Workers AI（Llama 3.1）。检查 SEO、性能（Core Web Vitals）、无障碍（WCAG 2.1）、最佳实践，30 秒出 AI 诊断报告，无需注册登录。
+
+https://pageguard.org
 
 维护中
 
@@ -696,6 +713,14 @@ https://vps-monitor.abo-vendor289.workers.dev/
 
 维护中
 
+SSL Certificate Monitor
+
+SSL 证书到期监控工具，检查 SSL 证书有效期并通过 RESTful API 提供服务。
+
+https://ssl-certificate-monitor.autocompany.workers.dev/
+
+维护中
+
 deploy-mcp
 
 为AI助手提供的通用部署跟踪器，支持实时状态徽章和部署监控，包括对 Cloudflare Pages 的支持。
@@ -709,6 +734,25 @@ What Broke Today
 AI 驱动的宕机聚合器，追踪 100+ 云服务（包括 Cloudflare）的状态，提供实时 Telegram 警报、RSS 订阅和 JSON API。
 
 https://whatbroke.today/
+
+维护中
+
+开发者工具
+-----
+
+名称
+
+特性
+
+在线地址
+
+状态
+
+Webhook Debugger
+
+自托管 Webhook 调试工具，支持签名验证（Stripe/GitHub/Slack/Shopify）、90天历史、全文搜索、一键重放。基于 Cloudflare Workers + D1 构建。
+
+https://webhook-debugger.autocompany.workers.dev
 
 维护中
 
@@ -1117,6 +1161,30 @@ micro-notepad
 cf-page-publish-mcp
 
 cloudflare 页面发布 mcp 工具，可以将 html 页面发布到 cloudflare，worker 上。可以mcp对接ai。
+
+维护中
+
+ShotOG
+
+开源 OG 图片生成 API，运行在 Cloudflare Workers 上。8 个模板、批量生成、自定义字体、边缘渲染 ~50ms。
+
+https://shotog.2214962083.workers.dev
+
+维护中
+
+redirect-checker
+
+基于 Cloudflare Workers 的 HTTP 重定向链分析器，支持检测重定向循环、性能测量、多种 User-Agent 预设（含 Googlebot/Bingbot）。提供 RESTful API 和响应式 Web UI。
+
+https://redirect-checker.autocompany.workers.dev/
+
+维护中
+
+MetaReview
+
+免费在线 Meta 分析平台，基于 Cloudflare Pages + Workers AI + KV 构建。支持 120+ 功能：森林图/漏斗图等 11 种统计图表（D3.js）、5 种效应量、AI 文献筛选（Llama 3.1 8B）、PDF 数据提取、DOCX/HTML 报告导出、PRISMA 流程图。中英双语，医学研究者 5 分钟从数据到森林图。
+
+https://metareview-8c1.pages.dev/
 
 维护中
 

@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 11882
+stars: 11936
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -252,33 +252,71 @@ make end2end
 
 Lightpanda is tested against the standardized Web Platform Tests.
 
-The relevant tests cases are committed in a dedicated repository which is fetched by the `make install-submodule` command.
-
-All the tests cases executed are located in the `tests/wpt` sub-directory.
+We use a fork including a custom `testharnessreport.js`.
 
 For reference, you can easily execute a WPT test case with your browser via wpt.live.
 
-#### Run WPT test suite
+#### Configure WPT HTTP server
 
-To run all the tests:
+To run the test, you must clone the repository, configure the custom hosts and generate the `MANIFEST.json` file.
+
+Clone the repository with the `fork` branch.
 
 ```
-make wpt
+git clone -b fork --depth=1 git@github.com:lightpanda-io/wpt.git
+```
+
+Enter into the `wpt/` dir.
+
+Install custom domains in your `/etc/hosts`
+
+```
+./wpt make-hosts-file | sudo tee -a /etc/hosts
+```
+
+Generate `MANIFEST.json`
+
+```
+./wpt manifest
+```
+
+Use the WPT's setup guide for details.
+
+#### Run WPT test suite
+
+An external Go runner is provided by github.com/lightpanda-io/demo/ repository, located into `wptrunner/` dir. You need to clone the project first.
+
+First start the WPT's HTTP server from your `wpt/` clone dir.
+
+```
+./wpt serve
+```
+
+Run a Lightpanda browser
+
+```
+zig build run -- --insecure_disable_tls_host_verification
+```
+
+Then you can start the wptrunner from the Demo's clone dir:
+
+```
+cd wptrunner && go run .
 ```
 
 Or one specific test:
 
 ```
-make wpt Node-childNodes.html
+cd wptrunner && go run . Node-childNodes.html
 ```
 
-#### Add a new WPT test case
+`wptrunner` command accepts `--summary` and `--json` options modifying output. Also `--concurrency` define the concurrency limit.
 
-We add new relevant tests cases files when we implemented changes in Lightpanda.
+⚠️ Running the whole test suite will take a long time. In this case, it's useful to build in `releaseFast` mode to make tests faster.
 
-To add a new test, copy the file you want from the WPT repo into the `tests/wpt` directory.
-
-⚠️ Please keep the original directory tree structure of `tests/wpt`.
+```
+zig build -Doptimize=ReleaseFast run
+```
 
 Contributing
 ------------

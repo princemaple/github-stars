@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 35233
+stars: 35438
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -117,11 +117,13 @@ GUI Clients
     -   Furious
     -   Invisible Man - Xray
     -   AnyPortal
+    -   GenyConnect
 -   Android
     -   v2rayNG
     -   X-flutter
     -   SaeedDev94/Xray
     -   SimpleXray
+    -   XrayFA
     -   AnyPortal
     -   NetProxy-Magisk
 -   iOS & macOS arm64 & tvOS
@@ -137,6 +139,7 @@ GUI Clients
     -   GoXRay
     -   AnyPortal
     -   v2rayN
+    -   GenyConnect
 -   Linux
     -   v2rayA
     -   Furious
@@ -144,6 +147,7 @@ GUI Clients
     -   GoXRay
     -   AnyPortal
     -   v2rayN
+    -   GenyConnect
 
 Others that support VLESS, XTLS, REALITY, XUDP, PLUX...
 -------------------------------------------------------

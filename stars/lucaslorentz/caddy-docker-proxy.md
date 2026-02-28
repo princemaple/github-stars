@@ -1,6 +1,6 @@
 ---
 project: caddy-docker-proxy
-stars: 4282
+stars: 4303
 description: Caddy as a reverse proxy for Docker
 url: https://github.com/lucaslorentz/caddy-docker-proxy
 ---
@@ -567,6 +567,7 @@ Those flags can also be set via environment variables:
 ```
 CADDY_DOCKER_CADDYFILE_PATH=<string>
 CADDY_DOCKER_ENVFILE=<string>
+CADDY_ADMIN=<string>
 CADDY_CONTROLLER_NETWORK=<string>
 CADDY_INGRESS_NETWORKS=<string>
 CADDY_DOCKER_SOCKETS=<string>

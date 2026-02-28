@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 14002
+stars: 14118
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern Rest API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -247,7 +247,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **amritk**
 
   
+**bgrcs**
+
+  
 **xC0dex**
+
+  
+**liamdscalar**
 
   
 **antlio**
@@ -277,13 +283,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **inyourtime**
 
   
-**bgrcs**
-
-  
 **gevann**
-
-  
-**liamdscalar**
 
   
 **federicobond**
@@ -313,13 +313,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **RemcoGoy**
 
   
+**mcollina**
+
+  
 **mpminardi**
 
   
 **TheVaan**
-
-  
-**mcollina**
 
   
 **si-net**
@@ -334,13 +334,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **lc-soft**
 
   
+**ATREAY**
+
+  
 **fuma-nama**
 
   
 **Edgaraszs**
 
   
-**ATREAY**
+**Duncanma**
 
   
 **ledgersteve**
@@ -364,13 +367,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **jpjpjp**
 
   
+**soulchild**
+
+  
 **hex0id**
 
   
 **yshrsmz**
-
-  
-**soulchild**
 
   
 **gsmcdonald**
@@ -379,10 +382,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **WDaan**
 
   
-**Duncanma**
+**handrews**
 
   
-**handrews**
+**wilhelmer**
 
   
 **luke-hagar-sp**
@@ -403,7 +406,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **SebastianBienert**
 
   
-**robert-dean**
+**bobheadxi**
 
   
 **rbange**
@@ -445,10 +448,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **smoores-dev**
 
   
-**Huliiiiii**
-
-  
-**ShadiestGoat**
+**soGit**
 
   
 **MarioGK**
@@ -497,6 +497,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **rickihastings**
+
+  
+**robert-dean**
+
+  
+**Huliiiiii**
 
   
 **unnoq**
@@ -577,6 +583,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **TomzBench**
 
   
+**thijskok**
+
+  
 **thibaultleouay**
 
   
@@ -587,12 +596,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **sinh117801**
-
-  
-**soGit**
-
-  
-**abdulamite**
 
   
 **Smyrcu**
@@ -611,6 +614,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **chrislearn**
+
+  
+**jensenbox**
 
   
 **ClanEver**
@@ -640,7 +646,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **diegolopes**
 
   
-**DmitriiKhudiakov**
+**eltociear**
+
+  
+**abdulamite**
 
   
 **MathurAditya724**
@@ -691,9 +700,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **brunogrcsada**
 
   
-**elliotnash**
-
-  
 **tltsutltsu**
 
   
@@ -736,10 +742,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **sanscontext**
 
   
-**wilhelmer**
+**mrlubos**
 
   
-**mrlubos**
+**ShadiestGoat**
+
+  
+**DmitriiKhudiakov**
+
+  
+**elliotnash**
 
   
 **elliott-with-the-longest-name-on-github**
@@ -785,6 +797,3 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **IceyWu**
-
-  
-**eltociear**

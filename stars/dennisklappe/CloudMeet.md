@@ -1,6 +1,6 @@
 ---
 project: CloudMeet
-stars: 392
+stars: 395
 description: Open-source Calendly alternative running on Cloudflare's free tier. Meeting scheduler with Google Calendar and Outlook sync.
 url: https://github.com/dennisklappe/CloudMeet
 ---

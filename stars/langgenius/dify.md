@@ -1,11 +1,9 @@
 ---
 project: dify
-stars: 129943
+stars: 130715
 description: Production-ready platform for agentic workflow development.
 url: https://github.com/langgenius/dify
 ---
-
-📌 Introducing Dify Workflow File Upload: Recreate Google NotebookLM Podcast
 
 Dify Cloud · Self-hosting · Documentation · Dify edition overview
 

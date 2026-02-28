@@ -1,6 +1,6 @@
 ---
 project: pytorch
-stars: 97658
+stars: 97829
 description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
 url: https://github.com/pytorch/pytorch
 ---
@@ -153,7 +153,7 @@ They require JetPack 4.2 and above, and @dusty-nv and @ptrblck are maintaining t
 If you are installing from source, you will need:
 
 -   Python 3.10 or later
--   A compiler that fully supports C++17, such as clang or gcc (gcc 9.4.0 or newer is required, on Linux)
+-   A compiler that fully supports C++20, such as clang or gcc (gcc 11.3.0 or newer is required, on Linux)
 -   Visual Studio or Visual Studio Build Tool (Windows only)
 -   At least 10 GB of free disk space
 -   30-60 minutes for the initial build (subsequent rebuilds are much faster)

@@ -1,6 +1,6 @@
 ---
 project: barcode-detector
-stars: 192
+stars: 197
 description: A Barcode Detection API ponyfill/polyfill that uses ZXing-C++ WebAssembly under the hood.
 url: https://github.com/Sec-ant/barcode-detector
 ---
@@ -22,35 +22,69 @@ Special Barcode Formats
 
 `aztec`
 
-   `linear_codes`1
+`other_barcode`
 
 `code_39`
 
+`aztec_code`
+
+`linear_codes`1
+
+`code_39_standard`
+
+`aztec_rune`
+
+`matrix_codes`2
+
+`code_39_extended`
+
 `data_matrix`
 
-   `matrix_codes`2
+`gs1_codes`3
 
-`code_93`
+`code_32`
 
-   `maxi_code`3
+`maxi_code`4
 
-   `any`4
+`retail_codes`5
 
-`code_128`
+`pzn`
 
 `pdf417`
 
-`databar`
+`industrial_codes`6
+
+`code_93`
+
+`compact_pdf417`
+
+`any`7
+
+`code_128`
 
 `qr_code`
 
-`databar_limited`
+`databar`
+
+`qr_code_model_1`
+
+`databar_omni`
+
+`qr_code_model_2`
+
+`databar_stacked`
 
 `micro_qr_code`
 
-`databar_expanded`
+`databar_stacked_omni`
 
 `rm_qr_code`
+
+`databar_expanded`
+
+`databar_expanded_stacked`
+
+`databar_limited`
 
 `dx_film_edge`
 
@@ -58,7 +92,13 @@ Special Barcode Formats
 
 `ean_13`
 
+`ean_upc`
+
+`isbn`
+
 `itf`
+
+`itf_14`
 
 `upc_a`
 
@@ -248,6 +288,12 @@ Footnotes
     
 2.  `matrix_codes` is a shorthand for all matrix barcode formats. ↩
     
-3.  Detection support for `MaxiCode` requires a pure monochrome image that contains an unrotated and unskewed symbol, along with a sufficient white border surrounding it. ↩
+3.  `gs1_codes` is a shorthand for all GS1 barcode formats. ↩
     
-4.  `any` is a shorthand for `linear_codes` and `matrix_codes`, i.e., all barcode formats. Note that you don't need to specify `any` in the `formats` option, as not providing the option also indicates detecting all barcode formats. ↩
+4.  Detection support for `MaxiCode` requires a pure monochrome image that contains an unrotated and unskewed symbol, along with a sufficient white border surrounding it. ↩
+    
+5.  `retail_codes` is a shorthand for all retail barcode formats. ↩
+    
+6.  `industrial_codes` is a shorthand for all industrial barcode formats. ↩
+    
+7.  `any` is a shorthand for all barcode formats. Note that you don't need to specify `any` in the `formats` option, as not providing the option also indicates detecting all barcode formats. ↩

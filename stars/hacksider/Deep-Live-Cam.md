@@ -1,6 +1,6 @@
 ---
 project: Deep-Live-Cam
-stars: 79721
+stars: 79884
 description: real time face swap and one-click video deepfake with only a single image
 url: https://github.com/hacksider/Deep-Live-Cam
 ---
@@ -293,23 +293,16 @@ Looking for a CLI mode? Using the -s/--source argument will make the run program
 Press
 -----
 
-**We are always open to criticism and are ready to improve, that's why we didn't cherry-pick anything.**
-
--   _"Deep-Live-Cam goes viral, allowing anyone to become a digital doppelganger"_ - Ars Technica
--   _"Thanks Deep Live Cam, shapeshifters are among us now"_ - Dataconomy
--   _"This free AI tool lets you become anyone during video-calls"_ - NewsBytes
--   _"OK, this viral AI live stream software is truly terrifying"_ - Creative Bloq
--   _"Deepfake AI Tool Lets You Become Anyone in a Video Call With Single Photo"_ - PetaPixel
--   _"Deep-Live-Cam Uses AI to Transform Your Face in Real-Time, Celebrities Included"_ - TechEBlog
--   _"An AI tool that "makes you look like anyone" during a video call is going viral online"_ - Telegrafi
--   _"This Deepfake Tool Turning Images Into Livestreams is Topping the GitHub Charts"_ - Emerge
--   _"New Real-Time Face-Swapping AI Allows Anyone to Mimic Famous Faces"_ - Digital Music News
--   _"This real-time webcam deepfake tool raises alarms about the future of identity theft"_ - DIYPhotography
--   _"That's Crazy, Oh God. That's Fucking Freaky Dude... That's So Wild Dude"_ - SomeOrdinaryGamers
--   _"Alright look look look, now look chat, we can do any face we want to look like chat"_ - IShowSpeed
--   _"They do a pretty good job matching poses, expression and even the lighting"_ - TechLinked (LTT)
--   _"Als Sean Connery an der Redaktionskonferenz teilnahm"_ - Golem.de (German)
--   _"What the F_\*\*! Why do I look like Vinny Jr? I look exactly like Vinny Jr!? No, this shit is crazy! Bro This is F\*\*\* Crazy! "\* - IShowSpeed
+-   **Ars Technica** - _"Deep-Live-Cam goes viral, allowing anyone to become a digital doppelganger"_
+-   **Yahoo!** - _"OK, this viral AI live stream software is truly terrifying"_
+-   **CNN Brasil** - _"AI can clone faces on webcam; understand how it works"_
+-   **Bloomberg Technoz** - _"Get to know Deep Live Cam technology, it can be used as a tool for deception."_
+-   **TrendMicro** - _"AI vs AI: DeepFakes and eKYC"_
+-   **PetaPixel** - _"Deepfake AI Tool Lets You Become Anyone in a Video Call With Single Photo"_
+-   **SomeOrdinaryGamers** - _"That's Crazy, Oh God. That's Fucking Freaky Dude... That's So Wild Dude"_
+-   **IShowSpeed** - _"Alright look look look, now look chat, we can do any face we want to look like chat"_
+-   **TechLinked (Linus Tech Tips)** - _"They do a pretty good job matching poses, expression and even the lighting"_
+-   **IShowSpeed** - _"What the F_\*\*! Why do I look like Vinny Jr? I look exactly like Vinny Jr!? No, this shit is crazy! Bro This is F\*\*\* Crazy!"\*
 
 Credits
 -------

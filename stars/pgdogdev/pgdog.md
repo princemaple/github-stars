@@ -1,6 +1,6 @@
 ---
 project: pgdog
-stars: 4031
+stars: 4093
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
@@ -166,6 +166,42 @@ role = "auto"
 name = "prod"
 host = "10.0.0.2"
 role = "auto"
+
+### Authentication
+
+📘 **Authentication**
+
+PgDog supports two authentication methods:
+
+1.  Password-based
+2.  AWS RDS IAM
+
+#### Password-based authentication
+
+Password-based authentication allows for clients to authenticate to PgDog and for PgDog to authenticate to PostgreSQL. It currently supports the following password hashing algorithms:
+
+-   SCRAM-SHA-256
+-   MD5
+-   Plain
+
+#### RDS IAM backend authentication
+
+PgDog can keep client-to-PgDog authentication unchanged while using AWS RDS IAM tokens for PgDog-to-PostgreSQL authentication on a per-user basis.
+
+**Example**
+
+\[\[users\]\]
+name = "alice"
+database = "pgdog"
+password = "client-password"
+server\_auth = "rds\_iam"
+# Optional; PgDog infers region from \*.region.rds.amazonaws.com(.cn) hostnames when omitted.
+# server\_iam\_region = "us-east-1"
+
+When any user has `server_auth = "rds_iam"`, the following settings must be configured as well:
+
+-   `tls_verify` must **not** be `"disabled"`.
+-   `passthrough_auth` must be `"disabled"`.
 
 ### Sharding
 

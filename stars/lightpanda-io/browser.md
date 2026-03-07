@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 11936
+stars: 12008
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -192,18 +192,6 @@ For **MacOS**, you need cmake and Rust.
 ```
 brew install cmake
 ```
-
-### Install Git submodules
-
-The project uses git submodules for dependencies.
-
-To init or update the submodules in the `vendor/` directory:
-
-```
-make install-submodule
-```
-
-This is an alias for `git submodule init && git submodule update`.
 
 ### Build and run
 

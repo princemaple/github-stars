@@ -1,6 +1,6 @@
 ---
 project: TVAPP
-stars: 13718
+stars: 14025
 description:  收集全网 Android TV电视盒子应用，涵盖影视、直播、K歌、工具、游戏等类型，整理优质APK资源，支持便捷下载与自动更新。提供安全验证、分类索引与兼容性标注，助力用户打造家庭影音娱乐中心！              ✅ TVBox/影视仓等影音壳接口配置源。
 url: https://github.com/youhunwl/TVAPP
 ---
@@ -99,7 +99,7 @@ v3.7.2
 
 FongMi影视
 
-v5.2.1
+v5.2.6
 
 下载
 
@@ -109,7 +109,7 @@ v5.2.1
 
 OK影视
 
-v3.7.2
+v3.7.3
 
 下载
 
@@ -119,7 +119,7 @@ v3.7.2
 
 OK影视Pro
 
-v5.0.3
+v5.0.5
 
 下载
 
@@ -499,7 +499,7 @@ v1.0.18
 
 你的电视
 
-v2.3.7
+v2.3.8
 
 下载
 
@@ -749,7 +749,7 @@ v2.3.9
 
 OK影视内置共存版
 
-v3.7.0
+v3.7.3
 
 下载
 
@@ -962,11 +962,10 @@ TVBox壳本地版内置10万+音乐/MV资源
 单仓：
  http://www.饭太硬.com/tv	# 饭太硬接口
  http://肥猫.com				# 肥猫接口
- http://fty.xxooo.cf/tv			# 神秘哥哥们备用接口
  https://毒盒.com/tv/	# 毒盒
  http://我不是.摸鱼儿.com			# 摸鱼儿接口
- http://ok321.top/tv		# OK影视内部接口
- http://ok321.top/ok		# OK影视公开接口
+ http://ok213.top/tv		# OK影视内部接口
+ http://ok213.top/ok		# OK影视公开接口
  http://tvbox.王二小放牛娃.top		# 王小二放牛娃接口
  https://www.yingm.cc/dm/dm.json  	# 动漫城接口
  http://home.jundie.top:81/top98.json	# 俊佬接口
@@ -977,14 +976,14 @@ TVBox壳本地版内置10万+音乐/MV资源
  https://tv.菜妮丝.top			# 菜妮丝接口
  https://api.hgyx.vip/hgyx.json		# HG接口
  https://dxawi.github.io/0/0.json	# dxawi
- http://www.mitvbox.xyz/小米/DEMO.json		# 小米
+ https://mitvbox.xyz/小米/DEMO.json		# 小米
  http://xhztv.top/xhz		# 小盒子单仓
  http://xhztv.top/4k.json		# 小盒子4K
  https://9877.kstore.space/AnotherD/api.json		# 潇洒接口
  https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json	# 香雅情
  https://bitbucket.org/xduo/duoapi/raw/master/xpg.json		# 小苹果接口
  https://raw.githubusercontent.com/guot55/YGBH/main/vip2.json		# 宝盒VIP
- http://tv.nxog.top/m/111.php?ou=公众号欧歌app&mz=all&jar=all&b=欧歌  # 欧歌
+ https://xn--anna-wn6lw489o.v.nxog.top/m/  # 欧歌
  https://哪吒.live/	# 哪吒
  https://www.252035.xyz/z/FongMi.json	# 真心
  http://www.meowtv.vip/tvbox.json	# 喵影视

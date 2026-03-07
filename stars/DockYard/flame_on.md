@@ -1,6 +1,6 @@
 ---
 project: flame_on
-stars: 249
+stars: 259
 description: Flame Graph LiveView Component and LiveDashboard plugin
 url: https://github.com/DockYard/flame_on
 ---
@@ -22,7 +22,7 @@ Add `:flame_on` to your dependencies:
 
 def deps do
   \[
-    {:flame\_on, "~> 0.7.0"}
+    {:flame\_on, "~> 1.0"}
   \]
 end
 

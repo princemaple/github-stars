@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 93
+stars: 134
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -14,9 +14,9 @@ Run AI coding tasks, monitor progress, switch models, and manage sessions from y
 
 No open ports, no exposed APIs. The bot communicates with your local OpenCode server and the Telegram Bot API only.
 
-Languages: English (`en`), Deutsch (`de`), Español (`es`), Русский (`ru`), 简体中文 (`zh`)
+Platforms: macOS, Windows, Linux
 
-Quick start: `npx @grinev/opencode-telegram-bot`
+Languages: English (`en`), Deutsch (`de`), Español (`es`), Русский (`ru`), 简体中文 (`zh`)
 
 Features
 --------
@@ -26,13 +26,16 @@ Features
 -   **Live status** — pinned message with current project, model, context usage, and changed files list, updated in real time
 -   **Model switching** — pick models from OpenCode favorites and recent history directly in the chat (favorites are shown first)
 -   **Agent modes** — switch between Plan and Build modes on the fly
+-   **Custom Commands** — run OpenCode custom commands (and built-ins like `init`/`review`) from an inline menu with confirmation
 -   **Interactive Q&A** — answer agent questions and approve permissions via inline buttons
 -   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, then forward recognized text to OpenCode
+-   **File attachments** — send images, PDF documents, and any text-based files to OpenCode (code, logs, configs etc.)
 -   **Context control** — compact context when it gets too large, right from the chat
 -   **Input flow control** — when an interactive flow is active, the bot accepts only relevant input to keep context consistent and avoid accidental actions
--   **Configurable reply formatting** — assistant replies use Telegram MarkdownV2 by default, with optional raw mode (`MESSAGE_FORMAT_MODE=markdown|raw`)
 -   **Security** — strict user ID whitelist; no one else can access your bot, even if they find it
 -   **Localization** — UI localization is supported for multiple languages (`BOT_LOCALE`)
+
+Planned features currently in development are listed in Current Task List.
 
 Prerequisites
 -------------
@@ -66,7 +69,9 @@ The fastest way — run directly with `npx`:
 
 npx @grinev/opencode-telegram-bot
 
-On first launch, an interactive wizard will guide you through the configuration — it asks for interface language first, then your bot token, user ID, and OpenCode API URL. After that, you're ready to go. Open your bot in Telegram and start sending tasks.
+> Quick start is for npm usage. You do not need to clone this repository. If you run this command from the source directory (repository root), it may fail with `opencode-telegram: not found`. To run from sources, use the Development section.
+
+On first launch, an interactive wizard will guide you through the configuration — it asks for interface language first, then your bot token, user ID, OpenCode API URL, and optional OpenCode server credentials (username/password). After that, you're ready to go. Open your bot in Telegram and start sending tasks.
 
 #### Alternative: Global Install
 
@@ -94,7 +99,7 @@ Fully supported
 
 Linux
 
-Experimental — should work, but has not been extensively tested. You may need additional steps such as granting execute permissions.
+Fully supported (tested on Ubuntu 24.04 LTS)
 
 Bot Commands
 ------------
@@ -126,6 +131,10 @@ Switch between OpenCode projects
 `/rename`
 
 Rename the current session
+
+`/commands`
+
+Browse and run custom commands
 
 `/opencode_start`
 
@@ -250,7 +259,7 @@ No
 
 `PROJECTS_LIST_LIMIT`
 
-Max projects shown in `/projects`
+Projects per page in `/projects`
 
 No
 
@@ -461,6 +470,11 @@ Contributing
 ------------
 
 Please follow commit and release note conventions in CONTRIBUTING.md.
+
+Community
+---------
+
+Have questions, want to share your experience using the bot, or have an idea for a feature? Join the conversation in GitHub Discussions.
 
 License
 -------

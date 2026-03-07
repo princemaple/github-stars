@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 86737
+stars: 89181
 description: 🔥 The Web Data API for AI - Turn entire websites into LLM-ready markdown or structured data
 url: https://github.com/firecrawl/firecrawl
 ---
@@ -80,17 +80,17 @@ Convert any URL to markdown, HTML, screenshots, or structured JSON
 
 Search the web and get full page content from results
 
-**Agent**
+**Map**
 
-Automated data gathering, just describe what you need
+Discover all URLs on a website instantly
 
 **Crawl**
 
 Scrape all URLs of a website with a single request
 
-**Map**
+**Agent**
 
-Discover all URLs on a website instantly
+Automated data gathering, just describe what you need
 
 * * *
 

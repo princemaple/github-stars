@@ -1,6 +1,6 @@
 ---
 project: data-formulator
-stars: 15088
+stars: 15108
 description: 🪄 Create rich visualizations with AI 
 url: https://github.com/microsoft/data-formulator
 ---
@@ -17,30 +17,25 @@ url: https://github.com/microsoft/data-formulator
 News 🔥🔥🔥
 -----------
 
-\[01-25-2025\] **Data Formulator 0.6** — Real-time insights from live data
+\[03-02-2026\] **Data Formulator 0.7 (alpha)** — More charts, new experience, enterprise-ready
 
--   ⚡ **Connect to live data**: Connect to URLs and databases with automatic refresh intervals. Visualizations update automatically as your data changes to provide you live insights. Demo: track international space station position speed live
--   🎨 **UI Updates**: Unified UI for data loading; direct drag-and-drop fields from the data table to update visualization designs.
-
-\[12-08-2025\] **Data Formulator 0.5.1** — Connect more, visualize more, move faster
-
--   🔌 **Community data loaders**: Google BigQuery, MySQL, Postgres, MongoDB
--   📊 **New chart types**: US Map & Pie Chart (more to be added soon)
--   ✏️ **Editable reports**: Refine generated reports with Chartifact in markdown style. demo
--   ⚡ **Snappier UI**: Noticeably faster interactions across the board
-
-\[11-07-2025\] Data Formulator 0.5: Vibe with your data, in control
-
--   📊 **Load (almost) any data**: load structured data, extract data from screenshots, from messy text blocks, or connect to databases.
--   🤖 **Explore data with AI agents**: Use agent mode for hands-off exploration, or stay in control in interactive mode.
--   ✅ **Verify AI generated results**: interact with charts and inspect data, formulas, explanations, and code.
--   📝 **Create reports to share insights**: choose charts you want to share, and ask agents to create reports grounded in data formulated throughout exploration.
+-   📊 **30 chart types** with a new semantic chart engine (area, streamgraph, candlestick, pie, radar, maps, and more).
+-   💬 **Hybrid chat + data thread** — chat woven into the exploration timeline with lineage, previews, and reasoning.
+-   🤖 **Unified `DataAgent`** replacing four separate agents, plus new recommendation and insight agents.
+-   🏗️ **Workspace / Data Lake** — persistent, identity-based data management with local and Azure Blob backends.
+-   🔒 **Security hardening** — code signing, sandboxed execution, authentication, and rate limiting.
+-   📦 **UV-first build** — reproducible builds via `uv.lock`; `uv sync` + `uv run data_formulator`.
+-   📝 Detailed writeup on the new architecture coming soon — stay tuned!
 
 Previous Updates
 ----------------
 
 Here are milestones that lead to the current design:
 
+-   **v0.6** (Demo): Real-time insights from live data — connect to URLs and databases with automatic refresh
+-   **uv support**: Faster installation with uv — `uvx data_formulator` or `uv pip install data_formulator`
+-   **v0.5.1** (Demo): Community data loaders, US Map & Pie Chart, editable reports, snappier UI
+-   **v0.5**: Vibe with your data, in control — agent mode, data extraction, reports
 -   **v0.2.2** (Demo): Goal-driven exploration with agent recommendations and performance improvements
 -   **v0.2.1.3/4** (Readme | Demo): External data loaders (MySQL, PostgreSQL, MSSQL, Azure Data Explorer, S3, Azure Blob)
 -   **v0.2** (Demos): Large data support with DuckDB integration
@@ -90,7 +85,7 @@ Here are milestones that lead to the current design:
     
     -   Now supports OpenAI, Azure, Ollama, and Anthropic models (and more powered by LiteLLM);
     -   Models with strong code generation and instruction following capabilities are recommended (gpt-4o, claude-3-5-sonnet etc.);
-    -   You can store API keys in `api-keys.env` to avoid typing them every time (see template `api-keys.env.template`).
+    -   You can store API keys in `.env` to avoid typing them every time (copy `.env.template` to `.env` and fill in your keys).
     -   Let us know which models you have good/bad experiences with, and what models you would like to see supported! \[comment here\]
 -   \[11-07-2024\] Minor fun update: data visualization challenges!
     
@@ -116,9 +111,26 @@ Get Started
 
 Play with Data Formulator with one of the following options:
 
--   **Option 1: Install via Python PIP**
+-   **Option 1: Install via uv (recommended)**
     
-    Use Python PIP for an easy setup experience, running locally (recommend: install it in a virtual environment).
+    uv is an extremely fast Python package manager. If you have uv installed, you can run Data Formulator directly without any setup:
+    
+    # Run data formulator directly (no install needed)
+    uvx data\_formulator
+    
+    Or install it in a project/virtual environment:
+    
+    # Install data\_formulator
+    uv pip install data\_formulator
+    
+    # Run data formulator
+    python -m data\_formulator
+    
+    Data Formulator will be automatically opened in the browser at http://localhost:5567.
+    
+-   **Option 2: Install via pip**
+    
+    Use pip for installation (recommend: install it in a virtual environment).
     
     # install data\_formulator
     pip install data\_formulator
@@ -126,15 +138,15 @@ Play with Data Formulator with one of the following options:
     # Run data formulator with this command
     python -m data\_formulator
     
-    Data Formulator will be automatically opened in the browser at http://localhost:5000.
+    Data Formulator will be automatically opened in the browser at http://localhost:5567.
     
     _you can specify the port number (e.g., 8080) by `python -m data_formulator --port 8080` if the default port is occupied._
     
--   **Option 2: Codespaces (5 minutes)**
+-   **Option 3: Codespaces (5 minutes)**
     
     You can also run Data Formulator in Codespaces; we have everything pre-configured. For more details, see CODESPACES.md.
     
--   **Option 3: Working in the developer mode**
+-   **Option 4: Working in the developer mode**
     
     You can build Data Formulator locally if you prefer full control over your development environment and develop your own version on top. For detailed instructions, refer to DEVELOPMENT.md.
     

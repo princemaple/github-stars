@@ -1,6 +1,6 @@
 ---
 project: mind-elixir-core
-stars: 2946
+stars: 2960
 description: ⚗ Mind Elixir is a JavaScript, framework-agnostic mind map core.
 url: https://github.com/SSShooter/mind-elixir-core
 ---
@@ -51,13 +51,7 @@ Use `npx skills add` to install guides to your project:
 
 **Integration Guide**:
 
-npx skills add https://github.com/ssshooter/mind-elixir-core/blob/master/skills/integrate-mind-elixir
-
-**Other Skills**:
-
--   Customize Markdown: `npx skills add https://github.com/ssshooter/mind-elixir-core/blob/master/skills/customize-markdown`
--   Export as Image: `npx skills add https://github.com/ssshooter/mind-elixir-core/blob/master/skills/export-mindmap-image`
--   Streaming Mindmap: `npx skills add https://github.com/ssshooter/mind-elixir-core/blob/master/skills/streaming-mindmap`
+npx skills add ssshooter/mind-elixir-core
 
 Table of Contents
 

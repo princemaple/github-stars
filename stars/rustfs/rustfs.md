@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 22542
+stars: 22897
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -21,6 +21,7 @@ Feature & Status
 -   **High Performance**: Built with Rust to ensure maximum speed and resource efficiency.
 -   **Distributed Architecture**: Scalable and fault-tolerant design suitable for large-scale deployments.
 -   **S3 Compatibility**: Seamless integration with existing S3-compatible applications and tools.
+-   **OpenStack Swift API**: Native support for Swift protocol with Keystone authentication.
 -   **OpenStack Keystone Integration**: Native support for OpenStack Keystone authentication with X-Auth-Token headers.
 -   **Data Lake Support**: Optimized for high-throughput big data and AI workloads.
 -   **Open Source**: Licensed under Apache 2.0, encouraging unrestricted community contributions and commercial usage.
@@ -89,6 +90,14 @@ Status
 **Multi-Tenancy**
 
 ✅ Available
+
+**Swift API**
+
+✅ Available
+
+**Swift Metadata Ops**
+
+🚧 Partial
 
 RustFS vs MinIO Performance
 ---------------------------

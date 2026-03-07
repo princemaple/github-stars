@@ -1,6 +1,6 @@
 ---
 project: chatterbox
-stars: 22916
+stars: 23122
 description: SoTA open-source TTS
 url: https://github.com/resemble-ai/chatterbox
 ---
@@ -8,7 +8,7 @@ url: https://github.com/resemble-ai/chatterbox
 Chatterbox TTS
 ==============
 
-\_Made with ♥️ by
+_Made with ♥️ by_
 
 **Chatterbox** is a family of three state-of-the-art, open-source text-to-speech models by Resemble AI.
 
@@ -131,7 +131,7 @@ ta.save("test-english.wav", wav, model.sr)
 multilingual\_model \= ChatterboxMultilingualTTS.from\_pretrained(device\=device)
 
 french\_text \= "Bonjour, comment ça va? Ceci est le modèle de synthèse vocale multilingue Chatterbox, il prend en charge 23 langues."
-wav\_french \= multilingual\_model.generate(spanish\_text, language\_id\="fr")
+wav\_french \= multilingual\_model.generate(french\_text, language\_id\="fr")
 ta.save("test-french.wav", wav\_french, model.sr)
 
 chinese\_text \= "你好，今天天气真不错，希望你有一个愉快的周末。"

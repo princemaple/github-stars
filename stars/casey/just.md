@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 31720
+stars: 31897
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -151,6 +151,12 @@ Snap
 just
 
 `snap install --edge --classic just`
+
+uv
+
+rust-just
+
+`uv tool install rust-just`
 
 #### BSD
 

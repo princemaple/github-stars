@@ -1,6 +1,6 @@
 ---
 project: jailbreak_llms
-stars: 3572
+stars: 3584
 description: [CCS'24] A dataset consists of 15,140 ChatGPT prompts from Reddit, Discord, websites, and open-source datasets (including 1,405 jailbreak prompts).
 url: https://github.com/verazuo/jailbreak_llms
 ---

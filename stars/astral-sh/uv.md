@@ -1,6 +1,6 @@
 ---
 project: uv
-stars: 80016
+stars: 80439
 description: An extremely fast Python package and project manager, written in Rust.
 url: https://github.com/astral-sh/uv
 ---
@@ -192,9 +192,9 @@ Migrate to uv without changing your existing workflows — and experience a 10-1
 
 Compile requirements into a platform-independent requirements file:
 
-$ uv pip compile docs/requirements.in \\
+$ uv pip compile requirements.in \\
    --universal \\
-   --output-file docs/requirements.txt
+   --output-file requirements.txt
 Resolved 43 packages in 12ms
 
 Create a virtual environment:
@@ -206,7 +206,7 @@ Activate with: source .venv/bin/activate
 
 Install the locked requirements:
 
-$ uv pip sync docs/requirements.txt
+$ uv pip sync requirements.txt
 Resolved 43 packages in 11ms
 Installed 43 packages in 208ms
  + babel==2.15.0

@@ -1,6 +1,6 @@
 ---
 project: biome
-stars: 23871
+stars: 23958
 description: A toolchain for web projects, aimed to provide functionalities to maintain them. Biome offers formatter and linter, usable via CLI and LSP.
 url: https://github.com/biomejs/biome
 ---
@@ -16,7 +16,7 @@ url: https://github.com/biomejs/biome
 
 **Biome is a fast formatter** for _JavaScript_, _TypeScript_, _JSX_, _JSON_, _CSS_ and _GraphQL_ that scores **97% compatibility with _Prettier_**.
 
-**Biome is a performant linter** for _JavaScript_, _TypeScript_, _JSX_, _JSON_, _CSS_, and _GraphQL_ that features **more than 340 rules** from ESLint, typescript-eslint, and other sources. It **outputs detailed and contextualized diagnostics** that help you to improve your code and become a better programmer!
+**Biome is a performant linter** for _JavaScript_, _TypeScript_, _JSX_, _JSON_, _CSS_, and _GraphQL_ that features **more than 450 rules** from ESLint, typescript-eslint, and other sources. It **outputs detailed and contextualized diagnostics** that help you to improve your code and become a better programmer!
 
 **Biome** is designed from the start to be used interactively within an editor. It can format and lint malformed code as you are writing it.
 

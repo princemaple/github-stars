@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3835
+stars: 3839
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -215,12 +215,6 @@ Optional
 
 Exclude specific usernames from the generated `$CONTRIBUTORS` variable. Refer to Exclude Contributors to learn more about this option.
 
-`include-pre-releases`
-
-Optional
-
-Include pre releases as "full" releases when drafting release notes. Default: `false`.
-
 `no-contributors-template`
 
 Optional
@@ -249,7 +243,19 @@ Sort changelog in ascending or descending order. Can be one of: `ascending`, `de
 
 Optional
 
-Mark the draft release as pre-release. Default `false`.
+Whether to draft a prerelease, with changes since another prerelease (if applicable). Default `false`.
+
+`prerelease-identifier`
+
+Optional
+
+A string indicating an identifier (alpha, beta, rc, etc), to increment the prerelease version. This automatically enables `prerelease` if not already set to `true`. Default `''`.
+
+`include-pre-releases`
+
+Optional
+
+When looking for the last published release to scan changes up-to, include pre-releases. Has no effect if using `prerelease: true` (already enabled). Default `false`.
 
 `latest`
 
@@ -280,6 +286,12 @@ Filter previous releases to consider only those with the target matching `commit
 Optional
 
 Restrict pull requests included in the release notes to only the pull requests that modified any of the paths in this array. Supports files and directories. Default: `[]`
+
+`excluded-paths`
+
+Optional
+
+Exclude pull requests from the release notes if they modified any of the paths in this array. Supports files and directories. If used with `include-paths`, the exclusion takes precedence. Default: `[]`
 
 `pull-request-limit`
 
@@ -551,14 +563,51 @@ autolabeler:
     body:
       - '/JIRA-\[0-9\]{1,4}/'
 
-Prerelease increment
---------------------
+Prerelease workflow
+-------------------
 
-When creating prerelease (`prerelease: true`), you can add a prerelease identifier to increment the prerelease version number, with the `prerelease-identifier` option. It accept any string, but it's recommended to use Semantic Versioning prerelease identifiers (alpha, beta, rc, etc).
+Release draft supports working with prereleases. It expects your workflow to be :
 
-Using `prerelease-identifier` automatically enable `include-prereleases`.
+-   A stable release is published, ex: `v3.5.0`
+-   You merge or add meaningful changes your users may want to see, but you are not quite ready for production
+-   You publish a prerelease, ex: `v3.5.0-rc.1`
+-   You merge more changes
+-   You publish another prerelease, ex: `v3.5.0-rc.2`
+-   You decide code is ready for production, you publish `v3.5.1` (or another increment based on your changes)
 
-prerelease-identifier: 'alpha' # will create a prerelease with version number x.x.x-alpha.x
+With release-drafter, you can draft each of these releases and prereleases with the appropriate content using parameter '`prerelease`' and '`prerelease-identifier`' - available as either an input of from the config-file.
+
+jobs:
+  update\_full\_release\_draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v6
+        with:
+          prerelease: false # the default
+          # ... rest of your config
+  update\_prerelease\_draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v6
+        with:
+          prerelease: true
+          prerelease-identifier: 'rc' # Use semver identifiers : alpha, beta, rc, etc
+
+Here, both jobs run in parallel every time you add changes to the configured branch.
+
+-   `update_full_release_draft` will pile-up changes since `v3.5.0` inside a draft for `v3.5.1` (or `v3.6.0` or `v4.0.0`, depending on your config)
+-   `update_prerelease_draft` will pile-up changes since the last prerelease in a prerelease-draft. Changes are :
+    -   if no previous (published) prereleases are found - changes since `v3.5.0` in a draft for `v3.5.0-rc.1` (prerelease-draft)
+    -   or if `v3.5.0-rc.1` exists (published) already - changes since `v3.5.0-rc.1` in a draft for `v3.5.0-rc.2` (prerelease-draft)
+
+Some users like to run `update_prerelease_draft` with `publish: true`, such as prereleases are published immediately without the need for human intervention (or an external automation). Since prereleases are not meant to be stable in the first place, automation may be an acceptable risk for you too.
+
+Important
+
+-   `prerelease-identifier` is not required when `prerelease` is enabled, but your prerelease will be named after / be associated with a tag that is not semver-compliant to actual prereleases.
+-   when specified `prerelease-identifier` enables `prerelease: true`
+
+If you want your stable releases to include changes since the last prerelease instead of the last stable release use `include-pre-releases: true`. This can reduce the number of changes included in the stable release body, but diverges from the standard workflow depicted above.
 
 Projects that don't use Semantic Versioning
 -------------------------------------------
@@ -598,11 +647,15 @@ A boolean indicating whether the release being created or updated should be imme
 
 `prerelease`
 
-A boolean indicating whether the release being created or updated is a prerelease.
+Whether to draft a prerelease, with changes since another prerelease (if applicable). Default `false`.
 
 `prerelease-identifier`
 
-A string indicating an identifier (alpha, beta, rc, etc), to increment the prerelease version. number
+A string indicating an identifier (alpha, beta, rc, etc), to increment the prerelease version. This automatically enables `prerelease` if not already set to `true`. Default `''`.
+
+`include-pre-releases`
+
+When looking for the last published release to scan changes up-to, include pre-releases. Has no effect if using `prerelease: true` (already enabled). Default `false`.
 
 `latest`
 
@@ -719,14 +772,24 @@ Releasing
 
 Run the following command:
 
-git checkout master && git pull && npm version \[major | minor | patch\]
+git checkout master
+git pull
+npm version \[major | minor | patch\] -m "chore: release %s"
+
+Important
+
+You may want the version increment to correspond to the last drafted release. You can use a verison number instead of `major | minor | patch` if needed.
 
 The command does the following:
 
--   Ensures you’re on master and don’t have local, un-commited changes
--   Bumps the version number in package.json based on major, minor or patch
--   Runs the `postversion` npm script in package.json, which:
-    -   Runs test
-    -   Pushes the tag to GitHub, which triggers GitHub Action that does the following:
-        -   Releases NPM
-        -   Publish the Release Draft!
+-   Run tests (`preversion` script)
+-   Bumps the version number in package.json and create corresponding tag
+-   Stage changes for git (`version` script)
+-   Commit and tag
+-   Push & push tag (`postversion` script)
+
+After pushing, the `release.yml` workflow will trigger (`on: push: tag`), and :
+
+-   publish to npmjs
+-   publish the release draft
+-   update major tag (ex: pushing `v6.2.1` bumps `v6` to the same commit)

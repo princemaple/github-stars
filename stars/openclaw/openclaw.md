@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 240274
+stars: 275475
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -10,7 +10,7 @@ url: https://github.com/openclaw/openclaw
 
 **EXFOLIATE! EXFOLIATE!**
 
-**OpenClaw** is a _personal AI assistant_ you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, Microsoft Teams, WebChat), plus extension channels like BlueBubbles, Matrix, Zalo, and Zalo Personal. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
+**OpenClaw** is a _personal AI assistant_ you run on your own devices. It answers you on the channels you already use (WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, BlueBubbles, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WebChat). It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
@@ -23,6 +23,8 @@ Sponsors
 
 OpenAI
 
+Vercel
+
 Blacksmith
 
 Convex
@@ -31,7 +33,7 @@ Convex
 
 -   **OpenAI** (ChatGPT/Codex)
 
-Model note: while any model is supported, I strongly recommend **Anthropic Pro/Max (100/200) + Opus 4.6** for long‑context strength and better prompt‑injection resistance. See Onboarding.
+Model note: while many providers/models are supported, for the best experience and lower prompt-injection risk use the strongest latest-generation model available to you. See Onboarding.
 
 Models (selection + auth)
 -------------------------
@@ -65,7 +67,7 @@ openclaw gateway --port 18789 --verbose
 # Send a message
 openclaw message send --to +1234567890 --message "Hello from OpenClaw"
 
-# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/Microsoft Teams/Matrix/Zalo/Zalo Personal/WebChat)
+# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/IRC/Microsoft Teams/Matrix/Feishu/LINE/Mattermost/Nextcloud Talk/Nostr/Synology Chat/Tlon/Twitch/Zalo/Zalo Personal/WebChat)
 openclaw agent --message "Ship checklist" --thinking high
 
 Upgrading? Updating guide (and run `openclaw doctor`).
@@ -117,9 +119,9 @@ Highlights
 ----------
 
 -   **Local-first Gateway** — single control plane for sessions, channels, tools, and events.
--   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), Microsoft Teams, Matrix, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
+-   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WebChat, macOS, iOS/Android.
 -   **Multi-agent routing** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
--   **Voice Wake + Talk Mode** — always-on speech for macOS/iOS/Android with ElevenLabs.
+-   **Voice Wake + Talk Mode** — wake words on macOS/iOS and continuous voice on Android (ElevenLabs + system TTS fallback).
 -   **Live Canvas** — agent-driven visual workspace with A2UI.
 -   **First-class tools** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
 -   **Companion apps** — macOS menu bar app + iOS/Android nodes.
@@ -141,14 +143,14 @@ Everything we built so far
 
 ### Channels
 
--   Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google Chat (Chat API), Signal (signal-cli), BlueBubbles (iMessage, recommended), iMessage (legacy imsg), Microsoft Teams (extension), Matrix (extension), Zalo (extension), Zalo Personal (extension), WebChat.
+-   Channels: WhatsApp (Baileys), Telegram (grammY), Slack (Bolt), Discord (discord.js), Google Chat (Chat API), Signal (signal-cli), BlueBubbles (iMessage, recommended), iMessage (legacy imsg), IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WebChat.
 -   Group routing: mention gating, reply tags, per-channel chunking and routing. Channel rules: Channels.
 
 ### Apps + nodes
 
 -   macOS app: menu bar control plane, Voice Wake/PTT, Talk Mode overlay, WebChat, debug tools, remote gateway control.
--   iOS node: Canvas, Voice Wake, Talk Mode, camera, screen recording, Bonjour pairing.
--   Android node: Canvas, Talk Mode, camera, screen recording, optional SMS.
+-   iOS node: Canvas, Voice Wake, Talk Mode, camera, screen recording, Bonjour + device pairing.
+-   Android node: Connect tab (setup code/manual), chat sessions, voice tab, Canvas, camera/screen recording, and Android device commands (notifications/location/SMS/photos/contacts/calendar/motion/app update).
 -   macOS node mode: system.run/notify + canvas/camera exposure.
 
 ### Tools + automation
@@ -177,7 +179,7 @@ How it works (short)
 --------------------
 
 ```
-WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / Microsoft Teams / Matrix / Zalo / Zalo Personal / WebChat
+WhatsApp / Telegram / Slack / Discord / Google Chat / Signal / iMessage / BlueBubbles / IRC / Microsoft Teams / Matrix / Feishu / LINE / Mattermost / Nextcloud Talk / Nostr / Synology Chat / Tlon / Twitch / Zalo / Zalo Personal / WebChat
                │
                ▼
 ┌───────────────────────────────┐
@@ -200,7 +202,7 @@ Key subsystems
 -   **Tailscale exposure** — Serve/Funnel for the Gateway dashboard + WS (remote access: Remote).
 -   **Browser control** — openclaw‑managed Chrome/Chromium with CDP control.
 -   **Canvas + A2UI** — agent‑driven visual workspace (A2UI host: Canvas/A2UI).
--   **Voice Wake + Talk Mode** — always‑on speech and continuous conversation.
+-   **Voice Wake + Talk Mode** — wake words on macOS/iOS plus continuous voice on Android.
 -   **Nodes** — Canvas, camera snap/clip, screen record, `location.get`, notifications, plus macOS‑only `system.run`/`system.notify`.
 
 Tailscale access (Gateway dashboard)
@@ -296,7 +298,7 @@ Note: signed builds required for macOS permissions to stick across rebuilds (see
 
 ### iOS node (optional)
 
--   Pairs as a node via the Bridge.
+-   Pairs as a node over the Gateway WebSocket (device pairing).
 -   Voice trigger forwarding + Canvas surface.
 -   Controlled via `openclaw nodes …`.
 
@@ -304,8 +306,8 @@ Runbook: iOS connect.
 
 ### Android node (optional)
 
--   Pairs via the same Bridge + pairing flow as iOS.
--   Exposes Canvas, Camera, and Screen capture commands.
+-   Pairs as a WS node via device pairing (`openclaw devices ...`).
+-   Exposes Connect/Chat/Voice tabs plus Canvas, Camera, Screen capture, and Android device command families.
 -   Runbook: Android connect.
 
 Agent workspace + skills

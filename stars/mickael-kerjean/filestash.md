@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 13680
+stars: 13723
 description: :file_folder: File Management Platform / Universal Data Access Layer (without FUSE)
 url: https://github.com/mickael-kerjean/filestash
 ---
@@ -10,16 +10,16 @@ What is this?
 
 It started as a storage agnostic Dropbox-like file manager that works with every storage protocol: FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more.
 
-It grew into a universal data access platform with virtual filesystem capabilities, APIs, RBAC, Gateways to expose your data over SFTP, S3, and MCP to give LLMs a limited view of your data:
+It grew into what we want to be the world's best file management platform, where everything that's not a fundamental truth of the universe lives in a plugin. Where other platforms are take-it-or-leave-it, ours gives you a rock solid core and a plugin system to handle opinions, so however deep requirements go, the only limit won't be technical but your own creativity.
 
 Key Features
 ============
 
--   A plugin based architecture with a minimal core that can be extended and customized through a rich ecosystem of plugins.
--   An awesome web client to access your data, built in vanilla JS, sleek, speedy, snappy, and infinitely customizable through our dynamic patch plugins.
--   A Workflow engine to enable automation and tons of integrations capabilities
--   Integrations with almost every storage system and authentication provider, with the explicit goal of supporting 100% of storage and auth technologies on the market (including unconventional ones like using WordPress as an IdP).
--   The frontend can open virtually any file format using xdg-open plugins that add renderers and additional buttons for formats not natively supported by browsers, from astronomy to embroidery and everything in between like:
+-   Plugin Driven Architecture: everything that matters is a plugin, browse the ecosystem or build your own. With this approach, you get exactly what you need without any kind of overhead or bloat.
+-   Universal Access: a sleek web client made in vanilla JS that's infinitely customizable via dynamic patch plugins, plus gateways to access your data via SFTP, MCP or S3, integrations via APIs and via web components like this psd viewer
+-   Integrations: our explicit goal is to support 100% of storage and authentication technologies on the market. Beyond your usual options, you can go much further, like a virtual filesystem delegating authentication to your WordPress site and using its roles to drive RBAC authorization.
+-   Workflow Engine: automate anything that happens to your files by chaining actions on events, from simple notifications via Slack or email to full on MFT pipelines and everything in between.
+-   File Apps: use any of the existing apps or build your own, from astronomy to embroidery and everything in between like:
     -   photography: heif, nef, raf, tiff, raw, arw, sr2, srf, nrw, cr2, crw, x3f, pef, rw2, orf, mrw, mdc, mef, mos, dcr, kdc, 3fr, erf and srw
     -   astronomy: fits, xisf
     -   science: with latex, plantuml & pandoc compilers
@@ -33,18 +33,19 @@ Key Features
     -   adobe: psd, ai, xd, dng, postscript, aco, ase, swf
     -   3d: fbx, gltf, obj, stl, step, mesh, ifc, dae
     -   embroidery: dgt, dst, dsb, dsz, edr, exp, 10o, col, hus, inf, jef, ksm, pcm, pcs, pes, sew, shv, sst, tap, u01, vip, vp3 and xxx
+    -   e2e: pgp, gpg
 -   Themes:  
     
--   Splashy AI features for search and smart folders
--   ... and much much more (chromecast support, on demand video transcoding, mounting shared links as network drive, public site, antivirus, versioning, audit, quota, ....)  
+-   AI features for search, smart folders and OCRs.
+-   ... and much much more (versioning, audit, public site, antivirus, quota, chat, chromecast support, on demand video transcoding, mounting shared links as network drive, ....)  
     As a rule of thumb, if your problem involves files, we either already have a plugin for it or can make a plugin for it
 
 Getting Started
 ===============
 
-To install Filestash, head to the Getting started guide.
+To install Filestash, head to the Getting started guide. If you want to leverage plugins, head over to the inventory, or learn about developing your own plugins.
 
-If you want to leverage plugins, head over to the inventory, or learn about developing your own plugins
+If you want guidance and expert help on your file management problem, book a call and let's figure out if Filestash is the right platform for you.
 
 Vision & Philosophy
 ===================
@@ -75,12 +76,10 @@ Support
 =======
 
 -   Commercial Users → support contract
--   For individuals → #filestash on IRC (libera.chat).
-
-Want to help us sprinkle some toppings on our noodle cups?
-
--   Bitcoin: `3LX5KGmSmHDj5EuXrmUvcg77EJxCxmdsgW`
--   Open Collective
+-   For individuals:
+    -   #filestash on IRC (libera.chat)
+    -   Bitcoin: `3LX5KGmSmHDj5EuXrmUvcg77EJxCxmdsgW`
+    -   Open Collective
 
 Credits
 =======

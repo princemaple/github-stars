@@ -1,13 +1,13 @@
 ---
 project: databasus
-stars: 5730
+stars: 5846
 description: Databases backup tool (PostgreSQL, MySQL, MongoDB)
 url: https://github.com/databasus/databasus
 ---
 
 ### Backup tool for PostgreSQL, MySQL and MongoDB
 
-Databasus is a free, open source and self-hosted tool to backup databases (with focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.). Previously known as Postgresus (see migration guide).
+Databasus is a free, open source and self-hosted tool to backup databases (with focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.)
 
   
 
@@ -24,7 +24,7 @@ Features • Installation • Usage • License • Contributing
 
 -   **PostgreSQL**: 12, 13, 14, 15, 16, 17 and 18
 -   **MySQL**: 5.7, 8 and 9
--   **MariaDB**: 10 and 11
+-   **MariaDB**: 10, 11 and 12
 -   **MongoDB**: 4, 5, 6, 7 and 8
 
 ### 🔄 **Scheduled backups**

@@ -1,6 +1,6 @@
 ---
 project: awesome-cto
-stars: 34402
+stars: 34463
 description: A curated and opinionated list of resources for Chief Technology Officers, with the emphasis on startups
 url: https://github.com/kuchin/awesome-cto
 ---
@@ -101,7 +101,6 @@ People Management
 -   The Power of Performance Reviews
 -   Performance reviews are coming up - Gergely Orosz
 -   Principles of Engineering Management
--   Compensation Best Practices
 -   Draw The Owl and Other Company Values You Didn’t Know You Should Have
 -   A MANAGER’S BILL OF RESPONSIBILITIES (AND RIGHTS)
 -   After Being A Manager, Can I Be Happy As A Cog?

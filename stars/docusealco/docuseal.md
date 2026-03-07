@@ -1,6 +1,6 @@
 ---
 project: docuseal
-stars: 11530
+stars: 11561
 description: Open source DocuSign alternative. Create, fill, and sign digital documents ✍️
 url: https://github.com/docusealco/docuseal
 ---
@@ -89,7 +89,7 @@ Book a Meeting
 License
 -------
 
-Distributed under the AGPLv3 License. See LICENSE for more information. Unless otherwise noted, all files © 2023 DocuSeal LLC.
+Distributed under the AGPLv3 License with Section 7(b) Additional Terms. See LICENSE and LICENSE\_ADDITIONAL\_TERMS for more information. Unless otherwise noted, all files © 2023-2026 DocuSeal LLC.
 
 Tools
 -----

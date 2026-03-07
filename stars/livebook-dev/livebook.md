@@ -1,6 +1,6 @@
 ---
 project: livebook
-stars: 5712
+stars: 5724
 description: Automate code & data workflows with interactive Elixir notebooks
 url: https://github.com/livebook-dev/livebook
 ---
@@ -52,7 +52,7 @@ We provide several methods for running Livebook, pick the one that best fits you
 
 -   Download the installer for Mac and Windows from our homepage
     
--   Latest stable builds: Mac (Universal), Windows
+-   Latest stable builds: macOS (arm64), macOS (x64), Windows, Linux (arm64), Linux (x64)
     
 -   Nightly builds: macOS (arm64), macOS (x64), Windows, Linux (arm64), Linux (x64)
     
@@ -144,6 +144,8 @@ The following environment variables can be used to configure Livebook on boot:
 -   `LIVEBOOK_APP_SERVICE_NAME` - sets the application name used by the cloud provider to aid debugging.
     
 -   `LIVEBOOK_APP_SERVICE_URL` - sets the application url to manage this Livebook instance within the cloud provider platform.
+    
+-   `LIVEBOOK_APPS_BANNER` - sets the value to render at the top apps banner.
     
 -   `LIVEBOOK_APPS_PATH` - the directory with app notebooks. When set, the apps are deployed on Livebook startup with the persisted settings. Password-protected notebooks will receive a random password, unless `LIVEBOOK_APPS_PATH_PASSWORD` is set. When deploying using Livebook's Docker image, consider using `LIVEBOOK_APPS_PATH_WARMUP`.
     

@@ -1,6 +1,6 @@
 ---
 project: FreeDomain
-stars: 149892
+stars: 151204
 description: DigitalPlat FreeDomain: Free Domain For Everyone
 url: https://github.com/DigitalPlatDev/FreeDomain
 ---
@@ -15,6 +15,8 @@ With FreeDomain, you’re free to register a unique domain and host it with your
 ### ✔️ Why Free Domains?
 
 At **DigitalPlat FreeDomain**, we’re on a mission to make the web more accessible. We believe that the cost of a domain shouldn’t hold anyone back from creating a website. Our goal is to make the internet an open space where everyone can have their own place online, regardless of budget.
+
+> DigitalPlat FreeDomain is independently designed and maintained by **Edward Hsing**, founder of the DigitalPlat Foundation.
 
 * * *
 

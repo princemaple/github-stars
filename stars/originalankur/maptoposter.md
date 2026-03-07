@@ -1,6 +1,6 @@
 ---
 project: maptoposter
-stars: 11388
+stars: 11699
 description: Transform your favorite cities into beautiful, minimalist designs. MapToPoster lets you create and export visually striking map posters with code.
 url: https://github.com/originalankur/maptoposter
 ---
@@ -614,6 +614,7 @@ except:
 
 \# Then plot before roads:
 if railways is not None and not railways.empty:
+    railways \= railways.to\_crs(g\_proj.graph\["crs"\])
     railways.plot(ax\=ax, color\=THEME\['railway'\], linewidth\=0.5, zorder\=2.5)
 
 **New theme property:**

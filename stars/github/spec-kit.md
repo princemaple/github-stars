@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 72832
+stars: 74823
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -20,6 +20,7 @@ Table of Contents
 -   🤔 What is Spec-Driven Development?
 -   ⚡ Get Started
 -   📽️ Video Overview
+-   🚶 Community Walkthroughs
 -   🤖 Supported AI Agents
 -   🔧 Specify CLI Reference
 -   📚 Core Philosophy
@@ -120,6 +121,18 @@ For detailed step-by-step instructions, see our comprehensive guide.
 
 Want to see Spec Kit in action? Watch our video overview!
 
+🚶 Community Walkthroughs
+-------------------------
+
+See Spec-Driven Development in action across different scenarios with these community-contributed walkthroughs:
+
+-   **Greenfield .NET CLI tool** — Builds a Timezone Utility as a .NET single-binary CLI tool from a blank directory, covering the full spec-kit workflow: constitution, specify, plan, tasks, and multi-pass implement using GitHub Copilot agents.
+    
+-   **Greenfield Spring Boot + React platform** — Builds an LLM performance analytics platform (REST API, graphs, iteration tracking) from scratch using Spring Boot, embedded React, PostgreSQL, and Docker Compose, with a clarify step and a cross-artifact consistency analysis pass included.
+    
+-   **Brownfield ASP.NET CMS extension** — Extends an existing open-source .NET CMS (CarrotCakeCMS-Core) with two new features — cross-platform Docker Compose infrastructure and a token-authenticated headless REST API — demonstrating how spec-kit fits into existing codebases without prior specs or a constitution.
+    
+
 🤖 Supported AI Agents
 ----------------------
 
@@ -133,11 +146,11 @@ Qoder CLI
 
 ✅
 
-Amazon Q Developer CLI
+Kiro CLI
 
-⚠️
+✅
 
-Amazon Q Developer CLI does not support custom arguments for slash commands.
+Use `--ai kiro-cli` (alias: `--ai kiro`)
 
 Amp
 
@@ -232,7 +245,7 @@ Initialize a new Specify project from the latest template
 
 `check`
 
-Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `shai`, `qodercli`)
+Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`)
 
 ### `specify init` Arguments & Options
 
@@ -252,7 +265,7 @@ Name for your new project directory (optional if using `--here`, or use `.` for 
 
 Option
 
-AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `q`, `agy`, `bob`, `qodercli`, or `generic` (requires `--ai-commands-dir`)
+AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `kiro-cli` (`kiro` alias), `agy`, `bob`, `qodercli`, or `generic` (requires `--ai-commands-dir`)
 
 `--ai-commands-dir`
 
@@ -331,6 +344,9 @@ specify init my-project --ai qodercli
 # Initialize with Windsurf support
 specify init my-project --ai windsurf
 
+# Initialize with Kiro CLI support
+specify init my-project --ai kiro-cli
+
 # Initialize with Amp support
 specify init my-project --ai amp
 
@@ -339,6 +355,9 @@ specify init my-project --ai shai
 
 # Initialize with IBM Bob support
 specify init my-project --ai bob
+
+# Initialize with Antigravity support
+specify init my-project --ai agy
 
 # Initialize with an unsupported agent (generic / bring your own agent)
 specify init my-project --ai generic --ai-commands-dir .myagent/commands/
@@ -566,7 +585,7 @@ specify init . --force --ai claude
 # or
 specify init --here --force --ai claude
 
-The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, or Amazon Q Developer CLI installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, or Kiro CLI installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
 
 specify init <project\_name\> --ai claude --ignore-agent-tools
 

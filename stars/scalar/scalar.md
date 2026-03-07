@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 14118
+stars: 14200
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern Rest API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -173,6 +173,10 @@ Scalar API Client
 
 Postman alternative
 
+Agent Scalar
+
+Chat with your API
+
 Scalar Registry
 
 Manage OpenAPI documents
@@ -313,13 +317,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **RemcoGoy**
 
   
-**mcollina**
-
-  
 **mpminardi**
 
   
 **TheVaan**
+
+  
+**mcollina**
 
   
 **si-net**
@@ -334,7 +338,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **lc-soft**
 
   
-**ATREAY**
+**wilhelmer**
 
   
 **fuma-nama**
@@ -343,7 +347,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Edgaraszs**
 
   
-**Duncanma**
+**ATREAY**
 
   
 **ledgersteve**
@@ -367,13 +371,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **jpjpjp**
 
   
-**soulchild**
-
-  
 **hex0id**
 
   
 **yshrsmz**
+
+  
+**soulchild**
+
+  
+**Duncanma**
 
   
 **gsmcdonald**
@@ -385,9 +392,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **handrews**
 
   
-**wilhelmer**
-
-  
 **luke-hagar-sp**
 
   
@@ -397,13 +401,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **mason-at-pieces**
 
   
+**SebastianBienert**
+
+  
 **mouhannad-sh**
 
   
 **PrinceManfred**
 
   
-**SebastianBienert**
+**MarioGK**
 
   
 **bobheadxi**
@@ -451,9 +458,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **soGit**
 
   
-**MarioGK**
-
-  
 **not-my-profile**
 
   
@@ -473,6 +477,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **michielbdejong**
+
+  
+**1571min**
 
   
 **malinbranduse**
@@ -502,103 +509,106 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **robert-dean**
 
   
-**Huliiiiii**
-
-  
-**unnoq**
-
-  
-**tsiwek-piwik**
-
-  
-**dunklesToast**
-
-  
-**stefanprobst**
-
-  
-**omerp-explorium**
-
-  
-**o-az**
-
-  
-**milksense**
-
-  
-**kwaichanz**
-
-  
-**g-airey**
-
-  
-**ga1az**
-
-  
-**FotieMConstant**
-
-  
-**danwithabox**
-
-  
-**WilliamBonvini**
+**sinh117801**
 
   
 **bsdayo**
 
   
-**Chinlinlee**
+**WilliamBonvini**
 
   
-**bingbeann**
+**cobyfrombrooklyn-bot**
 
   
-**zakaria-shahen**
+**danwithabox**
 
   
-**rolldeep-stepmerrily**
+**FotieMConstant**
 
   
-**Wolf-Syndrome**
+**ga1az**
 
   
-**rotciw**
+**g-airey**
 
   
-**WesleySkeen**
+**kwaichanz**
 
   
-**Ma-ve**
+**milksense**
 
   
-**Mai0313**
+**o-az**
 
   
-**Courtcircuits**
+**omerp-explorium**
 
   
-**rektdeckard**
+**stefanprobst**
 
   
-**TomzBench**
+**dunklesToast**
 
   
-**thijskok**
+**tsiwek-piwik**
 
   
-**thibaultleouay**
+**unnoq**
 
   
-**yokeTH**
+**Huliiiiii**
 
   
 **stratosblue**
 
   
-**sinh117801**
+**yokeTH**
 
   
-**Smyrcu**
+**thibaultleouay**
+
+  
+**thijskok**
+
+  
+**TomzBench**
+
+  
+**rektdeckard**
+
+  
+**Courtcircuits**
+
+  
+**Mai0313**
+
+  
+**Ma-ve**
+
+  
+**WesleySkeen**
+
+  
+**rotciw**
+
+  
+**Wolf-Syndrome**
+
+  
+**rolldeep-stepmerrily**
+
+  
+**zakaria-shahen**
+
+  
+**bingbeann**
+
+  
+**Chinlinlee**
+
+  
+**abdulamite**
 
   
 **cactysman**
@@ -646,10 +656,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **diegolopes**
 
   
-**eltociear**
+**DmitriiKhudiakov**
 
   
-**abdulamite**
+**elliotnash**
 
   
 **MathurAditya724**
@@ -700,7 +710,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **brunogrcsada**
 
   
-**tltsutltsu**
+**Smyrcu**
 
   
 **kevinand11**
@@ -736,6 +746,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **KevSlashNull**
 
   
+**kou029w**
+
+  
+**krcm0209**
+
+  
 **kyllian**
 
   
@@ -746,12 +762,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **ShadiestGoat**
-
-  
-**DmitriiKhudiakov**
-
-  
-**elliotnash**
 
   
 **elliott-with-the-longest-name-on-github**
@@ -797,3 +807,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **IceyWu**
+
+  
+**eltociear**
+
+  
+**tltsutltsu**

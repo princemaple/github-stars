@@ -1,6 +1,6 @@
 ---
 project: ente
-stars: 24843
+stars: 25037
 description: 💚 End-to-end encrypted cloud for everything.
 url: https://github.com/ente-io/ente
 ---
@@ -48,8 +48,6 @@ Ente Locker
 Protect your most important documents, credentials, and notes with end-to-end encryption. Share privately with people you trust, and set up access for emergencies. Available for iOS and Android.
 
 Ente Locker is free for up to 100 items. If you're subscribed to Ente Photos, you can store up to 1000 items. Learn more at ente.io/locker.
-
-GitHub releases
 
   
 

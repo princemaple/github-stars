@@ -1,6 +1,6 @@
 ---
 project: isomorphic-git
-stars: 8095
+stars: 8102
 description: A pure JavaScript implementation of git for node and browsers!
 url: https://github.com/isomorphic-git/isomorphic-git
 ---
@@ -89,7 +89,11 @@ const fs \= require('fs')
 const dir \= path.join(process.cwd(), 'test-clone')
 git.clone({ fs, http, dir, url: 'https://github.com/isomorphic-git/lightning-fs' }).then(console.log)
 
-If you're using `isomorphic-git` in the browser, you'll need something that emulates the `fs` API. The easiest to setup and most performant library is LightningFS which is written and maintained by the same author and is part of the `isomorphic-git` suite. If LightningFS doesn't meet your requirements, isomorphic-git should also work with ZenFS and Filer. Instead of `isomorphic-git/http/node` this time import `isomorphic-git/http/web`:
+If you're using `isomorphic-git` in the browser, you'll need something that emulates the `fs` API. The easiest to setup and most performant library is LightningFS which is written and maintained by the same author and is part of the `isomorphic-git` suite.
+
+⚠️ LightningFS may apply file operations out of order, which can lead to repository corruption if the process crashes. You can mitigate this by calling `fs.flush()` after Git operations.
+
+If LightningFS doesn't meet your requirements, isomorphic-git should also work with ZenFS and Filer. Instead of `isomorphic-git/http/node` this time import `isomorphic-git/http/web`:
 
 <script src\="https://unpkg.com/@isomorphic-git/lightning-fs"\></script\>
 <script src\="https://unpkg.com/isomorphic-git"\></script\>

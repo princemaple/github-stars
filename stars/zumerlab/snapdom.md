@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7580
+stars: 7595
 description: SnapDOM: DOM Capture Engine – Fast and Accurate HTML Conversion
 url: https://github.com/zumerlab/snapdom
 ---

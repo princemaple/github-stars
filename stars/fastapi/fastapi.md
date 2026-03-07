@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 95700
+stars: 95984
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -62,13 +62,13 @@ Kevin Glisson, Marc Vilanova, Forest Monsen - **Netflix** (ref)
 
 "_I’m over the moon excited about **FastAPI**. It’s so fun!_"
 
-Brian Okken - **Python Bytes podcast host** (ref)
+Brian Okken - **\[Python Bytes\](https://pythonbytes.fm/episodes/show/123/time-to-right-the-py-wrongs?time\_in\_sec=855) podcast host** (ref)
 
 * * *
 
 "_Honestly, what you've built looks super solid and polished. In many ways, it's what I wanted **Hug** to be - it's really inspiring to see someone build that._"
 
-Timothy Crosley - **Hug creator** (ref)
+Timothy Crosley - **\[Hug\](https://github.com/hugapi/hug) creator** (ref)
 
 * * *
 
@@ -76,7 +76,7 @@ Timothy Crosley - **Hug creator** (ref)
 
 "_We've switched over to **FastAPI** for our **APIs** \[...\] I think you'll like it \[...\]_"
 
-Ines Montani - Matthew Honnibal - **Explosion AI founders - spaCy creators** (ref) - (ref)
+Ines Montani - Matthew Honnibal - **\[Explosion AI\](https://explosion.ai) founders - \[spaCy\](https://spacy.io) creators** (ref) - (ref)
 
 * * *
 
@@ -160,7 +160,7 @@ If you don't know, check the _"In a hurry?"_ section about `async` and `await` i
 
 Run the server with:
 
-$ fastapi dev main.py
+$ fastapi dev
 
  ╭────────── FastAPI CLI - Development mode ───────────╮
  │                                                     │
@@ -181,9 +181,9 @@ INFO:     Started server process \[2248757\]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 
-About the command `fastapi dev main.py`...
+About the command `fastapi dev`...
 
-The command `fastapi dev` reads your `main.py` file, detects the **FastAPI** app in it, and starts a server using Uvicorn.
+The command `fastapi dev` reads your `main.py` file automatically, detects the **FastAPI** app in it, and starts a server using Uvicorn.
 
 By default, `fastapi dev` will start with auto-reload enabled for local development.
 
@@ -368,14 +368,6 @@ For a more complete example including more features, see the Tutorial - User Gui
 You can optionally deploy your FastAPI app to FastAPI Cloud, go and join the waiting list if you haven't. 🚀
 
 If you already have a **FastAPI Cloud** account (we invited you from the waiting list 😉), you can deploy your application with one command.
-
-Before deploying, make sure you are logged in:
-
-$ fastapi login
-
-You are logged in to FastAPI Cloud 🚀
-
-Then deploy your app:
 
 $ fastapi deploy
 

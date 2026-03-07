@@ -1,6 +1,6 @@
 ---
 project: expert
-stars: 1837
+stars: 1871
 description: Official Elixir Language Server Protocol implementation
 url: https://github.com/elixir-lang/expert
 ---

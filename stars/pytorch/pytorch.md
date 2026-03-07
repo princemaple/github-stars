@@ -1,6 +1,6 @@
 ---
 project: pytorch
-stars: 97829
+stars: 98025
 description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
 url: https://github.com/pytorch/pytorch
 ---
@@ -182,7 +182,7 @@ A conda environment is not required. You can also do a PyTorch build in a standa
 If you want to compile with CUDA support, select a supported version of CUDA from our support matrix, then install the following:
 
 -   NVIDIA CUDA
--   NVIDIA cuDNN v8.5 or above
+-   NVIDIA cuDNN v9.0 or above
 -   Compiler compatible with CUDA
 
 Note: You could refer to the cuDNN Support Matrix for cuDNN versions with the various supported CUDA, CUDA driver, and NVIDIA hardware.
@@ -360,7 +360,7 @@ ccmake build  # or cmake-gui build
 
 #### Using pre-built images
 
-You can also pull a pre-built docker image from Docker Hub and run with docker v19.03+
+You can also pull a pre-built docker image from Docker Hub and run with docker v23.0+
 
 docker run --gpus all --rm -ti --ipc=host pytorch/pytorch:latest
 
@@ -368,9 +368,9 @@ Please note that PyTorch uses shared memory to share data between processes, so 
 
 #### Building the image yourself
 
-**NOTE:** Must be built with a Docker version > 18.06
+**NOTE:** Must be built with a Docker version >= 23.0
 
-The `Dockerfile` is supplied to build images with CUDA 11.1 support and cuDNN v8. You can pass `PYTHON_VERSION=x.y` make variable to specify which Python version is to be used by Miniconda, or leave it unset to use the default.
+The Dockerfile is supplied to build images with CUDA 12.1 support and cuDNN v9. You can pass `PYTHON_VERSION=x.y` make variable to specify which Python version is to be used by Miniconda, or leave it unset to use the default, as the Dockerfile uses system Python.
 
 make -f docker.Makefile
 # images are tagged as docker.io/${your\_docker\_username}/pytorch
@@ -430,7 +430,7 @@ You can always find the relevant doc builds by going to the `Checks` tab on your
 
 You can either click through or toggle the accordion to see all of the jobs here, where you can see the docs jobs highlighted:
 
-If you click through, youi'll see the doc jobs at the bottom, like this:
+If you click through, you'll see the doc jobs at the bottom, like this:
 
 #### Building a PDF
 
@@ -470,7 +470,7 @@ Installation instructions and binaries for previous PyTorch versions may be foun
 Getting Started
 ---------------
 
-Three pointers to get you started:
+Pointers to get you started:
 
 -   Tutorials: get you started with understanding and using PyTorch
 -   Examples: easy to understand PyTorch code across all domains

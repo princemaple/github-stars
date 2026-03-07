@@ -1,6 +1,6 @@
 ---
 project: ChatTTS_colab
-stars: 2578
+stars: 2581
 description: 🚀 一键部署（含离线整合包）！基于 ChatTTS ，支持流式输出、音色抽卡、长音频生成和分角色朗读。简单易用，无需复杂安装。
 url: https://github.com/6drf21e/ChatTTS_colab
 ---

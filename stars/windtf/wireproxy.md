@@ -1,8 +1,8 @@
 ---
 project: wireproxy
-stars: 5412
+stars: 5429
 description: Wireguard client that exposes itself as a socks5 proxy
-url: https://github.com/whyvl/wireproxy
+url: https://github.com/windtf/wireproxy
 ---
 
 wireproxy
@@ -75,7 +75,7 @@ make
 Install
 =======
 
-go install github.com/pufferffish/wireproxy/cmd/wireproxy@v1.0.9 # or @latest
+go install github.com/windtf/wireproxy/cmd/wireproxy@v1.0.9 # or @latest
 
 Use with VPN
 ============
@@ -148,6 +148,10 @@ BindAddress = 127.0.0.1:25345
 # Avoid using spaces in the password field
 #Password = ...
 
+# Specifying certificate and key enables HTTPS
+#CertFile = ...
+#KeyFile = ...
+
 Alternatively, if you already have a wireguard config, you can import it in the wireproxy config file like this:
 
 WGConfig = <path to the wireguard config>
@@ -191,6 +195,18 @@ Target = service-two.servicenet:5001
 \[TCPServerTunnel\]
 ListenPort = 5080
 Target = service-three.servicenet:80
+
+\[UDPProxyTunnel\]
+BindAddress = 127.0.0.1:53
+Target = 1.1.1.1:53
+InactivityTimeout = 30 # If its set to 0, it will never timeout
+
+\[Resolve\]
+# Set DNS Resovle Strategy
+# \`ipv4\`: Prioritize A records.
+# \`ipv6\`: Prioritize AAAA records       .
+# \`auto\` (Default): If the WireGuard interface has IPv4 address only, it's equivalent to \`ipv4\`, otherwise it's equivalent to \`ipv6\`.
+ResolveStrategy = auto 
 
 Wireproxy can also allow peers to connect to it:
 

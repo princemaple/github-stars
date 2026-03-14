@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 68013
+stars: 68401
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -842,9 +842,9 @@ Recommend
 
 python
 
-3.9
+3.11
 
-3.10
+\>=3.11
 
 torch
 

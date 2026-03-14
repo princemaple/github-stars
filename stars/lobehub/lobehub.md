@@ -1,6 +1,6 @@
 ---
 project: lobehub
-stars: 73246
+stars: 73653
 description: The ultimate space for work and life — to find, build, and collaborate with agent teammates that grow with you. We are taking agent harness to the next level — enabling multi-agent collaboration, effortless agent team design, and introducing agents as the unit of work interaction.
 url: https://github.com/lobehub/lobehub
 ---
@@ -417,7 +417,7 @@ We provide a Docker image for deploying the LobeHub service on your own private 
 
 1.  create a folder to for storage files
 
-$ mkdir lobe-chat-db && cd lobe-chat-db
+$ mkdir lobehub-db && cd lobehub-db
 
 1.  init the LobeHub infrastructure
 
@@ -535,8 +535,8 @@ You can use GitHub Codespaces for online development:
 
 Or clone it for local development:
 
-$ git clone https://github.com/lobehub/lobe-chat.git
-$ cd lobe-chat
+$ git clone https://github.com/lobehub/lobehub.git
+$ cd lobehub
 $ pnpm install
 $ pnpm dev          # Full-stack (Next.js + Vite SPA)
 $ bun run dev:spa   # SPA frontend only (port 9876)

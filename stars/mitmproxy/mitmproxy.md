@@ -1,6 +1,6 @@
 ---
 project: mitmproxy
-stars: 42558
+stars: 42663
 description: An interactive TLS-capable intercepting HTTP proxy for penetration testers and software developers.
 url: https://github.com/mitmproxy/mitmproxy
 ---

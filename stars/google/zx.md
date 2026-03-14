@@ -1,6 +1,6 @@
 ---
 project: zx
-stars: 45254
+stars: 45279
 description: A tool for writing better scripts
 url: https://github.com/google/zx
 ---
@@ -25,18 +25,6 @@ const name \= 'foo bar'
 await $\`mkdir /tmp/${name}\`
 
 Bash is great, but when it comes to writing more complex scripts, many people prefer a more convenient programming language. JavaScript is a perfect choice, but the Node.js standard library requires additional hassle before using. No compromise, take the best of both. The `zx` package provides useful cross-platform wrappers around `child_process`, escapes arguments and gives sensible defaults.
-
-* * *
-
-### Crow Watch
-
-A computing-focused community.
-
-Join at **crow.watch/join/zx**
-
-Share great links, cool code, and new tools.
-
-* * *
 
 Install
 -------
@@ -66,8 +54,7 @@ Compatibility
 See also
 --------
 
--   srf — a tiny, dependency-free static file server for Node.js
--   fx — a JSON cli tool and terminal JSON viewer
+-   🔥 crow.watch — a computing-focused community, link aggregation and discussion, join.
 
 License
 -------

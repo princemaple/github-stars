@@ -1,6 +1,6 @@
 ---
 project: coolify
-stars: 51459
+stars: 51704
 description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
@@ -67,6 +67,11 @@ coolify.io/sponsorships
 
 Thank you so much!
 
+### Huge Sponsors
+
+-   MVPS - Cheap VPS servers at the highest possible quality
+-   SerpAPI - Google Search API — Scrape Google and other search engines from our fast, easy, and complete API
+
 ### Big Sponsors
 
 -   23M - Your experts for high-availability hosting solutions!
@@ -82,9 +87,10 @@ Thank you so much!
 -   CompAI - Open source compliance automation platform
 -   Convex - Open-source reactive database for web app developers
 -   CubePath - Dedicated Servers & Instant Deploy
--   Dade2 - IT Consulting, Cloud Solutions & System Integration
+-   Darweb - 3D CPQ solutions for ecommerce design
 -   Formbricks - The open source feedback platform
 -   GoldenVM - Premium virtual machine hosting solutions
+-   Greptile - The AI Code Reviewer
 -   Hetzner - Server, cloud, hosting, and data center solutions
 -   Hostinger - Web hosting and VPS solutions
 -   JobsCollider - 30,000+ remote jobs for developers
@@ -102,6 +108,7 @@ Thank you so much!
 -   Tigris - Modern developer data platform
 -   Tolgee - The open source localization platform
 -   Ubicloud - Open source cloud infrastructure platform
+-   VPSDime - Affordable high-performance VPS hosting solutions
 
 ### Small Sponsors
 

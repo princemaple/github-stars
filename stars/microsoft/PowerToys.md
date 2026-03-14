@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 130295
+stars: 130504
 description: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows
 url: https://github.com/microsoft/PowerToys
 ---
@@ -93,19 +93,19 @@ Filename
 
 Per user - x64
 
-PowerToysUserSetup-0.97.1-x64.exe
+PowerToysUserSetup-0.97.2-x64.exe
 
 Per user - ARM64
 
-PowerToysUserSetup-0.97.1-arm64.exe
+PowerToysUserSetup-0.97.2-arm64.exe
 
 Machine wide - x64
 
-PowerToysSetup-0.97.1-x64.exe
+PowerToysSetup-0.97.2-x64.exe
 
 Machine wide - ARM64
 
-PowerToysSetup-0.97.1-arm64.exe
+PowerToysSetup-0.97.2-arm64.exe
 
 **Microsoft Store**  
 You can easily install PowerToys from the Microsoft Store:

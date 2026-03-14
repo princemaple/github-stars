@@ -1,6 +1,6 @@
 ---
 project: css-loader
-stars: 1694
+stars: 1696
 description: This is a library having a collection of different types of CSS loaders, spinners
 url: https://github.com/vineethtrv/css-loader
 ---

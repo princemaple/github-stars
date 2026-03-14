@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 89181
+stars: 93028
 description: 🔥 The Web Data API for AI - Turn entire websites into LLM-ready markdown or structured data
 url: https://github.com/firecrawl/firecrawl
 ---
@@ -63,6 +63,37 @@ Response:
   }
 }
 
+### Install the Firecrawl Skill & CLI
+
+The Firecrawl Skill is an easy way for AI agents such as Claude Code, Antigravity and OpenCode to use Firecrawl through the CLI.
+
+Install and configure the skill for all detected AI coding agents:
+
+npx -y firecrawl-cli@latest init --all --browser
+
+After installing, restart your agent for it to discover the new skill.
+
+You can also install the CLI globally:
+
+npm install -g firecrawl-cli
+
+Authenticate with your API key:
+
+# Interactive login (opens browser)
+firecrawl login --browser
+
+# Or login with API key directly
+firecrawl login --api-key fc-YOUR\_API\_KEY
+
+# Or set via environment variable
+export FIRECRAWL\_API\_KEY=fc-YOUR\_API\_KEY
+
+Try a quick scrape:
+
+firecrawl https://example.com --only-main-content
+
+See the full Skill + CLI documentation for all available commands including search, map, crawl, agent, and browser automation.
+
 * * *
 
 Feature Overview
@@ -79,6 +110,10 @@ Convert any URL to markdown, HTML, screenshots, or structured JSON
 **Search**
 
 Search the web and get full page content from results
+
+**Browse**
+
+Let agents safely interact with the web
 
 **Map**
 
@@ -232,6 +267,71 @@ results \= firecrawl.search(
         "formats": \["markdown", "links"\]
     }
 )
+
+* * *
+
+Browse
+------
+
+Give your agents a secure browser environment. Let them run code safely to gather data and take action on the web.
+
+curl -X POST 'https://api.firecrawl.dev/v2/browser' \\
+  -H 'Authorization: Bearer fc-YOUR\_API\_KEY' \\
+  -H 'Content-Type: application/json'
+
+Response:
+
+{
+  "success": true,
+  "id": "550e8400-e29b-41d4-a716-446655440000",
+  "cdpUrl": "wss://cdp-proxy.firecrawl.dev/cdp/550e8400-e29b-41d4-a716-446655440000",
+  "liveViewUrl": "https://liveview.firecrawl.dev/550e8400-e29b-41d4-a716-446655440000"
+}
+
+### Execute Code in the Browser
+
+Run Playwright code, Python, or bash commands remotely:
+
+import Firecrawl from '@mendable/firecrawl-js';
+
+const firecrawl \= new Firecrawl({ apiKey: "fc-YOUR\_API\_KEY" });
+
+// 1. Launch a session
+const session \= await firecrawl.browser();
+
+// 2. Execute code
+const result \= await firecrawl.browserExecute(session.id, {
+  code: \`
+    await page.goto("https://news.ycombinator.com");
+    const title = await page.title();
+    console.log(title);
+  \`,
+  language: "node",
+});
+console.log(result.result); // "Hacker News"
+
+// 3. Close
+await firecrawl.deleteBrowser(session.id);
+
+### Persistent Sessions
+
+Save and reuse browser state (cookies, localStorage) across sessions:
+
+const session \= await firecrawl.browser({
+  ttl: 600,
+  profile: {
+    name: "my-profile",
+    saveChanges: true,
+  },
+});
+
+### agent-browser (Bash Mode)
+
+Instead of writing Playwright code, agents can send simple bash commands via agent-browser:
+
+firecrawl browser "open https://example.com"
+firecrawl browser "snapshot"
+firecrawl browser "click @e5"
 
 * * *
 
@@ -507,6 +607,54 @@ const results \= await app.search('best web scraping tools 2024', { limit: 10 })
 results.data.web.forEach(result \=> {
     console.log(\`${result.title}: ${result.url}\`);
 });
+
+### Java
+
+Add the dependency (Gradle/Maven):
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.firecrawl:firecrawl-java-sdk:2.0'
+}
+
+import dev.firecrawl.client.FirecrawlClient;
+import dev.firecrawl.model.\*;
+
+FirecrawlClient client = new FirecrawlClient(
+    System.getenv("FIRECRAWL\_API\_KEY"), null, null
+);
+
+// Scrape a single URL
+ScrapeParams scrapeParams = new ScrapeParams();
+scrapeParams.setFormats(new String\[\]{"markdown"});
+FirecrawlDocument doc = client.scrapeURL("https://firecrawl.dev", scrapeParams);
+System.out.println(doc.getMarkdown());
+
+// Use the Agent for autonomous data gathering
+AgentParams agentParams = new AgentParams("Find the founders of Stripe");
+AgentResponse start = client.createAgent(agentParams);
+AgentStatusResponse result = client.getAgentStatus(start.getId());
+System.out.println(result.getData());
+
+// Crawl a website (polls until completion)
+CrawlParams crawlParams = new CrawlParams();
+crawlParams.setLimit(50);
+CrawlStatusResponse job = client.crawlURL("https://docs.firecrawl.dev", crawlParams, null, 10);
+for (FirecrawlDocument page : job.getData()) {
+    System.out.println(page.getMetadata().get("sourceURL"));
+}
+
+// Search the web
+SearchParams searchParams = new SearchParams("best web scraping tools 2024");
+searchParams.setLimit(10);
+SearchResponse results = client.search(searchParams);
+for (SearchResult r : results.getResults()) {
+    System.out.println(r.getTitle() + ": " + r.getUrl());
+}
 
 ### Community SDKs
 

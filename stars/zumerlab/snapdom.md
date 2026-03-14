@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7595
+stars: 7608
 description: SnapDOM: DOM Capture Engine – Fast and Accurate HTML Conversion
 url: https://github.com/zumerlab/snapdom
 ---
@@ -27,16 +27,93 @@ Demo
 
 https://snapdom.dev
 
+Quick Start
+-----------
+
+**Capture any DOM element to PNG in one line:**
+
+import { snapdom } from '@zumer/snapdom';
+
+const img \= await snapdom.toPng(document.querySelector('#card'));
+document.body.appendChild(img);
+
+**Reusable capture** (one clone, multiple exports):
+
+const result \= await snapdom(document.querySelector('#card'));
+await result.toPng();      // → HTMLImageElement
+await result.toSvg();      // → SVG as Image
+await result.download({ format: 'jpg', filename: 'card.jpg' });
+
+* * *
+
+Capture Flow
+------------
+
+SnapDOM transforms your DOM element through these stages:
+
+flowchart LR
+    subgraph Input
+        A\[DOM Element\]
+    end
+    
+    subgraph Capture
+        B\[Clone\] --> C\[Styles & Pseudo\]
+        C --> D\[Images & Backgrounds\]
+        D --> E\[Fonts\]
+        E --> F\[SVG foreignObject\]
+    end
+    
+    subgraph Output
+        F --> G\[data:image/svg+xml\]
+        G --> H\[toPng / toSvg / toBlob / download\]
+    end
+    
+    A --> B
+
+Loading
+
+Stage
+
+What happens
+
+**Clone**
+
+Deep clone with styles, Shadow DOM, iframes. Exclude/filter nodes.
+
+**Styles & Pseudo**
+
+Inline `::before`/`::after` as elements, resolve `counter()`/`counters()`.
+
+**Images & Backgrounds**
+
+Fetch and inline external images/backgrounds as data URLs.
+
+**Fonts**
+
+Embed `@font-face` (optional) and icon fonts.
+
+**SVG**
+
+Wrap clone in `<foreignObject>`, serialize to `data:image/svg+xml`.
+
+**Export**
+
+Convert SVG to PNG/JPG/WebP/Blob or trigger download.
+
+Plugin hooks: `beforeSnap` → `beforeClone` → `afterClone` → `beforeRender` → `afterRender` → `beforeExport` → `afterExport`.
+
 Table of Contents
 -----------------
 
+-   Quick Start
+-   Capture Flow
 -   Installation
     -   NPM / Yarn (stable)
     -   NPM / Yarn (dev builds)
     -   CDN (stable)
     -   CDN (dev builds)
--   Build Outputs & Tree-Shaking
--   Basic usage
+-   Build Outputs
+-   Usage
     -   Reusable capture
     -   One-step shortcuts
 -   API
@@ -112,63 +189,74 @@ yarn add @zumer/snapdom@dev
   import { snapdom } from "https://unpkg.com/@zumer/snapdom@dev/dist/snapdom.mjs";
 </script\>
 
-Build Outputs & Tree-Shaking
-----------------------------
+Build Outputs
+-------------
 
-SnapDOM ships multiple build variants, but using it is simple.
+Variant
 
-### npm usage → ESM modular build (tree-shakeable)
+File
 
-When you import SnapDOM in a project with a bundler:
+Use case
 
-import { snapdom } from '@zumer/snapdom';
+**ESM** (tree-shakeable)
 
-your environment automatically loads:
+`dist/snapdom.mjs`
 
-dist/modules/snapdom.js
+Bundlers (Vite, webpack), `import`
 
-This is the modular ESM build, enabling:
+**IIFE** (global)
 
--   Tree-shaking
-    
--   Code-splitting
-    
--   Lazy loading of exporters (toPng, toJpg, toWebp, etc.)
-    
+`dist/snapdom.js`
 
-You do not need to configure anything; bundlers pick this build automatically.
+Script tag, legacy `require`
 
-### Script tag usage → Global build
+**Bundler (npm):**
+
+import { snapdom } from '@zumer/snapdom';  // → dist/snapdom.mjs
+
+**Script tag (CDN):**
 
 <script src\="https://unpkg.com/@zumer/snapdom/dist/snapdom.js"\></script\>
-<script\>
-  snapdom.toPng(document.body).then(img \=> {
-    document.body.appendChild(img);
-  });
-</script\>
+<script\> snapdom.toPng(document.body).then(img \=> document.body.appendChild(img)); </script\>
 
-This loads the monolithic global build and exposes snapdom on window.
+**Subpath imports** (lighter bundle if you only need one):
 
-Basic usage
------------
+import { preCache } from '@zumer/snapdom/preCache';
+import { plugins } from '@zumer/snapdom/plugins';
+
+Usage
+-----
+
+Pattern
+
+When to use
+
+**Reusable** `snapdom(el)`
+
+One clone → many exports (PNG + JPG + download).
+
+**Shortcuts** `snapdom.toPng(el)`
+
+Single export, less code.
 
 ### Reusable capture
+
+Capture once, export many times (no re-clone):
 
 const el \= document.querySelector('#target');
 const result \= await snapdom(el);
 
 const img \= await result.toPng();
 document.body.appendChild(img);
-
 await result.download({ format: 'jpg', filename: 'my-capture.jpg' });
 
 ### One-step shortcuts
 
-const el \= document.querySelector('#target');
-const png \= await snapdom.toPng(el);
-document.body.appendChild(png);
+Direct export when you need a single format:
 
+const png \= await snapdom.toPng(el);
 const blob \= await snapdom.toBlob(el);
+document.body.appendChild(png);
 
 API
 ---
@@ -688,45 +776,67 @@ const out \= await snapdom(element, {
 
 ### Plugin Lifecycle Hooks
 
+Hooks run in capture order (see Capture Flow):
+
 Hook
+
+Stage
 
 Purpose
 
-`beforeSnap(context)`
+`beforeSnap`
 
-Before any clone/style work. Ideal for adjusting global capture options.
+Start
 
-`beforeClone(context)`
+Adjust options before any work.
 
-Before DOM cloning. Can modify live DOM (use carefully).
+`beforeClone`
 
-`afterClone(context)`
+Pre-clone
 
-After the element subtree has been cloned. Safe to modify styles in the cloned tree.
+Before DOM clone (modify live DOM carefully).
 
-`beforeRender(context)`
+`afterClone`
 
-Right before SVG/dataURL serialization.
+Post-clone
 
-`afterRender(context)`
+Modify cloned tree safely (e.g. inject overlay).
 
-After serialization (you can inspect `context.svgString` or `context.dataURL`).
+`beforeRender`
 
-`beforeExport(context)`
+Pre-serialize
 
-Before each export call (`toPng`, `toSvg`, etc.).
+Right before SVG → data URL.
 
-`afterExport(context, result)`
+`afterRender`
 
-After each export call — can transform the returned result.
+Post-serialize
 
-`afterSnap(context)`
+Inspect `context.svgString` / `context.dataURL`.
 
-Runs **once**, after the **first export** finishes. Perfect for cleanup.
+`beforeExport`
 
-`defineExports(context)`
+Per export
 
-Returns a map of **custom exporters**, e.g. `{ pdf: async (ctx, opts) => Blob }`.
+Before each `toPng`, `toSvg`, etc.
+
+`afterExport`
+
+Per export
+
+Transform returned result.
+
+`afterSnap`
+
+Once
+
+After first export; cleanup.
+
+`defineExports`
+
+Setup
+
+Add custom exporters (e.g. `toPdf`).
 
 > Returned values from `afterExport` are chained to the next plugin (transform pipeline).
 
@@ -1050,33 +1160,29 @@ Have ideas or feature requests? Feel free to share suggestions or feedback in Gi
 Development
 -----------
 
-To contribute or build snapDOM locally:
+**Source layout:**
 
-# Clone the repository
+-   `src/api/` – Public API (`snapdom`, `preCache`)
+-   `src/core/` – Capture pipeline, clone, prepare, plugins
+-   `src/modules/` – Images, fonts, pseudo-elements, backgrounds, SVG
+-   `src/exporters/` – toPng, toSvg, toBlob, etc.
+-   `dist/` – Build output (`snapdom.js`, `snapdom.mjs`, `preCache.mjs`, `plugins.mjs`)
+
+**Build:**
+
 git clone https://github.com/zumerlab/snapdom.git
 cd snapdom
-
-# Switch to dev branch
 git checkout dev
-
-# Install dependencies
 npm install
-
-# Compile the library (ESM, CJS, and minified versions)
 npm run compile
 
-# Install playwright browsers (necessary for running tests)
-npx playwright install
+**Test:**
 
-# Run tests
+npx playwright install   # Required for browser tests
 npm test
-
-# Run Benchmarks
 npm run test:benchmark
 
-The main entry point is in `src/`, and output bundles are generated in the `dist/` folder.
-
-For detailed contribution guidelines, please see CONTRIBUTING.
+For detailed guidelines, see CONTRIBUTING.
 
 Contributors
 ------------

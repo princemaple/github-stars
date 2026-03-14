@@ -1,13 +1,11 @@
 ---
 project: release-drafter
-stars: 3839
+stars: 3849
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
 
-Drafts your next release notes as pull requests are merged into master. Built with Probot.
-
-* * *
+Drafts your next release notes as pull requests are merged into master.
 
 Usage
 -----
@@ -18,52 +16,29 @@ name: Release Drafter
 
 on:
   push:
-    # branches to consider in the event; optional, defaults to all
     branches:
       - main
       - master
 
-  # pull\_request event is required only for autolabeler
-  pull\_request:
-    # Only following types are handled by the action, but one can default to all as well
-    types: \[opened, reopened, synchronize\]
-  # pull\_request\_target event is required for autolabeler to support PRs from forks
-  # pull\_request\_target:
-  #   types: \[opened, reopened, synchronize\]
-
 permissions:
-  contents: read
+  contents: write # allow GITHUB\_TOKEN to update releases
 
 jobs:
   update\_release\_draft:
-    permissions:
-      # write permission is required to create a github release
-      contents: write
-      # write permission is required for autolabeler
-      # otherwise, read permission is required at least
-      pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      # (Optional) GitHub Enterprise requires GHE\_HOST variable set
-      #\- name: Set GHE\_HOST
-      #  run: |
-      #    echo "GHE\_HOST=${GITHUB\_SERVER\_URL##https:\\/\\/}" >> $GITHUB\_ENV
-
-      # Drafts your next Release notes as Pull Requests are merged into "master"
-      - uses: release-drafter/release-drafter@v6
-        # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
-        # with:
-        #   config-name: my-config.yml
-        #   disable-autolabeler: true
-        env:
-          GITHUB\_TOKEN: ${{ secrets.GITHUB\_TOKEN }}
-
-If you're unable to use GitHub Actions, you can use the Release Drafter GitHub App. Please refer to the Release Drafter GitHub App documentation for more information.
+      - uses: release-drafter/release-drafter@v7
+        with:
+          config-name: release-drafter.yml # the default, loads '.github/release-drafter.yml'
 
 Configuration
 -------------
 
-Once you’ve added Release Drafter to your repository, it must be enabled by adding a `.github/release-drafter.yml` configuration file to each repository. The configuration file **must** reside in your default branch, no other configurations will be accepted.
+The action requires a configuration file. Default location is `.github/release-drafter.yml`, and will be fetched using octokit behind the scenes. You do not need to checkout your repository beforehand.
+
+Note
+
+For advanced scenarios, please read dedicated Configuration Loading article. (ex: dynamic config, extending other files, fetch from another repo, etc...)
 
 ### Example
 
@@ -165,7 +140,7 @@ A known prefix used to filter release tags. For matching tags, this prefix is st
 
 Optional
 
-The template to use when calculating the next version number for the release. Useful for projects that don't use semantic versioning. Default: `"$MAJOR.$MINOR.$PATCH"`
+The template to use when calculating the next version number for the release. Useful for projects that don't use semantic versioning. Default: `"$MAJOR.$MINOR.$PATCH$PRERELEASE"`
 
 `change-template`
 
@@ -275,6 +250,12 @@ Optional
 
 The release target, i.e. branch or commit it should point to. Default: the ref that release-drafter runs for, e.g. `refs/heads/master` if configured to run on pushes to `master`.
 
+`filter-by-range`
+
+Optional
+
+Filter releases that satisfies a semver range. Evaluates the tag name againts node's `semver.satisfies()`. Default : `"*"`.
+
 `filter-by-commitish`
 
 Optional
@@ -287,11 +268,11 @@ Optional
 
 Restrict pull requests included in the release notes to only the pull requests that modified any of the paths in this array. Supports files and directories. Default: `[]`
 
-`excluded-paths`
+`exclude-paths`
 
 Optional
 
-Exclude pull requests from the release notes if they modified any of the paths in this array. Supports files and directories. If used with `include-paths`, the exclusion takes precedence. Default: `[]`
+Exclude pull requests from the release notes if they modified any of the paths in this array. Supports files and directories. If used with `include-paths`, exclusion takes precedence. Default: `[]`
 
 `pull-request-limit`
 
@@ -310,8 +291,6 @@ Size of the pagination window when walking the repo. Can avoid erratic 502s from
 Optional
 
 When drafting your first release, limit the amount of scanned commits. Expects an ISO 8601 date, ex: `"2025-06-18T10:29:51Z"`. Default: `""` (unlimited)
-
-Release Drafter also supports Probot Config, if you want to store your configuration files in a central repository. This allows you to share configurations between projects, and create a organization-wide configuration file by creating a repository named `.github` with the file `.github/release-drafter.yml`.
 
 Template Variables
 ------------------
@@ -376,14 +355,66 @@ The next minor version number. For example, if the last tag or release was `v1.2
 
 The next major version number. For example, if the last tag or release was `v1.2.3`, the value would be `v2.0.0`.
 
+`$NEXT_PRERELEASE_VERSION`
+
+The next prerelease suffix. Depends on `prerelease-identifier`. Ex: `v1.2.3-beta.3`. Default : `''`
+
 `$RESOLVED_VERSION`
 
 The next resolved version number, based on GitHub labels. Refer to Version Resolver to learn more about this.
 
+### Next Version Component Helpers
+
+For each of the `$NEXT_{MAJOR,MINOR,PATCH}_VERSION` variables, additional component helper variables are available that extract individual version components:
+
+Variable
+
+Description
+
+`$NEXT_MAJOR_VERSION_MAJOR`
+
+Major component of `$NEXT_MAJOR_VERSION`.
+
+`$NEXT_MAJOR_VERSION_MINOR`
+
+Minor component of `$NEXT_MAJOR_VERSION`.
+
+`$NEXT_MAJOR_VERSION_PATCH`
+
+Patch component of `$NEXT_MAJOR_VERSION`.
+
+`$NEXT_MINOR_VERSION_MAJOR`
+
+Major component of `$NEXT_MINOR_VERSION`.
+
+`$NEXT_MINOR_VERSION_MINOR`
+
+Minor component of `$NEXT_MINOR_VERSION`.
+
+`$NEXT_MINOR_VERSION_PATCH`
+
+Patch component of `$NEXT_MINOR_VERSION`.
+
+`$NEXT_PATCH_VERSION_MAJOR`
+
+Major component of `$NEXT_PATCH_VERSION`.
+
+`$NEXT_PATCH_VERSION_MINOR`
+
+Minor component of `$NEXT_PATCH_VERSION`.
+
+`$NEXT_PATCH_VERSION_PATCH`
+
+Patch component of `$NEXT_PATCH_VERSION`.
+
+`$NEXT_PRERELEASE_VERSION_PRERELEASE`
+
+Prerelease segment of `$NEXT_PRERELEASE_VERSION`. Ex : `'-beta.3'`
+
 Version Template Variables
 --------------------------
 
-You can use any of the following variables in `version-template` to format the `$NEXT_{PATCH,MINOR,MAJOR}_VERSION` variables:
+You can use any of the following variables in `version-template` to format the Next Version Variables:
 
 Variable
 
@@ -401,9 +432,21 @@ The minor version number.
 
 The major version number.
 
-`$COMPLETE`
+`$PRERELEASE`
 
-The complete version string (including any prerelease info).
+The prerelease suffix (for example `-rc.0`) or an empty string.
+
+You may want to use this when producing non semver output.
+
+version-template: 'ver $MAJOR'
+
+Important
+
+If you want the next release-drafter run to parse your version, stick to versions parseable by semver.coerce() (we enbale `loose` mode)
+
+semver.coerce('ver 1', true) // { version: '1.0.0' }
+
+If you simply want a verbose title for your releases, use the `name-template` config, and leave versions strictly semver-compliant.
 
 Version Resolver
 ----------------
@@ -492,7 +535,7 @@ categories:
 
 Pull requests with the label "feature" or "fix" will now be grouped together:
 
-Adding such labels to your PRs can be automated by using the embedded Autolabeler functionality (see below), PR Labeler or Probot Auto Labeler.
+Adding such labels to your PRs can be automated by using the embedded Autolabeler action.
 
 Optionally you can add a `collapse-after` entry to your category item, if the category has more than the defined `collapse-after` pull requests then it will show all pull requests collapsed for that category. Append the `collapse-after` integer to your category as following:
 
@@ -540,12 +583,23 @@ replacers:
     replace: 'https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-$1-$2'
   - search: 'myname'
     replace: 'My Name'
+  - search: '/- (\[a-z\])/g'
+    replace: '\- \\u$1' # Uppercase the first letter of each changelog entry
+
+`search` will be parsed to a RegExp, and `replace` supports substitution in the same flavour VSCode does.
 
 Autolabeler
 -----------
 
-You can add automatically a label into a pull request, with the `autolabeler` option. Available matchers are `files` (glob), `branch` (regex), `title` (regex) and `body` (regex). Matchers are evaluated independently; the label will be set if at least one of the matchers meets the criteria.
+You can add automatically a label into a pull request, with the `autolabeler` action.
 
+steps:
+  # runs autolabeler
+  - uses: release-drafter/release-drafter/autolabeler@latest
+
+Available matchers are `files` (glob), `branch` (regex), `title` (regex) and `body` (regex). Matchers are evaluated independently; the label will be set if at least one of the matchers meets the criteria.
+
+# .github/release-drafter.yml
 autolabeler:
   - label: 'chore'
     files:
@@ -562,6 +616,8 @@ autolabeler:
       - '/feature\\/.+/'
     body:
       - '/JIRA-\[0-9\]{1,4}/'
+
+# ... rest of release-drafter config
 
 Prerelease workflow
 -------------------
@@ -604,10 +660,10 @@ Some users like to run `update_prerelease_draft` with `publish: true`, such as p
 
 Important
 
--   `prerelease-identifier` is not required when `prerelease` is enabled, but your prerelease will be named after / be associated with a tag that is not semver-compliant to actual prereleases.
--   when specified `prerelease-identifier` enables `prerelease: true`
+-   `prerelease-identifier` is not required when `prerelease` is enabled, but your prerelease may not be named after / be associated with a tag that is semver-compliant to an actual prerelease.
+-   when specified, `prerelease-identifier` enables `prerelease: true`
 
-If you want your stable releases to include changes since the last prerelease instead of the last stable release use `include-pre-releases: true`. This can reduce the number of changes included in the stable release body, but diverges from the standard workflow depicted above.
+If you want your stable releases to include changes since the last prerelease instead of the last stable release, use `include-pre-releases: true`. This can reduce the number of changes included in the stable release body, but diverges from the standard workflow depicted above.
 
 Projects that don't use Semantic Versioning
 -------------------------------------------
@@ -629,6 +685,14 @@ Description
 
 If your workflow requires multiple release-drafter configs it be helpful to override the config-name. The config should still be located inside `.github` as that's where we are looking for config files.
 
+`token`
+
+Access token used to make requests against the GitHub API. Defaults to `${{ github.token }}`
+
+`dry-run`
+
+When enabled, no write operations (creating/updating releases or adding labels) are performed. Instead, the action logs what it would have done. Default : `false`
+
 `name`
 
 The name that will be used in the GitHub release that's created or updated. This will override any `name-template` specified in your `release-drafter.yml` if defined.
@@ -636,6 +700,10 @@ The name that will be used in the GitHub release that's created or updated. This
 `tag`
 
 The tag name to be associated with the GitHub release that's created or updated. This will override any `tag-template` specified in your `release-drafter.yml` if defined.
+
+`filter-by-range`
+
+Filter releases that satisfies a semver range. Evaluates the tag name againts node's `semver.satisfies()`.
 
 `version`
 
@@ -676,14 +744,6 @@ A string that would be added after the template body.
 `initial-commits-since`
 
 When drafting your first release, limit the amount of scanned commits. Expects an ISO 8601 date, ex: `"2025-06-18T10:29:51Z"`. Default: `""` (unlimited)
-
-`disable-releaser`
-
-A boolean indicating whether the releaser mode is disabled.
-
-`disable-autolabeler`
-
-A boolean indicating whether the autolabeler mode is disabled.
 
 Action Outputs
 --------------
@@ -734,62 +794,13 @@ Minor part of resolved version by Version Resolver. i.e. `3` for version `6.3.1`
 
 Patch part of resolved version by Version Resolver. i.e. `1` for version `6.3.1`
 
-Developing
-----------
-
-If you have Node v10+ installed locally, you can run the tests, and a local app, using the following commands:
-
-# Install dependencies
-npm install
-
-# Run the tests
-npm run test
-
-# Run the app locally
-npm run test:watch
-
-Once you've started the app, visit `localhost:3000` and you'll get step-by-step instructions for installing it in your GitHub account so you can start pushing commits and testing it locally.
-
-If you don’t have Node installed, you can use Docker Compose:
-
-# Run the tests
-docker compose run --rm app
-
 Contributing
 ------------
 
 Third-party contributions are welcome! 🙏🏼 See CONTRIBUTING.md for step-by-step instructions.
 
-If you need help or have a question, let me know via a GitHub issue.
-
-Deployment
-----------
-
-If you want to deploy your own copy of Release Drafter, follow the Probot Deployment Guide.
-
-Releasing
----------
-
-Run the following command:
-
-git checkout master
-git pull
-npm version \[major | minor | patch\] -m "chore: release %s"
-
 Important
 
-You may want the version increment to correspond to the last drafted release. You can use a verison number instead of `major | minor | patch` if needed.
+Before pushing, run `npm run all` to format, lint, type-check, test, and regenerate all build artifacts. The CI pipeline enforces that no uncommitted changes remain after these steps.
 
-The command does the following:
-
--   Run tests (`preversion` script)
--   Bumps the version number in package.json and create corresponding tag
--   Stage changes for git (`version` script)
--   Commit and tag
--   Push & push tag (`postversion` script)
-
-After pushing, the `release.yml` workflow will trigger (`on: push: tag`), and :
-
--   publish to npmjs
--   publish the release draft
--   update major tag (ex: pushing `v6.2.1` bumps `v6` to the same commit)
+If you need help or have a question, let us know via a GitHub issue.

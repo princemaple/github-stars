@@ -1,6 +1,6 @@
 ---
 project: tinyauth
-stars: 7071
+stars: 7109
 description: The tiniest authentication and authorization server you have ever seen.
 url: https://github.com/steveiliop56/tinyauth
 ---
@@ -8,11 +8,11 @@ url: https://github.com/steveiliop56/tinyauth
 Tinyauth
 ========
 
-The simplest way to protect your apps with a login screen.
+The tiniest authentication and authorization server you have ever seen.
 
   
 
-Tinyauth is a simple authentication middleware that adds a simple login screen or OAuth with Google, Github or any other provider to all of your apps. It supports all the popular proxies like Traefik, Nginx and Caddy.
+Tinyauth is the simplest and tiniest authentication and authorization server you have ever seen. It is designed to both work as an authentication middleware for your apps, offering support for OAuth, LDAP and access-controls, and as a standalone authentication server. It supports all the popular proxies like Traefik, Nginx and Caddy.
 
 Warning
 
@@ -25,7 +25,7 @@ This is the main development branch. For the latest stable release, see the docu
 Getting Started
 ---------------
 
-You can easily get started with Tinyauth by following the guide in the documentation. There is also an available docker compose file that has Traefik, Whoami and Tinyauth to demonstrate its capabilities.
+You can get started with Tinyauth by following the guide in the documentation. There is also an available docker-compose file that has Traefik, Whoami and Tinyauth to demonstrate its capabilities (keep in mind that this file lives in the development branch so it may have updates that are not yet released).
 
 Demo
 ----
@@ -42,17 +42,17 @@ If you wish to contribute to the documentation head over to the repository.
 Discord
 -------
 
-Tinyauth has a discord server. Feel free to hop in to chat about self-hosting, homelabs and of course Tinyauth. See you there!
+Tinyauth has a Discord server. Feel free to hop in to chat about self-hosting, homelabs and of course Tinyauth. See you there!
 
 Contributing
 ------------
 
-All contributions to the codebase are welcome! If you have any free time feel free to pick up an issue or add your own missing features. Make sure to check out the contributing guide for instructions on how to get the development server up and running.
+All contributions to the codebase are welcome! If you have any free time, feel free to pick up an issue or add your own missing features. Make sure to check out the contributing guide for instructions on how to get the development server up and running.
 
 Localization
 ------------
 
-If you would like to help translate Tinyauth into more languages, visit the Crowdin page.
+If you like, you can help translate Tinyauth into more languages by visiting the Crowdin page.
 
 License
 -------

@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 672
+stars: 726
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -19,6 +19,8 @@ Overview
 --------
 
 **RClone Manager** is a **modern, cross-platform GUI** that makes managing Rclone remotes effortless. Whether you're syncing files across cloud storage providers, mounting remote drives, or performing complex file operations, RClone Manager provides an intuitive interface that simplifies even the most advanced Rclone features.
+
+It also features a **built-in file manager (Nautilus)** that allows you to elegantly browse your remote files. You can display and edit files, move, delete, copy, and rename files and folders, as well as create new folders. The integrated file viewer lets you preview videos, images, PDFs, sound files, and text documents easily. It supports nearly all file operations, complete with right-click context menus and detailed properties modals!
 
 > Big `RC` comes from `Rclone RC`.
 
@@ -45,6 +47,10 @@ Job Watcher
 Serve Control
 
 Dark Mode
+
+Nautilus File Manager
+
+File Viewer
 
 * * *
 

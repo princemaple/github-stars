@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 74823
+stars: 76788
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -73,7 +73,13 @@ uv tool install specify-cli --force --from git+https://github.com/github/spec-ki
 
 Run directly without installing:
 
+# Create new project
 uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT\_NAME\>
+
+# Or initialize in existing project
+uvx --from git+https://github.com/github/spec-kit.git specify init . --ai claude
+# or
+uvx --from git+https://github.com/github/spec-kit.git specify init --here --ai claude
 
 **Benefits of persistent installation:**
 
@@ -130,7 +136,9 @@ See Spec-Driven Development in action across different scenarios with these comm
     
 -   **Greenfield Spring Boot + React platform** — Builds an LLM performance analytics platform (REST API, graphs, iteration tracking) from scratch using Spring Boot, embedded React, PostgreSQL, and Docker Compose, with a clarify step and a cross-artifact consistency analysis pass included.
     
--   **Brownfield ASP.NET CMS extension** — Extends an existing open-source .NET CMS (CarrotCakeCMS-Core) with two new features — cross-platform Docker Compose infrastructure and a token-authenticated headless REST API — demonstrating how spec-kit fits into existing codebases without prior specs or a constitution.
+-   **Brownfield ASP.NET CMS extension** — Extends an existing open-source .NET CMS (CarrotCakeCMS-Core, ~307,000 lines of C#, Razor, SQL, JavaScript, and config files) with two new features — cross-platform Docker Compose infrastructure and a token-authenticated headless REST API — demonstrating how spec-kit fits into existing codebases without prior specs or a constitution.
+    
+-   **Brownfield Java runtime extension** — Extends an existing open-source Jakarta EE runtime (Piranha, ~420,000 lines of Java, XML, JSP, HTML, and config files across 180 Maven modules) with a password-protected Server Admin Console, demonstrating spec-kit on a large multi-module Java project with no prior specs or constitution.
     
 
 🤖 Supported AI Agents
@@ -214,6 +222,18 @@ SHAI (OVHcloud)
 
 ✅
 
+Tabnine CLI
+
+✅
+
+Mistral Vibe
+
+✅
+
+Kimi Code
+
+✅
+
 Windsurf
 
 ✅
@@ -221,6 +241,8 @@ Windsurf
 Antigravity (agy)
 
 ✅
+
+Requires `--ai-skills`
 
 Generic
 
@@ -245,7 +267,7 @@ Initialize a new Specify project from the latest template
 
 `check`
 
-Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`)
+Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`, `vibe`, `kimi`)
 
 ### `specify init` Arguments & Options
 
@@ -265,7 +287,7 @@ Name for your new project directory (optional if using `--here`, or use `.` for 
 
 Option
 
-AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `kiro-cli` (`kiro` alias), `agy`, `bob`, `qodercli`, or `generic` (requires `--ai-commands-dir`)
+AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `kiro-cli` (`kiro` alias), `agy`, `bob`, `qodercli`, `vibe`, `kimi`, or `generic` (requires `--ai-commands-dir`)
 
 `--ai-commands-dir`
 
@@ -353,11 +375,14 @@ specify init my-project --ai amp
 # Initialize with SHAI support
 specify init my-project --ai shai
 
+# Initialize with Mistral Vibe support
+specify init my-project --ai vibe
+
 # Initialize with IBM Bob support
 specify init my-project --ai bob
 
 # Initialize with Antigravity support
-specify init my-project --ai agy
+specify init my-project --ai agy --ai-skills
 
 # Initialize with an unsupported agent (generic / bring your own agent)
 specify init my-project --ai generic --ai-commands-dir .myagent/commands/
@@ -585,7 +610,7 @@ specify init . --force --ai claude
 # or
 specify init --here --force --ai claude
 
-The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, or Kiro CLI installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, or Mistral Vibe installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
 
 specify init <project\_name\> --ai claude --ignore-agent-tools
 

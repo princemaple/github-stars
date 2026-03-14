@@ -1,6 +1,6 @@
 ---
 project: ohm
-stars: 5479
+stars: 5483
 description: A library and language for building parsers, interpreters, compilers, etc.
 url: https://github.com/ohmjs/ohm
 ---
@@ -41,6 +41,14 @@ The easiest way to get started with Ohm is to use the interactive editor. Altern
 -   Documentation
 -   For community support and discussion, join us on Discord, GitHub Discussions, or the ohm-discuss mailing list.
 -   For updates, follow on Bluesky or Mastodon.
+
+### Docker
+
+You can use the Ohm CLI without a local Node.js installation via the Docker image:
+
+docker run --rm -v $(pwd):/local ohmjs/ohm:latest compile my-grammar.ohm
+
+For full usage instructions, including how to build the image locally and set up a development container, see doc/docker.md.
 
 ### Installation
 

@@ -1,6 +1,6 @@
 ---
 project: stable-diffusion-webui
-stars: 161548
+stars: 161712
 description: Stable Diffusion web UI
 url: https://github.com/AUTOMATIC1111/stable-diffusion-webui
 ---

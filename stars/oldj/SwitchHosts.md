@@ -1,6 +1,6 @@
 ---
 project: SwitchHosts
-stars: 26327
+stars: 26345
 description: Switch hosts quickly!
 url: https://github.com/oldj/SwitchHosts
 ---
@@ -22,7 +22,7 @@ SwitchHosts
 
 Homepage: https://switchhosts.vercel.app
 
-SwitchHosts is an App for managing hosts file, it is based on Electron , React, Jotai , Chakra UI, CodeMirror, etc.
+SwitchHosts is an App for managing hosts file, it is based on Electron, React, Jotai, Mantine, etc.
 
 Screenshot
 ----------

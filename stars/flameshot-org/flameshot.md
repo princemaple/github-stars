@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 29446
+stars: 29494
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---
@@ -272,9 +272,9 @@ Shift + drag a handler of the selection area: mirror redimension in the opposite
 
 ### Global
 
-Flameshot uses Print screen (Windows) and cmd\-shift\-x (macOS) as default global hotkeys.
-
-On Linux, Flameshot doesn't yet support Prt Sc out of the box, but with a bit of configuration you can set this up:
+-   Windows: Prt Sc (fixed, cannot be changed) and Win + Shift + X (can be changed in the settings)
+-   macOS: cmd + Shift + X (can be changed in the settings)
+-   Linux: Flameshot doesn't yet support Prt Sc out of the box, but you can set this up with a bit of configuration:
 
 #### On KDE Plasma desktop
 

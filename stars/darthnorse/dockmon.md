@@ -27,6 +27,9 @@ Key Features
 -   **Automatic Updates** - Detect and execute container image updates on schedule
 -   **HTTP/HTTPS Health Checks** - Custom endpoint monitoring with auto-restart on failure
 -   **Blackout Windows** - Schedule maintenance periods to suppress alerts
+-   **Multi-User Support** - Group-based RBAC with custom groups, granular capabilities, and user management
+-   **OIDC/SSO Integration** - Single sign-on with any OIDC provider (Authentik, Keycloak, Okta, Entra ID, Auth0), automatic group sync, and optional user approval workflow
+-   **API Keys** - Programmatic access with group-based permissions, optional IP restrictions, and expiration
 -   **Secure by Design** - Session-based auth, rate limiting, mTLS for remote hosts, Alpine Linux base
 
 Documentation
@@ -36,6 +39,7 @@ Documentation
 -   **Quick Start** - Get started in 5 minutes
 -   **Installation** - Docker, unRAID, Synology, QNAP
 -   **Configuration** - Alerts, notifications, settings
+-   **Multi-User & OIDC** - Users, groups, SSO setup
 -   **Security** - Best practices and mTLS setup
 -   **Remote Monitoring** - Monitor remote Docker hosts
 -   **Event Viewer** - Comprehensive audit trail with filtering

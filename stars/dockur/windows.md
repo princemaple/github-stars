@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 50251
+stars: 50341
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---

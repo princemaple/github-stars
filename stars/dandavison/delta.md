@@ -1,6 +1,6 @@
 ---
 project: delta
-stars: 29378
+stars: 29489
 description: A syntax-highlighting pager for git, diff, grep, and blame output
 url: https://github.com/dandavison/delta
 ---
@@ -28,6 +28,7 @@ Or run:
 git config --global core.pager delta
 git config --global interactive.diffFilter 'delta --color-only'
 git config --global delta.navigate true
+git config --global delta.dark true  # or \`delta.light true\`, or omit for auto-detection
 git config --global merge.conflictStyle zdiff3
 
 Delta has many features and is very customizable; please see `delta -h` (short help) or `delta --help` (full manual), or the online user manual.

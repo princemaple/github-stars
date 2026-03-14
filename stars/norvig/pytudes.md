@@ -1,13 +1,13 @@
 ---
 project: pytudes
-stars: 24287
+stars: 24294
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
 
 _Peter Norvig  
 MIT License  
-2015-2022_
+2015-2026_
 
 pytudes
 =======
@@ -814,4 +814,20 @@ _Yet Another Python Templating Utility_
 Etudes for Programmers
 ======================
 
-I got the idea for the _"etudes"_ part of the name from this 1978 book by Charles Wetherell that was very influential to me when I was first learning to program. I still have my copy.
+I got the idea for the _"etudes"_ part of the name from this 1978 book by Charles Wetherell that was very influential to me when I was first learning to program. I still have my copy, but it is now easier to find a pdf than a hard copy.
+
+Reviews of pytudes
+==================
+
+Here's what some people are saying about `pytudes`:
+
+-   "What I find interesting is how Peter builds bottom-up solutions using low-level utilities... Reading his code is educational." - Jeremey Howard, co-founder of fast.ai and chief scientist at Kaggle
+-   "Everything I see from Peter Norvig is just always so incredibly well written and coded." — Jonathan, Hacker News
+-   "Peter Norvig is my go to recommendation when someone is interested in becoming better at solving day to day problems ... I feel his skill of dividing a problem into small pieces and expressing them in code in a natural way is unparalleled." — mikevin, Hacker News
+-   "I've never seen Peter Norvig choose anything but the most elegant and perfect data model for the problem at hand." — spoonjim, Hacker News
+-   "I just find Norvig's style of "functional Python" lovely in its own way (with noted disregard of Pep8 and other "best practices")" —raverbashing, Hacker News
+-   "You should check out Norvig's design of computer programs course on Udacity where he uses these kinds of puzzle programs to teach programming design concepts. It is a hard but really rewarding course. — nafizh, HN ACademy
+-   "Often enough I would think of something \[a possible improvement\[, but if you worked it out in detail there was some less-obvious reason the code was the way it was... All the code is pretty short, and it's not really 'production code', but it's enough to be an education in craftsmanship at every level."
+-   \[What code samples should programmers read?\] "Anything else implemented by Norvig, he's one of the best programmers that I've had the pleasure of reading code from." - jacquesm on Hacker News
+-   "Everything I see from Peter Norvig is just always so incredibly well written and coded. Every year looking at his solutions for advent of code \[0\] brings just so much learnings. Strongly recommend. - jyepin Hacker News
+-   "I feel his skill of dividing a problem into small pieces and expressing them in code in a natural way is unparalleled." - mikevin Hacker News

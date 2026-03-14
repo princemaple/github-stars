@@ -1,6 +1,6 @@
 ---
 project: black
-stars: 41422
+stars: 41434
 description: The uncompromising Python code formatter
 url: https://github.com/psf/black
 ---
@@ -16,7 +16,7 @@ Blackened code looks the same regardless of the project you're reading. Formatti
 
 _Black_ makes code review faster by producing the smallest diffs possible.
 
-Try it out now using the Black Playground. Watch the PyCon 2019 talk to learn more.
+Watch the PyCon 2019 talk to learn more.
 
 * * *
 

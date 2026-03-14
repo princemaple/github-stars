@@ -1,7 +1,7 @@
 ---
 project: rspack
-stars: 12541
-description: Rust-based bundler for JavaScript and TypeScript with refined webpack API 🦀
+stars: 12558
+description: Fast Rust-based bundler for the web with a modernized webpack API 🦀
 url: https://github.com/web-infra-dev/rspack
 ---
 
@@ -10,7 +10,7 @@ Rspack
 
 English | 简体中文
 
-Rspack is a high performance JavaScript bundler written in Rust. It offers strong compatibility with the webpack ecosystem, allowing for seamless replacement of webpack, and provides lightning fast build speeds.
+Rspack is a fast Rust-based bundler for the web. It modernizes the webpack API to enable seamless replacement of webpack while delivering lightning-fast build speeds.
 
 ✨ Features
 ----------

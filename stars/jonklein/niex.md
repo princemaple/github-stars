@@ -1,6 +1,6 @@
 ---
 project: niex
-stars: 418
+stars: 417
 description: Niex is an interactive Elixir code notebook built with Phoenix LiveView.
 url: https://github.com/jonklein/niex
 ---

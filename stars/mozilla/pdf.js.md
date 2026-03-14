@@ -1,6 +1,6 @@
 ---
 project: pdf.js
-stars: 52932
+stars: 52982
 description: PDF Reader in JavaScript
 url: https://github.com/mozilla/pdf.js
 ---
@@ -47,6 +47,10 @@ PDF.js is built into version 19+ of Firefox.
 
 -   The official extension for Chrome can be installed from the Chrome Web Store. _This extension is maintained by @Rob--W._
 -   Build Your Own - Get the code as explained below and issue `npx gulp chromium`. Then open Chrome, go to `Tools > Extension` and load the (unpackaged) extension from the directory `build/chromium`.
+
+### PDF debugger
+
+Browser the internal structure of a PDF document with https://mozilla.github.io/pdf.js/internal-viewer/web/pdf\_internal\_viewer.html
 
 Getting the Code
 ----------------

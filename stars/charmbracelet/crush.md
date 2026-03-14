@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 21035
+stars: 21352
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -435,6 +435,19 @@ mkdir \-Force "$env:LOCALAPPDATA\\crush\\skills"
 cd "$env:LOCALAPPDATA\\crush\\skills"
 git clone https://github.com/anthropics/skills.git \_temp
 mv \_temp/skills/\* . ; rm \-r \-force \_temp
+
+### Desktop notifications
+
+Crush sends desktop notifications when a tool call requires permission and when the agent finishes its turn. They're only sent when the terminal window isn't focused _and_ your terminal supports reporting the focus state.
+
+{
+  "$schema": "https://charm.land/crush.json",
+  "options": {
+    "disable\_notifications": false // default
+  }
+}
+
+To disable desktop notifications, set `disable_notifications` to `true` in your configuration. On macOS, notifications currently lack icons due to platform limitations.
 
 ### Initialization
 

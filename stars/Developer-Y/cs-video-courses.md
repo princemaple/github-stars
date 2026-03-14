@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 76675
+stars: 77113
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -380,6 +380,7 @@ Courses
 ### Artificial Intelligence
 
 -   CS50 - Introduction to Artificial Intelligence with Python (and Machine Learning), Harvard OCW
+-   10-202: Introduction to Modern AI - CMU
 -   CS 188 - Introduction to Artificial Intelligence, UC Berkeley - Spring 2025, by John Canny, Oliver Grillmeyer (Spring 2024) (Spring 2023)
 -   6.034 Artificial Intelligence, MIT OCW
 -   CS221: Artificial Intelligence: Principles and Techniques - Autumn 2019 - Stanford University
@@ -608,6 +609,7 @@ Courses
     -   UT Austin - Advances in Deep Learning
     -   HKU - Data 8014 Principles of Deep Representation Learning Fall 2025, by Yi Ma
     -   Local Explanations for Deep Learning Models (Fall 2023)
+    -   CS 6966/5966 Interpretability of LLMs (Spring 2026) - University of Utah
 -   #### **Reinforcement Learning**
     
     -   CS234: Reinforcement Learning - Spring 2024 - Stanford University (Winter 2019)
@@ -706,8 +708,9 @@ Courses
     -   WING NUS CS6101 Large Language Models (T2310)
     -   CS 839: Foundation Models Fall 2025 - UW Madison (YouTube playlists)
     -   CS 886: Recent Advances on Foundation Models Winter 2024 - University of Waterloo
-    -   UC Berkeley CS 194/294-196 Large Language Model Agents Fall 2024, by Dawn Song & Xinyun Chen (YouTube playlist)
+    -   UC Berkeley CS 194/294-196 Agentic AI Fall 2025 (YouTube, 2025) (Notes, 2024) (YouTube, 2024)
     -   UC Berkeley CS 194/294-267 Understanding Large Language Models Foundations and Safety spring 2024, by Dawn Song & Dan Hendrycks
+    -   UC Berkeley CS 194/294-280 Advanced Large Language Model Agents Spring 2025 (YouTube)
     -   Introduction to Large Language Models (LLMs), IIT Delhi
     -   CMU 10799 S26: Diffusion & Flow Matching
     -   6.S183: A Practical Introduction to Diffusion Models - MIT (YouTube, 2025 lectures)
@@ -1404,6 +1407,8 @@ Courses
 -   CMU 16-715 Robot Dynamics 2022 - CMU
 -   CMU 16-745 Optimal Control 2024 - CMU (Lecture notebooks) (YouTube-2023) (YouTube-2022)
 -   CMU 16-745 Optimal Control Recitations 2024 - CMU (YouTube-2023)
+-   CE 356 Elements of Hydraulic Engineering Spring 2025 - UT Austin
+-   CE 397 Control Theory for Smart Infrastructure Spring 2023 - UT Austin
 -   CS235 - Applied Robot Design for Non-Robot-Designers - Stanford University
 -   Lecture: Visual Navigation for Flying Robots (YouTube)
 -   CS 205A: Mathematical Methods for Robotics, Vision, and Graphics (Fall 2013)
@@ -1574,6 +1579,7 @@ Courses
 -   Stanford EE 376a winter 2011, Information Theory, by Thomas Cover
 -   MIT RES.6.007 Signals and Systems, 1987 - MIT
 -   MIT 9.19 Computational Psycholinguistics, 2023 - MIT (YouTube)
+-   MIT 21M.383 Computational Music Theory and Analysis, Spring 2023 - MIT (YouTube)
 -   UCCS ECE4510/ECE5510 Feedback Control Systems, by Gregory Plett
 -   UCCS ECE4520/ECE5520 Multivariable Control Systems I, by Gregory Plett
 -   UCCS ECE4530/ECE5530 Multivariable Control Systems II, by Gregory Plett

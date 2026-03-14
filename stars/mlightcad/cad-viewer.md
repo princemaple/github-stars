@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 435
+stars: 449
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -31,6 +31,40 @@ Features
 -   Offline and online editing workflows
 -   THREE.js 3D rendering engines with advanced optimization techniques
 -   Designed for extensibility and integration with platforms like CMS, Notion, and WeChat
+
+Getting Started
+---------------
+
+### Prerequisites
+
+-   Node.js >= 18
+-   pnpm >= 8
+
+### Installation
+
+git clone https://github.com/mlightcad/cad-viewer.git
+cd cad-viewer
+pnpm install
+
+### Development
+
+# Start the full-featured viewer (cad-viewer)
+pnpm dev
+
+# Or start the simple viewer
+pnpm dev:simple
+
+### Build
+
+pnpm build
+
+### Preview
+
+# Preview the full-featured viewer
+pnpm preview
+
+# Preview the simple viewer
+pnpm preview:simple
 
 How to Use
 ----------

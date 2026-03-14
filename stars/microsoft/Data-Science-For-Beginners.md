@@ -1,6 +1,6 @@
 ---
 project: Data-Science-For-Beginners
-stars: 34143
+stars: 34209
 description: 10 Weeks, 20 Lessons, Data Science for All!
 url: https://github.com/microsoft/Data-Science-For-Beginners
 ---

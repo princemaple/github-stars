@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3453
+stars: 3598
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -8,7 +8,7 @@ url: https://github.com/panphora/overtype
 OverType
 ========
 
-A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~117KB minified with all features.
+A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~118KB minified with all features.
 
 Live Examples
 -------------
@@ -30,7 +30,7 @@ Features
 -   ⌨️ **Keyboard shortcuts** - Common markdown shortcuts (Cmd/Ctrl+B for bold, etc.)
 -   📱 **Mobile optimized** - Responsive design with mobile-specific styles
 -   🔄 **DOM persistence aware** - Recovers from existing DOM (perfect for HyperClay and similar platforms)
--   🚀 **Lightweight** - ~117KB minified
+-   🚀 **Lightweight** - ~118KB minified
 -   🎯 **Optional toolbar** - Clean, minimal toolbar with all essential formatting
 -   ✨ **Smart shortcuts** - Keyboard shortcuts with selection preservation
 -   📝 **Smart list continuation** - GitHub-style automatic list continuation on Enter
@@ -58,7 +58,7 @@ EasyMDE
 
 **Size**
 
-~117KB
+~118KB
 
 364.02 KB
 
@@ -889,7 +889,7 @@ Special thanks to:
 -   Travis Bell - Reported keyboard shortcuts bug in ESM build (#80)
 -   fab2713 - Reported italic rendering in lists (#81), reinit maxHeight (#82), placeholder visibility (#83), suggested auto theme (#84), relative URL prefix (#85), minification improvements (#94)
 -   oooo-ps - Reported remote script loading issue (#86)
--   ddarfantasy - Reported text misalignment on longer lines (#91)
+-   ddarfantasy, ThaUnknown - Reported and debugged text misalignment caused by CSS framework font resets (#91)
 -   milen-yordanov - Reported code block colors ignoring theme in preview mode (#97)
 -   asalimian - Reported spellcheck being disabled (#98)
 

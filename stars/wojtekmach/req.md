@@ -56,7 +56,7 @@ Features
     
 -   Retries on errors (via `retry` step.)
     
--   Raise on 4xx/5xx errors (via `handle_http_errors` step.)
+-   Raise on unexpected response status (via `expect` step.)
     
 -   Verify response body against a checksum (via `checksum` step.)
     

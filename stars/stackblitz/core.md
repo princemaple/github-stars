@@ -1,6 +1,6 @@
 ---
 project: core
-stars: 10748
+stars: 10750
 description: Online IDE powered by Visual Studio Code ⚡️
 url: https://github.com/stackblitz/core
 ---

@@ -1,11 +1,9 @@
 ---
 project: rxdb
-stars: 23077
+stars: 23081
 description: A fast, local first, reactive Database for JavaScript Applications https://rxdb.info/
 url: https://github.com/pubkey/rxdb
 ---
-
-  
 
   
 
@@ -22,9 +20,7 @@ url: https://github.com/pubkey/rxdb
   What is RxDB?
 ---------------
 
-RxDB (short for **R**eactive **D**ata**b**ase) is a local-first, NoSQL-database for JavaScript Applications like Websites, hybrid Apps, Electron-Apps, Progressive Web Apps, Deno and Node.js. Reactive means that you can not only query the current state, but **subscribe** to all state changes like the result of a query or even a single field of a document. This is great for UI-based **realtime** applications in a way that makes it easy to develop and also has great performance benefits but can also be used to create fast backends in Node.js.  
-RxDB provides an easy to implement protocol for realtime **replication** with your existing infrastructure or one of the plugins for HTTP, GraphQL, CouchDB, Websocket, WebRTC, Supabase, Firestore, NATS, Google Drive.  
-RxDB is based on a storage interface that enables you to swap out the underlying storage engine. This increases **code reuse** because you can use the same database code for different JavaScript environments by just switching out the storage settings.
+RxDB (short for **R**eactive **D**ata**b**ase) is a local-first, NoSQL-database for JavaScript Applications. Reactive means that you can not only query the current state, but **subscribe** to all state changes like the result of a query or even a single field of a document. This is great for UI-based **realtime** applications in a way that makes it easy to develop and also has great performance benefits.
 
 Use the quickstart, read the documentation or explore the example projects.
 
@@ -43,7 +39,7 @@ RxDB is a proven technology used by thousands of developers worldwide. With its 
 -------------------------------------------------
 
 RxDB provides an easy to implement, **battle-tested** Sync Engine for realtime replication with your existing infrastructure.  
-You do not have to use a specific cloud or backend database. The protocol works by implementing three simple HTTP endpoints. There are also production-ready plugins to easily replicate with GraphQL, CouchDB, Websocket, WebRTC (P2P),Supabase, Firestore or NATS.
+You do not have to use a specific cloud or backend database. The protocol works by implementing three simple HTTP endpoints. There are also production-ready plugins to easily replicate with GraphQL, CouchDB, Websocket, WebRTC (P2P), Supabase, Firestore, NATS or Google Drive.
 
   **Flexible** storage layer
 ----------------------------
@@ -108,10 +104,24 @@ const db \= await createRxDatabase({
     storage: getRxStorageLocalstorage()
 });
 
-// add collections
+// add collections with a schema
 await db.addCollections({
   heroes: {
-    schema: mySchema
+    schema: {
+      version: 0,
+      primaryKey: 'name',
+      type: 'object',
+      properties: {
+        name: {
+          type: 'string',
+          maxLength: 100
+        },
+        healthpoints: {
+          type: 'number'
+        }
+      },
+      required: \['name', 'healthpoints'\]
+    }
   }
 });
 

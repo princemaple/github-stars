@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 31897
+stars: 32077
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -1382,19 +1382,47 @@ Use `{{{{` to include a literal `{{` in a format string:
 
 foo := f'I {{{{LOVE} curly braces!'
 
-### Ignoring Errors
+### Sigils
 
-Normally, if a command returns a non-zero exit status, execution will stop. To continue execution after a command, even if it fails, prefix the command with `-`:
+Commands in linewise recipes may be prefixed with any combination of the sigils `-`, `@`, and `?`.
+
+The `@` sigil toggles command echoing:
 
 foo:
-  \-cat foo
-  echo 'Done!'
+  @echo "This line won't be echoed!"
+  echo "This line will be echoed!"
+
+@bar:
+  @echo "This line will be echoed!"
+  echo "This line won't be echoed!"
+
+The `-` sigil cause recipe execution to continue even if the command returns a nonzero exit status:
+
+\# execution will continue, even if bar doesn't exist
+foo:
+  \-rmdir bar
+  mkdir bar
+  echo 'so much good stuff' > bar/stuff.txt
+
+The `?` sigilmaster causes the current recipe to stop executing if the command exits with status code `1`, however execution of other recipes will continue. Exit status `0` causes the current recipe to continue execution as normal. All other exit codes are reserved and should not be used, as they may be given meaning in a future version of `just`.
+
+If the `guards` setting is unset or false, `?` sigils are ignored and instead treated as part of the command.
+
+set guards
+
+@foo: bar
+  echo FOO
+
+@bar:
+  ?\[\[ -f baz \]\]
+  echo BAR
 
 $ just foo
-cat foo
-cat: foo: No such file or directory
-echo 'Done!'
-Done!
+FOO
+$ touch baz
+$ just foo
+BAR
+FOO
 
 ### Functions
 
@@ -1849,6 +1877,12 @@ recipe
 
 Require values of argument `ARG` to be passed as `--LONG` option.
 
+`[arg(ARG, pattern="PATTERN")]`1.45.0
+
+recipe
+
+Require values of argument `ARG` to match regular expression `PATTERN`.
+
 `[arg(ARG, short="S")]`1.46.0
 
 recipe
@@ -1861,23 +1895,17 @@ recipe
 
 Makes option `ARG` a flag which does not take a value.
 
-`[arg(ARG, pattern="PATTERN")]`1.45.0
+`[confirm(PROMPT)]`1.23.0
 
 recipe
 
-Require values of argument `ARG` to match regular expression `PATTERN`.
+Require confirmation prior to executing recipe with a custom prompt.
 
 `[confirm]`1.17.0
 
 recipe
 
 Require confirmation prior to executing recipe.
-
-`[confirm(PROMPT)]`1.23.0
-
-recipe
-
-Require confirmation prior to executing recipe with a custom prompt.
 
 `[default]`1.43.0
 
@@ -1891,6 +1919,12 @@ module, recipe
 
 Set recipe or module's documentation comment to `DOC`.
 
+`[dragonfly]`master
+
+recipe
+
+Enable recipe on DragonFly BSD.
+
 `[env(ENV_VAR, VALUE)]` master
 
 recipe
@@ -1902,6 +1936,12 @@ Set environment variables for recipe.
 recipe
 
 Set shebang recipe script's file extension to `EXT`. `EXT` should include a period if one is desired.
+
+`[freebsd]`master
+
+recipe
+
+Enable recipe on FreeBSD.
 
 `[group(NAME)]`1.27.0
 
@@ -1926,6 +1966,12 @@ Enable recipe on MacOS.
 recipe
 
 Attach `METADATA` to recipe.
+
+`[netbsd]`master
+
+recipe
+
+Enable recipe on NetBSD.
 
 `[no-cd]`1.9.0
 
@@ -1969,17 +2015,17 @@ alias, recipe
 
 Make recipe, alias, or variable private. See Private Recipes.
 
-`[script]`1.33.0
-
-recipe
-
-Execute recipe as script. See script recipes for more details.
-
 `[script(COMMAND)]`1.32.0
 
 recipe
 
 Execute recipe as a script interpreted by `COMMAND`. See script recipes for more details.
+
+`[script]`1.33.0
+
+recipe
+
+Execute recipe as script. See script recipes for more details.
 
 `[unix]`1.8.0
 
@@ -3770,7 +3816,7 @@ There is no shortage of command runners! Some more or less similar alternatives 
 -   mask: A Markdown-based command runner written in Rust.
 -   makesure: A simple and portable command runner written in AWK and shell.
 -   haku: A make-like command runner written in Rust.
--   mise: A development environment tool manager written in Rust supporing tasks in TOML files and standalone scripts.
+-   mise: A development environment tool manager written in Rust supporting tasks in TOML files and standalone scripts.
 
 Contributing
 ------------

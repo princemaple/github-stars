@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 134
+stars: 174
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -116,7 +116,7 @@ Server health, current project, session, and model info
 
 Create a new session
 
-`/stop`
+`/abort`
 
 Abort the current task
 

@@ -1,6 +1,6 @@
 ---
 project: usql
-stars: 9851
+stars: 9866
 description: Universal command-line interface for SQL databases
 url: https://github.com/xo/usql
 ---

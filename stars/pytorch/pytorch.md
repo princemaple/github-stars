@@ -1,6 +1,6 @@
 ---
 project: pytorch
-stars: 98025
+stars: 98252
 description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
 url: https://github.com/pytorch/pytorch
 ---
@@ -127,7 +127,7 @@ The memory usage in PyTorch is extremely efficient compared to Torch or some of 
 
 ### Extensions Without Pain
 
-Writing new neural network modules, or interfacing with PyTorch's Tensor API was designed to be straightforward and with minimal abstractions.
+Writing new neural network modules, or interfacing with PyTorch's Tensor API, was designed to be straightforward and with minimal abstractions.
 
 You can write new neural network layers in Python using the torch API or your favorite NumPy-based libraries such as SciPy.
 
@@ -237,13 +237,6 @@ pip install mkl-static mkl-include
 # Run from the pytorch directory after cloning
 # For Intel GPU support, please explicitly \`export USE\_XPU=1\` before running command.
 make triton
-
-**On MacOS**
-
-# Add this package on intel x86 processor machines only
-pip install mkl-static mkl-include
-# Add these packages if torch.distributed is needed
-conda install pkg-config libuv
 
 **On Windows**
 

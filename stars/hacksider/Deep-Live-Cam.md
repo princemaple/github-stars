@@ -1,11 +1,11 @@
 ---
 project: Deep-Live-Cam
-stars: 79884
+stars: 80018
 description: real time face swap and one-click video deepfake with only a single image
 url: https://github.com/hacksider/Deep-Live-Cam
 ---
 
-Deep-Live-Cam 2.0.5c
+Deep-Live-Cam 2.1 😊
 ====================
 
 Real-time face swap and video deepfake with a single click and only a single image.
@@ -30,8 +30,8 @@ By using this software, you agree to these terms and commit to using it in a man
 
 Users are expected to use this software responsibly and legally. If using a real person's face, obtain their consent and clearly label any output as a deepfake when sharing online. We are not responsible for end-user actions.
 
-Exclusive v2.6d Quick Start - Pre-built (Windows/Mac Silicon)
--------------------------------------------------------------
+Exclusive v2.7 beta Quick Start - Pre-built (Windows/Mac Silicon/CPU)
+---------------------------------------------------------------------
 
 ##### This is the fastest build you can get if you have a discrete NVIDIA or AMD GPU or Mac Silicon, And you'll receive special priority support.
 
@@ -261,6 +261,11 @@ Usage
 -   Wait for the preview to appear (10-30 seconds).
 -   Use a screen capture tool like OBS to stream.
 -   To change the face, select a new source image.
+
+Download all models in this huggingface link
+--------------------------------------------
+
+-   **Download models here**
 
 Command Line Arguments (Unmaintained)
 -------------------------------------

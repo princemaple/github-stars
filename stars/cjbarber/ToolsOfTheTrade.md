@@ -1,6 +1,6 @@
 ---
 project: ToolsOfTheTrade
-stars: 16958
+stars: 16962
 description: Tools of The Trade, from Hacker News.
 url: https://github.com/cjbarber/ToolsOfTheTrade
 ---
@@ -902,7 +902,7 @@ Auth0
 
 \-
 
-\-
+Auth0 is a comprehensive identity and access management platform that provides authentication and authorization services for applications.
 
 Connect2id
 
@@ -911,6 +911,14 @@ Connect2id
 €299/mo - €999/mo
 
 Hosted Connect2id server – a flexible, secure and certified OpenID Connect/OAuth 2.0 identity provider.
+
+Cerbos Hub
+
+@Cerbos
+
+Free up to 100 monthly active principals
+
+A complete authorization management system for authoring, testing, and deploying access policies. Fine-grained authorization and access control developers can trust.
 
 User Testing
 ------------
@@ -1309,7 +1317,7 @@ Two Minute Reports
 
 Free - $9/mo
 
-Two-Minute-Reports is an addon for Google Sheets, that helps startups pull data from different sources like Google Analytics, MySQL, Google PageSpeed, Firebase, etc. to analyze data, create reports, and automate e-mail reporting.
+Two Minute Reports helps Marketing Agencies automate reports and save billable hours. It works with both Google Sheets and Looker Studio. It helps automate data from different sources like Facebook Ads, Google Ads, Instagram, LinkedIN Ads, HubSpot, Google Analytics 4, Shopify, Amazon Seller/Ads, etc.
 
 Error/Exception Handling
 ------------------------
@@ -3953,6 +3961,14 @@ Pricing
 
 Description
 
+API Status Check
+
+\-
+
+Free
+
+Real-time status monitoring dashboard aggregating 50+ major API and cloud service status pages. Tracks AWS, Stripe, Twilio, GitHub, and more in one view with email alerts.
+
 StatusPage.io
 
 @Statuspage
@@ -4943,6 +4959,14 @@ Moz
 $99/mo - $599/mo
 
 Moz provides you all the tools you need to effectively do search engine optimization. On site optimization graders, competitor tracking, backlink analysis, rank tracking and many more features available to users.
+
+RatedWithAI
+
+\-
+
+Free - $29/mo
+
+AI-powered web accessibility scanner. Checks WCAG 2.2 compliance, detects issues, and provides fix guidance. Accessibility impacts SEO — Google uses Core Web Vitals and accessibility signals in rankings.
 
 KWFinder
 

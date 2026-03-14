@@ -1,6 +1,6 @@
 ---
 project: hysteria
-stars: 19062
+stars: 19149
 description: Hysteria is a powerful, lightning fast and censorship resistant proxy.
 url: https://github.com/apernet/hysteria
 ---

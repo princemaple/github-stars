@@ -1,6 +1,6 @@
 ---
 project: neko
-stars: 17277
+stars: 19954
 description: A self hosted virtual browser that runs in docker and uses WebRTC.
 url: https://github.com/m1k1o/neko
 ---
@@ -41,6 +41,7 @@ Primary use case is connecting with multiple people, leveraging real time synchr
 -   **Embed anything** - embed virtual browser in your web app - open source alternative to hyperbeam API.
     -   open any third-party website or application, synchronize audio and video flawlessly among multiple participants.
     -   request rooms using API with neko-rooms.
+-   **Neko inside VR Chat** - watch remote browser together with friends in VR.
 
 Other use cases that benefit from single-user:
 

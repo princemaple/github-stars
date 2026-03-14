@@ -1,6 +1,6 @@
 ---
 project: InvokeAI
-stars: 26858
+stars: 26873
 description: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.
 url: https://github.com/invoke-ai/InvokeAI
 ---
@@ -57,7 +57,7 @@ The Unified Canvas is a fully integrated canvas implementation with support for 
 
 ### Workflows & Nodes
 
-Invoke offers a fully featured workflow management solution, enabling users to combine the power of node-based workflows with the easy of a UI. This allows for customizable generation pipelines to be developed and shared by users looking to create specific workflows to support their production use-cases.
+Invoke offers a fully featured workflow management solution, enabling users to combine the power of node-based workflows with the ease of a UI. This allows for customizable generation pipelines to be developed and shared by users looking to create specific workflows to support their production use-cases.
 
 ### Board & Gallery Management
 

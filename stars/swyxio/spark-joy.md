@@ -1,6 +1,6 @@
 ---
 project: spark-joy
-stars: 9730
+stars: 9736
 description: ✨😂 2000+ ways to add design flair, user delight, and whimsy to your product.
 url: https://github.com/swyxio/spark-joy
 ---

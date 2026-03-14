@@ -1,6 +1,6 @@
 ---
 project: observer_cli
-stars: 1506
+stars: 1507
 description: Visualize Erlang/Elixir Nodes On The Command Line
 url: https://github.com/zhongwencool/observer_cli
 ---
@@ -26,7 +26,7 @@ Installation
 %% rebar.config
 {deps, \[observer\_cli\]}
 %% erlang.mk
-dep\_observer\_cli \= hex 1.8.6
+dep\_observer\_cli \= hex 1.8.7
 
 ### Elixir
 

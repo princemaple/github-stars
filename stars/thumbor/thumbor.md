@@ -1,6 +1,6 @@
 ---
 project: thumbor
-stars: 10467
+stars: 10465
 description: thumbor is an open-source photo thumbnail service by globo.com
 url: https://github.com/thumbor/thumbor
 ---
@@ -48,9 +48,18 @@ pip install thumbor\[all\]
 
 ### Option 2: Binary
 
-sudo add-apt-repository ppa:thumbor/ppa
-sudo aptitude update
-sudo aptitude install thumbor
+Available as a package in the official repositories of distributions such as Debian and Ubuntu.
+
+sudo apt update
+sudo apt install thumbor
+
+### Option 3: Docker
+
+An official Docker image is available on GitHub Container Registry:
+
+docker run -p 8888:8888 ghcr.io/thumbor/thumbor:latest
+
+For more information about the Docker image and available tags, visit the GitHub Container Registry.
 
 For more ways, please check out Installation.
 

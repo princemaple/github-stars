@@ -1,6 +1,6 @@
 ---
 project: imagor
-stars: 3918
+stars: 3920
 description: Fast, secure image processing server and Go library, using libvips
 url: https://github.com/cshum/imagor
 ---
@@ -84,6 +84,9 @@ imagor supports the following filters:
 -   `crop(left,top,width,height)` crops the image after resizing
     -   Absolute pixels: `crop(10,20,200,150)` - crop 200x150 box starting at (10,20)
     -   Relative (0.0-1.0): `crop(0.1,0.1,0.8,0.8)` - crop using percentages
+-   `draw_detections()` draws color-coded bounding boxes on detected regions. Each class name is automatically assigned a distinct colour via hash-based palette. For use with detection plugins such as imagorface. No-op when no Detector is configured.
+-   `pixelate(block_size)` applies a pixelate effect to the whole image by downscaling to 1/`block_size` then upscaling back with nearest-neighbour interpolation
+    -   `block_size` pixel block size in pixels, defaults to 10
 -   `fill(color)` fill the missing area or transparent image with the specified color:
     -   `color` - color name or hexadecimal rgb expression without the “#” character
         -   If color is "blur" - missing parts are filled with blurred original image
@@ -137,6 +140,12 @@ imagor supports the following filters:
     -   `color` the color name or hexadecimal rgb expression without the "#" character
 -   `saturation(amount)` increases or decreases the image saturation
     -   `amount` -100 to 100, the amount in % to increase or decrease the image saturation
+-   `redact([mode[, strength]])` obscures all detected regions for privacy/anonymisation (e.g. GDPR face blurring, legal document redaction). Requires a detection plugin such as imagorface. No-op when no Detector is configured or no regions are detected. Skips animated images.
+    -   `mode` — `blur` (default), `pixelate`, or any color name/hex for solid fill (e.g. `black`, `white`, `ff0000`)
+    -   `strength` — blur sigma (default 15) or pixelate block size in pixels (default 10). Not used for solid color mode.
+    -   Examples: `redact()`, `redact(blur,20)`, `redact(pixelate)`, `redact(pixelate,15)`, `redact(black)`, `redact(white)`, `redact(ff0000)`
+-   `redact_oval([mode[, strength]])` identical to `redact` but applies an elliptical mask to each region, producing a rounded/oval redaction shape. This is the most natural shape for face anonymisation as it closely follows the contour of a face. Same arguments and defaults as `redact`.
+    -   Examples: `redact_oval()`, `redact_oval(blur,20)`, `redact_oval(pixelate)`, `redact_oval(pixelate,15)`, `redact_oval(black)`, `redact_oval(white)`, `redact_oval(ff0000)`
 -   `sharpen(sigma)` sharpens the image
 -   `strip_exif()` removes Exif metadata from the resulting image
 -   `strip_icc()` removes ICC profile information from the resulting image. The image is first converted to sRGB color space to preserve correct colors before the profile is removed.
@@ -192,7 +201,7 @@ These filters do not manipulate images but provide useful utilities to the imago
 
 -   `attachment(filename)` returns attachment in the `Content-Disposition` header, and the browser will open a "Save as" dialog with `filename`. When `filename` not specified, imagor will get the filename from the image source
 -   `expire(timestamp)` adds expiration time to the content. `timestamp` is the unix milliseconds timestamp, e.g. if content is valid for 30s then timestamp would be `Date.now() + 30*1000` in JavaScript.
--   `preview()` skips the result storage even if result storage is enabled. Useful for conditional caching
+-   `preview()` skips the result storage even if result storage is enabled, and opts the request into the in-memory cache when configured. Useful for preview contexts where the same source image is served at multiple transformations.
 -   `raw()` response with a raw unprocessed and unchecked source image. Image still loads from loader and storage but skips the result storage
 
 ### Loader, Storage and Result Storage
@@ -737,11 +746,32 @@ Prepending `/params` to the existing endpoint returns the endpoint attributes in
 
 curl 'http://localhost:8000/params/g5bMqZvxaQK65qFPaP1qlJOTuLM=/fit-in/500x400/0x20/filters:fill(white)/raw.githubusercontent.com/cshum/imagor/master/testdata/gopher.png'
 
+### In-Memory Cache
+
+Imagor maintains an in-memory cache of decoded image pixels, keyed by image path. This avoids repeated I/O and decode for the same source image across different requests — base images, `watermark()` and `image()` filter overlays all share the same cache.
+
+The cache stores raw pixel buffers keyed by image path. Each request gets its own independent image object reconstructed from the cached bytes, so concurrent requests are fully safe with no shared mutable state. The cache is backed by ristretto with LRU eviction and a configurable byte budget.
+
+VIPS\_CACHE\_SIZE\=52428800      # Cache byte budget (e.g. 50 MiB). Default 0 = disabled
+VIPS\_CACHE\_MAX\_WIDTH\=2400     # Max image width to cache (default 2400px)
+VIPS\_CACHE\_MAX\_HEIGHT\=2000    # Max image height to cache (default 2000px)
+VIPS\_CACHE\_TTL\=1h             # Cache entry TTL. Default 0 = no expiry (LRU eviction only)
+VIPS\_CACHE\_FORMAT\=pixel       # Cache storage format: pixel (default), png, webp
+
+**When to use:**
+
+-   Enable in preview contexts where the same source image is requested at multiple sizes (e.g. `800x600`, `400x300`, `200x150`). Add `filters:preview()` to opt base image requests into the in-memory cache — the first request decodes and caches; subsequent requests skip I/O entirely.
+-   Enable when the same `watermark()` or `image()` image path is reused across many requests (e.g. a logo watermark on every image).
+-   Images larger than `VIPS_CACHE_MAX_WIDTH` × `VIPS_CACHE_MAX_HEIGHT` are still served normally, just not cached.
+-   Only known-size requests (explicit width × height) are served from cache. Unknown-size (0×0) and oversized requests always load from source to ensure correct native resolution.
+-   Requests with crop coordinates always bypass the cache, because the cache stores a downscaled copy and pixel coordinates from the original image space would be incorrect.
+-   Leave disabled (default) if source image paths are highly varied or user-supplied, as caching provides no benefit.
+-   Set `VIPS_CACHE_TTL` if source images may change at the same image path (e.g. mutable assets). Without a TTL, stale pixels are served until evicted by memory pressure or process restart. For stable assets (logos, static images), TTL is not needed.
+-   `VIPS_CACHE_FORMAT` controls how cached pixels are stored in memory. `pixel` (default) stores raw uncompressed pixels — fastest cache-hit and pixel-identical, but uses the most memory. `png` uses lossless compression — smaller memory footprint with pixel-identical quality. `webp` uses lossy compression — smallest memory footprint at the cost of slight quality difference.
+
 ### VIPS Performance Tuning
 
 imagor uses libvips for image processing. libvips provides several configuration options to tune performance and resource usage:
-
-#### Concurrency
 
 `VIPS_CONCURRENCY` controls the number of threads libvips uses for image operations:
 
@@ -757,22 +787,7 @@ VIPS\_CONCURRENCY\=4    # Use 4 threads
 
 For high-traffic deployments, it's generally better to scale horizontally (more imagor instances) rather than increasing `VIPS_CONCURRENCY`.
 
-#### Operation Cache
-
-libvips caches recently used operations to improve performance when processing similar images. These settings control the cache behavior:
-
-VIPS\_MAX\_CACHE\_MEM\=50000000     # Max memory for operation cache (bytes)
-VIPS\_MAX\_CACHE\_SIZE\=100         # Max number of operations to cache
-VIPS\_MAX\_CACHE\_FILES\=0          # Max number of file descriptors to cache
-
-**When to adjust:**
-
--   **Web servers** (many different images, few operations each): Keep defaults low or disable caching entirely (set to 0). The operation cache is less useful when each request processes a unique image.
--   **Batch processing** (few images, many operations): Increase cache limits to reuse operations across multiple transformations of the same images.
-
-**Default behavior:** libvips uses small cache limits suitable for web serving. For most imagor deployments, the defaults are appropriate.
-
-See libvips operation cache documentation for more details.
+libvips also has a built-in operation cache (`VIPS_MAX_CACHE_MEM`, `VIPS_MAX_CACHE_SIZE`, `VIPS_MAX_CACHE_FILES`) that reuses recently computed operations. For imagor's typical workload, each request processes a different source image so this cache rarely gets hits — the defaults (0 = disabled) are appropriate. See libvips documentation for details.
 
 ### POST Upload Endpoint
 
@@ -812,6 +827,7 @@ The imagor ecosystem includes several community-contributed projects that extend
 
 -   **cshum/imagor-studio** - Image gallery with built-in editing and template workflows
 -   **cshum/imagorvideo** - imagor video thumbnail server in Go and ffmpeg C bindings
+-   **cshum/imagorface** - Fast, on-the-fly face detection for imagor
 -   **sandstorm/laravel-imagor** - Laravel integration for imagor
 -   **codedoga/imagor-toy** - A ReactJS based app to play with Imagor
 
@@ -1117,10 +1133,22 @@ Usage of imagor:
         VIPS enable maximum compression with MozJPEG. Requires mozjpeg to be installed
   -vips-avif-speed int
         VIPS avif speed, the lowest is at 0 and the fastest is at 9 (Default 5).
+  -vips-detector-probe-size int
+        VIPS detector probe size: maximum dimension of the downscaled probe image used for smart crop region detection. Lower values are faster, higher values improve detection of small regions (default 400)
   -vips-strip-metadata
         VIPS strips all metadata from the resulting image
   -vips-unlimited
     	VIPS bypass image max resolution check and remove all denial of service limits
+  -vips-cache-size int
+        VIPS in-memory image cache size in bytes. Set 0 to disable (default). Caches decoded image pixels keyed by image path to avoid repeated I/O and decode for base images, watermark() and image() filters
+  -vips-cache-max-width int
+        VIPS image cache maximum width. Images wider than this are not cached (default 2400)
+  -vips-cache-max-height int
+        VIPS image cache maximum height. Images taller than this are not cached (default 2000)
+  -vips-cache-ttl duration
+        VIPS image cache TTL. Cached entries expire after this duration and are re-fetched from source. Set 0 (default) for no expiry
+  -vips-cache-format string
+        VIPS image cache storage format: pixel (default), png (lossless), webp (lossy)
         
   -sentry-dsn
         include sentry dsn to integrate imagor with sentry

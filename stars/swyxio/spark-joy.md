@@ -1,6 +1,6 @@
 ---
 project: spark-joy
-stars: 9736
+stars: 9737
 description: ✨😂 2000+ ways to add design flair, user delight, and whimsy to your product.
 url: https://github.com/swyxio/spark-joy
 ---
@@ -2209,28 +2209,68 @@ box-shadow: 20px 20px 22px #cfb3a6, \-20px \-20px 22px #fff2e0;
 Animations & Transitions
 ------------------------
 
+https://x.com/emilkowalski/status/2031742178297335879
+
+-   Make buttons feel responsive | Add 'transform: scale(0.97)' on '¡active'
+    
+-   Element appears from nowhere | Start from 'scale(0.95)', not 'scale(0)'
+    
+-   Shaky/jittery animations | Add 'will-change: transform'
+    
+-   Hover causes flicker | Animate child element, not parent
+    
+-   Popover scales from wrong point I Set 'transform-origin' to trigger location
+    
+-   Sequential tooltips feel slow I Skip delay/animation after first tooltip
+    
+-   Small buttons hard to tap I Use 44px minimum hit area (pseudo-element)
+    
+-   Something still feels off | Add subtle blur (under 20px) to mask it
+    
+-   Hover triggers on mobile | Use '@media (hover: hover) and (pointer: fine)'
+    
 -   Buttons, hover, inputs, and loaders https://cssfx.netlify.com/
+    
 -   general http://animista.net
+    
     -   animate an existing svg https://svgartista.net/ (by the same people as animista)
 -   general https://animejs.com/
+    
 -   https://www.theatrejs.com/ animate DOM elements or WebGL using a convenient visual editor that works along with the code you write.
+    
 -   motion graphics https://github.com/mojs/mojs
+    
 -   https://www.transition.style/ CSS transitions "My favourites are the ones that incorporate some hesitation in the animation, for an added uniqueness"
+    
 -   general https://daneden.github.io/animate.css/
+    
 -   https://animxyz.com/ Tailwind for animations, since you’re only using HTML classes.
+    
 -   general https://ianlunn.github.io/Hover/
+    
 -   Burgers https://march08.github.io/animated-burgers/
+    
 -   Burgers http://negomi.github.io/react-burger-menu/
+    
 -   Layout https://github.com/aholachek/react-flip-toolkit
+    
 -   Hover and loaders: https://www.csswand.dev/
+    
 -   Graphic animations: https://lottiefiles.com/
+    
     -   https://www.pixeltrue.com/free-illustrations lottie animations
 -   HTML animation? https://tumult.com/hype/ (paid)
+    
 -   Page Transitions with swup https://github.com/swup/swup (css tricks)
+    
 -   css animation without keyframes https://animxyz.com/docs/
+    
 -   collection of css animations https://xsgames.co/animatiss/
+    
 -   https://ericfortis.github.io/web-animations/ Open source plain JS, CSS, HTML, SVG animations
+    
 -   animation introduction & examples https://stackdiary.com/css-animations/
+    
 
 ### Loading Spinners
 

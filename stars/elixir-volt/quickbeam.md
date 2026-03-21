@@ -1,6 +1,6 @@
 ---
 project: quickbeam
-stars: 130
+stars: 156
 description: JavaScript runtime for the BEAM — Web APIs backed by OTP, native DOM, and a built-in TypeScript toolchain.
 url: https://github.com/elixir-volt/quickbeam
 ---
@@ -16,7 +16,7 @@ Installation
 ------------
 
 def deps do
-  \[{:quickbeam, "~> 0.6.1"}\]
+  \[{:quickbeam, "~> 0.7.1"}\]
 end
 
 Requires Zig 0.15+ (installed automatically by Zigler, or use system Zig).
@@ -67,6 +67,152 @@ const ref \= Beam.monitor(pid, (reason) \=> {
   console.log("process died:", reason);
 });
 Beam.demonitor(ref);
+
+### `Beam` API reference
+
+Category
+
+API
+
+Description
+
+**Bridge**
+
+`Beam.call(name, ...args)`
+
+Call an Elixir handler (async)
+
+`Beam.callSync(name, ...args)`
+
+Call an Elixir handler (sync)
+
+`Beam.send(pid, message)`
+
+Send a message to a BEAM process
+
+`Beam.onMessage(callback)`
+
+Receive BEAM messages
+
+**Process**
+
+`Beam.self()`
+
+PID of the owning GenServer
+
+`Beam.spawn(script)`
+
+Spawn a new JS runtime as a BEAM process
+
+`Beam.register(name)`
+
+Register the runtime under a name
+
+`Beam.whereis(name)`
+
+Look up a registered runtime
+
+`Beam.monitor(pid, callback)`
+
+Monitor a process for exit
+
+`Beam.demonitor(ref)`
+
+Cancel a monitor
+
+`Beam.link(pid)` / `Beam.unlink(pid)`
+
+Bidirectional crash propagation
+
+**Distribution**
+
+`Beam.nodes()`
+
+List connected BEAM nodes
+
+`Beam.rpc(node, runtime, fn, ...args)`
+
+Remote call to another node
+
+**Utilities**
+
+`Beam.sleep(ms)` / `Beam.sleepSync(ms)`
+
+Async/sync sleep
+
+`Beam.hash(data, range?)`
+
+Non-cryptographic hash (`:erlang.phash2`)
+
+`Beam.escapeHTML(str)`
+
+Escape `& < > " '`
+
+`Beam.which(bin)`
+
+Find executable on PATH
+
+`Beam.peek(promise)` / `Beam.peek.status(promise)`
+
+Read promise result without await
+
+`Beam.randomUUIDv7()`
+
+Monotonic sortable UUID
+
+`Beam.deepEquals(a, b)`
+
+Deep structural equality
+
+`Beam.nanoseconds()`
+
+Monotonic high-res timer
+
+`Beam.uniqueInteger()`
+
+Monotonically increasing unique integer
+
+`Beam.makeRef()`
+
+Create a unique BEAM reference
+
+`Beam.inspect(value)`
+
+Pretty-print any value (including PIDs/refs)
+
+**Semver**
+
+`Beam.semver.satisfies(version, range)`
+
+Check version against Elixir requirement
+
+`Beam.semver.order(a, b)`
+
+Compare two semver strings
+
+**Password**
+
+`Beam.password.hash(password, opts?)`
+
+PBKDF2-SHA256 hash
+
+`Beam.password.verify(password, hash)`
+
+Constant-time verification
+
+**Introspection**
+
+`Beam.version`
+
+QuickBEAM version string
+
+`Beam.systemInfo()`
+
+Schedulers, memory, atoms, OTP release
+
+`Beam.processInfo()`
+
+Memory, reductions, message queue
 
 Supervision
 -----------
@@ -219,6 +365,38 @@ Introspection
 \# Runtime diagnostics
 QuickBEAM.info(rt)
 \# %{handlers: \["db.query"\], memory: %{...}, global\_count: 87}
+
+### Bytecode disassembly
+
+Disassemble QuickJS bytecode into structured Elixir terms — like `:beam_disasm` for the BEAM:
+
+{:ok, bc} \= QuickBEAM.disasm(rt, "function fib(n) { if (n <= 1) return n; return fib(n-1) + fib(n-2) }")
+fib \= hd(bc.cpool)
+
+fib.name       \# "fib"
+fib.args       \# \["n"\]
+fib.stack\_size \# 4
+fib.opcodes
+\# \[
+\#   {0, :get\_arg0, 0},
+\#   {1, :push\_1, 1},
+\#   {2, :lte},
+\#   {3, :if\_false8, 7},
+\#   {5, :get\_arg0, 0},
+\#   {6, :return},
+\#   {7, :get\_var, "fib"},
+\#   {12, :get\_arg0, 0},
+\#   {13, :push\_1, 1},
+\#   {14, :sub},
+\#   {15, :call1, 1},
+\#   ...
+\# \]
+
+`disasm/1` works on precompiled bytecode binaries without a runtime:
+
+{:ok, bytecode} \= QuickBEAM.compile(rt, source)
+\# later, even on a different node:
+{:ok, %QuickBEAM.Bytecode{}} \= QuickBEAM.disasm(bytecode)
 
 DOM
 ---
@@ -574,6 +752,9 @@ Memory limits, reduction limits, timeouts
 Examples
 --------
 
+-   `examples/chat_room/` — real-time chat with Phoenix Channels. Each room is a supervised QuickBEAM runtime; JS broadcasts become PubSub pushes to WebSocket clients.
+-   `examples/ai_agent/` — conversational AI agent with streaming, tool use, and pluggable LLM backends. JS orchestrates the conversation loop; Elixir provides the I/O.
+-   `examples/counter_live/` — LiveView counter where each session gets a ~58 KB JS context from a shared pool. The simplest QuickBEAM + Phoenix integration.
 -   `examples/ssr/` — Preact SSR with a pool of runtimes and native DOM. Elixir reads the DOM directly — no `renderToString`.
 -   `examples/rule_engine/` — user-defined business rules (pricing, validation, transforms) in sandboxed JS runtimes with `apis: false`, memory limits, timeouts, and hot reload.
 -   `examples/live_dashboard/` — Workers (BEAM processes) compute metrics in parallel and broadcast results via BroadcastChannel (`:pg`). Crash recovery via OTP supervisor.

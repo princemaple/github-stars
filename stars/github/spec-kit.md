@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 76788
+stars: 79397
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -23,6 +23,7 @@ Table of Contents
 -   🚶 Community Walkthroughs
 -   🤖 Supported AI Agents
 -   🔧 Specify CLI Reference
+-   🧩 Making Spec Kit Your Own: Extensions & Presets
 -   📚 Core Philosophy
 -   🌟 Development Phases
 -   🎯 Experimental Goals
@@ -48,8 +49,12 @@ Choose your preferred installation method:
 
 #### Option 1: Persistent Installation (Recommended)
 
-Install once and use everywhere:
+Install once and use everywhere. Pin a specific release tag for stability (check Releases for the latest):
 
+# Install a specific stable release (recommended — replace vX.Y.Z with the latest tag)
+uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
+
+# Or install latest from main (may include unreleased changes)
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
 Then use the tool directly:
@@ -67,19 +72,19 @@ specify check
 
 To upgrade Specify, see the Upgrade Guide for detailed instructions. Quick upgrade:
 
-uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git
+uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git@vX.Y.Z
 
 #### Option 2: One-time Usage
 
 Run directly without installing:
 
-# Create new project
-uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT\_NAME\>
+# Create new project (pinned to a stable release — replace vX.Y.Z with the latest tag)
+uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init <PROJECT\_NAME\>
 
 # Or initialize in existing project
-uvx --from git+https://github.com/github/spec-kit.git specify init . --ai claude
+uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init . --ai claude
 # or
-uvx --from git+https://github.com/github/spec-kit.git specify init --here --ai claude
+uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init --here --ai claude
 
 **Benefits of persistent installation:**
 
@@ -88,9 +93,13 @@ uvx --from git+https://github.com/github/spec-kit.git specify init --here --ai c
 -   Better tool management with `uv tool list`, `uv tool upgrade`, `uv tool uninstall`
 -   Cleaner shell configuration
 
+#### Option 3: Enterprise / Air-Gapped Installation
+
+If your environment blocks access to PyPI or GitHub, see the Enterprise / Air-Gapped Installation guide for step-by-step instructions on using `pip download` to create portable, OS-specific wheel bundles on a connected machine.
+
 ### 2\. Establish project principles
 
-Launch your AI assistant in the project directory. The `/speckit.*` commands are available in the assistant.
+Launch your AI assistant in the project directory. Most agents expose spec-kit as `/speckit.*` slash commands; Codex CLI in skills mode uses `$speckit-*` instead.
 
 Use the **`/speckit.constitution`** command to create your project's governing principles and development guidelines that will guide all subsequent development.
 
@@ -140,6 +149,10 @@ See Spec-Driven Development in action across different scenarios with these comm
     
 -   **Brownfield Java runtime extension** — Extends an existing open-source Jakarta EE runtime (Piranha, ~420,000 lines of Java, XML, JSP, HTML, and config files across 180 Maven modules) with a password-protected Server Admin Console, demonstrating spec-kit on a large multi-module Java project with no prior specs or constitution.
     
+-   **Brownfield Go / React dashboard demo** — Demonstrates spec-kit driven entirely from the **terminal using GitHub Copilot CLI**. Extends NASA's open-source Hermes ground support system (Go) with a lightweight React-based web telemetry dashboard, showing that the full constitution → specify → plan → tasks → implement workflow works from the terminal.
+    
+-   **Greenfield Spring Boot MVC with a custom preset** — Builds a Spring Boot MVC application from scratch using a custom pirate-speak preset, demonstrating how presets can reshape the entire spec-kit experience: specifications become "Voyage Manifests," plans become "Battle Plans," and tasks become "Crew Assignments" — all generated in full pirate vernacular without changing any tooling.
+    
 
 🤖 Supported AI Agents
 ----------------------
@@ -180,6 +193,8 @@ Codex CLI
 
 ✅
 
+Requires `--ai-skills`. Codex recommends skills and treats custom prompts as deprecated. Spec-kit installs Codex skills into `.agents/skills` and invokes them as `$speckit-<command>`.
+
 Cursor
 
 ✅
@@ -210,6 +225,12 @@ opencode
 
 ✅
 
+Pi Coding Agent
+
+✅
+
+Pi doesn't have MCP support out of the box, so `taskstoissues` won't work as intended. MCP support can be added via extensions
+
 Qwen Code
 
 ✅
@@ -234,7 +255,15 @@ Kimi Code
 
 ✅
 
+iFlow CLI
+
+✅
+
 Windsurf
+
+✅
+
+Junie
 
 ✅
 
@@ -243,6 +272,10 @@ Antigravity (agy)
 ✅
 
 Requires `--ai-skills`
+
+Trae
+
+✅
 
 Generic
 
@@ -267,7 +300,7 @@ Initialize a new Specify project from the latest template
 
 `check`
 
-Check for installed tools (`git`, `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`, `vibe`, `kimi`)
+Check for installed tools: `git` plus all CLI-based agents configured in `AGENT_CONFIG` (for example: `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `junie`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`, `vibe`, `kimi`, `iflow`, `pi`, etc.)
 
 ### `specify init` Arguments & Options
 
@@ -287,7 +320,7 @@ Name for your new project directory (optional if using `--here`, or use `.` for 
 
 Option
 
-AI assistant to use: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `kiro-cli` (`kiro` alias), `agy`, `bob`, `qodercli`, `vibe`, `kimi`, or `generic` (requires `--ai-commands-dir`)
+AI assistant to use (see `AGENT_CONFIG` for the full, up-to-date list). Common options include: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `junie`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `kiro-cli` (`kiro` alias), `agy`, `bob`, `qodercli`, `vibe`, `kimi`, `iflow`, `pi`, or `generic` (requires `--ai-commands-dir`)
 
 `--ai-commands-dir`
 
@@ -349,6 +382,12 @@ Flag
 
 Install Prompt.MD templates as agent skills in agent-specific `skills/` directory (requires `--ai`)
 
+`--branch-numbering`
+
+Option
+
+Branch numbering strategy: `sequential` (default — `001`, `002`, `003`) or `timestamp` (`YYYYMMDD-HHMMSS`). Timestamp mode is useful for distributed teams to avoid numbering conflicts
+
 ### Examples
 
 # Basic project initialization
@@ -380,6 +419,12 @@ specify init my-project --ai vibe
 
 # Initialize with IBM Bob support
 specify init my-project --ai bob
+
+# Initialize with Pi Coding Agent support
+specify init my-project --ai pi
+
+# Initialize with Codex CLI support
+specify init my-project --ai codex --ai-skills
 
 # Initialize with Antigravity support
 specify init my-project --ai agy --ai-skills
@@ -415,12 +460,17 @@ specify init my-project --ai claude --ai-skills
 # Initialize in current directory with agent skills
 specify init --here --ai gemini --ai-skills
 
+# Use timestamp-based branch numbering (useful for distributed teams)
+specify init my-project --ai claude --branch-numbering timestamp
+
 # Check system requirements
 specify check
 
 ### Available Slash Commands
 
-After running `specify init`, your AI coding agent will have access to these slash commands for structured development:
+After running `specify init`, your AI coding agent will have access to these slash commands for structured development.
+
+For Codex CLI, `--ai-skills` installs spec-kit as agent skills instead of slash-command prompt files. In Codex skills mode, invoke spec-kit as `$speckit-constitution`, `$speckit-specify`, `$speckit-plan`, `$speckit-tasks`, and `$speckit-implement`.
 
 #### Core Commands
 
@@ -480,6 +530,81 @@ Description
 
 Override feature detection for non-Git repositories. Set to the feature directory name (e.g., `001-photo-albums`) to work on a specific feature when not using Git branches.  
 \*\*Must be set in the context of the agent you're working with prior to using `/speckit.plan` or follow-up commands.
+
+🧩 Making Spec Kit Your Own: Extensions & Presets
+-------------------------------------------------
+
+Spec Kit can be tailored to your needs through two complementary systems — **extensions** and **presets** — plus project-local overrides for one-off adjustments:
+
+block-beta
+    columns 1
+    overrides\["⬆ Highest priority\\nProject-Local Overrides\\n.specify/templates/overrides/"\]
+    presets\["Presets — Customize core & extensions\\n.specify/presets/<preset-id>/templates/"\]
+    extensions\["Extensions — Add new capabilities\\n.specify/extensions/<ext-id>/templates/"\]
+    core\["Spec Kit Core — Built-in SDD commands & templates\\n.specify/templates/\\n⬇ Lowest priority"\]
+
+    style overrides fill:transparent,stroke:#999
+    style presets fill:transparent,stroke:#4a9eda
+    style extensions fill:transparent,stroke:#4a9e4a
+    style core fill:transparent,stroke:#e6a817
+
+Loading
+
+**Templates** are resolved at **runtime** — Spec Kit walks the stack top-down and uses the first match. Project-local overrides (`.specify/templates/overrides/`) let you make one-off adjustments for a single project without creating a full preset. **Commands** are applied at **install time** — when you run `specify extension add` or `specify preset add`, command files are written into agent directories (e.g., `.claude/commands/`). If multiple presets or extensions provide the same command, the highest-priority version wins. On removal, the next-highest-priority version is restored automatically. If no overrides or customizations exist, Spec Kit uses its core defaults.
+
+### Extensions — Add New Capabilities
+
+Use **extensions** when you need functionality that goes beyond Spec Kit's core. Extensions introduce new commands and templates — for example, adding domain-specific workflows that are not covered by the built-in SDD commands, integrating with external tools, or adding entirely new development phases. They expand _what Spec Kit can do_.
+
+# Search available extensions
+specify extension search
+
+# Install an extension
+specify extension add <extension-name\>
+
+For example, extensions could add Jira integration, post-implementation code review, V-Model test traceability, or project health diagnostics.
+
+See the Extensions README for the full guide, the complete community catalog, and how to build and publish your own.
+
+### Presets — Customize Existing Workflows
+
+Use **presets** when you want to change _how_ Spec Kit works without adding new capabilities. Presets override the templates and commands that ship with the core _and_ with installed extensions — for example, enforcing a compliance-oriented spec format, using domain-specific terminology, or applying organizational standards to plans and tasks. They customize the artifacts and instructions that Spec Kit and its extensions produce.
+
+# Search available presets
+specify preset search
+
+# Install a preset
+specify preset add <preset-name\>
+
+For example, presets could restructure spec templates to require regulatory traceability, adapt the workflow to fit the methodology you use (e.g., Agile, Kanban, Waterfall, jobs-to-be-done, or domain-driven design), add mandatory security review gates to plans, enforce test-first task ordering, or localize the entire workflow to a different language. The pirate-speak demo shows just how deep the customization can go. Multiple presets can be stacked with priority ordering.
+
+See the Presets README for the full guide, including resolution order, priority, and how to create your own.
+
+### When to Use Which
+
+Goal
+
+Use
+
+Add a brand-new command or workflow
+
+Extension
+
+Customize the format of specs, plans, or tasks
+
+Preset
+
+Integrate an external tool or service
+
+Extension
+
+Enforce organizational or regulatory standards
+
+Preset
+
+Ship reusable domain-specific templates
+
+Either — presets for template overrides, extensions for templates bundled with new commands
 
 📚 Core Philosophy
 ------------------
@@ -598,11 +723,11 @@ specify init <project\_name\> --ai copilot
 
 # Or in current directory:
 specify init . --ai claude
-specify init . --ai codex
+specify init . --ai codex --ai-skills
 
 # or use --here flag
 specify init --here --ai claude
-specify init --here --ai codex
+specify init --here --ai codex --ai-skills
 
 # Force merge into a non-empty current directory
 specify init . --force --ai claude
@@ -610,7 +735,7 @@ specify init . --force --ai claude
 # or
 specify init --here --force --ai claude
 
-The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, or Mistral Vibe installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi, or Mistral Vibe installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
 
 specify init <project\_name\> --ai claude --ignore-agent-tools
 

@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 11319
+stars: 11882
 description: Termix is a web-based server management platform with SSH terminal, tunneling, and file editing capabilities.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -20,12 +20,13 @@ If you would like, you can support the project here!
 Overview
 ========
 
-Termix is an open-source, forever-free, self-hosted all-in-one server management platform. It provides a multi-platform solution for managing your servers and infrastructure through a single, intuitive interface. Termix offers SSH terminal access, SSH tunneling capabilities, remote file management, and many other tools. Termix is the perfect free and self-hosted alternative to Termius available for all platforms.
+Termix is an open-source, forever-free, self-hosted all-in-one server management platform. It provides a multi-platform solution for managing your servers and infrastructure through a single, intuitive interface. Termix offers SSH terminal access, remote desktop control (RDP, VNC, Telnet), SSH tunneling capabilities, remote SSH file management, and many other tools. Termix is the perfect free and self-hosted alternative to Termius available for all platforms.
 
 Features
 ========
 
 -   **SSH Terminal Access** - Full-featured terminal with split-screen support (up to 4 panels) with a browser-like tab system. Includes support for customizing the terminal including common terminal themes, fonts, and other components.
+-   **Remote Desktop Access** - RDP, VNC, and Telnet support over the browser with complete customization and split screening
 -   **SSH Tunnel Management** - Create and manage SSH tunnels with automatic reconnection and health monitoring and support for -l or -r connections
 -   **Remote File Manager** - Manage files directly on remote servers with support for viewing and editing code, images, audio, and video. Upload, download, rename, delete, and move files seamlessly with sudo support.
 -   **Docker Management** - Start, stop, pause, remove containers. View container stats. Control container using docker exec terminal. It was not made to replace Portainer or Dockge but rather to simply manage your containers compared to creating them.
@@ -80,7 +81,7 @@ Supported Devices:
     -   Google Play Store
     -   APK
 
-Visit the Termix Docs for more information on how to install Termix on all platforms. Otherwise, view a sample Docker Compose file here:
+Visit the Termix Docs for more information on how to install Termix on all platforms. Otherwise, view a sample Docker Compose file here (you can omit guacd and the network if you don't plan on using remote desktop features):
 
 services:
   termix:
@@ -93,10 +94,27 @@ services:
       - termix-data:/app/data
     environment:
       PORT: "8080"
+    depends\_on:
+      - guacd
+    networks:
+      - termix-net
+
+  guacd:
+    image: guacamole/guacd:latest
+    container\_name: guacd
+    restart: unless-stopped
+    ports:
+      - "4822:4822"
+    networks:
+      - termix-net
 
 volumes:
   termix-data:
     driver: local
+
+networks:
+  termix-net:
+    driver: bridge
 
 Sponsors
 ========

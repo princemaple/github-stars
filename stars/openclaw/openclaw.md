@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 312891
+stars: 328559
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -14,9 +14,9 @@ url: https://github.com/openclaw/openclaw
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
-Website · Docs · Vision · DeepWiki · Getting Started · Updating · Showcase · FAQ · Wizard · Nix · Docker · Discord
+Website · Docs · Vision · DeepWiki · Getting Started · Updating · Showcase · FAQ · Onboarding · Nix · Docker · Discord
 
-Preferred setup: run the onboarding wizard (`openclaw onboard`) in your terminal. The wizard guides you step by step through setting up the gateway, workspace, channels, and skills. The CLI wizard is the recommended path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**. Works with npm, pnpm, or bun. New install? Start here: Getting started
+Preferred setup: run `openclaw onboard` in your terminal. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**. Works with npm, pnpm, or bun. New install? Start here: Getting started
 
 Sponsors
 --------
@@ -44,19 +44,19 @@ Models (selection + auth)
 Install (recommended)
 ---------------------
 
-Runtime: **Node ≥22**.
+Runtime: **Node 24 (recommended) or Node 22.16+**.
 
 npm install -g openclaw@latest
 # or: pnpm add -g openclaw@latest
 
 openclaw onboard --install-daemon
 
-The wizard installs the Gateway daemon (launchd/systemd user service) so it stays running.
+OpenClaw Onboard installs the Gateway daemon (launchd/systemd user service) so it stays running.
 
 Quick start (TL;DR)
 -------------------
 
-Runtime: **Node ≥22**.
+Runtime: **Node 24 (recommended) or Node 22.16+**.
 
 Full beginner guide (auth, pairing, channels): Getting started
 
@@ -95,7 +95,7 @@ pnpm build
 
 pnpm openclaw onboard --install-daemon
 
-# Dev loop (auto-reload on TS changes)
+# Dev loop (auto-reload on source/config changes)
 pnpm gateway:watch
 
 Note: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary.
@@ -125,7 +125,7 @@ Highlights
 -   **Live Canvas** — agent-driven visual workspace with A2UI.
 -   **First-class tools** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
 -   **Companion apps** — macOS menu bar app + iOS/Android nodes.
--   **Onboarding + skills** — wizard-driven setup with bundled/managed/workspace skills.
+-   **Onboarding + skills** — onboarding-driven setup with bundled/managed/workspace skills.
 
 Star History
 ------------
@@ -136,7 +136,7 @@ Everything we built so far
 ### Core platform
 
 -   Gateway WS control plane with sessions, presence, config, cron, webhooks, Control UI, and Canvas host.
--   CLI surface: gateway, agent, send, wizard, and doctor.
+-   CLI surface: gateway, agent, send, onboarding, and doctor.
 -   Pi agent runtime in RPC mode with tool streaming and block streaming.
 -   Session model: `main` for direct chats, group isolation, activation modes, queue modes, reply-back. Group rules: Groups.
 -   Media pipeline: images/audio/video, transcription hooks, size caps, temp file lifecycle. Audio details: Audio.
@@ -294,7 +294,7 @@ If you plan to build/run companion apps, follow the platform runbooks below.
 -   WebChat + debug tools.
 -   Remote gateway control over SSH.
 
-Note: signed builds required for macOS permissions to stick across rebuilds (see `docs/mac/permissions.md`).
+Note: signed builds required for macOS permissions to stick across rebuilds (see macOS Permissions).
 
 ### iOS node (optional)
 
@@ -364,7 +364,7 @@ Details: Security guide · Docker + sandboxing · Sandbox config
 
 ### Discord
 
--   Set `DISCORD_BOT_TOKEN` or `channels.discord.token` (env wins).
+-   Set `DISCORD_BOT_TOKEN` or `channels.discord.token`.
 -   Optional: set `commands.native`, `commands.text`, or `commands.useAccessGroups`, plus `channels.discord.allowFrom`, `channels.discord.guilds`, or `channels.discord.mediaMaxMb` as needed.
 
 {
@@ -419,7 +419,7 @@ Use these when you’re past the onboarding flow and want the deeper reference.
 -   Run the Gateway by the book with the operational runbook.
 -   Learn how the Control UI/Web surfaces work and how to expose them safely.
 -   Understand remote access over SSH tunnels or tailnets.
--   Follow the onboarding wizard flow for a guided setup.
+-   Follow OpenClaw Onboard for a guided setup.
 -   Wire external triggers via the webhook surface.
 -   Set up Gmail Pub/Sub triggers.
 -   Learn the macOS menu bar companion details.

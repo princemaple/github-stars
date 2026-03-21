@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 6622
+stars: 6670
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---

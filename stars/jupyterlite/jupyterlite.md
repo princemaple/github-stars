@@ -1,6 +1,6 @@
 ---
 project: jupyterlite
-stars: 4778
+stars: 4786
 description: Wasm powered Jupyter running in the browser 💡
 url: https://github.com/jupyterlite/jupyterlite
 ---
@@ -146,6 +146,7 @@ See also:
 -   jyve: Jupyter Kernels, right inside JupyterLab
 -   Starboard Notebook: In-browser literal notebooks
 -   Basthon: A Jupyter notebook implementation using Pyodide
+-   Notebook.link: A cloud-backed, in-browser notebook platform based on JupyterLite
 
 👥 Contributors
 ---------------

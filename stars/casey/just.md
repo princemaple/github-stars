@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 32077
+stars: 32253
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -115,6 +115,12 @@ Cargo
 just
 
 `cargo install just`
+
+Cargo Binstall
+
+just
+
+`cargo binstall just`
 
 Conda
 
@@ -379,7 +385,7 @@ This does not, however, preclude fixing outright bugs, even if doing so might br
 
 There will never be a `just` 2.0. Any desirable backwards-incompatible changes will be opt-in on a per-`justfile` basis, so users may migrate at their leisure.
 
-Features that aren't yet ready for stabilization are marked as unstable and may be changed or removed at any time. Using unstable features produces an error by default, which can be suppressed with by passing the `--unstable` flag, `set unstable`, or setting the environment variable `JUST_UNSTABLE`, to any value other than `false`, `0`, or the empty string.
+Features that aren't yet ready for stabilization are marked as unstable and may be changed or removed at any time. Using unstable features produces an error by default, which can be suppressed by passing the `--unstable` flag, `set unstable`, or setting the environment variable `JUST_UNSTABLE`, to any value other than `false`, `0`, or the empty string.
 
 Editor Support
 --------------
@@ -472,7 +478,7 @@ Micro supports Justfile syntax highlighting out of the box, thanks to tomodachi9
 
 ### Zed
 
-The zed-just extension by jackTabsCode is avilable on the Zed extensions page.
+The zed-just extension by jackTabsCode is available on the Zed extensions page.
 
 ### Other Editors
 
@@ -867,6 +873,14 @@ boolean
 
 Ignore recipe lines beginning with `#`.
 
+`lazy`1.47.0
+
+boolean
+
+`false`
+
+Don't evaluate unused variables.
+
 `positional-arguments`
 
 boolean
@@ -1037,6 +1051,25 @@ $ just foo goodbye
 hello
 goodbye
 
+#### Lazy
+
+The `lazy` setting1.47.0, currently unstable, causes the evaluator to skip evaluating unused variables. This can be beneficial when a `justfile` contains variables that are expensive to evaluate but only sometimes used.
+
+In the following `justfile`, `token` will be skipped when only invoking `bar`:
+
+set lazy
+set unstable
+
+token := \`expensive-script-to-get-credentials\`
+
+foo:
+  curl -H "Authorization: Bearer {{ token }}" https://example.com/foo
+
+bar:
+  cargo test
+
+Because `just` cannot determine when exported variables are used, assignments with `export` and assignments in a module with `set export` will always be evaluated.
+
 #### Positional Arguments
 
 If `positional-arguments` is `true`, recipe arguments will be passed as positional arguments to commands. For linewise recipes, argument `$0` will be the name of the recipe.
@@ -1070,7 +1103,7 @@ $ just test foo "bar baz"
 \- foo
 \- bar baz
 
-Positional arguments may also be turned on on a per-recipe basis with the `[positional-arguments]` attribute1.29.0:
+Positional arguments may also be turned on a per-recipe basis with the `[positional-arguments]` attribute1.29.0:
 
 \[positional-arguments\]
 @foo bar:
@@ -1404,7 +1437,7 @@ foo:
   mkdir bar
   echo 'so much good stuff' > bar/stuff.txt
 
-The `?` sigilmaster causes the current recipe to stop executing if the command exits with status code `1`, however execution of other recipes will continue. Exit status `0` causes the current recipe to continue execution as normal. All other exit codes are reserved and should not be used, as they may be given meaning in a future version of `just`.
+The `?` sigil1.47.0 causes the current recipe to stop executing if the command exits with status code `1`, however execution of other recipes will continue. Exit status `0` causes the current recipe to continue execution as normal. All other exit codes are reserved and should not be used, as they may be given meaning in a future version of `just`.
 
 If the `guards` setting is unset or false, `?` sigils are ignored and instead treated as part of the command.
 
@@ -1596,8 +1629,8 @@ The process ID is: 420
 -   `prepend(prefix, s)`1.27.0 Prepend `prefix` to whitespace-separated strings in `s`. `prepend('src/', 'foo bar baz')` → `'src/foo src/bar src/baz'`
 -   `encode_uri_component(s)`1.27.0 - Percent-encode characters in `s` except `[A-Za-z0-9_.!~*'()-]`, matching the behavior of the JavaScript `encodeURIComponent` function.
 -   `quote(s)` - Replace all single quotes with `'\''` and prepend and append single quotes to `s`. This is sufficient to escape special characters for many shells, including most Bourne shell descendants.
--   `replace(s, from, to)` - Replace all occurrences of `from` in `s` to `to`.
--   `replace_regex(s, regex, replacement)` - Replace all occurrences of `regex` in `s` to `replacement`. Regular expressions are provided by the Rust `regex` crate. See the syntax documentation for usage examples. Capture groups are supported. The `replacement` string uses Replacement string syntax.
+-   `replace(s, from, to)` - Replace all occurrences of `from` in `s` with `to`.
+-   `replace_regex(s, regex, replacement)` - Replace all occurrences of `regex` in `s` with `replacement`. Regular expressions are provided by the Rust `regex` crate. See the syntax documentation for usage examples. Capture groups are supported. The `replacement` string uses Replacement string syntax.
 -   `trim(s)` - Remove leading and trailing whitespace from `s`.
 -   `trim_end(s)` - Remove trailing whitespace from `s`.
 -   `trim_end_match(s, substring)` - Remove suffix of `s` matching `substring`.
@@ -1640,7 +1673,7 @@ These functions can fail, for example if a path does not have an extension, whic
 
 #### Filesystem Access
 
--   `path_exists(path)` - Returns `true` if the path points at an existing entity and `false` otherwise. Traverses symbolic links, and returns `false` if the path is inaccessible or points to a broken symlink.
+-   `path_exists(path)` - Returns the string `true` if the path points at an existing entity and the string `false` otherwise. Traverses symbolic links, and returns the string `false` if the path is inaccessible or points to a broken symlink.
 -   `read(path)`1.39.0 - Returns the content of file at `path` as string.
 
 ##### Error Reporting
@@ -1682,9 +1715,9 @@ The arguments to `datetime` and `datetime_utc` are `strftime`\-style format stri
       @echo '{{ style("error") }}OH NO{{ NORMAL }}'
     
 
-##### User Directories1.23.0
+##### User Directories
 
-These functions return paths to user-specific directories for things like configuration, data, caches, executables, and the user's home directory.
+These functions1.23.0 return paths to user-specific directories for things like configuration, data, caches, executables, and the user's home directory.
 
 On Unix, these functions follow the XDG Base Directory Specification.
 
@@ -1919,13 +1952,13 @@ module, recipe
 
 Set recipe or module's documentation comment to `DOC`.
 
-`[dragonfly]`master
+`[dragonfly]`1.47.0
 
 recipe
 
 Enable recipe on DragonFly BSD.
 
-`[env(ENV_VAR, VALUE)]` master
+`[env(ENV_VAR, VALUE)]` 1.47.0
 
 recipe
 
@@ -1937,7 +1970,7 @@ recipe
 
 Set shebang recipe script's file extension to `EXT`. `EXT` should include a period if one is desired.
 
-`[freebsd]`master
+`[freebsd]`1.47.0
 
 recipe
 
@@ -1967,7 +2000,7 @@ recipe
 
 Attach `METADATA` to recipe.
 
-`[netbsd]`master
+`[netbsd]`1.47.0
 
 recipe
 
@@ -2063,9 +2096,9 @@ Attributes with a single argument may be written with a colon:
 \[group: 'bar'\]
 foo:
 
-#### Enabling and Disabling Recipes1.8.0
+#### Enabling and Disabling Recipes
 
-The `[linux]`, `[macos]`, `[unix]`, and `[windows]` attributes are configuration attributes. By default, recipes are always enabled. A recipe with one or more configuration attributes will only be enabled when one or more of those configurations is active.
+The `[linux]`, `[macos]`, `[unix]`, and `[windows]` attributes1.8.0 are configuration attributes. By default, recipes are always enabled. A recipe with one or more configuration attributes will only be enabled when one or more of those configurations is active.
 
 This can be used to write `justfile`s that behave differently depending on which operating system they run on. The `run` recipe in this `justfile` will compile and run `main.c`, using a different C compiler and using the correct output binary name for that compiler depending on the operating system:
 
@@ -2079,9 +2112,9 @@ run:
   cl main.c
   main.exe
 
-#### Disabling Changing Directory1.9.0
+#### Disabling Changing Directory
 
-`just` normally executes recipes with the current directory set to the directory that contains the `justfile`. This can be disabled using the `[no-cd]` attribute. This can be used to create recipes which use paths relative to the invocation directory, or which operate on the current directory.
+`just` normally executes recipes with the current directory set to the directory that contains the `justfile`. This can be disabled using the `[no-cd]` attribute1.9.0. This can be used to create recipes which use paths relative to the invocation directory, or which operate on the current directory.
 
 For example, this `commit` recipe:
 
@@ -2092,9 +2125,9 @@ commit file:
 
 Can be used with paths that are relative to the current directory, because `[no-cd]` prevents `just` from changing the current directory when executing `commit`.
 
-#### Requiring Confirmation for Recipes1.17.0
+#### Requiring Confirmation for Recipes
 
-`just` normally executes all recipes unless there is an error. The `[confirm]` attribute allows recipes require confirmation in the terminal prior to running. This can be overridden by passing `--yes` to `just`, which will automatically confirm any recipes marked by this attribute.
+`just` normally executes all recipes unless there is an error. The `[confirm]` attribute1.17.0 allows recipes require confirmation in the terminal prior to running. This can be overridden by passing `--yes` to `just`, which will automatically confirm any recipes marked by this attribute.
 
 Recipes dependent on a recipe that requires confirmation will not be run if the relied upon recipe is not confirmed, as well as recipes passed after any recipe that requires confirmation.
 
@@ -2102,13 +2135,22 @@ Recipes dependent on a recipe that requires confirmation will not be run if the 
 delete-all:
   rm -rf \*
 
-#### Custom Confirmation Prompt1.23.0
+#### Custom Confirmation Prompt
 
-The default confirmation prompt can be overridden with `[confirm(PROMPT)]`:
+The default confirmation prompt can be overridden with `[confirm(PROMPT)]`1.23.0:
 
 \[confirm("Are you sure you want to delete everything?")\]
 delete-everything:
   rm -rf \*
+
+#### Metadata
+
+Metadata in the form of lists of strings may be attached to recipes with the `[metadata(METADATA)]` attribute1.42.0:
+
+\[metadata("hello", "goodbye")\]
+foo:
+
+Metadata can be read using `just --dump --dump-format json`.
 
 ### Groups
 
@@ -2305,6 +2347,8 @@ $ just --set os bsd
 ./build bsd
 ./test --test bsd
 
+Variables in submodules can be overridden using the `::`\-separated path to the variable. A variable named `bar` in a submodule named `foo` may be overridden with `foo::bar=VALUE` or `--set foo::bar VALUE`.
+
 ### Getting and Setting Environment Variables
 
 #### Exporting `just` Variables
@@ -2342,9 +2386,9 @@ a $A $B\=\`echo $A\`:
 
 When export is set, all `just` variables are exported as environment variables.
 
-#### Unexporting Environment Variables1.29.0
+#### Unexporting Environment Variables
 
-Environment variables can be unexported with the `unexport keyword`:
+Environment variables can be unexported with the `unexport keyword`1.29.0:
 
 unexport FOO
 
@@ -2566,7 +2610,7 @@ bar=hello
 
 If a parameter has both a long and short option, it may be passed using either.
 
-Variadic `+` and `?` parameters cannot be options.
+Variadic `*` and `+` parameters cannot be options.
 
 The `[arg(ARG, value=VALUE, …)]`1.46.0 attribute can be used with `long` or `short` to make a parameter a flag which does not take a value.
 
@@ -3335,9 +3379,9 @@ bar: baz
 \# baz
 baz:
 
-### Modules1.19.0
+### Modules
 
-A `justfile` can declare modules using `mod` statements.
+A `justfile` can declare modules using `mod` statements1.19.0.
 
 `mod` statements were stabilized in `just`1.31.0. In earlier versions, you'll need to use the `--unstable` flag, `set unstable`, or set the `JUST_UNSTABLE` environment variable to use them.
 
@@ -3572,7 +3616,7 @@ The argument to `--timestamp-format` is a `strftime`\-style format string, see t
 
 ### Signal Handling
 
-Signals are messsages sent to running programs to trigger specific behavior. For example, `SIGINT` is sent to all processes in the terminal forground process group when `CTRL-C` is pressed.
+Signals are messages sent to running programs to trigger specific behavior. For example, `SIGINT` is sent to all processes in the terminal foreground process group when `CTRL-C` is pressed.
 
 `just` tries to exit when requested by a signal, but it also tries to avoid leaving behind running child proccesses, two goals which are somewhat in conflict.
 
@@ -3847,7 +3891,7 @@ Integration tests use the `Test` struct, a builder which allows for easily invok
     
 3.  Clone `just` and start hacking. The best workflow is to have the code you're working on in an editor alongside a job that re-runs tests whenever a file changes. You can run such a job by installing cargo-watch with `cargo install cargo-watch` and running `just watch test`.
     
-4.  Add a failing test for your feature. Most of the time this will be an integration test which exercises the feature end-to-end. Look for an appropriate file to put the test in in tests, or add a new file in tests and add a `mod` statement importing that file in tests/lib.rs.
+4.  Add a failing test for your feature. Most of the time this will be an integration test which exercises the feature end-to-end. Look for an appropriate file to put the test in tests, or add a new file in tests and add a `mod` statement importing that file in tests/lib.rs.
     
 5.  Implement the feature.
     

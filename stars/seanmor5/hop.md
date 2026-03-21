@@ -1,6 +1,6 @@
 ---
 project: hop
-stars: 88
+stars: 89
 description: A tiny web crawling framework for Elixir
 url: https://github.com/seanmor5/hop
 ---

@@ -1,6 +1,6 @@
 ---
 project: trailbase
-stars: 4676
+stars: 4694
 description: An open, sub-millisecond, single-executable Firebase alternative with type-safe APIs, built-in WebAssembly runtime, realtime subscriptions, auth, and admin UI built on Rust, SQLite & Wasmtime.
 url: https://github.com/trailbaseio/trailbase
 ---
@@ -117,3 +117,8 @@ We chose OSL-3.0 over other, better known copyleft licenses due to its narrower 
 This limited scope is similar to the GPL's classpath or the LGPL's linking exception. The goal is to allow building on top and around of TrailBase without any provisions rubbing off onto your original work, while making sure that fixes and improvements find their way back to the community. These are our intentions - we felt the need to spell them out explicitly because licensing is tricky and we ain't lawyers. Graciously, the license's author provides some more explanations. If you have any concerns, please reach out.
 
 If you require an exception, reach out to contact@trailbase.io.
+
+Funding
+-------
+
+This project receives funding through NGI Zero Core, a fund established by NLnet with financial support from the European Commission's Next Generation Internet program. Learn more on our NLnet project page.

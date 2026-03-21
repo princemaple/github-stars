@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 77113
+stars: 77382
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -76,6 +76,7 @@ Courses
 
 ### Introduction to Computer Science
 
+-   COMP1511 - Programming Fundamentals - UNSW (Complete Course: Lectures, Labs, Assignments, Exercises, Exams) | Video Playlist
 -   CS 10 - The Beauty and Joy of Computing - Spring 2015 - Dan Garcia - UC Berkeley InfoCoBuild
 -   6.0001 - Introduction to Computer Science and Programming in Python - MIT OCW
 -   6.001 - Structure and Interpretation of Computer Programs, MIT
@@ -132,7 +133,7 @@ Courses
 -   CSE 373 - Analysis of Algorithms, Stony Brook - Prof Skiena
 -   COP 3530 Data Structures and Algorithms, Prof Sahni, UFL (Videos)
 -   CS225 - Data Structures - University of Illinois at Urbana-Champaign(Video lectures)
--   CS2 - Data Structures and Algorithms - Richard Buckland - UNSW
+-   CS2 - Data Structures and Algorithms Sim-Mautner - UNSW
 -   Data Structures - Pepperdine University
 -   CS 161 - Design and Analysis of Algorithms, Prof. Tim Roughgarden, Stanford University
 -   6.046J - Introduction to Algorithms - Fall 2005, MIT OCW

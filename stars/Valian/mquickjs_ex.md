@@ -1,6 +1,6 @@
 ---
 project: mquickjs_ex
-stars: 51
+stars: 52
 description: Embedded JS runtime for Elixir based on MQuickJS
 url: https://github.com/Valian/mquickjs_ex
 ---

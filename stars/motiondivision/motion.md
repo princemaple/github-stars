@@ -1,6 +1,6 @@
 ---
 project: motion
-stars: 31201
+stars: 31272
 description: A modern animation library for React and JavaScript
 url: https://github.com/motiondivision/motion
 ---
@@ -41,7 +41,7 @@ Why Motion?
 
 Motion is available for React, JavaScript and Vue.
 
-React
+### React
 
 import { motion } from "motion/react"
 
@@ -51,7 +51,9 @@ function Component() {
 
 Get started with Motion for React.
 
-JavaScript
+**Note:** Framer Motion is now Motion. Import from `motion/react` instead of `framer-motion`.
+
+### JS
 
 import { animate } from "motion"
 
@@ -59,7 +61,7 @@ animate("#box", { x: 100 })
 
 Get started with JavaScript.
 
-Vue
+### Vue
 
 <script\>
     import { motion } from "motion-v"
@@ -69,19 +71,23 @@ Vue
 
 Get started with Motion for Vue.
 
-🎓 Examples
------------
+🎓 Examples & tutorials
+-----------------------
 
-Browse 100+ free and 180+ premium Motion Examples, with copy-paste code that'll level-up your animations whether you're a beginner or an expert.
+Browse 330+ official examples, with copy-paste code that'll level-up your animations whether you're a beginner or an expert.
+
+Over 100 examples come with a full step-by-step tutorial.
 
 ⚡️ Motion+
 ----------
 
 A one-time payment, lifetime-updates membership:
 
--   **180+ premium examples**
+-   **330+ examples**
+-   **100+ tutorials**
 -   **Premium APIs** like Cursor and Ticker
--   **Visual editing** for VS Code (alpha)
+-   **Transition editor** for Cursor and VS Code
+-   **AI skills**
 -   **Private Discord**
 -   **Early access content**
 

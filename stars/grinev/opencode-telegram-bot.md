@@ -1,7 +1,7 @@
 ---
 project: opencode-telegram-bot
-stars: 174
-description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine.
+stars: 240
+description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support. Can be used as lightweight OpenClaw alternative.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
 
@@ -14,9 +14,11 @@ Run AI coding tasks, monitor progress, switch models, and manage sessions from y
 
 No open ports, no exposed APIs. The bot communicates with your local OpenCode server and the Telegram Bot API only.
 
+Scheduled tasks support. Turns the bot into a lightweight OpenClaw alternative for OpenCode users.
+
 Platforms: macOS, Windows, Linux
 
-Languages: English (`en`), Deutsch (`de`), Español (`es`), Русский (`ru`), 简体中文 (`zh`)
+Languages: English (`en`), Deutsch (`de`), Español (`es`), Français (`fr`), Русский (`ru`), 简体中文 (`zh`)
 
 Features
 --------
@@ -30,6 +32,7 @@ Features
 -   **Interactive Q&A** — answer agent questions and approve permissions via inline buttons
 -   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, then forward recognized text to OpenCode
 -   **File attachments** — send images, PDF documents, and any text-based files to OpenCode (code, logs, configs etc.)
+-   **Scheduled tasks** — schedule prompts to run later or on a recurring interval; see Scheduled Tasks
 -   **Context control** — compact context when it gets too large, right from the chat
 -   **Input flow control** — when an interactive flow is active, the bot accepts only relevant input to keep context consistent and avoid accidental actions
 -   **Security** — strict user ID whitelist; no one else can access your bot, even if they find it
@@ -136,6 +139,14 @@ Rename the current session
 
 Browse and run custom commands
 
+`/task`
+
+Create a scheduled task
+
+`/tasklist`
+
+Browse and delete scheduled tasks
+
 `/opencode_start`
 
 Start the OpenCode server remotely
@@ -152,12 +163,23 @@ Any regular text message is sent as a prompt to the coding agent only when no bl
 
 > `/opencode_start` and `/opencode_stop` are intended as emergency commands — for example, if you need to restart a stuck server while away from your computer. Under normal usage, start `opencode serve` yourself before launching the bot.
 
+Scheduled Tasks
+---------------
+
+Scheduled tasks let you prepare prompts in advance and run them automatically later or on a recurring schedule. This is useful for periodic checks, routine code maintenance, or tasks you want OpenCode to execute while you are away from your computer. Use `/task` to create a scheduled task and `/tasklist` to review or delete existing ones.
+
+-   Each task is created from the currently selected OpenCode project and model
+-   Scheduled executions currently always run with the `build` agent
+-   Tasks run outside your active chat session, so they do not interrupt or affect the current session flow
+-   The minimum recurring interval is 5 minutes
+-   Up to 10 scheduled tasks can exist at once by default; change this with `TASK_LIMIT` in your `.env`
+
 Configuration
 -------------
 
 ### Localization
 
--   Supported locales: `en`, `de`, `es`, `ru`, `zh`
+-   Supported locales: `en`, `de`, `es`, `fr`, `ru`, `zh`
 -   The setup wizard asks for language first
 -   You can change locale later with `BOT_LOCALE`
 
@@ -243,7 +265,7 @@ Yes
 
 `BOT_LOCALE`
 
-Bot UI language (supported locale code, e.g. `en`, `de`, `es`, `ru`, `zh`)
+Bot UI language (supported locale code, e.g. `en`, `de`, `es`, `fr`, `ru`, `zh`)
 
 No
 
@@ -260,6 +282,22 @@ No
 `PROJECTS_LIST_LIMIT`
 
 Projects per page in `/projects`
+
+No
+
+`10`
+
+`COMMANDS_LIST_LIMIT`
+
+Commands per page in `/commands`
+
+No
+
+`10`
+
+`TASK_LIMIT`
+
+Maximum number of scheduled tasks that can exist at once
 
 No
 
@@ -288,6 +326,14 @@ Hide tool-call service messages (`💻 bash ...`, `📖 read ...`, etc.)
 No
 
 `false`
+
+`RESPONSE_STREAMING`
+
+Stream assistant replies while they are generated across one or more Telegram messages
+
+No
+
+`true`
 
 `MESSAGE_FORMAT_MODE`
 

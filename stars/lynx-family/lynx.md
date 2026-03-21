@@ -1,6 +1,6 @@
 ---
 project: lynx
-stars: 14581
+stars: 14626
 description: Empower the Web community and invite more to build across platforms.
 url: https://github.com/lynx-family/lynx
 ---
@@ -13,6 +13,7 @@ Content
 -   About Lynx
 -   Documentation
 -   How to Use Lynx
+-   Lynx Explorer
 -   How to Contribute
 -   Discussions
 -   Credits
@@ -47,6 +48,13 @@ We recommend using macOS as the development operating system. Windows and Linux 
 
 -   Trying out Lynx with hello world
 -   Integrating Lynx with an Existing Application
+
+Lynx Explorer
+-------------
+
+Lynx Explorer is the official app for testing and exploring Lynx. It provides native runtime environments (Android/iOS/Harmony/Windows/macOS) and bundles ReactLynx-based screens.
+
+-   Build and run Lynx Explorer: see lynx/explorer/README.md
 
 How to Contribute
 -----------------

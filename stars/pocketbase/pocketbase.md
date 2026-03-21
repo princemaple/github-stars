@@ -1,6 +1,6 @@
 ---
 project: pocketbase
-stars: 56742
+stars: 56986
 description: Open Source realtime backend in 1 file
 url: https://github.com/pocketbase/pocketbase
 ---
@@ -43,7 +43,7 @@ PocketBase is distributed as a regular Go library package which allows you to bu
 
 Here is a minimal example:
 
-1.  Install Go 1.23+ (_if you haven't already_)
+1.  Install Go 1.25+ (_if you haven't already_)
     
 2.  Create a new project directory with the following `main.go` file inside it:
     
@@ -86,7 +86,7 @@ _For more details please refer to Extend with Go._
 
 To build the minimal standalone executable, like the prebuilt ones in the releases page, you can simply run `go build` inside the `examples/base` directory:
 
-1.  Install Go 1.24+ (_if you haven't already_)
+1.  Install Go 1.25+ (_if you haven't already_)
 2.  Clone/download the repo
 3.  Navigate to `examples/base`
 4.  Run `GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build` (_https://go.dev/doc/install/source#environment_)

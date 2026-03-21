@@ -1,26 +1,49 @@
 ---
 project: dev-browser
-stars: 3847
+stars: 3941
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
 
-A browser automation plugin for Claude Code that lets Claude control your browser to test and verify your work as you develop.
+Brought to you by Do Browser.
+
+A browser automation tool that lets AI agents and developers control browsers with sandboxed JavaScript scripts.
 
 **Key features:**
 
+-   **Sandboxed execution** - Scripts run in a QuickJS WASM sandbox with no host access
 -   **Persistent pages** - Navigate once, interact across multiple scripts
--   **Flexible execution** - Full scripts when possible, step-by-step when exploring
--   **LLM-friendly DOM snapshots** - Structured page inspection optimized for AI
+-   **Auto-connect** - Connect to your running Chrome or launch a fresh Chromium
+-   **Full Playwright API** - goto, click, fill, locators, evaluate, screenshots, and more
 
-Prerequisites
--------------
+CLI Installation
+----------------
 
--   Claude Code CLI installed
--   Node.js (v18 or later) with npm
+npm install -g dev-browser
+dev-browser install    # installs Playwright + Chromium
 
-Installation
-------------
+> Windows is not currently supported.
+
+### Quick start
+
+# Launch a headless browser and run a script
+dev-browser --headless <<'EOF'
+const page = await browser.getPage("main");
+await page.goto("https://example.com");
+console.log(await page.title());
+EOF
+
+# Connect to your running Chrome (enable at chrome://inspect/#remote-debugging)
+dev-browser --connect <<'EOF'
+const tabs = await browser.listPages();
+console.log(JSON.stringify(tabs, null, 2));
+EOF
+
+### Using with AI agents
+
+After installing, just tell your agent to run `dev-browser --help` — the help output includes a full LLM usage guide with examples and API reference. No plugin or skill installation needed.
+
+Legacy plugin installation (Claude Code / Amp / Codex)
 
 ### Claude Code
 
@@ -43,51 +66,26 @@ git clone https://github.com/sawyerhood/dev-browser /tmp/dev-browser-skill
 cp -r /tmp/dev-browser-skill/skills/dev-browser $SKILLS\_DIR/dev-browser
 rm -rf /tmp/dev-browser-skill
 
-**Amp only:** Start the server manually before use:
+Script API
+----------
 
-cd ~/.claude/skills/dev-browser && npm install && npm run start-server
+Scripts run in a sandboxed QuickJS runtime (not Node.js). Available globals:
 
-### Chrome Extension (Optional)
+// Browser control
+browser.getPage(nameOrId)    // Get/create named page, or connect to tab by targetId
+browser.newPage()            // Create anonymous page (cleaned up after script)
+browser.listPages()          // List all tabs: \[{id, url, title, name}\]
+browser.closePage(name)      // Close a named page
 
-The Chrome extension allows Dev Browser to control your existing Chrome browser instead of launching a separate Chromium instance. This gives you access to your logged-in sessions, bookmarks, and extensions.
+// File I/O (restricted to ~/.dev-browser/tmp/)
+await saveScreenshot(buf, name)   // Save screenshot buffer, returns path
+await writeFile(name, data)       // Write file, returns path
+await readFile(name)              // Read file, returns content
 
-**Installation:**
+// Output
+console.log/warn/error/info       // Routed to CLI stdout/stderr
 
-1.  Download `extension.zip` from the latest release
-2.  Unzip the file to a permanent location (e.g., `~/.dev-browser-extension`)
-3.  Open Chrome and go to `chrome://extensions`
-4.  Enable "Developer mode" (toggle in top right)
-5.  Click "Load unpacked" and select the unzipped extension folder
-
-**Using the extension:**
-
-1.  Click the Dev Browser extension icon in Chrome's toolbar
-2.  Toggle it to "Active" - this enables browser control
-3.  Ask Claude to connect to your browser (e.g., "connect to my Chrome" or "use the extension")
-
-When active, Claude can control your existing Chrome tabs with all your logged-in sessions, cookies, and extensions intact.
-
-Permissions
------------
-
-To skip permission prompts, add to `~/.claude/settings.json`:
-
-{
-  "permissions": {
-    "allow": \["Skill(dev-browser:dev-browser)", "Bash(npx tsx:\*)"\]
-  }
-}
-
-Or run with `claude --dangerously-skip-permissions` (skips all prompts).
-
-Usage
------
-
-Just ask Claude to interact with your browser:
-
-> "Open localhost:3000 and verify the signup flow works"
-
-> "Go to the settings page and figure out why the save button isn't working"
+Pages are full Playwright Page objects — `goto`, `click`, `fill`, `locator`, `evaluate`, `screenshot`, and everything else, including `page.snapshotForAI({ track?, depth?, timeout? })`, which returns `{ full, incremental? }` for AI-friendly page snapshots.
 
 Benchmarks
 ----------
@@ -143,32 +141,6 @@ $2.81
 100%
 
 _See dev-browser-eval for methodology._
-
-### How It's Different
-
-Approach
-
-How It Works
-
-Tradeoff
-
-Playwright MCP
-
-Observe-think-act loop with individual tool calls
-
-Simple but slow; each action is a separate round-trip
-
-Playwright Skill
-
-Full scripts that run end-to-end
-
-Fast but fragile; scripts start fresh every time
-
-**Dev Browser**
-
-Stateful server + agentic script execution
-
-Best of both: persistent state with flexible execution
 
 License
 -------

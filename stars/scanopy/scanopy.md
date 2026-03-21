@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 4209
+stars: 4321
 description: Network documentation that updates itself
 url: https://github.com/scanopy/scanopy
 ---
@@ -75,10 +75,10 @@ For detailed setup options and configuration, see the Installation Guide.
 
 **scanopy.net/docs**
 
-🖼️ Examples
-------------
+🚀 Demo
+-------
 
-**scanopy.net/showcase**
+**demo.scanopy.net**
 
 🤝 Contributing
 ---------------

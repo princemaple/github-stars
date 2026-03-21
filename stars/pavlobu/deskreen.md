@@ -1,6 +1,6 @@
 ---
 project: deskreen
-stars: 20387
+stars: 20434
 description: Deskreen turns any device with a web browser into a secondary screen for your computer. ⭐️ Star to support our work!
 url: https://github.com/pavlobu/deskreen
 ---

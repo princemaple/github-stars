@@ -1,6 +1,6 @@
 ---
 project: beekeeper-studio
-stars: 22204
+stars: 22267
 description: Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows.
 url: https://github.com/beekeeper-studio/beekeeper-studio
 ---

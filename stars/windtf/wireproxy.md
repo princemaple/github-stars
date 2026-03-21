@@ -1,6 +1,6 @@
 ---
 project: wireproxy
-stars: 5447
+stars: 5465
 description: Wireguard client that exposes itself as a socks5 proxy
 url: https://github.com/windtf/wireproxy
 ---

@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 410203
+stars: 413032
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -1727,16 +1727,6 @@ HTTPS
 
 CORS
 
-Public Holidays
-
-Data on national, regional, and religious holidays via API
-
-`apiKey`
-
-Yes
-
-Yes
-
 Calendarific
 
 Worldwide Holidays
@@ -1862,6 +1852,16 @@ Non-Working Days
 Simple REST API for checking working, non-working or short days for Russia, CIS, USA and other
 
 No
+
+Yes
+
+Yes
+
+Public Holidays
+
+Data on national, regional, and religious holidays via API
+
+`apiKey`
 
 Yes
 
@@ -2182,6 +2182,16 @@ HTTPS
 
 CORS
 
+Coinlayer
+
+Real-time Crypto Currency Exchange Rates
+
+`apiKey`
+
+Yes
+
+Unknown
+
 0x
 
 API for querying token and pool stats across various liquidity pools
@@ -2211,16 +2221,6 @@ Ethereum Node-as-a-Service Provider
 Yes
 
 Yes
-
-apilayer coinlayer
-
-Real-time Crypto Currency Exchange Rates
-
-`apiKey`
-
-Yes
-
-Unknown
 
 Binance
 
@@ -2837,6 +2837,46 @@ HTTPS
 
 CORS
 
+Currencylayer
+
+Exchange rates and currency conversion
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Exchangerate.host
+
+Free foreign exchange & crypto rates API
+
+No
+
+Yes
+
+Unknown
+
+Exchangeratesapi.io
+
+Exchange rates with currency conversion
+
+`apiKey`
+
+Yes
+
+Yes
+
+Fixer
+
+Exchange rates and currency conversion
+
+`apiKey`
+
+No
+
+Unknown
+
 1Forge
 
 Forex currency market data
@@ -2854,16 +2894,6 @@ Free currency API with over 150 currencies
 `apiKey`
 
 Yes
-
-Unknown
-
-apilayer fixer.io
-
-Exchange rates and currency conversion
-
-`apiKey`
-
-No
 
 Unknown
 
@@ -2896,16 +2926,6 @@ Provides current and historical currency exchange rates with free plan 1K reques
 Yes
 
 Yes
-
-Currencylayer
-
-Exchange rates and currency conversion
-
-`apiKey`
-
-Yes
-
-Unknown
 
 CurrencyScoop
 
@@ -2940,26 +2960,6 @@ Unknown
 ExchangeRate-API
 
 Free currency conversion
-
-`apiKey`
-
-Yes
-
-Yes
-
-Exchangerate.host
-
-Free foreign exchange & crypto rates API
-
-No
-
-Yes
-
-Unknown
-
-Exchangeratesapi.io
-
-Exchange rates with currency conversion
 
 `apiKey`
 
@@ -3022,6 +3022,16 @@ HTTPS
 
 CORS
 
+VATlayer
+
+VAT number validation
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Lob.com
 
 US Address Verification
@@ -3082,16 +3092,6 @@ Yes
 
 Yes
 
-vatlayer
-
-VAT number validation
-
-`apiKey`
-
-Yes
-
-Unknown
-
 **⬆ Back to Index**  
   
 
@@ -3107,21 +3107,21 @@ HTTPS
 
 CORS
 
+Userstack
+
+Secure User-Agent String Lookup JSON API
+
+`OAuth`
+
+Yes
+
+Unknown
+
 24 Pull Requests
 
 Project to promote open source collaboration during December
 
 No
-
-Yes
-
-Yes
-
-Screenshot
-
-Take programmatic screenshots of web pages from any website
-
-`apiKey`
 
 Yes
 
@@ -3162,16 +3162,6 @@ ApiFlash
 Chrome based screenshot API for developers
 
 `apiKey`
-
-Yes
-
-Unknown
-
-apilayer userstack
-
-Secure User-Agent String Lookup JSON API
-
-`OAuth`
 
 Yes
 
@@ -4167,6 +4157,16 @@ Yes
 
 Unknown
 
+Screenshot
+
+Take programmatic screenshots of web pages from any website
+
+`apiKey`
+
+Yes
+
+Yes
+
 ScreenshotAPI.net
 
 Create pixel-perfect website screenshots
@@ -4762,7 +4762,7 @@ HTTPS
 
 CORS
 
-apilayer mailboxlayer
+mailboxlayer
 
 Email address validation
 
@@ -4771,16 +4771,6 @@ Email address validation
 Yes
 
 Unknown
-
-Email Validation
-
-Validate email addresses for deliverability and spam
-
-`apiKey`
-
-Yes
-
-Yes
 
 Cloudmersive Validate
 
@@ -4811,6 +4801,16 @@ No
 Yes
 
 Unknown
+
+Email Validation
+
+Validate email addresses for deliverability and spam
+
+`apiKey`
+
+Yes
+
+Yes
 
 EVA
 
@@ -5292,15 +5292,15 @@ HTTPS
 
 CORS
 
-VAT Validation
+Marketstack
 
-Validate VAT numbers and calculate VAT rates
+Real-Time, Intraday & Historical Market Data API
 
 `apiKey`
 
 Yes
 
-Yes
+Unknown
 
 Aletheia
 
@@ -5325,16 +5325,6 @@ Yes
 Alpha Vantage
 
 Realtime and historical stock data
-
-`apiKey`
-
-Yes
-
-Unknown
-
-apilayer marketstack
-
-Real-Time, Intraday & Historical Market Data API
 
 `apiKey`
 
@@ -5699,6 +5689,16 @@ Stock market data (real-time & historical)
 Yes
 
 Unknown
+
+VAT Validation
+
+Validate VAT numbers and calculate VAT rates
+
+`apiKey`
+
+Yes
+
+Yes
 
 WallstreetBets
 
@@ -6985,15 +6985,25 @@ HTTPS
 
 CORS
 
-IP Geolocation
+IPstack
 
-Geolocate website visitors from their IPs
+Locate and identify website visitors by IP address
 
 `apiKey`
 
 Yes
 
+Unknown
+
+ipapi.com
+
+Real-time Geolocation & Reverse IP Lookup REST API
+
+`apiKey`
+
 Yes
+
+Unknown
 
 Actinia Grass GIS
 
@@ -7044,16 +7054,6 @@ Get location information by IP address
 Yes
 
 Yes
-
-apilayer ipstack
-
-Locate and identify website visitors by IP address
-
-`apiKey`
-
-Yes
-
-Unknown
 
 Battuta
 
@@ -7405,6 +7405,16 @@ No
 
 Unknown
 
+IP Geolocation
+
+Geolocate website visitors from their IPs
+
+`apiKey`
+
+Yes
+
+Yes
+
 IP2Location
 
 IP geolocation web service to get more than 55 parameters
@@ -7434,16 +7444,6 @@ No
 Yes
 
 Yes
-
-ipapi.com
-
-Real-time Geolocation & Reverse IP Lookup REST API
-
-`apiKey`
-
-Yes
-
-Unknown
 
 IPGEO
 
@@ -9825,7 +9825,7 @@ HTTPS
 
 CORS
 
-apilayer mediastack
+Mediastack
 
 Free, Simple REST API for Live News & Blog Articles
 
@@ -10800,17 +10800,7 @@ HTTPS
 
 CORS
 
-Phone Validation
-
-Validate phone numbers globally
-
-`apiKey`
-
-Yes
-
-Yes
-
-apilayer numverify
+Numverify
 
 Phone number validation
 
@@ -10835,6 +10825,16 @@ Phone Specification
 Rest Api for Phone specifications
 
 No
+
+Yes
+
+Yes
+
+Phone Validation
+
+Validate phone numbers globally
+
+`apiKey`
 
 Yes
 
@@ -10865,9 +10865,9 @@ HTTPS
 
 CORS
 
-apilayer screenshotlayer
+Screenshotlayer
 
-URL 2 Image
+URL to screenshot
 
 No
 
@@ -14857,6 +14857,16 @@ HTTPS
 
 CORS
 
+Weatherstack
+
+Real-Time & Historical World Weather Data API
+
+`apiKey`
+
+Yes
+
+Unknown
+
 7Timer!
 
 Weather, especially for Astroweather
@@ -14880,16 +14890,6 @@ Unknown
 Aemet
 
 Weather and forecast data from Spain
-
-`apiKey`
-
-Yes
-
-Unknown
-
-apilayer weatherstack
-
-Real-Time & Historical World Weather Data API
 
 `apiKey`
 

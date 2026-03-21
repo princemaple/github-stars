@@ -1,13 +1,13 @@
 ---
 project: pangolin
-stars: 19518
+stars: 19611
 description: Identity-aware VPN and proxy for remote access to anything, anywhere.
 url: https://github.com/fosrl/pangolin
 ---
 
 ##### Website | Documentation | Contact Us
 
-**Start testing Pangolin at app.pangolin.net**
+**Get started with Pangolin at app.pangolin.net**
 
 Pangolin is an open-source, identity-based remote access platform built on WireGuard that enables secure, seamless connectivity to private and public resources. Pangolin combines reverse proxy and VPN capabilities into one platform, providing browser-based access to web applications and client-based access to any private resources, all with zero-trust security and granular access control.
 
@@ -22,6 +22,10 @@ Deployment Options
 
 Description
 
+**Pangolin Cloud**
+
+Fully managed service with instant setup and pay-as-you-go pricing — no infrastructure required. Or, self-host your own remote node and connect to our control plane.
+
 **Self-Host: Community Edition**
 
 Free, open source, and licensed under AGPL-3.
@@ -29,10 +33,6 @@ Free, open source, and licensed under AGPL-3.
 **Self-Host: Enterprise Edition**
 
 Licensed under Fossorial Commercial License. Free for personal and hobbyist use, and for businesses earning under $100K USD annually.
-
-**Pangolin Cloud**
-
-Fully managed service with instant setup and pay-as-you-go pricing — no infrastructure required. Or, self-host your own remote node and connect to our control plane.
 
 Key Features
 ------------
@@ -67,13 +67,13 @@ Download the Pangolin client for your platform:
 Get Started
 -----------
 
+### Sign up now
+
+Create an account at app.pangolin.net to get started with Pangolin Cloud. A generous free tier is available.
+
 ### Check out the docs
 
 We encourage everyone to read the full documentation first, which is available at docs.pangolin.net. This README provides only a very brief subset of the docs to illustrate some basic ideas.
-
-### Sign up and try now
-
-For Pangolin's managed service, you will first need to create an account at app.pangolin.net. We have a generous free tier to get started.
 
 Licensing
 ---------

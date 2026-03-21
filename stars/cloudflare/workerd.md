@@ -1,6 +1,6 @@
 ---
 project: workerd
-stars: 7580
+stars: 7989
 description: The JavaScript / Wasm runtime that powers Cloudflare Workers
 url: https://github.com/cloudflare/workerd
 ---
@@ -35,23 +35,6 @@ Introduction
     
 
 Read the blog post to learn more about these principles.
-
-### WARNING: This is a beta. Work in progress
-
-Although most of `workerd`'s code has been used in Cloudflare Workers for years, the `workerd` configuration format and top-level server code is brand new. We don't yet have much experience running this in production. As such, there will be rough edges, maybe even a few ridiculous bugs. Deploy to production at your own risk (but please tell us what goes wrong!).
-
-The config format may change in backwards-incompatible ways before `workerd` leaves beta, but should remain stable after that.
-
-A few caveats:
-
--   **General error logging** is awkward. Traditionally we have separated error logs into "application errors" (e.g. a Worker threw an exception from JavaScript) and "internal errors" (bugs in the implementation which the Workers team should address). We then sent these errors to completely different places. In the `workerd` world, the server admin wants to see both of these, so logging has become entirely different and, at the moment, is a bit ugly. For now, it may help to run `workerd` with the `--verbose` flag, which causes application errors to be written to standard error in the same way that internal errors are (but may also produce more noise). We'll be working on making this better out-of-the-box.
--   **Binary packages** are only available via npm, not as distro packages. This works well for testing with Miniflare, but is awkward for a production server that doesn't actually use Node at all.
--   **Multi-threading** is not implemented. `workerd` runs in a single-threaded event loop. For now, to utilize multiple cores, we suggest running multiple instances of `workerd` and balancing load across them. We will likely add some built-in functionality for this in the near future.
--   **Performance tuning** has not been done yet, and there is low-hanging fruit here. `workerd` performs decently as-is, but not spectacularly. Experiments suggest we can roughly double performance on a "hello world" load test with some tuning of compiler optimization flags and memory allocators.
--   **Durable Objects** currently always run on the same machine that requested them, using local disk storage. This is sufficient for testing and small services that fit on a single machine. In scalable production, though, you would presumably want Durable Objects to be distributed across many machines, always choosing the same machine for the same object.
--   **Parameterized workers** are not implemented yet. This is a new feature specified in the config schema, which doesn't have any precedent on Cloudflare.
--   **Tests** for most APIs are conspicuously missing. This is because the testing harness we have used for the past five years is deeply tied to the internal version of the codebase. Ideally, we need to translate those tests into the new `workerd test` format and move them to this repo; this is an ongoing effort. For the time being, we will be counting on the internal tests to catch bugs. We understand this is not ideal for external contributors trying to test their changes.
--   **Documentation** is growing quickly but is definitely still a work in progress.
 
 ### WARNING: `workerd` is not a hardened sandbox
 
@@ -124,25 +107,6 @@ If you have a fairly recent clang packages installed you can build a more perfor
 
 bazel build --config=thin-lto //src/workerd/server:workerd
 
-### Code Coverage (Linux only)
-
-Code coverage is only supported on Linux. To generate code coverage reports, you need LLVM coverage tools (`llvm-profdata` and `llvm-cov`) installed:
-
-sudo apt-get install llvm
-
-If your distribution installs versioned binaries (e.g., `llvm-profdata-19`), create symlinks:
-
-sudo ln -sf /usr/bin/llvm-profdata-19 /usr/local/bin/llvm-profdata
-sudo ln -sf /usr/bin/llvm-cov-19 /usr/local/bin/llvm-cov
-
-Then run coverage with:
-
-bazel coverage //...
-
-Or use the just command which also generates an HTML report:
-
-just coverage
-
 ### Configuring `workerd`
 
 `workerd` is configured using a config file written in Cap'n Proto text format.
@@ -182,8 +146,6 @@ addEventListener("fetch", event \=> {
 Complete reference documentation is provided by the comments in workerd.capnp.
 
 There is also a library of sample config files.
-
-(TODO: Provide a more extended tutorial.)
 
 ### Running `workerd`
 
@@ -261,4 +223,4 @@ ListenStream=0.0.0.0:443
 \[Install\]
 WantedBy=sockets.target
 
-(TODO: Fully explain how to get systemd to recognize these files and start the service.)
+Once these files are in place you can enable the service -- see the systemd documentation or ask your favorite LLM for details.

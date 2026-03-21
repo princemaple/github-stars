@@ -1,6 +1,6 @@
 ---
 project: fastai
-stars: 27906
+stars: 27922
 description: The fastai deep learning library
 url: https://github.com/fastai/fastai
 ---

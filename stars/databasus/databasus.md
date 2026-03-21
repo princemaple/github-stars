@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 5993
+stars: 6110
 description: Databases backup tool (PostgreSQL, MySQL, MongoDB)
 url: https://github.com/databasus/databasus
 ---
@@ -74,14 +74,16 @@ It is also important for Databasus that you are able to decrypt and restore back
 -   **Dark & light themes**: Choose the look that suits your workflow
 -   **Mobile adaptive**: Check your backups from anywhere on any device
 
-### ☁️ **Works with self-hosted & cloud databases**
+### 🔌 **Connection types**
 
-Databasus works seamlessly with both self-hosted PostgreSQL and cloud-managed databases:
+-   **Remote** — Databasus connects directly to the database over the network (recommended in read-only mode). No agent or additional software required. Works with cloud-managed and self-hosted databases
+-   **Agent** — A lightweight Databasus agent (written in Go) runs alongside the database. The agent streams backups directly to Databasus, so the database never needs to be exposed publicly. Supports host-installed databases and Docker containers
 
--   **Cloud support**: AWS RDS, Google Cloud SQL, Azure Database for PostgreSQL
--   **Self-hosted**: Any PostgreSQL instance you manage yourself
--   **Why no PITR support?**: Cloud providers already offer native PITR, and external PITR backups cannot be restored to managed cloud databases — making them impractical for cloud-hosted PostgreSQL
--   **Practical granularity**: Hourly and daily backups are sufficient for 99% of projects without the operational complexity of WAL archiving
+### 📦 **Backup types**
+
+-   **Logical** — Native dump of the database in its engine-specific binary format. Compressed and streamed directly to storage with no intermediate files
+-   **Physical** — File-level copy of the entire database cluster. Faster backup and restore for large datasets compared to logical dumps (requires agent)
+-   **Incremental** — Physical base backup combined with continuous WAL segment archiving. Enables Point-in-Time Recovery (PITR) — restore to any second between backups. Designed for disaster recovery and near-zero data loss requirements (requires agent)
 
 ### 🐳 **Self-hosted & secure**
 

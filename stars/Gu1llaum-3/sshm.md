@@ -1,6 +1,6 @@
 ---
 project: sshm
-stars: 1030
+stars: 1035
 description: SSHM is a beautiful command-line tool that transforms how you manage and connect to your SSH hosts. Built with Go and featuring an intuitive TUI interface, it makes SSH connection management effortless and enjoyable.
 url: https://github.com/Gu1llaum-3/sshm
 ---
@@ -24,7 +24,7 @@ _🖱️ Click on the image to view in full size_
 -   **⚡ Quick Connect** - Connect to any host instantly through the TUI or the CLI with `sshm <host>`
 -   **🔄 Port Forwarding** - Easy setup for Local, Remote, and Dynamic (SOCKS) forwarding with history persistence
 -   **📝 Easy Management** - Add, edit, move, and manage SSH configurations seamlessly
--   **🏷️ Tag Support** - Organize your hosts with custom tags for better categorization
+-   **🏷️ Tag Support** - Organize your hosts with custom tags for better categorization; use the special `hidden` tag to exclude hosts from the list while keeping them connectable
 -   **🔍 Smart Search** - Find hosts quickly with built-in filtering and search
 -   **📝 Real-time Status** - Live SSH connectivity indicators with asynchronous ping checks and color-coded status
 -   **🔔 Smart Updates** - Automatic version checking with update notifications
@@ -97,6 +97,7 @@ sshm
 -   `d` - Delete selected host
 -   `m` - Move host to another config file (requires SSH Include directives)
 -   `f` - Port forwarding setup
+-   `H` - Toggle hidden hosts visibility
 -   `q` - Quit
 -   `/` - Search/filter hosts
 
@@ -262,11 +263,36 @@ sshm move my-server -c /path/to/custom/ssh\_config
 # Search for hosts (interactive filter)
 sshm search
 
-# Show version information (includes update check)
+# Print machine-readable info (JSON) for scripting
+sshm info prod-server
+sshm info prod-server --pretty
+
+# With a custom SSH config file
+sshm -c /path/to/custom/ssh\_config info prod-server
+
+# Pipe to jq
+sshm info prod-server | jq -r '.result.target.hostname'
+sshm info prod-server | jq -r '.result.target.user'
+
+# Show version information
 sshm --version
+
+# Disable automatic update check (useful on air-gapped machines)
+sshm --no-update-check
 
 # Show help and available commands
 sshm --help
+
+### Host Info (JSON)
+
+`sshm info <hostname>` prints a single JSON object to stdout so you can script against it with `jq`.
+
+# Extract fields
+sshm info prod-server | jq -r '.result.target.hostname'
+sshm info prod-server | jq -r '.result.target.port'
+
+# Check not-found (exit code 2)
+sshm info does-not-exist | jq -r '.error.code'
 
 ### Shell Completion
 
@@ -464,17 +490,29 @@ SSHM includes built-in version checking that notifies you of available updates:
 
 **Features:**
 
--   **Background checking** - Version check happens asynchronously
+-   **Background checking** - Version check happens asynchronously, never blocking startup
 -   **Release notifications** - Clear indicators when updates are available
 -   **Pre-release detection** - Identifies beta and development versions
 -   **GitHub integration** - Direct links to release pages
 -   **Non-intrusive** - Updates don't interrupt your workflow
+-   **Configurable** - Can be disabled for air-gapped or offline environments
 
 **Update notifications appear:**
 
 -   In the main TUI interface as a subtle notification
--   In the `sshm --version` command output
 -   Only when a newer stable version is available
+
+**Disabling update checks:**
+
+Via the CLI flag (one-time):
+
+sshm --no-update-check
+
+Via `~/.config/sshm/config.json` (persistent):
+
+{
+  "check\_for\_updates": false
+}
 
 #### Port Forwarding History
 
@@ -603,7 +641,7 @@ SSHM supports all standard SSH configuration options:
 -   `IdentityFile` - Path to private key file
 -   `ProxyJump` - Jump server for connection tunneling (e.g., `user@jumphost:port`)
 -   `ProxyCommand` - Jump command for connection tunneling (e.g, `ssh -W %h:%p Jumphost`)
--   `Tags` - Custom tags (SSHM extension)
+-   `Tags` - Custom tags (SSHM extension); the special tag `hidden` hides the host from the TUI and `sshm search` while keeping it connectable via `sshm <host>`
 
 **Additional SSH Options:** You can add any valid SSH option using the "SSH Options" field in the interactive forms. Enter them in command-line format (e.g., `-o Compression=yes -o ServerAliveInterval=60`) and SSHM will automatically convert them to the proper SSH config format.
 
@@ -638,9 +676,9 @@ This will be automatically converted to:
     StrictHostKeyChecking no
 ```
 
-### Custom Key Bindings
+### Application Configuration
 
-SSHM supports customizable key bindings through a configuration file. This is particularly useful for users who want to modify the default quit behavior.
+SSHM supports a configuration file to customize its behavior, including key bindings and update checking.
 
 **Configuration File Location:**
 
@@ -650,6 +688,7 @@ SSHM supports customizable key bindings through a configuration file. This is pa
 **Example Configuration:**
 
 {
+  "check\_for\_updates": false,
   "key\_bindings": {
     "quit\_keys": \["q", "ctrl+c"\],
     "disable\_esc\_quit": true
@@ -658,10 +697,13 @@ SSHM supports customizable key bindings through a configuration file. This is pa
 
 **Available Options:**
 
+-   **check\_for\_updates**: Boolean to enable or disable the automatic update check at startup. Default: `true`. Set to `false` on air-gapped or offline machines to avoid connection delays.
 -   **quit\_keys**: Array of keys that will quit the application. Default: `["q", "ctrl+c"]`
 -   **disable\_esc\_quit**: Boolean flag to disable ESC key from quitting the application. Default: `false`
 
 **For Vim Users:** If you frequently press ESC accidentally causing the application to quit, set `disable_esc_quit` to `true`. This will disable ESC as a quit key while preserving all other functionality.
+
+**For Air-gapped Machines:** If SSHM is slow to start due to DNS timeouts when reaching GitHub, set `check_for_updates` to `false`. You can also use the `--no-update-check` CLI flag for a one-time override without editing the config file.
 
 **Default Configuration:** If no configuration file exists, SSHM will automatically create one with default settings that maintain backward compatibility.
 

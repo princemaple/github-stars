@@ -1,6 +1,6 @@
 ---
 project: transmission
-stars: 14453
+stars: 14479
 description: Official Transmission BitTorrent client repository
 url: https://github.com/transmission/transmission
 ---

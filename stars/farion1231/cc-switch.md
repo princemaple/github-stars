@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 28132
+stars: 31409
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex, OpenCode, openclaw & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -17,9 +17,9 @@ English | 中文 | 日本語 | Changelog
 
 Click to collapse
 
-MiniMax-M2.5 is a SOTA large language model designed for real-world productivity. Trained in a diverse range of complex real-world digital working environments, M2.5 builds upon the coding expertise of M2.1 to extend into general office work, reaching fluency in generating and operating Word, Excel, and Powerpoint files, context switching between diverse software environments, and working across different agent and human teams. Scoring 80.2% on SWE-Bench Verified, 51.3% on Multi-SWE-Bench, and 76.3% on BrowseComp, M2.5 is also more token efficient than previous generations, having been trained to optimize its actions and output through planning.
+MiniMax-M2.7 is a next-generation large language model designed for autonomous evolution and real-world productivity. Unlike traditional models, M2.7 actively participates in its own improvement through agent teams, dynamic tool use, and reinforcement learning loops. It delivers strong performance in software engineering (56.22% on SWE-Pro, 55.6% on VIBE-Pro, 57.0% on Terminal Bench 2) and excels in complex office workflows, achieving a leading 1495 ELO on GDPval-AA. With high-fidelity editing across Word, Excel, and PowerPoint, and a 97% adherence rate across 40+ complex skills, M2.7 sets a new standard for building AI-native workflows and organizations.
 
-Click to get an exclusive 12% off the MiniMax Coding Plan!
+Click to get an exclusive 12% off the MiniMax Token Plan!
 
 * * *
 
@@ -143,6 +143,7 @@ Add an official provider from the preset list. After switching to it, run the Lo
 -   **Local settings**: `~/.cc-switch/settings.json` (device-level UI preferences)
 -   **Backups**: `~/.cc-switch/backups/` (auto-rotated, keeps 10 most recent)
 -   **Skills**: `~/.cc-switch/skills/` (symlinked to corresponding apps by default)
+-   **Skill Backups**: `~/.cc-switch/skill-backups/` (created automatically before uninstall, keeps 20 most recent)
 
 Documentation
 -------------
@@ -176,7 +177,7 @@ Download & Installation
 ### System Requirements
 
 -   **Windows**: Windows 10 and above
--   **macOS**: macOS 10.15 (Catalina) and above
+-   **macOS**: macOS 12 (Monterey) and above
 -   **Linux**: Ubuntu 22.04+ / Debian 11+ / Fedora 34+ and other mainstream distributions
 
 ### Windows Users

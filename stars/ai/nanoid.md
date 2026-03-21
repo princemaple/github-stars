@@ -1,6 +1,6 @@
 ---
 project: nanoid
-stars: 26659
+stars: 26676
 description: A tiny (118 bytes), secure, URL-friendly, unique string ID generator for JavaScript
 url: https://github.com/ai/nanoid
 ---
@@ -8,7 +8,7 @@ url: https://github.com/ai/nanoid
 Nano ID
 =======
 
-**English** | 日本語 | Русский | 简体中文 | Bahasa Indonesia | 한국어
+**English** | 日本語 | Русский | 简体中文 | Bahasa Indonesia | 한국어 | العربية
 
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
@@ -64,7 +64,7 @@ Nano ID is quite comparable to UUID v4 (random-based). It has a similar number o
 There are two main differences between Nano ID and UUID v4:
 
 1.  Nano ID uses a bigger alphabet, so a similar number of random bits are packed in just 21 symbols instead of 36.
-2.  Nano ID code is **4 times smaller** than `uuid/v4` package: 130 bytes instead of 423.
+2.  Nano ID code is **4 times smaller** than `uuid/v4` package: 118 bytes instead of 423.
 
 Benchmark
 ---------
@@ -222,7 +222,7 @@ nanoid() //=> "fbaefaadeb"
 
 If you want to use the same URL-friendly symbols with `customRandom`, you can get the default alphabet using the `urlAlphabet`.
 
-const { customRandom, urlAlphabet } \= require('nanoid')
+import { customRandom, urlAlphabet } from 'nanoid'
 const nanoid \= customRandom(urlAlphabet, 10, random)
 
 Note, that between Nano ID versions we may change random generator call sequence. If you are using seed-based generators, we do not guarantee the same result.

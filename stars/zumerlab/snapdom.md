@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7608
+stars: 7622
 description: SnapDOM: DOM Capture Engine – Fast and Accurate HTML Conversion
 url: https://github.com/zumerlab/snapdom
 ---
@@ -51,26 +51,23 @@ Capture Flow
 
 SnapDOM transforms your DOM element through these stages:
 
-flowchart LR
-    subgraph Input
-        A\[DOM Element\]
-    end
-    
-    subgraph Capture
-        B\[Clone\] --> C\[Styles & Pseudo\]
-        C --> D\[Images & Backgrounds\]
-        D --> E\[Fonts\]
-        E --> F\[SVG foreignObject\]
-    end
-    
-    subgraph Output
-        F --> G\[data:image/svg+xml\]
-        G --> H\[toPng / toSvg / toBlob / download\]
-    end
-    
-    A --> B
-
-Loading
+```
+DOM Element
+    ↓
+Clone
+    ↓
+Styles & Pseudo
+    ↓
+Images & Backgrounds
+    ↓
+Fonts
+    ↓
+SVG foreignObject
+    ↓
+data:image/svg+xml
+    ↓
+toPng / toSvg / toBlob / download
+```
 
 Stage
 
@@ -120,6 +117,7 @@ Table of Contents
     -   snapdom(el, options?)
     -   Shortcut methods
 -   Options
+    -   debug
     -   Fallback image on `<img>` load failure
     -   Dimensions (`scale`, `width`, `height`)
     -   Cross-Origin Images & Fonts (`useProxy`)
@@ -389,6 +387,14 @@ Default
 
 Description
 
+`debug`
+
+boolean
+
+`false`
+
+When `true`, logs suppressed errors to `console.warn` for troubleshooting
+
 `fast`
 
 boolean
@@ -556,6 +562,14 @@ boolean
 `false`
 
 Do not expand the root’s bounding box for shadows/blur/outline, and strip those visual effects from the cloned root
+
+| `safariWarmupAttempts` | number | `3` | Safari only: iterations to prime font/decode (WebKit #219770). Use `1` if 3 causes lag |
+
+### debug
+
+When `debug: true`, SnapDOM logs normally suppressed errors to `console.warn` (with the `[snapdom]` prefix). Useful for troubleshooting capture issues (canvas failures, blob resolution, style stripping, etc.) without noisy output in production.
+
+await snapdom.toPng(el, { debug: true });
 
 ### Fallback image on `<img>` load failure
 
@@ -844,7 +858,7 @@ Add custom exporters (e.g. `toPdf`).
 
 Every hook receives a single `context` object that contains normalized capture state:
 
--   **Input & options:** `element`, `debug`, `fast`, `scale`, `dpr`, `width`, `height`, `backgroundColor`, `quality`, `useProxy`, `cache`, `outerTransforms`, `outerShadows`, `embedFonts`, `localFonts`, `iconFonts`, `excludeFonts`, `exclude`, `excludeMode`, `filter`, `filterMode`, `fallbackURL`.
+-   **Input & options:** `element`, `debug`, `fast`, `scale`, `dpr`, `width`, `height`, `backgroundColor`, `quality`, `useProxy`, `cache`, `outerTransforms`, `outerShadows`, `safariWarmupAttempts`, `embedFonts`, `localFonts`, `iconFonts`, `excludeFonts`, `exclude`, `excludeMode`, `filter`, `filterMode`, `fallbackURL`.
     
 -   **Intermediate values (depending on stage):** `clone`, `classCSS`, `styleCache`, `fontsCSS`, `baseCSS`, `svgString`, `dataURL`.
     
@@ -998,6 +1012,8 @@ Limitations
 -   External images should be CORS-accessible (use `useProxy` option for handling CORS denied)
 -   When WebP format is used on Safari, it will fallback to PNG rendering.
 -   `@font-face` CSS rule is well supported, but if need to use JS `FontFace()`, see this workaround `#43`
+-   **Safari**: captures with `embedFonts` or background/mask images run slower due to WebKit #219770 (font decode timing). SnapDOM does pre-captures + `drawImage` to prime the pipeline; configurable via `safariWarmupAttempts` (default 3).
+-   **Custom scrollbar styles** (`::-webkit-scrollbar`): Applied only when the element has _not_ been scrolled. When scrolled, the viewport content is captured without the scrollbar.
 
 Performance Benchmarks
 ----------------------

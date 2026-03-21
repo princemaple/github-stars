@@ -1,6 +1,6 @@
 ---
 project: pixijs
-stars: 46741
+stars: 46795
 description: The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer.
 url: https://github.com/pixijs/pixijs
 ---
@@ -44,12 +44,13 @@ npm install pixi.js
 
 ### Usage
 
+```
 import { Application, Assets, Sprite } from 'pixi.js';
 
-(async () \=>
+(async () =>
 {
     // Create a new application
-    const app \= new Application();
+    const app = new Application();
 
     // Initialize the application
     await app.init({ background: '#1099bb', resizeTo: window });
@@ -58,29 +59,30 @@ import { Application, Assets, Sprite } from 'pixi.js';
     document.body.appendChild(app.canvas);
 
     // Load the bunny texture
-    const texture \= await Assets.load('https://pixijs.com/assets/bunny.png');
+    const texture = await Assets.load('https://pixijs.com/assets/bunny.png');
 
     // Create a bunny Sprite
-    const bunny \= new Sprite(texture);
+    const bunny = new Sprite(texture);
 
     // Center the sprite's anchor point
     bunny.anchor.set(0.5);
 
     // Move the sprite to the center of the screen
-    bunny.x \= app.screen.width / 2;
-    bunny.y \= app.screen.height / 2;
+    bunny.x = app.screen.width / 2;
+    bunny.y = app.screen.height / 2;
 
     app.stage.addChild(bunny);
 
     // Listen for animate update
-    app.ticker.add((time) \=>
+    app.ticker.add((time) =>
     {
         // Just for fun, let's rotate mr rabbit a little.
-        // \* Delta is 1 if running at 100% performance \*
-        // \* Creates frame-independent transformation \*
-        bunny.rotation += 0.1 \* time.deltaTime;
+        // * Delta is 1 if running at 100% performance *
+        // * Creates frame-independent transformation *
+        bunny.rotation += 0.1 * time.deltaTime;
     });
 })();
+```
 
 ### Contribute
 

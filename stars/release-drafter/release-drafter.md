@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3849
+stars: 3851
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -20,8 +20,10 @@ on:
       - main
       - master
 
+# Permissions for default token (secrets.GITHUB\_TOKEN)
 permissions:
-  contents: write # allow GITHUB\_TOKEN to update releases
+  contents: write
+  pull-requests: read
 
 jobs:
   update\_release\_draft:
@@ -52,32 +54,32 @@ As pull requests are merged, a draft release is kept up-to-date listing the chan
 
 The following is a more complicated configuration, which categorises the changes into headings, and automatically suggests the next version number:
 
-name-template: 'v$RESOLVED\_VERSION 🌈'
-tag-template: 'v$RESOLVED\_VERSION'
+name-template: "v$RESOLVED\_VERSION 🌈"
+tag-template: "v$RESOLVED\_VERSION"
 categories:
-  - title: '🚀 Features'
+  - title: "🚀 Features"
     labels:
-      - 'feature'
-      - 'enhancement'
-  - title: '🐛 Bug Fixes'
+      - "feature"
+      - "enhancement"
+  - title: "🐛 Bug Fixes"
     labels:
-      - 'fix'
-      - 'bugfix'
-      - 'bug'
-  - title: '🧰 Maintenance'
-    label: 'chore'
-change-template: '\- $TITLE @$AUTHOR (#$NUMBER)'
+      - "fix"
+      - "bugfix"
+      - "bug"
+  - title: "🧰 Maintenance"
+    label: "chore"
+change-template: "\- $TITLE @$AUTHOR (#$NUMBER)"
 change-title-escapes: '\\<\*\_&' # You can add # and @ to disable mentions, and add \` to disable code blocks.
 version-resolver:
   major:
     labels:
-      - 'major'
+      - "major"
   minor:
     labels:
-      - 'minor'
+      - "minor"
   patch:
     labels:
-      - 'patch'
+      - "patch"
   default: patch
 template: |
   ## Changes
@@ -438,13 +440,13 @@ The prerelease suffix (for example `-rc.0`) or an empty string.
 
 You may want to use this when producing non semver output.
 
-version-template: 'ver $MAJOR'
+version-template: "ver $MAJOR"
 
 Important
 
 If you want the next release-drafter run to parse your version, stick to versions parseable by semver.coerce() (we enbale `loose` mode)
 
-semver.coerce('ver 1', true) // { version: '1.0.0' }
+semver.coerce("ver 1", true); // { version: '1.0.0' }
 
 If you simply want a verbose title for your releases, use the `name-template` config, and leave versions strictly semver-compliant.
 
@@ -456,13 +458,13 @@ With the `version-resolver` option version number incrementing can be resolved a
 version-resolver:
   major:
     labels:
-      - 'major'
+      - "major"
   minor:
     labels:
-      - 'minor'
+      - "minor"
   patch:
     labels:
-      - 'patch'
+      - "patch"
   default: patch
 
 The above config controls the output of the `$RESOLVED_VERSION` variable.
@@ -525,25 +527,25 @@ Categorize Pull Requests
 With the `categories` option you can categorize pull requests in release notes using labels. For example, append the following to your `.github/release-drafter.yml` file:
 
 categories:
-  - title: '🚀 Features'
-    label: 'feature'
-  - title: '🐛 Bug Fixes'
+  - title: "🚀 Features"
+    label: "feature"
+  - title: "🐛 Bug Fixes"
     labels:
-      - 'fix'
-      - 'bugfix'
-      - 'bug'
+      - "fix"
+      - "bugfix"
+      - "bug"
 
 Pull requests with the label "feature" or "fix" will now be grouped together:
 
 Adding such labels to your PRs can be automated by using the embedded Autolabeler action.
 
-Optionally you can add a `collapse-after` entry to your category item, if the category has more than the defined `collapse-after` pull requests then it will show all pull requests collapsed for that category. Append the `collapse-after` integer to your category as following:
+Optionally you can add a `collapse-after` entry to your category item, if the category has more than the defined `collapse-after` pull requests then it will show all pull requests collapsed for that category. Setting `collapse-after` to `0` will always collapse the category regardless of the number of pull requests. Append the `collapse-after` integer to your category as following:
 
 categories:
-  - title: '⬆️ Dependencies'
+  - title: "⬆️ Dependencies"
     collapse-after: 3
     labels:
-      - 'dependencies'
+      - "dependencies"
 
 Exclude Pull Requests
 ---------------------
@@ -551,7 +553,7 @@ Exclude Pull Requests
 With the `exclude-labels` option you can exclude pull requests from the release notes using labels. For example, append the following to your `.github/release-drafter.yml` file:
 
 exclude-labels:
-  - 'skip-changelog'
+  - "skip-changelog"
 
 Pull requests with the label "skip-changelog" will now be excluded from the release draft.
 
@@ -561,7 +563,7 @@ Include Pull Requests
 With the `include-labels` option you can specify pull requests from the release notes using labels. Only pull requests that have the configured labels will be included in the release draft. For example, append the following to your `.github/release-drafter.yml` file:
 
 include-labels:
-  - 'app-foo'
+  - "app-foo"
 
 Pull requests with the label "app-foo" will be the only pull requests included in the release draft.
 
@@ -571,7 +573,7 @@ Exclude Contributors
 By default, the `$CONTRIBUTORS` variable will contain the names or usernames of all the contributors of a release. The `exclude-contributors` option allows you to remove certain usernames from that list. This can be useful if don't wish to include yourself, to better highlight only the third-party contributions.
 
 exclude-contributors:
-  - 'myusername'
+  - "myusername"
 
 Replacers
 ---------
@@ -580,10 +582,10 @@ You can search and replace content in the generated changelog body, using regula
 
 replacers:
   - search: '/CVE-(\\d{4})-(\\d+)/g'
-    replace: 'https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-$1-$2'
-  - search: 'myname'
-    replace: 'My Name'
-  - search: '/- (\[a-z\])/g'
+    replace: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-$1-$2"
+  - search: "myname"
+    replace: "My Name"
+  - search: "/- (\[a-z\])/g"
     replace: '\- \\u$1' # Uppercase the first letter of each changelog entry
 
 `search` will be parsed to a RegExp, and `replace` supports substitution in the same flavour VSCode does.
@@ -593,29 +595,47 @@ Autolabeler
 
 You can add automatically a label into a pull request, with the `autolabeler` action.
 
-steps:
-  # runs autolabeler
-  - uses: release-drafter/release-drafter/autolabeler@latest
+name: Auto Label
+
+on:
+  pull\_request:
+    # Only following types are handled by the action, but one can default to all as well
+    types: \[opened, reopened, synchronize\]
+  # pull\_request\_target event is required for autolabeler to support PRs from forks
+  # pull\_request\_target:
+  #   types: \[opened, reopened, synchronize\]
+
+permissions:
+  contents: read
+
+jobs:
+  auto\_label:
+    permissions:
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      # runs autolabeler
+      - uses: release-drafter/release-drafter/autolabeler@v7
 
 Available matchers are `files` (glob), `branch` (regex), `title` (regex) and `body` (regex). Matchers are evaluated independently; the label will be set if at least one of the matchers meets the criteria.
 
 # .github/release-drafter.yml
 autolabeler:
-  - label: 'chore'
+  - label: "chore"
     files:
-      - '\*.md'
+      - "\*.md"
     branch:
       - '/docs{0,1}\\/.+/'
-  - label: 'bug'
+  - label: "bug"
     branch:
       - '/fix\\/.+/'
     title:
-      - '/fix/i'
-  - label: 'enhancement'
+      - "/fix/i"
+  - label: "enhancement"
     branch:
       - '/feature\\/.+/'
     body:
-      - '/JIRA-\[0-9\]{1,4}/'
+      - "/JIRA-\[0-9\]{1,4}/"
 
 # ... rest of release-drafter config
 
@@ -647,7 +667,7 @@ jobs:
       - uses: release-drafter/release-drafter@v6
         with:
           prerelease: true
-          prerelease-identifier: 'rc' # Use semver identifiers : alpha, beta, rc, etc
+          prerelease-identifier: "rc" # Use semver identifiers : alpha, beta, rc, etc
 
 Here, both jobs run in parallel every time you add changes to the configured branch.
 

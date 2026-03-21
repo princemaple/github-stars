@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 449
+stars: 469
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -19,6 +19,11 @@ cad-viewer is `the first web-based DXF/DWG viewer and editor in the world that o
 -   YouTube: @mlightcad
 -   Medium: @mlightcad
 -   Juejin(稀土掘金): @mlightcad
+
+### Built with cad-viewer
+
+-   DWG Viewer for Google Drive - A widely adopted Google Drive integration powered by cad-viewer, enabling thousands of users to preview DWG/DXF files directly in Drive, streamlining cloud workflows. Install to Google Drive
+-   CAD Viewer Web App - 2D/3D CAD viewer, built on cad-viewer, used by engineering teams globally for seamless browser-based file access. It is integreated to Google Drive too, Install.
 
 Features
 --------
@@ -173,7 +178,7 @@ Legend:
 -   Layer freeze / lock
 -   Lineweight display
 -   Linetype scaling
--   ⏳ Background / theme switching
+-   Background / theme switching
 
 ### Selection & Interaction
 
@@ -236,13 +241,20 @@ Legend:
 -   Dimensions (linear, aligned, angular)
 -   Blocks creation & insertion
 
-### Measurement & Dimension
+### Measurement
 
--   ⏳ Distance measurement & dimension
--   Area measurement & dimension
--   Angle measurement & dimension
--   Coordinate readout
+-   Distance
+-   Arc length
+-   Area
+-   Angle
+-   Coordinate
 -   Entity statistics (length, area, count)
+
+### Dimension
+
+-   Linear dimension
+-   Angle dimension
+-   Coordinate
 
 ### Properties & UI Panels
 

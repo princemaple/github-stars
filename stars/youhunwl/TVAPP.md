@@ -1,6 +1,6 @@
 ---
 project: TVAPP
-stars: 14331
+stars: 14592
 description:  收集全网 Android TV电视盒子应用，涵盖影视、直播、K歌、工具、游戏等类型，整理优质APK资源，支持便捷下载与自动更新。提供安全验证、分类索引与兼容性标注，助力用户打造家庭影音娱乐中心！              ✅ TVBox/影视仓等影音壳接口配置源。
 url: https://github.com/youhunwl/TVAPP
 ---
@@ -89,7 +89,7 @@ PLUS版本功能较全，支持点播+直播，内置宝盒没宝数据源
 
 宝盒TV
 
-v3.7.3
+v5.0.2
 
 下载
 
@@ -99,7 +99,7 @@ v3.7.3
 
 FongMi影视
 
-v5.2.7
+v5.3.0
 
 下载
 
@@ -109,7 +109,7 @@ v5.2.7
 
 OK影视
 
-v5.0.0
+v5.0.2
 
 下载
 
@@ -119,7 +119,7 @@ v5.0.0
 
 OK影视Pro
 
-v5.0.7
+v5.0.9
 
 下载
 
@@ -459,13 +459,13 @@ v1.0.3
 
 电视直播
 
-v1.3.0.172
+v1.1.0
 
 下载
 
 🟢
 
-基于天光云影3.3.9，使用Android原生开发的电视直播软件
+内置的直播，支持用户导入源和epg
 
 电视家修复版
 
@@ -499,7 +499,7 @@ v1.0.18
 
 你的电视
 
-v2.3.9
+v2.4.0
 
 下载
 
@@ -507,9 +507,19 @@ v2.3.9
 
 包含网页源+IPTV源可切换。注：最新版本需要在远程配置中，找到“仅用于测试直播源”这一行右侧的新增按钮，点击新增，稍等10-30秒，等待大屏提示完成就可以了
 
+云影空蒙
+
+v3.7.7
+
+下载
+
+🟢
+
+一款简洁的电视直播TV空壳版软件。
+
 DongYuTvWeb
 
-v1.0.6.5
+v1.0.10
 
 下载
 
@@ -629,7 +639,7 @@ v1.6.6
 
 BV
 
-v0.3.13
+v0.3.14
 
 下载
 
@@ -729,7 +739,7 @@ v10.1.0
 
 FM影视内置共存版
 
-v5.2.6
+v5.2.9
 
 下载
 
@@ -749,7 +759,7 @@ v2.3.9
 
 OK影视内置共存版
 
-v3.7.5
+v5.0.2
 
 下载
 
@@ -909,7 +919,7 @@ v1.0.0
 
 宝盒TV(FM内置版)
 
-v4.1.3
+v5.2.6
 
 下载
 
@@ -967,6 +977,7 @@ TVBox壳本地版内置10万+音乐/MV资源
  http://ok213.top/tv		# OK影视内部接口
  http://ok213.top/ok		# OK影视公开接口
  http://tvbox.王二小放牛娃.top		# 王小二放牛娃接口
+ https://9280.kstore.vip/newwex.json # 王小二放牛娃新接口
  https://www.yingm.cc/dm/dm.json  	# 动漫城接口
  http://home.jundie.top:81/top98.json	# 俊佬接口
  http://cdn.qiaoji8.com/tvbox.json		# 巧记
@@ -984,7 +995,6 @@ TVBox壳本地版内置10万+音乐/MV资源
  https://bitbucket.org/xduo/duoapi/raw/master/xpg.json		# 小苹果接口
  https://raw.githubusercontent.com/guot55/YGBH/main/vip2.json		# 宝盒VIP
  https://xn--anna-wn6lw489o.v.nxog.top/m/  # 欧歌
- https://哪吒.live/	# 哪吒
  https://www.252035.xyz/z/FongMi.json	# 真心
  http://www.meowtv.vip/tvbox.json	# 喵影视
  http://fmys.top/fmys.json	# 驸马
@@ -1019,7 +1029,7 @@ TVBox壳本地版内置10万+音乐/MV资源
  https://www.iyouhun.com/tv/zb		# 游魂直播源
  https://live.zbds.top/tv/iptv4.txt  # 直播电视IPV4
  https://3043.kstore.space/bhvip/bhzb.txt # 宝盒直播
- ttps://develop202.github.io/migu_video/interface.txt # 咪咕IPTV
+ https://develop202.github.io/migu_video/interface.txt # 咪咕IPTV
  https://raw.githubusercontent.com/PizazzGY/TV/master/output/user_result.txt   # 潇洒AI直播
  https://raw.githubusercontent.com/PizazzGY/TV/master/output/user_result.m3u   # 潇洒AI直播
  https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u   # IPTV 默认源

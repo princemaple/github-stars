@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 16999
+stars: 23238
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -8,7 +8,12 @@ url: https://github.com/lightpanda-io/browser
 Lightpanda Browser
 ==================
 
-lightpanda.io
+**The headless browser built from scratch for AI agents and automation.**  
+Not a Chromium fork. Not a WebKit patch. A new browser, written in Zig.
+
+ 
+
+_Puppeteer requesting 100 pages from a local website on a AWS EC2 m5.large instance. See benchmark details._
 
 Lightpanda is the open-source browser made for headless usage:
 
@@ -21,10 +26,6 @@ Fast web automation for AI agents, LLM training, scraping and testing:
 -   Ultra-low memory footprint (9x less than Chrome)
 -   Exceptionally fast execution (11x faster than Chrome)
 -   Instant startup
-
- 
-
-_Puppeteer requesting 100 pages from a local website on a AWS EC2 m5.large instance. See benchmark details._
 
 Quick start
 -----------
@@ -158,8 +159,6 @@ Here are the key features we have implemented:
 
 NOTE: There are hundreds of Web APIs. Developing a browser (even just for headless mode) is a huge task. Coverage will increase over time.
 
-You can also follow the progress of our Javascript support in our dedicated zig-js-runtime project.
-
 Build from sources
 ------------------
 
@@ -167,9 +166,9 @@ Build from sources
 
 Lightpanda is written with Zig `0.15.2`. You have to install it with the right version in order to build the project.
 
-Lightpanda also depends on zig-js-runtime (with v8), Libcurl and html5ever.
+Lightpanda also depends on v8, Libcurl and html5ever.
 
-To be able to build the v8 engine for zig-js-runtime, you have to install some libs:
+To be able to build the v8 engine, you have to install some libs:
 
 For **Debian/Ubuntu based Linux**:
 

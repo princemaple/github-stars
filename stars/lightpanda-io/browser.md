@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 23238
+stars: 25557
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -13,7 +13,7 @@ Not a Chromium fork. Not a WebKit patch. A new browser, written in Zig.
 
  
 
-_Puppeteer requesting 100 pages from a local website on a AWS EC2 m5.large instance. See benchmark details._
+_chromedp requesting 933 real web pages over the network on a AWS EC2 m5.large instance. See benchmark details._
 
 Lightpanda is the open-source browser made for headless usage:
 
@@ -58,7 +58,7 @@ docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly
 
 ### Dump a URL
 
-./lightpanda fetch --obey\_robots --log\_format pretty  --log\_level info https://demo-browser.lightpanda.io/campfire-commerce/
+./lightpanda fetch --obey-robots --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/
 
 INFO  telemetry : telemetry status . . . . . . . . . . . . .  \[+0ms\]
       disabled = false
@@ -90,7 +90,7 @@ INFO  http : request complete . . . . . . . . . . . . . . . . \[+141ms\]
 
 ### Start a CDP server
 
-./lightpanda serve --obey\_robots --log\_format pretty  --log\_level info --host 127.0.0.1 --port 9222
+./lightpanda serve --obey-robots --log-format pretty  --log-level info --host 127.0.0.1 --port 9222
 
 INFO  telemetry : telemetry status . . . . . . . . . . . . .  \[+0ms\]
       disabled = false
@@ -139,6 +139,7 @@ Lightpanda is in Beta and currently a work in progress. Stability and coverage a
 
 Here are the key features we have implemented:
 
+-   CORS #2015
 -   HTTP loader (Libcurl)
 -   HTML parser (html5ever)
 -   DOM tree
@@ -155,7 +156,7 @@ Here are the key features we have implemented:
 -   Custom HTTP headers
 -   Proxy support
 -   Network interception
--   Respect `robots.txt` with option `--obey_robots`
+-   Respect `robots.txt` with option `--obey-robots`
 
 NOTE: There are hundreds of Web APIs. Developing a browser (even just for headless mode) is a huge task. Coverage will increase over time.
 
@@ -282,7 +283,7 @@ First start the WPT's HTTP server from your `wpt/` clone dir.
 Run a Lightpanda browser
 
 ```
-zig build run -- --insecure_disable_tls_host_verification
+zig build run -- --insecure-disable-tls-host-verification
 ```
 
 Then you can start the wptrunner from the Demo's clone dir:

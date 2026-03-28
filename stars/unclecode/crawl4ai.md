@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 62343
+stars: 62800
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -21,11 +21,13 @@ _We’ll be onboarding in phases and working closely with early users. Limited s
 
 Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
 
-✨ Check out latest update v0.8.0
+✨ Check out latest update v0.8.5
 
-✨ **New in v0.8.0**: Crash Recovery & Prefetch Mode! Deep crawl crash recovery with `resume_state` and `on_state_change` callbacks for long-running crawls. New `prefetch=True` mode for 5-10x faster URL discovery. Critical security fixes for Docker API (hooks disabled by default, file:// URLs blocked). Release notes →
+✨ **New in v0.8.5**: Anti-Bot Detection, Shadow DOM & 60+ Bug Fixes! Automatic 3-tier anti-bot detection with proxy escalation, Shadow DOM flattening, deep crawl cancellation, config defaults API, consent popup removal, and critical security patches. Release notes →
 
-✨ Recent v0.7.8: Stability & Bug Fix Release! 11 bug fixes addressing Docker API issues, LLM extraction improvements, URL handling fixes, and dependency updates. Release notes →
+✨ Recent v0.8.0: Crash Recovery & Prefetch Mode! Deep crawl crash recovery with `resume_state` and `on_state_change` callbacks for long-running crawls. New `prefetch=True` mode for 5-10x faster URL discovery. Release notes →
+
+✨ Previous v0.7.8: Stability & Bug Fix Release! 11 bug fixes addressing Docker API issues, LLM extraction improvements, URL handling fixes, and dependency updates. Release notes →
 
 ✨ Previous v0.7.7: Complete Self-Hosting Platform with Real-time Monitoring! Enterprise-grade monitoring dashboard, comprehensive REST API, WebSocket streaming, and smart browser pool management. Release notes →
 
@@ -479,6 +481,46 @@ async def test\_news\_crawl():
 ✨ Recent Updates
 ----------------
 
+**Version 0.8.5 Release Highlights - Anti-Bot Detection, Shadow DOM & 60+ Bug Fixes**
+
+Our biggest release since v0.8.0. Anti-bot detection with proxy escalation, Shadow DOM flattening, deep crawl cancellation, and over 60 bug fixes.
+
+-   **🛡️ Anti-Bot Detection & Proxy Escalation**:
+    
+    -   3-tier detection: known vendors, generic block indicators, structural integrity checks
+    -   Automatic retry with proxy chain and fallback fetch function
+    
+    from crawl4ai import CrawlerRunConfig
+    from crawl4ai.async\_configs import ProxyConfig
+    
+    config \= CrawlerRunConfig(
+        proxy\_config\=\[ProxyConfig.DIRECT, ProxyConfig(server\="http://my-proxy:8080")\],
+        max\_retries\=2,
+        fallback\_fetch\_function\=my\_web\_unlocker,
+    )
+    
+-   **🌑 Shadow DOM Flattening**:
+    
+    -   Extract content hidden inside shadow DOM components
+    
+    config \= CrawlerRunConfig(flatten\_shadow\_dom\=True)
+    
+-   **🛑 Deep Crawl Cancellation**:
+    
+    -   Stop long crawls gracefully with `cancel()` or `should_cancel` callback
+    -   Works with BFS, DFS, and BestFirst strategies
+-   **⚙️ Config Defaults API**:
+    
+    -   `set_defaults()` / `get_defaults()` / `reset_defaults()` on BrowserConfig and CrawlerRunConfig
+-   **🔒 Critical Security Fixes**:
+    
+    -   RCE via deserialization in Docker `/crawl` endpoint — removed `eval()`, added allowlist
+    -   Redis CVE-2025-49844 (CVSS 10.0) — upgraded to 7.2.7
+-   **60+ Bug Fixes** across browser management, proxy, deep crawling, extraction, CLI, and Docker
+    
+
+Full v0.8.5 Release Notes →
+
 **Version 0.8.0 Release Highlights - Crash Recovery & Prefetch Mode**
 
 This release introduces crash recovery for deep crawls, a new prefetch mode for fast URL discovery, and critical security fixes for Docker deployments.
@@ -720,29 +762,30 @@ Full v0.7.4 Release Notes →
     
 -   **🎨 Multi-URL Configuration**: Different strategies for different URL patterns in one batch:
     
-    from crawl4ai import CrawlerRunConfig, MatchMode
-    
-    configs \= \[
-        \# Documentation sites - aggressive caching
-        CrawlerRunConfig(
-            url\_matcher\=\["\*docs\*", "\*documentation\*"\],
-            cache\_mode\="write",
-            markdown\_generator\_options\={"include\_links": True}
-        ),
-        
-        \# News/blog sites - fresh content
-        CrawlerRunConfig(
-            url\_matcher\=lambda url: 'blog' in url or 'news' in url,
-            cache\_mode\="bypass"
-        ),
-        
-        \# Fallback for everything else
-        CrawlerRunConfig()
-    \]
-    
-    results \= await crawler.arun\_many(urls, config\=configs)
-    \# Each URL gets the perfect configuration automatically
-    
+
+from crawl4ai import CrawlerRunConfig, MatchMode, CacheMode
+  
+  configs \= \[
+      \# Documentation sites - aggressive caching
+      CrawlerRunConfig(
+          url\_matcher\=\["\*docs\*", "\*documentation\*"\],
+          cache\_mode\=CacheMode.WRITE\_ONLY,
+          markdown\_generator\_options\={"include\_links": True}
+      ),
+      
+      \# News/blog sites - fresh content
+      CrawlerRunConfig(
+          url\_matcher\=lambda url: 'blog' in url or 'news' in url,
+          cache\_mode\=CacheMode.BYPASS
+      ),
+      
+      \# Fallback for everything else
+      CrawlerRunConfig()
+  \]
+  
+  results \= await crawler.arun\_many(urls, config\=configs)
+  \# Each URL gets the perfect configuration automatically
+
 -   **🧠 Memory Monitoring**: Track and optimize memory usage during crawling:
     
     from crawl4ai.memory\_utils import MemoryMonitor

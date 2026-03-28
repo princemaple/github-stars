@@ -1,6 +1,6 @@
 ---
 project: setup-ipsec-vpn
-stars: 27511
+stars: 27534
 description: Scripts to build your own IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2
 url: https://github.com/hwdsl2/setup-ipsec-vpn
 ---
@@ -48,7 +48,7 @@ https://gitlab.com/hwdsl2/setup-ipsec-vpn/-/raw/master/vpnsetup.sh
 
 If you are unable to download, open vpnsetup.sh, then click the `Raw` button on the right. Press `Ctrl/Cmd+A` to select all, `Ctrl/Cmd+C` to copy, then paste into your favorite editor.
 
-A pre-built Docker image is also available. For other options and client setup, read the sections below.
+Pre-built Docker images are also available: IPsec VPN | OpenVPN. For other options and client setup, read the sections below.
 
 \* A cloud server, virtual private server (VPS) or dedicated server.
 
@@ -90,7 +90,7 @@ Quick deploy to:
 
 For servers with an external firewall (e.g. EC2/GCE), open UDP ports 500 and 4500 for the VPN.
 
-A pre-built Docker image is also available. Advanced users can install on a Raspberry Pi. \[1\] \[2\]
+Pre-built Docker images are also available: IPsec VPN | OpenVPN. Advanced users can install on a Raspberry Pi. \[1\] \[2\]
 
 ⚠️ **DO NOT** run these scripts on your PC or Mac! They should only be used on a server!
 

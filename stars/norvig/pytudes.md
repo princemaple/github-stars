@@ -1,6 +1,6 @@
 ---
 project: pytudes
-stars: 24295
+stars: 24296
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
@@ -624,7 +624,7 @@ C D M N S
 
 2018
 
-Properly Ordered Card Hands
+Properly Organized Card Hands
 
 C D M N S
 

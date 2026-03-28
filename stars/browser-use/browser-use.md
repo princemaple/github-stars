@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 81812
+stars: 84848
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -61,6 +61,30 @@ if \_\_name\_\_ \== "\_\_main\_\_":
     asyncio.run(main())
 
 Check out the library docs and the cloud docs for more!
+
+  
+
+Open Source vs Cloud
+====================
+
+We benchmark Browser Use across 100 real-world browser tasks. Full benchmark is open source: **browser-use/benchmark**.
+
+**Use Open Source**
+
+-   You need custom tools or deep code-level integration
+-   You want to self-host and deploy browser agents on your own machines
+
+**Use Cloud (recommended)**
+
+-   Much better agent for complex tasks (see plot above)
+-   Easiest way to start and scale
+-   Best stealth with proxy rotation and captcha solving
+-   1000+ integrations (Gmail, Slack, Notion, and more)
+-   Persistent filesystem and memory
+
+**Use Both**
+
+-   Use the open-source library with your custom tools while running our cloud browsers and ChatBrowserUse model
 
   
 

@@ -1,6 +1,6 @@
 ---
 project: ng-icons
-stars: 560
+stars: 559
 description: The ultimate icon library for Angular
 url: https://github.com/ng-icons/ng-icons
 ---
@@ -48,6 +48,7 @@ Currently, we support the following libraries:
 -   Boxicons
 -   Mono Icons
 -   Lucide Icons
+-   Coolicons
 
 Got suggestions for additional iconsets? Create an issue and we can consider adding them!
 
@@ -276,6 +277,10 @@ MIT
 `@ng-icons/lucide`
 
 MIT
+
+`@ng-icons/coolicons`
+
+CC-BY-4.0
 
 Usage
 -----

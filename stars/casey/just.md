@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 32253
+stars: 32431
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -361,6 +361,18 @@ With extractions/setup-just:
 Or with taiki-e/install-action:
 
 \- uses: taiki-e/install-action@just
+
+### Docker
+
+`just` is available as a Docker image from the GitHub Container Registry.
+
+To copy `just` into a Docker image, add the following line to your `Dockerfile`:
+
+COPY --from=ghcr.io/casey/just:latest /just /usr/local/bin/
+
+After copying, `just` may also be used as part of a docker build:
+
+RUN just
 
 ### Release RSS Feed
 
@@ -1053,12 +1065,11 @@ goodbye
 
 #### Lazy
 
-The `lazy` setting1.47.0, currently unstable, causes the evaluator to skip evaluating unused variables. This can be beneficial when a `justfile` contains variables that are expensive to evaluate but only sometimes used.
+The `lazy` setting1.47.0 causes the evaluator to skip evaluating unused variables. This can be beneficial when a `justfile` contains variables that are expensive to evaluate but only sometimes used.
 
 In the following `justfile`, `token` will be skipped when only invoking `bar`:
 
 set lazy
-set unstable
 
 token := \`expensive-script-to-get-credentials\`
 
@@ -2843,8 +2854,6 @@ The directory that `just` writes temporary files to may be configured in a numbe
 
 Using the `[script]` attribute and `script-interpreter` setting, `just` can easily be configured to run Python recipes with `uv`:
 
-set unstable
-
 set script-interpreter := \['uv', 'run', '\--script'\]
 
 \[script\]
@@ -3383,7 +3392,7 @@ baz:
 
 A `justfile` can declare modules using `mod` statements1.19.0.
 
-`mod` statements were stabilized in `just`1.31.0. In earlier versions, you'll need to use the `--unstable` flag, `set unstable`, or set the `JUST_UNSTABLE` environment variable to use them.
+`mod` statements were stabilized in `just`1.31.0.
 
 If you have the following `justfile`:
 
@@ -3618,9 +3627,9 @@ The argument to `--timestamp-format` is a `strftime`\-style format string, see t
 
 Signals are messages sent to running programs to trigger specific behavior. For example, `SIGINT` is sent to all processes in the terminal foreground process group when `CTRL-C` is pressed.
 
-`just` tries to exit when requested by a signal, but it also tries to avoid leaving behind running child proccesses, two goals which are somewhat in conflict.
+`just` tries to exit when requested by a signal, but it also tries to avoid leaving behind running child processes, two goals which are somewhat in conflict.
 
-If `just` exits leaving behind child processes, the user will have no recourse but to `ps aux | grep` for the children and manually `kill` them, a tedious endevour.
+If `just` exits leaving behind child processes, the user will have no recourse but to `ps aux | grep` for the children and manually `kill` them, a tedious endeavor.
 
 #### Fatal Signals
 
@@ -3695,34 +3704,78 @@ parallel:
 
 For lightning-fast command running, put `alias j=just` in your shell's configuration file.
 
-In `bash`, the aliased command may not keep the shell completion functionality described in the next section. Add the following line to your `.bashrc` to use the same completion function as `just` for your aliased command:
-
-complete -F \_just -o bashdefault -o default j
-
 ### Shell Completion Scripts
 
-Shell completion scripts for Bash, Elvish, Fish, Nushell, PowerShell, and Zsh are available release archives.
+Shell completion scripts for Bash, Elvish, Fish, Nushell, PowerShell, and Zsh are available in release archives.
 
 The `just` binary can also generate the same completion scripts at runtime using `just --completions SHELL`:
 
-$ just --completions zsh \> just.zsh
+$ just --completions bash \> just
 
-Please refer to your shell's documentation for how to install them.
+#### Bash
 
-_macOS Note:_ Recent versions of macOS use zsh as the default shell. If you use Homebrew to install `just`, it will automatically install the most recent copy of the zsh completion script in the Homebrew zsh directory, which the built-in version of zsh doesn't know about by default. It's best to use this copy of the script if possible, since it will be updated whenever you update `just` via Homebrew. Also, many other Homebrew packages use the same location for completion scripts, and the built-in zsh doesn't know about those either. To take advantage of `just` completion in zsh in this scenario, you can set `fpath` to the Homebrew location before calling `compinit`. Note also that Oh My Zsh runs `compinit` by default. So your `.zshrc` file could look like this:
+The recommended approach is to use the `bash-completions` package to lazy-load the completion script:
 
-# Init Homebrew, which adds environment variables
-eval "$(brew shellenv)"
+mkdir -p ~/.local/share/bash-completion/completions
+just --completions bash \> ~/.local/share/bash-completion/completions/just
 
-fpath=($HOMEBREW\_PREFIX/share/zsh/site-functions $fpath)
+If `bash-completions` is not installed, you can source the completion script in your `.bashrc`:
 
-# Then choose one of these options:
-# 1. If you're using Oh My Zsh, you can initialize it here
-# source $ZSH/oh-my-zsh.sh
+source <(just --completions bash)
 
-# 2. Otherwise, run compinit yourself
-# autoload -U compinit
-# compinit
+If you use an alias like `alias j=just`, you should also save the completion script with the name `j` when lazy-loading:
+
+just --completions bash \> ~/.local/share/bash-completion/completions/j
+
+Or if not lazy-loading, add this line after sourcing the completion script in your `.bashrc`:
+
+complete -F \_clap\_complete\_just -o bashdefault -o default j
+
+#### Elvish
+
+In your `rc.elv`:
+
+set edit:completion:arg-completer\[just\] = { |@args|
+  eval (just --completions elvish | slurp)
+  set @result = (edit:completion:arg-completer\[just\] $@args)
+  put $@result
+}
+
+#### Fish
+
+Save the completion script to the completions directory to lazy-load it:
+
+mkdir \-p ~/.config/fish/completions
+just \--completions fish \> ~/.config/fish/completions/just.fish
+
+#### Nushell
+
+First save the completion script:
+
+just \--completions nushell | save \-f ($nu.default\-config\-dir | path join just.nu)
+
+Then in `config.nu`:
+
+source just.nu
+
+#### PowerShell
+
+In your PowerShell `$PROFILE`:
+
+just \--completions powershell | Out-String | Invoke-Expression
+
+#### Zsh
+
+First save the completion script:
+
+mkdir -p ~/.zsh/completions
+just --completions zsh \> ~/.zsh/completions/\_just
+
+Then in your `.zshrc`:
+
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit
+compinit
 
 ### Man Page
 
@@ -3804,7 +3857,7 @@ ls:
 
 For backwards compatibility, `invocation_directory()`, uses `cygpath.exe` to convert the invocation directory into a unix-style `/`\-separated path. Use `invocation_directory_native()` to get the native, Windows-style path. On unix, `invocation_directory()` and `invocation_directory_native()` both return the same unix-style path.
 
-`cygpath.exe` is used also used to convert Unix-style shebang lines into Windows paths. As an alternative, the `[script]` attribute, currently unstable, can be used, which does not depend on `cygpath.exe`.
+`cygpath.exe` is used also used to convert Unix-style shebang lines into Windows paths. As an alternative, the `[script]` attribute can be used, which does not depend on `cygpath.exe`.
 
 If `cygpath.exe` is available, you can use it to convert between path styles:
 

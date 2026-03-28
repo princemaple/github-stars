@@ -1,6 +1,6 @@
 ---
 project: coolify
-stars: 51939
+stars: 52318
 description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
@@ -81,7 +81,7 @@ Thank you so much!
 -   Arcjet - Advanced web security and performance solutions
 -   BC Direct - Your trusted technology consulting partner
 -   Blacksmith - Infrastructure automation platform
--   Brand.dev - API to personalize your product with logos, colors, and company info from any domain
+-   Context.dev - API to personalize your product with logos, colors, and company info from any domain
 -   ByteBase - Database CI/CD and Security at Scale
 -   CodeRabbit - Cut Code Review Time & Bugs in Half
 -   COMIT - New York Times award–winning contractor
@@ -101,6 +101,7 @@ Thank you so much!
 -   Logto - The better identity infrastructure for developers
 -   Macarne - Best IP Transit & Carrier Ethernet Solutions for Simplified Network Connectivity
 -   Mobb - Secure Your AI-Generated Code to Unlock Dev Productivity
+-   PetroSky Cloud - Open source cloud deployment solutions
 -   PFGLabs - Build Real Projects with Golang
 -   Ramnode - High Performance Cloud VPS Hosting
 -   SaasyKit - Complete SaaS starter kit for developers

@@ -1,6 +1,6 @@
 ---
 project: TradingAgents
-stars: 35460
+stars: 43323
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
@@ -17,7 +17,7 @@ TradingAgents: Multi-Agents LLM Financial Trading Framework
 News
 ----
 
--   \[2026-03\] **TradingAgents v0.2.1** released with GPT-5.4, Gemini 3.1, Claude 4.6 model coverage and improved system stability.
+-   \[2026-03\] **TradingAgents v0.2.2** released with GPT-5.4/Gemini 3.1/Claude 4.6 model coverage, five-tier rating scale, OpenAI Responses API, Anthropic effort control, and cross-platform stability.
 -   \[2026-02\] **TradingAgents v0.2.0** released with multi-provider LLM support (GPT-5.x, Gemini 3.x, Claude 4.x, Grok 4.x) and improved system architecture.
 -   \[2026-01\] **Trading-R1** Technical Report released, with Terminal expected to land soon.
 
@@ -71,9 +71,9 @@ Create a virtual environment in any of your favorite environment managers:
 conda create -n tradingagents python=3.13
 conda activate tradingagents
 
-Install dependencies:
+Install the package and its dependencies:
 
-pip install -r requirements.txt
+pip install .
 
 ### Required APIs
 
@@ -94,11 +94,12 @@ cp .env.example .env
 
 ### CLI Usage
 
-You can also try out the CLI directly by running:
+Launch the interactive CLI:
 
-python -m cli.main
+tradingagents          # installed command
+python -m cli.main     # alternative: run directly from source
 
-You will see a screen where you can select your desired tickers, date, LLMs, research depth, etc.
+You will see a screen where you can select your desired tickers, analysis date, LLM provider, research depth, and more.
 
 An interface will appear showing results as they load, letting you track the agent's progress as it runs.
 

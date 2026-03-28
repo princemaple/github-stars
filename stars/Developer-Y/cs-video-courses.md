@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 77382
+stars: 77537
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -76,6 +76,7 @@ Courses
 
 ### Introduction to Computer Science
 
+-   COMP6991 - Rust Programming - UNSW (2022) | Video Playlist
 -   COMP1511 - Programming Fundamentals - UNSW (Complete Course: Lectures, Labs, Assignments, Exercises, Exams) | Video Playlist
 -   CS 10 - The Beauty and Joy of Computing - Spring 2015 - Dan Garcia - UC Berkeley InfoCoBuild
 -   6.0001 - Introduction to Computer Science and Programming in Python - MIT OCW
@@ -219,6 +220,7 @@ Courses
 
 ### Systems Programming
 
+-   COMP1521 - Computer Systems Fundamentals (2025) - UNSW (Full Course: Website + Lectures, Labs, Assignments, Exercises, Exams, Video Playlist) | Watch Lectures
 -   15-213 Introduction to Computer Systems, Fall 2015 - CMU
 -   Computer Systems: A programmer's Perspective
 -   CS361 - COMPUTER SYSTEMS - UIC
@@ -836,6 +838,7 @@ Courses
 -   Computer Networks - IIT Kharagpur
 -   Introduction to Data Communications 2013, Steven Gordon - Thammasat University, Thailand
 -   Introduction to Complex Networks - RIT
+-   Computer Networks and Internet Protocol - IIT Kharagpur
 -   Structural Analysis and Visualization of Networks
 -   Columbia ELEN E4703 Wireless Communications spring 2006, by Angel Lozano
 -   Columbia COMS W4119 Computer Networks fall 2004, by Vishal Misra

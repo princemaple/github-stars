@@ -1,6 +1,6 @@
 ---
 project: dev-browser
-stars: 3941
+stars: 4978
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
@@ -22,8 +22,6 @@ CLI Installation
 npm install -g dev-browser
 dev-browser install    # installs Playwright + Chromium
 
-> Windows is not currently supported.
-
 ### Quick start
 
 # Launch a headless browser and run a script
@@ -39,9 +37,62 @@ const tabs = await browser.listPages();
 console.log(JSON.stringify(tabs, null, 2));
 EOF
 
+### Windows notes
+
+PowerShell install:
+
+npm install \-g dev\-browser
+dev\-browser install
+
+To attach to a running Chrome instance on Windows:
+
+chrome.exe \--remote\-debugging\-port\=9222
+dev\-browser \--connect
+
+Windows npm installs download the native `dev-browser-windows-x64.exe` release asset during `postinstall`, and the generated npm shims invoke that executable directly.
+
 ### Using with AI agents
 
 After installing, just tell your agent to run `dev-browser --help` — the help output includes a full LLM usage guide with examples and API reference. No plugin or skill installation needed.
+
+Allowing dev-browser in Claude Code without permission prompts
+
+By default, Claude Code asks for approval each time it runs a bash command. You can pre-approve `dev-browser` so it runs without permission checks by adding it to the `allow` list in your settings.
+
+**Per-project** — add to `.claude/settings.json` in your project root:
+
+{
+  "permissions": {
+    "allow": \[
+      "Bash(dev-browser \*)"
+    \]
+  }
+}
+
+**Per-user (global)** — add to `~/.claude/settings.json`:
+
+{
+  "permissions": {
+    "allow": \[
+      "Bash(dev-browser \*)"
+    \]
+  }
+}
+
+The pattern `Bash(dev-browser *)` matches any command starting with `dev-browser` followed by arguments (e.g. `dev-browser --headless`, `dev-browser --connect`). This is safe because dev-browser scripts run in a sandboxed QuickJS WASM environment with no host filesystem or network access.
+
+You can also allow related commands in the same list:
+
+{
+  "permissions": {
+    "allow": \[
+      "Bash(dev-browser \*)",
+      "Bash(npx dev-browser \*)"
+    \]
+  }
+}
+
+> **Tip:** If you've already been prompted and clicked "Always allow", Claude Code adds the specific command pattern automatically. The settings file approach lets you pre-approve it before the first run.
 
 Legacy plugin installation (Claude Code / Amp / Codex)
 

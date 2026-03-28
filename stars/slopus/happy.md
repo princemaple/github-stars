@@ -1,6 +1,6 @@
 ---
 project: happy
-stars: 15902
+stars: 16528
 description: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured
 url: https://github.com/slopus/happy
 ---
@@ -19,17 +19,6 @@ Mobile and Web Client for Claude Code & Codex
 ### Step 2: Install CLI on your computer
 
 npm install -g happy-coder
-
-### Run From Source (Repo Checkout)
-
-# from repository root
-yarn cli --help
-yarn cli codex
-
-### Release (Maintainers)
-
-# from repository root
-yarn release
 
 ### Step 3: Start using \`happy\` instead of \`claude\` or \`codex\`
 

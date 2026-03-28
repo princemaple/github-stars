@@ -1,6 +1,6 @@
 ---
 project: domainstack.io
-stars: 226
+stars: 229
 description: 🧰 All-in-one domain name intelligence as a service
 url: https://github.com/jakejarvis/domainstack.io
 ---

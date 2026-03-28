@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 14654
+stars: 14671
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.13. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -474,6 +474,18 @@ YourProductName
 Combination of `--file-version` & `--product-version`
 
 3.0.0.0-1.0.0.0
+
+{FILE\_VERSION}
+
+Value given as `--file-version`
+
+3.0.0.0
+
+{PRODUCT\_VERSION}
+
+Value given as `--product-version`
+
+1.0.0.0
 
 {HOME}
 

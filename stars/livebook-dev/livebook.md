@@ -1,6 +1,6 @@
 ---
 project: livebook
-stars: 5742
+stars: 5750
 description: Automate code & data workflows with interactive Elixir notebooks
 url: https://github.com/livebook-dev/livebook
 ---
@@ -279,8 +279,10 @@ Fly is a platform for running full stack apps and databases close to your users.
 Sponsors
 --------
 
-The platform where the machine learning community  
-collaborates on models, datasets, and applications.
+This project was a recipient of NGI0 Commons Fund,  
+a fund established by NLnet with financial support from the  
+European Commission's Next Generation Internet program.  
+Learn more.
 
   
 

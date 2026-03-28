@@ -1,6 +1,6 @@
 ---
 project: lua
-stars: 158
+stars: 159
 description: The most ergomonic interface to Luerl in Elixir
 url: https://github.com/tv-labs/lua
 ---

@@ -1,6 +1,6 @@
 ---
 project: sonic
-stars: 21162
+stars: 21176
 description: 🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM.
 url: https://github.com/valeriansaliou/sonic
 ---
@@ -58,8 +58,6 @@ How to use it?
 ### Installation
 
 Sonic is built in Rust. To install it, either download a version from the Sonic releases page, use `cargo install` or pull the source code from `master`.
-
-👉 _Each release binary comes with an `.asc` signature file, which can be verified using @valeriansaliou GPG public key: 🔑valeriansaliou.gpg.pub.asc._
 
 **👉 Install from packages:**
 

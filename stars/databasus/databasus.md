@@ -1,13 +1,13 @@
 ---
 project: databasus
-stars: 6110
-description: Databases backup tool (PostgreSQL, MySQL, MongoDB)
+stars: 6195
+description: PostgreSQL backup tool (with MySQL\MariaDB and MongoDB support)
 url: https://github.com/databasus/databasus
 ---
 
-### Backup tool for PostgreSQL, MySQL and MongoDB
+### PostgreSQL backup tool (with MySQL\\MariaDB and MongoDB support)
 
-Databasus is a free, open source and self-hosted tool to backup databases (with focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.)
+Databasus is a free, open source and self-hosted tool to backup databases (with primary focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.)
 
   
 
@@ -82,8 +82,8 @@ It is also important for Databasus that you are able to decrypt and restore back
 ### 📦 **Backup types**
 
 -   **Logical** — Native dump of the database in its engine-specific binary format. Compressed and streamed directly to storage with no intermediate files
--   **Physical** — File-level copy of the entire database cluster. Faster backup and restore for large datasets compared to logical dumps (requires agent)
--   **Incremental** — Physical base backup combined with continuous WAL segment archiving. Enables Point-in-Time Recovery (PITR) — restore to any second between backups. Designed for disaster recovery and near-zero data loss requirements (requires agent)
+-   **Physical** — File-level copy of the entire database cluster. Faster backup and restore for large datasets compared to logical dumps
+-   **Incremental** — Physical base backup combined with continuous WAL segment archiving. Enables Point-in-time recovery (PITR) — restore to any second between backups. Designed for disaster recovery and near-zero data loss requirements
 
 ### 🐳 **Self-hosted & secure**
 
@@ -224,8 +224,10 @@ Contributions are welcome! Read the contributing guide for more details, priorit
 
 Also you can join our large community of developers, DBAs and DevOps engineers on Telegram @databasus\_community.
 
-AI disclaimer
--------------
+FAQ
+---
+
+### AI disclaimer
 
 There have been questions about AI usage in project development in issues and discussions. As the project focuses on security, reliability and production usage, it's important to explain how AI is used in the development process.
 
@@ -261,3 +263,13 @@ Moreover, it's important to note that we do not differentiate between bad human 
 Even if code is written manually by a human, it's not guaranteed to be merged. Vibe code is not allowed at all and all such PRs are rejected by default (see contributing guide).
 
 We also draw attention to fast issue resolution and security vulnerability reporting.
+
+### You have a cloud version — are you truly open source?
+
+Yes. Every feature available in Databasus Cloud is equally available in the self-hosted version with no restrictions, no feature gates and no usage limits. The entire codebase is Apache 2.0 licensed and always will be.
+
+Databasus is not "open core." We do not withhold features behind a paid tier and then call the limited remainder "open source," as projects like GitLab or Sentry do. We believe open source means the complete product is open, not just a marketing label on a stripped-down edition.
+
+Databasus Cloud runs the exact same code as the self-hosted version. The only difference is that we take care of infrastructure, availability, backups, reservations, monitoring and updates for you — so you don't have to. If you are using cloud, you can always move your databases from cloud to self-hosted if you wish.
+
+Revenue from Cloud funds full-time development of the project. Most large open-source projects rely on corporate backing or sponsorship to survive. We chose a different path: Databasus sustains itself so it can grow and improve independently, without being tied to any enterprise or sponsor.

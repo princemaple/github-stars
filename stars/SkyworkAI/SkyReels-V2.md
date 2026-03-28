@@ -1,6 +1,6 @@
 ---
 project: SkyReels-V2
-stars: 6611
+stars: 6646
 description: SkyReels-V2: Infinite-length Film Generative model
 url: https://github.com/SkyworkAI/SkyReels-V2
 ---

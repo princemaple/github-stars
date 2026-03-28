@@ -1,6 +1,6 @@
 ---
 project: pgroll
-stars: 6395
+stars: 6405
 description: PostgreSQL zero-downtime migrations made easy
 url: https://github.com/xataio/pgroll
 ---

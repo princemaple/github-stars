@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 79397
+stars: 83169
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -20,7 +20,10 @@ Table of Contents
 -   🤔 What is Spec-Driven Development?
 -   ⚡ Get Started
 -   📽️ Video Overview
+-   🧩 Community Extensions
+-   🎨 Community Presets
 -   🚶 Community Walkthroughs
+-   🛠️ Community Friends
 -   🤖 Supported AI Agents
 -   🔧 Specify CLI Reference
 -   🧩 Making Spec Kit Your Own: Extensions & Presets
@@ -136,6 +139,423 @@ For detailed step-by-step instructions, see our comprehensive guide.
 
 Want to see Spec Kit in action? Watch our video overview!
 
+🧩 Community Extensions
+-----------------------
+
+The following community-contributed extensions are available in `catalog.community.json`:
+
+**Categories:**
+
+-   `docs` — reads, validates, or generates spec artifacts
+-   `code` — reviews, validates, or modifies source code
+-   `process` — orchestrates workflow across phases
+-   `integration` — syncs with external platforms
+-   `visibility` — reports on project health or progress
+
+**Effect:**
+
+-   `Read-only` — produces reports without modifying files
+-   `Read+Write` — modifies files, creates artifacts, or updates specs
+
+Extension
+
+Purpose
+
+Category
+
+Effect
+
+URL
+
+AI-Driven Engineering (AIDE)
+
+A structured 7-step workflow for building new projects from scratch with AI assistants — from vision through implementation
+
+`process`
+
+Read+Write
+
+aide
+
+Archive Extension
+
+Archive merged features into main project memory.
+
+`docs`
+
+Read+Write
+
+spec-kit-archive
+
+Azure DevOps Integration
+
+Sync user stories and tasks to Azure DevOps work items using OAuth authentication
+
+`integration`
+
+Read+Write
+
+spec-kit-azure-devops
+
+Checkpoint Extension
+
+Commit the changes made during the middle of the implementation, so you don't end up with just one very large commit at the end
+
+`code`
+
+Read+Write
+
+spec-kit-checkpoint
+
+Cleanup Extension
+
+Post-implementation quality gate that reviews changes, fixes small issues (scout rule), creates tasks for medium issues, and generates analysis for large issues
+
+`code`
+
+Read+Write
+
+spec-kit-cleanup
+
+Cognitive Squad
+
+Multi-agent cognitive system with Triadic Model: understanding, internalization, application — with quality gates, backpropagation verification, and self-healing
+
+`docs`
+
+Read+Write
+
+cognitive-squad
+
+Conduct Extension
+
+Orchestrates spec-kit phases via sub-agent delegation to reduce context pollution.
+
+`process`
+
+Read+Write
+
+spec-kit-conduct-ext
+
+DocGuard — CDD Enforcement
+
+Canonical-Driven Development enforcement. Validates, scores, and traces project documentation with automated checks, AI-driven workflows, and spec-kit hooks. Zero NPM runtime dependencies.
+
+`docs`
+
+Read+Write
+
+spec-kit-docguard
+
+Extensify
+
+Create and validate extensions and extension catalogs
+
+`process`
+
+Read+Write
+
+extensify
+
+Fleet Orchestrator
+
+Orchestrate a full feature lifecycle with human-in-the-loop gates across all SpecKit phases
+
+`process`
+
+Read+Write
+
+spec-kit-fleet
+
+Iterate
+
+Iterate on spec documents with a two-phase define-and-apply workflow — refine specs mid-implementation and go straight back to building
+
+`docs`
+
+Read+Write
+
+spec-kit-iterate
+
+Jira Integration
+
+Create Jira Epics, Stories, and Issues from spec-kit specifications and task breakdowns with configurable hierarchy and custom field support
+
+`integration`
+
+Read+Write
+
+spec-kit-jira
+
+Learning Extension
+
+Generate educational guides from implementations and enhance clarifications with mentoring context
+
+`docs`
+
+Read+Write
+
+spec-kit-learn
+
+MAQA — Multi-Agent & Quality Assurance
+
+Coordinator → feature → QA agent workflow with parallel worktree-based implementation. Language-agnostic. Auto-detects installed board plugins. Optional CI gate.
+
+`process`
+
+Read+Write
+
+spec-kit-maqa-ext
+
+MAQA Azure DevOps Integration
+
+Azure DevOps Boards integration for MAQA — syncs User Stories and Task children as features progress
+
+`integration`
+
+Read+Write
+
+spec-kit-maqa-azure-devops
+
+MAQA CI/CD Gate
+
+Auto-detects GitHub Actions, CircleCI, GitLab CI, and Bitbucket Pipelines. Blocks QA handoff until pipeline is green.
+
+`process`
+
+Read+Write
+
+spec-kit-maqa-ci
+
+MAQA GitHub Projects Integration
+
+GitHub Projects v2 integration for MAQA — syncs draft issues and Status columns as features progress
+
+`integration`
+
+Read+Write
+
+spec-kit-maqa-github-projects
+
+MAQA Jira Integration
+
+Jira integration for MAQA — syncs Stories and Subtasks as features progress through the board
+
+`integration`
+
+Read+Write
+
+spec-kit-maqa-jira
+
+MAQA Linear Integration
+
+Linear integration for MAQA — syncs issues and sub-issues across workflow states as features progress
+
+`integration`
+
+Read+Write
+
+spec-kit-maqa-linear
+
+MAQA Trello Integration
+
+Trello board integration for MAQA — populates board from specs, moves cards, real-time checklist ticking
+
+`integration`
+
+Read+Write
+
+spec-kit-maqa-trello
+
+Onboard
+
+Contextual onboarding and progressive growth for developers new to spec-kit projects. Explains specs, maps dependencies, validates understanding, and guides the next step
+
+`process`
+
+Read+Write
+
+spec-kit-onboard
+
+Plan Review Gate
+
+Require spec.md and plan.md to be merged via MR/PR before allowing task generation
+
+`process`
+
+Read-only
+
+spec-kit-plan-review-gate
+
+Presetify
+
+Create and validate presets and preset catalogs
+
+`process`
+
+Read+Write
+
+presetify
+
+Project Health Check
+
+Diagnose a Spec Kit project and report health issues across structure, agents, features, scripts, extensions, and git
+
+`visibility`
+
+Read-only
+
+spec-kit-doctor
+
+Project Status
+
+Show current SDD workflow progress — active feature, artifact status, task completion, workflow phase, and extensions summary
+
+`visibility`
+
+Read-only
+
+spec-kit-status
+
+Ralph Loop
+
+Autonomous implementation loop using AI agent CLI
+
+`code`
+
+Read+Write
+
+spec-kit-ralph
+
+Reconcile Extension
+
+Reconcile implementation drift by surgically updating feature artifacts.
+
+`docs`
+
+Read+Write
+
+spec-kit-reconcile
+
+Retrospective Extension
+
+Post-implementation retrospective with spec adherence scoring, drift analysis, and human-gated spec updates
+
+`docs`
+
+Read+Write
+
+spec-kit-retrospective
+
+Review Extension
+
+Post-implementation comprehensive code review with specialized agents for code quality, comments, tests, error handling, type design, and simplification
+
+`code`
+
+Read-only
+
+spec-kit-review
+
+SDD Utilities
+
+Resume interrupted workflows, validate project health, and verify spec-to-task traceability
+
+`process`
+
+Read+Write
+
+speckit-utils
+
+Spec Sync
+
+Detect and resolve drift between specs and implementation. AI-assisted resolution with human approval
+
+`docs`
+
+Read+Write
+
+spec-kit-sync
+
+Understanding
+
+Automated requirements quality analysis — 31 deterministic metrics against IEEE/ISO standards with experimental energy-based ambiguity detection
+
+`docs`
+
+Read-only
+
+understanding
+
+V-Model Extension Pack
+
+Enforces V-Model paired generation of development specs and test specs with full traceability
+
+`docs`
+
+Read+Write
+
+spec-kit-v-model
+
+Verify Extension
+
+Post-implementation quality gate that validates implemented code against specification artifacts
+
+`code`
+
+Read-only
+
+spec-kit-verify
+
+Verify Tasks Extension
+
+Detect phantom completions: tasks marked \[X\] in tasks.md with no real implementation
+
+`code`
+
+Read-only
+
+spec-kit-verify-tasks
+
+To submit your own extension, see the Extension Publishing Guide.
+
+🎨 Community Presets
+--------------------
+
+The following community-contributed presets customize how Spec Kit behaves — overriding templates, commands, and terminology without changing any tooling. Presets are available in `catalog.community.json`:
+
+Preset
+
+Purpose
+
+Provides
+
+Requires
+
+URL
+
+AIDE In-Place Migration
+
+Adapts the AIDE extension workflow for in-place technology migrations (X → Y pattern) — adds migration objectives, verification gates, knowledge documents, and behavioral equivalence criteria
+
+2 templates, 8 commands
+
+AIDE extension
+
+spec-kit-presets
+
+Pirate Speak (Full)
+
+Transforms all Spec Kit output into pirate speak — specs become "Voyage Manifests", plans become "Battle Plans", tasks become "Crew Assignments"
+
+6 templates, 9 commands
+
+—
+
+spec-kit-presets
+
+To build and publish your own preset, see the Presets Publishing Guide.
+
 🚶 Community Walkthroughs
 -------------------------
 
@@ -152,6 +572,18 @@ See Spec-Driven Development in action across different scenarios with these comm
 -   **Brownfield Go / React dashboard demo** — Demonstrates spec-kit driven entirely from the **terminal using GitHub Copilot CLI**. Extends NASA's open-source Hermes ground support system (Go) with a lightweight React-based web telemetry dashboard, showing that the full constitution → specify → plan → tasks → implement workflow works from the terminal.
     
 -   **Greenfield Spring Boot MVC with a custom preset** — Builds a Spring Boot MVC application from scratch using a custom pirate-speak preset, demonstrating how presets can reshape the entire spec-kit experience: specifications become "Voyage Manifests," plans become "Battle Plans," and tasks become "Crew Assignments" — all generated in full pirate vernacular without changing any tooling.
+    
+-   **Greenfield Spring Boot + React with a custom extension** — Walks through the **AIDE extension**, a community extension that adds an alternative spec-driven workflow to spec-kit with high-level specs (vision) and low-level specs (work items) organized in a 7-step iterative lifecycle: vision → roadmap → progress tracking → work queue → work items → execution → feedback loops. Uses a family trading platform (Spring Boot 4, React 19, PostgreSQL, Docker Compose) as the scenario to illustrate how the extension mechanism lets you plug in a different style of spec-driven development without changing any core tooling — truly utilizing the "Kit" in Spec Kit.
+    
+
+🛠️ Community Friends
+---------------------
+
+Community projects that extend, visualize, or build on Spec Kit:
+
+-   **cc-sdd** - A Claude Code plugin that adds composable traits on top of Spec Kit with Superpowers\-based quality gates, spec/code review, git worktree isolation, and parallel implementation via agent teams.
+    
+-   **Spec Kit Assistant** — A VS Code extension that provides a visual orchestrator for the full SDD workflow (constitution → specification → planning → tasks → implementation) with phase status visualization, an interactive task checklist, DAG visualization, and support for Claude, Gemini, GitHub Copilot, and OpenAI backends. Requires the `specify` CLI in your PATH.
     
 
 🤖 Supported AI Agents
@@ -380,7 +812,7 @@ GitHub token for API requests (or set GH\_TOKEN/GITHUB\_TOKEN env variable)
 
 Flag
 
-Install Prompt.MD templates as agent skills in agent-specific `skills/` directory (requires `--ai`)
+Install Prompt.MD templates as agent skills in agent-specific `skills/` directory (requires `--ai`). Extension commands are also auto-registered as skills when extensions are added later.
 
 `--branch-numbering`
 
@@ -564,7 +996,7 @@ specify extension add <extension-name\>
 
 For example, extensions could add Jira integration, post-implementation code review, V-Model test traceability, or project health diagnostics.
 
-See the Extensions README for the full guide, the complete community catalog, and how to build and publish your own.
+See the Extensions README for the full guide and how to build and publish your own. Browse the community extensions above for what's available.
 
 ### Presets — Customize Existing Workflows
 

@@ -1,6 +1,6 @@
 ---
 project: ente
-stars: 25317
+stars: 25624
 description: 💚 End-to-end encrypted cloud for everything.
 url: https://github.com/ente-io/ente
 ---
@@ -16,7 +16,7 @@ This monorepo contains all our source code - the client apps (iOS / Android / F-
 
 Our source code and cryptography have been externally audited by Cure53 (a German cybersecurity firm, arguably the world's best), Symbolic Software (French cryptography experts) and Fallible (an Indian penetration testing firm).
 
-Learn more at ente.io.
+Learn more at ente.com.
 
   
 
@@ -47,7 +47,7 @@ Ente Locker
 
 Protect your most important documents, credentials, and notes with end-to-end encryption. Share privately with people you trust, and set up access for emergencies. Available for iOS and Android.
 
-Ente Locker is free for up to 100 items. If you're subscribed to Ente Photos, you can store up to 1000 items. Learn more at ente.io/locker.
+Ente Locker is free for up to 100 items. If you're subscribed to Ente Photos, you can store up to 1000 items. Learn more at ente.com/locker.
 
   
 
@@ -73,4 +73,4 @@ Please visit the community section for all the ways to connect with our communit
 Security
 --------
 
-If you believe you have found a security vulnerability, please responsibly disclose it by emailing security@ente.io or using this link instead of opening a public issue. We will investigate all legitimate reports. To know more, please see our security policy.
+If you believe you have found a security vulnerability, please responsibly disclose it by emailing security@ente.com or using this link instead of opening a public issue. We will investigate all legitimate reports. To know more, please see our security policy.

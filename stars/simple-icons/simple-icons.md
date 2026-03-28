@@ -1,6 +1,6 @@
 ---
 project: simple-icons
-stars: 24677
+stars: 24780
 description: SVG icons for popular brands
 url: https://github.com/simple-icons/simple-icons
 ---
@@ -221,6 +221,10 @@ Flutter package
 Framer component
 
 @LitoMore
+
+Go package
+
+@dimmerz92
 
 Hugo module
 

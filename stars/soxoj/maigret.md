@@ -1,7 +1,7 @@
 ---
 project: maigret
-stars: 19243
-description: 🕵️‍♂️ Collect a dossier on a person by username from thousands of sites
+stars: 19298
+description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
 
@@ -10,7 +10,7 @@ Maigret
 
 _The Commissioner Jules Maigret is a fictional French police detective, created by Georges Simenon. His investigation method is based on understanding the personality of different people and their interactions._
 
-**👉👉👉 Online Telegram bot**
+**👉👉👉 Online Telegram bot | 🏢 Commercial use & API**
 
 About
 -----
@@ -151,6 +151,18 @@ Feedback
 --------
 
 If you have any questions, suggestions, or feedback, please feel free to open an issue, create a GitHub discussion, or contact the author directly via Telegram.
+
+Commercial Use
+--------------
+
+If you need a **daily updated database** of supported sites or an **API for username checks**, feel free to reach out:
+
+📧 maigret@soxoj.com
+
+Available options:
+
+-   Up-to-date site database - regularly maintained and updated list of 5K+ sites, delivered daily
+-   Username check API - programmatic access to Maigret's search capabilities for integration into your products
 
 SOWEL classification
 --------------------

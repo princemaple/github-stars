@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 240
+stars: 304
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support. Can be used as lightweight OpenClaw alternative.
 url: https://github.com/grinev/opencode-telegram-bot
 ---

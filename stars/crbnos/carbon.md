@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1843
+stars: 1863
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -226,10 +226,9 @@ $ cp ./.env.example ./.env
 -   `SUPABASE_SERVICE_ROLE_KEY=[service_role key]`
 -   `SUPABASE_ANON_KEY=[anon key]`
 
-1.  Create a Redis database in upstash and copy the following from the `REST API` section:
+1.  Set up a Redis instance (local or cloud) and add the connection URL:
 
--   `UPSTASH_REDIS_REST_URL=[UPSTASH_REDIS_REST_URL]`
--   `UPSTASH_REDIS_REST_TOKEN=[UPSTASH_REDIS_REST_TOKEN]`
+-   `REDIS_URL=[redis://user:password@host:port]`
 
 1.  Navigate to the project you created in https://cloud.trigger.dev and copy the following from the `Environments & API Keys` section:
 
@@ -430,7 +429,7 @@ const { data, error } \= await carbon.from("item").select("\*");
 
 ### From the Monorepo
 
-import { getCarbonServiceRole } from "@carbon/auth";
+import { getCarbonServiceRole } from "@carbon/auth/client.server";
 const carbon \= getCarbonServiceRole();
 
 // returns all items across companies

@@ -1,6 +1,6 @@
 ---
 project: gopeed
-stars: 23395
+stars: 23530
 description:   A fast, modern download manager for HTTP, BitTorrent, Magnet, and ED2K. Cross-platform, built with Golang and Flutter.
 url: https://github.com/GopeedLab/gopeed
 ---

@@ -12,7 +12,7 @@ PIG - Postgres Install Genius
 
 Install PostgreSQL 14 ~ 18 along with 461 extensions on (`amd64` / `arm64`) with native OS package manager
 
-All commands support structured output (`-o yaml/json`) with self-describing schema, making it an **Agent-Friendly** PostgreSQL CLI tool. Also check the **PGEXT.CLOUD** to get details about the available extensions.
+All commands support structured output (`-o yaml/json`) with self-describing schema, making it an **Agent-Friendly** PostgreSQL CLI tool. Also check the **Pigsty Extension Catalog** to get details about the available extensions.
 
 * * *
 
@@ -322,7 +322,7 @@ $ pig ext avail                      # show all packages availability on current
 vagrant@meta:~$ pig ext avail
 ✓ Found 294 packages available on u24.arm64
 
-Extension Availability on u24.aarch64 : https://pgext.cloud/os/u24.aarch64
+Extension Availability on u24.aarch64 : https://pigsty.io/ext/os/u24.aarch64
 Showing 318 packages with 461 extensions  (green = PIGSTY, blue = PGDG)
 
 Pkg                     18          17          16          15          14      
@@ -353,7 +353,7 @@ $ pig ext info pg\_duckdb
 │ License      │ MIT                                                                           │
 │ Language     │ C++                                                                           │
 │ Website      │ https://github.com/duckdb/pg\_duckdb                                           │
-│ Details      │ https://pgext.cloud/e/pg\_duckdb                                               │
+│ Details      │ https://pigsty.io/ext/e/pg\_duckdb                                             │
 │ Source       │ pg\_duckdb-1.1.1.tar.gz                                                        │
 ├──────────────┴───────────────────────────────────────────────────────────────────────────────┤
 │ Properties                                                                                   │
@@ -411,7 +411,7 @@ $ pig ext avail citus
 
 citus (citus) - Distributed PostgreSQL as an extension
 Latest: 14.0.0 | 70/84 avail, PG16, PG17, PG18
-Details: https://pgext.cloud/e/citus  (green = PIGSTY, blue = PGDG)
+Details: https://pigsty.io/ext/e/citus  (green = PIGSTY, blue = PGDG)
 
 ╭──────────────┬──────────────┬──────────────┬──────────────┬──────────────┬──────────────╮
 │ OS \\ PG      │      18      │      17      │      16      │      15      │      14      │

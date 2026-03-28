@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 799
+stars: 893
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -159,9 +159,9 @@ rm -f ${KULA\_INSTALL}
 
 ### Standalone
 
-wget https://github.com/c0m4r/kula/releases/download/0.11.0/kula-0.11.0-amd64.tar.gz
-echo "049b16022d761f9a67fe5cd0b0aa4e4544589b1fde917999bfdf6f44ce7fff8b kula-0.11.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.11.0-amd64.tar.gz
-tar -xvf kula-0.11.0-amd64.tar.gz
+wget https://github.com/c0m4r/kula/releases/download/0.13.0/kula-0.13.0-amd64.tar.gz
+echo "2ce34692d9bf91b28ac8d540ccf49e48af20d3b0eb6054b778f87cc37ad7a044 kula-0.13.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.13.0-amd64.tar.gz
+tar -xvf kula-0.13.0-amd64.tar.gz
 cd kula
 ./kula
 
@@ -178,31 +178,31 @@ docker logs -f kula
 
 ### Debian / Ubuntu (.deb)
 
-wget https://github.com/c0m4r/kula/releases/download/0.11.0/kula-0.11.0-amd64.deb
-echo "3aff5cd19ea2a894eb6ff3bec76aa87c0aef5d6db45757ce465cd97361e5a9cd kula-0.11.0-amd64.deb" | sha256sum -c || rm -f kula-0.11.0-amd64.deb
-sudo dpkg -i kula-0.11.0-amd64.deb
+wget https://github.com/c0m4r/kula/releases/download/0.13.0/kula-0.13.0-amd64.deb
+echo "090c17401875e817e47fcbe2c11831f14afb9773f73e05a648a49cb69e326a14 kula-0.13.0-amd64.deb" | sha256sum -c || rm -f kula-0.13.0-amd64.deb
+sudo dpkg -i kula-0.13.0-amd64.deb
 journalctl -f -t kula
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-wget https://github.com/c0m4r/kula/releases/download/0.11.0/kula-0.11.0-x86\_64.rpm
-echo "09cd5d38e0ff3ce72d20b471816f26c5ccdcd6ddd58e0b2e014908bcf4130399 kula-0.11.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.11.0-x86\_64.rpm
-sudo rpm -i kula-0.11.0-x86\_64.rpm
+wget https://github.com/c0m4r/kula/releases/download/0.13.0/kula-0.13.0-x86\_64.rpm
+echo "86e4b87429b409ceeb478cf542b0401750baf05aa1dbcb76ca4c133865c9ef71 kula-0.13.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.13.0-x86\_64.rpm
+sudo rpm -i kula-0.13.0-x86\_64.rpm
 journalctl -f -t kula
 
 ### Arch Linux / Manjaro (AUR)
 
-wget https://github.com/c0m4r/kula/releases/download/0.11.0/kula-0.11.0-aur.tar.gz
-echo "3b28dc2f4ef1c11524806e0572fb163c3823b3a91f3ce64859b811c73c7423e1 kula-0.11.0-aur.tar.gz" | sha256sum -c || rm -f kula-0.11.0-aur.tar.gz
-tar -xvf kula-0.11.0-aur.tar.gz
-cd kula-0.11.0-aur
+https://aur.archlinux.org/packages/kula
+
+git clone https://aur.archlinux.org/kula.git
+cd kula
 makepkg -si
 
 ### Build from Source
 
 git clone https://github.com/c0m4r/kula.git
 cd kula
-bash addons/build.sh
+./addons/build.sh
 
 * * *
 
@@ -289,18 +289,22 @@ All settings live in `config.yaml`. See `config.example.yaml` for defaults.
 --------------
 
 # Lint + test suite
-bash ./addons/check.sh
+./addons/check.sh
 
-# Build dev (Binary size: ~14MB)
+# Build
+./addonsh.build.sh
+
+# Build dev (Binary size: ~17MB)
 CGO\_ENABLED=0 go build -o kula ./cmd/kula/
 
-# Build prod (Binary size: ~9MB, xz: ~3MB)
+# Build prod (Binary size: ~12MB, xz: ~4MB)
 CGO\_ENABLED=0 go build -trimpath -ldflags="\-s -w" -buildvcs=false -o kula ./cmd/kula/
 
 ### Updating Dependencies
 
 To safely update only the Go modules used by Kula to their latest minor/patch versions, and prune any unused dependencies:
 
+./addons/go\_modules\_updates.py
 go get -u ./...
 go mod tidy
 
@@ -310,10 +314,7 @@ go mod tidy
 go test -race ./...
 
 # Run the full storage benchmark suite (default: 3s per bench)
-bash addons/benchmark.sh
-
-# Shorter run for quick iteration
-bash addons/benchmark.sh 500ms
+./addons/benchmark.sh
 
 # Python scripts formatter and linters
 black addons/\*.py
@@ -322,26 +323,26 @@ mypy --strict addons/\*.py
 
 ### Cross-Compile
 
-bash addons/build.sh cross    # builds amd64, arm64, riscv64
+./addons/build.sh cross    # builds amd64, arm64, riscv64
 
 ### Debian / Ubuntu (.deb)
 
-bash addons/build\_deb.sh
+./addons/build\_deb.sh
 ls -1 dist/kula-\*.deb
 
 ### Arch Linux / Manjaro (AUR)
 
-bash addons/build\_aur.sh
+./addons/build\_aur.sh
 cd dist/aur && makepkg -si
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-bash addons/build\_rpm.sh
+./addons/build\_rpm.sh
 ls -1 dist/kula-\*.rpm
 
 ### Docker
 
-bash addons/docker/build.sh
+./addons/docker/build.sh
 docker compose -f addons/docker/docker-compose.yml up -d
 
 * * *

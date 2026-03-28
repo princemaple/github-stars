@@ -1,6 +1,6 @@
 ---
 project: TVAPP
-stars: 14592
+stars: 14828
 description:  收集全网 Android TV电视盒子应用，涵盖影视、直播、K歌、工具、游戏等类型，整理优质APK资源，支持便捷下载与自动更新。提供安全验证、分类索引与兼容性标注，助力用户打造家庭影音娱乐中心！              ✅ TVBox/影视仓等影音壳接口配置源。
 url: https://github.com/youhunwl/TVAPP
 ---
@@ -39,7 +39,7 @@ TVBox
 
 影视仓
 
-v6.1.9
+v6.2.0
 
 下载
 
@@ -89,7 +89,7 @@ PLUS版本功能较全，支持点播+直播，内置宝盒没宝数据源
 
 宝盒TV
 
-v5.0.2
+v5.0.3
 
 下载
 
@@ -99,7 +99,7 @@ v5.0.2
 
 FongMi影视
 
-v5.3.0
+v5.3.3
 
 下载
 
@@ -109,7 +109,7 @@ v5.3.0
 
 OK影视
 
-v5.0.2
+v5.0.6
 
 下载
 
@@ -119,7 +119,7 @@ v5.0.2
 
 OK影视Pro
 
-v5.0.9
+v5.1.2
 
 下载
 
@@ -519,7 +519,7 @@ v3.7.7
 
 DongYuTvWeb
 
-v1.0.10
+v1.0.12
 
 下载
 
@@ -739,7 +739,7 @@ v10.1.0
 
 FM影视内置共存版
 
-v5.2.9
+v5.3.2
 
 下载
 
@@ -1028,7 +1028,6 @@ TVBox壳本地版内置10万+音乐/MV资源
 推荐在线源：
  https://www.iyouhun.com/tv/zb		# 游魂直播源
  https://live.zbds.top/tv/iptv4.txt  # 直播电视IPV4
- https://3043.kstore.space/bhvip/bhzb.txt # 宝盒直播
  https://develop202.github.io/migu_video/interface.txt # 咪咕IPTV
  https://raw.githubusercontent.com/PizazzGY/TV/master/output/user_result.txt   # 潇洒AI直播
  https://raw.githubusercontent.com/PizazzGY/TV/master/output/user_result.m3u   # 潇洒AI直播
@@ -1058,7 +1057,9 @@ TVBox壳本地版内置10万+音乐/MV资源
  https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u # YanG集合源，有部分IPv6
  
 部分海外源：
- http://go8.myartsonline.com/zx/0/港澳4Gtv.txt # 港澳4Gtv
+ https://php.946985.filegear-sg.me/jackTV.m3u # JackTV直播{翻}
+ https://iptv-org.github.io/iptv/index.m3u # 海外TV直播{翻}
+ https://web.utako.moe/jp.m3u # 日本TV直播{翻}
  https://epg.pw/test_channels.m3u # 中国大陆频道
  https://epg.pw/test_channels_hong_kong.m3u # 中国香港频道
  https://epg.pw/test_channels_macau.m3u # 中国澳门频道
@@ -1070,13 +1071,10 @@ TVBox壳本地版内置10万+音乐/MV资源
  https://iptv-org.github.io/iptv/index.m3u # 世界各地免费电视频道
 
 其他直播源：
- http://emby.free.coms.su/diyp/live.php # 斗鱼影厅
  https://live.freetv.top/huyayqk.m3u # 虎牙一起看
  https://live.freetv.top/douyuyqk.m3u # 斗鱼一起看
- https://www.goodiptv.club/yylunbo.m3u?url=https://lunbo.freetv.top # YY轮播
- https://www.goodiptv.club/bililive.m3u # 哔哩哔哩直播源
- https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/ya.m3u # 虎牙直播源
- https://raw.githubusercontent.com/YanG-1989/m3u/main/yu.m3u # 斗鱼直播源
+ https://gongdian.top/tv/Mursor/yylunbo.m3u # YY轮播
+ https://gongdian.top/tv/Mursor/bililive.m3u # 哔哩哔哩直播源
 ```
 
 免责声明

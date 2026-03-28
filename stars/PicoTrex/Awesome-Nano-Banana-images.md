@@ -1,6 +1,6 @@
 ---
 project: Awesome-Nano-Banana-images
-stars: 21589
+stars: 21783
 description: A curated collection of fun and creative examples generated with Nano Banana & Nano Banana Pro🍌, Gemini-2.5-flash-image based model. We also release Nano-consistent-150K openly to support the community's development of image generation and unified models(click to website to see our blog)
 url: https://github.com/PicoTrex/Awesome-Nano-Banana-images
 ---

@@ -1,6 +1,6 @@
 ---
 project: diff-pdf
-stars: 4196
+stars: 4202
 description: A simple tool for visually comparing two PDF files
 url: https://github.com/vslavik/diff-pdf
 ---
@@ -25,6 +25,8 @@ $ diff-pdf --view a.pdf b.pdf
 ```
 
 This opens a window that lets you view the files' pages and zoom in on details. It is also possible to shift the two pages relatively to each other using Ctrl-arrows (Cmd-arrows on MacOS). This is useful for identifying translation-only differences.
+
+You can also use `Ctrl+<` and `Ctrl+>` (`Cmd+<` and `Cmd+>` on MacOS) show the left and right documents respecively. `Ctrl+D` to return back to the diff view.
 
 See the output of `$ diff-pdf --help` for complete list of options.
 

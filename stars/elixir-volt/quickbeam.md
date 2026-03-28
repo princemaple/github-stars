@@ -1,6 +1,6 @@
 ---
 project: quickbeam
-stars: 156
+stars: 162
 description: JavaScript runtime for the BEAM — Web APIs backed by OTP, native DOM, and a built-in TypeScript toolchain.
 url: https://github.com/elixir-volt/quickbeam
 ---
@@ -748,6 +748,13 @@ Sandboxed user code
 `QuickBEAM` or `Context` with `apis: false`
 
 Memory limits, reduction limits, timeouts
+
+Development
+-----------
+
+mix ci
+
+Runs the full project quality gate: formatting, Credo, Dialyzer, Zig lint, TypeScript lint, duplicate-code checks, and tests.
 
 Examples
 --------

@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 21786
+stars: 22111
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -406,11 +406,22 @@ To disable tools from MCP servers, see the MCP config section.
 
 Crush supports the Agent Skills open standard for extending agent capabilities with reusable skill packages. Skills are folders containing a `SKILL.md` file with instructions that Crush can discover and activate on demand.
 
-Skills are discovered from:
+The global paths we looks for skills are:
 
--   `~/.config/crush/skills/` on Unix (default, can be overridden with `CRUSH_SKILLS_DIR`)
--   `%LOCALAPPDATA%\crush\skills\` on Windows (default, can be overridden with `CRUSH_SKILLS_DIR`)
+-   `$CRUSH_SKILLS_DIR`
+-   `$XDG_CONFIG_HOME/agents/skills` or `~/.config/agents/skills/`
+-   `$XDG_CONFIG_HOME/crush/skills` or `~/.config/crush/skills/`
+-   On Windows, we _also_ look at
+    -   `%LOCALAPPDATA%\agents\skills\` or `%USERPROFILE%\AppData\Local\agents\skills\`
+    -   `%LOCALAPPDATA%\crush\skills\` or `%USERPROFILE%\AppData\Local\crush\skills\`
 -   Additional paths configured via `options.skills_paths`
+
+On top of that, we _also_ load skills in your project from the following relative paths:
+
+-   `.agents/skills`
+-   `.crush/skills`
+-   `.claude/skills`
+-   `.cursor/skills`
 
 {
   "$schema": "https://charm.land/crush.json",
@@ -722,6 +733,33 @@ Or by setting the following in your config:
 }
 
 Crush also respects the `DO_NOT_TRACK` convention which can be enabled via `export DO_NOT_TRACK=1`.
+
+Q&A
+---
+
+### Why is clipboard copy and paste not working?
+
+Installing an extra tool might be needed on Unix-like environments.
+
+Environment
+
+Tool
+
+Windows
+
+Native support
+
+macOS
+
+Native support
+
+Linux/BSD + Wayland
+
+`wl-copy` and `wl-paste`
+
+Linux/BSD + X11
+
+`xclip` or `xsel`
 
 Contributing
 ------------

@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 14360
+stars: 14436
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -317,6 +317,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **RemcoGoy**
 
   
+**wilhelmer**
+
+  
 **adjsky**
 
   
@@ -345,9 +348,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **lc-soft**
-
-  
-**wilhelmer**
 
   
 **fuma-nama**
@@ -422,7 +422,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ledgersteve**
 
   
-**not-my-profile**
+**abdulamite**
+
+  
+**robert-dean**
 
   
 **bobheadxi**
@@ -470,7 +473,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **dotfortun**
 
   
-**smoores-dev**
+**not-my-profile**
 
   
 **tinchoz49**
@@ -524,7 +527,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **rickihastings**
 
   
-**robert-dean**
+**smoores-dev**
 
   
 **bingbeann**
@@ -683,9 +686,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **elliotnash**
 
   
-**abdulamite**
-
-  
 **MathurAditya724**
 
   
@@ -696,6 +696,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **alewin**
+
+  
+**alonfaraj**
 
   
 **gizero**

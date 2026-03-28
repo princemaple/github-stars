@@ -1,6 +1,6 @@
 ---
 project: pangolin
-stars: 19611
+stars: 19697
 description: Identity-aware VPN and proxy for remote access to anything, anywhere.
 url: https://github.com/fosrl/pangolin
 ---

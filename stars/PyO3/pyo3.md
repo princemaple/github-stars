@@ -1,6 +1,6 @@
 ---
 project: pyo3
-stars: 15474
+stars: 15500
 description: Rust bindings for the Python interpreter
 url: https://github.com/PyO3/pyo3
 ---
@@ -22,7 +22,7 @@ Requires Rust 1.83 or greater.
 
 PyO3 supports the following Python distributions:
 
--   CPython 3.7 or greater
+-   CPython 3.8 or greater
 -   PyPy 7.3 (Python 3.11+)
 -   GraalPy 25.0 or greater (Python 3.12+)
 

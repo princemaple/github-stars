@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 13060
+stars: 13113
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -584,6 +584,14 @@ https://github.com/zaunist/gemini-balance-do
 
 维护中
 
+LLMKit
+
+Open-source AI API gateway built on CF Workers + Durable Objects. Cost tracking, budget enforcement, rate limiting for 11 LLM providers (OpenAI, Anthropic, Gemini, etc). TypeScript SDK, CLI, MCP server. MIT license.
+
+https://github.com/smigolsmigol/llmkit
+
+维护中
+
 文件分享
 ----
 
@@ -638,6 +646,14 @@ cf-drop
 serverless-webdav
 
 基于 Cloudflare Workers 和 Cloudflare D1 数据库 构建的轻量级、可扩展的 WebDAV 服务器实现。
+
+维护中
+
+R2Drop
+
+Native macOS menu bar app for uploading files to Cloudflare R2. Built with Swift + Rust, supports drag-and-drop, automatic URL copying, and multiple bucket management.
+
+https://r2drop.com
 
 维护中
 
@@ -1185,6 +1201,14 @@ MetaReview
 免费在线 Meta 分析平台，基于 Cloudflare Pages + Workers AI + KV 构建。支持 120+ 功能：森林图/漏斗图等 11 种统计图表（D3.js）、5 种效应量、AI 文献筛选（Llama 3.1 8B）、PDF 数据提取、DOCX/HTML 报告导出、PRISMA 流程图。中英双语，医学研究者 5 分钟从数据到森林图。
 
 https://metareview-8c1.pages.dev/
+
+维护中
+
+Keep My Claw
+
+基于 Cloudflare Workers + D1 + R2 的 AI 代理加密云备份工具。支持自动定时备份、客户端 AES-256 加密、一键恢复到任意设备，专为 OpenClaw 工作空间设计。
+
+https://keepmyclaw.com
 
 维护中
 

@@ -1,6 +1,6 @@
 ---
 project: openpanel
-stars: 5539
+stars: 5569
 description: OpenPanel is an open-source web and product analytics platform, an open-source alternative to Mixpanel with optional self-hosting.
 url: https://github.com/Openpanel-dev/openpanel
 ---

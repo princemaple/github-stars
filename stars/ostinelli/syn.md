@@ -75,13 +75,13 @@ end
 If you're using rebar3, add `syn` as a dependency in your project's `rebar.config` file:
 
 {deps, \[
-  {syn, {git, "git://github.com/ostinelli/syn.git", {tag, "3.4.0"}}}
+  {syn, {git, "git://github.com/ostinelli/syn.git", {tag, "3.4.1"}}}
 \]}.
 
 Or, if you're using Hex.pm as package manager (with the rebar3\_hex plugin):
 
 {deps, \[
-  {syn, "3.4.0"}
+  {syn, "3.4.1"}
 \]}.
 
 Ensure that `syn` is started with your application, for example by adding it in your `.app` file to the list of `applications`:

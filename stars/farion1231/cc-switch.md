@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 31409
+stars: 34833
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex, OpenCode, openclaw & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -125,9 +125,9 @@ For most tools, yes — restart your terminal or the CLI tool for changes to tak
 
 CC Switch provides a "Shared Config Snippet" feature to pass common data (beyond API keys and endpoints) between providers. Go to "Edit Provider" → "Shared Config Panel" → click "Extract from Current Provider" to save all common data. When creating a new provider, check "Write Shared Config" (enabled by default) to include plugin data in the new provider. All your configuration items are preserved in the default provider imported when you first launched the app.
 
-**macOS shows "unidentified developer" warning — how do I fix it?**
+**macOS installation**
 
-The author doesn't have an Apple Developer account yet (registration in progress). Close the warning, then go to **System Settings → Privacy & Security → Open Anyway**. After that, the app will open normally.
+CC Switch for macOS is code-signed and notarized by Apple. You can download and install it directly — no extra steps needed. We recommend using the `.dmg` installer.
 
 **Why can't I delete the currently active provider?**
 
@@ -197,9 +197,9 @@ brew upgrade --cask cc-switch
 
 **Method 2: Manual Download**
 
-Download `CC-Switch-v{version}-macOS.zip` from the Releases page and extract to use.
+Download `CC-Switch-v{version}-macOS.dmg` (recommended) or `.zip` from the Releases page.
 
-> **Note**: Since the author doesn't have an Apple Developer account, you may see an "unidentified developer" warning on first launch. Please close it first, then go to "System Settings" → "Privacy & Security" → click "Open Anyway", and you'll be able to open it normally afterwards.
+> **Note**: CC Switch for macOS is code-signed and notarized by Apple. You can install and open it directly.
 
 ### Arch Linux Users
 

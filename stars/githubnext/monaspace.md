@@ -1,6 +1,6 @@
 ---
 project: monaspace
-stars: 18635
+stars: 18693
 description: An innovative superfamily of fonts for code
 url: https://github.com/githubnext/monaspace
 ---
@@ -62,6 +62,8 @@ Ligature handling has changed significantly in Monaspace point releases. If you'
 -   v1.1
 -   v1.101
 -   v1.2
+-   v1.3
+-   v1.4
 
 The `liga` font feature enables customized spacing of repeating characters, like `///` or `||`. It is designed to avoid activating inside longer sequences like `////`.
 
@@ -72,7 +74,7 @@ There are ten groups of coding ligatures, separated into stylistic sets. You may
 -   `ss03`: ligatures related to arrows like `->` and `~>`.
 -   `ss04`: ligatures related to markup, like `</` and `/>`.
 -   `ss05`: ligatures related to the F# programming language, like `|>`.
--   `ss06`: ligatures related to repeated uses of `#`, `+`, and `&`.
+-   `ss06`: ligatures related to repeated uses of `#`, `+`, `_`, `=` and `&`.
 -   `ss07`: ligatures related to colons like `::` or `=:=`.
 -   `ss08`: ligatures related to combinations of periods with other glyphs like `..=` or `.-`.
 -   `ss09`: ligatures related to combinations of the greater/less than and equals signs, like `<=>`,`>>`, and `=<<`.
@@ -98,6 +100,8 @@ Specific characters have variants that you can optionally enable using the `cvNN
 
 -   `cv10`: `l` `i` alternates (Neon, Argon, Xenon, Radon)
 -   `cv11`: `j` `f` `r` `t` alternates (Neon, Argon)
+-   `cv12`: Bulgarian-specific Cyrillic alternates
+-   `cv13`: Serbianc-specific Cyrillic alternates
 
 #### cv30-cv59: symbol variants
 
@@ -178,6 +182,8 @@ Ligature handling has changed significantly in Monaspace point releases. If you'
 -   v1.1
 -   v1.101
 -   v1.2
+-   v1.3
+-   v1.4
 
 Set the font family:
 
@@ -234,9 +240,14 @@ Monaspace was made to improve all code for all developers. GitHub Next set out o
 
 #### Lettermatic
 
--   Riley Cran
--   Danelle Cheney
--   Heather Cran
+-   **Latin Type Designers:** Riley Cran, Danelle Cheney, Heather Cran
+-   **Lead Symbols & Punctuation:** Heather Cran
+-   **Lead Language Support:** Heather Cran
+-   **Language Support Expansions:** Danelle Cheney, Jane Solomon
+-   **Cyrillic Type Design:** Heather Cran, Danelle Cheney, Jane Solomon, Lauren Dickens, Riley Cran
+-   **Cyrillic Consultancy:** Ilya Ruderman
+-   **Greek Consultancy:** Elina Koutsogiannopoulou
+-   **Vietnamese Consultancy:** Donny Trương
 
 #### GitHub Next
 
@@ -249,7 +260,15 @@ Monaspace was made to improve all code for all developers. GitHub Next set out o
 
 -   Anna Thomas
 -   Marg Chronister
--   Jane Solomon
+
+Interesting Statistics:
+-----------------------
+
+-   Typefaces families: `5`
+-   Variable axes per family: `3`
+-   Languages supported: `>220`
+-   Unique glyphs: `>6,000`
+-   Total glyphs: `~750,000`
 
 Star History
 ------------

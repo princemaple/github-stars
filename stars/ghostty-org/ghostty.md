@@ -1,6 +1,6 @@
 ---
 project: ghostty
-stars: 48012
+stars: 48971
 description: 👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.
 url: https://github.com/ghostty-org/ghostty
 ---
@@ -12,6 +12,7 @@ Ghostty
 ==============
 
 Fast, native, feature-rich terminal emulator pushing modern features.  
+A native GUI or embeddable library via `libghostty`.  
 About · Download · Documentation · Contributing · Developing
 
 About
@@ -19,11 +20,7 @@ About
 
 Ghostty is a terminal emulator that differentiates itself by being fast, feature-rich, and native. While there are many excellent terminal emulators available, they all force you to choose between speed, features, or native UIs. Ghostty provides all three.
 
-In all categories, I am not trying to claim that Ghostty is the best (i.e. the fastest, most feature-rich, or most native). But Ghostty is competitive in all three categories and Ghostty doesn't make you choose between them.
-
-Ghostty also intends to push the boundaries of what is possible with a terminal emulator by exposing modern, opt-in features that enable CLI tool developers to build more feature rich, interactive applications.
-
-While aiming for this ambitious goal, our first step is to make Ghostty one of the best fully standards compliant terminal emulator, remaining compatible with all existing shells and software while supporting all of the latest terminal innovations in the ecosystem. You can use Ghostty as a drop-in replacement for your existing terminal emulator.
+**`libghostty`** is a cross-platform, zero-dependency C and Zig library for building terminal emulators or utilizing terminal functionality (such as style parsing). Anyone can use `libghostty` to build a terminal emulator or embed a terminal into their own applications. See Ghostling for a minimal complete project example or the `examples` directory for smaller examples of using `libghostty` in C and Zig.
 
 For more details, see About Ghostty.
 
@@ -44,6 +41,8 @@ If you have any ideas, issues, etc. regarding Ghostty, or would like to contribu
 
 Roadmap and Status
 ------------------
+
+Ghostty is stable and in use by millions of people and machines daily.
 
 The high-level ambitious plan for the project, in order:
 
@@ -67,37 +66,25 @@ Competitive performance
 
 3
 
-Basic customizability -- fonts, bg colors, etc.
+Rich windowing features -- multi-window, tabbing, panes
 
 ✅
 
 4
 
-Richer windowing features -- multi-window, tabbing, panes
+Native Platform Experiences
 
 ✅
 
 5
 
-Native Platform Experiences (i.e. Mac Preference Panel)
+Cross-platform `libghostty` for Embeddable Terminals
 
-⚠️
+✅
 
 6
 
-Cross-platform `libghostty` for Embeddable Terminals
-
-⚠️
-
-7
-
-Windows Terminals (including PowerShell, Cmd, WSL)
-
-❌
-
-N
-
-Fancy features (to be expanded upon later)
+Ghostty-only Terminal Control Sequences
 
 ❌
 
@@ -105,27 +92,25 @@ Additional details for each step in the big roadmap below:
 
 #### Standards-Compliant Terminal Emulation
 
-Ghostty implements enough control sequences to be used by hundreds of testers daily for over the past year. Further, we've done a comprehensive xterm audit comparing Ghostty's behavior to xterm and building a set of conformance test cases.
+Ghostty implements all of the regularly used control sequences and can run every mainstream terminal program without issue. For legacy sequences, we've done a comprehensive xterm audit comparing Ghostty's behavior to xterm and building a set of conformance test cases.
 
-We believe Ghostty is one of the most compliant terminal emulators available.
+In addition to legacy sequences (what you'd call real "terminal" emulation), Ghostty also supports more modern sequences than almost any other terminal emulator. These features include things like the Kitty graphics protocol, Kitty image protocol, clipboard sequences, synchronized rendering, light/dark mode notifications, and many, many more.
+
+We believe Ghostty is one of the most compliant and feature-rich terminal emulators available.
 
 Terminal behavior is partially a de jure standard (i.e. ECMA-48) but mostly a de facto standard as defined by popular terminal emulators worldwide. Ghostty takes the approach that our behavior is defined by (1) standards, if available, (2) xterm, if the feature exists, (3) other popular terminals, in that order. This defines what the Ghostty project views as a "standard."
 
 #### Competitive Performance
 
-We need better benchmarks to continuously verify this, but Ghostty is generally in the same performance category as the other highest performing terminal emulators.
+Ghostty is generally in the same performance category as the other highest performing terminal emulators.
 
-For rendering, we have a multi-renderer architecture that uses OpenGL on Linux and Metal on macOS. As far as I'm aware, we're the only terminal emulator other than iTerm that uses Metal directly. And we're the only terminal emulator that has a Metal renderer that supports ligatures (iTerm uses a CPU renderer if ligatures are enabled). We can maintain around 60fps under heavy load and much more generally -- though the terminal is usually rendering much lower due to little screen changes.
+"The same performance category" means that Ghostty is much faster than traditional or "slow" terminals and is within an unnoticeable margin of the well-known "fast" terminals. For example, Ghostty and Alacritty are usually within a few percentage points of each other on various benchmarks, but are both something like 100x faster than Terminal.app and iTerm. However, Ghostty is much more feature rich than Alacritty and has a much more native app experience.
 
-For IO, we have a dedicated IO thread that maintains very little jitter under heavy IO load (i.e. `cat <big file>.txt`). On benchmarks for IO, we're usually within a small margin of other fast terminal emulators. For example, reading a dump of plain text is 4x faster compared to iTerm and Kitty, and 2x faster than Terminal.app. Alacritty is very fast but we're still around the same speed (give or take) and our app experience is much more feature rich.
+This performance is achieved through high-level architectural decisions and low-level optimizations. At a high-level, Ghostty has a multi-threaded architecture with a dedicated read thread, write thread, and render thread per terminal. Our renderer uses OpenGL on Linux and Metal on macOS. Our read thread has a heavily optimized terminal parser that leverages CPU-specific SIMD instructions. Etc.
 
-Note
+#### Rich Windowing Features
 
-Despite being _very fast_, there is a lot of room for improvement here.
-
-#### Richer Windowing Features
-
-The Mac and Linux (build with GTK) apps support multi-window, tabbing, and splits.
+The Mac and Linux (build with GTK) apps support multi-window, tabbing, and splits with additional features such as tab renaming, coloring, etc. These features allow for a higher degree of organization and customization than single-window terminals.
 
 #### Native Platform Experiences
 
@@ -133,9 +118,11 @@ Ghostty is a cross-platform terminal emulator but we don't aim for a least-commo
 
 -   The macOS app is a true SwiftUI-based application with all the things you would expect such as real windowing, menu bars, a settings GUI, etc.
 -   macOS uses a true Metal renderer with CoreText for font discovery.
+-   macOS supports AppleScript, Apple Shortcuts (AppIntents), etc.
 -   The Linux app is built with GTK.
+-   The Linux app integrates deeply with systemd if available for things like always-on, new windows in a single instance, cgroup isolation, etc.
 
-There are more improvements to be made. The macOS settings window is still a work-in-progress. Similar improvements will follow with Linux.
+Our goal with Ghostty is for users of whatever platform they run Ghostty on to think that Ghostty was built for their platform first and maybe even exclusively. We want Ghostty to feel like a native app on every platform, for the best definition of "native" on each platform.
 
 #### Cross-platform `libghostty` for Embeddable Terminals
 
@@ -143,9 +130,19 @@ In addition to being a standalone terminal emulator, Ghostty is a C-compatible l
 
 Due to the scope of this project, we're breaking libghostty down into separate actually libraries, starting with `libghostty-vt`. The goal of this project is to focus on parsing terminal sequences and maintaining terminal state. This is covered in more detail in this blog post.
 
-`libghostty-vt` is already available and usable today for Zig and C and is compatible for macOS, Linux, Windows, and WebAssembly. At the time of writing this, the API isn't stable yet and we haven't tagged an official release, but the core logic is well proven (since Ghostty uses it) and we're working hard on it now.
+`libghostty-vt` is already available and usable today for Zig and C and is compatible for macOS, Linux, Windows, and WebAssembly. The functionality is extremely stable (since its been proven in Ghostty GUI for a long time), but the API signatures are still in flux.
 
-The ultimate goal is not hypothetical! The macOS app is a `libghostty` consumer. The macOS app is a native Swift app developed in Xcode and `main()` is within Swift. The Swift app links to `libghostty` and uses the C API to render terminals.
+`libghostty` is already heavily in use. See `examples` for small examples of using `libghostty` in C and Zig or the Ghostling project for a complete example. See awesome-libghostty for a list of projects and resources related to `libghostty`.
+
+We haven't tagged libghostty with a version yet and we're still working on a better docs experience, but our Doxygen website is a good resource for the C API.
+
+#### Ghostty-only Terminal Control Sequences
+
+We want and believe that terminal applications can and should be able to do so much more. We've worked hard to support a wide variety of modern sequences created by other terminal emulators towards this end, but we also want to fill the gaps by creating our own sequences.
+
+We've been hesitant to do this up until now because we don't want to create more fragmentation in the terminal ecosystem by creating sequences that only work in Ghostty. But, we do want to balance that with the desire to push the terminal forward with stagnant standards and the slow pace of change in the terminal ecosystem.
+
+We haven't done any of this yet.
 
 Crash Reports
 -------------

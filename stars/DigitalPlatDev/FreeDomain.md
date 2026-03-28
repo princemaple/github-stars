@@ -1,6 +1,6 @@
 ---
 project: FreeDomain
-stars: 153598
+stars: 154660
 description: DigitalPlat FreeDomain: Free Domain For Everyone
 url: https://github.com/DigitalPlatDev/FreeDomain
 ---
@@ -26,6 +26,7 @@ At **DigitalPlat FreeDomain**, we’re on a mission to make the web more accessi
 -   **.US.KG**
 -   **.QZZ.IO**
 -   **.XX.KG**
+-   **.QD.JE**
 
 _(More extensions coming soon!)_
 
@@ -43,7 +44,7 @@ Jump in and register your domain by visiting our site:
 
 ### 🌟 Trusted by Thousands
 
-With over 400,000 domains already registered, DigitalPlat FreeDomain is a trusted choice for individuals and organizations alike. Join our growing community and claim your own free domain today!
+With over 500,000 domains already registered, DigitalPlat FreeDomain is a trusted choice for individuals and organizations alike. Join our growing community and claim your own free domain today!
 
 * * *
 

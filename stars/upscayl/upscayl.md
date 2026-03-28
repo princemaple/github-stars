@@ -1,6 +1,6 @@
 ---
 project: upscayl
-stars: 44082
+stars: 44229
 description: 🆙 Upscayl - #1 Free and Open Source AI Image Upscaler for Linux, MacOS and Windows.
 url: https://github.com/upscayl/upscayl
 ---
@@ -71,6 +71,8 @@ _You can also choose to install using other formats like RPM (Fedora), DEB (Debi
 --------
 
 (MacOS 12 and later)
+
+Link
 
 1.  Go to releases section or our official website.
 2.  Download the `upscayl-x.x.x-mac.dmg` file.

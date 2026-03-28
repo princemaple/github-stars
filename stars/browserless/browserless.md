@@ -1,6 +1,6 @@
 ---
 project: browserless
-stars: 12795
+stars: 12836
 description: Deploy headless browsers in Docker. Run on our cloud or bring your own. Free for non-commercial uses.
 url: https://github.com/browserless/browserless
 ---

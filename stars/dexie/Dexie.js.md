@@ -1,6 +1,6 @@
 ---
 project: Dexie.js
-stars: 14128
+stars: 14159
 description: A Minimalistic Wrapper for IndexedDB
 url: https://github.com/dexie/Dexie.js
 ---
@@ -314,3 +314,7 @@ Watch
 ```
 pnpm run watch
 ```
+
+  
+
+Browser testing via

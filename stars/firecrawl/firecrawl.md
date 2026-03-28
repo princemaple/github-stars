@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 96113
+stars: 99960
 description: 🔥 The Web Data API for AI - Turn entire websites into LLM-ready markdown or structured data
 url: https://github.com/firecrawl/firecrawl
 ---
@@ -111,9 +111,9 @@ Convert any URL to markdown, HTML, screenshots, or structured JSON
 
 Search the web and get full page content from results
 
-**Browse**
+**Interact**
 
-Let agents safely interact with the web
+Scrape a page, then interact with it via prompts or code
 
 **Map**
 
@@ -270,60 +270,78 @@ results \= firecrawl.search(
 
 * * *
 
-Browse
-------
+Interact
+--------
 
-Give your agents a secure browser environment. Let them run code safely to gather data and take action on the web.
+Scrape a page, then interact with it - click buttons, fill forms, extract dynamic content, or navigate deeper. Use natural language prompts or run code for full control.
 
-curl -X POST 'https://api.firecrawl.dev/v2/browser' \\
-  -H 'Authorization: Bearer fc-YOUR\_API\_KEY' \\
-  -H 'Content-Type: application/json'
+### Interact via Prompting
 
-Response:
+Describe what you want and the agent will click, type, scroll, and extract data automatically.
 
-{
-  "success": true,
-  "id": "550e8400-e29b-41d4-a716-446655440000",
-  "cdpUrl": "wss://cdp-proxy.firecrawl.dev/cdp/550e8400-e29b-41d4-a716-446655440000",
-  "liveViewUrl": "https://liveview.firecrawl.dev/550e8400-e29b-41d4-a716-446655440000"
-}
+from firecrawl import Firecrawl
 
-### Execute Code in the Browser
+app \= Firecrawl(api\_key\="fc-YOUR\_API\_KEY")
 
-Run Playwright code, Python, or bash commands remotely:
+\# 1. Scrape a page
+result \= app.scrape("https://www.amazon.com", formats\=\["markdown"\])
+scrape\_id \= result.metadata\["scrapeId"\]
+
+\# 2. Interact with it using natural language
+app.interact(scrape\_id, prompt\="Search for iPhone 16 Pro Max")
+response \= app.interact(scrape\_id, prompt\="Click on the first result and tell me the price")
+print(response.output)  \# "The iPhone 16 Pro Max (256GB) is priced at $1,199.00."
+
+\# 3. Stop the session
+app.stop\_interaction(scrape\_id)
+
+### Run Code in the Browser
+
+For full control, execute Playwright code directly - `page` is already connected:
 
 import Firecrawl from '@mendable/firecrawl-js';
 
 const firecrawl \= new Firecrawl({ apiKey: "fc-YOUR\_API\_KEY" });
 
-// 1. Launch a session
-const session \= await firecrawl.browser();
+// 1. Scrape a page
+const scrapeResult \= await firecrawl.scrape("https://news.ycombinator.com", { formats: \["markdown"\] });
+const scrapeId \= scrapeResult.metadata.scrapeId;
 
-// 2. Execute code
-const result \= await firecrawl.browserExecute(session.id, {
+// 2. Execute Playwright code
+const result \= await firecrawl.interact(scrapeId, {
   code: \`
-    await page.goto("https://news.ycombinator.com");
+    await page.click('#next-page');
+    await page.waitForLoadState('networkidle');
     const title = await page.title();
-    console.log(title);
+    JSON.stringify({ title });
   \`,
   language: "node",
 });
-console.log(result.result); // "Hacker News"
+console.log(result.result);
 
-// 3. Close
-await firecrawl.deleteBrowser(session.id);
+// 3. Stop
+await firecrawl.stopInteraction(scrapeId);
 
-### Persistent Sessions
+### Persistent Profiles
 
 Save and reuse browser state (cookies, localStorage) across sessions:
 
-const session \= await firecrawl.browser({
-  ttl: 600,
-  profile: {
-    name: "my-profile",
-    saveChanges: true,
-  },
-});
+result \= app.scrape(
+    "https://app.example.com/login",
+    formats\=\["markdown"\],
+    profile\={"name": "my-app", "save\_changes": True},
+)
+scrape\_id \= result.metadata\["scrapeId"\]
+
+app.interact(scrape\_id, prompt\="Fill in user@example.com and password, then click Login")
+app.stop\_interaction(scrape\_id)
+
+\# Next session - already logged in
+result \= app.scrape(
+    "https://app.example.com/dashboard",
+    formats\=\["markdown"\],
+    profile\={"name": "my-app", "save\_changes": True},
+)
 
 ### agent-browser (Bash Mode)
 
@@ -655,6 +673,37 @@ SearchResponse results = client.search(searchParams);
 for (SearchResult r : results.getResults()) {
     System.out.println(r.getTitle() + ": " + r.getUrl());
 }
+
+### Elixir
+
+Add the dependency:
+
+def deps do
+  \[
+    {:firecrawl, "~> 1.0"}
+  \]
+end
+
+\# Scrape a URL
+{:ok, response} \= Firecrawl.scrape\_and\_extract\_from\_url(
+  url: "https://firecrawl.dev",
+  formats: \["markdown"\]
+)
+
+\# Crawl a website
+{:ok, response} \= Firecrawl.crawl\_urls(
+  url: "https://docs.firecrawl.dev",
+  limit: 50
+)
+
+\# Search the web
+{:ok, response} \= Firecrawl.search\_and\_scrape(
+  query: "best web scraping tools 2024",
+  limit: 10
+)
+
+\# Map URLs
+{:ok, response} \= Firecrawl.map\_urls(url: "https://example.com")
 
 ### Community SDKs
 

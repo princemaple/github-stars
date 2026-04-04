@@ -1,6 +1,6 @@
 ---
 project: html-to-image
-stars: 7082
+stars: 7092
 description: ✂️ Generates an image from a DOM node using HTML5 canvas and SVG.
 url: https://github.com/bubkoo/html-to-image
 ---

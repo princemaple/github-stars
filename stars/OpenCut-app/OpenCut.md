@@ -1,6 +1,6 @@
 ---
 project: OpenCut
-stars: 47463
+stars: 47669
 description: The open-source CapCut alternative
 url: https://github.com/OpenCut-app/OpenCut
 ---
@@ -36,6 +36,7 @@ Project Structure
 -----------------
 
 -   `apps/web/` – Main Next.js web application
+-   `apps/desktop/` – Native desktop app (in progress)
 -   `src/components/` – UI and editor components
 -   `src/hooks/` – Custom React hooks
 -   `src/lib/` – Utility and API logic
@@ -78,6 +79,40 @@ The application will be available at http://localhost:3000.
 
 The `.env.example` has sensible defaults that match the Docker Compose config — it should work out of the box.
 
+### Desktop setup
+
+Desktop is opt-in. If you're only working on the web app, skip this entirely.
+
+If you want to get ready for `apps/desktop`, see `apps/desktop/README.md`. It's a two-step setup: Rust toolchain first, then desktop native dependencies.
+
+### Local WASM development
+
+Only needed if you're editing `rust/wasm` and want the web app to use your local build instead of the published package.
+
+1.  Build the package once from the repo root:
+    
+    bun run build:wasm
+    
+2.  Register the generated package for linking:
+    
+    cd rust/wasm/pkg
+    bun link
+    
+3.  Link `apps/web` to the local package:
+    
+    cd apps/web
+    bun link opencut-wasm
+    
+4.  Rebuild on changes while you work:
+    
+    bun dev:wasm
+    
+
+To switch `apps/web` back to the published package, run:
+
+cd apps/web
+bun add opencut-wasm
+
 ### Self-Hosting with Docker
 
 To run everything (including a production build of the app) in Docker:
@@ -101,6 +136,7 @@ See our Contributing Guide for detailed setup instructions, development guidelin
 
 -   Fork the repo and clone locally
 -   Follow the setup instructions in CONTRIBUTING.md
+-   Working on `apps/desktop`? See `apps/desktop/README.md` for setup
 -   Create a feature branch and submit a PR
 
 License

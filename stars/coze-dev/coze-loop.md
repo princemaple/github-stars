@@ -1,6 +1,6 @@
 ---
 project: coze-loop
-stars: 5376
+stars: 5385
 description: Next-generation AI Agent Optimization Platform: Cozeloop addresses challenges in AI agent development by providing full-lifecycle management capabilities from development, debugging, and evaluation to monitoring.  
 url: https://github.com/coze-dev/coze-loop
 ---
@@ -119,6 +119,10 @@ Procedure:
     
 6.  Start customizing your Coze Loop project. Refer to the examples in the `examples/` directory. Modify `values.yaml` to override the default settings. After making changes, rerun `make helm-up` for the changes to take effect.
     
+
+Warning
+
+If you want to deploy Coze Loop in a public network environment, it is recommended to assess security risks before you begin, and take corresponding protection measures. Possible security risks include account registration functions, Coze Server listening address configurations, SSRF (Server - Side Request Forgery), and some horizontal privilege escalations in APIs. For more details, refer to Quickstart.
 
 Use the Coze Loop open source version
 -------------------------------------

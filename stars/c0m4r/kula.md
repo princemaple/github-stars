@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 893
+stars: 928
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -47,7 +47,7 @@ Total, free, used
 
 **Network**
 
-Per-interface throughput (Mbps), packets/s, errors, drops; TCP errors/s, resets/s, established connections; socket counts
+Per-interface throughput (Mbps), packets/s, errors, drops; TCP errors/s, resets/s, retrans, established; sockets
 
 **Disks**
 
@@ -68,6 +68,22 @@ Kula's own CPU%, RSS memory, open file descriptors
 **Thermal**
 
 CPU, GPU and Disk temperatures
+
+**Battery**
+
+/sys/class/power\_supply - power supply / battery status
+
+**Containers**
+
+Docker, podman, raw cgroups
+
+**Applications**
+
+PostgreSQL, nginx
+
+**Custom**
+
+Monitor anything with custom metrics
 
 Note: Monitoring NVIDIA GPUs might require additional setup. Check GPU monitoring.
 
@@ -159,9 +175,9 @@ rm -f ${KULA\_INSTALL}
 
 ### Standalone
 
-wget https://github.com/c0m4r/kula/releases/download/0.13.0/kula-0.13.0-amd64.tar.gz
-echo "2ce34692d9bf91b28ac8d540ccf49e48af20d3b0eb6054b778f87cc37ad7a044 kula-0.13.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.13.0-amd64.tar.gz
-tar -xvf kula-0.13.0-amd64.tar.gz
+wget https://github.com/c0m4r/kula/releases/download/0.14.0/kula-0.14.0-amd64.tar.gz
+echo "e2434759e6903a32f4cf27b9c6d97a11f2c33bf8c6e51f659e86683e77a97944 kula-0.14.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.14.0-amd64.tar.gz
+tar -xvf kula-0.14.0-amd64.tar.gz
 cd kula
 ./kula
 
@@ -178,16 +194,16 @@ docker logs -f kula
 
 ### Debian / Ubuntu (.deb)
 
-wget https://github.com/c0m4r/kula/releases/download/0.13.0/kula-0.13.0-amd64.deb
-echo "090c17401875e817e47fcbe2c11831f14afb9773f73e05a648a49cb69e326a14 kula-0.13.0-amd64.deb" | sha256sum -c || rm -f kula-0.13.0-amd64.deb
-sudo dpkg -i kula-0.13.0-amd64.deb
+wget https://github.com/c0m4r/kula/releases/download/0.14.0/kula-0.14.0-amd64.deb
+echo "c3717d606d8093179f7395757586992719aa6f2b0da04f7e8ea433cd487bb294 kula-0.14.0-amd64.deb" | sha256sum -c || rm -f kula-0.14.0-amd64.deb
+sudo dpkg -i kula-0.14.0-amd64.deb
 journalctl -f -t kula
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-wget https://github.com/c0m4r/kula/releases/download/0.13.0/kula-0.13.0-x86\_64.rpm
-echo "86e4b87429b409ceeb478cf542b0401750baf05aa1dbcb76ca4c133865c9ef71 kula-0.13.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.13.0-x86\_64.rpm
-sudo rpm -i kula-0.13.0-x86\_64.rpm
+wget https://github.com/c0m4r/kula/releases/download/0.14.0/kula-0.14.0-x86\_64.rpm
+echo "de95e5dcbfa7a838936b089d29fcd2065918f634825b1e724592e7d3cf3319f7 kula-0.14.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.14.0-x86\_64.rpm
+sudo rpm -i kula-0.14.0-x86\_64.rpm
 journalctl -f -t kula
 
 ### Arch Linux / Manjaro (AUR)

@@ -1,6 +1,6 @@
 ---
 project: req
-stars: 1300
+stars: 1304
 description: Req is a batteries-included HTTP client for Elixir.
 url: https://github.com/wojtekmach/req
 ---
@@ -207,8 +207,8 @@ There are many packages that extend the Req library. To get yours listed here, s
 Presentations
 -------------
 
--   Req: A batteries-included HTTP client for Elixir - ElixirConf 2023, 2023-09-08
--   Req: A batteries included HTTP client for Elixir - Elixir Kenya, 2022-08-26
+-   Building API Clients with Req -- ElixirConf EU 2024
+-   Req: A batteries-included HTTP client for Elixir -- ElixirConf 2023
 
 Development
 -----------

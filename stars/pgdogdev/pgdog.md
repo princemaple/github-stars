@@ -1,6 +1,6 @@
 ---
 project: pgdog
-stars: 4232
+stars: 4254
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---

@@ -1,6 +1,6 @@
 ---
 project: ex_webrtc
-stars: 463
+stars: 464
 description: An Elixir implementation of the W3C WebRTC API
 url: https://github.com/elixir-webrtc/ex_webrtc
 ---

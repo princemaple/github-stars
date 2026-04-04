@@ -15,7 +15,7 @@ Features
 
 `TelemetryUI`’s primary goal is to display your application metrics without external infrastructure dependencies. Plug, Phoenix, Phoenix LiveView, Absinthe, Ecto, Erlang VM, Tesla, Finch, Redix, Oban, Broadway and others expose all sorts of data that can be useful. You can also emit your own events from your application.
 
-Your data should not have to be uploaded somewhere else to have insighful metrics.
+Your data should not have to be uploaded somewhere else to have insightful metrics.
 
 It comes with a Postgres backend, powered by Ecto, to quickly (and efficiently) store and query your application events.
 
@@ -36,7 +36,7 @@ It comes with a Postgres backend, powered by Ecto, to quickly (and efficiently) 
 -   Dynamic configuration via functions for runtime flexibility
 -   Hidden pages and custom styling per page
 
-Checkout the Guides for more informations.
+Check out the Guides for more information.
 
 Usage
 -----
@@ -57,13 +57,13 @@ Configure TelemetryUI for test. This disables all TelemetryUI processes during t
 \# config/test.exs
 config :telemetry\_ui, disabled: true
 
-Then run mix deps.get to install Telemetry and its dependencies.
+Then run `mix deps.get` to install Telemetry and its dependencies.
 
 After the packages are installed you must create a database migration to add the `telemetry_ui_events` table to your database:
 
 mix ecto.gen.migration add\_telemetry\_ui\_events\_table
 
-Open the generated migration in your editor and call the up and down functions on `TelemetryUI.Adapter.EctoPostgres.Migrations`:
+Open the generated migration in your editor and call the up and down functions on `TelemetryUI.Backend.EctoPostgres.Migrations`:
 
 defmodule MyApp.Repo.Migrations.AddTelemetryUIEventsTable do
   use Ecto.Migration
@@ -120,7 +120,7 @@ defp telemetry\_config do
   \]
 end
 
-Since the config is read once at startup, you need to restart the server if you add new metrics to track. Alternatively, you can use the hot-reload feature (see guides/hot-reload.md).
+Since the config is read once at startup, you need to restart the server if you add new metrics to track. Alternatively, you can use the hot-reload feature (see Hot Reload).
 
 To see the rendered metrics, you need to add a route to your router.
 
@@ -173,7 +173,7 @@ Instead of passing configuration directly, you can pass a function that returns 
 \# Using module and function tuple
 {TelemetryUI, config: {MyApp.Telemetry, :config}}
 
-This is particularly useful with the hot-reload feature (see guides/hot-reload.md).
+This is particularly useful with the hot-reload feature (see Hot Reload).
 
 ### Named Instances
 
@@ -190,7 +190,7 @@ Then reference the name in your router:
 get("/admin/metrics", TelemetryUI.Web, \[\], \[assigns: %{telemetry\_ui\_allowed: true, telemetry\_ui\_name: :admin}\])
 get("/user/metrics", TelemetryUI.Web, \[\], \[assigns: %{telemetry\_ui\_allowed: true, telemetry\_ui\_name: :user\_dashboard}\])
 
-See guides/multi-metrics-endpoints.md for a complete example.
+See Multi Metrics Endpoints for a complete example.
 
 ### Disabling TelemetryUI
 
@@ -199,12 +199,12 @@ You can disable all TelemetryUI processes (useful for testing):
 \# config/test.exs
 config :telemetry\_ui, disabled: true
 
-For all configuration options, see guides/configuration-reference.md.
+For all configuration options, see Configuration Reference.
 
 License
 -------
 
-`TelemetryUI` is © 2024 Mirego and may be freely distributed under the New BSD license. See the `LICENSE.md` file.
+`TelemetryUI` is © 2026 Mirego and may be freely distributed under the New BSD license. See the `LICENSE.md` file.
 
 About Mirego
 ------------

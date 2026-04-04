@@ -1,9 +1,19 @@
 ---
 project: fzf
-stars: 79063
+stars: 79257
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---
+
+* * *
+
+  
+  
+  
+Show your love for fzf — T-shirts, mugs, and stickers now available!  
+  
+commitgoods.com/collections/fzf  
+  
 
 * * *
 
@@ -545,10 +555,14 @@ By setting up shell integration, you can use the following key bindings in bash,
           --bind 'ctrl-/:change-preview-window(down|hidden|)'"
         
     -   Can be disabled by setting `FZF_CTRL_T_COMMAND` to an empty string when sourcing the script
--   `CTRL-R` - Paste the selected command from history onto the command-line
+-   `CTRL-R` - Paste the selected command from history onto the command-line. With fish shell, it is possible to select multiple commands.
     -   If you want to see the commands in chronological order, press `CTRL-R` again which toggles sorting by relevance
     -   Press `ALT-R` to toggle "raw" mode where you can see the surrounding items of a match. In this mode, you can press `CTRL-N` and `CTRL-P` to move between the matching items only.
     -   Press `CTRL-/` or `ALT-/` to toggle line wrapping
+    -   Fish shell only:
+        -   Press `SHIFT-DELETE` to delete the selected commands
+        -   Press `ALT-ENTER` to reformat and insert the selected commands
+        -   Press `ALT-T` to cycle through command prefix (timestamp, date/time, none)
     -   Set `FZF_CTRL_R_OPTS` to pass additional options to fzf
         
         # CTRL-Y to copy the command into clipboard using pbcopy
@@ -556,6 +570,12 @@ By setting up shell integration, you can use the following key bindings in bash,
           --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
           --color header:italic
           --header 'Press CTRL-Y to copy command into clipboard'"
+        
+        # Fish shell: Set date/time as default prefix
+        set \-gx FZF\_CTRL\_R\_OPTS "\--with-nth 1,3.. --bind 'alt-t:change-with-nth(2..|3..|1,3..)'"
+        
+        # Or display no prefix by default
+        set \-gx FZF\_CTRL\_R\_OPTS "\--with-nth 3.. --bind 'alt-t:change-with-nth(2..|1,3..|3..)'"
         
     -   Can be disabled by setting `FZF_CTRL_R_COMMAND` to an empty string when sourcing the script
     -   Custom override via a non-empty `FZF_CTRL_R_COMMAND` is not yet supported and will emit a warning
@@ -723,53 +743,57 @@ If you need to post-process the output from fzf, define `_fzf_complete_COMMAND_p
 
 ### Fuzzy completion for fish
 
-(Available in 0.68.0 or later)
-
 Fuzzy completion for fish differs from bash and zsh in that:
 
--   It doesn't require a trigger sequence like `**`. Instead, if activates on `Shift-TAB`, while `TAB` preserves fish's native completion behavior.
+-   It doesn't require a trigger sequence like `**`. Instead, if activates on `Shift-TAB` (replacing the native pager search mode), while `TAB` preserves fish's native completion behavior.
 -   It relies on fish's native completion system to populate the candidate list, rather than performing a recursive file system traversal. For recursive searching, use the `CTRL-T` binding instead.
--   The only supported configuration variable is `FZF_COMPLETION_OPTS`.
+-   If the current command line token is a wildcard pattern, it performs search on the wildcard expansion path list (instead of the native behavior of inserting all the results in command line). Because the shell is used for the expansion, there is a limit in the number of results.
+-   The only supported configuration variables are `FZF_COMPLETION_OPTS` and `FZF_EXPANSION_OPS`.
+-   The function that is used by custom completion functions is named `fzf_complete`, which only accepts fzf options as arguments, and can be also called without any redirected input, to just modify fzf options while presenting the native completion results. For compatibility with other shells, a function named `_fzf_complete` is provided, that can accept `-- $argv` in its command line arguments, after fzf options.
 
-That said, just like in bash and zsh, you can implement custom completion for a specific command by defining an `_fzf_complete_COMMAND` function. For example:
+For commands that are not covered by fish completions, it is better to create regular fish completion functions (which will work for both `TAB` and `Shift-TAB`), and create fzf completion functions only when needing to modify fzf options for a specific command or want different results for `Shift-TAB`:
 
-function \_fzf\_complete\_foo
-  function \_fzf\_complete\_foo\_post
-    awk '{print $NF}'
-  end
-  \_fzf\_complete \--multi \--reverse \--header-lines\=3 -- $argv < (ls \-al | psub)
-
-  functions \-e \_fzf\_complete\_foo\_post
-end
-
-And here's a more complex example for customizing `git`
-
+# Customize git completion
 function \_fzf\_complete\_git
+  # Show header text with active branch for all git completions
+  set \-lx -- FZF\_COMPLETION\_OPTS \--header\="'"(git branch \--show-current 2>/dev/null)"'"
+
+  # No other changes when less than 3 arguments, or when completing options
+  if not set \-q argv\[3\]; or string match \-q -- '\-\*' $argv\[-1\]
+    fzf\_complete
+    return
+  end
+
+  # Check subcommand
   switch $argv\[2\]
-    case checkout switch
-      \_fzf\_complete \--reverse \--no-preview -- $argv < (git branch \--all \--format\='%(refname:short)' | psub)
+    case checkout diff log show
+      # Set preview and display all branches and commits for subcommands: checkout, diff, log, show
+      begin
+        git branch \--all \--format\='%(refname:short)'
+        git log \--all \--oneline \--color\=always
+      end | fzf\_complete \--no-multi \--ansi \--accept-nth\=1 \--query\=$argv\[-1\] \--preview\='git show --color=always {1}'
 
-    case add
-      function \_fzf\_complete\_git\_post
-        awk '{print $NF}'
-      end
-      \_fzf\_complete \--multi \--reverse -- $argv < (git status \--short | psub)
-
-    case show log diff
-      function \_fzf\_complete\_git\_post
-        awk '{print $1}'
-      end
-      \_fzf\_complete \--reverse \--no-sort \--preview\='git show --color=always {1}' -- $argv < (git log \--oneline | psub)
-
-    case ''
-      \_\_fzf\_complete\_native "$argv\[1\] " \--query\=(commandline \-t | string escape)
+    case add rm mv
+      # Only set preview for subcommands: add, rm, mv
+      # Special characters in fish completion lists are escaped, so the r flag must be used.
+      fzf\_complete \--preview\="git diff --color=always {r1}"
 
     case '\*'
-      set \-l -- current\_token (commandline \-t)
-      \_\_fzf\_complete\_native "$argv $current\_token" \--query\=(string escape -- $current\_token) \--multi
+      # No changes for other subcommands
+      fzf\_complete
   end
+end
 
-  functions \-e \_fzf\_complete\_git\_post
+Similar to bash and zsh, the output of fzf can be processed before inserted in command line, by defining a function named `_fzf_complete_COMMAND_post` or `_fzf_post_complete_COMMAND`:
+
+function \_fzf\_complete\_foo
+  ls \-sh \--zero \--color\=always | fzf\_complete \--read0 \--print0 \--ansi \--no-multi-line \--header-lines\=1
+end
+
+function \_fzf\_post\_complete\_foo
+  while read \-lz result
+    string escape \-n -- $result | string trim \-l \-c '\\ ' | string split \-m 1 \-f 2 ' '
+  end
 end
 
 Vim plugin

@@ -1,6 +1,6 @@
 ---
 project: slidev
-stars: 45250
+stars: 45427
 description: Presentation Slides for Developers
 url: https://github.com/slidevjs/slidev
 ---
@@ -44,7 +44,7 @@ sli.dev/new
 
 ### Init Project Locally
 
-Install Node.js >=18 and run the following command:
+Install Node.js >= 20.12.0 and run the following command:
 
 npm init slidev
 

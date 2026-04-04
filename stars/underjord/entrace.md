@@ -1,6 +1,6 @@
 ---
 project: entrace
-stars: 58
+stars: 62
 description: null
 url: https://github.com/underjord/entrace
 ---

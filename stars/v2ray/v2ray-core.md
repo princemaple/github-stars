@@ -1,6 +1,6 @@
 ---
 project: v2ray-core
-stars: 46975
+stars: 46963
 description: A platform for building proxies to bypass network restrictions.
 url: https://github.com/v2ray/v2ray-core
 ---

@@ -1,6 +1,6 @@
 ---
 project: dnd-kit
-stars: 16867
+stars: 16913
 description: The modern toolkit for building drag and drop interfaces
 url: https://github.com/clauderic/dnd-kit
 ---

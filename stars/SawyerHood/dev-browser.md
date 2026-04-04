@@ -1,6 +1,6 @@
 ---
 project: dev-browser
-stars: 4978
+stars: 5402
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
@@ -27,7 +27,7 @@ dev-browser install    # installs Playwright + Chromium
 # Launch a headless browser and run a script
 dev-browser --headless <<'EOF'
 const page = await browser.getPage("main");
-await page.goto("https://example.com");
+await page.goto("https://example.com", { waitUntil: "domcontentloaded" });
 console.log(await page.title());
 EOF
 
@@ -36,6 +36,21 @@ dev-browser --connect <<'EOF'
 const tabs = await browser.listPages();
 console.log(JSON.stringify(tabs, null, 2));
 EOF
+
+### PowerShell (Windows)
+
+@"
+const page = await browser.getPage("main");
+await page.goto("https://example.com", { waitUntil: "domcontentloaded" });
+console.log(await page.title());
+"@ | dev\-browser
+
+With `--connect`:
+
+@"
+const page = await browser.getPage("main");
+console.log(await page.title());
+"@ | dev\-browser \--connect
 
 ### Windows notes
 

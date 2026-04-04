@@ -1,6 +1,6 @@
 ---
 project: ludwig
-stars: 11666
+stars: 11663
 description: Low-code framework for building custom LLMs, neural networks, and other AI models
 url: https://github.com/ludwig-ai/ludwig
 ---
@@ -22,7 +22,7 @@ Key features:
 
 Ludwig is hosted by the Linux Foundation AI & Data.
 
-**Tech stack:** Python 3.12 | PyTorch 2.6 | Pydantic 2 | Transformers 5 | Ray 2.54
+**Tech stack:** Python 3.12 | PyTorch 2.7+ | Pydantic 2 | Transformers 5 | Ray 2.54
 
 💾 Installation
 ===============

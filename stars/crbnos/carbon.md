@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1863
+stars: 1869
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -129,9 +129,9 @@ Transactional PDFs and email templates
 
 Integration definitions and configurations
 
-`@carbon/jest`
+`@carbon/config`
 
-Jest preset configuration shared across apps and packages
+Shared configuration (vitest, tsconfig, tailwind) across apps and packages
 
 `@carbon/jobs`
 
@@ -156,10 +156,6 @@ Third-party client libraries (slack, resend)
 `@carbon/stripe`
 
 Stripe integration
-
-`@carbon/tsconfig`
-
-Shared, extendable tsconfig configuration used across apps and packages
 
 `@carbon/utils`
 

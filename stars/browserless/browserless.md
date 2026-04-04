@@ -1,6 +1,6 @@
 ---
 project: browserless
-stars: 12836
+stars: 12889
 description: Deploy headless browsers in Docker. Run on our cloud or bring your own. Free for non-commercial uses.
 url: https://github.com/browserless/browserless
 ---
@@ -98,6 +98,11 @@ Our Self-serve cloud and Enterprise offerings include all the general features p
 -   **Advanced Captcha/Stealth Routes** for enhanced anti-detection with Captcha solving, fingerprint randomization, and residential proxy rotation
 -   **REST APIs** for tasks such as retrieving HTML, PDFs or Screenshot etc.
 -   **Inbuilt residential proxy** for automatic IP rotation and geo-targeting with residential proxy networks
+-   **/smart-scrape API** for intelligently scraping any URL using cascading strategies (HTTP fetch, proxy, headless browser, captcha solving)
+-   **/crawl API** for asynchronously crawling entire websites and scraping every discovered page into structured, LLM-ready data
+-   **/map API** for discovering all URLs on a website via sitemaps and link extraction, with search-based relevance ranking
+-   **/search API** for searching the web and optionally scraping each result page into structured formats (markdown, HTML, links, or screenshots)
+-   **MCP Server** for connecting AI assistants (Claude Desktop, Cursor, VS Code, Windsurf) directly to Browserless browser automation
 -   **Webhook Integrations** for queue alerts, rejections, timeouts, errors, and health failures
 
 🚢 Customisable Deployment Options

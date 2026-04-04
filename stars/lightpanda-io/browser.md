@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 25557
+stars: 27089
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -23,8 +23,8 @@ Lightpanda is the open-source browser made for headless usage:
 
 Fast web automation for AI agents, LLM training, scraping and testing:
 
--   Ultra-low memory footprint (9x less than Chrome)
--   Exceptionally fast execution (11x faster than Chrome)
+-   Ultra-low memory footprint (16x less than Chrome)
+-   Exceptionally fast execution (9x faster than Chrome)
 -   Instant startup
 
 Quick start

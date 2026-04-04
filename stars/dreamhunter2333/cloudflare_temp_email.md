@@ -1,6 +1,6 @@
 ---
 project: cloudflare_temp_email
-stars: 7433
+stars: 8006
 description: CloudFlare free temp domain email 免费收发 临时域名邮箱 支持附件 IMAP SMTP TelegramBot
 url: https://github.com/dreamhunter2333/cloudflare_temp_email
 ---
@@ -67,6 +67,7 @@ Star History（点击收缩/展开） 目录（点击收缩/展开）
 
 -   使用 `rust wasm` 解析邮件，解析速度快，几乎所有邮件都能解析，node 的解析模块解析邮件失败的邮件，rust wasm 也能解析成功
 -   **AI 邮件识别** - 使用 Cloudflare Workers AI 自动提取邮件中的验证码、认证链接、服务链接等重要信息
+-   支持为指定基础域名创建随机二级域名邮箱地址，更适合收件隔离场景
 -   支持发送邮件，支持 `DKIM` 验证
 -   支持 `SMTP` 和 `Resend` 等多种发送方式
 -   增加查看 `附件` 功能，支持附件图片显示

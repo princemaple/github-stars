@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 14436
+stars: 14518
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -113,6 +113,7 @@ The following frameworks have chosen Scalar API Reference as their default OpenA
 -   Nitro
 -   oRPC
 -   Platformatic
+-   Spry
 
   
 
@@ -359,7 +360,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ATREAY**
 
   
-**gsmcdonald**
+**Duncanma**
 
   
 **timheuer**
@@ -392,10 +393,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **soulchild**
 
   
-**WDaan**
+**gsmcdonald**
 
   
-**Duncanma**
+**WDaan**
 
   
 **handrews**
@@ -404,28 +405,22 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **luke-hagar-sp**
 
   
-**luc122c**
-
-  
-**mason-at-pieces**
-
-  
-**mouhannad-sh**
-
-  
-**PrinceManfred**
+**ledgersteve**
 
   
 **SebastianBienert**
 
   
-**ledgersteve**
+**PrinceManfred**
 
   
-**abdulamite**
+**luc122c**
 
   
-**robert-dean**
+**mouhannad-sh**
+
+  
+**mason-at-pieces**
 
   
 **bobheadxi**
@@ -470,7 +465,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **SergioChan**
 
   
+**medz**
+
+  
 **dotfortun**
+
+  
+**zakaria-shahen**
 
   
 **not-my-profile**
@@ -527,7 +528,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **rickihastings**
 
   
-**smoores-dev**
+**robert-dean**
 
   
 **bingbeann**
@@ -581,6 +582,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Huliiiiii**
 
   
+**smoores-dev**
+
+  
 **soGit**
 
   
@@ -608,6 +612,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Courtcircuits**
 
   
+**YagUber**
+
+  
 **mveselov-stack-wizard**
 
   
@@ -629,7 +636,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **rolldeep-stepmerrily**
 
   
-**zakaria-shahen**
+**abdulamite**
 
   
 **cactysman**
@@ -740,6 +747,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Smyrcu**
 
   
+**elliott-with-the-longest-name-on-github**
+
+  
 **kevinand11**
 
   
@@ -794,10 +804,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **MarioGK**
 
   
-**elliott-with-the-longest-name-on-github**
+**emmanuel-ferdman**
 
   
-**emmanuel-ferdman**
+**froggy1014**
 
   
 **facus26**

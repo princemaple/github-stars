@@ -1,12 +1,16 @@
 ---
 project: Ciphey
-stars: 21281
+stars: 21289
 description: ⚡ Automatically decrypt encryptions without knowing the key or cipher, decode encodings, and crack hashes ⚡
 url: https://github.com/bee-san/Ciphey
 ---
 
+🚨 An experimental rewrite in Rust can be found here https://github.com/bee-san/ares 🚨
+
+🚨 I intend to merge this rewrite into this repo by June of 2026 🚨
+
 Translations  
-🇩🇪 DE 🇫🇷 FR 🇭🇺 HU 🇮🇩 ID 🇮🇹 IT 🇳🇱 NL 🇧🇷 PT-BR 🇷🇺 RU 🇨🇳 ZH 🇹🇭 TH  
+🇩🇪 DE 🇬🇧 EN 🇫🇷 FR 🇭🇺 HU 🇮🇳 HI 🇮🇩 ID 🇮🇹 IT 🇳🇱 NL 🇧🇷 PT-BR 🇷🇺 RU 🇹🇭 TH 🇨🇳 ZH  
   
 ➡️ Documentation | Discord | Installation Guide ⬅️  
 

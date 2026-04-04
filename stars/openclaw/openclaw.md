@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 339416
+stars: 348074
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -20,14 +20,6 @@ Preferred setup: run `openclaw onboard` in your terminal. OpenClaw Onboard guide
 
 Sponsors
 --------
-
-OpenAI
-
-Vercel
-
-Blacksmith
-
-Convex
 
 **Subscriptions (OAuth):**
 

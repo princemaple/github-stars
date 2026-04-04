@@ -1,6 +1,6 @@
 ---
 project: kepler.gl
-stars: 11691
+stars: 11704
 description: Kepler.gl is a powerful open source geospatial analysis tool for large-scale data sets.
 url: https://github.com/keplergl/kepler.gl
 ---
@@ -30,7 +30,9 @@ Links
 Env
 ---
 
-Use Node 18.18.2 or above, older node versions have not been supported/ tested. For best results, use nvm `nvm install`.
+For **developing this repository**, use Node **18.18.2** (see `.nvmrc`): run `nvm install` and `nvm use`. Newer Node versions can make `yarn install` / `yarn bootstrap` try to compile the `gl` dev dependency from source; if that fails, see Troubleshooting: gl package install.
+
+When **using kepler.gl as a dependency** in your own app, use Node 18.18.2 or a supported LTS; older Node versions are not supported or tested.
 
 Install kepler.gl modules
 -------------------------

@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 29054
+stars: 29439
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, ANY OS, ANY PLATFORM — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -415,14 +415,6 @@ password = "..."
 
 \[channels.signal\]
 phone\_number = "+1234567890"
-
-**LINE:**
-
-\[channels\_config.line\]
-channel\_secret = "your-channel-secret"
-channel\_access\_token = "your-channel-access-token"
-allowed\_users = \["Uxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"\]  # LINE user IDs, or \["\*"\] for all
-reply\_mode = "reply\_first"  # reply\_first (default) | push\_only | reply\_only
 
 ### Tunnel configuration
 

@@ -1,16 +1,16 @@
 ---
 project: scanopy
-stars: 4559
-description: Network documentation that updates itself.
+stars: 4685
+description: Network diagrams that update themselves
 url: https://github.com/scanopy/scanopy
 ---
 
 Scanopy
 =======
 
-**Network documentation that updates itself.**
+**Clean network diagrams. One-time setup, zero upkeep.**
 
-Scanopy scans your network, discovers hosts and services, and generates a live topology diagram that stays current automatically. One daemon, no per-device agents, no manual upkeep.
+Scanopy scans your network, identifies hosts and services, and generates an interactive visualization showing how everything connects, letting you easily create and maintain network documentation.
 
   
   

@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 32431
+stars: 32600
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -56,6 +56,8 @@ If you need help with `just` please feel free to open an issue or ping me on Dis
 
 Installation
 ------------
+
+Just can be installed using your favorite package manager, by downloading pre-built binaries, or building from source with `cargo install just`.
 
 ### Prerequisites
 
@@ -386,6 +388,19 @@ just-install can be used to automate installation of `just` in Node.js applicati
 
 For more information, see the just-install README file.
 
+### Nix Flake
+
+The `just` repository includes a `flake.nix` that defines a nix flake, allowing you to use `just` as an input to another flake:
+
+{
+  inputs \= {
+    just.url \= "github:casey/just";
+  }
+
+  outputs \= {self, nixpkgs, just}: {
+  }
+}
+
 Backwards Compatibility
 -----------------------
 
@@ -429,24 +444,6 @@ git clone https://github.com/NoahTheDuke/vim-just.git
 #### `tree-sitter-just`
 
 tree-sitter-just is an Nvim Treesitter plugin for Neovim.
-
-#### Makefile Syntax Highlighting
-
-Vim's built-in makefile syntax highlighting isn't perfect for `justfile`s, but it's better than nothing. You can put the following in `~/.vim/filetype.vim`:
-
-if exists("did\_load\_filetypes")
-  finish
-endif
-
-augroup filetypedetect
-  au BufNewFile,BufRead justfile setf make
-augroup END
-
-Or add the following to an individual `justfile` to enable `make` mode on a per-file basis:
-
-```
-# vim: set ft=make :
-```
 
 ### Emacs
 
@@ -1047,6 +1044,10 @@ $ just serve
 Starting server with database localhost:6379 on port 1337…
 ./server --database $DATABASE\_ADDRESS --port $SERVER\_PORT
 
+Variables in environment files loaded in parent modules are inherited by submodules.
+
+Environment files are loaded in submodulesmaster and may override variable defined in parent module environment files.
+
 #### Export
 
 The `export` setting causes all `just` variables to be exported as environment variables. Defaults to `false`.
@@ -1228,6 +1229,47 @@ $ just --list
 Available recipes:
     build # Build stuff
     test
+
+### Variables and Assignments
+
+Module-level variables may be created by assigning them a value with `:=`:
+
+foo := "hello"
+bar := "world"
+
+baz:
+  echo {{ foo + " " + bar }}
+
+All variables in a module may be printed:
+
+$ just --evaluate
+bar := "world"
+foo := "hello"
+
+Or the value of a single variable:
+
+$ just --evalaute foo
+hello
+
+All variables in a submodule or a single variable in a submodule may be printed with a path to the submodule or variablemaster:
+
+$ just --evaluate bob::bar
+x := "world"
+y := "hello"
+$ just --evaluate bob::bar::y
+hello
+
+The format of exported variables may be controlled with `--evaluate-format`master:
+
+$ just --evaluate --evaluate-format shell
+bar="world"
+foo="hello"
+
+The default format is `--evaluate-format just`:
+
+$ just --evaluate --evaluate-format just
+bar := "world"
+foo := "hello"
 
 ### Expressions and Substitutions
 
@@ -1610,6 +1652,15 @@ script:
 
 `source_file()` and `source_directory()` behave the same as `justfile()` and `justfile_directory()` in the root `justfile`, but will return the path and directory, respectively, of the current `import` or `mod` source file when called from within an import or submodule.
 
+#### Module and Module Directory
+
+-   `module_file()` - Retrieves the path of the current module file.
+    
+-   `module_directory()` - Retrieves the path of the parent directory of the current module file.
+    
+
+`module_file()` and `module_directory()` behave the same as `justfile()` and `justfile_directory()` in the root `justfile`, but will return the path and directory, respectively, of the current `mod` source file when called from within submodule.
+
 #### Just Executable
 
 -   `just_executable()` - Absolute path to the `just` executable.
@@ -1712,7 +1763,7 @@ The arguments to `datetime` and `datetime_utc` are `strftime`\-style format stri
 
 #### Semantic Versions
 
--   `semver_matches(version, requirement)`1.16.0 - Check whether a semantic `version`, e.g., `"0.1.0"` matches a `requirement`, e.g., `">=0.1.0"`, returning `"true"` if so and `"false"` otherwise.
+-   `semver_matches(version, requirement)`1.16.0 - Check whether a semantic `version`, e.g., `"0.1.0"` matches a `requirement`, e.g., `">=0.1.0"`, returning the string `"true"` if so and the string `"false"` otherwise.
 
 #### Style
 
@@ -1743,6 +1794,7 @@ See the `dirs` crate for more details.
 -   `data_local_directory()` - The local user-specific data directory.
 -   `executable_directory()` - The user-specific executable directory.
 -   `home_directory()` - The user's home directory.
+-   `runtime_directory()` - The user-specific runtime directory. Only defined on Linux.
 
 If you would like to use XDG base directories on all platforms you can use the `env(…)` function with the appropriate environment variable and fallback, although note that the XDG specification requires ignoring non-absolute paths, so for full compatibility with spec-compliant applications, you would need to do:
 
@@ -2153,6 +2205,12 @@ The default confirmation prompt can be overridden with `[confirm(PROMPT)]`1.23.0
 \[confirm("Are you sure you want to delete everything?")\]
 delete-everything:
   rm -rf \*
+
+The confirmation prompt may also be an expressionmaster which may reference assignments or recipe arguments:
+
+\[confirm("Deploy to " + env + "?")\]
+deploy env:
+  echo 'Deploying to {{env}}...'
 
 #### Metadata
 
@@ -3898,6 +3956,10 @@ export FOO := '''
 
 bar:
   printf %s "$FOO"
+
+### Skill for Agents
+
+A skill for agents is available in skills/just and may be installed manually or with `npx skills add casey/just --global`.
 
 ### Alternatives and Prior Art
 

@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 34833
+stars: 38851
 description: A cross-platform desktop All-in-One assistant tool for Claude Code, Codex, OpenCode, openclaw & Gemini CLI.
 url: https://github.com/farion1231/cc-switch
 ---
@@ -14,6 +14,8 @@ English | 中文 | 日本語 | Changelog
 
 ❤️Sponsor
 ---------
+
+> Want to appear here?
 
 Click to collapse
 
@@ -50,6 +52,8 @@ Thanks to Micu API for sponsoring this project! Micu API is a global LLM relay s
 Thanks to XCodeAPI for sponsoring this project! XCodeAPI offers a special benefit for CC Switch users: register via this link and get an extra 10% credit bonus on your first order! (Contact the site admin to claim)
 
 Thanks to CTok.ai for sponsoring this project! CTok.ai is dedicated to building a one-stop AI programming tool service platform. We offer professional Claude Code packages and technical community services, with support for Google Gemini and OpenAI Codex. Through carefully designed plans and a professional tech community, we provide developers with reliable service guarantees and continuous technical support, making AI-assisted programming a true productivity tool. Click here to register!
+
+Thanks to ChefShop AI for sponsoring this project! ChefShop AI is a premium account service provider tailored for heavy AI subscription users. The platform offers official top-up and stable account services for mainstream large models including ChatGPT Plus/Pro, Claude Max, Grok Super/Heavy, and Gemini. Click here to purchase!
 
 Why CC Switch?
 --------------
@@ -214,12 +218,8 @@ Download the latest Linux build from the Releases page:
 -   `CC-Switch-v{version}-Linux.deb` (Debian/Ubuntu)
 -   `CC-Switch-v{version}-Linux.rpm` (Fedora/RHEL/openSUSE)
 -   `CC-Switch-v{version}-Linux.AppImage` (Universal)
--   `CC-Switch-v{version}-Linux.flatpak` (Flatpak)
 
-Flatpak install & run:
-
-flatpak install --user ./CC-Switch-v{version}-Linux.flatpak
-flatpak run com.ccswitch.desktop
+> **Flatpak**: Not included in official releases. You can build it yourself from the `.deb` — see `flatpak/README.md` for instructions.
 
 **Architecture Overview**
 
@@ -257,7 +257,7 @@ flatpak run com.ccswitch.desktop
 -   **ProviderService**: Provider CRUD, switching, backfill, sorting
 -   **McpService**: MCP server management, import/export, live file sync
 -   **ProxyService**: Local proxy mode with hot-switching and format conversion
--   **SessionManager**: Claude Code conversation history browsing
+-   **SessionManager**: Conversation history browsing across all supported apps
 -   **ConfigService**: Config import/export, backup rotation
 -   **SpeedtestService**: API endpoint latency measurement
 

@@ -1,6 +1,6 @@
 ---
 project: setup-ipsec-vpn
-stars: 27534
+stars: 27558
 description: Scripts to build your own IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2
 url: https://github.com/hwdsl2/setup-ipsec-vpn
 ---
@@ -29,7 +29,9 @@ wget https://get.vpnsetup.net -O vpn.sh && sudo sh vpn.sh
 
 Your VPN login details will be randomly generated, and displayed when finished.
 
-**Optional:** Install WireGuard and/or OpenVPN on the same server.
+Tip
+
+Optionally install WireGuard, OpenVPN and/or Headscale on the same server.
 
 See the script in action (terminal recording).
 
@@ -48,7 +50,7 @@ https://gitlab.com/hwdsl2/setup-ipsec-vpn/-/raw/master/vpnsetup.sh
 
 If you are unable to download, open vpnsetup.sh, then click the `Raw` button on the right. Press `Ctrl/Cmd+A` to select all, `Ctrl/Cmd+C` to copy, then paste into your favorite editor.
 
-Pre-built Docker images are also available: IPsec VPN | OpenVPN. For other options and client setup, read the sections below.
+A pre-built Docker image is also available. For other options and client setup, read the sections below.
 
 \* A cloud server, virtual private server (VPS) or dedicated server.
 
@@ -90,9 +92,11 @@ Quick deploy to:
 
 For servers with an external firewall (e.g. EC2/GCE), open UDP ports 500 and 4500 for the VPN.
 
-Pre-built Docker images are also available: IPsec VPN | OpenVPN. Advanced users can install on a Raspberry Pi. \[1\] \[2\]
+A pre-built Docker image is also available. Advanced users can install on a Raspberry Pi. \[1\] \[2\]
 
-⚠️ **DO NOT** run these scripts on your PC or Mac! They should only be used on a server!
+Warning
+
+**DO NOT** run these scripts on your PC or Mac! They should only be used on a server!
 
 Installation
 ------------
@@ -112,7 +116,9 @@ nano -w vpn.sh
 \[Replace with your own values: YOUR\_IPSEC\_PSK, YOUR\_USERNAME and YOUR\_PASSWORD\]
 sudo sh vpn.sh
 
-**Note:** A secure IPsec PSK should consist of at least 20 random characters.
+Note
+
+A secure IPsec PSK should consist of at least 20 random characters.
 
 **Option 3:** Define your VPN credentials as environment variables.
 
@@ -124,7 +130,9 @@ VPN\_USER='your\_vpn\_username' \\
 VPN\_PASSWORD='your\_vpn\_password' \\
 sh vpn.sh
 
-You may optionally install WireGuard and/or OpenVPN on the same server. If your server runs CentOS Stream, Rocky Linux or AlmaLinux, first install OpenVPN/WireGuard, then install the IPsec VPN.
+Tip
+
+Optionally install WireGuard, OpenVPN and/or Headscale on the same server. If your server runs CentOS Stream, Rocky Linux or AlmaLinux, first install OpenVPN/WireGuard, then install the IPsec VPN.
 
 Click here if you are unable to download.
 
@@ -228,7 +236,9 @@ Ad blocking, configurable. Learn more.
 
 If you need to change DNS servers after VPN setup, see Advanced usage.
 
-**Note:** If IKEv2 is already set up on the server, the variables above have no effect for IKEv2 mode. In that case, to customize IKEv2 options such as DNS servers, you can first remove IKEv2, then set it up again using `sudo ikev2.sh`.
+Note
+
+If IKEv2 is already set up on the server, the variables above have no effect for IKEv2 mode. In that case, to customize IKEv2 options such as DNS servers, you can first remove IKEv2, then set it up again using `sudo ikev2.sh`.
 
 ### Customize IKEv2 options
 
@@ -506,7 +516,9 @@ Uninstall the VPN
 
 To uninstall IPsec VPN, run the helper script:
 
-**Warning:** This helper script will remove IPsec VPN from your server. All VPN configuration will be **permanently deleted**, and Libreswan and xl2tpd will be removed. This **cannot be undone**!
+Caution
+
+This helper script will remove IPsec VPN from your server. All VPN configuration will be **permanently deleted**, and Libreswan and xl2tpd will be removed. This **cannot be undone**!
 
 wget https://get.vpnsetup.net/unst -O unst.sh && sudo bash unst.sh
 

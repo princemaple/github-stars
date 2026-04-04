@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 22111
+stars: 22494
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -270,6 +270,10 @@ Crush’s default model listing is managed in Catwalk, a community-supported, op
 Configuration
 -------------
 
+Tip
+
+Crush ships with a builtin `crush-config` skill for configuring itself. In many cases you can simply ask Crush to configure itself.
+
 Crush runs great with no configuration. That said, if you do need or want to customize Crush, configuration can be added either local to the project itself, or globally, with the following priority:
 
 1.  `.crush.json`
@@ -393,14 +397,22 @@ If you'd like to prevent Crush from using certain built-in tools entirely, you c
 {
   "$schema": "https://charm.land/crush.json",
   "options": {
-    "disabled\_tools": \[
-      "bash",
-      "sourcegraph"
-    \]
+    "disabled\_tools": \["bash", "sourcegraph"\]
   }
 }
 
 To disable tools from MCP servers, see the MCP config section.
+
+### Disabling Skills
+
+If you'd like to prevent Crush from using certain skills entirely, you can disable them via the `options.disabled_skills` list. Disabled skills are hidden from the agent, including builtin skills and skills discovered from disk.
+
+{
+  "$schema": "https://charm.land/crush.json",
+  "options": {
+    "disabled\_skills": \["crush-config"\]
+  }
+}
 
 ### Agent Skills
 
@@ -428,9 +440,9 @@ On top of that, we _also_ load skills in your project from the following relativ
   "options": {
     "skills\_paths": \[
       "~/.config/crush/skills", // Windows: "%LOCALAPPDATA%\\\\crush\\\\skills",
-      "./project-skills"
-    \]
-  }
+      "./project-skills",
+    \],
+  },
 }
 
 You can get started with example skills from anthropics/skills:
@@ -454,8 +466,8 @@ Crush sends desktop notifications when a tool call requires permission and when 
 {
   "$schema": "https://charm.land/crush.json",
   "options": {
-    "disable\_notifications": false // default
-  }
+    "disable\_notifications": false, // default
+  },
 }
 
 To disable desktop notifications, set `disable_notifications` to `true` in your configuration. On macOS, notifications currently lack icons due to platform limitations.

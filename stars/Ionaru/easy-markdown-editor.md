@@ -1,6 +1,6 @@
 ---
 project: easy-markdown-editor
-stars: 2956
+stars: 2959
 description: EasyMDE: A simple, beautiful, and embeddable JavaScript Markdown editor. Delightful editing for beginners and experts alike. Features built-in autosaving and spell checking.
 url: https://github.com/Ionaru/easy-markdown-editor
 ---

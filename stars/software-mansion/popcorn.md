@@ -1,6 +1,6 @@
 ---
 project: popcorn
-stars: 623
+stars: 625
 description: Running Elixir in the browser
 url: https://github.com/software-mansion/popcorn
 ---
@@ -20,6 +20,11 @@ Examples
 --------
 
 The examples are hosted at popcorn.swmansion.com, and the source code is in the `examples/` directory.
+
+See also third-party examples:
+
+-   Running Popcorn on iOS (WebView based): https://github.com/u9g/uno-royale
+-   A collection of local Live View demos: https://petermm.github.io/popcorn\_live\_view/
 
 Repository Structure
 --------------------

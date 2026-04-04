@@ -1,6 +1,6 @@
 ---
 project: goaccess
-stars: 20362
+stars: 20381
 description: GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 url: https://github.com/allinurl/goaccess
 ---
@@ -97,9 +97,9 @@ GoAccess can be compiled and used on \*nix systems.
 Download, extract and compile GoAccess with:
 
 ```
-$ wget https://tar.goaccess.io/goaccess-1.10.1.tar.gz
-$ tar -xzvf goaccess-1.10.1.tar.gz
-$ cd goaccess-1.10.1/
+$ wget https://tar.goaccess.io/goaccess-1.10.2.tar.gz
+$ tar -xzvf goaccess-1.10.2.tar.gz
+$ cd goaccess-1.10.2/
 $ ./configure --enable-utf8 --enable-geoip=mmdb --with-zlib
 $ make
 # make install

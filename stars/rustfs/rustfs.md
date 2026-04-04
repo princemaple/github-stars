@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 23878
+stars: 24207
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -290,6 +290,17 @@ nix build github:rustfs/rustfs
 # Or from a local checkout
 nix build
 nix run
+
+### 6\. X-CMD (Option 6)
+
+If you are an x-cmd user:
+
+# Run directly without installing
+x rustfs
+
+# Download the binary and install it to the global environment
+x env use rustfs
+rustfs --help
 
 * * *
 

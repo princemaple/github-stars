@@ -1,6 +1,6 @@
 ---
 project: usql
-stars: 9883
+stars: 9894
 description: Universal command-line interface for SQL databases
 url: https://github.com/xo/usql
 ---
@@ -124,25 +124,25 @@ When building `usql` out-of-the-box with `go build` or `go install`, only the `b
 
 # build/install with base drivers (PostgreSQL, MySQL, SQLite3, Microsoft SQL Server,
 # Oracle, CSVQ)
-$ go install github.com/xo/usql@master
+$ go install github.com/xo/usql@main
 
 Other databases can be enabled by specifying the build tag for their database driver.
 
 # build/install with base, Avatica, and ODBC drivers
-$ go install -tags 'avatica odbc' github.com/xo/usql@master
+$ go install -tags 'avatica odbc' github.com/xo/usql@main
 
 For every build tag `<driver>`, there is also a `no_<driver>` build tag that will disable the driver:
 
 # build/install most drivers, excluding Avatica, Couchbase, and PostgreSQL
-$ go install -tags 'most no\_avatica no\_couchbase no\_postgres' github.com/xo/usql@master
+$ go install -tags 'most no\_avatica no\_couchbase no\_postgres' github.com/xo/usql@main
 
 By specifying the build tags `most` or `all`, the build will include most, and all SQL drivers, respectively:
 
 # build/install with most drivers (excludes CGO drivers and problematic drivers)
-$ go install -tags most github.com/xo/usql@master
+$ go install -tags most github.com/xo/usql@main
 
 # build/install all drivers (includes CGO drivers and problematic drivers)
-$ go install -tags all github.com/xo/usql@master
+$ go install -tags all github.com/xo/usql@main
 
 Database Support
 ----------------

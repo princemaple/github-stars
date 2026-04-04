@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1174
+stars: 1177
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---

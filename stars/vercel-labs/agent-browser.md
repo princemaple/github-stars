@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 25499
+stars: 27006
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -8,7 +8,7 @@ url: https://github.com/vercel-labs/agent-browser
 agent-browser
 =============
 
-Headless browser automation CLI for AI agents. Fast native Rust CLI.
+Browser automation CLI for AI agents. Fast native Rust CLI.
 
 Installation
 ------------
@@ -65,7 +65,7 @@ Detects your installation method (npm, Homebrew, or Cargo) and runs the appropri
 
 ### Requirements
 
--   **Chrome** - Run `agent-browser install` to download Chrome from Chrome for Testing (Google's official automation channel). No Playwright or Node.js required for the daemon.
+-   **Chrome** - Run `agent-browser install` to download Chrome from Chrome for Testing (Google's official automation channel). Existing Chrome, Brave, Playwright, and Puppeteer installations are detected automatically. No Playwright or Node.js required for the daemon.
 -   **Rust** - Only needed when building from source (see From Source above).
 
 Quick Start
@@ -268,6 +268,8 @@ agent-browser dialog accept \[text\]    # Accept (with optional prompt text)
 agent-browser dialog dismiss          # Dismiss
 agent-browser dialog status           # Check if a dialog is currently open
 
+By default, `alert` and `beforeunload` dialogs are automatically accepted so they never block the agent. `confirm` and `prompt` dialogs still require explicit handling. Use `--no-auto-dialog` (or `AGENT_BROWSER_NO_AUTO_DIALOG=1`) to disable automatic handling.
+
 When a JavaScript dialog is pending, all command responses include a `warning` field with the dialog type and message.
 
 ### Diff
@@ -290,6 +292,7 @@ agent-browser trace stop \[path\]       # Stop and save trace
 agent-browser profiler start          # Start Chrome DevTools profiling
 agent-browser profiler stop \[path\]    # Stop and save profile (.json)
 agent-browser console                 # View console messages (log, error, warn, info)
+agent-browser console --json          # JSON output with raw CDP args for programmatic access
 agent-browser console --clear         # Clear console
 agent-browser errors                  # View page errors (uncaught JavaScript exceptions)
 agent-browser errors --clear          # Clear errors
@@ -328,6 +331,12 @@ Approach
 Best for
 
 Flag / Env
+
+**Chrome profile reuse**
+
+Reuse your existing Chrome login state (cookies, sessions) with zero setup
+
+`--profile <name>` / `AGENT_BROWSER_PROFILE`
 
 **Persistent profile**
 
@@ -414,10 +423,31 @@ Each session has its own:
 -   Navigation history
 -   Authentication state
 
+Chrome Profile Reuse
+--------------------
+
+The fastest way to use your existing login state: pass a Chrome profile name to `--profile`:
+
+# List available Chrome profiles
+agent-browser profiles
+
+# Reuse your default Chrome profile's login state
+agent-browser --profile Default open https://gmail.com
+
+# Use a named profile (by display name or directory name)
+agent-browser --profile "Work" open https://app.example.com
+
+# Or via environment variable
+AGENT\_BROWSER\_PROFILE=Default agent-browser open https://gmail.com
+
+This copies your Chrome profile to a temp directory (read-only snapshot, no changes to your original profile), so the browser launches with your existing cookies and sessions.
+
+> **Note:** On Windows, close Chrome before using `--profile <name>` if Chrome is running, as some profile files may be locked.
+
 Persistent Profiles
 -------------------
 
-By default, browser state (cookies, localStorage, login sessions) is ephemeral and lost when the browser closes. Use `--profile` to persist state across browser restarts:
+For a persistent custom profile directory that stores state across browser restarts, pass a path to `--profile`:
 
 # Use a persistent profile directory
 agent-browser --profile ~/.myapp-profile open myapp.com
@@ -588,9 +618,9 @@ Use isolated session (or `AGENT_BROWSER_SESSION` env)
 
 Auto-save/restore session state (or `AGENT_BROWSER_SESSION_NAME` env)
 
-`--profile <path>`
+`--profile <name|path>`
 
-Persistent browser profile directory (or `AGENT_BROWSER_PROFILE` env)
+Chrome profile name or persistent directory path (or `AGENT_BROWSER_PROFILE` env)
 
 `--state <path>`
 
@@ -708,6 +738,10 @@ Interactive confirmation prompts; auto-denies if stdin is not a TTY (or `AGENT_B
 
 Browser engine: `chrome` (default), `lightpanda` (or `AGENT_BROWSER_ENGINE` env)
 
+`--no-auto-dialog`
+
+Disable automatic dismissal of `alert`/`beforeunload` dialogs (or `AGENT_BROWSER_NO_AUTO_DIALOG` env)
+
 `--config <path>`
 
 Use a custom config file (or `AGENT_BROWSER_CONFIG` env)
@@ -741,6 +775,7 @@ The dashboard displays:
 -   **Live viewport** -- real-time JPEG frames from the browser
 -   **Activity feed** -- chronological command/result stream with timing and expandable details
 -   **Console output** -- browser console messages (log, warn, error)
+-   **Session creation** -- create new sessions from the UI with local engines (Chrome, Lightpanda) or cloud providers (AgentCore, Browserbase, Browserless, Browser Use, Kernel)
 
 Configuration
 -------------
@@ -1432,6 +1467,63 @@ When enabled, agent-browser connects to a Kernel cloud session instead of launch
 **Profile Persistence:** When `KERNEL_PROFILE_NAME` is set, the profile will be created if it doesn't already exist. Cookies, logins, and session data are automatically saved back to the profile when the browser session ends, making them available for future sessions.
 
 Get your API key from the Kernel Dashboard.
+
+### AgentCore
+
+AWS Bedrock AgentCore provides cloud browser sessions with SigV4 authentication.
+
+To enable AgentCore, use the `-p` flag:
+
+agent-browser -p agentcore open https://example.com
+
+Or use environment variables for CI/scripts:
+
+export AGENT\_BROWSER\_PROVIDER=agentcore
+agent-browser open https://example.com
+
+Credentials are automatically resolved from environment variables (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`) or the AWS CLI (`aws configure export-credentials`), which supports SSO, profiles, and IAM roles.
+
+Optional configuration via environment variables:
+
+Variable
+
+Description
+
+Default
+
+`AGENTCORE_REGION`
+
+AWS region for the AgentCore endpoint
+
+`us-east-1`
+
+`AGENTCORE_BROWSER_ID`
+
+Browser identifier
+
+`aws.browser.v1`
+
+`AGENTCORE_PROFILE_ID`
+
+Browser profile for persistent state (cookies, localStorage)
+
+(none)
+
+`AGENTCORE_SESSION_TIMEOUT`
+
+Session timeout in seconds
+
+`3600`
+
+`AWS_PROFILE`
+
+AWS CLI profile for credential resolution
+
+`default`
+
+**Browser profiles:** When `AGENTCORE_PROFILE_ID` is set, browser state (cookies, localStorage) is persisted across sessions automatically.
+
+When enabled, agent-browser connects to an AgentCore cloud browser session instead of launching a local browser. All commands work identically.
 
 License
 -------

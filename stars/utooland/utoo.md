@@ -1,6 +1,6 @@
 ---
 project: utoo
-stars: 2312
+stars: 2402
 description: A unified toolchain for web development
 url: https://github.com/utooland/utoo
 ---

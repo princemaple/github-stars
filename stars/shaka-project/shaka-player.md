@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8025
+stars: 8037
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -342,6 +342,26 @@ Playstation 5⁷
 **Y**
 
 Titan OS⁷
+
+\-
+
+\-
+
+\-
+
+\-
+
+\-
+
+\-
+
+\-
+
+\-
+
+**Y**
+
+TiVo OS⁷
 
 \-
 
@@ -738,6 +758,18 @@ untested⁷
 untested⁷
 
 Titan OS⁷
+
+untested⁷
+
+untested⁷
+
+\-
+
+\-
+
+untested⁷
+
+TiVo OS⁷
 
 untested⁷
 

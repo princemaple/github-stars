@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 131083
+stars: 131328
 description: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows
 url: https://github.com/microsoft/PowerToys
 ---
@@ -12,13 +12,10 @@ Microsoft PowerToys is a collection of utilities that help you customize Windows
 
 ### Installation · Documentation · Blog · Release notes
 
-  
-  
-
 🔨 Utilities
 ------------
 
-PowerToys includes over 25 utilities to help you customize and optimize your Windows experience:
+PowerToys includes over 30 utilities to help you customize and optimize your Windows experience:
 
 Advanced Paste
 
@@ -76,7 +73,7 @@ Workspaces
 
 ZoomIt
 
-📋 Installation
+📦 Installation
 ---------------
 
 For detailed installation instructions and system requirements, visit the installation docs.
@@ -84,8 +81,9 @@ For detailed installation instructions and system requirements, visit the instal
 But to get started quickly, choose one of the installation methods below:  
   
 
-**Download .exe from GitHub**  
-Go to the PowerToys GitHub releases, click Assets to reveal the downloads, and choose the installer that matches your architecture and install scope. For most devices, that's the x64 per-user installer.
+**Download the .exe file from GitHub**  
+
+Go to the PowerToys GitHub releases, select **Assets** to reveal the installation files, and choose the one that matches your architecture and install scope. For most devices, that would be _x64 per-user_.
 
 Description
 
@@ -111,18 +109,18 @@ PowerToysSetup-0.98.1-arm64.exe
 You can easily install PowerToys from the Microsoft Store:
 
 **WinGet**  
-Download PowerToys from WinGet. Updating PowerToys via winget will respect the current PowerToys installation scope. To install PowerToys, run the following command from the command line / PowerShell:
+Download PowerToys from \[WinGet\](https://github.com/microsoft/winget-cli#installing-the-client). Updating PowerToys via winget will respect the current PowerToys installation scope. To install PowerToys, run the following command from the command line / PowerShell:
 
-_User scope installer \[default\]_
+-   User scope installer (default)
 
 winget install Microsoft.PowerToys \-s winget
 
-_Machine-wide scope installer_
+-   Machine-wide scope installer
 
 winget install \--scope machine Microsoft.PowerToys \-s winget
 
 **Other methods**  
-There are community driven install methods such as Chocolatey and Scoop. If these are your preferred install solutions, you can find the install instructions there.
+There are \[community driven install methods\](https://learn.microsoft.com/windows/powertoys/install#community-driven-install-tools) such as Chocolatey and Scoop. If these are your preferred install solutions, you can find the install instructions there.
 
 ✨ What's new?
 -------------
@@ -144,12 +142,12 @@ Contributing
 
 This project welcomes contributions of all types. Besides coding features / bug fixes, other ways to assist include spec writing, design, documentation, and finding bugs. We are excited to work with the power user community to build a set of tools for helping you get the most out of Windows. We ask that **before you start work on a feature that you would like to contribute**, please read our Contributor's Guide. We would be happy to work with you to figure out the best approach, provide guidance and mentorship throughout feature development, and help avoid any wasted or duplicate effort. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you grant us the rights to use your contribution and that you have permission to do so. For guidance on developing for PowerToys, please read the developer docs for a detailed breakdown. This includes how to setup your computer to compile.
 
-Code of Conduct
+Code of conduct
 ---------------
 
 This project has adopted the Microsoft Open Source Code of Conduct.
 
-Privacy Statement
+Privacy statement
 -----------------
 
 The application logs basic diagnostic data (telemetry). For more privacy information and what we collect, see our PowerToys Data and Privacy documentation.

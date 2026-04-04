@@ -1,6 +1,6 @@
 ---
 project: workerd
-stars: 8063
+stars: 8095
 description: The JavaScript / Wasm runtime that powers Cloudflare Workers
 url: https://github.com/cloudflare/workerd
 ---
@@ -65,7 +65,7 @@ To build `workerd`, you need:
 -   On Linux:
     -   We use the clang/LLVM toolchain to build workerd and support version 19 and higher. Earlier versions of clang may still work, but are not officially supported.
         
-    -   Clang 19+ (e.g. package `clang-19` on Debian Trixie). If clang is installed as `clang-<version>` please create a symlink to it in your PATH named `clang`, or use `--action_env=CC=clang-<version>` on `bazel` command lines to specify the compiler name.
+    -   Clang 19+ (e.g. package `clang-19` on Debian Trixie). If clang is installed as `clang-<version>` please create a symlink to it in your PATH named `clang`, or use `--repo_env=CC=clang-<version>` on `bazel` command lines to specify the compiler name.
         
     -   libc++ 19+ (e.g. packages `libc++-19-dev` and `libc++abi-19-dev`)
         

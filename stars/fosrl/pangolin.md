@@ -1,6 +1,6 @@
 ---
 project: pangolin
-stars: 19697
+stars: 19846
 description: Identity-aware VPN and proxy for remote access to anything, anywhere.
 url: https://github.com/fosrl/pangolin
 ---
@@ -24,7 +24,7 @@ Description
 
 **Pangolin Cloud**
 
-Fully managed service with instant setup and pay-as-you-go pricing — no infrastructure required. Or, self-host your own remote node and connect to our control plane.
+Fully managed service with instant setup and pay-as-you-go pricing - no infrastructure required. Or, self-host your own remote node and connect to our control plane.
 
 **Self-Host: Community Edition**
 

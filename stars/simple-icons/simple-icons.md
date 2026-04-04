@@ -1,6 +1,6 @@
 ---
 project: simple-icons
-stars: 24780
+stars: 24823
 description: SVG icons for popular brands
 url: https://github.com/simple-icons/simple-icons
 ---
@@ -62,6 +62,8 @@ You can use a `viewbox=auto` parameter to get an auto-sized viewbox. This is use
 <img height\="20" src\="https://cdn.simpleicons.org/github?viewbox=auto" />
 <img height\="20" src\="https://cdn.simpleicons.org/simpleicons?viewbox=auto" />
 <img height\="20" src\="https://cdn.simpleicons.org/awesomelists?viewbox=auto" />
+
+See simple-icons-cdn to learn more usages.
 
 ### Node Usage
 

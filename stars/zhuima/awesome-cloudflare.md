@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 13113
+stars: 13168
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -328,6 +328,14 @@ Gins-Blog
 一个高性能、Agentic-First 的博客平台。完全基于 Cloudflare 生态 (Workers, Pages, D1, KV, R2, Vectorize)。内置 MCP 协议，支持通过 OpenClaw 零人工自动部署。
 
 https://blog.ichimarugin728.com
+
+维护中
+
+讀角獸
+
+使用 Cloudflare Pages + Workers + D1 + KV + R2 全家桶構建的繁體中文深度分析出版物。Astro 4 hybrid SSR，零外部服務依賴。
+
+https://ducorn.com/
 
 维护中
 
@@ -752,6 +760,14 @@ AI 驱动的宕机聚合器，追踪 100+ 云服务（包括 Cloudflare）的状
 https://whatbroke.today/
 
 维护中
+
+oddin-status
+
+精美的状态页与在线率监控系统。生产级环境就绪，开箱即用。
+
+https://status.oddinpay.com/
+
+运行正常
 
 开发者工具
 -----

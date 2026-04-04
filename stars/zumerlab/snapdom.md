@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7636
+stars: 7663
 description: SnapDOM: Next-generation DOM capture engine — fast, modular, extensible.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -827,6 +827,12 @@ Exports the capture as a PNG embedded in a downloadable PDF. Supports portrait a
 Export
 
 Uses the experimental WICG `drawElementImage` API for direct DOM-to-canvas rendering where supported.
+
+`prompt-export`
+
+Export
+
+LLM-friendly capture: adds a `toPrompt()` method that returns an annotated screenshot, structured element map with bounding boxes, and a pre-formatted text prompt.
 
 ### Community Plugins
 

@@ -1,6 +1,6 @@
 ---
 project: httpx
-stars: 15129
+stars: 15149
 description: A next generation HTTP client for Python. 🦋
 url: https://github.com/encode/httpx
 ---

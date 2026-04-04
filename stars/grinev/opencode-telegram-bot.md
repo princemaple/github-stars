@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 304
+stars: 350
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support. Can be used as lightweight OpenClaw alternative.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -28,9 +28,10 @@ Features
 -   **Live status** — pinned message with current project, model, context usage, and changed files list, updated in real time
 -   **Model switching** — pick models from OpenCode favorites and recent history directly in the chat (favorites are shown first)
 -   **Agent modes** — switch between Plan and Build modes on the fly
+-   **Subagent activity** — watch live subagent progress in chat, including the current task, agent, model, and active tool step
 -   **Custom Commands** — run OpenCode custom commands (and built-ins like `init`/`review`) from an inline menu with confirmation
 -   **Interactive Q&A** — answer agent questions and approve permissions via inline buttons
--   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, then forward recognized text to OpenCode
+-   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, and optionally enable spoken replies with `/tts`
 -   **File attachments** — send images, PDF documents, and any text-based files to OpenCode (code, logs, configs etc.)
 -   **Scheduled tasks** — schedule prompts to run later or on a recurring interval; see Scheduled Tasks
 -   **Context control** — compact context when it gets too large, right from the chat
@@ -130,6 +131,10 @@ Browse and switch between recent sessions
 `/projects`
 
 Switch between OpenCode projects
+
+`/tts`
+
+Toggle audio replies
 
 `/rename`
 
@@ -303,6 +308,14 @@ No
 
 `10`
 
+`BASH_TOOL_DISPLAY_MAX_LENGTH`
+
+Maximum displayed length for `bash` tool commands in Telegram summaries; longer commands are truncated
+
+No
+
+`128`
+
 `SERVICE_MESSAGES_INTERVAL_SEC`
 
 Service messages interval (thinking + tool calls); keep `>=2` to avoid Telegram rate limits, `0` = immediate
@@ -383,6 +396,38 @@ No
 
 —
 
+`TTS_API_URL`
+
+TTS API base URL
+
+No
+
+—
+
+`TTS_API_KEY`
+
+TTS API key
+
+No
+
+—
+
+`TTS_MODEL`
+
+TTS model name passed to `/audio/speech`
+
+No
+
+`gpt-4o-mini-tts`
+
+`TTS_VOICE`
+
+OpenAI-compatible TTS voice name
+
+No
+
+`alloy`
+
 `LOG_LEVEL`
 
 Log level (`debug`, `info`, `warn`, `error`)
@@ -401,6 +446,15 @@ If `STT_API_URL` and `STT_API_KEY` are set, the bot will:
 2.  Transcribe them via `POST {STT_API_URL}/audio/transcriptions`
 3.  Show recognized text in chat
 4.  Send the recognized text to OpenCode as a normal prompt
+
+If TTS credentials are configured, you can toggle spoken replies globally with `/tts`. The preference is stored in `settings.json` and persists across restarts.
+
+TTS configuration example:
+
+TTS\_API\_URL\=https://api.openai.com/v1
+TTS\_API\_KEY\=your-tts-api-key
+TTS\_MODEL\=gpt-4o-mini-tts
+TTS\_VOICE\=alloy
 
 Supported provider examples (Whisper-compatible):
 

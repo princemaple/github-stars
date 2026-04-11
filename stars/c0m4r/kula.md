@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 928
+stars: 954
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -163,7 +163,7 @@ Note: Never thoughtlessly paste commands into the terminal. Even checking the ch
 
 ### Guided
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/c0m4r/kula/refs/heads/main/addons/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/c0m4r/kula/refs/heads/main/addons/install.sh)"
 
 ### Guided (verify installer)
 

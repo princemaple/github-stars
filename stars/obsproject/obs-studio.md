@@ -1,6 +1,6 @@
 ---
 project: obs-studio
-stars: 71373
+stars: 71532
 description: OBS Studio - Free and open source software for live streaming and screen recording
 url: https://github.com/obsproject/obs-studio
 ---
@@ -30,7 +30,8 @@ Contributing
 ------------
 
 -   If you would like to help fund or sponsor the project, you can do so via Patreon, OpenCollective, or PayPal. See our contribute page for more information.
--   If you wish to contribute code to the project, please make sure to read the coding and commit guidelines: https://github.com/obsproject/obs-studio/blob/master/CONTRIBUTING.rst
+-   If you wish to contribute code to the project, please make sure to read the coding and commit guidelines: https://github.com/obsproject/obs-studio/blob/master/CONTRIBUTING.md
+-   Code for the project follows the code style guidelines, located here: https://github.com/obsproject/obs-studio/blob/master/CODESTYLE.md
 -   Developer/API documentation can be found here: https://obsproject.com/docs
 -   If you wish to contribute translations, do not submit pull requests. Instead, please use Crowdin. For more information read this page: https://obsproject.com/wiki/How-To-Contribute-Translations-For-OBS
 -   Contributors to OBS Studio and related repositories are expected to follow our Code of Conduct, which can be read here: https://github.com/obsproject/obs-studio/blob/master/COC.rst

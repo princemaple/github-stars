@@ -1,6 +1,6 @@
 ---
 project: portmaster
-stars: 12322
+stars: 12409
 description: 🏔 Love Freedom - ❌ Block Mass Surveillance
 url: https://github.com/safing/portmaster
 ---

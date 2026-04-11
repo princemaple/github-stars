@@ -1,6 +1,6 @@
 ---
 project: setup-ipsec-vpn
-stars: 27558
+stars: 27595
 description: Scripts to build your own IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2
 url: https://github.com/hwdsl2/setup-ipsec-vpn
 ---
@@ -16,12 +16,14 @@ An IPsec VPN encrypts your network traffic, so that nobody between you and the V
 
 We will use Libreswan as the IPsec server, and xl2tpd as the L2TP provider.
 
+**Also available:** Docker images for WireGuard, OpenVPN, Headscale and LiteLLM.
+
 **» 📖 Book: Privacy Tools in the Age of AI  Build Your Own VPN Server**
 
 Quick start
 -----------
 
-First, prepare your Linux server\* with an install of Ubuntu, Debian or CentOS.
+First, prepare your Linux server\* with an install of a supported OS.
 
 Use this one-liner to set up an IPsec VPN server:
 

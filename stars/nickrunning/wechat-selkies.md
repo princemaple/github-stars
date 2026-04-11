@@ -1,6 +1,6 @@
 ---
 project: wechat-selkies
-stars: 2666
+stars: 2681
 description: 基于Selkies的Linux网页版微信/QQ/Telegram，支持本地中文输入法，支持三方应用，支持AMD64和ARM64。
 url: https://github.com/nickrunning/wechat-selkies
 ---
@@ -21,6 +21,8 @@ WeChat Selkies
 ------
 
 > 如果升级后部分功能缺失，请先清空本地挂载目录下的openbox目录(如`./config/.config/openbox`)。
+
+> 仓库内置了上游微信版本自动检测机制：GitHub Actions 会定时检查官方 `.deb` 包版本，检测到变化后自动更新 `versions/upstream.env` 并触发镜像构建。
 
 功能特性
 ----
@@ -291,6 +293,19 @@ docker compose pull && docker compose up -d
 git pull && docker compose up -d --build
 
 > **注意：** 微信和QQ的安装包 URL 指向官方最新版本，重新构建镜像时会自动下载最新版。
+
+对于仓库维护者，当前自动化流程如下：
+
+1.  `Detect Upstream Package Updates` 每 6 小时检查一次微信官方安装包版本，也支持手动触发
+2.  如果检测到版本号或安装包哈希变化，工作流会更新 `versions/upstream.env`
+3.  该文件变更提交到 `master` 后，会自动触发 `Build and Publish Docker Image`
+
+版本状态文件位于 `versions/upstream.env`，当前记录了：
+
+-   微信 amd64/arm64 下载地址
+-   微信 amd64/arm64 解析出的版本号
+-   微信 amd64/arm64 安装包 SHA256
+-   最近一次发生变更的检测时间
 
 ### 常见问题
 

@@ -1,6 +1,6 @@
 ---
 project: love
-stars: 7897
+stars: 8174
 description: LÖVE is an awesome 2D game framework for Lua.
 url: https://github.com/love2d/love
 ---
@@ -46,7 +46,7 @@ See the readme in the testing folder for more info.
 Contributing
 ------------
 
-The best places to contribute are through the issue tracker and the official Discord server or IRC channel.
+The best places to contribute are through the issue tracker and the official Discord server.
 
 For code contributions, pull requests and patches are welcome. Be sure to read the source code style guide. Changes and new features typically get discussed in the issue tracker or on Discord or the forums before a pull request is made.
 

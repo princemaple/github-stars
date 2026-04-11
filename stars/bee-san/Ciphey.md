@@ -1,394 +1,167 @@
 ---
 project: Ciphey
-stars: 21289
+stars: 21305
 description: ⚡ Automatically decrypt encryptions without knowing the key or cipher, decode encodings, and crack hashes ⚡
 url: https://github.com/bee-san/Ciphey
 ---
 
-🚨 An experimental rewrite in Rust can be found here https://github.com/bee-san/ares 🚨
-
-🚨 I intend to merge this rewrite into this repo by June of 2026 🚨
-
-Translations  
-🇩🇪 DE 🇬🇧 EN 🇫🇷 FR 🇭🇺 HU 🇮🇳 HI 🇮🇩 ID 🇮🇹 IT 🇳🇱 NL 🇧🇷 PT-BR 🇷🇺 RU 🇹🇭 TH 🇨🇳 ZH  
   
-➡️ Documentation | Discord | Installation Guide ⬅️  
-
   
-Fully automated decryption/decoding/cracking tool using natural language processing & artificial intelligence, along with some common sense.
+➡️ Discord | Documentation ⬅️
 
-* * *
+Project ciphey
+==============
 
-Installation Guide
-------------------
+ciphey is the next generation of decoding tools, built by the same people that brought you Ciphey.
 
-🐍 Python
+We fully intend to replace Ciphey with ciphey.
 
-🐋 Docker (Universal)
+✨ You can read more about ciphey here https://skerritt.blog/introducing-ciphey/ ✨
 
-🍎 MacPorts (macOS)
-
-🍺 Homebrew (macOS/Linux)
-
-`python3 -m pip install ciphey --upgrade`
-
-`docker run -it --rm remnux/ciphey`
-
-`sudo port install ciphey`
-
-`brew install ciphey`
-
-Linux
-
-Mac OS
-
-Windows
-
-* * *
-
-🤔 What is this?
-================
-
-Input encrypted text, get the decrypted text back.
-
-> "What type of encryption?"
-
-That's the point. You don't know, you just know it's possibly encrypted. Ciphey will figure it out for you.
-
-Ciphey can solve most things in 3 seconds or less.
-
-Ciphey aims to be a tool to automate a lot of decryptions & decodings such as multiple base encodings, classical ciphers, hashes or more advanced cryptography.
-
-If you don't know much about cryptography, or you want to quickly check the ciphertext before working on it yourself, Ciphey is for you.
-
-**The technical part.** Ciphey uses a custom built artificial intelligence module (_AuSearch_) with a _Cipher Detection Interface_ to approximate what something is encrypted with. And then a custom-built, customisable natural language processing _Language Checker Interface_, which can detect when the given text becomes plaintext.
-
-No neural networks or bloated AI here. We only use what is fast and minimal.
-
-And that's just the tip of the iceberg. For the full technical explanation, check out our documentation.
-
-✨ Features
+How to Use
 ==========
 
--   **50+ encryptions/encodings supported** such as binary, Morse code and Base64. Classical ciphers like the Caesar cipher, Affine cipher and the Vigenere cipher. Along with modern encryption like repeating-key XOR and more. **For the full list, click here**
--   **Custom Built Artificial Intelligence with Augmented Search (AuSearch) for answering the question "what encryption was used?"** Resulting in decryptions taking less than 3 seconds.
--   **Custom built natural language processing module** Ciphey can determine whether something is plaintext or not. Whether that plaintext is JSON, a CTF flag, or English, Ciphey can get it in a couple of milliseconds.
--   **Multi Language Support** at present, only German & English (with AU, UK, CAN, USA variants).
--   **Supports encryptions and hashes** Which the alternatives such as CyberChef Magic do not.
--   **C++ core** Blazingly fast.
+The simplest way to use ciphey is to join the Discord Server, head to the #bots channel and use ciphey with `$ciphey`. Type `$help` for helpful information!
 
-🔭 Ciphey vs CyberChef
-======================
+The second best way is to use `cargo install ciphey` and call it with `ciphey`.
 
-🔁 Base64 Encoded 42 times
---------------------------
+You can also `git clone` this repo and run `docker build .` it to get an image.
 
-Name
+Features
+========
 
-⚡ Ciphey ⚡
+Some features that may interest you, and that we're proud of.
 
-🐢 CyberChef 🐢
+Fast
+----
 
-Gif
+ciphey is fast. Very fast. Other decoders such as Ciphey require advance artifical intelligence to determine which path it should take to decode (whether to try Caesar next or Base64 etc).
 
-Time
+ciphey is so fast we don't need to worry about this currently. For every 1 decode Ciphey can do, ciphey can do ~7. That's a 700% increase in speed.
 
-2 seconds
+Library First
+-------------
 
-6 seconds
+There are 2 main parts to ciphey, the library and the CLI. The CLI simply uses the library which means you can build on-top of ciphey. Some features we've built are:
 
-Setup
+-   A Discord Bot
+-   Better testing of the whole program 💖
+-   This CLI
 
--   Run ciphey on the file
+Decoders
+--------
 
--   Set the regex param to "{"
--   You need to know how many times to recurse
--   You need to know it's Base64 all the way down
--   You need to load CyberChef (it's a bloated JS app)
--   Know enough about CyberChef to create this pipeline
--   Invert the match
+ciphey currently supports 16 decoders and it is growing fast. Ciphey supports around ~50, and we are adding more everyday.
 
-**Note** The gifs may load at different times, so one may appear significantly faster than another.  
-**A note on magic** CyberChef's most similar feature to Ciphey is Magic. Magic fails instantly on this input and crashes. The only way we could force CyberChef to compete was to manually define it.
+Timer
+-----
 
-We also tested CyberChef and Ciphey with a **6gb file**. Ciphey cracked it in **5 minutes and 54 seconds**. CyberChef crashed before it even started.
+One of the big issues with Ciphey is that it could run forever. If it couldn't decode your text, you'd never know!
 
-📊 Ciphey vs Katana vs CyberChef Magic
---------------------------------------
+ciphey has a timer (built into the library and the CLI) which means it will eventually expire. The CLI defaults to 5 seconds, the Discord Bot defaults to 10 (to account for network messages being sent across).
 
-**Name**
-
-⚡ Ciphey ⚡
-
-🗡️ Katana 🗡️
-
-🐢 CyberChef Magic 🐢
-
-Advanced Language Checker
-
-✅
-
-❌
-
-✅
-
-Supports Encryptions
-
-✅
-
-✅
-
-❌
-
-Releases named after Dystopian themes 🌃
-
-✅
-
-❌
-
-❌
-
-Supports hashes
-
-✅
-
-✅
-
-❌
-
-Easy to set up
-
-✅
-
-❌
-
-✅
-
-Can guess what something is encrypted with
-
-✅
-
-❌
-
-❌
-
-Created for hackers by hackers
-
-✅
-
-✅
-
-❌
-
-🎬 Getting Started
-==================
-
-If you're having trouble with installing Ciphey, read this.
-
-‼️ Important Links (Docs, Installation guide, Discord Support)
---------------------------------------------------------------
-
-Installation Guide
-
-Documentation
-
-Discord
-
-Docker Image (from REMnux)
-
-📖 Installation Guide
-
-📚 Documentation
-
-🦜 Discord
-
-🐋 Docker Documentation
-
-🏃‍♀️Running Ciphey
--------------------
-
-There are 3 ways to run Ciphey.
-
-1.  File Input `ciphey -f encrypted.txt`
-2.  Unqualified input `ciphey -- "Encrypted input"`
-3.  Normal way `ciphey -t "Encrypted input"`
-
-To get rid of the progress bars, probability table, and all the noise use the quiet mode.
-
-`ciphey -t "encrypted text here" -q`
-
-For a full list of arguments, run `ciphey --help`.
-
-### ⚗️ Importing Ciphey
-
-You can import Ciphey's main and use it in your own programs and code. `from Ciphey.__main__ import main`
-
-🎪 Contributors
-===============
-
-Ciphey was invented by Bee in 2008, and revived in 2019. Ciphey wouldn't be where it was today without Cyclic3 - president of UoL's Cyber Security Society.
-
-Ciphey was revived & recreated by the Cyber Security Society for use in CTFs. If you're ever in Liverpool, consider giving a talk or sponsoring our events. Email us at `cybersecurity@society.liverpoolguild.org` to find out more 🤠
-
-**Major Credit** to George H for working out how we could use proper algorithms to speed up the search process. **Special thanks** to varghalladesign for designing the logo. Check out their other design work!
-
-🐕‍🦺 Contributing
-------------------
-
-Don't be afraid to contribute! We have many, many things you can do to help out. Each of them labelled and easily explained with examples. If you're trying to contribute but stuck, tag @bee-san ✨
-
-Alternatively, join the Discord group and send a message there (link in contrib file) or at the top of this README as a badge.
-
-Please read the contributing file for exact details on how to contribute ✨
-
-By doing so, you'll get your name added to the README below and get to be apart of an ever-growing project!
-
-💰 Financial Contributors
+Better Docs, Better Tests
 -------------------------
 
-The contributions will be used to fund not only the future of Ciphey and its authors, but also Cyber Security Society at the University of Liverpool.
+ciphey already has ~120 tests, documentation tests (to ensure our docs are kept up to date) and we enforce documentation on all of our major components. This is beautiful.
 
-GitHub doesn't support "sponsor this project and we'll evenly distribute the money", so pick a link and we'll sort it out on our end 🥰
+LemmeKnow
+---------
 
-✨ Contributors
+LemmeKnow is the Rust version of PyWhat. It's 33 times faster which means we can now decode and determine whether something is an IP address or whatnot 3300% faster than in Python.
+
+Multithreading
 --------------
 
-Thanks goes to these wonderful people (emoji key):
+Ciphey did not support multi-threading, it was quite slow. ciphey supports it natively using Rayon, one of the fastest multi-threading libraries out there.
 
-  
-**cyclic3**  
-🎨 🚧 💻 🤔
+While we do not entirely see the effects of it with only 16 decoders (and them being quite fast), as we add more decoders (and slower ones) we'll see it won't affect the overall programs speed as much.
 
-  
-**Brandon**  
-🎨 🚧 💻 🤔
+Multi level decodings
+---------------------
 
-  
-**michalani**  
-💻
+Ciphey did not support multi-level decryptions like a path of Rot13 -> Base64 -> Rot13 because it was so slow. ciphey is fast enough to support this, although we plan to turn it off eventually.
 
-  
-**ashb07**  
-💻
+Configurable Sensitivity for Plaintext Detection
+------------------------------------------------
 
-  
-**Shardion**  
-🐛
+ciphey now supports configurable sensitivity levels for gibberish detection, allowing for more accurate plaintext identification across different types of encodings. Classical ciphers like Caesar use Low sensitivity to better handle English-like results, while most other decoders use Medium sensitivity by default.
 
-  
-**Bryan**  
-🌍 📖
+This feature helps reduce false positives and negatives in plaintext detection, making ciphey more reliable across a wider range of encoded texts.
 
-  
-**Lukas Gabriel**  
-💻 🐛 🌍 🤔
+Enhanced Plaintext Detection with BERT
+--------------------------------------
 
-  
-**Darshan**  
-🐛
+ciphey now offers enhanced plaintext detection using a BERT-based model from the `gibberish-or-not` crate. This feature:
 
-  
-**SkeletalDemise**  
-💻
+-   Increases plaintext detection accuracy by approximately 40%
+-   Reduces false positives and negatives when identifying plaintext
+-   Can be enabled during first-run setup or later with `ciphey --enable-enhanced-detection`
+-   Requires a one-time download of a 500MB AI model (requires a free Hugging Face account)
 
-  
-**Christian Clauss**  
-💻 🐛
+New Features
+============
 
-  
-**Machinexa2**  
-🖋
+Better search algorithm
+-----------------------
 
-  
-**Anant Verma**  
-💻 🐛
+We now use A\* search. This is very fast.
 
-  
-**XVXTOR**  
-📖
+A\* works by using a heuristic to estimate the cost of reaching the goal from the current state.
 
-  
-**Itamikame**  
-💻
+First, we ignore the heuristic for very fast decoders like Base64 and ensure we run them first each time on each node.
 
-  
-**MikeMerz**  
-💻
+Then, we calculate the heuristic for the remaining decoders using `cipher_identifier` which can determine the probability a given string is a certain cipher.
 
-  
-**Jacob Galam**  
-💻 🐛
+We store previous results in a cache to avoid recalculating the same path.
 
-  
-**TuxTheXplorer**  
-🌍
+We prune the search tree to avoid unnecessary calculations and keep the memory usage down if it gets too bad.
 
-  
-**Itamai**  
-💻 🐛
+We also keep track of statistics on decoders to dynamically prioritise decoders that work better (example: caesar is popular, but Beaufort is not so Caesar will dynamically be prioritised over Beaufort)
 
-  
-**Filipe**  
-🌍
+Finally, we keep track of popular pairs. So base64 -> base64 is very popular, so we prioritise that path (among others).
 
-  
-**Malathi**  
-💻
+Custom themes
+-------------
 
-  
-**Jack**  
-🌍
+You can now set a custom theme for ciphey. This is useful if you want to make ciphey look different.
 
-  
-**Younes**  
-🌍
+This also helps with accessibility.
 
-  
-**Marnick Vandecauter**  
-🌍
+Vigenere
+--------
 
-  
-**Michael V**  
-💻
+We now use perhaps the best algorithm for Vigenere.
 
-  
-**chuinzer**  
-🌍
+It's fast, accurate and handles non-letter characters better than any other algorithm.
 
-  
-**blackcat-917**  
-🌍 📖
+Better English checking
+-----------------------
 
-  
-**Åsmund Brekke**  
-💻
+We use a qudgaram / trigram / english dict checker to calculate probability of plaintext.
 
-  
-**Sashreek Shankar**  
-💻
+We change the thresholds depending on the cipher. Example is that Caesar returns text that "looks" like english, whereas base64 does not.
 
-  
-**cryptobadger**  
-💻 🐛
+As well as this, we have a database of popular regex (about 500) of api keys, mac addresses, etc.
 
-  
-**elf**  
-💻
+We also have a `is_password` function to determine if a string is an exact password seen in a data dump.
 
-  
-**Roger Yu**  
-💻
+More ciphers
+------------
 
-  
-**dysleixa**  
-💻
+-   Braille
+-   Atbash
+-   Vigenere
 
-  
-**Mohammad Zulfikar**  
-📖
+Database
+--------
 
-  
-**Alexander Burchenko**  
-🌍
+We now store statistics in a database. This is useful for seeing how ciphey is doing over time.
 
-This project follows the all-contributors specification. Contributions of any kind welcome!
+AI Use
+======
+
+We use AI for 2 things:
+
+1.  The TUI is entirely vibe coded.
+2.  I made AI spend hours researching every single CTF challenge out there. It created a list of 15,071 CTFs. It then went through every single CTF and looked for writeups. In those writeups it looked for anything related to encoding / decoding. It then created tests out of those. This enabled us to increase our testing coverage and make sure all CTF encoding / decoding challenges are solveable with this tool.

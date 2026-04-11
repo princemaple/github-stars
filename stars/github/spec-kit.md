@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 85280
+stars: 87111
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -203,6 +203,56 @@ Read+Write
 
 spec-kit-azure-devops
 
+Branch Convention
+
+Configurable branch and folder naming conventions for /specify with presets and custom patterns
+
+`process`
+
+Read+Write
+
+spec-kit-branch-convention
+
+Brownfield Bootstrap
+
+Bootstrap spec-kit for existing codebases — auto-discover architecture and adopt SDD incrementally
+
+`process`
+
+Read+Write
+
+spec-kit-brownfield
+
+Bugfix Workflow
+
+Structured bugfix workflow — capture bugs, trace to spec artifacts, and patch specs surgically
+
+`process`
+
+Read+Write
+
+spec-kit-bugfix
+
+Canon
+
+Adds canon-driven (baseline-driven) workflows: spec-first, code-first, spec-drift. Requires Canon Core preset installation.
+
+`process`
+
+Read+Write
+
+spec-kit-canon
+
+CI Guard
+
+Spec compliance gates for CI/CD — verify specs exist, check drift, and block merges on gaps
+
+`process`
+
+Read-only
+
+spec-kit-ci-guard
+
 Checkpoint Extension
 
 Commit the changes made during the middle of the implementation, so you don't end up with just one very large commit at the end
@@ -232,6 +282,16 @@ Orchestrates spec-kit phases via sub-agent delegation to reduce context pollutio
 Read+Write
 
 spec-kit-conduct-ext
+
+Confluence Extension
+
+Create a doc in Confluence summarizing the specifications and planning files
+
+`integration`
+
+Read+Write
+
+spec-kit-confluence
 
 DocGuard — CDD Enforcement
 
@@ -383,6 +443,16 @@ Read+Write
 
 spec-kit-maqa-trello
 
+MemoryLint
+
+Agent memory governance tool: Automatically audits and fixes boundary conflicts between AGENTS.md and the constitution.
+
+`process`
+
+Read+Write
+
+memorylint
+
 Onboard
 
 Contextual onboarding and progressive growth for developers new to spec-kit projects. Explains specs, maps dependencies, validates understanding, and guides the next step
@@ -393,6 +463,16 @@ Read+Write
 
 spec-kit-onboard
 
+Optimize
+
+Audit and optimize AI governance for context efficiency — token budgets, rule health, interpretability, compression, coherence, and echo detection
+
+`process`
+
+Read+Write
+
+spec-kit-optimize
+
 Plan Review Gate
 
 Require spec.md and plan.md to be merged via MR/PR before allowing task generation
@@ -402,6 +482,16 @@ Require spec.md and plan.md to be merged via MR/PR before allowing task generati
 Read-only
 
 spec-kit-plan-review-gate
+
+PR Bridge
+
+Auto-generate pull request descriptions, checklists, and summaries from spec artifacts
+
+`process`
+
+Read-only
+
+spec-kit-pr-bridge-
 
 Presetify
 
@@ -523,25 +613,15 @@ Read+Write
 
 speckit-utils
 
-Staff Review Extension
+Security Review
 
-Staff-engineer-level code review that validates implementation against spec, checks security, performance, and test coverage
+Comprehensive security audit of codebases using AI-powered DevSecOps analysis
 
 `code`
 
 Read-only
 
-spec-kit-staff-review
-
-Superpowers Bridge
-
-Orchestrates obra/superpowers skills within the spec-kit SDD workflow across the full lifecycle (clarification, TDD, review, verification, critique, debugging, branch completion)
-
-`process`
-
-Read+Write
-
-superpowers-bridge
+spec-kit-security-review
 
 Ship Release Extension
 
@@ -563,6 +643,26 @@ Read-only
 
 spec-kit-critique
 
+Spec Diagram
+
+Auto-generate Mermaid diagrams of SDD workflow state, feature progress, and task dependencies
+
+`visibility`
+
+Read-only
+
+spec-kit-diagram-
+
+Spec Refine
+
+Update specs in-place, propagate changes to plan and tasks, and diff impact across artifacts
+
+`process`
+
+Read+Write
+
+spec-kit-refine
+
 Spec Sync
 
 Detect and resolve drift between specs and implementation. AI-assisted resolution with human approval
@@ -572,6 +672,56 @@ Detect and resolve drift between specs and implementation. AI-assisted resolutio
 Read+Write
 
 spec-kit-sync
+
+SpecTest
+
+Auto-generate test scaffolds from spec criteria, map coverage, and find untested requirements
+
+`code`
+
+Read+Write
+
+spec-kit-spectest
+
+Staff Review Extension
+
+Staff-engineer-level code review that validates implementation against spec, checks security, performance, and test coverage
+
+`code`
+
+Read-only
+
+spec-kit-staff-review
+
+Status Report
+
+Project status, feature progress, and next-action recommendations for spec-driven workflows
+
+`visibility`
+
+Read-only
+
+Open-Agent-Tools/spec-kit-status
+
+Superpowers Bridge
+
+Orchestrates obra/superpowers skills within the spec-kit SDD workflow across the full lifecycle (clarification, TDD, review, verification, critique, debugging, branch completion)
+
+`process`
+
+Read+Write
+
+superpowers-bridge
+
+TinySpec
+
+Lightweight single-file workflow for small tasks — skip the heavy multi-step SDD process
+
+`process`
+
+Read+Write
+
+spec-kit-tinyspec
 
 V-Model Extension Pack
 
@@ -602,6 +752,16 @@ Detect phantom completions: tasks marked \[X\] in tasks.md with no real implemen
 Read-only
 
 spec-kit-verify-tasks
+
+Worktree Isolation
+
+Spawn isolated git worktrees for parallel feature development without checkout switching
+
+`process`
+
+Read+Write
+
+spec-kit-worktree
 
 To submit your own extension, see the Extension Publishing Guide.
 
@@ -634,11 +794,61 @@ AIDE extension
 
 spec-kit-presets
 
+Canon Core
+
+Adapts original Spec Kit workflow to work together with Canon extension
+
+2 templates, 8 commands
+
+—
+
+spec-kit-canon
+
+Explicit Task Dependencies
+
+Adds explicit `(depends on T###)` dependency declarations and an Execution Wave DAG to tasks.md for parallel scheduling
+
+1 template, 1 command
+
+—
+
+spec-kit-preset-explicit-task-dependencies
+
+Multi-Repo Branching
+
+Coordinates feature branch creation across multiple git repositories (independent repos and submodules) during plan and tasks phases
+
+2 commands
+
+—
+
+spec-kit-preset-multi-repo-branching
+
 Pirate Speak (Full)
 
 Transforms all Spec Kit output into pirate speak — specs become "Voyage Manifests", plans become "Battle Plans", tasks become "Crew Assignments"
 
 6 templates, 9 commands
+
+—
+
+spec-kit-presets
+
+Table of Contents Navigation
+
+Adds a navigable Table of Contents to generated spec.md, plan.md, and tasks.md documents
+
+3 templates, 3 commands
+
+—
+
+spec-kit-preset-toc-navigation
+
+VS Code Ask Questions
+
+Enhances the clarify command to use `vscode/askQuestions` for batched interactive questioning.
+
+1 command
 
 —
 
@@ -682,6 +892,8 @@ Community projects that extend, visualize, or build on Spec Kit:
 -   **cc-spex** - A Claude Code plugin that adds composable traits on top of Spec Kit with Superpowers\-based quality gates, spec/code review, git worktree isolation, and parallel implementation via agent teams.
     
 -   **Spec Kit Assistant** — A VS Code extension that provides a visual orchestrator for the full SDD workflow (constitution → specification → planning → tasks → implementation) with phase status visualization, an interactive task checklist, DAG visualization, and support for Claude, Gemini, GitHub Copilot, and OpenAI backends. Requires the `specify` CLI in your PATH.
+    
+-   **SpecKit Companion** — A VS Code extension that brings a visual GUI to Spec Kit. Browse specs in a rich markdown viewer with clickable file references, create specifications with image attachments, comment and refine each step inline (GitHub-style review), track your progress through the SDD workflow with a visual phase stepper, and manage steering documents like constitutions and templates.
     
 
 🤖 Supported AI Agents
@@ -821,10 +1033,95 @@ Generic
 
 Bring your own agent — use `--ai generic --ai-commands-dir <path>` for unsupported agents
 
+Available Slash Commands
+------------------------
+
+After running `specify init`, your AI coding agent will have access to these slash commands for structured development. If you pass `--ai <agent> --ai-skills`, Spec Kit installs agent skills instead of slash-command prompt files; `--ai-skills` requires `--ai`.
+
+#### Core Commands
+
+Essential commands for the Spec-Driven Development workflow:
+
+Command
+
+Agent Skill
+
+Description
+
+`/speckit.constitution`
+
+`speckit-constitution`
+
+Create or update project governing principles and development guidelines
+
+`/speckit.specify`
+
+`speckit-specify`
+
+Define what you want to build (requirements and user stories)
+
+`/speckit.plan`
+
+`speckit-plan`
+
+Create technical implementation plans with your chosen tech stack
+
+`/speckit.tasks`
+
+`speckit-tasks`
+
+Generate actionable task lists for implementation
+
+`/speckit.taskstoissues`
+
+`speckit-taskstoissues`
+
+Convert generated task lists into GitHub issues for tracking and execution
+
+`/speckit.implement`
+
+`speckit-implement`
+
+Execute all tasks to build the feature according to the plan
+
+#### Optional Commands
+
+Additional commands for enhanced quality and validation:
+
+Command
+
+Agent Skill
+
+Description
+
+`/speckit.clarify`
+
+`speckit-clarify`
+
+Clarify underspecified areas (recommended before `/speckit.plan`; formerly `/quizme`)
+
+`/speckit.analyze`
+
+`speckit-analyze`
+
+Cross-artifact consistency & coverage analysis (run after `/speckit.tasks`, before `/speckit.implement`)
+
+`/speckit.checklist`
+
+`speckit-checklist`
+
+Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English")
+
 🔧 Specify CLI Reference
 ------------------------
 
-The `specify` command supports the following options:
+The `specify` tool is invoked as
+
+```
+specify <COMMAND> [SUBCOMMAND] [OPTIONS]
+```
+
+and supports the following commands:
 
 ### Commands
 
@@ -834,13 +1131,31 @@ Description
 
 `init`
 
-Initialize a new Specify project from the latest template
+Initialize a new Specify project from the latest template.
 
 `check`
 
 Check for installed tools: `git` plus all CLI-based agents configured in `AGENT_CONFIG` (for example: `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `junie`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`, `vibe`, `kimi`, `iflow`, `pi`, `forge`, etc.)
 
+`version`
+
+Show the currently installed Spec Kit version.
+
+`extension`
+
+Manage extensions
+
+`preset`
+
+Manage presets
+
+`integration`
+
+Manage integrations
+
 ### `specify init` Arguments & Options
+
+specify init \[PROJECT\_NAME\] <OPTIONS\>
 
 Argument/Option
 
@@ -848,7 +1163,7 @@ Type
 
 Description
 
-`<project-name>`
+`<PROJECT_NAME>`
 
 Argument
 
@@ -924,7 +1239,7 @@ Install Prompt.MD templates as agent skills in agent-specific `skills/` director
 
 Option
 
-Branch numbering strategy: `sequential` (default — `001`, `002`, `003`) or `timestamp` (`YYYYMMDD-HHMMSS`). Timestamp mode is useful for distributed teams to avoid numbering conflicts
+Branch numbering strategy: `sequential` (default — `001`, `002`, `003`, …, `1000`, … — expands beyond 3 digits automatically) or `timestamp` (`YYYYMMDD-HHMMSS`). Timestamp mode is useful for distributed teams to avoid numbering conflicts
 
 ### Examples
 
@@ -1007,64 +1322,6 @@ specify init my-project --ai claude --branch-numbering timestamp
 # Check system requirements
 specify check
 
-### Available Slash Commands
-
-After running `specify init`, your AI coding agent will have access to these structured development commands.
-
-Most agents expose the traditional dotted slash commands shown below, like `/speckit.plan`.
-
-Claude Code installs spec-kit as skills and invokes them as `/speckit-constitution`, `/speckit-specify`, `/speckit-plan`, `/speckit-tasks`, and `/speckit-implement`.
-
-For Codex CLI, `--ai-skills` installs spec-kit as agent skills instead of slash-command prompt files. In Codex skills mode, invoke spec-kit as `$speckit-constitution`, `$speckit-specify`, `$speckit-plan`, `$speckit-tasks`, and `$speckit-implement`.
-
-#### Core Commands
-
-Essential commands for the Spec-Driven Development workflow:
-
-Command
-
-Description
-
-`/speckit.constitution`
-
-Create or update project governing principles and development guidelines
-
-`/speckit.specify`
-
-Define what you want to build (requirements and user stories)
-
-`/speckit.plan`
-
-Create technical implementation plans with your chosen tech stack
-
-`/speckit.tasks`
-
-Generate actionable task lists for implementation
-
-`/speckit.implement`
-
-Execute all tasks to build the feature according to the plan
-
-#### Optional Commands
-
-Additional commands for enhanced quality and validation:
-
-Command
-
-Description
-
-`/speckit.clarify`
-
-Clarify underspecified areas (recommended before `/speckit.plan`; formerly `/quizme`)
-
-`/speckit.analyze`
-
-Cross-artifact consistency & coverage analysis (run after `/speckit.tasks`, before `/speckit.implement`)
-
-`/speckit.checklist`
-
-Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English")
-
 ### Environment Variables
 
 Variable
@@ -1081,21 +1338,41 @@ Override feature detection for non-Git repositories. Set to the feature director
 
 Spec Kit can be tailored to your needs through two complementary systems — **extensions** and **presets** — plus project-local overrides for one-off adjustments:
 
-block-beta
-    columns 1
-    overrides\["⬆ Highest priority\\nProject-Local Overrides\\n.specify/templates/overrides/"\]
-    presets\["Presets — Customize core & extensions\\n.specify/presets/<preset-id>/templates/"\]
-    extensions\["Extensions — Add new capabilities\\n.specify/extensions/<ext-id>/templates/"\]
-    core\["Spec Kit Core — Built-in SDD commands & templates\\n.specify/templates/\\n⬇ Lowest priority"\]
+Priority
 
-    style overrides fill:transparent,stroke:#999
-    style presets fill:transparent,stroke:#4a9eda
-    style extensions fill:transparent,stroke:#4a9e4a
-    style core fill:transparent,stroke:#e6a817
+Component Type
 
-Loading
+Location
 
-**Templates** are resolved at **runtime** — Spec Kit walks the stack top-down and uses the first match. Project-local overrides (`.specify/templates/overrides/`) let you make one-off adjustments for a single project without creating a full preset. **Commands** are applied at **install time** — when you run `specify extension add` or `specify preset add`, command files are written into agent directories (e.g., `.claude/commands/`). If multiple presets or extensions provide the same command, the highest-priority version wins. On removal, the next-highest-priority version is restored automatically. If no overrides or customizations exist, Spec Kit uses its core defaults.
+⬆ 1
+
+Project-Local Overrides
+
+`.specify/templates/overrides/`
+
+2
+
+Presets — Customize core & extensions
+
+`.specify/presets/templates/`
+
+3
+
+Extensions — Add new capabilities
+
+`.specify/extensions/templates/`
+
+⬇ 4
+
+Spec Kit Core — Built-in SDD commands & templates
+
+`.specify/templates/`
+
+-   **Templates** are resolved at **runtime** — Spec Kit walks the stack top-down and uses the first match.
+-   Project-local overrides (`.specify/templates/overrides/`) let you make one-off adjustments for a single project without creating a full preset.
+-   **Extension/preset commands** are applied at **install time** — when you run `specify extension add` or `specify preset add`, command files are written into agent directories (e.g., `.claude/commands/`).
+-   If multiple presets or extensions provide the same command, the highest-priority version wins. On removal, the next-highest-priority version is restored automatically.
+-   If no overrides or customizations exist, Spec Kit uses its core defaults.
 
 ### Extensions — Add New Capabilities
 

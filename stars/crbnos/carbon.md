@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1869
+stars: 1876
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -64,9 +64,10 @@ Techstack
 -   Radix UI - behavior
 -   Supabase - database
 -   Supabase – auth
--   Upstash - cache
--   Trigger - jobs
+-   Redis - cache
+-   Inngest - jobs
 -   Resend – email
+-   Lingui - i18n
 -   Novu – notifications
 -   Vercel – hosting
 -   Stripe - billing
@@ -185,25 +186,13 @@ Purpose
 
 URL
 
-Upstash
-
-Serverless Redis
-
-https://console.upstash.com/login
-
-Trigger.dev
-
-Job runner
-
-https://cloud.trigger.dev/login
-
 Posthog
 
 Product analytics platform
 
 https://us.posthog.com/signup
 
-Each of these services has a free tier which should be plenty to support local development. If you're self hosting, and you don't want to use Upstash or Posthog, it's pretty easy to replace upstash with a redis container in `@carbon/kv` and remove the Posthog analytics.
+Posthog has a free tier which should be plenty to support local development. If you're self hosting and you don't want to use Posthog, it's pretty easy to remove the analytics.
 
 ### Installation
 
@@ -221,16 +210,6 @@ $ cp ./.env.example ./.env
 
 -   `SUPABASE_SERVICE_ROLE_KEY=[service_role key]`
 -   `SUPABASE_ANON_KEY=[anon key]`
-
-1.  Set up a Redis instance (local or cloud) and add the connection URL:
-
--   `REDIS_URL=[redis://user:password@host:port]`
-
-1.  Navigate to the project you created in https://cloud.trigger.dev and copy the following from the `Environments & API Keys` section:
-
--   `TRIGGER_SECRET_KEY=[Private 'dev' API Key, starting 'tr_dev_*']`
--   `TRIGGER_API_URL="https://api.trigger.dev"`
--   `TRIGGER_PROJECT_ID=[Public 'project' key, starting 'proj*]`
 
 1.  In Posthog go to https://\[region\].posthog.com/project/\[project-id\]/settings/project-details to find your Project ID and Project API key:
 
@@ -299,6 +278,10 @@ http://localhost:4111
 Starter
 
 http://localhost:4000
+
+Background Jobs
+
+http://localhost:8288
 
 Postgres
 
@@ -437,3 +420,32 @@ const { data, error } \= await carbon
   .from("item")
   .select("\*")
   .eq("companyId", companyId);
+
+Translations
+------------
+
+In order to run `npm run translate` you must first run:
+
+brew install ollama
+brew services start ollama
+ollama pull llama3.2
+curl http://localhost:11434/api/tags
+npx linguito config set \\
+  llmSettings.provider=ollama \\
+  llmSettings.url=http://127.0.0.1:11434/api
+
+Migration Notes
+---------------
+
+### Trigger.dev to Inngest
+
+Background jobs have been migrated from Trigger.dev to Inngest. Key changes:
+
+-   **Job definitions** moved from `packages/jobs/trigger/` to `packages/jobs/src/inngest/functions/`
+-   **Triggering jobs** from app code uses `trigger()` and `batchTrigger()` from `@carbon/jobs` instead of `tasks.trigger()` from `@trigger.dev/sdk`
+-   **Inngest dev server** runs via `npx inngest-cli@latest dev -u http://localhost:3000/api/inngest`
+-   **Environment variables**: `TRIGGER_SECRET_KEY`, `TRIGGER_API_URL`, and `TRIGGER_PROJECT_ID` are no longer needed. Set `INNGEST_EVENT_KEY` and `INNGEST_SIGNING_KEY` instead (not required for local dev).
+
+### Upstash to Local Redis
+
+The caching layer (`@carbon/kv`) no longer depends on Upstash. A standard Redis instance is used instead. The `REDIS_URL` environment variable still applies, but you can point it at any Redis-compatible server (including a local Docker container).

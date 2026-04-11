@@ -1,6 +1,6 @@
 ---
 project: windows95
-stars: 23942
+stars: 23946
 description: 💩🚀 Windows 95 in Electron. Runs on macOS, Linux, and Windows.
 url: https://github.com/felixrieseberg/windows95
 ---

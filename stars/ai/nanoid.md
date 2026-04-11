@@ -1,6 +1,6 @@
 ---
 project: nanoid
-stars: 26713
+stars: 26723
 description: A tiny (118 bytes), secure, URL-friendly, unique string ID generator for JavaScript
 url: https://github.com/ai/nanoid
 ---
@@ -213,7 +213,7 @@ import { customRandom } from 'nanoid'
 
 const rng \= seedrandom(seed)
 const nanoid \= customRandom('abcdef', 10, size \=> {
-  return (new Uint8Array(size)).map(() \=> 256 \* rng())
+  return new Uint8Array(size).map(() \=> 256 \* rng())
 })
 
 nanoid() //=> "fbaefaadeb"
@@ -234,11 +234,13 @@ Usage
 
 There’s no correct way to use Nano ID for React `key` prop since it should be consistent among renders.
 
-function Todos({todos}) {
+function Todos({ todos }) {
   return (
     <ul\>
       {todos.map(todo \=> (
-        <li key\={nanoid()}\> /\* DON’T DO IT \*/
+        <li key\={nanoid()}\>
+          {' '}
+          /\* DON’T DO IT \*/
           {todo.text}
         </li\>
       ))}
@@ -248,20 +250,18 @@ function Todos({todos}) {
 
 You should rather try to reach for stable ID inside your list item.
 
-const todoItems \= todos.map((todo) \=>
-  <li key\={todo.id}\>
-    {todo.text}
-  </li\>
-)
+const todoItems \= todos.map(todo \=> <li key\={todo.id}\>{todo.text}</li\>)
 
 In case you don’t have stable IDs you'd rather use index as `key` instead of `nanoid()`:
 
-const todoItems \= todos.map((text, index) \=>
-  <li key\={index}\> /\* Still not recommended but preferred over nanoid().
-                      Only do this if items have no stable IDs. \*/
+const todoItems \= todos.map((text, index) \=> (
+  <li key\={index}\>
+    {' '}
+    /\* Still not recommended but preferred over nanoid(). Only do this if items
+    have no stable IDs. \*/
     {text}
   </li\>
-)
+))
 
 In case you just need random IDs to link elements like labels and input fields together, `useId` is recommended. That hook was added in React 18.
 

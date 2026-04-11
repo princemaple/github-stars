@@ -1,6 +1,6 @@
 ---
 project: trzsz-ssh
-stars: 2508
+stars: 2533
 description: trzsz-ssh ( tssh ) is an ssh client designed as a drop-in replacement for the openssh client. It aims to provide complete compatibility with openssh, mirroring all its features, while also offering additional useful features. Such as login prompt, batch login, remember password, automated interaction, trzsz, zmodem(rz/sz), udp mode like mosh, etc.
 url: https://github.com/trzsz/trzsz-ssh
 ---
@@ -52,10 +52,6 @@ SSH Agent
 
 `-a` `-A` `ForwardAgent` `IdentityAgent` `IdentitiesOnly` `SSH_AUTH_SOCK`
 
-Basic Login
-
-`-l` `-p` `-i` `-F` `HostName` `Port` `User` `IdentityFile` `SendEnv` `SetEnv`
-
 X11 Forward
 
 `-x` `-X` `-Y` `ForwardX11` `ForwardX11Trusted` `ForwardX11Timeout` `XAuthLocation`
@@ -63,6 +59,10 @@ X11 Forward
 Canonicalize
 
 `CanonicalizeHostname` `CanonicalDomains` `CanonicalizeMaxDots` `CanonicalizeFallbackLocal`
+
+Basic Login
+
+`-l` `-p` `-i` `-F` `HostName` `Port` `User` `IdentityFile` `CertificateFile` `SendEnv` `SetEnv`
 
 Authentication
 
@@ -234,7 +234,11 @@ UDP 端口转发
     
     `go install github.com/trzsz/trzsz-ssh/cmd/tssh@latest`
     
+    # latest release
     go install github.com/trzsz/trzsz-ssh/cmd/tssh@latest
+    
+    # latest development version (main branch)
+    go install github.com/trzsz/trzsz-ssh/cmd/tssh@main
     
     The binaries are usually located in ~/go/bin/ ( C:\\Users\\your\_name\\go\\bin\\ on Windows ).
     

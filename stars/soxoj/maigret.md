@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 19354
+stars: 19415
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -83,6 +83,10 @@ docker run -v /mydir:/app/reports soxoj/maigret:latest username --html
 
 # manual build
 docker build -t maigret .
+
+### Troubleshooting
+
+If you encounter build errors during installation, check the troubleshooting guide.
 
 Usage examples
 --------------

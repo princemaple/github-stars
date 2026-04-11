@@ -1,6 +1,6 @@
 ---
 project: ng-icons
-stars: 560
+stars: 561
 description: The ultimate icon library for Angular
 url: https://github.com/ng-icons/ng-icons
 ---

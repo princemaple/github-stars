@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 104104
+stars: 107545
 description: 🔥 The Web Data API for AI - Power AI agents with clean web data
 url: https://github.com/firecrawl/firecrawl
 ---

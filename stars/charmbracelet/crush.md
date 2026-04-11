@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 22494
+stars: 22862
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -211,6 +211,10 @@ io.net
 `GROQ_API_KEY`
 
 Groq
+
+`AVIAN_API_KEY`
+
+Avian
 
 `VERTEXAI_PROJECT`
 

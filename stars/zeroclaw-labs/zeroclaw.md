@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 29439
+stars: 29989
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, ANY OS, ANY PLATFORM — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -680,8 +680,8 @@ Use these when you're past the onboarding flow and want the deeper reference.
 -   Proxy agent playbook: docs/ops/proxy-agent-playbook.md
 -   Hardware guides: docs/hardware/README.md
 
-Smooth Crab 🦀
---------------
+Icy Crab 🦀
+-----------
 
 ZeroClaw was built for the smooth crab 🦀, a fast and efficient AI assistant. Built by Argenis De La Rosa and the community.
 

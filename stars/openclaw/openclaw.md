@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 348074
+stars: 354914
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -25,7 +25,7 @@ Sponsors
 
 -   **OpenAI** (ChatGPT/Codex)
 
-Model note: while many providers/models are supported, for the best experience and lower prompt-injection risk use the strongest latest-generation model available to you. See Onboarding.
+Model note: while many providers and models are supported, prefer a current flagship model from the provider you trust and already use. See Onboarding.
 
 Models (selection + auth)
 -------------------------
@@ -316,7 +316,7 @@ Minimal `~/.openclaw/openclaw.json` (model + defaults):
 
 {
   agent: {
-    model: "anthropic/claude-opus-4-6",
+    model: "<provider>/<model-id>",
   },
 }
 

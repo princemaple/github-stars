@@ -1,6 +1,6 @@
 ---
 project: TrafficMonitor
-stars: 43793
+stars: 43926
 description: 这是一个用于显示当前网速、CPU及内存利用率的桌面悬浮窗软件，并支持任务栏显示，支持更换皮肤。
 url: https://github.com/zhongyang219/TrafficMonitor
 ---
@@ -74,13 +74,13 @@ CPU频率监控
 
 ✔
 
-❌
+✔
 
 硬盘利用率监控
 
 ✔
 
-❌
+✔
 
 网络详细信息
 
@@ -105,6 +105,8 @@ CPU频率监控
 是
 
 否
+
+注：从1.86版本开始，TrafficMonitor Lite版也提供了显卡和硬盘利用率监控功能，相比标准版仅少了温度监控功能。后续TrafficMonitor中的温度监控功能将不再维护，TrafficMonitor将不再提供标准版，仅提供Lite版。温度监控功能已经迁移到了硬件监控插件，如果需要使用温度监控功能，请下载硬件监控插件。
 
 主要特性
 ====

@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 13168
+stars: 13479
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -339,6 +339,14 @@ https://ducorn.com/
 
 维护中
 
+One Stroke Fan
+
+基于 Astro 构建并部署在 Cloudflare Pages 的多语言粉丝站。支持 9 种语言、100+ 页面、sitemap / hreflang / JSON-LD / llms.txt，纯静态零成本运行。
+
+https://one-stroke.savetimefor.fun
+
+维护中
+
 脚手架
 ===
 
@@ -497,6 +505,14 @@ PageGuard
 免费网站健康扫描器，基于 Cloudflare Workers + D1 + Workers AI（Llama 3.1）。检查 SEO、性能（Core Web Vitals）、无障碍（WCAG 2.1）、最佳实践，30 秒出 AI 诊断报告，无需注册登录。
 
 https://pageguard.org
+
+维护中
+
+Beam
+
+轻量级、无 Cookie、GDPR 合规的网页分析服务，基于 Cloudflare Workers + D1 构建。无需 Cookie 即可收集页面浏览数据，隐私友好，可自部署。
+
+https://beam.keylightdigital.com/
 
 维护中
 
@@ -665,6 +681,31 @@ https://r2drop.com
 
 维护中
 
+K-Vault
+
+基于 Cloudflare 的 Serverless 聚合云盘。以 Telegram 为核心，兼容 R2、S3、Discord、HuggingFace 等多存储后端，支持 Webhook 直传、2GB 扩展、内容审核和自定义域名。
+
+维护中
+
+对象存储
+----
+
+项目
+
+简介
+
+在线地址
+
+状态
+
+awesome-object-storage
+
+21个S3兼容对象存储提供商的全面比较，包括Cloudflare R2。涵盖定价、陷阱和迁移成本。
+
+https://storage.mixpeek.com
+
+维护中
+
 测速
 --
 
@@ -785,6 +826,20 @@ Webhook Debugger
 自托管 Webhook 调试工具，支持签名验证（Stripe/GitHub/Slack/Shopify）、90天历史、全文搜索、一键重放。基于 Cloudflare Workers + D1 构建。
 
 https://webhook-debugger.autocompany.workers.dev
+
+维护中
+
+Cloudflare-WeChat-Notifier
+
+基于 Cloudflare Workers + Hono + D1 + Queues 的微信通知桥接服务。支持扫码登录、Webhook 入站、异步投递、失败重试和日志追踪，适用于 CI/CD、监控告警等通知场景。
+
+维护中
+
+GetWeb
+
+基于 Cloudflare Workers + GitHub Actions + Electron 的网页打包 EXE 工具。在线填写网址即可生成 Windows 桌面应用，支持自定义图标、构建历史和多 Token 负载均衡。
+
+https://jishuguai.cc.cd/
 
 维护中
 
@@ -1225,6 +1280,94 @@ Keep My Claw
 基于 Cloudflare Workers + D1 + R2 的 AI 代理加密云备份工具。支持自动定时备份、客户端 AES-256 加密、一键恢复到任意设备，专为 OpenClaw 工作空间设计。
 
 https://keepmyclaw.com
+
+维护中
+
+2FAuth Worker
+
+支持 Cloudflare Workers 与 Docker 双模式部署的高安全 2FA/TOTP 管理系统。提供 PWA、离线验证码生成、Health Shield 和 WebDAV/S3/Telegram 多通道备份。
+
+https://2fauth.pp.ua
+
+维护中
+
+AI Maze Generator
+
+基于 Next.js + OpenNext 部署在 Cloudflare Workers 上的在线迷宫生成器与游戏。支持 10 种迷宫模式、每日挑战、排行榜、自定义生成和 PDF 导出。
+
+https://ai-mazegenerator.com
+
+维护中
+
+OmniConvert
+
+部署在 Cloudflare Pages + Workers 的免费开源文件与单位转换工具箱。支持 94 种文件格式转换、345 种单位换算、PWA 离线使用、8 种语言以及 API / MCP 接口。
+
+https://tools.sagasu.art
+
+维护中
+
+Voice to Instrument
+
+免费 AI 音乐工具，可将人声录音转换为钢琴、吉他、鼓等器乐伴奏，适合内容创作与音乐制作。
+
+https://voicetoinstrument.com?utm\_source=github&utm\_medium=directory&utm\_campaign=backlink
+
+维护中
+
+TrySchedule
+
+免费在线排班与日程构建工具，无需登录即可快速创建和调整时间表。
+
+https://www.tryschedule.com/?utm\_source=github&utm\_medium=directory&utm\_campaign=backlink
+
+维护中
+
+Period Calculator
+
+AI 驱动的经期周期计算工具，用于周期跟踪、日期预测与相关信息查询。
+
+https://www.aiperiodcalculator.com/
+
+维护中
+
+Nano Banana 2
+
+使用 Cloudflare R2 与 Turnstile 的 AI 图像工作室，支持文生图、图像编辑、广告海报和电商视觉生成。
+
+https://nanobananas2.org
+
+维护中
+
+D2Down
+
+免费高速在线视频下载与转换工具，支持 YouTube、TikTok 等平台。
+
+https://d2down.com?utm\_source=github&utm\_medium=directory&utm\_campaign=backlink
+
+维护中
+
+TOPUPlive
+
+在线充值平台，支持手机充值、直播、游戏、礼品卡等 3000+ 商品类别。
+
+https://www.topuplive.com/?utm\_source=github&utm\_medium=directory&utm\_campaign=backlink
+
+维护中
+
+Slitherlinks
+
+免费在线 Slitherlink 数字回路谜题平台，提供 1900+ 谜题、每日挑战、全球排行榜，技术栈包含 Cloudflare Workers + D1。
+
+https://slitherlinks.com
+
+维护中
+
+Flashify
+
+AI 驱动的学习工具，可将 PDF 学习资料转换为高质量 Anki 闪卡并导出卡组。
+
+https://flashify.app?utm\_source=github&utm\_medium=directory&utm\_campaign=backlink-2026q1
 
 维护中
 

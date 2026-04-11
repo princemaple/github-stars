@@ -1,6 +1,6 @@
 ---
 project: MechanicalSoup
-stars: 4849
+stars: 4852
 description: A Python library for automating interaction with websites.
 url: https://github.com/MechanicalSoup/MechanicalSoup
 ---

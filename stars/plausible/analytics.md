@@ -1,52 +1,91 @@
 ---
 project: analytics
-stars: 24532
-description: Simple, open source, lightweight and privacy-friendly web analytics alternative to Google Analytics.
+stars: 24568
+description: Open source, privacy-first web analytics. Lightweight, cookie-free Google Analytics alternative. Self-hosted or cloud.
 url: https://github.com/plausible/analytics
 ---
 
 Plausible Analytics
 ===================
 
-Simple Metrics | Lightweight Script | Privacy Focused | Open Source | Docs | Contributing  
+Live Demo | Open Source | Docs | Contributing  
   
 
-Plausible Analytics is an easy to use, lightweight, open source and privacy-friendly alternative to Google Analytics. It doesn’t use cookies and is fully compliant with GDPR, CCPA and PECR. You can self-host Plausible Community Edition or have us manage Plausible Analytics for you in the cloud. Here's the live demo of our own website stats. Made and hosted in the EU 🇪🇺
+Plausible Analytics is an open source, privacy-first web analytics tool. Lightweight, cookie-free alternative to Google Analytics. Available in managed cloud or self-hosted community edition.
 
-We are dedicated to making web analytics more privacy-friendly. Our mission is to reduce corporate surveillance by providing an alternative web analytics tool which doesn’t come from the AdTech world. We are completely independent and solely funded by our subscribers.
+-   🔐 Privacy-focused
+-   🛡️ GDPR, CCPA, PECR compliant
+-   📊 Simple, fast dashboard
+-   🪶 Lightweight script
+-   🇪🇺 Made and hosted in the EU
 
 Why Plausible?
 --------------
 
 Here's what makes Plausible a great Google Analytics alternative and why we're trusted by thousands of paying subscribers to deliver their website and business insights:
 
--   **Clutter Free**: Plausible Analytics provides simple web analytics and it cuts through the noise. No layers of menus, no need for custom reports. Get all the important insights on one single page. No training necessary.
--   **GDPR/CCPA/PECR compliant**: Measure traffic, not individuals. No personal data or IP addresses are ever stored in our database. We don't use cookies or any other persistent identifiers. Read more about our data policy
--   **Lightweight**: Plausible Analytics works by loading a script on your website, like Google Analytics. Our script is small, making your website quicker to load. You can also send events directly to our events API.
--   **Email or Slack reports**: Keep an eye on your traffic with weekly and/or monthly email or Slack reports. You can also get traffic spike notifications.
--   **Invite team members and share stats**: You have the option to be transparent and open your web analytics to everyone. Your website stats are private by default but you can choose to make them public so anyone with your custom link can view them. You can invite team members and assign user roles too.
--   **Define key goals and track conversions**: Create custom events with custom dimensions to track conversions and attribution to understand and identify the trends that matter. Track ecommerce revenue, outbound link clicks, form completions, file downloads and 404 error pages. Increase conversions using funnel analysis.
--   **Search keywords**: Integrate your dashboard with Google Search Console to get the most accurate reporting on your search keywords.
--   **SPA support**: Plausible is built with modern web frameworks in mind and it works automatically with any pushState based router on the frontend. We also support frameworks that use the URL hash for routing. See our documentation.
--   **Smooth transition from Google Analytics**: There's a realtime dashboard, entry pages report and integration with Search Console. You can track your paid campaigns and conversions. You can invite team members. You can even import your historical Google Analytics stats and there's a Google Tag Manager template too. Learn how to get the most out of your Plausible experience and join thousands who have already migrated from Google Analytics.
+-   **Clutter-free**  
+    Plausible provides simple web analytics that cut through the noise. No layers of menus or need to create custom reports. All key insights are on a single page, with no training required.
+    
+-   **Privacy-first and compliant**  
+    Measure traffic, not individuals. No personal data or IP addresses are stored, and no cookies or persistent identifiers are used. Fully compliant with GDPR, CCPA and PECR.  
+    Read more about our data policy
+    
+-   **Lightweight**  
+    Our script is tiny, helping your website load faster. You can also send events directly to our events API.
+    
+-   **Built for modern workflows**  
+    Works with modern frameworks and supports SPAs out of the box, including pushState and hash-based routing. See details.
+    
+-   **Define key goals and track conversions**  
+    Track goals, conversions, revenue attribution and funnels using custom events and dimensions. Turn on codeless tracking for outbound link clicks, form completions, file downloads and 404 error pages.
+    
+-   **Easy reporting and sharing**  
+    Get weekly or monthly reports via email or Slack, including traffic spike/drop notifications. Invite team members with role-based access, share dashboards publicly or with anyone using a simple link. Make your analytics transparent by default.
+    
+-   **Search insights included**  
+    Integrate with Google Search Console to get accurate keyword data directly in your dashboard.
+    
+-   **API and integrations**  
+    Send events directly via our API and export your stats using the stats API or CSV. Build custom workflows and integrations on top of your data.
+    
+-   **Real-time insights**  
+    Monitor live traffic and understand what’s happening on your site as it happens.
+    
+-   **Smooth transition from Google Analytics**  
+    Familiar metrics, campaign tracking and Search Console integration. Import your historical Google Analytics stats and continue where you left off.
+    
 
-Interested to learn more? Read more on our website, learn more about the team and the goals of the project on our about page or explore the documentation.
+Thousands of teams use Plausible to understand their traffic without sacrificing privacy or simplicity. Learn how to get the most out of your Plausible experience.
+
+We are dedicated to making web analytics more privacy-friendly. Our mission is to reduce corporate surveillance by providing an alternative web analytics tool which doesn’t come from the AdTech world. We are completely independent and solely funded by our subscribers.
+
+Interested to learn more? Read more on our website, learn more about the team and our goals on our about page or explore the documentation.
 
 Why is Plausible Analytics Cloud not free like Google Analytics?
 ----------------------------------------------------------------
 
-Plausible Analytics is an independently owned and actively developed project. To keep the project development going, to stay in business, to continue putting effort into building a better product and to cover our costs, we need to charge a fee.
+Plausible is an independent, open source project funded entirely by our users. We charge a subscription to sustainably develop, maintain and improve the product over the long term.
 
-Google Analytics is free because Google has built their company and their wealth by collecting and analyzing huge amounts of personal information from web users and using these personal and behavioral insights to sell advertisements.
+Google Analytics is free to use because Google monetizes user data for advertising. That model comes with trade-offs: data collection, complexity and additional overhead for compliance and consent.
 
-Plausible has no part in that business model. No personal data is being collected and analyzed either. With Plausible, you 100% own and control all of your website data. This data is not being shared with or sold to any third-parties.
+With Plausible, the business model is simple:
 
-We choose the subscription business model rather than the business model of surveillance capitalism. See reasons why we believe you should stop using Google Analytics on your website.
+-   No data collection beyond aggregated, anonymized stats
+-   No third-party data sharing
+-   No advertising or tracking ecosystem
+-   You fully own and control your data
+
+We believe paying for analytics should be straightforward. You pay for a product, not with your users’ data, but with a transparent subscription. Learn more.
 
 Getting started with Plausible
 ------------------------------
 
-The easiest way to get started with Plausible Analytics is with our official managed service in the cloud. It takes 2 minutes to start counting your stats with a worldwide CDN, high availability, backups, security and maintenance all done for you by us.
+The easiest way to get started with Plausible Analytics is with our official managed service in the cloud.
+
+-   Takes ~2 minutes to set up
+-   Global CDN, high availability, backups and security included
+-   No maintenance required
 
 In order to be compliant with the GDPR and the Schrems II ruling, all visitor data for our managed service in the cloud is exclusively processed on servers and cloud infrastructure owned and operated by European providers. Your website data never leaves the EU.
 
@@ -117,7 +156,13 @@ Our only source of funding is our premium, managed service for running Plausible
 Technology
 ----------
 
-Plausible Analytics is a standard Elixir/Phoenix application backed by a PostgreSQL database for general data and a Clickhouse database for stats. On the frontend we use TailwindCSS for styling and React to make the dashboard interactive.
+Plausible is built with a modern, scalable stack:
+
+-   **Backend**: Elixir + Phoenix
+-   **Databases**: PostgreSQL (general data), ClickHouse (analytics)
+-   **Frontend**: React + TailwindCSS
+
+Our architecture allows Plausible to handle large volumes of traffic efficiently while keeping the dashboard fast and responsive.
 
 Contributors
 ------------
@@ -129,7 +174,7 @@ Feedback & Roadmap
 
 We welcome feedback from our community. We have a public roadmap driven by the features suggested by the community members. Take a look at our feedback board. Please let us know if you have any requests and vote on open issues so we can better prioritize.
 
-To stay up to date with all the latest news and product updates, make sure to follow us on X (formerly Twitter), LinkedIn or Mastodon.
+To stay up to date with all the latest news and product updates, make sure to follow us on X (formerly Twitter), Bluesky, LinkedIn and Mastodon.
 
 License & Trademarks
 --------------------

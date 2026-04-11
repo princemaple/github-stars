@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 492
+stars: 507
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -229,6 +229,7 @@ Legend:
 
 -   Line
 -   Polyline
+-   Spline
 -   Circle
 -   Arc
 -   Ellipse
@@ -275,7 +276,6 @@ Legend:
 
 -   Command registry
 -   Command aliases
--   Keyboard-driven workflow
 -   Command prompts (AutoCAD-style)
 
 ### Integration & Extensibility
@@ -299,7 +299,7 @@ Legend:
 #### Offline Editor
 
 -   ⏳ Local editing in browser
--   Save to DXF
+-   ⏳ Save to DXF
 -   Save change set / diff
 -   IndexedDB persistence
 

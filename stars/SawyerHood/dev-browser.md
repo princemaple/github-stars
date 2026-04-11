@@ -1,6 +1,6 @@
 ---
 project: dev-browser
-stars: 5402
+stars: 5689
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
@@ -15,6 +15,11 @@ A browser automation tool that lets AI agents and developers control browsers wi
 -   **Persistent pages** - Navigate once, interact across multiple scripts
 -   **Auto-connect** - Connect to your running Chrome or launch a fresh Chromium
 -   **Full Playwright API** - goto, click, fill, locators, evaluate, screenshots, and more
+
+Demo
+----
+
+dev-browser-sheet-small.mp4
 
 CLI Installation
 ----------------

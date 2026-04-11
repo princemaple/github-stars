@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 27006
+stars: 28673
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -122,6 +122,8 @@ agent-browser stream status           # Show runtime streaming state and bound p
 agent-browser stream disable          # Stop runtime WebSocket streaming
 agent-browser close                   # Close browser (aliases: quit, exit)
 agent-browser close --all             # Close all active sessions
+agent-browser chat "<instruction>"    # AI chat: natural language browser control (single-shot)
+agent-browser chat                    # AI chat: interactive REPL mode
 
 ### Get Info
 
@@ -184,18 +186,21 @@ agent-browser wait "#spinner" --state hidden
 
 ### Batch Execution
 
-Execute multiple commands in a single invocation by piping a JSON array of string arrays to `batch`. This avoids per-command process startup overhead when running multi-step workflows.
+Execute multiple commands in a single invocation. Commands can be passed as quoted arguments or piped as JSON via stdin. This avoids per-command process startup overhead when running multi-step workflows.
 
-# Pipe commands as JSON
+# Argument mode: each quoted argument is a full command
+agent-browser batch "open https://example.com" "snapshot -i" "screenshot"
+
+# With --bail to stop on first error
+agent-browser batch --bail "open https://example.com" "click @e1" "screenshot"
+
+# Stdin mode: pipe commands as JSON
 echo '\[
   \["open", "https://example.com"\],
   \["snapshot", "-i"\],
   \["click", "@e1"\],
   \["screenshot", "result.png"\]
 \]' | agent-browser batch --json
-
-# Stop on first error
-agent-browser batch --bail < commands.json
 
 ### Clipboard
 
@@ -558,6 +563,7 @@ The `snapshot` command supports filtering to reduce output size:
 
 agent-browser snapshot                    # Full accessibility tree
 agent-browser snapshot -i                 # Interactive elements only (buttons, inputs, links)
+agent-browser snapshot -i --urls          # Interactive elements with link URLs
 agent-browser snapshot -c                 # Compact (remove empty structural elements)
 agent-browser snapshot -d 3               # Limit depth to 3 levels
 agent-browser snapshot -s "#main"         # Scope to CSS selector
@@ -570,6 +576,10 @@ Description
 `-i, --interactive`
 
 Only show interactive elements (buttons, links, inputs)
+
+`-u, --urls`
+
+Include href URLs for link elements
 
 `-c, --compact`
 
@@ -742,6 +752,18 @@ Browser engine: `chrome` (default), `lightpanda` (or `AGENT_BROWSER_ENGINE` env)
 
 Disable automatic dismissal of `alert`/`beforeunload` dialogs (or `AGENT_BROWSER_NO_AUTO_DIALOG` env)
 
+`--model <name>`
+
+AI model for chat command (or `AI_GATEWAY_MODEL` env)
+
+`-v`, `--verbose`
+
+Show tool commands and their raw output (chat)
+
+`-q`, `--quiet`
+
+Show only AI text responses, hide tool calls (chat)
+
 `--config <path>`
 
 Use a custom config file (or `AGENT_BROWSER_CONFIG` env)
@@ -754,9 +776,6 @@ Observability Dashboard
 -----------------------
 
 Monitor agent-browser sessions in real time with a local web dashboard showing a live viewport and command activity feed.
-
-# Install the dashboard (one time)
-agent-browser dashboard install
 
 # Start the dashboard server (runs in background on port 4848)
 agent-browser dashboard start
@@ -776,6 +795,29 @@ The dashboard displays:
 -   **Activity feed** -- chronological command/result stream with timing and expandable details
 -   **Console output** -- browser console messages (log, warn, error)
 -   **Session creation** -- create new sessions from the UI with local engines (Chrome, Lightpanda) or cloud providers (AgentCore, Browserbase, Browserless, Browser Use, Kernel)
+-   **AI Chat** -- chat with an AI assistant directly in the dashboard (requires Vercel AI Gateway configuration)
+
+### AI Chat
+
+The dashboard includes an optional AI chat panel powered by the Vercel AI Gateway. The same functionality is available directly from the CLI via the `chat` command. Set these environment variables to enable AI chat:
+
+export AI\_GATEWAY\_API\_KEY=gw\_your\_key\_here
+export AI\_GATEWAY\_MODEL=anthropic/claude-sonnet-4.6           # optional, this is the default
+export AI\_GATEWAY\_URL=https://ai-gateway.vercel.sh           # optional, this is the default
+
+**CLI usage:**
+
+agent-browser chat "open google.com and search for cats"     # Single-shot
+agent-browser chat                                           # Interactive REPL
+agent-browser -q chat "summarize this page"                  # Quiet mode (text only)
+agent-browser -v chat "fill in the login form"               # Verbose (show command output)
+agent-browser --model openai/gpt-4o chat "take a screenshot" # Override model
+
+The `chat` command translates natural language instructions into agent-browser commands, executes them, and streams the AI response. In interactive mode, type `quit` to exit. Use `--json` for structured output suitable for agent consumption.
+
+**Dashboard usage:**
+
+The Chat tab is always visible in the dashboard. When `AI_GATEWAY_API_KEY` is set, the Rust server proxies requests to the gateway and streams responses back using the Vercel AI SDK's UI Message Stream protocol. Without the key, sending a message shows an error inline.
 
 Configuration
 -------------

@@ -1,6 +1,6 @@
 ---
 project: chromic_pdf
-stars: 477
+stars: 478
 description: Convenient HTML to PDF/A rendering library for Elixir based on Chrome & Ghostscript
 url: https://github.com/bitcrowd/chromic_pdf
 ---

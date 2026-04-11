@@ -1,6 +1,6 @@
 ---
 project: simple-icons
-stars: 24823
+stars: 24856
 description: SVG icons for popular brands
 url: https://github.com/simple-icons/simple-icons
 ---
@@ -215,6 +215,10 @@ Astro package
 Blazor Nuget package
 
 @TimeWarpEngineering
+
+Elm package
+
+@agj
 
 Flutter package
 

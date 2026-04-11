@@ -1,6 +1,6 @@
 ---
 project: n8n
-stars: 182456
+stars: 183597
 description: Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.
 url: https://github.com/n8n-io/n8n
 ---
@@ -61,7 +61,7 @@ n8n is fair-code distributed under the Sustainable Use License and n8n Enterpris
 -   **Self-Hostable**: Deploy anywhere
 -   **Extensible**: Add your own nodes and functionality
 
-Enterprise licenses available for additional features and support.
+Enterprise Licenses available for additional features and support.
 
 Additional information about the license model can be found in the docs.
 

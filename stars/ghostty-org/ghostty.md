@@ -1,6 +1,6 @@
 ---
 project: ghostty
-stars: 49696
+stars: 50433
 description: 👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.
 url: https://github.com/ghostty-org/ghostty
 ---
@@ -128,7 +128,7 @@ Our goal with Ghostty is for users of whatever platform they run Ghostty on to t
 
 In addition to being a standalone terminal emulator, Ghostty is a C-compatible library for embedding a fast, feature-rich terminal emulator in any 3rd party project. This library is called `libghostty`.
 
-Due to the scope of this project, we're breaking libghostty down into separate actually libraries, starting with `libghostty-vt`. The goal of this project is to focus on parsing terminal sequences and maintaining terminal state. This is covered in more detail in this blog post.
+Due to the scope of this project, we're breaking libghostty down into separate libraries, starting with `libghostty-vt`. The goal of this project is to focus on parsing terminal sequences and maintaining terminal state. This is covered in more detail in this blog post.
 
 `libghostty-vt` is already available and usable today for Zig and C and is compatible for macOS, Linux, Windows, and WebAssembly. The functionality is extremely stable (since its been proven in Ghostty GUI for a long time), but the API signatures are still in flux.
 

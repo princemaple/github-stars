@@ -1,7 +1,7 @@
 ---
 project: jscpd
-stars: 5501
-description: Copy/paste detector for programming source code.
+stars: 5514
+description: Copy/paste detector for programming source code. 
 url: https://github.com/kucherenko/jscpd
 ---
 
@@ -52,6 +52,15 @@ Html reporter for jscpd
 @jscpd/badge-reporter
 
 Badge reporter for jscpd
+
+AI Agent Skill
+--------------
+
+jscpd includes an agent skill for detecting and eliminating code duplication with AI coding assistants (Claude, Copilot, Gemini, Cursor, etc.).
+
+npx skills add kucherenko/jscpd
+
+Once installed, the skill teaches your agent to run jscpd with the `ai` reporter and refactor detected duplications.
 
 Installation
 ------------

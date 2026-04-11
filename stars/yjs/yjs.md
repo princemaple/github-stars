@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 21568
+stars: 21615
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -35,7 +35,6 @@ Who is using Yjs
 ----------------
 
 -   AFFiNE A local-first, privacy-first, open source knowledge base. 🌟
--   Huly - Open Source All-in-One Project Management Platform 🌟
 -   Cargo Site builder for designers and artists 🌟
 -   Gitbook Knowledge management for technical teams 🌟
 -   Evernote Note-taking app 🌟
@@ -43,6 +42,7 @@ Who is using Yjs
 -   Ellipsus - Collaborative writing app for storytelling etc. Supports versioning, change attribution, and "blame". A solution for the whole publishing process (also selling) ⭐
 -   Dynaboard Build web apps collaboratively. ⭐
 -   Relm A collaborative gameworld for teamwork and community. ⭐
+-   Huly - Open Source All-in-One Project Management Platform
 -   Room.sh A meeting application with integrated collaborative drawing, editing, and coding tools. ⭐
 -   Nimbus Note A note-taking app designed by Nimbus Web. ⭐
 -   Pluxbox RadioManager A web-based app to collaboratively organize radio broadcasts. ⭐
@@ -89,6 +89,7 @@ Who is using Yjs
 -   reearth-flow - Collaboratively calculate and convert various data
 -   ProtonMail | Proton Docs - E2E encrypted collaborative documents in Proton Drive.
 -   Theneo - AI-powered API docs with live team collaboration.
+-   ToolJet - Build full-stack enterprise internal apps in minutes.
 
 Table of Contents
 -----------------
@@ -334,6 +335,10 @@ Use Matrix as an off-the-shelf backend for Yjs by using the MatrixProvider. Use 
 yrb-actioncable
 
 An ActionCable companion for Yjs clients. There is a fitting redis extension as well.
+
+y-atproto
+
+A Yjs provider that syncs documents over the AT Protocol (the decentralized protocol behind Bluesky). Documents are stored as ATProto records and real-time updates are delivered via Jetstream.
 
 ypy-websocket
 

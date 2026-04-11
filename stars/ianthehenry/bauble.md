@@ -1,6 +1,6 @@
 ---
 project: bauble
-stars: 566
+stars: 569
 description: a playground for making 3D art with lisp and math
 url: https://github.com/ianthehenry/bauble
 ---

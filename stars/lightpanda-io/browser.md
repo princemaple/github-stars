@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 27089
+stars: 28435
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -13,19 +13,34 @@ Not a Chromium fork. Not a WebKit patch. A new browser, written in Zig.
 
  
 
-_chromedp requesting 933 real web pages over the network on a AWS EC2 m5.large instance. See benchmark details._
+Benchmarks
+----------
 
-Lightpanda is the open-source browser made for headless usage:
+Requesting 933 real web pages over the network on a AWS EC2 m5.large instance. See benchmark details.
 
--   Javascript execution
--   Support of Web APIs (partial, WIP)
--   Compatible with Playwright1, Puppeteer, chromedp through CDP
+Metric
 
-Fast web automation for AI agents, LLM training, scraping and testing:
+Lightpanda
 
--   Ultra-low memory footprint (16x less than Chrome)
--   Exceptionally fast execution (9x faster than Chrome)
--   Instant startup
+Headless Chrome
+
+Difference
+
+Memory (peak, 100 pages)
+
+123MB
+
+2GB
+
+~16 less
+
+Execution time (100 pages)
+
+5s
+
+46s
+
+~9x faster
 
 Quick start
 -----------
@@ -41,10 +56,14 @@ _For Linux_
 curl -L -o lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86\_64-linux && \\
 chmod a+x ./lightpanda
 
+Linux aarch64 is also available
+
 _For MacOS_
 
 curl -L -o lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-macos && \\
 chmod a+x ./lightpanda
+
+MacOS x86\_64 is also available
 
 _For Windows + WSL2_
 
@@ -54,53 +73,21 @@ The Lightpanda browser is compatible to run on windows inside WSL. Follow the Li
 
 Lightpanda provides official Docker images for both Linux amd64 and arm64 architectures. The following command fetches the Docker image and starts a new container exposing Lightpanda's CDP server on port `9222`.
 
-docker run -d --name lightpanda -p 9222:9222 lightpanda/browser:nightly
+docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly
 
 ### Dump a URL
 
-./lightpanda fetch --obey-robots --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/
+./lightpanda fetch --obey-robots --dump html --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/
 
-INFO  telemetry : telemetry status . . . . . . . . . . . . .  \[+0ms\]
-      disabled = false
-
-INFO  page : navigate . . . . . . . . . . . . . . . . . . . . \[+6ms\]
-      url = https://demo-browser.lightpanda.io/campfire-commerce/
-      method = GET
-      reason = address\_bar
-      body = false
-      req\_id = 1
-
-INFO  browser : executing script . . . . . . . . . . . . . .  \[+118ms\]
-      src = https://demo-browser.lightpanda.io/campfire-commerce/script.js
-      kind = javascript
-      cacheable = true
-
-INFO  http : request complete . . . . . . . . . . . . . . . . \[+140ms\]
-      source = xhr
-      url = https://demo-browser.lightpanda.io/campfire-commerce/json/product.json
-      status = 200
-      len = 4770
-
-INFO  http : request complete . . . . . . . . . . . . . . . . \[+141ms\]
-      source = fetch
-      url = https://demo-browser.lightpanda.io/campfire-commerce/json/reviews.json
-      status = 200
-      len = 1615
-<!DOCTYPE html>
+You can use `--dump markdown` to convert directly into markdown. `--wait-until`, `--wait-ms`, `--wait-selector` and `--wait-script` are available to adjust waiting time before dump.
 
 ### Start a CDP server
 
 ./lightpanda serve --obey-robots --log-format pretty  --log-level info --host 127.0.0.1 --port 9222
 
-INFO  telemetry : telemetry status . . . . . . . . . . . . .  \[+0ms\]
-      disabled = false
-
-INFO  app : server running . . . . . . . . . . . . . . . . .  \[+0ms\]
-      address = 127.0.0.1:9222
-
 Once the CDP server started, you can run a Puppeteer script by configuring the `browserWSEndpoint`.
 
-'use strict'
+Example Puppeteer script
 
 import puppeteer from 'puppeteer-core';
 
@@ -127,6 +114,25 @@ console.log(links);
 await page.close();
 await context.close();
 await browser.disconnect();
+
+### Native MCP and skill
+
+The MCP server communicates via MCP JSON-RPC 2.0 over stdio.
+
+Add to your MCP configuration:
+
+{
+  "mcpServers": {
+    "lightpanda": {
+      "command": "/path/to/lightpanda",
+      "args": \["mcp"\]
+    }
+  }
+}
+
+Read full documentation
+
+A skill is available in lightpanda-io/agent-skill.
 
 ### Telemetry
 
@@ -309,37 +315,32 @@ zig build -Doptimize=ReleaseFast run
 Contributing
 ------------
 
-Lightpanda accepts pull requests through GitHub.
+See CONTRIBUTING.md for guidelines. You must sign our CLA during the pull request process.
 
-You have to sign our CLA during the pull request process otherwise we're not able to accept your contributions.
+-   Discord
 
-Why?
-----
+Why Lightpanda?
+---------------
 
 ### Javascript execution is mandatory for the modern web
 
-In the good old days, scraping a webpage was as easy as making an HTTP request, cURL-like. It’s not possible anymore, because Javascript is everywhere, like it or not:
+Simple HTTP requests used to be enough for web automation. That's no longer the case. Javascript now drives most of the web:
 
--   Ajax, Single Page App, infinite loading, “click to display”, instant search, etc.
--   JS web frameworks: React, Vue, Angular & others
+-   Ajax, Single Page Apps, infinite loading, instant search
+-   JS frameworks: React, Vue, Angular, and others
 
 ### Chrome is not the right tool
 
-If we need Javascript, why not use a real web browser? Take a huge desktop application, hack it, and run it on the server. Hundreds or thousands of instances of Chrome if you use it at scale. Are you sure it’s such a good idea?
+Running a full desktop browser on a server works, but it does not scale well. Chrome at hundreds or thousands of instances is expensive:
 
--   Heavy on RAM and CPU, expensive to run
--   Hard to package, deploy and maintain at scale
--   Bloated, lots of features are not useful in headless usage
+-   Heavy on RAM and CPU
+-   Hard to package, deploy, and maintain at scale
+-   Many features are not necessary in headless made
 
 ### Lightpanda is built for performance
 
-If we want both Javascript and performance in a true headless browser, we need to start from scratch. Not another iteration of Chromium, really from a blank page. Crazy right? But that’s what we did:
+Supporting Javascript with real performance meant building from scratch rather than forking Chromium:
 
--   Not based on Chromium, Blink or WebKit
--   Low-level system programming language (Zig) with optimisations in mind
--   Opinionated: without graphical rendering
-
-Footnotes
----------
-
-1.  **Playwright support disclaimer:** Due to the nature of Playwright, a script that works with the current version of the browser may not function correctly with a future version. Playwright uses an intermediate JavaScript layer that selects an execution strategy based on the browser's available features. If Lightpanda adds a new Web API, Playwright may choose to execute different code for the same script. This new code path could attempt to use features that are not yet implemented. Lightpanda makes an effort to add compatibility tests, but we can't cover all scenarios. If you encounter an issue, please create a GitHub issue and include the last known working version of the script. ↩
+-   Not based on Chromium, Blink, or WebKit
+-   Written in Zig, a low-level language with explicit memory control
+-   No graphical rendering engine

@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 188
+stars: 189
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---
@@ -10,7 +10,7 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL (& Extension) Package Manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 14 ~ 18 along with 461 extensions on (`amd64` / `arm64`) with native OS package manager
+Install PostgreSQL 14 ~ 18 along with 481 extensions on (`amd64` / `arm64`) with native OS package manager
 
 All commands support structured output (`-o yaml/json`) with self-describing schema, making it an **Agent-Friendly** PostgreSQL CLI tool. Also check the **Pigsty Extension Catalog** to get details about the available extensions.
 
@@ -29,7 +29,7 @@ $ pig repo add pigsty pgdg -u       # add pgdg & pigsty repo, then update repo c
 $ pig ext install pg18              # install PostgreSQL 18 kernels with native PGDG packages
 $ pig ext install pg\_duckdb -v 18   # install the pg\_duckdb extension (for current pg18)
 
-That's it. All set! Check the advanced usage for details and the full list of 461 available extensions.
+That's it. All set! Check the advanced usage for details and the full list of 481 available extensions.
 
 * * *
 
@@ -320,13 +320,13 @@ $ pig ext avail postgis pgvector     # show matrix for multiple extensions
 $ pig ext avail                      # show all packages availability on current OS
 
 vagrant@meta:~$ pig ext avail
-✓ Found 294 packages available on u24.arm64
+✓ Found 297 packages available on u24.arm64
 
 Extension Availability on u24.aarch64 : https://pigsty.io/ext/os/u24.aarch64
-Showing 318 packages with 461 extensions  (green = PIGSTY, blue = PGDG)
+Showing 340 packages with 481 extensions  (green = PIGSTY, blue = PGDG)
 
 Pkg                     18          17          16          15          14      
-timescaledb             2.25.1      2.25.1      2.25.1      2.25.1      2.19.3
+timescaledb             2.25.2      2.25.2      2.25.2      2.25.2      2.19.3
 timescaledb\_toolkit     1.22.0      1.22.0      1.22.0      1.22.0      1.19.0
 pg\_timeseries           0.2.0       0.2.0       0.2.0       0.2.0       0.2.0   
 periods                 1.2.3       1.2.3       1.2.3       1.2.3       1.2.3   

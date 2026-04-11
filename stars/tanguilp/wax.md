@@ -393,3 +393,8 @@ Support of FIDO2
 -   TOC CRLs verification
 -   Loading and verification of metadata statements against the hased value of the TOC
 -   Handling of the status of the authenticator (through whitelisting, see the `:acceptable_authenticator_statuses` option)
+
+Global environment variables
+----------------------------
+
+-   `setup_for_conformance_suite`: set to `true` to enable what's needed top run the conformance test suite. Only works when the Mix environment is `:dev`

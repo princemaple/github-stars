@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 14518
+stars: 14595
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -360,7 +360,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ATREAY**
 
   
-**Duncanma**
+**gsmcdonald**
 
   
 **timheuer**
@@ -393,10 +393,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **soulchild**
 
   
-**gsmcdonald**
+**WDaan**
 
   
-**WDaan**
+**Duncanma**
 
   
 **handrews**
@@ -405,22 +405,22 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **luke-hagar-sp**
 
   
-**ledgersteve**
-
-  
-**SebastianBienert**
-
-  
-**PrinceManfred**
-
-  
 **luc122c**
+
+  
+**mason-at-pieces**
 
   
 **mouhannad-sh**
 
   
-**mason-at-pieces**
+**PrinceManfred**
+
+  
+**SebastianBienert**
+
+  
+**ledgersteve**
 
   
 **bobheadxi**
@@ -471,10 +471,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **dotfortun**
 
   
-**zakaria-shahen**
+**smoores-dev**
 
   
-**not-my-profile**
+**cactysman**
 
   
 **tinchoz49**
@@ -546,6 +546,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **danwithabox**
 
   
+**demingongo**
+
+  
 **FotieMConstant**
 
   
@@ -580,9 +583,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **Huliiiiii**
-
-  
-**smoores-dev**
 
   
 **soGit**
@@ -636,10 +636,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **rolldeep-stepmerrily**
 
   
-**abdulamite**
-
-  
-**cactysman**
+**zakaria-shahen**
 
   
 **foxfriends**
@@ -691,6 +688,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **elliotnash**
+
+  
+**kevinand11**
+
+  
+**abdulamite**
 
   
 **MathurAditya724**
@@ -747,12 +750,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Smyrcu**
 
   
-**elliott-with-the-longest-name-on-github**
-
-  
-**kevinand11**
-
-  
 **JacobCoffee**
 
   
@@ -802,6 +799,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **MarioGK**
+
+  
+**not-my-profile**
+
+  
+**elliott-with-the-longest-name-on-github**
 
   
 **emmanuel-ferdman**

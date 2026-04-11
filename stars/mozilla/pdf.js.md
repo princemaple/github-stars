@@ -1,6 +1,6 @@
 ---
 project: pdf.js
-stars: 53073
+stars: 53105
 description: PDF Reader in JavaScript
 url: https://github.com/mozilla/pdf.js
 ---

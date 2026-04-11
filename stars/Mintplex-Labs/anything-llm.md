@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 57645
+stars: 58092
 description: The all-in-one AI productivity accelerator. On device and privacy first with no annoying setup or configuration.
 url: https://github.com/Mintplex-Labs/anything-llm
 ---

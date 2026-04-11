@@ -1,6 +1,6 @@
 ---
 project: quickbeam
-stars: 325
+stars: 349
 description: JavaScript runtime for the BEAM — Web APIs backed by OTP, native DOM, and a built-in TypeScript toolchain.
 url: https://github.com/elixir-volt/quickbeam
 ---
@@ -453,7 +453,7 @@ lexbor (native C DOM)
 
 `WebSocket`
 
-`:gun`
+`Mint.WebSocket`
 
 `Worker`
 

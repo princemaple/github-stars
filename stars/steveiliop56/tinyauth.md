@@ -1,6 +1,6 @@
 ---
 project: tinyauth
-stars: 7192
+stars: 7220
 description: The tiniest authentication and authorization server you have ever seen.
 url: https://github.com/steveiliop56/tinyauth
 ---
@@ -21,6 +21,10 @@ Tinyauth is in active development and configuration may change often. Please mak
 Note
 
 This is the main development branch. For the latest stable release, see the documentation or the latest stable tag.
+
+Note
+
+Tinyauth is in the process of migrating to the new tinyauthapp organization. The organization **is official** and it will host all of the Tinyauth related repositories in the future.
 
 Getting Started
 ---------------
@@ -64,7 +68,7 @@ Sponsors
 
 A big thank you to the following people for providing me with more coffee:
 
-                        
+                          
 
 Acknowledgements
 ----------------

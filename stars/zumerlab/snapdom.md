@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7663
+stars: 7673
 description: SnapDOM: Next-generation DOM capture engine — fast, modular, extensible.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -566,7 +566,13 @@ boolean
 
 Do not expand the root’s bounding box for shadows/blur/outline, and strip those visual effects from the cloned root
 
-| `safariWarmupAttempts` | number | `3` | Safari only: iterations to prime font/decode (WebKit #219770). Use `1` if 3 causes lag |
+`safariWarmupAttempts`
+
+number
+
+`3`
+
+Safari only: iterations to prime font/decode (WebKit #219770). Use `1` if 3 causes lag
 
 ### debug
 

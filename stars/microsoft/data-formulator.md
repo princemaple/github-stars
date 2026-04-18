@@ -1,6 +1,6 @@
 ---
 project: data-formulator
-stars: 15205
+stars: 15227
 description: 🪄 Create rich visualizations with AI 
 url: https://github.com/microsoft/data-formulator
 ---

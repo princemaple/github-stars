@@ -1,23 +1,23 @@
 ---
 project: PySimpleGUI
-stars: 13699
-description: Python GUIs for Humans! PySimpleGUI is the top-rated Python application development environment. Launched in 2018 and actively developed, maintained, and supported in 2024. Transforms tkinter, Qt, WxPython, and Remi into a simple, intuitive, and fun experience for both hobbyists and expert users.
+stars: 13704
+description: Python GUIs for Humans! PySimpleGUI is the top-rated Python application development environment. Launched in 2018. NEW for 2026 - the LGPL3 Version 6.  Transforms tkinter, Qt, WxPython, and Remi into a simple, intuitive, and fun experience for both hobbyists and expert users.  
 url: https://github.com/PySimpleGUI/PySimpleGUI
 ---
 
 PySimpleGUI 6
 =============
 
-6-Apr-2026
+**Wait, what?**
 
-Wait, what?
+6-Apr-2026
 
 As we've been winding down the commercialization effort, shutting down servers and archiving materials, I saw this week that the PySimpleGUI repositories are going to be of little use. Everything was switched over to using PySimpleGUI 5. The documentation is PySimpleGUI5 specific as well. So, I made a decision a couple of days ago to get the project into a state where it's at least usable and hopefully even useful.
 
-Version 4 on PyPI
------------------
+Version 4 on PyPI 4.60.5.1
+--------------------------
 
-A first step was to put version 4.60.5 up on PyPI. Version 4.60.5.0 was posted this week so that `pip install PySimpleGUI` will provide a version of PySimpleGUI that's solid.
+A first step was to put version 4.60.5 up on PyPI. Version 4.60.5.1 was posted this week so that `pip install PySimpleGUI` will provide a version of PySimpleGUI that's solid.
 
 PySimpleGUI 6 - Back to LGPL3
 -----------------------------
@@ -31,11 +31,11 @@ What to expect ahead
 
 ### Applications, Demo Programs, etc
 
-These all need to be modified to remove the commercial license and checks for version 5. It shouldn't take too long to get them all changed. In the meantime, everything is usable with minor edits.
+The applications `psgdemos`, `psgfiglet`, `psghotkey` have all been upgraded to 6 and posted on GitHub and PyPI. The remaining applications are being updated as well.
 
-### Upload to PyPI
+### Version 6 Uploaded to PyPI
 
-I'm hoping to get PSG6 up to PyPI in the next week. I first would like to get some runtime on it with installs happening from GitHub. When it is uploaded, because it's version 6, anyone pip installing will get it by default, so that quality needs to be checked first.
+On Tues 14-Apr-2026 PSG Version 6 was posted to PyPI. There were a LOT of changes that have been made over the years since version 4 was released. Hoping that it all goes well! Feel free to open an issue if you run into trouble.
 
 ### Maintenance & Support
 
@@ -44,28 +44,25 @@ I don't have a firm grasp of the future beyond a few weeks at this point. If the
 Installing
 ----------
 
-You can install straight from this GitHub repo.
+You can install the latest released version from PyPI with a simple:
 
-### Quickest install using zipball
+PyPI
+----
+
+`python -m pip install PySimpleGUI`
+
+Github
+------
+
+You can install the latest version straight from the PySimpleGUI GitHub repo without downloading the repo by running:
 
 `python -m pip install --upgrade https://github.com/PySimpleGUI/PySimpleGUI/zipball/master`
 
-if you invoke using `python3`:
+If you want to download the repo then download/close and run in the downloaded folder:
 
-`python3 -m pip install --upgrade https://github.com/PySimpleGUI/PySimpleGUI/zipball/master`
-
-### If you have git installed
-
-You can pip install straight from this Repo using the command:  
-`python -m pip install git+https://github.com/PySimpleGUI/PySimpleGUI`
-
-or if you invoke Python using `python3`:  
-`python3 -m pip install git+https://github.com/PySimpleGUI/PySimpleGUI`
-
-You can also download/clone the repo and run  
 `python -m pip install .`
 
 More updates coming...
 ----------------------
 
-I'll post regular updates as progress is made. It should progress pretty quickly.
+Changes are rolling out onto GitHub and PyPI every few days. They'll continue until everything gets switched over to Version 6.

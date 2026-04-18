@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 29989
+stars: 30323
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, ANY OS, ANY PLATFORM — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -56,7 +56,7 @@ Quick start (TL;DR)
 Full beginner guide (auth, pairing, channels): Getting started
 
 # Install + onboard
-./install.sh --api-key "sk-..." --provider openrouter
+./install.sh
 
 # Start the gateway (webhook server + web dashboard)
 zeroclaw gateway                # default: 127.0.0.1:42617
@@ -591,39 +591,18 @@ Prerequisites
 
 #### One-Line Installer
 
-Or skip the steps above and install everything (system deps, Rust, ZeroClaw) in a single command:
+Or skip the steps above and install everything (Rust, ZeroClaw) in a single command:
 
 curl -LsSf https://raw.githubusercontent.com/zeroclaw-labs/zeroclaw/master/install.sh | bash
 
-#### Compilation resource requirements
+#### Build profiles
 
-Building from source needs more resources than running the resulting binary:
+./install.sh                                          # full (default features)
+./install.sh --minimal                                # kernel only (~6.6MB)
+./install.sh --minimal --features agent-runtime,channel-discord  # custom
+./install.sh --list-features                          # see all available features
 
-Resource
-
-Minimum
-
-Recommended
-
-**RAM + swap**
-
-2 GB
-
-4 GB+
-
-**Free disk**
-
-6 GB
-
-10 GB+
-
-If your host is below the minimum, use pre-built binaries:
-
-./install.sh --prefer-prebuilt
-
-To require binary-only install with no source fallback:
-
-./install.sh --prebuilt-only
+For pre-built binaries, see GitHub Releases.
 
 #### Optional
 
@@ -690,8 +669,6 @@ ZeroClaw was built for the smooth crab 🦀, a fast and efficient AI assistant. 
 
 Support ZeroClaw
 ----------------
-
-If ZeroClaw helps your work and you want to support ongoing development, you can donate here:
 
 ### 🙏 Special Thanks
 

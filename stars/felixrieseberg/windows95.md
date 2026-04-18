@@ -1,6 +1,6 @@
 ---
 project: windows95
-stars: 23946
+stars: 24092
 description: 💩🚀 Windows 95 in Electron. Runs on macOS, Linux, and Windows.
 url: https://github.com/felixrieseberg/windows95
 ---
@@ -18,7 +18,6 @@ Windows
 
 32-bit 💿 Installer | 📦 Standalone Zip  
 64-bit 💿 Installer | 📦 Standalone Zip  
-ARM64 💿 Installer | 📦 Standalone Zip  
 ❓ Don't know what kind of chip you have? It's probably \`x64\`. To confirm, on your computer, hit Start, enter "processor" for info.
 
   
@@ -31,6 +30,8 @@ Intel Processor 📦 Standalone Zip ❓ Don't know what kind of chip you have? I
 Linux
 
 64-bit 💿 rpm | 💿 deb  
+ARM64 💿 rpm | 💿 deb  
+ARM 💿 rpm | 💿 deb  
 
 * * *
 

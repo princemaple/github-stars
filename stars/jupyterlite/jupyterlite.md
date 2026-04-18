@@ -1,6 +1,6 @@
 ---
 project: jupyterlite
-stars: 4801
+stars: 4806
 description: Wasm powered Jupyter running in the browser 💡
 url: https://github.com/jupyterlite/jupyterlite
 ---

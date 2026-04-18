@@ -1,6 +1,6 @@
 ---
 project: mediapipe
-stars: 34665
+stars: 34798
 description: Cross-platform, customizable ML solutions for live and streaming media.
 url: https://github.com/google-ai-edge/mediapipe
 ---

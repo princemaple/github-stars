@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8042
+stars: 8043
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -534,11 +534,11 @@ MOQT Streaming Format (MSF) (Experimental)
 
 Features supported:
 
--   Media over QUIC Transport draft-14
+-   Media over QUIC Transport draft-14 and draft-16
 -   MOQT Streaming Format draft-0 and CMSF draft-0
 -   Audio, Video and Text
 -   ABR (only navigator.connection change event)
--   Encrypted content with PSSH in the initData
+-   DRM support for Widevine, PlayReady, FairPlay and ClearKey, using the CMSF ContentProtection
 -   MP4 / CMAF support
 -   Live
 -   For browsers that support WebTransport certificate fingerprints (e.g., Chrome), you can use self-signed certificates without installing them.

@@ -1,6 +1,6 @@
 ---
 project: v2ray
-stars: 28656
+stars: 28746
 description: 最好用的 V2Ray 一键安装脚本 & 管理脚本
 url: https://github.com/233boy/v2ray
 ---

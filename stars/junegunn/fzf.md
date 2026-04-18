@@ -1,6 +1,6 @@
 ---
 project: fzf
-stars: 79392
+stars: 79596
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---
@@ -47,7 +47,7 @@ Table of Contents
     -   Using the finder
     -   Display modes
         -   `--height` mode
-        -   `--tmux` mode
+        -   `--popup` mode
     -   Search syntax
     -   Environment variables
     -   Customizing the look
@@ -365,21 +365,21 @@ Height value can be a negative number.
 # Screen height - 3
 fzf --height -3
 
-#### `--tmux` mode
+#### `--popup` mode
 
-With `--tmux` option, fzf will start in a tmux popup.
+With `--popup` option, fzf will start in a popup window (requires tmux 3.3+ or Zellij 0.44+).
 
-# --tmux \[center|top|bottom|left|right\]\[,SIZE\[%\]\]\[,SIZE\[%\]\[,border-native\]\]
+# --popup \[center|top|bottom|left|right\]\[,SIZE\[%\]\]\[,SIZE\[%\]\[,border-native\]\]
 
-fzf --tmux center         # Center, 50% width and height
-fzf --tmux 80%            # Center, 80% width and height
-fzf --tmux 100%,50%       # Center, 100% width and 50% height
-fzf --tmux left,40%       # Left, 40% width
-fzf --tmux left,40%,90%   # Left, 40% width, 90% height
-fzf --tmux top,40%        # Top, 40% height
-fzf --tmux bottom,80%,40% # Bottom, 80% width, 40% height
+fzf --popup center         # Center, 50% width and height
+fzf --popup 80%            # Center, 80% width and height
+fzf --popup 100%,50%       # Center, 100% width and 50% height
+fzf --popup left,40%       # Left, 40% width
+fzf --popup left,40%,90%   # Left, 40% width, 90% height
+fzf --popup top,40%        # Top, 40% height
+fzf --popup bottom,80%,40% # Bottom, 80% width, 40% height
 
-`--tmux` is silently ignored when you're not on tmux.
+`--popup` is silently ignored when you're not on tmux or Zellij.
 
 Note
 
@@ -389,8 +389,8 @@ Tip
 
 You can add these options to `$FZF_DEFAULT_OPTS` so that they're applied by default. For example,
 
-# Open in tmux popup if on tmux, otherwise use --height mode
-export FZF\_DEFAULT\_OPTS='\--height 40% --tmux bottom,40% --layout reverse --border top'
+# Open in a popup if on tmux or Zellij, otherwise use --height mode
+export FZF\_DEFAULT\_OPTS='\--height 40% --popup bottom,40% --layout reverse --border top'
 
 ### Search syntax
 
@@ -592,7 +592,7 @@ By setting up shell integration, you can use the following key bindings in bash,
         
     -   Can be disabled by setting `FZF_ALT_C_COMMAND` to an empty string when sourcing the script
 
-Display modes for these bindings can be separately configured via `FZF_{CTRL_T,CTRL_R,ALT_C}_OPTS` or globally via `FZF_DEFAULT_OPTS`. (e.g. `FZF_CTRL_R_OPTS='--tmux bottom,60% --height 60% --border top'`)
+Display modes for these bindings can be separately configured via `FZF_{CTRL_T,CTRL_R,ALT_C}_OPTS` or globally via `FZF_DEFAULT_OPTS`. (e.g. `FZF_CTRL_R_OPTS='--popup bottom,60% --height 60% --border top'`)
 
 More tips can be found on the wiki page.
 

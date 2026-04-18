@@ -1,12 +1,14 @@
 ---
 project: imageflow
-stars: 4382
+stars: 4383
 description: High-performance image manipulation for web servers. Includes imageflow_server, imageflow_tool, and libimageflow
 url: https://github.com/imazen/imageflow
 ---
 
 optimal images at incredible speeds
 -----------------------------------
+
+**Coming next:** see the Roadmap for Imageflow 3 (pure-Rust codecs, multicore) and 4 (HDR, wide gamut, streaming pipeline).
 
 Download blazing fast and safer tools for a modern image workflow.
 
@@ -15,6 +17,28 @@ Download blazing fast and safer tools for a modern image workflow.
 -   **Imageflow.Server** is cross-platform and can manipulate images in-flight (e.g.`/bucket/img.jpg?w=200`) for direct use from HTML. Source images can reside in blob storage, on another server, or on the filesystem. It's a production ready server with excellent hybrid disk caching, support for Azure and Amazon blob storage, and can be easily customized. You can deploy it easily via Docker, on a VM, or via any cloud host. It's also backwards compatible with the ImageResizer API - which is useful, as ImageResizer as been integrated into more than a thousand different CMSes and applications in the last decade.
 
 **Open an issue to share ideas, feedback, or ask questions. We believe in feedback-driven design, and streamlining real-world usage is the fastest way to a great product.**
+
+Roadmap: Imageflow 3 and 4
+--------------------------
+
+See ROADMAP.md for details.
+
+**Imageflow 3** is in active development. It brings:
+
+-   A new pipeline engine with substantially faster decode, resize, and encode paths.
+-   Multicore encoding and decoding.
+-   A full set of `#![forbid(unsafe)]` pure-Rust native codecs replacing the C dependencies — JPEG, PNG, WebP, GIF, AVIF, JXL, BMP, TIFF, and more — with better compression and speed than the equivalent C libraries on most workloads.
+-   Backwards-compatible API: existing v1 querystrings and JSON jobs run unchanged.
+
+Output remains sRGB in v3.
+
+**Imageflow 4** is the color and HDR release:
+
+-   A new streaming pipeline that keeps peak memory bounded regardless of image dimensions.
+-   End-to-end HDR and wide-gamut color, preserved through every operation rather than collapsed to sRGB.
+-   Output to any color space or ICC profile, not just sRGB.
+-   UltraHDR gain map round-trip and tone-mapping for SDR fallback.
+-   A set of professional photographer-focused tuning filters — exposure, contrast, clarity, saturation, white balance — operating in perceptually uniform color space.
 
 Querystring API Documentation
 

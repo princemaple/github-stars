@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 5514
+stars: 5532
 description: Copy/paste detector for programming source code. 
 url: https://github.com/kucherenko/jscpd
 ---
@@ -187,6 +187,7 @@ Who uses jscpd
 -   Mega-Linter is a 100% open-source linters aggregator for CI (GitHub Action & other CI tools) or to run locally
 -   Codacy automatically analyzes your source code and identifies issues as you go, helping you develop software more efficiently with fewer issues down the line.
 -   Natural is a general natural language facility for nodejs. It offers a broad range of functionalities for natural language processing.
+-   OpenClaw is a personal AI assistant that runs on your own devices, supporting 20+ messaging channels and multi-platform companion apps.
 
 Backers
 -------
@@ -197,6 +198,9 @@ Sponsors
 --------
 
 Support this project by becoming a sponsor. Your logo will show up here with a link to your website. \[Become a sponsor\]
+
+Star History
+------------
 
 License
 -------

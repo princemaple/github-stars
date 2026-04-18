@@ -1,6 +1,6 @@
 ---
 project: OpenCut
-stars: 47958
+stars: 48108
 description: The open-source CapCut alternative
 url: https://github.com/OpenCut-app/OpenCut
 ---
@@ -22,26 +22,13 @@ Why?
 -   **Free features**: Most basic CapCut features are now paywalled
 -   **Simple**: People want editors that are easy to use - CapCut proved that
 
-Features
---------
-
--   Timeline-based editing
--   Multi-track support
--   Real-time preview
--   No watermarks or subscriptions
--   Analytics provided by Databuddy, 100% Anonymized & Non-invasive.
--   Blog powered by Marble, Headless CMS.
-
 Project Structure
 -----------------
 
--   `apps/web/` – Main Next.js web application
--   `apps/desktop/` – Native desktop app (in progress)
--   `src/components/` – UI and editor components
--   `src/hooks/` – Custom React hooks
--   `src/lib/` – Utility and API logic
--   `src/stores/` – State management (Zustand, etc.)
--   `src/types/` – TypeScript types
+-   `apps/web/`: Next.js web application
+-   `apps/desktop/`: Native desktop app built with GPUI (in progress)
+-   `rust/`: Platform-agnostic core: GPU compositor, effects, masks, and WASM bindings. We're actively migrating business logic here from TypeScript.
+-   `docs/`: Architecture and subsystem documentation
 
 Getting Started
 ---------------

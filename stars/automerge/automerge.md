@@ -1,6 +1,6 @@
 ---
 project: automerge
-stars: 6159
+stars: 6186
 description: A JSON-like data structure (a CRDT) that can be modified concurrently by different users, and merged again automatically. 
 url: https://github.com/automerge/automerge
 ---
@@ -46,7 +46,6 @@ To build this codebase you will need:
 
 -   `rust`
 -   `node`
--   `yarn`
 
 And if you are interested in building the automerge-c library
 
@@ -82,11 +81,8 @@ curl --proto '\=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install cmake, node, cmocka
 brew install cmake node cmocka
 
-# install yarn
-npm install --global yarn
-
 # install javascript dependencies
-yarn --cwd ./javascript
+npm --prefix ./javascript install
 
 # install rust dependencies
 cargo install wasm-bindgen-cli wasm-opt cargo-deny

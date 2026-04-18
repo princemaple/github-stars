@@ -1,11 +1,11 @@
 ---
 project: Deep-Live-Cam
-stars: 89612
+stars: 91053
 description: real time face swap and one-click video deepfake with only a single image
 url: https://github.com/hacksider/Deep-Live-Cam
 ---
 
-Deep-Live-Cam 2.1.2
+Deep-Live-Cam 2.1.3
 ===================
 
 Real-time face swap and video deepfake with a single click and only a single image.
@@ -322,6 +322,7 @@ Credits
 -   kier007: for improving the user experience
 -   qitianai: for multi-lingual support
 -   laurigates: Decoupling stuffs to make everything faster!
+-   maxwbuckley: For making the effort to optimize this for mac!
 -   and all developers behind libraries used in this project.
 -   Footnote: Please be informed that the base author of the code is s0md3v
 -   All the wonderful users who helped make this project go viral by starring the repo ❤️

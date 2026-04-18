@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 14595
+stars: 14782
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -315,6 +315,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Mason-Little**
 
   
+**YagUber**
+
+  
 **RemcoGoy**
 
   
@@ -360,7 +363,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ATREAY**
 
   
-**gsmcdonald**
+**alonfaraj**
+
+  
+**ledgersteve**
 
   
 **timheuer**
@@ -393,58 +399,61 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **soulchild**
 
   
-**WDaan**
-
-  
-**Duncanma**
-
-  
-**handrews**
-
-  
-**luke-hagar-sp**
-
-  
-**luc122c**
-
-  
-**mason-at-pieces**
-
-  
-**mouhannad-sh**
+**SebastianBienert**
 
   
 **PrinceManfred**
 
   
-**SebastianBienert**
+**mouhannad-sh**
 
   
-**ledgersteve**
+**mason-at-pieces**
 
   
-**bobheadxi**
+**luc122c**
 
   
-**rcollas**
+**luke-hagar-sp**
 
   
-**rbange**
+**handrews**
 
   
-**hrynevychroman**
+**Duncanma**
 
   
-**rpmccarter**
+**WDaan**
 
   
-**roryschadler**
+**gsmcdonald**
+
+  
+**mirismaili**
 
   
 **rmp135**
 
   
-**mirismaili**
+**roryschadler**
+
+  
+**rpmccarter**
+
+  
+**hrynevychroman**
+
+  
+**rbange**
+
+  
+**rcollas**
+
+  
+**bobheadxi**
+
+  
+**cactysman**
 
   
 **STP5940**
@@ -472,9 +481,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **smoores-dev**
-
-  
-**cactysman**
 
   
 **tinchoz49**
@@ -505,6 +511,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **Olexandr88**
+
+  
+**pat-s**
 
   
 **pkucmus**
@@ -597,6 +606,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **yokeTH**
 
   
+**Thiago-Mausbach**
+
+  
 **thibaultleouay**
 
   
@@ -610,9 +622,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **Courtcircuits**
-
-  
-**YagUber**
 
   
 **mveselov-stack-wizard**
@@ -690,7 +699,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **elliotnash**
 
   
-**kevinand11**
+**elliott-with-the-longest-name-on-github**
 
   
 **abdulamite**
@@ -706,9 +715,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **alewin**
-
-  
-**alonfaraj**
 
   
 **gizero**
@@ -739,6 +745,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **Borisich**
+
+  
+**bmanth60**
 
   
 **brianheineman**
@@ -795,6 +804,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ShadiestGoat**
 
   
+**da411d**
+
+  
 **marikaner**
 
   
@@ -802,9 +814,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **not-my-profile**
-
-  
-**elliott-with-the-longest-name-on-github**
 
   
 **emmanuel-ferdman**
@@ -859,3 +868,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **tltsutltsu**
+
+  
+**kevinand11**

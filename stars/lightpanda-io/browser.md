@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 28435
+stars: 28915
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -56,7 +56,13 @@ _For Linux_
 curl -L -o lightpanda https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86\_64-linux && \\
 chmod a+x ./lightpanda
 
+Verify the binary before running anything:
+
+./lightpanda version
+
 Linux aarch64 is also available
+
+> **Note:** The Linux release binaries are linked against glibc. On musl-based distros (Alpine, etc.) the binary fails with `cannot execute: required file not found` because the glibc dynamic linker is missing. Use a glibc-based base image (e.g., `FROM debian:bookworm-slim` or `FROM ubuntu:24.04`) or build from sources.
 
 _For MacOS_
 
@@ -67,7 +73,11 @@ MacOS x86\_64 is also available
 
 _For Windows + WSL2_
 
-The Lightpanda browser is compatible to run on windows inside WSL. Follow the Linux instruction for installation from a WSL terminal. It is recommended to install clients like Puppeteer on the Windows host.
+Lightpanda has no native Windows binary. Install it inside WSL following the Linux steps above.
+
+WSL not installed? Run `wsl --install` from an administrator shell, restart, then open `wsl`. See Microsoft's WSL install guide for details.
+
+Your automation client (Puppeteer, Playwright, etc.) can run either inside WSL or on the Windows host. WSL forwards `localhost:9222` automatically.
 
 **Install from Docker**
 

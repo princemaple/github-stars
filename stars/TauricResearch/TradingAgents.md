@@ -1,6 +1,6 @@
 ---
 project: TradingAgents
-stars: 49582
+stars: 51422
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
@@ -95,8 +95,13 @@ export OPENAI\_API\_KEY=...          # OpenAI (GPT)
 export GOOGLE\_API\_KEY=...          # Google (Gemini)
 export ANTHROPIC\_API\_KEY=...       # Anthropic (Claude)
 export XAI\_API\_KEY=...             # xAI (Grok)
+export DEEPSEEK\_API\_KEY=...        # DeepSeek
+export DASHSCOPE\_API\_KEY=...       # Qwen (Alibaba DashScope)
+export ZHIPU\_API\_KEY=...           # GLM (Zhipu)
 export OPENROUTER\_API\_KEY=...      # OpenRouter
 export ALPHA\_VANTAGE\_API\_KEY=...   # Alpha Vantage
+
+For enterprise providers (e.g. Azure OpenAI, AWS Bedrock), copy `.env.enterprise.example` to `.env.enterprise` and fill in your credentials.
 
 For local models, configure Ollama with `llm_provider: "ollama"` in your config.
 

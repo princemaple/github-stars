@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 32807
+stars: 32975
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -1746,7 +1746,7 @@ These functions can fail, for example if a path does not have an extension, whic
 #### Filesystem Access
 
 -   `path_exists(path)` - Returns the string `true` if the path points at an existing entity and the string `false` otherwise. Traverses symbolic links, and returns the string `false` if the path is inaccessible or points to a broken symlink.
--   `read(path)`1.39.0 - Returns the content of file at `path` as string.
+-   `read(path)`1.39.0 - Returns the content of file at `path` as a string.
 
 #### Assertions and Error Reporting
 

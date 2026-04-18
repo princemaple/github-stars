@@ -1,6 +1,6 @@
 ---
 project: pgdog
-stars: 4271
+stars: 4283
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
@@ -171,10 +171,11 @@ role = "auto"
 
 📘 **Authentication**
 
-PgDog supports two authentication methods:
+PgDog supports three authentication methods:
 
 1.  Password-based
 2.  AWS RDS IAM
+3.  Azure Workload Identity
 
 #### Password-based authentication
 
@@ -199,6 +200,23 @@ server\_auth = "rds\_iam"
 # server\_iam\_region = "us-east-1"
 
 When any user has `server_auth = "rds_iam"`, the following settings must be configured as well:
+
+-   `tls_verify` must **not** be `"disabled"`.
+-   `passthrough_auth` must be `"disabled"`.
+
+#### Azure Workload Identity authentication
+
+PgDog can also use Azure Workload Identity for PgDog-to-PostgreSQL authentication, while keeping client-to-PgDog authentication unchanged. This is configured on a per-user basis, similarly to RDS IAM:
+
+**Example**
+
+\[\[users\]\]
+name = "alice"
+database = "pgdog"
+password = "client-password"
+server\_auth = "azure\_workload\_identity"
+
+When any user has `server_auth = "azure_workload_identity"`, the following settings must be configured as well:
 
 -   `tls_verify` must **not** be `"disabled"`.
 -   `passthrough_auth` must be `"disabled"`.

@@ -1,6 +1,6 @@
 ---
 project: erldns
-stars: 480
+stars: 481
 description: DNS server, in Erlang.
 url: https://github.com/dnsimple/erldns
 ---

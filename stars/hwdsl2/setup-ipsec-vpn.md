@@ -1,7 +1,7 @@
 ---
 project: setup-ipsec-vpn
-stars: 27595
-description: Scripts to build your own IPsec VPN server, with IPsec/L2TP, Cisco IPsec and IKEv2
+stars: 27632
+description: Set up your own IPsec VPN server in just a few minutes, with IPsec/L2TP, Cisco IPsec and IKEv2. Supports Ubuntu, Debian, CentOS/RHEL, Amazon Linux, Alpine and Raspberry Pi. Includes client config and management scripts.
 url: https://github.com/hwdsl2/setup-ipsec-vpn
 ---
 
@@ -16,9 +16,19 @@ An IPsec VPN encrypts your network traffic, so that nobody between you and the V
 
 We will use Libreswan as the IPsec server, and xl2tpd as the L2TP provider.
 
-**Also available:** Docker images for WireGuard, OpenVPN, Headscale and LiteLLM.
+**Features:**
 
-**» 📖 Book: Privacy Tools in the Age of AI  Build Your Own VPN Server**
+-   Fully automated IPsec VPN server setup, no user input needed
+-   Supports IKEv2 with strong and fast ciphers (e.g. AES-GCM)
+-   Generates VPN profiles to auto-configure iOS, macOS and Android devices
+-   Supports Windows, macOS, iOS, Android, Chrome OS and Linux as VPN clients
+-   Includes helper scripts to manage VPN users and certificates
+
+**Also available:**
+
+-   Docker VPN: WireGuard, OpenVPN, IPsec VPN, Headscale
+-   Docker AI/Audio: Whisper (STT), Kokoro (TTS), Embeddings, LiteLLM
+-   📖 Book: Privacy Tools in the Age of AI, Build Your Own VPN Server
 
 Quick start
 -----------
@@ -55,15 +65,6 @@ If you are unable to download, open vpnsetup.sh, then click the `Raw` button on 
 A pre-built Docker image is also available. For other options and client setup, read the sections below.
 
 \* A cloud server, virtual private server (VPS) or dedicated server.
-
-Features
---------
-
--   Fully automated IPsec VPN server setup, no user input needed
--   Supports IKEv2 with strong and fast ciphers (e.g. AES-GCM)
--   Generates VPN profiles to auto-configure iOS, macOS and Android devices
--   Supports Windows, macOS, iOS, Android, Chrome OS and Linux as VPN clients
--   Includes helper scripts to manage VPN users and certificates
 
 Requirements
 ------------
@@ -502,6 +503,7 @@ See Advanced usage.
 -   Use alternative DNS servers
 -   DNS name and server IP changes
 -   IKEv2-only VPN
+-   Enable IKEv2 perfect forward secrecy
 -   Internal VPN IPs and traffic
 -   Specify VPN server's public IP
 -   Customize VPN subnets

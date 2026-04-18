@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 79935
+stars: 80276
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -331,6 +331,7 @@ Courses
     -   Software Engineering with Objects and Components 2015/16- University of Edinburgh
 -   #### **Software Engineering**
     
+-   COMP1531 - Software Engineering Fundamentals - UNSW (2025) | Video Playlist
     -   Computer Science 169- Software Engineering - Spring 2015 - UCBerkeley
     -   Computer Science 169- Software Engineering - Fall 2019 - UCBerkeley
     -   CS 5150 - Software Engineering, Fall 2014 - Cornell University
@@ -1596,3 +1597,9 @@ Courses
 -   UCCS ECE4720/ECE5720 Battery Management and Control, by Gregory Plett
 -   Purdue ME 597 Distributed Energy Resources Spring 2024, by Kevin J. Kircher
 -   Stanford AA228V/CS238V Validation of Safety Critical Systems Winter 2025, by Sydney Michelle Katz
+
+* * *
+
+### Related
+
+-   Theoretical Computer Science Awesome List

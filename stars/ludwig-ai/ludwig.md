@@ -1,6 +1,6 @@
 ---
 project: ludwig
-stars: 11668
+stars: 11673
 description: Low-code framework for building custom LLMs, neural networks, and other AI models
 url: https://github.com/ludwig-ai/ludwig
 ---
@@ -15,10 +15,10 @@ Ludwig is a **low-code** framework for building **custom** AI models like **LLMs
 Key features:
 
 -   🛠 **Build custom models with ease:** a declarative YAML configuration file is all you need to train a state-of-the-art LLM on your data. Support for multi-task and multi-modality learning. Comprehensive config validation detects invalid parameter combinations and prevents runtime failures.
--   ⚡ **Optimized for scale and efficiency:** automatic batch size selection, distributed training (DDP, DeepSpeed), parameter efficient fine-tuning (PEFT), 4-bit quantization (QLoRA), paged and 8-bit optimizers, and larger-than-memory datasets.
+-   ⚡ **Optimized for scale and efficiency:** automatic batch size selection, distributed training via HuggingFace Accelerate, parameter efficient fine-tuning (PEFT) including LoRA, DoRA, and VeRA, 4-bit quantization (QLoRA, torchao), paged and 8-bit optimizers, sequence packing, and larger-than-memory datasets.
 -   📐 **Expert level control:** retain full control of your models down to the activation functions. Support for hyperparameter optimization, explainability, and rich metric visualizations.
 -   🧱 **Modular and extensible:** experiment with different model architectures, tasks, features, and modalities with just a few parameter changes in the config. Think building blocks for deep learning.
--   🚢 **Engineered for production:** prebuilt Docker containers, native support for running with Ray on Kubernetes, export models to Torchscript and Triton, upload to HuggingFace with one command.
+-   🚢 **Engineered for production:** prebuilt Docker containers, native support for running with Ray on Kubernetes, vLLM serving for LLMs, export models to SafeTensors, `torch.export`, or ONNX, upload to HuggingFace with one command, and auto-generated model cards and training reports.
 
 Ludwig is hosted by the Linux Foundation AI & Data.
 
@@ -52,6 +52,13 @@ For a full tutorial, check out the official getting started guide, or take a loo
 
 Large Language Model Fine-Tuning
 --------------------------------
+
+Ludwig supports the full spectrum of LLM fine-tuning techniques:
+
+-   **Supervised fine-tuning (SFT):** standard instruction tuning on input/output pairs
+-   **Preference learning / alignment:** DPO, KTO, ORPO, and GRPO trainers for RLHF-style alignment
+-   **Parameter-efficient fine-tuning:** LoRA, DoRA, VeRA, LoRA+, and adapter layers via PEFT
+-   **Quantized training:** 4-bit QLoRA (bitsandbytes) and torchao quantization
 
 Let's fine-tune a pretrained LLM to follow instructions like a chatbot ("instruction tuning").
 
@@ -282,7 +289,7 @@ Try applying Ludwig to your data. Reach out on Discord if you have any questions
     
 -   **Automatically scale training to multi-GPU, multi-node clusters**
     
-    Go from training on your local machine to the cloud without code changes.
+    Go from training on your local machine to the cloud without code changes. Ludwig uses HuggingFace Accelerate under the hood for transparent distributed training across DDP, FSDP, and DeepSpeed configurations.
     
 -   **Low-code interface for state-of-the-art models, including pre-trained Huggingface Transformers**
     
@@ -302,9 +309,9 @@ Try applying Ludwig to your data. Reach out on Discord if you have any questions
     
     ludwig serve --model\_path=/path/to/model
     
-    Ludwig supports exporting models to efficient Torchscript bundles.
+    Ludwig supports exporting trained models to SafeTensors (default), `torch.export` `.pt2` bundles, or ONNX via the dynamo-based exporter.
     
-    ludwig export\_torchscript -–model\_path=/path/to/model
+    ludwig export\_model --model\_path=/path/to/model --output\_path=exported/ --format=torch\_export
     
 
 📚 Tutorials

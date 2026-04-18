@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 14000
+stars: 14084
 description: :file_folder: File Management Platform / Universal Data Access Layer (without FUSE)
 url: https://github.com/mickael-kerjean/filestash
 ---
@@ -15,8 +15,8 @@ It grew into what we want to be the world's best file management platform, where
 Key Features
 ============
 
--   Plugin Driven Architecture: everything that matters is a plugin, browse the ecosystem or build your own. With this approach, you get exactly what you need without any kind of overhead or bloat.
--   Universal Access: a sleek web client made in vanilla JS that's infinitely customizable via dynamic patch plugins, plus gateways to access your data via SFTP, MCP or S3, integrations via APIs and via web components like this psd viewer
+-   Plugin Driven Architecture: everything that matters is a plugin, browse the ecosystem or build your own. With this approach, you get exactly what you need without overhead and bloat.
+-   Universal Access: the web client is just one way to access your data (albeit an awesome one, handcrafted in vanilla JS). APIs and Gateways let you also expose your data over protocols like SFTP, S3, FTP, WebDAV, MCP, and AS2.
 -   Integrations: our explicit goal is to support 100% of storage and authentication technologies on the market. Beyond your usual options, you can go much further, like a virtual filesystem delegating authentication to your WordPress site and using its roles to drive RBAC authorization.
 -   Workflow Engine: automate anything that happens to your files by chaining actions on events, from simple notifications via Slack or email to full on MFT pipelines and everything in between.
 -   File Apps: use any of the existing apps or build your own, from astronomy to embroidery and everything in between like:

@@ -1,6 +1,6 @@
 ---
 project: fq
-stars: 10473
+stars: 10480
 description: jq for binary formats - tool, language and decoders for working with binary and text formats
 url: https://github.com/wader/fq
 ---
@@ -36,7 +36,7 @@ It was originally designed to query, inspect and debug media codecs and containe
 
 ### Supported formats
 
-aac\_frame, adts, adts\_frame, aiff, amf0, apev2, apple\_bookmark, ar, asn1\_ber, av1\_ccr, av1\_frame, av1\_obu, avc\_annexb, avc\_au, avc\_dcr, avc\_nalu, avc\_pps, avc\_sei, avc\_sps, avi, avro\_ocf, bencode, bitcoin\_blkdat, bitcoin\_block, bitcoin\_script, bitcoin\_transaction, bits, bplist, bsd\_loopback\_frame, bson, bytes, bzip2, caff, cbor, csv, dns, dns\_tcp, elf, ether8023\_frame, exif, fairplay\_spc, fit, flac, flac\_frame, flac\_metadatablock, flac\_metadatablocks, flac\_picture, flac\_streaminfo, gif, gzip, hevc\_annexb, hevc\_au, hevc\_dcr, hevc\_nalu, hevc\_pps, hevc\_sps, hevc\_vps, html, icc\_profile, icmp, icmpv6, id3v1, id3v11, id3v2, ipv4\_packet, ipv6\_packet, jp2c, jpeg, json, jsonl, leveldb\_descriptor, leveldb\_log, leveldb\_table, luajit, macho, macho\_fat, markdown, matroska, midi, moc3, mp3, mp3\_frame, mp3\_frame\_vbri, mp3\_frame\_xing, mp4, mpeg\_asc, mpeg\_es, mpeg\_pes, mpeg\_pes\_packet, mpeg\_spu, mpeg\_ts, msgpack, negentropy, nes, ogg, ogg\_page, opentimestamps, opus\_packet, pcap, pcapng, pg\_btree, pg\_control, pg\_heap, png, prores\_frame, protobuf, protobuf\_widevine, pssh\_playready, rtmp, safetensors, sll2\_packet, sll\_packet, tap, tar, tcp\_segment, tiff, tls, toml, tzif, tzx, udp\_datagram, vorbis\_comment, vorbis\_packet, vp8\_frame, vp9\_cfm, vp9\_frame, vpx\_ccr, wasm, wav, webp, xml, yaml, zip
+aac\_frame, adts, adts\_frame, aiff, amf0, apev2, apple\_bookmark, ar, asn1\_ber, av1\_ccr, av1\_frame, av1\_obu, avc\_annexb, avc\_au, avc\_dcr, avc\_nalu, avc\_pps, avc\_sei, avc\_sps, avi, avro\_ocf, bencode, bitcoin\_blkdat, bitcoin\_block, bitcoin\_script, bitcoin\_transaction, bits, bplist, bsd\_loopback\_frame, bson, bytes, bzip2, caff, cbor, csv, dns, dns\_tcp, elf, ether8023\_frame, exif, fairplay\_spc, fit, flac, flac\_frame, flac\_metadatablock, flac\_metadatablocks, flac\_picture, flac\_streaminfo, gif, gzip, hevc\_annexb, hevc\_au, hevc\_dcr, hevc\_nalu, hevc\_pps, hevc\_sps, hevc\_vps, html, icc\_profile, icmp, icmpv6, id3v1, id3v11, id3v2, ipv4\_packet, ipv6\_packet, jp2c, jpeg, json, jsonl, leveldb\_descriptor, leveldb\_log, leveldb\_table, luajit, macho, macho\_fat, markdown, matroska, midi, moc3, mp3, mp3\_frame, mp3\_frame\_vbri, mp3\_frame\_xing, mp4, mpeg\_asc, mpeg\_es, mpeg\_pes, mpeg\_pes\_packet, mpeg\_spu, mpeg\_ts, msgpack, negentropy, nes, ogg, ogg\_page, opentimestamps, opus\_packet, pcap, pcapng, pg\_btree, pg\_control, pg\_heap, png, prores\_frame, protobuf, protobuf\_widevine, pssh\_playready, rtmp, safetensors, sll2\_packet, sll\_packet, stl, tap, tar, tcp\_segment, tiff, tls, toml, tzif, tzx, udp\_datagram, vorbis\_comment, vorbis\_packet, vp8\_frame, vp9\_cfm, vp9\_frame, vpx\_ccr, wasm, wav, webp, xml, yaml, zip
 
 It can also work with some common text formats like URLs, hex, base64, PEM etc and for some serialization formats like XML, YAML, etc. it can transform both from and to jq values.
 

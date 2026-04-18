@@ -1,6 +1,6 @@
 ---
 project: mint
-stars: 1409
+stars: 1410
 description: Functional HTTP client for Elixir with support for HTTP/1 and HTTP/2 🌱
 url: https://github.com/elixir-mint/mint
 ---
@@ -123,7 +123,7 @@ If the default ports are already in use, you can configure them via environment 
 TINYPROXY\_PORT=8887 docker compose up --detach
 TINYPROXY\_PORT=8887 mix test --include proxy
 
-Available port variables: `TINYPROXY_PORT` (default 8888), `TINYPROXY_AUTH_PORT` (default 8889), `HTTPBIN_HTTP_PORT` (default 8080), `HTTPBIN_HTTPS_PORT` (default 8443).
+Available port variables: `TINYPROXY_PORT` (default 8888), `TINYPROXY_AUTH_PORT` (default 8889), `HTTPBIN_HTTP_PORT` (default 8080), `HTTPBIN_HTTPS_PORT` (default 8443), `HTTPBIN_H2C_PORT` (default 8081).
 
 License
 -------

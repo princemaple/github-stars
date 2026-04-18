@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 21615
+stars: 21678
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -412,12 +412,16 @@ There are several Yjs-compatible ports to other programming languages.
 -   y-octo - Rust implementation by AFFiNE
 -   y-crdt - Rust implementation with multiple language bindings to other languages
     -   yrs - Rust interface
-    -   ypy - Python binding
+    -   pycrdt - Python binding
     -   yrb - Ruby binding
+    -   yr - R binding
+    -   ydotnet - .NET/C# binding
     -   yswift - Swift binding
+    -   ykt - Kotlin binding
     -   yffi - C-FFI
     -   ywasm - WASM binding
-    -   y\_ex - Elixir bindings
+    -   y\_ex - Elixir binding
+    -   ypy - Python binding (deprecated, use pycrdt)
 -   ycs - .Net compatible C# implementation.
 
 Getting Started

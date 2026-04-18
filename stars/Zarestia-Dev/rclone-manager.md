@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 789
+stars: 821
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -94,9 +94,12 @@ Install Command
 
 **Homebrew**
 
-_Coming Soon_
+`brew tap Zarestia-Dev/zarestia`  
+`brew install --cask rclone-manager`
 
 **Direct Download**
+
+Download DMG
 
 > 📚 **Detailed Guide:** Wiki: Installation - macOS  
 > _Important: Read this for the "App is Damaged" fix and macFUSE setup._

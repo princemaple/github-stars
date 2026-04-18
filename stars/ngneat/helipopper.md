@@ -1,6 +1,6 @@
 ---
 project: helipopper
-stars: 452
+stars: 453
 description: 🚁 A Powerful Tooltip and Popover for Angular Applications
 url: https://github.com/ngneat/helipopper
 ---
@@ -27,6 +27,8 @@ Features
 ✅ Manual Trigger Support  
 ✅ Text Overflow Support  
 ✅ Context Menu Support  
+✅ Component Bindings via `inputBinding` / `outputBinding` / `twoWayBinding`  
+✅ Global Enable / Disable All  
 
 ### Installation
 
@@ -111,6 +113,34 @@ class MyComponent {
 }
 
 <button \[tp\]\="MyComponent"\>Click Me</button\>
+
+### Component Bindings
+
+Pass reactive Angular bindings (`inputBinding`, `outputBinding`, `twoWayBinding`) to a dynamically created component using the `tpBindings` input:
+
+import { inputBinding, signal } from '@angular/core';
+import { MyPopoverComponent } from './my-popover.component';
+
+@Component({})
+class HostComponent {
+  component \= MyPopoverComponent;
+  readonly greeting \= signal('Hello!');
+  readonly bindings \= \[
+    inputBinding('greeting', () \=> this.greeting()),
+  \];
+}
+
+<button \[tp\]\="component" tpVariation\="popper" \[tpBindings\]\="bindings"\>Open</button\>
+
+The same `bindings` option is available when creating a tooltip programmatically via `TippyService`:
+
+import { inputBinding } from '@angular/core';
+
+this.tippyService.create(host, MyPopoverComponent, {
+  bindings: \[inputBinding('greeting', () \=> this.greeting())\],
+}).subscribe((instance) \=> { ... });
+
+Host directives can be applied the same way using `tpDirectives` / `directives`.
 
 ### Text Overflow
 
@@ -244,13 +274,14 @@ tpIsEnabled: boolean;
 tpIsVisible: boolean;
 tpClassName: string;
 tpOnlyTextOverflow: boolean;
+tpStaticWidthHost: boolean;
 tpData: any;
 tpUseHostWidth: boolean;
 tpHideOnEscape: boolean;
-tpDetectChangesComponent: boolean;
 tpPopperWidth: number | string;
 tpHost: HTMLElement;
-tpIsVisible: boolean;
+tpBindings: Binding\[\];       // inputBinding / outputBinding / twoWayBinding descriptors
+tpDirectives: DirectiveWithBindings\[\]; // host directives with optional bindings
 
 ### Outputs
 
@@ -285,6 +316,24 @@ class Component {
     this.tippy?.destroy();
   }
 }
+
+### Enable / Disable All Tooltips
+
+`TippyService` exposes `enableAll()` and `disableAll()` methods that globally enable or disable every tooltip managed by the service:
+
+class MyComponent {
+  private tippyService \= inject(TippyService);
+
+  disableTooltips() {
+    this.tippyService.disableAll();
+  }
+
+  enableTooltips() {
+    this.tippyService.enableAll();
+  }
+}
+
+Tooltips that were individually disabled via `[tpIsEnabled]="false"` are not re-enabled by `enableAll()`.
 
 Contributors ✨
 --------------

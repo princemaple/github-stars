@@ -1,6 +1,6 @@
 ---
 project: tridactyl
-stars: 6150
+stars: 6164
 description: A Vim-like interface for Firefox, inspired by Vimperator/Pentadactyl.
 url: https://github.com/tridactyl/tridactyl
 ---

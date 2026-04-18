@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 13479
+stars: 13597
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -1172,6 +1172,8 @@ subpool-worker
 AWS-AccessBridge
 
 AWS 多账号管理和登录服务
+
+https://aws-access-bridge.220cbb9e01920558e6d2862ebf66b298.workers.dev/
 
 维护中
 

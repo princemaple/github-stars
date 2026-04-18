@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 19415
+stars: 19509
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -8,53 +8,84 @@ url: https://github.com/soxoj/maigret
 Maigret
 =======
 
-_The Commissioner Jules Maigret is a fictional French police detective, created by Georges Simenon. His investigation method is based on understanding the personality of different people and their interactions._
+  
 
-**👉👉👉 Online Telegram bot | 🏢 Commercial use & API**
+  
 
-About
------
+**Maigret** collects a dossier on a person **by username only**, checking for accounts on a huge number of sites and gathering all the available information from web pages. No API keys required.
 
-**Maigret** collects a dossier on a person **by username only**, checking for accounts on a huge number of sites and gathering all the available information from web pages. No API keys are required. Maigret is an easy-to-use and powerful fork of Sherlock.
+Contents
+--------
 
-Currently supports more than 3000 sites (full list), search is launched against 500 popular sites in descending order of popularity by default. Also supported checking Tor sites, I2P sites, and domains (via DNS resolving).
+-   In one minute
+-   Main features
+-   Demo
+-   Installation
+-   Usage
+-   Contributing
+-   Commercial Use
+-   About
 
-Powered By Maigret
-------------------
+In one minute
+-------------
 
-These are professional tools for social media content analysis and OSINT investigations that use Maigret (banners are clickable).
+Ensure you have Python 3.10 or higher.
+
+pip install maigret
+maigret YOUR\_USERNAME
+
+No install? Try the Telegram bot or a Cloud Shell.
+
+Want a web UI? See how to launch it.
+
+See also: Quick start.
 
 Main features
 -------------
 
--   Profile page parsing, extraction of personal info, links to other profiles, etc.
--   Recursive search by new usernames and other IDs found
--   Search by tags (site categories, countries)
--   Censorship and captcha detection
--   Requests retries
+-   Supports 3,000+ sites (see full list). A default run checks the 500 highest-ranked sites by traffic; pass `-a` to scan everything, or `--tags` to narrow by category/country.
+-   Embeddable in Python projects — import `maigret` and run searches programmatically (see library usage).
+-   Extracts all available information about the account owner from profile pages and site APIs, including links to other accounts.
+-   Performs recursive search using discovered usernames and other IDs.
+-   Allows filtering by tags (site categories, countries).
+-   Detects and partially bypasses blocks, censorship, and CAPTCHA.
+-   Fetches an auto-updated site database from GitHub each run (once per 24 hours), and falls back to the built-in database if offline.
+-   Works with Tor and I2P websites; able to check domains.
+-   Ships with a web interface for browsing results as a graph and downloading reports in every format from a single page.
 
-See the full description of Maigret features in the documentation.
+For the complete feature list, see the features documentation.
+
+### Used by
+
+Professional OSINT and social-media analysis tools built on Maigret:
+
+Demo
+----
+
+### Video
+
+### Reports
+
+PDF report, HTML report
+
+Full console output
 
 Installation
 ------------
 
-‼️ Maigret is available online via official Telegram bot. Consider using it if you don't want to install anything.
+Already ran the In one minute steps? You're set. Below are alternative methods.
+
+Don't want to install anything? Use the Telegram bot.
 
 ### Windows
 
-Standalone EXE-binaries for Windows are located in Releases section of GitHub repository.
+Download a standalone EXE from Releases. Video guide: https://youtu.be/qIgwTZOmMmM.
 
-Video guide on how to run it: https://youtu.be/qIgwTZOmMmM.
+### Cloud Shells
 
-### Installation in Cloud Shells
+Run Maigret in the browser via cloud shells or Jupyter notebooks:
 
-You can launch Maigret using cloud shells and Jupyter notebooks. Press one of the buttons below and follow the instructions to launch it in your browser.
-
-### Local installation
-
-Maigret can be installed using pip, Docker, or simply can be launched from the cloned repo.
-
-**NOTE**: Python 3.10 or higher and pip is required, **Python 3.11 is recommended.**
+### Local installation (pip)
 
 # install from pypi
 pip3 install maigret
@@ -62,7 +93,7 @@ pip3 install maigret
 # usage
 maigret username
 
-### Cloning a repository
+### From source
 
 # or clone and install manually
 git clone https://github.com/soxoj/maigret && cd maigret
@@ -86,15 +117,23 @@ docker build -t maigret .
 
 ### Troubleshooting
 
-If you encounter build errors during installation, check the troubleshooting guide.
+Build errors? See the troubleshooting guide.
 
-Usage examples
---------------
+Usage
+-----
+
+### Examples
 
 # make HTML, PDF, and Xmind8 reports
 maigret user --html
 maigret user --pdf
 maigret user --xmind #Output not compatible with xmind 2022+
+
+# machine-readable exports
+maigret user --json ndjson   # newline-delimited JSON (also: --json simple)
+maigret user --csv
+maigret user --txt
+maigret user --graph         # interactive D3 graph (HTML)
 
 # search on sites marked with tags photo & dating
 maigret user --tags photo,dating
@@ -105,81 +144,79 @@ maigret user --tags us
 # search for three usernames on all available sites
 maigret user1 user2 user3 -a
 
-Use `maigret --help` to get full options description. Also options are documented.
+Run `maigret --help` for all options. Docs: CLI options, more examples. Running into 403s or timeouts? See TROUBLESHOOTING.md.
 
 ### Web interface
 
-You can run Maigret with a web interface, where you can view the graph with results and download reports of all formats on a single page.
+Maigret has a built-in web UI with a results graph and downloadable reports.
 
 Web Interface Screenshots
 
-Instructions:
-
-1.  Run Maigret with the `--web` flag and specify the port number.
-
 maigret --web 5000
 
-1.  Open http://127.0.0.1:5000 in your browser and enter one or more usernames to make a search.
-    
-2.  Wait a bit for the search to complete and view the graph with results, the table with all accounts found, and download reports of all formats.
-    
+Open http://127.0.0.1:5000, enter a username, and view results.
+
+### Python library
+
+**Maigret can be embedded in your own Python projects.** The CLI is a thin wrapper around an async function you can call directly — build custom pipelines, feed results into your own tooling, or run it inside a larger OSINT workflow.
+
+See the full library usage guide for a working example, async patterns, and how to filter sites by tag.
+
+### Useful CLI flags
+
+-   `--parse URL` — parse a profile page, extract IDs/usernames, and use them to kick off a recursive search.
+-   `--permute` — generate likely username variants from two or more inputs (e.g. `john doe` → `johndoe`, `j.doe`, …) and search for all of them.
+-   `--self-check [--auto-disable]` — verify `usernameClaimed` / `usernameUnclaimed` pairs against live sites for maintainers auditing the database.
+
+### Tor / I2P / proxies
+
+Maigret can route checks through a proxy, Tor, or I2P — useful for `.onion` / `.i2p` sites and for bypassing WAFs that block datacenter IPs.
+
+# any HTTP/SOCKS proxy
+maigret user --proxy socks5://127.0.0.1:1080
+
+# Tor (default gateway socks5://127.0.0.1:9050)
+maigret user --tor-proxy socks5://127.0.0.1:9050
+
+# I2P (default gateway http://127.0.0.1:4444)
+maigret user --i2p-proxy http://127.0.0.1:4444
+
+Start your Tor / I2P daemon before running the command — Maigret does not manage these gateways.
 
 Contributing
 ------------
 
-Maigret has open-source code, so you may contribute your own sites by adding them to `data.json` file, or bring changes to it's code!
-
-For more information about development and contribution, please read the development documentation.
-
-Demo with page parsing and recursive username search
-----------------------------------------------------
-
-### Video (asciinema)
-
-### Reports
-
-PDF report, HTML report
-
-Full console output
-
-Disclaimer
-----------
-
-**This tool is intended for educational and lawful purposes only.** The developers do not endorse or encourage any illegal activities or misuse of this tool. Regulations regarding the collection and use of personal data vary by country and region, including but not limited to GDPR in the EU, CCPA in the USA, and similar laws worldwide.
-
-It is your sole responsibility to ensure that your use of this tool complies with all applicable laws and regulations in your jurisdiction. Any illegal use of this tool is strictly prohibited, and you are fully accountable for your actions.
-
-The authors and developers of this tool bear no responsibility for any misuse or unlawful activities conducted by its users.
-
-Feedback
---------
-
-If you have any questions, suggestions, or feedback, please feel free to open an issue, create a GitHub discussion, or contact the author directly via Telegram.
+Add or fix new sites surgically in `data.json` (no `json.load`/`json.dump`), then run `./utils/update_site_data.py` to regenerate `sites.md` and the database metadata, and open a pull request. For more details, see the CONTRIBUTING guide and development docs. Release history: CHANGELOG.md.
 
 Commercial Use
 --------------
 
-If you need a **daily updated database** of supported sites or an **API for username checks**, feel free to reach out:
+The open-source Maigret is MIT-licensed and free for commercial use without restriction — but site checks break over time and need active maintenance.
 
-📧 maigret@soxoj.com
+For serious commercial use — with a **daily-updated site database** or a **username-check API** — reach out: 📧 maigret@soxoj.com
 
-Available options:
+-   Private site database — 5 000+ sites, updated daily (separate from the public open-source database)
+-   Username check API — integrate Maigret into your product
 
--   Up-to-date site database - regularly maintained and updated list of 5K+ sites, delivered daily
--   Username check API - programmatic access to Maigret's search capabilities for integration into your products
+About
+-----
 
-SOWEL classification
---------------------
+### Disclaimer
 
-This tool uses the following OSINT techniques:
+**For educational and lawful purposes only.** You are responsible for complying with all applicable laws (GDPR, CCPA, etc.) in your jurisdiction. The authors bear no responsibility for misuse.
+
+### Feedback
+
+Open an issue · GitHub Discussions · Telegram
+
+### SOWEL classification
+
+OSINT techniques used:
 
 -   SOTL-2.2. Search For Accounts On Other Platforms
 -   SOTL-6.1. Check Logins Reuse To Find Another Account
 -   SOTL-6.2. Check Nicknames Reuse To Find Another Account
 
-License
--------
+### License
 
-MIT © Maigret  
-MIT © Sherlock Project  
-Original Creator of Sherlock Project - Siddharth Dushantha
+MIT © Maigret

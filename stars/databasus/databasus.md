@@ -1,11 +1,11 @@
 ---
 project: databasus
-stars: 6364
-description: PostgreSQL backup tool (with MySQL\MariaDB and MongoDB support)
+stars: 6430
+description: Database backup tool (PostgreSQL, MySQL\MariaDB and MongoDB)
 url: https://github.com/databasus/databasus
 ---
 
-### PostgreSQL backup tool (with MySQL\\MariaDB and MongoDB support)
+### Database backup tool (PostgreSQL, MySQL\\MariaDB and MongoDB)
 
 Databasus is a free, open source and self-hosted tool to backup databases (with primary focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.)
 

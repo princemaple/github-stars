@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 421
+stars: 482
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support. Can be used as lightweight OpenClaw alternative.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -25,17 +25,19 @@ Features
 
 -   **Remote coding** — send prompts to OpenCode from anywhere, receive complete results with code sent as files
 -   **Session management** — create new sessions or continue existing ones, just like in the TUI
--   **Live status** — pinned message with current project, model, context usage, and changed files list, updated in real time
+-   **Live status** — pinned message with current project/worktree, model, context usage, and changed files list, updated in real time
 -   **Model switching** — pick models from OpenCode favorites and recent history directly in the chat (favorites are shown first)
 -   **Agent modes** — switch between Plan and Build modes on the fly
 -   **Subagent activity** — watch live subagent progress in chat, including the current task, agent, model, and active tool step
 -   **Custom Commands** — run OpenCode custom commands (and built-ins like `init`/`review`) from an inline menu with confirmation
+-   **Skills Catalog** — browse OpenCode skills from an inline menu and run them immediately or with arguments in the next message
 -   **Interactive Q&A** — answer agent questions and approve permissions via inline buttons
 -   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, and optionally enable spoken replies with `/tts`
 -   **File attachments** — send images, PDF documents, and any text-based files to OpenCode (code, logs, configs etc.)
 -   **Scheduled tasks** — schedule prompts to run later or on a recurring interval; see Scheduled Tasks
 -   **Context control** — compact context when it gets too large, right from the chat
 -   **Input flow control** — when an interactive flow is active, the bot accepts only relevant input to keep context consistent and avoid accidental actions
+-   **Git worktree switching** — browse and switch between existing git worktrees for the current repository with `/worktree`
 -   **Security** — strict user ID whitelist; no one else can access your bot, even if they find it
 -   **Localization** — UI localization is supported for multiple languages (`BOT_LOCALE`)
 
@@ -61,17 +63,21 @@ You'll also need your **Telegram User ID** — send any message to @userinfobot 
 
 ### 2\. Start OpenCode Server
 
-Start the OpenCode server:
+Run the OpenCode server on the same machine where the bot runs:
 
 opencode serve
 
-> The bot connects to the OpenCode API at `http://localhost:4096` by default.
+> The bot connects to the local OpenCode API at `http://localhost:4096` by default.
+
+> After the bot is configured, you can also start and stop the local OpenCode server from Telegram with `/opencode_start` and `/opencode_stop`.
 
 ### 3\. Install & Run
 
 The fastest way — run directly with `npx`:
 
-npx @grinev/opencode-telegram-bot
+npx @grinev/opencode-telegram-bot@latest
+
+> **Note:** This README tracks the `main` branch, which may include unreleased changes. The latest npm release may not include every feature described here yet. See recent commits on `main`.
 
 > Quick start is for npm usage. You do not need to clone this repository. If you run this command from the source directory (repository root), it may fail with `opencode-telegram: not found`. To run from sources, use the Development section.
 
@@ -81,6 +87,18 @@ On first launch, an interactive wizard will guide you through the configuration 
 
 npm install -g @grinev/opencode-telegram-bot
 opencode-telegram start
+
+`start` runs in the foreground by default. This is the recommended mode for `systemd`, Docker, local debugging, and other external process managers.
+
+To run the bot in the built-in background mode instead:
+
+opencode-telegram start --daemon
+opencode-telegram status
+opencode-telegram stop
+
+> Built-in daemon mode is intended for standalone npm installs without an external supervisor. For `systemd`, `pm2`, or Docker, keep using `opencode-telegram start` without `--daemon`.
+
+For Linux `systemd` setup, see `docs/LINUX_SYSTEMD_SETUP.md`.
 
 To reconfigure at any time:
 
@@ -132,6 +150,10 @@ Browse and switch between recent sessions
 
 Switch between OpenCode projects
 
+`/worktree`
+
+Switch between existing git worktrees
+
 `/open`
 
 Add a project by browsing directories
@@ -148,6 +170,10 @@ Rename the current session
 
 Browse and run custom commands
 
+`/skills`
+
+Browse and run OpenCode skills
+
 `/task`
 
 Create a scheduled task
@@ -158,11 +184,11 @@ Browse and delete scheduled tasks
 
 `/opencode_start`
 
-Start the OpenCode server remotely
+Start the local OpenCode server on the bot machine
 
 `/opencode_stop`
 
-Stop the OpenCode server remotely
+Stop the local OpenCode server on the bot machine
 
 `/help`
 
@@ -170,7 +196,7 @@ Show available commands
 
 Any regular text message is sent as a prompt to the coding agent only when no blocking interaction is active. Voice/audio messages are transcribed and then sent as prompts when STT is configured.
 
-> `/opencode_start` and `/opencode_stop` are intended as emergency commands — for example, if you need to restart a stuck server while away from your computer. Under normal usage, start `opencode serve` yourself before launching the bot.
+When the current project is a git repository, `/worktree` shows the existing worktrees for that repository. Status and pinned updates display the main project path with the active branch, and show a separate `Worktree` line when a linked worktree is selected.
 
 Scheduled Tasks
 ---------------
@@ -181,6 +207,8 @@ Scheduled tasks let you prepare prompts in advance and run them automatically la
 -   Scheduled executions currently always run with the `build` agent
 -   Tasks run outside your active chat session, so they do not interrupt or affect the current session flow
 -   The minimum recurring interval is 5 minutes
+-   If a recurring task is still running when its next interval arrives, the bot does not start a parallel copy of the same task and does not replay missed intervals later
+-   By default, the bot waits up to 120 minutes for one scheduled task run; change this with `SCHEDULED_TASK_EXECUTION_TIMEOUT_MINUTES` if needed
 -   Up to 10 scheduled tasks can exist at once by default; change this with `TASK_LIMIT` in your `.env`
 
 Configuration
@@ -306,7 +334,7 @@ No
 
 `COMMANDS_LIST_LIMIT`
 
-Commands per page in `/commands`
+Items per page in `/commands` and `/skills`
 
 No
 
@@ -319,6 +347,14 @@ Maximum number of scheduled tasks that can exist at once
 No
 
 `10`
+
+`SCHEDULED_TASK_EXECUTION_TIMEOUT_MINUTES`
+
+Maximum time the bot waits for one scheduled task run before marking it failed
+
+No
+
+`120`
 
 `BASH_TOOL_DISPLAY_MAX_LENGTH`
 
@@ -347,6 +383,14 @@ No
 `HIDE_TOOL_CALL_MESSAGES`
 
 Hide tool-call service messages (`💻 bash ...`, `📖 read ...`, etc.)
+
+No
+
+`false`
+
+`HIDE_TOOL_FILE_MESSAGES`
+
+Hide file edit documents sent as `.txt` attachments (`edit_*.txt`, `write_*.txt`)
 
 No
 
@@ -403,6 +447,14 @@ No
 `STT_LANGUAGE`
 
 Optional language hint (empty = provider auto-detect)
+
+No
+
+—
+
+`STT_NOTE_PROMPT`
+
+Optional note prepended to the LLM prompt as `[Note: ...]` for voice transcriptions; empty / `false` / `0` disable it
 
 No
 
@@ -468,6 +520,8 @@ If `STT_API_URL` and `STT_API_KEY` are set, the bot will:
 2.  Transcribe them via `POST {STT_API_URL}/audio/transcriptions`
 3.  Show recognized text in chat
 4.  Send the recognized text to OpenCode as a normal prompt
+
+If `STT_NOTE_PROMPT` is set to a non-empty value other than `false` or `0`, the bot prepends `[Note: ...]` to the transcription before sending it to the LLM. The recognized text shown in Telegram stays unchanged.
 
 If TTS credentials are configured, you can toggle spoken replies globally with `/tts`. The preference is stored in `settings.json` and persists across restarts.
 
@@ -575,8 +629,9 @@ Troubleshooting
 
 **"OpenCode server is not available"**
 
--   Ensure `opencode serve` is running in your project directory
--   Check that `OPENCODE_API_URL` points to the correct address (default: `http://localhost:4096`)
+-   Ensure an OpenCode server is running at the configured `OPENCODE_API_URL` (default: `http://localhost:4096`)
+-   For a local setup, you can start it with `opencode serve` or use `/opencode_start` in Telegram
+-   If `OPENCODE_API_URL` points to a remote server, verify that the address is reachable from the bot machine and that the remote server is healthy
 
 **No models in model picker**
 

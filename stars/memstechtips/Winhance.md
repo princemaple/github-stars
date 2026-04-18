@@ -1,6 +1,6 @@
 ---
 project: Winhance
-stars: 8406
+stars: 8753
 description: Application designed to optimize, customize and enhance your Windows experience.
 url: https://github.com/memstechtips/Winhance
 ---

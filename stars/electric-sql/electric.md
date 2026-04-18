@@ -1,6 +1,6 @@
 ---
 project: electric
-stars: 10057
+stars: 10092
 description: Read-path sync engine for Postgres that handles partial replication, data delivery and fan-out.
 url: https://github.com/electric-sql/electric
 ---
@@ -16,6 +16,7 @@ Real-time sync for Postgres.
 -   What is Electric?
 -   Getting Started
 -   HTTP API Docs
+-   Phoenix LiveDashboard
 -   Developing Electric
     -   Mac setup
 -   Contributing
@@ -79,6 +80,19 @@ HTTP API Docs
 -------------
 
 The HTTP API is defined in an OpenAPI spec in website/electric-api.yaml.
+
+Phoenix LiveDashboard
+---------------------
+
+Electric includes an optional Phoenix LiveDashboard for real-time monitoring of the running system (VM metrics, process info, ETS tables, etc.).
+
+To enable it, set the `ELECTRIC_LIVE_DASHBOARD_PORT` environment variable:
+
+ELECTRIC\_LIVE\_DASHBOARD\_PORT=4000
+
+The dashboard will be available at `http://localhost:4000` (or whichever port you choose). When the variable is not set, the dashboard is not started.
+
+> **WARNING: The LiveDashboard endpoint is completely unauthenticated.** Anyone with network access to the port can view internal system state. In production, you **must** restrict access to this port using firewall rules, network policies, or similar controls. Do not expose it to the public internet.
 
 Developing Electric
 -------------------

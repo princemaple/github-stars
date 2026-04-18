@@ -1,6 +1,6 @@
 ---
 project: langextract
-stars: 35588
+stars: 35672
 description: A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.
 url: https://github.com/google/langextract
 ---
@@ -271,7 +271,7 @@ LangExtract supports custom LLM providers via a lightweight plugin system. You c
 
 See the detailed guide in Provider System Documentation to learn how to:
 
--   Register a provider with `@registry.register(...)`
+-   Register a provider with `@router.register(...)` from `langextract.providers`
 -   Publish an entry point for discovery
 -   Optionally provide a schema with `get_schema_class()` for structured output
 -   Integrate with the factory via `create_model(...)`
@@ -283,17 +283,31 @@ LangExtract supports OpenAI models (requires optional dependency: `pip install l
 
 import langextract as lx
 
+\# OPENAI\_API\_KEY in the environment is picked up automatically; pass
+\# api\_key=... explicitly only if you need to override it.
 result \= lx.extract(
     text\_or\_documents\=input\_text,
     prompt\_description\=prompt,
     examples\=examples,
     model\_id\="gpt-4o",  \# Automatically selects OpenAI provider
-    api\_key\=os.environ.get('OPENAI\_API\_KEY'),
-    fence\_output\=True,
-    use\_schema\_constraints\=False
 )
 
-Note: OpenAI models require `fence_output=True` and `use_schema_constraints=False` because LangExtract doesn't implement schema constraints for OpenAI yet.
+The OpenAI provider uses JSON mode and auto-determines fence and schema behavior — leave `fence_output` and `use_schema_constraints` unset.
+
+For OpenAI-compatible endpoints or non-GPT model IDs (which skip auto-routing), use `ModelConfig` with an explicit provider:
+
+from langextract.factory import ModelConfig
+
+result \= lx.extract(
+    text\_or\_documents\=input\_text,
+    prompt\_description\=prompt,
+    examples\=examples,
+    config\=ModelConfig(
+        model\_id\="my-openai-compatible-model",
+        provider\="openai",
+        provider\_kwargs\={"api\_key": "sk-...", "base\_url": "https://..."},
+    ),
+)
 
 Using Local LLMs with Ollama
 ----------------------------
@@ -308,9 +322,9 @@ result \= lx.extract(
     examples\=examples,
     model\_id\="gemma2:2b",  \# Automatically selects Ollama provider
     model\_url\="http://localhost:11434",
-    fence\_output\=False,
-    use\_schema\_constraints\=False
 )
+
+The Ollama provider exposes `FormatModeSchema` for JSON mode. Leave `fence_output` and `use_schema_constraints` unset so the factory auto-configures from the provider's schema.
 
 **Quick setup:** Install Ollama from ollama.com, run `ollama pull gemma2:2b`, then `ollama serve`.
 

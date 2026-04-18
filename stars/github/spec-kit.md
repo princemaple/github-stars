@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 87111
+stars: 89162
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -24,7 +24,7 @@ Table of Contents
 -   🎨 Community Presets
 -   🚶 Community Walkthroughs
 -   🛠️ Community Friends
--   🤖 Supported AI Agents
+-   🤖 Supported AI Coding Agent Integrations
 -   🔧 Specify CLI Reference
 -   🧩 Making Spec Kit Your Own: Extensions & Presets
 -   📚 Core Philosophy
@@ -50,6 +50,8 @@ Spec-Driven Development **flips the script** on traditional software development
 
 Choose your preferred installation method:
 
+> **Important:** The only official, maintained packages for Spec Kit are published from this GitHub repository. Any packages with the same name on PyPI are **not** affiliated with this project and are not maintained by the Spec Kit maintainers. Always install directly from GitHub as shown below.
+
 #### Option 1: Persistent Installation (Recommended)
 
 Install once and use everywhere. Pin a specific release tag for stability (check Releases for the latest):
@@ -60,15 +62,19 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX
 # Or install latest from main (may include unreleased changes)
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
-Then use the tool directly:
+Then verify the correct version is installed:
+
+specify version
+
+And use the tool directly:
 
 # Create new project
 specify init <PROJECT\_NAME\>
 
 # Or initialize in existing project
-specify init . --ai claude
+specify init . --ai copilot
 # or
-specify init --here --ai claude
+specify init --here --ai copilot
 
 # Check installed tools
 specify check
@@ -85,9 +91,9 @@ Run directly without installing:
 uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init <PROJECT\_NAME\>
 
 # Or initialize in existing project
-uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init . --ai claude
+uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init . --ai copilot
 # or
-uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init --here --ai claude
+uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init --here --ai copilot
 
 **Benefits of persistent installation:**
 
@@ -173,6 +179,16 @@ Effect
 
 URL
 
+Agent Assign
+
+Assign specialized Claude Code agents to spec-kit tasks for targeted execution
+
+`process`
+
+Read+Write
+
+spec-kit-agent-assign
+
 AI-Driven Engineering (AIDE)
 
 A structured 7-step workflow for building new projects from scratch with AI assistants — from vision through implementation
@@ -182,6 +198,16 @@ A structured 7-step workflow for building new projects from scratch with AI assi
 Read+Write
 
 aide
+
+Architect Impact Previewer
+
+Predicts architectural impact, complexity, and risks of proposed changes before implementation.
+
+`visibility`
+
+Read-only
+
+spec-kit-architect-preview
 
 Archive Extension
 
@@ -202,6 +228,16 @@ Sync user stories and tasks to Azure DevOps work items using OAuth authenticatio
 Read+Write
 
 spec-kit-azure-devops
+
+Blueprint
+
+Stay code-literate in AI-driven development: review a complete code blueprint for every task from spec artifacts before /speckit.implement runs
+
+`docs`
+
+Read+Write
+
+spec-kit-blueprint
 
 Branch Convention
 
@@ -242,6 +278,16 @@ Adds canon-driven (baseline-driven) workflows: spec-first, code-first, spec-drif
 Read+Write
 
 spec-kit-canon
+
+Catalog CI
+
+Automated validation for spec-kit community catalog entries — structure, URLs, diffs, and linting
+
+`process`
+
+Read-only
+
+spec-kit-catalog-ci
 
 CI Guard
 
@@ -342,6 +388,26 @@ Orchestrate a full feature lifecycle with human-in-the-loop gates across all Spe
 Read+Write
 
 spec-kit-fleet
+
+GitHub Issues Integration 1
+
+Generate spec artifacts from GitHub Issues - import issues, sync updates, and maintain bidirectional traceability
+
+`integration`
+
+Read+Write
+
+spec-kit-github-issues
+
+GitHub Issues Integration 2
+
+Creates and syncs local specs from an existing GitHub issue
+
+`integration`
+
+Read+Write
+
+spec-kit-issue
 
 Iterate
 
@@ -623,6 +689,16 @@ Read-only
 
 spec-kit-security-review
 
+SFSpeckit
+
+Enterprise Salesforce SDLC with 18 commands for the full SDD lifecycle.
+
+`process`
+
+Read+Write
+
+spec-kit-sf
+
 Ship Release Extension
 
 Automates release pipeline: pre-flight checks, branch sync, changelog generation, CI verification, and PR creation
@@ -662,6 +738,16 @@ Update specs in-place, propagate changes to plan and tasks, and diff impact acro
 Read+Write
 
 spec-kit-refine
+
+Spec Scope
+
+Effort estimation and scope tracking — estimate work, detect creep, and budget time per phase
+
+`process`
+
+Read-only
+
+spec-kit-scope-
 
 Spec Sync
 
@@ -753,6 +839,16 @@ Read-only
 
 spec-kit-verify-tasks
 
+What-if Analysis
+
+Preview the downstream impact (complexity, effort, tasks, risks) of requirement changes before committing to them
+
+`visibility`
+
+Read-only
+
+spec-kit-whatif
+
 Worktree Isolation
 
 Spawn isolated git worktrees for parallel feature development without checkout switching
@@ -762,6 +858,16 @@ Spawn isolated git worktrees for parallel feature development without checkout s
 Read+Write
 
 spec-kit-worktree
+
+Worktrees
+
+Default-on worktree isolation for parallel agents — sibling or nested layout
+
+`process`
+
+Read+Write
+
+spec-kit-worktree-parallel
 
 To submit your own extension, see the Extension Publishing Guide.
 
@@ -813,6 +919,16 @@ Adds explicit `(depends on T###)` dependency declarations and an Execution Wave 
 —
 
 spec-kit-preset-explicit-task-dependencies
+
+Fiction Book Writing
+
+It adapts the Spec-Driven Development workflow for storytelling to create books or audiobooks (with annotations): features become story elements, specs become story briefs, plans become story structures, and tasks become scene-by-scene writing tasks. Supports single and multi-POV, all major plot structure frameworks, and two style modes: an author voice sample or humanized AI prose with 5 prose profiles. Supports interactive elements like brainstorming, interview, roleplay.
+
+21 templates, 26 commands
+
+—
+
+spec-kit-preset-fiction-book-writing
 
 Multi-Repo Branching
 
@@ -883,155 +999,14 @@ See Spec-Driven Development in action across different scenarios with these comm
 🛠️ Community Friends
 ---------------------
 
-Note
+Community projects that extend, visualize, or build on Spec Kit. See the full list on the Community Friends page.
 
-Community projects listed here are independently created and maintained by their respective authors. They are **not reviewed, nor endorsed, nor supported by GitHub**. Review their source code before installation and use at your own discretion.
+🤖 Supported AI Coding Agent Integrations
+-----------------------------------------
 
-Community projects that extend, visualize, or build on Spec Kit:
+Spec Kit works with 30+ AI coding agents — both CLI tools and IDE-based assistants. See the full list with notes and usage details in the Supported AI Coding Agent Integrations guide.
 
--   **cc-spex** - A Claude Code plugin that adds composable traits on top of Spec Kit with Superpowers\-based quality gates, spec/code review, git worktree isolation, and parallel implementation via agent teams.
-    
--   **Spec Kit Assistant** — A VS Code extension that provides a visual orchestrator for the full SDD workflow (constitution → specification → planning → tasks → implementation) with phase status visualization, an interactive task checklist, DAG visualization, and support for Claude, Gemini, GitHub Copilot, and OpenAI backends. Requires the `specify` CLI in your PATH.
-    
--   **SpecKit Companion** — A VS Code extension that brings a visual GUI to Spec Kit. Browse specs in a rich markdown viewer with clickable file references, create specifications with image attachments, comment and refine each step inline (GitHub-style review), track your progress through the SDD workflow with a visual phase stepper, and manage steering documents like constitutions and templates.
-    
-
-🤖 Supported AI Agents
-----------------------
-
-Agent
-
-Support
-
-Notes
-
-Qoder CLI
-
-✅
-
-Kiro CLI
-
-✅
-
-Use `--ai kiro-cli` (alias: `--ai kiro`)
-
-Amp
-
-✅
-
-Auggie CLI
-
-✅
-
-Claude Code
-
-✅
-
-Installs skills in `.claude/skills`; invoke spec-kit as `/speckit-constitution`, `/speckit-plan`, etc.
-
-CodeBuddy CLI
-
-✅
-
-Codex CLI
-
-✅
-
-Requires `--ai-skills`. Codex recommends skills and treats custom prompts as deprecated. Spec-kit installs Codex skills into `.agents/skills` and invokes them as `$speckit-<command>`.
-
-Cursor
-
-✅
-
-Forge
-
-✅
-
-CLI tool: `forge`
-
-Gemini CLI
-
-✅
-
-GitHub Copilot
-
-✅
-
-IBM Bob
-
-✅
-
-IDE-based agent with slash command support
-
-Jules
-
-✅
-
-Kilo Code
-
-✅
-
-opencode
-
-✅
-
-Pi Coding Agent
-
-✅
-
-Pi doesn't have MCP support out of the box, so `taskstoissues` won't work as intended. MCP support can be added via extensions
-
-Qwen Code
-
-✅
-
-Roo Code
-
-✅
-
-SHAI (OVHcloud)
-
-✅
-
-Tabnine CLI
-
-✅
-
-Mistral Vibe
-
-✅
-
-Kimi Code
-
-✅
-
-iFlow CLI
-
-✅
-
-Windsurf
-
-✅
-
-Junie
-
-✅
-
-Antigravity (agy)
-
-✅
-
-Requires `--ai-skills`
-
-Trae
-
-✅
-
-Generic
-
-✅
-
-Bring your own agent — use `--ai generic --ai-commands-dir <path>` for unsupported agents
+Run `specify integration list` to see all available integrations in your installed version.
 
 Available Slash Commands
 ------------------------
@@ -1115,223 +1090,7 @@ Generate custom quality checklists that validate requirements completeness, clar
 🔧 Specify CLI Reference
 ------------------------
 
-The `specify` tool is invoked as
-
-```
-specify <COMMAND> [SUBCOMMAND] [OPTIONS]
-```
-
-and supports the following commands:
-
-### Commands
-
-Command
-
-Description
-
-`init`
-
-Initialize a new Specify project from the latest template.
-
-`check`
-
-Check for installed tools: `git` plus all CLI-based agents configured in `AGENT_CONFIG` (for example: `claude`, `gemini`, `code`/`code-insiders`, `cursor-agent`, `windsurf`, `junie`, `qwen`, `opencode`, `codex`, `kiro-cli`, `shai`, `qodercli`, `vibe`, `kimi`, `iflow`, `pi`, `forge`, etc.)
-
-`version`
-
-Show the currently installed Spec Kit version.
-
-`extension`
-
-Manage extensions
-
-`preset`
-
-Manage presets
-
-`integration`
-
-Manage integrations
-
-### `specify init` Arguments & Options
-
-specify init \[PROJECT\_NAME\] <OPTIONS\>
-
-Argument/Option
-
-Type
-
-Description
-
-`<PROJECT_NAME>`
-
-Argument
-
-Name for your new project directory (optional if using `--here`, or use `.` for current directory)
-
-`--ai`
-
-Option
-
-AI assistant to use (see `AGENT_CONFIG` for the full, up-to-date list). Common options include: `claude`, `gemini`, `copilot`, `cursor-agent`, `qwen`, `opencode`, `codex`, `windsurf`, `junie`, `kilocode`, `auggie`, `roo`, `codebuddy`, `amp`, `shai`, `kiro-cli` (`kiro` alias), `agy`, `bob`, `qodercli`, `vibe`, `kimi`, `iflow`, `pi`, `forge`, or `generic` (requires `--ai-commands-dir`)
-
-`--ai-commands-dir`
-
-Option
-
-Directory for agent command files (required with `--ai generic`, e.g. `.myagent/commands/`)
-
-`--script`
-
-Option
-
-Script variant to use: `sh` (bash/zsh) or `ps` (PowerShell)
-
-`--ignore-agent-tools`
-
-Flag
-
-Skip checks for AI agent tools like Claude Code
-
-`--no-git`
-
-Flag
-
-Skip git repository initialization
-
-`--here`
-
-Flag
-
-Initialize project in the current directory instead of creating a new one
-
-`--force`
-
-Flag
-
-Force merge/overwrite when initializing in current directory (skip confirmation)
-
-`--skip-tls`
-
-Flag
-
-Skip SSL/TLS verification (not recommended)
-
-`--debug`
-
-Flag
-
-Enable detailed debug output for troubleshooting
-
-`--github-token`
-
-Option
-
-GitHub token for API requests (or set GH\_TOKEN/GITHUB\_TOKEN env variable)
-
-`--ai-skills`
-
-Flag
-
-Install Prompt.MD templates as agent skills in agent-specific `skills/` directory (requires `--ai`). Extension commands are also auto-registered as skills when extensions are added later.
-
-`--branch-numbering`
-
-Option
-
-Branch numbering strategy: `sequential` (default — `001`, `002`, `003`, …, `1000`, … — expands beyond 3 digits automatically) or `timestamp` (`YYYYMMDD-HHMMSS`). Timestamp mode is useful for distributed teams to avoid numbering conflicts
-
-### Examples
-
-# Basic project initialization
-specify init my-project
-
-# Initialize with specific AI assistant
-specify init my-project --ai claude
-
-# Initialize with Cursor support
-specify init my-project --ai cursor-agent
-
-# Initialize with Qoder support
-specify init my-project --ai qodercli
-
-# Initialize with Windsurf support
-specify init my-project --ai windsurf
-
-# Initialize with Kiro CLI support
-specify init my-project --ai kiro-cli
-
-# Initialize with Amp support
-specify init my-project --ai amp
-
-# Initialize with SHAI support
-specify init my-project --ai shai
-
-# Initialize with Mistral Vibe support
-specify init my-project --ai vibe
-
-# Initialize with IBM Bob support
-specify init my-project --ai bob
-
-# Initialize with Pi Coding Agent support
-specify init my-project --ai pi
-
-# Initialize with Codex CLI support
-specify init my-project --ai codex --ai-skills
-
-# Initialize with Antigravity support
-specify init my-project --ai agy --ai-skills
-
-# Initialize with Forge support
-specify init my-project --ai forge
-
-# Initialize with an unsupported agent (generic / bring your own agent)
-specify init my-project --ai generic --ai-commands-dir .myagent/commands/
-
-# Initialize with PowerShell scripts (Windows/cross-platform)
-specify init my-project --ai copilot --script ps
-
-# Initialize in current directory
-specify init . --ai copilot
-# or use the --here flag
-specify init --here --ai copilot
-
-# Force merge into current (non-empty) directory without confirmation
-specify init . --force --ai copilot
-# or
-specify init --here --force --ai copilot
-
-# Skip git initialization
-specify init my-project --ai gemini --no-git
-
-# Enable debug output for troubleshooting
-specify init my-project --ai claude --debug
-
-# Use GitHub token for API requests (helpful for corporate environments)
-specify init my-project --ai claude --github-token ghp\_your\_token\_here
-
-# Claude Code installs skills with the project by default
-specify init my-project --ai claude
-
-# Initialize in current directory with agent skills
-specify init --here --ai gemini --ai-skills
-
-# Use timestamp-based branch numbering (useful for distributed teams)
-specify init my-project --ai claude --branch-numbering timestamp
-
-# Check system requirements
-specify check
-
-### Environment Variables
-
-Variable
-
-Description
-
-`SPECIFY_FEATURE`
-
-Override feature detection for non-Git repositories. Set to the feature directory name (e.g., `001-photo-albums`) to work on a specific feature when not using Git branches.  
-\*\*Must be set in the context of the agent you're working with prior to using `/speckit.plan` or follow-up commands.
+For full command details, options, and examples, see the CLI Reference.
 
 🧩 Making Spec Kit Your Own: Extensions & Presets
 -------------------------------------------------
@@ -1386,7 +1145,7 @@ specify extension add <extension-name\>
 
 For example, extensions could add Jira integration, post-implementation code review, V-Model test traceability, or project health diagnostics.
 
-See the Extensions README for the full guide and how to build and publish your own. Browse the community extensions above for what's available.
+See the Extensions reference for the full command guide. Browse the community extensions above for what's available.
 
 ### Presets — Customize Existing Workflows
 
@@ -1400,7 +1159,7 @@ specify preset add <preset-name\>
 
 For example, presets could restructure spec templates to require regulatory traceability, adapt the workflow to fit the methodology you use (e.g., Agile, Kanban, Waterfall, jobs-to-be-done, or domain-driven design), add mandatory security review gates to plans, enforce test-first task ordering, or localize the entire workflow to a different language. The pirate-speak demo shows just how deep the customization can go. Multiple presets can be stacked with priority ordering.
 
-See the Presets README for the full guide, including resolution order, priority, and how to create your own.
+See the Presets reference for the full command guide, including resolution order and priority stacking.
 
 ### When to Use Which
 
@@ -1539,27 +1298,27 @@ specify init --here --force
 
 You will be prompted to select the AI agent you are using. You can also proactively specify it directly in the terminal:
 
-specify init <project\_name\> --ai claude
+specify init <project\_name\> --ai copilot
 specify init <project\_name\> --ai gemini
 specify init <project\_name\> --ai copilot
 
 # Or in current directory:
-specify init . --ai claude
+specify init . --ai copilot
 specify init . --ai codex --ai-skills
 
 # or use --here flag
-specify init --here --ai claude
+specify init --here --ai copilot
 specify init --here --ai codex --ai-skills
 
 # Force merge into a non-empty current directory
-specify init . --force --ai claude
+specify init . --force --ai copilot
 
 # or
-specify init --here --force --ai claude
+specify init --here --force --ai copilot
 
-The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi, Forge, or Mistral Vibe installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi, Forge, Goose, or Mistral Vibe installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
 
-specify init <project\_name\> --ai claude --ignore-agent-tools
+specify init <project\_name\> --ai copilot --ignore-agent-tools
 
 ### **STEP 1:** Establish project principles
 

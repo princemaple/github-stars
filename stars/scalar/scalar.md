@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 14782
+stars: 14849
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -72,7 +72,7 @@ And there's an ever-growing list of plugins and integrations:
 
 -   HTML/JS API (works everywhere)
 -   .NET ASP.NET Core
--   .NET Aspire
+-   Aspire
 -   AdonisJS
 -   Astro
 -   Django Ninja
@@ -312,6 +312,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ivanagas**
 
   
+**wilhelmer**
+
+  
 **Mason-Little**
 
   
@@ -321,10 +324,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **RemcoGoy**
 
   
-**wilhelmer**
+**adjsky**
 
   
-**adjsky**
+**alonfaraj**
 
   
 **mpminardi**
@@ -361,9 +364,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **ATREAY**
-
-  
-**alonfaraj**
 
   
 **ledgersteve**
@@ -420,13 +420,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **handrews**
 
   
+**gsmcdonald**
+
+  
 **Duncanma**
 
   
 **WDaan**
 
   
-**gsmcdonald**
+**STP5940**
 
   
 **mirismaili**
@@ -450,13 +453,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **rcollas**
 
   
-**bobheadxi**
-
-  
-**cactysman**
-
-  
-**STP5940**
+**abdulamite**
 
   
 **captainsafia**
@@ -483,7 +480,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **smoores-dev**
 
   
-**tinchoz49**
+**soGit**
 
   
 **MatteoH2O1999**
@@ -540,10 +537,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **robert-dean**
 
   
-**bingbeann**
+**bobheadxi**
 
   
-**Chinlinlee**
+**sinh117801**
 
   
 **bsdayo**
@@ -565,6 +562,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **g-airey**
+
+  
+**gary5**
 
   
 **kwaichanz**
@@ -591,13 +591,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **dinwwwh**
 
   
+**zgcalebp**
+
+  
 **Huliiiiii**
-
-  
-**soGit**
-
-  
-**sinh117801**
 
   
 **stratosblue**
@@ -646,6 +643,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **zakaria-shahen**
+
+  
+**bingbeann**
+
+  
+**Chinlinlee**
 
   
 **foxfriends**
@@ -702,7 +705,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **elliott-with-the-longest-name-on-github**
 
   
-**abdulamite**
+**emmanuel-ferdman**
 
   
 **MathurAditya724**
@@ -759,7 +762,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Smyrcu**
 
   
-**JacobCoffee**
+**cactysman**
 
   
 **Tholdrim**
@@ -816,7 +819,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **not-my-profile**
 
   
-**emmanuel-ferdman**
+**tinchoz49**
 
   
 **froggy1014**
@@ -871,3 +874,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **kevinand11**
+
+  
+**JacobCoffee**

@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 1919
+stars: 2049
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -192,6 +192,24 @@ Product analytics platform
 
 https://us.posthog.com/signup
 
+Stripe
+
+Payments service
+
+https://dashboard.stripe.com/login
+
+Resend
+
+Email service
+
+https://resend.com
+
+Novu
+
+Notifications service
+
+https://dashboard.novu.co/auth/sign-in
+
 Posthog has a free tier which should be plenty to support local development. If you're self hosting and you don't want to use Posthog, it's pretty easy to remove the analytics.
 
 ### Installation
@@ -206,20 +224,33 @@ Create an `.env` file and copy the contents of `.env.example` file into it
 
 $ cp ./.env.example ./.env
 
-1.  Use the output of `npm run db:start` to set the supabase entries:
+1.  **Social Sign In**: Signing in requires you to setup one of two methods:
+
+-   Email requires a Resend API key (you'll set this up later on)
+-   Sign-in with Google requires a Google auth client with these variables. See the Supabase docs for instructions on how to set this up:
+    -   Set `Authorized JavaScript origins` to only `http://127.0.0.1:54321`
+    -   Set `Authorized redirect URIs` to `http://127.0.0.1:54321/auth/v1/callback`
+-   You should set environment variables like the following.
+    -   `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID="******.apps.googleusercontent.com"`
+    -   `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET="GOCSPX-****************"`
+
+1.  **Supabase**: Start up the backend services using `npm run db:start`. Find the following values in its output to set the supabase entries:
 
 -   `SUPABASE_SERVICE_ROLE_KEY=[service_role key]`
 -   `SUPABASE_ANON_KEY=[anon key]`
 
-1.  In Posthog go to https://\[region\].posthog.com/project/\[project-id\]/settings/project-details to find your Project ID and Project API key:
+1.  **Redis** (Caching): Set up a Redis instance (local or cloud) and add the connection URL. You can set one up in the cloud easily using Upstash:
+
+-   `REDIS_URL=[redis://user:password@host:port]`
+
+1.  **Posthog** (Analytics): In Posthog go to https://\[region\].posthog.com/project/\[project-id\]/settings/project-details to find your Project ID and Project API key:
 
 -   `POSTHOG_API_HOST=[https://[region].posthog.com]`
 -   `POSTHOG_PROJECT_PUBLIC_KEY=[Project API Key starting 'phc*']`
 
-1.  Add a `STRIPE_SECRET_KEY` from the Stripe admin interface, and then run `npm run -w @carbon/stripe register:stripe` to get a `STRIPE_WEBHOOK_SECRET`
+1.  **Stripe** (Payment service) - Create a stripe account, add a `STRIPE_SECRET_KEY` from the Stripe `Settings > Developers` interface
 
 -   `STRIPE_SECRET_KEY="sk_test_*************"`
--   `STRIPE_WEBHOOK_SECRET="whsec_************"`
 
 1.  **Resend** (Email service) - Create a Resend account and configure:
 
@@ -234,23 +265,11 @@ Resend is used for transactional emails (user invitations, email verification, o
 -   `NOVU_APPLICATION_ID="********************"` (Client-side, public)
 -   `NOVU_SECRET_KEY="********************"` (Server-side secret, backend only)
 
-Novu is used for in-app notifications and notification workflows. After setup, sync your Novu workflows:
+Novu is used for in-app notifications and notification workflows. After standing up the application and tunnelling port 3000, sync your Novu workflows:
 
 npm run novu:sync
 
 This command syncs your Novu workflows with the Carbon application using the bridge URL.
-
-1.  Signing in requires you to setup one of two methods:
-    -   Email requires a Resend API key (configured in step 6 above)
-    -   Sign-in with Google requires a Google auth client with these variables:
-        -   `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID="******.apps.googleusercontent.com"`
-        -   `SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_SECRET="GOCSPX-****************"`
-        -   `SUPABASE_AUTH_EXTERNAL_GOOGLE_REDIRECT_URI="http://127.0.0.1:54321/auth/v1/callback"`
-
-Then you can run the following:
-
-$ npm run db:build     # run db migrations and seed script
-$ npm run build        # build the packages
 
 Finally, start the apps and packages:
 

@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 482
+stars: 528
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support. Can be used as lightweight OpenClaw alternative.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -25,6 +25,7 @@ Features
 
 -   **Remote coding** — send prompts to OpenCode from anywhere, receive complete results with code sent as files
 -   **Session management** — create new sessions or continue existing ones, just like in the TUI
+-   **Track live session** — follow a live OpenCode CLI session; see Track Existing Session
 -   **Live status** — pinned message with current project/worktree, model, context usage, and changed files list, updated in real time
 -   **Model switching** — pick models from OpenCode favorites and recent history directly in the chat (favorites are shown first)
 -   **Agent modes** — switch between Plan and Build modes on the fly
@@ -210,6 +211,19 @@ Scheduled tasks let you prepare prompts in advance and run them automatically la
 -   If a recurring task is still running when its next interval arrives, the bot does not start a parallel copy of the same task and does not replay missed intervals later
 -   By default, the bot waits up to 120 minutes for one scheduled task run; change this with `SCHEDULED_TASK_EXECUTION_TIMEOUT_MINUTES` if needed
 -   Up to 10 scheduled tasks can exist at once by default; change this with `TASK_LIMIT` in your `.env`
+
+Track Existing Session
+----------------------
+
+After you create a new session, select an existing one, or let the bot auto-create one from your first prompt, the bot automatically starts tracking that session. It follows live events from the same OpenCode CLI session, shows external text input sent from another TUI client, and lets you continue the same session from Telegram.
+
+For this to work, the console OpenCode instance must be started on the same port the bot connects to. By default, OpenCode starts on a random port, so use one of the setups below.
+
+-   **Single TUI, simplest setup** — start OpenCode on a fixed port: `opencode --port 4096`
+-   Point the bot to `http://127.0.0.1:4096`, then select or create the same session in Telegram
+-   **Multiple TUI clients, shared backend** — start one backend: `opencode serve --port 4096`
+-   In each terminal client, connect with: `opencode attach http://127.0.0.1:4096`
+-   In the bot, select or create the same session to start tracking it automatically
 
 Configuration
 -------------
@@ -460,9 +474,17 @@ No
 
 —
 
+`TTS_PROVIDER`
+
+TTS provider: `openai` for OpenAI-compatible APIs or `google` for Google Cloud TTS
+
+No
+
+`openai`
+
 `TTS_API_URL`
 
-TTS API base URL
+OpenAI-compatible TTS API base URL
 
 No
 
@@ -470,7 +492,7 @@ No
 
 `TTS_API_KEY`
 
-TTS API key
+OpenAI-compatible TTS API key
 
 No
 
@@ -478,7 +500,7 @@ No
 
 `TTS_MODEL`
 
-TTS model name passed to `/audio/speech`
+OpenAI-compatible TTS model name passed to `/audio/speech`
 
 No
 
@@ -486,11 +508,19 @@ No
 
 `TTS_VOICE`
 
-OpenAI-compatible TTS voice name
+TTS voice name. Defaults to `alloy` for OpenAI-compatible APIs and `en-US-Studio-O` for Google Cloud TTS
 
 No
 
-`alloy`
+provider-specific
+
+`GOOGLE_APPLICATION_CREDENTIALS`
+
+Path to a Google Cloud service account JSON key file for `TTS_PROVIDER=google`
+
+No
+
+—
 
 `LOG_LEVEL`
 
@@ -525,12 +555,19 @@ If `STT_NOTE_PROMPT` is set to a non-empty value other than `false` or `0`, the 
 
 If TTS credentials are configured, you can toggle spoken replies globally with `/tts`. The preference is stored in `settings.json` and persists across restarts.
 
-TTS configuration example:
+OpenAI-compatible TTS configuration example:
 
+TTS\_PROVIDER\=openai
 TTS\_API\_URL\=https://api.openai.com/v1
 TTS\_API\_KEY\=your-tts-api-key
 TTS\_MODEL\=gpt-4o-mini-tts
 TTS\_VOICE\=alloy
+
+Google Cloud TTS configuration example:
+
+TTS\_PROVIDER\=google
+TTS\_VOICE\=en-US-Studio-O
+GOOGLE\_APPLICATION\_CREDENTIALS\=/path/to/service-account-key.json
 
 Supported provider examples (Whisper-compatible):
 
@@ -651,7 +688,7 @@ Please follow commit and release note conventions in CONTRIBUTING.md.
 Community
 ---------
 
-Have questions, want to share your experience using the bot, or have an idea for a feature? Join the conversation in GitHub Discussions.
+Have questions, want to share your experience using the bot, or have an idea for a feature? Join the Telegram group for announcements and discussions, or start a thread in GitHub Discussions.
 
 License
 -------

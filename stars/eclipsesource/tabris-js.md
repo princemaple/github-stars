@@ -1,6 +1,6 @@
 ---
 project: tabris-js
-stars: 1416
+stars: 1417
 description: Create native mobile apps in JavaScript or TypeScript.
 url: https://github.com/eclipsesource/tabris-js
 ---

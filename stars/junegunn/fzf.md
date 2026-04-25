@@ -1,6 +1,6 @@
 ---
 project: fzf
-stars: 79596
+stars: 79782
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---
@@ -10,7 +10,7 @@ url: https://github.com/junegunn/fzf
   
   
   
-Show your love for fzf — T-shirts, mugs, and stickers now available!  
+Show your love for fzf -- T-shirts, mugs, and stickers now available!  
   
 commitgoods.com/collections/fzf  
   
@@ -24,10 +24,10 @@ It's an interactive filter program for any kind of list; files, command history,
 Highlights
 ----------
 
--   **Portable** — Distributed as a single binary for easy installation
--   **Fast** — Optimized to process millions of items instantly
--   **Versatile** — Fully customizable through an event-action binding mechanism
--   **All-inclusive** — Comes with integrations for Bash, Zsh, Fish, Vim, and Neovim
+-   **Portable** -- Distributed as a single binary for easy installation
+-   **Fast** -- Optimized to process millions of items instantly
+-   **Versatile** -- Fully customizable through an event-action binding mechanism
+-   **All-inclusive** -- Comes with integrations for Bash, Zsh, Fish, Vim, and Neovim
 
 Table of Contents
 -----------------
@@ -483,7 +483,7 @@ The available options are described later in this document.
 
 ### Customizing the look
 
-The user interface of fzf is fully customizable with a large number of configuration options. For a quick setup, you can start with one of the style presets — `default`, `full`, or `minimal` — using the `--style` option.
+The user interface of fzf is fully customizable with a large number of configuration options. For a quick setup, you can start with one of the style presets -- `default`, `full`, or `minimal` -- using the `--style` option.
 
 fzf --style full \\
     --preview 'fzf-preview.sh {}' --bind 'focus:transform-header:file --brief {}'

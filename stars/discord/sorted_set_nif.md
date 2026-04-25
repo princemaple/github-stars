@@ -1,6 +1,6 @@
 ---
 project: sorted_set_nif
-stars: 1648
+stars: 1647
 description: Elixir SortedSet backed by a Rust-based NIF
 url: https://github.com/discord/sorted_set_nif
 ---

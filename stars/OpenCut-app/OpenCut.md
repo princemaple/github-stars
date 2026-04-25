@@ -1,6 +1,6 @@
 ---
 project: OpenCut
-stars: 48108
+stars: 48411
 description: The open-source CapCut alternative
 url: https://github.com/OpenCut-app/OpenCut
 ---
@@ -75,6 +75,17 @@ If you want to get ready for `apps/desktop`, see `apps/desktop/README.md`. It's 
 ### Local WASM development
 
 Only needed if you're editing `rust/wasm` and want the web app to use your local build instead of the published package.
+
+**Prerequisites** — install these once before anything else:
+
+# Rust toolchain
+curl --proto '\=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# build the WASM package
+cargo install wasm-pack
+
+# reruns the build on file changes, used by bun dev:wasm
+cargo install cargo-watch
 
 1.  Build the package once from the repo root:
     

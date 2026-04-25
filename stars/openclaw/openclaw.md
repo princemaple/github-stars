@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 360044
+stars: 363895
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -34,7 +34,7 @@ Model note: while many providers and models are supported, prefer a current flag
 Install (recommended)
 ---------------------
 
-Runtime: **Node 24 (recommended) or Node 22.16+**.
+Runtime: **Node 24 (recommended) or Node 22.14+**.
 
 npm install -g openclaw@latest
 # or: pnpm add -g openclaw@latest
@@ -46,7 +46,7 @@ OpenClaw Onboard installs the Gateway daemon (launchd/systemd user service) so i
 Quick start (TL;DR)
 -------------------
 
-Runtime: **Node 24 (recommended) or Node 22.16+**.
+Runtime: **Node 24 (recommended) or Node 22.14+**.
 
 Full beginner guide (auth, pairing, channels): Getting started
 
@@ -55,7 +55,7 @@ openclaw onboard --install-daemon
 openclaw gateway --port 18789 --verbose
 
 # Send a message
-openclaw message send --to +1234567890 --message "Hello from OpenClaw"
+openclaw message send --target +1234567890 --message "Hello from OpenClaw"
 
 # Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/IRC/Microsoft Teams/Matrix/Feishu/LINE/Mattermost/Nextcloud Talk/Nostr/Synology Chat/Tlon/Twitch/Zalo/Zalo Personal/WeChat/QQ/WebChat)
 openclaw agent --message "Ship checklist" --thinking high
@@ -95,9 +95,9 @@ Security model (important)
 --------------------------
 
 -   Default: tools run on the host for the `main` session, so the agent has full access when it is just you.
--   Group/channel safety: set `agents.defaults.sandbox.mode: "non-main"` to run non-`main` sessions inside per-session Docker sandboxes.
+-   Group/channel safety: set `agents.defaults.sandbox.mode: "non-main"` to run non-`main` sessions inside sandboxes. Docker is the default sandbox backend; SSH and OpenShell backends are also available.
 -   Typical sandbox default: allow `bash`, `process`, `read`, `write`, `edit`, `sessions_list`, `sessions_history`, `sessions_send`, `sessions_spawn`; deny `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway`.
--   Before exposing anything remotely, read Security, Docker sandboxing, and Configuration.
+-   Before exposing anything remotely, read Security, Sandboxing, and Configuration.
 
 Operator quick refs
 -------------------
@@ -113,7 +113,7 @@ Docs by goal
 -   New here: Getting started, Onboarding, Updating
 -   Channel setup: Channels index, WhatsApp, Telegram, Discord, Slack
 -   Apps + nodes: macOS, iOS, Android, Nodes
--   Config + security: Configuration, Security, Docker sandboxing
+-   Config + security: Configuration, Security, Sandboxing
 -   Remote + web: Gateway, Remote access, Tailscale, Web surfaces
 -   Tools + automation: Tools, Skills, Cron jobs, Webhooks, Gmail Pub/Sub
 -   Internals: Architecture, Agent, Session model, Gateway protocol
@@ -154,19 +154,30 @@ From source (development)
 
 Prefer `pnpm` for builds from source. Bun is optional for running TypeScript directly.
 
+For the dev loop:
+
 git clone https://github.com/openclaw/openclaw.git
 cd openclaw
 
 pnpm install
-pnpm ui:build # auto-installs UI deps on first run
-pnpm build
 
-pnpm openclaw onboard --install-daemon
+# First run only (or after resetting local OpenClaw config/workspace)
+pnpm openclaw setup
+
+# Optional: prebuild Control UI before first startup
+pnpm ui:build
 
 # Dev loop (auto-reload on source/config changes)
 pnpm gateway:watch
 
-Note: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary.
+If you need a built `dist/` from the checkout (for Node, packaging, or release validation), run:
+
+pnpm build
+pnpm ui:build
+
+`pnpm openclaw setup` writes the local config/workspace needed for `pnpm gateway:watch`. It is safe to re-run, but you normally only need it on first setup or after resetting local state. `pnpm gateway:watch` does not rebuild `dist/control-ui`, so rerun `pnpm ui:build` after `ui/` changes or use `pnpm ui:dev` when iterating on the Control UI. If you want this checkout to run onboarding directly, use `pnpm openclaw onboard --install-daemon`.
+
+Note: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary, while `pnpm gateway:watch` rebuilds the runtime on demand during the dev loop.
 
 Development channels
 --------------------

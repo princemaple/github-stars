@@ -1,19 +1,70 @@
 ---
 project: pdfcpu
-stars: 8567
+stars: 8584
 description: A PDF processor written in Go.
 url: https://github.com/pdfcpu/pdfcpu
 ---
 
-pdfcpu: a Go PDF processor and CLI
-==================================
+pdfcpu: a PDF processor written in Go with CLI and API support
+==============================================================
 
-pdfcpu is a PDF processing library written in Go that supports encryption and offers both an API and a command-line interface (CLI). It is compatible with all PDF versions with basic support and ongoing improvement for PDF 2.0 (ISO-32000-2).
+pdfcpu is a PDF processing library written in Go.
 
-Motivation
-----------
+It is compatible with all PDF versions. Support for PDF 2.0 (ISO-32000-2) is evolving and continuously improving.
 
-This is an effort to build a comprehensive PDF processing library from the ground up written in Go. Over time pdfcpu aims to support the standard range of PDF processing features and also any interesting use cases that may present themselves along the way.
+* * *
+
+Installation
+------------
+
+### CLI
+
+👉 CLI Installation instructions
+
+### Go API
+
+👉 API Installation instructions
+
+* * *
+
+Usage
+-----
+
+### CLI
+
+Validate against PDF 2.0 (ISO-32000-2):
+
+```
+pdfcpu validate input.pdf
+```
+
+Merge two PDFs:
+
+```
+pdfcpu merge out.pdf in1.pdf in2.pdf
+```
+
+### Go API
+
+See API documentation for usage examples.
+
+* * *
+
+Features
+--------
+
+-   Validate, optimize, split, trim, and merge PDFs
+-   Extract and manipulate images, fonts, and metadata
+-   Encrypt and decrypt PDFs
+-   Resize and rotate pages
+-   Add and remove stamps and watermarks
+-   Manage digital signatures (ongoing work)
+-   Manage attachments and more...
+
+In Action
+---------
+
+Common operations and examples:
 
            
   
@@ -21,168 +72,188 @@ This is an effort to build a comprehensive PDF processing library from the groun
   
  
 
-Focus
------
-
-The primary emphasis is on providing robust assistance for batch processing and scripting through a comprehensive command-line interface. Simultaneously, pdfcpu aims to simplify the integration of PDF processing into your Go-based backend system by offering a versatile set of commands.
+* * *
 
 Command Set
 -----------
 
--   annotations
--   attachments
--   booklet
--   bookmarks
--   boxes
--   certificates
--   change owner password
--   change user password
--   collect
--   config
--   create
--   crop
--   cut
--   decrypt
--   encrypt
--   extract
--   fonts
--   form
--   grid
--   images
--   import
--   info
--   keywords
--   merge
--   ndown
--   nup
--   optimize
--   pagelayout
--   pagemode
--   pages
--   permissions
--   portfolio
--   poster
--   properties
--   resize
--   rotate
--   signatures
--   split
--   stamp
--   trim
--   validate
--   viewerpref
--   watermark
--   zoom
+Complete list of supported commands:
+
+annotations
+
+attachments
+
+booklet
+
+bookmarks
+
+boxes
+
+certificates
+
+change owner password
+
+change user password
+
+collect
+
+config
+
+create
+
+crop
+
+cut
+
+decrypt
+
+encrypt
+
+extract
+
+fonts
+
+form
+
+grid
+
+images
+
+import
+
+info
+
+keywords
+
+merge
+
+ndown
+
+nup
+
+optimize
+
+pagelayout
+
+pagemode
+
+pages
+
+permissions
+
+portfolio
+
+poster
+
+properties
+
+resize
+
+rotate
+
+signatures
+
+split
+
+stamp
+
+trim
+
+validate
+
+viewerpref
+
+watermark
+
+zoom
+
+* * *
+
+Motivation
+----------
+
+pdfcpu aims to provide comprehensive PDF processing capabilities implemented in Go.
+
+It focuses on correctness, robustness and independence from external dependencies.
+
+* * *
+
+Focus
+-----
+
+-   comprehensive PDF processing functionality
+-   minimal external dependencies
+-   predictable and stable behavior
+
+* * *
 
 Documentation
 -------------
 
--   pdfcpu.io
--   API tests
--   API samples
--   CLI usage: `$ pdfcpu help cmd`
+-   Project documentation: https://pdfcpu.io
 
-### GoDoc
+### CLI
 
--   pdfcpu package
--   pdfcpu API
--   pdfcpu CLI
+-   Command help: `pdfcpu [command] --help`
 
-Reminder
---------
+### Go API
 
--   Always make sure your work is based on the latest commit!  
+-   Package documentation: https://pkg.go.dev/github.com/pdfcpu/pdfcpu
     
--   pdfcpu is still _Alpha_ - bugfixes are committed on the fly and will be mentioned in the next release notes.  
+-   API documentation: https://pkg.go.dev/github.com/pdfcpu/pdfcpu/pkg/api
     
--   Follow pdfcpu for news and release announcements.
--   For quick questions or discussions get in touch on the Gopher Slack in the #pdfcpu channel.
+-   Examples:
+    
+    -   https://github.com/pdfcpu/pdfcpu/tree/master/pkg/api/test
+    -   https://github.com/pdfcpu/pdfcpu/tree/master/pkg/samples
 
-Demo Screencast
----------------
-
-(using older version with a smaller command set)
-
-Installation
-------------
-
-### Download
-
-Get the latest binary here.
-
-### Using Go Modules
-
-```
-$ git clone https://github.com/pdfcpu/pdfcpu
-$ cd pdfcpu/cmd/pdfcpu
-$ go install
-$ pdfcpu version
-```
-
-or directly through Go install:
-
-```
-$ go install github.com/pdfcpu/pdfcpu/cmd/pdfcpu@latest
-```
-
-### Using Homebrew (macOS)
-
-```
-$ brew install pdfcpu
-$ pdfcpu version
-```
-
-### Using DNF/YUM (Fedora)
-
-```
-$ sudo dnf install golang-github-pdfcpu
-$ pdfcpu version
-```
-
-### Run in a Docker container
-
-$ docker build -t pdfcpu .
-# mount current host folder into container as /app to process files in the local host folder
-$ docker run -it -v "$(pwd)":/app pdfcpu validate a.pdf
+* * *
 
 Contributing
 ------------
 
-### What
+Contributions are welcome.
 
--   Please create an issue if you find a bug or want to propose a change.
--   Feature requests - always welcome!
--   Bug fixes - always welcome!
--   PRs - let's discuss first or create an issue.
--   pdfcpu is stable but still _Alpha_ and occasionally undergoing heavy changes.
+-   Report bugs or propose changes via issues
+-   Discuss ideas on the discussion board
+-   For PRs, please open an issue or discussion first v
 
-### How
+### Guidelines
 
--   The pdfcpu discussion board is open! Please engage in any form helpful for the community.
--   If you want to report a bug please attach the _very verbose_ (`pdfcpu cmd -vv ...`) output and ideally a test PDF that you can share.
--   Always make sure your contribution is based on the latest commit.
--   Please sign your commits.
+-   Base your work on the latest commit
+-   Include verbose output (`pdfcpu cmd -vv ...`) and a sample PDF when reporting issues
+-   Please sign your commits
 
-### Reporting Crashes
+### Reporting crashes
 
-Unfortunately crashes do happen :( For the majority of the cases this is due to a diverse pool of PDF Writers out there and millions of PDF files using different versions waiting to be processed by pdfcpu. Sometimes these PDFs were written more than 20(!) years ago. Often there is an issue with validation - sometimes a bug in the parser. Many times even using relaxed validation with pdfcpu does not work. In these cases we need to extend relaxed validation and for this we are relying on your help. By reporting crashes you are helping to improve the stability of pdfcpu. If you happen to crash on any pdfcpu operation be it on the command line or in your Go backend these are the steps to report this:
+Crashes may occur due to the wide variety of PDF producers and formats in use, including older or non-compliant files. In many cases this is related to validation issues or edge cases in the parser.
 
-Regardless of the pdfcpu operation, please start using the pdfcpu command line to validate your file:
+Even with relaxed validation, some files cannot be processed. These cases are essential for improving pdfcpu by extending validation and handling additional real-world PDFs.
 
-$ pdfcpu validate -v &\> crash.log
+If you encounter a crash, please report it.
 
-or to produce very verbose output
+Start by validating the file using the CLI:
 
-$ pdfcpu validate -vv &\> crash.log
+pdfcpu validate -vv <file.pdf\>
 
-will produce what's needed to investigate a crash. Then open an issue and post `crash.log` or its contents. Ideally post a test PDF you can share to reproduce this. You can also email to hhrutter@gmail.com or if you prefer Slack you can get in touch on the Gopher slack #pdfcpu channel.
+Include in your report:
 
-If processing your PDF with pdfcpu crashes during validation and can be opened by Adobe Reader and Mac Preview chances are we can extend relaxed validation and provide a fix. If the file in question cannot be opened by both Adobe Reader and Mac Preview we cannot help you!
+-   the command used
+-   verbose output (`-vv`)
+-   a sanitized sample PDF
+
+If validation crashes for a PDF that opens in Adobe Reader or macOS Preview, it is likely we can extend relaxed validation and provide a fix.
+
+If the file cannot be opened by both Adobe Reader and macOS Preview, we cannot support it.
+
+Please include a sample PDF to reproduce the issue whenever possible.
+
+* * *
 
 Contributors
 ------------
 
-Thanks 💚 goes to these wonderful people:
+Thanks 💚 to all contributors:
 
   
 **Horst Rutter**
@@ -352,17 +423,39 @@ Thanks 💚 goes to these wonderful people:
   
 **Florian Kinder**
 
+  
+**mdmcconnell**
+
+  
+**Bradley Erickson**
+
+  
+**doronbehar**
+
+  
+**joeyave**
+
+* * *
+
 Code of Conduct
 ---------------
 
-Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+This project is released with a Contributor Code of Conduct. By participating, you agree to abide by its terms.
+
+* * *
 
 Disclaimer
 ----------
 
-Usage of pdfcpu assumes you know about and respect all copyrights of any PDF content you may be processing. This applies to the PDF files as such, their content and in particular all embedded resources like font files or images. Credit goes to Renee French for creating our beloved Gopher.
+Use of pdfcpu assumes compliance with all applicable copyrights for any processed PDF content, including embedded resources such as fonts and images.
+
+Gopher artwork by Renee French
+
+* * *
 
 License
 -------
 
-Apache-2.0
+Apache License 2.0
+
+* * *

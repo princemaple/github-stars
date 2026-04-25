@@ -1,6 +1,6 @@
 ---
 project: multigres
-stars: 2098
+stars: 2105
 description: Vitess for Postgres
 url: https://github.com/multigres/multigres
 ---

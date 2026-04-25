@@ -1,6 +1,6 @@
 ---
 project: pocketbase
-stars: 57698
+stars: 57961
 description: Open Source realtime backend in 1 file
 url: https://github.com/pocketbase/pocketbase
 ---
@@ -137,8 +137,10 @@ You could help continuing its development by:
 -   Contribute to the source code
 -   Suggest new features and report issues
 
-PRs for new OAuth2 providers, bug fixes, code optimizations and documentation improvements are more than welcome.
-
-But please refrain creating PRs for _new features_ without previously discussing the implementation details. PocketBase has a roadmap and I try to work on issues in specific order and such PRs often come in out of nowhere and skew all initial planning with tedious back-and-forth communication.
+Please refrain creating PRs for _new features_ without previously discussing the implementation details. PocketBase has a roadmap and I try to work on issues in specific order and such PRs often come in out of nowhere and skew all initial planning with tedious back-and-forth communication.
 
 Don't get upset if I close your PR, even if it is well executed and tested. This doesn't mean that it will never be merged. Later we can always refer to it and/or take pieces of your implementation when the time comes to work on the issue (don't worry you'll be credited in the release notes).
+
+Important
+
+Due to recent LLM spam, PRs are temporary disabled and only existing collaborators can open a PR. If you stumble on a problem that you want to fix, please consider instead opening an issue or discussion with link to your fork _(if not obvious - LLM contributions are not welcome)_. This status may change in the future in case GitHub finally decide to do something about the constant spam, or when I find time to move the project somewhere else.

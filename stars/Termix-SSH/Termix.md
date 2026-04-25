@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 12276
+stars: 12371
 description: Termix is a web-based server management platform with SSH terminal, tunneling, and file editing capabilities.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -8,7 +8,7 @@ url: https://github.com/Termix-SSH/Termix
 Repo Stats
 ==========
 
-English · 中文 · 日本語 · 한국어 · Français · Deutsch · Español · Português · Русский · العربية · हिन्दी · Türkçe · Tiếng Việt · Italiano
+🇺🇸 English · 🇨🇳 中文 · 🇯🇵 日本語 · 🇰🇷 한국어 · 🇫🇷 Français · 🇩🇪 Deutsch · 🇪🇸 Español · 🇧🇷 Português · 🇷🇺 Русский · 🇸🇦 العربية · 🇮🇳 हिन्दी · 🇹🇷 Türkçe · 🇻🇳 Tiếng Việt · 🇮🇹 Italiano
 
   
 Achieved on September 1st, 2025
@@ -36,14 +36,14 @@ Features
 -   **Database Encryption** - Backend stored as encrypted SQLite database files. View docs for more.
 -   **Data Export/Import** - Export and import SSH hosts, credentials, and file manager data
 -   **Automatic SSL Setup** - Built-in SSL certificate generation and management with HTTPS redirects
--   **Modern UI** - Clean desktop/mobile-friendly interface built with React, Tailwind CSS, and Shadcn. Choose between dark or light mode based UI. Use URL routes to open any connection in full-screen.
+-   **Modern UI** - Clean desktop/mobile-friendly interface built with React, Tailwind CSS, and Shadcn. Choose between many different UI themes including light, dark, Dracula, etc. Use URL routes to open any connection in full-screen.
 -   **Languages** - Built-in support ~30 languages (managed by Crowdin)
 -   **Platform Support** - Available as a web app, desktop application (Windows, Linux, and macOS, can be run standalone without Termix backend), PWA, and dedicated mobile/tablet app for iOS and Android.
 -   **SSH Tools** - Create reusable command snippets that execute with a single click. Run one command simultaneously across multiple open terminals.
 -   **Command History** - Auto-complete and view previously ran SSH commands
 -   **Quick Connect** - Connect to a server without having to save the connection data
 -   **Command Palette** - Double tap left shift to quickly access SSH connections with your keyboard
--   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, host key verification, password autofill, OPKSSH, etc.
+-   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, host key verification, password autofill, OPKSSH, tmux, port knocking, etc.
 -   **Network Graph** - Customize your Dashboard to visualize your homelab based off your SSH connections with status support
 -   **Persistent Tabs** - SSH sessions and tabs stay open across devices/refreshes if enabled in user profile
 
@@ -98,7 +98,7 @@ services:
       - termix-net
 
   guacd:
-    image: guacamole/guacd:latest
+    image: guacamole/guacd:1.6.0
     container\_name: guacd
     restart: unless-stopped
     ports:

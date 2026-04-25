@@ -1,6 +1,6 @@
 ---
 project: dify
-stars: 138261
+stars: 139145
 description: Production-ready platform for agentic workflow development.
 url: https://github.com/langgenius/dify
 ---
@@ -78,17 +78,6 @@ Advanced Setup
 
 If you need to customize the configuration, please refer to the comments in our .env.example file and update the corresponding values in your `.env` file. Additionally, you might need to make adjustments to the `docker-compose.yaml` file itself, such as changing image versions, port mappings, or volume mounts, based on your specific deployment environment and requirements. After making any changes, please re-run `docker compose up -d`. You can find the full list of available environment variables here.
 
-#### Customizing Suggested Questions
-
-You can now customize the "Suggested Questions After Answer" feature to better fit your use case. For example, to generate longer, more technical questions:
-
-# In your .env file
-SUGGESTED\_QUESTIONS\_PROMPT='Please help me predict the five most likely technical follow-up questions a developer would ask. Focus on implementation details, best practices, and architecture considerations. Keep each question between 40-60 characters. Output must be JSON array: \["question1","question2","question3","question4","question5"\]'
-SUGGESTED\_QUESTIONS\_MAX\_TOKENS=512
-SUGGESTED\_QUESTIONS\_TEMPERATURE=0.3
-
-See the Suggested Questions Configuration Guide for detailed examples and usage instructions.
-
 ### Metrics Monitoring with Grafana
 
 Import the dashboard to Grafana, using Dify's PostgreSQL database as data source, to monitor metrics in granularity of apps, tenants, messages, and more.
@@ -97,7 +86,7 @@ Import the dashboard to Grafana, using Dify's PostgreSQL database as data source
 
 ### Deployment with Kubernetes
 
-If you'd like to configure a highly-available setup, there are community-contributed Helm Charts and YAML files which allow Dify to be deployed on Kubernetes.
+If you'd like to configure a highly available setup, there are community-contributed Helm Charts and YAML files which allow Dify to be deployed on Kubernetes.
 
 -   Helm Chart by @LeoQuote
 -   Helm Chart by @BorisPolonsky

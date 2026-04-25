@@ -10,7 +10,7 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL (& Extension) Package Manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 14 ~ 18 along with 504 extensions on (`amd64` / `arm64`) with native OS package manager
+Install PostgreSQL 14 ~ 18 along with 507 extensions on (`amd64` / `arm64`) with native OS package manager
 
 All commands support structured output (`-o yaml/json`) with self-describing schema, making it an **Agent-Friendly** PostgreSQL CLI tool. Also check the **Pigsty Extension Catalog** to get details about the available extensions.
 
@@ -29,7 +29,7 @@ $ pig repo add pigsty pgdg -u       # add pgdg & pigsty repo, then update repo c
 $ pig ext install pg18              # install PostgreSQL 18 kernels with native PGDG packages
 $ pig ext install pg\_duckdb -v 18   # install the pg\_duckdb extension (for current pg18)
 
-That's it. All set! Check the advanced usage for details and the full list of 504 available extensions.
+That's it. All set! Check the advanced usage for details and the full list of 507 available extensions.
 
 * * *
 
@@ -119,7 +119,7 @@ pig build repo                   # init build repo (=repo set -ru)
 pig build tool  \[mini|full|...\]  # init build toolset
 pig build proxy \[id@host:port \]  # init build proxy (optional)
 pig build rust                   # init rustc cargo
-pig build pgrx  \[-v 0.17.0\]      # init pgrx
+pig build pgrx  \[-v 0.18.0\]      # init pgrx
 pig build spec                   # init build spec repo
 pig build get   \[all|std|..\]     # get ext code tarball with prefixes
 pig build dep   \[extname...\]     # install extension build deps
@@ -323,7 +323,7 @@ vagrant@meta:~$ pig ext avail
 ✓ Found 297 packages available on u24.arm64
 
 Extension Availability on u24.aarch64 : https://pigsty.io/ext/os/u24.aarch64
-Showing 340 packages with 504 extensions  (green = PIGSTY, blue = PGDG)
+Showing 340 packages with 507 extensions  (green = PIGSTY, blue = PGDG)
 
 Pkg                     18          17          16          15          14      
 timescaledb             2.25.2      2.25.2      2.25.2      2.25.2      2.19.3
@@ -540,7 +540,7 @@ CMD \["/bin/bash"\]
 
 RUN apt update && apt install -y ca-certificates vim ncdu wget curl rsync unzip && \\
     curl https://repo.pigsty.io/pig | bash -s && pig repo add --remove && apt clean
-RUN pig repo set && pig build tool && pig build spec && pig build rust && pig build pgrx -v 0.17.0
+RUN pig repo set && pig build tool && pig build spec && pig build rust && pig build pgrx -v 0.18.0
 
 docker build -t d13:latest .
 docker run --name=d13 -d -it d13:latest /bin/bash

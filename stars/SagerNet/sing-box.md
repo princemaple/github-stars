@@ -1,13 +1,9 @@
 ---
 project: sing-box
-stars: 32800
+stars: 33102
 description: The universal proxy platform
 url: https://github.com/SagerNet/sing-box
 ---
-
-> Sponsored by Warp, built for coding with multiple AI agents
-
-* * *
 
 sing-box
 ========

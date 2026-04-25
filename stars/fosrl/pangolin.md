@@ -1,6 +1,6 @@
 ---
 project: pangolin
-stars: 20329
+stars: 20423
 description: Identity-aware VPN and tunneled reverse proxy for remote access.
 url: https://github.com/fosrl/pangolin
 ---
@@ -21,9 +21,9 @@ Installation
 Deployment Options
 ------------------
 
--   **Pangolin Cloud** — Fully managed service - no infrastructure required.
--   **Self-Host: Community Edition** — Free, open source, and licensed under AGPL-3.
--   **Self-Host: Enterprise Edition** — Licensed under Fossorial Commercial License. Free for personal and hobbyist use, and for businesses making less than $100K USD gross annual revenue.
+-   **Pangolin Cloud** - Fully managed service - no infrastructure required.
+-   **Self-Host: Community Edition** - Free, open source, and licensed under AGPL-3.
+-   **Self-Host: Enterprise Edition** - Licensed under Fossorial Commercial License. Free for personal and hobbyist use, and for businesses making less than $100K USD gross annual revenue.
 
 Key Features
 ------------

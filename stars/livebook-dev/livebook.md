@@ -1,6 +1,6 @@
 ---
 project: livebook
-stars: 5764
+stars: 5768
 description: Automate code & data workflows with interactive Elixir notebooks
 url: https://github.com/livebook-dev/livebook
 ---
@@ -253,23 +253,9 @@ mix phx.server
 # Run tests
 mix test
 
-### Desktop app builds
+### Desktop app
 
-For macOS, run:
-
-# Test macOS app locally
-(cd rel/app/macos && ./run.sh)
-
-# Build macOS installer
-.github/scripts/app/build\_macos.sh
-
-For Windows, run:
-
-# Test Windows app locally
-(cd rel/app/windows && ./run.sh)
-
-# Build Windows installer
-.github/scripts/app/build\_windows.sh
+./rel/app/tauri.sh dev
 
 Platinum sponsors
 -----------------

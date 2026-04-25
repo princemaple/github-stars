@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 28915
+stars: 29343
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -108,12 +108,12 @@ const browser \= await puppeteer.connect({
 
 // The rest of your script remains the same.
 const context \= await browser.createBrowserContext();
-const page \= await context.newPage();
+const frame \= await context.newPage();
 
-// Dump all the links from the page.
-await page.goto('https://demo-browser.lightpanda.io/amiibo/', {waitUntil: "networkidle0"});
+// Dump all the links from the frame.
+await frame.goto('https://demo-browser.lightpanda.io/amiibo/', {waitUntil: "networkidle0"});
 
-const links \= await page.evaluate(() \=> {
+const links \= await frame.evaluate(() \=> {
   return Array.from(document.querySelectorAll('a')).map(row \=> {
     return row.getAttribute('href');
   });
@@ -121,7 +121,7 @@ const links \= await page.evaluate(() \=> {
 
 console.log(links);
 
-await page.close();
+await frame.close();
 await context.close();
 await browser.disconnect();
 

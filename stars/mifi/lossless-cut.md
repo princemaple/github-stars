@@ -1,6 +1,6 @@
 ---
 project: lossless-cut
-stars: 39875
+stars: 40028
 description: The swiss army knife of lossless video/audio editing
 url: https://github.com/mifi/lossless-cut
 ---
@@ -131,6 +131,7 @@ LosslessCut uses the Chromium browser's HTML5 video player, and not all formats/
 Documentation
 -------------
 
+-   Official website: LosslessCut.app
 -   **Getting started, FAQ and usage documentation**
 -   Troubleshooting and known issues and limitations
 -   Contributing

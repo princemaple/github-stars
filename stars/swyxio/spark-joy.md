@@ -940,6 +940,8 @@ Examples: https://dev.to/dcodeyt/add-dark-mode-to-your-websites-with-css-5bh4
 
 One liner dark mode (careful about perf!): `filter: invert(100%) hue-rotate(180deg);` - more filters here
 
+-   the more intense version - https://cssence.com/2024/six-levels-of-dark-mode/ steps thru many levels of modern dark mode (2026)
+
 https://workos.com/blog/5-lessons-we-learned-adding-dark-mode-to-our-platform?ref=sidebar
 
 ### Palette Generators

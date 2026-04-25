@@ -1,6 +1,6 @@
 ---
 project: cloudflare_temp_email
-stars: 8477
+stars: 8710
 description: CloudFlare free temp domain email 免费收发 临时域名邮箱 支持附件 IMAP SMTP TelegramBot
 url: https://github.com/dreamhunter2333/cloudflare_temp_email
 ---
@@ -108,6 +108,7 @@ Star History（点击收缩/展开） 目录（点击收缩/展开）
 -   Webhook 支持，消息推送集成
 -   支持 `CF Turnstile` 人机验证
 -   限流配置，防止滥用
+-   **Agent 友好**：内置 `cf-temp-mail-agent-mail` skill，AI agent 可直接消费邮箱，详见 文档
 
 技术架构
 ----

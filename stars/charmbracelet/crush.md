@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 23173
+stars: 23492
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -151,7 +151,7 @@ go install github.com/charmbracelet/crush@latest
 
 Warning
 
-Productivity may increase when using Crush and you may find yourself nerd sniped when first using the application. If the symptoms persist, join the Discord and nerd snipe the rest of us.
+Productivity may increase when using Crush and you may find yourself nerd sniped when first using the application. If the symptoms persist, join the Slack or Discord and nerd snipe the rest of us.
 
 Getting Started
 ---------------

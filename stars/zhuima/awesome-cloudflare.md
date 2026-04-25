@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 13597
+stars: 13657
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -687,6 +687,14 @@ K-Vault
 
 维护中
 
+ZeroLink
+
+零知识安全传递工具，无账号、端到端加密、服务器无法解密；支持 Password / Passkey 双模式，适合安全传递密码、API Token、恢复码、私密消息和敏感文件。基于 Cloudflare Workers + Durable Objects + R2 构建。
+
+https://zerolink.dev
+
+维护中
+
 对象存储
 ----
 
@@ -810,6 +818,14 @@ https://status.oddinpay.com/
 
 运行正常
 
+AIWatch
+
+30 个 AI 服务（Claude、OpenAI、Gemini、Mistral、Groq、ElevenLabs 等）的实时状态监控仪表板。基于 Cloudflare Workers + KV + Workers AI（Gemma 4 26B 用于事件分析）构建，提供 Discord/Slack 告警、AI 驱动的事件分析和综合可靠性评分。
+
+https://ai-watch.dev/
+
+维护中
+
 开发者工具
 -----
 
@@ -840,6 +856,14 @@ GetWeb
 基于 Cloudflare Workers + GitHub Actions + Electron 的网页打包 EXE 工具。在线填写网址即可生成 Windows 桌面应用，支持自定义图标、构建历史和多 Token 负载均衡。
 
 https://jishuguai.cc.cd/
+
+维护中
+
+HackMyIP
+
+基于 Cloudflare Workers 构建的在线隐私与网络工具集，提供 IP 查询、DNS/WebRTC 泄露检测、端口扫描、邮箱泄露检查、密码强度检测、网速测试等 20+ 工具，免费无需注册。
+
+https://hackmyip.com/
 
 维护中
 
@@ -1370,6 +1394,14 @@ Flashify
 AI 驱动的学习工具，可将 PDF 学习资料转换为高质量 Anki 闪卡并导出卡组。
 
 https://flashify.app?utm\_source=github&utm\_medium=directory&utm\_campaign=backlink-2026q1
+
+维护中
+
+Voidly Messenger
+
+完全基于 Cloudflare 构建的端到端加密消息 PWA（Pages + Workers + D1 + KV）。采用 Signal Protocol（Double Ratchet + X3DH）与 ML-KEM-768 后量子混合加密，全部加密在客户端完成，Workers 无法读取明文。
+
+https://msg.voidly.ai
 
 维护中
 

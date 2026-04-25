@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 89162
+stars: 90857
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -62,6 +62,10 @@ uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX
 # Or install latest from main (may include unreleased changes)
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
 
+# Alternative: using pipx (also works)
+pipx install git+https://github.com/github/spec-kit.git@vX.Y.Z
+pipx install git+https://github.com/github/spec-kit.git
+
 Then verify the correct version is installed:
 
 specify version
@@ -72,9 +76,9 @@ And use the tool directly:
 specify init <PROJECT\_NAME\>
 
 # Or initialize in existing project
-specify init . --ai copilot
+specify init . --integration copilot
 # or
-specify init --here --ai copilot
+specify init --here --integration copilot
 
 # Check installed tools
 specify check
@@ -82,6 +86,7 @@ specify check
 To upgrade Specify, see the Upgrade Guide for detailed instructions. Quick upgrade:
 
 uv tool install specify-cli --force --from git+https://github.com/github/spec-kit.git@vX.Y.Z
+# pipx users: pipx install --force git+https://github.com/github/spec-kit.git@vX.Y.Z
 
 #### Option 2: One-time Usage
 
@@ -91,9 +96,9 @@ Run directly without installing:
 uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init <PROJECT\_NAME\>
 
 # Or initialize in existing project
-uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init . --ai copilot
+uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init . --integration copilot
 # or
-uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init --here --ai copilot
+uvx --from git+https://github.com/github/spec-kit.git@vX.Y.Z specify init --here --integration copilot
 
 **Benefits of persistent installation:**
 
@@ -108,7 +113,7 @@ If your environment blocks access to PyPI or GitHub, see the Enterprise / Air-Ga
 
 ### 2\. Establish project principles
 
-Launch your AI assistant in the project directory. Most agents expose spec-kit as `/speckit.*` slash commands; Codex CLI in skills mode uses `$speckit-*` instead.
+Launch your coding agent in the project directory. Most agents expose spec-kit as `/speckit.*` slash commands; Codex CLI in skills mode uses `$speckit-*` instead.
 
 Use the **`/speckit.constitution`** command to create your project's governing principles and development guidelines that will guide all subsequent development.
 
@@ -509,6 +514,26 @@ Read+Write
 
 spec-kit-maqa-trello
 
+Memory Loader
+
+Loads .specify/memory/ files before lifecycle commands so LLM agents have project governance context
+
+`docs`
+
+Read-only
+
+spec-kit-memory-loader
+
+Memory MD
+
+Repository-native durable memory for Spec Kit projects
+
+`docs`
+
+Read+Write
+
+spec-kit-memory-hub
+
 MemoryLint
 
 Agent memory governance tool: Automatically audits and fixes boundary conflicts between AGENTS.md and the constitution.
@@ -571,7 +596,7 @@ presetify
 
 Product Forge
 
-Full product lifecycle: research → product spec → SpecKit → implement → verify → test
+Full product lifecycle from research to release — portfolio, lite mode, monorepo, optional V-Model
 
 `process`
 
@@ -629,6 +654,16 @@ Read+Write
 
 spec-kit-reconcile
 
+Red Team
+
+Adversarial review of specs before /speckit.plan — parallel lens agents surface risks that clarify/analyze structurally can't (prompt injection, integrity gaps, cross-spec drift, silent failures). Produces a structured findings report; no auto-edits to specs.
+
+`docs`
+
+Read+Write
+
+spec-kit-red-team
+
 Repository Index
 
 Generate index for existing repo for overview, architecture and module level.
@@ -668,6 +703,16 @@ Post-implementation comprehensive code review with specialized agents for code q
 Read-only
 
 spec-kit-review
+
+Ripple
+
+Detect side effects that tests can't catch after implementation — delta-anchored analysis across 9 domain-agnostic categories
+
+`code`
+
+Read+Write
+
+spec-kit-ripple
 
 SDD Utilities
 
@@ -709,6 +754,16 @@ Read+Write
 
 spec-kit-ship
 
+Spec Reference Loader
+
+Reads the ## References section from the feature spec and loads only the listed docs into context
+
+`docs`
+
+Read-only
+
+spec-kit-spec-reference-loader
+
 Spec Critique Extension
 
 Dual-lens critical review of spec and plan from product strategy and engineering risk perspectives
@@ -728,6 +783,16 @@ Auto-generate Mermaid diagrams of SDD workflow state, feature progress, and task
 Read-only
 
 spec-kit-diagram-
+
+Spec Orchestrator
+
+Cross-feature orchestration — track state, select tasks, and detect conflicts across parallel specs
+
+`process`
+
+Read-only
+
+spec-kit-orchestrator
 
 Spec Refine
 
@@ -758,6 +823,16 @@ Detect and resolve drift between specs and implementation. AI-assisted resolutio
 Read+Write
 
 spec-kit-sync
+
+Spec Validate
+
+Comprehension validation, review gating, and approval state for spec-kit artifacts — staged quizzes, peer review SLA, and a hard gate before /speckit.implement
+
+`process`
+
+Read+Write
+
+spec-kit-spec-validate
 
 SpecTest
 
@@ -799,6 +874,16 @@ Read+Write
 
 superpowers-bridge
 
+Superpowers Bridge (WangX0111)
+
+Bridges spec-kit with obra/superpowers (brainstorming, TDD, subagent, code-review) into a unified, resumable workflow with graceful degradation and session progress tracking
+
+`process`
+
+Read+Write
+
+superspec
+
 TinySpec
 
 Lightweight single-file workflow for small tasks — skip the heavy multi-step SDD process
@@ -839,6 +924,16 @@ Read-only
 
 spec-kit-verify-tasks
 
+Version Guard
+
+Verify tech stack versions against live npm registries before planning and implementation
+
+`process`
+
+Read-only
+
+spec-kit-version-guard
+
 What-if Analysis
 
 Preview the downstream impact (complexity, effort, tasks, risks) of requirement changes before committing to them
@@ -848,6 +943,16 @@ Preview the downstream impact (complexity, effort, tasks, risks) of requirement 
 Read-only
 
 spec-kit-whatif
+
+Wireframe Visual Feedback Loop
+
+SVG wireframe generation, review, and sign-off for spec-driven development. Approved wireframes become spec constraints honored by /speckit.plan, /speckit.tasks, and /speckit.implement
+
+`visibility`
+
+Read+Write
+
+spec-kit-extension-wireframe
 
 Worktree Isolation
 
@@ -874,127 +979,18 @@ To submit your own extension, see the Extension Publishing Guide.
 🎨 Community Presets
 --------------------
 
+Community-contributed presets customize how Spec Kit behaves — overriding templates, commands, and terminology without changing any tooling. See the full list on the Community Presets page.
+
 Note
 
-Community presets are independently created and maintained by their respective authors. GitHub and the Spec Kit maintainers may review pull requests that add entries to the community catalog for formatting, catalog structure, or policy compliance, but they do **not review, audit, endorse, or support the preset code itself**. Review preset source code before installation and use at your own discretion.
+Community presets are third-party contributions and are not maintained by the Spec Kit team. Review them carefully before use, and see the docs page above for the full disclaimer.
 
-The following community-contributed presets customize how Spec Kit behaves — overriding templates, commands, and terminology without changing any tooling. Presets are available in `catalog.community.json`:
-
-Preset
-
-Purpose
-
-Provides
-
-Requires
-
-URL
-
-AIDE In-Place Migration
-
-Adapts the AIDE extension workflow for in-place technology migrations (X → Y pattern) — adds migration objectives, verification gates, knowledge documents, and behavioral equivalence criteria
-
-2 templates, 8 commands
-
-AIDE extension
-
-spec-kit-presets
-
-Canon Core
-
-Adapts original Spec Kit workflow to work together with Canon extension
-
-2 templates, 8 commands
-
-—
-
-spec-kit-canon
-
-Explicit Task Dependencies
-
-Adds explicit `(depends on T###)` dependency declarations and an Execution Wave DAG to tasks.md for parallel scheduling
-
-1 template, 1 command
-
-—
-
-spec-kit-preset-explicit-task-dependencies
-
-Fiction Book Writing
-
-It adapts the Spec-Driven Development workflow for storytelling to create books or audiobooks (with annotations): features become story elements, specs become story briefs, plans become story structures, and tasks become scene-by-scene writing tasks. Supports single and multi-POV, all major plot structure frameworks, and two style modes: an author voice sample or humanized AI prose with 5 prose profiles. Supports interactive elements like brainstorming, interview, roleplay.
-
-21 templates, 26 commands
-
-—
-
-spec-kit-preset-fiction-book-writing
-
-Multi-Repo Branching
-
-Coordinates feature branch creation across multiple git repositories (independent repos and submodules) during plan and tasks phases
-
-2 commands
-
-—
-
-spec-kit-preset-multi-repo-branching
-
-Pirate Speak (Full)
-
-Transforms all Spec Kit output into pirate speak — specs become "Voyage Manifests", plans become "Battle Plans", tasks become "Crew Assignments"
-
-6 templates, 9 commands
-
-—
-
-spec-kit-presets
-
-Table of Contents Navigation
-
-Adds a navigable Table of Contents to generated spec.md, plan.md, and tasks.md documents
-
-3 templates, 3 commands
-
-—
-
-spec-kit-preset-toc-navigation
-
-VS Code Ask Questions
-
-Enhances the clarify command to use `vscode/askQuestions` for batched interactive questioning.
-
-1 command
-
-—
-
-spec-kit-presets
-
-To build and publish your own preset, see the Presets Publishing Guide.
+To submit your own preset, see the Presets Publishing Guide.
 
 🚶 Community Walkthroughs
 -------------------------
 
-Note
-
-Community walkthroughs are independently created and maintained by their respective authors. They are **not reviewed, nor endorsed, nor supported by GitHub**. Review their content before following along and use at your own discretion.
-
-See Spec-Driven Development in action across different scenarios with these community-contributed walkthroughs:
-
--   **Greenfield .NET CLI tool** — Builds a Timezone Utility as a .NET single-binary CLI tool from a blank directory, covering the full spec-kit workflow: constitution, specify, plan, tasks, and multi-pass implement using GitHub Copilot agents.
-    
--   **Greenfield Spring Boot + React platform** — Builds an LLM performance analytics platform (REST API, graphs, iteration tracking) from scratch using Spring Boot, embedded React, PostgreSQL, and Docker Compose, with a clarify step and a cross-artifact consistency analysis pass included.
-    
--   **Brownfield ASP.NET CMS extension** — Extends an existing open-source .NET CMS (CarrotCakeCMS-Core, ~307,000 lines of C#, Razor, SQL, JavaScript, and config files) with two new features — cross-platform Docker Compose infrastructure and a token-authenticated headless REST API — demonstrating how spec-kit fits into existing codebases without prior specs or a constitution.
-    
--   **Brownfield Java runtime extension** — Extends an existing open-source Jakarta EE runtime (Piranha, ~420,000 lines of Java, XML, JSP, HTML, and config files across 180 Maven modules) with a password-protected Server Admin Console, demonstrating spec-kit on a large multi-module Java project with no prior specs or constitution.
-    
--   **Brownfield Go / React dashboard demo** — Demonstrates spec-kit driven entirely from the **terminal using GitHub Copilot CLI**. Extends NASA's open-source Hermes ground support system (Go) with a lightweight React-based web telemetry dashboard, showing that the full constitution → specify → plan → tasks → implement workflow works from the terminal.
-    
--   **Greenfield Spring Boot MVC with a custom preset** — Builds a Spring Boot MVC application from scratch using a custom pirate-speak preset, demonstrating how presets can reshape the entire spec-kit experience: specifications become "Voyage Manifests," plans become "Battle Plans," and tasks become "Crew Assignments" — all generated in full pirate vernacular without changing any tooling.
-    
--   **Greenfield Spring Boot + React with a custom extension** — Walks through the **AIDE extension**, a community extension that adds an alternative spec-driven workflow to spec-kit with high-level specs (vision) and low-level specs (work items) organized in a 7-step iterative lifecycle: vision → roadmap → progress tracking → work queue → work items → execution → feedback loops. Uses a family trading platform (Spring Boot 4, React 19, PostgreSQL, Docker Compose) as the scenario to illustrate how the extension mechanism lets you plug in a different style of spec-driven development without changing any core tooling — truly utilizing the "Kit" in Spec Kit.
-    
+See Spec-Driven Development in action across different scenarios with community-contributed walkthroughs; find the full list on the Community Walkthroughs page.
 
 🛠️ Community Friends
 ---------------------
@@ -1011,7 +1007,7 @@ Run `specify integration list` to see all available integrations in your install
 Available Slash Commands
 ------------------------
 
-After running `specify init`, your AI coding agent will have access to these slash commands for structured development. If you pass `--ai <agent> --ai-skills`, Spec Kit installs agent skills instead of slash-command prompt files; `--ai-skills` requires `--ai`.
+After running `specify init`, your AI coding agent will have access to these slash commands for structured development. For integrations that support skills mode, passing `--integration <agent> --integration-options="--skills"` installs agent skills instead of slash-command prompt files.
 
 #### Core Commands
 
@@ -1263,7 +1259,7 @@ Our research and experimentation focus on:
 
 -   **Linux/macOS/Windows**
 -   Supported AI coding agent.
--   uv for package management
+-   uv for package management (recommended) or pipx for persistent installation
 -   Python 3.11+
 -   Git
 
@@ -1296,33 +1292,33 @@ specify init . --force
 # or
 specify init --here --force
 
-You will be prompted to select the AI agent you are using. You can also proactively specify it directly in the terminal:
+You will be prompted to select the coding agent integration you are using. You can also proactively specify it directly in the terminal:
 
-specify init <project\_name\> --ai copilot
-specify init <project\_name\> --ai gemini
-specify init <project\_name\> --ai copilot
+specify init <project\_name\> --integration copilot
+specify init <project\_name\> --integration gemini
+specify init <project\_name\> --integration codex
 
 # Or in current directory:
-specify init . --ai copilot
-specify init . --ai codex --ai-skills
+specify init . --integration copilot
+specify init . --integration codex --integration-options="\--skills"
 
 # or use --here flag
-specify init --here --ai copilot
-specify init --here --ai codex --ai-skills
+specify init --here --integration copilot
+specify init --here --integration codex --integration-options="\--skills"
 
 # Force merge into a non-empty current directory
-specify init . --force --ai copilot
+specify init . --force --integration copilot
 
 # or
-specify init --here --force --ai copilot
+specify init --here --force --integration copilot
 
 The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi, Forge, Goose, or Mistral Vibe installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
 
-specify init <project\_name\> --ai copilot --ignore-agent-tools
+specify init <project\_name\> --integration copilot --ignore-agent-tools
 
 ### **STEP 1:** Establish project principles
 
-Go to the project folder and run your AI agent. In our example, we're using `claude`.
+Go to the project folder and run your coding agent. In our example, we're using `claude`.
 
 You will know that things are configured correctly if you see the `/speckit.constitution`, `/speckit.specify`, `/speckit.plan`, `/speckit.tasks`, and `/speckit.implement` commands available.
 
@@ -1332,7 +1328,7 @@ The first step should be establishing your project's governing principles using 
 /speckit.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements. Include governance for how these principles should guide technical decisions and implementation choices.
 ```
 
-This step creates or updates the `.specify/memory/constitution.md` file with your project's foundational guidelines that the AI agent will reference during specification, planning, and implementation phases.
+This step creates or updates the `.specify/memory/constitution.md` file with your project's foundational guidelines that the coding agent will reference during specification, planning, and implementation phases.
 
 ### **STEP 2:** Create project specifications
 
@@ -1536,9 +1532,9 @@ The `/speckit.implement` command will:
 -   Follow the TDD approach defined in your task plan
 -   Provide progress updates and handle errors appropriately
 
-> \[!IMPORTANT\] The AI agent will execute local CLI commands (such as `dotnet`, `npm`, etc.) - make sure you have the required tools installed on your machine.
+> \[!IMPORTANT\] The coding agent will execute local CLI commands (such as `dotnet`, `npm`, etc.) - make sure you have the required tools installed on your machine.
 
-Once the implementation is complete, test the application and resolve any runtime errors that may not be visible in CLI logs (e.g., browser console errors). You can copy and paste such errors back to your AI agent for resolution.
+Once the implementation is complete, test the application and resolve any runtime errors that may not be visible in CLI logs (e.g., browser console errors). You can copy and paste such errors back to your coding agent for resolution.
 
 * * *
 

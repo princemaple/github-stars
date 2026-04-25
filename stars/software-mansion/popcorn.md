@@ -1,6 +1,6 @@
 ---
 project: popcorn
-stars: 639
+stars: 645
 description: Running Elixir in the browser
 url: https://github.com/software-mansion/popcorn
 ---
@@ -31,6 +31,7 @@ Repository Structure
 
 -   **`popcorn/elixir/`** - Elixir library used to patch OTP and Elixir stdlib, create .avm bundles and containing JS interop API.
 -   **`popcorn/js/`** - JavaScript library loads the VM in Wasm, manages its isolation, and bridges JS and Elixir.
+-   **`otp/`** - temporary location for integration with BEAM/OTP.
 -   **`examples/`** - Example projects showcasing Popcorn features, hosted at popcorn.swmansion.com. Examples use development version of Popcorn.
 -   **`landing-page/`** - Popcorn landing page.
 -   **`language-tour/`** - Interactive Elixir language tour running purely in the browser.
@@ -58,7 +59,7 @@ Run `scripts/dev.sh --help` to see all available examples and projects.
 
 ### Testing
 
-mise run test               # Elixir unix tests (default)
+mise run test            # Elixir unix tests (default)
 mise run test --wasm     # Elixir wasm tests
 mise run test --js       # JS tests
 
@@ -66,7 +67,7 @@ AtomVM is built automatically if artifacts are missing. Make sure you have AtomV
 
 ### Other tasks
 
-mise run clean              # Clean build artifacts
+mise run clean           # Clean build artifacts
 mise run clean --all     # Clean everything including examples
 
 All tasks are thin wrappers around `scripts/*.sh` — you can run those directly.

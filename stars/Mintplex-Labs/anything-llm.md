@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 58555
+stars: 58983
 description: The all-in-one AI productivity accelerator. On device and privacy first with no annoying setup or configuration.
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -205,6 +205,16 @@ You can verify these claims by finding all locations `Telemetry.sendTelemetry` i
 We take privacy very seriously, and we hope you understand that we want to learn how our tool is used, without using annoying popup surveys, so we can build something worth using. The anonymous data is _never_ shared with third parties, ever.
 
 \[View all telemetry events in source code\](https://github.com/search?q=repo%3AMintplex-Labs%2Fanything-llm%20.sendTelemetry(&type=code)
+
+### Other outbound connections
+
+If you disable telemetry, you would still see outbound connections to the following services:
+
+-   If using an external tool, LLM, Embedding models, or Vector databases, you will still see outbound connections to the respective service provider.
+-   `cdn.anythingllm.com` for pulling models from our mirror CDN. This is not tracked by telemetry and is actually useful for those in VPN restricted regions.
+-   `github/githubusercontent.com` There are some various flat files that are downloaded from these domains for context window caching.
+
+Basically, if telemetry is disabled we don't collect anything. However, depending on your setup you may still see outbound connections and would be subject to the terms of service of the respective service provider.
 
 👋 Contributing
 ---------------

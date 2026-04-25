@@ -1,6 +1,6 @@
 ---
 project: PaddleOCR
-stars: 75893
+stars: 76541
 description: Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages.
 url: https://github.com/PaddlePaddle/PaddleOCR
 ---
@@ -39,7 +39,14 @@ English | 简体中文 | 繁體中文 | 日本語 | 한국어 | Français | Ру
 📣 Recent updates
 -----------------
 
-### 🔥 \[2026.01.29\] PaddleOCR v3.4.0 Released: The Era of Irregular Document Parsing
+### 🔥 PaddleOCR v3.5.0 Released: More Flexible Inference and Richer Document Output
+
+-   **Flexible inference backends**: Seamlessly switch between Paddle static graph, Paddle dynamic graph, or Transformers. PaddleOCR is now deeply integrated with the Hugging Face ecosystem, and 20 major models support Transformers as the inference backend.
+-   **Office documents to Markdown**: Convert common document formats such as Word, Excel, and PowerPoint into Markdown.
+-   **DOCX export for parsed results**: The `PaddleOCR-VL` series, `PP-StructureV3`, and `PP-DocTranslation` now support exporting parsed results to DOCX for convenient viewing and editing in Microsoft Word.
+-   **Official browser inference SDK**: Released `PaddleOCR.js`, the official browser inference SDK that supports running `PP-OCRv5` directly in the browser.
+
+**2026.01.29: Release of PaddleOCR 3.4.0**
 
 -   **PaddleOCR-VL-1.5 (SOTA 0.9B VLM)**: Our latest flagship model for document parsing is now live!
     -   **94.5% Accuracy on OmniDocBench**: Surpassing top-tier general large models and specialized document parsers.

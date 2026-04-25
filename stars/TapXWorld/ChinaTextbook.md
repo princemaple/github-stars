@@ -1,6 +1,6 @@
 ---
 project: ChinaTextbook
-stars: 69965
+stars: 70375
 description: 所有小初高、大学PDF教材。
 url: https://github.com/TapXWorld/ChinaTextbook
 ---

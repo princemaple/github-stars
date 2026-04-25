@@ -1,6 +1,6 @@
 ---
 project: rspack
-stars: 12622
+stars: 12636
 description: Fast Rust-based bundler for the web with a modernized webpack API 🦀
 url: https://github.com/web-infra-dev/rspack
 ---
@@ -99,11 +99,11 @@ A collection of Agent Skills for Rstack
 
 Rspack 2.x docs
 
-Documentation for Rspack 2.x (beta)
+Documentation for Rspack 2.x
 
 Rspack 1.x docs
 
-Documentation for Rspack 1.x (latest)
+Documentation for Rspack 1.x
 
 Rspack 0.x docs
 
@@ -128,10 +128,11 @@ Design resources for Rstack
 Contributors
 ------------
 
-Benchmark
----------
+Benchmarks
+----------
 
-See Benchmark.
+-   See build-tools-performance for comparisons between Rspack and other tools.
+-   See Rspack Benchmarks for Rspack's performance trends over time.
 
 Credits
 -------

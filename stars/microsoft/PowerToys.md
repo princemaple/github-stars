@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 131816
+stars: 132025
 description: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows
 url: https://github.com/microsoft/PowerToys
 ---
@@ -39,6 +39,8 @@ File Explorer Add-ons
 
 File Locksmith
 
+Grab And Move
+
 Hosts File Editor
 
 Image Resizer
@@ -54,6 +56,8 @@ Mouse Without Borders
 New+
 
 Peek
+
+PowerDisplay
 
 PowerRename
 

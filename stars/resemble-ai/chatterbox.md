@@ -1,6 +1,6 @@
 ---
 project: chatterbox
-stars: 24372
+stars: 24469
 description: SoTA open-source TTS
 url: https://github.com/resemble-ai/chatterbox
 ---

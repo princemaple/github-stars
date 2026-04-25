@@ -1,6 +1,6 @@
 ---
 project: pytudes
-stars: 24314
+stars: 24319
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
@@ -31,6 +31,18 @@ Run
 Year
 
 New
+
+C D M N S
+
+2026
+
+Did you solve it? R y clvr ngh t rd ths sntnc?
+
+C D M N S
+
+2026
+
+Project Euler #3: Largest prime factor
 
 C D M N S
 
@@ -388,6 +400,12 @@ Number Bracelets Game
 
 C D M N S
 
+2026
+
+Project Euler #3: Largest prime factor
+
+C D M N S
+
 2019
 
 Pairing Socks
@@ -426,7 +444,7 @@ C D M N S
 
 2021
 
-Sudoku: 100,000 puzzles/second in Java
+Sudoku: 200,000 puzzles/second in Java
 
 C D M N S
 
@@ -481,6 +499,12 @@ C D M N S
 2020
 
 Chemical Element Spelling
+
+C D M N S
+
+2026
+
+Did you solve it? R y clvr ngh t rd ths sntnc?
 
 C D M N S
 

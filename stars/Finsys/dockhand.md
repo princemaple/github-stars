@@ -1,6 +1,6 @@
 ---
 project: dockhand
-stars: 3865
+stars: 3950
 description: Dockhand - Docker management you will like.
 url: https://github.com/Finsys/dockhand
 ---
@@ -34,6 +34,13 @@ Tech Stack
 -   **Backend**: Bun runtime with SvelteKit API routes
 -   **Database**: SQLite or PostgreSQL via Drizzle ORM
 -   **Docker**: direct docker API calls.
+
+Screenshots
+-----------
+
+Light Mode
+
+Dark Mode
 
 License
 -------

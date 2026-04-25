@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 4759
+stars: 4800
 description: Network diagrams that update themselves
 url: https://github.com/scanopy/scanopy
 ---
@@ -8,9 +8,9 @@ url: https://github.com/scanopy/scanopy
 Scanopy
 =======
 
-**Network documentation that updates itself.**
+**Network documentation, without the drawing.**
 
-Scanopy scans your network, discovers hosts and services, and generates a live topology diagram that stays current automatically. One daemon, no per-device agents, no manual upkeep.
+Scanopy replaces manual network diagrams with a continuously maintained model of what's actually running. A single daemon scans on a schedule and produces four views from each scan: L2 (physical), L3 (logical), workloads, and applications. Unlike diagrams drawn in draw.io that go stale the week they're saved, or IaC state that misses drift and resources provisioned outside the pipeline, Scanopy reflects the current state of your infrastructure. Export as SVG, Mermaid, or Confluence; embed live maps; or feed the model into your existing source of truth.
 
   
   
@@ -19,25 +19,37 @@ Scanopy scans your network, discovers hosts and services, and generates a live t
 
 > 💡 **Prefer not to self-host?** Get a free trial of Scanopy Cloud
 
-✨ Key Features
---------------
+**L2 (Physical)**  
+Every switch, every port, every link.
 
--   **Automatic Discovery**: Scans networks to identify hosts, services, and their relationships
--   **200+ Service Definitions**: Auto-detects databases, web servers, containers, network infrastructure, monitoring tools, and enterprise applications
--   **Interactive Topology**: Generates visual network diagrams with extensive customization options
--   **Distributed Scanning**: Deploy daemons across network segments to map complex topologies
--   **Docker Integration**: Discovers containerized services automatically
--   **Organization Management**: Multi-user support with role-based permissions
--   **Scheduled Discovery**: Automated scanning to keep documentation current
+**L3 (Logical)**  
+Subnets, VLANs, and how hosts bridge them.
+
+**Workloads**  
+Bare metal to hypervisors to containers.
+
+**Applications**  
+Services and their dependencies, grouped by application.
+
+✨ Features
+----------
+
+-   **Automatic discovery**: Maps hosts and services by scanning the network. One scanner, no per-device agents.
+-   **230+ service definitions**: Auto-detects databases, web servers, containers, network infrastructure, and enterprise applications.
+-   **Four views from one scan**: L2 (physical), L3 (logical), workloads, and application dependencies.
+-   **Distributed scanning**: Deploy daemons across segments to map multi-site and multi-VLAN topologies.
+-   **Docker & SNMP integration**: Native discovery for containerized services and network hardware.
+-   **Scheduled rescans**: Documentation stays current as infrastructure changes.
+-   **Multi-user + RBAC**: Organization management, role-based access, and shareable live views for teammates or external stakeholders.
 
 🎯 Perfect For
 --------------
 
--   **Home Lab Enthusiasts**: Document your ever-growing infrastructure
--   **IT Professionals**: Maintain accurate network inventory without manual spreadsheets
--   **System Administrators**: Visualize complex multi-VLAN environments
--   **DevOps Teams**: Map containerized services and their dependencies
--   **MSPs**: Manage multiple client networks with your team
+-   **Platform & DevOps teams**: Trace service dependencies without APM. Map containers, VMs, and hardware in one model.
+-   **Network engineers**: Multi-VLAN, multi-site topology diagrams derived from SNMP, LLDP, and ARP. No manual drawing.
+-   **IT operations**: Keep inventory, topology, and dependencies current across teams and sites.
+-   **MSPs**: Per-client documentation with shareable live views.
+-   **Home labs**: Document your infrastructure without opening draw.io.
 
 📋 Licensing
 ------------
@@ -78,7 +90,7 @@ For detailed setup options and configuration, see the Installation Guide.
 🚀 Demo
 -------
 
-**demo.scanopy.net**
+**demo.scanopy.net**. Hosted demo app with a sample dataset. Try the full UI without installing anything.
 
 🤝 Contributing
 ---------------

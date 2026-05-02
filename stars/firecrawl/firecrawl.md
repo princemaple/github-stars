@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 112220
+stars: 114227
 description: 🔥 The API to search, scrape, and interact with the web for AI
 url: https://github.com/firecrawl/firecrawl
 ---

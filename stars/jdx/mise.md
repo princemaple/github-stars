@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 27248
+stars: 27568
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---
@@ -9,18 +9,24 @@ url: https://github.com/jdx/mise
 mise-en-place
 ================
 
-**The front-end to your dev env**
+**Dev tools, env vars, and tasks in one CLI**
 
 Getting Started • Documentation • Dev Tools • Environments • Tasks
 
 * * *
 
+Tip
+
+My latest project, aube just hit stable! It's the fastest Node.js package manager with strong security defaults and is compatible with npm/pnpm/yarn lockfiles!
+
 What is it?
 -----------
 
--   Like asdf (or nvm or pyenv but for any language) it manages dev tools like node, python, cmake, terraform, and hundreds more.
--   Like direnv it manages environment variables for different project directories.
--   Like make it manages tasks used to build and test projects.
+`mise` prepares your development environment before each command runs. It keeps project tools, environment variables, and tasks in one `mise.toml` file so new shells, checkouts, and CI jobs all start from the same setup.
+
+-   Install and switch between dev tools like node, python, cmake, terraform, and hundreds more.
+-   Load environment variables per project directory, including values from `.env` files and other sources.
+-   Define and run tasks for building, testing, linting, and deploying projects.
 
 Demo
 ----
@@ -46,7 +52,7 @@ $ ~/.local/bin/mise --version
  / / / / / / (\_\_  )  \_\_/\_\_\_\_\_/  \_\_/ / / /\_\_\_\_\_/ /\_/ / / /\_/ / /\_\_/  \_\_/
 /\_/ /\_/ /\_/\_/\_\_\_\_/\\\_\_\_/      \\\_\_\_/\_/ /\_/     / .\_\_\_/\_/\\\_\_,\_/\\\_\_\_/\\\_\_\_/
                                             /\_/                 by @jdx
-2026.4.22 macos-arm64 (2026-04-25)
+2026.4.28 macos-arm64 (2026-04-30)
 
 Hook mise into your shell (pick the right one for your shell):
 
@@ -141,7 +147,7 @@ Find more examples in the mise cookbook.
 Full Documentation
 ------------------
 
-See mise.jdx.dev
+See mise.en.dev
 
 GitHub Issues & Discussions
 ---------------------------

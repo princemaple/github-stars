@@ -1,6 +1,6 @@
 ---
 project: appmetrics.js
-stars: 1366
+stars: 1364
 description: A small (< 1kb) library for measuring things in your web app and reporting the results to Google Analytics.
 url: https://github.com/ebidel/appmetrics.js
 ---

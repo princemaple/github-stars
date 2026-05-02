@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 14771
+stars: 14798
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.13. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -360,13 +360,13 @@ Create Nuitka Package configuration for those, with `dll` section for the packag
 
 These are ignored, since they are macOS extension modules or DLLs.
 
-Need to add configuration with `dll` section or `depends` that are missing
+Add package configuration with the missing `dll` sections or `depends` entries.
 
 `.so`
 
 These are ignored, since they are Linux, BSD, etc. extension modules or DLLs.
 
-Need to add configuration with `dll` section or `depends` that are missing
+Add package configuration with the missing `dll` sections or `depends` entries.
 
 `.exe`
 

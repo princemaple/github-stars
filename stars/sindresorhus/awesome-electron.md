@@ -1,6 +1,6 @@
 ---
 project: awesome-electron
-stars: 27114
+stars: 27130
 description: Useful resources for creating apps with Electron
 url: https://github.com/sindresorhus/awesome-electron
 ---

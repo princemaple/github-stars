@@ -1,6 +1,6 @@
 ---
 project: dozzle
-stars: 12468
+stars: 12655
 description: Realtime log viewer for containers.  Supports Docker, Swarm and K8s. 
 url: https://github.com/amir20/dozzle
 ---
@@ -46,7 +46,7 @@ $ docker pull amir20/dozzle:latest
 The simplest way to use Dozzle is to run the Docker container. Mount the Docker Unix socket with `--volume` to `/var/run/docker.sock`:
 
 ```
-$ docker run --name dozzle -d --volume=/var/run/docker.sock:/var/run/docker.sock -p 8080:8080 amir20/dozzle:latest
+$ docker run --name dozzle -d --volume=/var/run/docker.sock:/var/run/docker.sock -v dozzle_data:/data -p 8080:8080 amir20/dozzle:latest
 ```
 
 Dozzle will be available at http://localhost:8080/.
@@ -60,8 +60,11 @@ services:
     image: amir20/dozzle:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - dozzle_data:/data
     ports:
       - 8080:8080
+volumes:
+  dozzle_data:
 ```
 
 For advanced options like authentication, remote hosts, or common questions, see the documentation at dozzle.dev.

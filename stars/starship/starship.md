@@ -1,6 +1,6 @@
 ---
 project: starship
-stars: 56873
+stars: 57090
 description: ☄🌌️  The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 url: https://github.com/starship/starship
 ---
@@ -10,6 +10,15 @@ url: https://github.com/starship/starship
 Website · Installation · Configuration
 
                        
+
+Warning
+
+**The default branch has been renamed from `master` to `main`.** If you have a local clone, update it by running:
+
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
 
 **The minimal, blazing-fast, and infinitely customizable prompt for any shell!**
 

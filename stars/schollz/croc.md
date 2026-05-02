@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 34758
+stars: 34886
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -161,7 +161,7 @@ croc --classic
 
 #### Custom Code Phrase
 
-You can send with your own code phrase (must be more than 6 characters):
+You can send with your own code phrase (must be at least 6 characters):
 
 croc send --code \[code-phrase\] \[file(s)-or-folder\]
 

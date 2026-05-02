@@ -1,6 +1,6 @@
 ---
 project: elixir-google-api
-stars: 1073
+stars: 1074
 description: Elixir client libraries for accessing Google APIs.
 url: https://github.com/googleapis/elixir-google-api
 ---

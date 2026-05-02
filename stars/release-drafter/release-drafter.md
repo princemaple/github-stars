@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3869
+stars: 3873
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -226,7 +226,7 @@ Whether to draft a prerelease, with changes since another prerelease (if applica
 
 Optional
 
-A string indicating an identifier (alpha, beta, rc, etc), to increment the prerelease version. This automatically enables `prerelease` if not already set to `true`. Default `''`.
+A string indicating an identifier (alpha, beta, rc, etc), to increment the prerelease version. This automatically enables `prerelease` when both options come from the same config location; explicit action inputs still take precedence. Default `''`.
 
 `include-pre-releases`
 
@@ -287,12 +287,6 @@ Limit for associatedPullRequests API call. Use this when working with long-lived
 Optional
 
 Size of the pagination window when walking the repo. Can avoid erratic 502s from Github. Default: `15`
-
-`initial-commits-since`
-
-Optional
-
-When drafting your first release, limit the amount of scanned commits. Expects an ISO 8601 date, ex: `"2025-06-18T10:29:51Z"`. Default: `""` (unlimited)
 
 Template Variables
 ------------------
@@ -681,7 +675,7 @@ Some users like to run `update_prerelease_draft` with `publish: true`, such as p
 Important
 
 -   `prerelease-identifier` is not required when `prerelease` is enabled, but your prerelease may not be named after / be associated with a tag that is semver-compliant to an actual prerelease.
--   when specified, `prerelease-identifier` enables `prerelease: true`
+-   when specified, `prerelease-identifier` enables `prerelease: true` if both values come from the same config location; explicit action inputs still take precedence over config file values
 
 If you want your stable releases to include changes since the last prerelease instead of the last stable release, use `include-pre-releases: true`. This can reduce the number of changes included in the stable release body, but diverges from the standard workflow depicted above.
 
@@ -739,7 +733,7 @@ Whether to draft a prerelease, with changes since another prerelease (if applica
 
 `prerelease-identifier`
 
-A string indicating an identifier (alpha, beta, rc, etc), to increment the prerelease version. This automatically enables `prerelease` if not already set to `true`. Default `''`.
+A string indicating an identifier (alpha, beta, rc, etc), to increment the prerelease version. This automatically enables `prerelease` when both options come from the same config location; explicit action inputs still take precedence. Default `''`.
 
 `include-pre-releases`
 
@@ -760,10 +754,6 @@ A string that would be added before the template body.
 `footer`
 
 A string that would be added after the template body.
-
-`initial-commits-since`
-
-When drafting your first release, limit the amount of scanned commits. Expects an ISO 8601 date, ex: `"2025-06-18T10:29:51Z"`. Default: `""` (unlimited)
 
 Action Outputs
 --------------

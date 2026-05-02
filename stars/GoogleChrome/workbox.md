@@ -1,6 +1,6 @@
 ---
 project: workbox
-stars: 12939
+stars: 12938
 description: 📦 Workbox: JavaScript libraries for Progressive Web Apps
 url: https://github.com/GoogleChrome/workbox
 ---

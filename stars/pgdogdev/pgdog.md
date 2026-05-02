@@ -1,6 +1,6 @@
 ---
 project: pgdog
-stars: 4304
+stars: 4321
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
@@ -493,7 +493,7 @@ Cutover can be done atomically with multiple PgDog containers because `RELOAD` d
 
 📘 **Metrics**
 
-PgDog exposes both the standard PgBouncer-style admin database and an OpenMetrics endpoint. The admin database isn't 100% compatible, so we recommend you use OpenMetrics for monitoring. Example Datadog configuration and dashboard are included.
+PgDog exposes both the standard PgBouncer-style admin database, an OpenMetrics endpoint and can push metrics to an OTEL endpoint. The admin database isn't 100% compatible, so we recommend you use either OpenMetrics or OTEL ingestion for monitoring. Example Datadog configuration and dashboard are included.
 
 Running PgDog locally
 ---------------------

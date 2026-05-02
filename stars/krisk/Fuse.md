@@ -1,6 +1,6 @@
 ---
 project: Fuse
-stars: 20212
+stars: 20229
 description: Lightweight fuzzy-search, in JavaScript
 url: https://github.com/krisk/Fuse
 ---
@@ -39,7 +39,7 @@ const fuse \= new FuseWorker(docs, {
 const results \= await fuse.search('query')
 fuse.terminate()
 
-Same options, same results as `Fuse` — just async. See the Web Workers docs for the interactive demo and full API.
+Same options and results as `Fuse` — just async. Function-valued options (`sortFn`, `getFn`, `keys[].getFn`) aren't supported because functions can't be transferred to a worker; everything else carries over. See the Web Workers docs for the interactive demo and full API.
 
 Installation
 ------------
@@ -153,6 +153,8 @@ Use `Fuse.match()` to fuzzy-match a pattern against a single string without crea
 
 const result \= Fuse.match('javscript', 'JavaScript: The Good Parts')
 // → { isMatch: true, score: 0.04, indices: \[\[0, 9\]\] }
+
+`Fuse.match()` does **not** support `useTokenSearch` — token search requires corpus-level statistics (`df`, `fieldCount`) that a one-off string comparison can't provide. Passing `useTokenSearch: true` throws an explicit error. Use `new Fuse(docs, { useTokenSearch: true }).search(query)` for token-search behavior.
 
 ### Dynamic Collections
 

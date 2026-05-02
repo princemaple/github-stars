@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 528
+stars: 576
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support. Can be used as lightweight OpenClaw alternative.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -175,6 +175,10 @@ Browse and run custom commands
 
 Browse and run OpenCode skills
 
+`/mcps`
+
+Browse and toggle MCP servers
+
 `/task`
 
 Create a scheduled task
@@ -281,6 +285,22 @@ OpenCode server URL
 No
 
 `http://localhost:4096`
+
+`OPENCODE_AUTO_RESTART_ENABLED`
+
+Automatically restart a local OpenCode server when health-checks fail
+
+No
+
+`false`
+
+`OPENCODE_MONITOR_INTERVAL_SEC`
+
+Health monitor interval in seconds when OpenCode auto-restart is enabled
+
+No
+
+`300`
 
 `OPENCODE_SERVER_USERNAME`
 
@@ -668,6 +688,7 @@ Troubleshooting
 
 -   Ensure an OpenCode server is running at the configured `OPENCODE_API_URL` (default: `http://localhost:4096`)
 -   For a local setup, you can start it with `opencode serve` or use `/opencode_start` in Telegram
+-   For VPS/systemd setups with scheduled tasks, enable `OPENCODE_AUTO_RESTART_ENABLED=true` to let the bot restart a local OpenCode server when health-checks fail
 -   If `OPENCODE_API_URL` points to a remote server, verify that the address is reachable from the bot machine and that the remote server is healthy
 
 **No models in model picker**

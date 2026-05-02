@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 426460
+stars: 430155
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -186,6 +186,16 @@ No
 Yes
 
 No
+
+Cat Facts
+
+Random cat facts
+
+No
+
+Yes
+
+Yes
 
 Cataas
 
@@ -1417,6 +1427,16 @@ Yes
 
 Unknown
 
+Runyankole Bible
+
+Free REST API for the Runyankore-Rukiga Bible — 66 books, 31106 verses
+
+No
+
+Yes
+
+Yes
+
 The Bible
 
 Everything you need from the Bible in one discoverable place
@@ -1430,6 +1450,16 @@ Unknown
 Thirukkural
 
 1330 Thirukkural poems and explanation in Tamil and English
+
+No
+
+Yes
+
+Yes
+
+Urantia Papers
+
+Full-text + semantic search across the Urantia Papers, with audio narration, entities, translations
 
 No
 
@@ -4267,6 +4297,16 @@ Yes
 
 Yes
 
+Suprsonic
+
+Unified agent API: search, scrape, enrich, image gen, TTS, STT, messaging. One key, 20+ capabilities
+
+`apiKey`
+
+Yes
+
+Yes
+
 Tyk
 
 Api and service management platform
@@ -6010,16 +6050,6 @@ HTTPS
 
 CORS
 
-Age of Empires II
-
-Get information about Age of Empires II resources
-
-No
-
-Yes
-
-No
-
 AmiiboAPI
 
 Nintendo Amiibo Information
@@ -7065,6 +7095,16 @@ No
 
 Unknown
 
+BdAPIs
+
+Get divisions, districts, and upazzilas of Bangladesh
+
+No
+
+Yes
+
+Unknown
+
 BigDataCloud
 
 Provides fast and accurate IP geolocation APIs along with security checks and confidence area
@@ -7675,6 +7715,16 @@ Yes
 
 Yes
 
+PostalCodes
+
+Postal code search, country exports, and address validation data
+
+No
+
+Yes
+
+Unknown
+
 Queimadas INPE
 
 Access to heat focus data (probable wildfire)
@@ -8159,6 +8209,16 @@ International firearm injury prevention and policy
 Yes
 
 Unknown
+
+Indian Pincode
+
+Free India PIN code lookup with GPS coordinates, 165k+ post offices, state & district data
+
+No
+
+Yes
+
+Yes
 
 INEI
 
@@ -8655,6 +8715,16 @@ Open Government, West Australia
 West Australia Open Data
 
 No
+
+Yes
+
+Unknown
+
+OpenRegistry
+
+Real-time queries to 27 national company registries (UK, FR, DE, IT, ES, KR + 21 more)
+
+`OAuth`
 
 Yes
 
@@ -9275,6 +9345,16 @@ Yes
 
 Yes
 
+DeepAI
+
+Provides AI-powered APIs for text generation, image processing, and more
+
+`apiKey`
+
+Yes
+
+Yes
+
 Deepcode
 
 AI for code review
@@ -9434,6 +9514,16 @@ Face Detection, Face Recognition and Face Grouping
 Yes
 
 Unknown
+
+TensorFeed
+
+Real-time AI news, model pricing, service status, and agent activity feeds
+
+No
+
+Yes
+
+Yes
 
 Time Door
 
@@ -9780,6 +9870,16 @@ Yes
 
 Unknown
 
+Sunor
+
+AI music generation API via Suno, with pay-as-you-go credits
+
+`apiKey`
+
+Yes
+
+Unknown
+
 TasteDive
 
 Similar artist API (also works for movies and TV shows)
@@ -9857,7 +9957,7 @@ Unknown
 
 Currents
 
-Latest news published in various news sources, blogs and forums
+Real-time and historical global news with multilingual support
 
 `apiKey`
 
@@ -10347,6 +10447,16 @@ The largest set of publicly available real time urban data in the UK
 No
 
 No
+
+No
+
+Voidly
+
+Internet censorship measurements, incidents, and ISP-level blocking data across 126 countries
+
+No
+
+Yes
 
 No
 
@@ -11255,6 +11365,16 @@ Yes
 
 Unknown
 
+CodeCogs
+
+Render LaTeX equations in PNG, GIF, SVG, EMF, PDF, JSON, or download formats with styling options
+
+No
+
+Yes
+
+Unknown
+
 CORE
 
 Access the world's Open Access research papers
@@ -11799,6 +11919,16 @@ Perform OSINT via Intelligence X
 Yes
 
 Unknown
+
+IPLogs
+
+Free VPN, proxy, Tor and datacenter IP detection. 13 sources, active probing.
+
+No
+
+Yes
+
+Yes
 
 LoginRadius
 
@@ -12757,6 +12887,16 @@ Yes
 
 Unknown
 
+RacingHub
+
+Formula 1 historical data and statistics
+
+No
+
+Yes
+
+Unknown
+
 Sport Data
 
 Get sports data from all over the world
@@ -13227,6 +13367,16 @@ Yes
 
 Unknown
 
+GeoScore
+
+Score content for AI search citation readiness. Returns a 0-100 GEO score, 8 structural metrics, and improvement fixes
+
+`apiKey`
+
+Yes
+
+Yes
+
 Hirak OCR
 
 Image to text -text recognition- from image more than 100 language, accurate, unlimited requests
@@ -13476,6 +13626,16 @@ Real-time Flight Status & Global Aviation Data API
 Yes
 
 Unknown
+
+Apimetro
+
+Geospatial data for Mexico City public transport system (Metro, Metrobús, Cablebús, RTP, etc.)
+
+No
+
+Yes
+
+Yes
 
 AviationAPI
 
@@ -15067,6 +15227,16 @@ Yes
 
 Unknown
 
+Pirate Weather
+
+Free weather API with forecast data similar to Dark Sky
+
+No
+
+Yes
+
+Yes
+
 QWeather
 
 Location-based weather data
@@ -15167,9 +15337,10 @@ Yes
 
 No
 
-**⬆ Back to Index**  
-  
+**⬆ Back to Index**
 
+  
+  
   
 
 License

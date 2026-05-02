@@ -1,7 +1,7 @@
 ---
 project: pangolin
-stars: 20423
-description: Identity-aware VPN and tunneled reverse proxy for remote access.
+stars: 20549
+description: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.
 url: https://github.com/fosrl/pangolin
 ---
 
@@ -9,7 +9,7 @@ url: https://github.com/fosrl/pangolin
 
 **Get started with Pangolin at app.pangolin.net**
 
-Pangolin is an open-source, identity-based remote access platform built on WireGuard that enables secure, seamless connectivity to private and public resources. Pangolin combines reverse proxy and VPN capabilities into one platform, providing browser-based access to web applications and client-based access to any private resources with NAT traversal, all with granular access controls.
+Pangolin is an open-source, identity-based remote access platform built on WireGuard® that enables secure, seamless connectivity to private and public resources. Pangolin combines reverse proxy and VPN capabilities into one platform, providing browser-based access to web applications and client-based access to any private resources with NAT traversal, all with granular access controls.
 
 Installation
 ------------

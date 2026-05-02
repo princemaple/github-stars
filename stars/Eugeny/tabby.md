@@ -1,6 +1,6 @@
 ---
 project: tabby
-stars: 70684
+stars: 70879
 description: A terminal for a more modern age
 url: https://github.com/Eugeny/tabby
 ---
@@ -116,7 +116,7 @@ Plugins and themes can be installed directly from the Settings view inside Tabby
 -   highlight - Tabby terminal keyword highlight plugin
 -   web-auth-handler - In-app web authentication popups (Built primarily for warpgate in-browser auth)
 -   mcp-server - Powerful Model Context Protocol server integration for Tabby that seamlessly connects with AI assistants through MCP clients like Cursor and Windsurf, enhancing your terminal workflow with intelligent AI capabilities.
--   ssh-keymap - lets your synced Tabby SSH profiles reference private keys by name instead of by absolute file path. A local mapping file (never synced) translates each name to the real path on that machine
+-   ssh-keymap - lets your synced Tabby SSH profiles reference private keys by name instead of by absolute file path. A local mapping file (never synced) translates each name to the real path on that machine \* serial-timestamp - adds timestamps to serial terminal sessions
 
 Themes
 ======

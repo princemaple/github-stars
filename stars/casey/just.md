@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 33164
+stars: 33319
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -736,6 +736,10 @@ $ just foo
 $ just bar
 /subdir
 
+Use `set no-cd`master to make all recipes in the current module default to the same behavior.
+
+`set no-cd` and `set working-directory` can be overridden on a per-recipe basis with the `[no-cd]` and `[working-directory]` attributes.
+
 You can override the working directory for all recipes with `set working-directory := '…'`:
 
 set working-directory := 'bar'
@@ -897,6 +901,14 @@ boolean
 `false`
 
 Don't evaluate unused variables.
+
+`no-cd`master
+
+boolean
+
+`false`
+
+Don't change directory when executing recipes by recipe attribute.
 
 `positional-arguments`
 
@@ -3472,7 +3484,7 @@ When two duplicate definitions are imported and are at the same depth, the one f
 
 This is because `just` uses a stack when processing imports, pushing imports onto the stack in source-order, and always processing the top of the stack next, so earlier imports are actually handled later by the compiler.
 
-This is definitely a bug, but since `just` has very strong backwards compatibility guarantees and we take enormous pains not to break anyone's `justfile`, we have created issue #2540 to discuss whether or not we can actually fix it.
+This is definitely a bug, but since `just` has very strong backwards compatibility guarantees and we take enormous pains not to break anyone's `justfile`, see issue #2540 for discussion on whether or not we can actually fix it.
 
 Imports may be made optional by putting a `?` after the `import` keyword:
 

@@ -1,6 +1,6 @@
 ---
 project: electron-boilerplate
-stars: 3123
+stars: 3122
 description: Boilerplate application for Electron runtime
 url: https://github.com/szwacz/electron-boilerplate
 ---

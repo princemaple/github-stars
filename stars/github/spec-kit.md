@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 90857
+stars: 92187
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -514,6 +514,16 @@ Read+Write
 
 spec-kit-maqa-trello
 
+MarkItDown Document Converter
+
+Convert documents (PDF, Word, PowerPoint, Excel, and more) to Markdown for use as spec reference material
+
+`docs`
+
+Read+Write
+
+spec-kit-markitdown
+
 Memory Loader
 
 Loads .specify/memory/ files before lifecycle commands so LLM agents have project governance context
@@ -544,6 +554,16 @@ Read+Write
 
 memorylint
 
+Microsoft 365 Integration
+
+Fetch Teams messages, meeting transcripts, and SharePoint/OneDrive files as local Markdown for spec generation
+
+`integration`
+
+Read+Write
+
+spec-kit-m365
+
 Onboard
 
 Contextual onboarding and progressive growth for developers new to spec-kit projects. Explains specs, maps dependencies, validates understanding, and guides the next step
@@ -563,6 +583,16 @@ Audit and optimize AI governance for context efficiency — token budgets, rule 
 Read+Write
 
 spec-kit-optimize
+
+OWASP LLM Threat Model
+
+OWASP Top 10 for LLM Applications 2025 threat analysis on agent artifacts
+
+`code`
+
+Read-only
+
+spec-kit-threatmodel
 
 Plan Review Gate
 
@@ -726,11 +756,11 @@ speckit-utils
 
 Security Review
 
-Comprehensive security audit of codebases using AI-powered DevSecOps analysis
+Full-project secure-by-design security audits plus staged, branch/PR, plan, task, follow-up, and apply reviews
 
 `code`
 
-Read-only
+Read+Write
 
 spec-kit-security-review
 
@@ -834,6 +864,16 @@ Read+Write
 
 spec-kit-spec-validate
 
+Spec2Cloud
+
+Spec-driven workflow tuned for shipping to Azure
+
+`process`
+
+Read+Write
+
+spec2cloud
+
 SpecTest
 
 Auto-generate test scaffolds from spec criteria, map coverage, and find untested requirements
@@ -843,6 +883,16 @@ Auto-generate test scaffolds from spec criteria, map coverage, and find untested
 Read+Write
 
 spec-kit-spectest
+
+Squad Bridge
+
+Bootstrap and synchronize a Squad agent team from your Speckit spec and tasks
+
+`process`
+
+Read+Write
+
+spec-kit-squad
 
 Staff Review Extension
 
@@ -893,6 +943,16 @@ Lightweight single-file workflow for small tasks — skip the heavy multi-step S
 Read+Write
 
 spec-kit-tinyspec
+
+Token Consumption Analyzer
+
+Captures, analyzes, and compares token consumption across SDD workflows
+
+`visibility`
+
+Read-only
+
+spec-kit-token-analyzer
 
 V-Model Extension Pack
 
@@ -953,6 +1013,16 @@ SVG wireframe generation, review, and sign-off for spec-driven development. Appr
 Read+Write
 
 spec-kit-extension-wireframe
+
+Work IQ
+
+Integrate Microsoft 365 organizational knowledge into spec-driven development workflows
+
+`integration`
+
+Read-only
+
+spec-kit-workiq
 
 Worktree Isolation
 

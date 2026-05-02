@@ -1,6 +1,6 @@
 ---
 project: flv.js
-stars: 23236
+stars: 23232
 description: HTML5 FLV Player
 url: https://github.com/bilibili/flv.js
 ---

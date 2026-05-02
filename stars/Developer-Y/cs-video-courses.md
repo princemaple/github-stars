@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 80483
+stars: 80731
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -215,6 +215,10 @@ Courses
 -   Parameterized Complexity
 -   Structural Graph Theory - IIT Madras
 -   Information Theory - IISC Bangalore
+-   6.5220/6.856J/18.416J Randomized Algorithms (Spring 2025) (Youtube)
+-   18.225 - Graph Theory and Additive Combinatorics - MIT - Fall 2023
+-   Extremal graph theory at KAIST
+-   Advanced graph theory, KAIST 2020
 
 * * *
 
@@ -252,6 +256,8 @@ Courses
     -   CSE 60641 - Graduate Operating Systems, Fall 08
     -   Advanced Programming in the UNIX Environment
     -   Operating System - IIT Madras
+    -   CS 153 Frontier Systems - Stanford University - Spring 2026
+    -   EE415: Introduction to Operating Systems (KAIST)
 -   #### **Distributed Systems**
     
     -   CS 677 - Distributed Operating Systems, Spring 24 - Umass OS
@@ -331,7 +337,7 @@ Courses
     -   Software Engineering with Objects and Components 2015/16- University of Edinburgh
 -   #### **Software Engineering**
     
--   COMP1531 - Software Engineering Fundamentals - UNSW (2025) | Video Playlist
+    -   COMP1531 - Software Engineering Fundamentals - UNSW (2025) | Video Playlist
     -   Computer Science 169- Software Engineering - Spring 2015 - UCBerkeley
     -   Computer Science 169- Software Engineering - Fall 2019 - UCBerkeley
     -   CS 5150 - Software Engineering, Fall 2014 - Cornell University
@@ -363,6 +369,7 @@ Courses
     -   UIUC ECE 508 / CS 508 Manycore Parallel Algorithms spring 2019, by Wen-mei Hwu
     -   UIUC CS 420 / ECE 492 / CSE 402 Introduction to Parallel Programming for Scientists and Engineers fall 2015, by Sanjay Kale
     -   Stanford CME 213 Introduction to Parallel Computing using MPI, openMP, and CUDA winter 2020, by Eric Darve
+    -   KAIST CS431: Concurrent Programming
 -   #### **Mobile Application Development**
     
     -   MOOC Programming Mobile Applications for Android Handheld Systems - University of Maryland
@@ -441,6 +448,7 @@ Courses
     -   undergraduate machine learning at UBC 2012, Nando de Freitas
     -   CS 229 - Machine Learning - Stanford University (Autumn 2018)
     -   CS 189/289A Introduction to Machine Learning, Prof Jonathan Shewchuk - UCBerkeley
+    -   CS 189/289A: Intro to Machine Learning - UC Berkeley - Spring 2026
     -   CPSC 340: Machine Learning and Data Mining (2018) - UBC
     -   CS391L Machine Learning, Spring 2025 - UT Austin
     -   CS4780/5780 Machine Learning, Fall 2013 - Cornell University
@@ -535,6 +543,8 @@ Courses
     -   Algorithms for Big Data - IIT Madras
     -   Python Data Science with the TCLab (YouTube)
     -   Foundations of Data Analysis (Fall 2020)- University of Utah
+    -   Introduction to Data Science (IDS) - Wil van der Aalst (RWTH Aachen University) (2021-2022 edition)
+    -   Machine Learning Class (Winter 2019-2020) - UniHeidelberg
 -   #### **Data Mining**
     
     -   CSEP 546, Data Mining - Pedro Domingos, Sp 2016 - University of Washington (YouTube)
@@ -614,6 +624,8 @@ Courses
     -   HKU - Data 8014 Principles of Deep Representation Learning Fall 2025, by Yi Ma
     -   Local Explanations for Deep Learning Models (Fall 2023)
     -   CS 6966/5966 Interpretability of LLMs (Spring 2026) - University of Utah
+    -   Deep Graph Learning (DGL, 2025) - Prof. Islem Rekik - Imperial College London
+    -   Intuitive Deep Learning Series
 -   #### **Reinforcement Learning**
     
     -   CS234: Reinforcement Learning - Spring 2024 - Stanford University (Winter 2019)
@@ -693,6 +705,7 @@ Courses
     -   Natural Language Processing (Spring 2024) - University of Utah
     -   Multilingual NLP 2020 - CMU
     -   Speech Technology - IIT Madras
+    -   Deep Learning for NLP (KAIST AI605 Fall 2021)
 -   #### **Generative AI and LLMs**
     
     -   Stanford CS236: Deep Generative Models I 2023 I Stefano Ermon
@@ -704,8 +717,9 @@ Courses
     -   MIT 6.S184 Flow Matching and Diffusion Models, 2025
     -   Course on Diffusion Models for Generative AI - UT Austin
     -   CS 492(C) Diffusion and Flow Models - Fall 2025 - KAIST (YouTube)
-    -   Stanford CS336 Language Modeling from Scratch I 2025 - Stanford
+    -   Stanford CS336 Language Modeling from Scratch I 2025 - Stanford (2026)
     -   Stanford CME295 Transformers & LLMs - Autumn 2025 - Stanford
+    -   Stanford CME296: Diffusion & Large Vision Models
     -   Introduction to large language models - IIT Madras
     -   Build a Large Language Model (From Scratch) by Sebastian Raschka
     -   Reinforcement Learning of Large Language Models - UCLA
@@ -727,6 +741,8 @@ Courses
     -   NYCU Deep Generative Models 2025
     -   COMPSCI 690L | Deep Generative Models | 2024 | Sajjad Amini
     -   ECE1508: Deep Generative Models - Summer 2025 - UofT
+    -   6.S980 Machine Learning for Inverse Graphics - Fall 2022 - MIT
+    -   6.S087 - Foundation Models and Generative AI - MIT
 -   #### **Computer Vision**
     
     -   CS 231n - Convolutional Neural Networks for Visual Recognition, Stanford University
@@ -775,6 +791,8 @@ Courses
     -   University of Wisconsin-Madison ISyE/Math/CS 728 Integer Optimization (second part of the course) spring 2020
     -   Columbia IEOR E4007 Optimization Models and Methods 2005, by Garud Iyengar
     -   UC Berkeley EECS 127 / 227A Optimization Models in Engineering (Spring 2024 lectures)
+    -   Modern Optimization and theory for Deep Learning
+    -   Manifold Learning, Optimization and Information Geometry - Politecnico Milan - PhD level
 -   #### **Unsupervised Learning**
     
     -   CS294 Deep Unsupervised Learning Spring 2024
@@ -823,6 +841,10 @@ Courses
     -   CSCE 585 - Machine Learning Systems, University of South Carolina (YouTube-2020)
     -   CS-E4740 - Federated Learning, Spring 2023, Aalto University
     -   Uncertainty Modeling in AI | National University of Singapore
+    -   Process Mining Course @ RWTH Aachen University (BPI 2021)
+    -   CS 2881 AI Safety - Harvard - Fall 2025 (Youtube)
+    -   Chat GPT-X and Generative Models for EM Systems Design - KAIST
+    -   CS492(F) Computational Learning Theory (Fall 2021, KAIST)
 
 * * *
 
@@ -889,6 +911,7 @@ Courses
     -   Stanford CS109 Introduction to Probability for Computer Scientists I 2022 I Chris Piech
     -   MIT RES.6-012 Introduction to Probability, Spring 2018 - MIT
     -   Statistics 110 - Probability - Harvard University
+    -   Statistical Rethinking 2026 - Richard McElreath
     -   STAT 2.1x: Descriptive Statistics | UC Berkeley
     -   STAT 2.2x: Probability | UC Berkeley
     -   MOOC - Statistics: Making Sense of Data, Coursera
@@ -934,8 +957,11 @@ Courses
     -   6.262 Discrete Stochastic Processes - MIT OCW
     -   18.650 Statistics for Applications - MIT OCW
     -   STAT240 - Robust Statistics - UC Berkeley
+    -   MAS575 Combinatorics at KAIST
+    -   Probabilistic method, KAIST 2020
 -   **Linear Algebra**
     -   Mathematical Foundations of Machine Learning (Fall 2021) - University of Chicago - Rebecca Willett
+    -   Mathematical Foundations of Machine Learning (Fall 2025) - Rebecca Willett - University of Chicago
     -   18.06 - Linear Algebra, Prof. Gilbert Strang, MIT OCW
     -   18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning - MIT OCW
     -   University of Wisconsin-Madison ECE/CS/ME 532 Matrix Methods in Machine Learning fall 2017, by Laurent Lessard
@@ -1083,6 +1109,9 @@ Courses
 -   Spring 2019 - Probabilistically Checkable and Interactive Proof Systems (Alessandro Chiesa)
 -   Algebraic Coding Theory - Stanford University
 -   CS60094 Computational Number Theory
+-   KAIST CS420: Compiler Design
+-   CS402 Introduction to Logic for Computer Science (Spring 2020, KAIST)
+-   CS520 Theories of Programming Languages (Fall 2020, KAIST)
 
 * * *
 
@@ -1253,6 +1282,10 @@ Courses
 -   UC Berkeley CS184/284A Computer Graphics and Imaging Spring 2022, by Ren Ng (YouTube playlist)
 -   CS 15-458/858: Discrete Differential Geometry - Carnegie Mellon University - Spring 2021
 -   IN2124: Basic Mathematical Tools for Imaging and Visualization - TUM - Winter 2021
+-   KAIST CS580 Computer Graphics (Spring 2024)
+-   Discrete Differential Geometry - CMU 15-458/858
+-   Machine Learning For Inverse Graphics - MIT
+-   Geometric Structures - KAIST
 
 * * *
 
@@ -1295,6 +1328,8 @@ Courses
 -   Interventional Medical Image Processing - Spring 2016 - FAU (Spring 2015) (Spring 2012) (Spring 2011) (Spring 2009)
 -   Advances in Computer Vision - MIT
 -   3D Computer Vision | National University of Singapore
+-   Machine Learning for Computer Vision class (Winter 2017-2018) - UniHeidelberg
+-   Computer Vision Foundations Class (Summer 2020) - UniHeidelberg
 
 * * *
 
@@ -1314,6 +1349,7 @@ Courses
 -   Physics-informed machine learning meets engineering seminar series
 -   Physics Informed Machine Learning Workshop
 -   Jake VanderPlas: Machine learning in Astronomy python tutorial
+-   Machine Learning and Physics - UniHeidelberg
 
 * * *
 
@@ -1475,7 +1511,7 @@ Courses
 -   Surgical Robotics Lectures - Carleton University
 -   Introduction to Mechatronic and Robotics - IIT Bombay
 -   Robotics Fall 2020 - UIC
--   Introduction to Robotics @ Princeton
+-   Introduction to Robotics @ Princeton (Slides)
 -   Evolutionary robotics course. Spring 2025
 -   Robotics: Basics and Selected Advanced - IISC Bangalore
 -   Nonlinear Control Design Jan 2024 - IIT Bombay
@@ -1483,6 +1519,8 @@ Courses
 -   Mobile Robot Systems Course - Amanda Prorok, University of Cambridge
 -   Robot Academy - Peter Corke
 -   ENAE 788M: Hands On Autonomous Aerial Robotics - University of Maryland
+-   Robot Learning 2025: Foundational Models for Robotics and Scaling DeepRL - Montreal Robotics
+-   Mila Robot Learning Seminar - Montreal Robotics
 
 * * *
 
@@ -1597,6 +1635,7 @@ Courses
 -   UCCS ECE4720/ECE5720 Battery Management and Control, by Gregory Plett
 -   Purdue ME 597 Distributed Energy Resources Spring 2024, by Kevin J. Kircher
 -   Stanford AA228V/CS238V Validation of Safety Critical Systems Winter 2025, by Sydney Michelle Katz
+-   RES.1-002 - Introduction to R and Geographic Information Systems (GIS) - MIT - Fall 2023
 
 * * *
 

@@ -1,106 +1,170 @@
 ---
 project: nocobase
-stars: 22206
-description: NocoBase is the most extensible AI-powered no-code/low-code platform for building business applications and enterprise solutions.
+stars: 22262
+description: NocoBase is an open-source AI + no-code platform for building business systems fast. Instead of generating everything from scratch, AI works on top of production-proven infrastructure and a WYSIWYG no-code interface, so you get both speed and reliability.
 url: https://github.com/nocobase/nocobase
 ---
 
-English | 中文 | 日本語| Français
+English | 简体中文 | 日本語 | Français | Español | Português | Bahasa Indonesia | Tiếng Việt | Deutsch
 
-Meet-Your-AI-Employee-EN.mp4
+NocoBase-v2.2-EN.mp4
 
 Table of Contents
 -----------------
 
 -   What is NocoBase
 -   Release Notes
--   Distinctive features
+-   Distinctive Features
+-   AI Agent Access
 -   Installation
--   How NocoBase works
 
 What is NocoBase
 ----------------
 
-NocoBase is the most extensible AI-powered no-code platform.  
-Total control. Infinite extensibility. AI collaboration.  
-Enable your team to adapt quickly and cut costs dramatically.  
-No years of development. No millions wasted.  
-Deploy NocoBase in minutes — and take control of everything.
+NocoBase is an open-source AI + no-code platform for building business systems fast. Instead of generating everything from scratch, AI works on top of production-proven infrastructure and a WYSIWYG no-code interface, so you get both speed and reliability.
 
 Homepage:  
 https://www.nocobase.com/
 
-Online Demo:  
+Online demo:  
 https://demo.nocobase.com/new
 
-Documents:  
+Documentation:  
 https://docs.nocobase.com/
 
 Forum:  
-https://forum.nocobase.com/
+https://forum.nocobase.com/c/english-forum/5
 
-Use Cases:  
+User stories:  
 https://www.nocobase.com/en/blog/tags/customer-stories
 
 Release Notes
 -------------
 
-Our blog is regularly updated with release notes and provides a weekly summary.
+Our release notes are updated regularly on the blog, with weekly summaries of important changes.
 
-Distinctive features
+Distinctive Features
 --------------------
 
-### 1\. Data model-driven, not form/table–driven
+### 1\. Collaborative: AI and people build together
 
-Instead of being constrained by forms or tables, NocoBase adopts a data model–driven approach, separating data structure from user interface to unlock unlimited possibilities.
+Coding agents get a full CLI and skills, while people get a WYSIWYG no-code interface, so both can collaborate efficiently.
 
--   UI and data structure are fully decoupled
--   Multiple blocks and actions can be created for the same table or record in any quantity or form
--   Supports the main database, external databases, and third-party APIs as data sources
+#### Build with the AI coding agents you already know
 
-### 2\. AI employees, integrated into your business systems
+Go from deployment to a working system in minutes with mainstream coding agents.
 
-Unlike standalone AI demos, NocoBase allows you to embed AI capabilities seamlessly into your interfaces, workflows, and data context, making AI truly useful in real business scenarios.
+-   Works with mainstream agents like Claude Code, Cursor, Codex, OpenCode, and TRAE
+-   Agents can handle setup, development, migration, and release end to end
 
--   Define AI employees for roles such as translator, analyst, researcher, or assistant
--   Seamless AI–human collaboration in interfaces and workflows
--   Ensure AI usage is secure, transparent, and customizable for your business needs
+#### Build manually in a WYSIWYG no-code interface
 
-### 3\. What you see is what you get, incredibly easy to use
+People can build and modify visually in a WYSIWYG interface, even without AI.
 
-While enabling the development of complex business systems, NocoBase keeps the experience simple and intuitive.
+-   Switch between usage mode and configuration mode with one click
+-   Review and configure data models, pages, workflows, and permissions visually
+-   Designed for regular users, not just developers
 
--   One-click switch between usage mode and configuration mode
--   Pages serve as a canvas to arrange blocks and actions, similar to Notion
--   Configuration mode is designed for ordinary users, not just programmers
+#### Mix AI development and manual building however you need
 
-### 4\. Everything is a plugin, designed for extension
+Split the work as needed: people can refine what AI builds, and AI can continue from human configuration.
 
-Adding more no-code features will never cover every business case. NocoBase is built for extension through its plugin-based microkernel architecture.
+-   AI can quickly create data models, pages, and workflows
+-   People can quickly refine the UI and interactions
+-   Collaborate as needed and keep iterating
 
--   All functionalities are plugins, similar to WordPress
--   Plugins are ready to use upon installation
--   Pages, blocks, actions, APIs, and data sources can all be extended through custom plugins
+### 2\. Intelligent: AI helps run the business, not just build the system
+
+NocoBase includes AI employees, so AI can work directly inside the system.
+
+#### AI employees integrated into business workflows
+
+AI employees get business context automatically and execute tasks directly inside the system.
+
+-   Front-end: help with analysis, Q&A, form filling, and more
+-   Back-end: handle document recognition, risk monitoring, and task routing automatically
+-   Integrated with workflows, AI employees can join decisions and execution
+
+#### Open interfaces for the agent ecosystem
+
+MCP, HTTP APIs, CLI, and rich skills let external agents connect securely.
+
+-   Platforms like OpenClaw, Hermes, Dify, Coze, and n8n connect through standard protocols
+-   Connects with Telegram, WhatsApp, Slack, and Gmail to query data, trigger actions, and execute business workflows
+-   One interface model keeps internal and external agents within the same boundaries
+
+#### Permission controls keep AI behavior under control
+
+Every AI action follows the same fine-grained permissions as human users.
+
+-   Each AI employee has its own role, with field-level read and write permissions
+-   Audit logs make every data change and workflow trigger traceable
+-   Admins can adjust AI permissions at any time to keep boundaries clear
+
+### 3\. Reliable: ready infrastructure for real business
+
+Data models, permissions, and workflows are complex and error-sensitive.  
+NocoBase provides them as built-in infrastructure, tested and proven in production.
+
+#### Complete infrastructure, without starting from scratch
+
+Dozens of built-in modules cover the most common business needs.
+
+-   Data models, permissions, workflows, and audit logs work out of the box
+-   Proven in production, instead of regenerated as black-box code each time
+-   Built-in guardrails keep AI output aligned with the system architecture
+
+#### Data-model driven, with data decoupled from UI
+
+Business data stays in standard relational structures, separate from the UI.
+
+-   Use the main database, external databases, and third-party APIs as data sources
+-   AI and people work on the same data model, so results stay transparent
+-   Your data always stays in your own database, without platform lock-in
+
+#### Plugin architecture for sustainable growth
+
+With a microkernel design, everything is a plugin and the system can grow without losing control.
+
+-   New features are added through composable plugins with shared conventions
+-   Mix custom and official plugins to fit your business
+-   The same architecture applies to both AI-built and manually built plugins
+
+AI Agent Access
+---------------
+
+The simplest way to let an AI agent operate NocoBase is to install the NocoBase CLI, finish initialization, and then start or restart your AI agent session inside the initialized working directory.
+
+-   NocoBase CLI is responsible for installing, connecting, and managing NocoBase applications
+-   During initialization, CLI automatically installs NocoBase Skills so the agent understands data models, pages, workflows, permissions, and plugins
+-   Once initialization is done, the AI agent can start working as long as its workspace points to that directory
+
+Minimal flow:
+
+npm install -g @nocobase/cli@beta
+mkdir my-nocobase && cd my-nocobase
+nb init --ui
+
+Then restart your AI agent session in that directory, for example:
+
+cd my-nocobase && codex
+
+Learn more:  
+https://docs.nocobase.com/ai/quick-start
 
 Installation
 ------------
 
 NocoBase supports three installation methods:
 
--   Installing With Docker (👍Recommended)
+-   Install with Docker (recommended)
     
-    Suitable for no-code scenarios, no code to write. When upgrading, just download the latest image and reboot.
+    Best for no-code scenarios and requires no code writing. To upgrade, pull the latest image and restart.
     
--   Installing from create-nocobase-app CLI
+-   Install with create-nocobase-app
     
-    The business code of the project is completely independent and supports low-code development.
+    The business code of your project stays independent and supports low-code development.
     
--   Installing from Git source code
+-   Install from Git source code
     
-    If you want to experience the latest unreleased version, or want to participate in the contribution, you need to make changes and debug on the source code, it is recommended to choose this installation method, which requires a high level of development skills, and if the code has been updated, you can git pull the latest code.
-    
-
-How NocoBase works
-------------------
-
-nocobase-2-main-1080p-en-v2.mp4
+    If you want the latest unreleased version or plan to contribute by modifying and debugging source code directly, this method is recommended. It requires stronger development skills, and you can pull updates through Git when the code changes.

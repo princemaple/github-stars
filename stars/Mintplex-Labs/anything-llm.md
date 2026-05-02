@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 58983
+stars: 59419
 description: The all-in-one AI productivity accelerator. On device and privacy first with no annoying setup or configuration.
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -27,6 +27,7 @@ AnythingLLM supports multiple users as well where you can control the access and
 Cool features of AnythingLLM
 ----------------------------
 
+-   Scheduled Tasks
 -   Intelligent Skill Selection Enable **unlimited** tools for your models while reducing token usage by up to 80% per query
 -   **No-code AI Agent builder**
 -   **Full MCP-compatibility**

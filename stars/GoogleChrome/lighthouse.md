@@ -1,6 +1,6 @@
 ---
 project: lighthouse
-stars: 30097
+stars: 30122
 description: Automated auditing, performance metrics, and best practices for the web.
 url: https://github.com/GoogleChrome/lighthouse
 ---

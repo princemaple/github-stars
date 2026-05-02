@@ -1,6 +1,6 @@
 ---
 project: material-components-web
-stars: 17077
+stars: 17072
 description: Modular and customizable Material Design UI components for the web
 url: https://github.com/material-components/material-components-web
 ---

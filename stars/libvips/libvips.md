@@ -1,6 +1,6 @@
 ---
 project: libvips
-stars: 11263
+stars: 11273
 description: A fast image processing library with low memory needs.
 url: https://github.com/libvips/libvips
 ---
@@ -79,7 +79,7 @@ CarrierWave
 
 MediaWiki
 
-and others. The official libvips GUI is nip2, a strange combination of a spreadsheet and a photo editor.
+and others. The official libvips GUI is nip4, a strange combination of a spreadsheet and a photo editor.
 
 Install
 =======

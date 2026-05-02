@@ -1,6 +1,6 @@
 ---
 project: desktop
-stars: 41650
+stars: 41797
 description: Welcome to a calmer internet
 url: https://github.com/zen-browser/desktop
 ---
@@ -13,8 +13,8 @@ Download • Website • Documentation • Release Notes
 
 ### Firefox Versions
 
--   `Release` - Is currently built using Firefox version `150.0`! 🚀
--   `Twilight` - Is currently built using Firefox version `RC 150.0`!
+-   `Release` - Is currently built using Firefox version `150.0.1`! 🚀
+-   `Twilight` - Is currently built using Firefox version `RC 150.0.1`!
 
 ### Contributing
 

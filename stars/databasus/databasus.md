@@ -1,11 +1,11 @@
 ---
 project: databasus
-stars: 6553
+stars: 6662
 description: Database backup tool (PostgreSQL, MySQL\MariaDB and MongoDB)
 url: https://github.com/databasus/databasus
 ---
 
-### Database backup tool (PostgreSQL, MySQL\\MariaDB and MongoDB)
+### PostgreSQL backup tool (with MySQL\\MariaDB and MongoDB support)
 
 Databasus is a free, open source and self-hosted tool to backup databases (with primary focus on PostgreSQL). Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.)
 
@@ -268,8 +268,8 @@ We also draw attention to fast issue resolution and security vulnerability repor
 
 Yes. Every feature available in Databasus Cloud is equally available in the self-hosted version with no restrictions, no feature gates and no usage limits. The entire codebase is Apache 2.0 licensed and always will be.
 
-Databasus is not "open core." We do not withhold features behind a paid tier and then call the limited remainder "open source," as projects like GitLab or Sentry do. We believe open source means the complete product is open, not just a marketing label on a stripped-down edition.
+Databasus is not "open core". We do not withhold features behind a paid tier and then call the limited remainder "open source" as projects like GitLab or Sentry do. We believe open source means the complete product is open, not just a marketing label on a stripped-down edition.
 
 Databasus Cloud runs the exact same code as the self-hosted version. The only difference is that we take care of infrastructure, availability, backups, reservations, monitoring and updates for you — so you don't have to. If you are using cloud, you can always move your databases from cloud to self-hosted if you wish.
 
-Revenue from Cloud funds full-time development of the project. Most large open-source projects rely on corporate backing or sponsorship to survive. We chose a different path: Databasus sustains itself so it can grow and improve independently, without being tied to any enterprise or sponsor.
+Revenue from Databasus Cloud funds full-time development of the project. Many open-source projects depend on corporate backing, sponsorships or volunteer maintainers, which can create long-term sustainability challenges. Recent discussions around Tailwind and the archival of pgBackRest show that even popular or critical open-source projects need a durable funding model. Databasus Cloud is our way to make the project financially sustainable while keeping the full product open source, self-hostable and independent from any single corporate sponsor.

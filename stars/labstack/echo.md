@@ -1,6 +1,6 @@
 ---
 project: echo
-stars: 32348
+stars: 32355
 description: High performance, minimalist Go web framework
 url: https://github.com/labstack/echo
 ---

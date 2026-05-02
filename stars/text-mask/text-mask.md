@@ -1,6 +1,6 @@
 ---
 project: text-mask
-stars: 8221
+stars: 8220
 description: Input mask for React, Angular, Ember, Vue, & plain JavaScript
 url: https://github.com/text-mask/text-mask
 ---

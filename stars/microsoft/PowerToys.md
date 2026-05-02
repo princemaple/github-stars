@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 132025
+stars: 132740
 description: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows
 url: https://github.com/microsoft/PowerToys
 ---
@@ -87,27 +87,7 @@ But to get started quickly, choose one of the installation methods below:
 
 **Download the .exe file from GitHub**  
 
-Go to the PowerToys GitHub releases, select **Assets** to reveal the installation files, and choose the one that matches your architecture and install scope. For most devices, that would be _x64 per-user_.
-
-Description
-
-Filename
-
-Per user - x64
-
-PowerToysUserSetup-0.98.1-x64.exe
-
-Per user - ARM64
-
-PowerToysUserSetup-0.98.1-arm64.exe
-
-Machine wide - x64
-
-PowerToysSetup-0.98.1-x64.exe
-
-Machine wide - ARM64
-
-PowerToysSetup-0.98.1-arm64.exe
+Go to the PowerToys GitHub releases, scroll down and select **Assets** to reveal the installation files, and choose the one that matches your architecture and install scope. For most devices, that would be _x64 per-user_.
 
 **Microsoft Store**  
 You can easily install PowerToys from the Microsoft Store:
@@ -134,7 +114,7 @@ To see what's new, check out the release notes.
 🛣️ Roadmap
 -----------
 
-We are planning some nice new features and improvements for the next releases – PowerDisplay, Command Palette improvements and a brand-new Shortcut Guide experience! Stay tuned for v0.99!
+We are planning some nice new features and improvements for the next releases – a brand-new Shortcut Guide experience, ensuring it's easier to find and install Command Palette extensions and so much more! Stay tuned for \[v0.100\]\[github-next-release-work\]!
 
 ❤️ PowerToys Community
 ----------------------

@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3634
+stars: 3640
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -8,7 +8,7 @@ url: https://github.com/panphora/overtype
 OverType
 ========
 
-A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~118KB minified with all features.
+A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~110KB minified with all features.
 
 Live Examples
 -------------
@@ -30,7 +30,7 @@ Features
 -   ⌨️ **Keyboard shortcuts** - Common markdown shortcuts (Cmd/Ctrl+B for bold, etc.)
 -   📱 **Mobile optimized** - Responsive design with mobile-specific styles
 -   🔄 **DOM persistence aware** - Recovers from existing DOM (perfect for HyperClay and similar platforms)
--   🚀 **Lightweight** - ~118KB minified
+-   🚀 **Lightweight** - ~110KB minified
 -   🎯 **Optional toolbar** - Clean, minimal toolbar with all essential formatting
 -   ✨ **Smart shortcuts** - Keyboard shortcuts with selection preservation
 -   📝 **Smart list continuation** - GitHub-style automatic list continuation on Enter
@@ -58,7 +58,7 @@ EasyMDE
 
 **Size**
 
-~118KB
+~110KB
 
 364.02 KB
 
@@ -884,14 +884,20 @@ Special thanks to:
 -   Kristián Kostecký - Fixed toolbar option being ignored in reinit() (#62)
 -   Lyric Wai - Fixed double-escaping of links (#64), shared code block alignment fix (#65)
 -   kozi - Reported Firefox link tooltip bug (#68), toolbar positioning (#69), theme CSS variable issues (#70, #71)
--   1951FDG - Reported unordered list rendering bug (#74), suggested showStats() API improvement (#77)
--   nodesocket - Reported toolbarButtons export issues (#73, #78), suggested image toolbar button (#89)
+-   1951FDG - Reported unordered list rendering bug (#74), suggested showStats() API improvement (#77), reported placeholder CSS regression (#102)
+-   nodesocket - Reported toolbarButtons export issues (#73, #78), suggested image toolbar button (#89), reported custom theme stats bar styling (#101)
 -   Travis Bell - Reported keyboard shortcuts bug in ESM build (#80)
 -   fab2713 - Reported italic rendering in lists (#81), reinit maxHeight (#82), placeholder visibility (#83), suggested auto theme (#84), relative URL prefix (#85), minification improvements (#94)
 -   oooo-ps - Reported remote script loading issue (#86)
 -   ddarfantasy, ThaUnknown - Reported and debugged text misalignment caused by CSS framework font resets (#91)
 -   milen-yordanov - Reported code block colors ignoring theme in preview mode (#97)
 -   asalimian - Reported spellcheck being disabled (#98)
+-   be5invis - Reported reinit() not propagating fontSize changes (#108), suggested focus/blur callbacks (#107)
+-   Danny Vink - Fixed task list overlay alignment with spaced checkbox markers (#109)
+-   yurivish - Reported fontFamily option not being applied (#110)
+-   phinnaeus - Diagnosed missing fontFamily wiring (#110)
+-   Tan Nhu - Fixed onChange feedback loop with async syntax highlighters (#111)
+-   pscanf - Re-exported markdown-actions for custom toolbar implementations (#105, #106)
 
 ### TypeScript & Framework Support
 

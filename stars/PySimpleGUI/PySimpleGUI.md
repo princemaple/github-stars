@@ -1,6 +1,6 @@
 ---
 project: PySimpleGUI
-stars: 13705
+stars: 13706
 description: Python GUIs for Humans! PySimpleGUI is the top-rated Python application development environment. Launched in 2018. NEW for 2026 - the LGPL3 Version 6.  Transforms tkinter, Qt, WxPython, and Remi into a simple, intuitive, and fun experience for both hobbyists and expert users.  
 url: https://github.com/PySimpleGUI/PySimpleGUI
 ---

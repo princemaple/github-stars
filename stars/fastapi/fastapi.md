@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 97645
+stars: 97826
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -35,7 +35,9 @@ Sponsors
 
 ### Keystone Sponsor
 
-### Gold and Silver Sponsors
+### Gold Sponsors
+
+### Silver Sponsors
 
 Other sponsors
 
@@ -60,31 +62,16 @@ Kevin Glisson, Marc Vilanova, Forest Monsen - **Netflix** (ref)
 
 * * *
 
-"_I’m over the moon excited about **FastAPI**. It’s so fun!_"
-
-Brian Okken - **\[Python Bytes\](https://pythonbytes.fm/episodes/show/123/time-to-right-the-py-wrongs?time\_in\_sec=855) podcast host** (ref)
-
-* * *
-
-"_Honestly, what you've built looks super solid and polished. In many ways, it's what I wanted **Hug** to be - it's really inspiring to see someone build that._"
-
-Timothy Crosley - **\[Hug\](https://github.com/hugapi/hug) creator** (ref)
-
-* * *
-
-"_If you're looking to learn one **modern framework** for building REST APIs, check out **FastAPI** \[...\] It's fast, easy to use and easy to learn \[...\]_"
-
-"_We've switched over to **FastAPI** for our **APIs** \[...\] I think you'll like it \[...\]_"
-
-Ines Montani - Matthew Honnibal - **\[Explosion AI\](https://explosion.ai) founders - \[spaCy\](https://spacy.io) creators** (ref) - (ref)
-
-* * *
-
 "_If anyone is looking to build a production Python API, I would highly recommend **FastAPI**. It is **beautifully designed**, **simple to use** and **highly scalable**, it has become a **key component** in our API first development strategy and is driving many automations and services such as our Virtual TAC Engineer._"
 
 Deon Pillsbury - **Cisco** (ref)
 
 * * *
+
+FastAPI Conf
+------------
+
+**FastAPI Conf '26** is happening on **October 28, 2026** in **Amsterdam, NL**. All about FastAPI, right from the source. 🎤
 
 FastAPI mini documentary
 ------------------------

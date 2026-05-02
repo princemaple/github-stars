@@ -1,6 +1,6 @@
 ---
 project: CyberChef
-stars: 34662
+stars: 34735
 description: The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis
 url: https://github.com/gchq/CyberChef
 ---
@@ -39,7 +39,7 @@ docker build --tag cyberchef --ulimit nofile=10000 .
 
 1.  Run the docker container
 
-docker run -it -p 8080:80 cyberchef
+docker run -it -p 8080:8080 cyberchef
 
 1.  Navigate to `http://localhost:8080` in your browser
 
@@ -47,7 +47,7 @@ docker run -it -p 8080:80 cyberchef
 
 If you prefer to skip the build process, you can use the pre-built image
 
-docker run -it -p 8080:80 ghcr.io/gchq/cyberchef:latest
+docker run -it -p 8080:8080 ghcr.io/gchq/cyberchef:latest
 
 Just like before, navigate to `http://localhost:8080` in your browser.
 
@@ -121,7 +121,7 @@ CyberChef is built to support
 Node.js support
 ---------------
 
-CyberChef is built to fully support Node.js `v16`. For more information, see the "Node API" wiki page
+CyberChef is built to fully support Node.js `v24`. For more information, see the "Node API" wiki page
 
 Contributing
 ------------

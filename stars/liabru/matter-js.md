@@ -1,6 +1,6 @@
 ---
 project: matter-js
-stars: 18159
+stars: 18173
 description: a 2D rigid body physics engine for the web ▲● ■
 url: https://github.com/liabru/matter-js
 ---

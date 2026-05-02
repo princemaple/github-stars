@@ -1,6 +1,6 @@
 ---
 project: metadata-action
-stars: 1116
+stars: 1119
 description: GitHub Action to extract metadata (tags, labels) from Git reference and GitHub events for Docker
 url: https://github.com/docker/metadata-action
 ---

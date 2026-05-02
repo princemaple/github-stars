@@ -17,6 +17,11 @@ Using PouchDB
 
 To get started using PouchDB, check out the web site and API documentation.
 
+Deploying the Documentation Site www.pouchdb.com
+------------------------------------------------
+
+Doc website deployment is handled automatically once the changes land in `master`.
+
 Getting Help
 ------------
 

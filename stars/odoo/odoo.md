@@ -1,6 +1,6 @@
 ---
 project: odoo
-stars: 50314
+stars: 50429
 description: Odoo. Open Source Apps To Grow Your Business.
 url: https://github.com/odoo/odoo
 ---

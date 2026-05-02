@@ -1,6 +1,6 @@
 ---
 project: webaudiox
-stars: 441
+stars: 440
 description: helpers for WebAudio API
 url: https://github.com/jeromeetienne/webaudiox
 ---

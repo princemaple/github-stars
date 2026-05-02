@@ -1,6 +1,6 @@
 ---
 project: awesome-cto
-stars: 34789
+stars: 34842
 description: A curated and opinionated list of resources for Chief Technology Officers, with the emphasis on startups
 url: https://github.com/kuchin/awesome-cto
 ---

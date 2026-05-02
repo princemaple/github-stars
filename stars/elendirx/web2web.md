@@ -1,6 +1,6 @@
 ---
 project: web2web
-stars: 2248
+stars: 2247
 description: P2P web powered by torrents and blockchain.
 url: https://github.com/elendirx/web2web
 ---

@@ -1,6 +1,6 @@
 ---
 project: upscayl
-stars: 44846
+stars: 45007
 description: 🆙 Upscayl - #1 Free and Open Source AI Image Upscaler for Linux, MacOS and Windows.
 url: https://github.com/upscayl/upscayl
 ---

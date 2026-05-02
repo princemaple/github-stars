@@ -1,6 +1,6 @@
 ---
 project: rustler
-stars: 4784
+stars: 4786
 description: Safe Rust bridge for creating Erlang NIF functions
 url: https://github.com/rusterlium/rustler
 ---

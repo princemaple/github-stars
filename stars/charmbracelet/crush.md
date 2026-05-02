@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 23492
+stars: 23774
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -372,6 +372,10 @@ Crush also supports Model Context Protocol (MCP) servers through three transport
     }
   }
 }
+
+### Hooks
+
+Crush has preliminary support for hooks. For details, see the hook guide.
 
 ### Ignoring Files
 

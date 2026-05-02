@@ -1,6 +1,6 @@
 ---
 project: chatterbox
-stars: 24469
+stars: 24546
 description: SoTA open-source TTS
 url: https://github.com/resemble-ai/chatterbox
 ---
@@ -129,6 +129,8 @@ ta.save("test-english.wav", wav, model.sr)
 
 \# Multilingual examples
 multilingual\_model \= ChatterboxMultilingualTTS.from\_pretrained(device\=device)
+\# v2 remains the default. To use the v3 multilingual checkpoint:
+\# multilingual\_model = ChatterboxMultilingualTTS.from\_pretrained(device=device, t3\_model="v3")
 
 french\_text \= "Bonjour, comment ça va? Ceci est le modèle de synthèse vocale multilingue Chatterbox, il prend en charge 23 langues."
 wav\_french \= multilingual\_model.generate(french\_text, language\_id\="fr")

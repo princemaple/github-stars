@@ -1,6 +1,6 @@
 ---
 project: caddy-waf
-stars: 763
+stars: 766
 description: Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
 url: https://github.com/fabriziosalmi/caddy-waf
 ---

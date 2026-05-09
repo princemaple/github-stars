@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 29816
+stars: 29861
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---
@@ -418,6 +418,7 @@ There are packages available in the repository of some Linux distributions:
 -   Debian 10+: `apt install flameshot`
     -   Package for Debian 9 ("Stretch") also available via stretch-backports.
 -   Ubuntu: `apt install flameshot`
+    -   A PPA supporting Ubuntu 22.04 and newer is provided by Quentin Lienhardt that offers an up-to-date version of `flameshot`.
 -   openSUSE: `zypper install flameshot`
 -   Void Linux: `xbps-install flameshot`
 -   Solus: `eopkg it flameshot`
@@ -598,7 +599,7 @@ https://flameshot.org/docs/guide/faq/
 License
 -------
 
--   The main code is licensed under GPLv3
+-   The main code is licensed under GPLv3+
 -   The logo of Flameshot is licensed under Free Art License v1.3
 -   The button icons are licensed under Apache License 2.0. See: https://github.com/google/material-design-icons
 -   The code at capture/capturewidget.cpp is based on https://github.com/ckaiser/Lightscreen/blob/master/dialogs/areadialog.cpp (GPLv2)
@@ -606,7 +607,7 @@ License
 -   I copied a few lines of code from KSnapshot regiongrabber.cpp revision `796531` (LGPL)
 -   Qt-Color-Widgets taken and modified from https://github.com/mbasaglia/Qt-Color-Widgets (see their license and exceptions in the project) (LGPL/GPL)
 
-Info: If I take code from your project and that implies a relicense to GPLv3, you can reuse my changes with the original previous license of your project applied.
+Info: If I take code from your project and that implies a relicense to GPLv3+, you can reuse my changes with the original previous license of your project applied.
 
 Privacy Policy
 --------------

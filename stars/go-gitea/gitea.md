@@ -1,6 +1,6 @@
 ---
 project: gitea
-stars: 55301
+stars: 55519
 description: Git with a cup of tea! Painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, package registry and CI/CD
 url: https://github.com/go-gitea/gitea
 ---
@@ -39,12 +39,6 @@ From the root of the source tree, run:
 
 ```
 TAGS="bindata" make build
-```
-
-or if SQLite support is required:
-
-```
-TAGS="bindata sqlite sqlite_unlock_notify" make build
 ```
 
 The `build` target is split into two sub-targets:

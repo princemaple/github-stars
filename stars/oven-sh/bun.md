@@ -1,6 +1,6 @@
 ---
 project: bun
-stars: 89510
+stars: 89797
 description: Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one
 url: https://github.com/oven-sh/bun
 ---
@@ -75,30 +75,27 @@ Quick links
     -   Installation
     -   Quickstart
     -   TypeScript
+    -   TypeScript 6
 -   Templating
     
     -   `bun init`
     -   `bun create`
--   CLI
-    
-    -   `bun upgrade`
 -   Runtime
     
     -   `bun run`
     -   File types (Loaders)
-    -   TypeScript
     -   JSX
     -   Environment variables
     -   Bun APIs
     -   Web APIs
     -   Node.js compatibility
-    -   Single-file executable
     -   Plugins
     -   Watch mode / Hot Reloading
     -   Module resolution
     -   Auto-install
     -   bunfig.toml
     -   Debugger
+    -   REPL
     -   $ Shell
 -   Package manager
     
@@ -107,19 +104,24 @@ Quick links
     -   `bun remove`
     -   `bun update`
     -   `bun link`
-    -   `bun unlink`
     -   `bun pm`
     -   `bun outdated`
     -   `bun publish`
     -   `bun patch`
-    -   `bun patch-commit`
+    -   `bun why`
+    -   `bun audit`
+    -   `bun info`
     -   Global cache
+    -   Global store
+    -   Isolated installs
     -   Workspaces
+    -   Catalogs
     -   Lifecycle scripts
     -   Filter
     -   Lockfile
     -   Scopes and registries
     -   Overrides and resolutions
+    -   Security scanner API
     -   `.npmrc`
 -   Bundler
     
@@ -130,14 +132,16 @@ Quick links
     -   vs esbuild
     -   Single-file executable
     -   CSS
-    -   HTML
+    -   HTML & static sites
     -   Hot Module Replacement (HMR)
     -   Full-stack with HTML imports
+    -   Standalone HTML
+    -   Bytecode caching
+    -   Minifier
 -   Test runner
     
     -   `bun test`
     -   Writing tests
-    -   Watch mode
     -   Lifecycle hooks
     -   Mocks
     -   Snapshots
@@ -154,12 +158,15 @@ Quick links
 -   API
     
     -   HTTP server (`Bun.serve`)
+    -   HTTP routing
+    -   HTTP error handling
+    -   HTTP metrics
     -   WebSockets
     -   Workers
     -   Binary data
     -   Streams
     -   File I/O (`Bun.file`)
-    -   import.meta
+    -   Archive (tar)
     -   SQLite (`bun:sqlite`)
     -   PostgreSQL (`Bun.sql`)
     -   Redis (`Bun.redis`)
@@ -168,8 +175,9 @@ Quick links
     -   TCP sockets
     -   UDP sockets
     -   Globals
-    -   $ Shell
     -   Child processes (spawn)
+    -   Cron (`Bun.cron`)
+    -   WebView
     -   Transpiler (`Bun.Transpiler`)
     -   Hashing
     -   Colors (`Bun.color`)
@@ -177,8 +185,15 @@ Quick links
     -   FFI (`bun:ffi`)
     -   C Compiler (`bun:ffi` cc)
     -   HTMLRewriter
-    -   Testing (`bun:test`)
     -   Cookies (`Bun.Cookie`)
+    -   CSRF (`Bun.CSRF`)
+    -   Secrets (`Bun.secrets`)
+    -   YAML (`Bun.YAML`)
+    -   TOML (`Bun.TOML`)
+    -   JSON5
+    -   JSONL
+    -   Markdown
+    -   Image processing
     -   Utils
     -   Node-API
     -   Glob (`Bun.Glob`)
@@ -189,6 +204,14 @@ Quick links
 Guides
 ------
 
+-   Deployment
+    
+    -   Deploy to Vercel
+    -   Deploy to Railway
+    -   Deploy to Render
+    -   Deploy to AWS Lambda
+    -   Deploy to DigitalOcean
+    -   Deploy to Google Cloud Run
 -   Binary
     
     -   Convert a Blob to a string
@@ -218,10 +241,12 @@ Guides
     -   Use React and JSX
     -   Use Gel with Bun
     -   Use Prisma with Bun
+    -   Use Prisma Postgres with Bun
     -   Add Sentry to a Bun app
     -   Create a Discord bot
     -   Run Bun as a daemon with PM2
     -   Use Drizzle ORM with Bun
+    -   Use Upstash Redis with Bun
     -   Build an app with Nuxt and Bun
     -   Build an app with Qwik and Bun
     -   Build an app with Astro and Bun
@@ -229,10 +254,10 @@ Guides
     -   Build a frontend using Vite and Bun
     -   Build an app with Next.js and Bun
     -   Run Bun as a daemon with systemd
-    -   Deploy a Bun application on Render
     -   Build an HTTP server using Hono and Bun
     -   Build an app with SvelteKit and Bun
     -   Build an app with SolidStart and Bun
+    -   Build an app with TanStack Start and Bun
     -   Build an HTTP server using Elysia and Bun
     -   Build an HTTP server using StricJS and Bun
     -   Containerize a Bun application with Docker
@@ -259,6 +284,7 @@ Guides
     -   Upload files via HTTP using FormData
     -   Streaming HTTP Server with Async Iterators
     -   Streaming HTTP Server with Node.js Streams
+    -   Server-Sent Events (SSE) with Bun
 -   Install
     
     -   Add a dependency
@@ -306,6 +332,8 @@ Guides
     -   Run a Shell Command
     -   Import a JSON file
     -   Import a TOML file
+    -   Import a YAML file
+    -   Import a JSON5 file
     -   Set a time zone in Bun
     -   Set environment variables
     -   Re-map import paths
@@ -318,6 +346,7 @@ Guides
     -   Debugging Bun with the VS Code extension
     -   Inspect memory usage using V8 heap snapshots
     -   Define and replace static globals & constants
+    -   Build-time constants with --define
     -   Codesign a single-file JavaScript executable on macOS
 -   Streams
     
@@ -353,12 +382,14 @@ Guides
     -   Generate code coverage reports with the Bun test runner
     -   import, require, and test Svelte components with bun test
     -   Set a code coverage threshold with the Bun test runner
+    -   Selectively run tests concurrently with glob patterns
 -   Util
     
     -   Generate a UUID
     -   Hash a password
     -   Escape an HTML string
     -   Get the current Bun version
+    -   Upgrade Bun to the latest version
     -   Encode and decode base64 strings
     -   Compress and decompress data with gzip
     -   Sleep for a fixed number of milliseconds

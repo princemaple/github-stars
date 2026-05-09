@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 92187
+stars: 94330
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -55,6 +55,10 @@ Choose your preferred installation method:
 #### Option 1: Persistent Installation (Recommended)
 
 Install once and use everywhere. Pin a specific release tag for stability (check Releases for the latest):
+
+Note
+
+The `uv tool install` commands below require **uv** — a fast Python package manager. If you see `command not found: uv`, install uv first. The `pipx` alternative does not require uv.
 
 # Install a specific stable release (recommended — replace vX.Y.Z with the latest tag)
 uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
@@ -155,7 +159,7 @@ Want to see Spec Kit in action? Watch our video overview!
 
 Note
 
-Community extensions are independently created and maintained by their respective authors. GitHub and the Spec Kit maintainers may review pull requests that add entries to the community catalog for formatting, catalog structure, or policy compliance, but they do **not review, audit, endorse, or support the extension code itself**. The Community Extensions website is also a third-party resource. Review extension source code before installation and use at your own discretion.
+Community extensions are independently created and maintained by their respective authors. Maintainers only verify that catalog entries are complete and correctly formatted — they do **not review, audit, endorse, or support the extension code itself**. The Community Extensions website is also a third-party resource. Review extension source code before installation and use at your own discretion.
 
 🔍 **Browse and search community extensions on the Community Extensions website.**
 
@@ -204,6 +208,16 @@ Read+Write
 
 aide
 
+API Evolve
+
+Managed API contract evolution — breaking-change detection, semver enforcement, deprecation orchestration, and lifecycle gates across REST, GraphQL, and gRPC
+
+`process`
+
+Read+Write
+
+spec-kit-api-evolve
+
 Architect Impact Previewer
 
 Predicts architectural impact, complexity, and risks of proposed changes before implementation.
@@ -213,6 +227,16 @@ Predicts architectural impact, complexity, and risks of proposed changes before 
 Read-only
 
 spec-kit-architect-preview
+
+Architecture Guard
+
+Continuous architecture governance for AI-assisted development. Reviews specs, plans, and code for architecture drift, producing structured refactor tasks and evolution proposals.
+
+`process`
+
+Read+Write
+
+spec-kit-architecture-guard
 
 Archive Extension
 
@@ -344,6 +368,16 @@ Read+Write
 
 spec-kit-confluence
 
+Cost Tracker
+
+Track real LLM dollar cost across SDD workflows — per-feature budgets, per-integration comparison, and finance-ready exports
+
+`visibility`
+
+Read+Write
+
+spec-kit-cost
+
 DocGuard — CDD Enforcement
 
 Canonical-Driven Development enforcement. Validates, scores, and traces project documentation with automated checks, AI-driven workflows, and spec-kit hooks. Zero NPM runtime dependencies.
@@ -413,6 +447,16 @@ Creates and syncs local specs from an existing GitHub issue
 Read+Write
 
 spec-kit-issue
+
+Intelligent Agent Orchestrator
+
+Cross-catalog agent discovery and intelligent prompt-to-command routing
+
+`process`
+
+Read+Write
+
+spec-kit-orchestrator
 
 Iterate
 
@@ -536,7 +580,7 @@ spec-kit-memory-loader
 
 Memory MD
 
-Repository-native durable memory for Spec Kit projects
+Spec Kit extension for repository-native Markdown memory that captures durable decisions, bugs, and project context
 
 `docs`
 
@@ -563,6 +607,26 @@ Fetch Teams messages, meeting transcripts, and SharePoint/OneDrive files as loca
 Read+Write
 
 spec-kit-m365
+
+Multi-Model Review
+
+Cross-model Spec Kit handoffs for spec authoring, implementation routing, and review.
+
+`process`
+
+Read+Write
+
+multi-model-review
+
+.NET Framework to Modern .NET Migration
+
+Orchestrate end-to-end .NET Framework to modern .NET migration across 7 phases, with SDD lifecycle integration
+
+`process`
+
+Read+Write
+
+spec-kit-fx-to-net
 
 Onboard
 
@@ -1362,7 +1426,7 @@ specify init . --force
 # or
 specify init --here --force
 
-You will be prompted to select the coding agent integration you are using. You can also proactively specify it directly in the terminal:
+In an interactive terminal, you will be prompted to select the coding agent integration you are using. In non-interactive sessions, such as CI or piped runs, `specify init` defaults to GitHub Copilot unless you pass `--integration`. You can also proactively specify the integration directly in the terminal:
 
 specify init <project\_name\> --integration copilot
 specify init <project\_name\> --integration gemini

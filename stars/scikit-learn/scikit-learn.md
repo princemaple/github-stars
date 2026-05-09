@@ -1,6 +1,6 @@
 ---
 project: scikit-learn
-stars: 65966
+stars: 66015
 description: scikit-learn: machine learning in Python
 url: https://github.com/scikit-learn/scikit-learn
 ---
@@ -23,6 +23,7 @@ scikit-learn requires:
 -   Python (>= 3.11)
 -   NumPy (>= 1.24.1)
 -   SciPy (>= 1.10.0)
+-   Narwhals (>= 2.0.1)
 -   joblib (>= 1.3.0)
 -   threadpoolctl (>= 3.2.0)
 

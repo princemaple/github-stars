@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 70844
+stars: 71092
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -529,9 +529,9 @@ qwen3\_5/qwen3\_5\_nothink
 
 Qwen3.6
 
-35B
+27B/35B
 
-qwen3\_6/qwen3\_6\_nothink
+qwen3\_6
 
 Qwen2-Audio
 

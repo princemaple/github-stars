@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 29926
+stars: 30174
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -47,9 +47,19 @@ Quick start
 
 ### Install
 
-**Install from the nightly builds**
+**Package Managers**
 
-You can download the last binary from the nightly builds for Linux x86\_64 and MacOS aarch64.
+Latest nightly from Homebrew:
+
+brew install lightpanda-io/browser/lightpanda
+
+Latest nightly from Arch Linux User Repository:
+
+yay -S lightpanda-nightly-bi
+
+**Download from the nightly builds**
+
+You can download the last binary from the nightly builds for Linux and MacOS for both x86\_64 and aarch64.
 
 _For Linux_
 

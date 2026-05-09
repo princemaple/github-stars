@@ -1,6 +1,6 @@
 ---
 project: ngx-markdown
-stars: 1181
+stars: 1183
 description: Angular markdown component/directive/pipe/service to parse static, dynamic or remote content to HTML with syntax highlight and more...
 url: https://github.com/jfcere/ngx-markdown
 ---
@@ -42,7 +42,7 @@ Installation
 
 To add ngx-markdown along with the required marked library to your `package.json` use the following commands.
 
-npm install ngx-markdown marked@^17.0.0 --save
+npm install ngx-markdown marked@^18.0.0 --save
 
 ### Syntax highlight
 

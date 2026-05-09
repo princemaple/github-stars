@@ -1,6 +1,6 @@
 ---
 project: xh
-stars: 7773
+stars: 7791
 description: Friendly and fast tool for sending HTTP requests
 url: https://github.com/ducaale/xh
 ---
@@ -213,7 +213,7 @@ Options:
 Each option can be reset with a --no-OPTION argument.
 ```
 
-Run `xh help` for more detailed information.
+Run `xh help` or `man xh` for more detailed information.
 
 ### Request Items
 

@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 367561
+stars: 370220
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -14,7 +14,7 @@ url: https://github.com/openclaw/openclaw
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
-Supported channels include: WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, BlueBubbles, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat, QQ, WebChat.
+Supported channels include: WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat, QQ, WebChat.
 
 Website · Docs · Vision · DeepWiki · Getting Started · Updating · Showcase · FAQ · Onboarding · Nix · Docker · Discord
 
@@ -34,7 +34,7 @@ Model note: while many providers and models are supported, prefer a current flag
 Install (recommended)
 ---------------------
 
-Runtime: **Node 24 (recommended) or Node 22.14+**.
+Runtime: **Node 24 (recommended) or Node 22.16+**.
 
 npm install -g openclaw@latest
 # or: pnpm add -g openclaw@latest
@@ -46,7 +46,7 @@ OpenClaw Onboard installs the Gateway daemon (launchd/systemd user service) so i
 Quick start (TL;DR)
 -------------------
 
-Runtime: **Node 24 (recommended) or Node 22.14+**.
+Runtime: **Node 24 (recommended) or Node 22.16+**.
 
 Full beginner guide (auth, pairing, channels): Getting started
 
@@ -57,7 +57,7 @@ openclaw gateway --port 18789 --verbose
 # Send a message
 openclaw message send --target +1234567890 --message "Hello from OpenClaw"
 
-# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/BlueBubbles/IRC/Microsoft Teams/Matrix/Feishu/LINE/Mattermost/Nextcloud Talk/Nostr/Synology Chat/Tlon/Twitch/Zalo/Zalo Personal/WeChat/QQ/WebChat)
+# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/IRC/Microsoft Teams/Matrix/Feishu/LINE/Mattermost/Nextcloud Talk/Nostr/Synology Chat/Tlon/Twitch/Zalo/Zalo Personal/WeChat/QQ/WebChat)
 openclaw agent --message "Ship checklist" --thinking high
 
 Upgrading? Updating guide (and run `openclaw doctor`).
@@ -83,7 +83,7 @@ Highlights
 ----------
 
 -   **Local-first Gateway** — single control plane for sessions, channels, tools, and events.
--   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, BlueBubbles (iMessage), iMessage (legacy), IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat, QQ, WebChat, macOS, iOS/Android.
+-   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat, QQ, WebChat, macOS, iOS/Android.
 -   **Multi-agent routing** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
 -   **Voice Wake + Talk Mode** — wake words on macOS/iOS and continuous voice on Android (ElevenLabs + system TTS fallback).
 -   **Live Canvas** — agent-driven visual workspace with A2UI.

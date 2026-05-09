@@ -1,6 +1,6 @@
 ---
 project: yarn
-stars: 41509
+stars: 41517
 description: The 1.x line is frozen - features and bugfixes now happen on https://github.com/yarnpkg/berry
 url: https://github.com/yarnpkg/yarn
 ---

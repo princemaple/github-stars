@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 430155
+stars: 433562
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -620,7 +620,7 @@ No
 
 Yes
 
-No
+Yes
 
 Waifu.im
 
@@ -2252,6 +2252,16 @@ Yes
 
 Yes
 
+Alpha (Mossland)
+
+Korean crypto channel stance + RAG Q&A + canonical entity/topic/event store
+
+No
+
+Yes
+
+Yes
+
 Binance
 
 Exchange for Trading Cryptocurrencies based in China
@@ -3027,6 +3037,16 @@ Yes
 
 Yes
 
+paralelo.bo
+
+Bolivia parallel-market USD/BOB exchange rate, aggregated from P2P sources every 60s
+
+No
+
+Yes
+
+Yes
+
 VATComply.com
 
 Exchange rates, geolocation and VAT number validation
@@ -3777,6 +3797,16 @@ Yes
 
 Unknown
 
+isitdownstatus
+
+Check if websites and online services are currently down
+
+No
+
+Yes
+
+Unknown
+
 jsDelivr
 
 Package info and download stats on jsDelivr CDN
@@ -3802,6 +3832,16 @@ JSONbin.io
 Free JSON storage service. Ideal for small scale Web apps, Websites and Mobile apps
 
 `apiKey`
+
+Yes
+
+Yes
+
+JSONPlaceholder
+
+Fake REST API for testing and prototyping
+
+No
 
 Yes
 
@@ -4307,6 +4347,16 @@ Yes
 
 Yes
 
+Thunderbit
+
+Extract web pages as Markdown or structured data for AI apps
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Tyk
 
 Api and service management platform
@@ -4757,6 +4807,16 @@ Yes
 
 Unknown
 
+staffSign
+
+Digital employment contract API with QES/eIDAS support for HR and staffing
+
+`apiKey`
+
+Yes
+
+Yes
+
 Vector Express v2.0
 
 Free vector file converting API
@@ -4841,6 +4901,16 @@ No
 Yes
 
 Unknown
+
+EmailJS
+
+Send emails directly from client-side JavaScript without a backend server
+
+`apiKey`
+
+Yes
+
+Yes
 
 Email Validation
 
@@ -4942,6 +5012,16 @@ Yes
 
 Unknown
 
+PostStack
+
+EU-hosted email API for transactional and marketing email, with contacts, broadcasts, and analytics
+
+`apiKey`
+
+Yes
+
+No
+
 Sendgrid
 
 A cloud-based SMTP provider that allows you to send emails without having to maintain email servers
@@ -4986,6 +5066,16 @@ Auth
 HTTPS
 
 CORS
+
+Anycrap
+
+35,000+ absurdist AI-generated product concepts with names, descriptions, and images
+
+`apiKey`
+
+Yes
+
+Yes
 
 chucknorris.io
 
@@ -5047,6 +5137,16 @@ Yes
 
 Unknown
 
+Memesio
+
+Meme creation API with templates, editable captions and hosted share links
+
+No
+
+Yes
+
+No
+
 NaMoMemes
 
 Memes on Narendra Modi
@@ -5066,6 +5166,16 @@ No
 Yes
 
 Unknown
+
+TasteDive
+
+Content-based recommendations for movies, music, TV shows, books, games, and podcasts
+
+`apiKey`
+
+Yes
+
+No
 
 Techy
 
@@ -5708,7 +5818,7 @@ Instant VAT number and tax validation across the globe
 
 Yes
 
-Unkown
+Unknown
 
 Tradier
 
@@ -7970,6 +8080,16 @@ Yes
 
 No
 
+CPFHub
+
+Brazilian CPF lookup — returns full name, birth date, and gender for any CPF
+
+`apiKey`
+
+Yes
+
+Yes
+
 Census.gov
 
 The US Census Bureau provides various APIs and data sets on demographics and businesses
@@ -8249,6 +8369,16 @@ No
 Yes
 
 Unknown
+
+LocalGov.jp
+
+Japan grants and subsidies (central J-Grants + 1,916 municipalities)
+
+No
+
+Yes
+
+Yes
 
 National Park Service, US
 
@@ -8960,6 +9090,16 @@ Dataflow Kit COVID-19
 COVID-19 live statistics into sites per hour
 
 No
+
+Yes
+
+Unknown
+
+Edamam
+
+Food and nutrition data API with recipe search
+
+`apiKey`
 
 Yes
 
@@ -9975,6 +10115,16 @@ Yes
 
 Unknown
 
+Florida Man
+
+Static JSON dataset of 10,000+ Florida Man headlines by date
+
+No
+
+Yes
+
+Yes
+
 GNews
 
 Search for news from various sources
@@ -10140,6 +10290,16 @@ No
 
 Unknown
 
+AcreLens
+
+Land suitability scoring API for any US property: off-grid, rural, recreational, investment
+
+`apiKey`
+
+Yes
+
+Unknown
+
 API Setu
 
 An Indian Government platform that provides a lot of APIS for KYC, business, education & employment
@@ -10290,6 +10450,16 @@ Yes
 
 Yes
 
+ModelPartFinder Error Codes
+
+Lookup appliance and equipment error codes by brand and code, with recommended replacement parts
+
+No
+
+Yes
+
+Yes
+
 Nasdaq Data Link
 
 Stock market data
@@ -10309,6 +10479,16 @@ No
 Yes
 
 Yes
+
+Onyx Bazaar
+
+Free public leaderboard of x402 paid HTTP services indexed from Coinbase CDP discovery API
+
+No
+
+Yes
+
+Unknown
 
 Open Data Minneapolis
 
@@ -10909,6 +11089,16 @@ Auth
 HTTPS
 
 CORS
+
+Numlookup
+
+Phone number validation and carrier lookup API with global coverage
+
+`apiKey`
+
+Yes
+
+Unknown
 
 Numverify
 
@@ -11564,6 +11754,16 @@ No
 Yes
 
 Unknown
+
+OpenAlex
+
+Open catalog of scholarly works, authors, institutions, sources, and concepts
+
+No
+
+Yes
+
+Yes
 
 Purple Air
 
@@ -12302,6 +12502,16 @@ Yes
 
 Unknown
 
+Bluesky
+
+Decentralized social networking via the AT protocol
+
+No
+
+Yes
+
+Yes
+
 Cisco Spark
 
 Team Collaboration Software
@@ -12746,6 +12956,16 @@ Unofficial detailed American college football statistics, records, and results A
 Yes
 
 Unknown
+
+DiscGolf
+
+Structured disc golf course data
+
+No
+
+Yes
+
+Yes
 
 Ergast F1
 
@@ -13561,6 +13781,16 @@ No
 Yes
 
 Unknown
+
+WhereParcel
+
+Unified parcel tracking API across 60+ carriers worldwide (USPS, FedEx, UPS, DHL, etc.)
+
+`apiKey`
+
+Yes
+
+Yes
 
 **⬆ Back to Index**  
   
@@ -15327,6 +15557,16 @@ Yes
 
 Unknown
 
+wttr.in
+
+Weather in your terminal, supports JSON output
+
+No
+
+Yes
+
+Yes
+
 Yandex.Weather
 
 Assesses weather condition in specific locations
@@ -15337,10 +15577,9 @@ Yes
 
 No
 
-**⬆ Back to Index**
+**⬆ Back to Index**  
+  
 
-  
-  
   
 
 License

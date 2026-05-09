@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 48339
+stars: 48587
 description: 🤱🏻 Turn any webpage into a desktop app with one command.
 url: https://github.com/tw93/Pake
 ---
@@ -166,7 +166,7 @@ First-time packaging requires environment setup and may be slower, subsequent bu
 Development
 -----------
 
-Requires Rust `>=1.85` and Node `>=22`. For detailed installation guide, see Tauri documentation. If unfamiliar with development environment, use the CLI tool instead.
+Requires Rust `>=1.85` and Node `>=22` (recommended LTS; `>=18` also works). For detailed installation guide, see Tauri documentation. If unfamiliar with development environment, use the CLI tool instead.
 
 # Install dependencies
 pnpm i

@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 26971
+stars: 27290
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -237,6 +237,22 @@ docker compose --profile observability up -d
 Similarly, you can run the command with podman
 
 podman compose --profile observability up -d
+
+Webhook notification quick start (Docker):
+
+docker run -d --name rustfs -p 9000:9000 \\
+  -e RUSTFS\_NOTIFY\_ENABLE=true \\
+  -e RUSTFS\_NOTIFY\_WEBHOOK\_ENABLE\_PRIMARY=on \\
+  -e RUSTFS\_NOTIFY\_WEBHOOK\_ENDPOINT\_PRIMARY=http://<host-ip\>:3020/webhook \\
+  -e RUSTFS\_NOTIFY\_WEBHOOK\_QUEUE\_DIR\_PRIMARY=/tmp/rustfs-events \\
+  rustfs/rustfs:latest
+
+Notes:
+
+-   `RUSTFS_NOTIFY_ENABLE=true` enables the global notify module switch.
+-   For ARN `arn:rustfs:sqs::primary:webhook`, use instance-scoped env vars with `_PRIMARY`.
+-   If queue dir is omitted, default is `/opt/rustfs/events`; ensure it is writable by the container runtime user.
+-   `RUSTFS_NOTIFY_WEBHOOK_SKIP_TLS_VERIFY_PRIMARY` defaults to `false`; enabling it skips webhook TLS certificate verification, allows MITM attacks, and emits a startup warning. Prefer `RUSTFS_NOTIFY_WEBHOOK_CLIENT_CA_PRIMARY` for private CAs.
 
 **NOTE**: We recommend reviewing the `docker-compose.yml` file before running. It defines several services including Grafana, Prometheus, and Jaeger, which are helpful for RustFS observability. If you wish to start Redis or Nginx containers, you can specify the corresponding profiles.
 

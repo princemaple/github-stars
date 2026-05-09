@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 32033
+stars: 32173
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -37,7 +37,6 @@ Table of Contents
 -   Quick Start
     -   Quick Start with weed mini
     -   Quick Start for S3 API on Docker
-    -   Quick Start with Single Binary
 -   Introduction
 -   Features
     -   Additional Features
@@ -63,41 +62,38 @@ Quick Start
 Quick Start with weed mini
 --------------------------
 
-The easiest way to get started with SeaweedFS for development and testing:
+Download the latest binary from https://github.com/seaweedfs/seaweedfs/releases and unzip the single `weed` (or `weed.exe`) file, or run `go install github.com/seaweedfs/seaweedfs/weed@latest`. Then start a ready-to-use S3 object store with credentials and a pre-created bucket in one command:
 
--   Download the latest binary from https://github.com/seaweedfs/seaweedfs/releases and unzip a single binary file `weed` or `weed.exe`.
-
-Example:
-
-# remove quarantine on macOS
-# xattr -d com.apple.quarantine  ./weed
-
+AWS\_ACCESS\_KEY\_ID=admin \\
+AWS\_SECRET\_ACCESS\_KEY=secret \\
+S3\_BUCKET=my-bucket \\
 ./weed mini -dir=/data
 
-This single command starts a complete SeaweedFS setup with:
+That's it — the S3 endpoint is at http://localhost:8333, `my-bucket` already exists, and `admin`/`secret` are valid credentials. `S3_BUCKET` accepts a comma-separated list (e.g. `raw,processed`); use `S3_TABLE_BUCKET` for S3 Tables (Iceberg) buckets. Drop any of the env vars to skip that piece (no AWS keys → S3 runs in unauthenticated "Allow All" mode for development).
 
+The same command starts everything else too:
+
+-   **S3 Endpoint**: http://localhost:8333
 -   **Master UI**: http://localhost:9333
 -   **Volume Server**: http://localhost:9340
 -   **Filer UI**: http://localhost:8888
--   **S3 Endpoint**: http://localhost:8333
 -   **WebDAV**: http://localhost:7333
 -   **Admin UI**: http://localhost:23646
 
-Perfect for development, testing, learning SeaweedFS, and single node deployments!
+> macOS: if the binary is quarantined, run `xattr -d com.apple.quarantine ./weed` first.
+
+Perfect for development, testing, learning SeaweedFS, and single-node deployments. To scale out, add more volume servers by running `weed volume -dir="/some/data/dir2" -master="<master_host>:9333" -port=8081` locally, on another machine, or on thousands of machines.
 
 Quick Start for S3 API on Docker
 --------------------------------
 
-`docker run -p 8333:8333 chrislusf/seaweedfs server -s3`
+docker run -p 8333:8333 \\
+  -e AWS\_ACCESS\_KEY\_ID=admin \\
+  -e AWS\_SECRET\_ACCESS\_KEY=secret \\
+  -e S3\_BUCKET=my-bucket \\
+  chrislusf/seaweedfs
 
-Quick Start with Single Binary
-------------------------------
-
--   Download the latest binary from https://github.com/seaweedfs/seaweedfs/releases and unzip a single binary file `weed` or `weed.exe`. Or run `go install github.com/seaweedfs/seaweedfs/weed@latest`.
--   `export AWS_ACCESS_KEY_ID=admin ; export AWS_SECRET_ACCESS_KEY=key` as the admin credentials to access the object store.
--   Run `weed server -dir=/some/data/dir -s3` to start one master, one volume server, one filer, and one S3 gateway. The difference with `weed mini` is that `weed mini` can auto configure based on the single host environment, while `weed server` requires manual configuration and are designed for production use.
-
-Also, to increase capacity, just add more volume servers by running `weed volume -dir="/some/data/dir2" -master="<master_host>:9333" -port=8081` locally, or on a different machine, or on thousands of machines. That is it!
+Same behavior as the `weed mini` command above — the S3 endpoint is at http://localhost:8333 with `my-bucket` pre-created. Drop the env vars to run anonymously for development.
 
 Introduction
 ============
@@ -116,6 +112,8 @@ SeaweedFS started by implementing Facebook's Haystack design paper. Also, Seawee
 On top of the blob store, optional Filer can support directories and POSIX attributes. Filer is a separate linearly-scalable stateless server with customizable metadata stores, e.g., MySql, Postgres, Redis, Cassandra, HBase, Mongodb, Elastic Search, LevelDB, RocksDB, Sqlite, MemSql, TiDB, Etcd, CockroachDB, YDB, etc.
 
 SeaweedFS can transparently integrate with the cloud. With hot data on local cluster, and warm data on the cloud with O(1) access time, SeaweedFS can achieve both fast local access time and elastic cloud storage capacity. What's more, the cloud storage access API cost is minimized. Faster and cheaper than direct cloud storage!
+
+SeaweedFS also ships a built-in **Iceberg REST Catalog**, turning the same cluster into a self-contained lakehouse. Spark, Trino, Dremio, DuckDB, and RisingWave can query Iceberg tables directly — no Hive Metastore, Glue, or external catalog service required. Storage and table metadata live in one system, simplifying on-prem and small-team analytics stacks.
 
 Back to TOC
 
@@ -158,6 +156,15 @@ Filer Features
 -   Super Large Files stores large or super large files in tens of TB.
 -   Cloud Drive mounts cloud storage to local cluster, cached for fast read and write with asynchronous write back.
 -   Gateway to Remote Object Store mirrors bucket operations to remote object storage, in addition to Cloud Drive
+
+Data Lakehouse Features
+-----------------------
+
+-   S3 Table Buckets expose a dedicated namespace for Iceberg tables with strict layout validation.
+-   Built-in Iceberg REST Catalog runs alongside the S3 endpoint — no external metastore needed.
+-   Native integrations with Apache Spark, Trino, Dremio, DuckDB, and RisingWave.
+-   Automated table maintenance: compaction, snapshot expiration, orphan removal, manifest rewriting.
+-   Granular IAM at the bucket, namespace, and table level via standard S3 bucket policies.
 
 Kubernetes
 ----------

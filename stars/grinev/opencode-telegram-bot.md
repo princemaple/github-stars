@@ -1,7 +1,7 @@
 ---
 project: opencode-telegram-bot
-stars: 576
-description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support. Can be used as lightweight OpenClaw alternative.
+stars: 615
+description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
 
@@ -26,6 +26,7 @@ Features
 -   **Remote coding** — send prompts to OpenCode from anywhere, receive complete results with code sent as files
 -   **Session management** — create new sessions or continue existing ones, just like in the TUI
 -   **Track live session** — follow a live OpenCode CLI session; see Track Existing Session
+-   **Background session notifications** — get short notifications when detached or non-current sessions in the current project/worktree reply, ask questions, or request permissions
 -   **Live status** — pinned message with current project/worktree, model, context usage, and changed files list, updated in real time
 -   **Model switching** — pick models from OpenCode favorites and recent history directly in the chat (favorites are shown first)
 -   **Agent modes** — switch between Plan and Build modes on the fly
@@ -41,6 +42,7 @@ Features
 -   **Git worktree switching** — browse and switch between existing git worktrees for the current repository with `/worktree`
 -   **Security** — strict user ID whitelist; no one else can access your bot, even if they find it
 -   **Localization** — UI localization is supported for multiple languages (`BOT_LOCALE`)
+-   **Interactive file browser** — use `/ls` to browse files and directories inside the current project, open subdirectories, go back, and download files by tapping them
 
 Planned features currently in development are listed in Current Task List.
 
@@ -143,6 +145,10 @@ Create a new session
 
 Abort the current task
 
+`/detach`
+
+Detach from the current session without stopping it
+
 `/sessions`
 
 Browse and switch between recent sessions
@@ -158,6 +164,10 @@ Switch between existing git worktrees
 `/open`
 
 Add a project by browsing directories
+
+`/ls`
+
+List directory contents, then tap to open or download
 
 `/tts`
 
@@ -429,6 +439,14 @@ Hide file edit documents sent as `.txt` attachments (`edit_*.txt`, `write_*.txt`
 No
 
 `false`
+
+`TRACK_BACKGROUND_SESSIONS`
+
+Track detached/non-current sessions in the current selected project/worktree and send short notifications
+
+No
+
+`true`
 
 `RESPONSE_STREAMING`
 

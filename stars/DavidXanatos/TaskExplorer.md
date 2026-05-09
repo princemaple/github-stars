@@ -1,6 +1,6 @@
 ---
 project: TaskExplorer
-stars: 3347
+stars: 3400
 description: Power full Task Manager
 url: https://github.com/DavidXanatos/TaskExplorer
 ---

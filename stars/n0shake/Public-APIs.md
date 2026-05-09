@@ -1,6 +1,6 @@
 ---
 project: Public-APIs
-stars: 23307
+stars: 23354
 description: 📚 A public list of APIs from round the web.
 url: https://github.com/n0shake/Public-APIs
 ---
@@ -3043,6 +3043,12 @@ API
 Description
 
 Open/Trial
+
+**ExtendsClass**
+
+Collection of free REST APIs designed to help web developers with prototyping.
+
+**N/A**
 
 **Faker API**
 

@@ -1,6 +1,6 @@
 ---
 project: dify
-stars: 139885
+stars: 140734
 description: Production-ready platform for agentic workflow development.
 url: https://github.com/langgenius/dify
 ---
@@ -76,7 +76,7 @@ Advanced Setup
 
 ### Custom configurations
 
-If you need to customize the configuration, please refer to the comments in our .env.example file and update the corresponding values in your `.env` file. Additionally, you might need to make adjustments to the `docker-compose.yaml` file itself, such as changing image versions, port mappings, or volume mounts, based on your specific deployment environment and requirements. After making any changes, please re-run `docker compose up -d`. You can find the full list of available environment variables here.
+If you need to customize the configuration, edit `docker/.env`. The essential startup defaults live in `docker/.env.example`, and optional advanced variables are split under `docker/envs/` by theme. After making any changes, re-run `docker compose up -d` from the `docker` directory. You can find the full list of available environment variables here.
 
 ### Metrics Monitoring with Grafana
 

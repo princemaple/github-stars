@@ -1,6 +1,6 @@
 ---
 project: docuseal
-stars: 12004
+stars: 16077
 description: Open source DocuSign alternative. Create, fill, and sign digital documents ✍️
 url: https://github.com/docusealco/docuseal
 ---
@@ -40,7 +40,7 @@ Pro Features
 -   Company logo and white-label
 -   User roles
 -   Automated reminders
--   Invitation and identify verification via SMS
+-   Invitation and identity verification via SMS
 -   Conditional fields and formulas
 -   Bulk send with CSV, XLSX spreadsheet import
 -   SSO / SAML
@@ -65,7 +65,7 @@ Railway
 
 docker run --name docuseal -p 3000:3000 -v.:/data docuseal/docuseal
 
-By default DocuSeal docker container uses an SQLite database to store data and configurations. Alternatively, it is possible use PostgreSQL or MySQL databases by specifying the `DATABASE_URL` env variable.
+By default DocuSeal docker container uses an SQLite database to store data and configurations. Alternatively, it is possible to use PostgreSQL or MySQL databases by specifying the `DATABASE_URL` env variable.
 
 #### Docker Compose
 

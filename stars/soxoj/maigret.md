@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 22598
+stars: 27035
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -9,6 +9,10 @@ Maigret
 =======
 
   
+
+  
+
+**English** · 简体中文
 
   
 
@@ -52,6 +56,7 @@ Main features
 -   Fetches an auto-updated site database from GitHub each run (once per 24 hours), and falls back to the built-in database if offline.
 -   Works with Tor and I2P websites; able to check domains.
 -   Ships with a web interface for browsing results as a graph and downloading reports in every format from a single page.
+-   Optional AI analysis mode (`--ai`) that turns raw findings into a short investigation summary using an OpenAI-compatible API.
 
 For the complete feature list, see the features documentation.
 
@@ -156,6 +161,9 @@ maigret user --tags us
 # search for three usernames on all available sites
 maigret user1 user2 user3 -a
 
+# AI-assisted investigation summary (needs OPENAI\_API\_KEY)
+maigret user --ai
+
 Run `maigret --help` for all options. Docs: CLI options, more examples. Running into 403s or timeouts? See TROUBLESHOOTING.md.
 
 ### Web interface
@@ -179,6 +187,19 @@ See the full library usage guide for a working example, async patterns, and how 
 -   `--parse URL` — parse a profile page, extract IDs/usernames, and use them to kick off a recursive search.
 -   `--permute` — generate likely username variants from two or more inputs (e.g. `john doe` → `johndoe`, `j.doe`, …) and search for all of them.
 -   `--self-check [--auto-disable]` — verify `usernameClaimed` / `usernameUnclaimed` pairs against live sites for maintainers auditing the database.
+-   `--ai` / `--ai-model` — run the AI analysis over the search results and stream a short investigation summary to the terminal.
+
+### AI analysis
+
+`--ai` collects the search results, builds an internal Markdown report, and sends it to an OpenAI-compatible chat completion endpoint to produce a short, neutral investigation summary (likely real name, location, occupation, interests, languages, confidence, follow-up leads). Per-site progress is suppressed and the model's output is streamed to stdout.
+
+export OPENAI\_API\_KEY=sk-...
+maigret user --ai
+
+# pick a different model
+maigret user --ai --ai-model gpt-4o-mini
+
+The key can also be set as `openai_api_key` in `settings.json`. The endpoint defaults to `https://api.openai.com/v1`, but `openai_api_base_url` in `settings.json` can point to any OpenAI-compatible API (Azure OpenAI, OpenRouter, a local server, …). See the settings docs for the full list of options.
 
 ### Tor / I2P / proxies
 
@@ -194,6 +215,17 @@ maigret user --tor-proxy socks5://127.0.0.1:9050
 maigret user --i2p-proxy http://127.0.0.1:4444
 
 Start your Tor / I2P daemon before running the command — Maigret does not manage these gateways.
+
+### Cloudflare bypass
+
+> **Experimental.** The Cloudflare webgate is under active development; the configuration schema, CLI behaviour, and the set of routed sites may change without backwards-compatibility guarantees.
+
+A subset of sites in the database require a real browser to solve a JavaScript challenge. Maigret can offload these checks to a local FlareSolverr instance:
+
+docker run -d -p 8191:8191 --name flaresolverr ghcr.io/flaresolverr/flaresolverr:latest
+maigret --cloudflare-bypass <username\>
+
+The bypass is opt-in (`--cloudflare-bypass` or `cloudflare_bypass.enabled` in `settings.json`) and only fires for sites whose `protection` field matches. See the feature docs for backend options and configuration.
 
 Contributing
 ------------

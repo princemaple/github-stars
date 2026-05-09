@@ -1,6 +1,6 @@
 ---
 project: Constrict
-stars: 611
+stars: 612
 description: Read-only mirror of https://gitlab.gnome.org/World/Constrict
 url: https://github.com/Wartybix/Constrict
 ---

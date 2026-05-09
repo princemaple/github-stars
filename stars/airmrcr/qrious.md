@@ -2,7 +2,7 @@
 project: qrious
 stars: 1625
 description: Pure JavaScript library for QR code generation using canvas
-url: https://github.com/neocotic/qrious
+url: https://github.com/airmrcr/qrious
 ---
 
 ```

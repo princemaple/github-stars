@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3640
+stars: 3652
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -8,7 +8,7 @@ url: https://github.com/panphora/overtype
 OverType
 ========
 
-A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~110KB minified with all features.
+A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~111KB minified with all features.
 
 Live Examples
 -------------
@@ -30,7 +30,7 @@ Features
 -   ⌨️ **Keyboard shortcuts** - Common markdown shortcuts (Cmd/Ctrl+B for bold, etc.)
 -   📱 **Mobile optimized** - Responsive design with mobile-specific styles
 -   🔄 **DOM persistence aware** - Recovers from existing DOM (perfect for HyperClay and similar platforms)
--   🚀 **Lightweight** - ~110KB minified
+-   🚀 **Lightweight** - ~111KB minified
 -   🎯 **Optional toolbar** - Clean, minimal toolbar with all essential formatting
 -   ✨ **Smart shortcuts** - Keyboard shortcuts with selection preservation
 -   📝 **Smart list continuation** - GitHub-style automatic list continuation on Enter
@@ -58,7 +58,7 @@ EasyMDE
 
 **Size**
 
-~110KB
+~111KB
 
 364.02 KB
 
@@ -248,6 +248,22 @@ const \[editor\] \= new OverType('#editor', {
 // Available: bold, italic, code, link, h1, h2, h3, bulletList,
 // orderedList, taskList, quote, separator, viewMode
 
+**Driving formatting from your own UI:**
+
+OverType re-exports the bundled `markdown-actions` library so you can build a fully custom toolbar (or any UI) without installing or bundling `markdown-actions` separately:
+
+import OverType, { markdownActions } from 'overtype';
+
+const \[editor\] \= new OverType('#editor');
+
+// Apply formatting to the editor's textarea directly
+document.querySelector('#bold-btn').addEventListener('click', () \=> {
+  markdownActions.toggleBold(editor.textarea);
+  editor.textarea.focus();
+});
+
+Available actions include `toggleBold`, `toggleItalic`, `toggleCode`, `insertLink`, `toggleBulletList`, `toggleNumberedList`, `toggleQuote`, `toggleTaskList`, `insertHeader`, `toggleH1`/`H2`/`H3`, `getActiveFormats`, `hasFormat`, `expandSelection`, and `applyCustomFormat`. The same namespace is available as `window.markdownActions` and `OverType.markdownActions` in script-tag builds.
+
 See examples/custom-toolbar.html for complete examples.
 
 ### View Modes
@@ -328,6 +344,36 @@ document.querySelector('form').addEventListener('submit', (e) \=> {
   const content \= editor.getValue();
   // Form will automatically validate required field
 });
+
+### File Uploads
+
+OverType handles paste and drop of files when `fileUpload` is configured. You upload to your own backend in `onInsertFile` and return the markdown to insert. When that markdown link is later removed from the editor, `onRemoveFile` fires so you can clean up the backend file.
+
+const \[editor\] \= new OverType('#editor', {
+  fileUpload: {
+    enabled: true,
+    maxSize: 10 \* 1024 \* 1024,                  // 10MB
+    mimeTypes: \['image/png', 'image/jpeg'\],     // optional whitelist; empty = accept all
+    batch: false,                               // true = one onInsertFile call per drop
+
+    // Upload to your backend, return the markdown link to insert
+    onInsertFile: async (file) \=> {
+      const { url } \= await uploadToBackend(file);
+      const isImage \= file.type.startsWith('image/');
+      return isImage ? \`!\[${file.name}\](${url})\` : \`\[${file.name}\](${url})\`;
+    },
+
+    // Optional: fires when an inserted link is removed from the editor.
+    // Useful for deleting orphaned files from storage.
+    onRemoveFile: ({ url, filename, file }) \=> {
+      fetch(\`/api/files/${encodeURIComponent(url)}\`, { method: 'DELETE' });
+    }
+  }
+});
+
+`onRemoveFile` only fires for URLs that OverType originally inserted via `onInsertFile`. URL edits, manual paste of an existing link, or programmatic edits to non-tracked URLs do not trigger it.
+
+See examples/file-upload.html for a complete working demo.
 
 ### Custom Theme
 
@@ -559,7 +605,19 @@ new OverType(target, options)
   
   // Callbacks
   onChange: (value, instance) \=> {},
-  onKeydown: (event, instance) \=> {}
+  onKeydown: (event, instance) \=> {},
+  onFocus: (event, instance) \=> {},
+  onBlur: (event, instance) \=> {},
+
+  // File upload (paste/drop) — see "File Uploads" section below
+  fileUpload: {
+    enabled: true,
+    maxSize: 10 \* 1024 \* 1024,                            // bytes (default 10MB)
+    mimeTypes: \[\],                                        // empty = accept all
+    batch: false,                                         // single onInsertFile call per drop
+    onInsertFile: async (file) \=> \`\[${file.name}\](url)\`,  // required: return inserted markdown
+    onRemoveFile: ({ url, filename, file }) \=> {}         // fires when an inserted link is removed
+  }
 }
 
 ### Instance Methods
@@ -633,10 +691,12 @@ OverType.init(target, options)
 
 // Initialize with per-element config via data-ot-\* attributes
 // Uses kebab-case: data-ot-show-stats="true" → showStats: true
+// Accepts a selector, Element, NodeList, or Array of elements
 OverType.initFromData('.editor', { /\* defaults \*/ })
 
-// Get instance from element
-OverType.getInstance(element)
+// Get instance from a selector, Element, NodeList, or Array
+// Returns the instance for the first matching element
+OverType.getInstance(target)
 
 // Destroy all instances
 OverType.destroyAll()
@@ -870,7 +930,7 @@ Uses kebab-case attributes that convert to camelCase options (e.g., `data-ot-sho
 
 **Supported:** `toolbar`, `theme`, `value`, `placeholder`, `autofocus`, `auto-resize`, `min-height`, `max-height`, `font-size`, `line-height`, `show-stats`, `smart-lists`, `show-active-line-raw`
 
-**Not supported (use JS):** `toolbarButtons`, `textareaProps`, `onChange`, `onKeydown`, `statsFormatter`, `codeHighlighter`, `colors`, `mobile`
+**Not supported (use JS):** `toolbarButtons`, `textareaProps`, `onChange`, `onKeydown`, `onFocus`, `onBlur`, `statsFormatter`, `codeHighlighter`, `colors`, `mobile`
 
 Contributors
 ------------
@@ -885,7 +945,7 @@ Special thanks to:
 -   Lyric Wai - Fixed double-escaping of links (#64), shared code block alignment fix (#65)
 -   kozi - Reported Firefox link tooltip bug (#68), toolbar positioning (#69), theme CSS variable issues (#70, #71)
 -   1951FDG - Reported unordered list rendering bug (#74), suggested showStats() API improvement (#77), reported placeholder CSS regression (#102)
--   nodesocket - Reported toolbarButtons export issues (#73, #78), suggested image toolbar button (#89), reported custom theme stats bar styling (#101)
+-   nodesocket - Reported toolbarButtons export issues (#73, #78), suggested image toolbar button (#89), reported custom theme stats bar styling (#101), suggested onRemoveFile callback (#104)
 -   Travis Bell - Reported keyboard shortcuts bug in ESM build (#80)
 -   fab2713 - Reported italic rendering in lists (#81), reinit maxHeight (#82), placeholder visibility (#83), suggested auto theme (#84), relative URL prefix (#85), minification improvements (#94)
 -   oooo-ps - Reported remote script loading issue (#86)

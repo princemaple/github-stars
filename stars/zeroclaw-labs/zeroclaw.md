@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 30928
+stars: 31188
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, ANY OS, ANY PLATFORM — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -74,6 +74,17 @@ One TOML file at `~/.zeroclaw/config.toml`. Pointers:
 -   Channels overview — per-channel `[channels.<name>]` blocks
 -   Security overview — autonomy, sandboxing, tool receipts
 -   Full config reference — generated from the live schema; every key documented
+
+For standard OpenAI Codex subscription auth, keep `config.toml` minimal:
+
+default\_provider = "openai-codex"
+default\_model = "gpt-5-codex"
+
+Notes:
+
+-   Normal OpenAI Codex subscription auth uses stored auth profiles, not top-level `api_key` / `api_url`.
+-   Only set `api_key` / `api_url` when intentionally targeting a custom OpenAI-compatible gateway or endpoint.
+-   If you see `provider streaming failed, falling back to non-streaming chat`, ZeroClaw retries the same request in non-streaming mode. Check `zeroclaw auth status` before changing provider config.
 
 Architecture
 ------------

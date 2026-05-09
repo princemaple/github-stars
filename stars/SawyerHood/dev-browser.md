@@ -1,6 +1,6 @@
 ---
 project: dev-browser
-stars: 6040
+stars: 6072
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---

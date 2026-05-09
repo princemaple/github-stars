@@ -1,6 +1,6 @@
 ---
 project: iptv
-stars: 115729
+stars: 116072
 description: Collection of publicly available IPTV channels from all over the world
 url: https://github.com/iptv-org/iptv
 ---

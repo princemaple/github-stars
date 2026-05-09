@@ -1,6 +1,6 @@
 ---
 project: SPlayer
-stars: 7004
+stars: 7062
 description: 🎵 A cross-platform music player with Jellyfin / Navidrome / Emby media server support, word-by-word lyrics, desktop & taskbar lyrics, cloud music drive, local library management, audio spectrum visualization and mobile-friendly UI. 简约的跨平台音乐播放器，支持逐字歌词、桌面歌词、任务栏歌词、云盘音乐、本地音乐管理及流媒体播放
 url: https://github.com/imsyy/SPlayer
 ---
@@ -10,7 +10,7 @@ SPlayer
 
 一个简约的音乐播放器
 
-API Docs | 交流群 | 开发版 | 发行版
+API Docs | 开发版 | 发行版
 
   
 
@@ -49,9 +49,6 @@ Important
 ### 跳过原生模块构建
 
 默认会编译 `native/*` 下的原生模块（需要 Rust）。如果你的场景不需要原生能力，可设置 `SKIP_NATIVE_BUILD=true` 后再执行 `pnpm dev` / `pnpm build`。
-
-💬 交流群
-------
 
 👀 Demo
 -------

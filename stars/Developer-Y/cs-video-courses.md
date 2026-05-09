@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 80731
+stars: 81093
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -746,6 +746,7 @@ Courses
 -   #### **Computer Vision**
     
     -   CS 231n - Convolutional Neural Networks for Visual Recognition, Stanford University
+    -   The Ancient Secrets of Computer Vision, University of Washington - Joseph Redmon (YouTube)
     -   CS 198-126: Modern Computer Vision Fall 2022 (UC Berkeley)
     -   Machine Learning for Robotics and Computer Vision, WS 2013/2014 - TU München (YouTube)
     -   COGSCI 1 - Intro to Cognitive Science Summer 2022 - UC Berkeley
@@ -761,6 +762,7 @@ Courses
     -   Advanced Deep Learning for Computer vision (ADL4CV) (IN2364) - TU Munich (Youtube)
     -   Advanced Deep Learning for Physics (ADL4P) - TU Munich
     -   Computer Vision III: Detection, Segmentation and Tracking (CV3DST) (IN2375) - TU Munich
+    -   Lecture: Computer Vision, University of Tübingen - Andreas Geiger (YouTube)
 -   #### **Time Series Analysis**
     
     -   02417 Time Series Analysis
@@ -1443,6 +1445,7 @@ Courses
 -   DeepRob Winter 2023 - University of Michigan
 -   CS 223A - Introduction to Robotics, Stanford University
 -   6.832 Underactuated Robotics - MIT OCW
+-   6.801 Machine Vision, MIT Fall 2020 - Berthold Horn (YouTube)
 -   CS287 Advanced Robotics at UC Berkeley Fall 2019 -- Instructor: Pieter Abbeel
 -   CS 287 - Advanced Robotics, Fall 2011, UC Berkeley (Videos)
 -   CMU 16-715 Robot Dynamics 2022 - CMU
@@ -1579,63 +1582,110 @@ Courses
 ### Misc
 
 -   **HCI**
+    
     -   CS147 - Introduction to Human-Computer Interaction Design - Stanford
     -   CSEP 510 - Human Computer Interaction
     -   Programming for Designers - COMP1400-T2 (2010) - UNSW
     -   08-763 Intro to HCI for Technology Executives - Fall 2015 - CMU
     -   05-600 HCI Pro Seminar - Fall 2015 - CMU
 -   **Game Development**
+    
     -   CS50's Introduction to Game Development
     -   MIT CMS.611J Creating Video Games, Fall 2014
     -   MOOC - Beginning Game Programming with C# - Coursera
     -   Gatech ECE4795 GPU Programming for Video Games, Summer 2021
+    -   COMP 4300 - C++ Game Programming, Memorial University, Fall 2024 - David Churchill
+    -   COMP 4303 - AI for Video Games, Memorial University, Winter 2023 - David Churchill
 -   **Geospatial**
+    
     -   Introduction to Spatial Data Science, Autumn 2016, University of Chicago
     -   Spatial Regression Analysis, Spring 2017, University of Chicago
     -   Spatial Data Science, Autumn 2017, University of Chicago
     -   Introduction to Geographic Information Systems - IIT Roorkee
 -   MOOC - Matlab - Coursera
+    
 -   Computing for Computer Scientists - University of Michigan
+    
 -   Linux System Administration Decal, Spring 2025, UC Berkeley
+    
 -   Linux Implementation/Administration Practicum - Redhat by Tulio Llosa
+    
 -   Innovative Computing - Harvard University
+    
 -   Linux Programming & Scripting - IIT Madras
+    
 -   Model Checking - IIT Madras
+    
 -   Virtual Reality - IIT Madras
+    
 -   Dependable Systems (SS 2014) - HPI University of Potsdam
+    
 -   Business Process Compliance (WT 2013/14) - HPI University of Potsdam
+    
 -   Design Thinking for Digital Engineering (SS 2018) - Dr. Julia von Thienen - HPI
+    
 -   CS224w – Social Network Analysis – Autumn 2017 - Stanford University
+    
 -   The Missing Semester of Your CS Education
+    
 -   University of Crete, Computer Science video lectures (mostly Greek language lectures, very few 100% English-speaking courses). Very popular CS destination for European Erasmus students
+    
 -   Stanford EE274 I Data Compression: Theory and Applications I 2023
+    
 -   Probabilistic Methods - University of Waterloo
+    
 -   Free Probability Theory and Ramanujan Graphs - Spring 2024
+    
 -   Asymptotics and perturbation methods - Prof. Steven Strogatz
+    
 -   ETH Zürich AI in the Sciences and Engineering
+    
 -   Introduction to GIS Programming (Fall 2024) - Open Geospatial Solutions
+    
 -   Gatech Guitar Amplification and Effects, by Aaron Lanterman
+    
 -   Gatech ECE3084 Signals and Systems summer 2020, by Aaron Lanterman
+    
 -   Gatech ECE4450 Analog Circuits for Music Synthesis spring 2021, by Aaron Lanterman
+    
 -   UC Berkeley EE 120 Signals and Systems spring 2019, by Murat Arcak
+    
 -   Stanford EE 102 spring 1999, Introduction to Signals and Systems, by Stephen Boyd
+    
 -   Stanford EE 376a winter 2011, Information Theory, by Thomas Cover
+    
 -   MIT RES.6.007 Signals and Systems, 1987 - MIT
+    
 -   MIT 9.19 Computational Psycholinguistics, 2023 - MIT (YouTube)
+    
 -   MIT 21M.383 Computational Music Theory and Analysis, Spring 2023 - MIT (YouTube)
+    
 -   UCCS ECE4510/ECE5510 Feedback Control Systems, by Gregory Plett
+    
 -   UCCS ECE4520/ECE5520 Multivariable Control Systems I, by Gregory Plett
+    
 -   UCCS ECE4530/ECE5530 Multivariable Control Systems II, by Gregory Plett
+    
 -   UCCS ECE4540/ECE5540 Digital Control Systems, by Gregory Plett
+    
 -   UCCS ECE4550/ECE5550 Applied Kalman Filtering, by Gregory Plett
+    
 -   UCCS ECE4560/ECE5560 System Identification, by Gregory Plett
+    
 -   UCCS ECE4570/ECE5570 Optimization for Systems and Control, by M. Scott Trimboli
+    
 -   UCCS ECE4580/ECE5580 Multivariable Control in the Frequency Domain, by M. Scott Trimboli
+    
 -   UCCS ECE4710/ECE5710 Modeling, Simulation, and Identification of Battery Dynamics, by Gregory Plett
+    
 -   UCCS ECE4720/ECE5720 Battery Management and Control, by Gregory Plett
+    
 -   Purdue ME 597 Distributed Energy Resources Spring 2024, by Kevin J. Kircher
+    
 -   Stanford AA228V/CS238V Validation of Safety Critical Systems Winter 2025, by Sydney Michelle Katz
+    
 -   RES.1-002 - Introduction to R and Geographic Information Systems (GIS) - MIT - Fall 2023
+    
 
 * * *
 

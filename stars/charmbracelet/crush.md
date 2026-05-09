@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 23774
+stars: 24067
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -163,6 +163,10 @@ That said, you can also set environment variables for preferred providers.
 Environment Variable
 
 Provider
+
+`HYPER_API_KEY`
+
+Charm Hyper
 
 `ANTHROPIC_API_KEY`
 

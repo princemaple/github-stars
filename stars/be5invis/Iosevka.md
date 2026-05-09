@@ -1,6 +1,6 @@
 ---
 project: Iosevka
-stars: 22191
+stars: 22219
 description: Versatile typeface for code, from code.
 url: https://github.com/be5invis/Iosevka
 ---

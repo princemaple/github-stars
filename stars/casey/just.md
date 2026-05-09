@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 33319
+stars: 33473
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -763,7 +763,7 @@ $ pwd
 $ just foo
 /home/bob/bar
 
-The argument to the `working-directory` setting or `working-directory` attribute may be absolute or relative. If it is relative it is interpreted relative to the default working directory.
+The argument to the `working-directory` setting or `working-directory` attribute may be an expressionmaster whose value is absolute or relative. If it is relative it is interpreted relative to the default working directory.
 
 ### Aliases
 
@@ -2070,11 +2070,11 @@ recipe
 
 Enable recipe on DragonFly BSD.
 
-`[env(ENV_VAR, VALUE)]` 1.47.0
+`[env(NAME, VALUE)]` 1.47.0
 
 recipe
 
-Set environment variables for recipe.
+Set environment variable `NAME` to `VALUE` for recipe. `NAME` and `VALUE` may be expressionsmaster.
 
 `[extension(EXT)]`1.32.0
 
@@ -2200,7 +2200,7 @@ Enable recipe on Windows.
 
 recipe
 
-Set recipe working directory. `PATH` may be relative or absolute. If relative, it is interpreted relative to the default working directory.
+Set recipe working directory. `PATH` may be an expressionmaster whose value is relative or absolute. If relative, it is interpreted relative to the default working directory.
 
 A recipe can have multiple attributes, either on multiple lines:
 

@@ -1,6 +1,6 @@
 ---
 project: trzsz-ssh
-stars: 2558
+stars: 2574
 description: trzsz-ssh ( tssh ) is an ssh client designed as a drop-in replacement for the openssh client. It aims to provide complete compatibility with openssh, mirroring all its features, while also offering additional useful features. Such as login prompt, batch login, remember password, automated interaction, trzsz, zmodem(rz/sz), udp mode like mosh, etc.
 url: https://github.com/trzsz/trzsz-ssh
 ---
@@ -158,6 +158,8 @@ UDP 端口转发
 
 ### Installation
 
+> 💡 **Note**: The package is named `trzsz-ssh` in Homebrew, while it’s usually named `tssh` elsewhere.
+
 -   Install with scoop / winget / choco on Windows
     
     `scoop install tssh` / `winget install tssh` / `choco install tssh`
@@ -196,7 +198,14 @@ UDP 端口转发
     
     sudo apt install tssh
     
--   Install with yum on Linux
+-   Install with dnf on Fedora / CentOS / RHEL
+    
+    `sudo dnf install tssh`
+    
+    sudo dnf copr enable @trzsz/trzsz
+    sudo dnf install tssh
+    
+-   Install with yum on Legacy CentOS / RHEL
     
     `sudo yum install tssh`
     
@@ -229,6 +238,16 @@ UDP 端口转发
     `crew install tssh`
     
     crew install tssh
+    
+-   Install with pixi / conda / mamba from conda-forge
+    
+    `pixi global install tssh` / `conda install tssh` / `mamba install tssh`
+    
+    pixi global install tssh
+    
+    conda install -c conda-forge tssh
+    
+    mamba install -c conda-forge tssh
     
 -   Install with Go ( Requires go 1.25 or later )
     

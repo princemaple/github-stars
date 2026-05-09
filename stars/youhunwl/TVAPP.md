@@ -1,6 +1,6 @@
 ---
 project: TVAPP
-stars: 16094
+stars: 16381
 description:  收集全网 Android TV电视盒子应用，涵盖影视、直播、K歌、工具、游戏等类型，整理优质APK资源，支持便捷下载与自动更新。提供安全验证、分类索引与兼容性标注，助力用户打造家庭影音娱乐中心！              ✅ TVBox/影视仓等影音壳接口配置源。
 url: https://github.com/youhunwl/TVAPP
 ---
@@ -99,7 +99,7 @@ v5.1.6
 
 FongMi影视
 
-v5.4.4
+v5.4.6
 
 下载
 

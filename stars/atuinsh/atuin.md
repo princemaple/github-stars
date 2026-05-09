@@ -1,6 +1,6 @@
 ---
 project: atuin
-stars: 29586
+stars: 29657
 description: ✨ Making your shell magical
 url: https://github.com/atuinsh/atuin
 ---
@@ -97,6 +97,15 @@ Security
 ========
 
 If you find any security issues, we'd appreciate it if you could alert ellie@atuin.sh
+
+Related projects
+================
+
+-   Catpuccin for Atuin
+-   eshell-atuin
+-   mob (tiny creatures in your terminal)
+
+Please open a PR for any others!
 
 Contributors
 ============

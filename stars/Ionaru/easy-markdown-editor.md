@@ -1,6 +1,6 @@
 ---
 project: easy-markdown-editor
-stars: 2982
+stars: 2989
 description: EasyMDE: A simple, beautiful, and embeddable JavaScript Markdown editor. Delightful editing for beginners and experts alike. Features built-in autosaving and spell checking.
 url: https://github.com/Ionaru/easy-markdown-editor
 ---
@@ -406,6 +406,13 @@ toggleOrderedList
 Numbered List  
 fa fa-list-ol
 
+check-list
+
+toggleCheckList
+
+Check List  
+fa fa-check-square-o
+
 clean-block
 
 cleanBlock
@@ -643,6 +650,12 @@ Ctrl\-Alt\-L
 Cmd\-Alt\-L
 
 "toggleOrderedList"
+
+Shift\-Ctrl\-L
+
+Shift\-Cmd\-L
+
+"toggleCheckList"
 
 Shift\-Ctrl\-H
 

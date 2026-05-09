@@ -1,6 +1,6 @@
 ---
 project: gyroflow
-stars: 8454
+stars: 8467
 description: Video stabilization using gyroscope data
 url: https://github.com/gyroflow/gyroflow
 ---
@@ -210,6 +210,8 @@ OpenCV usage is kept to a minimum, used only for lens calibration and optical fl
 
 GPU stuff supports _DirectX_, _OpenGL_, _Metal_ and _Vulkan_ thanks to _Qt RHI_ and _wgpu_. For GPU processing we use _OpenCL_ or _wgpu_, with highly parallelized CPU implementation as a fallback.
 
+The Gyroflow binary links against mdk-sdk, which is closed-source and not licensed under the GNU GPL. Gyroflow is licensed under GPLv3 with an additional permission allowing linking with mdk-sdk. mdk-sdk is distributed under its own license.
+
 ### Code structure
 
 1.  Entire GUI is in the `src/ui` directory
@@ -261,7 +263,7 @@ For working with QML I recommend to use Qt Creator and load all QML files there,
 
 ### Building for Android
 
-1.  Prerequisites: `git`, `7z`, working `powershell`, Android SDK and NDK. Android is not well supported yet, but the app can be built and somewhat works. Building is supported only on Windows
+1.  Prerequisites: `git`, `7z`, working `powershell`, Android SDK and NDK. Building is supported only on Windows
 2.  Get latest stable Rust language from: https://rustup.rs/
 3.  Install `Just` by running `cargo install --force just`
 4.  Clone the repo: `git clone https://github.com/gyroflow/gyroflow.git`
@@ -301,6 +303,8 @@ License
 Distributed under the GPLv3 License with App Store Exception. See LICENSE for more information.
 
 As additional permission under section 7, you are allowed to distribute `gyroflow_core` through an app store, even if that store has restrictive terms and conditions that are incompatible with the GPL, provided that the source is also available under the GPL with or without this permission through a channel without those restrictive terms and conditions.
+
+The Gyroflow binary links against mdk-sdk, which is closed-source and not licensed under the GNU GPL. An additional permission is granted allowing linking with mdk-sdk. mdk-sdk is distributed under its own license.
 
 Authors
 -------

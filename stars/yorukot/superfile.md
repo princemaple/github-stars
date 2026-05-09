@@ -1,6 +1,6 @@
 ---
 project: superfile
-stars: 17254
+stars: 17301
 description: Pretty fancy and modern terminal file manager
 url: https://github.com/yorukot/superfile
 ---
@@ -16,6 +16,10 @@ Available for macOS, Linux, & Windows
 
 * * *
 
+  
+  
+  
+
 Demo
 ----
 
@@ -24,22 +28,37 @@ Perform common operations
 Content
 -------
 
+-   Demo
+-   Content
 -   Installation
+    -   macOS and Linux
+    -   Windows
+        -   Powershell
+        -   Winget
+        -   Scoop
+    -   More installation methods
 -   Build
+    -   For macOS/Linux
+    -   For Windows
+-   Start superfile
 -   Supported Systems
 -   Tutorial
 -   Plugins
 -   Themes
 -   Hotkeys
 -   Notes
--   Contributing
 -   Troubleshooting
+-   Uninstalling
+    -   macOS and Linux
+    -   Window
+-   Contributing
 -   Thanks
     -   Support
     -   Core maintainer
     -   Contributors
     -   Powered by
     -   Star History
+-   ༼ つ ◕\_◕ ༽つ Please share.
 
 Installation
 ------------
@@ -139,9 +158,7 @@ Click me to the theme wiki
 Hotkeys
 -------
 
-Warning
-
-If you are vim/nvim user please change your default hotkeys config to vim version!
+> \[!WARNING\] If you are vim/nvim user please change your default hotkeys config to vim version!
 
 **Click me to see the hotkey wiki**
 

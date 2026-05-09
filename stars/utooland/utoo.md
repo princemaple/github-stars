@@ -1,6 +1,6 @@
 ---
 project: utoo
-stars: 2461
+stars: 2467
 description: A unified toolchain for web development
 url: https://github.com/utooland/utoo
 ---
@@ -50,8 +50,10 @@ Run anywhere: Local, CI, or Browser (via WASM).
 
 ### 1\. Install
 
-# Install the core toolchain
-npm install -g utoo
+# Install the core toolchain (pick one)
+brew install utooland/tap/utoo   # macOS / Linux via Homebrew
+npm install -g utoo              # cross-platform via npm
+cargo install utoo-pm            # build from source via Cargo
 
 # Install the bundler in nodejs environment
 ut install @utoo/pack --save-dev

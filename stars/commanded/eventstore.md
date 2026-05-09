@@ -1,6 +1,6 @@
 ---
 project: eventstore
-stars: 1146
+stars: 1148
 description: Event store using PostgreSQL for persistence
 url: https://github.com/commanded/eventstore
 ---
@@ -38,6 +38,7 @@ MIT License
     -   Using with PgBouncer
 -   Using the EventStore
     -   Writing to a stream
+        -   Using correlation and causation identifiers
         -   Appending events to an existing stream
     -   Reading from a stream
     -   Reading from all streams

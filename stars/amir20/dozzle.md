@@ -1,6 +1,6 @@
 ---
 project: dozzle
-stars: 12851
+stars: 12951
 description: Realtime log viewer for containers.  Supports Docker, Swarm and K8s. 
 url: https://github.com/amir20/dozzle
 ---
@@ -96,6 +96,8 @@ Technical Details
 
 Dozzle uses automatic API negotiation, which works with most Docker configurations. Dozzle also works with Colima and Podman.
 
+Dozzle requires Docker Engine 19.03 or newer (API version 1.40+). Older daemons are not supported by the underlying Docker SDK.
+
 ### Installation on Podman
 
 By default, Podman doesn't have a background process, but you can enable the remote socket for Dozzle to work.
@@ -162,11 +164,43 @@ MIT
 Building
 --------
 
-To build and test locally:
+Want to contribute? Great! Dozzle has two parts: a **Go backend** that talks to Docker, and a **Vue frontend** that runs in the browser. You don't need to know both — pick the side that matches what you want to change. For documentation fixes, no setup is needed at all; just edit the file on GitHub.
 
-1.  Install Node.js and pnpm.
-2.  Install Go.
-3.  Install protoc.
-4.  Install Go tools with `go install tool`.
-5.  Install Node modules with `pnpm install`.
-6.  Run `make dev` to start a development server with hot reload.
+### 1\. Install the prerequisites
+
+You'll need Go (1.25+), Node.js (with pnpm), and protoc.
+
+On macOS, you can install everything in one go:
+
+brew install go node pnpm protobuf
+
+On Linux (Debian/Ubuntu):
+
+sudo apt install golang nodejs protobuf-compiler
+npm install -g pnpm
+
+On Windows, we recommend using WSL2 and following the Linux instructions.
+
+### 2\. Clone and set up
+
+git clone https://github.com/amir20/dozzle.git
+cd dozzle
+pnpm install                # installs frontend dependencies
+go install tool             # installs Go build tools listed in go.mod (air, protoc-gen-go, etc.)
+make generate               # generates TLS certificates and protobuf code (only needed once)
+
+### 3\. Start the dev server
+
+make dev
+
+Open http://localhost:3100 — you should see the Dozzle UI connected to your local Docker. Both the frontend and backend reload automatically when you save a file.
+
+### Making your first change
+
+Try editing `assets/pages/index.vue` and saving — the browser updates instantly. For backend changes, edit any `.go` file and the server will restart on its own.
+
+### Troubleshooting
+
+-   **Nothing shows up at localhost:3100** — make sure Docker is running and the socket is accessible at `/var/run/docker.sock`.
+-   **`make generate` fails** — confirm `protoc` is on your PATH (`protoc --version`).
+-   **Still stuck?** Open a question in GitHub Discussions — we're happy to help.

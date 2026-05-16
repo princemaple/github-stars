@@ -1,7 +1,7 @@
 ---
 project: firecrawl
-stars: 117472
-description: 🔥 The API to search, scrape, and interact with the web for AI
+stars: 120656
+description: 🔥 Search, scrape, and clean the web for AI agents.
 url: https://github.com/firecrawl/firecrawl
 ---
 
@@ -12,7 +12,7 @@ url: https://github.com/firecrawl/firecrawl
 **🔥 Firecrawl**
 ================
 
-**Power AI agents with clean web data.** The API to search, scrape, and interact with the web at scale. Open source and available as a hosted service.
+**Search, scrape, and clean the web for AI agents.** The web context API to find sources, extract content, and turn it into clean Markdown or structured data your agents can ship with. Open source and available as a hosted service.
 
 _Pst. Hey, you, join our stargazers :)_
 
@@ -661,6 +661,8 @@ Integrations
 **Agents & AI Tools**
 
 -   Firecrawl Skill
+-   Firecrawl CLI Skills
+-   Firecrawl Workflows
 -   Firecrawl MCP
 
 **Platforms**

@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 33473
+stars: 33691
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -736,7 +736,7 @@ $ just foo
 $ just bar
 /subdir
 
-Use `set no-cd`master to make all recipes in the current module default to the same behavior.
+Use `set no-cd`1.51.0 to make all recipes in the current module default to the same behavior.
 
 `set no-cd` and `set working-directory` can be overridden on a per-recipe basis with the `[no-cd]` and `[working-directory]` attributes.
 
@@ -763,7 +763,7 @@ $ pwd
 $ just foo
 /home/bob/bar
 
-The argument to the `working-directory` setting or `working-directory` attribute may be an expressionmaster whose value is absolute or relative. If it is relative it is interpreted relative to the default working directory.
+The argument to the `working-directory` setting or `working-directory` attribute may be an expression1.51.0 whose value is absolute or relative. If it is relative it is interpreted relative to the default working directory.
 
 ### Aliases
 
@@ -902,7 +902,7 @@ boolean
 
 Don't evaluate unused variables.
 
-`no-cd`master
+`no-cd`1.51.0
 
 boolean
 
@@ -2074,7 +2074,7 @@ Enable recipe on DragonFly BSD.
 
 recipe
 
-Set environment variable `NAME` to `VALUE` for recipe. `NAME` and `VALUE` may be expressionsmaster.
+Set environment variable `NAME` to `VALUE` for recipe. `NAME` and `VALUE` may be expressions1.51.0.
 
 `[extension(EXT)]`1.32.0
 
@@ -2200,7 +2200,7 @@ Enable recipe on Windows.
 
 recipe
 
-Set recipe working directory. `PATH` may be an expressionmaster whose value is relative or absolute. If relative, it is interpreted relative to the default working directory.
+Set recipe working directory. `PATH` may be an expression1.51.0 whose value is relative or absolute. If relative, it is interpreted relative to the default working directory.
 
 A recipe can have multiple attributes, either on multiple lines:
 

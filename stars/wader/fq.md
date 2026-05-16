@@ -1,6 +1,6 @@
 ---
 project: fq
-stars: 10492
+stars: 10497
 description: jq for binary formats - tool, language and decoders for working with binary and text formats
 url: https://github.com/wader/fq
 ---
@@ -87,6 +87,12 @@ pacman -S fq
 You can also build and install the development (VCS) package using an AUR helper:
 
 paru -S fq-git
+
+### Gentoo
+
+`fq` can be installed from the Gentoo package repository using `emerge`:
+
+emerge dev-util/fq
 
 ### Guix
 

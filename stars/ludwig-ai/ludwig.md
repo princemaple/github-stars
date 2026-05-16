@@ -1,6 +1,6 @@
 ---
 project: ludwig
-stars: 11692
+stars: 11696
 description: Low-code framework for building custom LLMs, neural networks, and other AI models
 url: https://github.com/ludwig-ai/ludwig
 ---
@@ -290,10 +290,12 @@ Capabilities
 -   **Experiment tracking**: TensorBoard, Weights & Biases, Comet ML, MLflow, Aim Stack
 -   **Model inspection**: `ModelInspector` — weight enumeration, architecture summary, feature importance proxy
 -   **Visualizations**: learning curves, confusion matrices, calibration plots, ROC curves, hyperopt analysis
--   **AutoML**: `ludwig.automl.auto_train()` — give it a dataset and a time budget
+-   **AutoML**: `ludwig.automl.auto_train()` — give it a dataset and a time budget; the YAML-driven search space samples encoder/combiner/decoder combinations and validates them before training
+-   **Dataset quality checks**: `from ludwig.utils.dataset_quality import check_dataset_quality` — validates a DataFrame before training (missing values, class imbalance, near-duplicate columns, ID leakage, …)
+-   **OpenML integration**: load any OpenML task directly — `OpenMLLoader` fetches by task ID and caches locally as Parquet
 -   **LLM config generation**: `ludwig generate_config "describe your task"` — LLM writes the YAML
 -   **K-fold cross-validation**: `ludwig experiment --k_fold N`
--   **Dataset Zoo**: 50+ built-in benchmark datasets (`ludwig://mnist`, `ludwig://alpaca`, …)
+-   **Dataset Zoo**: 70+ built-in benchmark datasets (`ludwig://mnist`, `ludwig://alpaca`, …)
 
 * * *
 

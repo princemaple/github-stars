@@ -1,6 +1,6 @@
 ---
 project: quickbeam
-stars: 391
+stars: 396
 description: JavaScript runtime for the BEAM — Web APIs backed by OTP, native DOM, and a built-in TypeScript toolchain.
 url: https://github.com/elixir-volt/quickbeam
 ---
@@ -16,7 +16,7 @@ Installation
 ------------
 
 def deps do
-  \[{:quickbeam, "~> 0.7.1"}\]
+  \[{:quickbeam, "~> 0.10.10"}\]
 end
 
 Requires Zig 0.15+ (installed automatically by Zigler, or use system Zig).
@@ -634,7 +634,14 @@ files \= \[
 npm packages
 ------------
 
-QuickBEAM ships with a built-in npm client — no Node.js required.
+QuickBEAM can use `npm_ex` to install npm packages without Node.js. Add it when you want Mix-powered npm installs:
+
+def deps do
+  \[
+    {:quickbeam, "~> 0.10.10"},
+    {:npm, "~> 0.7.0"}
+  \]
+end
 
 mix npm.install sanitize-html
 

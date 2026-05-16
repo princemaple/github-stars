@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 51294
+stars: 51383
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -94,7 +94,7 @@ Select from the values below:
 
 Windows 11 Pro
 
-7.2 GB
+7.9 GB
 
 `11l`
 
@@ -160,7 +160,7 @@ Windows 2000 Professional
 
 Windows Server 2025
 
-6.7 GB
+7.6 GB
 
 `2022`
 
@@ -220,7 +220,7 @@ environment:
 
 Tip
 
-This can also be used to resize the existing disk to a larger capacity without any data loss. However you will need to manually extend the disk partition since the added disk space will appear as unallocated.
+This can also be used to resize the existing disk to a larger capacity without any data loss. However you will need to manually extend the disk partition afterwards, since the added disk space will appear as unallocated.
 
 ### How do I share files with the host?
 
@@ -391,7 +391,9 @@ environment:
 devices:
   - /dev/bus/usb
 
-If the device is a USB disk drive, please wait until after the installation is fully completed before connecting it. Otherwise the installation may fail, as the order of the disks can get rearranged.
+Warning
+
+Adding a USB mass storage device before Windows Setup has finished may cause it to fail. Or worse: the drive can get formatted as the system disk, and all your data will be lost! So always keep them disconnected when launching the container for the first time.
 
 ### How do I verify if my system supports KVM?
 

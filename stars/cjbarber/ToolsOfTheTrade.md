@@ -1,6 +1,6 @@
 ---
 project: ToolsOfTheTrade
-stars: 17033
+stars: 17039
 description: Tools of The Trade, from Hacker News.
 url: https://github.com/cjbarber/ToolsOfTheTrade
 ---
@@ -3448,6 +3448,14 @@ Twitter
 Pricing
 
 Description
+
+Foil
+
+@usefoil
+
+\-
+
+Detect AI agents, bots and malicious devices with a drop-in SDK for web, iOS and Android
 
 Burp
 

@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 31188
+stars: 31383
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, ANY OS, ANY PLATFORM — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---

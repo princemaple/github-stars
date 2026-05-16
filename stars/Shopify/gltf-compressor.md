@@ -39,8 +39,8 @@ Running locally
 To run locally, simply execute these commands in the root of this repository:
 
 ```
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Controls
@@ -51,6 +51,13 @@ Controls
 -   Use the scrollwheel to zoom in and out.
 -   Hold the `C` key to show the original model. Release it to show the compressed model.
 -   Hold the `X` key to highlight meshes that use the selected material.
+
+Privacy
+-------
+
+The hosted version at gltf-compressor.com records anonymous usage events via PostHog so we can understand how the tool is used and where to invest. Autocapture and session recording are disabled. Only a small set of explicit events is sent, and no file names or model contents ever leave your browser.
+
+Builds served from any other host (local development, forks, self-hosted deployments) collect nothing. The PostHog key is stored as a GitHub Actions secret on the canonical repository and is not inherited by forks.
 
 Acknowledgments
 ---------------

@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 615
+stars: 650
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -287,6 +287,30 @@ Proxy URL for Telegram API (SOCKS5/HTTP)
 No
 
 —
+
+`TELEGRAM_API_ROOT`
+
+Custom Telegram Bot API root URL (e.g. nginx reverse-proxying `api.telegram.org`); applied to API calls and file downloads
+
+No
+
+`https://api.telegram.org`
+
+`TELEGRAM_PROXY_SECRET`
+
+Shared secret sent as `X-Proxy-Secret` header on every Bot API request and file download (used with `TELEGRAM_API_ROOT`)
+
+No
+
+—
+
+`TELEGRAM_FORCE_IPV4`
+
+Force IPv4 for direct Telegram API and file requests; useful when IPv6 DNS works but outbound IPv6 is broken
+
+No
+
+`false`
 
 `OPENCODE_API_URL`
 
@@ -579,6 +603,48 @@ No
 > **Keep your `.env` file private.** It contains your bot token. Never commit it to version control.
 
 Logs are written to `./logs` when running from sources and to the runtime config directory `logs/` folder in `installed` mode. Log rotation depends on runtime mode: `sources` creates one file per bot launch, while `installed` appends to one file per day. Old log files are removed according to `LOG_RETENTION`.
+
+### Reverse Proxy (Optional)
+
+For environments that block `api.telegram.org` but allow your own HTTPS endpoint (corporate networks, restricted regions), you can route Bot API traffic through a reverse proxy you control. This is an alternative to the SOCKS/HTTP forward proxy configured with `TELEGRAM_PROXY_URL`.
+
+Set `TELEGRAM_API_ROOT` to your reverse-proxy URL — both Bot API calls and file downloads (including voice/audio files) will use it. Optionally set `TELEGRAM_PROXY_SECRET` so the bot sends an `X-Proxy-Secret` header your proxy can use to authorize callers.
+
+`.env`:
+
+TELEGRAM\_API\_ROOT\=https://tg-proxy.yourdomain.com
+TELEGRAM\_PROXY\_SECRET\=some-long-random-string
+
+Example nginx config:
+
+server {
+    listen 443 ssl http2;
+    server\_name tg-proxy.yourdomain.com;
+
+    ssl\_certificate     /etc/letsencrypt/live/tg-proxy.yourdomain.com/fullchain.pem;
+    ssl\_certificate\_key /etc/letsencrypt/live/tg-proxy.yourdomain.com/privkey.pem;
+
+    access\_log off;  # the bot token appears in URL paths
+    client\_max\_body\_size 50m;
+
+    if ($http\_x\_proxy\_secret != "some-long-random-string") { return 403; }
+
+    location / {
+        proxy\_pass https://api.telegram.org;
+        proxy\_ssl\_server\_name on;
+        proxy\_set\_header Host api.telegram.org;
+    }
+}
+
+`TELEGRAM_API_ROOT` and `TELEGRAM_PROXY_URL` are alternative connectivity modes — the former picks the URL the bot connects to (a reverse proxy on your side), while the latter tunnels TCP through a forward proxy. Configure only one of them; the bot rejects using both at startup.
+
+### Force IPv4 for Telegram (Optional)
+
+If the bot fails during startup with errors such as `Network request for 'setMyCommands' failed` or `Network request for 'getWebhookInfo' failed`, and the same machine has broken outbound IPv6 connectivity, force direct Telegram requests to use IPv4:
+
+TELEGRAM\_FORCE\_IPV4\=true
+
+This affects direct Bot API calls and Telegram file downloads. It is not a replacement for `TELEGRAM_PROXY_URL` or `TELEGRAM_API_ROOT` when Telegram is blocked by the network.
 
 ### Voice and Audio Transcription (Optional)
 

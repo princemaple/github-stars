@@ -17,25 +17,8 @@ Features
 -   Add inline CSS properties from external `<link>` stylesheets
 -   Transform HTML to plain text
 
-Installation
-------------
-
-def deps do
-  \[
-    \# ...
-    {:premailex, "~> 0.3.20"},
-
-    \# Optional, but recommended for SSL validation with :httpc
-    {:certifi, "~> 2.4"},
-    {:ssl\_verify\_fun, "~> 1.1"},
-    \# ...
-  \]
-end
-
-Run `mix deps.get` to install it.
-
-Getting started
----------------
+Usage
+-----
 
 Transform an HTML string to text:
 
@@ -91,9 +74,39 @@ end
 HTML parser
 -----------
 
-By default, premailex uses `Floki` to parse HTML, but you can exchange it for any HTML parser you prefer. `Meeseeks` is supported with the `Premailex.HTMLParser.Meeseeks` module. To use it, add the following to `config.exs`:
+Premailex supports `Floki`, `LazyHTML`, `Meeseeks` and will automatically use the first one available based on the dependencies in `mix.exs`:
+
+def deps do
+  \[
+    {:premailex, "~> 0.3.20"},
+    {:floki, "~> 0.19"},
+    \# {:lazy\_html, "~> 0.1.11"},
+    \# {:meeseeks, "~> 0.11"},
+  \]
+end
+
+To explicitly configure which parser to use, add to your `config.exs`:
 
 config :premailex, html\_parser: Premailex.HTMLParser.Meeseeks
+\# or
+config :premailex, html\_parser: Premailex.HTMLParser.LazyHTML
+
+Installation
+------------
+
+def deps do
+  \[
+    \# ...
+    {:premailex, "~> 0.3.20"},
+
+    \# Optional, but recommended for SSL validation with :httpc
+    {:certifi, "~> 2.4"},
+    {:ssl\_verify\_fun, "~> 1.1"},
+    \# ...
+  \]
+end
+
+Run `mix deps.get` to install it.
 
 LICENSE
 -------

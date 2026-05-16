@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 3912
+stars: 12583
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -103,7 +103,7 @@ Open http://localhost:8080. Create a profile. Click **Launch**. Done.
 
 * * *
 
-Latest: v0.3.26 (Chromium 146.0.7680.177.4)
+Latest: v0.3.28 (Chromium 146.0.7680.177.4)
 -------------------------------------------
 
 -   **`launch_context_async()`** — async counterpart to `launch_context()`. Forwards kwargs to `browser.new_context()` for `storage_state`, `permissions`, `extra_http_headers` without a persistent profile folder.
@@ -523,7 +523,14 @@ ctx.close()  \# profile saved
 \# Next run — cookies, localStorage restored automatically
 ctx \= launch\_persistent\_context("./my-profile", headless\=False)
 
-Supports all the same options as `launch_context()`: `proxy`, `user_agent`, `viewport`, `locale`, `timezone`, `color_scheme`, `geoip`.
+\# Load Chrome extensions
+ctx \= launch\_persistent\_context(
+    "./my-profile",
+    headless\=False,
+    extension\_paths\=\["./my-extension"\],
+)
+
+Supports all the same options as `launch_context()`: `proxy`, `user_agent`, `viewport`, `locale`, `timezone`, `color_scheme`, `geoip`, `extension_paths`.
 
 Async version: `launch_persistent_context_async()`.
 
@@ -766,6 +773,12 @@ Set to `false` to disable background update checks
 `false`
 
 Set to `true` to skip SHA-256 verification after download
+
+`CLOAKBROWSER_GEOIP_TIMEOUT_SECONDS`
+
+`5`
+
+Max seconds for GeoIP resolution before continuing without it
 
 Fingerprint Management
 ----------------------
@@ -1548,5 +1561,12 @@ Contributors
 -   @evelaa123 — humanize behavior, persistent contexts, Windows fix
 -   @yahooguntu — persistent contexts
 -   @kitiho — null viewport fix
--   @eofreternal — humanConfig type fix
--   @AlexTech314 — AWS Lambda integration
+-   @eofreternal — humanConfig type fix, humanized method option types
+-   @manaskarra — iframe scope fix for humanized frame actions, GeoIP timeout guard
+-   @Youhai020616 — SOCKS5 credential encoding logging
+-   @AlexTech314 — AWS Lambda integration, cold-start hardening
+-   @dgtlmoon — graceful pw.stop() cleanup
+-   @zackycodes — Chrome extension loading
+-   @aaronjmars — security fixes (shell injection, dep bumps)
+-   @Seryiza — Nix/NixOS flake
+-   @245678000000 — package-lock sync

@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 34956
+stars: 35018
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -262,6 +262,10 @@ docker run -d -p 9009-9013:9009-9013 -e CROC\_PASS='YOURPASSWORD' docker.io/scho
 To send files using your custom relay:
 
 croc --pass YOURPASSWORD --relay "myreal.example.com:9009" send \[filename\]
+
+To use custom ports, set `CROC_PORTS` (comma-separated) or `CROC_PORT` (base port):
+
+docker run -d -p 9010-9011:9010-9011 -e CROC\_PORTS='9010,9011' -e CROC\_PASS='YOURPASSWORD' docker.io/schollz/croc
 
 Acknowledgements
 ----------------

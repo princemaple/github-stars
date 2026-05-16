@@ -1,6 +1,6 @@
 ---
 project: sonic
-stars: 21205
+stars: 21211
 description: 🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM.
 url: https://github.com/valeriansaliou/sonic
 ---
@@ -14,7 +14,7 @@ Sonic can be used as a simple alternative to super-heavy and full-featured searc
 
 A strong attention to performance and code cleanliness has been given when designing Sonic. It aims at being crash-free, super-fast and puts minimum strain on server resources (our measurements have shown that Sonic - when under load - responds to search queries in the μs range, eats ~30MB RAM and has a low CPU footprint; see our benchmarks).
 
-_Tested at Rust version: `rustc 1.74.1 (a28077b28 2023-12-04)`_
+_Tested at Rust version: `rustc 1.95.0 (59807616e 2026-04-14)`_
 
 **🇫🇷 Crafted in Nantes, France.**
 
@@ -83,15 +83,13 @@ nano /etc/sonic.cfg
 
 Finally, restart Sonic:
 
-```
 service sonic restart
-```
 
 **👉 Install from source:**
 
 If you pulled the source code from Git, you can build it using `cargo`:
 
-cargo build --release
+cargo build --locked --release
 
 You can find the built binaries in the `./target/release` directory.
 
@@ -269,6 +267,7 @@ Sonic supports a wide range of languages in its lexing system. If a language is 
 -   🇺🇦 Ukrainian
 -   🇵🇰 Urdu
 -   🇻🇳 Vietnamese
+-   🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh
 -   🇮🇱 Yiddish
 -   🇿🇦 Zulu
 

@@ -1,6 +1,6 @@
 ---
 project: firecracker
-stars: 34198
+stars: 34390
 description: Secure and fast microVMs for serverless computing.
 url: https://github.com/firecracker-microvm/firecracker
 ---
@@ -80,6 +80,7 @@ The **API endpoint** can be used to:
 -   Add a entropy device to the microVM.
 -   Add a pmem device to the microVM.
 -   Configure and manage memory hotplugging.
+-   `[Developer Preview]` Hot-plug and hot-unplug virtio PCI devices while the VM is running.
 -   Start the microVM using a given kernel image, root file system, and boot arguments.
 -   \[x86\_64 only\] Stop the microVM.
 

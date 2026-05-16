@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 433562
+stars: 435324
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -2002,6 +2002,16 @@ Yes
 
 Unknown
 
+FileUp
+
+Temporary file hosting with upload API, expiration times, and view limits
+
+No
+
+Yes
+
+Unknown
+
 GoFile
 
 Unlimited size file uploads for free
@@ -2812,6 +2822,16 @@ Yes
 
 Unknown
 
+PumpFunData
+
+Historical Pump.fun and PumpSwap AMM swap data as hourly Parquet files
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Solana JSON RPC
 
 Provides various endpoints to interact with the Solana Blockchain
@@ -3316,6 +3336,16 @@ Make A Free A.I Brain
 Yes
 
 Yes
+
+BrewPage
+
+Free hosting for HTML, JSON, key-value, files, multi-file sites with short URLs and TTL retention
+
+No
+
+Yes
+
+No
 
 Browshot
 
@@ -4597,6 +4627,16 @@ Yes
 
 Yes
 
+BuildPDF
+
+Convert HTML, images, and text to PDF
+
+`apiKey`
+
+Yes
+
+Yes
+
 ClickUp
 
 ClickUp is a robust, cloud-based project management tool for boosting productivity
@@ -5127,6 +5167,16 @@ Yes
 
 Unknown
 
+justmeme.wtf
+
+Free meme API with 2400+ templates, search, trending, and AI generation
+
+No
+
+Yes
+
+Yes
+
 Meme Maker
 
 REST API for create your own meme
@@ -5612,11 +5662,31 @@ Yes
 
 Yes
 
+Helium
+
+News with media bias scoring, balanced news synthesis, live market data, AI options pricing
+
+No
+
+Yes
+
+Yes
+
 Hotstoks
 
 Stock market data powered by SQL
 
 `apiKey`
+
+Yes
+
+Yes
+
+IBANforge
+
+IBAN validation and BIC/SWIFT lookup for 75+ countries with 121K+ bank entries
+
+No
 
 Yes
 
@@ -6024,6 +6094,16 @@ No
 Yes
 
 Unknown
+
+RecipeAPI
+
+Recipes, ingredients, nutrition data and cooking instructions
+
+`apiKey`
+
+Yes
+
+Yes
 
 Rustybeer
 
@@ -7160,6 +7240,16 @@ administrative-divisons-db
 Get all administrative divisions of a country
 
 No
+
+Yes
+
+Yes
+
+ApogeoAPI
+
+Bundled API for countries, states, cities, IP geolocation, and live exchange rates
+
+`apiKey`
 
 Yes
 
@@ -9270,6 +9360,16 @@ HTTPS
 
 CORS
 
+AI Dev Jobs
+
+AI/ML engineering job aggregator with REST, RSS, and MCP endpoints
+
+No
+
+Yes
+
+Yes
+
 Adzuna
 
 Job board aggregator
@@ -9335,6 +9435,16 @@ GraphQL Jobs
 Jobs with GraphQL
 
 No
+
+Yes
+
+Yes
+
+HeroHunt People Search
+
+Search 1 billion people profiles across LinkedIn and GitHub for talent sourcing
+
+`apiKey`
 
 Yes
 
@@ -9525,6 +9635,16 @@ Yes
 
 Yes
 
+Groq
+
+Fast AI inference API with free tier, supports Llama, Mixtral, Gemma models
+
+`apiKey`
+
+Yes
+
+Yes
+
 Hirak FaceAPI
 
 Face detection, face recognition with age estimation/gender estimation, accurate, no quota limits
@@ -9534,6 +9654,16 @@ Face detection, face recognition with age estimation/gender estimation, accurate
 Yes
 
 Unknown
+
+Hugging Face
+
+AI model hub with inference API for NLP, computer vision, and audio
+
+`apiKey`
+
+Yes
+
+Yes
 
 Imagga
 
@@ -10045,6 +10175,16 @@ Vagalume
 Crowdsourced lyrics and music knowledge
 
 `apiKey`
+
+Yes
+
+Unknown
+
+Verome
+
+Music API for searching, streaming, and exploring music data from YouTube Music, YouTube, and Last.fm
+
+No
 
 Yes
 
@@ -11990,6 +12130,16 @@ Yes
 
 Unknown
 
+dead-drop
+
+Ephemeral zero-knowledge encrypted data sharing
+
+No
+
+Yes
+
+Yes
+
 Dehash.lt
 
 Hash decryption MD5, SHA1, SHA3, SHA256, SHA384, SHA512
@@ -13216,6 +13366,16 @@ Crowd-Sourced Sports Data and Artwork
 Yes
 
 Yes
+
+TourneyRadar
+
+Upcoming chess tournaments from 140+ national federations worldwide
+
+No
+
+Yes
+
+Unknown
 
 Tredict
 
@@ -15360,6 +15520,16 @@ Yes
 Hong Kong Obervatory
 
 Provide weather information, earthquake information, and climate data
+
+No
+
+Yes
+
+Unknown
+
+IPMA
+
+Portuguese weather and climate data
 
 No
 

@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 1104
+stars: 1134
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---

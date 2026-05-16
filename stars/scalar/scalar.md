@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 14973
+stars: 15035
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -294,6 +294,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **gevann**
 
   
+**alonfaraj**
+
+  
 **federicobond**
 
   
@@ -303,10 +306,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **matthyk**
 
   
-**alonfaraj**
+**Amorim33**
 
   
-**Amorim33**
+**wilhelmer**
 
   
 **baywet**
@@ -316,9 +319,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **Mason-Little**
-
-  
-**wilhelmer**
 
   
 **ivanagas**
@@ -366,7 +366,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ATREAY**
 
   
-**ledgersteve**
+**gsmcdonald**
 
   
 **timheuer**
@@ -399,61 +399,58 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **soulchild**
 
   
-**SebastianBienert**
-
-  
-**PrinceManfred**
-
-  
-**mouhannad-sh**
-
-  
-**mason-at-pieces**
-
-  
-**luc122c**
-
-  
-**luke-hagar-sp**
-
-  
-**handrews**
-
-  
-**gsmcdonald**
+**WDaan**
 
   
 **Duncanma**
 
   
-**WDaan**
+**handrews**
 
   
-**STP5940**
+**luke-hagar-sp**
 
   
-**mirismaili**
+**luc122c**
 
   
-**rmp135**
+**mason-at-pieces**
 
   
-**roryschadler**
+**mouhannad-sh**
 
   
-**rpmccarter**
+**PrinceManfred**
 
   
-**hrynevychroman**
+**SebastianBienert**
 
   
-**rbange**
+**ledgersteve**
 
   
 **rcollas**
 
   
-**abdulamite**
+**rbange**
+
+  
+**hrynevychroman**
+
+  
+**rpmccarter**
+
+  
+**roryschadler**
+
+  
+**rmp135**
+
+  
+**mirismaili**
+
+  
+**STP5940**
 
   
 **captainsafia**
@@ -483,7 +480,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **soGit**
 
   
-**MatteoH2O1999**
+**Chinlinlee**
+
+  
+**abdulamite**
 
   
 **maxehmookau**
@@ -528,6 +528,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **pdjohntony**
 
   
+**cyphercodes**
+
+  
 **rhuanbarreto**
 
   
@@ -538,9 +541,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **bobheadxi**
-
-  
-**sinh117801**
 
   
 **bsdayo**
@@ -597,6 +597,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Huliiiiii**
 
   
+**SimonVadier**
+
+  
+**sinh117801**
+
+  
 **stratosblue**
 
   
@@ -646,9 +652,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **bingbeann**
-
-  
-**Chinlinlee**
 
   
 **foxfriends**
@@ -765,7 +768,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **cactysman**
 
   
-**Tholdrim**
+**froggy1014**
 
   
 **Jefwillems**
@@ -822,7 +825,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **tinchoz49**
 
   
-**froggy1014**
+**MatteoH2O1999**
 
   
 **facus26**
@@ -877,3 +880,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **JacobCoffee**
+
+  
+**Tholdrim**

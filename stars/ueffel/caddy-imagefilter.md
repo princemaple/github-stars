@@ -1,6 +1,6 @@
 ---
 project: caddy-imagefilter
-stars: 33
+stars: 34
 description: Caddy module to transform images from the file system in various ways.
 url: https://github.com/ueffel/caddy-imagefilter
 ---

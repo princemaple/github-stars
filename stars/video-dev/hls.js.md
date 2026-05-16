@@ -1,6 +1,6 @@
 ---
 project: hls.js
-stars: 16677
+stars: 16701
 description: HLS.js is a JavaScript library that plays HLS in browsers with support for MSE.
 url: https://github.com/video-dev/hls.js
 ---
@@ -344,7 +344,9 @@ Directly include dist/hls.js or dist/hls.min.js in a script tag on the page. Thi
 
 #### Alternative setup
 
-To check for native browser support first and then fallback to HLS.js, swap these conditionals. See this comment to understand some of the tradeoffs.
+To check for native browser support first and then fallback to HLS.js, swap these conditionals.
+
+> **Note:** `video.canPlayType('application/vnd.apple.mpegurl')` returns a non-empty string ("maybe") in Safari, Chrome, and potentially other browsers. However, not all browsers support HLS content equally — for example, Chrome 147 reports support but may fail to play certain streams natively. Using `Hls.isSupported()` first (the default setup above) is recommended unless you specifically need native playback.
 
 <script src\="https://cdn.jsdelivr.net/npm/hls.js@1"\></script\>
 <!-- Or if you want the latest version from the main branch -->
@@ -354,12 +356,17 @@ To check for native browser support first and then fallback to HLS.js, swap thes
   var video \= document.getElementById('video');
   var videoSrc \= 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8';
   //
-  // First check for native browser HLS support
+  // Only use native HLS in browsers with ManagedMediaSource (e.g. modern Safari)
+  // where native playback is well-supported. Other browsers may report HLS support
+  // via canPlayType but fail to play certain streams reliably.
   //
-  if (video.canPlayType('application/vnd.apple.mpegurl')) {
+  if (
+    video.canPlayType('application/vnd.apple.mpegurl') &&
+    'ManagedMediaSource' in window
+  ) {
     video.src \= videoSrc;
     //
-    // If no native HLS support, check if HLS.js is supported
+    // If not using native HLS, check if HLS.js is supported
     //
   } else if (Hls.isSupported()) {
     var hls \= new Hls();

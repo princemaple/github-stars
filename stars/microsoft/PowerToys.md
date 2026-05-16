@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 132981
+stars: 133203
 description: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows
 url: https://github.com/microsoft/PowerToys
 ---
@@ -114,7 +114,7 @@ To see what's new, check out the release notes.
 🛣️ Roadmap
 -----------
 
-We are planning some nice new features and improvements for the next releases – a brand-new Shortcut Guide experience, ensuring it's easier to find and install Command Palette extensions and so much more! Stay tuned for \[v0.100\]\[github-next-release-work\]!
+We are planning some nice new features and improvements for the next releases – a brand-new Shortcut Guide experience, ensuring it's easier to find and install Command Palette extensions and so much more! Stay tuned for v0.100!
 
 ❤️ PowerToys Community
 ----------------------

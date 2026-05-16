@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 6798
+stars: 6867
 description: Database backup tool (PostgreSQL, MySQL\MariaDB and MongoDB)
 url: https://github.com/databasus/databasus
 ---
@@ -25,7 +25,7 @@ Features • Installation • Usage • License • Contributing
 -   **PostgreSQL**: 12, 13, 14, 15, 16, 17 and 18
 -   **MySQL**: 5.7, 8 and 9
 -   **MariaDB**: 10, 11 and 12
--   **MongoDB**: 4, 5, 6, 7 and 8
+-   **MongoDB**: 4.2+, 5, 6, 7 and 8
 
 ### 🔄 **Scheduled backups**
 
@@ -212,6 +212,23 @@ After installation, it is also recommended to backup your Databasus itself or, a
 
 * * *
 
+🛡️ Security & reliability engineering
+--------------------------------------
+
+Databasus works with sensitive data, so preventing vulnerabilities, unauthorised access and data leaks is a primary concern. We invest in this on both sides of the system: in the code itself (permission checks, encryption, careful handling of secrets) and in the infrastructure around it (dependency analysis, CVE response, DevSecOps best practices). The pipeline below runs automatically on every commit and PR. No single layer is enough on its own, but together they reduce the chance of vulnerable code, unsafe dependencies, broken images, or non-restorable backups reaching a release.
+
+For static analysis we combine several independent passes. CodeQL scans the full codebase for security issues. CodeRabbit reviews every PR and runs gitleaks for secret scanning and semgrep for security rules inline. Dockerfiles and CI workflows get extra rules of their own (pinned action references, least-privilege permissions, suspicious base images), so insecure patterns are flagged before they ever merge. On top of these per-PR checks, Codex Security from OpenAI runs regular, deeper audits of the whole codebase. It's a separate program that catches architectural and cross-cutting issues narrow PR-time scans can miss.
+
+On the dependency side, Dependabot watches all of our dependencies against the GitHub Advisory Database and surfaces CVEs within minutes of publication. Updates run through a cooldown so newly-published versions get a chance to mature before we adopt them. This is a deliberate defence against compromised-package incidents like supply-chain attack. The Dependency Review Action blocks any PR that introduces a new HIGH or CRITICAL CVE outright.
+
+Container images are scanned with Trivy on every build. A separate Trivy pass on the Dockerfile catches misconfigurations before they make it into an image. All GitHub Actions are pinned to full commit SHAs rather than floating tags like `@v4` or `@main`, which have been an active attack vector in 2025. Workflows default to least-privilege permissions and only elevate per-job when genuinely needed.
+
+Critical paths are covered by both unit and integration tests, run against real database containers for every supported engine and major version. Restore is the path that matters most for a backup tool, so we test it explicitly: every PR runs full backup-then-restore cycles against those same real containers, verifying that backups can actually be restored end-to-end, not just written successfully. The rest of the CI/CD pipeline runs lint, type-check, the full test suite, image smoke tests and multi-architecture builds on every PR. A release only ships if all of it passes.
+
+Found a vulnerability? Report it via the GitHub Security tab. See SECURITY.md. Security reports are the highest-priority work queue. For runtime application security (AES-256-GCM at rest, zero-trust storage, encrypted secrets, read-only DB user by default) see Enterprise-grade security in the Features section above.
+
+* * *
+
 📝 License
 ----------
 
@@ -250,19 +267,13 @@ AI is not used for:
 -   code without line-by-line verification by a human
 -   code without tests
 
-The project has:
-
--   solid test coverage (both unit and integration tests)
--   CI/CD pipeline automation with tests and linting to ensure code quality
--   verification by experienced developers with experience in large and secure projects
-
 So AI is just an assistant and a tool for developers to increase productivity and ensure code quality. The work is done by developers.
 
 Moreover, it's important to note that we do not differentiate between bad human code and AI vibe code. There are strict requirements for any code to be merged to keep the codebase maintainable.
 
 Even if code is written manually by a human, it's not guaranteed to be merged. Vibe code is not allowed at all and all such PRs are rejected by default (see contributing guide).
 
-We also draw attention to fast issue resolution and security vulnerability reporting.
+The engineering safeguards behind these rules (CI, static analysis, dependency scanning, test coverage and vulnerability response) are documented in Security & reliability engineering above.
 
 ### You have a cloud version — are you truly open source?
 

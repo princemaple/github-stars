@@ -1,6 +1,6 @@
 ---
 project: ferret
-stars: 5979
+stars: 5983
 description: Declarative web scraping
 url: https://github.com/MontFerret/ferret
 ---
@@ -28,6 +28,12 @@ Ferret is a declarative system for working with web data - extracting it, queryi
 -   Embeddable in Go applications
 -   Extensible runtime and function system
 -   Portable and fast
+
+### Direct mutation
+
+Ferret supports statement-level direct mutation with `=`, `+=`, `-=`, `*=`, and `/=`. Assignment targets may be declared bindings or writable paths such as `obj.prop`, `obj["key"]`, `arr[i]`, and mixed member/index chains.
+
+Assignments use the same safe-navigation syntax as reads, for example `obj?.profile?.city = "Berlin"` or `obj?.items?.[i] = value`. When a guarded hop is absent, the assignment is a no-op and the right-hand side is not evaluated. Strict missing path segments still fail, and assignment is not an expression.
 
 Getting started
 ---------------

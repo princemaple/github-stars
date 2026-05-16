@@ -1,6 +1,6 @@
 ---
 project: text-spinners
-stars: 2704
+stars: 2703
 description: Pure text, CSS only, font independent, inline loading indicators
 url: https://github.com/maxbeier/text-spinners
 ---

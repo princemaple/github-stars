@@ -1,6 +1,6 @@
 ---
 project: supabase
-stars: 102103
+stars: 102461
 description: The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.
 url: https://github.com/supabase/supabase
 ---

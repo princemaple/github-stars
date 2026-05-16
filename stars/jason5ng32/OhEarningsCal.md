@@ -1,6 +1,6 @@
 ---
 project: OhEarningsCal
-stars: 554
+stars: 556
 description: Subscribe to US stock earnings dates from your calendar app
 url: https://github.com/jason5ng32/OhEarningsCal
 ---

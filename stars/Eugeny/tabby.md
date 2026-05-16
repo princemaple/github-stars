@@ -1,6 +1,6 @@
 ---
 project: tabby
-stars: 71159
+stars: 71360
 description: A terminal for a more modern age
 url: https://github.com/Eugeny/tabby
 ---
@@ -25,7 +25,7 @@ This README is also available in: 🇪🇸 Spanish · 🇷🇺 Русский ·
 
 * * *
 
-**Tabby** (formerly **Terminus**) is a highly configurable terminal emulator, SSH and serial client for Windows 10, macOS and Linux
+**Tabby** (formerly **Terminus**) is a highly configurable terminal emulator, SSH and serial client for Windows, macOS and Linux
 
 -   Integrated SSH and Telnet client and connection manager
 -   Integrated serial terminal

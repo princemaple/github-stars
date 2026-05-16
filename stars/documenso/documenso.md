@@ -1,6 +1,6 @@
 ---
 project: documenso
-stars: 12821
+stars: 12863
 description: The Open Source DocuSign Alternative.
 url: https://github.com/documenso/documenso
 ---
@@ -8,7 +8,7 @@ url: https://github.com/documenso/documenso
 The Open Source DocuSign Alternative.  
 **Learn more »**  
   
-Discord · Website · Issues · Upcoming Releases · Roadmap
+Discord · Website · Documentation · Issues · Upcoming Releases · Roadmap
 
 About Documenso
 ---------------
@@ -108,43 +108,7 @@ Developer Setup
 
 ### Manual Setup
 
-Follow these steps to setup Documenso on your local machine:
-
-1.  Fork this repository to your GitHub account.
-
-After forking the repository, clone it to your local device by using the following command:
-
-git clone https://github.com/<your-username\>/documenso
-
-1.  Run `npm i` in the root directory
-    
-2.  Create your `.env` from the `.env.example`. You can use `cp .env.example .env` to get started with our handpicked defaults.
-    
-3.  Set the following environment variables:
-    
-    -   NEXTAUTH\_SECRET
-    -   NEXT\_PUBLIC\_WEBAPP\_URL
-    -   NEXT\_PRIVATE\_DATABASE\_URL
-    -   NEXT\_PRIVATE\_DIRECT\_DATABASE\_URL
-    -   NEXT\_PRIVATE\_SMTP\_FROM\_NAME
-    -   NEXT\_PRIVATE\_SMTP\_FROM\_ADDRESS
-4.  Create the database schema by running `npm run prisma:migrate-dev`
-    
-5.  Run `npm run translate:compile` in the root directory to compile lingui
-    
-6.  Run `npm run dev` in the root directory to start
-    
-7.  Register a new user at http://localhost:3000/signup
-    
-
-* * *
-
--   Optional: Seed the database using `npm run prisma:seed -w @documenso/prisma` to create a test user and document.
--   Optional: Create your own signing certificate.
-    -   To generate your own using these steps and a Linux Terminal or Windows Subsystem for Linux (WSL), see **Create your own signing certificate**.
--   Optional: Configure job provider for document reminders.
-    -   The default local job provider does not support scheduled jobs required for document reminders.
-    -   To enable reminders, set `NEXT_PRIVATE_JOBS_PROVIDER=inngest` and provide `NEXT_PRIVATE_INNGEST_EVENT_KEY` in your `.env` file.
+Follow the manual setup guide to configure Documenso on your local machine.
 
 ### Run in Gitpod
 
@@ -161,126 +125,37 @@ If you're a visual learner and prefer to watch a video walkthrough of setting up
 Docker
 ------
 
-We provide a Docker container for Documenso, which is published on both DockerHub and GitHub Container Registry.
+We provide official Docker images on DockerHub and GitHub Container Registry.
 
--   DockerHub: https://hub.docker.com/r/documenso/documenso
--   GitHub Container Registry: https://ghcr.io/documenso/documenso
-
-You can pull the Docker image from either of these registries and run it with your preferred container hosting provider.
-
-Please note that you will need to provide environment variables for connecting to the database, mailserver, and so forth.
-
-For detailed instructions on how to configure and run the Docker container, please refer to the Docker README in the `docker` directory.
+For setup instructions, see the Docker Deployment and Docker Compose guides.
 
 Self Hosting
 ------------
 
-We support a variety of deployment methods, and are actively working on adding more. Stay tuned for updates!
+We support a variety of deployment methods including Docker, Docker Compose, Railway, Kubernetes, and manual deployment.
 
-### Fetch, configure, and build
+For full instructions, requirements, and configuration details, see the Self Hosting documentation.
 
-First, clone the code from Github:
+### One-Click Deploys
 
-```
-git clone https://github.com/documenso/documenso.git
-```
+#### Railway
 
-Then, inside the `documenso` folder, copy the example env file:
+#### Render
 
-```
-cp .env.example .env
-```
+#### Koyeb
 
-The following environment variables must be set:
-
--   `NEXTAUTH_SECRET`
--   `NEXT_PUBLIC_WEBAPP_URL`
--   `NEXT_PRIVATE_DATABASE_URL`
--   `NEXT_PRIVATE_DIRECT_DATABASE_URL`
--   `NEXT_PRIVATE_SMTP_FROM_NAME`
--   `NEXT_PRIVATE_SMTP_FROM_ADDRESS`
-
-> If you are using a reverse proxy in front of Documenso, don't forget to provide the public URL for the `NEXT_PUBLIC_WEBAPP_URL` variable!
-
-Now you can install the dependencies and build it:
-
-```
-npm i
-npm run build
-npm run prisma:migrate-deploy
-```
-
-Finally, you can start it with:
-
-```
-cd apps/remix
-npm run start
-```
-
-This will start the server on `localhost:3000`. For now, any reverse proxy can then do the frontend and SSL termination.
-
-> If you want to run with another port than 3000, you can start the application with `next -p <ANY PORT>` from the `apps/remix` folder.
-
-### Run as a service
-
-You can use a systemd service file to run the app. Here is a simple example of the service running on port 3500 (using 3000 by default):
-
-\[Unit\]
-Description=documenso
-After=network.target
-
-\[Service\]
-Environment=PATH=/path/to/your/node/binaries
-Type=simple
-User=www-data
-WorkingDirectory=/var/www/documenso/apps/remix
-ExecStart=/usr/bin/next start -p 3500
-TimeoutSec=15
-Restart=always
-
-\[Install\]
-WantedBy=multi-user.target
-
-### Railway
-
-### Render
-
-### Koyeb
-
-Elestio
--------
+#### Elestio
 
 Troubleshooting
 ---------------
+
+For troubleshooting self-hosted deployments, see the Troubleshooting guide and Tips & Common Pitfalls.
 
 ### I'm not receiving any emails when using the developer quickstart.
 
 When using the developer quickstart, an Inbucket server will be spun up in a docker container that will store all outgoing emails locally for you to view.
 
 The Web UI can be found at http://localhost:9000, while the SMTP port will be on localhost:2500.
-
-### Support IPv6
-
-If you are deploying to a cluster that uses only IPv6, You can use a custom command to pass a parameter to the Remix start command
-
-For local docker run
-
-docker run -it documenso:latest npm run start -- -H ::
-
-For k8s or docker-compose
-
-containers:
-  - name: documenso
-    image: documenso:latest
-    imagePullPolicy: IfNotPresent
-    command:
-      - npm
-    args:
-      - run
-      - start
-      - \--
-      - \-H
-      - '::'
 
 ### I can't see environment variables in my package scripts.
 

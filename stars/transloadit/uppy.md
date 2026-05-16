@@ -1,6 +1,6 @@
 ---
 project: uppy
-stars: 30754
+stars: 30767
 description: The next open source file uploader for web browsers :dog: 
 url: https://github.com/transloadit/uppy
 ---
@@ -10,7 +10,7 @@ Uppy
 
 Uppy is a sleek, modular JavaScript file uploader that integrates seamlessly with any application. It’s fast, has a comprehensible API and lets you worry about more important problems than building a file uploader.
 
--   **Fetch** files from local disk, remote URLs, Google Drive, Dropbox, Box, Instagram or snap and record selfies with a camera
+-   **Fetch** files from local disk, remote URLs, Google Drive, Dropbox, Box, or snap and record selfies with a camera
 -   **Preview** and edit metadata with a nice interface
 -   **Upload** to the final destination, optionally process/encode
 
@@ -62,7 +62,7 @@ Features
 
 -   Lightweight, modular plugin-based architecture, light on dependencies ⚡
 -   Resumable file uploads via the open tus standard, so large uploads survive network hiccups
--   Supports picking files from: Webcam, Dropbox, Box, Google Drive, Instagram, bypassing the user’s device where possible, syncing between servers directly via @uppy/companion
+-   Supports picking files from: Webcam, Dropbox, Box, Google Drive, bypassing the user’s device where possible, syncing between servers directly via @uppy/companion
 -   Works great with file encoding and processing backends, such as Transloadit, works great without (all you need is to roll your own Apache/Nginx/Node/FFmpeg/etc backend)
 -   Sleek user interface ✨
 -   Optional file recovery (after a browser crash) with Golden Retriever
@@ -106,7 +106,7 @@ Documentation
 -------------
 
 -   Uppy — full list of options, methods and events
--   Companion — setting up and running a Companion instance, which adds support for Instagram, Dropbox, Box, Google Drive and remote URLs
+-   Companion — setting up and running a Companion instance, which adds support for Dropbox, Box, Google Drive and remote URLs
 -   React — components to integrate Uppy UI plugins with React apps
 -   Architecture & Writing a Plugin — how to write a plugin for Uppy
 
@@ -115,7 +115,7 @@ Plugins
 
 ### UI Elements
 
--   `Dashboard` — universal UI with previews, progress bars, metadata editor and all the cool stuff. Required for most UI plugins like Webcam and Instagram
+-   `Dashboard` — universal UI with previews, progress bars, metadata editor and all the cool stuff. Required for most UI plugins like Webcam
 -   Headless components (react, svelte, vue)
 
 ### Sources
@@ -126,7 +126,6 @@ Plugins
 -   ⓒ `Google Drive` — import files from Google Drive
 -   ⓒ `Dropbox` — import files from Dropbox
 -   ⓒ `Box` — import files from Box
--   ⓒ `Instagram` — import images and videos from Instagram
 -   ⓒ `Facebook` — import images and videos from Facebook
 -   ⓒ `OneDrive` — import files from Microsoft OneDrive
 -   ⓒ `Import From URL` — import direct URLs from anywhere on the web
@@ -164,7 +163,7 @@ Having no JavaScript beats having a lot of it, so that’s a fair question! Runn
 -   We received complaints about broken uploads and found that resumable uploads are important, especially for big files and to be inclusive towards people on poorer connections (we also launched tus.io to attack that problem). Uppy uploads can survive network outages and browser crashes or accidental navigate-aways.
 -   Uppy supports editing meta information before uploading.
 -   Uppy allows cropping images before uploading.
--   There’s the situation where people are using their mobile devices and want to upload on the go, but they have their picture on Instagram, files in Dropbox or a plain file URL from anywhere on the open web. Uppy allows to pick files from those and push it to the destination without downloading it to your mobile device first.
+-   There’s the situation where people are using their mobile devices and want to upload on the go, but they have files in Dropbox or a plain file URL from anywhere on the open web. Uppy allows to pick files from those and push it to the destination without downloading it to your mobile device first.
 -   Accurate upload progress reporting is an issue on many platforms.
 -   Some file validation — size, type, number of files — can be done on the client with Uppy.
 -   Uppy integrates webcam support, in case your users want to upload a picture/video/audio that does not exist yet :)
@@ -190,7 +189,7 @@ Yes, whatever you want on the backend will work with `@uppy/xhr-upload` plugin, 
 
 If you want resumability with the Tus plugin, use one of the tus server implementations 👌🏼
 
-And you’ll need `@uppy/companion` if you’d like your users to be able to pick files from Instagram, Google Drive, Dropbox or via direct URLs (with more services coming).
+And you’ll need `@uppy/companion` if you’d like your users to be able to pick files from Google Drive, Dropbox or via direct URLs (with more services coming).
 
 Contributions are welcome
 -------------------------

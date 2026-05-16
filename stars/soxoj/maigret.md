@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 27035
+stars: 28990
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -38,7 +38,7 @@ Ensure you have Python 3.10 or higher.
 pip install maigret
 maigret YOUR\_USERNAME
 
-No install? Try the Telegram bot or a Cloud Shell.
+No install? Try the community Telegram bot or a Cloud Shell.
 
 Want a web UI? See how to launch it.
 
@@ -80,7 +80,7 @@ Installation
 
 Already ran the In one minute steps? You're set. Below are alternative methods.
 
-Don't want to install anything? Use the Telegram bot.
+Don't want to install anything? Use the community Telegram bot.
 
 ### Windows
 
@@ -135,6 +135,8 @@ docker build --target web -t maigret-web . # Web UI image
 ### Troubleshooting
 
 Build errors? See the troubleshooting guide.
+
+PDF reports (`--pdf`) are an optional extra — install with `pip install 'maigret[pdf]'`. They need system-level graphics libraries on Linux/macOS; see the PDF reports section for per-OS install steps.
 
 Usage
 -----

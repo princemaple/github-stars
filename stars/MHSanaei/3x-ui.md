@@ -1,6 +1,6 @@
 ---
 project: 3x-ui
-stars: 36436
+stars: 37373
 description: Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit (Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun) 
 url: https://github.com/MHSanaei/3x-ui
 ---
@@ -32,6 +32,13 @@ Acknowledgment
 
 -   Iran v2ray rules (License: **GPL-3.0**): _Enhanced v2ray/xray and v2ray/xray-clients routing rules with built-in Iranian domains and a focus on security and adblocking._
 -   Russia v2ray rules (License: **GPL-3.0**): _This repository contains automatically updated V2Ray routing rules based on data on blocked domains and addresses in Russia._
+
+Community Tools
+---------------
+
+Tools and integrations built by the community around 3x-ui.
+
+-   terraform-provider-3x-ui (License: **MIT**): _Manage inbounds, clients, panel settings, and Xray configuration as code with Terraform / OpenTofu._
 
 Support project
 ---------------

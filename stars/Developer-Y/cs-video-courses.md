@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 81093
+stars: 81325
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -84,7 +84,7 @@ Courses
 -   Introduction to Computational Thinking - MIT
 -   CS 50 - Introduction to Computer Science, Harvard University (cs50.tv)
 -   CS50R - Introduction to Programming with R (Lecture Videos)
--   CS50: Introduction to Computer Science with Python - Harvard (David J. Malan)
+-   CS50P - CS50's Introduction to Programming with Python - Harvard (David J. Malan) (Lecture Videos)
 -   CS 61A - Structure and Interpretation of Computer Programs \[Python\], UC Berkeley
 -   CPSC 110 - Systematic Program Design \[Racket\], University of British Columbia
 -   CS50's Understanding Technology
@@ -247,6 +247,7 @@ Courses
     -   CSE 421/521 - Introduction to Operating Systems, SUNY University at Buffalo, NY - Spring 2016 (Lectures - YouTube) (Recitations 2016) (Assignment walkthroughs)
     -   CS 377 - Operating Systems, Fall 16 - Umass OS
     -   CS 577 - Operating Systems, Spring 20 - Umass OS
+    -   CS 537 - Introduction to Operating Systems - Andrea & Remzi Arpaci-Dusseau, University of Wisconsin-Madison (OSTEP free textbook) (Lecture Videos)
     -   6.828 - Operating System Engineering \[Fall 2014\]
     -   6.S081 - Operating System Engineering \[Fall 2020\]
     -   CSE 30341 - Operating Systems, Spr 2008
@@ -643,6 +644,7 @@ Courses
     -   ECE 8851: Reinforcement Learning
     -   CS294-112, Deep Reinforcement Learning Sp17 (YouTube)
     -   UCL Course 2015 on Reinforcement Learning by David Silver from DeepMind (YouTube)
+    -   DeepMind x UCL Reinforcement Learning Lecture Series 2021 - Hado van Hasselt, Diana Borsa, Matteo Hessel
     -   Deep RL Bootcamp - Berkeley Aug 2017
     -   Reinforcement Learning - IIT Madras
     -   Reinforcement Learning Course at KTH (FDD3359 - 2022)
@@ -828,6 +830,7 @@ Courses
     -   Introduction to Data-Centric AI - MIT
     -   Parallel Computing and Scientific Machine Learning
     -   Machine Learning System Design - System Design Fight Club
+    -   CS 329S - Machine Learning Systems Design, Winter 2022 - Chip Huyen, Stanford University (Syllabus & lecture videos)
     -   UT Austin ECE 381V Bandits and Online Learning fall 2021, by Sanjay Shakkottai
     -   UCSD MATH 273B Information Geometry and its Applications winter 2022, by Melvin Leok
     -   Cornell ECE 5545 Machine Learning Hardware and Systems Spring 2022, by Mohamed Abdelfattah
@@ -1039,6 +1042,7 @@ Courses
 -   CSCI 5710 e-Commerce Implementation, Fall 2015 - ETSU iTunes
 -   MOOC - Web Development - Udacity
 -   Web Technologies Prof. Dr. Christoph Meinel - HPI
+-   Full Stack Open - University of Helsinki (Modern Web Development with React, Node.js, GraphQL, TypeScript)
 
 * * *
 
@@ -1282,6 +1286,7 @@ Courses
 -   CS 468 - Differential Geometry for Computer Science - Stanford University (Lecture videos)
 -   CMU 15-462/662: Computer Graphics
 -   UC Berkeley CS184/284A Computer Graphics and Imaging Spring 2022, by Ren Ng (YouTube playlist)
+-   CS 5610/6610 - Interactive Computer Graphics, Cem Yuksel - University of Utah (Lectures - YouTube)
 -   CS 15-458/858: Discrete Differential Geometry - Carnegie Mellon University - Spring 2021
 -   IN2124: Basic Mathematical Tools for Imaging and Visualization - TUM - Winter 2021
 -   KAIST CS580 Computer Graphics (Spring 2024)
@@ -1569,6 +1574,7 @@ Courses
     -   Blockchain for Developers Decal - Spring 2018 - Berkeley DeCal
     -   Cryptocurrency Engineering and Design - Spring 2018 - MIT
     -   15.S12 Blockchain and Money, Fall 2018 - MIT
+    -   Bitcoin and Cryptocurrency Technologies - Arvind Narayanan, Princeton University (YouTube Lectures) (Free book PDF)
     -   Blockchain - Foundations and Use Cases
 -   **Become Blockchain Developer**
     -   Solidity for Beginners - Dapp University

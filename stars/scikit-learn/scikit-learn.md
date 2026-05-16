@@ -1,6 +1,6 @@
 ---
 project: scikit-learn
-stars: 66015
+stars: 66097
 description: scikit-learn: machine learning in Python
 url: https://github.com/scikit-learn/scikit-learn
 ---
@@ -24,12 +24,12 @@ scikit-learn requires:
 -   NumPy (>= 1.24.1)
 -   SciPy (>= 1.10.0)
 -   Narwhals (>= 2.0.1)
--   joblib (>= 1.3.0)
--   threadpoolctl (>= 3.2.0)
+-   joblib (>= 1.4.0)
+-   threadpoolctl (>= 3.5.0)
 
 * * *
 
-Scikit-learn plotting capabilities (i.e., functions start with `plot_` and classes end with `Display`) require Matplotlib (>= 3.6.1). For running the examples Matplotlib >= 3.6.1 is required. A few examples require scikit-image >= 0.22.0, a few examples require pandas >= 1.5.0, some examples require seaborn >= 0.13.0 and Plotly >= 5.18.0.
+Scikit-learn plotting capabilities (i.e., functions start with `plot_` and classes end with `Display`) require Matplotlib (>= 3.6.1). For running the examples Matplotlib >= 3.6.1 is required. A few examples require scikit-image >= 0.22.0, a few examples require pandas >= 1.5.0, some examples require seaborn >= 0.13.0 and Plotly >= 5.22.0.
 
 ### User installation
 

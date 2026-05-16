@@ -1,6 +1,6 @@
 ---
 project: nx
-stars: 2880
+stars: 2883
 description: Multi-dimensional arrays (tensors) and numerical definitions for Elixir
 url: https://github.com/elixir-nx/nx
 ---

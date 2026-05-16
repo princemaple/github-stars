@@ -1,6 +1,6 @@
 ---
 project: TradingAgents
-stars: 72472
+stars: 76146
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
@@ -17,7 +17,8 @@ TradingAgents: Multi-Agents LLM Financial Trading Framework
 News
 ----
 
--   \[2026-04\] **TradingAgents v0.2.4** released with structured-output agents (Research Manager, Trader, Portfolio Manager), LangGraph checkpoint resume, persistent decision log, DeepSeek/Qwen/GLM/Azure provider support, Docker, and a Windows UTF-8 encoding fix. See CHANGELOG.md for the full list.
+-   \[2026-05\] **TradingAgents v0.2.5** released with the grounded Sentiment Analyst, GPT-5.5 etc. model coverage, Qwen/GLM/MiniMax dual-region support, `TRADINGAGENTS_*` env-var configurability with API-key auto-detection, remote Ollama support, non-US alpha benchmarks, and ticker path-traversal hardening. See CHANGELOG.md for the full list.
+-   \[2026-04\] **TradingAgents v0.2.4** released with structured-output agents (Research Manager, Trader, Portfolio Manager), LangGraph checkpoint resume, persistent decision log, DeepSeek/Qwen/GLM/Azure provider support, Docker, and a Windows UTF-8 encoding fix.
 -   \[2026-03\] **TradingAgents v0.2.3** released with multi-language support, GPT-5.4 family models, unified model catalog, backtesting date fidelity, and proxy support.
 -   \[2026-03\] **TradingAgents v0.2.2** released with GPT-5.4/Gemini 3.1/Claude 4.6 model coverage, five-tier rating scale, OpenAI Responses API, Anthropic effort control, and cross-platform stability.
 -   \[2026-02\] **TradingAgents v0.2.0** released with multi-provider LLM support (GPT-5.x, Gemini 3.x, Claude 4.x, Grok 4.x) and improved system architecture.
@@ -41,7 +42,7 @@ Our framework decomposes complex trading tasks into specialized roles. This ensu
 ### Analyst Team
 
 -   Fundamentals Analyst: Evaluates company financials and performance metrics, identifying intrinsic values and potential red flags.
--   Sentiment Analyst: Analyzes social media and public sentiment using sentiment scoring algorithms to gauge short-term market mood.
+-   Sentiment Analyst: Aggregates news headlines, StockTwits, and Reddit chatter into a single sentiment read to gauge short-term market mood.
 -   News Analyst: Monitors global news and macroeconomic indicators, interpreting the impact of events on market conditions.
 -   Technical Analyst: Utilizes technical indicators (like MACD and RSI) to detect trading patterns and forecast price movements.
 
@@ -97,14 +98,18 @@ export GOOGLE\_API\_KEY=...          # Google (Gemini)
 export ANTHROPIC\_API\_KEY=...       # Anthropic (Claude)
 export XAI\_API\_KEY=...             # xAI (Grok)
 export DEEPSEEK\_API\_KEY=...        # DeepSeek
-export DASHSCOPE\_API\_KEY=...       # Qwen (Alibaba DashScope)
-export ZHIPU\_API\_KEY=...           # GLM (Zhipu)
+export DASHSCOPE\_API\_KEY=...       # Qwen — International (dashscope-intl.aliyuncs.com)
+export DASHSCOPE\_CN\_API\_KEY=...    # Qwen — China (dashscope.aliyuncs.com)
+export ZHIPU\_API\_KEY=...           # GLM via Z.AI (international)
+export ZHIPU\_CN\_API\_KEY=...        # GLM via BigModel (China, open.bigmodel.cn)
+export MINIMAX\_API\_KEY=...         # MiniMax — Global (api.minimax.io, M2.x, 204K ctx)
+export MINIMAX\_CN\_API\_KEY=...      # MiniMax — China (api.minimaxi.com, M2.x, 204K ctx)
 export OPENROUTER\_API\_KEY=...      # OpenRouter
 export ALPHA\_VANTAGE\_API\_KEY=...   # Alpha Vantage
 
 For enterprise providers (e.g. Azure OpenAI, AWS Bedrock), copy `.env.enterprise.example` to `.env.enterprise` and fill in your credentials.
 
-For local models, configure Ollama with `llm_provider: "ollama"` in your config.
+For local models, configure Ollama with `llm_provider: "ollama"`. The default endpoint is `http://localhost:11434/v1`; set `OLLAMA_BASE_URL` to point at a remote `ollama-serve`. Pull models with `ollama pull <name>`, and pick "Custom model ID" in the CLI for any model not listed by default.
 
 Alternatively, copy `.env.example` to `.env` and fill in your keys:
 
@@ -126,7 +131,7 @@ TradingAgents Package
 
 ### Implementation Details
 
-We built TradingAgents with LangGraph to ensure flexibility and modularity. The framework supports multiple LLM providers: OpenAI, Google, Anthropic, xAI, DeepSeek, Qwen (Alibaba DashScope), GLM (Zhipu), OpenRouter, Ollama for local models, and Azure OpenAI for enterprise.
+We built TradingAgents with LangGraph to ensure flexibility and modularity. The framework supports multiple LLM providers: OpenAI, Google, Anthropic, xAI, DeepSeek, Qwen (Alibaba DashScope, international and China endpoints), GLM (Zhipu), MiniMax (global + China), OpenRouter, Ollama for local models, and Azure OpenAI for enterprise.
 
 ### Python Usage
 
@@ -147,7 +152,7 @@ from tradingagents.graph.trading\_graph import TradingAgentsGraph
 from tradingagents.default\_config import DEFAULT\_CONFIG
 
 config \= DEFAULT\_CONFIG.copy()
-config\["llm\_provider"\] \= "openai"        \# openai, google, anthropic, xai, deepseek, qwen, glm, openrouter, ollama, azure
+config\["llm\_provider"\] \= "openai"        \# openai, google, anthropic, xai, deepseek, qwen, qwen-cn, glm, glm-cn, minimax, minimax-cn, openrouter, ollama, azure
 config\["deep\_think\_llm"\] \= "gpt-5.4"     \# Model for complex reasoning
 config\["quick\_think\_llm"\] \= "gpt-5.4-mini" \# Model for quick tasks
 config\["max\_debate\_rounds"\] \= 2

@@ -213,6 +213,7 @@ Table of Contents
 -   **Searching**
     -   Algolia
 -   **Security**
+    -   IPASIS
     -   Snyk
 -   **Serverless app hosting**
     -   Catalyst AppSail

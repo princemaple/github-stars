@@ -1,6 +1,6 @@
 ---
 project: data-formulator
-stars: 15254
+stars: 15630
 description: 🪄 Create rich visualizations with AI 
 url: https://github.com/microsoft/data-formulator
 ---
@@ -17,15 +17,19 @@ url: https://github.com/microsoft/data-formulator
 News 🔥🔥🔥
 -----------
 
-\[03-02-2026\] **Data Formulator 0.7 (alpha)** — More charts, new experience, enterprise-ready
+\[05-11-2026\] **Data Formulator 0.7 (alpha 2)** — A new chapter for AI-powered data exploration
 
--   📊 **30 chart types** with a new semantic chart engine (area, streamgraph, candlestick, pie, radar, maps, and more).
--   💬 **Hybrid chat + data thread** — chat woven into the exploration timeline with lineage, previews, and reasoning.
--   🤖 **Unified `DataAgent`** replacing four separate agents, plus new recommendation and insight agents.
--   🏗️ **Workspace / Data Lake** — persistent, identity-based data management with local and Azure Blob backends.
--   🔒 **Security hardening** — code signing, sandboxed execution, authentication, and rate limiting.
--   📦 **UV-first build** — reproducible builds via `uv.lock`; `uv sync` + `uv run data_formulator`.
--   📝 Detailed writeup on the new architecture coming soon — stay tuned!
+-   🔌 **Data connectors** — first-class persistent connection to Superset, Kusto, Cosmos DB, MySQL, PostgreSQL, MSSQL, S3, Azure Blob, BigQuery, and more, with SSO, lazy catalog loading, search, and smart filters.
+-   💬 **Conversational agent with thread memory** — a unified `DataAgent` that weaves explanation, exploration, visualization, and recommendation into one fluid conversation, carrying context across turns so the agent stays in sync with your train of thought.
+-   🗂️ **Persistent session & workspace management** — identity-isolated workspaces with local and Azure Blob backends; sessions persist across restarts with timestamps and sort.
+-   📊 **Expressive visualization** — 30+ chart types via a new semantic chart engine (area, streamgraph, candlestick, pie, radar, maps, …), plus a chart style-refinement agent that turns rough charts into presentation-ready visuals: restyle in one click, refine typography, color, layout, and annotations through natural language.
+-   📚 **Knowledge distillation (experimental)** — agents distill reusable skills and experiences from your sessions into a shared knowledge library that informs future sessions.
+
+> Install the pre-release with `pip install --pre data-formulator` or pin `==0.7.0a2`.
+
+Tip
+
+**Are you a developer?** Join us to shape the future of AI-powered data exploration! We're looking for help with new agents, data connectors, chart templates, and more. Check out the Developers' Guide and our open issues.
 
 Previous Updates
 ----------------
@@ -47,145 +51,56 @@ Here are milestones that lead to the current design:
 -   **Data Extraction**: Parse data from images and text (demo)
 -   **Initial Release**: Blog | Video
 
-**View detailed update history**
-
--   \[07-10-2025\] Data Formulator 0.2.2: Start with an analysis goal
-    
-    -   Some key frontend performance updates.
-    -   You can start your exploration with a goal, or, tab and see if the agent can recommend some good exploration ideas for you. Demo
--   \[05-13-2025\] Data Formulator 0.2.1.3/4: External Data Loader
-    
-    -   We introduced external data loader class to make import data easier. Readme and Demo
-        -   Current data loaders: MySQL, Azure Data Explorer (Kusto), Azure Blob and Amazon S3 (json, parquet, csv).
-        -   \[07-01-2025\] Updated with: Postgresql, mssql.
-    -   Call for action link:
-        -   Users: let us know which data source you'd like to load data from.
-        -   Developers: let's build more data loaders.
--   \[04-23-2025\] Data Formulator 0.2: working with _large_ data 📦📦📦
-    
-    -   Explore large data by:
-        1.  Upload large data file to the local database (powered by DuckDB).
-        2.  Use drag-and-drop to specify charts, and Data Formulator dynamically fetches data from the database to create visualizations (with ⚡️⚡️⚡️ speeds).
-        3.  Work with AI agents: they generate SQL queries to transform the data to create rich visualizations!
-        4.  Anchor the result / follow up / create a new branch / join tables; let's dive deeper.
-    -   Checkout the demos at \[https://github.com/microsoft/data-formulator/releases/tag/0.2\]
-    -   Improved overall system performance, and enjoy the updated derive concept functionality.
--   \[03-20-2025\] Data Formulator 0.1.7: Anchoring ⚓︎
-    
-    -   Anchor an intermediate dataset, so that followup data analysis are built on top of the anchored data, not the original one.
-    -   Clean a data and work with only the cleaned data; create a subset from the original data or join multiple data, and then go from there. AI agents will be less likely to get confused and work faster. ⚡️⚡️
-    -   Check out the demos at \[https://github.com/microsoft/data-formulator/releases/tag/0.1.7\]
-    -   Don't forget to update Data Formulator to test it out!
--   \[02-20-2025\] Data Formulator 0.1.6 released!
-    
-    -   Now supports working with multiple datasets at once! Tell Data Formulator which data tables you would like to use in the encoding shelf, and it will figure out how to join the tables to create a visualization to answer your question. 🪄
-    -   Checkout the demo at \[https://github.com/microsoft/data-formulator/releases/tag/0.1.6\].
-    -   Update your Data Formulator to the latest version to play with the new features.
--   \[02-12-2025\] More models supported now!
-    
-    -   Now supports OpenAI, Azure, Ollama, and Anthropic models (and more powered by LiteLLM);
-    -   Models with strong code generation and instruction following capabilities are recommended (gpt-4o, claude-3-5-sonnet etc.);
-    -   You can store API keys in `.env` to avoid typing them every time (copy `.env.template` to `.env` and fill in your keys).
-    -   Let us know which models you have good/bad experiences with, and what models you would like to see supported! \[comment here\]
--   \[11-07-2024\] Minor fun update: data visualization challenges!
-    
-    -   We added a few visualization challenges with the sample datasets. Can you complete them all? \[try them out!\]
-    -   Comment in the issue when you did, or share your results/questions with others! \[comment here\]
--   \[10-11-2024\] Data Formulator python package released!
-    
-    -   You can now install Data Formulator using Python and run it locally, easily. \[check it out\].
-    -   Our Codespaces configuration is also updated for fast start up ⚡️. \[try it now!\]
-    -   New experimental feature: load an image or a messy text, and ask AI to parse and clean it for you(!). \[demo\]
--   \[10-01-2024\] Initial release of Data Formulator, check out our \[blog\] and \[video\]!
-    
-
 Overview
 --------
 
 **Data Formulator** is a Microsoft Research prototype for data exploration with visualizations powered by AI agents.
 
-Data Formulator enables analysts to iteratively explore and visualize data. Started with data in any format (screenshot, text, csv, or database), users can work with AI agents with a novel blended interface that combines _user interface interactions (UI)_ and _natural language (NL) inputs_ to communicate their intents, control branching exploration directions, and create reports to share their insights.
+Data Formulator enables analysts to explore data with visualizations. Started with data in any format (screenshot, text, csv, or database), you can work with AI agents with a novel blended interface that combines _user interface interactions (UI)_ and _natural language (NL) inputs_ to communicate their intents, control branching exploration directions, and create reports to share their insights.
 
 Get Started
 -----------
 
-Play with Data Formulator with one of the following options:
+Play with Data Formulator with one of the following options.
 
 -   **Option 1: Install via uv (recommended)**
     
     uv is an extremely fast Python package manager. If you have uv installed, you can run Data Formulator directly without any setup:
     
-    # Run data formulator directly (no install needed)
     uvx data\_formulator
     
-    Or install it in a project/virtual environment:
-    
-    # Install data\_formulator
-    uv pip install data\_formulator
-    
-    # Run data formulator
-    python -m data\_formulator
-    
-    Data Formulator will be automatically opened in the browser at http://localhost:5567.
+    Run `uvx data_formulator --help` to see all available options, such as custom port, sandboxing mode, and data storage location.
     
 -   **Option 2: Install via pip**
     
     Use pip for installation (recommend: install it in a virtual environment).
     
-    # install data\_formulator
-    pip install data\_formulator
-    
-    # Run data formulator with this command
-    python -m data\_formulator
+    pip install data\_formulator # install
+    python -m data\_formulator # run
     
     Data Formulator will be automatically opened in the browser at http://localhost:5567.
     
-    _you can specify the port number (e.g., 8080) by `python -m data_formulator --port 8080` if the default port is occupied._
+-   **Option 3: Run with Docker**
     
--   **Option 3: Codespaces (5 minutes)**
+    docker compose up --build
     
-    You can also run Data Formulator in Codespaces; we have everything pre-configured. For more details, see CODESPACES.md.
+    Open http://localhost:5567 in your browser. To stop, press `Ctrl+C` or run `docker compose down`.
     
--   **Option 4: Working in the developer mode**
+-   **Option 4: Codespaces**
     
-    You can build Data Formulator locally if you prefer full control over your development environment and develop your own version on top. For detailed instructions, refer to DEVELOPMENT.md.
+    You can run Data Formulator in Codespaces; we have everything pre-configured. For more details, see CODESPACES.md.
+    
+-   **Option 5: Working as developer**
+    
+    You can build Data Formulator locally and develop your own version. Check out details in DEVELOPMENT.md.
     
 
 Using Data Formulator
 ---------------------
 
-### Load Data
-
-Besides uploading csv, tsv or xlsx files that contain structured data, you can ask Data Formulator to extract data from screenshots, text blocks or websites, or load data from databases use connectors. Then you are ready to explore.
-
-### Explore Data
-
-There are four levels to explore data based depending on whether you want more vibe or more control:
-
--   Level 1 (most control): Create charts with UI via drag-and-drop, if all fields to be visualized are already in the data.
--   Level 2: Specify chart designs with natural language + NL. Describe how new fields should be visualized in your chart, AI will automatically transform data to realize the design.
--   Level 3: Get recommendations: Ask AI agents to recommend charts directly from NL descriptions, or even directly ask for exploration ideas.
--   Level 4 (most vibe): In agent mode, provide a high-level goal and let AI agents automatically plan and explore data in multiple turns. Exploration threads will be created automatically.
+Besides uploading csv, tsv or xlsx files that contain structured data, you can ask Data Formulator to extract data from screenshots, text blocks or websites, or load data from databases use connectors. Then you are ready to explore. Ask visualizaiton questions, edit charts, or delegate some exploration tasks to agents. Then, create reports to share your insights.
 
 data-formulator-tutorial.mp4
-
--   Level 5: In practice, leverage all of them to keep up with both vibe and control!
-
-### Create Reports
-
-Use the report builder to compose a report of the style you like, based on selected charts. Then share the reports to others!
-
-Developers' Guide
------------------
-
-Follow the developers' instructions to build your new data analysis tools on top of Data Formulator.
-
-Help wanted:
-
--   Add more database connectors (#156)
--   Scaling up messy data extractor: more document types and larger files.
--   Adding more chart templates (e.g., maps).
--   other ideas?
 
 Research Papers
 ---------------

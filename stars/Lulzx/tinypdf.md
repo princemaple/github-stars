@@ -1,6 +1,6 @@
 ---
 project: tinypdf
-stars: 1670
+stars: 1761
 description: Minimal PDF creation library. <400 LOC, zero dependencies, makes real PDFs.
 url: https://github.com/Lulzx/tinypdf
 ---
@@ -140,6 +140,25 @@ Automatic word wrapping and pagination included.
 
 writeFileSync('output.pdf', pdf)
 
+### Stream large PDFs
+
+For documents too large to fit in memory, use `buildStream()` to emit a `ReadableStream<Uint8Array>` one object at a time.
+
+import { pdf } from 'tinypdf'
+
+const doc \= pdf()
+for (let i \= 0; i < 10\_000; i++) {
+  doc.page((ctx) \=> ctx.text(\`Page ${i + 1}\`, 50, 750, 12))
+}
+
+// Write to disk (Bun)
+await Bun.write('huge.pdf', doc.buildStream())
+
+// Or serve as an HTTP response
+return new Response(doc.buildStream(), {
+  headers: { 'Content-Type': 'application/pdf' },
+})
+
 * * *
 
 API
@@ -149,6 +168,7 @@ pdf()                                      // create document
 doc.page(callback)                         // add page (612×792 default)
 doc.page(width, height, callback)          // add page with custom size
 doc.build()                                // returns Uint8Array
+doc.buildStream()                          // returns ReadableStream<Uint8Array>
 
 ctx.text(str, x, y, size, options?)        // options: { color, align, width }
 ctx.rect(x, y, w, h, fill)                 // filled rectangle

@@ -1,6 +1,6 @@
 ---
 project: setup-ipsec-vpn
-stars: 27798
+stars: 27841
 description: Set up your own IPsec VPN server in just a few minutes, with IPsec/L2TP, Cisco IPsec and IKEv2. Supports Ubuntu, Debian, CentOS/RHEL, Amazon Linux, Alpine and Raspberry Pi. Includes client config and management scripts.
 url: https://github.com/hwdsl2/setup-ipsec-vpn
 ---
@@ -26,7 +26,8 @@ We will use Libreswan as the IPsec server, and xl2tpd as the L2TP provider.
 
 **Also available:**
 
--   Docker: WireGuard, OpenVPN, IPsec VPN, Headscale, Self-hosted AI Stack
+-   Docker VPN: WireGuard, OpenVPN, IPsec VPN, Headscale
+-   Docker AI: Self-hosted AI Stack
 -   📖 Book: Privacy Tools in the Age of AI, Build Your Own VPN Server
 
 Quick start

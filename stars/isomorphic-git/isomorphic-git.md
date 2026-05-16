@@ -1,6 +1,6 @@
 ---
 project: isomorphic-git
-stars: 8210
+stars: 8225
 description: A pure JavaScript implementation of git for node and browsers!
 url: https://github.com/isomorphic-git/isomorphic-git
 ---
@@ -284,6 +284,8 @@ Acknowledgments
 Isomorphic-git would not have been possible without the pioneering work by @creationix and @chrisdickinson. Git is a tricky binary mess, and without their examples (and their modules!) we would not have been able to come even close to finishing this. They are geniuses ahead of their time.
 
 Cross-browser device testing is provided by:
+
+Code Review AI provided by:
 
 Contributors
 ------------
@@ -627,34 +629,6 @@ Thanks goes to these wonderful people (emoji key):
 📦 📓
 
   
-**Patrick Kranz**  
-💻 📖 ⚠️
-
-  
-**Luke Cotter**  
-💻
-
-  
-**Tom Larkworthy**  
-📖
-
-  
-**Mostafa Mahmoud**  
-💻 ⚠️ 💬
-
-  
-**Aniket Bhosale**  
-💻 📖 ⚠️
-
-  
-**Mathias Nisted Velling**  
-💻 ⚠️
-
-  
-**acandoo**  
-📦 📓
-
-  
 **Bekatan Satyev**  
 💻 ⚠️
 
@@ -685,6 +659,14 @@ Thanks goes to these wonderful people (emoji key):
   
 **N0zoM1z0**  
 🛡️
+
+  
+**Amadeus Maximilian**  
+💻 🐛
+
+  
+**Alexandru Georoceanu**  
+💻
 
 This project follows the all-contributors specification. Contributions of any kind welcome!
 

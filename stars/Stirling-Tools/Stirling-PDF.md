@@ -1,6 +1,6 @@
 ---
 project: Stirling-PDF
-stars: 78460
+stars: 78829
 description: #1 PDF Application on GitHub that lets you edit PDFs on any device anywhere
 url: https://github.com/Stirling-Tools/Stirling-PDF
 ---

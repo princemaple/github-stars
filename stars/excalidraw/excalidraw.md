@@ -1,6 +1,6 @@
 ---
 project: excalidraw
-stars: 122836
+stars: 123363
 description: Virtual whiteboard for sketching hand-drawn like diagrams
 url: https://github.com/excalidraw/excalidraw
 ---

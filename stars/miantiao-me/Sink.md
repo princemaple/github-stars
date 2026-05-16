@@ -1,6 +1,6 @@
 ---
 project: Sink
-stars: 6606
+stars: 6635
 description: ⚡ A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.
 url: https://github.com/miantiao-me/Sink
 ---
@@ -18,16 +18,15 @@ url: https://github.com/miantiao-me/Sink
 -   **🔗 URL Shortening:** Compress your URLs to their minimal length.
 -   **📈 Analytics:** Monitor link analytics and gather insightful statistics.
 -   **☁️ Serverless:** Deploy without the need for traditional servers.
--   **🎨 Customizable Slug:** Support for personalized slugs and case sensitivity.
--   **🪄 AI Slug:** Leverage AI to generate slugs.
--   **⏰ Link Expiration:** Set expiration dates for your links.
--   **📱 Device Routing:** Redirect iOS/Android users to different URLs (App Store links).
--   **🖼️ OpenGraph Preview:** Custom social media previews with title, description, and image.
--   **📊 Real-time Analytics:** Live 3D globe visualization and real-time event logs.
+-   **🎨 Customizable Slug:** Support personalized slugs, UTM parameters, and case sensitivity.
+-   **🪄 AI Assistance:** Generate slugs and OpenGraph metadata from page content.
+-   **⏰ Link Control:** Set expirations, passwords, and unsafe-link warning pages.
+-   **📱 Smart Routing:** Redirect visitors by device or country.
+-   **🖼️ Social Preview:** Customize social previews with titles, descriptions, and images.
+-   **📊 Real-time Analytics:** Live 3D globe and real-time event logs.
 -   **🔲 QR Code:** Generate QR codes for your short links.
--   **📦 Import/Export:** Bulk migration via JSON/CSV files.
--   **🌍 Multi-language:** Full i18n support for the dashboard.
--   **🌙 Dark Mode:** Light, dark, and system theme support.
+-   **📦 Import/Export:** Bulk link migration via JSON and access analytics via CSV.
+-   **🌍 Multi-language:** Full i18n support for dashboard and redirect pages.
 
 🪧 Demo
 -------
@@ -61,7 +60,7 @@ We welcome your contributions and PRs.
 -   Enhanced Link Management (with Cloudflare D1)
 -   Analytics Enhancements (Support for merging filter conditions)
 -   Dashboard Performance Optimization (Infinite loading)
--   Units Test
+-   API, migration, backup, and redirect tests
 
 🏗️ Deployment
 --------------

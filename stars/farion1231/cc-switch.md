@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 72620
+stars: 78952
 description: A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Gemini CLI & Hermes Agent. Only official website: ccswitch.io
 url: https://github.com/farion1231/cc-switch
 ---
@@ -60,8 +60,6 @@ Thanks to Micu API for sponsoring this project! Micu API is a global LLM relay s
 Thanks to LemonData for sponsoring this project! LemonData is a high-performance AI API aggregation platform — one API key for 300+ models including GPT, Claude, Gemini, DeepSeek, and more. All models priced 30–70% below official rates with auto-failover, smart routing, and unlimited concurrency. New users get $1 free credit instantly upon registration — sign up via this linkto claim your bonus and start building right away!
 
 Thanks to CTok.ai for sponsoring this project! CTok.ai is dedicated to building a one-stop AI programming tool service platform. We offer professional Claude Code packages and technical community services, with support for Google Gemini and OpenAI Codex. Through carefully designed plans and a professional tech community, we provide developers with reliable service guarantees and continuous technical support, making AI-assisted programming a true productivity tool. Click here to register!
-
-Thanks to LionCC for sponsoring this project! LionCC is built for Vibe Coders who pursue the ultimate development experience. We provide stable, low-latency, and competitively priced computing services for Claude Code, Codex, and OpenClaw, saving up to 50% in costs. After registering, add customer service on WeChat (HSQBJ088888888) with the code "cc-switch" to receive $10 in free credits (10 million tokens). For other collaborations, follow the blog @LionCC.ai. Click here to register!
 
 This project is sponsored by Claude API. Direct Claude API access — connect Claude Code and Agent apps in 3 minutes. New users can claim a free trial credit.Powered by official Anthropic API keys + AWS Bedrock official channels. No reverse engineering, no model degradation. Full support for Opus / Sonnet / Haiku model lineup, with official capabilities preserved including Tool Use, 1M context window, and more. Built for Claude Code power users, Agent engineers, and enterprise engineering teams. Invoicing and dedicated team support available. Click here to register!
 
@@ -206,7 +204,6 @@ Download the latest `CC-Switch-v{version}-Windows.msi` installer or `CC-Switch-v
 
 **Method 1: Install via Homebrew (Recommended)**
 
-brew tap farion1231/ccswitch
 brew install --cask cc-switch
 
 Update:

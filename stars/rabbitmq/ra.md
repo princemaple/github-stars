@@ -136,7 +136,7 @@ Use `ra:leader_query/{2,3}` to perform a leader query:
 %% find current Raft cluster leader
 {ok, \_Members, LeaderId} \= ra:members(quick\_start),
 %% perform a leader query on the leader node
-QueryFun \= fun(StateVal) -> StateVal end,
+QueryFun \= {ra\_lib, id, \[\]},
 {ok, {\_TermMeta, State}, LeaderId1} \= ra:leader\_query(LeaderId, QueryFun).
 
 Similarly, use `ra:local_query/{2,3}` to perform a local query:

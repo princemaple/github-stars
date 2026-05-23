@@ -1,6 +1,6 @@
 ---
 project: volt
-stars: 133
+stars: 139
 description: Elixir-native frontend build tool — dev server, HMR, and production builds for JavaScript, TypeScript, Vue SFCs, and CSS. No Node.js required.
 url: https://github.com/elixir-volt/volt
 ---
@@ -24,7 +24,7 @@ Phoenix ships with esbuild and a Tailwind CLI as separate binaries downloaded at
 
 Volt replaces both with a single Elixir dep. `mix phx.server` starts the frontend toolchain automatically, rebuilding Tailwind in ~40ms on template changes and hot-swapping JS modules via HMR. Compilation errors show as a browser overlay. Production builds finish in under 100ms.
 
-You also get features you'd expect from Vite: code splitting, CSS Modules, `import.meta.glob()`, `.env` variables, static asset imports, import aliases, and `import.meta.hot` with state preservation.
+You also get features you'd expect from Vite: code splitting, CSS Modules, `import.meta.glob()`, dynamic import variables, `.env` variables, static asset imports, import aliases, and `import.meta.hot` with state preservation.
 
 The pieces integrate because they run in one toolchain: template edits can trigger incremental Tailwind rebuilds, browser console output can flow back to your Elixir terminal, and project-specific JS/TS lint rules can be written as Elixir modules. See the Features guide for the full list.
 
@@ -58,9 +58,10 @@ config :volt,
     \]
   \]
 
-`Volt.entry_path/1` resolves to the source file in dev and the content-hashed path in production, like `~p` for JS:
+`Volt.static_path/2` resolves Volt-managed assets to source files in dev and content-hashed paths in production:
 
-<script defer phx-track-static type\="module" src\={Volt.entry\_path(@endpoint)}\></script\>
+<link phx-track-static rel\="stylesheet" href\={Volt.static\_path(@endpoint, "/assets/css/app.css")} />
+<script defer phx-track-static type\="module" src\={Volt.static\_path(@endpoint, "/assets/js/app.js")}\></script\>
 
 Production builds
 -----------------
@@ -77,7 +78,7 @@ Building "assets/js/app.ts"...
 Built in 15ms
 ```
 
-Tree-shaking, minification, code splitting, content-hashed filenames, and source maps. Ready for `mix phx.digest`.
+Tree-shaking, minification, code splitting, configurable env prefixes and asset URL prefixes, source maps, content-hashed JavaScript/CSS/assets, and manifest output. Ready for `mix phx.digest`.
 
 Framework support
 -----------------
@@ -97,8 +98,9 @@ JS/TS formatting and linting run as Rust NIFs. `mix format` handles Elixir and J
 mix format           # Elixir + JS/TS
 mix volt.lint        # 650+ oxlint rules
 mix volt.js.check    # format + lint for CI
+mix volt.js.check --type-aware --type-check
 
-Project-specific lint rules can be written in Elixir with `OXC.Lint.Rule`.
+Project-specific lint rules can be written in Elixir with `OXC.Lint.Rule`. Type-aware TypeScript rules can run through `tsgolint` with `--type-aware`.
 
 Plugins
 -------

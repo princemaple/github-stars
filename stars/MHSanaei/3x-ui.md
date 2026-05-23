@@ -1,6 +1,6 @@
 ---
 project: 3x-ui
-stars: 37373
+stars: 37960
 description: Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit (Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun) 
 url: https://github.com/MHSanaei/3x-ui
 ---
@@ -21,6 +21,35 @@ Quick Start
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 
 For full documentation, please visit the project Wiki.
+
+Database Options
+----------------
+
+3X-UI supports two backends, chosen during the install:
+
+-   **SQLite** (default) — a single file at `/etc/x-ui/x-ui.db`. Zero setup, ideal for small/medium deployments.
+-   **PostgreSQL** — recommended for high client counts or multi-node setups. The installer can install PostgreSQL locally for you, or accept a DSN to an existing server.
+
+At runtime the backend is selected via env vars (the installer writes these to `/etc/default/x-ui` for you):
+
+```
+XUI_DB_TYPE=postgres
+XUI_DB_DSN=postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable
+```
+
+### Migrating an existing SQLite install to PostgreSQL
+
+x-ui migrate-db --dsn "postgres://xui:password@127.0.0.1:5432/xui?sslmode=disable"
+# then set XUI\_DB\_TYPE and XUI\_DB\_DSN in /etc/default/x-ui and restart:
+systemctl restart x-ui
+
+The source SQLite file is left untouched; remove it manually once you have verified the new backend.
+
+### Docker
+
+The default `docker compose up -d` keeps using SQLite. To run with the bundled PostgreSQL service, uncomment the two `XUI_DB_*` env lines in `docker-compose.yml` and start with the profile:
+
+docker compose --profile postgres up -d
 
 A Special Thanks to
 -------------------

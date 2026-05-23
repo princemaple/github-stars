@@ -1,6 +1,6 @@
 ---
 project: srs
-stars: 28829
+stars: 28881
 description: SRS is a simple, high-efficiency, real-time media server supporting RTMP, WebRTC, HLS, HTTP-FLV, HTTP-TS, SRT, MPEG-DASH, and GB28181, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711.
 url: https://github.com/ossrs/srs
 ---
@@ -8,7 +8,7 @@ url: https://github.com/ossrs/srs
 SRS(Simple Realtime Server)
 ===========================
 
-SRS/7.0 (Kai) is a simple, high-efficiency, and real-time video server, supporting RTMP/WebRTC/HLS/HTTP-FLV/SRT/MPEG-DASH/GB28181, Linux/macOS, X86\_64/ARMv7/AARCH64/M1/RISCV/LOONGARCH/MIPS, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711, and essential features.
+SRS/8.0 (Free) is a simple, high-efficiency, and real-time video server, supporting RTMP/WebRTC/HLS/HTTP-FLV/SRT/MPEG-DASH/GB28181, Linux/macOS, X86\_64/ARMv7/AARCH64/M1/RISCV/LOONGARCH/MIPS, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711, and essential features.
 
 > Note: For more details on the single-node architecture for SRS, please visit the following link.
 
@@ -180,6 +180,3 @@ Dockers
 -------
 
 Please read DOCKERS.
-
-Beijing, 2013.10  
-Winlin

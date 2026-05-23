@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 120656
+stars: 123411
 description: 🔥 Search, scrape, and clean the web for AI agents.
 url: https://github.com/firecrawl/firecrawl
 ---

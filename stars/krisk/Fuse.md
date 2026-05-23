@@ -1,6 +1,6 @@
 ---
 project: Fuse
-stars: 20254
+stars: 20269
 description: Lightweight fuzzy-search, in JavaScript
 url: https://github.com/krisk/Fuse
 ---
@@ -121,6 +121,7 @@ fuse.search('express midleware rout')
 -   **Relevance ranking** — rare terms are weighted higher than common ones
 -   **Word order independent** — `"patterns javascript"` and `"javascript patterns"` return identical results
 -   **No query length limit** — long multi-word queries work naturally since each term is searched separately
+-   **AND or OR** — `tokenMatch: 'all'` returns only records matching _every_ word (filtering); the default `'any'` matches any word
 
 Available in the full build. See TOKEN\_SEARCH.md for details and performance benchmarks.
 
@@ -178,13 +179,13 @@ Min + gzip
 
 Fuzzy + Extended + Logical + Token search
 
-~8 kB
+~8.6 kB
 
 **Basic**
 
 Fuzzy search only
 
-~6.5 kB
+~6.8 kB
 
 Use the basic build if you only need fuzzy search and want the smallest bundle size.
 
@@ -192,6 +193,11 @@ Documentation
 -------------
 
 For the full API reference, configuration options, scoring theory, and interactive demos, visit **fusejs.io**.
+
+Official ports
+--------------
+
+-   **fuse-swift**: Swift port for iOS, macOS, tvOS, watchOS, visionOS, and Linux. Byte-equivalent results, idiomatic Swift API, syncs with each upstream release. Currently in 2.0.0-rc.1.
 
 Supporting Fuse.js
 ------------------

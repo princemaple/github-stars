@@ -1,6 +1,6 @@
 ---
 project: simple-icons
-stars: 25100
+stars: 25125
 description: SVG icons for popular brands
 url: https://github.com/simple-icons/simple-icons
 ---
@@ -144,6 +144,10 @@ The below are known extensions to third-party tools.
 Extension
 
 Author
+
+Await widget
+
+@LitoMore
 
 Blender add-on
 

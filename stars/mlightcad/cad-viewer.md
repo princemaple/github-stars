@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 609
+stars: 625
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -11,6 +11,8 @@ CAD-Viewer
 简体中文
 
 cad-viewer is `the first web-based DXF/DWG viewer and editor in the world that operates entirely in browser, without relying on any backend services`. By performing DWG/DXF parsing, geometry processing, and rendering directly in the browser, cad-viewer enables true serverless CAD viewing and editing, ideal for cloud apps, offline usage, and privacy-sensitive workflows.
+
+It also offers something you will rarely find in other CAD viewers—**one-click export to a single, self-contained HTML file**. The downloaded `.html` embeds the drawing snapshot and a lightweight viewer runtime, so recipients can open, pan, zoom, toggle layers, and measure distances in any modern browser with **no CAD app, no server, and no install**. Most desktop and web CAD viewers only let you view inside their own product; cad-viewer turns a live drawing into a portable, offline artifact you can email, archive, or drop on a static file host—ideal for sharing with clients, compliance archives, and air-gapped workflows.
 
 -   **🌐 Live Demo**
 -   **🌐 API Docs**
@@ -33,6 +35,7 @@ Features
 -   **Enhanced data security** - Files never leave your device, ensuring complete privacy
 -   **Easy integration** - No server setup or backend infrastructure needed
 -   Modular architecture for seamless third-party integration
+-   **Export to offline HTML** — Export the current drawing as one self-contained `.html` file with an embedded viewer (pan/zoom, zoom extents, layers, distance measure, EN/ZH UI). Opens offline in any browser; no cad-viewer instance or backend required.
 -   Offline and online editing workflows
 -   THREE.js 3D rendering engines with advanced optimization techniques
 -   Designed for extensibility and integration with platforms like CMS, Notion, and WeChat
@@ -42,8 +45,8 @@ Getting Started
 
 ### Prerequisites
 
--   Node.js >= 18
--   pnpm >= 8
+-   Node.js >= 24
+-   pnpm >= 10
 
 ### Installation
 
@@ -132,6 +135,7 @@ Legend:
 
 -   DXF loading
 -   DWG loading
+-   Export to self-contained offline HTML (embedded viewer)
 -   Large file streaming / incremental loading
 -   ⏳ File version compatibility (R12–Latest)
 

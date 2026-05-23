@@ -1,6 +1,6 @@
 ---
 project: BroadcastChannel
-stars: 2009
+stars: 2016
 description: Turn your Telegram Channel into a MicroBlog.
 url: https://github.com/miantiao-me/BroadcastChannel
 ---

@@ -1,6 +1,6 @@
 ---
 project: calendar_interval
-stars: 72
+stars: 71
 description: Functions for working with calendar intervals
 url: https://github.com/wojtekmach/calendar_interval
 ---

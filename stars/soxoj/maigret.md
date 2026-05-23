@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 28990
+stars: 30048
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -16,7 +16,7 @@ Maigret
 
   
 
-**Maigret** collects a dossier on a person **by username only**, checking for accounts on a huge number of sites and gathering all the available information from web pages. No API keys required.
+**Maigret** collects a dossier on a person **by username only**, checking for accounts on a huge number of sites and gathering all the available information from web pages. No API keys required. **AI profiling (demo)**.
 
 Contents
 --------
@@ -84,7 +84,17 @@ Don't want to install anything? Use the community Telegram bot.
 
 ### Windows
 
-Download a standalone EXE from Releases. Video guide: https://youtu.be/qIgwTZOmMmM.
+Download `maigret_standalone.exe` from Releases. You can launch it two ways:
+
+-   **Double-click it** — Maigret will ask for a username, run a default search, and wait at the end so the report links stay visible.
+-   **Run it from a terminal** — open Command Prompt (press `Win+R`, type `cmd`, hit Enter) or PowerShell to pass extra options:
+
+cd %USERPROFILE%\\Downloads
+maigret\_standalone.exe USERNAME
+maigret\_standalone.exe USERNAME --html       :: also save an HTML report
+maigret\_standalone.exe --help                :: list all options
+
+Video guide: https://youtu.be/qIgwTZOmMmM.
 
 ### Cloud Shells
 

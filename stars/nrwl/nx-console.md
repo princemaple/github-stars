@@ -1,6 +1,6 @@
 ---
 project: nx-console
-stars: 1397
+stars: 1406
 description: Nx Console is the user interface for Nx & Lerna.
 url: https://github.com/nrwl/nx-console
 ---
@@ -17,7 +17,7 @@ Why Nx Console?
 
 Developers use both command-line tools and user interfaces. They commit in the terminal, but resolve conflicts in Visual Studio Code or WebStorm. They use the right tool for the job.
 
-Nx Console is that tool. It helps developers stay in the flow, provides visual workflows, enhances your AI chats and more.
+Nx Console is that tool. It helps developers stay in the flow, provides visual workflows, and enhances your AI chats and more.
 
 Installation
 ------------

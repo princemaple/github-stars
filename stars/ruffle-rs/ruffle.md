@@ -1,6 +1,6 @@
 ---
 project: ruffle
-stars: 18074
+stars: 18098
 description: A Flash Player emulator written in Rust
 url: https://github.com/ruffle-rs/ruffle
 ---
@@ -61,11 +61,11 @@ The following are typical dependencies for Linux:
 
 -   Ubuntu/Debian:
     
-    sudo apt install pkg-config libasound2-dev libudev-dev default-jre-headless g++
+    sudo apt install pkg-config libasound2-dev libudev-dev libfontconfig-dev default-jre-headless g++
     
 -   Fedora/RHEL:
     
-    sudo dnf install pkgconf-pkg-config alsa-lib-devel systemd-devel java-latest-openjdk-headless gcc-c++
+    sudo dnf install pkgconf-pkg-config alsa-lib-devel systemd-devel fontconfig-devel java-latest-openjdk-headless gcc-c++
     
 
 ### Desktop

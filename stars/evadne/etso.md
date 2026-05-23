@@ -1,6 +1,6 @@
 ---
 project: etso
-stars: 384
+stars: 385
 description: Ecto 3 adapter allowing use of Ecto schemas held in ETS tables
 url: https://github.com/evadne/etso
 ---

@@ -1,6 +1,6 @@
 ---
 project: hammer
-stars: 915
+stars: 914
 description: An Elixir rate-limiter with pluggable backends
 url: https://github.com/ExHammer/hammer
 ---
@@ -44,6 +44,10 @@ Hammer.Atomic.FixWindow
 
 Hammer.Atomic
 
+Hammer.Atomic.FixWindowPerKey
+
+Hammer.Atomic
+
 Hammer.Atomic.LeakyBucket
 
 Hammer.Atomic
@@ -53,6 +57,10 @@ Hammer.Atomic.TokenBucket
 Hammer.Atomic
 
 Hammer.ETS.FixWindow
+
+Hammer.ETS
+
+Hammer.ETS.FixWindowPerKey
 
 Hammer.ETS
 
@@ -109,6 +117,14 @@ Here's a comparison of the different rate limiting algorithms to help you choose
 -   Potential edge case: Up to 2x requests possible at window boundaries
 -   Best for: Basic API limits where occasional bursts are acceptable
 
+### Fixed Window Per Key
+
+-   Same low overhead and one-entry-per-key footprint as Fixed Window
+-   Each key's window is anchored to its first hit, not a globally aligned wall-clock boundary
+-   2x boundary burst is still possible per key, but boundaries are not globally synchronized so they cannot be exploited deterministically
+-   Same semantics as the common Redis `INCR + EXPIRE NX` pattern
+-   Best for: Basic rate limiting where globally-synchronized boundaries are undesirable
+
 ### Leaky Bucket
 
 -   Provides smooth, consistent request rate
@@ -133,6 +149,7 @@ Here's a comparison of the different rate limiting algorithms to help you choose
 Selection Guide:
 
 -   Need simple implementation? → Fixed Window
+-   Want Fixed Window simplicity but without globally-synchronized boundaries? → Fixed Window Per Key
 -   Need smooth output rate? → Leaky Bucket
 -   Need burst tolerance? → Token Bucket
 -   Need precise limits? → Sliding Window

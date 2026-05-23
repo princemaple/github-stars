@@ -1,6 +1,6 @@
 ---
 project: transformers
-stars: 160665
+stars: 160908
 description: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. 
 url: https://github.com/huggingface/transformers
 ---
@@ -146,7 +146,7 @@ Why should I use Transformers?
     
     -   Share trained models instead of training from scratch.
     -   Reduce compute time and production costs.
-    -   Dozens of model architectures with 1M+ pretrained checkpoints across all modalities.
+    -   Hundreds of model architectures with 1M+ pretrained checkpoints across all modalities.
 3.  Choose the right framework for every part of a model's lifetime:
     
     -   Train state-of-the-art models in 3 lines of code.
@@ -240,6 +240,6 @@ We now have a paper you can cite for the 🤗 Transformers library:
     year = "2020",
     address = "Online",
     publisher = "Association for Computational Linguistics",
-    url = "https://www.aclweb.org/anthology/2020.emnlp-demos.6",
+    url = "https://aclanthology.org/2020.emnlp-demos.6/",
     pages = "38--45"
 }

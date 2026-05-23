@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 60131
+stars: 60520
 description: The all-in-one AI productivity accelerator. On device and privacy first with no annoying setup or configuration.
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -24,15 +24,17 @@ AnythingLLM is the all-in-one AI application that lets you build a private, full
 
 AnythingLLM supports multiple users as well where you can control the access and experience per user without compromising the security or privacy of the instance or your intellectual property.
 
-Cool features of AnythingLLM
+Cool Features of AnythingLLM
 ----------------------------
 
--   Scheduled Tasks
+-   Dynamic Model Routing - Automatically route chats to the best provider & model for the conversation based on rules you define.
+-   Automatic & User Managed Memories - Have your LLM remember important information about you or your workspace.
+-   Scheduled Tasks - Run recurring tasks or prompts on a cron schedule with full agent capabilities.
 -   Intelligent Skill Selection Enable **unlimited** tools for your models while reducing token usage by up to 80% per query
--   **No-code AI Agent builder**
--   **Full MCP-compatibility**
--   **Multi-modal support (both closed and open-source LLMs!)**
--   **Custom AI Agents**
+-   No-code AI Agent builder
+-   MCP-compatibility
+-   Multi-modal support (both closed and open-source LLMs!)
+-   Custom AI Agents
 -   👤 Multi-user instance support and permissioning _Docker version only_
 -   🦾 Agents inside your workspace (browse the web, etc)
 -   💬 Custom Embeddable Chat widget for your website _Docker version only_
@@ -84,6 +86,7 @@ Cool features of AnythingLLM
 -   PrivateModeAI (chat models)
 -   SambaNova Cloud (chat models)
 -   Lemonade by AMD
+-   Minimax
 
 **Embedder models:**
 

@@ -1,6 +1,6 @@
 ---
 project: neko
-stars: 20940
+stars: 20971
 description: A self hosted virtual browser that runs in docker and uses WebRTC.
 url: https://github.com/m1k1o/neko
 ---

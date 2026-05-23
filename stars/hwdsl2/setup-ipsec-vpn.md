@@ -1,6 +1,6 @@
 ---
 project: setup-ipsec-vpn
-stars: 27841
+stars: 27882
 description: Set up your own IPsec VPN server in just a few minutes, with IPsec/L2TP, Cisco IPsec and IKEv2. Supports Ubuntu, Debian, CentOS/RHEL, Amazon Linux, Alpine and Raspberry Pi. Includes client config and management scripts.
 url: https://github.com/hwdsl2/setup-ipsec-vpn
 ---
@@ -445,6 +445,11 @@ Get your computer or device to use the VPN. Please refer to:
 **Read 📖 VPN book to access extra content.**
 
 Enjoy your very own VPN! ✨🎉🚀✨
+
+Community
+---------
+
+-   Discussions and updates: r/selfhostedstack
 
 Important notes
 ---------------

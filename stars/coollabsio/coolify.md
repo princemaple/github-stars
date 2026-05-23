@@ -1,6 +1,6 @@
 ---
 project: coolify
-stars: 55281
+stars: 55801
 description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
@@ -72,7 +72,7 @@ Thank you so much!
 -   MVPS - Cheap VPS servers at the highest possible quality
 -   SerpAPI - Google Search API — Scrape Google and other search engines from our fast, easy, and complete API
 -   ScreenshotOne - Screenshot API for devs
--   PrivateAlps - Cloud Services Provider, VPS, servers Infrastructure for people who care about privacy and control
+-   PrivateAlps - Cloud Services Provider, VPS, servers infrastructure for people who care about privacy and control
 
 ### Big Sponsors
 
@@ -81,13 +81,13 @@ Thank you so much!
 -   Arcjet - Advanced web security and performance solutions
 -   BC Direct - Your trusted technology consulting partner
 -   Blacksmith - Infrastructure automation platform
+-   Capture.page - Fast & Reliable Screenshot API for Developers
 -   Context.dev - API to personalize your product with logos, colors, and company info from any domain
 -   ByteBase - Database CI/CD and Security at Scale
 -   CodeRabbit - Cut Code Review Time & Bugs in Half
 -   COMIT - New York Times award–winning contractor
 -   CompAI - Open source compliance automation platform
 -   Convex - Open-source reactive database for web app developers
--   CubePath - Dedicated Servers & Instant Deploy
 -   Darweb - 3D CPQ solutions for ecommerce design
 -   Dataforest Cloud - Deploy cloud servers as seeds independently in seconds. Enterprise hardware, premium network, 100% made in Germany.
 -   Formbricks - The open source feedback platform
@@ -99,6 +99,7 @@ Thank you so much!
 -   Juxtdigital - Digital PR & AI Authority Building Agency
 -   LiquidWeb - Premium managed hosting solutions
 -   Logto - The better identity infrastructure for developers
+-   LumaDock - Fast and reliable virtual server hosting
 -   Macarne - Best IP Transit & Carrier Ethernet Solutions for Simplified Network Connectivity
 -   Mobb - Secure Your AI-Generated Code to Unlock Dev Productivity
 -   PetroSky Cloud - Open source cloud deployment solutions

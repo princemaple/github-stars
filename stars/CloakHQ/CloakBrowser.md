@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 12583
+stars: 19508
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -23,7 +23,7 @@ _Cloudflare Turnstile — 3 live tests passing (headed mode, macOS)_
 Drop-in Playwright/Puppeteer replacement for Python and JavaScript.  
 Same API, same code — just swap the import. **3 lines of code, 30 seconds to unblock.**
 
--   **49 source-level C++ patches** — canvas, WebGL, audio, fonts, GPU, screen, WebRTC, network timing, automation signals, CDP input behavior
+-   **58 source-level C++ patches** — canvas, WebGL, audio, fonts, GPU, screen, WebRTC, network timing, automation signals, CDP input behavior
 -   **`humanize=True`** — human-like mouse curves, keyboard timing, and scroll patterns. One flag, behavioral detection passes
 -   **0.9 reCAPTCHA v3 score** — human-level, server-verified
 -   **Passes Cloudflare Turnstile**, FingerprintJS, BrowserScan — tested against 30+ detection sites
@@ -103,18 +103,20 @@ Open http://localhost:8080. Create a profile. Click **Launch**. Done.
 
 * * *
 
-Latest: v0.3.28 (Chromium 146.0.7680.177.4)
+Latest: v0.3.30 (Chromium 146.0.7680.177.5)
 -------------------------------------------
 
--   **`launch_context_async()`** — async counterpart to `launch_context()`. Forwards kwargs to `browser.new_context()` for `storage_state`, `permissions`, `extra_http_headers` without a persistent profile folder.
--   **JS `contextOptions` escape hatch** — forward arbitrary options (including `storageState`) to Playwright's `newContext()` from `launchContext()` / `launchPersistentContext()`.
--   **Native SOCKS5 proxy** — `proxy="socks5://user:pass@host:port"` works directly in all launch functions, Python + JS. QUIC/HTTP3 tunnels through SOCKS5 via UDP ASSOCIATE.
--   **Chromium 146 upgrade** — rebased all patches from 145.0.7632.x to 146.0.7680.177
--   **57 fingerprint patches** — additional detection-vector coverage (WebAuthn, AAC audio, window position) and WebGL/canvas consistency fixes
--   **WebRTC IP spoofing** — `--fingerprint-webrtc-ip=auto` resolves your proxy's exit IP and spoofs WebRTC ICE candidates. Auto-injected when using `geoip=True` (no extra network call)
+-   **58 fingerprint patches** — rendering consistency improvements across Linux and Windows, corrected GPU/display/graphics parameters to match stock Chrome 146 profiles
+-   **Windows native GPU passthrough** — real hardware values pass through directly instead of being spoofed, matching real browser behavior
+-   **HTTP proxy inline credentials** — new network-layer support for proxies with inline authentication
+-   **`extension_paths`** — load Chrome extensions in all launch functions
+-   **Humanize actionability** — auto-wait for visible, enabled, stable elements before humanized actions
+-   **Per-call `human_config`** — override humanize settings on individual method calls
+-   **Composable JS helpers** — `buildLaunchOptions()` and `humanizeBrowser()` for custom Playwright integrations
+-   **Native SOCKS5 proxy** — `proxy="socks5://user:pass@host:port"` works directly in all launch functions, Python + JS. QUIC/HTTP3 tunnels through SOCKS5 via UDP ASSOCIATE
 -   **Proxy signal removal** — DNS/connect/SSL timing zeroed, proxy cache headers stripped, Proxy-Connection header leak removed
--   **`cloakserve` CDP multiplexer** — rewritten as a multi-connection CDP proxy with per-connection fingerprint seeds
--   **Humanize CDP isolation** — keyboard events now use isolated worlds and trusted dispatch for better behavioral stealth
+-   **Chromium 146 upgrade** — rebased all patches from 145.0.7632.x to 146.0.7680.177
+-   **WebRTC IP spoofing** — `--fingerprint-webrtc-ip=auto` resolves your proxy's exit IP and spoofs WebRTC ICE candidates. Auto-injected when using `geoip=True` (no extra network call)
 -   **`humanize=True`** — one flag makes all mouse, keyboard, and scroll interactions behave like a real user. Bézier curves, per-character typing, realistic scroll patterns
 -   **Stealthy with zero flags** — binary auto-generates a random fingerprint seed at startup. No configuration required
 -   **Timezone & locale from proxy IP** — `launch(proxy="...", geoip=True)` auto-detects timezone and locale
@@ -386,7 +388,7 @@ CloakBrowser is a thin wrapper (Python + JavaScript) around a custom-built Chrom
 3.  **Every launch** → Playwright or Puppeteer starts with our binary + stealth args
 4.  **You write code** → standard Playwright/Puppeteer API, nothing new to learn
 
-The binary includes 49 source-level patches covering canvas, WebGL, audio, fonts, GPU, screen properties, WebRTC, network timing, hardware reporting, automation signal removal, and CDP input behavior mimicking.
+The binary includes 58 source-level patches covering canvas, WebGL, audio, fonts, GPU, screen properties, WebRTC, network timing, hardware reporting, automation signal removal, and CDP input behavior mimicking.
 
 These are compiled into the Chromium binary — not injected via JavaScript, not set via flags.
 
@@ -571,7 +573,7 @@ from cloakbrowser import binary\_info, clear\_cache, ensure\_binary
 
 \# Check binary installation status
 print(binary\_info())
-\# {'version': '146.0.7680.177.3', 'platform': 'linux-x64', 'installed': True, ...}
+\# {'version': '146.0.7680.177.5', 'platform': 'linux-x64', 'installed': True, ...}
 
 \# Force re-download
 clear\_cache()
@@ -1105,7 +1107,7 @@ Linux x86\_64
 
 146
 
-57
+58
 
 ✅ Latest
 
@@ -1113,9 +1115,9 @@ Linux arm64 (RPi, Graviton)
 
 146
 
-57
+58
 
-✅ Latest
+✅
 
 macOS arm64 (Apple Silicon)
 
@@ -1137,7 +1139,7 @@ Windows x86\_64
 
 146
 
-57
+58
 
 ✅ Latest
 
@@ -1491,7 +1493,7 @@ Feature
 
 Status
 
-Linux x64 — Chromium 146 (57 patches)
+Linux x64 — Chromium 146 (58 patches)
 
 ✅ Released
 
@@ -1499,7 +1501,7 @@ macOS arm64/x64 — Chromium 145 (26 patches)
 
 ✅ Released
 
-Windows x64 — Chromium 146 (57 patches)
+Windows x64 — Chromium 146 (58 patches)
 
 ✅ Released
 
@@ -1533,7 +1535,7 @@ All releases are signed for supply chain verification.
 
 # Verify GPG signature (binary release tag)
 gpg --keyserver keyserver.ubuntu.com --recv-keys C60C0DDC9D0DE2DD
-git verify-tag chromium-v146.0.7680.177.3
+git verify-tag chromium-v146.0.7680.177.5
 
 # Verify GitHub binary attestation (Sigstore)
 gh attestation verify cloakbrowser-linux-x64.tar.gz --repo CloakHQ/cloakbrowser
@@ -1570,3 +1572,5 @@ Contributors
 -   @aaronjmars — security fixes (shell injection, dep bumps)
 -   @Seryiza — Nix/NixOS flake
 -   @245678000000 — package-lock sync
+-   @honor2030 — cloakserve WebSocket origin guard, composable JS launch helpers
+-   @0xlally — security reports (cloakserve path traversal, WebSocket origin bypass)

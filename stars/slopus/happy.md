@@ -1,6 +1,6 @@
 ---
 project: happy
-stars: 20795
+stars: 21083
 description: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured
 url: https://github.com/slopus/happy
 ---

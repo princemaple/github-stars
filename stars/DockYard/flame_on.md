@@ -1,6 +1,6 @@
 ---
 project: flame_on
-stars: 264
+stars: 266
 description: Flame Graph LiveView Component and LiveDashboard plugin
 url: https://github.com/DockYard/flame_on
 ---

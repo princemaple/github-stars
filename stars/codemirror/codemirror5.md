@@ -1,6 +1,6 @@
 ---
 project: codemirror5
-stars: 27244
+stars: 27250
 description: In-browser code editor (version 5, legacy)
 url: https://github.com/codemirror/codemirror5
 ---

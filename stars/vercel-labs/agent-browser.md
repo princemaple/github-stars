@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 33173
+stars: 34084
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -41,6 +41,8 @@ agent-browser install  # Download Chrome from Chrome for Testing (first time onl
 
 ### From Source
 
+Requires Node.js 24+, pnpm 11+, and Rust.
+
 git clone https://github.com/vercel-labs/agent-browser
 cd agent-browser
 pnpm install
@@ -66,6 +68,7 @@ Detects your installation method (npm, Homebrew, or Cargo) and runs the appropri
 ### Requirements
 
 -   **Chrome** - Run `agent-browser install` to download Chrome from Chrome for Testing (Google's official automation channel). Existing Chrome, Brave, Playwright, and Puppeteer installations are detected automatically. No Playwright or Node.js required for the daemon.
+-   **Node.js 24+ and pnpm 11+** - Only needed when building from source.
 -   **Rust** - Only needed when building from source (see From Source above).
 
 Quick Start

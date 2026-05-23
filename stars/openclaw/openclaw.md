@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 372427
+stars: 374173
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -34,7 +34,7 @@ Model note: while many providers and models are supported, prefer a current flag
 Install (recommended)
 ---------------------
 
-Runtime: **Node 24 (recommended) or Node 22.16+**.
+Runtime: **Node 24 (recommended) or Node 22.19+**.
 
 npm install -g openclaw@latest
 # or: pnpm add -g openclaw@latest
@@ -46,13 +46,21 @@ OpenClaw Onboard installs the Gateway daemon (launchd/systemd user service) so i
 Quick start (TL;DR)
 -------------------
 
-Runtime: **Node 24 (recommended) or Node 22.16+**.
+Runtime: **Node 24 (recommended) or Node 22.19+**.
 
 Full beginner guide (auth, pairing, channels): Getting started
 
-openclaw onboard --install-daemon
+Recommended daemon mode:
 
+openclaw onboard --install-daemon
+openclaw gateway status
+
+Foreground/debug mode:
+
+openclaw gateway stop
 openclaw gateway --port 18789 --verbose
+
+Send a test message or ask the assistant after either startup mode is running:
 
 # Send a message
 openclaw message send --target +1234567890 --message "Hello from OpenClaw"
@@ -69,7 +77,7 @@ Security defaults (DM access)
 
 OpenClaw connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
 
-Full security guide: Security
+Full security guide: Security. Before remote exposure, use the Gateway exposure runbook.
 
 Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:
 
@@ -97,7 +105,7 @@ Security model (important)
 -   Default: tools run on the host for the `main` session, so the agent has full access when it is just you.
 -   Group/channel safety: set `agents.defaults.sandbox.mode: "non-main"` to run non-`main` sessions inside sandboxes. Docker is the default sandbox backend; SSH and OpenShell backends are also available.
 -   Typical sandbox default: allow `bash`, `process`, `read`, `write`, `edit`, `sessions_list`, `sessions_history`, `sessions_send`, `sessions_spawn`; deny `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway`.
--   Before exposing anything remotely, read Security, Sandboxing, and Configuration.
+-   Before exposing anything remotely, read Security, Gateway exposure runbook, Sandboxing, and Configuration.
 
 Operator quick refs
 -------------------
@@ -113,7 +121,7 @@ Docs by goal
 -   New here: Getting started, Onboarding, Updating
 -   Channel setup: Channels index, WhatsApp, Telegram, Discord, Slack
 -   Apps + nodes: macOS, iOS, Android, Nodes
--   Config + security: Configuration, Security, Sandboxing
+-   Config + security: Configuration, Security, Exposure runbook, Sandboxing
 -   Remote + web: Gateway, Remote access, Tailscale, Web surfaces
 -   Tools + automation: Tools, Skills, Cron jobs, Webhooks, Gmail Pub/Sub
 -   Internals: Architecture, Agent, Session model, Gateway protocol

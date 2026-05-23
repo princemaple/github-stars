@@ -1,6 +1,6 @@
 ---
 project: posthog
-stars: 34517
+stars: 34659
 description: 🦔 PostHog is an all-in-one developer platform for building successful products. We offer product analytics, web analytics, session replay, error tracking, feature flags, experimentation, surveys, data warehouse, a CDP, and an AI product assistant to help debug your code, ship features faster, and keep all your usage and customer data in one stack.
 url: https://github.com/PostHog/posthog
 ---
@@ -21,7 +21,7 @@ PostHog provides every tool you need to build a successful product including:
 -   Surveys: Ask anything with our collection of no-code survey templates, or build custom surveys with our survey builder.
 -   Data warehouse: Sync data from external tools like Stripe, Hubspot, your data warehouse, and more. Query it alongside your product data.
 -   Data pipelines: Run custom filters and transformations on your incoming data. Send it to 25+ tools or any webhook in real time or batch export large amounts to your warehouse.
--   LLM analytics: Capture traces, generations, latency, and cost for your LLM-powered app.
+-   AI observability: Capture traces, generations, latency, and cost for your LLM-powered app.
 -   Workflows: Create workflows that automate actions or send messages to your users.
 
 Best of all, all of this is free to use with a generous monthly free tier for each product. Get started by signing up for PostHog Cloud US or PostHog Cloud EU.

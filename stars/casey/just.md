@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 33691
+stars: 33852
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---

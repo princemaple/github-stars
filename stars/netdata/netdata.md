@@ -1,6 +1,6 @@
 ---
 project: netdata
-stars: 78829
+stars: 78924
 description: The fastest path to AI-powered full stack observability, even for lean teams.
 url: https://github.com/netdata/netdata
 ---

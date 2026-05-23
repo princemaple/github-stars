@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 1134
+stars: 1185
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -148,6 +148,7 @@ The frontend is a single-page application embedded in the binary. Built on Chart
 -   Alert system for clock sync, low entropy, and system overload
 -   Modern aesthetics with light/dark theme support
 -   Optional AI assistant powered by a local Ollama model (see below)
+-   Prometheus exporter endpoint for scraping into existing observability stacks
 
 ### AI Assistant
 
@@ -191,9 +192,9 @@ rm -f ${KULA\_INSTALL}
 
 ### Standalone
 
-wget https://github.com/c0m4r/kula/releases/download/0.15.0/kula-0.15.0-amd64.tar.gz
-echo "92a189984672566cc3f31deee22926c25fbbf6370ba361f9b326fe43010b5d60 kula-0.15.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.15.0-amd64.tar.gz
-tar -xvf kula-0.15.0-amd64.tar.gz
+wget https://github.com/c0m4r/kula/releases/download/0.16.0/kula-0.16.0-amd64.tar.gz
+echo "0e13e8ac6feba89268e223c4975a3d31e1b9db91d6fe9550a0bb158fc25616fd kula-0.16.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.16.0-amd64.tar.gz
+tar -xvf kula-0.16.0-amd64.tar.gz
 cd kula
 ./kula
 
@@ -210,16 +211,16 @@ docker logs -f kula
 
 ### Debian / Ubuntu (.deb)
 
-wget https://github.com/c0m4r/kula/releases/download/0.15.0/kula-0.15.0-amd64.deb
-echo "de193f1561375c6e55089f3b5af22d63205f42d6118608e5093344cc6b119e60 kula-0.15.0-amd64.deb" | sha256sum -c || rm -f kula-0.15.0-amd64.deb
-sudo dpkg -i kula-0.15.0-amd64.deb
+wget https://github.com/c0m4r/kula/releases/download/0.16.0/kula-0.16.0-amd64.deb
+echo "b4edd589ed99e6053f9a74ed0e4e9511880e39e9582078d09aff94003a684dcb kula-0.16.0-amd64.deb" | sha256sum -c || rm -f kula-0.16.0-amd64.deb
+sudo dpkg -i kula-0.16.0-amd64.deb
 journalctl -f -t kula
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-wget https://github.com/c0m4r/kula/releases/download/0.15.0/kula-0.15.0-x86\_64.rpm
-echo "36f1c968e7cbd7643a2d611221128d80596f27ff756bbee4dd5a33238a33cbb6 kula-0.15.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.15.0-x86\_64.rpm
-sudo rpm -i kula-0.15.0-x86\_64.rpm
+wget https://github.com/c0m4r/kula/releases/download/0.16.0/kula-0.16.0-x86\_64.rpm
+echo "2aba936feaf67c96c95070f22beae8c40a590adb2876d3f2b70e5a3595bd5fb6 kula-0.16.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.16.0-x86\_64.rpm
+sudo rpm -i kula-0.16.0-x86\_64.rpm
 journalctl -f -t kula
 
 ### Arch Linux / Manjaro (AUR)
@@ -326,10 +327,10 @@ All settings live in `config.yaml`. See `config.example.yaml` for defaults.
 # Build
 ./addonsh.build.sh
 
-# Build dev (Binary size: ~17MB)
+# Build dev (Binary size: ~20MB)
 CGO\_ENABLED=0 go build -o kula ./cmd/kula/
 
-# Build prod (Binary size: ~12MB, xz: ~4MB)
+# Build prod (Binary size: ~14MB, xz: ~4MB)
 CGO\_ENABLED=0 go build -trimpath -ldflags="\-s -w" -buildvcs=false -o kula ./cmd/kula/
 
 ### Updating Dependencies

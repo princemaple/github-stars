@@ -1,6 +1,6 @@
 ---
 project: SwitchHosts
-stars: 26624
+stars: 26672
 description: Switch hosts quickly!
 url: https://github.com/oldj/SwitchHosts
 ---
@@ -22,7 +22,7 @@ SwitchHosts
 
 Homepage: https://switchhosts.vercel.app
 
-SwitchHosts is an App for managing hosts file, it is based on Electron, React, Jotai, Mantine, etc.
+SwitchHosts is an App for managing hosts file, it is based on Tauri, React, Jotai, Mantine, etc.
 
 Screenshot
 ----------
@@ -30,10 +30,14 @@ Screenshot
 Features
 --------
 
--   Switch hosts quickly
--   Syntax highlight
--   Remote hosts
--   Switch from system tray
+-   Manage system, local, remote, group, and folder hosts entries
+-   Switch hosts quickly from the main window or system tray
+-   Syntax highlighting for hosts files
+-   Find and replace across hosts entries
+-   Refresh remote hosts manually, on a schedule, or at startup
+-   Import/export hosts data, including importing backups from a URL
+-   Move entries to the trashcan and restore or delete them later
+-   Preferences for write mode, proxy, update checks, launch at login, post-apply commands, and the local HTTP API
 
 Install
 -------
@@ -51,31 +55,40 @@ choco install switchhosts
 Backup
 ------
 
-SwitchHosts stores data at `~/.SwitchHosts` (Or folder `.SwitchHosts` under the current user's home path on Windows), the `~/.SwitchHosts/data` folder contains data, while the `~/.SwitchHosts/config` folder contains various configuration information.
+SwitchHosts stores data at `~/.SwitchHosts` (Or folder `.SwitchHosts` under the current user's home path on Windows). In the v5 data layout:
+
+-   `~/.SwitchHosts/manifest.json` stores the hosts tree
+-   `~/.SwitchHosts/entries/` stores local and remote hosts content
+-   `~/.SwitchHosts/trashcan.json` stores trashcan entries
+-   `~/.SwitchHosts/internal/config.json` stores preferences
+-   `~/.SwitchHosts/internal/histories/` stores system hosts and command run history
+
+For a complete manual backup, copy the whole `~/.SwitchHosts` folder. The in-app export creates a hosts data backup JSON; it does not include preferences or histories.
 
 Develop and build
 -----------------
 
+### Prerequisites
+
+-   Node.js
+-   Rust
+-   Tauri system dependencies, see Tauri Prerequisites
+
 ### Development
 
--   Install Node.js
--   Change to the folder `./`, run `npm install` to install dependented libraries
--   Run `npm run dev` to start the development server
--   Then run `npm run start` to start the app for developing or debuging
+-   Run `npm install` to install dependencies
+-   Run `npm run tauri:dev` to start the app in development mode
 
 ### Build and package
 
--   It is recommended to use electron-builder for packaging
--   Go to the `./` folder
--   Run `npm run build`
--   Run `npm run make`, if everything goes well, the packaged files will be in the `./dist` folder.
--   This command may take several minutes to finish when you run it the first time, as it needs time to download dependent files. You can download the dependencies manually here, or Taobao mirror, then save the files to `~/.electron` . You can check the Electron Docs for more infomation.
+-   Run `npm run tauri:build` to create a production build
+-   The packaged files will be in `./src-tauri/target/release/bundle/`
 
-# build
-npm run build
+# development
+npm run tauri:dev
 
-# make
-npm run make # the packed files will be in ./dist
+# production build
+npm run tauri:build
 
 Copyright
 ---------

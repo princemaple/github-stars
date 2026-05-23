@@ -1,11 +1,11 @@
 ---
 project: pglite
-stars: 15224
+stars: 15267
 description: Embeddable Postgres with real-time, reactive bindings.
 url: https://github.com/electric-sql/pglite
 ---
 
-PGlite - the WASM build of Postgres from ElectricSQL.  
+PGlite - the WASM build of Postgres from Electric.  
 Build reactive, realtime, local-first apps directly on Postgres.
 
 PGlite - Postgres in WASM

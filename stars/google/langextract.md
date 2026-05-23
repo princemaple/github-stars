@@ -1,6 +1,6 @@
 ---
 project: langextract
-stars: 36474
+stars: 36532
 description: A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.
 url: https://github.com/google/langextract
 ---
@@ -104,10 +104,10 @@ result \= lx.extract(
     text\_or\_documents\=input\_text,
     prompt\_description\=prompt,
     examples\=examples,
-    model\_id\="gemini-2.5-flash",
+    model\_id\="gemini-3.5-flash",
 )
 
-> **Model Selection**: `gemini-2.5-flash` is the recommended default, offering an excellent balance of speed, cost, and quality. For highly complex tasks requiring deeper reasoning, `gemini-2.5-pro` may provide superior results. For large-scale or production use, a Tier 2 Gemini quota is suggested to increase throughput and avoid rate limits. See the rate-limit documentation for details.
+> **Model Selection**: `gemini-3.5-flash` is the recommended default, offering strong extraction quality for LangExtract's schema-constrained workflows. For high-volume or cost-sensitive workloads, consider the current stable Flash-Lite model, `gemini-3.1-flash-lite`; for highly complex tasks requiring deeper reasoning, evaluate a current Gemini Pro model from the official model documentation. For large-scale or production use, a paid Gemini tier is suggested to increase throughput and avoid rate limits. See the rate-limit documentation for details.
 > 
 > **Model Lifecycle**: Note that Gemini models have a lifecycle with defined retirement dates. Users should consult the official model version documentation to stay informed about the latest stable and legacy versions.
 
@@ -139,7 +139,7 @@ result \= lx.extract(
     text\_or\_documents\="https://www.gutenberg.org/files/1513/1513-0.txt",
     prompt\_description\=prompt,
     examples\=examples,
-    model\_id\="gemini-2.5-flash",
+    model\_id\="gemini-3.5-flash",
     extraction\_passes\=3,    \# Improves recall through multiple passes
     max\_workers\=20,         \# Parallel processing for speed
     max\_char\_buffer\=1000    \# Smaller contexts for better accuracy
@@ -228,7 +228,7 @@ result \= lx.extract(
     text\_or\_documents\=input\_text,
     prompt\_description\="Extract information...",
     examples\=\[...\],
-    model\_id\="gemini-2.5-flash"
+    model\_id\="gemini-3.5-flash"
 )
 
 **Option 3: Direct API Key (Not Recommended for Production)**
@@ -239,7 +239,7 @@ result \= lx.extract(
     text\_or\_documents\=input\_text,
     prompt\_description\="Extract information...",
     examples\=\[...\],
-    model\_id\="gemini-2.5-flash",
+    model\_id\="gemini-3.5-flash",
     api\_key\="your-api-key-here"  \# Only use this for testing/development
 )
 
@@ -251,7 +251,7 @@ result \= lx.extract(
     text\_or\_documents\=input\_text,
     prompt\_description\="Extract information...",
     examples\=\[...\],
-    model\_id\="gemini-2.5-flash",
+    model\_id\="gemini-3.5-flash",
     language\_model\_params\={
         "vertexai": True,
         "project": "your-project-id",
@@ -293,6 +293,22 @@ result \= lx.extract(
 )
 
 The OpenAI provider uses JSON mode and auto-determines fence and schema behavior — leave `fence_output` and `use_schema_constraints` unset.
+
+For large, non-latency-sensitive OpenAI workloads, enable the OpenAI Batch API with `language_model_params`. Batch mode is opt-in and falls back to realtime calls when the prompt count is below the configured threshold.
+
+result \= lx.extract(
+    text\_or\_documents\=documents,
+    prompt\_description\=prompt,
+    examples\=examples,
+    model\_id\="gpt-4o-mini",
+    language\_model\_params\={
+        "batch": {
+            "enabled": True,
+            "threshold": 50,
+            "poll\_interval": 10,
+        }
+    },
+)
 
 For OpenAI-compatible endpoints or non-GPT model IDs (which skip auto-routing), use `ModelConfig` with an explicit provider:
 

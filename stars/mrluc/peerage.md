@@ -1,6 +1,6 @@
 ---
 project: peerage
-stars: 399
+stars: 398
 description: Easy Elixir clusters, pluggable discovery. DNS-based (Kubernetes, Weave), UDP multicast, others.
 url: https://github.com/mrluc/peerage
 ---

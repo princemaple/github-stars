@@ -1,7 +1,7 @@
 ---
 project: zeroclaw
-stars: 31383
-description: Fast, small, and fully autonomous AI personal assistant infrastructure, ANY OS, ANY PLATFORM — deploy anywhere, swap anything 🦀
+stars: 31545
+description: Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
 
@@ -47,8 +47,8 @@ Platform-specific notes: Linux · macOS · Windows · Docker
 Quick start
 -----------
 
-zeroclaw onboard                  # wizard: picks a provider, wires channels
-zeroclaw agent                    # interactive chat in the terminal
+zeroclaw onboard                  # interactive onboard: provider, channels, agents, etc.
+zeroclaw agent -a <alias\>         # interactive chat using the \[agents.<alias>\] entry
 zeroclaw service install          # register as systemd/launchctl/Windows Service
 zeroclaw service start            # run it always-on in the background
 
@@ -70,20 +70,26 @@ Configuration
 
 One TOML file at `~/.zeroclaw/config.toml`. Pointers:
 
--   Provider configuration — the universal `[providers.models.<name>]` schema
--   Channels overview — per-channel `[channels.<name>]` blocks
+-   Provider configuration — the universal `[providers.models.<type>.<alias>]` schema
+-   Channels overview — per-channel `[channels.<type>.<alias>]` blocks
 -   Security overview — autonomy, sandboxing, tool receipts
 -   Full config reference — generated from the live schema; every key documented
 
-For standard OpenAI Codex subscription auth, keep `config.toml` minimal:
+A V3 config has at minimum four section headers (`<type>.<alias>` shaped) — a provider entry, an agent that references it, and a risk profile the agent gates against. See Provider Configuration → Minimal working example for the canonical four-section form with inline type/alias commentary.
 
-default\_provider = "openai-codex"
-default\_model = "gpt-5-codex"
+For standard OpenAI Codex subscription auth, swap the provider entry to:
+
+\[providers.models.openai.coding\]   # type = openai; alias = coding (you choose)
+model = "gpt-5-codex"
+wire\_api = "responses"
+requires\_openai\_auth = true
+
+…and point your agent at it with `model_provider = "openai.coding"`.
 
 Notes:
 
--   Normal OpenAI Codex subscription auth uses stored auth profiles, not top-level `api_key` / `api_url`.
--   Only set `api_key` / `api_url` when intentionally targeting a custom OpenAI-compatible gateway or endpoint.
+-   Normal OpenAI Codex subscription auth uses stored auth profiles, not an `api_key` on the provider entry.
+-   Only set `api_key` / `uri` on `[providers.models.openai.<alias>]` when intentionally targeting a custom OpenAI-compatible gateway or endpoint.
 -   If you see `provider streaming failed, falling back to non-streaming chat`, ZeroClaw retries the same request in non-streaming mode. Check `zeroclaw auth status` before changing provider config.
 
 Architecture

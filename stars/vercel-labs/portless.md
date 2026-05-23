@@ -1,6 +1,6 @@
 ---
 project: portless
-stars: 9346
+stars: 9464
 description: Replace port numbers with stable, named local URLs. For humans and agents.
 url: https://github.com/vercel-labs/portless
 ---
@@ -469,6 +469,8 @@ Development
 
 This repo is a pnpm workspace monorepo using Turborepo. The publishable package lives in `packages/portless/`.
 
+Use Node.js 24+ and pnpm 11 for repository development. The `.node-version` file pins the Node major for version managers.
+
 pnpm install          # Install all dependencies
 pnpm build            # Build all packages
 pnpm test             # Run tests
@@ -480,6 +482,6 @@ pnpm format           # Format all files with Prettier
 Requirements
 ------------
 
--   Node.js 20+
+-   Node.js 24+
 -   macOS, Linux, or Windows
 -   Tailscale CLI (optional, for `--tailscale` and `--funnel`)

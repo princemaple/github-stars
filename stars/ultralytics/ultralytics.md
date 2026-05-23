@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 57208
+stars: 57487
 description: Ultralytics YOLO 🚀
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -11,7 +11,7 @@ url: https://github.com/ultralytics/ultralytics
 
   
 
-Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at object detection, tracking, instance segmentation, image classification, and pose estimation tasks.
+Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at object detection, tracking, instance segmentation, semantic segmentation, image classification, and pose estimation tasks.
 
 Find detailed documentation in the Ultralytics Docs. Get support via GitHub Issues. Join discussions on Discord, Reddit, and the Ultralytics Community Forums!
 
@@ -73,7 +73,7 @@ Discover more examples in the YOLO Python Docs.
 ✨ Models
 --------
 
-Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on the COCO dataset for Detection, Segmentation, and Pose Estimation. Additionally, Classification models pretrained on the ImageNet dataset are available. Tracking mode is compatible with all Detection, Segmentation, and Pose models. All Models are automatically downloaded from the latest Ultralytics release upon first use.
+Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on COCO for Detection, Segmentation, and Pose Estimation. Semantic Segmentation models are pretrained on Cityscapes, and Classification models are pretrained on ImageNet. Tracking mode is compatible with Detection, Segmentation, and Pose models. All Models download automatically from the latest Ultralytics release on first use.
 
   
   
@@ -304,6 +304,92 @@ YOLO26x-seg
     Reproduce with `yolo val segment data=coco.yaml device=0`
 -   **Speed** metrics are averaged over COCO val images using an Amazon EC2 P4d instance. CPU speeds measured with ONNX export. GPU speeds measured with TensorRT export.  
     Reproduce with `yolo val segment data=coco.yaml batch=1 device=0|cpu`
+
+Semantic Segmentation (Cityscapes)
+
+See the Semantic Segmentation Docs for usage examples. These models are trained on Cityscapes, including 19 classes.
+
+Model
+
+size  
+(pixels)
+
+mIoUval
+
+Speed  
+RTX3090 PyTorch  
+(ms)
+
+params  
+(M)
+
+FLOPs  
+(B)
+
+YOLO26n-sem
+
+1024 × 2048
+
+78.3
+
+4.4 ± 0.0
+
+1.6
+
+22.7
+
+YOLO26s-sem
+
+1024 × 2048
+
+80.8
+
+8.4 ± 0.0
+
+6.5
+
+88.8
+
+YOLO26m-sem
+
+1024 × 2048
+
+82.0
+
+19.9 ± 0.1
+
+14.3
+
+304.5
+
+YOLO26l-sem
+
+1024 × 2048
+
+82.9
+
+26.5 ± 0.1
+
+17.9
+
+384.7
+
+YOLO26x-sem
+
+1024 × 2048
+
+83.6
+
+48.9 ± 0.2
+
+40.2
+
+861.7
+
+-   **mIoUval** values are for single-model single-scale on the Cityscapes validation set.  
+    Reproduce with `yolo semantic val data=cityscapes.yaml device=0 imgsz=2048`
+-   **Speed** metrics are averaged over Cityscapes validation images using an RTX3090 instance.  
+    Reproduce with `yolo semantic val data=cityscapes.yaml batch=1 device=0|cpu imgsz=2048`
 
 Classification (ImageNet)
 
@@ -665,7 +751,7 @@ We look forward to your contributions to help make the Ultralytics ecosystem eve
 Ultralytics offers two licensing options to suit different needs:
 
 -   **AGPL-3.0 License**: This OSI-approved open-source license is perfect for students, researchers, and enthusiasts. It encourages open collaboration and knowledge sharing. See the LICENSE file for full details.
--   **Ultralytics Enterprise License**: Designed for commercial use, this license allows for the seamless integration of Ultralytics software and AI models into commercial products and services, bypassing the open-source requirements of AGPL-3.0. If your use case involves commercial deployment, please contact us via Ultralytics Licensing.
+-   **Ultralytics Enterprise License**: For development and production use, this license enables seamless integration of Ultralytics software and AI models into business products and services, including internal tools, automated workflows, and production deployments, bypassing the open-source requirements of AGPL-3.0. To get started, please contact us via Ultralytics Licensing.
 
 📞 Contact
 ----------

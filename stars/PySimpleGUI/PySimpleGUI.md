@@ -1,9 +1,18 @@
 ---
 project: PySimpleGUI
-stars: 13803
+stars: 13806
 description: Python GUIs for Humans! PySimpleGUI is the top-rated Python application development environment. Launched in 2018. NEW for 2026 - the LGPL3 Version 6.  Transforms tkinter, Qt, WxPython, and Remi into a simple, intuitive, and fun experience for both hobbyists and expert users.  
 url: https://github.com/PySimpleGUI/PySimpleGUI
 ---
+
+FREE Udemy Course
+=================
+
+The Udemy course makes $10's a month, usually less. I've decided to give away the course for a while. This coupon is good for the next 2 days. After that I'll create another that's good for 30 days.
+
+https://www.udemy.com/course/pysimplegui/?couponCode=85BCD636F9F53A834371
+
+Or use code: 85BCD636F9F53A834371
 
 Open Source Once Again...
 =========================
@@ -162,6 +171,8 @@ I use PySimpleGUI regularly, and I can’t imagine building a Windows app withou
 
 That’s reason enough for me to keep working to clean up the ecosystem and keep it running well.
 
+* * *
+
 History
 =======
 
@@ -189,7 +200,7 @@ Timeline
 -   February 2024 – Version 5 (commercial launch)
 -   April 2026 – Version 6
 
-There’s an Announcements Issue on GitHub that I’ve used like a running blog. It has grown to over 1,700 entries documenting the project in detail.
+There’s an Announcements Issue on GitHub that I’ve used like a running blog. It has grown to over 1,700 entries documenting the project in detail. To make reading it easier, a snapshot is posted in the documnation under the tab Announcements 2018-2024.
 
 Funding Reality
 ---------------
@@ -256,6 +267,8 @@ Thank You
 Thank you to everyone who has supported the project over the years.
 
 I don’t know exactly what comes next, but I’ve enjoyed the journey and I'm looking forward to whatever is ahead.
+
+* * *
 
 License & Copyright
 -------------------

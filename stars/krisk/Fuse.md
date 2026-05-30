@@ -1,6 +1,6 @@
 ---
 project: Fuse
-stars: 20269
+stars: 20288
 description: Lightweight fuzzy-search, in JavaScript
 url: https://github.com/krisk/Fuse
 ---
@@ -25,8 +25,8 @@ fuse.search('javascrpt paterns')
 
 See Token Search below for details.
 
-🧪 Beta: Web Workers
---------------------
+Web Workers
+-----------
 
 Search large datasets without freezing the UI. `FuseWorker` splits your data across multiple Web Workers and searches in parallel — ~5x faster on 100K documents.
 
@@ -122,8 +122,9 @@ fuse.search('express midleware rout')
 -   **Word order independent** — `"patterns javascript"` and `"javascript patterns"` return identical results
 -   **No query length limit** — long multi-word queries work naturally since each term is searched separately
 -   **AND or OR** — `tokenMatch: 'all'` returns only records matching _every_ word (filtering); the default `'any'` matches any word
+-   **Custom tokenizer** — pass a regex or function via `tokenize` for tokens with internal punctuation (`node.js`, `c++`), or use `Intl.Segmenter` for CJK / Thai word segmentation. Unicode-aware by default
 
-Available in the full build. See TOKEN\_SEARCH.md for details and performance benchmarks.
+Available in the full build. See the Token Search docs for details and performance benchmarks.
 
 ### Logical Search
 

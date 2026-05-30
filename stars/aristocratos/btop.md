@@ -1,6 +1,6 @@
 ---
 project: btop
-stars: 32415
+stars: 32550
 description: A monitor of resources
 url: https://github.com/aristocratos/btop
 ---
@@ -1364,6 +1364,10 @@ proc\_follow\_detailed = true
 
 #\* In tree-view, always accumulate child process resources in the parent process.
 proc\_aggregate = false
+
+#\* In tree-view, auto-collapse processes with this many or more direct children when
+#\* entering tree mode. 0 to disable. Useful for collapsing multi-process apps like browsers.
+proc\_tree\_auto\_collapse = 0
 
 #\* Should cpu and memory usage display be preserved for dead processes when paused.
 keep\_dead\_proc\_usage = false

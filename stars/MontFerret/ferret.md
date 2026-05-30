@@ -1,7 +1,7 @@
 ---
 project: ferret
-stars: 5988
-description: Declarative web scraping
+stars: 5990
+description: Declarative data extraction engine
 url: https://github.com/MontFerret/ferret
 ---
 
@@ -12,7 +12,19 @@ Try it! Docs CLI Test runner Web worker
 
 * * *
 
-> **📢 Notice:** This branch contains the upcoming **Ferret v2**. For the stable v1 release, please visit Ferret v1.
+Explore Ferret v2
+-----------------
+
+Ferret v2 is currently in alpha. You can try the new syntax in the playground and read more about the design behind the new runtime and language capabilities:
+
+-   Try Ferret v2 in the Playground
+-   On the Road to Ferret v2
+-   Inside Ferret v2: The New Execution Model
+-   Inside Ferret v2: New Language Capabilities
+
+* * *
+
+> **Notice:** This branch contains the upcoming **Ferret v2**. For the stable v1 release, please visit Ferret v1.
 
 * * *
 

@@ -1,14 +1,20 @@
 ---
 project: Termix
-stars: 12972
-description: Termix is a web-based server management platform with SSH terminal, tunneling, and file editing capabilities.
+stars: 13206
+description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
 
-Repo Stats
-==========
+Termix
+======
 
-🇺🇸 English · 🇨🇳 中文 · 🇯🇵 日本語 · 🇰🇷 한국어 · 🇫🇷 Français · 🇩🇪 Deutsch · 🇪🇸 Español · 🇧🇷 Português · 🇷🇺 Русский · 🇸🇦 العربية · 🇮🇳 हिन्दी · 🇹🇷 Türkçe · 🇻🇳 Tiếng Việt · 🇮🇹 Italiano
+Self-hosted SSH management and remote desktop access
+
+English · 中文 · 日本語 · 한국어 · Français · Deutsch · Español · Português · Русский · العربية · हिन्दी · Türkçe · Tiếng Việt · Italiano
+
+  
+  
+  
 
   
 Achieved on September 1st, 2025
@@ -16,71 +22,97 @@ Achieved on September 1st, 2025
   
 
 Overview
-========
+--------
 
-Termix is an open-source, forever-free, self-hosted all-in-one server management platform. It provides a multi-platform solution for managing your servers and infrastructure through a single, intuitive interface. Termix offers SSH terminal access, remote desktop control (RDP, VNC, Telnet), SSH tunneling capabilities, remote SSH file management, and many other tools. Termix is the perfect free and self-hosted alternative to Termius available for all platforms.
+Termix is an open-source, forever-free, self-hosted all-in-one server management platform. It provides a multi-platform solution for managing your servers and infrastructure through a single, intuitive interface. Termix offers SSH terminal access, remote desktop control (RDP, VNC, Telnet), SSH tunneling capabilities, remote file management, and many other tools. Termix is the perfect free and self-hosted alternative to Termius available for all platforms.
+
+  
 
 Features
-========
+--------
 
--   **SSH Terminal Access** - Full-featured terminal with split-screen support (up to 4 panels) with a browser-like tab system. Includes support for customizing the terminal including common terminal themes, fonts, and other components.
--   **Remote Desktop Access** - RDP, VNC, and Telnet support over the browser with complete customization and split screening
--   **SSH Tunnel Management** - Create and manage server-to-server SSH tunnels with automatic reconnection, health monitoring, and local, remote, or dynamic SOCKS forwarding. Desktop client-to-server tunnel settings are stored locally per desktop install, optional C2S preset snapshots can be saved to the server, renamed, loaded, or deleted when you want to move a local tunnel configuration between clients.
--   **Remote File Manager** - Manage files directly on remote servers with support for viewing and editing code, images, audio, and video. Upload, download, rename, delete, and move files seamlessly with sudo support.
--   **Docker Management** - Start, stop, pause, remove containers. View container stats. Control container using docker exec terminal. It was not made to replace Portainer or Dockge but rather to simply manage your containers compared to creating them.
--   **SSH Host Manager** - Save, organize, and manage your SSH connections with tags and folders, and easily save reusable login info while being able to automate the deployment of SSH keys
--   **Server Stats** - View CPU, memory, and disk usage along with network, uptime, system information, firewall, port monitor, on most Linux based servers
+**SSH Terminal Access:** Full-featured terminal with split-screen support (up to 4 panels) with a browser-like tab system. Includes support for customizing the terminal including common terminal themes, fonts, and other components.
+
+**Remote Desktop Access:** RDP, VNC, and Telnet support over the browser with complete customization and split screening.
+
+**SSH Tunnel Management:** Create and manage server-to-server SSH tunnels with automatic reconnection, health monitoring, and local, remote, or dynamic SOCKS forwarding. Desktop client-to-server tunnel settings are stored locally per desktop install, optional C2S preset snapshots can be saved to the server, renamed, loaded, or deleted when you want to move a local tunnel configuration between clients.
+
+**Remote File Manager:** Manage files directly on remote servers with support for viewing and editing code, images, audio, and video. Upload, download, rename, delete, and move files seamlessly with sudo support.
+
+**Docker Management:** Start, stop, pause, remove containers. View container stats. Control container using docker exec terminal. It was not made to replace Portainer or Dockge but rather to simply manage your containers compared to creating them.
+
+**SSH Host Manager:** Save, organize, and manage your SSH connections with tags and folders, and easily save reusable login info while being able to automate the deployment of SSH keys.
+
+**Server Stats:** View CPU, memory, and disk usage along with network, uptime, system information, firewall, port monitor, on most Linux based servers.
+
+**User Authentication:** Secure user management with admin controls and OIDC (with access control) and 2FA (TOTP) support. View active user sessions across all platforms and revoke permissions. Link your OIDC/Local accounts together.
+
+**RBAC:** Create roles and share hosts across users/roles.
+
+**Database Encryption:** Backend stored as encrypted SQLite database files. View docs for more.
+
+**Network Graph:** Customize your Dashboard to visualize your homelab based off your SSH connections with status support.
+
+**SSH Tools:** Create reusable command snippets that execute with a single click. Run one command simultaneously across multiple open terminals.
+
+**Persistent Tabs:** SSH sessions and tabs stay open across devices/refreshes if enabled in user profile.
+
+**Languages:** Built-in support ~30 languages (managed by Crowdin).
+
+  
+**More features**  
+
 -   **Dashboard** - View server information at a glance on your dashboard
--   **RBAC** - Create roles and share hosts across users/roles
--   **User Authentication** - Secure user management with admin controls and OIDC (with access control) and 2FA (TOTP) support. View active user sessions across all platforms and revoke permissions. Link your OIDC/Local accounts together.
--   **Database Encryption** - Backend stored as encrypted SQLite database files. View docs for more.
 -   **API Keys** - Create user-scoped API keys with expiration dates to be used for automation/CI
 -   **Data Export/Import** - Export and import SSH hosts, credentials, and file manager data
 -   **Automatic SSL Setup** - Built-in SSL certificate generation and management with HTTPS redirects
 -   **Modern UI** - Clean desktop/mobile-friendly interface built with React, Tailwind CSS, and Shadcn. Choose between many different UI themes including light, dark, Dracula, etc. Use URL routes to open any connection in full-screen.
--   **Languages** - Built-in support ~30 languages (managed by Crowdin)
--   **Platform Support** - Available as a web app, desktop application (Windows, Linux, and macOS, can be run standalone without Termix backend), PWA, and dedicated mobile/tablet app for iOS and Android.
--   **SSH Tools** - Create reusable command snippets that execute with a single click. Run one command simultaneously across multiple open terminals.
 -   **Command History** - Auto-complete and view previously ran SSH commands
 -   **Quick Connect** - Connect to a server without having to save the connection data
 -   **Command Palette** - Double tap left shift to quickly access SSH connections with your keyboard
 -   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, host key verification, password autofill, OPKSSH, tmux, port knocking, etc.
--   **Network Graph** - Customize your Dashboard to visualize your homelab based off your SSH connections with status support
--   **Persistent Tabs** - SSH sessions and tabs stay open across devices/refreshes if enabled in user profile
 
-Planned Features
-================
+  
 
-See Projects for all planned features. If you are looking to contribute, see Contributing.
+Platform Support
+----------------
+
+Platform
+
+Distribution
+
+**Web**
+
+Any modern browser (Chrome, Safari, Firefox) · PWA support
+
+**Windows** x64/ia32
+
+Portable · MSI Installer · Chocolatey
+
+**Linux** x64/ia32
+
+Portable · AUR · AppImage · Deb · Flatpak
+
+**macOS** x64/ia32, v12.0+
+
+Apple App Store · DMG · Homebrew
+
+**iOS/iPadOS** v15.1+
+
+Apple App Store · IPA
+
+**Android** v7.0+
+
+Google Play Store · APK
+
+  
 
 Installation
-============
+------------
 
-Supported Devices:
+Visit the Termix Docs for full installation instructions across all platforms.
 
--   Website (any modern browser on any platform like Chrome, Safari, and Firefox) (includes PWA support)
--   Windows (x64/ia32)
-    -   Portable
-    -   MSI Installer
-    -   Chocolatey Package Manager
--   Linux (x64/ia32)
-    -   Portable
-    -   AUR
-    -   AppImage
-    -   Deb
-    -   Flatpak
--   macOS (x64/ia32 on v12.0+)
-    -   Apple App Store
-    -   DMG
-    -   Homebrew
--   iOS/iPadOS (v15.1+)
-    -   Apple App Store
-    -   IPA
--   Android (v7.0+)
-    -   Google Play Store
-    -   APK
-
-Visit the Termix Docs for more information on how to install Termix on all platforms. Otherwise, view a sample Docker Compose file here (you can omit guacd and the network if you don't plan on using remote desktop features):
+Sample Docker Compose file (you can omit `guacd` and the network if you don't plan on using remote desktop features):
 
 services:
   termix:
@@ -115,22 +147,45 @@ networks:
   termix-net:
     driver: bridge
 
-Sponsors
-========
-
-                                                     
-
-Support
-=======
-
-If you need help or want to request a feature with Termix, visit the Issues page, log in, and press `New Issue`. Please be as detailed as possible in your issue, preferably written in English. You can also join the Discord server and visit the support channel, however, response times may be longer.
+  
 
 Screenshots
-===========
+-----------
+
+  
+
+Watch update overviews on YouTube
+
+  
+  
 
 Some videos and images may be out of date or may not perfectly showcase features.
 
-License
-=======
+  
 
-Distributed under the Apache License Version 2.0. See LICENSE for more information.
+Planned Features
+----------------
+
+See Projects for all planned features. If you are looking to contribute, see Contributing.
+
+  
+
+Sponsors
+--------
+
+  
+                       
+
+  
+
+Support
+-------
+
+If you need help or want to request a feature with Termix, visit the Issues page, log in, and press `New Issue`. Please be as detailed as possible in your issue, preferably written in English. You can also join the Discord server and visit the support channel, however, response times may be longer.
+
+  
+
+License
+-------
+
+Distributed under the Apache License Version 2.0. See `LICENSE` for more information.

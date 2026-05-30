@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 32456
+stars: 32602
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -671,7 +671,7 @@ Back to TOC
 Enterprise
 ----------
 
-For enterprise users, please visit seaweedfs.com for the SeaweedFS Enterprise Edition, which has a self-healing storage format with better data protection.
+For enterprise users, please visit seaweedfs.com for the SeaweedFS Enterprise Edition, which has advanced features, including data recovery, self-healing storage, customizable erasure coding, EC vacuum and repair, etc.
 
 Back to TOC
 

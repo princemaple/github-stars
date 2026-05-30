@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 374173
+stars: 375676
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -16,7 +16,7 @@ If you want a personal, single-user assistant that feels local, fast, and always
 
 Supported channels include: WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat, QQ, WebChat.
 
-Website · Docs · Vision · DeepWiki · Getting Started · Updating · Showcase · FAQ · Onboarding · Nix · Docker · Discord
+Website · Docs · Vision · Third-party notices · DeepWiki · Getting Started · Updating · Showcase · FAQ · Onboarding · Nix · Docker · Discord
 
 New install? Start here: Getting started
 

@@ -1,6 +1,6 @@
 ---
 project: urllib3
-stars: 4025
+stars: 4029
 description: urllib3 is a user-friendly HTTP client library for Python
 url: https://github.com/urllib3/urllib3
 ---
@@ -65,6 +65,8 @@ Security Disclosures
 --------------------
 
 To report a security vulnerability, please use the Tidelift security contact. Tidelift will coordinate the fix and disclosure with maintainers.
+
+See the repository Security Policy for more details.
 
 Maintainers
 -----------

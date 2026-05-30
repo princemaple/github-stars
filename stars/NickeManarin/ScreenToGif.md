@@ -1,6 +1,6 @@
 ---
 project: ScreenToGif
-stars: 26980
+stars: 27019
 description: 🎬 ScreenToGif allows you to record a selected area of your screen, edit and save it as a gif or video.
 url: https://github.com/NickeManarin/ScreenToGif
 ---

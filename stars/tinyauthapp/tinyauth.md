@@ -1,6 +1,6 @@
 ---
 project: tinyauth
-stars: 7389
+stars: 7424
 description: The tiniest authentication and authorization server you have ever seen.
 url: https://github.com/tinyauthapp/tinyauth
 ---

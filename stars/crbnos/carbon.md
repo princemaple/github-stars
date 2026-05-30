@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 2109
+stars: 2123
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -68,7 +68,6 @@ Techstack
 -   Inngest - jobs
 -   Resend – email
 -   Lingui - i18n
--   Novu – notifications
 -   Vercel – hosting
 -   Stripe - billing
 
@@ -206,12 +205,6 @@ Email service
 
 https://resend.com
 
-Novu
-
-Notifications service
-
-https://dashboard.novu.co/auth/sign-in
-
 Posthog has a free tier which should be plenty to support local development. If you're self hosting and you don't want to use Posthog, it's pretty easy to remove the analytics.
 
 ### Installation
@@ -284,7 +277,7 @@ $ cp ./.env.example ./.env
 -   `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` — keys minted per-worktree from a random `SUPABASE_JWT_SECRET`
 -   `SUPABASE_DB_URL` — direct Postgres URL on a dynamic port
 
-`.env.local` is generated; do not commit it or hand-edit values that came from `crbn up` (they are re-derived on each boot). Put genuine secrets (OAuth client IDs, Stripe keys, Resend, Novu) in `.env` only.
+`.env.local` is generated; do not commit it or hand-edit values that came from `crbn up` (they are re-derived on each boot). Put genuine secrets (OAuth client IDs, Stripe keys, Resend) in `.env` only.
 
 Run `crbn status` at any time to see the live port assignment and the URLs portless is serving.
 
@@ -307,17 +300,6 @@ Run `crbn status` at any time to see the live port assignment and the URLs portl
 -   `RESEND_AUDIENCE_ID="*****"` (Optional - required for contact management in `packages/jobs`)
 
 Resend is used for transactional emails (user invitations, email verification, onboarding). All three variables are stored in `packages/auth/src/config/env.ts`.
-
-1.  **Novu** (In-app notifications) - Create a Novu account and configure:
-
--   `NOVU_APPLICATION_ID="********************"` (Client-side, public)
--   `NOVU_SECRET_KEY="********************"` (Server-side secret, backend only)
-
-Novu is used for in-app notifications and notification workflows. After standing up the application and tunnelling port 3000, sync your Novu workflows:
-
-pnpm run novu:sync
-
-This command syncs your Novu workflows with the Carbon application using the bridge URL.
 
 Finally, boot the stack and the apps:
 

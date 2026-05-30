@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 14851
+stars: 14874
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.13. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -1083,6 +1083,18 @@ e.g. Debian Python, Anaconda Python
 Python with or without GIL
 
 boolean
+
+{PYTHON\_VERSION}
+
+Python version (major.minor)
+
+e.g. 3.10
+
+{PYTHON\_VERSION\_FULL}
+
+Full Python version
+
+e.g. 3.10.11
 
 The use of `{MAIN_DIRECTORY}` is recommended when you want to specify a filename relative to the main script, e.g. for use in data file options or user package configuration yaml files,
 

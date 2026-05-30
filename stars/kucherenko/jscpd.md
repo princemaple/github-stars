@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 5685
+stars: 5703
 description: Copy/paste detector for programming source code, supports 223 formats. AI-ready with token-efficient reporter, skill and MCP server.
 url: https://github.com/kucherenko/jscpd
 ---

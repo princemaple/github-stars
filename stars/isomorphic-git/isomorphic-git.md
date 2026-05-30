@@ -1,6 +1,6 @@
 ---
 project: isomorphic-git
-stars: 8236
+stars: 8243
 description: A pure JavaScript implementation of git for node and browsers!
 url: https://github.com/isomorphic-git/isomorphic-git
 ---
@@ -288,6 +288,8 @@ Cross-browser device testing is provided by:
 Code Review AI provided by:
 
 DNS provided by:
+
+Hosting (for CORS) provided by:
 
 Contributors
 ------------

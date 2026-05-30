@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 1185
+stars: 1194
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -79,7 +79,7 @@ Docker, podman, raw cgroups
 
 **Applications**
 
-PostgreSQL, nginx
+PostgreSQL, MySQL/MariaDB, nginx, apache2
 
 **Custom**
 
@@ -180,21 +180,21 @@ Note: Never thoughtlessly paste commands into the terminal. Even checking the ch
 
 ### Guided
 
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/c0m4r/kula/refs/heads/main/addons/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/c0m4r/kula/refs/heads/main/addons/install\_v2.sh)"
 
 ### Guided (verify installer)
 
 KULA\_INSTALL=$(mktemp)
-curl -o ${KULA\_INSTALL} -fsSL https://kula.ovh/install
-echo "c70f6f070a1f93e278f07f7efb7d662a48bc16f43909df7889d8778430dde1b6 ${KULA\_INSTALL}" | sha256sum -c || rm -f ${KULA\_INSTALL}
+curl -o ${KULA\_INSTALL} -fsSL https://raw.githubusercontent.com/c0m4r/kula/refs/heads/main/addons/install\_v2.sh
+echo "bad61ee9eed4595d20fa7e613bd27c3b8700c67f8a5fcac756d282a811705398 ${KULA\_INSTALL}" | sha256sum -c || rm -f ${KULA\_INSTALL}
 bash ${KULA\_INSTALL}
 rm -f ${KULA\_INSTALL}
 
 ### Standalone
 
-wget https://github.com/c0m4r/kula/releases/download/0.16.0/kula-0.16.0-amd64.tar.gz
-echo "0e13e8ac6feba89268e223c4975a3d31e1b9db91d6fe9550a0bb158fc25616fd kula-0.16.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.16.0-amd64.tar.gz
-tar -xvf kula-0.16.0-amd64.tar.gz
+wget https://github.com/c0m4r/kula/releases/download/0.17.2/kula-0.17.2-amd64.tar.gz
+echo "804b96337c4970f23f081620b804d0ff81a516c64f5b5c71e2fe2a68b2dab35a kula-0.17.2-amd64.tar.gz" | sha256sum -c || rm -f kula-0.17.2-amd64.tar.gz
+tar -xvf kula-0.17.2-amd64.tar.gz
 cd kula
 ./kula
 
@@ -211,16 +211,16 @@ docker logs -f kula
 
 ### Debian / Ubuntu (.deb)
 
-wget https://github.com/c0m4r/kula/releases/download/0.16.0/kula-0.16.0-amd64.deb
-echo "b4edd589ed99e6053f9a74ed0e4e9511880e39e9582078d09aff94003a684dcb kula-0.16.0-amd64.deb" | sha256sum -c || rm -f kula-0.16.0-amd64.deb
-sudo dpkg -i kula-0.16.0-amd64.deb
+wget https://github.com/c0m4r/kula/releases/download/0.17.2/kula-0.17.2-amd64.deb
+echo "72775325e178d85e2dd4ff967327559e3f7f8d0275f2db9c7c19f46c7410b175 kula-0.17.2-amd64.deb" | sha256sum -c || rm -f kula-0.17.2-amd64.deb
+sudo dpkg -i kula-0.17.2-amd64.deb
 journalctl -f -t kula
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-wget https://github.com/c0m4r/kula/releases/download/0.16.0/kula-0.16.0-x86\_64.rpm
-echo "2aba936feaf67c96c95070f22beae8c40a590adb2876d3f2b70e5a3595bd5fb6 kula-0.16.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.16.0-x86\_64.rpm
-sudo rpm -i kula-0.16.0-x86\_64.rpm
+wget https://github.com/c0m4r/kula/releases/download/0.17.2/kula-0.17.2-x86\_64.rpm
+echo "e311125504a77419f4832fa75e954dac6b8f7b1e932818f80d30bc3223b4a20f kula-0.17.2-x86\_64.rpm" | sha256sum -c || rm -f kula-0.17.2-x86\_64.rpm
+sudo rpm -i kula-0.17.2-x86\_64.rpm
 journalctl -f -t kula
 
 ### Arch Linux / Manjaro (AUR)
@@ -230,6 +230,14 @@ https://aur.archlinux.org/packages/kula
 git clone https://aur.archlinux.org/kula.git
 cd kula
 makepkg -si
+
+### Snap
+
+sudo snap install kula
+
+The snap uses **strict sandbox** so by default Kula features will be limited to the basics, which can be extended with snap connect.
+
+See Snap Wiki for the full guide.
 
 ### Build from Source
 
@@ -377,6 +385,17 @@ ls -1 dist/kula-\*.rpm
 
 ./addons/docker/build.sh
 docker compose -f addons/docker/docker-compose.yml up -d
+
+### Snap
+
+Requires snapcraft and a build backend (LXD recommended):
+
+snap install snapcraft --classic
+snap install lxd
+lxd init --auto
+./addons/build\_snap.sh            # host arch, into dist/
+./addons/build\_snap.sh cross      # cross-build amd64/arm64/riscv64 locally
+ls -1 dist/kula-\*.snap
 
 * * *
 

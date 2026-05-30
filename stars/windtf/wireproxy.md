@@ -1,6 +1,6 @@
 ---
 project: wireproxy
-stars: 5600
+stars: 5614
 description: Wireguard client that exposes itself as a socks5 proxy
 url: https://github.com/windtf/wireproxy
 ---
@@ -91,7 +91,7 @@ make
 Install
 =======
 
-go install github.com/windtf/wireproxy/cmd/wireproxy@v1.0.9 # or @latest
+go install github.com/windtf/wireproxy/cmd/wireproxy@v1.1.2 # or @latest
 
 Use with VPN
 ============

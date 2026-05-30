@@ -1,6 +1,6 @@
 ---
 project: waffle
-stars: 816
+stars: 817
 description: Flexible file upload and attachment library for Elixir
 url: https://github.com/elixir-waffle/waffle
 ---

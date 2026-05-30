@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 60520
+stars: 60813
 description: The all-in-one AI productivity accelerator. On device and privacy first with no annoying setup or configuration.
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -87,16 +87,24 @@ Cool Features of AnythingLLM
 -   SambaNova Cloud (chat models)
 -   Lemonade by AMD
 -   Minimax
+-   Cerebras (chat models)
 
 **Embedder models:**
 
 -   AnythingLLM Native Embedder (default)
 -   OpenAI
 -   Azure OpenAI
+-   Gemini
 -   LocalAI (all)
 -   Ollama (all)
 -   LM Studio (all)
+-   Lemonade
+-   OpenRouter
+-   LiteLLM
 -   Cohere
+-   Voyage AI
+-   Mistral
+-   Generic OpenAI-compatible embedding APIs
 
 **Audio Transcription models:**
 

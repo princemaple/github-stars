@@ -1,6 +1,6 @@
 ---
 project: fabric.js
-stars: 31184
+stars: 31204
 description: Javascript Canvas Library, SVG-to-Canvas (& canvas-to-SVG) Parser
 url: https://github.com/fabricjs/fabric.js
 ---
@@ -95,7 +95,7 @@ $ npm install fabric --save
 # or use yarn
 $ yarn add fabric
 # or use pnpm
-$ pnpm install fabric
+$ pnpm add fabric
 
 #### Browser
 

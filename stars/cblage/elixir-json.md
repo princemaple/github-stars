@@ -1,6 +1,6 @@
 ---
 project: elixir-json
-stars: 219
+stars: 218
 description: Native JSON library for Elixir
 url: https://github.com/cblage/elixir-json
 ---

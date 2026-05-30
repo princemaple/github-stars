@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 71530
+stars: 71722
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -17,7 +17,7 @@ Available for MacOS, Linux, & Windows
 
 ### Easily fine-tune 100+ large language models with zero-code CLI and Web UI
 
-👋 Join our WeChat, NPU, Lab4AI, LLaMA Factory Online user group.
+👋 Join our WeChat and NPU user groups.
 
 \[ English | 中文 \]
 
@@ -33,15 +33,12 @@ Start cloud training:
 
 -   **Colab (free)**: https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing
 -   **PAI-DSW (free trial)**: https://gallery.pai-ml.com/#/preview/deepLearning/nlp/llama\_factory
--   **LLaMA Factory Online**: https://www.llamafactory.com.cn/?utm\_source=LLaMA-Factory
--   **Alaya NeW (cloud GPU deal)**: https://docs.alayanew.com/docs/documents/useGuide/LLaMAFactory/mutiple/?utm\_source=LLaMA-Factory
 
 Read technical notes:
 
 -   **Documentation (WIP)**: https://llamafactory.readthedocs.io/en/latest/
 -   **Documentation (AMD GPU)**: https://rocm.docs.amd.com/projects/ai-developer-hub/en/latest/notebooks/fine\_tune/llama\_factory\_llama3.html
 -   **Official Blog**: https://blog.llamafactory.net/en/
--   **Official Course**: https://www.lab4ai.cn/course/detail?id=7c13e60f6137474eb40f6fd3983c0f46&utm\_source=LLaMA-Factory
 
 Note
 
@@ -62,7 +59,6 @@ Table of Contents
     -   Data Preparation
     -   Quickstart
     -   Fine-Tuning with LLaMA Board GUI
-    -   LLaMA Factory Online
     -   Build Docker
     -   Deploy with OpenAI-style API and vLLM
     -   Download from ModelScope Hub
@@ -111,15 +107,11 @@ Website: https://blog.llamafactory.net/en/
 
 -   💡 KTransformers Fine-Tuning × LLaMA Factory: Fine-tuning 1000 Billion models with 2 4090-GPU + CPU (English)
 -   💡 Easy Dataset × LLaMA Factory: Enabling LLMs to Efficiently Learn Domain Knowledge (English)
--   Fine-tune a mental health LLM using LLaMA-Factory (Chinese)
--   Fine-tune GPT-OSS for Role-Playing using LLaMA-Factory (Chinese)
 -   A One-Stop Code-Free Model Reinforcement Learning and Deployment Platform based on LLaMA-Factory and EasyR1 (Chinese)
 -   How Apoidea Group enhances visual information extraction from banking documents with multimodal models using LLaMA-Factory on Amazon SageMaker HyperPod (English)
 
 All Blogs
 
--   Fine-tune Llama3.1-70B for Medical Diagnosis using LLaMA-Factory (Chinese)
--   Fine-tune Qwen2.5-VL for Autonomous Driving using LLaMA-Factory (Chinese)
 -   LLaMA Factory: Fine-tuning the DeepSeek-R1-Distill-Qwen-7B Model for News Classifier (Chinese)
 -   A One-Stop Code-Free Model Fine-Tuning & Deployment Platform based on SageMaker and LLaMA-Factory (Chinese)
 -   LLaMA Factory Multi-Modal Fine-Tuning Practice: Fine-Tuning Qwen2-VL for Personal Tourist Guide (Chinese)
@@ -1165,10 +1157,6 @@ Read FAQs first if you encounter any problems.
 ### Fine-Tuning with LLaMA Board GUI (powered by Gradio)
 
 llamafactory-cli webui
-
-### LLaMA Factory Online
-
-Read our documentation.
 
 ### Build Docker
 

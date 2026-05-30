@@ -1,19 +1,9 @@
 ---
 project: directus
-stars: 35843
+stars: 36024
 description: The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.
 url: https://github.com/directus/directus
 ---
-
-* * *
-
-Note
-
-We’re planning an update to the Directus source code license and would love your feedback.  
-Take a look at our community post and share your thoughts!  
-🔗 Directus License Revision: Community Feedback Requested
-
-* * *
 
 🐰 Introduction
 ---------------
@@ -83,15 +73,21 @@ Directus is made possible with support from our passionate core team, talented c
 📄 Understanding Our License
 ----------------------------
 
-Directus is licensed under the Business Source License (BSL) 1.1 with a permissive additional use grant. For most users, it operates just like open source! Here's what that means for you:
+Directus is licensed under the Monospace Sustainable Core License (MSCL) 1.0, a source-available license derived from the Fair Core License.
 
-### Free for Most Users
+Read about our evolving our license from BSL to MSCL for long-term sustainability.
 
-If your organization has less than $5M in annual revenue and/or funding combined, you can use Directus freely in any way you'd like. Build that side project, launch your startup, or experiment with the platform — no strings attached.
+### Free for Most Builders
 
-### Enterprise Usage
+Organizations under **$5M in annual revenue and 50 employees** can use the Directus platform for free under the Open Innovation Grant— no strings attached.
 
-For larger organizations (>$5M in annual revenue/funding) using Directus in production, we require a commercial license. This model helps us maintain a sustainable balance: keeping Directus free for the majority of our community while ensuring larger organizations who benefit from the platform contribute to its continued development.
+### Free Core Tier
+
+Even above those thresholds, a free Core tier is available to explore and build on Directus without a commercial license.
+
+### Commercial License
+
+Larger organizations using advanced or enterprise features require a commercial license. See our pricing for details. This model helps us maintain a sustainable balance: keeping Directus free for the majority of our community while ensuring larger organizations who benefit from the platform contribute to its continued development.
 
 ### Why This Approach?
 

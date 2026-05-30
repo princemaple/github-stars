@@ -1,6 +1,6 @@
 ---
 project: pgroll
-stars: 6471
+stars: 6482
 description: PostgreSQL zero-downtime migrations made easy
 url: https://github.com/xataio/pgroll
 ---
@@ -70,7 +70,14 @@ Follow these steps to perform your first schema migration using `pgroll`:
 
 `pgroll` needs to store some internal state in the database. A table is created to track the current schema version and store version history. To prepare the database, run the following command:
 
-pgroll init --postgres-url postgres://user:password@host:port/dbname
+pgroll --postgres-url postgres://user:password@host:port/dbname init
+
+### Import existing DB (optional)
+
+To start from a scratch (empty) database, just skip this step :)  
+But if you want to use pgroll on an **already populated** database, you need to "import" the current structure using the `baseline` command:
+
+pgroll --postgres-url postgres://user:password@host:port/dbname baseline 000\_existing\_schema ./migrations/
 
 ### Start a migration
 

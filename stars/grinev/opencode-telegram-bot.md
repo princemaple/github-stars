@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 694
+stars: 728
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -153,6 +153,10 @@ Detach from the current session without stopping it
 
 Browse and switch between recent sessions
 
+`/messages`
+
+Browse user messages, revert or fork from a previous state
+
 `/projects`
 
 Switch between OpenCode projects
@@ -212,6 +216,15 @@ Show available commands
 Any regular text message is sent as a prompt to the coding agent only when no blocking interaction is active. Voice/audio messages are transcribed and then sent as prompts when STT is configured.
 
 When the current project is a git repository, `/worktree` shows the existing worktrees for that repository. Status and pinned updates display the main project path with the active branch, and show a separate `Worktree` line when a linked worktree is selected.
+
+Message History, Revert, and Fork
+---------------------------------
+
+The `/messages` command displays all user messages in the current session, sorted by time (newest first). Select a message to view its full text and access the **Revert** and **Fork** actions.
+
+**Revert** rolls back the session state to the selected message, discarding all subsequent messages and agent responses. This is useful when you want to retry a different approach from a specific point in the conversation.
+
+**Fork** creates a new session that branches from the selected message. The original session remains unchanged, and you can continue working in the new forked session. This is useful when you want to explore an alternative approach without losing the original conversation history.
 
 Scheduled Tasks
 ---------------
@@ -379,6 +392,14 @@ No
 `SESSIONS_LIST_LIMIT`
 
 Sessions per page in `/sessions`
+
+No
+
+`10`
+
+`MESSAGES_LIST_LIMIT`
+
+User messages per page in `/messages`
 
 No
 

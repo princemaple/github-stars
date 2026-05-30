@@ -1,6 +1,6 @@
 ---
 project: dozzle
-stars: 13006
+stars: 13120
 description: Realtime log viewer for containers.  Supports Docker, Swarm and K8s. 
 url: https://github.com/amir20/dozzle
 ---

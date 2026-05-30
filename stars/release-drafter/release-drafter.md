@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3877
+stars: 3879
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -58,29 +58,31 @@ name-template: "v$RESOLVED\_VERSION 🌈"
 tag-template: "v$RESOLVED\_VERSION"
 categories:
   - title: "🚀 Features"
-    labels:
-      - "feature"
-      - "enhancement"
+    semver-increment: minor
+    when:
+      labels:
+        - "feature"
+        - "enhancement"
   - title: "🐛 Bug Fixes"
-    labels:
-      - "fix"
-      - "bugfix"
-      - "bug"
+    when:
+      labels:
+        - "fix"
+        - "bugfix"
+        - "bug"
   - title: "🧰 Maintenance"
-    label: "chore"
+    when:
+      label: "chore"
+  - type: "pre-exclude"
+    when:
+      label: "skip-changelog"
+  - type: "version-resolver"
+    semver-increment: "major"
+    when:
+      label: "major"
+  - type: "version-resolver"
+    semver-increment: "patch"
 change-template: "\- $TITLE @$AUTHOR (#$NUMBER)"
 change-title-escapes: '\\<\*\_&' # You can add # and @ to disable mentions, and add \` to disable code blocks.
-version-resolver:
-  major:
-    labels:
-      - "major"
-  minor:
-    labels:
-      - "minor"
-  patch:
-    labels:
-      - "patch"
-  default: patch
 template: |
   ## Changes
   $CHANGES
@@ -172,19 +174,7 @@ The references to listen for configuration updates to `.github/release-drafter.y
 
 Optional
 
-Categorize pull requests using labels. Refer to Categorize Pull Requests to learn more about this option.
-
-`exclude-labels`
-
-Optional
-
-Exclude pull requests using labels. Refer to Exclude Pull Requests to learn more about this option.
-
-`include-labels`
-
-Optional
-
-Include only the specified pull requests using labels. Refer to Include Pull Requests to learn more about this option.
+Define how changes are filtered, grouped, and versioned. Categories support `type`, `when`, `exclusive`, `collapse-after`, and `semver-increment`. Refer to Categorize Changes.
 
 `exclude-contributors`
 
@@ -240,12 +230,6 @@ Optional
 
 Mark the release as latest. Only works for published releases. Can be one of: `true`, `false`, `legacy`. Default `true`.
 
-`version-resolver`
-
-Optional
-
-Adjust the `$RESOLVED_VERSION` variable using labels. Refer to Version Resolver to learn more about this
-
 `commitish`
 
 Optional
@@ -263,18 +247,6 @@ Filter releases that satisfies a semver range. Evaluates the tag name againts no
 Optional
 
 Filter previous releases to consider only those with the target matching `commitish`. Default: `false`.
-
-`include-paths`
-
-Optional
-
-Restrict pull requests included in the release notes to only the pull requests that modified any of the paths in this array. Supports files and directories. Default: `[]`
-
-`exclude-paths`
-
-Optional
-
-Exclude pull requests from the release notes if they modified any of the paths in this array. Supports files and directories. If used with `include-paths`, exclusion takes precedence. Default: `[]`
 
 `pull-request-limit`
 
@@ -357,7 +329,7 @@ The next prerelease suffix. Depends on `prerelease-identifier`. Ex: `v1.2.3-beta
 
 `$RESOLVED_VERSION`
 
-The next resolved version number, based on GitHub labels. Refer to Version Resolver to learn more about this.
+The next resolved version number, based on which categories the matching changes end up in and the `semver-increment` configured on those categories. Refer to Version Resolver to learn more about this.
 
 ### Next Version Component Helpers
 
@@ -447,23 +419,37 @@ If you simply want a verbose title for your releases, use the `name-template` co
 Version Resolver
 ----------------
 
-With the `version-resolver` option version number incrementing can be resolved automatically based on labels of individual pull requests. Append the following to your `.github/release-drafter.yml` file:
+Any category with `semver-increment` contributes to `$RESOLVED_VERSION`. Use `type: version-resolver` categories when you want version resolution rules that do not also render a changelog section.
 
-version-resolver:
-  major:
-    labels:
-      - "major"
-  minor:
-    labels:
-      - "minor"
-  patch:
-    labels:
-      - "patch"
-  default: patch
+Before version resolution runs, any `pre-include` and `pre-exclude` categories filter the candidate pull requests. After that:
 
-The above config controls the output of the `$RESOLVED_VERSION` variable.
+-   `type: changelog` categories contribute only for pull requests that end up assigned to that changelog category
+-   `type: version-resolver` categories contribute from their own matches without rendering a changelog section
+-   the highest matching increment wins across both category types
 
-If a pull requests is found with the label `major`/`minor`/`patch`, the corresponding version key will be incremented from a semantic version. The maximum out of major, minor and patch found in any of the pull requests will be used to increment the version number. If no pull requests are found with the assigned labels, the `default` will be assigned.
+Category order matters when `exclusive: true` is used. Exclusivity is evaluated independently for changelog categories and version-resolver categories.
+
+categories:
+  - type: "version-resolver"
+    semver-increment: "major"
+    when:
+      label: "major"
+  - type: "version-resolver"
+    semver-increment: "minor"
+    when:
+      label: "minor"
+  - type: "version-resolver"
+    semver-increment: "patch"
+    when:
+      label: "patch"
+  - type: "version-resolver"
+    semver-increment: "patch"
+
+The example above:
+
+-   uses matching categories to resolve `major`, `minor`, or `patch`
+-   uses the category with no `when` as the fallback when nothing else matches
+-   picks the highest semver increment across matching categories
 
 Change Template Variables
 -------------------------
@@ -515,51 +501,185 @@ references:
 
 Currently matching against any `ref/heads/` and `ref/tags/` references behind the scene
 
-Categorize Pull Requests
-------------------------
+Categorize Changes
+------------------
 
-With the `categories` option you can categorize pull requests in release notes using labels. For example, append the following to your `.github/release-drafter.yml` file:
+With the `categories` option you can describe the full change classification pipeline:
+
+-   `type: changelog` groups matching changes in the rendered release notes
+-   `type: pre-include` keeps only matching changes for later processing
+-   `type: pre-exclude` removes matching changes before changelog generation
+-   `type: version-resolver` affects `$RESOLVED_VERSION` without rendering a changelog section
+
+`pre-include` always runs before `pre-exclude`, and both category types affect both changelog generation and version resolution.
+
+Categories are evaluated in the order they are defined. By default, a pull request can match multiple categories of the same type. Setting `exclusive: true` on a `changelog` or `version-resolver` category stops later categories of that same type from also matching the same pull request.
+
+Each category supports the following keys:
+
+Key
+
+Applies to
+
+Description
+
+`type`
+
+All categories
+
+Category behavior. Defaults to `changelog`.
+
+`title`
+
+`changelog`
+
+Required for changelog categories because `category-template` renders it. Ignored for `pre-include`, `pre-exclude`, and `version-resolver`.
+
+`when`
+
+All categories
+
+Match conditions. Omit it or use an empty array to match all changes.
+
+`exclusive`
+
+`changelog`, `version-resolver`
+
+Prevents later categories of the same type from also matching the same pull request. Defaults to `false`.
+
+`collapse-after`
+
+`changelog`
+
+Collapses long changelog sections into `<details>`. `0` always collapses, `-1` disables collapsing. Defaults to `-1`.
+
+`semver-increment`
+
+`changelog`, `version-resolver`
+
+Version increment contributed by matching changes. Can be `major`, `minor`, or `patch`. Defaults to `patch`. Ignored for `pre-include` and `pre-exclude`.
+
+Each category can define a `when` condition as either:
+
+-   a single condition object
+-   an array of condition objects, where matching any one condition is enough
+
+Within one condition, label and path predicates are combined with AND logic.
+
+The condition keys are:
+
+Key
+
+Description
+
+`label`
+
+Shorthand for one `labels` entry.
+
+`labels`
+
+Label predicates to compare against the pull request labels.
+
+`labels-mode`
+
+How the configured labels are matched. Defaults to `any`.
+
+`path`
+
+Shorthand for one `paths` entry.
+
+`paths`
+
+Glob patterns to compare against the path patterns matched by the pull request.
+
+`paths-mode`
+
+How the configured paths are matched. Defaults to `any`.
 
 categories:
   - title: "🚀 Features"
-    label: "feature"
+    semver-increment: "minor"
+    when:
+      labels:
+        - "feature"
+        - "enhancement"
   - title: "🐛 Bug Fixes"
-    labels:
-      - "fix"
-      - "bugfix"
-      - "bug"
+    when:
+      - labels:
+          - "bug"
+          - "fix"
+      - labels:
+          - "regression"
+        paths:
+          - "src/\*\*"
+  - title: "⬆️ Dependencies"
+    collapse-after: 0
+    exclusive: true
+    when:
+      label: "dependencies"
+  - type: "pre-exclude"
+    when:
+      label: "skip-changelog"
 
-Pull requests with the label "feature" or "fix" will now be grouped together:
+The `labels-mode` and `paths-mode` options control how the configured labels or path patterns are compared. `any` is the default. Path matching operates on the set of configured path patterns that matched the pull request.
+
+Within a condition, `label` is shorthand for a single `labels` entry. If both `label` and `labels` are present, they are combined before `labels-mode` is applied. With the default `labels-mode: any`, `labels: ["feature", "enhancement"]` matches pull requests carrying either label.
+
+Likewise, `path` is shorthand for a single `paths` entry. If both `path` and `paths` are present, they are combined before `paths-mode` is applied.
+
+The available matching modes are:
+
+-   `any`: at least one configured value matches
+-   `all`: every configured value matches
+-   `only`: every change value is included in the configured set
+-   `exactly`: the change values and configured values are the same set
+
+For path conditions, `only` and `exactly` compare against the set of configured path patterns that matched the pull request, not against raw changed file paths.
+
+If a condition does not configure any `label`/`labels` or `path`/`paths`, the corresponding `*-mode` setting has no effect.
+
+An omitted or empty `when` matches all changes, but the meaning depends on the category type:
+
+-   at most one `type: changelog` category may omit `when`; it becomes the bucket for otherwise uncategorized changes
+-   a `type: version-resolver` category with no `when` acts as the fallback when no other version-resolver category matches
+-   `pre-include` and `pre-exclude` categories with no `when` match every change
+
+Changes with matching labels or paths will now be grouped together:
 
 Adding such labels to your PRs can be automated by using the embedded Autolabeler action.
 
-Optionally you can add a `collapse-after` entry to your category item, if the category has more than the defined `collapse-after` pull requests then it will show all pull requests collapsed for that category. Setting `collapse-after` to `0` will always collapse the category regardless of the number of pull requests. Append the `collapse-after` integer to your category as following:
+Optionally you can add a `collapse-after` entry to your category item, if the category has more than the defined `collapse-after` pull requests then it will show all pull requests collapsed for that category. Setting `collapse-after` to `0` will always collapse the category regardless of the number of pull requests, and setting it to `-1` disables collapsing. Append the `collapse-after` integer to your category as following:
 
 categories:
   - title: "⬆️ Dependencies"
     collapse-after: 3
-    labels:
-      - "dependencies"
+    when:
+      label: "dependencies"
 
-Exclude Pull Requests
----------------------
+Exclude Changes
+---------------
 
-With the `exclude-labels` option you can exclude pull requests from the release notes using labels. For example, append the following to your `.github/release-drafter.yml` file:
+The recommended way to exclude changes is a `type: pre-exclude` category. For example, append the following to your `.github/release-drafter.yml` file:
 
-exclude-labels:
-  - "skip-changelog"
+categories:
+  - type: "pre-exclude"
+    when:
+      label: "skip-changelog"
 
-Pull requests with the label "skip-changelog" will now be excluded from the release draft.
+Changes with the label "skip-changelog" will now be excluded from the release draft.
 
-Include Pull Requests
----------------------
+Include Changes
+---------------
 
-With the `include-labels` option you can specify pull requests from the release notes using labels. Only pull requests that have the configured labels will be included in the release draft. For example, append the following to your `.github/release-drafter.yml` file:
+The recommended way to include only a subset of changes is a `type: pre-include` category. Only changes that match at least one `pre-include` category are kept for the rest of the pipeline. For example, append the following to your `.github/release-drafter.yml` file:
 
-include-labels:
-  - "app-foo"
+categories:
+  - type: "pre-include"
+    when:
+      labels:
+        - "app-foo"
 
-Pull requests with the label "app-foo" will be the only pull requests included in the release draft.
+Changes with the label "app-foo" will be the only changes included in the release draft.
 
 Exclude Contributors
 --------------------
@@ -803,6 +923,11 @@ Minor part of resolved version by Version Resolver. i.e. `3` for version `6.3.1`
 `patch_version`
 
 Patch part of resolved version by Version Resolver. i.e. `1` for version `6.3.1`
+
+GitHub Enterprise Server (GHES)
+-------------------------------
+
+Release Drafter creates its GitHub client with `@actions/github.getOctokit()`. In GitHub Actions, that client uses the runtime API base URL from `GITHUB_API_URL`, so the same workflow can target GHES without extra `github.com`\-specific configuration, assuming the required REST and GraphQL APIs are available on the instance.
 
 Contributing
 ------------

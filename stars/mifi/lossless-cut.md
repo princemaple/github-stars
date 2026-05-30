@@ -1,6 +1,6 @@
 ---
 project: lossless-cut
-stars: 40631
+stars: 40797
 description: The swiss army knife of lossless video/audio editing
 url: https://github.com/mifi/lossless-cut
 ---
@@ -71,6 +71,7 @@ Features
 -   Black scene detection, silent audio detection, and scene change detection
 -   Divide timeline into segments of length L, size (X MB), N number of segments or even randomized segments!
 -   Speed up / slow down video or audio file (changing FPS)
+-   Lossless crop and aspect ratio modification
 -   Basic CLI and HTTP API
 -   Show (DJI) embedded GPS track on a map
 -   Losslessly Download videos over HTTP (e.g. HLS `.m3u8`)

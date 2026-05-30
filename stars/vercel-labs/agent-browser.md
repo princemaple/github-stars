@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 34084
+stars: 34763
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -81,6 +81,8 @@ agent-browser fill @e3 "test@example.com" # Fill by ref
 agent-browser get text @e1                # Get text by ref
 agent-browser screenshot page.png
 agent-browser close
+
+Headless Chromium screenshots hide native scrollbars for consistent image output. Pass `--hide-scrollbars false` when launching to keep native scrollbars visible.
 
 ### Traditional Selectors (also supported)
 
@@ -754,6 +756,10 @@ Ignore HTTPS certificate errors (useful for self-signed certs)
 
 Allow file:// URLs to access local files (Chromium only)
 
+`--hide-scrollbars <bool>`
+
+Hide native scrollbars in headless Chromium screenshots, enabled by default (or `AGENT_BROWSER_HIDE_SCROLLBARS` env)
+
 `-p, --provider <name>`
 
 Cloud browser provider (or `AGENT_BROWSER_PROVIDER` env)
@@ -920,6 +926,7 @@ Create an `agent-browser.json` file to set persistent defaults instead of repeat
   "proxy": "http://localhost:8080",
   "profile": "./browser-data",
   "userAgent": "my-agent/1.0",
+  "hideScrollbars": false,
   "ignoreHttpsErrors": true
 }
 

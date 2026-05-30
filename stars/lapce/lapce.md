@@ -1,6 +1,6 @@
 ---
 project: lapce
-stars: 38467
+stars: 38479
 description: Lightning-fast and Powerful Code Editor written in Rust
 url: https://github.com/lapce/lapce
 ---

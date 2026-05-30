@@ -1,6 +1,6 @@
 ---
 project: erlang-python
-stars: 90
+stars: 91
 description: Execute Python from Erlang using dirty NIFs with GIL-aware execution, rate limiting, and free-threading support
 url: https://github.com/benoitc/erlang-python
 ---
@@ -42,7 +42,7 @@ Key features:
 Requirements
 ------------
 
--   Erlang/OTP 27+
+-   Erlang/OTP 28+ (tested on OTP 28 and 29)
 -   Python 3.12+ (3.13+ for free-threading)
 -   C compiler (gcc, clang)
 

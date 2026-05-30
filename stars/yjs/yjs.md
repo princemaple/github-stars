@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 21877
+stars: 21928
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -1090,9 +1090,13 @@ ytext.toString() // => ''
 undoManager.redo()
 ytext.toString() // => 'abc'
 
-**`constructor(scope:Y.AbstractType|Array<Y.AbstractType> [, {captureTimeout:number,trackedOrigins:Set<any>,deleteFilter:function(item):boolean}])`**
+**`constructor(scope:Y.AbstractType|Array<Y.AbstractType> [, {captureTimeout:number,trackedOrigins:Set<any>,deleteFilter:function(item):boolean,ignoreRemoteAttributeChanges:boolean}])`**
 
 Accepts either single type as scope or an array of types.
+
+**`ignoreRemoteAttributeChanges:boolean`**
+
+By default, the UndoManager will never overwrite remote changes. In some cases this is not the expected behavior. When set to `true`, undo/redo may overwrite remote attribute changes (e.g. on `Y.Map` keys or `Y.XmlElement` / `Y.XmlText` attributes). Defaults to `false`. _(previously named `ignoreRemoteMapChanges`)_
 
 **`undo()`**
 

@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 436814
+stars: 437948
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -1256,6 +1256,16 @@ Do not worry about managing the multiple versions of the Bible
 Yes
 
 No
+
+Amanah Sunnah
+
+Semantic search across Quran, Hadith, Tafsir & 18K+ Rijal narrators
+
+`apiKey`
+
+Yes
+
+Yes
 
 Bhagavad Gita
 
@@ -4107,6 +4117,16 @@ Yes
 
 Unknown
 
+QR & Barcode
+
+QR codes and barcodes (Code 128, EAN-13, Data Matrix, PDF417 + more). SVG or PNG output
+
+No
+
+Yes
+
+Yes
+
 QR code
 
 Create an easy to read QR code and URL shortener
@@ -5602,6 +5622,16 @@ Yes
 
 Yes
 
+EconPulse
+
+Live economic data — CPI, PPI, energy, treasury rates, BTC premium
+
+apiKey
+
+Yes
+
+Yes
+
 Fed Treasury
 
 U.S. Department of the Treasury Data
@@ -5960,270 +5990,11 @@ Yes
 
 Unknown
 
-**⬆ Back to Index**  
+**⬆ Back to Index**
+
   
-
-### Food & Drink
-
-API
-
-Description
-
-Auth
-
-HTTPS
-
-CORS
-
-BaconMockup
-
-Resizable bacon placeholder images
-
-No
-
-Yes
-
-Yes
-
-Chomp
-
-Data about various grocery products and foods
-
-`apiKey`
-
-Yes
-
-Unknown
-
-Coffee
-
-Random pictures of coffee
-
-No
-
-Yes
-
-Unknown
-
-Edamam nutrition
-
-Nutrition Analysis
-
-`apiKey`
-
-Yes
-
-Unknown
-
-Edamam recipes
-
-Recipe Search
-
-`apiKey`
-
-Yes
-
-Unknown
-
-Foodish
-
-Random pictures of food dishes
-
-No
-
-Yes
-
-Yes
-
-Fruityvice
-
-Data about all kinds of fruit
-
-No
-
-Yes
-
-Unknown
-
-Kroger
-
-Supermarket Data
-
-`apiKey`
-
-Yes
-
-Unknown
-
-LCBO
-
-Alcohol
-
-`apiKey`
-
-Yes
-
-Unknown
-
-Open Brewery DB
-
-Breweries, Cideries and Craft Beer Bottle Shops
-
-No
-
-Yes
-
-Yes
-
-Open Food Facts
-
-Food Products Database
-
-No
-
-Yes
-
-Unknown
-
-PunkAPI
-
-Brewdog Beer Recipes
-
-No
-
-Yes
-
-Unknown
-
-RecipeAPI
-
-Recipes, ingredients, nutrition data and cooking instructions
-
-`apiKey`
-
-Yes
-
-Yes
-
-Rustybeer
-
-Beer brewing tools
-
-No
-
-Yes
-
-No
-
-Spoonacular
-
-Recipes, Food Products, and Meal Planning
-
-`apiKey`
-
-Yes
-
-Unknown
-
-Systembolaget
-
-Govornment owned liqour store in Sweden
-
-`apiKey`
-
-Yes
-
-Unknown
-
-TacoFancy
-
-Community-driven taco database
-
-No
-
-No
-
-Unknown
-
-Tasty
-
-API to query data about recipe, plan, ingredients
-
-`apiKey`
-
-Yes
-
-Unknown
-
-The Report of the Week
-
-Food & Drink Reviews
-
-No
-
-Yes
-
-Unknown
-
-TheCocktailDB
-
-Cocktail Recipes
-
-`apiKey`
-
-Yes
-
-Yes
-
-TheMealDB
-
-Meal Recipes
-
-`apiKey`
-
-Yes
-
-Yes
-
-Untappd
-
-Social beer sharing
-
-`OAuth`
-
-Yes
-
-Unknown
-
-What's on the menu?
-
-NYPL human-transcribed historical menu collection
-
-`apiKey`
-
-No
-
-Unknown
-
-WhiskyHunter
-
-Past online whisky auctions statistical data
-
-No
-
-Yes
-
-Unknown
-
-Zestful
-
-Parse recipe ingredients
-
-`apiKey`
-
-Yes
-
-Yes
+  
+\### Food & Drink API | Description | Auth | HTTPS | CORS | |:---|:---|:---|:---|:---| | \[BaconMockup\](https://baconmockup.com/) | Resizable bacon placeholder images | No | Yes | Yes | | \[Chomp\](https://chompthis.com/api/) | Data about various grocery products and foods | \`apiKey\` | Yes | Unknown | | \[Coffee\](https://coffee.alexflipnote.dev/) | Random pictures of coffee | No | Yes | Unknown | | \[Edamam nutrition\](https://developer.edamam.com/edamam-docs-nutrition-api) | Nutrition Analysis | \`apiKey\` | Yes | Unknown | | \[Edamam recipes\](https://developer.edamam.com/edamam-docs-recipe-api) | Recipe Search | \`apiKey\` | Yes | Unknown | | \[Foodish\](https://github.com/surhud004/Foodish#readme) | Random pictures of food dishes | No | Yes | Yes | | \[Fruityvice\](https://www.fruityvice.com) | Data about all kinds of fruit | No | Yes | Unknown | | \[Kroger\](https://developer.kroger.com/reference) | Supermarket Data | \`apiKey\` | Yes | Unknown | | \[LCBO\](https://lcboapi.com/) | Alcohol | \`apiKey\` | Yes | Unknown | | \[Open Brewery DB\](https://www.openbrewerydb.org) | Breweries, Cideries and Craft Beer Bottle Shops | No | Yes | Yes | | \[Open Food Facts\](https://world.openfoodfacts.org/data) | Food Products Database | No | Yes | Unknown | | \[PunkAPI\](https://punkapi.com/) | Brewdog Beer Recipes | No | Yes | Unknown | | \[RecipeAPI\](https://recipeapi.io) | Recipes, ingredients, nutrition data and cooking instructions | \`apiKey\` | Yes | Yes | | \[Rustybeer\](https://rustybeer.herokuapp.com/) | Beer brewing tools | No | Yes | No | | \[Spoonacular\](https://spoonacular.com/food-api) | Recipes, Food Products, and Meal Planning | \`apiKey\` | Yes | Unknown | | \[Systembolaget\](https://api-portal.systembolaget.se) | Govornment owned liqour store in Sweden | \`apiKey\` | Yes | Unknown | | \[TacoFancy\](https://github.com/evz/tacofancy-api) | Community-driven taco database | No | No | Unknown | | \[Tasty\](https://rapidapi.com/apidojo/api/tasty/) | API to query data about recipe, plan, ingredients | \`apiKey\` | Yes | Unknown | | \[The Report of the Week\](https://github.com/andyklimczak/TheReportOfTheWeek-API) | Food & Drink Reviews | No | Yes | Unknown | | \[TheCocktailDB\](https://www.thecocktaildb.com/api.php) | Cocktail Recipes | \`apiKey\` | Yes | Yes | | \[TheMealDB\](https://www.themealdb.com/api.php) | Meal Recipes | \`apiKey\` | Yes | Yes | | \[Untappd\](https://untappd.com/api/docs) | Social beer sharing | \`OAuth\` | Yes | Unknown | | \[What's on the menu?\](http://nypl.github.io/menus-api/) | NYPL human-transcribed historical menu collection | \`apiKey\` | No | Unknown | | \[WhiskyHunter\](https://whiskyhunter.net/api/) | Past online whisky auctions statistical data | No | Yes | Unknown | | \[Zestful\](https://zestfuldata.com/) | Parse recipe ingredients | \`apiKey\` | Yes | Yes |
 
 **⬆ Back to Index**  
   
@@ -7554,6 +7325,16 @@ No
 Yes
 
 Unknown
+
+HackMyIP
+
+IP geolocation, ISP and privacy/VPN scoring, email breach checks, DNS and WHOIS lookups
+
+No
+
+Yes
+
+Yes
 
 HelloSalut
 
@@ -10640,6 +10421,16 @@ Yes
 
 No
 
+Open Scholarships
+
+Free, openly-licensed directory of US scholarships and student aid from official sources
+
+No
+
+Yes
+
+Yes
+
 openAFRICA
 
 Large datasets repository of African open data
@@ -13707,6 +13498,16 @@ Yes
 
 Unknown
 
+Audexum
+
+Text-to-speech REST API with 43 voices and 33 languages
+
+`apiKey`
+
+Yes
+
+Yes
+
 Cloudmersive Natural Language Processing
 
 Natural language processing and text analysis
@@ -14210,6 +14011,16 @@ Unknown
 Open Charge Map
 
 Global public registry of electric vehicle charging locations
+
+`apiKey`
+
+Yes
+
+Yes
+
+Orizn Visa
+
+Visa requirements for 199 countries, 39K+ passport-destination pairs in 15 languages
 
 `apiKey`
 
@@ -14821,6 +14632,16 @@ Custom URL shortener for sharing branded links
 Yes
 
 Unknown
+
+RedirHub
+
+URL redirect management with custom domains, HTTPS, analytics, and REST API
+
+`apiKey`
+
+Yes
+
+Yes
 
 Short Link
 

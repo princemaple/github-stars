@@ -1,6 +1,6 @@
 ---
 project: coolify
-stars: 55801
+stars: 56221
 description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
@@ -71,6 +71,7 @@ Thank you so much!
 
 -   MVPS - Cheap VPS servers at the highest possible quality
 -   SerpAPI - Google Search API — Scrape Google and other search engines from our fast, easy, and complete API
+-   Seibert Group - Boost productivity company-wide with AI agents like Claude Code
 -   ScreenshotOne - Screenshot API for devs
 -   PrivateAlps - Cloud Services Provider, VPS, servers infrastructure for people who care about privacy and control
 
@@ -82,7 +83,6 @@ Thank you so much!
 -   BC Direct - Your trusted technology consulting partner
 -   Blacksmith - Infrastructure automation platform
 -   Capture.page - Fast & Reliable Screenshot API for Developers
--   Context.dev - API to personalize your product with logos, colors, and company info from any domain
 -   ByteBase - Database CI/CD and Security at Scale
 -   CodeRabbit - Cut Code Review Time & Bugs in Half
 -   COMIT - New York Times award–winning contractor

@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 38870
+stars: 39049
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -79,7 +79,6 @@ Installation
     -   Xray\_bash\_onekey, XTool, VPainLess
     -   v2ray-agent, Xray\_onekey, ProxySU
 -   Magisk
-    -   Xray4Magisk
     -   Xray\_For\_Magisk
 -   Homebrew
     -   `brew install xray`
@@ -128,6 +127,7 @@ GUI Clients
     -   XrayFA
     -   AnyPortal
     -   OneXray
+    -   AsteriskNG
 -   iOS & macOS arm64 & tvOS
     -   Happ | Happ RU | Happ tvOS
     -   Streisand
@@ -171,6 +171,7 @@ Others that support VLESS, XTLS, REALITY, XUDP, PLUX...
     -   xtls-sdk
     -   xtlsapi
     -   AndroidLibXrayLite
+    -   flutter\_vless
     -   Xray-core-python
     -   xray-api
 -   XrayR
@@ -209,6 +210,11 @@ CGO\_ENABLED=0 go build -o xray -trimpath -buildvcs=false -ldflags="\-s -w -buil
 Make sure that you are using the same Go version, and remember to set the git commit id (7 bytes):
 
 CGO\_ENABLED=0 go build -o xray -trimpath -buildvcs=false -gcflags="all=-l=4" -ldflags="\-X github.com/xtls/xray-core/core.build=REPLACE -s -w -buildid=" -v ./main
+
+For Android:
+
+GOOS=android GOARCH=arm64 CGO\_ENABLED=1 CC=/path/to/aarch64-linux-android24-clang go build -o xray -trimpath -buildvcs=false -gcflags="all=-l=4" -ldflags="\-X github.com/xtls/xray-core/core.build=REPLACE -s -w -buildid= -checklinkname=0" -v ./main
+GOOS=android GOARCH=amd64 CGO\_ENABLED=1 CC=/path/to/x86\_64-linux-android24-clang go build -o xray -trimpath -buildvcs=false -gcflags="all=-l=4" -ldflags="\-X github.com/xtls/xray-core/core.build=REPLACE -s -w -buildid= -checklinkname=0" -v ./main
 
 If you are compiling a 32-bit MIPS/MIPSLE target, use this command instead:
 

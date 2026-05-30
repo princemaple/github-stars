@@ -1,6 +1,6 @@
 ---
 project: mini_repo
-stars: 195
+stars: 196
 description: MiniRepo allows self-hosting of Hex packages.
 url: https://github.com/wojtekmach/mini_repo
 ---

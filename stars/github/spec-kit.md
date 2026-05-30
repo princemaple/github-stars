@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 105302
+stars: 107181
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -20,10 +20,7 @@ Table of Contents
 -   🤔 What is Spec-Driven Development?
 -   ⚡ Get Started
 -   📽️ Video Overview
--   🧩 Community Extensions
--   🎨 Community Presets
--   🚶 Community Walkthroughs
--   🛠️ Community Friends
+-   🌍 Community
 -   🤖 Supported AI Coding Agent Integrations
 -   🔧 Specify CLI Reference
 -   🧩 Making Spec Kit Your Own: Extensions & Presets
@@ -33,7 +30,7 @@ Table of Contents
 -   🔧 Prerequisites
 -   📖 Learn More
 -   📋 Detailed Process
--   Support
+-   💬 Support
 -   🙏 Acknowledgements
 -   📄 License
 
@@ -97,37 +94,21 @@ For detailed step-by-step instructions, see our comprehensive guide.
 
 Want to see Spec Kit in action? Watch our video overview!
 
-🧩 Community Extensions
------------------------
+🌍 Community
+------------
 
-Community-contributed extensions add new commands, hooks, and capabilities to Spec Kit. See the full list on the Community Extensions page.
+Explore community-contributed resources on the Spec Kit docs site:
 
-Note
-
-Community extensions are independently created and maintained by their respective authors. Maintainers only verify that catalog entries are complete and correctly formatted — they do **not review, audit, endorse, or support the extension code itself**. Review extension source code before installation and use at your own discretion.
-
-To submit your own extension, see the Extension Publishing Guide.
-
-🎨 Community Presets
---------------------
-
-Community-contributed presets customize how Spec Kit behaves — overriding templates, commands, and terminology without changing any tooling. See the full list on the Community Presets page.
+-   Extensions — commands, hooks, and capabilities
+-   Presets — template and terminology overrides
+-   Walkthroughs — end-to-end SDD scenarios
+-   Friends — projects that extend or build on Spec Kit
 
 Note
 
-Community presets are third-party contributions and are not maintained by the Spec Kit team. Review them carefully before use, and see the docs page above for the full disclaimer.
+Community contributions are independently created and maintained by their respective authors. Review source code before installation and use at your own discretion.
 
-To submit your own preset, see the Presets Publishing Guide.
-
-🚶 Community Walkthroughs
--------------------------
-
-See Spec-Driven Development in action across different scenarios with community-contributed walkthroughs; find the full list on the Community Walkthroughs page.
-
-🛠️ Community Friends
----------------------
-
-Community projects that extend, visualize, or build on Spec Kit. See the full list on the Community Friends page.
+Want to contribute? See the Extension Publishing Guide or the Presets Publishing Guide.
 
 🤖 Supported AI Coding Agent Integrations
 -----------------------------------------
@@ -273,7 +254,7 @@ specify extension add <extension-name\>
 
 For example, extensions could add Jira integration, post-implementation code review, V-Model test traceability, or project health diagnostics.
 
-See the Extensions reference for the full command guide. Browse the community extensions above for what's available.
+See the Extensions reference for the full command guide. Browse the community extensions for what's available.
 
 ### Presets — Customize Existing Workflows
 
@@ -674,8 +655,8 @@ Once the implementation is complete, test the application and resolve any runtim
 
 * * *
 
-Support
--------
+💬 Support
+----------
 
 For support, please open a GitHub issue. We welcome bug reports, feature requests, and questions about using Spec-Driven Development.
 

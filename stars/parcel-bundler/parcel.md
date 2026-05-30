@@ -1,6 +1,6 @@
 ---
 project: parcel
-stars: 44033
+stars: 44023
 description: The zero configuration build tool for the web. 📦🚀
 url: https://github.com/parcel-bundler/parcel
 ---

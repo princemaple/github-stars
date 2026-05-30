@@ -1,7 +1,7 @@
 ---
 project: databasus
-stars: 6942
-description: Database backup tool (PostgreSQL, MySQL\MariaDB and MongoDB)
+stars: 7017
+description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---
 

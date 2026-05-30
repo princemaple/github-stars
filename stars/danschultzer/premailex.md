@@ -1,6 +1,6 @@
 ---
 project: premailex
-stars: 185
+stars: 187
 description: Preflight for your HTML emails - inline styling and plain text.
 url: https://github.com/danschultzer/premailex
 ---
@@ -8,23 +8,23 @@ url: https://github.com/danschultzer/premailex
 Premailex
 =========
 
-Preflight for your HTML emails. Adds inline styling, and converts HTML to plain text.
+Preflight for your HTML emails. Inlines CSS styles and converts HTML to plain text.
 
 Features
 --------
 
--   Add inline CSS properties from `<style>`
--   Add inline CSS properties from external `<link>` stylesheets
--   Transform HTML to plain text
+-   Inline CSS from `<style>` tags
+-   Inline CSS from external `<link>` stylesheets
+-   Convert HTML to plain text
 
 Usage
 -----
 
-Transform an HTML string to text:
+Convert an HTML string to plain text:
 
 Premailex.to\_text(html)
 
-Add inline styles based on styles defined in `<head>`:
+Inline an HTML string with CSS styles defined in `<head>`:
 
 Premailex.to\_inline\_css(html)
 
@@ -74,11 +74,13 @@ end
 HTML parser
 -----------
 
-Premailex supports `LazyHTML`, `Floki`, `Meeseeks`, and `:xmerl` and will automatically use the first one available based on the dependencies in `mix.exs`:
+Premailex supports `LazyHTML`, `Floki`, `Meeseeks`, and `:xmerl`.
+
+It automatically selects the first available parser based on your `mix.exs` dependencies:
 
 defp deps do
   \[
-    {:premailex, "~> 0.3.20"},
+    {:premailex, "~> 1.0"},
     \# {:lazy\_html, "~> 0.1.11"},
     \# {:floki, "~> 0.24"},
     \# {:meeseeks, "~> 0.11"}
@@ -97,7 +99,7 @@ Installation
 def deps do
   \[
     \# ...
-    {:premailex, "~> 0.3.20"},
+    {:premailex, "~> 1.0"},
 
     \# Optional, but recommended for SSL validation with :httpc
     {:certifi, "~> 2.4"},
@@ -106,7 +108,7 @@ def deps do
   \]
 end
 
-Run `mix deps.get` to install it.
+Remember to run `mix deps.get` to install the dependencies.
 
 LICENSE
 -------

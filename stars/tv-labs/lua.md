@@ -1,7 +1,7 @@
 ---
 project: lua
-stars: 164
-description: The most ergomonic interface to Luerl in Elixir
+stars: 167
+description: A Lua 5.3 runtime in pure Elixir
 url: https://github.com/tv-labs/lua
 ---
 

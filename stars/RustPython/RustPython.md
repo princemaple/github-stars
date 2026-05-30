@@ -1,6 +1,6 @@
 ---
 project: RustPython
-stars: 22071
+stars: 22086
 description: A Python Interpreter written in Rust
 url: https://github.com/RustPython/RustPython
 ---
@@ -59,7 +59,7 @@ $ python # now \`python\` is the alias of the RustPython for the new env
 
 ### PIP
 
-If you'd like to make https requests, you can enable the `ssl` feature, which also lets you install the `pip` package manager. Note that on Windows, you may need to install OpenSSL, or you can enable the `ssl-vendor` feature instead, which compiles OpenSSL for you but requires a C compiler, perl, and `make`. OpenSSL version 3 is expected and tested in CI. Older versions may not work.
+If you'd like to make https requests, you can enable the `ssl` feature, which also lets you install the `pip` package manager. Note that on Windows, you may need to install OpenSSL, or you can enable the `ssl-openssl-vendor` feature instead, which compiles OpenSSL for you but requires a C compiler, perl, and `make`. OpenSSL version 3 is expected and tested in CI. Older versions may not work.
 
 Once you've installed rustpython with SSL support, you can install pip by running:
 
@@ -73,7 +73,7 @@ rustpython
 
 ### SSL provider
 
-For HTTPS requests, `ssl-rustls` feature is enabled by default. You can replace it with `ssl-openssl` feature if your environment requires OpenSSL. Note that to use OpenSSL on Windows, you may need to install OpenSSL, or you can enable the `ssl-vendor` feature instead, which compiles OpenSSL for you but requires a C compiler, perl, and `make`. OpenSSL version 3 is expected and tested in CI. Older versions may not work.
+For HTTPS requests, `ssl-rustls-aws-lc` is enabled by default for the RustPython binary. Embedders can use `rustpython-stdlib`'s provider-agnostic `ssl-rustls` feature and install their own rustls crypto provider, or replace rustls with `ssl-openssl` if their environment requires OpenSSL. Note that to use OpenSSL on Windows, you may need to install OpenSSL, or you can enable the `ssl-openssl-vendor` feature instead, which compiles OpenSSL for you but requires a C compiler, perl, and `make`. OpenSSL version 3 is expected and tested in CI. Older versions may not work.
 
 ### WASI
 
@@ -180,17 +180,9 @@ For a high level overview of the components, see the architecture document.
 Contributing
 ------------
 
-Contributions are more than welcome, and in many cases we are happy to guide contributors through PRs or on Discord. Please refer to the development guide as well for tips on developments.
+Contributions are welcome and highly appreciated. To get started, check out the **contributing guidelines**.
 
-With that in mind, please note this project is maintained by volunteers, some of the best ways to get started are below:
-
-Most tasks are listed in the issue tracker. Check issues labeled with good first issue if you wish to start coding.
-
-To enhance CPython compatibility, try to increase unittest coverage by checking this article: How to contribute to RustPython by CPython unittest
-
-Another approach is to checkout the source code: builtin functions and object methods are often the simplest and easiest way to contribute.
-
-You can also simply run `python -I scripts/whats_left.py` to assist in finding any unimplemented method.
+You can also join us on **Discord**.
 
 Compiling to WebAssembly
 ------------------------

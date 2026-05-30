@@ -1,6 +1,6 @@
 ---
 project: awless
-stars: 4970
+stars: 4969
 description: A Mighty CLI for AWS
 url: https://github.com/wallix/awless
 ---

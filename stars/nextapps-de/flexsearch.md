@@ -1,6 +1,6 @@
 ---
 project: flexsearch
-stars: 13707
+stars: 13712
 description: Next-generation full-text search library for Browser and Node.js
 url: https://github.com/nextapps-de/flexsearch
 ---
@@ -689,7 +689,7 @@ Also, pre-compiled non-bundled production-ready modules are located in `dist/mod
 You can also load modules via CDN:
 
 <script type\="module"\>
-    import Index from "https://unpkg.com/flexsearch@0.8.2/dist/module/index.js";
+    import Index from "https://unpkg.com/flexsearch@0.8.212/dist/module/index.js";
     const index \= new Index(/\* ... \*/);
 </script\>
 

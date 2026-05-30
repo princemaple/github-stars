@@ -1,6 +1,6 @@
 ---
 project: schism
-stars: 72
+stars: 73
 description: Partition testing tool for elixir
 url: https://github.com/elixir-toniq/schism
 ---

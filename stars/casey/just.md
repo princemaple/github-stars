@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 33852
+stars: 33985
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -521,7 +521,7 @@ When you invoke `just`, it looks for a file named `justfile` in the current dire
 
 The search for a `justfile` is case insensitive, so any case, like `Justfile`, `JUSTFILE`, or `JuStFiLe`, will work. `just` will also look for files with the name `.justfile`, in case you'd like to hide a `justfile`.
 
-Running `just` with no arguments runs the first recipe in the `justfile`:
+By default, running `just` with no arguments runs the first recipe in the `justfile`:
 
 $ just
 echo 'This is a recipe!'
@@ -606,10 +606,9 @@ test:
 lint:
   echo Linting…
 
-If no recipe makes sense as the default recipe, you can add a recipe to the beginning of your `justfile` that lists the available recipes:
+If no recipe makes sense as the default recipe, you can use `default-list`master to list the available recipes instead:
 
-default:
-  just --list
+set default-list := true
 
 ### Listing Available Recipes
 
@@ -660,12 +659,13 @@ Available recipes:
 $ just --summary --unsorted
 test build
 
-If you'd like `just` to default to listing the recipes in the `justfile`, you can use this as your default recipe:
+If you'd like `just` to default to listing the recipes in the `justfile`, set `default-list`master:
 
-default:
-  @just --list
+set default-list := true
 
-Note that you may need to add `--justfile {{justfile()}}` to the line above. Without it, if you executed `just -f /some/distant/justfile -d .` or `just -f ./non-standard-justfile`, the plain `just --list` inside the recipe would not necessarily use the file you provided. It would try to find a justfile in your current path, maybe even resulting in a `No justfile found` error.
+The setting is per-module, so invoking a module path with `default-list` enabled lists that module's recipes.
+
+You can also default to listing recipes this behavior by settting the environment variable `JUST_DEFAULT_LIST=true` or passing `--default-list`master.
 
 The heading text can be customized with `--list-heading`:
 
@@ -821,6 +821,14 @@ boolean
 `false`
 
 Allow variables appearing later in a `justfile` to override earlier variables with the same name.
+
+`default-list`
+
+boolean
+
+`false`
+
+List recipes instead of running the default recipe.
 
 `dotenv-filename`
 

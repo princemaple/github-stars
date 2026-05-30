@@ -1,7 +1,7 @@
 ---
 project: ImageGlass
-stars: 13200
-description: 🏞 A lightweight, versatile image viewer
+stars: 13247
+description: 🏞 A fast, open-source, modern image viewer for 90+ formats – including WEBP, GIF, SVG, AVIF, JXL, HEIC and more – built for smooth browsing across Windows, macOS, and Linux.
 url: https://github.com/d2phap/ImageGlass
 ---
 

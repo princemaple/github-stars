@@ -1,6 +1,6 @@
 ---
 project: multigres
-stars: 2150
+stars: 2166
 description: Vitess for Postgres
 url: https://github.com/multigres/multigres
 ---
@@ -10,7 +10,7 @@ Multigres - Vitess for Postgres
 
 Multigres is a Vitess adaptation for Postgres. The project is currently in the early stages of development.
 
-Please visit the Multigres site if you'd like to try it.
+Please visit the Multigres site if you'd like to try it. To run Multigres on EKS, see the EKS getting started guide.
 
 If you have any questions or feedback, please start a discussion.
 

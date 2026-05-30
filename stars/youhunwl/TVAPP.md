@@ -1,6 +1,6 @@
 ---
 project: TVAPP
-stars: 16999
+stars: 17471
 description:  收集全网 Android TV电视盒子应用，涵盖影视、直播、K歌、工具、游戏等类型，整理优质APK资源，支持便捷下载与自动更新。提供安全验证、分类索引与兼容性标注，助力用户打造家庭影音娱乐中心！              ✅ TVBox/影视仓等影音壳接口配置源。
 url: https://github.com/youhunwl/TVAPP
 ---
@@ -449,7 +449,7 @@ v2.9.0
 
 千寻直播
 
-v1.1.2
+v1.1.5
 
 下载
 
@@ -469,13 +469,13 @@ v1.0.52
 
 WebViewTV
 
-v2.1.1
+v2.1.2
 
 下载
 
 🟢
 
-直接使用官网直播链接，非常稳定可靠，稳定版下载v2.0.4，尝鲜版下载v2.1.1
+直接使用官网直播链接，非常稳定可靠，稳定版下载v2.0.4，尝鲜版下载v2.1.2
 
 七星电视
 
@@ -997,6 +997,36 @@ v7.0
 
 TVBox壳本地版内置10万+音乐/MV资源
 
+贝乐虎儿歌
+
+v6.6.0
+
+下载
+
+🟢
+
+专为安卓智能电视打造的儿歌应用，种类非常丰富
+
+Myyy
+
+v2.0
+
+下载
+
+🟢
+
+电视版的多源音乐播放器
+
+WebHomeTV
+
+v5.5.2
+
+下载
+
+🟢
+
+基于FongMi二次开发，在其基础上重点增强了 **WebHome 自定义首页**、**App Native SDK**、**网盘链接检测** 和 **Nostr/TMDB 推荐首页**
+
 ...updating
 
 接口源 🌟
@@ -1039,7 +1069,7 @@ TVBox壳本地版内置10万+音乐/MV资源
  https://dxawi.github.io/0/0.json	# dxawi
  http://xhztv.top/xhz		# 小盒子单仓
  http://xhztv.top/4k.json		# 小盒子4K
- https://9877.kstore.space/AnotherD/api.json		# 潇洒接口
+ https://9877.kstore.space/ONE/one.json		# 潇洒接口
  https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json	# 香雅情
  https://bitbucket.org/xduo/duoapi/raw/master/xpg.json		# 小苹果接口
  https://raw.githubusercontent.com/guot55/YGBH/main/vip2.json		# 宝盒VIP

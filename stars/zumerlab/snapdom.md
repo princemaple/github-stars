@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7783
+stars: 7814
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---

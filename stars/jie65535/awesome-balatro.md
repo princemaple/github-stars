@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1204
+stars: 1208
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -74,6 +74,7 @@ Tools
 -----
 
 -   Balatro Calculator - Calculate the best score for any Balatro hand. by @Saffron
+-   Balatro HQ - Web tools for Balatro: a score calculator with side-by-side build comparison, a free seed analyzer with AI playstyle advice, and a seed vault that saves seeds with their build summary and notes. by @o98k-ok
 -   Balatro Mobile Maker - Create a mobile Balatro app from your Steam version of Balatro. by @blake502
 -   Balatro Modpack Manager - Install, update, and customize modpacks in one streamlined tool. by \[@Dimserene\]
 -   Balatro Seed Oracle - Balatro Seed Searcher with visual drag&drop filter builder coded in C# and AvaloniaUI. by @OptimusPi
@@ -106,6 +107,7 @@ Mods (Require **Steamodded**)
 
 ### API
 
+-   After-Five-Api - An api for adding custom hand poker hands, 6 of a kind, 7 royal flush, 8 eights whatever you want. by @RakibRyan
 -   Balatrobot - A Botting API for Balatro. by @Besteon
 -   EnhanceAPI - Allows for the easy addition of custom enhancements. by @Numbuh214
 -   FederAPI - An API library mod that allows to register vouchers, blinds, tarots, sounds, etc. by @itayfeder
@@ -216,6 +218,7 @@ Mods (Require **Steamodded**)
 -   Flush Hotkeys - Adds hotkeys for selecting flushes, full houses and other hand types. by @Agoraaa
 -   Free Reroll - Rerolls are free! It may ruin your game experience. by `@Tianjing`
 -   GameSpeed Display and Spacereroll - Always display the speed. Press the shift key to change speed and space key to reroll in shop, also disable the FPS display. by @snowylight
+-   Hand of Six Smods - Allows you to select 6 cards to play. by @RakibRyan
 -   Hermit Level Up | github - Adds a level system for **The Hermit**, increasing its money cap with each level. by @LnxFCA
 -   Hotkeys Collection - Adds hotkeys / keyboard shortcuts for a wide range of Balatro game actions, designed to be able to play most common hands without having to click very often. by @DorkDad141 based on @Agoraaa's mod
 -   House Rules - a mod that adds difficulty modifiers to your runs. by @Mysthaps
@@ -323,6 +326,7 @@ Mods (Require **Steamodded**)
 -   RNG Butter - A mod that tilts RNG somewhat in player's favour. by `@Kusoro`
 -   Ro-Balatro | discord - A fusion between Balatro and Roblox. by @AlexZGreat
 -   ror2funnyitems - Adds the funny items from Risk of Rain 2. by @aou
+-   Rule Breaker Joker - Extend balatro hand beyond 5 cards per round. +1 card per joker. by @RakibRyan
 -   Sculio - A vanilla-esque mod that aims to add new and faithful content to Balatro (Currently contains 45+ Jokers). by @crmykybord
 -   Seven Sins - A pack of Jokers based on the Seven Deadly Sins including 3 new challenges. by @AlexDavies8
 -   Slay the Princess - Adds 31 new Jokers and a new deck based on Slay the Princess. by @Kastamera

@@ -1,7 +1,7 @@
 ---
 project: firecrawl
-stars: 123411
-description: 🔥 Search, scrape, and clean the web for AI agents.
+stars: 126491
+description: The API to search, scrape, and interact with the web at scale. 🔥
 url: https://github.com/firecrawl/firecrawl
 ---
 
@@ -12,7 +12,7 @@ url: https://github.com/firecrawl/firecrawl
 **🔥 Firecrawl**
 ================
 
-**Search, scrape, and clean the web for AI agents.** The web context API to find sources, extract content, and turn it into clean Markdown or structured data your agents can ship with. Open source and available as a hosted service.
+**The API to search, scrape, and interact with the web at scale. 🔥** The web context API to find sources, extract content, and turn it into clean Markdown or structured data your agents can ship with. Open source and available as a hosted service.
 
 _Pst. Hey, you, join our stargazers :)_
 
@@ -96,7 +96,7 @@ search\_result \= app.search("firecrawl", limit\=5)
 
 **Node.js**
 
-import Firecrawl from '@mendable/firecrawl-js';
+import { Firecrawl } from 'firecrawl';
 
 const app \= new Firecrawl({apiKey: "fc-YOUR\_API\_KEY"});
 
@@ -145,7 +145,7 @@ result \= app.scrape('firecrawl.dev')
 
 **Node.js**
 
-import Firecrawl from '@mendable/firecrawl-js';
+import { Firecrawl } from 'firecrawl';
 
 const app \= new Firecrawl({ apiKey: "fc-YOUR\_API\_KEY" });
 
@@ -197,7 +197,7 @@ app.interact(scrape\_id, prompt\="Click the first result")
 
 **Node.js**
 
-import Firecrawl from '@mendable/firecrawl-js';
+import { Firecrawl } from 'firecrawl';
 
 const app \= new Firecrawl({apiKey: "fc-YOUR\_API\_KEY"});
 
@@ -511,9 +511,9 @@ print(results)
 
 Install the SDK:
 
-npm install @mendable/firecrawl-js
+npm install firecrawl
 
-import Firecrawl from '@mendable/firecrawl-js';
+import { Firecrawl } from 'firecrawl';
 
 const app \= new Firecrawl({ apiKey: 'fc-YOUR\_API\_KEY' });
 

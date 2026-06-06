@@ -1,6 +1,6 @@
 ---
 project: sonic
-stars: 21232
+stars: 21245
 description: 🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM.
 url: https://github.com/valeriansaliou/sonic
 ---
@@ -113,7 +113,7 @@ You might find it convenient to run Sonic via Docker. You can find the pre-built
 
 First, pull the `valeriansaliou/sonic` image:
 
-docker pull valeriansaliou/sonic:v1.5.1
+docker pull valeriansaliou/sonic:v1.6.0
 
 Then, seed it a configuration file and run it (replace `/path/to/your/sonic/config.cfg` with the path to your configuration file):
 
@@ -270,6 +270,8 @@ Sonic supports a wide range of languages in its lexing system. If a language is 
 -   🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh
 -   🇮🇱 Yiddish
 -   🇿🇦 Zulu
+
+Only a subset of those languages support stemming. Sonic uses Snowball stemming algorithms via the `waken_snowball` crate. See the crate’s documentation for a list of supported languages.
 
 How fast & lightweight is it?
 -----------------------------

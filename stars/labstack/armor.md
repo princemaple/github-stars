@@ -1,6 +1,6 @@
 ---
 project: armor
-stars: 1660
+stars: 1661
 description: Uncomplicated, modern HTTP server
 url: https://github.com/labstack/armor
 ---

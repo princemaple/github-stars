@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 71722
+stars: 71943
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -1307,7 +1307,7 @@ Click to show
 8.  Choi et al. FACT-GPT: Fact-Checking Augmentation via Claim Matching with LLMs. 2024. \[arxiv\]
 9.  Zhang et al. AutoMathText: Autonomous Data Selection with Language Models for Mathematical Texts. 2024. \[arxiv\]
 10.  Lyu et al. KnowTuning: Knowledge-aware Fine-tuning for Large Language Models. 2024. \[arxiv\]
-11.  Yang et al. LaCo: Large Language Model Pruning via Layer Collaps. 2024. \[arxiv\]
+11.  Yang et al. LaCo: Large Language Model Pruning via Layer Collapse. 2024. \[arxiv\]
 12.  Bhardwaj et al. Language Models are Homer Simpson! Safety Re-Alignment of Fine-tuned Language Models through Task Arithmetic. 2024. \[arxiv\]
 13.  Yang et al. Enhancing Empathetic Response Generation by Augmenting LLMs with Small-scale Empathetic Models. 2024. \[arxiv\]
 14.  Yi et al. Generation Meets Verification: Accelerating Large Language Model Inference with Smart Parallel Auto-Correct Decoding. ACL 2024 Findings. \[arxiv\]

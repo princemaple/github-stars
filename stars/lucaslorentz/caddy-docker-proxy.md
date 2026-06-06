@@ -1,6 +1,6 @@
 ---
 project: caddy-docker-proxy
-stars: 4496
+stars: 4510
 description: Caddy as a reverse proxy for Docker
 url: https://github.com/lucaslorentz/caddy-docker-proxy
 ---
@@ -626,6 +626,18 @@ Interval to manually check Docker for a new Caddyfile.
 
 Interval to throttle Caddyfile updates triggered by Docker events.  
 **Default:** `100ms`
+
+`--log-level`
+
+`CADDY_DOCKER_LOG_LEVEL`
+
+Log level: `DEBUG` | `INFO` | `WARN` | `ERROR`. Empty keeps Caddy's default
+
+`--log-format`
+
+`CADDY_DOCKER_LOG_FORMAT`
+
+Log format: `console` | `json`. Empty keeps Caddy's default
 
 _(env only)_
 

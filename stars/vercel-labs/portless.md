@@ -1,6 +1,6 @@
 ---
 project: portless
-stars: 9579
+stars: 9655
 description: Replace port numbers with stable, named local URLs. For humans and agents.
 url: https://github.com/vercel-labs/portless
 ---
@@ -337,6 +337,19 @@ Set `PORTLESS_TAILSCALE=1` in your shell profile or `.env` to share every app by
 
 Requires the Tailscale CLI to be installed and connected (`tailscale up`), with Tailscale HTTPS certificates enabled.
 
+ngrok sharing
+-------------
+
+Expose your dev server to the public internet with ngrok:
+
+portless myapp --ngrok next dev
+# -> https://myapp.localhost           (local)
+# -> https://abc123.ngrok.app          (public)
+
+Set `PORTLESS_NGROK=1` in your shell profile or `.env` to enable ngrok by default when portless runs an app. `portless list` shows both local and ngrok URLs. The ngrok tunnel is cleaned up automatically when the app exits.
+
+Requires the ngrok CLI to be installed and authenticated. If ngrok reports an authentication error, run `ngrok config add-authtoken <token>` and try again.
+
 Commands
 --------
 
@@ -391,6 +404,7 @@ portless service uninstall       # Remove the startup service
 --app-port <number>              Use a fixed port for the app (skip auto-assignment)
 --tailscale                      Share the app on your Tailscale network (tailnet)
 --funnel                         Share the app publicly via Tailscale Funnel
+--ngrok                          Share the app publicly via ngrok
 --force                          Kill the existing process and take over its route
 --name <name>                    Use <name> as the app name
 ```
@@ -409,6 +423,7 @@ PORTLESS_WILDCARD=1              Allow unregistered subdomains to fall back to p
 PORTLESS_SYNC_HOSTS=0            Disable auto-sync of /etc/hosts (on by default)
 PORTLESS_TAILSCALE=1             Share apps on your Tailscale network (same as --tailscale)
 PORTLESS_FUNNEL=1                Share apps publicly via Tailscale Funnel (same as --funnel)
+PORTLESS_NGROK=1                 Share apps publicly via ngrok (same as --ngrok)
 PORTLESS_STATE_DIR=<path>        Override the state directory
 
 # Injected into child processes
@@ -416,6 +431,7 @@ PORT                             Ephemeral port the child should listen on
 HOST                             Usually 127.0.0.1 (omitted for Expo in LAN mode)
 PORTLESS_URL                     Public URL (e.g. https://myapp.localhost)
 PORTLESS_TAILSCALE_URL           Tailscale URL of the app (when --tailscale is active)
+PORTLESS_NGROK_URL               ngrok URL of the app (when --ngrok is active)
 NODE_EXTRA_CA_CERTS              Path to the portless CA (when HTTPS is active)
 ```
 
@@ -494,3 +510,4 @@ Requirements
 -   Node.js 24+
 -   macOS, Linux, or Windows
 -   Tailscale CLI (optional, for `--tailscale` and `--funnel`)
+-   ngrok CLI (optional, for `--ngrok`)

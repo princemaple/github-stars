@@ -1,6 +1,6 @@
 ---
 project: docker-mailserver
-stars: 18291
+stars: 18338
 description: Production-ready fullstack but simple mail server (SMTP, IMAP, LDAP, Antispam, Antivirus, etc.) running inside a container.
 url: https://github.com/docker-mailserver/docker-mailserver
 ---

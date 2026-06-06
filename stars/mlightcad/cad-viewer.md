@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 648
+stars: 675
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -24,8 +24,14 @@ It also offers something you will rarely find in other CAD viewers—**one-click
 
 ### Apps Built with cad-viewer
 
--   DWG Viewer for Google Drive - A widely adopted Google Drive integration powered by cad-viewer, enabling thousands of users to preview DWG/DXF files directly in Drive, streamlining cloud workflows. Install to Google Drive
--   CAD Viewer Web App - 2D/3D CAD viewer, built on cad-viewer, used by engineering teams globally for seamless browser-based file access. It is integreated to Google Drive too, Install.
+The Thingraph team builds production DWG/DXF viewers and platform integrations on top of cad-viewer, serving tens of thousands of users worldwide:
+
+-   DWG Viewer Web App — Browser-based DWG/DXF viewer used by engineering teams worldwide for fast, serverless drawing access. Install for your platform:
+    -   Google Drive — open DWG/DXF from Drive with **Open with**
+    -   VS Code — custom read-only editor for `.dwg` / `.dxf`
+    -   Cursor — same extension via Open VSX
+    -   Confluence — embed DWG/DXF previews on pages
+    -   Windows Explorer — thumbnail and preview in File Explorer
 
 Features
 --------

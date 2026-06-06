@@ -1,18 +1,18 @@
 ---
 project: PySimpleGUI
-stars: 13806
-description: Python GUIs for Humans! PySimpleGUI is the top-rated Python application development environment. Launched in 2018. NEW for 2026 - the LGPL3 Version 6.  Transforms tkinter, Qt, WxPython, and Remi into a simple, intuitive, and fun experience for both hobbyists and expert users.  
+stars: 13797
+description: Python GUIs for Humans! Create any GUI simple or complicated in a way that's intuitive.  Launched in 2018. NEW for 2026 - the LGPL3 Version 6.  Transforms tkinter, Qt, WxPython, and Remi into a simple, intuitive, and fun experience for both hobbyists and expert users. 
 url: https://github.com/PySimpleGUI/PySimpleGUI
 ---
 
 FREE Udemy Course
 =================
 
-The Udemy course makes $10's a month, usually less. I've decided to give away the course for a while. This coupon is good for the next 2 days. After that I'll create another that's good for 30 days.
+The Udemy course makes $10's a month, usually less. I've decided to give away the course for a while. This coupon is good for the next 30 days.
 
-https://www.udemy.com/course/pysimplegui/?couponCode=85BCD636F9F53A834371
+https://www.udemy.com/course/pysimplegui/?couponCode=033334A16163C571B739
 
-Or use code: 85BCD636F9F53A834371
+Or use code: 033334A16163C571B739
 
 Open Source Once Again...
 =========================
@@ -35,22 +35,26 @@ Installing from PyPI
 
 To install the latest version (v6):
 
-`python -m pip install PySimpleGUI`
+python -m pip install PySimpleGUI
 
 If you need the older version (4.60.5.1):
 
-`python -m pip install PySimpleGUI==4.60.5.1`
+python -m pip install PySimpleGUI==4.60.5.1
 
 Installing from Github
 ----------------------
 
 The GitHub repo has the most up-to-date code. You can install directly without cloning:
 
-`python -m pip install --upgrade https://github.com/PySimpleGUI/PySimpleGUI/zipball/master`
+python -m pip install --upgrade https://github.com/PySimpleGUI/PySimpleGUI/zipball/master
+
+To install a specific release that's here on GitHub, change `master` to the release number. To install version 6.1:
+
+python -m pip install --upgrade https://github.com/PySimpleGUI/PySimpleGUI/zipball/6.1
 
 Or clone/download the repo and install locally:
 
-`python -m pip install .`
+python -m pip install .
 
 Longer Term Outlook
 -------------------
@@ -140,6 +144,19 @@ Features & Fixes
 
 -   6.0.5 - The ability to upgrade to the latest Maint Release is once again built into PSG. You can use the Home Window or the command line command`psgupgrade`. You can see the release notes and install a new version.
 
+-   6.0.6 - Fix for bug #5750. Graph events was going into an infinite loop when write\_event\_value events were received. Fix was to clear the realtime button flag. Potential for regression problems should be minimal since only the Graph element conditional was changed.
+-   6.0.7 - Added Enhancement #6671. Added parameter select select\_node\_keys to Tree.update. Enables nodes in the tree to be programmatically selected as if the user selected them.
+-   6.0.7 - Fixed Multiline echo\_stdout\_stderr feature/parameter. Was not correctly echoing out to sys.stdout, stderr. Edited docstring to document the correct behavior. It will only echo if you've rerouted stdout or stderr to the element. It will not do the reroute for you.
+-   6.1.2 - Fix for Issue #6686 - Calendar chooser button clearing fields that should only be cleared when window.read returns. Used the newly added element\_that\_generated\_event variable from the Graph element fix above (already came in handy).
+-   6.1.4 - Display the Maint Release version number in the Home Window. Moved the install button
+-   6.1.5 - Added ability to specify timers using string "H:M:S" when calling Window.start\_timer.
+-   6.1.6 - Enhancement - support for horizontal scroll only for scrollable column element
+
+* * *
+
+PSGWeb
+------
+
 -   PSGWeb - PySimpleGUI running in a browser window
     -   Works with most demo programs
     -   To try it, go to any PySimpleGUI application on GitHub, add `psgweb.us` onto the front of the url, press enter
@@ -159,17 +176,17 @@ I use LLMs to search and summarize documentation, lookup errors, do research, ge
 
 ### **I like to write code.**
 
-I fell in love with programming 50 years ago. Writing software is my happy place. Why would I give that to a computer to do instead of getting the enjoyment I get from doing it? AI can generate lots of things. The feeling I get writing software is not one of the things AI can generate.
+I fell in love with programming 50 years ago. Writing software is my happy place. It's an "I **get to** write software" thing. AI can generate lots of things. The feeling I get writing software is not one of the things AI can generate.
 
 I'm not in a hurry. If I wanted code written for me, I would have opened the project up to pull requests years ago, but I didn't because I wanted to write the code. It's fun!
 
 ### PySimpleGUI in the AI era
 
-A common question in software today is whether a library is still relevant. I think for PySimpleGUI the answer is yes. People discover and install PySimpleGUI every day. GUI applications are often built incrementally. As features are added, layouts change, buttons move, and the code needs to evolve. That’s much easier when the code is understandable, whether it was written by a person or an AI.
+A common question in software today is whether a library is still relevant. I think for PySimpleGUI the answer is yes. People discover and install PySimpleGUI every day. Doesn't matter **how many** people use it. More than one is good enough. It's a thrill that other programmers want to use what I create.
 
-I use PySimpleGUI regularly, and I can’t imagine building a Windows app without it. I’ve recently been working on a 6502 breadboard computer. I built a bus analyzer using a couple of Raspberry Pi Picos and a PySimpleGUI app to control everything from Windows. Coding up a windows application to be the front-end to my tools is very easy for me to do using PySimpleGUI.
+I use PySimpleGUI regularly. I can’t imagine building a Windows app without it. I’ve recently been working on a 6502 breadboard computer. I built a bus analyzer using a couple of Raspberry Pi Picos and a PySimpleGUI app to control everything from Windows. Coding up a windows application to be the front-end to my tools is very easy for me to do using PySimpleGUI.
 
-That’s reason enough for me to keep working to clean up the ecosystem and keep it running well.
+That’s reason enough for me to keep working to clean up the ecosystem and keep it running.
 
 * * *
 

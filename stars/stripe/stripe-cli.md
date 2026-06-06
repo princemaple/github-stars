@@ -1,6 +1,6 @@
 ---
 project: stripe-cli
-stars: 2060
+stars: 2070
 description: A command-line tool for Stripe
 url: https://github.com/stripe/stripe-cli
 ---
@@ -21,6 +21,16 @@ Installation
 ------------
 
 Stripe CLI is available for macOS, Windows, and Linux for distros like Ubuntu, Debian, RedHat and CentOS.
+
+### npm (macOS, Linux, Windows)
+
+If you have Node.js >= 18 installed, you can install via `npm`:
+
+npm install -g @stripe/cli
+
+You can also directly execute commands via `npx`, although this won't add `stripe` to your `PATH`:
+
+npx @stripe/cli login
 
 ### macOS
 

@@ -1,6 +1,6 @@
 ---
 project: OhEarningsCal
-stars: 559
+stars: 560
 description: Subscribe to US stock earnings dates from your calendar app
 url: https://github.com/jason5ng32/OhEarningsCal
 ---
@@ -85,13 +85,13 @@ Earnings data is cached in GitHub Actions cache, never in git — `main` only ca
 Local development
 -----------------
 
-npm install
+pnpm install
 cp .env.example .env   # edit env vars
 
-npm run fetch:indices  # first run / when refreshing constituents
-npm run fetch          # pull yesterday + next 30 days into data/earnings/
-npm run gen            # write docs/ics/\*.ics
-npm run dev            # http://localhost:18302
+pnpm fetch:indices     # first run / when refreshing constituents
+pnpm fetch             # pull yesterday + next 30 days into data/earnings/
+pnpm gen               # write docs/ics/\*.ics
+pnpm dev               # http://localhost:18302
 
 Convenience endpoints on the dev server:
 

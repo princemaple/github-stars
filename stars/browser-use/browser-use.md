@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 96308
+stars: 97485
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -26,6 +26,11 @@ url: https://github.com/browser-use/browser-use
 
 uv init && uv add browser-use && uv sync
 # uvx browser-use install  # Run if you don't have Chromium installed
+
+**Experimental Rust agent:** install Browser Use Terminal for `from browser_use.rust import Agent`:
+
+curl -fsSL https://browser-use.com/terminal/install.sh | sh
+browser
 
 **2\. \[Optional\] Get your API key from Browser Use Cloud:**
 
@@ -56,6 +61,23 @@ async def main():
         browser\=browser,
     )
     await agent.run()
+
+if \_\_name\_\_ \== "\_\_main\_\_":
+    asyncio.run(main())
+
+**4\. \[Optional\] Try the experimental Rust core:**
+
+from browser\_use import ChatBrowserUse
+from browser\_use.rust import Agent
+import asyncio
+
+async def main():
+    agent \= Agent(
+        task\="Find the number of stars of the browser-use repo",
+        llm\=ChatBrowserUse(),
+    )
+    history \= await agent.run()
+    print(history.final\_result())
 
 if \_\_name\_\_ \== "\_\_main\_\_":
     asyncio.run(main())

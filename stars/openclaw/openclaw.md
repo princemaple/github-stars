@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 375676
+stars: 377286
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -20,7 +20,7 @@ Website · Docs · Vision · Third-party notices · DeepWiki · Getting Started 
 
 New install? Start here: Getting started
 
-Preferred setup: run `openclaw onboard` in your terminal. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on **macOS, Linux, and Windows (via WSL2; strongly recommended)**. Works with npm, pnpm, or bun.
+Preferred setup: run `openclaw onboard` in your terminal. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on **macOS, Linux, and Windows**. Windows desktop users can start with the native Windows Hub companion app for setup, tray status, chat, node mode, and local MCP mode. Works with npm, pnpm, or bun.
 
 Sponsors
 --------
@@ -96,7 +96,7 @@ Highlights
 -   **Voice Wake + Talk Mode** — wake words on macOS/iOS and continuous voice on Android (ElevenLabs + system TTS fallback).
 -   **Live Canvas** — agent-driven visual workspace with A2UI.
 -   **First-class tools** — browser, canvas, nodes, cron, sessions, and Discord/Slack actions.
--   **Companion apps** — macOS menu bar app + iOS/Android nodes.
+-   **Companion apps** — Windows Hub, macOS menu bar app, and iOS/Android nodes.
 -   **Onboarding + skills** — onboarding-driven setup with bundled/managed/workspace skills.
 
 Security model (important)
@@ -120,7 +120,7 @@ Docs by goal
 
 -   New here: Getting started, Onboarding, Updating
 -   Channel setup: Channels index, WhatsApp, Telegram, Discord, Slack
--   Apps + nodes: macOS, iOS, Android, Nodes
+-   Apps + nodes: Windows Hub, macOS, iOS, Android, Nodes
 -   Config + security: Configuration, Security, Exposure runbook, Sandboxing
 -   Remote + web: Gateway, Remote access, Tailscale, Web surfaces
 -   Tools + automation: Tools, Skills, Cron jobs, Webhooks, Gmail Pub/Sub

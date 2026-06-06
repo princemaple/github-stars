@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 31074
+stars: 31309
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -17,6 +17,17 @@ Maigret
   
 
 **Maigret** collects a dossier on a person **by username only**, checking for accounts on a huge number of sites and gathering all the available information from web pages. No API keys required. **AI profiling (demo)**.
+
+Sponsors
+--------
+
+**RapidProxy** provides high-performance residential proxies for Twitter scraping, Selenium automation, and web data extraction.  
+90M+ IPs • Smart rotation • Anti-block • Non-expiring traffic  
+**Special Offer:** Try it free — Plans from $0.65/GB. Use code `RAPID10` for 10% off.
+
+**VaultProxies** — The proxy network ops teams reach for when they're tired of getting throttled, flagged, or guessed.  
+Enterprise-grade rotation • High uptime • Throttle-resistant routing  
+**Special Offer:** Plans from $1/GB — as low as $0.50/GB. Use code `50OFF` for 50% off.
 
 Contents
 --------

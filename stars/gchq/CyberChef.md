@@ -1,6 +1,6 @@
 ---
 project: CyberChef
-stars: 34953
+stars: 35009
 description: The Cyber Swiss Army Knife - a web app for encryption, encoding, compression and data analysis
 url: https://github.com/gchq/CyberChef
 ---
@@ -74,6 +74,7 @@ You can use as many operations as you like in simple or complex ways. Some examp
 -   Carry out different operations on data of different types
 -   Use parts of the input as arguments to operations
 -   Perform AES decryption, extracting the IV from the beginning of the cipher stream
+-   A simpler way to perform the same AES Decryption
 -   Automagically detect several layers of nested encoding
 
 Features

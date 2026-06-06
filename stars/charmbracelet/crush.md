@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 24834
+stars: 25053
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---

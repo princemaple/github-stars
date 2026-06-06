@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 7017
+stars: 7125
 description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---

@@ -1,6 +1,6 @@
 ---
 project: dev-browser
-stars: 6193
+stars: 6222
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
@@ -157,6 +157,11 @@ await readFile(name)              // Read file, returns content
 console.log/warn/error/info       // Routed to CLI stdout/stderr
 
 Pages are full Playwright Page objects — `goto`, `click`, `fill`, `locator`, `evaluate`, `screenshot`, and everything else, including `page.snapshotForAI({ track?, depth?, timeout? })`, which returns `{ full, incremental? }` for AI-friendly page snapshots.
+
+Every page also exposes two computer-use toolsets:
+
+-   `page.cua.*` — pixel/vision tier: `screenshot()` saves a JPEG whose pixels map 1:1 onto CSS coordinates at any DPR and returns `{ path, width, height }`; `click`, `doubleClick`, `drag`, `move`, `scroll`, `keypress`, and `type` act at those coordinates.
+-   `page.domCua.*` — DOM-id tier: `getVisibleDom()` snapshots visible interactive elements as pseudo-HTML lines with `node_id=N`; `click`, `doubleClick`, and `scroll` act by node id (ids are only valid against the latest snapshot of the current document), plus `type` and `keypress` for the focused element.
 
 Benchmarks
 ----------

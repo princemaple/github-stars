@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 21928
+stars: 21976
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -423,6 +423,7 @@ There are several Yjs-compatible ports to other programming languages.
     -   y\_ex - Elixir binding
     -   ypy - Python binding (deprecated, use pycrdt)
 -   ycs - .Net compatible C# implementation.
+-   ygo - Go implementation.
 
 Getting Started
 ---------------

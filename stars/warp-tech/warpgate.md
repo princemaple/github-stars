@@ -1,6 +1,6 @@
 ---
 project: warpgate
-stars: 7028
+stars: 7098
 description: Fully transparent SSH, HTTPS, Kubernetes, MySQL and Postgres bastion/PAM that doesn't need additional client-side software
 url: https://github.com/warp-tech/warpgate
 ---
@@ -114,7 +114,7 @@ Please use GitHub's vulnerability reporting system.
 Project Status
 --------------
 
-The project is ready for production.
+Warpgate is being actively used in enterprise settings.
 
 How it works
 ------------
@@ -130,6 +130,15 @@ When connecting through HTTPS, Warpgate presents a selection of available target
 You manage the target and user lists and assign them to each other through the admin UI, and the session history is stored in an SQLite database (default: in `/var/lib/warpgate`).
 
 You can also use the admin web interface to view the live session list, review session recordings, logs and more.
+
+AI transparency disclosure
+--------------------------
+
+In late 2025, this project had started accepting AI-assisted contributions. Contributors are required to disclose AI use. I believe that by applying the same high quality standard to all PRs, whether AI-assisted or not, no sacrifice in quality or security needs to be made.
+
+Since AI is a spectrum between braindead vibe bros and autocomplete users, I believe that being transparent about its use helps establish and limit the place of AI in this project.
+
+Architectural and security decisions on this project are 100% human.
 
 Contributing / building from source
 -----------------------------------
@@ -150,7 +159,7 @@ The binary is in `target/{debug|release}`.
     -   Database: SQLite via `sea-orm` + `sqlx`
     -   SSH: `russh`
 -   Typescript
-    -   Svelte
+    -   Svelte 5
     -   Bootstrap
 
 ### Backend API
@@ -240,6 +249,10 @@ Thanks goes to these wonderful people (emoji key):
 
   
 **Lukas Klepper**  
+💻
+
+  
+**kamilkrzeminski**  
 💻
 
 This project follows the all-contributors specification. Contributions of any kind welcome!

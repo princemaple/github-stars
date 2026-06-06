@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 728
+stars: 765
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -18,7 +18,7 @@ Scheduled tasks support. Turns the bot into a lightweight OpenClaw alternative f
 
 Platforms: macOS, Windows, Linux
 
-Languages: English (`en`), Deutsch (`de`), Español (`es`), Français (`fr`), Русский (`ru`), 简体中文 (`zh`)
+Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`), Français (`fr`), Русский (`ru`), 简体中文 (`zh`)
 
 Features
 --------
@@ -257,7 +257,7 @@ Configuration
 
 ### Localization
 
--   Supported locales: `en`, `de`, `es`, `fr`, `ru`, `zh`
+-   Supported locales: `en`, `ar`, `de`, `es`, `fr`, `ru`, `zh`
 -   The setup wizard asks for language first
 -   You can change locale later with `BOT_LOCALE`
 
@@ -383,7 +383,7 @@ Yes
 
 `BOT_LOCALE`
 
-Bot UI language (supported locale code, e.g. `en`, `de`, `es`, `fr`, `ru`, `zh`)
+Bot UI language (supported locale code, e.g. `en`, `ar`, `de`, `es`, `fr`, `ru`, `zh`)
 
 No
 

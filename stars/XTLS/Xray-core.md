@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 39049
+stars: 39288
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -153,6 +153,8 @@ GUI Clients
     -   v2rayN
     -   GenyConnect
     -   OneXray
+-   HarmonyOS
+    -   Hey
 
 Others that support VLESS, XTLS, REALITY, XUDP, PLUX...
 -------------------------------------------------------

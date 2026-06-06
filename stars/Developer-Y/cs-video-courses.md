@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 81649
+stars: 81742
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -546,6 +546,7 @@ Courses
     -   Foundations of Data Analysis (Fall 2020)- University of Utah
     -   Introduction to Data Science (IDS) - Wil van der Aalst (RWTH Aachen University) (2021-2022 edition)
     -   Machine Learning Class (Winter 2019-2020) - UniHeidelberg
+    -   Toronto ECE 1513 Introduction to Machine Learning winter 2026, by Ali Bereyhi
 -   #### **Data Mining**
     
     -   CSEP 546, Data Mining - Pedro Domingos, Sp 2016 - University of Washington (YouTube)
@@ -627,6 +628,9 @@ Courses
     -   CS 6966/5966 Interpretability of LLMs (Spring 2026) - University of Utah
     -   Deep Graph Learning (DGL, 2025) - Prof. Islem Rekik - Imperial College London
     -   Intuitive Deep Learning Series
+    -   Toronto ECE 1508 Applied Deep Learning winter 2026, by Ali BereyhiYoutube
+    -   UC Berkeley CS 182 / 282a Deep Learning fall 2025, by Gireeja Ranade & Anant SahaiYoutube
+    -   SNU M2177.43 Introduction to Deep Learning spring 2026, by Hyun Oh Song
 -   #### **Reinforcement Learning**
     
     -   CS234: Reinforcement Learning - Spring 2024 - Stanford University (Winter 2019)
@@ -1281,7 +1285,7 @@ Courses
 -   Advanced Visualization UC Davis
 -   Computer Graphics Fall 2011, Barbara Hecker
 -   Ray Tracing for Global Illumination, UCDavis
--   Rendering / Ray Tracing Course, SS 2015 - TU Wien introduction/id389259246))
+-   Rendering / Ray Tracing Course, SS 2015 - TU Wien
 -   Computational Geometry - IIT Delhi
 -   CS 468 - Differential Geometry for Computer Science - Stanford University (Lecture videos)
 -   CMU 15-462/662: Computer Graphics
@@ -1400,6 +1404,7 @@ Courses
 -   Introduction to Neural Computation - MIT OCW
 -   Data Science for Biologists - Steve Brunton
 -   Big Data and Biological Networks IIT Madras
+-   Johns Hopkins Mathematical foundations of Biomedical Engineering, by Reza Shadmehr
 
 * * *
 
@@ -1529,6 +1534,8 @@ Courses
 -   ENAE 788M: Hands On Autonomous Aerial Robotics - University of Maryland
 -   Robot Learning 2025: Foundational Models for Robotics and Scaling DeepRL - Montreal Robotics
 -   Mila Robot Learning Seminar - Montreal Robotics
+-   Johns Hopkins Learning, Estimation, and Control spring 2026, by Reza ShadmehrYoutube
+-   SUSTech ME424 Modern Control and Estimation ( Kalman Filter Theory ) fall 2021, by Wei ZhangYoutube 1Youtube 2
 
 * * *
 
@@ -1588,14 +1595,12 @@ Courses
 ### Misc
 
 -   **HCI**
-    
     -   CS147 - Introduction to Human-Computer Interaction Design - Stanford
     -   CSEP 510 - Human Computer Interaction
     -   Programming for Designers - COMP1400-T2 (2010) - UNSW
     -   08-763 Intro to HCI for Technology Executives - Fall 2015 - CMU
     -   05-600 HCI Pro Seminar - Fall 2015 - CMU
 -   **Game Development**
-    
     -   CS50's Introduction to Game Development
     -   MIT CMS.611J Creating Video Games, Fall 2014
     -   MOOC - Beginning Game Programming with C# - Coursera
@@ -1603,95 +1608,53 @@ Courses
     -   COMP 4300 - C++ Game Programming, Memorial University, Fall 2024 - David Churchill
     -   COMP 4303 - AI for Video Games, Memorial University, Winter 2023 - David Churchill
 -   **Geospatial**
-    
     -   Introduction to Spatial Data Science, Autumn 2016, University of Chicago
     -   Spatial Regression Analysis, Spring 2017, University of Chicago
     -   Spatial Data Science, Autumn 2017, University of Chicago
     -   Introduction to Geographic Information Systems - IIT Roorkee
 -   MOOC - Matlab - Coursera
-    
 -   Computing for Computer Scientists - University of Michigan
-    
 -   Linux System Administration Decal, Spring 2025, UC Berkeley
-    
 -   Linux Implementation/Administration Practicum - Redhat by Tulio Llosa
-    
 -   Innovative Computing - Harvard University
-    
 -   Linux Programming & Scripting - IIT Madras
-    
 -   Model Checking - IIT Madras
-    
 -   Virtual Reality - IIT Madras
-    
 -   Dependable Systems (SS 2014) - HPI University of Potsdam
-    
 -   Business Process Compliance (WT 2013/14) - HPI University of Potsdam
-    
 -   Design Thinking for Digital Engineering (SS 2018) - Dr. Julia von Thienen - HPI
-    
 -   CS224w – Social Network Analysis – Autumn 2017 - Stanford University
-    
 -   The Missing Semester of Your CS Education
-    
 -   University of Crete, Computer Science video lectures (mostly Greek language lectures, very few 100% English-speaking courses). Very popular CS destination for European Erasmus students
-    
 -   Stanford EE274 I Data Compression: Theory and Applications I 2023
-    
 -   Probabilistic Methods - University of Waterloo
-    
 -   Free Probability Theory and Ramanujan Graphs - Spring 2024
-    
 -   Asymptotics and perturbation methods - Prof. Steven Strogatz
-    
 -   ETH Zürich AI in the Sciences and Engineering
-    
 -   Introduction to GIS Programming (Fall 2024) - Open Geospatial Solutions
-    
 -   Gatech Guitar Amplification and Effects, by Aaron Lanterman
-    
 -   Gatech ECE3084 Signals and Systems summer 2020, by Aaron Lanterman
-    
 -   Gatech ECE4450 Analog Circuits for Music Synthesis spring 2021, by Aaron Lanterman
-    
 -   UC Berkeley EE 120 Signals and Systems spring 2019, by Murat Arcak
-    
 -   Stanford EE 102 spring 1999, Introduction to Signals and Systems, by Stephen Boyd
-    
 -   Stanford EE 376a winter 2011, Information Theory, by Thomas Cover
-    
 -   MIT RES.6.007 Signals and Systems, 1987 - MIT
-    
 -   MIT 9.19 Computational Psycholinguistics, 2023 - MIT (YouTube)
-    
 -   MIT 21M.383 Computational Music Theory and Analysis, Spring 2023 - MIT (YouTube)
-    
 -   UCCS ECE4510/ECE5510 Feedback Control Systems, by Gregory Plett
-    
 -   UCCS ECE4520/ECE5520 Multivariable Control Systems I, by Gregory Plett
-    
 -   UCCS ECE4530/ECE5530 Multivariable Control Systems II, by Gregory Plett
-    
 -   UCCS ECE4540/ECE5540 Digital Control Systems, by Gregory Plett
-    
 -   UCCS ECE4550/ECE5550 Applied Kalman Filtering, by Gregory Plett
-    
 -   UCCS ECE4560/ECE5560 System Identification, by Gregory Plett
-    
 -   UCCS ECE4570/ECE5570 Optimization for Systems and Control, by M. Scott Trimboli
-    
 -   UCCS ECE4580/ECE5580 Multivariable Control in the Frequency Domain, by M. Scott Trimboli
-    
 -   UCCS ECE4710/ECE5710 Modeling, Simulation, and Identification of Battery Dynamics, by Gregory Plett
-    
 -   UCCS ECE4720/ECE5720 Battery Management and Control, by Gregory Plett
-    
 -   Purdue ME 597 Distributed Energy Resources Spring 2024, by Kevin J. Kircher
-    
 -   Stanford AA228V/CS238V Validation of Safety Critical Systems Winter 2025, by Sydney Michelle Katz
-    
 -   RES.1-002 - Introduction to R and Geographic Information Systems (GIS) - MIT - Fall 2023
-    
+-   CMU 17 803 Empirical Methods spring 2026, by Bogdan VasilescuYoutube
 
 * * *
 

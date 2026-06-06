@@ -1,6 +1,6 @@
 ---
 project: flair
-stars: 14377
+stars: 14378
 description: A very simple framework for state-of-the-art Natural Language Processing (NLP)
 url: https://github.com/flairNLP/flair
 ---

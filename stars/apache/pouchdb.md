@@ -1,6 +1,6 @@
 ---
 project: pouchdb
-stars: 17573
+stars: 17575
 description: :kangaroo: - PouchDB is a pocket-sized database.
 url: https://github.com/apache/pouchdb
 ---
@@ -16,11 +16,6 @@ Using PouchDB
 -------------
 
 To get started using PouchDB, check out the web site and API documentation.
-
-Deploying the Documentation Site www.pouchdb.com
-------------------------------------------------
-
-Doc website deployment is handled automatically once the changes land in `master`.
 
 Getting Help
 ------------
@@ -57,3 +52,10 @@ Contributing
 We're always looking for new contributors! If you'd like to try your hand at writing code, writing documentation, designing the website, writing a blog post, or answering questions on StackOverflow, then we'd love to have your input.
 
 If you have a pull request that you'd like to submit, please read the contributing guide for info on style, commit message format, and other (slightly!) nitpicky things like that. PouchDB is heavily tested, so you'll also want to check out the testing guide.
+
+The pouchdb.com Website
+-----------------------
+
+The documentation website at pouchdb.com is also part of this repo, in the `/docs` folder. It has its own `/docs/WEBSITE_README.md`
+
+Website deployment happens automatically once the changes land in `master`.

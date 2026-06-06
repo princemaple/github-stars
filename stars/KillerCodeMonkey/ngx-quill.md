@@ -1,6 +1,6 @@
 ---
 project: ngx-quill
-stars: 1850
+stars: 1851
 description: Angular (>=2) components for the Quill Rich Text Editor
 url: https://github.com/KillerCodeMonkey/ngx-quill
 ---
@@ -26,6 +26,12 @@ ngx-quill
 
 supported
 
+v22
+
+\>= 31.x
+
+until Nov, 2027
+
 v21
 
 \>= 29.x
@@ -37,12 +43,6 @@ v20
 28.x
 
 until Nov, 2026
-
-v19
-
-27.x
-
-until May, 2026
 
 Examples
 --------

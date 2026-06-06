@@ -1,6 +1,6 @@
 ---
 project: pglite
-stars: 15318
+stars: 15351
 description: Embeddable Postgres with real-time, reactive bindings.
 url: https://github.com/electric-sql/pglite
 ---
@@ -11,7 +11,7 @@ Build reactive, realtime, local-first apps directly on Postgres.
 PGlite - Postgres in WASM
 =========================
 
-PGlite is a WASM Postgres build packaged into a TypeScript client library that enables you to run Postgres in the browser, Node.js, Bun and Deno, with no need to install any other dependencies. It is only 3mb gzipped and has support for many Postgres extensions, including pgvector.
+PGlite is a WASM Postgres build packaged into a TypeScript client library that enables you to run Postgres in the browser, Node.js, Bun and Deno, with no need to install any other dependencies. It is only 3mb gzipped and has support for many Postgres extensions, including pgvector and PostGIS.
 
 import { PGlite } from "@electric-sql/pglite";
 

@@ -1,6 +1,6 @@
 ---
 project: lua
-stars: 167
+stars: 186
 description: A Lua 5.3 runtime in pure Elixir
 url: https://github.com/tv-labs/lua
 ---
@@ -8,256 +8,192 @@ url: https://github.com/tv-labs/lua
 Lua
 ===
 
-`Lua` is an Elixir-native Lua 5.3 virtual machine. It runs Lua code on the BEAM with no Erlang or C dependencies, and exposes an ergonomic Elixir API for embedding Lua scripting in your application.
+Embed a sandboxed Lua 5.3 scripting runtime in your Elixir application — no NIFs, no C, no Erlang runtime dependency.
 
-Features
---------
+`Lua` is a Lua 5.3 virtual machine implemented entirely in Elixir. The lexer, parser, register-based VM, and standard library all run directly on the BEAM, so there is nothing to compile and no foreign code in your release. It exists to let you safely run untrusted scripts — AI-agent–authored code, game logic, user-defined rules, configuration, plugins — with a small, idiomatic Elixir API for passing data and functions across the boundary. Giving an AI agent a sandboxed runtime where it can only call the Elixir functions you expose is a primary use case. Scripts are sandboxed by default, errors carry source and line information, and each `Lua` value is plain immutable Elixir state with no shared mutable globals.
 
--   Pure-Elixir implementation of Lua 5.3 — lexer, parser, register-based VM, and standard library — running directly on the BEAM
--   `~LUA` sigil for validating (and optionally pre-compiling) Lua code at compile time
--   `deflua` macro for exposing Elixir functions to Lua
--   Beautiful error messages and stack traces
--   Sandboxing of stdlib paths
--   Deep setting/getting of variables and state from Elixir
--   Pattern-matching, metatables, varargs, multiple returns, `_G`/`_ENV`, `string`/`table`/`math`/`debug` libraries, and the `string.find`/`match`/ `gmatch`/`gsub` pattern engine
+Installation
+------------
 
-> #### Lua the Elixir library vs Lua the language {: .info}
-> 
-> When referring to this library, `Lua` will be stylized as a link.
-> 
-> References to Lua the language will be in plaintext and not linked.
+Add `lua` to your dependencies in `mix.exs`:
 
-Executing Lua
--------------
+def deps do
+  \[
+    {:lua, "~> 1.0.0-rc"}
+  \]
+end
 
-`Lua` can be run using the `eval!/2` function
+Quickstart
+----------
+
+Evaluate Lua with `Lua.eval!/2`. It returns `{results, lua}` where `results` is the list of returned values and `lua` is the updated state:
 
 ```
-iex> {[4], _} = Lua.eval!("return 2 + 2")
+iex> {[4], _lua} = Lua.eval!("return 2 + 2")
 ```
 
-Compile-time validation
------------------------
-
-Use the `~LUA` sigil to parse and validate your Lua code at compile time
+You can thread state across multiple evaluations, set globals from Elixir, and read them back:
 
 ```
-iex> import Lua, only: [sigil_LUA: 2]
-
-#iex> {[4], _} = Lua.eval!(~LUA[return 2 +])
-** (Lua.CompilerException) Failed to compile Lua!
+iex> lua = Lua.set!(Lua.new(), [:name], "world")
+iex> {[greeting], _lua} = Lua.eval!(lua, ~S[return "hello, " .. name])
+iex> greeting
+"hello, world"
 ```
 
-Using the `c` modifier transforms your Lua code into a `t:Lua.Chunk.t/0` at compile-time, which will speed up execution at runtime since the Lua no longer needs to be parsed
+Tour
+----
+
+### Error messages with source and line
+
+Runtime errors raise `Lua.RuntimeException`, which carries the failing `:source` and `:line` so you can report exactly where a script broke:
+
+try do
+  Lua.eval!(~LUA"""
+  local x = 1
+  error("something went wrong")
+  """)
+rescue
+  e in Lua.RuntimeException \->
+    e.line    \# => 2
+    e.source  \# => "<eval>" (chunk name)
+
+    \# e.message is a formatted, colorized frame (ANSI codes elided here):
+    #
+    \#   Lua runtime error: Runtime Error
+    #
+    \#     at <eval>:2:
+    #
+    \#     runtime error: something went wrong
+    e.message
+end
+
+Lua-level error handling works too — `pcall` catches the error and returns it as a value:
 
 ```
-iex> import Lua, only: [sigil_LUA: 2]
-iex> {[4], _} = Lua.eval!(~LUA[return 2 + 2]c)
+iex> {[false, "nope"], _lua} = Lua.eval!(~S[return pcall(function() error("nope") end)])
 ```
 
-Exposing Elixir functions to Lua
---------------------------------
+### Calling Elixir functions from Lua
 
-The simplest way to expose an Elixir function to Lua is using the `Lua.set!/3` function
+The quickest way to expose an Elixir function is `Lua.set!/3`:
 
-import Lua, only: \[sigil\_LUA: 2\]
+```
+iex> lua = Lua.set!(Lua.new(), [:sum], fn args -> [Enum.sum(args)] end)
+iex> {[10], _lua} = Lua.eval!(lua, "return sum(1, 2, 3, 4)")
+```
 
-lua \= 
-  Lua.set!(Lua.new(), \[:sum\], fn args \->
-    \[Enum.sum(args)\]
-  end)
-
-{\[10\], \_} \= Lua.eval!(lua, ~LUA\[return sum(1, 2, 3, 4)\]c)
-
-For easily expressing APIs, `Lua` provides the `deflua` macro for exposing Elixir functions to Lua
+For richer APIs, define a module with `use Lua.API` and the `deflua` macro, then load it with `Lua.load_api/2`:
 
 defmodule MyAPI do
   use Lua.API
-      
+
   deflua double(v), do: 2 \* v
 end
 
-import Lua, only: \[sigil\_LUA: 2\]
-    
 lua \= Lua.new() |> Lua.load\_api(MyAPI)
 
-{\[10\], \_} \= Lua.eval!(lua, ~LUA\[return double(5)\])
+{\[10\], \_lua} \= Lua.eval!(lua, "return double(5)")
 
-Calling Lua functions from Elixir
----------------------------------
+### Userdata
 
-`Lua` can be used to expose complex functions written in Elixir. In some cases, you may want to call Lua functions from Elixir. This can be achieved with the `Lua.call_function!/3` function
+Pass an arbitrary Elixir term across the boundary as a `{:userdata, term}` tuple. It round-trips opaquely — Lua can hold the reference and hand it back, but cannot inspect or dereference it:
 
-defmodule MyAPI do
-  use Lua.API, scope: "example"
+```
+iex> lua = Lua.set!(Lua.new(), [:thing], {:userdata, %{secret: 42}})
+iex> {[{:userdata, %{secret: 42}}], _lua} = Lua.eval!(lua, "return thing")
+```
 
-  deflua foo(value), state do
-    Lua.call\_function!(state, \[:string, :lower\], \[value\])
-  end
-end
+### Sandboxing
 
-import Lua, only: \[sigil\_LUA: 2\]
+`Lua.new/1` sandboxes dangerous stdlib paths by default, including `os.execute`, `os.exit`, `os.getenv`, file I/O (`io.*`), `require`, `load`, and `dofile`. Calling a sandboxed function raises rather than touching the host:
 
-lua \= Lua.new() |> Lua.load\_api(MyAPI)
+Lua.eval!(~S\[os.execute("rm -rf /")\])
+\# \*\* (Lua.RuntimeException) Lua runtime error: os.execute(\_) is sandboxed
 
-{\["wow"\], \_} \= Lua.eval!(lua, ~LUA\[return example.foo("WOW")\])
+To allow a specific operation, exclude it from the sandbox explicitly:
 
-Modify Lua state from Elixir
-----------------------------
+```
+iex> lua = Lua.new(exclude: [[:os, :getenv]])
+iex> {[value], _lua} = Lua.eval!(lua, ~S[return os.getenv("HOME")])
+iex> is_binary(value)
+true
+```
 
-You can also use `Lua` to modify the state of the lua environment inside your Elixir code. Imagine you have a queue module that you want to implement in Elixir, with the queue stored in a global variable
+### Metatables and metamethods
 
-defmodule Queue do
-  use Lua.API, scope: "q"
-  
-  deflua push(v), state do
-    \# Pull out the global variable "my\_queue" from lua
-    queue \= Lua.get!(state, \[:my\_queue\])
-    
-    \# Call the Lua function table.insert(table, value)
-    {\[\], state} \= Lua.call\_function!(state, \[:table, :insert\], \[queue, v\])
-    
-    \# Return the modified lua state with no return values
-    {\[\], state}
-  end
-end
+Full metamethod dispatch is supported (`__index`, `__newindex`, `__call`, arithmetic, comparison, length, concatenation, and `__tostring`), so idiomatic Lua object patterns work as written:
 
-import Lua, only: \[sigil\_LUA: 2\]
+```
+iex> {[result], _lua} = Lua.eval!(~LUA"""
+...> local Vec = {}
+...> Vec.__index = Vec
+...> Vec.__add = function(a, b) return setmetatable({x = a.x + b.x}, Vec) end
+...> local a = setmetatable({x = 1}, Vec)
+...> local b = setmetatable({x = 2}, Vec)
+...> return (a + b).x
+...> """)
+iex> result
+3
+```
 
-lua \= Lua.new() |> Lua.load\_api(Queue)
+Coverage and status
+-------------------
 
-{\[queue\], \_} \=
-  Lua.eval!(lua, """
-  my\_queue = {}
-  q.push("first")
-  q.push("second")
-  return my\_queue
-  """)
-  
-\["first", "second"\] \= Lua.Table.as\_list(queue)
+`Lua` targets Lua 5.3. The lexer, parser, register-based VM, value encoding/decoding, varargs, multiple returns, `_G`/`_ENV`, metatables, the string-pattern engine (`find`/`match`/`gmatch`/`gsub`), and the `string`, `table`, `math`, `os`, and `debug` standard libraries are implemented.
 
-Accessing private state from Elixir
------------------------------------
+As a sandboxed _embedded_ VM, some standalone-interpreter behavior is a deliberate non-goal rather than a missing feature:
 
-When building applications with `Lua`, you may find yourself in need of propagating extra context for use in your APIs. For instance, you may want to access information about the current user who executed the Lua script, an API key, or something else that is private and should not be available to the Lua code. For this, we have the `Lua.put_private/3`, `Lua.get_private/2`, and `Lua.delete_private/2` functions.
+-   **Standalone interpreter / `os.execute`** — there is no shell-out to the host.
+-   **Host filesystem access** — `Lua` does not read your host filesystem. The `io.*` library and `require`/`dofile` are sandboxed by default and raise rather than touching disk; there is no host-OS file or module resolution.
+-   **Coroutines**, **garbage collection / weak tables**, and the **full `debug` library**.
 
-For example, imagine you wanted to allow the user to access information about themselves
+For the live Lua 5.3 official test-suite pass count and the rationale behind each deferral, see the `ROADMAP.md`. This release is `1.0.0-rc.0`.
 
-defmodule User do
-  defstruct \[:name\]
-end
-
-defmodule UserAPI do
-  use Lua.API, scope: "user"
-  
-  deflua name(), state do
-    user \= Lua.get\_private!(state, :user) 
-    
-    {\[user.name\], state}
-  end
-end
-
-user \= %User{name: "Robert Virding"}
-
-lua \= Lua.new() |> Lua.put\_private(:user, user) |> Lua.load\_api(UserAPI)
-
-{\["Hello Robert Virding"\], \_lua} \= Lua.eval!(lua, ~LUA"""
-  return "Hello " .. user.name()
-""")
-
-This allows you to have simple, expressive APIs that access context that is unavailable to the Lua code.
-
-Encoding and Decoding data
---------------------------
-
-When working with `Lua`, you may want to inject data of various types into the runtime. Some values, such as integers, have the same representation inside the VM as they do in Elixir and do not require encoding. Other values, such as maps, are represented inside the VM as tables and must be encoded first. Arbitrary Elixir terms can be passed across the boundary using a `{:userdata, any()}` tuple.
-
-Values may be encoded with `Lua.encode!/2`.
-
-Elixir type
-
-Internal VM type
-
-Requires encoding?
-
-`nil`
-
-`nil`
-
-no
-
-`boolean()`
-
-`boolean()`
-
-no
-
-`number()`
-
-`number()`
-
-no
-
-`binary()`
-
-`binary()`
-
-no
-
-`atom()`
-
-`binary()`
-
-yes
-
-`map()`
-
-`{:tref, integer()}`
-
-yes
-
-`{:userdata, any()}`
-
-`{:udref, integer()}`
-
-yes
-
-`(any()) -> any()`
-
-`{:native_func, fun}`
-
-yes
-
-`(any(), Lua.t()) -> any()`
-
-`{:native_func, fun}`
-
-yes
-
-`list(any())`
-
-`list(VM type)`
-
-maybe (if any of its values require encoding)
-
-Userdata
+Examples
 --------
 
-There are situations where you want to pass around a reference to some Elixir datastructure, such as a struct. In these situations, you can use a `{:userdata, any()}` tuple.
+Runnable, end-to-end scripts live in `examples/`. Run any of them with `mix run examples/<name>.exs`:
 
-defmodule Thing do
-  defstruct \[:value\]
-end
+-   `examples/01_quickstart.exs` — eval some Lua and get the result.
+-   `examples/02_userdata.exs` — pass an Elixir struct as userdata and call methods on it from Lua.
+-   `examples/03_custom_stdlib.exs` — add an Elixir-defined function to the state and call it from Lua.
+-   `examples/04_sandboxing.exs` — the default sandbox plus allowing specific `os.*` ops explicitly.
+-   `examples/05_chunks.exs` — compile once, eval many times.
+-   `examples/06_error_handling.exs` — `pcall`, structured exception fields, source/line attribution.
 
-{encoded, lua} \= Lua.encode!(Lua.new(), {:userdata, %Thing{value: "1234"}})
+Documentation
+-------------
 
-lua \= Lua.set!(lua, \[:foo\], encoded)
+-   Full API reference on HexDocs.
+-   The Working with Lua guide is a Livebook walkthrough of the embedding patterns.
+-   The `~LUA` sigil and Mix tasks guide covers compile-time validation and tooling.
+-   The Security and sandboxing guide covers the sandbox, allocation guards, recursion limits, and bounding CPU and memory.
 
-{\[{:userdata, %Thing{value: "1234"}}\], \_} \= Lua.eval!(lua, "return foo")
+> #### Lua the Elixir library vs Lua the language {: .info}
+> 
+> When referring to this library, `Lua` is stylized as a link. References to Lua the language are in plaintext and not linked.
 
-Trying to deference userdata inside a Lua program will result in an exception.
+Security and sandboxing
+-----------------------
 
-Credits
+`Lua` is built to run untrusted scripts. By default, `Lua.new/1` installs a sandbox that blocks the dangerous standard-library paths (`io`, `file`, `os.execute`/`exit`/`getenv`, `package`, `require`, `load`, …), and the VM guards against allocation-bomb denial-of-service by refusing oversized `string.rep`, `table.unpack`/`concat`/`move`, and string concatenations before they allocate.
+
+\# os.exit is sandboxed by default — calling it raises (catchable)
+iex\> {\[false, message\], \_} \= Lua.eval!(Lua.new(), "return pcall(os.exit)")
+iex\> message \=~ "sandboxed"
+true
+
+Capability sandboxing (`:sandboxed`, `:exclude`, `Lua.sandbox/2`), recursion limits (`:max_call_depth`), the built-in allocation guards, and the host-level pattern for bounding CPU time and total memory are all covered in the Security and sandboxing guide.
+
+Compatibility and credits
+-------------------------
+
+`Lua` started as an ergonomic Elixir wrapper around Robert Virding's Luerl project. As of `1.0.0` it is a full Elixir-native reimplementation of the Lua 5.3 lexer, parser, and virtual machine, with a public API designed to feel idiomatic from Elixir.
+
+Compared to Luerl: `Lua` is pure Elixir with no shared mutable state (each `Lua` value is plain immutable state you thread explicitly), ships richer error messages with source and line attribution, and benchmarks competitively. Luerl deserves credit as the prior art that made this possible — its design informed many decisions in the new VM, and we benchmark against it.
+
+License
 -------
 
-`Lua` started as an ergonomic Elixir wrapper around Robert Virding's Luerl project. As of `1.0.0` this library is a full Elixir-native reimplementation of the Lua 5.3 lexer, parser, and virtual machine, with a public API designed to feel idiomatic from Elixir. Luerl deserves credit as the prior art that made this possible — its design informed many of the decisions in the new VM, and we benchmark against it.
+Released under the Apache-2.0 license. See `LICENSE`.

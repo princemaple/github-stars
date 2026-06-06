@@ -1,6 +1,6 @@
 ---
 project: ngx-charts
-stars: 4356
+stars: 4357
 description: :bar_chart: Declarative Charting Framework for Angular
 url: https://github.com/swimlane/ngx-charts
 ---
@@ -73,6 +73,7 @@ Release
 -   Run `git checkout -b release/X.Y.Z`
 -   Update version in `projects/swimlane/ngx-charts/package.json`
 -   Update changelog in `projects/docs/changelog.md`
+-   Run `yarn package`
 -   Run `git commit -am "(release): X.Y.Z"`
 -   Run `git tag X.Y.Z`
 -   Run `git push origin HEAD --tags`

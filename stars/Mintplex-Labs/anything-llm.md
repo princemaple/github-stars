@@ -1,7 +1,7 @@
 ---
 project: anything-llm
-stars: 60813
-description: The all-in-one AI productivity accelerator. On device and privacy first with no annoying setup or configuration.
+stars: 61154
+description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
 
@@ -246,8 +246,9 @@ Basically, if telemetry is disabled we don't collect anything. However, dependin
 🔗 More Products
 ----------------
 
--   **VectorAdmin:** An all-in-one GUI & tool-suite for managing vector databases.
--   **OpenAI Assistant Swarm:** Turn your entire library of OpenAI assistants into one single army commanded from a single agent.
+-   **AnythingLLM Mobile (MIT Licensed):** A mobile application that allows you to use AnythingLLM on your mobile device.
+-   **AnythingLLM Browser Extension:** A browser extension that allows you to use AnythingLLM in your browser.
+-   **AnythingLLM Embed:** A widget that allows you to embed AnythingLLM in your website.
 
 * * *
 

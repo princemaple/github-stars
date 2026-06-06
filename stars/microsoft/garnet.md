@@ -1,6 +1,6 @@
 ---
 project: garnet
-stars: 11846
+stars: 11861
 description: Garnet is a remote cache-store from Microsoft Research that offers strong performance (throughput and latency), scalability, storage, recovery, cluster sharding, key migration, and replication features. Garnet can work with existing Redis clients.
 url: https://github.com/microsoft/garnet
 ---
@@ -18,6 +18,13 @@ Garnet is a new remote cache-store from Microsoft Research, that offers several 
 This repo contains the code to build and run Garnet. For more information and documentation, check out our website at https://microsoft.github.io/garnet.
 
 **Looking for a fully managed service?** Azure Cosmos DB Garnet Cache provides Garnet as a fully managed, enterprise-ready caching solution with built-in high availability, performance guarantees and zero infrastructure management.
+
+What's New 🎉
+-------------
+
+-   **🚀 Vector Sets (Preview)** — Approximate nearest-neighbor search backed by the DiskANN algorithm and Garnet's Tsavorite storage engine. In our initial results, Garnet leads on QPS, p99 latency, and recall.
+-   **🔍 Range Index (Preview)** — Secondary range and equality indexes over Garnet keys, powered by Bf-Tree.
+-   **📄 The Garnet paper will appear at VLDB 2026!** B. Chandramouli, V. Zois, T. Hart, T. Zaccai, L. M. Maas, Y. Rajasekaran, D. Gehring. _Garnet: A Next-Generation Cache-Store for Accelerating Applications and Services._ PVLDB 2026. \[PDF\]
 
 Feature Summary
 ---------------

@@ -1,6 +1,6 @@
 ---
 project: lossless-cut
-stars: 40797
+stars: 41021
 description: The swiss army knife of lossless video/audio editing
 url: https://github.com/mifi/lossless-cut
 ---
@@ -75,6 +75,7 @@ Features
 -   Basic CLI and HTTP API
 -   Show (DJI) embedded GPS track on a map
 -   Losslessly Download videos over HTTP (e.g. HLS `.m3u8`)
+-   Extremely fast removal of all non-keyframes (e.g. timelapse)
 
 Example lossless use cases
 --------------------------

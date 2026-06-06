@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 67346
+stars: 67923
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -21,11 +21,11 @@ _We’ll be onboarding in phases and working closely with early users. Limited s
 
 Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
 
-✨ Check out latest update v0.8.6
+✨ Check out latest update v0.8.9
 
-✨ **New in v0.8.6**: Security hotfix — replaced `litellm` with `unclecode-litellm` due to a PyPI supply chain compromise. If you're on v0.8.5, please upgrade immediately.
+✨ **New in v0.8.9**: Follow-up security patch for the self-hosted Docker API server, closing an SSRF via proxy settings that 0.8.8 did not cover. Backward compatible. If you run the Docker server, upgrade. A larger secure-by-default release with breaking changes is coming in ~1-2 weeks. Release notes →
 
-✨ Recent v0.8.5: Anti-Bot Detection, Shadow DOM & 60+ Bug Fixes! Automatic 3-tier anti-bot detection with proxy escalation, Shadow DOM flattening, deep crawl cancellation, config defaults API, consent popup removal, and critical security patches. Release notes →
+✨ Recent v0.8.6: Security hotfix that replaced `litellm` with `unclecode-litellm` due to a PyPI supply chain compromise.
 
 ✨ Previous v0.8.0: Crash Recovery & Prefetch Mode! Deep crawl crash recovery with `resume_state` and `on_state_change` callbacks for long-running crawls. New `prefetch=True` mode for 5-10x faster URL discovery. Release notes →
 
@@ -481,7 +481,31 @@ async def test\_news\_crawl():
 ✨ Recent Updates
 ----------------
 
-**Version 0.8.6 — Security Hotfix: litellm Supply Chain Fix**
+**Version 0.8.9 Release Highlights - Proxy SSRF Patch**
+
+A follow-up, backward-compatible security patch for the self-hosted Docker API server: closes an SSRF via proxy settings (`proxy_config.server`, the deprecated `proxy`, `crawler_config.proxy_config`, and proxy/DNS flags in `extra_args`) that 0.8.8 did not cover. Proxy destinations are now validated like crawl URLs. Upgrade in place, no config changes. A larger secure-by-default release with breaking changes is coming in ~1-2 weeks; a migration guide will accompany the pre-announcement.
+
+pip install -U crawl4ai
+
+Full v0.8.9 Release Notes →
+
+**Version 0.8.8 Release Highlights - Docker Server Security Patch**
+
+A focused, backward-compatible security patch for the self-hosted Docker API server: closes SSRF filter gaps (IPv6 transition forms), hardens screenshot/PDF `output_path` against a symlink write, stops LLM credential exfiltration via a request `base_url`, and adds CRLF-safe logging and webhook header validation. Upgrade in place, no config changes.
+
+pip install -U crawl4ai
+
+Full v0.8.8 Release Notes →
+
+**Version 0.8.7 Release Highlights - Security Hardening, DomainMapper & Community Fixes**
+
+A security-hardening release. Fixes critical Docker API vulnerabilities (AST sandbox escape RCE, hook sandbox RCE, hardcoded JWT secret, SSRF on webhook and crawl endpoints, arbitrary file write, monitor auth bypass, stored XSS, and unauthenticated JS execution), adds the DomainMapper feature, and ships a batch of scraping, deep-crawl, and LLM fixes. If you self-host the Docker API, upgrade immediately.
+
+pip install -U crawl4ai
+
+Full v0.8.7 Release Notes →
+
+**Version 0.8.6 - Security Hotfix: litellm Supply Chain Fix**
 
 Replaced `litellm` dependency with `unclecode-litellm` due to a PyPI supply chain compromise affecting the original package. If you're on v0.8.5 or earlier, upgrade immediately.
 

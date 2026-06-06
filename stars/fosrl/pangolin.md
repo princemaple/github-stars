@@ -1,6 +1,6 @@
 ---
 project: pangolin
-stars: 20942
+stars: 21030
 description: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.
 url: https://github.com/fosrl/pangolin
 ---

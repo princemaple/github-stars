@@ -1,6 +1,6 @@
 ---
 project: cachex
-stars: 1740
+stars: 1741
 description: A powerful caching library for Elixir with support for transactions, fallbacks and expirations
 url: https://github.com/whitfin/cachex
 ---

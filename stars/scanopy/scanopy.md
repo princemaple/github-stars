@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 5005
+stars: 5027
 description: Network diagrams that update themselves
 url: https://github.com/scanopy/scanopy
 ---

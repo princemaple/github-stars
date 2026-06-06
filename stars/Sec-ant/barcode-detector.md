@@ -1,6 +1,6 @@
 ---
 project: barcode-detector
-stars: 217
+stars: 219
 description: A Barcode Detection API ponyfill/polyfill that uses ZXing-C++ WebAssembly under the hood.
 url: https://github.com/Sec-ant/barcode-detector
 ---
@@ -62,25 +62,27 @@ Special Barcode Formats
 
 `code_128`
 
-`qr_code`
+`micro_pdf417`
 
 `databar`
 
-`qr_code_model_1`
+`qr_code`
 
 `databar_omni`
 
-`qr_code_model_2`
+`qr_code_model_1`
 
 `databar_stacked`
 
-`micro_qr_code`
+`qr_code_model_2`
 
 `databar_stacked_omni`
 
-`rm_qr_code`
+`micro_qr_code`
 
 `databar_expanded`
+
+`rm_qr_code`
 
 `databar_expanded_stacked`
 
@@ -103,6 +105,12 @@ Special Barcode Formats
 `upc_a`
 
 `upc_e`
+
+`telepen`
+
+`telepen_alpha`
+
+`telepen_numeric`
 
 Install
 -------

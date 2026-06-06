@@ -1,6 +1,6 @@
 ---
 project: firecracker
-stars: 34674
+stars: 34787
 description: Secure and fast microVMs for serverless computing.
 url: https://github.com/firecracker-microvm/firecracker
 ---
@@ -117,6 +117,8 @@ al2023 linux\_6.1
 
 linux\_6.1
 
+al2023 linux\_6.18
+
 m7i.metal-24xl (Intel Sapphire Rapids)
 
 m7i.metal-48xl (Intel Sapphire Rapids)
@@ -137,7 +139,7 @@ m8g.metal-24xl (Graviton 4)
 
 m8g.metal-48xl (Graviton 4)
 
-**\***: We **only** support AWS EC2 8th Gen Intel (\*8i) instances using a 6.1 host kernel. This is due to poor kernel support for Granite Rapids CPUs on 5.10.
+**\***: We **only** support AWS EC2 8th Gen Intel (\*8i) instances using a 6.1 or 6.18 host kernel. This is due to poor kernel support for Granite Rapids CPUs on 5.10.
 
 Known issues and Limitations
 ----------------------------

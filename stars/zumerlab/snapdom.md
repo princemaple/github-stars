@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7814
+stars: 7833
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -10,8 +10,8 @@ English | 简体中文
 SnapDOM
 =======
 
-**SnapDOM** is a next-generation **DOM Capture Engine** — ultra-fast, modular, and extensible.  
-It converts any DOM subtree into a self-contained representation that can be exported to SVG, PNG, JPG, WebP, Canvas, Blob, or **any custom format** through plugins.
+**SnapDOM** is a next-generation **DOM Capture Engine** — the fast, modern alternative to **html2canvas**, **dom-to-image**, and **html-to-image**.  
+It converts any DOM subtree into a self-contained representation that can be exported to SVG, PNG, JPG, WebP, Canvas, Blob, or **any custom format** through plugins — ultra-fast, modular, extensible, and dependency-free.
 
 -   Full DOM capture
 -   Embedded styles, pseudo-elements, and fonts

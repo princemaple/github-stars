@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 31649
+stars: 31797
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -29,7 +29,7 @@ git clone https://github.com/zeroclaw-labs/zeroclaw.git
 cd zeroclaw
 ./install.sh
 
-The installer asks whether you want a prebuilt binary (fast, ~seconds) or a source build (slower, customisable). Both end the same way — `zeroclaw onboard` kicks off automatically.
+The installer asks whether you want a prebuilt binary (fast, ~seconds) or a source build (slower, customisable). Both end the same way — `zeroclaw quickstart` kicks off automatically.
 
 Flags:
 
@@ -38,7 +38,7 @@ Flags:
 ./install.sh --source                # always build from source
 ./install.sh --minimal               # kernel only (~6.6 MB)
 ./install.sh --source --features agent-runtime,channel-discord  # custom feature set
-./install.sh --skip-onboard          # install only, run `zeroclaw onboard` later
+./install.sh --skip-quickstart       # install only, run `zeroclaw quickstart` later
 ./install.sh --list-features         # print available feature flags
 ```
 
@@ -47,7 +47,7 @@ Platform-specific notes: Linux · macOS · Windows · Docker
 Quick start
 -----------
 
-zeroclaw onboard                  # interactive onboard: provider, channels, agents, etc.
+zeroclaw quickstart               # one-shot setup: pick a provider, write a working config
 zeroclaw agent -a <alias\>         # interactive chat using the \[agents.<alias>\] entry
 zeroclaw service install          # register as systemd/launchctl/Windows Service
 zeroclaw service start            # run it always-on in the background

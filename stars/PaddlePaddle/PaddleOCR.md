@@ -1,6 +1,6 @@
 ---
 project: PaddleOCR
-stars: 79070
+stars: 80941
 description: Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages.
 url: https://github.com/PaddlePaddle/PaddleOCR
 ---
@@ -250,4 +250,14 @@ This project is released under the Apache 2.0 license.
       archivePrefix\={arXiv},
       primaryClass\={cs.CV},
       url\={https://arxiv.org/abs/2601.21957}, 
+}
+
+@misc{zhang2026paddleocrvl16expandingfrontierdocument,
+      title\={PaddleOCR-VL-1.6: Expanding the Frontier of Document Parsing with Under-Optimized Region Refinement and Progressive Post-Training}, 
+      author\={Zelun Zhang and Hongen Liu and Suyin Liang and Yubo Zhang and Yiqing Xiang and Jiaxuan Liu and Ting Sun and Manhui Lin and Yue Zhang and Changda Zhou and Tingquan Gao and Cheng Cui and Yi Liu and Dianhai Yu and Yanjun Ma},
+      year\={2026},
+      eprint\={2606.03264},
+      archivePrefix\={arXiv},
+      primaryClass\={cs.CV},
+      url\={https://arxiv.org/abs/2606.03264}, 
 }

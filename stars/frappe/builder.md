@@ -1,6 +1,6 @@
 ---
 project: builder
-stars: 2041
+stars: 2043
 description: Craft beautiful websites effortlessly with an intuitive visual builder and publish them instantly
 url: https://github.com/frappe/builder
 ---
@@ -24,11 +24,14 @@ Most existing solutions were either too complex, too restrictive, or difficult t
 ### Key Features
 
 -   **Intuitive Visual Builder:** Simplify your workflow with a Figma-like editor.
+-   **AI-Powered Page Generation:** Generate complete web pages instantly using AI with a simple text prompt.
 -   **Responsive Views:** Ensure your sites look great on any device without the fuss.
--   **Frappe CMS Integration:** Easily fetch data from your database and create dynamic pages.
--   **Scripting Capabilities:** Customize with client scripts, global scripts, and styles.
+-   **Dark Mode Support:** Built-in dark mode with automatic system preference detection and a manual override option.
+-   **Built-in CMS:** Leverage Frappe Framework's inbuilt CMS to manage structured content, fetch dynamic data from your database, and power data-driven pages without a separate backend.
+-   **Advanced Scripting:** Customize every layer of your page like global scripts, client scripts, per-block data scripts, and typed block props. Bind any property or style to dynamic values sourced from scripts, page data, or query parameters.
 -   **One-Click Publishing:** Instantly share your creation with the world in a single click.
 -   **Performance Excellence:** Frappe Builder does not bloat web pages with unnecessary scripts hence pages are highly performant, consistently scoring high on Google Lighthouse tests.
+-   **Page Analytics:** Built-in analytics dashboard with traffic insights including page views, unique visitors, and top referrers.
 -   **Production Ready**: Frappe.io built on Frappe Builder, stands as a testament to its reliability in delivering production-ready solutions.
 
 ### Under the Hood
@@ -120,3 +123,4 @@ yarn dev --host
 -   Discuss Forum
 -   Documentation
 -   Figma Plugin (Beta)
+-   Frappe Script Editor

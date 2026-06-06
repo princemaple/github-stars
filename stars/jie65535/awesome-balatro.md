@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1208
+stars: 1209
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -89,6 +89,7 @@ Tools
 -   BalatroWebSiteTemplate - Use web pages to show your Jokers. like this. by @notmario
 -   Blueprint - An online seed analyzer inspired by the soul, with joker spoilers and queue support @miaklwalker
 -   Immolate - An OpenCL seed searcher for Balatro. by @MathIsFun\_
+-   JokerDeck - A mod manager for Balatro with mod browsing, one-click install, instant enable/disable on browser and locally, dependency detection and more. by @Ch3rryC0d3r
 -   Motely - A C# CPU SIMD seed searcher for Balatro. by @tacodiva
 -   Ouija - A JSON-powered, Immolate-based seed searcher for Balatro. by @OptimusPi
 -   PerkeoApp - A Balatro iOS companion app coded in Swift. by @alex-cova
@@ -300,6 +301,7 @@ Mods (Require **Steamodded**)
 -   FloundersJokers - Adds a variety of different jokers. by @Flounderful
 -   Fusion Jokers - Fuse two jokers together to create special, powerful jokers! by @itayfeder and @Lyman
 -   Harambe's Chosen - Cavendish went extinct... just as planned. This mod adds a third, legendary, banana joker to the chain! by @Joolean
+-   House of Hearts - Balatro University community project made for the House of Hearts event organised by American Heart Association. by `Balatro University Community`
 -   Inscrybed Jokers - Some Jokers inspired by Inscryption. by @LunaAstraCassiopeia
 -   JankJonklers - A small pack of Jokers for the game. by @Lyman
 -   JellyMod - A pack of 17 Jokers and 22 new "reverse" tarot cards. by @JamestheJellyfish

@@ -1,6 +1,6 @@
 ---
 project: SwitchHosts
-stars: 26730
+stars: 26779
 description: Switch hosts quickly!
 url: https://github.com/oldj/SwitchHosts
 ---

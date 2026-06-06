@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 437948
+stars: 439812
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -426,16 +426,6 @@ No
 Yes
 
 Unknown
-
-Zoo Animals
-
-Facts and pictures of zoo animals
-
-No
-
-Yes
-
-Yes
 
 **⬆ Back to Index**  
   
@@ -882,6 +872,16 @@ Yes
 
 Unknown
 
+DummyImage
+
+Generate placeholder images with custom size, colors and text
+
+No
+
+Yes
+
+Unknown
+
 EmojiHub
 
 Get emojis by categories and groups
@@ -1001,6 +1001,16 @@ RijksMuseum Data
 Yes
 
 Unknown
+
+UpRes
+
+AI image upscaling to 8K with 18 models (Real-ESRGAN, SeedVR2, AuraSR)
+
+`apiKey`
+
+Yes
+
+Yes
 
 Word Cloud
 
@@ -1132,6 +1142,16 @@ Yes
 
 Yes
 
+Blockscout
+
+Multichain block explorer REST API (with Etherscan-compatible JSON-RPC)
+
+`apiKey`
+
+Yes
+
+No
+
 Chainlink
 
 Build hybrid smart contracts with Chainlink
@@ -1201,6 +1221,16 @@ No
 No
 
 No
+
+TWZRD Agent Intel
+
+Solana on-chain agent trust scoring via MCP; 4 free tools to score, resolve and verify AI agent wallets
+
+No
+
+Yes
+
+Yes
 
 The Graph
 
@@ -1366,6 +1396,16 @@ No
 Yes
 
 Unknown
+
+KDP Intelligence
+
+KDP niche demand scores, competition analysis and revenue estimates
+
+No
+
+Yes
+
+Yes
 
 Open Library
 
@@ -1602,6 +1642,16 @@ Yes
 
 Unknown
 
+Invovate
+
+Generate PDF, JSON & UBL invoices in 11 languages from one JSON POST
+
+`apiKey`
+
+Yes
+
+No
+
 Mailchimp
 
 Send marketing campaigns and transactional mails
@@ -1651,6 +1701,16 @@ Access your queries and dashboards on Redash
 Yes
 
 Yes
+
+Signaliz
+
+GTM enrichment, lead generation, email verification, and company signals
+
+`apiKey`
+
+Yes
+
+Unknown
 
 Smartsheet
 
@@ -1767,6 +1827,16 @@ HTTPS
 
 CORS
 
+caldays
+
+Public holidays for 195+ countries
+
+No
+
+Yes
+
+Yes
+
 Calendarific
 
 Worldwide Holidays
@@ -1777,9 +1847,9 @@ Yes
 
 Unknown
 
-Checkiday - National Holiday API
+Checkiday - National Holiday
 
-Industry-leading Holiday API. Over 5,000 holidays and thousands of descriptions. Trusted by the World’s leading companies
+Industry-leading holiday data with over 5,000 holidays and thousands of descriptions
 
 `apiKey`
 
@@ -1917,6 +1987,16 @@ Yes
 
 No
 
+The Calendar
+
+Public holidays for US states and 30 countries plus sports and finance calendars as static JSON
+
+No
+
+Yes
+
+Yes
+
 UK Bank Holidays
 
 Bank holidays in England and Wales, Scotland and Northern Ireland
@@ -1941,26 +2021,6 @@ Auth
 HTTPS
 
 CORS
-
-AnonFiles
-
-Upload and share your files anonymously
-
-No
-
-Yes
-
-Unknown
-
-BayFiles
-
-Upload and share your files
-
-No
-
-Yes
-
-Unknown
 
 Box
 
@@ -2642,16 +2702,6 @@ Yes
 
 Unknown
 
-FTX
-
-Complete REST, websocket, and FTX APIs to suit your algorithmic trading needs
-
-`apiKey`
-
-Yes
-
-Yes
-
 Gateio
 
 API provides spot, margin and futures trading operations
@@ -3217,6 +3267,16 @@ Yes
 
 Yes
 
+Amazonscraperapi
+
+Amazon product, search & batch scraping API with residential proxies (1000 free)
+
+`apiKey`
+
+Yes
+
+No
+
 API Grátis
 
 Multiples services and public APIs
@@ -3487,6 +3547,16 @@ Yes
 
 Unknown
 
+DownStatus
+
+Real-time status for GitHub, AWS, Discord and 90+ services
+
+No
+
+Yes
+
+Yes
+
 ExtendsClass JSON Storage
 
 A simple JSON store API
@@ -3717,6 +3787,16 @@ Yes
 
 Yes
 
+Hipsum
+
+Hipster-themed lorem ipsum generator for placeholder text
+
+No
+
+Yes
+
+Unknown
+
 Hunter
 
 API for domain search, professional email finder, author finder and email verifier
@@ -3886,6 +3966,16 @@ No
 Yes
 
 Yes
+
+Keyvalue
+
+Simple key-value storage REST API for quick prototyping
+
+No
+
+Yes
+
+Unknown
 
 Kroki
 
@@ -4397,6 +4487,26 @@ Yes
 
 Yes
 
+Talordata
+
+SERP data from major search engines with a free trial
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Thunder Client
+
+API testing tool
+
+No
+
+Yes
+
+Yes
+
 Thunderbit
 
 Extract web pages as Markdown or structured data for AI apps
@@ -4837,6 +4947,26 @@ Yes
 
 Unknown
 
+Renderly
+
+HTML to PDF conversion API built on Chromium
+
+`apiKey`
+
+Yes
+
+Yes
+
+Rendex
+
+Render HTML, Markdown, or URLs to PNG/JPEG/WebP/PDF, with extraction and templating
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Restpack
 
 Provides screenshot, HTML to PDF and content extraction APIs
@@ -4857,7 +4987,7 @@ Yes
 
 Unknown
 
-Smart Image Enhancement API
+Smart Image Enhancement
 
 Performs image upscaling by adding detail to images through multiple super-resolution algorithms
 
@@ -4902,6 +5032,16 @@ Zube
 Full stack project management
 
 `OAuth`
+
+Yes
+
+Unknown
+
+Zero Retention PDF
+
+Zero-retention HTML to PDF conversion
+
+`apiKey`
 
 Yes
 
@@ -5017,6 +5157,16 @@ Kickbox
 Email verification API
 
 No
+
+Yes
+
+Yes
+
+Kiprio Email Validate
+
+Free email validation: MX check, disposable detection, syntax
+
+`apiKey`
 
 Yes
 
@@ -5187,6 +5337,16 @@ Yes
 
 Unknown
 
+JokeAPI
+
+Programmable jokes in multiple languages with filtering options
+
+No
+
+Yes
+
+Yes
+
 justmeme.wtf
 
 Free meme API with 2400+ templates, search, trending, and AI generation
@@ -5226,6 +5386,16 @@ No
 Yes
 
 Unknown
+
+PotterDB
+
+Harry Potter universe database with characters, spells, potions and more
+
+No
+
+Yes
+
+Yes
 
 Random Useless Facts
 
@@ -5562,7 +5732,7 @@ Yes
 
 Yes
 
-Bank Data API
+Bank Data
 
 Instant IBAN and SWIFT number validation across the globe
 
@@ -5602,6 +5772,16 @@ Yes
 
 Unknown
 
+BriefTape
+
+Real-time AI-summarized SEC filings, Fed, FDA and BLS data, ticker-tagged
+
+`apiKey`
+
+Yes
+
+Yes
+
 Citi
 
 All Citigroup account and statement data APIs
@@ -5611,6 +5791,16 @@ All Citigroup account and statement data APIs
 Yes
 
 Unknown
+
+CongressInvests
+
+Real-time U.S. congressional stock trade disclosures from Senate EFD and House Clerk
+
+`apiKey`
+
+Yes
+
+Yes
 
 Econdb
 
@@ -5626,7 +5816,7 @@ EconPulse
 
 Live economic data — CPI, PPI, energy, treasury rates, BTC premium
 
-apiKey
+`apiKey`
 
 Yes
 
@@ -5828,7 +6018,9 @@ Connect with user's bank accounts and access transaction data
 
 `apiKey`
 
-YES
+Yes
+
+Unknown
 
 Polygon
 
@@ -5910,7 +6102,17 @@ Yes
 
 Unknown
 
-Tax Data API
+Sugra
+
+One API for market data, economics, commodities, climate, and global news. LLM-ready JSON
+
+`apiKey`
+
+Yes
+
+Yes
+
+Tax Data
 
 Instant VAT number and tax validation across the globe
 
@@ -5990,11 +6192,270 @@ Yes
 
 Unknown
 
-**⬆ Back to Index**
+**⬆ Back to Index**  
+  
 
-  
-  
-\### Food & Drink API | Description | Auth | HTTPS | CORS | |:---|:---|:---|:---|:---| | \[BaconMockup\](https://baconmockup.com/) | Resizable bacon placeholder images | No | Yes | Yes | | \[Chomp\](https://chompthis.com/api/) | Data about various grocery products and foods | \`apiKey\` | Yes | Unknown | | \[Coffee\](https://coffee.alexflipnote.dev/) | Random pictures of coffee | No | Yes | Unknown | | \[Edamam nutrition\](https://developer.edamam.com/edamam-docs-nutrition-api) | Nutrition Analysis | \`apiKey\` | Yes | Unknown | | \[Edamam recipes\](https://developer.edamam.com/edamam-docs-recipe-api) | Recipe Search | \`apiKey\` | Yes | Unknown | | \[Foodish\](https://github.com/surhud004/Foodish#readme) | Random pictures of food dishes | No | Yes | Yes | | \[Fruityvice\](https://www.fruityvice.com) | Data about all kinds of fruit | No | Yes | Unknown | | \[Kroger\](https://developer.kroger.com/reference) | Supermarket Data | \`apiKey\` | Yes | Unknown | | \[LCBO\](https://lcboapi.com/) | Alcohol | \`apiKey\` | Yes | Unknown | | \[Open Brewery DB\](https://www.openbrewerydb.org) | Breweries, Cideries and Craft Beer Bottle Shops | No | Yes | Yes | | \[Open Food Facts\](https://world.openfoodfacts.org/data) | Food Products Database | No | Yes | Unknown | | \[PunkAPI\](https://punkapi.com/) | Brewdog Beer Recipes | No | Yes | Unknown | | \[RecipeAPI\](https://recipeapi.io) | Recipes, ingredients, nutrition data and cooking instructions | \`apiKey\` | Yes | Yes | | \[Rustybeer\](https://rustybeer.herokuapp.com/) | Beer brewing tools | No | Yes | No | | \[Spoonacular\](https://spoonacular.com/food-api) | Recipes, Food Products, and Meal Planning | \`apiKey\` | Yes | Unknown | | \[Systembolaget\](https://api-portal.systembolaget.se) | Govornment owned liqour store in Sweden | \`apiKey\` | Yes | Unknown | | \[TacoFancy\](https://github.com/evz/tacofancy-api) | Community-driven taco database | No | No | Unknown | | \[Tasty\](https://rapidapi.com/apidojo/api/tasty/) | API to query data about recipe, plan, ingredients | \`apiKey\` | Yes | Unknown | | \[The Report of the Week\](https://github.com/andyklimczak/TheReportOfTheWeek-API) | Food & Drink Reviews | No | Yes | Unknown | | \[TheCocktailDB\](https://www.thecocktaildb.com/api.php) | Cocktail Recipes | \`apiKey\` | Yes | Yes | | \[TheMealDB\](https://www.themealdb.com/api.php) | Meal Recipes | \`apiKey\` | Yes | Yes | | \[Untappd\](https://untappd.com/api/docs) | Social beer sharing | \`OAuth\` | Yes | Unknown | | \[What's on the menu?\](http://nypl.github.io/menus-api/) | NYPL human-transcribed historical menu collection | \`apiKey\` | No | Unknown | | \[WhiskyHunter\](https://whiskyhunter.net/api/) | Past online whisky auctions statistical data | No | Yes | Unknown | | \[Zestful\](https://zestfuldata.com/) | Parse recipe ingredients | \`apiKey\` | Yes | Yes |
+### Food & Drink
+
+API
+
+Description
+
+Auth
+
+HTTPS
+
+CORS
+
+BaconMockup
+
+Resizable bacon placeholder images
+
+No
+
+Yes
+
+Yes
+
+Chomp
+
+Data about various grocery products and foods
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Coffee
+
+Random pictures of coffee
+
+No
+
+Yes
+
+Unknown
+
+Edamam nutrition
+
+Nutrition Analysis
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Edamam recipes
+
+Recipe Search
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Foodish
+
+Random pictures of food dishes
+
+No
+
+Yes
+
+Yes
+
+Fruityvice
+
+Data about all kinds of fruit
+
+No
+
+Yes
+
+Unknown
+
+Kroger
+
+Supermarket Data
+
+`apiKey`
+
+Yes
+
+Unknown
+
+LCBO
+
+Alcohol
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Open Brewery DB
+
+Breweries, Cideries and Craft Beer Bottle Shops
+
+No
+
+Yes
+
+Yes
+
+Open Food Facts
+
+Food Products Database
+
+No
+
+Yes
+
+Unknown
+
+PunkAPI
+
+Brewdog Beer Recipes
+
+No
+
+Yes
+
+Unknown
+
+RecipeAPI
+
+Recipes, ingredients, nutrition data and cooking instructions
+
+`apiKey`
+
+Yes
+
+Yes
+
+Rustybeer
+
+Beer brewing tools
+
+No
+
+Yes
+
+No
+
+Spoonacular
+
+Recipes, Food Products, and Meal Planning
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Systembolaget
+
+Govornment owned liqour store in Sweden
+
+`apiKey`
+
+Yes
+
+Unknown
+
+TacoFancy
+
+Community-driven taco database
+
+No
+
+No
+
+Unknown
+
+Tasty
+
+API to query data about recipe, plan, ingredients
+
+`apiKey`
+
+Yes
+
+Unknown
+
+The Report of the Week
+
+Food & Drink Reviews
+
+No
+
+Yes
+
+Unknown
+
+TheCocktailDB
+
+Cocktail Recipes
+
+`apiKey`
+
+Yes
+
+Yes
+
+TheMealDB
+
+Meal Recipes
+
+`apiKey`
+
+Yes
+
+Yes
+
+Untappd
+
+Social beer sharing
+
+`OAuth`
+
+Yes
+
+Unknown
+
+What's on the menu?
+
+NYPL human-transcribed historical menu collection
+
+`apiKey`
+
+No
+
+Unknown
+
+WhiskyHunter
+
+Past online whisky auctions statistical data
+
+No
+
+Yes
+
+Unknown
+
+Zestful
+
+Parse recipe ingredients
+
+`apiKey`
+
+Yes
+
+Yes
 
 **⬆ Back to Index**  
   
@@ -6030,6 +6491,16 @@ No
 Yes
 
 Unknown
+
+Astroworld
+
+Free Minecraft data: mobs, biomes, items, enchantments, structures, commands, versions, achievements, trades
+
+No
+
+Yes
+
+Yes
 
 Autochess VNG
 
@@ -6090,6 +6561,16 @@ No
 Yes
 
 Yes
+
+Call of Duty Mobile
+
+Unofficial API for CODM player data and daily cache claiming
+
+No
+
+Yes
+
+Unknown
 
 CheapShark
 
@@ -7526,6 +8007,16 @@ Yes
 
 Unknown
 
+Kiprio UK Postcode
+
+UK postcode lookup with lat/lon, district, ward, constituency
+
+`apiKey`
+
+Yes
+
+Yes
+
 LocationIQ
 
 Provides forward/reverse geocoding and batch geocoding
@@ -8081,6 +8572,16 @@ Yes
 
 Unknown
 
+Conversor IAE CNAE
+
+Spanish IAE/CNAE tax activity codes, 2009→2025 crosswalk and AEAT obligations
+
+`apiKey`
+
+Yes
+
+No
+
 Data USA
 
 US Public Data
@@ -8261,6 +8762,16 @@ Yes
 
 Yes
 
+Neotimo DGFiP Mirror
+
+French DGFiP registry of certified e-invoicing platforms (Plateformes Agréées), searchable by SIRET
+
+No
+
+Yes
+
+Unknown
+
 Open Government, ACT
 
 Australian Capital Territory Open Data
@@ -8416,6 +8927,16 @@ Open Government, India
 Indian Government Open Data
 
 `apiKey`
+
+Yes
+
+Unknown
+
+Open Government, Indonesia
+
+Indonesian Government Open Data
+
+No
 
 Yes
 
@@ -8781,6 +9302,16 @@ Yes
 
 Unknown
 
+US Federal Contracts & Grants
+
+US federal contracts, grants, and agency spending data updated daily
+
+No
+
+Yes
+
+Yes
+
 USAspending.gov
 
 US federal spending data
@@ -9036,6 +9567,16 @@ Yes
 
 Unknown
 
+Longevity World Cup
+
+Public biological age competition data with biomarkers and rankings
+
+No
+
+Yes
+
+Yes
+
 Makeup
 
 Makeup Information
@@ -9043,6 +9584,16 @@ Makeup Information
 No
 
 No
+
+Unknown
+
+MedlinePlus Genetics
+
+Genetic conditions, genes, chromosomes and mtDNA data
+
+No
+
+Yes
 
 Unknown
 
@@ -9499,6 +10050,16 @@ Unknown
 Machinetutors
 
 AI Solutions: Video/Image Classification & Tagging, NSFW, Icon/Image/Audio Search, NLP
+
+`apiKey`
+
+Yes
+
+Yes
+
+MediaCraft AI
+
+Chinese content compliance review (17 platforms), EN↔CN translation, and SEO optimization. Pay-per-call via x402 (Solana USDC).
 
 `apiKey`
 
@@ -9963,7 +10524,7 @@ Unknown
 
 Verome
 
-Music API for searching, streaming, and exploring music data from YouTube Music, YouTube, and Last.fm
+Music API for searching, streaming and exploring music data from YouTube Music, YouTube, and Last.fm
 
 No
 
@@ -10571,6 +11132,16 @@ Yes
 
 No
 
+Warnely
+
+Composite travel-safety scores for 180 countries (FCDO + US State + GPI + WGI + live incident wire), OpenAPI 3.1 spec, CC BY 4.0
+
+No
+
+Yes
+
+Yes
+
 Wikidata
 
 Collaboratively edited knowledge base operated by the Wikimedia Foundation
@@ -10786,6 +11357,16 @@ Yes
 
 Unknown
 
+AstroWay
+
+Astrology, natal charts, Human Design, Vedic and horoscopes on the Swiss Ephemeris
+
+`apiKey`
+
+Yes
+
+Yes
+
 Biriyani As A Service
 
 Biriyani images placeholder
@@ -10895,6 +11476,16 @@ Community of readers and writers offering unique perspectives on ideas
 Yes
 
 Unknown
+
+Personality.fyi
+
+Free MBTI personality types and OEJTS test scoring
+
+No
+
+Yes
+
+Yes
 
 Programming Quotes
 
@@ -12063,7 +12654,7 @@ Unknown
 
 IPLogs
 
-Free VPN, proxy, Tor and datacenter IP detection. 13 sources, active probing.
+Free VPN, proxy, Tor and datacenter IP detection. 13 sources, active probing
 
 No
 
@@ -12211,6 +12802,16 @@ Yes
 
 Unknown
 
+URLhaus
+
+Database of malicious URLs used for malware distribution
+
+`No`
+
+Yes
+
+Unknown
+
 Virushee
 
 Virushee file/data scanning
@@ -12261,6 +12862,16 @@ Digi-Key
 Retrieve price and inventory of electronic components as well as place orders
 
 `OAuth`
+
+Yes
+
+Unknown
+
+Descripio Amazon Reviews
+
+Amazon product reviews for 12 marketplaces
+
+`apiKey`
 
 Yes
 
@@ -12538,6 +13149,16 @@ Full Contact
 Get Social Media profiles and contact Information
 
 `OAuth`
+
+Yes
+
+Unknown
+
+GetXAPI
+
+Read Twitter / X data and post tweets, likes, retweets, follows, DMs via REST
+
+`apiKey`
 
 Yes
 
@@ -13028,6 +13649,16 @@ Yes
 
 Yes
 
+OpenF1
+
+Real-time and historical Formula 1 data including laps, car telemetry and positions
+
+No
+
+Yes
+
+Yes
+
 OpenLigaDB
 
 Crowd sourced sports league results
@@ -13038,9 +13669,29 @@ Yes
 
 Yes
 
+Padel Snipe
+
+4,000+ mapped padel clubs across 9 European countries with GPS and courts
+
+No
+
+Yes
+
+Yes
+
 Premier League Standings
 
 All Current Premier League Standings and Statistics
+
+`apiKey`
+
+Yes
+
+Unknown
+
+PropLine
+
+Real-time player-props betting odds with graded prop resolution across 13 books
 
 `apiKey`
 
@@ -13098,6 +13749,16 @@ Yes
 
 Yes
 
+SportScore
+
+Live scores, fixtures, standings and stats for football, basketball, cricket and tennis
+
+No
+
+Yes
+
+Yes
+
 Sportmonks Cricket
 
 Live cricket score, player statistics and fantasy API
@@ -13147,6 +13808,16 @@ No
 No
 
 No
+
+TheRundown
+
+Real-time sports data: odds, scores, stats & prediction markets, 30+ leagues, 18+ sportsbooks
+
+`apiKey`
+
+Yes
+
+Yes
 
 TheSportsDB
 
@@ -13222,6 +13893,16 @@ No
 Yes
 
 No
+
+DummyJSON
+
+Fake REST API with products, users, posts, comments, todos and more
+
+No
+
+Yes
+
+Yes
 
 English Random Words
 
@@ -13423,6 +14104,16 @@ Yes
 
 Unknown
 
+TotalShiftLeft Sandbox
+
+Free multi-protocol sandbox: REST, GraphQL & SOAP with OAuth2/JWT auth and OpenAPI 3.0 spec
+
+No
+
+Yes
+
+Yes
+
 UUID Generator
 
 Generate UUIDs
@@ -13468,7 +14159,7 @@ HTTPS
 
 CORS
 
-Code Detection API
+Code Detection
 
 Detect, label, format and enrich the code in your app or in your data pipeline
 
@@ -13550,7 +14241,7 @@ Unknown
 
 GeoScore
 
-Score content for AI search citation readiness. Returns a 0-100 GEO score, 8 structural metrics, and improvement fixes
+Score content for AI search citation readiness with a 0-100 GEO score and 8 structural metrics
 
 `apiKey`
 
@@ -13577,6 +14268,16 @@ Translate between 21 of most used languages, accurate, unlimited requests
 Yes
 
 Unknown
+
+Kiprio Translate
+
+Free text translation with language detection, supports 50+ languages
+
+`apiKey`
+
+Yes
+
+Yes
 
 Lecto Translation
 
@@ -14037,6 +14738,16 @@ No
 Yes
 
 Unknown
+
+OpenVan
+
+Fuel prices for 121 countries, food cost index & vanlife weather scores for RV travel
+
+No
+
+Yes
+
+Yes
 
 Railway Transport for France
 
@@ -14708,6 +15419,16 @@ HTTPS
 
 CORS
 
+Auto Body Shop Directory
+
+Find auto body shops by ZIP code, city, location, or profile
+
+No
+
+Yes
+
+No
+
 Brazilian Vehicles and Prices
 
 Vehicles information from Fundação Instituto de Pesquisas Econômicas - Fipe
@@ -14717,6 +15438,16 @@ No
 Yes
 
 No
+
+CarVector
+
+Vehicle specs, images, recalls, and DTC codes across 1925-2029
+
+`apiKey`
+
+Yes
+
+Yes
 
 Helipaddy sites
 
@@ -14757,6 +15488,26 @@ No
 Yes
 
 Unknown
+
+ProblemsByVin
+
+Owner complaints, recalls and failure-mileage statistics by vehicle make, model and year
+
+No
+
+Yes
+
+Yes
+
+RevCarData
+
+86,000+ global vehicle specifications and EV metrics
+
+`apiKey`
+
+Yes
+
+Yes
 
 Smartcar
 
@@ -14903,6 +15654,16 @@ Yes
 
 Unknown
 
+Hyperserve
+
+Video backend API: upload any format, transcode to MP4, deliver via CDN
+
+`apiKey`
+
+Yes
+
+Yes
+
 IMDb-API
 
 API for receiving movie, serial and cast information
@@ -14992,6 +15753,16 @@ No
 Yes
 
 Yes
+
+Rendobar
+
+Hosted media processing over REST: transcode, caption, watermark video
+
+`apiKey`
+
+Yes
+
+No
 
 Ron Swanson Quotes
 
@@ -15358,16 +16129,6 @@ Yes
 
 Unknown
 
-MetaWeather
-
-Weather
-
-No
-
-Yes
-
-No
-
 Meteorologisk Institutt
 
 Weather and climate data
@@ -15467,6 +16228,16 @@ Location-based weather data
 Yes
 
 Yes
+
+Rainbow Weather
+
+Global real-time nowcasting API powered by radar + satellite fusion
+
+`apiKey`
+
+Yes
+
+Unknown
 
 RainViewer
 

@@ -1,6 +1,6 @@
 ---
 project: libcimbar
-stars: 6063
+stars: 6077
 description: Optimized implementation for color-icon-matrix barcodes
 url: https://github.com/sz3/libcimbar
 ---
@@ -130,6 +130,11 @@ Room for improvement/next steps
 -------------------------------
 
 TODO
+
+Community Tools
+---------------
+
+-   cimbar-bigfile — A pure-frontend wrapper that splits files into multiple parallel `encode_id` streams (10–15 MB chunks per stream), and ships a `manifest.json` for SHA256-verified reassembly. Supports 100+ MB files. No changes to libcimbar or cfc required.
 
 Inspiration
 -----------

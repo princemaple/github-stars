@@ -1,6 +1,6 @@
 ---
 project: OpenList
-stars: 22904
+stars: 23034
 description: A new AList Fork to Anti Trust Crisis
 url: https://github.com/OpenListTeam/OpenList
 ---
@@ -138,6 +138,15 @@ Please refer to _Discussions_ for raising general questions, **_Issues_ is for b
 
 Sponsor
 -------
+
+Donors
+------
+
+Thanks to the following donors for their generous support:
+
+-   HisAtri
+-   爱发电用户\_7jTh
+-   suka
 
 License
 -------

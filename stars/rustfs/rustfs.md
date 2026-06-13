@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 28482
+stars: 28753
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -212,7 +212,7 @@ curl -O https://rustfs.com/install\_rustfs.sh && bash install\_rustfs.sh
 
 ### 2\. Docker Quick Start (Option 2)
 
-The RustFS container runs as a non-root user `rustfs` (UID `10001`). If you run Docker with `-v` to mount a host directory, please ensure the host directory owner is set to `10001`, otherwise you will encounter permission denied errors.
+The RustFS container runs as a non-root user `rustfs` (UID/GID `10001:10001`). If you bind-mount host directories with Docker or Compose, every mounted path must be writable by that user, otherwise startup may fail with permission denied errors. This applies to data directories, log directories, and TLS certificate directories when `RUSTFS_TLS_PATH` is enabled.
 
 # Create data and logs directories
 mkdir -p data logs
@@ -224,15 +224,27 @@ chown -R 10001:10001 data logs
 docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
 
 # Using specific version
-docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-beta.7
+docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-beta.8
 
 If you use podman instead of docker, you can install the RustFS with the below command
 
 podman run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
 
+If you enable TLS with a bind-mounted certificate directory, prepare that mount the same way:
+
+mkdir -p certs
+chown -R 10001:10001 certs
+
 You can also use Docker Compose. Using the `docker-compose.yml` file in the root directory:
 
 docker compose --profile observability up -d
+
+Before running Compose with host bind mounts:
+
+-   Ensure every mounted host path is writable by `10001:10001`.
+-   If you enable TLS, ensure the certificate mount for `/opt/tls` is also readable by `10001:10001`.
+-   If matching host ownership is not practical, run the `rustfs` service with `user: "<host-uid>:<host-gid>"` instead.
+-   `docker-compose-simple.yml` includes a `volume-permission-helper` service for named volumes. `docker-compose.yml` relies on you to prepare bind-mounted host paths in advance.
 
 Similarly, you can run the command with podman
 
@@ -291,6 +303,8 @@ make help-docker                      # Show all Docker-related commands
 ### 4\. Build with Helm Chart (Option 4) - Cloud Native
 
 Follow the instructions in the Helm Chart README to install RustFS on a Kubernetes cluster.
+
+For scanner pacing, cycle budgets, bitrot cadence, lifecycle transition status, and single-node single-disk idle CPU tuning, see Scanner Runtime Controls. For repeatable scanner-pressure validation, see Scanner Benchmark Runbook.
 
 ### 5\. Nix Flake (Option 5)
 

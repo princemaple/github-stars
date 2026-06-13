@@ -1,6 +1,6 @@
 ---
 project: coturn
-stars: 14067
+stars: 14093
 description: coturn TURN server project
 url: https://github.com/coturn/coturn
 ---

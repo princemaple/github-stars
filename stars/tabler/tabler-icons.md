@@ -1,6 +1,6 @@
 ---
 project: tabler-icons
-stars: 20859
+stars: 20905
 description: A set of over 6000 free MIT-licensed high-quality SVG icons for you to use in your web projects.
 url: https://github.com/tabler/tabler-icons
 ---
@@ -116,15 +116,15 @@ Vue components available through `@tabler/icons-vue` package.
   <IconHome />
 
   <!-- set \`stroke\` color \-->
-  <IconHome color\="red"/>
-  <IconHome stroke\="red"/>
+  <IconHome color="red"/>
+  <IconHome stroke="red"/>
 
   <!-- set custom \`width\` and \`height\` \-->
-  <IconHome size\="36"/>
+  <IconHome size="36"/>
 
   <!-- set \`stroke-width\` \-->
-  <IconHome strokeWidth\="2"/>
-  <IconHome stroke-width\="2"/>
+  <IconHome strokeWidth="2"/>
+  <IconHome stroke-width="2"/>
 </template\>
 
 <script\>
@@ -143,7 +143,7 @@ import { IconHome } from '@tabler/icons-vue';
 </script\>
 
 <template\>
-  <IconHome color\="red" size\="36" strokeWidth\="2"/>
+  <IconHome color="red" size="36" strokeWidth="2"/>
 </template\>
 
 For more details, see the documentation.

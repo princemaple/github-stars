@@ -1,6 +1,6 @@
 ---
 project: ferret
-stars: 5990
+stars: 6011
 description: Declarative data extraction engine
 url: https://github.com/MontFerret/ferret
 ---
@@ -31,21 +31,20 @@ Ferret v2 is currently in alpha. You can try the new syntax in the playground an
 What is it?
 -----------
 
-Ferret is a declarative system for working with web data - extracting it, querying it, and turning it into structured results for testing, analytics, machine learning, and other workflows. It allows users to focus on the data they need while abstracting away the complexity of browser automation, page interaction, and underlying execution details.
+Ferret is a declarative runtime for structured data extraction and automation.
+
+It lets you query web pages, browser state, documents, APIs, and host-provided data sources with a dedicated query language, then return the result as structured data.
+
+Instead of writing page-specific glue code for browser control, DOM traversal, waiting, extraction, and transformation, Ferret lets you describe the data you want and run that workflow from the CLI, a worker, or an embedded Go application.
 
 ### Features
 
--   Declarative query language
--   Works with static and dynamic web pages
--   Embeddable in Go applications
--   Extensible runtime and function system
--   Portable and fast
-
-### Direct mutation
-
-Ferret supports statement-level direct mutation with `=`, `+=`, `-=`, `*=`, and `/=`. Assignment targets may be declared bindings or writable paths such as `obj.prop`, `obj["key"]`, `arr[i]`, and mixed member/index chains.
-
-Assignments use the same safe-navigation syntax as reads, for example `obj?.profile?.city = "Berlin"` or `obj?.items?.[i] = value`. When a guarded hop is absent, the assignment is a no-op and the right-hand side is not evaluated. Strict missing path segments still fail, and assignment is not an expression.
+-   Declarative query language for structured data workflows
+-   Support for static pages, dynamic pages, and browser-driven extraction
+-   CLI and embeddable Go runtime
+-   Extensible module, function, and runtime capability system
+-   Structured results for testing, analytics, AI/ML, and automation pipelines
+-   Portable execution model with a focused VM
 
 Getting started
 ---------------

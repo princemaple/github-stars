@@ -1,6 +1,6 @@
 ---
 project: quay
-stars: 2781
+stars: 2785
 description: Build, Store, and Distribute your Applications and Containers
 url: https://github.com/quay/quay
 ---

@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 439812
+stars: 441323
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -54,6 +54,10 @@ Free, real-time flight status and global Aviation data API
 Zenserp
 
 Fast, Accurate Google Search Data Built for Developers
+
+Filestack
+
+Powerful API to upload, transform & deliver any file into your app
 
 Screenshotlayer
 
@@ -1692,6 +1696,16 @@ Yes
 
 Unknown
 
+Pick an Agency
+
+Search 47,000+ marketing agencies by service, location and rating
+
+No
+
+Yes
+
+Yes
+
 Redash
 
 Access your queries and dashboards on Redash
@@ -2741,6 +2755,16 @@ Seychelles based cryptocurrency exchange
 Yes
 
 Unknown
+
+Hyperliquid Market Data
+
+Hyperliquid open interest, funding and cross-venue predicted rates per coin
+
+`apiKey`
+
+Yes
+
+Yes
 
 icy.tools
 
@@ -4907,6 +4931,16 @@ Yes
 
 Unknown
 
+OCR.Space
+
+OCR text extraction from images and PDFs with a free tier
+
+`apiKey`
+
+Yes
+
+Unknown
+
 PandaDoc
 
 DocGen and eSignatures API
@@ -5601,6 +5635,16 @@ Hourly usage energy report for Srp customers
 Yes
 
 No
+
+SustainMetrics
+
+18,000+ GHG emission factors from DEFRA, EPA, ADEME, Ember
+
+`apiKey`
+
+Yes
+
+Yes
 
 UK Carbon Intensity
 
@@ -7907,6 +7951,16 @@ No
 
 Unknown
 
+IP-API.io
+
+IP geolocation with VPN/proxy/Tor detection, reputation and risk score
+
+`apiKey`
+
+Yes
+
+Yes
+
 IP Geolocation
 
 Geolocate website visitors from their IPs
@@ -7936,6 +7990,16 @@ Detect proxy and VPN using IP address
 Yes
 
 Unknown
+
+ip2geo.dev
+
+Programmatically convert IP addresses into geolocation data
+
+`apiKey`
+
+Yes
+
+Yes
 
 ipapi.co
 
@@ -8012,6 +8076,16 @@ Kiprio UK Postcode
 UK postcode lookup with lat/lon, district, ward, constituency
 
 `apiKey`
+
+Yes
+
+Yes
+
+LatLng
+
+Geocoding, reverse geocoding, places, and static maps
+
+No
 
 Yes
 
@@ -8641,6 +8715,16 @@ No
 Yes
 
 Unknown
+
+FastDOL
+
+Federal enforcement records for US employers: OSHA, WHD, MSHA, EPA, NLRB, and more
+
+`apiKey`
+
+Yes
+
+Yes
 
 FBI Wanted
 
@@ -9337,6 +9421,16 @@ HTTPS
 
 CORS
 
+Clinical Trials Directory
+
+Every clinical trial registered with ClinicalTrials.gov, indexed by condition and sponsor
+
+No
+
+Yes
+
+Yes
+
 CMS.gov
 
 Access to the data from the CMS - medicare.gov
@@ -9486,6 +9580,16 @@ No
 Yes
 
 Yes
+
+Cure Cancer With AI
+
+Oncology research, clinical trials, FDA approvals, news, and MAMMAL predictions
+
+`apiKey`
+
+Yes
+
+No
 
 Dataflow Kit COVID-19
 
@@ -9812,6 +9916,16 @@ No
 
 Unknown
 
+JobDataLake
+
+1M+ enriched job listings from 20,000+ companies with salary, skills, seniority
+
+`apiKey`
+
+Yes
+
+Yes
+
 Open Skills
 
 Job titles, skills and related jobs data
@@ -10030,6 +10144,16 @@ Unknown
 Irisnet
 
 Realtime content moderation API that blocks or blurs unwanted images in real-time
+
+`apiKey`
+
+Yes
+
+Yes
+
+Jina AI
+
+Free AI API for embeddings, reranking, and text processing
 
 `apiKey`
 
@@ -10687,6 +10811,16 @@ Yes
 
 Unknown
 
+Noozra
+
+Free news headlines from 200+ curated RSS sources
+
+No
+
+Yes
+
+Yes
+
 NPR One
 
 Personalized news listening experience from NPR
@@ -10882,9 +11016,29 @@ Yes
 
 Unknown
 
+InfraNode
+
+Unified German city open data: weather, air quality, EV chargers, transit, demographics
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Joshua Project
 
 People groups of the world with the fewest followers of Christ
+
+`apiKey`
+
+Yes
+
+Unknown
+
+K-Data Gate
+
+Korean market data: K-beauty/K-food products, Naver trends, stocks, real estate, weather
 
 `apiKey`
 
@@ -11057,6 +11211,16 @@ Socrata
 Access to Open Data from Governments, Non-profits and NGOs around the world
 
 `OAuth`
+
+Yes
+
+Yes
+
+Statistics of the World
+
+Economic data for 218 countries — GDP, population, inflation, and 440+ indicators from IMF and World Bank
+
+No
 
 Yes
 
@@ -11671,6 +11835,16 @@ Phone number validation & carrier lookup
 Yes
 
 Yes
+
+VeriRoute Intel
+
+CNAM caller ID, carrier/LRN lookup and spam scoring for North American phone numbers
+
+`apiKey`
+
+Yes
+
+Unknown
 
 **⬆ Back to Index**  
   
@@ -13434,6 +13608,16 @@ Yes
 
 Unknown
 
+xfetch
+
+Read API for X/Twitter search, profiles, tweets, and social graph
+
+`apiKey`
+
+Yes
+
+Yes
+
 **⬆ Back to Index**  
   
 
@@ -14629,6 +14813,16 @@ Yes
 
 Yes
 
+FAA N-Number Registry
+
+Every FAA-registered civil aircraft in the United States, lookup by N-number or Mode S hex code
+
+No
+
+Yes
+
+Yes
+
 Grab
 
 Track deliveries, ride fares, payments and loyalty points
@@ -14768,6 +14962,16 @@ No
 Yes
 
 Unknown
+
+Road511
+
+Unified traffic data from 65 US/CA jurisdictions: events, cameras, signs, bridges, truck routes
+
+`apiKey`
+
+Yes
+
+Yes
 
 Sabre for Developers
 

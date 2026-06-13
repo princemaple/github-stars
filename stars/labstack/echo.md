@@ -1,6 +1,6 @@
 ---
 project: echo
-stars: 32432
+stars: 32445
 description: High performance, minimalist Go web framework
 url: https://github.com/labstack/echo
 ---
@@ -9,6 +9,8 @@ Echo
 ----
 
 High performance, extensible, minimalist Go web framework.
+
+Echo is built on Go's standard `net/http` — and interoperates with it via `echo.WrapHandler` / `echo.WrapMiddleware` — adding the parts the standard library leaves to you: a fast radix-tree router, request binding (with a pluggable validator), a deep middleware ecosystem, and centralized error handling. Actively maintained, with `v5` as the current release line (see badges above for the latest version and most recent commit).
 
 -   Official website
 -   Quick start
@@ -49,6 +51,8 @@ Guide
 -   Latest major version of Echo is `v5` as of 2026-01-18.
     -   See API\_CHANGES\_V5.md for public API changes between `v4` and `v5`, notes on upgrading.
 -   Echo `v4` is supported with **security**\* updates and **bug** fixes until **2026-12-31**
+
+See ROADMAP.md for where Echo is heading and the version support policy.
 
 ### Installation
 

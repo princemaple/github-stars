@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 97485
+stars: 98679
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -22,15 +22,19 @@ url: https://github.com/browser-use/browser-use
 👋 Human Quickstart
 ===================
 
-**1\. Create environment and install Browser-Use with uv (Python>=3.11):**
+Browser Use 0.13 introduces a new beta agent powered by a Rust core and a browser harness built for current frontier models. It gives the model a real browser/computer action space, persistent tools, and recovery loops inspired by coding agents.
 
-uv init && uv add browser-use && uv sync
-# uvx browser-use install  # Run if you don't have Chromium installed
+```
+Python API -> Rust core -> Browser harness -> Web task done
+```
 
-**Experimental Rust agent:** install Browser Use Terminal for `from browser_use.rust import Agent`:
+**1\. Install Browser Use with the native core runtime (Python>=3.11):**
 
-curl -fsSL https://browser-use.com/terminal/install.sh | sh
+uv add "browser-use\[core\]"
+# or: pip install "browser-use\[core\]"
 browser
+
+The `[core]` extra installs the native Browser Use runtime for your platform.
 
 **2\. \[Optional\] Get your API key from Browser Use Cloud:**
 
@@ -43,44 +47,37 @@ BROWSER_USE_API_KEY=your-key
 
 **3\. Run your first agent:**
 
-from browser\_use import Agent, Browser, ChatBrowserUse
-\# from browser\_use import ChatGoogle  # ChatGoogle(model='gemini-3-flash-preview')
-\# from browser\_use import ChatAnthropic  # ChatAnthropic(model='claude-sonnet-4-6')
-import asyncio
+**Browser Use Terminal:**
 
-async def main():
-    browser \= Browser(
-        \# use\_cloud=True,  # Use a stealth browser on Browser Use Cloud
-    )
+uv add "browser-use\[core\]"
+browser
 
-    agent \= Agent(
-        task\="Find the number of stars of the browser-use repo",
-        llm\=ChatBrowserUse(),
-        \# llm=ChatGoogle(model='gemini-3-flash-preview'),
-        \# llm=ChatAnthropic(model='claude-sonnet-4-6'),
-        browser\=browser,
-    )
-    await agent.run()
+**Python Script:**
 
-if \_\_name\_\_ \== "\_\_main\_\_":
-    asyncio.run(main())
-
-**4\. \[Optional\] Try the experimental Rust core:**
-
-from browser\_use import ChatBrowserUse
-from browser\_use.rust import Agent
+from browser\_use.beta import Agent, BrowserProfile, ChatBrowserUse
+\# from browser\_use.beta import ChatOpenAI  # ChatOpenAI(model='gpt-5.5')
+\# from browser\_use.beta import ChatAnthropic  # ChatAnthropic(model='claude-opus-4-8')
 import asyncio
 
 async def main():
     agent \= Agent(
         task\="Find the number of stars of the browser-use repo",
-        llm\=ChatBrowserUse(),
+        llm\=ChatBrowserUse(model\='openai/gpt-5.5'),
+        \# llm=ChatBrowserUse(model='bu-2-0'),  # Browser Use's own optimized model
+        \# llm=ChatOpenAI(model='gpt-5.5'),
+        \# llm=ChatAnthropic(model='claude-opus-4-8'),  # Sonnet also works well.
+        browser\_profile\=BrowserProfile(
+            headless\=False,
+            allowed\_domains\=\["\*.github.com"\],
+        ),
     )
     history \= await agent.run()
     print(history.final\_result())
 
 if \_\_name\_\_ \== "\_\_main\_\_":
     asyncio.run(main())
+
+Existing Python agent users can keep using `from browser_use import Agent`. The new Rust-powered beta agent is `from browser_use.beta import Agent`.
 
 Check out the library docs and the cloud docs for more!
 
@@ -191,13 +188,18 @@ FAQ
 
 We optimized **ChatBrowserUse()** specifically for browser automation tasks. On avg it completes tasks 3-5x faster than other models with SOTA accuracy.
 
-**Pricing (per 1M tokens):**
+For pricing and other LLM providers, see our supported models documentation.
 
--   Input tokens: $0.20
--   Cached input tokens: $0.02
--   Output tokens: $2.00
+**Can I use Claude / GPT / Gemini through ChatBrowserUse?**
 
-For other LLM providers, see our supported models documentation.
+Yes. `ChatBrowserUse` accepts provider-prefixed model ids, so a single `BROWSER_USE_API_KEY` reaches all of them — no separate OpenAI/Anthropic/Google keys required:
+
+from browser\_use import Agent, ChatBrowserUse
+
+llm \= ChatBrowserUse(model\='anthropic/claude-sonnet-4-6')  \# or 'openai/gpt-5.5', 'google/gemini-3-pro'
+agent \= Agent(task\='...', llm\=llm)
+
+For the best speed and cost we still recommend the default `bu-*` models.
 
 **Should I use the Browser Use system prompt with the open-source preview model?**
 

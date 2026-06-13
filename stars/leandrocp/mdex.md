@@ -1,6 +1,6 @@
 ---
 project: mdex
-stars: 421
+stars: 425
 description: Markdown for Elixir. Fast, Extensible, Phoenix-native. AI-ready. Built on top of comrak, ammonia, and lumis.
 url: https://github.com/leandrocp/mdex
 ---
@@ -34,7 +34,7 @@ Features
 -   Phoenix HEEx components and expressions
 -   Streaming incomplete fragments
 -   Emoji shortcodes
--   Built-in Syntax Highlighting for code blocks
+-   Built-in Syntax Highlighting with Lumis or Syntect
 -   Code Block Decorators
 -   HTML sanitization
 -   ~MD Sigil for Markdown, HTML, HEEx, JSON, XML, and Quill Delta
@@ -56,7 +56,7 @@ Add `:mdex` dependency:
 
 def deps do
   \[
-    {:mdex, "~> 0.11"}
+    {:mdex, "~> 0.12"}
   \]
 end
 
@@ -71,6 +71,19 @@ Usage
 
 iex\> MDEx.to\_html!("# Hello :smile:", extension: \[shortcodes: true\])
 "<h1>Hello 😄</h1>"
+
+#### Syntax Highlighting
+
+Syntax highlight code blocks using either Lumis or Syntect, for example to use Lumis:
+
+def deps do
+  \[
+    {:mdex, "~> 0.12"},
+    {:lumis, "~> 0.1"}
+  \]
+end
+
+config :mdex\_native, syntax\_highlighter: :lumis
 
 #### GitHub Flavored Markdown (GFM)
 
@@ -154,8 +167,11 @@ Used By
 -   Canada Navigator
 -   Conpipe
 -   Exmeralda
+-   Hexpm
 -   Jido
 -   Loomkin
+-   Phoenix SEO
+-   Phoenix Storybook
 -   Plural Console
 -   Prosody
 -   Reposit
@@ -164,6 +180,7 @@ Used By
 -   Tableau
 -   Teiserver
 -   TermUI
+-   Tuist
 -   Valentine
 -   Wraft
 -   And more...
@@ -218,7 +235,7 @@ Active
 
 Pure Elixir
 
-❌
+⚠️¹
 
 ✅
 
@@ -388,7 +405,7 @@ GLFM⁴
 
 Discord⁵
 
-⚠️¹
+⚠️⁶
 
 ❌
 
@@ -396,11 +413,12 @@ Discord⁵
 
 ❌
 
-1.  Partial support
+1.  MDEx depends on mdex\_native which uses Rustler
 2.  Possible with earmark\_reversal
 3.  GitHub Flavored Markdown
 4.  GitLab Flavored Markdown
 5.  Discord Flavored Markdown
+6.  Partial support
 
 Benchmark
 ---------

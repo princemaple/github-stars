@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 50033
+stars: 50444
 description: 🤱🏻 Turn any webpage into a desktop app with one command.
 url: https://github.com/tw93/Pake
 ---
@@ -187,6 +187,14 @@ Pake's development can not be without these Hackers. They contributed a lot of c
 Support
 -------
 
+-   The most direct way to support me is getting Mole for Mac, my paid Mac cleanup app.
 -   If Pake helped you, share it with friends or give it a star.
 -   Got ideas or bugs? Open an issue or PR, feel free to contribute your best AI model.
 -   I have two cats, TangYuan and Coke. If you think Pake delights your life, you can feed them canned food 🥩.
+
+These lovely people already did 🐱  
+
+License
+-------
+
+Pake is open source under GPL-3.0, see LICENSE; apps you build with Pake are entirely yours to use and distribute. If you fork Pake into your own product, to avoid confusion please give it a different name and credit Pake as the source.

@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 31797
+stars: 31899
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -42,7 +42,7 @@ Flags:
 ./install.sh --list-features         # print available feature flags
 ```
 
-Platform-specific notes: Linux · macOS · Windows · Docker
+Platform-specific notes: Linux · macOS · Windows · FreeBSD · NixOS · Docker
 
 Quick start
 -----------

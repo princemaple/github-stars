@@ -1,6 +1,6 @@
 ---
 project: sentry-elixir
-stars: 688
+stars: 689
 description: The official Elixir SDK for Sentry (sentry.io)
 url: https://github.com/getsentry/sentry-elixir
 ---
@@ -24,7 +24,7 @@ defp deps do
   \[
     \# ...
 
-    {:sentry, "~> 11.0"},
+    {:sentry, "~> 13.0"},
     {:jason, "~> 1.4"},
     {:finch, "~> 0.17.0"}
   \]

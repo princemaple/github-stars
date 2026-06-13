@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 39288
+stars: 39544
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -194,6 +194,27 @@ Credits
 
 -   Xray-core v1.0.0 was forked from v2fly-core 9a03cc5, and we have made & accumulated a huge number of enhancements over time, check the release notes for each version.
 -   For third-party projects used in Xray-core, check your local or the latest go.mod.
+
+### Bundled Third-Party Components Redistribution
+
+**Certain optional features dynamically load third-party components. These optional components are separate works distributed under their own licenses, and are bundled into the ZIP package for ease of use. Users may replace these components under the licenses from these components.**
+
+These components include:
+
+#### Wintun
+
+This distribution contains unmodified official precompiled and pre-signed Wintun binaries.
+
+-   Project: Wintun
+-   Copyright: Copyright (C) 2018-2021 WireGuard LLC. All Rights Reserved.
+-   Redistribution License: Prebuilt Binaries License (PBL) bundled with official precompiled and pre-signed binaries from wintun.net
+-   Component(s): wintun.dll
+-   Source: https://www.wintun.net/
+-   Included in:
+    -   Windows x86 (windows-32, win7-32)
+    -   Windows x86-64 (windows-64, win7-64)
+    -   Windows AArch64 (windows-arm64)
+-   Notes: Wintun is an optional runtime-loaded component only used for TUN inbound functionality on supported Windows platforms.
 
 One-line Compilation
 --------------------

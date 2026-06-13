@@ -1,6 +1,6 @@
 ---
 project: erlang-python
-stars: 94
+stars: 96
 description: Execute Python from Erlang using dirty NIFs with GIL-aware execution, rate limiting, and free-threading support
 url: https://github.com/benoitc/erlang-python
 ---

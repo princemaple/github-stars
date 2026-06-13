@@ -1,6 +1,6 @@
 ---
 project: chatterbox
-stars: 24981
+stars: 25047
 description: SoTA open-source TTS
 url: https://github.com/resemble-ai/chatterbox
 ---
@@ -10,9 +10,23 @@ Chatterbox TTS
 
 _Made with ♥️ by_
 
-**Chatterbox** is a family of three state-of-the-art, open-source text-to-speech models by Resemble AI.
+**Chatterbox** is a family of state-of-the-art, open-source text-to-speech models by Resemble AI.
 
-We are excited to introduce **Chatterbox-Turbo**, our most efficient model yet. Built on a streamlined 350M parameter architecture, **Turbo** delivers high-quality speech with less compute and VRAM than our previous models. We have also distilled the speech-token-to-mel decoder, previously a bottleneck, reducing generation from 10 steps to just **one**, while retaining high-fidelity audio output.
+Latest Release: Chatterbox Multilingual V3
+------------------------------------------
+
+**Chatterbox Multilingual V3** is the latest general-purpose multilingual TTS model in the Chatterbox family. It keeps the same 0.5B model size while improving speaker similarity, reducing hallucinations, and producing more natural, conversational speech across languages.
+
+V3 is designed for broad language coverage like V2, but with stronger stability and more expressive generation. It is the recommended multilingual model for users who want one voice cloning model that works across many languages.
+
+Alongside V3, we are releasing the **Single Language Pack**: dedicated finetunes for priority languages where tighter quality control, stronger language-specific behavior, and more specialized speech generation are valuable.
+
+-   **Broad Multilingual Coverage:** Designed as the main general-purpose multilingual Chatterbox model, supporting wide language coverage similar to V2.
+-   **Single Language Pack:** Dedicated single-language models provide stronger specialization and quality control where language- and regional-dialect-specific performance matters most.
+-   **More Consistent Speaker Similarity:** Improves voice identity and accent preservation across languages, making cross-language voice cloning more stable and reliable.
+-   **Reduced Hallucination:** V3 is optimized to reduce unwanted continuation, repetition, and off-prompt speech, especially in cases where earlier multilingual models were less stable.
+
+For low-latency English voice agents, **Chatterbox-Turbo** is our most efficient model. Built on a streamlined 350M parameter architecture, **Turbo** delivers high-quality speech with less compute and VRAM than our previous models. We have also distilled the speech-token-to-mel decoder, previously a bottleneck, reducing generation from 10 steps to just **one**, while retaining high-fidelity audio output.
 
 **Paralinguistic tags** are now native to the Turbo model, allowing you to use `[cough]`, `[laugh]`, `[chuckle]`, and more to add distinct realism. While Turbo was built primarily for low-latency voice agents, it excels at narration and creative workflows.
 
@@ -50,19 +64,33 @@ Demo
 
 Listen
 
-Chatterbox-Multilingual (Language list)
+**Chatterbox-Multilingual V3** (Language list)
 
-500M
+**500M**
 
-23+
+**23+**
 
-Zero-shot cloning, Multiple Languages
+Improved speaker similarity, reduced hallucinations, more natural multilingual speech
 
-Global applications, Localization
+Global applications, localization, cross-language voice cloning
 
 Demo
 
 Listen
+
+**Single Language Pack** (Models)
+
+500M each
+
+6 dedicated finetunes
+
+Language- and region-specific quality control
+
+Priority languages and dialect-sensitive applications
+
+Models
+
+Demos
 
 Chatterbox (Tips and Tricks)
 
@@ -120,25 +148,26 @@ import torchaudio as ta
 from chatterbox.tts import ChatterboxTTS
 from chatterbox.mtl\_tts import ChatterboxMultilingualTTS
 
+device \= "cuda"  \# or "cpu" / "mps"
+
 \# English example
-model \= ChatterboxTTS.from\_pretrained(device\="cuda")
+model \= ChatterboxTTS.from\_pretrained(device\=device)
 
 text \= "Ezreal and Jinx teamed up with Ahri, Yasuo, and Teemo to take down the enemy's Nexus in an epic late-game pentakill."
 wav \= model.generate(text)
 ta.save("test-english.wav", wav, model.sr)
 
-\# Multilingual examples
-multilingual\_model \= ChatterboxMultilingualTTS.from\_pretrained(device\=device)
-\# v2 remains the default. To use the v3 multilingual checkpoint:
-\# multilingual\_model = ChatterboxMultilingualTTS.from\_pretrained(device=device, t3\_model="v3")
+\# Multilingual V3 examples
+multilingual\_model \= ChatterboxMultilingualTTS.from\_pretrained(device\=device, t3\_model\="v3")
+\# To use the legacy V2 multilingual checkpoint, omit t3\_model or pass t3\_model="v2".
 
 french\_text \= "Bonjour, comment ça va? Ceci est le modèle de synthèse vocale multilingue Chatterbox, il prend en charge 23 langues."
 wav\_french \= multilingual\_model.generate(french\_text, language\_id\="fr")
-ta.save("test-french.wav", wav\_french, model.sr)
+ta.save("test-french.wav", wav\_french, multilingual\_model.sr)
 
 chinese\_text \= "你好，今天天气真不错，希望你有一个愉快的周末。"
 wav\_chinese \= multilingual\_model.generate(chinese\_text, language\_id\="zh")
-ta.save("test-chinese.wav", wav\_chinese, model.sr)
+ta.save("test-chinese.wav", wav\_chinese, multilingual\_model.sr)
 
 \# If you want to synthesize with a different voice, specify the audio prompt
 AUDIO\_PROMPT\_PATH \= "YOUR\_FILE.wav"
@@ -150,7 +179,56 @@ See `example_tts.py` and `example_vc.py` for more examples.
 Supported Languages
 -------------------
 
+The general-purpose Chatterbox Multilingual model supports the following languages:
+
 Arabic (ar) • Danish (da) • German (de) • Greek (el) • English (en) • Spanish (es) • Finnish (fi) • French (fr) • Hebrew (he) • Hindi (hi) • Italian (it) • Japanese (ja) • Korean (ko) • Malay (ms) • Dutch (nl) • Norwegian (no) • Polish (pl) • Portuguese (pt) • Russian (ru) • Swedish (sv) • Swahili (sw) • Turkish (tr) • Chinese (zh)
+
+Single Language Pack
+--------------------
+
+The Single Language Pack provides dedicated finetunes for priority languages and regional variants. Use these when you want stronger language-specific behavior, tighter quality control, or dialect-aware generation beyond the general multilingual model.
+
+Language
+
+Model Card
+
+Demo Space
+
+Chinese
+
+ResembleAI/Chatterbox-Multilingual-zh-cmn
+
+Demo
+
+Latam Spanish
+
+ResembleAI/Chatterbox-Multilingual-es-mx-latam
+
+Demo
+
+Brazilian Portuguese
+
+ResembleAI/Chatterbox-Multilingual-pt-br
+
+Demo
+
+Spain Spanish
+
+ResembleAI/Chatterbox-Multilingual-es-es
+
+Demo
+
+Portugal Portuguese
+
+ResembleAI/Chatterbox-Multilingual-pt-pt
+
+Demo
+
+Hindi
+
+ResembleAI/Chatterbox-Multilingual-hi
+
+Demo
 
 Original Chatterbox Tips
 ------------------------

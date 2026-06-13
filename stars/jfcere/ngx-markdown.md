@@ -1,6 +1,6 @@
 ---
 project: ngx-markdown
-stars: 1188
+stars: 1189
 description: Angular markdown component/directive/pipe/service to parse static, dynamic or remote content to HTML with syntax highlight and more...
 url: https://github.com/jfcere/ngx-markdown
 ---
@@ -221,37 +221,43 @@ Using `markdown` component and/or directive, you will be able to use the `emoji`
 
 > 🔔 Math rendering is **optional**, skip this step if you are not planning to use it
 
-To add KaTeX library to your `package.json` use the following command.
+To add KaTeX math rendering support to your application install the KaTeX runtime and the parser extension:
 
-npm install katex@^0.16.0 --save
+npm install katex@^0.16.0 marked-katex-extension@^5.0.0 --save
 
-To activate KaTeX math rendering you will need to include...
-
--   KaTex JavaScript library - `node_modules/katex/dist/katex.min.js` file
--   KaTex Auto-Render extension - `node_modules/katex/dist/contrib/auto-render.min.js,` file
--   KaTex CSS customization - `node_modules/katex/dist/katex.min.css` file
-
-If you are using Angular CLI you can follow the `angular.json` example below...
+To activate KaTeX math rendering you need to include the KaTeX stylesheet:
 
 "styles": \[
   "styles.css",
 + "node\_modules/katex/dist/katex.min.css"
 \],
-"scripts": \[
-+ "node\_modules/katex/dist/katex.min.js",
-+ "node\_modules/katex/dist/contrib/auto-render.min.js",
-\]
 
 #### KaTeX plugin
 
-Using `markdown` component and/or directive, you will be able to use the `katex` property to activate KaTeX plugin that renders mathematical expression to HTML.
+Using the `markdown` component and/or directive, you can enable KaTeX rendering with the `katex` property:
 
 <markdown
   katex
   \[src\]\="path/to/file.md"\>
 </markdown\>
 
-Optionally, you can use `katexOptions` property to specify both the KaTeX options and the KaTeX Auto-Render options.
+#### Global configuration
+
+Global KaTeX options can be provided with the `KATEX_OPTIONS` injection token when configuring `provideMarkdown()`.
+
+provideMarkdown({
+  katexOptions: {
+    provide: KATEX\_OPTIONS,
+    useValue: {
+      displayMode: false,
+      throwOnError: false,
+    },
+  },
+}),
+
+#### Component configuration
+
+Optionally, you can specify the KaTeX options at the component-level through `katexOptions` property:
 
 import { KatexOptions } from 'ngx-markdown';
 
@@ -260,7 +266,6 @@ public options: KatexOptions \= {
   throwOnError: false,
   errorColor: '#cc0000',
   delimiters: \[...\],
-  ...
 };
 
 <markdown
@@ -269,7 +274,7 @@ public options: KatexOptions \= {
   \[src\]\="path/to/file.md"\>
 </markdown\>
 
-> 📘 Follow official KaTeX options and KaTeX Auto-Render options documentation for more details on the available options.
+> 📘 Follow official KaTeX options documentation for more details on available options.
 
 ### Diagrams tool
 
@@ -300,24 +305,9 @@ Using `markdown` component and/or directive, you will be able to use the `mermai
 
 #### Global configuration
 
-You can provide a global configuration for mermaid configuration options to use across your application with the `mermaidOptions` in the `MarkdownModuleConfig` either with `provideMarkdown` provide-function for standalone components or `MarkdownModule.forRoot()` for module configuration.
-
-##### Using the `provideMarkdown` function
+You can provide a global configuration for mermaid configuration options to use across your application with the `mermaidOptions` when configuring `provideMarkdown`.
 
 provideMarkdown({
-  mermaidOptions: {
-    provide: MERMAID\_OPTIONS,
-    useValue: {
-      darkMode: true,
-      look: 'handDrawn',
-      ...
-    },
-  },
-}),
-
-##### Using the `MarkdownModule` import
-
-MarkdownModule.forRoot({
   mermaidOptions: {
     provide: MERMAID\_OPTIONS,
     useValue: {
@@ -391,9 +381,7 @@ To customize the default button styling, use the `.markdown-clipboard-button` CS
 
 #### Using global configuration
 
-You can provide a custom component to use globaly across your application with the `clipboardOptions` in the `MarkdownModuleConfig` either with `provideMarkdown` provide-function for standalone components or `MarkdownModule.forRoot()` for module configuration.
-
-##### Using the `provideMarkdown` function
+You can provide a custom component to use globaly across your application with the `clipboardOptions` when configuring `provideMarkdown`.
 
 provideMarkdown({
   clipboardOptions: {
@@ -403,17 +391,6 @@ provideMarkdown({
     },
   },
 })
-
-##### Using the `MarkdownModule` import
-
-MarkdownModule.forRoot({
-  clipboardOptions: {
-    provide: CLIPBOARD\_OPTIONS,
-    useValue: {
-      buttonComponent: ClipboardButtonComponent,
-    },
-  },
-}),
 
 #### Using a component
 
@@ -461,11 +438,7 @@ Alternatively, the `clipboard` directive can be used in conjonction with `ng-tem
 Configuration
 -------------
 
-The ngx-markdown library can be used either with the standalone components or with modules configuration. Please follow the configuration section that matches your application.
-
-### Standalone components
-
-Use the `provideMarkdown` provide-function in your application configuration `ApplicationConfig` to be able to provide the `MarkdownComponent` and `MarkdownPipe` to your standalone components and/or inject the `MarkdownService`.
+The ngx-markdown library can be used with standalone components. Use the `provideMarkdown` provide-function in your application configuration `ApplicationConfig` to be able to provide the `MarkdownComponent` and `MarkdownPipe` to your standalone components and/or inject the `MarkdownService`.
 
 import { NgModule } from '@angular/core';
 + import { provideMarkdown } from 'ngx-markdown';
@@ -476,60 +449,18 @@ export const appConfig: ApplicationConfig = {
   \],
 };
 
-### Modules configuration
-
-You must import `MarkdownModule` inside your main application module (usually named AppModule) with `forRoot` to be able to use the `markdown` component, directive, pipe and/or `MarkdownService`.
-
-import { NgModule } from '@angular/core';
-+ import { MarkdownModule } from 'ngx-markdown';
-import { AppComponent } from './app.component';
-
-@NgModule({
-  imports: \[
-+   MarkdownModule.forRoot(),
-  \],
-  declarations: \[AppComponent\],
-  bootstrap: \[AppComponent\],
-})
-export class AppModule { }
-
-Use `forChild` when importing `MarkdownModule` into other application modules to allow you to use the same parser configuration across your application.
-
-import { NgModule } from '@angular/core';
-+ import { MarkdownModule } from 'ngx-markdown';
-import { HomeComponent } from './home.component';
-
-@NgModule({
-  imports: \[
-+   MarkdownModule.forChild(),
-  \],
-  declarations: \[HomeComponent\],
-})
-export class HomeModule { }
-
 ### Remote file configuration
 
 If you want to use the `[src]` attribute to directly load a remote file, in order to keep only one instance of `HttpClient` and avoid issues with interceptors, you also have to provide `HttpClient`:
-
-##### Using the `provideMarkdown` function
 
 providers: \[
 +  provideHttpClient(),
 +  provideMarkdown({ loader: HttpClient }),
 \],
 
-##### Using the `MarkdownModule` import
-
-imports: \[
-+  HttpClientModule,
-+  MarkdownModule.forRoot({ loader: HttpClient }),
-\],
-
 #### Sanitization
 
-**Sanitization is enabled by default** and uses Angular’s `DomSanitizer` with `SecurityContext.HTML` to prevent XSS vulnerabilities. It can be disabled by changing the `SecurityContext` level using the `sanitize` property when configuring the `MarkdownModule`.
-
-##### Using the `provideMarkdown` function
+**Sanitization is enabled by default** and uses Angular’s `DomSanitizer` with `SecurityContext.HTML` to prevent XSS vulnerabilities. It can be disabled by changing the `SecurityContext` level using the `sanitize` property when configuring `provideMarkdown`.
 
 import { SecurityContext } from '@angular/core';
 import { SANITIZE } from 'ngx-markdown';
@@ -539,22 +470,6 @@ provideMarkdown()
 
 // disable sanitization
 provideMarkdown({
-  sanitize: {
-    provide: SANITIZE,
-    useValue: SecurityContext.NONE
-  },
-})
-
-##### Using the `MarkdownModule` import
-
-import { SecurityContext } from '@angular/core';
-import { SANITIZE } from 'ngx-markdown';
-
-// enable default sanitization
-MarkdownModule.forRoot()
-
-// disable sanitization
-MarkdownModule.forRoot({
   sanitize: {
     provide: SANITIZE,
     useValue: SecurityContext.NONE
@@ -574,25 +489,6 @@ function sanitizeHtml(html: string): string {
 
 // provide a sanitize function
 provideMarkdown({
-  sanitize: {
-    provide: SANITIZE,
-    useValue: sanitizeHtml,
-  },
-})
-
-##### Using the `MarkdownModule` import
-
-import DOMPurify from 'dompurify';
-import { SANITIZE } from 'ngx-markdown';
-
-// sanitize function using an external library
-function sanitizeHtml(html: string): string {
-  DOMPurify.setConfig({ ... });
-  return DOMPurify.sanitize(html);
-}
-
-// provide a sanitize function
-MarkdownModule.forRoot({
   sanitize: {
     provide: SANITIZE,
     useValue: sanitizeHtml,
@@ -620,9 +516,7 @@ You can bypass sanitization using the markdown component, directive or pipe usin
 
 #### MarkedOptions
 
-Optionally, markdown parsing can be configured using MarkedOptions that can be provided with the `MARKED_OPTIONS` injection token via the `markedOptions` property of the `forRoot` method of `MarkdownModule`.
-
-##### Using the `provideMarkdown` function
+Optionally, markdown parsing can be configured using MarkedOptions that can be provided with the `MARKED_OPTIONS` injection token via the `markedOptions` property when configuring `provideMarkdown`.
 
 // imports
 import { MARKED\_OPTIONS, provideMarkdown } from 'ngx-markdown';
@@ -632,27 +526,6 @@ provideMarkdown(),
 
 // using specific options with ValueProvider and passing HttpClient
 provideMarkdown({
-  markedOptions: {
-    provide: MARKED\_OPTIONS,
-    useValue: {
-      gfm: true,
-      breaks: false,
-      pedantic: false,
-    },
-  },
-}),
-
-##### Using the `MarkdownModule` import
-
-// imports
-import { MarkdownModule, MARKED\_OPTIONS } from 'ngx-markdown';
-
-// using default options
-MarkdownModule.forRoot(),
-
-// using specific options with ValueProvider and passing HttpClient
-MarkdownModule.forRoot({
-  loader: HttpClient, // optional, only if you use \[src\] attribute
   markedOptions: {
     provide: MARKED\_OPTIONS,
     useValue: {
@@ -688,8 +561,6 @@ export function markedOptionsFactory(): MarkedOptions {
   };
 }
 
-##### Using the `provideMarkdown` function
-
 // using specific option with FactoryProvider
 provideMarkdown({
   markedOptions: {
@@ -698,45 +569,13 @@ provideMarkdown({
   },
 }),
 
-##### Using the `MarkdownModule` import
-
-// using specific option with FactoryProvider
-MarkdownModule.forRoot({
-  markedOptions: {
-    provide: MARKED\_OPTIONS,
-    useFactory: markedOptionsFactory,
-  },
-}),
-
 ### Marked extensions
 
-When configuring the `MarkdownModule`, you can provide marked extensions using the `MARKED_EXTENSION` injection token via the `markedExtensions` property, which accepts an array of providers and supports Angular dependency injection.
-
-##### Using the `provideMarkdown` function
+When configuring `provideMarkdown`, you can provide marked extensions using the `MARKED_EXTENSION` injection token via the `markedExtensions` property, which accepts an array of providers and supports Angular dependency injection.
 
 import { gfmHeadingId } from 'marked-gfm-heading-id';
 
 providemarkdown({
-  markedExtensions: \[
-    {
-      provide: MARKED\_EXTENSIONS,
-      useFactory: gfmHeadingId,
-      multi: true,
-    },
-    {
-      provide: MARKED\_EXTENSIONS,
-      useFactory: myExtensionFactory,
-      deps: \[SomeService\],
-      multi: true,
-    },
-  \],
-}),
-
-##### Using the `MarkdownModule` import
-
-import { gfmHeadingId } from 'marked-gfm-heading-id';
-
-MarkdownModule.forRoot({
   markedExtensions: \[
     {
       provide: MARKED\_EXTENSIONS,
@@ -864,7 +703,7 @@ Renderer
 
 Tokens can be rendered in a custom manner by either...
 
--   providing the `renderer` property with the `MarkedOptions` when importing `MarkdownModule.forRoot()` into your main application module (see Configuration section)
+-   providing the `renderer` property with the `MarkedOptions` when configuring `provideMarkdown()` (see Configuration section)
 -   using `MarkdownService` exposed `renderer`
 
 Here is an example of overriding the default heading token rendering through `MarkdownService` by adding an embedded anchor tag like on GitHub:

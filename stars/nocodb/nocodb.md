@@ -1,6 +1,6 @@
 ---
 project: nocodb
-stars: 63301
+stars: 63424
 description: 🔥 🔥 🔥 A Free & Self-hostable Airtable Alternative
 url: https://github.com/nocodb/nocodb
 ---
@@ -54,7 +54,7 @@ bash <(curl -sSL http://install.nocodb.com/noco.sh) <(mktemp)
 Auto-upstall does the following: 🕊
 
 -   🐳 Automatically installs all pre-requisites like docker, docker-compose
--   🚀 Automatically installs NocoDB with PostgreSQL, Redis, Minio, Traefik gateway using Docker Compose. 🐘 🗄️ 🌐
+-   🚀 Automatically installs NocoDB with PostgreSQL, Redis, Traefik gateway using Docker Compose. 🐘 🗄️ 🌐
 -   🔄 Automatically upgrades NocoDB to the latest version when you run the command again.
 -   🔒 Automatically setups SSL and also renews it. Needs a domain or subdomain as input while installation.
 

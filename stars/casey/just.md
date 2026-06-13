@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 34247
+stars: 34274
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -606,7 +606,7 @@ test:
 lint:
   echo Linting…
 
-If no recipe makes sense as the default recipe, you can use `default-list`master to list the available recipes instead:
+If no recipe makes sense as the default recipe, you can use `default-list`1.52.0 to list the available recipes instead:
 
 set default-list := true
 
@@ -659,13 +659,13 @@ Available recipes:
 $ just --summary --unsorted
 test build
 
-If you'd like `just` to default to listing the recipes in the `justfile`, set `default-list`master:
+If you'd like `just` to default to listing the recipes in the `justfile`, set `default-list`1.52.0:
 
 set default-list := true
 
 The setting is per-module, so invoking a module path with `default-list` enabled lists that module's recipes.
 
-You can also default to listing recipes this behavior by settting the environment variable `JUST_DEFAULT_LIST=true` or passing `--default-list`master.
+You can also default to listing recipes this behavior by settting the environment variable `JUST_DEFAULT_LIST=true` or passing `--default-list`1.52.0.
 
 The heading text can be customized with `--list-heading`:
 
@@ -830,6 +830,14 @@ boolean
 
 List recipes instead of running the default recipe.
 
+`default-script`1.52.0
+
+boolean
+
+`false`
+
+Default recipes to script instead of shell.
+
 `dotenv-filename`
 
 string
@@ -894,14 +902,6 @@ boolean
 
 Ignore recipe lines beginning with `#`.
 
-`no-exit-message`1.39.0
-
-boolean
-
-`false`
-
-Don't print exit messages if recipes fail.
-
 `lazy`1.47.0
 
 boolean
@@ -910,6 +910,14 @@ boolean
 
 Don't evaluate unused variables.
 
+`lists`master
+
+boolean
+
+`false`
+
+Values may be lists of strings instead of strings. Currently unstable.
+
 `no-cd`1.51.0
 
 boolean
@@ -917,6 +925,14 @@ boolean
 `false`
 
 Don't change directory when executing recipes by recipe attribute.
+
+`no-exit-message`1.39.0
+
+boolean
+
+`false`
+
+Don't print exit messages if recipes fail.
 
 `positional-arguments`
 
@@ -1110,9 +1126,94 @@ bar:
 
 Because `just` cannot determine when exported variables are used, assignments with `export` and assignments in a module with `set export` will always be evaluated.
 
+#### Lists
+
+The `lists` settingmaster allows values that are lists of strings. It is currently unstable and will change in backwards incompatible ways. This section documents changes in behavior when `set lists` is enabled.
+
+Variadic recipe parameters are lists of strings instead of single space-separated strings.
+
+Lists literals are written `[a, b, c]` and are flattened, since lists may only contain strings and not other lists. For example, `[["a", "b"], [], "c"]` evaluates to `["a", "b", "c"]`.
+
+The following functions apply to each list element individually:
+
+-   `absolute_path()`
+-   `append()`
+-   `prepend()`
+-   `quote()`
+
+`append()` and `prepend()` do not split elements on whitespace and error if the first argument is not a single-element list.
+
+The canonical boolean true value is the string `"true"`, and the canonical boolean false value is the empty list `[]`. All values other than the empty list are truthy, including `''`.
+
+The functions `is_dependency()`, `path_exists()`, and `semver_matches()` return the canonical booleans.
+
+`which()` function the empty list when no executable is found.
+
+Each argument to a dependency binds to exactly one parameter, and supplying extra arguments to a variadic dependency is an error.
+
+Dependencies may be invoked once per element of a list with `*(recipe *argument)`.
+
+A parameter evaluates to the default when the argument is an empty list.
+
+Passing an empty list to a non-`*` parameter without a default is an error.
+
+When `positional-arguments` is set, list arguments are space-joined unless they are variadic, in which case they are passed as one positional argument per element.
+
+##### Examples
+
+Each list element is `quote()`'ed separately:
+
+set unstable
+set lists
+
+@foo \*args:
+  printf '%s\\n' {{ quote(args) }}
+
+$ just foo bar 'baz bob'
+bar
+baz bob
+
+The return value of `quote(args)` is `'bar' 'baz bob'`, instead of `'bar baz bob'`, as would be the case without `set lists`.
+
+Variadic positional arguments:
+
+set unstable
+set lists
+set positional-arguments
+
+foo \*args: (bar args 'bob') (baz args)
+
+@bar first second:
+  echo first=$1
+  echo second=$2
+
+@baz \*args:
+  echo '$1='$1
+  echo '$2='$2
+
+$ just foo one two
+first=one two
+second=bob
+$1=one
+$2=two
+
+A mapped dependency is invoked once per element of its starred argument:
+
+set unstable
+set lists
+
+build target \*platform: \*(compile target \*platform)
+
+@compile target platform:
+  echo compiling {{ target }} for {{ platform }}…
+
+$ just build x86 foo bar
+compiling foo for x86…
+compiling bar for x86…
+
 #### Positional Arguments
 
-If `positional-arguments` is `true`, recipe arguments will be passed as positional arguments to commands. For linewise recipes, argument `$0` will be the name of the recipe.
+If `positional-arguments` is `true`, recipe arguments will be passed as positional arguments to commands. For shell recipes, argument `$0` will be the name of the recipe.
 
 For example, running this recipe:
 
@@ -1325,18 +1426,18 @@ foobar := 'foo' + 'bar'
 
 #### Logical Operators
 
-The logical operators `&&` and `||` can be used to coalesce string values1.37.0, similar to Python's `and` and `or`. These operators consider the empty string `''` to be false, and all other strings to be true.
+The logical operators `&&` and `||` can be used to coalesce values1.37.0, similar to Python's `and` and `or`. The only false value is the empty list `[]`; every other value, including the empty string `''`, is true.
 
-These operators are currently unstable.
+These operators require `set lists`master, which is currently unstable.
 
-The `&&` operator returns the empty string if the left-hand argument is the empty string, otherwise it returns the right-hand argument:
+The `&&` operator returns the empty list if the left-hand argument is false, otherwise it returns the right-hand argument:
 
-foo := '' && 'goodbye'      \# ''
+foo := \[\] && 'goodbye'      \# \[\]
 bar := 'hello' && 'goodbye' \# 'goodbye'
 
-The `||` operator returns the left-hand argument if it is non-empty, otherwise it returns the right-hand argument:
+The `||` operator returns the left-hand argument if it is true, otherwise it returns the right-hand argument:
 
-foo := '' || 'goodbye'      \# 'goodbye'
+foo := \[\] || 'goodbye'      \# 'goodbye'
 bar := 'hello' || 'goodbye' \# 'hello'
 
 #### Joining Paths
@@ -1498,7 +1599,7 @@ foo := f'I {{{{LOVE} curly braces!'
 
 ### Sigils
 
-Commands in linewise recipes may be prefixed with any combination of the sigils `-`, `@`, and `?`.
+Commands in shell recipes may be prefixed with any combination of the sigils `-`, `@`, and `?`.
 
 The `@` sigil toggles command echoing:
 
@@ -1608,12 +1709,6 @@ $ just
 -   `env_var(key)` — Deprecated alias for `env(key)`.
 -   `env_var_or_default(key, default)` — Deprecated alias for `env(key, default)`.
 
-A default can be substituted for an empty environment variable value with the `||` operator, currently unstable:
-
-set unstable
-
-foo := env('FOO', '') || 'DEFAULT\_VALUE'
-
 #### Executables
 
 -   `require(name)`1.39.0 — Search directories in the `PATH` environment variable for the executable `name` and return its full path, or halt with an error if no executable with `name` exists.
@@ -1642,6 +1737,9 @@ foo := env('FOO', '') || 'DEFAULT\_VALUE'
 #### Invocation Information
 
 -   `is_dependency()` - Returns the string `true` if the current recipe is being run as a dependency of another recipe, rather than being run directly, otherwise returns the string `false`.
+    
+-   `recipe_name()`master - Returns the name of the current recipe.
+    
 
 #### Invocation Directory
 
@@ -1721,6 +1819,7 @@ The process ID is: 420
 -   `prepend(prefix, s)`1.27.0 - Prepend `prefix` to whitespace-separated strings in `s`. `prepend('src/', 'foo bar baz')` → `'src/foo src/bar src/baz'`
 -   `encode_uri_component(s)`1.27.0 - Percent-encode characters in `s` except `[A-Za-z0-9_.!~*'()-]`, matching the behavior of the JavaScript `encodeURIComponent` function.
 -   `quote(s)` - Replace all single quotes with `'\''` and prepend and append single quotes to `s`. This is sufficient to escape special characters for many shells, including most Bourne shell descendants.
+-   `show(value)`master - Convert `value` to a string containing its literal representation. Brackets are used for empty and multi-element lists, e.g., `"[]"` and `"["foo", "bar"]"`, but not single-element lists, e.g., `"foo"`.
 -   `replace(s, from, to)` - Replace all occurrences of `from` in `s` with `to`.
 -   `replace_regex(s, regex, replacement)` - Replace all occurrences of `regex` in `s` with `replacement`. Regular expressions are provided by the Rust `regex` crate. See the syntax documentation for usage examples. Capture groups are supported. The `replacement` string uses Replacement string syntax.
 -   `trim(s)` - Remove leading and trailing whitespace from `s`.
@@ -2191,6 +2290,12 @@ Execute recipe as a script interpreted by `COMMAND`. See script recipes for more
 recipe
 
 Execute recipe as script. See script recipes for more details.
+
+`[shell]`1.52.0
+
+recipe
+
+Execute recipe as a shell recipe, overriding `set default-script`.
 
 `[unix]`1.8.0
 
@@ -2911,20 +3016,16 @@ polyglot: python js perl sh ruby nu
 python:
   #!/usr/bin/env python3
   print('Hello from python!')
-
 js:
   #!/usr/bin/env node
   console.log('Greetings from JavaScript!')
-
 perl:
   #!/usr/bin/env perl
   print "Larry Wall says Hi!\\n";
-
 sh:
   #!/usr/bin/env sh
   hello='Yo'
   echo "$hello from a shell script!"
-
 nu:
   #!/usr/bin/env nu
   let hello = 'Hola'
@@ -2959,6 +3060,8 @@ Recipes with a `[script(COMMAND)]`1.32.0 attribute are run as scripts interprete
 Recipes with an empty `[script]` attribute are executed with the value of `set script-interpreter := […]`1.33.0, defaulting to `sh -eu`, and _not_ the value of `set shell`.
 
 The body of the recipe is evaluated, written to disk in the temporary directory, and run by passing its path as an argument to `COMMAND`.
+
+With `set default-script := true`1.52.0, recipes default to script recipes instead of shell recipes, unless overridden with the `[shell]` attribute1.52.0.
 
 ### Script and Shebang Recipe Temporary Files
 
@@ -3012,7 +3115,7 @@ foo:
   hello='Yo'
   echo "$hello from Bash!"
 
-It isn't strictly necessary, but `set -euxo pipefail` turns on a few useful features that make `bash` shebang recipes behave more like normal, linewise `just` recipes:
+It isn't strictly necessary, but `set -euxo pipefail` turns on a few useful features that make `bash` shebang recipes behave more like normal, shell `just` recipes:
 
 -   `set -e` makes `bash` exit if a command fails.
     
@@ -3020,7 +3123,7 @@ It isn't strictly necessary, but `set -euxo pipefail` turns on a few useful feat
     
 -   `set -x` makes `bash` print each script line before it's run.
     
--   `set -o pipefail` makes `bash` exit if a command in a pipeline fails. This is `bash`\-specific, so isn't turned on in normal linewise `just` recipes.
+-   `set -o pipefail` makes `bash` exit if a command in a pipeline fails. This is `bash`\-specific, so isn't turned on in normal shell `just` recipes.
     
 
 Together, these avoid a lot of shell scripting gotchas.
@@ -3563,7 +3666,7 @@ Modules may be made optional by putting a `?` after the `mod` keyword:
 
 mod? foo
 
-Missing source files for optional modules do not produce an error. If a recipe depends on a missing optional module, directly, or transitively, it will be disabled. Attempting to invoke a disabled recipe is an error, but other non-disabled recipes can still be run.master
+Missing source files for optional modules do not produce an error. If a recipe or alias depends on a missing optional module, directly, or transitively, it will be disabled. Attempting to invoke a disabled recipe or alias is an error, but other non-disabled recipes can still be run.1.52.0
 
 Optional modules with no source file do not conflict, so you can have multiple mod statements with the same name, but with different source file paths, as long as at most one source file exists:
 
@@ -3611,6 +3714,23 @@ Note: Shebang line splitting is not consistent across operating systems. The pre
 default:
   echo foo
 
+### Markdown `justfile`s
+
+If the argument to `--justfile` ends in `.md`, `just` extracts the contents of unindented `just` fenced code blocks and writes them to a `justfile` in a temporary directorymaster:
+
+\# Project
+
+Build the project:
+
+\`\`\`just
+build:
+  echo Building…
+\`\`\`
+
+$ just --justfile README.md build
+echo Building…
+Building…
+
 ### Formatting and dumping `justfile`s
 
 Each `justfile` has a canonical formatting with respect to whitespace and newlines.
@@ -3628,6 +3748,8 @@ $ cat justfile
 
 some-recipe:
     echo "foo"
+
+When the `justfile` is read from standard input with `--justfile -` or extracted from a markdown file, `--fmt` prints the formatted `justfile` to stdout.
 
 Note that formatting is not covered by any backwards compatibility guarantee and is subject to change from time to time.
 
@@ -3712,7 +3834,7 @@ This defeats `just`'s ability to catch typos, for example if you type `$argument
 
 ### Configuring the Shell
 
-There are a number of ways to configure the shell for linewise recipes, which are the default when a recipe does not start with a `#!` shebang. Their precedence, from highest to lowest, is:
+There are a number of ways to configure the shell for shell recipes, which are the default when a recipe does not start with a `#!` shebang. Their precedence, from highest to lowest, is:
 
 1.  The `--shell` and `--shell-arg` command line options. Passing either of these will cause `just` to ignore any settings in the current justfile.
 2.  `set windows-shell := [...]`

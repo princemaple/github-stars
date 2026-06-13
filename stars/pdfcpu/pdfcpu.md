@@ -1,16 +1,16 @@
 ---
 project: pdfcpu
-stars: 8667
-description: A PDF processor written in Go.
+stars: 8671
+description: PDF tooling for Go and the command line.
 url: https://github.com/pdfcpu/pdfcpu
 ---
 
-pdfcpu: a PDF processor written in Go with CLI and API support
-==============================================================
+pdfcpu: PDF tooling for Go and the command line
+===============================================
 
-pdfcpu is a PDF processing library written in Go.
+pdfcpu provides a Go API and command-line tools for working with PDF files.
 
-It is compatible with all PDF versions. Support for PDF 2.0 (ISO-32000-2) is evolving and continuously improving.
+It supports PDFs across versions. PDF 2.0 (ISO-32000-2) validation support is basic and continuously improving.
 
 * * *
 
@@ -32,7 +32,7 @@ Usage
 
 ### CLI
 
-Validate against PDF 2.0 (ISO-32000-2):
+Validate a PDF:
 
 ```
 pdfcpu validate input.pdf
@@ -41,7 +41,7 @@ pdfcpu validate input.pdf
 Merge two PDFs:
 
 ```
-pdfcpu merge out.pdf in1.pdf in2.pdf
+pdfcpu merge merged.pdf in1.pdf in2.pdf
 ```
 
 ### Go API
@@ -58,7 +58,7 @@ Features
 -   Encrypt and decrypt PDFs
 -   Resize and rotate pages
 -   Add and remove stamps and watermarks
--   Manage digital signatures (ongoing work)
+-   Validate signature integrity, report signature evidence, and remove signatures
 -   Manage attachments and more...
 
 In Action
@@ -191,6 +191,7 @@ Documentation
 -------------
 
 -   Project documentation: https://pdfcpu.io
+-   Changelog: https://pdfcpu.io/changelog
 
 ### CLI
 
@@ -216,7 +217,7 @@ Contributions are welcome.
 
 -   Report bugs or propose changes via issues
 -   Discuss ideas on the discussion board
--   For PRs, please open an issue or discussion first v
+-   For PRs, please open an issue or discussion first
 
 ### Guidelines
 
@@ -437,6 +438,9 @@ Thanks 💚 to all contributors:
 
   
 **Zhenbang Wei**
+
+  
+**HarishTeens**
 
 * * *
 

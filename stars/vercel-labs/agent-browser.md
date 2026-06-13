@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 35403
+stars: 35987
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -81,6 +81,8 @@ agent-browser fill @e3 "test@example.com" # Fill by ref
 agent-browser get text @e1                # Get text by ref
 agent-browser screenshot page.png
 agent-browser close
+
+Clicks fail early when another element covers the target's click point, for example a consent banner or modal. Dismiss or interact with the reported covering element, then take a fresh snapshot before retrying the original ref.
 
 Headless Chromium screenshots hide native scrollbars for consistent image output. Pass `--hide-scrollbars false` when launching to keep native scrollbars visible.
 
@@ -990,6 +992,8 @@ agent-browser click @e2                   # Click the button
 agent-browser fill @e3 "test@example.com" # Fill the textbox
 agent-browser get text @e1                # Get heading text
 agent-browser hover @e4                   # Hover the link
+
+When a ref click is blocked by an overlay, the error includes the covering element, such as `covered by <div#consent-banner>`. Click the banner or dialog control first, then run `snapshot` again before reusing refs.
 
 **Why use refs?**
 

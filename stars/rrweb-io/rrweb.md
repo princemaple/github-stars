@@ -1,6 +1,6 @@
 ---
 project: rrweb
-stars: 19664
+stars: 19695
 description: record and replay the web
 url: https://github.com/rrweb-io/rrweb
 ---
@@ -10,11 +10,9 @@ Try rrweb
 rrweb
 =====
 
-**The rrweb documentary (in Chinese, with English subtitles)**
+**(new!) rrweb cloud - hosted rrweb backend is now available**
 
 中文文档
-
-> I have joined Github Sponsors and highly appreciate your sponsorship.
 
 rrweb refers to 'record and replay the web', which is a tool for recording and replaying users' interactions on the web.
 
@@ -39,8 +37,8 @@ rrweb is mainly composed of 3 parts:
 Roadmap
 -------
 
--   storage engine: do deduplication on a large number of rrweb sessions
--   compact mutation data in common patterns
+-   ✅ storage engine: do deduplication on a large number of rrweb sessions
+-   Token efficient AI session replay format (in progress)
 -   provide plugins via the new plugin API, including:
     -   XHR plugin
     -   fetch plugin
@@ -85,20 +83,16 @@ Core Team Members
 -----------------
 
   
-**Yuyz0112**  
-  
-
-  
-**Yun Feng**  
-  
+**Juice10**  
+open for rrweb consulting
 
   
 **eoghanmurray**  
   
 
   
-**Juice10**  
-open for rrweb consulting
+**Yun Feng**  
+  
 
 Who's using rrweb?
 ------------------

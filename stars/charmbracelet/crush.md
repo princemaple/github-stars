@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 25053
+stars: 25283
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -411,6 +411,25 @@ A non-zero `AttachedClients` (often combined with `IsBusy`) is the cue that a se
 The first client to create a workspace fixes its process-wide flags. In particular, `--yolo` and `--debug` follow a **first-wins** rule: later clients that arrive at the same `--cwd` with different values for those flags do not change the running workspace. A debug log line is emitted recording the mismatch, and the workspace keeps the flags it was created with.
 
 A workspace lives as long as at least one client has an SSE event stream open against it. When the last stream disconnects, the workspace is torn down. There is a short grace window right after `POST /v1/workspaces` so a client that has created the workspace but not yet opened its event stream does not get reaped before it can attach.
+
+### Global context files
+
+Crush automatically includes two files for cross-project instructions.
+
+-   `~/.config/crush/CRUSH.md`: Crush-specific rules that would confuse other agentic coding tools. If you only use Crush, this is the only one you need to edit.
+-   `~/.config/AGENTS.md`: generic instructions that other coding tools might read. Avoid referring to Crush-specific features or workflows here. You probably only care about this if you use multiple agentic coding tools and want to share instructions between them.
+
+You can customize these paths using the `global_context_paths` option in your configuration:
+
+{
+  "$schema": "https://charm.land/crush.json",
+  "options": {
+    "global\_context\_paths": \[
+      "~/path/to/custom/context/file.md",
+      "/full/path/to/folder/of/files/" // recursively load all .md files in folder
+    \]
+  }
+}
 
 ### Ignoring Files
 

@@ -1,6 +1,6 @@
 ---
 project: TradingAgents
-stars: 83493
+stars: 85807
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
@@ -71,7 +71,7 @@ cd TradingAgents
 
 Create a virtual environment in any of your favorite environment managers:
 
-conda create -n tradingagents python=3.13
+conda create -n tradingagents python=3.12
 conda activate tradingagents
 
 Install the package and its dependencies:

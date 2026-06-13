@@ -1,6 +1,6 @@
 ---
 project: city-script
-stars: 160
+stars: 161
 description: Collection of scripts that can be loaded into city-roads
 url: https://github.com/anvaka/city-script
 ---

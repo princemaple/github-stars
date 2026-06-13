@@ -1,6 +1,6 @@
 ---
 project: vibetunnel
-stars: 4524
+stars: 4542
 description: Turn any browser into your terminal & command your agents on the go.
 url: https://github.com/amantus-ai/vibetunnel
 ---
@@ -91,7 +91,7 @@ The `vt` command is a smart wrapper that forwards your terminal sessions through
 
 **Installation sources**:
 
--   **macOS App**: Creates `/usr/local/bin/vt` symlink during installation
+-   **macOS App**: Installs the `vt` wrapper script at `/usr/local/bin/vt` during installation
 -   **npm Package**: Installs `vt` globally, with intelligent Mac app detection
 
 **Smart detection**: When you run `vt` from the npm package, it:
@@ -390,6 +390,8 @@ Simple authentication for deployments:
 export VIBETUNNEL\_USERNAME=admin
 export VIBETUNNEL\_PASSWORD=your-secure-password
 npm run start
+
+JWT signing keys are generated once in `~/.vibetunnel/jwt-secret` with owner-only permissions, so browser sessions remain valid across server restarts. Set `JWT_SECRET` to use an operator-managed signing secret instead; rotating either value logs out clients.
 
 #### 3\. SSH Key Authentication
 

@@ -1,6 +1,6 @@
 ---
 project: pdf.js
-stars: 53400
+stars: 53442
 description: PDF Reader in JavaScript
 url: https://github.com/mozilla/pdf.js
 ---
@@ -50,7 +50,7 @@ PDF.js is built into version 19+ of Firefox.
 
 ### PDF debugger
 
-Browser the internal structure of a PDF document with https://mozilla.github.io/pdf.js/internal-viewer/web/debugger.html
+Browse the internal structure of a PDF document with https://mozilla.github.io/pdf.js/internal-viewer/web/debugger.html
 
 Getting the Code
 ----------------

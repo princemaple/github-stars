@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 81742
+stars: 81786
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -91,9 +91,9 @@ Courses
 -   CSE 142 Computer Programming I (Java Programming), Spring 2016 - University of Washington
 -   CS 1301 Intro to computing - Gatech
 -   CS 106A - Programming Methodology, Stanford University (Lecture Videos)
--   CS 106B - Programming Abstractions, Stanford University (Lecture Videos)
+-   CS 106B - Programming Abstractions, Stanford University
 -   CS 106L - Standard C++ Programming(Lecture Videos)
--   CS 106X - Programming Abstractions in C++ (Lecture Videos)
+-   CS 106X - Programming Abstractions in C++
 -   CS 107 - Programming Paradigms, Stanford University
 -   CmSc 150 - Introduction to Programming with Arcade Games, Simpson College
 -   IN2377 - Concepts of C++ programming (Winter 2023), TUM (Winter 2022) (Summer 2022) (Summer 2021)
@@ -818,6 +818,7 @@ Courses
     -   Info 290 - Analyzing Big Data with Twitter, UC Berkeley school of information (YouTube)
     -   CS224W Machine Learning with Graphs | Spring 2021 | Stanford University
     -   9.520 - Statistical Learning Theory and Applications, Fall 2015 - MIT
+    -   EE531 - Statistical Learning Theory, Spring 2026 - KAIST
     -   Statistical Learning Theory, Spring 2019 - ETH Zürich
     -   Course on the Statistical Learning Theory, University of São Paulo, ICMC
     -   Reinforcement Learning - UCL
@@ -1536,6 +1537,7 @@ Courses
 -   Mila Robot Learning Seminar - Montreal Robotics
 -   Johns Hopkins Learning, Estimation, and Control spring 2026, by Reza ShadmehrYoutube
 -   SUSTech ME424 Modern Control and Estimation ( Kalman Filter Theory ) fall 2021, by Wei ZhangYoutube 1Youtube 2
+-   Robot Learning - ETH Zurich (Youtube, Guest lectures)
 
 * * *
 

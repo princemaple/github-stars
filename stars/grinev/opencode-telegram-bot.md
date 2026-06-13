@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 765
+stars: 795
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -559,7 +559,7 @@ No
 
 `TTS_PROVIDER`
 
-TTS provider: `openai` for OpenAI-compatible APIs or `google` for Google Cloud TTS
+TTS provider: `openai` for OpenAI-compatible APIs, `elevenlabs` for ElevenLabs, or `google` for Google Cloud TTS
 
 No
 
@@ -567,7 +567,7 @@ No
 
 `TTS_API_URL`
 
-OpenAI-compatible TTS API base URL
+TTS API base URL for OpenAI-compatible APIs or ElevenLabs
 
 No
 
@@ -575,7 +575,7 @@ No
 
 `TTS_API_KEY`
 
-OpenAI-compatible TTS API key
+TTS API key for OpenAI-compatible APIs or ElevenLabs
 
 No
 
@@ -583,7 +583,7 @@ No
 
 `TTS_MODEL`
 
-OpenAI-compatible TTS model name passed to `/audio/speech`
+TTS model name. Passed as `model` for OpenAI-compatible APIs and `model_id` for ElevenLabs
 
 No
 
@@ -591,7 +591,7 @@ No
 
 `TTS_VOICE`
 
-TTS voice name. Defaults to `alloy` for OpenAI-compatible APIs and `en-US-Studio-O` for Google Cloud TTS
+TTS voice name or ElevenLabs voice ID. Defaults to `alloy`, `21m00Tcm4TlvDq8ikWAM`, or `en-US-Studio-O` by provider
 
 No
 
@@ -687,6 +687,14 @@ TTS\_API\_URL\=https://api.openai.com/v1
 TTS\_API\_KEY\=your-tts-api-key
 TTS\_MODEL\=gpt-4o-mini-tts
 TTS\_VOICE\=alloy
+
+ElevenLabs TTS configuration example:
+
+TTS\_PROVIDER\=elevenlabs
+TTS\_API\_URL\=https://api.elevenlabs.io/v1
+TTS\_API\_KEY\=your-elevenlabs-api-key
+TTS\_MODEL\=eleven\_flash\_v2\_5
+TTS\_VOICE\=21m00Tcm4TlvDq8ikWAM
 
 Google Cloud TTS configuration example:
 

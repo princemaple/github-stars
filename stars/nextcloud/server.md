@@ -1,6 +1,6 @@
 ---
 project: server
-stars: 35682
+stars: 35768
 description: ☁️ Nextcloud server, a safe home for all your data
 url: https://github.com/nextcloud/server
 ---
@@ -60,6 +60,17 @@ Third-party components are handled as git submodules which have to be initialize
 Several apps that are included by default in regular releases such as First run wizard or Activity are missing in `master` and have to be installed manually by cloning them into the `apps` subfolder.
 
 Otherwise, git checkouts can be handled the same as release archives, by using the `stable*` branches. Note they should never be used on production systems.
+
+#### Testing your code
+
+We use multiple test frameworks for specific areas of the code:
+
+-   PHPUnit for PHP unit tests
+-   Behat for PHP integration tests
+-   Vitest for Javascript / Typescript unit tests
+-   Playwright for end-to-end tests
+
+For our end-to-end tests using Playwright you can refer to our documentation on how to debug errors and to contribute new test cases.
 
 ### Tools we use 🛠
 

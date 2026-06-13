@@ -1,6 +1,6 @@
 ---
 project: dockhand
-stars: 4740
+stars: 4828
 description: Dockhand - Docker management you will like.
 url: https://github.com/Finsys/dockhand
 ---
@@ -38,9 +38,43 @@ Tech Stack
 Screenshots
 -----------
 
-Light Mode
+**Environments overview** — manage every Docker host from one place
 
-Dark Mode
+**Environment dashboard** — live CPU, memory and disk metrics per host
+
+**Containers** — real-time status, resources and port mappings
+
+**Compose stacks** — deploy and orchestrate multi-container apps
+
+**Compose editor** — edit YAML side-by-side with env variables
+
+**Images** — track tags, sizes, updates and clean up unused
+
+**Logs & terminal** — stream logs with a shell next to them
+
+**Interactive shell** — exec straight into any container
+
+**Add environment** — connect via socket, agent or direct TCP
+
+**Settings & theming** — themes, fonts, scanners and schedules
+
+**Network graph** — visualize how services connect across stacks
+
+**Container files** — browse, edit, upload and download in-place
+
+**Image layers** — inspect every layer, its size and contents
+
+**Vulnerability scans** — Grype & Trivy CVE results per image
+
+**Volume browser** — explore and edit files inside any volume
+
+**Stack graph editor** — visual editor for services, networks and secrets
+
+**Deploy from Git** — pull stacks from repos with webhooks & auto-sync
+
+**Schedules** — cron-style automation for prune, updates and cleanup
+
+**Activity log** — audit every action across all environments
 
 License
 -------

@@ -1,11 +1,11 @@
 ---
 project: 3x-ui
-stars: 39795
+stars: 40556
 description: Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit (Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun) 
 url: https://github.com/MHSanaei/3x-ui
 ---
 
-English | فارسی | العربية | 中文 | Español | Русский
+English | فارسی | العربية | 中文 | Español | Русский | Türkçe
 
 **3X-UI** is an advanced, open-source web control panel for managing Xray-core servers. It provides a clean, multi-language interface for deploying, configuring, and monitoring a wide range of proxy and VPN protocols — from a single VPS to multi-node deployments.
 
@@ -25,7 +25,7 @@ Features
 -   **Traffic statistics** — per inbound, per client, and per outbound, with reset controls.
 -   **Multi-node support** — manage and scale across multiple servers from a single panel.
 -   **Outbound & routing** — WARP, NordVPN, custom routing rules, load balancers, and outbound proxy chaining.
--   **Built-in subscription server** with multiple output formats.
+-   **Built-in subscription server** with multiple output formats and custom page templates.
 -   **Telegram bot** for remote monitoring and management.
 -   **RESTful API** with in-panel Swagger documentation.
 -   **Flexible storage** — SQLite (default) or PostgreSQL.
@@ -124,6 +124,12 @@ Maximum open connections (PostgreSQL pool)
 Maximum idle connections (PostgreSQL pool)
 
 —
+
+`XUI_INIT_WEB_BASE_PATH`
+
+The initial URI path for the web panel
+
+`/`
 
 `XUI_ENABLE_FAIL2BAN`
 

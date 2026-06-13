@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 61154
+stars: 61540
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -58,7 +58,6 @@ Cool Features of AnythingLLM
 -   Anthropic
 -   NVIDIA NIM (chat models)
 -   Google Gemini Pro
--   Hugging Face (chat models)
 -   Ollama (chat models)
 -   LM Studio (all models)
 -   LocalAI (all models)

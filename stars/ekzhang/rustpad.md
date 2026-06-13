@@ -1,6 +1,6 @@
 ---
 project: rustpad
-stars: 4030
+stars: 4034
 description: Efficient and minimal collaborative code editor, self-hosted, no database required
 url: https://github.com/ekzhang/rustpad
 ---

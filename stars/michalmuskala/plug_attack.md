@@ -1,6 +1,6 @@
 ---
 project: plug_attack
-stars: 451
+stars: 453
 description: A plug building toolkit for blocking and throttling abusive requests
 url: https://github.com/michalmuskala/plug_attack
 ---

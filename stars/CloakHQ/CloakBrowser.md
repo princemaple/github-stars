@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 24463
+stars: 25919
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -1271,6 +1271,10 @@ docker run -d --name cloak -p 127.0.0.1:9222:9222 cloakhq/cloakbrowser \\
 docker run -d --name cloak -p 127.0.0.1:9222:9222 cloakhq/cloakbrowser \\
   cloakserve --headless=false
 
+# Reap disconnected per-seed browser processes after 5 minutes
+docker run -d --name cloak -p 127.0.0.1:9222:9222 cloakhq/cloakbrowser \\
+  cloakserve --idle-timeout=300
+
 Stop the server:
 
 docker stop cloak && docker rm cloak
@@ -1312,7 +1316,9 @@ b4 \= pw.chromium.connect\_over\_cdp(
     "&proxy=http://proxy:8080&geoip=true"
 )
 
-Supported query params: `fingerprint`, `timezone`, `locale`, `platform`, `platform-version`, `brand`, `brand-version`, `gpu-vendor`, `gpu-renderer`, `hardware-concurrency`, `device-memory`, `screen-width`, `screen-height`, `proxy`, `geoip`. Same seed reuses the same process (first connection's params win). No seed = shared default process (backward compatible). Check active processes at `GET /` (returns JSON with PIDs, ports, and connection counts).
+Supported query params: `fingerprint`, `timezone`, `locale`, `platform`, `platform-version`, `brand`, `brand-version`, `gpu-vendor`, `gpu-renderer`, `hardware-concurrency`, `device-memory`, `screen-width`, `screen-height`, `proxy`, `geoip`. Same seed reuses the same process (first connection's params win). No seed = shared default process (backward compatible).
+
+By default, per-seed processes stay alive until `cloakserve` exits. If clients create many unique seeds, set `--idle-timeout=SECONDS` or `CLOAKSERVE_IDLE_TIMEOUT=SECONDS` to automatically terminate a seed's Chrome process after its last CDP WebSocket disconnects. `0`, `off`, `false`, `none`, or `disabled` disable idle cleanup. When cleanup runs, the seed's temporary profile directory under `--data-dir` is removed too. Check active processes at `GET /` (returns JSON with PIDs, ports, connection counts, idle timeout, and pending cleanup status).
 
 **Persistent profiles** — mount a volume to keep cookies and sessions across container restarts:
 

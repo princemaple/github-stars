@@ -1,6 +1,6 @@
 ---
 project: mediapipe
-stars: 35502
+stars: 35606
 description: Cross-platform, customizable ML solutions for live and streaming media.
 url: https://github.com/google-ai-edge/mediapipe
 ---
@@ -86,6 +86,17 @@ Contributing
 We welcome contributions. Please follow these guidelines.
 
 We use GitHub issues for tracking requests and bugs. Please post questions to the MediaPipe Stack Overflow with a `mediapipe` tag.
+
+Privacy Notice
+--------------
+
+Last modified: June 5, 2026
+
+When you use MediaPipe Tasks, processing of the input data (e.g. images, video, text) takes place on device, and MediaPipe does not send that input data to Google servers. As a result, you can use our MediaPipe Tasks APIs for processing data that should not leave the device.
+
+MediaPipe Tasks APIs send metrics about the performance and utilization of the APIs in your app to Google. Google uses this metrics data to measure performance, usage, debug, maintain and improve the MediaPipe Tasks, as further described in our Privacy Policy.
+
+**You are responsible for obtaining informed consent from your app users about Google's processing of MediaPipe metrics data as required by applicable law.**
 
 Resources
 ---------

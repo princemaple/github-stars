@@ -1,6 +1,6 @@
 ---
 project: restic
-stars: 33891
+stars: 34377
 description: Fast, secure, efficient backup program
 url: https://github.com/restic/restic
 ---

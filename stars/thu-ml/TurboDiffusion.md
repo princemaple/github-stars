@@ -1,6 +1,6 @@
 ---
 project: TurboDiffusion
-stars: 3523
+stars: 3531
 description: TurboDiffusion: 100–200× Acceleration for Video Diffusion Models
 url: https://github.com/thu-ml/TurboDiffusion
 ---

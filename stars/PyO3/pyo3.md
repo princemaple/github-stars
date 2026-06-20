@@ -1,6 +1,6 @@
 ---
 project: pyo3
-stars: 15786
+stars: 15817
 description: Rust bindings for the Python interpreter
 url: https://github.com/PyO3/pyo3
 ---
@@ -22,7 +22,7 @@ Requires Rust 1.83 or greater.
 
 PyO3 supports the following Python distributions:
 
--   CPython 3.8 or greater
+-   CPython 3.9 or greater
 -   PyPy 7.3 (Python 3.11+)
 -   GraalPy 25.0 or greater (Python 3.12+)
 
@@ -215,6 +215,7 @@ Examples
 -   rust-python-coverage _Example PyO3 project with automated test coverage for Rust and Python._
 -   rnet Asynchronous Python HTTP Client with Black Magic
 -   sail _Unifying stream, batch, and AI workloads with Apache Spark compatibility._
+-   tibs _A sleek Python library for binary data._
 -   tiktoken _A fast BPE tokeniser for use with OpenAI's models._
 -   tokenizers _Python bindings to the Hugging Face tokenizers (NLP) written in Rust._
 -   tzfpy _A fast package to convert longitude/latitude to timezone name._

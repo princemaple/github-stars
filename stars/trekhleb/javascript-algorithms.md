@@ -1,6 +1,6 @@
 ---
 project: javascript-algorithms
-stars: 196082
+stars: 196103
 description: 📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings
 url: https://github.com/trekhleb/javascript-algorithms
 ---
@@ -37,6 +37,7 @@ Remember that each data has its own trade-offs. And you need to pay attention mo
 -   `B` Doubly Linked List
 -   `B` Queue
 -   `B` Stack
+-   `B` Deque - double-ended queue
 -   `B` Hash Table
 -   `B` Heap - max and min heap versions
 -   `B` Priority Queue

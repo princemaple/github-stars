@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 22016
+stars: 22059
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -227,6 +227,12 @@ demo
 immer
 
 immer-yjs
+
+demo
+
+mutative
+
+mutative-yjs
 
 demo
 

@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 68416
+stars: 69006
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -21,9 +21,11 @@ _We’ll be onboarding in phases and working closely with early users. Limited s
 
 Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
 
-✨ Check out latest update v0.8.9
+✨ Check out latest update v0.9
 
-✨ **New in v0.8.9**: Follow-up security patch for the self-hosted Docker API server, closing an SSRF via proxy settings that 0.8.8 did not cover. Backward compatible. If you run the Docker server, upgrade. A larger secure-by-default release with breaking changes is coming in ~1-2 weeks. Release notes →
+✨ **New in v0.9**: Major secure-by-default release of the Docker API server. Auth is on by default, the server binds loopback unless given a token, and the request body is now an untrusted trust boundary. Breaking changes for the self-hosted server only; the pip library is unchanged. If you self-host the Docker API, read the migration guide before upgrading. Release notes →
+
+✨ Recent v0.8.7: Security-hardening release. Fixes critical Docker API vulnerabilities (RCE, SSRF, auth bypass, file write, XSS, hardcoded JWT secret), adds DomainMapper, and ships scraping, deep-crawl, and LLM fixes. Release notes →
 
 ✨ Recent v0.8.6: Security hotfix that replaced `litellm` with `unclecode-litellm` due to a PyPI supply chain compromise.
 
@@ -481,21 +483,15 @@ async def test\_news\_crawl():
 ✨ Recent Updates
 ----------------
 
-**Version 0.8.9 Release Highlights - Proxy SSRF Patch**
+**Version 0.9.0 Release Highlights - Secure-by-Default Docker Server**
 
-A follow-up, backward-compatible security patch for the self-hosted Docker API server: closes an SSRF via proxy settings (`proxy_config.server`, the deprecated `proxy`, `crawler_config.proxy_config`, and proxy/DNS flags in `extra_args`) that 0.8.8 did not cover. Proxy destinations are now validated like crawl URLs. Upgrade in place, no config changes. A larger secure-by-default release with breaking changes is coming in ~1-2 weeks; a migration guide will accompany the pre-announcement.
+A major, secure-by-default release of the Docker API server. The out-of-the-box deployment is hardened with defense in depth: authentication is on by default, the server binds loopback unless you give it a token, and the network request body is treated as an untrusted trust boundary. Request-supplied browser internals and hook code are gone; hooks are declarative, `output_path` is replaced by an artifact store, TLS verification is on, CORS is deny-by-default, and Redis is password-protected and loopback-only.
 
-pip install -U crawl4ai
-
-Full v0.8.9 Release Notes →
-
-**Version 0.8.8 Release Highlights - Docker Server Security Patch**
-
-A focused, backward-compatible security patch for the self-hosted Docker API server: closes SSRF filter gaps (IPv6 transition forms), hardens screenshot/PDF `output_path` against a symlink write, stops LLM credential exfiltration via a request `base_url`, and adds CRLF-safe logging and webhook header validation. Upgrade in place, no config changes.
+This is a breaking release for the self-hosted Docker server only. The core pip library (SDK / in-process use) is unchanged. If you self-host the Docker API, read the migration guide before upgrading.
 
 pip install -U crawl4ai
 
-Full v0.8.8 Release Notes →
+Migration Guide → · Full v0.9.0 Release Notes →
 
 **Version 0.8.7 Release Highlights - Security Hardening, DomainMapper & Community Fixes**
 

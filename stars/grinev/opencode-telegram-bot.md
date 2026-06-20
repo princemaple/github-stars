@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 795
+stars: 831
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -19,6 +19,8 @@ Scheduled tasks support. Turns the bot into a lightweight OpenClaw alternative f
 Platforms: macOS, Windows, Linux
 
 Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`), Français (`fr`), Русский (`ru`), 简体中文 (`zh`)
+
+> I use boardown, my open-source Markdown-based task board, to plan and track this project. It stores tasks in plain `.md` files and can be used as a VS Code extension or a desktop app.
 
 Features
 --------
@@ -175,7 +177,7 @@ List directory contents, then tap to open or download
 
 `/tts`
 
-Toggle audio replies
+Choose audio reply mode (`off`, `all`, or `auto`)
 
 `/rename`
 
@@ -445,6 +447,14 @@ No
 
 `120`
 
+`SCHEDULED_TASK_DISABLE_NOTIFICATION`
+
+Send scheduled task result/error messages without Telegram push notifications
+
+No
+
+`false`
+
 `BASH_TOOL_DISPLAY_MAX_LENGTH`
 
 Maximum displayed length for `bash` tool commands in Telegram summaries; longer commands are truncated
@@ -464,6 +474,14 @@ No
 `HIDE_THINKING_MESSAGES`
 
 Hide `💭 Thinking...` service messages
+
+No
+
+`false`
+
+`SHOW_THINKING_CONTENT`
+
+Show full model reasoning in the thinking message; uses `RESPONSE_STREAMING_MODE` for edit vs draft streaming
 
 No
 
@@ -678,7 +696,7 @@ If `STT_API_URL` and `STT_API_KEY` are set, the bot will:
 
 If `STT_NOTE_PROMPT` is set to a non-empty value other than `false` or `0`, the bot prepends `[Note: ...]` to the transcription before sending it to the LLM. The recognized text shown in Telegram stays unchanged.
 
-If TTS credentials are configured, you can toggle spoken replies globally with `/tts`. The preference is stored in `settings.json` and persists across restarts.
+If TTS credentials are configured, you can choose spoken reply behavior with `/tts`: `off` disables audio replies, `all` sends audio for every assistant reply, and `auto` sends audio only after voice/audio prompts. The preference is stored in `settings.json` and persists across restarts.
 
 OpenAI-compatible TTS configuration example:
 

@@ -1,12 +1,14 @@
 ---
 project: maigret
-stars: 33001
+stars: 33390
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
 
 Maigret
 =======
+
+  
 
   
 
@@ -28,6 +30,8 @@ Sponsors
 **VaultProxies** — The proxy network ops teams reach for when they're tired of getting throttled, flagged, or guessed.  
 Enterprise-grade rotation • High uptime • Throttle-resistant routing  
 **Special Offer:** Plans from $1/GB — as low as $0.50/GB. Use code `50OFF` for 50% off.
+
+**9Proxy** provides residential proxies from just **$0.018/IP or $0.68/GB**. 20M+ IPs across 90+ countries. Sticky or rotating sessions, managed from desktop or mobile app.
 
 Contents
 --------

@@ -1,6 +1,6 @@
 ---
 project: transformers
-stars: 161566
+stars: 161754
 description: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. 
 url: https://github.com/huggingface/transformers
 ---

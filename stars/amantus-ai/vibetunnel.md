@@ -1,6 +1,6 @@
 ---
 project: vibetunnel
-stars: 4542
+stars: 4555
 description: Turn any browser into your terminal & command your agents on the go.
 url: https://github.com/amantus-ai/vibetunnel
 ---
@@ -63,7 +63,7 @@ Quick Start
 
 **macOS App**: Requires an Apple Silicon Mac (M1+). Intel Macs are not supported for the native app.
 
-**npm Package**: Works on any system with Node.js 22.12+, including Intel Macs and Linux. Windows is not yet supported (#252).
+**npm Package**: Works on Node.js 22.12 through 24.x, including Intel Macs and Linux. Windows is not yet supported (#252).
 
 ### 1\. Download & Install
 
@@ -175,15 +175,17 @@ Tailscale creates a secure peer-to-peer VPN network between your devices. It's t
 
 #### Basic Setup
 
-1.  Install Tailscale on your Mac: Download from Mac App Store or Direct Download
+1.  Install Tailscale on your Mac: Download from Mac App Store, Direct Download, or a CLI/daemon package such as nix-darwin
 2.  Install Tailscale on your remote device:
     -   **iOS**: Download from App Store
     -   **Android**: Download from Google Play
     -   **Other platforms**: All Downloads
 3.  Sign in to both devices with the same account
 4.  If using VibeTunnel's Tailscale Serve integration, ensure Tailscale Serve is enabled in your tailnet settings
-5.  Find your Mac's Tailscale hostname in the Tailscale menu bar app (e.g., `my-mac.tailnet-name.ts.net`)
+5.  Find your Mac's Tailscale hostname in the menu bar app or with `tailscale status` (e.g., `my-mac.tailnet-name.ts.net`)
 6.  Access VibeTunnel at `http://[your-tailscale-hostname]:4020`
+
+VibeTunnel detects standard CLI locations and nix-darwin system/user profiles, and falls back to `tailscale status --json` when the macOS app API is unavailable.
 
 #### Enhanced Tailscale Features
 
@@ -285,6 +287,25 @@ ngrok creates secure tunnels to your localhost, making VibeTunnel accessible via
 1.  Install cloudflared
 2.  Run `cloudflared tunnel --url http://localhost:4020`
 3.  Access via the generated `*.trycloudflare.com` URL
+
+### Option 5: Pinggy
+
+1.  Install the Pinggy CLI: `npm install -g pinggy`
+2.  Open VibeTunnel Settings → Remote → Pinggy Integration
+3.  Optionally save a Pinggy access token for a persistent subdomain or custom domain
+4.  Enable the tunnel and open the displayed public HTTPS URL
+
+Free tunnels use a new URL after reconnecting. A persistent subdomain or custom domain requires a Pinggy plan that supports it and must be assigned to the saved token in the Pinggy dashboard.
+
+### Option 6: Pangolin
+
+1.  Create a Site in Pangolin and copy its Newt endpoint, ID, and secret
+2.  Install Newt: `curl -fsSL https://static.pangolin.net/get-newt.sh | bash`
+3.  Open VibeTunnel Settings → Remote → Pangolin Integration and save the site credentials
+4.  In Pangolin, create a public Resource targeting `http://localhost:4020`
+5.  Connect the site in VibeTunnel and use the Resource URL configured by Pangolin
+
+VibeTunnel stores the Newt site credentials in Keychain and starts Newt with a protected temporary config file, keeping the secret out of process arguments and environment variables.
 
 Git Follow Mode
 ---------------
@@ -465,7 +486,7 @@ yarn global add vibetunnel
 # Or with pnpm
 pnpm add -g vibetunnel
 
-**Requirements**: Node.js 22.12.0 or higher
+**Requirements**: Node.js 22.12 through 24.x
 
 ### One-shot (no install)
 
@@ -743,8 +764,8 @@ Building from Source
 
 -   macOS 14.0+ (Sonoma) on Apple Silicon (M1+)
 -   Xcode 16.0+
--   Node.js 22.12+ (minimum supported version)
--   Zig 0.15.2 (for building vt-fwd binary; install via `brew install zig` or from ziglang.org)
+-   Node.js 22.12 through 24.x
+-   Zig 0.16.0 (for building vt-fwd binary; install via `brew install zig` or from ziglang.org)
 
 ### Build Steps
 

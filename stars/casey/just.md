@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 34274
+stars: 34374
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -910,7 +910,7 @@ boolean
 
 Don't evaluate unused variables.
 
-`lists`master
+`lists`1.53.0
 
 boolean
 
@@ -1128,36 +1128,76 @@ Because `just` cannot determine when exported variables are used, assignments wi
 
 #### Lists
 
-The `lists` settingmaster allows values that are lists of strings. It is currently unstable and will change in backwards incompatible ways. This section documents changes in behavior when `set lists` is enabled.
+The `lists` setting1.53.0 allows values that are lists of strings. It is currently unstable and will change in backwards incompatible ways. This section documents changes in behavior when `set lists` is enabled.
+
+It has not yet been decided how lists should behave with many of the built-in functions. Functions that have been updated to accept lists are mentioned in this section. Using lists with any other function is an error. The `join_list()` function can be used to convert lists into space-separated strings for use with un-upgraded functions. Feedback on how built-in functions should behave with lists, and on lists in general, is most welcome! Feel free to open an issue or leave a comment in the `set lists` tracking issue.
 
 Variadic recipe parameters are lists of strings instead of single space-separated strings.
 
-Lists literals are written `[a, b, c]` and are flattened, since lists may only contain strings and not other lists. For example, `[["a", "b"], [], "c"]` evaluates to `["a", "b", "c"]`.
+List literals are written `[a, b, c]`. List literals flatten their arguments, since lists may only contain strings and not other lists. For example, `[["a", "b"], [], "c"]` evaluates to `["a", "b", "c"]`.
 
-The following functions apply to each list element individually:
-
--   `absolute_path()`
--   `append()`
--   `prepend()`
--   `quote()`
-
-`append()` and `prepend()` do not split elements on whitespace and error if the first argument is not a single-element list.
-
-The canonical boolean true value is the string `"true"`, and the canonical boolean false value is the empty list `[]`. All values other than the empty list are truthy, including `''`.
-
-The functions `is_dependency()`, `path_exists()`, and `semver_matches()` return the canonical booleans.
-
-`which()` function the empty list when no executable is found.
+Lists in recipe and `f`\-string interpolations are joined with spaces into a single string.
 
 Each argument to a dependency binds to exactly one parameter, and supplying extra arguments to a variadic dependency is an error.
 
 Dependencies may be invoked once per element of a list with `*(recipe *argument)`.
 
-A parameter evaluates to the default when the argument is an empty list.
+A parameter evaluates to the default when the argument is the empty list.
 
 Passing an empty list to a non-`*` parameter without a default is an error.
 
+The `else` of an `if` may be omitted, in which case the `if` evaluates to `[]` when its condition is false.
+
+Message values in `assert(condition, message)` and `[confirm(message)]` are space-joined for display.
+
+The `+` and `/` operators combine strings and lists. A string and a non-empty list are combined by concatenating the string with each element of the list. Two lists of the same length are combined into a list containing the pairwise concatenated elements of both operands. Combining two lists of different lengths is an error.
+
+The `++` operator performs list concatenation.
+
+##### Booleans
+
+The canonical boolean true value is the string `"true"`, and the canonical boolean false value is the empty list `[]`. All values other than the empty list are truthy, including `''`.
+
+The condition of an `if` or `assert()` may be any expression, which is evaluated for truthiness.
+
+The comparison operators `==`, `!=`, `=~`, and `!~` may be used anywhere, not just in `if` and `assert()`, and evaluate to `"true"` or `[]`.
+
+`value =~ regexes` is true if any element in `value` matches any regex in `regexes`. It is false if either `value` or `regexes` is empty.
+
+`value !~ regexes` is true if no element in `value` matches any regex in `regexes`. It is true if either `value` or `regexes` is empty.
+
+Values may be negated with `!`. `!expression` evaluates to `"true"` if `expression` is `[]`, otherwise it evaluates to `[]`.
+
+##### Settings
+
+The `script-interpreter`, `shell`, and `windows-shell` settings flatten their elements like list literals.
+
 When `positional-arguments` is set, list arguments are space-joined unless they are variadic, in which case they are passed as one positional argument per element.
+
+The `--dotenv-filename` and `--dotenv-path` options may be passed multiple times, and the `dotenv-filename` and `dotenv-path` settings accept lists, in which case multiple environment files may be loaded. The values of `dotenv-path` are tried first. If none are found the current directory is searched for the names in `dotenv-filename`, followed by its ancestors, stopping in the first directory that contains any of them and loading all matching files in that directory. If multiple environment files are loaded, variables in files later in list take precedence over earlier ones.
+
+##### Attributes
+
+The `[arg]` `flag` attribute makes the parameter a flag which does not take a value on the command line. For example, with `[arg('foo', long, flag)]`, `foo` will be `"true"` when `--foo` is passed, and `[]` otherwise. Flag parameters may not have a default.
+
+In `[env(variable, value)]` if `value` is `[]`, `variable` is not set. Otherwise it is set to `value` joined with spaces.
+
+##### Functions
+
+-   `absolute_path()` - Applies to each list element individually.
+-   `append()` - Applies to each list element individually and does not split elements on whitespace.
+-   `assert(condition, message)` - Evaluates to `condition`.
+-   `bool(value)` Converts `value` to the canonical boolean values. Returns `[]` when `value` is `""` `"0"` `"false"`, or `[]`, and `"true"` when `value` is `"1"` or `"true"`. All other values are an error. Can be used to parse booleans passed as arguments or environment variables.
+-   `env(keys, default)` Checks for the environment variables named in `keys` in order and returns the value of the first that is set. Returns `default` if none are set or an error if `default` is omitted.
+-   `is_dependency()` - Returns the canonical booleans.
+-   `join_list(value, separator)` - Joins `value` into a single string. Elements are joined with `separator`, or with a single space if `separator` is omitted.
+-   `path_exists()` - Returns the canonical booleans.
+-   `prepend()` - Applies to each list element individually and does not split elements on whitespace.
+-   `quote()` - Applies to each list element individually.
+-   `semver_matches()` - Returns the canonical booleans.
+-   `show(value)` - Converts `value` into a string containing its literal representation. Brackets are used for empty and multi-element lists, e.g., `"[]"` and `"["foo", "bar"]"`, but not single-element lists, e.g., `"foo"`.
+-   `split(string, separator)` - Splits `string` into a list on each occurrence of `separator`. If `separator` is omitted, `string` is split on whitespace, with leading and trailing whitespace trimmed.
+-   `which()` - Returns the empty list when no executable is found.
 
 ##### Examples
 
@@ -1197,11 +1237,12 @@ second=bob
 $1=one
 $2=two
 
-A mapped dependency is invoked once per element of its starred argument:
+A mapped dependency is invoked once per element of its starred argument, with `[parallel]` to run them in parallel:
 
 set unstable
 set lists
 
+\[parallel\]
 build target \*platform: \*(compile target \*platform)
 
 @compile target platform:
@@ -1210,6 +1251,14 @@ build target \*platform: \*(compile target \*platform)
 $ just build x86 foo bar
 compiling foo for x86…
 compiling bar for x86…
+
+The canonical false value `[]` is recommended as a default for options:
+
+set unstable
+set lists
+
+\[arg('bar', long)\]
+foo bar\=\[\]:
 
 #### Positional Arguments
 
@@ -1428,7 +1477,7 @@ foobar := 'foo' + 'bar'
 
 The logical operators `&&` and `||` can be used to coalesce values1.37.0, similar to Python's `and` and `or`. The only false value is the empty list `[]`; every other value, including the empty string `''`, is true.
 
-These operators require `set lists`master, which is currently unstable.
+These operators require `set lists`1.53.0, which is currently unstable.
 
 The `&&` operator returns the empty list if the left-hand argument is false, otherwise it returns the right-hand argument:
 
@@ -1721,9 +1770,10 @@ $ just
     $ just
     bash: '/bin/bash'
     
--   `which(name)`1.39.0 — Search directories in the `PATH` environment variable for the executable `name` and return its full path, or the empty string if no executable with `name` exists. Currently unstable.
+-   `which(name)`1.39.0 — Search directories in the `PATH` environment variable for the executable `name` and return its full path, or the empty list if not found. Requires `set lists`1.53.0.
     
     set unstable
+    set lists
     
     bosh := which("bosh")
     
@@ -1738,7 +1788,7 @@ $ just
 
 -   `is_dependency()` - Returns the string `true` if the current recipe is being run as a dependency of another recipe, rather than being run directly, otherwise returns the string `false`.
     
--   `recipe_name()`master - Returns the name of the current recipe.
+-   `recipe_name()`1.53.0 - Returns the name of the current recipe.
     
 
 #### Invocation Directory
@@ -1819,7 +1869,6 @@ The process ID is: 420
 -   `prepend(prefix, s)`1.27.0 - Prepend `prefix` to whitespace-separated strings in `s`. `prepend('src/', 'foo bar baz')` → `'src/foo src/bar src/baz'`
 -   `encode_uri_component(s)`1.27.0 - Percent-encode characters in `s` except `[A-Za-z0-9_.!~*'()-]`, matching the behavior of the JavaScript `encodeURIComponent` function.
 -   `quote(s)` - Replace all single quotes with `'\''` and prepend and append single quotes to `s`. This is sufficient to escape special characters for many shells, including most Bourne shell descendants.
--   `show(value)`master - Convert `value` to a string containing its literal representation. Brackets are used for empty and multi-element lists, e.g., `"[]"` and `"["foo", "bar"]"`, but not single-element lists, e.g., `"foo"`.
 -   `replace(s, from, to)` - Replace all occurrences of `from` in `s` with `to`.
 -   `replace_regex(s, regex, replacement)` - Replace all occurrences of `regex` in `s` with `replacement`. Regular expressions are provided by the Rust `regex` crate. See the syntax documentation for usage examples. Capture groups are supported. The `replacement` string uses Replacement string syntax.
 -   `trim(s)` - Remove leading and trailing whitespace from `s`.
@@ -1869,7 +1918,7 @@ These functions can fail, for example if a path does not have an extension, whic
 
 #### Assertions and Error Reporting
 
--   `assert(CONDITION, EXPRESSION)`1.27.0 - Error with message `EXPRESSION` if `CONDITION` is false.
+-   `assert(CONDITION, EXPRESSION)`1.27.0 - Error with message `EXPRESSION` if `CONDITION` is false. `EXPRESSION` may be omitted1.53.0,
 -   `error(message)` - Abort execution and report error `message` to user.
 
 #### UUID and Hash Generation
@@ -2141,7 +2190,7 @@ recipe
 
 Require values of argument `ARG` to be passed as short `-S` option.
 
-`[arg(ARG, value="VALUE")]`1.46.0
+`[arg(ARG, value=VALUE)]`1.46.0
 
 recipe
 
@@ -2855,7 +2904,7 @@ If a parameter has both a long and short option, it may be passed using either.
 
 Variadic `*` and `+` parameters cannot be options.
 
-The `[arg(ARG, value=VALUE, …)]`1.46.0 attribute can be used with `long` or `short` to make a parameter a flag which does not take a value.
+The `[arg(ARG, value=VALUE, …)]`1.46.0 attribute can be used with `long` or `short` to make a parameter a flag which does not take a value. `VALUE` may be an expressionmaster.
 
 In this `justfile`:
 
@@ -3716,7 +3765,7 @@ default:
 
 ### Markdown `justfile`s
 
-If the argument to `--justfile` ends in `.md`, `just` extracts the contents of unindented `just` fenced code blocks and writes them to a `justfile` in a temporary directorymaster:
+If the argument to `--justfile` ends in `.md`, `just` extracts the contents of unindented `just` fenced code blocks and writes them to a `justfile` in a temporary directory1.53.0:
 
 \# Project
 

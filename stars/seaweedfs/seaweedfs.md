@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 32895
+stars: 33040
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -366,7 +366,7 @@ Back to TOC
 SeaweedFS Filer
 ---------------
 
-Built on top of the blob store, SeaweedFS Filer adds directory structure to create a file system. The directory sturcture is an interface that is implemented in many key-value stores or databases.
+Built on top of the blob store, SeaweedFS Filer adds directory structure to create a file system. The directory structure is an interface that is implemented in many key-value stores or databases.
 
 The content of a file is mapped to one or many blobs, distributed to multiple volumes on multiple volume servers.
 

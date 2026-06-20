@@ -1,6 +1,6 @@
 ---
 project: PySimpleGUI
-stars: 13803
+stars: 13809
 description: Python GUIs for Humans! Create any GUI simple or complicated in a way that's intuitive.  Launched in 2018. NEW for 2026 - the LGPL3 Version 6.  Transforms tkinter, Qt, WxPython, and Remi into a simple, intuitive, and fun experience for both hobbyists and expert users. 
 url: https://github.com/PySimpleGUI/PySimpleGUI
 ---
@@ -59,9 +59,9 @@ python -m pip install .
 Longer Term Outlook
 -------------------
 
-I’m still wrapping up the transition from version 5 to 6, including the docs. After that, I’m honestly not sure what the long-term future looks like—but if the past 8 years are any indication, I’m not great at predicting it.
+I’m honestly not sure what the long-term future looks like—but if the past 8 years are any indication, I’m not great at predicting it.
 
-For now, I’m here and happy to help.
+For now, I’m here, having fun writing code, and happy to help.
 
 Thank you
 ---------
@@ -121,47 +121,42 @@ PySimpleGUI has always been developed more like a proprietary product than an op
 What's new...
 =============
 
-Recently added features and activities
---------------------------------------
+Features & Fixes in version 6.2
+-------------------------------
+
+-   Fixed bug in Window.settings\_save
+-   Added ability to "print" an image inline in a Multiline element
+-   The ability to upgrade to the latest Maint Release is once again built into PSG. You can use the Home Window or the command line command`psgupgrade`. You can see the release notes and install a new version.
+-   Fix for bug #5750. Graph events was going into an infinite loop when write\_event\_value events were received. Fix was to clear the realtime button flag. Potential for regression problems should be minimal since only the Graph element conditional was changed.
+-   Added Enhancement #6671. Added parameter select select\_node\_keys to Tree.update. Enables nodes in the tree to be programmatically selected as if the user selected them.
+-   Fixed Multiline echo\_stdout\_stderr feature/parameter. Was not correctly echoing out to sys.stdout, stderr. Edited docstring to document the correct behavior. It will only echo if you've rerouted stdout or stderr to the element. It will not do the reroute for you.
+-   Fix for Issue #6686 - Calendar chooser button clearing fields that should only be cleared when window.read returns. Used the newly added element\_that\_generated\_event variable from the Graph element fix above (already came in handy).
+-   Display the Maint Release version number in the Home Window. Moved the install button
+-   Added ability to specify timers using string "H:M:S" when calling Window.start\_timer.
+-   Enhancement - support for horizontal scroll only for scrollable column element
+-   Fixed Multiline echo\_stdout\_stderr feature/parameter. Was not correctly echoing out to sys.stdout, stderr. Edited docstring to document the correct behavior. It will only echo if you've rerouted stdout or stderr to the element. It will not do the reroute for you.
+-   Fix for Issue #6686 - Calendar chooser button clearing fields that should only be cleared when window.read returns. Used the newly added element\_that\_generated\_event variable from the Graph element fix above (already came in handy).
+-   Added ability to specify timers using string "H:M:S" when calling Window.start\_timer.
+-   Enhancement - ability to set the Frame border color. Added border\_color and border\_width\_no\_relief parms to the Frame element
+    -   Frame border color to default to the text element color if no color is set
+
+The documentation has been updated. The call ref section matches the version 6.2 release.
 
 Drag and Drop!
 --------------
 
 Hard to believe, but drag and drop is working on PySimpleGUI.
 
-Drag and Drop support has been a wish for many years. We finallyi may have found a way to do it such that the PySimpleGUI code is not changed. All code is in the user code-space.
+Drag and Drop support has been a wish for many years. We finally may have found a way to do it such that the PySimpleGUI code is not changed. All code is in the user code-space.
 
 `psgdnd` is a new package posted on GitHub that adds drag and drop to PySimpleGUI. You can pip install it and try drag and drop for yourself. More information and examples can be found in that repo.
 
-python -m pip install --upgrade https://github.com/PySimpleGUI/psgdnd/zipball/main
-
-Documentation
--------------
-
--   The move of the documentation from ReadTheDocs to GitHub pages is complete. Users should notice no difference.
--   Removal of Version 5 specifics is done for the mostpart. There may be a few spots that need cleanup
--   Work has started to include PSG 6 details. The SDK Call Reference needs upating before the next PyPO release, preferably sooner so that the code on GitHub is in there prior to PyPO release.
+Version 6.0.1 was released to PyPI. It's working on Windows. Version 6.0.2 on GitHub has the fixes that were needed for Linux (so far... there could be more to come). The Mac is still an unknown.
 
 New repo - PSGMicroPython
 -------------------------
 
 Created a new repo and added code for interfacing to a MicroPython-based microcontroller. It works with Raspberry Pi Pico and ESP32. It may work with other boards too. Not meant to be robust or significant. It's just some code I threw together that could maybe be useful to someone else... or not...
-
-Features & Fixes
-----------------
-
--   6.0.2 - Fixed bug in Window.settings\_save
--   6.0.3 - Added ability to "print" an image inline in a Multiline element
-
--   6.0.5 - The ability to upgrade to the latest Maint Release is once again built into PSG. You can use the Home Window or the command line command`psgupgrade`. You can see the release notes and install a new version.
-
--   6.0.6 - Fix for bug #5750. Graph events was going into an infinite loop when write\_event\_value events were received. Fix was to clear the realtime button flag. Potential for regression problems should be minimal since only the Graph element conditional was changed.
--   6.0.7 - Added Enhancement #6671. Added parameter select select\_node\_keys to Tree.update. Enables nodes in the tree to be programmatically selected as if the user selected them.
--   6.0.7 - Fixed Multiline echo\_stdout\_stderr feature/parameter. Was not correctly echoing out to sys.stdout, stderr. Edited docstring to document the correct behavior. It will only echo if you've rerouted stdout or stderr to the element. It will not do the reroute for you.
--   6.1.2 - Fix for Issue #6686 - Calendar chooser button clearing fields that should only be cleared when window.read returns. Used the newly added element\_that\_generated\_event variable from the Graph element fix above (already came in handy).
--   6.1.4 - Display the Maint Release version number in the Home Window. Moved the install button
--   6.1.5 - Added ability to specify timers using string "H:M:S" when calling Window.start\_timer.
--   6.1.6 - Enhancement - support for horizontal scroll only for scrollable column element
 
 * * *
 

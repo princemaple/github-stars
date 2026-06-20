@@ -180,15 +180,17 @@ Release
 -   Pull master (`git pull`)
 -   Clean and test (Optional)
     -   Run `rm -rf node_modules`
-    -   Run `npm i`
-    -   Run tests (`npm run test:release`)
+    -   Run `yarn`
+    -   Run tests (`yarn test:release`)
 -   Examine CHANGELOG.md to determine next version (X.Y.Z)
 -   Run `git checkout -b release/X.Y.Z`
--   Update version using `npm version [<newversion> | major | minor | patch]`
-    -   This will update `package.json` versions and `changelog.md`.
+-   Update version in `package.json`.
+-   Update changelog in `CHANGELOG.md`
+-   Run `yarn package`
+-   Run `git commit -am "(release): X.Y.Z"`
+-   Run `git tag X.Y.Z`
 -   Run `git push origin HEAD --tags`
--   Run `npm run publish:lib`
--   Run `npm run deploy`
+-   Run `yarn run publish`
 -   Submit PR
 
 Credits

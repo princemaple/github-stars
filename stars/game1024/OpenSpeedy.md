@@ -1,6 +1,6 @@
 ---
 project: OpenSpeedy
-stars: 16134
+stars: 16236
 description: 🎮 An open-source game speed modifier.
 url: https://github.com/game1024/OpenSpeedy
 ---
@@ -8,170 +8,154 @@ url: https://github.com/game1024/OpenSpeedy
 OpenSpeedy
 ==========
 
-OpenSpeedy is an open-source and free game speed tool that helps you break frame rate limitations and provides a smoother, silkier gaming acceleration experience.
+最好用的开源游戏变速器
 
-Offcial Website  
   
   
   
   
-  
 
-简体中文 · 日本語 · English
+🌐 English | Deutsch | Français | 日本語 | 한국어 | 中文
 
-🚀 Features
-===========
+🚀 特性
+=====
 
--   Completely free and open-source
--   Easy-to-use interface
--   Customizable speed multiplier
--   Good compatibility with various game engines
--   Low system resource consumption
--   Supports accelerating both x86 and x64 processes
--   Non-invasive to the kernel: Ring3 level Hook, does not compromise the system kernel
+-   快捷变速
+-   现代化UI
+-   同时可以支持x86和x64平台进程
+-   无内核侵入性，Ring3层Hook，不破坏系统内核
 
-💾 Installation
-===============
+💾 安装
+=====
 
-📦 **Method1: Winget**
+📦 **方式1: Winget**
 
-# install 
+# 安装命令如下
 winget install openspeedy
 
-# open a new terminal, you can run openspeedy by following command
-speedy
+# 打开一个新的终端，运行openspeedy
+openspeedy
 
-📥 **Method2: Manual Download**
+📥 **方式2: 手动下载**
 
-Visit the Installation Page to download the latest version
+访问 安装页面 下载最新版本
 
-💻 System Requirements
-======================
+💻 操作系统要求
+=========
 
--   OS: Windows 10 or later
--   Platform: x86 (32-bit) and x64 (64-bit)
+-   OS: Windows10 以上
+-   平台：x86（32位） 和 x64 （64位）
 
-📝 Usage Instructions
-=====================
+📝 使用说明
+=======
 
-1.  Start OpenSpeedy
-2.  Launch the target game you want to speed up
+1.  启动 OpenSpeedy
+2.  运行需要变速的目标游戏
 
-1.  Select the game process, and adjust the speed multiplier in the OpenSpeedy interface
+1.  勾选游戏进程，在 OpenSpeedy 界面中调整速度倍率
 
-1.  The effect takes effect immediately. Compare the results below
+1.  即刻生效，对比效果如下
 
-default.mp4
+2026-06-20.20-40-21.mp4
 
-🔧 Technical Principle
-======================
+🔧 技术原理
+=======
 
-OpenSpeedy achieves game speed adjustment by hooking the following Windows system time functions:
+编译环境要求：
 
-Function Name
+-   Node.js 18+
+-   Rust
+-   CMake
+-   Visual Studio（含 C++ 桌面开发工作负载）
 
-Library
+编译命令：
 
-Description
+npm run tauri dev
+
+OpenSpeedy 通过 Hook 以下 Windows 系统时间函数来实现游戏速度调整：
+
+函数名
+
+所属库
+
+功能
 
 Sleep
 
 user32.dll
 
-Thread sleep
+线程休眠
 
 SetTimer
 
 user32.dll
 
-Create message-based timer
+创建基于消息的计时器
 
 timeGetTime
 
 winmm.dll
 
-Get milliseconds elapsed since system startup
+获取系统启动后经过的毫秒数
 
 GetTickCount
 
 kernel32.dll
 
-Get milliseconds elapsed since system startup
+获取系统启动后经过的毫秒数
 
 GetTickCount64
 
 kernel32.dll
 
-Get milliseconds elapsed since system startup (64-bit)
+获取系统启动后经过的毫秒数(64位)
 
 QueryPerformanceCounter
 
 kernel32.dll
 
-High precision performance counter
+高精度性能计数器
 
 GetSystemTimeAsFileTime
 
 kernel32.dll
 
-Get system time
+获取系统时间
 
 GetSystemTimePreciseAsFileTime
 
 kernel32.dll
 
-Get high precision system time
+获取高精度系统时间
 
-⚠️ Notes
-========
+⚠️ 注意事项
+=======
 
--   This tool is for learning and research purposes only
--   Some online games may have anti-cheat systems. Using this tool may result in your account being banned
--   Excessive speeding up may cause the game physics engine to malfunction or crash
--   Not recommended for use in competitive online games
--   Open source product does not include digital signature and may be falsely flagged by antivirus software
+-   本工具仅供学习和研究使用
+-   部分在线游戏可能有反作弊系统，使用本工具可能导致账号被封禁
+-   过度加速可能导致游戏物理引擎异常或崩溃
+-   不建议在竞技类在线游戏中使用
+-   开源产品不带数字签名，可能被杀毒软件误报
 
-🔄 Feedback
-===========
+🔄 反馈
+=====
 
-If you encounter any issues during use, feel free to provide feedback via:
+如果在使用过程中遇到任何问题，欢迎通过以下方式反馈：
 
--   FAQ - You can first check the wiki to locate the issue.
--   GitHub Issues - Submit issue reports
+-   FAQ - 先查看wiki定位常见问题
+-   GitHub Issues - 提交问题报告, 网盘类问题请勿提issue, 我不支持, 谢谢合作～🙏
 
-🎁 Buy me a coffee
-==================
+📜 开源协议
+=======
 
-If you find the OpenSpeedy project helpful, you can buy me a coffee~ ☕️
+OpenSpeedy 遵循 GPL v3 许可证。
 
-Name
+🙏 鸣谢
+=====
 
-Description
+OpenSpeedy使用到以下项目的源码，感谢开源社区的力量，如果OpenSpeedy对你有帮助，欢迎Star!
 
-365VPN
+-   minhook: 用于API Hook
+-   tauri: GUI
 
-uses dedicated lines to connect worldwide, offering speeds of up to 10Gbps. Download now to start surfing for free🏄: https://ref.365tz87989.com/?r=RWQVZD
-
-Github Sponsor
-
-https://github.com/sponsors/game1024
-
-Sponsors
-========
-
-This program uses free code signing provided by SignPath.io and a certificate by the SignPath Foundation
-
-📜 License
-==========
-
-OpenSpeedy is licensed under the GNU v3 License.
-
-🙏 Acknowledgements
-===================
-
-OpenSpeedy uses source code from the following projects. Thanks to the open-source community! If OpenSpeedy helps you, please give us a Star!
-
--   minhook: For API Hooking
--   Qt: GUI
-
-Disclaimer: OpenSpeedy is intended for educational and research purposes only. Users assume all risks and responsibilities for using this software. The author is not responsible for any loss or legal liability resulting from the use of this software.
+免责声明: OpenSpeedy 仅用于教育和研究目的。用户应自行承担使用本软件的所有风险和责任。作者不对因使用本软件导致的任何损失或法律责任负责。

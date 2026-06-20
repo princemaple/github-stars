@@ -1,6 +1,6 @@
 ---
 project: beekeeper-studio
-stars: 23005
+stars: 23066
 description: Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows.
 url: https://github.com/beekeeper-studio/beekeeper-studio
 ---
@@ -346,6 +346,8 @@ Want to write some code and improve Beekeeper Studio? Getting set-up is easy on 
 # 2. Check out your fork:
 git clone git@github.com:<your-username\>/beekeeper-studio.git beekeeper-studio
 cd beekeeper-studio/
+yarn set version classic
+nvm use 22
 yarn install # installs dependencies
 
 # Now you can start the app:

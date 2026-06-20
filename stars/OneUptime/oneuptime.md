@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 7148
+stars: 7189
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -66,6 +66,7 @@ Monitor the platforms your services run on — from bare-metal servers to hyperv
 -   **Servers & VMs** — host metrics (CPU, memory, disk, network, processes) and logs from Linux, macOS, and Windows hosts. Docs →
 -   **Kubernetes** — one `helm install` ships node, pod, container, and cluster metrics, events, logs, and eBPF-powered traces and service maps. Docs →
 -   **Docker** — a single agent container auto-discovers every container on the host and ships metrics and logs. Docs →
+-   **Podman** — a single agent container auto-discovers every container on the host (via Podman's Docker-compatible socket) and ships metrics and logs. Docs →
 -   **Proxmox** — one agent per cluster covers nodes, VMs and containers, storage, HA resource state, backup-job coverage, and storage replication health. Docs →
 -   **Ceph** — cluster health with a drill-down into active health checks, capacity usage and growth forecast, OSD/pool/PG/monitor visibility, and cluster logs. Docs →
 

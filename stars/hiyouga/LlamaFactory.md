@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 72134
+stars: 72312
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -38,6 +38,7 @@ Read technical notes:
 
 -   **Documentation (WIP)**: https://llamafactory.readthedocs.io/en/latest/
 -   **Documentation (AMD GPU)**: https://rocm.docs.amd.com/projects/ai-developer-hub/en/latest/notebooks/fine\_tune/llama\_factory\_llama3.html
+-   **Documentation (ASCEND NPU)**: https://llamafactory.readthedocs.io/en/latest/multibackend/npu/index.html
 -   **Official Blog**: https://blog.llamafactory.net/en/
 
 Note
@@ -107,6 +108,8 @@ Website: https://blog.llamafactory.net/en/
 
 -   💡 KTransformers Fine-Tuning × LLaMA Factory: Fine-tuning 1000 Billion models with 2 4090-GPU + CPU (English)
 -   💡 Easy Dataset × LLaMA Factory: Enabling LLMs to Efficiently Learn Domain Knowledge (English)
+-   💡 DataFlow × LLaMA Factory: Producing High-Quality Data for LLM Training with a Data Preparation Pipeline (English) | 中文
+-   💡 DataFlex × LLaMA Factory: A Data-Centric Dynamic Training System Built on LLaMA-Factory (English) | 中文
 -   A One-Stop Code-Free Model Reinforcement Learning and Deployment Platform based on LLaMA-Factory and EasyR1 (Chinese)
 -   How Apoidea Group enhances visual information extraction from banking documents with multimodal models using LLaMA-Factory on Amazon SageMaker HyperPod (English)
 

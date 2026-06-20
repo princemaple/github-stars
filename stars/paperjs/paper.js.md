@@ -1,6 +1,6 @@
 ---
 project: paper.js
-stars: 15052
+stars: 15053
 description: The Swiss Army Knife of Vector Graphics Scripting – Scriptographer ported to JavaScript and the browser, using HTML5 Canvas. Created by @lehni & @puckey
 url: https://github.com/paperjs/paper.js
 ---

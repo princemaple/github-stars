@@ -1,6 +1,6 @@
 ---
 project: pytudes
-stars: 24339
+stars: 24352
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
@@ -31,6 +31,12 @@ Open
 Year
 
 New
+
+co nb
+
+2026
+
+(How to Write a (Lisp) Interpreter (in Python))
 
 co nb
 
@@ -667,6 +673,12 @@ co nb
 2017
 
 Convex Hull Problem
+
+co nb
+
+2026
+
+(How to Write a (Lisp) Interpreter (in Python))
 
 co nb
 

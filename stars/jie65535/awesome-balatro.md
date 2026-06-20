@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1216
+stars: 1219
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -88,6 +88,7 @@ Tools
 -   Balatrones - Manage custom modpack instances for Balatro with their own mods and save files in separate directories (Currently Windows only). by @bconlon1
 -   BalatroWebSiteTemplate - Use web pages to show your Jokers. like this. by @notmario
 -   Blueprint - An online seed analyzer inspired by the soul, with joker spoilers and queue support @miaklwalker
+-   BusDash - Win rate dashboard for gold stake players, by @Bus693
 -   Immolate - An OpenCL seed searcher for Balatro. by @MathIsFun\_
 -   JokerDeck - A mod manager for Balatro with mod browsing, one-click install, instant enable/disable on browser and locally, dependency detection and more. by @Ch3rryC0d3r
 -   Motely - A C# CPU SIMD seed searcher for Balatro. by @tacodiva
@@ -105,6 +106,8 @@ Mod Loaders
 
 Mods (Require **Steamodded**)
 -----------------------------
+
+-   
 
 ### API
 
@@ -146,6 +149,7 @@ Mods (Require **Steamodded**)
 
 -   Codex Arcanum - Adds a new set of cards: Alchemy! by @itayfeder
 -   Deluxe Consumables Cards - Add Deluxe versions of consumables. by @JeffVi
+-   \[Redux-Arcanum\] (https://github.com/jumbocarrot0/Redux-Arcanum) - tweaks of Codex-Arcanum. by jumbocarrot0
 -   The Autumn Circus - A modularized Balatro mod adding a variety of content! by AutumnMood
 
 ### Decks
@@ -204,48 +208,97 @@ Mods (Require **Steamodded**)
 ### Functionality
 
 -   +1 Shop slot for High Stakes - Adds Overstock Voucher (+1 card slot in Shop) to all runs at Blue Stakes or higher. by @Encarvlucas
+    
 -   Add +1 Shop to Every Run - Adds Overstock Voucher (+1 card slot in Shop) to all runs. by @Encarvlucas
--   Always Show Seed - Shows the seed and makes you able to copy it at all time on the options eveon on non seeded run. by @infarctus
+    
+-   Always Show Seed rekindled - Shows the seed and makes you able to copy it at all time on the options eveon on non seeded run. by @RakibRyan
+    
+-   Aurinko - Lets plant cards generate with editions by @MathIsFun0
+    
 -   BalatroQuickLoad - I made this module for quick file reads. Repeatedly switching to the main menu was too painful. by @TsunamiinFantasy
+    
 -   Better Balatro - A mod that changes the gameplay for a fresh Balatro™️ experience! by @Mysthaps
+    
 -   Better Mouse And Gamepad - Make mouse and gamepad more efficient and easier to use. For example multiply select cards by holding and dragging right mouse button. by @Kooluve
+    
 -   Better Stakes - Rework of orange and gold stakes, making them less challenging and reducing the need to reset for a good start. by @kjossul
+    
 -   Card Sleeves - Adds fancy sleeves which not only keep the cards cosy, but also apply the modifier of the deck it represents (e.g. get +$10 at start with Yellow Sleeve). by @Larswijn
+    
 -   Choose First Shop Joker - This mod adds a way to choose the first joker that spawns. by @infarctus
+    
 -   Collection Fix - Fixes the collection to work with amounts of cards that aren't the base game's. by @Golden Epsilon
+    
 -   Debug Menu - Enables Balatro's builtin debug menu. Press TAB to show keybinds. by @MathIsFun\_
+    
 -   DisableVerdantLeaf - Disable Verdant Leaf (All cards debuffed until 1 Joker Sold) on specific challenge runs. by @V-rtualized
+    
 -   Faster Stakes Unlock - Winning a run with a stake unlocks the stake 2 levels below for all decks. by @Wiwiweb
+    
 -   Flush Hotkeys - Adds hotkeys for selecting flushes, full houses and other hand types. by @Agoraaa
+    
 -   Free Reroll - Rerolls are free! It may ruin your game experience. by `@Tianjing`
+    
 -   GameSpeed Display and Spacereroll - Always display the speed. Press the shift key to change speed and space key to reroll in shop, also disable the FPS display. by @snowylight
+    
 -   Hand of Six Smods - Allows you to select 6 cards to play. by @RakibRyan
+    
 -   Hermit Level Up | github - Adds a level system for **The Hermit**, increasing its money cap with each level. by @LnxFCA
+    
 -   Hotkeys Collection - Adds hotkeys / keyboard shortcuts for a wide range of Balatro game actions, designed to be able to play most common hands without having to click very often. by @DorkDad141 based on @Agoraaa's mod
+    
 -   House Rules - a mod that adds difficulty modifiers to your runs. by @Mysthaps
+    
 -   Increase Shop Size - Increase cards that are sold in the shop by 2. by `@MonkeyHiko`
+    
 -   IncreaseJokerCap - Increase Base Joker Capacity. by @Akita Attribute
+    
 -   IncreaseSoulProbability - Increase Soul Spectral Card Probability To Spawn. by @Akita Attribute
+    
 -   InfinteScore - A mod to increase the score cap from 1.7e308 to effectively infinite. by @JamestheJellyfish
+    
 -   JimboStats - Automatic Run History Tracking Platform. by `@demarcot`, @AxBolduc, @mwithington
+    
 -   JoJo's Tarots - Replaces tarot cards graphics with ones from Jojo's. by `@KaptenApten`
+    
+-   lock-the-deal - Allows locking of a joker, tarot card or planet card in shop to be purchased later. @LnxFCA
+    
 -   Masquerade - Allows multiple card sprites to coexist and be randomly picked when displayed. by @Amavoleda
+    
 -   Metal Card Falling Sound Effect - Replaces default steel card activation sound with metal pipe falling sound effect. by @Muddie
+    
 -   Milck QOL - Add keyboard shortcuts to the game. by Milck
+    
 -   Neow Blessings - Neow has transformed into a cute little card! Choose between 4 blessings at the start of your run, inspired from Slay the Spire. by @kjossul
+    
 -   Quick Restart - Quickly reroll ante 1 tags by clicking f2. by @arachnei
+    
 -   RandomSprite - Randomizes the sprites of all Jokers, Vouchers, Boosters and comsumables. This will also randomize all modded cards into vanilla sprites. by @Mysthaps
+    
 -   ReplaceJokers - A mod to replace all jokers. Can be used to make runs that only have a select few jokers. by @Akita Attribute
+    
 -   RerollPacks - Reroll packs when rerolling the shop. by @DorkDad141
+    
 -   Robo Sorting - Adds Joker Sorting with the S key in the shop. by `@Robo`
+    
 -   Rumble - Enables controller rumble support. by @WilsontheWolf
+    
+-   Saturn - introduces some Quality of Life features for better game experience on endless mode.. by @OceanRamen
+    
 -   Seed Challenges - Allows seeding challenge runs. by @n4ru
+    
 -   Seed Persistence - Quick restart seeded runs. by @n4ru
+    
 -   Set Seed Achievements Bypass - Enables achievements with seeded run. by @infarctus
+    
 -   Slower Scaling Ante - Slows the ante scaling to a linear pattern. by @infarctus
+    
 -   Stickers Always Shown - The joker's stickers are always shown!. by @SirMaiquis
+    
 -   Survival Mode - This mod adds two new game modes: Survival and Survival+. by @Aure
+    
 -   UltraHand - Click on the card in the collection menu to spawn, ignoring the card count limit. by @xioxin
+    
 
 ### GUI
 
@@ -261,7 +314,7 @@ Mods (Require **Steamodded**)
 -   Deselect All - Adds a deselect all button to deselect all highlighted cards. by @Zei33
 -   Divvy's History - View your last played hand! by @DivvyCr
 -   Divvy's Preview - Simulate and preview the score that your hand will get! by @DivvyCr
--   Escape Exit Button - Add an "Exit" button into the "Escape" menu. by @Steamo
+-   Exit Button - Add an "Exit" button into the "Escape" menu. by @RakibRyan
 -   Fold Button - Quickly forfeit your runs with the 'Fold' button! by @happinyz
 -   Gay Mod - Changes a "Straight" into a "Gay". Also changes "Venus" into "Penis" as a bonus. by @FosterBarnes
 -   Hitboxes - Enables Balatro's builtin hitboxes. Also shows some other debug information. by @MathIsFun\_
@@ -278,6 +331,8 @@ Mods (Require **Steamodded**)
 -   No Background discord - Disables the background on start. by @WilsontheWolf
 -   Roulette - Adds a roulette to the game so you can lose all your money and loose your run faster, obviously. by @Hellyom
 -   SeedUnlocker - Allows for entering seeds without Balatro's arbitrary character restrictions. by @MathIsFun\_
+-   SilkTouch - enable mobile like touch ui everywhere for smoother frictionless gameplay @HuyTheKiller
+-   Simple fps display - a simple lightweight mod that shows fps by @RakibRyan
 -   Spectral Recolouring | discord - Adds a shader to allow easy recolouring of spectral cards. by @Eremel\_
 -   Speedrun Timer - A speedrun timer for Balatro. by @MathIsFun\_
 -   SystemClock - Adds a draggable, resizable, customizable clock to the game screen. by @Breezebuilder
@@ -289,57 +344,111 @@ Mods (Require **Steamodded**)
 ### Jokers
 
 -   5CEBalatro - do jokers have meat? by @DPS2004, `@The 5CEB server`
+    
 -   AncientJokerFix - Fixes Ancient Joker to only pick suits in your deck. by @gabepesco
+    
 -   Bad Apple Joker - Adds the Bad Apple Joker to the game. by @JamestheJellyfish
+    
 -   BBBalatro - Adds 15 well-designed jokers and counting. by @BBBalatroMod
+    
 -   Betmma Jokers - 5 More Jokers! by @Betmma
+    
 -   BIG BANG | trailer - Once there was an explosion. A bang which caused a naneinf in a round. (2 jokers & 1 challenge). by @ZJWCY
+    
 -   CheesyJokers - Might as well make my own joker pack since so may other people are doing it. by @ilikecheese
+    
 -   D6 Jokers | discord - Adds D6 Jokers that have their effects determined by a die roll. by @ItsFlowwey
+    
 -   Date A Live - Adds 19 jokers from anime DATE A LIVE. by @snowylight
+    
 -   Emergence - This mod features one (1) custom Joker, and a custom deck that revolves around its mechanics. by @Snoresville
--   FloundersJokers - Adds a variety of different jokers. by @Flounderful
+    
+-   FloundersJokers - Adds a variety of different jokers. by
+    
+-   @Flounderful
+    
 -   Fusion Jokers - Fuse two jokers together to create special, powerful jokers! by @itayfeder and @Lyman
+    
 -   Harambe's Chosen - Cavendish went extinct... just as planned. This mod adds a third, legendary, banana joker to the chain! by @Joolean
+    
 -   House of Hearts - Balatro University community project made for the House of Hearts event organised by American Heart Association. by `Balatro University Community`
+    
 -   Inscrybed Jokers - Some Jokers inspired by Inscryption. by @LunaAstraCassiopeia
+    
 -   JankJonklers - A small pack of Jokers for the game. by @Lyman
+    
 -   JellyMod - A pack of 17 Jokers and 22 new "reverse" tarot cards. by @JamestheJellyfish
+    
 -   Joker Evolution | discord - Gives a few jokers strong evolutions! by @SDM\_0
+    
 -   Joker Fusions - Adds fused Jokers to the game, encountered via owning two compatible Jokers. by `@Numbuh214`
+    
 -   LobotomyCorp - A Balatro mod. Face the Fear, Build the Future. by @Mysthaps
+    
 -   LushMod - Pack with 9 jokers with some interesting effects. by @lusciousdev
+    
 -   Lynverse Jokers - A pack of 15 Jokers based on some lovely ladies! by @AlexyoTheFirst
+    
 -   Milatro - Adds 30 new vanilla inspired Jokers to allow for new builds and synergies. by @MilanKapitein
+    
 -   MittMods - This mod adds many different jokers to the game. by `@MittensGCTM`
+    
 -   Mor jokers | discord - Adds mor jokers. by @Morpline and @Blizzow
+    
 -   MoreFluff - Adds more jokers to the game, by @notmario
+    
 -   Multipack - More crazy packs! You can even choose booster packs from a "multipack". by @snowylight
+    
 -   MultiJokers - Adds a couple of custom jokers to the game. by @John Maged, `@Multi`, `@GoldenEpsilon`
+    
 -   MystJokers - Adds more Jokers to the game. Before you install, read below. by @Mysthaps
+    
 -   Olympus - adding Greek mythology based Jokers. by @AbhinavR314
+    
 -   Pampa Joker Pack - Adds 28 jokers to the game. by @Matelote
+    
 -   Panley Joker - Adds the Panley Joker to the game. by @RedrcknRbn
+    
 -   PiJoker - A joker based on Pi. by @Beeks17
+    
 -   Quilombo - Adds 7 custom jokers with interesting effects. by @acetna
+    
 -   Restart Run Button - Adds a Restart Run button to the escape menu and game over screen. Useful on mobile or for those who were annoyed that the built in R hotkey to restart the run doesn't work on the game over screen. by @Jdbye
+    
 -   Reverie - Reverie is a movie-themed Balatro expansion that focuses on providing special shops and various contents around it. by @DVRP
+    
 -   Risk of Jesters - Risk of Rain themed Jokers, Vouchers and more. by @DVRP
+    
 -   RNG Butter - A mod that tilts RNG somewhat in player's favour. by `@Kusoro`
+    
 -   Ro-Balatro | discord - A fusion between Balatro and Roblox. by @AlexZGreat
+    
 -   ror2funnyitems - Adds the funny items from Risk of Rain 2. by @aou
+    
 -   Rule Breaker Joker - Extend balatro hand beyond 5 cards per round. +1 card per joker. by @RakibRyan
+    
 -   Sculio - A vanilla-esque mod that aims to add new and faithful content to Balatro (Currently contains 45+ Jokers). by @crmykybord
+    
 -   Seven Sins - A pack of Jokers based on the Seven Deadly Sins including 3 new challenges. by @AlexDavies8
+    
 -   Slay the Princess - Adds 31 new Jokers and a new deck based on Slay the Princess. by @Kastamera
+    
 -   Snoresville's Turbulent Jokers - 15 Jokers (6 Common, 5 Uncommon, 3 Rare, 1 Legendary) and 7 Decks that revolve around some of the Jokers. by @Snoreville
+    
 -   Snow's Mods - This is a Theme(s) mod that adds mult varying things to the game, There is currently (1 Theme). by @RattlingSnow353
+    
 -   Star Rail Events - New consumable cards based on iconic events from Honkai: Star Rail by @snowylight
+    
 -   Super Balatrio Bros | discord - The entirety of Super Mario Bros. for the NES, now playable inside Balatro! by @DPS2004
+    
 -   Tag Team - This mod features one (1) custom Joker. by @Snoresville
+    
 -   The Blunt - This mod features one (1) custom Joker. by @Snoresville
+    
 -   Themed Jokers - A bunch of themed Jokers. by @Blizzow
+    
 -   Zilliax - Assemble Functional Modules to create your own Zilliax! by @snowylight
+    
 
 ### Seals
 

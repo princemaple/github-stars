@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 35987
+stars: 36569
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -388,6 +388,7 @@ agent-browser upgrade                 # Upgrade agent-browser to the latest vers
 agent-browser doctor                  # Diagnose the install and auto-clean stale daemon files
 agent-browser doctor --fix            # Also run destructive repairs (reinstall Chrome, purge old state, ...)
 agent-browser doctor --offline --quick  # Skip network probes and the live launch test
+agent-browser mcp                     # Start an MCP stdio server
 
 `doctor` checks your environment, Chrome install, daemon state, config files, encryption key, providers, network reachability, and runs a live headless browser launch test. Stale socket/pid sidecar files are auto-cleaned. Output is also available as `--json` for agents.
 
@@ -401,6 +402,68 @@ agent-browser skills get --all        # Output every skill
 agent-browser skills path \[name\]      # Print skill directory path
 
 Serves bundled skill content that always matches the installed CLI version. AI agents use this to get current instructions rather than relying on cached copies. Set `AGENT_BROWSER_SKILLS_DIR` to override the skills directory path.
+
+### MCP Server
+
+agent-browser mcp
+agent-browser mcp --tools all
+agent-browser mcp --tools core,network,react
+
+Starts a Model Context Protocol server over stdio. MCP clients launch this command as a subprocess and exchange newline-delimited JSON-RPC on stdin and stdout. The server defaults to MCP protocol 2025-11-25 and accepts older supported client protocol versions during initialization.
+
+The default tools profile is `core`, which keeps MCP context small for everyday browser automation. Use `--tools all` for the full typed CLI parity surface, or combine profiles with commas, such as `--tools core,network,react`.
+
+Profiles:
+
+-   `core` — Default. Navigation, snapshots, interaction, waits, reads, screenshots, JavaScript eval, close, tab basics, and profile discovery
+-   `network` — Network routes, request inspection, HAR, headers, credentials, offline
+-   `state` — Cookies, storage, auth, saved state, sessions, profiles, skills
+-   `debug` — Console/errors, tracing, profiling, recording, clipboard, plugins, doctor, dashboard, install, upgrade, chat, diff, batch, confirm/deny
+-   `tabs` — Back/forward/reload, tabs, windows, frames, dialogs
+-   `react` — React tree/inspect/renders/suspense, vitals, pushstate
+-   `mobile` — Viewport/device/geolocation/media, touch, swipe, mouse, keyboard
+-   `all` — Every MCP tool, including the full typed CLI parity surface
+
+Common tools include:
+
+-   `agent_browser_tools_profiles`
+-   `agent_browser_open`
+-   `agent_browser_snapshot`
+-   `agent_browser_click`
+-   `agent_browser_fill`
+-   `agent_browser_type`
+-   `agent_browser_press`
+-   `agent_browser_wait_for_selector`
+-   `agent_browser_screenshot`
+-   `agent_browser_get_url`
+-   `agent_browser_eval`
+-   `agent_browser_close`
+
+Each tool has typed fields such as `url`, `selector`, `text`, `key`, and `session`, so MCP clients show meaningful approval prompts instead of raw command arrays. Each tool also accepts `extraArgs` for advanced CLI flags and exact CLI parity. Tool discovery is paginated and includes read-only/open-world annotations so modern MCP clients can load the large typed surface incrementally.
+
+Example MCP client config:
+
+{
+  "mcpServers": {
+    "agent-browser": {
+      "command": "agent-browser",
+      "args": \["mcp"\]
+    }
+  }
+}
+
+Full parity MCP client config:
+
+{
+  "mcpServers": {
+    "agent-browser": {
+      "command": "agent-browser",
+      "args": \["mcp", "\--tools", "all"\]
+    }
+  }
+}
+
+Tool invocations use the same config files and environment variables as the CLI. Use `session` in the tool arguments, or set `AGENT_BROWSER_SESSION`, to isolate browser state.
 
 Authentication
 --------------
@@ -598,6 +661,7 @@ Security
 agent-browser includes security features for safe AI agent deployments. All features are opt-in, and existing workflows are unaffected until you explicitly enable a feature:
 
 -   **Authentication Vault**: Store credentials locally (always encrypted), reference by name. The LLM never sees passwords. `auth login` navigates with `load` and then waits for login form selectors to appear (SPA-friendly, timeout follows the default action timeout). A key is auto-generated at `~/.agent-browser/.encryption-key` if `AGENT_BROWSER_ENCRYPTION_KEY` is not set: `echo "pass" | agent-browser auth save github --url https://github.com/login --username user --password-stdin` then `agent-browser auth login github`
+-   **Plugin System**: Extend agent-browser with external executable plugins. Plugins run out-of-process over the `agent-browser.plugin.v1` stdio JSON protocol and declare capabilities such as `credential.read`, `browser.provider`, `launch.mutate`, or `command.run`.
 -   **Content Boundary Markers**: Wrap page output in delimiters so LLMs can distinguish tool output from untrusted content: `--content-boundaries`
 -   **Domain Allowlist**: Restrict navigation to trusted domains (wildcards like `*.example.com` also match the bare domain): `--allowed-domains "example.com,*.example.com"`. Sub-resource requests (scripts, images, fetch) and WebSocket/EventSource connections to non-allowed domains are also blocked. Include any CDN domains your target pages depend on (e.g., `*.cdn.example.com`).
 -   **Action Policy**: Gate destructive actions with a static policy file: `--action-policy ./policy.json`
@@ -632,7 +696,82 @@ Action categories requiring confirmation
 
 Enable interactive confirmation prompts
 
+`AGENT_BROWSER_PLUGINS`
+
+JSON plugin registry override
+
 See Security documentation for details.
+
+### Plugin System
+
+Plugins let third-party tools integrate without becoming built-in agent-browser dependencies. Add a plugin from npm or GitHub:
+
+agent-browser plugin add agent-browser-plugin-captcha
+agent-browser plugin add @company/agent-browser-plugin-vault --name vault
+agent-browser plugin add org/agent-browser-plugin-cloud-browser
+
+References are resolved by shape: `name` uses npm, `@scope/name` uses npm, and `owner/repo` uses GitHub. `plugin add` writes `./agent-browser.json` by default; use `--global` for `~/.agent-browser/config.json`.
+
+Plugin packages should support `plugin.manifest` so `plugin add` can discover their name and capabilities automatically. If a plugin does not support manifests, pass `--capability <name>` during add.
+
+Plugins can also be configured manually in `agent-browser.json`:
+
+{
+  "plugins": \[
+    {
+      "name": "vault",
+      "command": "agent-browser-plugin-vault",
+      "capabilities": \["credential.read"\]
+    },
+    {
+      "name": "cloud-browser",
+      "command": "agent-browser-plugin-cloud-browser",
+      "capabilities": \["browser.provider"\]
+    },
+    {
+      "name": "stealth",
+      "command": "agent-browser-plugin-stealth",
+      "capabilities": \["launch.mutate"\]
+    },
+    {
+      "name": "captcha",
+      "command": "agent-browser-plugin-captcha",
+      "capabilities": \["command.run", "captcha.solve"\]
+    }
+  \]
+}
+
+Inspect configured plugins:
+
+agent-browser plugin list
+agent-browser plugin show vault
+
+Use a credential provider plugin for one login:
+
+agent-browser auth login my-app --credential-provider vault --item "My App"
+agent-browser auth login my-app --credential-provider vault --item "My App" --url https://app.example.com/login --username-selector "#email" --password-selector "#password" --submit-selector "button\[type=submit\]"
+
+Use a browser provider plugin:
+
+agent-browser --provider cloud-browser open https://example.com
+
+Use a launch mutator plugin for stealth or local launch customization. The plugin can append Chrome args, extensions, and init scripts before the browser starts:
+
+agent-browser open https://example.com
+
+Use a generic plugin command for domain-specific tools such as CAPTCHA solvers:
+
+agent-browser plugin run captcha captcha.solve --payload '{"siteKey":"...","url":"https://example.com"}'
+
+The protocol request always includes `protocol`, `type`, `capability`, and `request`. A credential plugin receives `credential.resolve`, a browser provider receives `browser.launch`, a launch mutator receives `launch.mutate`, and generic commands receive the supplied request type. `plugin run` is for `command.run` and custom capabilities; core capabilities and protocol request types use their dedicated command paths. agent-browser keeps browser automation, redaction-sensitive output, and policy enforcement in core.
+
+Gate plugin access by capability action:
+
+agent-browser --confirm-actions plugin:vault:credential.read auth login my-app --credential-provider vault --item "My App"
+agent-browser --confirm-actions plugin:cloud-browser:browser.provider --provider cloud-browser open https://example.com
+agent-browser --confirm-actions plugin:stealth:launch.mutate open https://example.com
+
+Do not put vault tokens or passwords in plugin command args. Use the vault vendor's own login/session mechanism or environment outside agent-browser config.
 
 Snapshot Options
 ----------------
@@ -764,7 +903,7 @@ Hide native scrollbars in headless Chromium screenshots, enabled by default (or 
 
 `-p, --provider <name>`
 
-Cloud browser provider (or `AGENT_BROWSER_PROVIDER` env)
+Browser provider, including configured `browser.provider` plugins (or `AGENT_BROWSER_PROVIDER` env)
 
 `--device <name>`
 
@@ -929,7 +1068,14 @@ Create an `agent-browser.json` file to set persistent defaults instead of repeat
   "profile": "./browser-data",
   "userAgent": "my-agent/1.0",
   "hideScrollbars": false,
-  "ignoreHttpsErrors": true
+  "ignoreHttpsErrors": true,
+  "plugins": \[
+    {
+      "name": "vault",
+      "command": "agent-browser-plugin-vault",
+      "capabilities": \["credential.read"\]
+    }
+  \]
 }
 
 Use `--config <path>` or `AGENT_BROWSER_CONFIG` to load a specific config file instead of the defaults:
@@ -937,7 +1083,7 @@ Use `--config <path>` or `AGENT_BROWSER_CONFIG` to load a specific config file i
 agent-browser --config ./ci-config.json open example.com
 AGENT\_BROWSER\_CONFIG=./ci-config.json agent-browser open example.com
 
-All options from the table above can be set in the config file using camelCase keys (e.g., `--executable-path` becomes `"executablePath"`, `--proxy-bypass` becomes `"proxyBypass"`). Unknown keys are ignored for forward compatibility.
+All options from the table above can be set in the config file using camelCase keys (e.g., `--executable-path` becomes `"executablePath"`, `--proxy-bypass` becomes `"proxyBypass"`). Plugins are configured with the `"plugins"` array shown above. Unknown keys are ignored for forward compatibility.
 
 A JSON Schema is available for IDE autocomplete and validation. Add a `$schema` key to your config file to enable it:
 

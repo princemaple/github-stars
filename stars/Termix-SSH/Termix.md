@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 13494
+stars: 13608
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -41,11 +41,13 @@ Features
 
 **Docker Management:** Start, stop, pause, remove containers. View container stats. Control container using docker exec terminal. It was not made to replace Portainer or Dockge but rather to simply manage your containers compared to creating them.
 
-**SSH Host Manager:** Save, organize, and manage your SSH connections with tags and folders, and easily save reusable login info while being able to automate the deployment of SSH keys.
+**SSH Host Manager:** Save, organize, and manage your SSH connections with tags and folders (folder customization and nested folder support), and easily save reusable login info while being able to automate the deployment of SSH keys.
 
-**Server Stats:** View CPU, memory, and disk usage along with network, uptime, system information, firewall, port monitor, on most Linux based servers.
+**Host Metrics:** View CPU, memory, disk usage, network, uptime, system information, firewall, port monitor, log viewer, users/permissions, certificates, and many more which work on most Linux based servers.
 
-**User Authentication:** Secure user management with admin controls and OIDC (with access control) and 2FA (TOTP) support. View active user sessions across all platforms and revoke permissions. Link your OIDC/Local accounts together.
+**User Authentication:** Secure user management with admin controls and OIDC/LDAP/SSO (with access control) and 2FA (TOTP) support. View active user sessions across all platforms and revoke permissions. Link your OIDC/Local accounts together. View audit log of all users actions.
+
+**Tailscale Integration:** List devices from your tailnet to quickly add them as hosts, and connect using Tailscale SSH as an authentication method, letting your tailnet ACLs handle authorization without storing credentials.
 
 **RBAC:** Create roles and share hosts across users/roles.
 
@@ -70,7 +72,8 @@ Features
 -   **Command History** - Auto-complete and view previously ran SSH commands
 -   **Quick Connect** - Connect to a server without having to save the connection data
 -   **Command Palette** - Double tap left shift to quickly access SSH connections with your keyboard
--   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, host key verification, password autofill, OPKSSH, tmux, port knocking, etc.
+-   **Proxmox Integration** - Auto-add hosts into Termix from your Proxmox instance
+-   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, host key verification, password autofill, OPKSSH, tmux, port knocking, terminal logging, etc.
 
   
 

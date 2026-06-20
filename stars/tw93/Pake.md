@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 50444
+stars: 54599
 description: 🤱🏻 Turn any webpage into a desktop app with one command.
 url: https://github.com/tw93/Pake
 ---
@@ -197,4 +197,4 @@ These lovely people already did 🐱
 License
 -------
 
-Pake is open source under GPL-3.0, see LICENSE; apps you build with Pake are entirely yours to use and distribute. If you fork Pake into your own product, to avoid confusion please give it a different name and credit Pake as the source.
+Pake is open source under GPL-3.0, see LICENSE and Pake Output Exception; apps you build with Pake are entirely yours to use and distribute. If you fork Pake into your own product, to avoid confusion please give it a different name and credit Pake as the source.

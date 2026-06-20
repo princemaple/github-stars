@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7845
+stars: 7893
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -574,11 +574,36 @@ number
 
 Safari only: iterations to prime font/decode (WebKit #219770). Use `1` if 3 causes lag
 
+`compress`
+
+boolean
+
+`true`
+
+Downsample inlined raster images to their visible resolution. Faster raster captures + smaller SVG output, fidelity-neutral. Set `false` to embed images verbatim
+
 ### debug
 
 When `debug: true`, SnapDOM logs normally suppressed errors to `console.warn` (with the `[snapdom]` prefix). Useful for troubleshooting capture issues (canvas failures, blob resolution, style stripping, etc.) without noisy output in production.
 
 await snapdom.toPng(el, { debug: true });
+
+### compress
+
+Inlined raster images are embedded at their full natural resolution even when shown in a small box — pixels the output can never display, which only bloat the payload and slow rasterization. With `compress` (on by default) SnapDOM downsamples each oversized raster to (a touch below) the resolution actually visible (`display box × scale × dpr`), preserving aspect ratio and never upscaling. The source codec is kept (PNGs stay lossless), and because the image was already shown far smaller than its natural size the quality loss is imperceptible in practice. Images already at or below their visible size are left untouched. Covers `<img>` (incl. cloned canvas/video), non-repeating CSS `background-image`, and SVG `<image>`.
+
+The benefit depends on the export:
+
+-   **Raster** (`toPng` / `toJpg` / `toCanvas` / `toBlob`): **much faster** — the browser decodes/composites small images instead of huge ones. Output size is essentially unchanged (the final bitmap is the same visible pixels).
+-   **SVG** (`toSvg` / raw): **much smaller** output — the downsampled images are embedded in the SVG.
+
+It is a no-op for images already shown at (or below) their natural resolution, so the common case pays virtually nothing. Pass `compress: false` to embed images verbatim (e.g. if you intend to scale the SVG up later).
+
+// default: images downsampled to visible resolution
+await snapdom.toPng(el);
+
+// keep images at full resolution
+await snapdom.toPng(el, { compress: false });
 
 ### Fallback image on `<img>` load failure
 
@@ -950,7 +975,7 @@ Add custom exporters (e.g. `toPdf`).
 
 Every hook receives a single `context` object that contains normalized capture state:
 
--   **Input & options:** `element`, `debug`, `fast`, `scale`, `dpr`, `width`, `height`, `backgroundColor`, `quality`, `useProxy`, `cache`, `outerTransforms`, `outerShadows`, `safariWarmupAttempts`, `embedFonts`, `localFonts`, `iconFonts`, `excludeFonts`, `exclude`, `excludeMode`, `filter`, `filterMode`, `fallbackURL`.
+-   **Input & options:** `element`, `debug`, `fast`, `scale`, `dpr`, `width`, `height`, `backgroundColor`, `quality`, `useProxy`, `cache`, `outerTransforms`, `outerShadows`, `safariWarmupAttempts`, `compress`, `embedFonts`, `localFonts`, `iconFonts`, `excludeFonts`, `exclude`, `excludeMode`, `filter`, `filterMode`, `fallbackURL`.
     
 -   **Intermediate values (depending on stage):** `clone`, `classCSS`, `styleCache`, `fontsCSS`, `baseCSS`, `svgString`, `dataURL`.
     

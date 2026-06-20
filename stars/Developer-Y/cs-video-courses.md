@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 81786
+stars: 81873
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -847,6 +847,7 @@ Courses
     -   Statistical Physics of Machine Learning
     -   11-755 - Machine Learning for Signal Processing, CMU (YouTube-2024, YouTube-2023)
     -   Machine Learning for 3D Data, Fall 2023, KAIST
+    -   Machine Learning for 3D Data, Spring 2026, KAIST Recordings
     -   Machine Learning for Physicists, Spring 2019, FAU (Spring 2017)
     -   CSCE 585 - Machine Learning Systems, University of South Carolina (YouTube-2020)
     -   CS-E4740 - Federated Learning, Spring 2023, Aalto University
@@ -1161,6 +1162,8 @@ Courses
 -   Performance evaluation of Computer systems - IIT Madras
 -   Real Time systems - IIT Karaghpur
 -   EE 380 Colloquium on Computer Systems - Stanford University
+-   CSE 6220 / CX 4220 Introduction to High Performance Computing - Georgia Tech Videos - Sp 2025 Website - Fa 2024 Videos - Fa 2024
+-   CSE 6230 High Performance Computing: Tools and Applications - Georgia Tech Videos - Sp 2024
 -   System storages - IISc Bangalore
 -   High Performance Computing - IISC Bangalore
 -   2023 High Performance Computing Course Prof Dr - Ing Morris Riedel (2022)
@@ -1354,6 +1357,7 @@ Courses
 -   Computational Astrophysics - AstroTwinCoLo, 2015
 -   Astroinformatics 2019 Conference - Caltech
 -   Space Science with Python - Astroniz
+-   EE 210 Applied Electromagnetic Theory, UC Berkeley Videos - Fa 2025
 -   Computational Physics Course in Python, Rutgers 2021
 -   Landau Computational Physics Course
 -   Statistical Methods and Machine Learning in High Energy Physics

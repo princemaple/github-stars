@@ -1,6 +1,6 @@
 ---
 project: superfile
-stars: 17502
+stars: 17554
 description: Pretty fancy and modern terminal file manager
 url: https://github.com/yorukot/superfile
 ---
@@ -179,15 +179,9 @@ Uninstalling
 
 ### macOS and Linux
 
-On macOS and Linux, you can uninstall superfile by simply removing the binary. If you installed superfile with sudo, run:
+bash -c "$(curl -sLo- https://superfile.dev/uninstall.sh)"
 
-sudo rm /usr/local/bin/spf
-
-If you installed superfile without sudo, run:
-
-rm ~/.local/bin/spf
-
-If you don't rember, just try removing both.
+If you want to inspect the script, see : uninstall.sh
 
 ### Window
 

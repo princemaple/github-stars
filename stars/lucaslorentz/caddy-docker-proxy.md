@@ -1,6 +1,6 @@
 ---
 project: caddy-docker-proxy
-stars: 4525
+stars: 4536
 description: Caddy as a reverse proxy for Docker
 url: https://github.com/lucaslorentz/caddy-docker-proxy
 ---

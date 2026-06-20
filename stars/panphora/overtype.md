@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3670
+stars: 3677
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -8,7 +8,7 @@ url: https://github.com/panphora/overtype
 OverType
 ========
 
-A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~111KB minified with all features.
+A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~117KB minified with all features.
 
 Live Examples
 -------------
@@ -30,7 +30,7 @@ Features
 -   ⌨️ **Keyboard shortcuts** - Common markdown shortcuts (Cmd/Ctrl+B for bold, etc.)
 -   📱 **Mobile optimized** - Responsive design with mobile-specific styles
 -   🔄 **DOM persistence aware** - Recovers from existing DOM (perfect for HyperClay and similar platforms)
--   🚀 **Lightweight** - ~111KB minified
+-   🚀 **Lightweight** - ~117KB minified
 -   🎯 **Optional toolbar** - Clean, minimal toolbar with all essential formatting
 -   ✨ **Smart shortcuts** - Keyboard shortcuts with selection preservation
 -   📝 **Smart list continuation** - GitHub-style automatic list continuation on Enter
@@ -58,7 +58,7 @@ EasyMDE
 
 **Size**
 
-~111KB
+~117KB
 
 364.02 KB
 
@@ -173,13 +173,36 @@ Classic editing
 Installation
 ------------
 
-### NPM
+### NPM (bundlers: Vite, webpack, Rollup, etc.)
 
 npm install overtype
 
-### CDN
+import OverType from 'overtype';
+
+const \[editor\] \= new OverType('#editor', { value: '# Hello' });
+
+OverType is ESM-first and also ships a CommonJS build, so both styles work:
+
+// ESM — default or named import
+import OverType from 'overtype';
+import { OverType } from 'overtype';
+
+// CommonJS
+const { OverType } \= require('overtype');
+
+### CDN: native ES module (no build step)
+
+<script type\="module"\>
+  import OverType from 'https://cdn.jsdelivr.net/npm/overtype@latest/dist/overtype.esm.js';
+  const \[editor\] \= new OverType('#editor', { value: '# Hello' });
+</script\>
+
+### CDN: global script tag (IIFE)
 
 <script src\="https://cdn.jsdelivr.net/npm/overtype@latest/dist/overtype.min.js"\></script\>
+<script\>
+  const \[editor\] \= new OverType('#editor', { value: '# Hello' });
+</script\>
 
 Quick Start
 -----------
@@ -248,6 +271,18 @@ const \[editor\] \= new OverType('#editor', {
 // Available: bold, italic, code, link, h1, h2, h3, bulletList,
 // orderedList, taskList, quote, separator, viewMode
 
+Custom buttons that behave like toggle buttons can provide `isActive`. When it returns `true` or `false`, OverType updates the button’s `active` class and `aria-pressed` state:
+
+{
+  name: 'customToggle',
+  icon: '<svg>...</svg>',
+  title: 'Custom Toggle',
+  isActive: ({ editor, activeFormats }) \=> activeFormats.includes('bold'),
+  action: ({ editor }) \=> {
+    // Toggle your custom formatting
+  }
+}
+
 **Driving formatting from your own UI:**
 
 OverType re-exports the bundled `markdown-actions` library so you can build a fully custom toolbar (or any UI) without installing or bundling `markdown-actions` separately:
@@ -311,8 +346,11 @@ The toolbar and keyboard shortcuts work together seamlessly:
 -   **Cmd/Ctrl + K** - Insert link
 -   **Cmd/Ctrl + Shift + 7** - Numbered list
 -   **Cmd/Ctrl + Shift + 8** - Bullet list
+-   **Cmd/Ctrl + \]** - Indent current line or selection
+-   **Cmd/Ctrl + \[** - Outdent current line or selection
+-   **Tab / Shift+Tab** - Indent or outdent selected lines
 
-All shortcuts preserve text selection, allowing you to apply multiple formats quickly.
+Collapsed **Tab** and **Shift+Tab** follow normal browser focus navigation so keyboard users can leave the editor. Editing shortcuts preserve text selection, allowing you to apply multiple formats quickly.
 
 ### Multiple Editors
 
@@ -597,6 +635,9 @@ new OverType(target, options)
   // Spellcheck
   spellcheck: false,      // Enable browser spellcheck (disabled by default)
 
+  // Link tooltip
+  transformLinkUrl: (url) \=> url,  // Rewrite the URL shown/opened in the link tooltip (per instance)
+
   // Stats bar
   showStats: false,       // Enable/disable stats bar
   statsFormatter: (stats) \=> {  // Custom stats format
@@ -722,10 +763,6 @@ Toggle italic
 
 Cmd/Ctrl + K
 
-Wrap in code
-
-Cmd/Ctrl + Shift + K
-
 Insert link
 
 Cmd/Ctrl + Shift + 7
@@ -735,6 +772,20 @@ Toggle numbered list
 Cmd/Ctrl + Shift + 8
 
 Toggle bullet list
+
+Cmd/Ctrl + \]
+
+Indent current line or selection
+
+Cmd/Ctrl + \[
+
+Outdent current line or selection
+
+Tab / Shift+Tab
+
+Indent or outdent selected lines
+
+When no text is selected, Tab and Shift+Tab use normal browser focus navigation.
 
 Supported Markdown
 ------------------
@@ -862,6 +913,26 @@ Links are clickable with Cmd/Ctrl+Click only. Direct clicking would interfere wi
 
 These limitations are what enable OverType's core benefits: perfect native textarea behavior, tiny size, and zero complexity.
 
+Transforming Link URLs
+----------------------
+
+When your cursor is inside a `[text](url)`, OverType shows a tooltip to open the link. If you edit a document at a different path or domain than where it's published, relative URLs can point to the wrong place. Pass `transformLinkUrl` to rewrite the URL shown and opened by the tooltip, per instance. Your markdown text and the rendered preview are left untouched.
+
+const urlPreviewRegExp \= \[\[/^\\//, '/preview/'\], \[/www\\./, ''\]\];
+
+const \[editor\] \= new OverType('#editor', {
+  transformLinkUrl: (url) \=> urlPreviewRegExp.reduce((value, re) \=> value.replace(...re), url)
+});
+
+The transformed URL is passed through OverType's URL sanitizer before opening, so the tooltip can never open a dangerous scheme (`javascript:`, `data:`, and similar). If your function throws or returns a non-string, the original URL is used.
+
+Recipes
+-------
+
+OverType stays small by leaving optional features to the host app and exposing the public API needed to build them (`editor.textarea`, `onChange`, `getValue`/`setValue`).
+
+-   **Autocomplete / mention popups** - GitHub-style `@mention` and `#issue` popups built entirely on the public API, no core changes.
+
 Development
 -----------
 
@@ -928,9 +999,23 @@ Use `OverType.initFromData()` to configure multiple editors via HTML data attrib
 
 Uses kebab-case attributes that convert to camelCase options (e.g., `data-ot-show-stats` → `showStats`).
 
-**Supported:** `toolbar`, `theme`, `value`, `placeholder`, `autofocus`, `auto-resize`, `min-height`, `max-height`, `font-size`, `line-height`, `show-stats`, `smart-lists`, `show-active-line-raw`
+### Native textarea attributes (`required`, `name`, etc.)
 
-**Not supported (use JS):** `toolbarButtons`, `textareaProps`, `onChange`, `onKeydown`, `onFocus`, `onBlur`, `statsFormatter`, `codeHighlighter`, `colors`, `mobile`
+Set `textareaProps` from HTML in two ways:
+
+<!-- One attribute per prop: data-ot-textarea-<attr> -->
+<div class\="editor" data-ot-textarea-required data-ot-textarea-name\="message"\></div\>
+
+<!-- Or the whole object as JSON -->
+<div class\="editor" data-ot-textarea-props\='{"required":true,"maxLength":500,"name":"message"}'\></div\>
+
+Both put a real `required`/`name`/etc. attribute on the underlying `<textarea>`, so the editor participates in native form validation. To make a field optional, omit the attribute (don't set `data-ot-textarea-required="false"`, which still marks it required, the same way the HTML `required` attribute works).
+
+Any object-valued option can also be passed as JSON (values starting with `{` or `[` are parsed; malformed JSON falls back to the raw string).
+
+**Supported:** `toolbar`, `theme`, `value`, `placeholder`, `autofocus`, `auto-resize`, `min-height`, `max-height`, `font-size`, `line-height`, `show-stats`, `smart-lists`, `show-active-line-raw`, `textarea-props` / `textarea-*`
+
+**Not supported (use JS):** `toolbarButtons`, `onChange`, `onKeydown`, `onFocus`, `onBlur`, `statsFormatter`, `codeHighlighter`, `colors`, `mobile`
 
 Contributors
 ------------
@@ -958,6 +1043,9 @@ Special thanks to:
 -   phinnaeus - Diagnosed missing fontFamily wiring (#110)
 -   Tan Nhu - Fixed onChange feedback loop with async syntax highlighters (#111)
 -   pscanf - Re-exported markdown-actions for custom toolbar implementations (#105, #106)
+-   riasvdv - Contributed keyboard focus-trap fix (#115) and toolbar accessibility following the W3C APG Toolbar pattern (#114)
+-   gcamacho079 - Reported the markdown editor keyboard focus trap (#113)
+-   Matt Round - Reported the Safari stale-glyph caret/wrap desync and supplied the original workaround (#116)
 
 ### TypeScript & Framework Support
 
@@ -971,7 +1059,7 @@ Special thanks to:
 -   Yukai Huang - Contributed syntax highlighting implementation (#35)
 -   Rognoni - Suggested custom toolbar button API (#61)
 -   Deyan Gigov - Reported checkbox rendering bug in preview mode (#60), contributed auto theme implementation (#100)
--   GregJohnStewart - Suggested data attribute configuration (#76), reported initFromData array nesting bug (#93), suggested DOM element init (#92)
+-   GregJohnStewart - Suggested data attribute configuration (#76), reported initFromData array nesting bug (#93), suggested DOM element init (#92), suggested supporting more options via data attributes (#112)
 -   boris-glumpler - Suggested custom syntax highlighting API (#79)
 -   sorokya - Contributed file upload support (#87)
 -   aaronmyatt - Contributed show/hide toolbar methods (#95)

@@ -1,12 +1,12 @@
 ---
-project: eleventy
-stars: 19691
+project: buildawesome
+stars: 19716
 description: A simpler site generator. Transforms a directory of templates (of varying types) into HTML.
-url: https://github.com/11ty/eleventy
+url: https://github.com/11ty/buildawesome
 ---
 
-eleventy 🕚⚡️🎈🐀
-=================
+Build Awesome (Eleventy) 🕚⚡️🎈🐀
+=================================
 
 A simpler static site generator. An alternative to Jekyll. Written in JavaScript. Transforms a directory of templates (of varying types) into HTML.
 
@@ -28,6 +28,9 @@ Installation
 ------------
 
 ```
+npm install @awesome.me/buildawesome --save-dev
+
+# Backwards compatible here too:
 npm install @11ty/eleventy --save-dev
 ```
 
@@ -44,7 +47,7 @@ We have a few test suites, for various reasons:
 
 -   ava JavaScript test runner (assertions docs) (primary test suite in `test/`)
 -   Node.js Test runner (secondary test suite in `test_node/`)
--   Vitest (in Browser Mode) (client tests in `packages/client/test/`)
+-   Vitest (in Browser Mode) (browser tests in `packages/browser/test/`)
 -   Benchmark for Performance Regressions
 
 These run in various environments:

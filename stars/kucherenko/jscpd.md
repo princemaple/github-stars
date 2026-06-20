@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 5768
+stars: 5789
 description: Copy/paste detector for programming source code, supports 223 formats. AI-ready with token-efficient reporter, skill and MCP server.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -35,6 +35,14 @@ cpd /path/to/code
 
 # Rust-native install (exposes both jscpd and cpd)
 cargo install jscpd
+
+# Nix (installs both jscpd and cpd)
+nix run github:kucherenko/jscpd -- /path/to/code
+# or install permanently
+nix profile install github:kucherenko/jscpd
+
+# Homebrew (macOS/Linux)
+brew install jscpd
 
 Documentation
 -------------

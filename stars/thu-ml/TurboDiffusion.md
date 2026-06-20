@@ -1,6 +1,6 @@
 ---
 project: TurboDiffusion
-stars: 3531
+stars: 3535
 description: TurboDiffusion: 100–200× Acceleration for Video Diffusion Models
 url: https://github.com/thu-ml/TurboDiffusion
 ---
@@ -418,13 +418,6 @@ Citation
   title={TurboDiffusion: Accelerating Video Diffusion Models by 100-200 Times},
   author={Zhang, Jintao and Zheng, Kaiwen and Jiang, Kai and Wang, Haoxu and Stoica, Ion and Gonzalez, Joseph E and Chen, Jianfei and Zhu, Jun},
   journal={arXiv preprint arXiv:2512.16093},
-  year={2025}
-}
-
-@software{turbodiffusion2025,
-  title={TurboDiffusion: Accelerating Video Diffusion Models by 100-200 Times},
-  author={The TurboDiffusion Team},
-  url={https://github.com/thu-ml/TurboDiffusion},
   year={2025}
 }
 

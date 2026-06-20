@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 28753
+stars: 29020
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -228,7 +228,11 @@ docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/log
 
 If you use podman instead of docker, you can install the RustFS with the below command
 
-podman run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
+# Create data and logs directories
+mkdir -p data logs
+
+# Run the container (podman will automatically set the folders ownership)
+podman run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data:Z,U -v $(pwd)/logs:/logs:Z,U rustfs/rustfs:latest
 
 If you enable TLS with a bind-mounted certificate directory, prepare that mount the same way:
 

@@ -1,7 +1,7 @@
 ---
 project: ferret
 stars: 6011
-description: Declarative data extraction engine
+description: Declarative data automation language and Go runtime for structured extraction workflows.
 url: https://github.com/MontFerret/ferret
 ---
 
@@ -41,7 +41,8 @@ Instead of writing page-specific glue code for browser control, DOM traversal, w
 
 -   Declarative query language for structured data workflows
 -   Support for static pages, dynamic pages, and browser-driven extraction
--   CLI and embeddable Go runtime
+-   CLI tooling, including formatting and debugging support
+-   Embeddable Go runtime for integrating Ferret into applications
 -   Extensible module, function, and runtime capability system
 -   Structured results for testing, analytics, AI/ML, and automation pipelines
 -   Portable execution model with a focused VM

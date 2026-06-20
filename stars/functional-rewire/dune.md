@@ -1,6 +1,6 @@
 ---
 project: dune
-stars: 207
+stars: 208
 description: A sandbox for Elixir to safely evaluate untrusted code from user input
 url: https://github.com/functional-rewire/dune
 ---
@@ -79,7 +79,7 @@ The package can be installed by adding `dune` to your list of dependencies in `m
 
 def deps do
   \[
-    {:dune, "~> 0.3.16"}
+    {:dune, "~> 0.3.17"}
   \]
 end
 

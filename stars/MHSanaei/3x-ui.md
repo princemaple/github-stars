@@ -1,6 +1,6 @@
 ---
 project: 3x-ui
-stars: 40556
+stars: 41092
 description: Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit (Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun) 
 url: https://github.com/MHSanaei/3x-ui
 ---
@@ -45,6 +45,15 @@ bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.
 During installation a random username, password, and access path are generated. After installation, run `x-ui` to open the management menu, where you can start/stop the service, view or reset your login credentials, manage SSL certificates, and more.
 
 For full documentation, please visit the project Wiki.
+
+### Unattended install & cloud images
+
+The installer also runs **non-interactively** for cloud-init and golden images. Set `XUI_NONINTERACTIVE=1` (or pipe with no TTY) and it installs end-to-end with zero prompts, generating random credentials and writing them to `/etc/x-ui/install-result.env`. See `deploy/` for:
+
+-   Cloud-init user-data — unattended install on any cloud (Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle)
+-   Packer golden image — build an AWS EC2 AMI + qcow2 (amd64/arm64) with per-instance credentials generated on first boot
+-   Amazon Lightsail — launch script + reusable snapshot builder
+-   AWS Marketplace checklist
 
 Supported Platforms
 -------------------

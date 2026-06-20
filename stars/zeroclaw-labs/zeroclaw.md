@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 31899
+stars: 31965
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -36,10 +36,18 @@ Flags:
 ```
 ./install.sh --prebuilt              # always prebuilt; don't ask
 ./install.sh --source                # always build from source
-./install.sh --minimal               # kernel only (~6.6 MB)
+./install.sh --preset minimal        # kernel-only source preset (~6.6 MB)
+./install.sh --minimal               # alias for --preset minimal
 ./install.sh --source --features agent-runtime,channel-discord  # custom feature set
+./install.sh --apps zerocode         # select apps to install; use "none" to skip all
+./install.sh --without-tui           # skip building zerocode
+./install.sh --with-gateway          # force gateway support on
+./install.sh --without-gateway       # force gateway support off
+./install.sh --prefix /tmp/zc-test   # install under a custom prefix
+./install.sh --dry-run --prebuilt    # preview without installing
 ./install.sh --skip-quickstart       # install only, run `zeroclaw quickstart` later
 ./install.sh --list-features         # print available feature flags
+./install.sh --uninstall             # remove ZeroClaw
 ```
 
 Platform-specific notes: Linux · macOS · Windows · FreeBSD · NixOS · Docker

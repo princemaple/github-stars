@@ -1,6 +1,6 @@
 ---
 project: lua
-stars: 195
+stars: 200
 description: A Lua 5.3 runtime in pure Elixir
 url: https://github.com/tv-labs/lua
 ---
@@ -71,7 +71,9 @@ end
 Lua-level error handling works too — `pcall` catches the error and returns it as a value:
 
 ```
-iex> {[false, "nope"], _lua} = Lua.eval!(~S[return pcall(function() error("nope") end)])
+iex> {[false, err], _lua} = Lua.eval!(~S[return pcall(function() error("nope") end)])
+iex> err =~ "nope"
+true
 ```
 
 ### Calling Elixir functions from Lua
@@ -119,6 +121,19 @@ iex> {[value], _lua} = Lua.eval!(lua, ~S[return os.getenv("HOME")])
 iex> is_binary(value)
 true
 ```
+
+### Resource limits
+
+Sandboxing controls _which_ functions a script may call, but it does not stop a script from spinning forever or recursing without bound. Two options on `Lua.new/1` give you deterministic limits without wrapping each evaluation in a host `Task` plus a wall-clock timeout. Both default to `:infinity` (no limit) and raise catchable runtime errors, so `pcall` recovers from them in-band:
+
+-   `:max_call_depth` caps nested function-call depth; exceeding it raises `"stack overflow"`.
+    
+-   `:max_instructions` caps the number of VM instructions a single evaluation may execute; exceeding it raises `"instruction budget exceeded"`.
+    
+    iex> lua = Lua.new(max\_instructions: 1000) iex> {\[false, message\], \_lua} = Lua.eval!(lua, S\[return pcall(function() while true do end end)\]) iex> message = "instruction budget exceeded" true
+    
+
+See the Sandboxing guide for details.
 
 ### Metatables and metamethods
 

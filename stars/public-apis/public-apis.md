@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 441323
+stars: 443138
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -2466,6 +2466,16 @@ Yes
 
 Unknown
 
+btcnode.uk
+
+Bitcoin blockchain data, fees, mempool, SEC insider trades, Reddit sentiment. x402 micropayments for paid endpoints.
+
+No
+
+Yes
+
+Unknown
+
 BtcTurk
 
 Real-time cryptocurrency data, graphs and API that allows buy&sell
@@ -4448,6 +4458,16 @@ ALL-CAPS AS A SERVICE
 No
 
 No
+
+Unknown
+
+SiteIntel
+
+Extract metadata, tech stack, emails, and screenshots from any URL
+
+`apiKey`
+
+Yes
 
 Unknown
 
@@ -10081,6 +10101,16 @@ Yes
 
 Yes
 
+GoldBean
+
+OCR, Translation, NLP & ERNIE LLM via Baidu AI (free tier available)
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Groq
 
 Fast AI inference API with free tier, supports Llama, Mixtral, Gemma models
@@ -13024,6 +13054,16 @@ CORS
 Best Buy
 
 Products, Buying Options, Categories, Recommendations, Stores and Commerce
+
+`apiKey`
+
+Yes
+
+Unknown
+
+BuyWhere
+
+Real-time product catalog API for AI agents across merchants in 7 countries (SG, MY, TH, VN, PH, ID, US)
 
 `apiKey`
 

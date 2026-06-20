@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 30134
+stars: 30183
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---
@@ -21,6 +21,8 @@ Index
 
 -   Features
 -   Usage
+    -   Usage on Windows
+    -   Usage on Hyprland / Sway / wlroots
     -   CLI configuration
     -   Config file
 -   Keyboard Shortcuts
@@ -106,6 +108,10 @@ A systray icon will be in your system's panel while Flameshot is running. Do a r
 On Windows, `flameshot.exe` will behave as expected for all supported command-line arguments, but it will not output any text to the console. This is problematic if, for example, you are running `flameshot.exe -h`.
 
 If you require console output, run `flameshot-cli.exe` instead. `flameshot-cli.exe` is a minimal wrapper around `flameshot.exe` that ensures all stdout is captured and output to the console.
+
+### Usage on Hyprland / Sway / wlroots
+
+Please refer to this document for detailed instructions on how to set up Flameshot on Hyprland, Sway, and wlroots-based Wayland compositors.
 
 ### CLI configuration
 

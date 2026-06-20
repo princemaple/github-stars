@@ -1,6 +1,6 @@
 ---
 project: xh
-stars: 7862
+stars: 7874
 description: Friendly and fast tool for sending HTTP requests
 url: https://github.com/ducaale/xh
 ---
@@ -45,6 +45,12 @@ Huber
 
 `huber install xh`
 
+Any
+
+Mise
+
+`mise use xh --global`
+
 Android (Termux)
 
 pkg
@@ -74,6 +80,12 @@ Debian & Ubuntu
 Apt\*\*\*\*
 
 `sudo apt install xh`
+
+Fedora
+
+Copr\*\*\*\*\*
+
+`sudo dnf install xh`
 
 FreeBSD
 
@@ -142,6 +154,8 @@ Winget
 \*\*\* Built with native-tls only.
 
 \*\*\*\* Available since Debian 13 and Ubuntu 25.04. Built with native-tls only.
+
+\*\*\*\*\* Enable COPR repo via `sudo dnf copr enable ducaale/xh`
 
 ### via pre-built binaries
 

@@ -1,6 +1,6 @@
 ---
 project: erlang-quickjs
-stars: 11
+stars: 12
 description: QuickJS JavaScript engine for Erlang (powered by quickjs-ng). API-compatible replacement for erlang-duktape.
 url: https://github.com/benoitc/erlang-quickjs
 ---

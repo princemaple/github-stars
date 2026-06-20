@@ -1,16 +1,18 @@
 ---
 project: pouchdb
-stars: 17579
+stars: 17582
 description: :kangaroo: - PouchDB is a pocket-sized database.
 url: https://github.com/apache/pouchdb
 ---
 
-PouchDB – The Database that Syncs!
-==================================
+Apache PouchDB – The Database that Syncs!
+=========================================
 
-PouchDB is an open-source JavaScript database inspired by Apache CouchDB that is designed to run well within the browser.
+Apache PouchDB is an open-source JavaScript database inspired by Apache CouchDB that is designed to run well within the browser.
 
 PouchDB was created to help web developers build applications that work as well offline as they do online.
+
+Apache PouchDB is currently undergoing Incubation at the Apache Software Foundation. Read the ASF Disclaimer for incubator projects.
 
 Using PouchDB
 -------------

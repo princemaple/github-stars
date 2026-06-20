@@ -1,6 +1,6 @@
 ---
 project: chatwoot
-stars: 30822
+stars: 32935
 description: Open-source live-chat, email support, omni-channel desk. An alternative to Intercom, Zendesk, Salesforce Service Cloud etc. 🔥💬
 url: https://github.com/chatwoot/chatwoot
 ---

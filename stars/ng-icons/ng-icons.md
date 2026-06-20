@@ -1,6 +1,6 @@
 ---
 project: ng-icons
-stars: 574
+stars: 578
 description: The ultimate icon library for Angular
 url: https://github.com/ng-icons/ng-icons
 ---
@@ -49,6 +49,7 @@ Currently, we support the following libraries:
 -   Mono Icons
 -   Lucide Icons
 -   Coolicons
+-   Fluent UI
 
 Got suggestions for additional iconsets? Create an issue and we can consider adding them!
 
@@ -281,6 +282,10 @@ MIT
 `@ng-icons/coolicons`
 
 CC-BY-4.0
+
+`@ng-icons/fluent-ui`
+
+MIT
 
 Usage
 -----

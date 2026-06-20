@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 25283
+stars: 25531
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -712,16 +712,28 @@ To add specific models to the configuration, configure as such:
 
 ### Local Models
 
-Local models can also be configured via OpenAI-compatible API. Here are two common examples:
-
-#### Ollama
+Crush can auto-discovers models from local providers. Add a custom provider with `type` set to `omlx`, `lmstudio`, `litellm`, or `ollama` and leave out the models list. Crush will populate the model list automatically.
 
 {
   "providers": {
     "ollama": {
       "name": "Ollama",
       "base\_url": "http://localhost:11434/v1/",
-      "type": "openai-compat",
+      "type": "ollama"
+    }
+  }
+}
+
+#### Manual Model Configuration
+
+You can still list models explicitly. User-defined models always take precedence over discovered ones, and any fields you set won't be overwritten by auto-discovery. Auto discovery will run if the model list is empty for any `openai-compat` provider or if you pass `"auto_discovery": true` it will merge the found models with your hand configured ones.
+
+{
+  "providers": {
+    "ollama": {
+      "name": "Ollama",
+      "base\_url": "http://localhost:11434/v1/",
+      "type": "ollama",
       "models": \[
         {
           "name": "Qwen 3 30B",
@@ -729,27 +741,8 @@ Local models can also be configured via OpenAI-compatible API. Here are two comm
           "context\_window": 256000,
           "default\_max\_tokens": 20000
         }
-      \]
-    }
-  }
-}
-
-#### LM Studio
-
-{
-  "providers": {
-    "lmstudio": {
-      "name": "LM Studio",
-      "base\_url": "http://localhost:1234/v1/",
-      "type": "openai-compat",
-      "models": \[
-        {
-          "name": "Qwen 3 30B",
-          "id": "qwen/qwen3-30b-a3b-2507",
-          "context\_window": 256000,
-          "default\_max\_tokens": 20000
-        }
-      \]
+      \],
+      "auto\_discovery": true
     }
   }
 }

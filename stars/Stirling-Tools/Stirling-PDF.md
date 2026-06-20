@@ -1,6 +1,6 @@
 ---
 project: Stirling-PDF
-stars: 80786
+stars: 81612
 description: #1 PDF Application on GitHub that lets you edit PDFs on any device anywhere
 url: https://github.com/Stirling-Tools/Stirling-PDF
 ---
@@ -50,7 +50,7 @@ Contributing
 
 We welcome contributions! Please see CONTRIBUTING.md for guidelines.
 
-This project uses Task as a unified command runner for all build, dev, and test commands. Run `task install` to get started, or see the Developer Guide for full details.
+This project uses Task as a unified command runner for all build, dev, and test commands. Run `task dev` to get started running the editor, run `task` to see the most common commands, or see the Developer Guide for full details.
 
 For adding translations, see the Translation Guide.
 

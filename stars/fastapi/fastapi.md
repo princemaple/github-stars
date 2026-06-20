@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 99172
+stars: 99434
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -337,13 +337,13 @@ For a more complete example including more features, see the Tutorial - User Gui
 
 **Spoiler alert**: the tutorial - user guide includes:
 
--   Declaration of **parameters** from other different places as: **headers**, **cookies**, **form fields** and **files**.
--   How to set **validation constraints** as `maximum_length` or `regex`.
+-   Declaration of **parameters** from other different places such as: **headers**, **cookies**, **form fields** and **files**.
+-   How to set **validation constraints** such as `maximum_length` or `regex`.
 -   A very powerful and easy to use **Dependency Injection** system.
 -   Security and authentication, including support for **OAuth2** with **JWT tokens** and **HTTP Basic** auth.
 -   More advanced (but equally easy) techniques for declaring **deeply nested JSON models** (thanks to Pydantic).
 -   **GraphQL** integration with Strawberry and other libraries.
--   Many extra features (thanks to Starlette) as:
+-   Many extra features (thanks to Starlette) such as:
     -   **WebSockets**
     -   extremely easy tests based on HTTPX and `pytest`
     -   **CORS**

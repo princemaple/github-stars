@@ -1,6 +1,6 @@
 ---
 project: gitea
-stars: 56281
+stars: 56406
 description: Git with a cup of tea! Painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, package registry and CI/CD
 url: https://github.com/go-gitea/gitea
 ---
@@ -13,15 +13,15 @@ Gitea
 Purpose
 -------
 
-The goal of this project is to make the easiest, fastest, and most painless way of setting up a self-hosted Git service.
+The goal of Gitea is to make the easiest, fastest, and most painless way of setting up a self-hosted all-in-one software development service, including Git hosting, code management, code review, issue tracking, project kanban, wiki, team collaboration, package registry and CI/CD which can reuse GitHub Actions.
 
-As Gitea is written in Go, it works across **all** the platforms and architectures that are supported by Go, including Linux, macOS, and Windows on x86, amd64, ARM and PowerPC architectures. This project has been forked from Gogs since November of 2016, but a lot has changed.
+As Gitea is written in Go, it works across **all** the platforms and architectures that are supported by Go, including Linux, macOS, FreeBSD/OpenBSD and Windows on x86, amd64, ARM, RISC-V 64 and PowerPC architectures.
 
 For online demonstrations, you can visit demo.gitea.com.
 
 For accessing free Gitea service (with a limited number of repositories), you can visit gitea.com.
 
-To quickly deploy your own dedicated Gitea instance on Gitea Cloud, you can start a free trial at cloud.gitea.com.
+To quickly deploy your own dedicated Gitea instance on Gitea Cloud, you can start a free trial at cloud.gitea.com, or use container (docker/podman/etc) to deploy on your own server with the official image.
 
 Documentation
 -------------
@@ -35,33 +35,11 @@ If you have any suggestions or would like to contribute to it, you can visit the
 Building
 --------
 
-From the root of the source tree, run:
+See docs/build-setup.md for prerequisites and docs/development.md for setting up a local development environment, linting, and testing.
 
-```
-TAGS="bindata" make build
-```
+If you'd like to build from source or make a distribution package, see docs/build-source.md for more information.
 
-The `build` target is split into two sub-targets:
-
--   `make backend` which requires Go Stable, the required version is defined in go.mod.
--   `make frontend` which requires Node.js LTS or greater and pnpm.
-
-Internet connectivity is required to download the go and npm modules. When building from the official source tarballs which include pre-built frontend files, the `frontend` target will not be triggered, making it possible to build without Node.js.
-
-More info: https://docs.gitea.com/installation/install-from-source
-
-Using
------
-
-After building, a binary file named `gitea` will be generated in the root of the source tree by default. To run it, use:
-
-```
-./gitea web
-```
-
-Note
-
-If you're interested in using our APIs, we have experimental support with documentation.
+After building, you can run `./gitea web` to start the server, or `./gitea help` to see all available commands.
 
 Contributing
 ------------
@@ -71,7 +49,8 @@ Expected workflow is: Fork -> Patch -> Push -> Pull Request
 Note
 
 1.  **YOU MUST READ THE CONTRIBUTORS GUIDE BEFORE STARTING TO WORK ON A PULL REQUEST.**
-2.  If you have found a vulnerability in the project, please write privately to **security@gitea.io**. Thanks!
+2.  New to the codebase? The development guide walks through setting up a local environment and building from source.
+3.  If you have found a vulnerability in the project, please write privately to **security@gitea.io**. Thanks!
 
 Translating
 -----------
@@ -118,13 +97,17 @@ FAQ
 
 Gitea is pronounced /ɡɪ’ti:/ as in "gi-tea" with a hard g.
 
-**Why is this not hosted on a Gitea instance?**
+**How do I configure Gitea?**
 
-We're working on it.
+For dynamic config options, you can change it on your admin panel's configuration section.
+
+For static config options, you can edit your `app.ini` file and resart the instance. See app.example.ini or configuration documentation for more details.
 
 **Where can I find the security patches?**
 
 In the release log or the change log, search for the keyword `SECURITY` to find the security patches.
+
+(more FAQs are listed in FAQ documentation)
 
 License
 -------
@@ -134,7 +117,7 @@ This project is licensed under the MIT License. See the LICENSE file for the ful
 Further information
 -------------------
 
-Looking for an overview of the interface? Check it out!
+Looking for an overview of the interface? Check it out the screenshots!
 
 ### Login/Register Page
 

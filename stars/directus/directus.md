@@ -1,99 +1,108 @@
 ---
 project: directus
-stars: 36013
+stars: 36037
 description: The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.
 url: https://github.com/directus/directus
 ---
 
-🐰 Introduction
+The Collaborative Backend for Builders & AI
+===========================================
+
+Connect any SQL database and get instant REST and GraphQL APIs, a visual management Studio, and a native MCP server for AI agents.
+
+45M+ downloads · 500K+ projects deployed
+
+Note
+
+**Free for most organizations.** Under $5M annual revenue and 50 employees? Directus is completely free. Apply for an Open Innovation Grant license and get a key in minutes. Learn more about our license.
+
+* * *
+
+🐇 Introduction
 ---------------
 
-Directus is a real-time API and App dashboard for managing SQL database content.
+Directus wraps any SQL database with a REST and GraphQL API layer and a visual Studio. Engineers control schema and access. Non-technical teammates and AI agents work directly with live data. No tickets, no boilerplate.
 
--   **REST & GraphQL API.** Instantly layers a blazingly fast Node.js API on top of any SQL database.
--   **Manage Pure SQL.** Works with new or existing SQL databases, no migration required.
--   **Choose your Database.** Supports PostgreSQL, MySQL, SQLite, OracleDB, CockroachDB, MariaDB, and MS-SQL.
--   **On-Prem or Cloud.** Run locally, install on-premises, or use our self-service Cloud service.
--   **Completely Extensible.** Built to white-label, it is easy to customize our modular platform.
--   **A Modern Dashboard.** Our no-code Vue.js app is safe and intuitive for non-technical users, no training required.
+-   **REST & GraphQL APIs:** Automatically generated from your database schema. No configuration required.
+-   **Visual Studio:** A full management interface for non-technical teammates.
+-   **AI Assistant:** Embedded in the Studio. Creates, translates, and takes direct action on your content.
+-   **Native MCP Server:** Connect Claude, Cursor, ChatGPT, or any MCP-compatible tool directly to your data.
+-   **Policy-based Access Control:** Granular permissions down to the field level, for humans and AI agents alike.
+-   **Bring your own database:** Postgres, MySQL, MariaDB, MS SQL, SQLite, OracleDB, CockroachDB, and more.
+-   **Fully extensible:** Custom endpoints, hooks, interfaces, and modules.
+-   **Self-host or cloud:** Run locally, on your own infrastructure, or on Directus Cloud.
 
-**Learn more about Directus** • **Documentation**
+Learn more about Directus · Documentation
 
-  
+* * *
+
+🤖 AI & MCP
+-----------
+
+Directus includes a built-in AI Assistant and a native MCP server. AI works with your live data, not a copy of it.
+
+-   **AI Assistant:** Creates content, runs translations, and triggers workflows directly from the Studio.
+-   **Native MCP Server:** Any MCP-compatible agent or tool can connect to Directus. Same access policies that apply to your team apply to AI.
+-   **Governed by default:** AI agents operate under the same role-based permissions as human users. No special cases, no workarounds.
+
+Read the AI & MCP docs
+
+* * *
 
 🚀 Directus Cloud
 -----------------
 
-Directus Cloud allows you to create projects, hosted by the Directus team, from $15/month.
+Directus Cloud provisions a fully managed project in under 90 seconds.
 
--   A self-service dashboard to create and monitor all your projects in one place.
--   Everything you need: Directus, database, storage, auto-scaling, and a global CDN.
--   Select your desired region and provision a new project in ~90 seconds.
+-   **Centrally managed:** Self-service dashboard to create and monitor all your projects in one place
+-   **All-in-one solution:** Database, storage, and auto-scaling included with a global CDN
+-   **Simple setup:** Select a region and get a running instance immediately
 
-**Create a Directus Cloud Project**
+Create a Directus Cloud Project
 
-  
+* * *
 
 ⚡ One-Click Deployment Options
 ------------------------------
 
-Deploy Directus with a single click via Railway—complete infrastructure without the complexity.
-
 ### Deploy on Railway
 
-Fully provisioned — one click to deploy Directus with PostgreSQL database, Redis cache, and S3-compatible bucket storage, all connected via Railway's private network for secure, zero-egress communication.
+One click. Fully provisioned with PostgreSQL, Redis, and S3-compatible storage, connected via Railway's private network.
 
-  
+* * *
 
-🤔 Community Help
+🙋 Community Help
 -----------------
 
 The Directus Documentation is a great place to start, or explore these other channels:
 
--   Community (Questions, Discussions)
+-   Community Forum (Questions, Discussions)
 -   Discord (Live Chat)
 -   GitHub Issues (Report Bugs)
 -   Roadmap (Roadmap & Feature Requests)
--   Twitter (Latest News)
+-   Resources (Latest News)
 -   YouTube (Video Tutorials)
 
-  
+* * *
 
-❤️ Contributing & Sponsoring
-----------------------------
+❤️ Contributing
+---------------
 
-Please read our Contributing Guide before submitting Pull Requests.
+Read our Contributing Guide before submitting pull requests.
 
-All security vulnerabilities should be reported in accordance with our Security Policy.
+Report security vulnerabilities per our Security Policy.
 
-Directus is made possible with support from our passionate core team, talented contributors, and amazing GitHub Sponsors. Thank you all!
+Built by our core team and contributors. Thank you.
 
-  
+* * *
 
-📄 Understanding Our License
-----------------------------
+📄 License
+----------
 
 Directus is licensed under the Monospace Sustainable Core License (MSCL) 1.0, a source-available license derived from the Fair Core License.
 
-Read about our evolving our license from BSL to MSCL for long-term sustainability.
+**Free for most builders.** Organizations under $5M in annual revenue and 50 employees can use Directus for free under the Open Innovation Grant.
 
-### Free for Most Builders
+**Free Core Tier.** A free tier is available to everyone to explore and build on Directus without a commercial license.
 
-Organizations under **$5M in annual revenue and 50 employees** can use the Directus platform for free under the Open Innovation Grant— no strings attached.
-
-### Free Core Tier
-
-Even above those thresholds, a free Core tier is available to explore and build on Directus without a commercial license.
-
-### Commercial License
-
-Larger organizations using advanced or enterprise features require a commercial license. See our pricing for details. This model helps us maintain a sustainable balance: keeping Directus free for the majority of our community while ensuring larger organizations who benefit from the platform contribute to its continued development.
-
-### Why This Approach?
-
-We believe in making powerful data tools accessible to everyone. This license lets us:
-
--   Keep Directus free for individuals, startups, and smaller companies
--   Maintain active development and strong support
--   Continue improving the platform for everyone
--   Stay sustainable as an independent project
+**Commercial License.** Organizations above those thresholds using advanced or enterprise features require a commercial license. See pricing for details.

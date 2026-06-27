@@ -1,6 +1,6 @@
 ---
 project: dify
-stars: 145965
+stars: 146768
 description: Production-ready platform for agentic workflow development.
 url: https://github.com/langgenius/dify
 ---
@@ -55,7 +55,7 @@ Using Dify
 ----------
 
 -   **Cloud  
-    **We host a Dify Cloud service for anyone to try with zero setup. It provides all the capabilities of the self-deployed version, and includes 200 free GPT-4 calls in the sandbox plan.
+    **We host a Dify Cloud service for anyone to try with zero setup. It provides all the capabilities of the self-deployed version, and includes 200 free GPT-4 calls in the sandbox plan. If you run into issues with Dify Cloud, contact our Cloud support team.
     
 -   **Self-hosting Dify Community Edition  
     **Quickly get Dify running in your environment with this starter guide. Use our documentation for further references and more in-depth instructions.

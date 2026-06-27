@@ -1,6 +1,6 @@
 ---
 project: portless
-stars: 9817
+stars: 9976
 description: Replace port numbers with stable, named local URLs. For humans and agents.
 url: https://github.com/vercel-labs/portless
 ---
@@ -361,6 +361,7 @@ portless alias <name\> <port\>     # Register a static route (e.g. for Docker)
 portless alias <name\> <port\> --force  # Overwrite an existing route
 portless alias --remove <name\>   # Remove a static route
 portless list                    # Show active routes
+portless doctor                  # Check proxy, routes, DNS, and CA trust
 portless trust                   # Add local CA to system trust store
 portless clean                   # Remove state, CA trust entry, and hosts block
 portless prune                   # Kill orphaned dev servers from crashed sessions
@@ -435,7 +436,7 @@ PORTLESS_NGROK_URL               ngrok URL of the app (when --ngrok is active)
 NODE_EXTRA_CA_CERTS              Path to the portless CA (when HTTPS is active)
 ```
 
-> **Reserved names:** `run`, `get`, `alias`, `hosts`, `list`, `trust`, `clean`, `prune`, `proxy`, and `service` are subcommands and cannot be used as app names directly. Use `portless run <cmd>` to infer the name from your project, or `portless --name <name> <cmd>` to force any name including reserved ones.
+> **Reserved names:** `run`, `get`, `alias`, `hosts`, `list`, `doctor`, `trust`, `clean`, `prune`, `proxy`, and `service` are subcommands and cannot be used as app names directly. Use `portless run <cmd>` to infer the name from your project, or `portless --name <name> <cmd>` to force any name including reserved ones.
 
 Uninstall / reset
 -----------------
@@ -457,6 +458,11 @@ portless hosts sync    # Add current routes to /etc/hosts
 portless hosts clean   # Clean up later
 
 Auto-syncs `/etc/hosts` for route hostnames by default (`.localhost`, custom TLDs, LAN `.local`). Set `PORTLESS_SYNC_HOSTS=0` to disable.
+
+Troubleshooting
+---------------
+
+Run `portless doctor` to inspect local health without changing state. It checks Node.js, the state directory, proxy liveness, route entries, HTTPS CA trust, hostname resolution, and LAN mode prerequisites, then prints suggested fixes.
 
 Proxying Between Portless Apps
 ------------------------------

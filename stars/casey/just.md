@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 34374
+stars: 34454
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -784,6 +784,14 @@ mod foo
 
 alias baz := foo::bar
 
+Or a modulemaster:
+
+mod frontend
+
+alias f := frontend
+
+$ just f build
+
 ### Settings
 
 Settings control interpretation and execution. Each setting may be specified at most once, anywhere in the `justfile`.
@@ -837,6 +845,14 @@ boolean
 `false`
 
 Default recipes to script instead of shell.
+
+`dotenv-command`1.54.0
+
+string
+
+\-
+
+Run a command and load its output as an environment file.
 
 `dotenv-filename`
 
@@ -892,7 +908,15 @@ boolean
 
 `false`
 
-Search `justfile` in parent directory if the first recipe on the command line is not found.
+Search for `justfile` in parent directory if the first recipe on the command line is not found.
+
+`guards`1.47.0
+
+boolean
+
+`false`
+
+Enable the `?` guard sigil on recipe lines. See sigils.
 
 `ignore-comments`
 
@@ -917,6 +941,14 @@ boolean
 `false`
 
 Values may be lists of strings instead of strings. Currently unstable.
+
+`minimum-version`master
+
+string
+
+\-
+
+Error if `just` is older than `minimum-version`. Accepts a string of the form `MAJOR.MINOR.PATCH`, e.g., `"1.55.0"`.
 
 `no-cd`1.51.0
 
@@ -1068,6 +1100,14 @@ The loaded variables are environment variables, not `just` variables, and so mus
 
 If `dotenv-override` is set, variables from the environment file will override existing environment variables.
 
+If `dotenv-command` is set, `just` runs it with the configured `shell` and loads its standard output as an environment file.
+
+This is useful for sourcing secrets from a secret manager or vault:
+
+set dotenv-command := 'sops -d .enc.env'
+
+The command-line option `--dotenv-command` can be used to set or override `dotenv-command` at runtime, and may be passed multiple times. Each value is run as a command, with variables from later commands taking precedence over variables from earlier commands.
+
 For example, if your `.env` file contains:
 
 \# a comment, will be ignored
@@ -1176,9 +1216,17 @@ When `positional-arguments` is set, list arguments are space-joined unless they 
 
 The `--dotenv-filename` and `--dotenv-path` options may be passed multiple times, and the `dotenv-filename` and `dotenv-path` settings accept lists, in which case multiple environment files may be loaded. The values of `dotenv-path` are tried first. If none are found the current directory is searched for the names in `dotenv-filename`, followed by its ancestors, stopping in the first directory that contains any of them and loading all matching files in that directory. If multiple environment files are loaded, variables in files later in list take precedence over earlier ones.
 
+Each element of the value of `set dotenv-command` is run as a command, with variables from commands later in the list taking precedence over variables from commands earlier in the list.
+
 ##### Attributes
 
-The `[arg]` `flag` attribute makes the parameter a flag which does not take a value on the command line. For example, with `[arg('foo', long, flag)]`, `foo` will be `"true"` when `--foo` is passed, and `[]` otherwise. Flag parameters may not have a default.
+The `[arg(flag)]` attribute makes the parameter a flag which does not take a value on the command line. For example, with `[arg('foo', long, flag)]`, `foo` will be `"true"` when `--foo` is passed, and `[]` otherwise. Flag parameters may not have a default.
+
+The `[arg(multiple)]` attribute allows an option or flag to be passed more than once, assigning the list of passed values to the parameter. When combined with `flag` or `value=VALUE`, `"true"` or `VALUE`, respectively, are repeated for each occurance of the flag.
+
+The value of `[arg(help)]` may be a list, in which case the help string is the elements of the list joined with spaces. If the list is empty, the argument has no help string.
+
+The value of `[arg(pattern)]` may be a list, in which case the argument is accepted if it matches any pattern in the list. If the value is the empty list, any argument is accepted. For example, with `[arg('foo', pattern=['--help', '--version'])]`, `foo` may be `--help` or `--version`.
 
 In `[env(variable, value)]` if `value` is `[]`, `variable` is not set. Otherwise it is set to `value` joined with spaces.
 
@@ -1259,6 +1307,18 @@ set lists
 
 \[arg('bar', long)\]
 foo bar\=\[\]:
+
+#### Requiring a Minimum Just Version
+
+If you use features of `just` which require a particular version, you may use the `minimum-version`master setting to make it an error to use older versions of `just`:
+
+set minimum-version := <sup>master</sup>
+
+If `just` encounters a minimum version greater than its own version, it will print an error message with the required version, which is hopefully better than the confused error message it would have otherwise produced.
+
+The `minimum-version` setting should be placed at the top of the `justfile`, before any usage of the new feature that it guards.
+
+Any features which change the lexer in forward-incompatible ways will still produce an unhelpful error message, as the minimum version check is implemented in the parser, which runs after the lexer.
 
 #### Positional Arguments
 
@@ -1946,14 +2006,53 @@ The arguments to `datetime` and `datetime_utc` are `strftime`\-style format stri
 
 #### Style
 
--   `style(name)`1.37.0 - Return a named terminal display attribute escape sequence used by `just`. Unlike terminal display attribute escape sequence constants, which contain standard colors and styles, `style(name)` returns an escape sequence used by `just` itself, and can be used to make recipe output match `just`'s own output.
+-   `style(styles)`1.37.0 - Return a terminal escape sequence combining the named styles in `styles`.
     
-    Recognized values for `name` are `'command'`, for echoed recipe lines, `error`, and `warning`.
+    The styles supported by version 1.37.0 and later can be used to duplicate `just`'s own styles:
     
-    For example, to style an error message:
+    -   `command`: echoed recipe lines
+    -   `error`: errors
+    -   `warning`: warnings
     
-    scary:
-      @echo '{{ style("error") }}OH NO{{ NORMAL }}'
+    Additional styles supported by mastermaster and later include named colors:
+    
+    -   `black`
+    -   `blue`
+    -   `cyan`
+    -   `green`
+    -   `magenta`
+    -   `red`
+    -   `white`
+    -   `yellow`
+    
+    The 256 indexed colors, written as integers between `0` and `255`, e.g., `1` or `67`.
+    
+    The 24-bit colors, written as `#RRGGBB` or `#RGB` hex codes, e.g., `#065535` or `#AAA`.
+    
+    And display properties:
+    
+    -   `blink`
+    -   `bold`
+    -   `dim`
+    -   `hidden`
+    -   `italic`
+    -   `reverse`
+    -   `strikethrough`
+    -   `underline`
+    
+    All color styles color the foreground by default, and come in explicit foreground variants prefixed with `fg:` and background variants prefixed with `bg:`, e.g., `bg:blue`, `fg:133`, and `#FFF`.
+    
+    `styles` may be a list of styles, in which case all listed styles are combined to produce the final escape sequence.
+    
+    Note that the escape sequence returned by `style(styles)` are prefixes. You can use the `NORMAL` constant to reset the style after use:
+    
+    error message:
+      echo '{{style("error") + message + NORMAL}}'
+    
+-   `style(styles, text)`master Style `text` with `styles` as in the one-argument form. The style is reset automatically, so use of `NORMAL` to reset the terminal is not needed:
+    
+    error message:
+      echo '{{style("error", message)}}'
     
 
 ##### User Directories
@@ -2170,31 +2269,37 @@ Description
 
 recipe
 
-Print help string `HELP` for `ARG` in usage messages.
+Print help string `HELP` for `ARG` in usage messages. May be a const expressionmaster.
 
 `[arg(ARG, long="LONG")]`1.46.0
 
 recipe
 
-Require values of argument `ARG` to be passed as `--LONG` option.
+Require values of argument `ARG` to be passed as `--LONG` option. If the parameter is variadic, the option is repeatablemaster.
 
 `[arg(ARG, pattern="PATTERN")]`1.45.0
 
 recipe
 
-Require values of argument `ARG` to match regular expression `PATTERN`.
+Require values of argument `ARG` to match regular expression `PATTERN`. May be a const expressionmaster.
 
 `[arg(ARG, short="S")]`1.46.0
 
 recipe
 
-Require values of argument `ARG` to be passed as short `-S` option.
+Require values of argument `ARG` to be passed as short `-S` option. If the parameter is variadic, the option is repeatablemaster.
 
 `[arg(ARG, value=VALUE)]`1.46.0
 
 recipe
 
 Makes option `ARG` a flag which does not take a value.
+
+`[cache]`1.54.0
+
+recipe
+
+Skip recipe invocations when a matching entry exists in the cache. See cached recipes for details. Currently unstable.
 
 `[confirm(PROMPT)]`1.23.0
 
@@ -2207,6 +2312,12 @@ Require confirmation prior to executing recipe with a custom prompt.
 recipe
 
 Require confirmation prior to executing recipe.
+
+`[continue(SIGNALS)]`1.54.0
+
+recipe
+
+Continue execution normally if a command is interrupted by any of `SIGNALS` and exits successfully. Defaults to `SIGINT`.
 
 `[default]`1.43.0
 
@@ -2817,11 +2928,13 @@ Parameters prefixed with a `$` will be exported as environment variables:
 foo $bar:
   echo $bar
 
-Parameters may be constrained to match regular expression patterns using the `[arg("name", pattern="pattern")]` attribute1.45.0:
+Parameters may be constrained to match regular expression patterns using the `[arg("name", pattern=PATTERN)]` attribute1.45.0:
 
 \[arg('n', pattern='\\d+')\]
 double n:
   echo $(({{n}} \* 2))
+
+The value of `pattern` may be a const expressionmaster.
 
 A leading `^` and trailing `$` are added to the pattern, so it must match the entire argument value.
 
@@ -2845,6 +2958,8 @@ Help strings may be added to arguments using the `[arg(ARG, help=HELP)]` attribu
 
 \[arg("bar", help="hello")\]
 foo bar:
+
+The value `help` may be a const expressionmaster.
 
 $ just --usage foo
 Usage: just foo bar
@@ -2883,7 +2998,7 @@ Options may also be passed with `--name=value` syntax:
 $ just foo --bar=hello
 bar=hello
 
-The value of `long` can be omitted, in which case the option defaults to the name of the parameter:
+The value of `long` may be omitted, in which case the option defaults to the name of the parameter. With the following justfile, `bar` may be passed with `--bar`:
 
 \[arg("bar", long)\]
 foo bar:
@@ -2900,11 +3015,27 @@ The parameter `bar` is given with the `-b` option:
 $ just foo -b hello
 bar=hello
 
+The value of `short` may be omitted, in which case the option defaults to the first character of the name of the parameter. With the following justfile, `bar` may be passed with `-b`:
+
+\[arg("bar", short)\]
+foo bar:
+
 If a parameter has both a long and short option, it may be passed using either.
 
-Variadic `*` and `+` parameters cannot be options.
+Multiple short options may be combinedmaster, for example `-abc` is equivalent to `-a -b -c`. A short option which takes a value may appear last, for example `-abcd VALUE`.
 
-The `[arg(ARG, value=VALUE, …)]`1.46.0 attribute can be used with `long` or `short` to make a parameter a flag which does not take a value. `VALUE` may be an expressionmaster.
+Variadic `*` and `+` parameters may be options, in which case the option is repeatable, with each occurrence contributing one value:
+
+\[arg('file', long)\]
+backup +file:
+  scp {{file}} me@server.com:
+
+$ just backup --file FAQ.md --file GRAMMAR.md
+scp FAQ.md GRAMMAR.md me@server.com:
+
+As with positional variadic parameters, `+` options must be passed at least once, whereas `*` options may be omitted.
+
+The `[arg(ARG, value=VALUE, …)]`1.46.0 attribute can be used with `long` or `short` to make a parameter a flag which does not take a value. `VALUE` may be an expression1.54.0.
 
 In this `justfile`:
 
@@ -3228,6 +3359,30 @@ venv:
 run: venv
   ./foo/bin/python3 main.py
 
+### Activating Environments
+
+Some tools require an activation step, such as Python virtual environments:
+
+. .venv/bin/activate
+
+Because these tools modify the environment of a running shell, it is not possible for `just` to perform this activation step for you. However, there are some workarounds.
+
+The best workaround for Python environment management is to switch to `uv`. `uv` sets up the correct environment for each command, so no activation step is needed.
+
+If that isn't possible, and for other tools, you can create a shared prelude and include it in script recipes that need it. It can span multiple lines and include any number of steps:
+
+prelude := '''
+  set -eux
+  . .venv/bin/activate
+'''
+
+\[script\]
+run:
+  {{ prelude }}
+  python script.py
+
+This workaround doesn't work with shell recipes, which spawn a new shell for each command.
+
 ### Changing the Working Directory in a Recipe
 
 Each recipe line is executed by a new shell, so if you change the working directory on one line, it won't have an effect on later lines:
@@ -3441,6 +3596,116 @@ $ just
 Since environment variables are inherited by child processes, command-line options set with environment variables are inherited by recursive invocations of `just`, whereas command-line options set with arguments are not.
 
 Consult `just --help` for which options can be set with environment variables.
+
+### Cached Recipes
+
+`just` will skip invocations of recipes with the `[cache]` attribute1.54.0 if it finds an entry matching the invocation in the cache. The `[cache]` attribute may only be used with script recipes and is currently unstable.
+
+Unlike many other features of `just`, which are, hopefully, well thought-out and user-friendly, cached recipes are inherently fragile. It is important to understand their limitations before relying on them. Please read this section thoroughly, including the friendly admonitions below.
+
+The cache is a directory named `.justcache` alongside the `justfile` and should not be committed to version control systems. It contains cache entries named `HASH.json`, where `HASH` is the BLAKE3 hash of a serialized cache key JSON object.
+
+The keys of the cache key object are:
+
+-   `body`: evaluated recipe body
+-   `environment`: map of environment variable names to values
+-   `executor`: script interpreter or shebang
+-   `extra`: user-supplied value
+-   `inputs`: map of file paths to content hashs
+-   `positional`: positional arguments
+-   `recipe`: `::`\-separated module path to invoked recipe
+-   `working_directory`: current working directory
+
+Cache key objects for invoked recipes can be printed to standard error with `just -vv`.
+
+The value of `extra` may be supplied with `[cache(extra = EXPRESSION)]`, where `EXPRESSION` is an arbitrary expression evaluated with recipe arguments in scope. Changes to the value of `extra` will cause a cache miss.
+
+Before `just` runs a cached recipe, it creates a cache key, hashes it, and looks for the corresponding cache entry.
+
+If the cache entry is non-empty, it skips the invocation.
+
+If the cache entry does not exist or is empty, it runs the invocation and writes `{}` to the cache entry.
+
+File locks are taken on cache entries, so concurrent execution of cached recipes by multiple `just` processes is safe. If two processes run a recipe invocation with the same cache key, the first will take the lock, run the recipe, write to the cache entry, and relinquish the lock. The second will block until the first relinquishes the lock, see that the entry is non-empty, and skip the invocation.
+
+The cache can be bypassed entirely with the `--no-cache` flag.
+
+#### Clearing the Cache
+
+The recipe cache is stored in a directory named `.justcache` alongside the `justfile`. Deleting it will clear the cache.
+
+The cache can also be cleared with `just --clean`, which can selectively clear cache entries:
+
+# clear all cache entries
+just --clean
+
+# clear cache entries for recipe \`foo\`
+just --clean foo
+
+# clear cache entries for recipe \`baz\` in submodule \`bar\`
+just --clean bar baz
+
+# clear cache entries for recipes in submodule module \`bar\`
+just --clean bar
+
+# clear cache entries for recipes in submodule module \`bar::bob\`
+just --clean bar bob
+
+# '::'-separated paths may also be used
+just --clean bar::bob
+
+#### Input Files
+
+Input files can be provided with `[cache(inputs = FILES)]`, where `FILES` is an expression that is evaluated with recipe arguments in scope and whose evaluated elements are paths. Paths may be absolute or relative to the recipe's working directory.
+
+Each input file is hashed with BLAKE3 and added to the `inputs` cache key, which contains a map of paths to hashes.
+
+Any changes to the contents of an input file changes the cache key, which causes the next invocation to miss the cache and re-run.
+
+Missing inputs and paths to directories are errors.
+
+In this example, the `build` recipe will re-run if `lib.c` or `main.c` change:
+
+set unstable
+set lists
+
+\[script\]
+\[cache(inputs = \["lib.c", "main.c"\])\]
+build:
+  cc lib.c main.c -o main
+
+#### Output Files
+
+Output files can be provided with `[cache(outputs = FILES)]`, where `FILES` is an expression that is evaluated with recipe arguments in scope and whose evaluated elements are paths. Paths may be absolute or relative to the recipe's working directory.
+
+Outputs are not part of the cache key.
+
+All output files must exist for an invocation to be skipped, and after an invocation runs successfully, it is an error if any output file does not exist.
+
+In this example, `build` re-runs whenever `main` is missing, and errors if it runs without producing `main`:
+
+set unstable
+set lists
+
+\[script\]
+\[cache(inputs = \["lib.c", "main.c"\], outputs = "main")\]
+build:
+  cc lib.c main.c -o main
+
+clean:
+  rm -f main
+
+This forces `build` to re-run if `main` is deleted by `clean`.
+
+#### Friendly Admonitions
+
+`just` will happily skip cached recipes, but it is your responsibility to make sure that this is safe, and that the contents of the cache key capture enough information about recipe invocations for caching to make sense in the first place.
+
+In particular, there are many details about the context in which a recipe runs that are not captured by cache keys.
+
+These include the time, input files, output files, system binaries, operating system version, databases, systems over the network, the DNS, and any of the myriad other things which may change the execution of a computer program.
+
+Attempting to skip execution based on the type of crude heuristics that `just` employs has a long and sordid history. However, it is an undeniably convenient and powerful tool, and it is provided in the hopes that you find it useful.
 
 ### Private Recipes
 
@@ -3925,7 +4190,7 @@ The argument to `--timestamp-format` is a `strftime`\-style format string, see t
 
 ### Signal Handling
 
-Signals are messages sent to running programs to trigger specific behavior. For example, `SIGINT` is sent to all processes in the terminal foreground process group when `CTRL-C` is pressed.
+Signals are messages sent to running programs to trigger specific behavior. For example, `SIGINT` is sent to all processes in the terminal foreground process group when `ctrl-c` is pressed.
 
 `just` tries to exit when requested by a signal, but it also tries to avoid leaving behind running child processes, two goals which are somewhat in conflict.
 
@@ -3944,6 +4209,23 @@ When a child process _is_ running, `just` will wait until it terminates, to avoi
 Additionally, on receipt of `SIGTERM`, `just` will forward `SIGTERM` to any running children1.41.0, since unlike other fatal signals, `SIGTERM`, was likely sent to `just` alone.
 
 Regardless of whether a child process terminates successfully after `just` receives a fatal signal, `just` halts execution.
+
+#### Continuing Execution
+
+The `[continue]`1.54.0 attribute can be used to make `just` continue execution even if it receives a fatal signal as long as the child process it's running exits successfully.
+
+With no arguments, `[continue]` handles `SIGINT` (`ctrl-c`) so `SIGQUIT` (`ctrl-\`) can still be used to stop execution.
+
+With arguments, one or more signals to handle may be given explicitly, as `"SIGHUP"`, `"SIGINT"`, and `"SIGQUIT"`.
+
+In this example, if `main.py` catches `SIGINT` and exits successfully, `cleanup` will still run and `just` will exit successfully:
+
+\[continue\]
+test: && cleanup
+  python3 main.py
+
+cleanup:
+  echo cleanup
 
 #### `SIGINFO`
 

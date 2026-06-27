@@ -1,6 +1,6 @@
 ---
 project: btop
-stars: 32965
+stars: 33067
 description: A monitor of resources
 url: https://github.com/aristocratos/btop
 ---
@@ -270,7 +270,9 @@ Also necessary is a UTF8 locale and a font that includes:
 -   Unicode Block “Geometric Shapes” U+25A0 - U+25FF
 -   Unicode Block "Box Drawing" and "Block Elements" U+2500 - U+259F
 
-### **Optional Dependencies (Needed for GPU monitoring) (Only Linux)**
+### **Optional Dependencies (Needed for GPU monitoring)**
+
+GPU monitoring is supported on Linux and on macOS with Apple Silicon GPUs.
 
 GPU monitoring also requires a btop binary built with GPU support (`GPU_SUPPORT=true` flag).
 
@@ -580,7 +582,17 @@ For x86\_64 Linux the flag `GPU_SUPPORT` is automatically set to `true`, to manu
     
     Enables link time optimization (ON by default)
     
-    | `-DBTOP_GPU=<ON\|OFF>` | Enable GPU support (ON by default) | | `-DBTOP_RSMI_STATIC=<ON\|OFF>` | Build and link the ROCm SMI library statically (OFF by default) | | `-DCMAKE_INSTALL_PREFIX=<path>` | The installation prefix ('/usr/local' by default) |
+    `-DBTOP_GPU=<ON|OFF>`
+    
+    Enable GPU support (ON by default)
+    
+    `-DBTOP_RSMI_STATIC=<ON|OFF>`
+    
+    Build and link the ROCm SMI library statically (OFF by default)
+    
+    `-DCMAKE_INSTALL_PREFIX=<path>`
+    
+    The installation prefix ('/usr/local' by default)
     
     To force any other compiler, run `CXX=<compiler> cmake -B build -G Ninja`
     
@@ -652,6 +664,10 @@ Install and use Homebrew or MacPorts package managers for easy dependency instal
     `DEBUG=true`
     
     Sets OPTFLAGS to `-O0 -g` and enables more verbose debug logging
+    
+    `GPU_SUPPORT=<true|false>`
+    
+    Enable/disable GPU support (Enabled by default on macOS)
     
     `ARCH=<architecture>`
     
@@ -739,7 +755,13 @@ Install and use Homebrew or MacPorts package managers for easy dependency instal
     
     Enables link time optimization (ON by default)
     
-    | `-DCMAKE_INSTALL_PREFIX=<path>` | The installation prefix ('/usr/local' by default) |
+    `-DBTOP_GPU=<ON|OFF>`
+    
+    Enable GPU support (ON by default)
+    
+    `-DCMAKE_INSTALL_PREFIX=<path>`
+    
+    The installation prefix ('/usr/local' by default)
     
     To force any specific compiler, run `CXX=<compiler> cmake -B build -G Ninja`
     
@@ -895,7 +917,9 @@ Note that GNU make (`gmake`) is required to compile on FreeBSD.
     
     Enables link time optimization (ON by default)
     
-    | `-DCMAKE_INSTALL_PREFIX=<path>` | The installation prefix ('/usr/local' by default) |
+    `-DCMAKE_INSTALL_PREFIX=<path>`
+    
+    The installation prefix ('/usr/local' by default)
     
     _**Note:** Static linking does not work with GCC._
     
@@ -1051,7 +1075,9 @@ Note that GNU make (`gmake`) is required to compile on NetBSD.
     
     Enables link time optimization (ON by default)
     
-    | `-DCMAKE_INSTALL_PREFIX=<path>` | The installation prefix ('/usr/local' by default) |
+    `-DCMAKE_INSTALL_PREFIX=<path>`
+    
+    The installation prefix ('/usr/local' by default)
     
     To force any other compiler, run `CXX=<compiler> cmake -B build -G Ninja`
     

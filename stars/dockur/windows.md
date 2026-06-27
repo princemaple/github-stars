@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 51744
+stars: 52141
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -476,6 +476,9 @@ You can use qemus/qemu in that case.
 ### Is this project legal?
 
 Yes, this project contains only open-source code and does not distribute any copyrighted material. Any product keys found in the code are just generic placeholders provided by Microsoft for trial purposes. So under all applicable laws, this project will be considered legal.
+
+Stars 🌟
+--------
 
 Disclaimer ⚖️
 -------------

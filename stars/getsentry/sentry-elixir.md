@@ -1,6 +1,6 @@
 ---
 project: sentry-elixir
-stars: 688
+stars: 690
 description: The official Elixir SDK for Sentry (sentry.io)
 url: https://github.com/getsentry/sentry-elixir
 ---

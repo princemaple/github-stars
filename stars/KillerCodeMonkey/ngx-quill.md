@@ -34,7 +34,7 @@ until Nov, 2027
 
 v21
 
-\>= 29.x
+29.x, 30.x
 
 until May, 2027
 

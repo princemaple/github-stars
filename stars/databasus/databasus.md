@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 7471
+stars: 7535
 description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---
@@ -153,6 +153,12 @@ services:
     volumes:
       - ./databasus-data:/databasus-data
     restart: unless-stopped
+    healthcheck:
+      test: \["CMD", "databasus", "healthcheck"\]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start\_period: 60s
 
 Then run:
 

@@ -1,6 +1,6 @@
 ---
 project: pgdog
-stars: 5004
+stars: 5038
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
@@ -171,11 +171,12 @@ role = "auto"
 
 📘 **Authentication**
 
-PgDog supports three authentication methods:
+PgDog supports four authentication methods:
 
 1.  Password-based
 2.  AWS RDS IAM
 3.  Azure Workload Identity
+4.  HashiCorp Vault dynamic credentials
 
 #### Password-based authentication
 
@@ -217,6 +218,37 @@ password = "client-password"
 server\_auth = "azure\_workload\_identity"
 
 When any user has `server_auth = "azure_workload_identity"`, the following settings must be configured as well:
+
+-   `tls_verify` must **not** be `"disabled"`.
+-   `passthrough_auth` must be `"disabled"`.
+
+#### HashiCorp Vault authentication
+
+PgDog can fetch dynamic database credentials (username and password) from HashiCorp Vault's database secrets engine, while keeping client-to-PgDog authentication unchanged. Credentials are cached and rotated automatically after a configured percentage of the Vault lease has elapsed.
+
+**Example**
+
+In `users.toml`:
+
+\[\[users\]\]
+name = "alice"
+database = "pgdog"
+password = "client-password"
+server\_auth = "vault"
+vault\_path = "database/creds/pgdog"
+# Refresh credentials after 80% of the lease has elapsed (default).
+# vault\_refresh\_percent = 80
+
+In `pgdog.toml`:
+
+\[vault\]
+url = "https://vault.internal:8200"
+auth\_method = "kubernetes" # or "approle"
+kubernetes\_role = "pgdog"
+
+PgDog logs into Vault with Kubernetes auth (using the pod's service account JWT) or AppRole (`approle_role_id` plus `approle_secret_id_file` or the `VAULT_SECRET_ID` environment variable).
+
+When any user has `server_auth = "vault"`, the following settings must be configured as well:
 
 -   `tls_verify` must **not** be `"disabled"`.
 -   `passthrough_auth` must be `"disabled"`.

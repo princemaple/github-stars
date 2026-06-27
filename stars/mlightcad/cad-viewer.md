@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 720
+stars: 744
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -96,6 +96,71 @@ How to Use
 -   **Zoom**: Pinch with two fingers
 -   **Pan**: Single-finger drag
 
+Plugin System
+-------------
+
+CAD-Viewer is built around a modular **plugin system** in `@mlightcad/cad-simple-viewer`. Plugins implement the `AcApPlugin` interface and hook into viewer lifecycle via `onLoad` / `onUnload`—typically to register commands, add UI, or wire export/import pipelines.
+
+Load plugins through `AcApDocManager.instance.pluginManager` (`loadPlugin`, `registerLazyPlugin`, or `plugins.fromConfig` when creating the document manager). Export-oriented plugins support **lazy loading**: register a small stub up front and download the heavy bundle only when the user runs the related command (for example `chtml`).
+
+The monorepo ships several first-party plugins. Each focuses on one concern; combine them as needed. **Installation, registration, and API details live in each package’s README**—see the links below.
+
+### Official plugins
+
+Package
+
+Role
+
+Commands / capabilities
+
+`@mlightcad/cad-simple-ui-plugin`
+
+**Toolbar & layer manager UI** for `cad-simple-viewer` (plain DOM, no Vue/React)
+
+`layer`, default toolbar (view, measure, export, review, theme, locale)
+
+`@mlightcad/cad-html-plugin`
+
+Export drawings to **self-contained offline HTML**
+
+`chtml`
+
+`@mlightcad/cad-pdf-plugin`
+
+**PDF export and import** (vector pipeline)
+
+`cpdf`, `ipdf`
+
+`@mlightcad/cad-svg-plugin`
+
+**SVG export** and shared vector renderer (also used by PDF export)
+
+`csvg`
+
+### `@mlightcad/cad-simple-ui-plugin` — UI chrome for the simple viewer
+
+`cad-simple-viewer` deliberately ships **no application UI**—only the canvas and CAD core. If you embed the simple viewer in your own web app and want ready-made chrome without adopting the full Vue-based `cad-viewer` shell, **`cad-simple-ui-plugin` is the intended UI layer**.
+
+It provides:
+
+-   A **configurable toolbar** (placement on any edge, default CAD commands, nested menus, custom items)
+-   A **floating layer manager** (layer on/off, ACI color picker, zoom-to-layer on double-click)
+-   **Theme sync** with the `COLORTHEME` sysvar and `--ml-ui-*` CSS tokens on your host element
+-   **Locale sync** with `AcApI18n` (English / Chinese)
+
+All widgets are framework-agnostic (plain DOM). The full Vue `cad-viewer` app has its own Element Plus UI and does not require this plugin; use `cad-simple-ui-plugin` when you build on `cad-simple-viewer` directly.
+
+→ **Quick start, toolbar customization, and options:** packages/cad-simple-ui-plugin/README.md
+
+### Export plugins (HTML / PDF / SVG)
+
+These plugins add export (and PDF import) commands to the same plugin manager. They are **lazy-loaded** so initial page weight stays small. The `cad-simple-viewer-example` demo registers all three export plugins plus `cad-simple-ui-plugin`; the full `cad-viewer` app registers the export plugins in its bootstrap.
+
+-   **HTML** — one-file offline viewer for sharing and archiving: packages/cad-html-plugin/README.md  
+    (Headless CLI using the same pipeline: packages/cad-html-exporter-cli/README.md)
+-   **PDF** — vector PDF export and PDF-to-CAD import: packages/cad-pdf-plugin/README.md
+-   **SVG** — vector SVG export: packages/cad-svg-plugin/README.md
+
 Performance
 -----------
 
@@ -116,11 +181,27 @@ Known Issues
 CAD-Viewer has some known limitations that users should be aware of:
 
 -   **Unsupported Entities**:
-    -   **Tables** (DWG files only): Table entities are not currently supported in DWG files because LibreDWG is used to read DWG files and it doesn't support table entity yet. If one table is created by line and polyline entities, definitely it is supported.
-    -   **XRefs**: External references (XRefs) are not supported and will not be displayed.
+    
+    -   **XRefs**: External references (XRefs) are not currently supported. This is mainly because file access in the browser works differently from desktop CAD applications. Support for XRefs is planned for a future release.
 -   **DWG File Compatibility**:
+    
     -   Some DWG drawings may fail to open due to bugs in the underlying LibreDWG library. This is a known limitation of the current DWG parsing implementation. If you find those issues, please log one issue on CAD-Viewer issues page or LibreDWG issues page.
-    -   In the Chinese architecture and construction industry, CAD drawings are widely created using Tianzheng software. However, many entities in Tianzheng drawings are proprietary custom objects, and no public APIs are provided to access or parse their internal data. As a result, before opening such drawings with CAD-Viewer, they must first be converted to T3 format using Tianzheng. After conversion, the drawings can be correctly opened and viewed in CAD-Viewer.
+    -   Drawings that contain third-party custom entities (e.g., Tianzheng drawings in the Chinese architecture and construction industry) may not display correctly unless proxy graphics are saved. When saving such drawings, ensure the system variable `PROXYGRAPHICS` is set to `1`. If proxy graphics are embedded in the file, CAD-Viewer can display them.
+    
+    Whether proxy graphics are written when saving a DWG is controlled by the system variable `PROXYGRAPHICS`:
+    
+    Value
+    
+    Meaning
+    
+    0
+    
+    Do not save proxy graphics
+    
+    1
+    
+    Save proxy graphics
+    
 
 These issues are being tracked and will be addressed in future releases.
 
@@ -203,12 +284,12 @@ Legend:
 
 #### Snapping (OSNAP)
 
--   ⏳ Endpoint: Now working for INSERT entity yet.
+-   ⏳ Endpoint: Not working for INSERT entity yet.
 -   Midpoint
--   ⏳ Center
+-   Center
 -   Intersection
 -   Perpendicular / tangent
--   ⏳ Nearest
+-   Nearest
 -   Snap tracking
 
 ### Editing & Modification
@@ -280,7 +361,7 @@ Legend:
 -   Layer manager
 -   Block manager
 -   Command history / console
--   ⏳ Status bar (snap, ortho, grid)
+-   Status bar (snap, ortho, grid)
 
 #### Command System
 
@@ -308,8 +389,8 @@ Legend:
 
 #### Offline Editor
 
--   ⏳ Local editing in browser
--   ⏳ Save to DXF
+-   Local editing in browser
+-   Save to DXF
 -   Save change set / diff
 -   IndexedDB persistence
 

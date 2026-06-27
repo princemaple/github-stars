@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 29020
+stars: 29245
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -11,7 +11,7 @@ Getting Started · Docs · Bug reports · Discussions
 
 English | 简体中文 | Deutsch | Español | français | 日本語 | 한국어 | Portuguese | Русский
 
-RustFS is a high-performance, distributed object storage system built in Rust—one of the most loved programming languages worldwide. RustFS combines the simplicity of MinIO with the memory safety and raw performance of Rust. It offers full S3 compatibility, is completely open-source, and is optimized for data lakes, AI, and big data workloads.
+RustFS is a high-performance, distributed object storage system built in Rust—one of the most loved programming languages worldwide. RustFS combines the simplicity of MinIO with the memory safety and raw performance of Rust. It offers broad S3 API compatibility for supported features, is completely open-source, and is optimized for data lakes, AI, and big data workloads.
 
 Unlike other storage systems, RustFS is released under the permissible Apache 2.0 license, avoiding the restrictions of AGPL. With Rust as its foundation, RustFS delivers superior speed and secure distributed features for next-generation object storage.
 
@@ -20,7 +20,7 @@ Feature & Status
 
 -   **High Performance**: Built with Rust to ensure maximum speed and resource efficiency.
 -   **Distributed Architecture**: Scalable and fault-tolerant design suitable for large-scale deployments.
--   **S3 Compatibility**: Seamless integration with existing S3-compatible applications and tools.
+-   **S3 Compatibility**: Seamless integration with common S3-compatible applications and tools; current coverage is tracked in the S3 compatibility matrix.
 -   **OpenStack Swift API**: Native support for Swift protocol with Keystone authentication.
 -   **OpenStack Keystone Integration**: Native support for OpenStack Keystone authentication with X-Auth-Token headers.
 -   **Data Lake Support**: Optimized for high-throughput big data and AI workloads.
@@ -174,8 +174,8 @@ Risk of license traps and intellectual property pollution.
 
 **Compatibility**
 
-**100% S3 Compatible**  
-Works with any cloud provider or client, anywhere.
+**S3-Compatible Core**  
+Works with common S3-compatible clients, with coverage tracked in the compatibility matrix.
 
 **Variable Compatibility**  
 May lack support for local cloud vendors or specific APIs.

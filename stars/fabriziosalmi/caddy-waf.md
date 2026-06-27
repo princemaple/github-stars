@@ -1,6 +1,6 @@
 ---
 project: caddy-waf
-stars: 776
+stars: 783
 description: Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
 url: https://github.com/fabriziosalmi/caddy-waf
 ---
@@ -12,7 +12,7 @@ A Web Application Firewall middleware for the Caddy web server, written in Go.
 
 -   **Module ID**: `http.handlers.waf`
 -   **Go module path**: `github.com/fabriziosalmi/caddy-waf`
--   **Current version**: `v0.3.0` (see `caddywaf.go` — `const wafVersion`)
+-   **Current version**: `v0.3.3` (see `caddywaf.go` — `const wafVersion`)
 -   **License**: AGPL-3.0
 
 * * *
@@ -118,7 +118,7 @@ A representative provisioning log:
 ```
 INFO  Provisioning WAF middleware     {"log_level":"info","log_path":"debug.json","log_json":true,"anomaly_threshold":20}
 INFO  http.handlers.waf  Tor exit nodes updated  {"count":1093}
-INFO  WAF middleware version  {"version":"v0.3.0"}
+INFO  WAF middleware version  {"version":"v0.3.3"}
 INFO  Rate limit configuration  {"requests":100,"window":10,"cleanup_interval":300,"paths":["/api/v1/.*"],"match_all_paths":false}
 WARN  GeoIP database not found. Country blacklisting/whitelisting will be disabled  {"path":"GeoLite2-Country.mmdb"}
 INFO  IP blacklist loaded     {"path":"ip_blacklist.txt","valid_entries":223770,"invalid_entries":0,"total_lines":223770}
@@ -135,7 +135,7 @@ Installation
 ### Requirements
 
 -   Go **1.25** or newer (`go.mod` declares `go 1.25`)
--   Caddy **v2.10.x** or newer (current build uses `github.com/caddyserver/caddy/v2 v2.10.2`)
+-   Caddy **v2.11.x** or newer (current build uses `github.com/caddyserver/caddy/v2 v2.11.2`)
 -   `xcaddy` for building Caddy with plugins
 
 ### Option 1 — Build with xcaddy (recommended)

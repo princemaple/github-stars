@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3891
+stars: 3894
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -590,7 +590,7 @@ Shorthand for one `paths` entry.
 
 `paths`
 
-Glob patterns to compare against the path patterns matched by the pull request.
+Glob patterns to compare against the files changed by the pull request.
 
 `paths-mode`
 
@@ -621,7 +621,7 @@ categories:
     when:
       label: "skip-changelog"
 
-The `labels-mode` and `paths-mode` options control how the configured labels or path patterns are compared. `any` is the default. Path matching operates on the set of configured path patterns that matched the pull request.
+The `labels-mode` and `paths-mode` options control how the configured labels or path patterns are compared. `any` is the default. Path matching operates on the pull request's changed files.
 
 Within a condition, `label` is shorthand for a single `labels` entry. If both `label` and `labels` are present, they are combined before `labels-mode` is applied. With the default `labels-mode: any`, `labels: ["feature", "enhancement"]` matches pull requests carrying either label.
 
@@ -633,8 +633,6 @@ The available matching modes are:
 -   `all`: every configured value matches
 -   `only`: every change value is included in the configured set
 -   `exactly`: the change values and configured values are the same set
-
-For path conditions, `only` and `exactly` compare against the set of configured path patterns that matched the pull request, not against raw changed file paths.
 
 If a condition does not configure any `label`/`labels` or `path`/`paths`, the corresponding `*-mode` setting has no effect.
 

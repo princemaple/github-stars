@@ -1,6 +1,6 @@
 ---
 project: walt
-stars: 4640
+stars: 4639
 description: :zap: Walt is a JavaScript-like syntax for WebAssembly text format :zap:
 url: https://github.com/ballercat/walt
 ---

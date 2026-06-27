@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 13608
+stars: 13788
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -149,6 +149,15 @@ volumes:
 networks:
   termix-net:
     driver: bridge
+
+  
+
+Donate
+------
+
+Termix is free and open source with no subscriptions or paid plans. If you find it useful, consider donating to help cover server costs, domains, and development time.
+
+Donate
 
   
 

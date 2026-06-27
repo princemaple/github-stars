@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 105182
+stars: 109480
 description: A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Gemini CLI & Hermes Agent. Only official website: ccswitch.io
 url: https://github.com/farion1231/cc-switch
 ---
@@ -21,7 +21,7 @@ English | 中文 | 日本語 | Deutsch | Changelog
 
 Click to collapse
 
-Kimi K2.6 is an open-source, native multimodal agentic model from Moonshot AI, built for long-horizon coding, coding-driven design, and swarm-based task orchestration. It is designed to handle complex end-to-end engineering work across front-end, DevOps, performance optimization, and full-stack workflows, while coordinating large groups of specialized agents to plan, implement, test, and iterate on real coding tasks.
+Kimi K2.7 Code is an open-source, coding-focused agentic model developed by Moonshot AI. It delivers stronger coding and agent performance, with substantial improvements in real-world long-horizon coding tasks. These gains translate into higher end-to-end task success rates across complex software engineering workflows. K2.7 Code also improves reasoning efficiency, reducing thinking-token usage by approximately 30% compared with K2.6. **Click here to start using Kimi**
 
 * * *
 
@@ -53,7 +53,7 @@ Thanks to SSSAiCode for sponsoring this project! SSSAiCode is a stable and relia
 
 Thanks to Micu API for sponsoring this project! Micu API is a global LLM relay service provider dedicated to delivering the best cost-performance ratio with high stability. Backed by a registered enterprise for core assurance, eliminating any risk of service discontinuation, with fast official invoicing support! We champion "zero cost to try": top up from as low as ¥1 with no minimum, and get fee-free refunds anytime! Micu API offers an exclusive deal for CC Switch users: register via this link and enter promo code "ccswitch" when topping up to enjoy a **10% discount**!
 
-Thanks to CTok.ai for sponsoring this project! CTok.ai is dedicated to building a one-stop AI programming tool service platform. We offer professional Claude Code packages and technical community services, with support for Google Gemini and OpenAI Codex. Through carefully designed plans and a professional tech community, we provide developers with reliable service guarantees and continuous technical support, making AI-assisted programming a true productivity tool. Click here to register!
+Thanks to ETok.ai for sponsoring this project! ETok.ai is dedicated to building a one-stop AI programming tool service platform. We offer professional Claude Code packages and technical community services, with support for Google Gemini and OpenAI Codex. Through carefully designed plans and a professional tech community, we provide developers with reliable service guarantees and continuous technical support, making AI-assisted programming a true productivity tool. Click here to register!
 
 This project is sponsored by Claude API. Direct Claude API access — connect Claude Code and Agent apps in 3 minutes. New users can claim a free trial credit.Powered by official Anthropic API keys + AWS Bedrock official channels. No reverse engineering, no model degradation. Full support for Opus / Sonnet / Haiku model lineup, with official capabilities preserved including Tool Use, 1M context window, and more. Built for Claude Code power users, Agent engineers, and enterprise engineering teams. Invoicing and dedicated team support available. Click here to register!
 

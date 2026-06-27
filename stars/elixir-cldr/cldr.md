@@ -8,6 +8,10 @@ url: https://github.com/elixir-cldr/cldr
 Getting Started with Cldr
 =========================
 
+> #### Support for ex\_cldr libraries {: .info}
+> 
+> Support for `ex_cldr` and related libraries is provided until December 31, 2027. Consumers are encouraged to migrate to the localize library as a direct replacement. See future support for more information.
+
 > #### Change to :json\_library configuration {: .warning}
 > 
 > As of `ex_cldr` version 2.37.2 the configuration parameter `:json_library` does not attempt to read the configuration of either Phoenix or Ecto.

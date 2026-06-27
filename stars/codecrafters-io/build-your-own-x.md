@@ -1,6 +1,6 @@
 ---
 project: build-your-own-x
-stars: 517736
+stars: 520252
 description: Master programming by recreating your favorite technologies from scratch.
 url: https://github.com/codecrafters-io/build-your-own-x
 ---
@@ -270,6 +270,7 @@ Tutorials
 -   **JavaScript / Java**: _Neural Networks - The Nature of Code_ \[video\]
 -   **JavaScript**: _Neural networks from scratch for JavaScript linguists (Part1 — The Perceptron)_
 -   **Python**: _A Neural Network in 11 lines of Python_
+-   **Python**: _Build Deep Learning From Scratch (reimplement PyTorch internals across 34 stages)_
 -   **Python**: _Implement a Neural Network from Scratch_
 -   **Python**: _Optical Character Recognition (OCR)_
 -   **Python**: _Traffic signs classification with a convolutional network_

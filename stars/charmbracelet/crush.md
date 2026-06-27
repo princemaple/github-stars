@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 25531
+stars: 25798
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -712,7 +712,7 @@ To add specific models to the configuration, configure as such:
 
 ### Local Models
 
-Crush can auto-discovers models from local providers. Add a custom provider with `type` set to `omlx`, `lmstudio`, `litellm`, or `ollama` and leave out the models list. Crush will populate the model list automatically.
+Crush can auto-discovers models from local providers. Add a custom provider with `type` set to `llamacpp`, `omlx`, `lmstudio`, `litellm`, or `ollama` and leave out the models list. Crush will populate the model list automatically.
 
 {
   "providers": {
@@ -724,9 +724,21 @@ Crush can auto-discovers models from local providers. Add a custom provider with
   }
 }
 
+For llama.cpp (`llama-server`), point at the server's base URL:
+
+{
+  "providers": {
+    "llamacpp": {
+      "name": "llama.cpp",
+      "base\_url": "http://localhost:2222",
+      "type": "llamacpp"
+    }
+  }
+}
+
 #### Manual Model Configuration
 
-You can still list models explicitly. User-defined models always take precedence over discovered ones, and any fields you set won't be overwritten by auto-discovery. Auto discovery will run if the model list is empty for any `openai-compat` provider or if you pass `"auto_discovery": true` it will merge the found models with your hand configured ones.
+You can still list models explicitly. User-defined models always take precedence over discovered ones, and any fields you set won't be overwritten by auto-discovery. Auto discovery will run if the model list is empty for any `openai-compat` provider or if you pass `"discover_models": true` it will merge the found models with your hand configured ones.
 
 {
   "providers": {
@@ -742,7 +754,7 @@ You can still list models explicitly. User-defined models always take precedence
           "default\_max\_tokens": 20000
         }
       \],
-      "auto\_discovery": true
+      "discover\_models": true
     }
   }
 }

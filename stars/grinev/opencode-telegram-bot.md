@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 831
+stars: 855
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -36,7 +36,8 @@ Features
 -   **Custom Commands** — run OpenCode custom commands (and built-ins like `init`/`review`) from an inline menu with confirmation
 -   **Skills Catalog** — browse OpenCode skills from an inline menu and run them immediately or with arguments in the next message
 -   **Interactive Q&A** — answer agent questions and approve permissions via inline buttons
--   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, and optionally enable spoken replies with `/tts`
+-   **Runtime settings** — use `/settings` to change runtime preferences; see Runtime Settings
+-   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, and optionally enable spoken replies in `/settings`
 -   **File attachments** — send images, PDF documents, and text-based files to OpenCode, including multiple files in one Telegram album
 -   **Scheduled tasks** — schedule prompts to run later or on a recurring interval; see Scheduled Tasks
 -   **Context control** — compact context when it gets too large, right from the chat
@@ -175,9 +176,9 @@ Add a project by browsing directories
 
 List directory contents, then tap to open or download
 
-`/tts`
+`/settings`
 
-Choose audio reply mode (`off`, `all`, or `auto`)
+Change bot settings
 
 `/rename`
 
@@ -463,46 +464,6 @@ No
 
 `128`
 
-`SERVICE_MESSAGES_INTERVAL_SEC`
-
-Service messages interval (thinking + tool calls); keep `>=2` to avoid Telegram rate limits, `0` = immediate
-
-No
-
-`5`
-
-`HIDE_THINKING_MESSAGES`
-
-Hide `💭 Thinking...` service messages
-
-No
-
-`false`
-
-`SHOW_THINKING_CONTENT`
-
-Show full model reasoning in the thinking message; uses `RESPONSE_STREAMING_MODE` for edit vs draft streaming
-
-No
-
-`false`
-
-`HIDE_TOOL_CALL_MESSAGES`
-
-Hide tool-call service messages (`💻 bash ...`, `📖 read ...`, etc.)
-
-No
-
-`false`
-
-`HIDE_TOOL_FILE_MESSAGES`
-
-Hide file edit documents sent as `.txt` attachments (`edit_*.txt`, `write_*.txt`)
-
-No
-
-`false`
-
 `TRACK_BACKGROUND_SESSIONS`
 
 Track detached/non-current sessions in the current selected project/worktree and send short notifications
@@ -511,13 +472,13 @@ No
 
 `true`
 
-`RESPONSE_STREAMING`
+`RESPONSE_STREAM_THROTTLE_MS`
 
-Stream assistant replies while they are generated across one or more Telegram messages
+Stream update throttle in milliseconds for assistant, thinking, and tool message edits
 
 No
 
-`true`
+`1000`
 
 `MESSAGE_FORMAT_MODE`
 
@@ -643,6 +604,16 @@ No
 
 Logs are written to `./logs` when running from sources and to the runtime config directory `logs/` folder in `installed` mode. Log rotation depends on runtime mode: `sources` creates one file per bot launch, while `installed` appends to one file per day. Old log files are removed according to `LOG_RETENTION`.
 
+### Runtime Settings
+
+Runtime preferences are changed from `/settings` and stored in `settings.json`:
+
+-   Compact output mode
+-   Thinking content display
+-   Diff file attachments
+-   Response streaming mode: `edit` or `draft (experimental)`; applies only to final assistant replies, not thinking messages
+-   Audio replies: `off`, `all`, or `auto` when TTS is configured
+
 ### Reverse Proxy (Optional)
 
 For environments that block `api.telegram.org` but allow your own HTTPS endpoint (corporate networks, restricted regions), you can route Bot API traffic through a reverse proxy you control. This is an alternative to the SOCKS/HTTP forward proxy configured with `TELEGRAM_PROXY_URL`.
@@ -696,7 +667,7 @@ If `STT_API_URL` and `STT_API_KEY` are set, the bot will:
 
 If `STT_NOTE_PROMPT` is set to a non-empty value other than `false` or `0`, the bot prepends `[Note: ...]` to the transcription before sending it to the LLM. The recognized text shown in Telegram stays unchanged.
 
-If TTS credentials are configured, you can choose spoken reply behavior with `/tts`: `off` disables audio replies, `all` sends audio for every assistant reply, and `auto` sends audio only after voice/audio prompts. The preference is stored in `settings.json` and persists across restarts.
+If TTS credentials are configured, you can choose spoken reply behavior in `/settings`: `off` disables audio replies, `all` sends audio for every assistant reply, and `auto` sends audio only after voice/audio prompts. The preference is stored in `settings.json` and persists across restarts.
 
 OpenAI-compatible TTS configuration example:
 

@@ -1,6 +1,6 @@
 ---
 project: coturn
-stars: 14114
+stars: 14138
 description: coturn TURN server project
 url: https://github.com/coturn/coturn
 ---
@@ -38,11 +38,11 @@ Developing
 coturn requires following dependencies to be installed first
 
 -   libevent2
+-   libmicrohttpd (Prometheus metrics interface)
 
 Optional
 
 -   openssl (to support TLS and DTLS, authorized STUN and TURN)
--   libmicrohttp and prometheus-client-c (prometheus interface)
 -   MariaDB/MySQL (user database)
 -   Hiredis (user database, monitoring)
 -   SQLite (user database)

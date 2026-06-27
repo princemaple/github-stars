@@ -1,6 +1,6 @@
 ---
 project: Xray-core
-stars: 39722
+stars: 39904
 description: Xray, Penetrates Everything. Also the best v2ray-core. Where the magic happens. An open platform for various uses.
 url: https://github.com/XTLS/Xray-core
 ---
@@ -79,6 +79,7 @@ Installation
     -   Xray\_bash\_onekey, XTool, VPainLess
     -   v2ray-agent, Xray\_onekey, ProxySU
 -   Magisk
+    -   Magic\_V2Ray
     -   Xray\_For\_Magisk
 -   Homebrew
     -   `brew install xray`

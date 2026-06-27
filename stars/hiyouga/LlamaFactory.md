@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 72312
+stars: 72602
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -444,17 +444,23 @@ MiMo
 
 mimo/mimo\_v2
 
-MiniCPM 4
+MiniCPM 4/5
 
-0.5B/8B
+0.5B/1B/8B
 
-cpm4
+cpm4/empty
 
 MiniCPM-o/MiniCPM-V 4.5
 
 8B/9B
 
 minicpm\_o/minicpm\_v
+
+MiniCPM-V 4.6
+
+3B/8B
+
+minicpm\_v\_4\_6
 
 MiniMax-M1/MiniMax-M2
 

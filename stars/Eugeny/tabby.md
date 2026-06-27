@@ -1,6 +1,6 @@
 ---
 project: tabby
-stars: 72238
+stars: 72418
 description: A terminal for a more modern age
 url: https://github.com/Eugeny/tabby
 ---
@@ -767,6 +767,14 @@ Thanks goes to these wonderful people (emoji key):
 
   
 **Puneet Dixit**  
+💻
+
+  
+**Balaji Eswaramoorthi**  
+💻
+
+  
+**linzack**  
 💻
 
 This project follows the all-contributors specification. Contributions of any kind are welcome!

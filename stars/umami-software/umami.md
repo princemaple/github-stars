@@ -1,6 +1,6 @@
 ---
 project: umami
-stars: 37244
+stars: 37376
 description: Umami is a modern, privacy-focused analytics platform. An open-source alternative to Google Analytics, Mixpanel and Amplitude.
 url: https://github.com/umami-software/umami
 ---
@@ -38,6 +38,8 @@ pnpm install
 Create an `.env` file with the following:
 
 DATABASE\_URL=connection-url
+
+Optional: set `API_URL` to change the base URL used by internal UI API calls. Relative paths are served under `BASE_PATH`; absolute URLs are proxied through the local `/api` route. For example, `API_URL=/internal-api` or `API_URL=https://api.example.com/api`.
 
 The connection URL format:
 

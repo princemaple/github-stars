@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 379672
+stars: 380735
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -232,7 +232,7 @@ OpenClaw was built for **Molty**, a space lobster AI assistant. 🦞 by Peter St
 Community
 ---------
 
-See CONTRIBUTING.md for guidelines, maintainers, and how to submit PRs. AI/vibe-coded PRs welcome! 🤖
+See CONTRIBUTING.md for guidelines, maintainers, and how to submit PRs. Use the issue chooser for bugs, docs bugs, and feature requests; ask setup/support questions in Discord; and report vulnerabilities through SECURITY.md. PRs should link the relevant issue when possible and follow the PR template with problem, impact, and evidence. AI/vibe-coded PRs welcome! 🤖
 
 Special thanks to Mario Zechner for his support and for pi-mono. Special thanks to Adam Doppelt for the lobster.bot domain.
 

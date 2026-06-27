@@ -1,6 +1,6 @@
 ---
 project: OpenSpeedy
-stars: 16236
+stars: 16357
 description: 🎮 An open-source game speed modifier.
 url: https://github.com/game1024/OpenSpeedy
 ---
@@ -128,6 +128,18 @@ kernel32.dll
 
 获取高精度系统时间
 
+SetWaitableTimer
+
+kernel32.dll
+
+设置可等待定时器
+
+SetWaitableTimerEx
+
+kernel32.dll
+
+设置可等待定时器(扩展)
+
 ⚠️ 注意事项
 =======
 
@@ -157,5 +169,7 @@ OpenSpeedy使用到以下项目的源码，感谢开源社区的力量，如果O
 
 -   minhook: 用于API Hook
 -   tauri: GUI
+-   MUI: UI 组件库
+-   Ant Design: UI 分割面板组件
 
 免责声明: OpenSpeedy 仅用于教育和研究目的。用户应自行承担使用本软件的所有风险和责任。作者不对因使用本软件导致的任何损失或法律责任负责。

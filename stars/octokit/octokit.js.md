@@ -1,6 +1,6 @@
 ---
 project: octokit.js
-stars: 7790
+stars: 7797
 description: The all-batteries-included GitHub SDK for Browsers, Node.js, and Deno.
 url: https://github.com/octokit/octokit.js
 ---

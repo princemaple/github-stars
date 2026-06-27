@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 443138
+stars: 444567
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -344,16 +344,6 @@ Yes
 PlaceDog
 
 Placeholder Dog pictures
-
-No
-
-Yes
-
-Yes
-
-PlaceKitten
-
-Placeholder Kitten pictures
 
 No
 
@@ -1686,6 +1676,16 @@ No
 
 Unknown
 
+Meirra
+
+SEO monitoring, email verification, lead generation, and marketing analytics
+
+`apiKey`
+
+Yes
+
+Yes
+
 ORB Intelligence
 
 Company lookup
@@ -2436,6 +2436,16 @@ Yes
 
 Unknown
 
+Block Lottos
+
+On-chain lottery, draw history, jackpot and advertising endpoints
+
+No
+
+Yes
+
+Yes
+
 Blockchain
 
 Bitcoin Payment, Wallet & Transaction Data
@@ -2866,6 +2876,16 @@ Yes
 
 Unknown
 
+Mexc
+
+Cryptocurrency info, place order
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Nexchange
 
 Automated cryptocurrency exchange service
@@ -3160,6 +3180,16 @@ No
 Yes
 
 Yes
+
+TaxID
+
+EU VAT number validation with company name and address lookup across all 27 member states
+
+`apiKey`
+
+Yes
+
+Unknown
 
 VATComply.com
 
@@ -4581,6 +4611,16 @@ Yes
 
 Unknown
 
+Webclaw
+
+Web content extraction for LLMs with scrape, crawl, search, and summarize
+
+`apiKey`
+
+Yes
+
+Yes
+
 WebScraping.AI
 
 Web Scraping API with built-in proxies and JS rendering
@@ -4971,6 +5011,16 @@ Yes
 
 No
 
+PDFFleet
+
+HTML and URL to PDF API with templates and a free tier
+
+`apiKey`
+
+Yes
+
+Yes
+
 Pocket
 
 Bookmarking service
@@ -4986,6 +5036,16 @@ Podio
 File sharing and productivity
 
 `OAuth`
+
+Yes
+
+Unknown
+
+PolyDoc
+
+HTML/URL to PDF and screenshots, plus Factur-X/ZUGFeRD e-invoices; free tier
+
+`apiKey`
 
 Yes
 
@@ -5886,6 +5946,16 @@ Yes
 
 Yes
 
+Edgrapi
+
+Clean SEC EDGAR company financials, ratios, filings and 10-K/10-Q sections as normalized JSON
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Fed Treasury
 
 U.S. Department of the Treasury Data
@@ -6149,6 +6219,16 @@ Unknown
 StockData
 
 Real-Time, Intraday & Historical Market Data, News and Sentiment API
+
+`apiKey`
+
+Yes
+
+Yes
+
+StockFit
+
+SEC filings, financial statements, earnings, ETF holdings and ownership data
 
 `apiKey`
 
@@ -8726,6 +8806,16 @@ Yes
 
 Unknown
 
+eCourtsIndia
+
+Indian court case status, judgments, and hearing schedule API
+
+`apiKey`
+
+Yes
+
+Yes
+
 EPA
 
 Web services and data sets from the US Environmental Protection Agency
@@ -9345,6 +9435,16 @@ No
 Yes
 
 Unknown
+
+OpenMercantil
+
+Spanish company public data and BORME event timelines
+
+No
+
+Yes
+
+Yes
 
 OpenRegistry
 
@@ -10240,6 +10340,16 @@ NLP API using spaCy and transformers for NER, sentiments, classification, summar
 Yes
 
 Unknown
+
+Not Human Search
+
+AI tool discovery with agentic scoring for 8,600+ tools and MCP servers
+
+No
+
+Yes
+
+Yes
 
 OpenVisionAPI
 
@@ -12736,6 +12846,16 @@ Yes
 
 Unknown
 
+Domain Intelligence
+
+DNS, WHOIS/RDAP, SSL, subdomain enumeration, and email security in one parallel call
+
+`apiKey`
+
+Yes
+
+No
+
 EmailRep
 
 Email address threat and risk prediction
@@ -14593,6 +14713,16 @@ Correios
 Integration to provide information and prepare shipments using Correio's services
 
 `apiKey`
+
+Yes
+
+Unknown
+
+Mapbox
+
+Maps, directions, geocoding
+
+apiKey
 
 Yes
 

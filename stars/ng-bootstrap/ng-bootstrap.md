@@ -1,6 +1,6 @@
 ---
 project: ng-bootstrap
-stars: 8232
+stars: 8231
 description: Angular powered Bootstrap
 url: https://github.com/ng-bootstrap/ng-bootstrap
 ---
@@ -171,6 +171,14 @@ Popper
 20.x.x
 
 ^21.0.0
+
+5.3.8
+
+^2.11.8
+
+21.x.x
+
+^22.0.0
 
 5.3.8
 

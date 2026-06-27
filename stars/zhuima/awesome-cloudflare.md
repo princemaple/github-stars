@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 14135
+stars: 14339
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -27,8 +27,6 @@ Awesome Cloudflare
 在线版本
 ----
 
--   OpenClaw Monitor - Real-time AI agent monitoring dashboard for OpenClaw. Tracks Gateway status, sessions, token usage & trends with Vue 3 + ECharts.
-
 Awesome Cloudflare 在线导航
 
 群组
@@ -39,26 +37,27 @@ Awesome Cloudflare 在线导航
 Contents
 --------
 
--   -   在线版本
-    -   群组
-    -   Contents
-    -   图床
-    -   邮箱
-    -   博客
+-   在线版本
+-   群组
+-   Contents
+-   图床
+-   邮箱
+-   博客
 -   脚手架
-    -   短链
-    -   网站分析
-    -   隧道
-    -   加速
-    -   文件分享
-    -   测速
-    -   监控
-    -   开发者工具
+-   短链
+-   网站分析
+-   隧道
+-   加速
+-   文件分享
+-   对象存储
+-   测速
+-   监控
+-   开发者工具
 -   文章
-    -   其他
-    -   教程
-    -   Contributors
-    -   Star History
+-   其他
+-   教程
+-   Contributors
+-   Star History
 
 图床
 --
@@ -135,9 +134,9 @@ roim-picx
 
 CloudFlare-ImgBed
 
-基于CloudFlare和Telegraph的免费图床，本仓库基于https://github.com/cf-pages/Telegraph-Image ，是原项目前端页面的重制版。开源、清晰、美观、动画丝滑、玩法多样！
+基于Cloudflare Worker技术栈的免费图床，具有美观、易用的现代化前端，支持Cloudflare, Docker等部署方式，支持Telegram, Discord, S3, R2, Huggingface, Webdav等多个存储渠道，不限制文件格式和大小。
 
-https://demo-cloudflare-imgbed.pages.dev/
+https://cfbed.1314883.xyz/
 
 维护中
 
@@ -350,7 +349,7 @@ https://one-stroke.savetimefor.fun
 维护中
 
 脚手架
-===
+---
 
 名称
 
@@ -365,6 +364,14 @@ nextflare
 Next.js App running with Lemon Squeezy on Cloudflare.
 
 https://nextflare-template.pages.dev/
+
+维护中
+
+create-microservices-app
+
+Scaffold a Cloudflare-native SaaS app — Workers, D1, SvelteKit/Hono, with verified auth, booking, payment & email modules.
+
+https://microservices.sh
 
 维护中
 
@@ -828,6 +835,14 @@ https://ai-watch.dev/
 
 维护中
 
+Prismix
+
+AI monitoring for 76 services (OpenAI, Anthropic, Cursor...) on Cloudflare Workers+KV. Email/webhook alerts, 30-day uptime, status badges, news aggregation, MCP directory.
+
+https://prismix.dev
+
+Active
+
 开发者工具
 -----
 
@@ -869,8 +884,16 @@ https://hackmyip.com/
 
 维护中
 
+Dualmark
+
+开源 AEO（Answer Engine Optimization）基础设施。`@dualmark/cloudflare` 适配器包装任意上游 Worker，在边缘通过 HTTP 内容协商为 AI 爬虫（GPTBot、ClaudeBot、PerplexityBot 等 19 个已知 UA）返回干净的 Markdown 副本，人类访客获得 HTML，同一 URL 双格式。Apache 2.0，npm provenance 签名。
+
+https://dualmark.dev
+
+维护中
+
 文章
-==
+--
 
 名称
 

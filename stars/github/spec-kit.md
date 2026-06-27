@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 114357
+stars: 115878
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -118,6 +118,7 @@ Explore community-contributed resources on the Spec Kit docs site:
 
 -   Extensions — commands, hooks, and capabilities
 -   Presets — template and terminology overrides
+-   Bundles — role and team stacks composed from existing components
 -   Walkthroughs — end-to-end SDD scenarios
 -   Friends — projects that extend or build on Spec Kit
 
@@ -125,7 +126,7 @@ Note
 
 Community contributions are independently created and maintained by their respective authors. Review source code before installation and use at your own discretion.
 
-Want to contribute? See the Extension Publishing Guide or the Presets Publishing Guide.
+Want to contribute? See the Extension Publishing Guide, the Presets Publishing Guide, or the Community Bundles guide.
 
 🤖 Supported AI Coding Agent Integrations
 -----------------------------------------
@@ -316,7 +317,7 @@ specify bundle remove <bundle-id\>     # removes only this bundle's components
 
 Bundles resolve from a **priority-ordered catalog stack** (project > user > built-in). Each source carries an install policy: `install-allowed` sources can be installed from, while `discovery-only` sources are visible in `search`/`info` but refuse installation. Manage the stack with `specify bundle catalog list|add|remove`.
 
-Authors validate and package bundles locally — there is no first-class publish; distribution is hosting the built artifact and adding a catalog entry:
+Authors validate and package bundles locally. Distribution is hosting the built artifact and adding a catalog source; community bundle submissions use the Bundle Submission issue template so required component catalogs and install evidence can be reviewed:
 
 specify bundle validate --path ./my-bundle      # structural + reference checks
 specify bundle build --path ./my-bundle         # produce a versioned .zip artifact
@@ -486,7 +487,7 @@ specify init . --force --integration copilot
 # or
 specify init --here --force --integration copilot
 
-The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi, Forge, Goose, or Mistral Vibe installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+The CLI will check if you have Claude Code, Gemini CLI, Cursor CLI, Qwen CLI, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi, Oh My Pi, Forge, Goose, Mistral Vibe, or ZCode installed. If you do not, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
 
 specify init <project\_name\> --integration copilot --ignore-agent-tools
 

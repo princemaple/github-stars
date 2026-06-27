@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 5082
+stars: 5099
 description: Network diagrams that update themselves
 url: https://github.com/scanopy/scanopy
 ---
@@ -23,7 +23,7 @@ Scanopy replaces manual network diagrams with a continuously maintained model of
 Every switch, every port, every link.
 
 **L3 (Logical)**  
-Subnets, VLANs, and how hosts bridge them.
+Subnets and how hosts connect across them.
 
 **Workloads**  
 Bare metal to hypervisors to containers.

@@ -1,6 +1,6 @@
 ---
 project: 3x-ui
-stars: 41092
+stars: 41671
 description: Xray panel supporting multi-protocol multi-user expire day & traffic & IP limit (Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun) 
 url: https://github.com/MHSanaei/3x-ui
 ---
@@ -42,18 +42,24 @@ Quick Start
 
 bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh)
 
+To install a specific version, append its tag (e.g. `v3.4.0`):
+
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) v3.4.0
+
+To install the rolling **dev** build (latest per-commit pre-release from `main`, not a stable release), pass `dev-latest`:
+
+bash <(curl -Ls https://raw.githubusercontent.com/mhsanaei/3x-ui/master/install.sh) dev-latest
+
 During installation a random username, password, and access path are generated. After installation, run `x-ui` to open the management menu, where you can start/stop the service, view or reset your login credentials, manage SSL certificates, and more.
 
 For full documentation, please visit the project Wiki.
 
-### Unattended install & cloud images
+### Unattended install
 
-The installer also runs **non-interactively** for cloud-init and golden images. Set `XUI_NONINTERACTIVE=1` (or pipe with no TTY) and it installs end-to-end with zero prompts, generating random credentials and writing them to `/etc/x-ui/install-result.env`. See `deploy/` for:
+The installer also runs **non-interactively** for cloud-init. Set `XUI_NONINTERACTIVE=1` (or pipe with no TTY) and it installs end-to-end with zero prompts, generating random credentials and writing them to `/etc/x-ui/install-result.env`. See `deploy/` for:
 
 -   Cloud-init user-data — unattended install on any cloud (Hetzner/AWS/DO/Vultr/GCP/Azure/Oracle)
--   Packer golden image — build an AWS EC2 AMI + qcow2 (amd64/arm64) with per-instance credentials generated on first boot
--   Amazon Lightsail — launch script + reusable snapshot builder
--   AWS Marketplace checklist
+-   Hetzner Cloud notes — cloud-init deployment on Hetzner
 
 Supported Platforms
 -------------------
@@ -157,6 +163,48 @@ Log verbosity (`debug`, `info`, `warning`, `error`)
 Enable debug mode
 
 `false`
+
+`XUI_TUNNEL_HEALTH_MONITOR`
+
+Enable the tunnel health monitor (probes a URL and restarts xray after repeated failures; a restart drops all clients)
+
+`false`
+
+`XUI_TUNNEL_HEALTH_PROXY`
+
+Proxy the probe is sent through; point it at a local xray inbound so the probe tests the tunnel (e.g. `socks5://127.0.0.1:1080`). Empty means the probe only checks host connectivity
+
+—
+
+`XUI_TUNNEL_HEALTH_URL`
+
+URL probed for tunnel health
+
+`https://www.cloudflare.com/cdn-cgi/trace`
+
+`XUI_TUNNEL_HEALTH_INTERVAL`
+
+Interval between probes
+
+`30s`
+
+`XUI_TUNNEL_HEALTH_TIMEOUT`
+
+Per-probe timeout
+
+`10s`
+
+`XUI_TUNNEL_HEALTH_FAILURES`
+
+Consecutive failures before a restart is triggered
+
+`3`
+
+`XUI_TUNNEL_HEALTH_COOLDOWN`
+
+Minimum delay between consecutive restarts
+
+`5m`
 
 Supported Languages
 -------------------

@@ -1,6 +1,6 @@
 ---
 project: litestream
-stars: 13742
+stars: 13756
 description: Streaming replication for SQLite.
 url: https://github.com/benbjohnson/litestream
 ---

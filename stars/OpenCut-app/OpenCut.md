@@ -1,6 +1,6 @@
 ---
 project: OpenCut
-stars: 58442
+stars: 60242
 description: The open-source CapCut alternative
 url: https://github.com/OpenCut-app/OpenCut
 ---
@@ -24,6 +24,26 @@ Status
 
 You can still find the previous version at opencut-app/opencut-classic, which is the one to reach for today. opencut.app still runs the classic version; the rewrite will live at new.opencut.app until it's ready to take over.
 
+Development
+-----------
+
+Install proto if you haven't already:
+
+bash <(curl -fsSL https://moonrepo.dev/install/proto.sh)
+
+From the repo root:
+
+proto use    # installs bun + moon at the versions pinned in .prototools
+bun install
+
+moon run web:dev   # localhost:5173
+moon run api:dev   # localhost:8787
+
+Contributing
+------------
+
+We're not set up to take outside contributions yet while the architecture is being designed. If you want to follow along, ask questions, or just hang out, join the Discord or open an issue.
+
 Sponsors
 --------
 
@@ -32,11 +52,6 @@ OpenCut is supported by companies that believe in open source creator tools.
 -   **fal.ai**: Generative image, video, and audio models all in one place.
 
 Want your logo here? Reach out at sponsor@opencut.app.
-
-Contributing
-------------
-
-We're not set up to take outside contributions yet while the architecture is being designed. If you want to follow along, ask questions, or just hang out, join the Discord or open an issue.
 
 License
 -------

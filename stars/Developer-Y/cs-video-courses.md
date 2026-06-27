@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 81873
+stars: 81975
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -169,6 +169,8 @@ Courses
 -   CS264 Beyond Worst-Case Analysis, Fall 2014 - Tim Roughgarden Lecture (Youtube)
 -   CS364A Algorithmic Game Theory, Fall 2013 - Tim Roughgarden Lectures
 -   CS364B Advanced Mechanism Design, Winter 2014 - Tim Roughgarden Lectures
+-   CS3510 Algorithms, Spring 2024 - Georgia Tech Videos - Sp 2024 Videos - Su 2025
+-   CS4510 Automata and Complexity - Georgia Tech Videos - Su 2021 Videos - Su 2023 Videos - Su 2024 Videos - Su 2025
 -   Algorithms - Aduni
 -   6.889 - Algorithms for Planar Graphs and Beyond (Fall 2011) MIT
 -   6.890 Algorithmic Lower Bounds: Fun with Hardness Proofs - MIT OCW
@@ -792,6 +794,7 @@ Courses
     -   University of Twente Discrete Optimization, by Marc Uetz (Fall 2020)
     -   UC Davis MAT 168 Optimization winter 2024, by Matthias Köppe
     -   Purdue University CHE 597 Computational Optimization spring 2025, by Can Li
+    -   Purdue University ECE 695 Optimization for Deep Learning (OPT4DL), by Abolfazl Hashemi YouTube - Fa 25
     -   UCSD CS292F Convex Optimization Spring 2020, by Yu-Xiang Wang (Youtube)
     -   UIUC ECE 490 Introduction to Optimization fall 2020, by Venugopal V. Veeravalli (YouTube)
     -   University of Wisconsin-Madison CS/ECE/ISyE 524 Introduction to Optimization spring 2017-18, by Laurent Lessard
@@ -908,6 +911,7 @@ Courses
 -   **Discrete Math**
     -   6.042J - Mathematics for Computer Science, MIT OCW
     -   18.200 - Principles of Discrete Applied Mathematics, MIT OCW
+    -   CS 2050 Discrete Mathematics, Georgia Tech Videos - Su 2024
     -   UC Berkeley Computer Science 70, Discrete Mathematics and Probability Theory - Fall 2025 (YouTube)
     -   CSE 547 Discrete Mathematics, Prof Skiena, University of Stony Brook
     -   Discrete Structures (Summer 2011) - Rutgers, The State University of New Jersey

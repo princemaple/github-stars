@@ -1,6 +1,6 @@
 ---
 project: pytudes
-stars: 24352
+stars: 24359
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
@@ -55,6 +55,12 @@ co nb
 2026
 
 Project Euler #3: Largest prime factor
+
+co nb
+
+2026
+
+Project Euler 1–100
 
 co nb
 
@@ -160,12 +166,6 @@ Pickleball Tournament
 
 co nb
 
-2017
-
-Project Euler Utilities
-
-co nb
-
 2022
 
 Selecting Names from a Menu
@@ -180,7 +180,7 @@ Open
 
 Year
 
-Advent of Code
+Advent of Code and Project Euler
 
 co nb
 
@@ -247,6 +247,18 @@ co nb
 2022
 
 Advent of Code Utilities
+
+co nb
+
+2026
+
+Project Euler 1–100
+
+co nb
+
+2026
+
+Project Euler #3: Largest prime factor
 
 Open
 
@@ -373,12 +385,6 @@ co nb
 2024
 
 Number Bracelets Game
-
-co nb
-
-2026
-
-Project Euler #3: Largest prime factor
 
 co nb
 

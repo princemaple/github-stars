@@ -1,6 +1,6 @@
 ---
 project: ex_webrtc
-stars: 473
+stars: 475
 description: An Elixir implementation of the W3C WebRTC API
 url: https://github.com/elixir-webrtc/ex_webrtc
 ---
@@ -18,7 +18,7 @@ Add `ex_webrtc` to the list of dependencies in `mix.exs`
 
 def deps do
   \[
-    {:ex\_webrtc, "~> 0.16.0"}
+    {:ex\_webrtc, "~> 0.17.0"}
   \]
 end
 
@@ -26,7 +26,7 @@ Elixir WebRTC comes with optional support for DataChannels, but it must be expli
 
 def deps do
   \[
-    {:ex\_webrtc, "~> 0.16.0"},
+    {:ex\_webrtc, "~> 0.17.0"},
     {:ex\_sctp, "~> 0.1.2"}
   \]
 end

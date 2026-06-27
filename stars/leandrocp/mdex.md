@@ -1,6 +1,6 @@
 ---
 project: mdex
-stars: 426
+stars: 429
 description: Markdown for Elixir. Fast, Extensible, Phoenix-native. AI-ready. Built on top of comrak, ammonia, and lumis.
 url: https://github.com/leandrocp/mdex
 ---
@@ -228,7 +228,7 @@ Active
 
 ✅
 
-❌
+⚠️¹
 
 ✅
 
@@ -236,7 +236,7 @@ Active
 
 Pure Elixir
 
-⚠️¹
+⚠️²
 
 ✅
 
@@ -308,7 +308,7 @@ AST to Markdown
 
 ✅
 
-⚠️²
+⚠️³
 
 ❌
 
@@ -344,16 +344,6 @@ To XML
 
 ✅
 
-To Slack
-
-✅
-
-❌
-
-❌
-
-❌
-
 To Manpage
 
 ❌
@@ -384,6 +374,16 @@ To Quill Delta
 
 ❌
 
+To Slack
+
+✅
+
+❌
+
+❌
+
+❌
+
 Emoji
 
 ✅
@@ -394,7 +394,7 @@ Emoji
 
 ❌
 
-GFM³
+GFM⁴
 
 ✅
 
@@ -404,7 +404,7 @@ GFM³
 
 ❌
 
-GLFM⁴
+GLFM⁵
 
 ✅
 
@@ -414,22 +414,23 @@ GLFM⁴
 
 ❌
 
-Discord⁵
+Discord⁶
 
-⚠️⁶
-
-❌
+⚠️⁷
 
 ❌
 
 ❌
 
-1.  MDEx depends on mdex\_native which uses Rustler
-2.  Possible with earmark\_reversal
-3.  GitHub Flavored Markdown
-4.  GitLab Flavored Markdown
-5.  Discord Flavored Markdown
-6.  Partial support
+❌
+
+1.  Earmark is currently marked as retired
+2.  MDEx depends on mdex\_native which uses Rustler
+3.  Possible with earmark\_reversal
+4.  GitHub Flavored Markdown
+5.  GitLab Flavored Markdown
+6.  Discord Flavored Markdown
+7.  Partial support
 
 Benchmark
 ---------

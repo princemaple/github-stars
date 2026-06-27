@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 54599
+stars: 58135
 description: 🤱🏻 Turn any webpage into a desktop app with one command.
 url: https://github.com/tw93/Pake
 ---
@@ -15,7 +15,7 @@ Pake
 Features
 --------
 
--   🎐 **Lightweight**: Nearly 20 times smaller than Electron packages, typically around 5M
+-   🎐 **Lightweight**: Installer is nearly 20 times smaller than Electron packages, typically under 10M on disk
 -   🚀 **Fast**: Built with Rust Tauri, much faster than traditional JS frameworks with lower memory usage
 -   ⚡ **Easy to use**: One-command packaging via CLI or online building, no complex configuration needed
 -   📦 **Feature-rich**: Supports shortcuts, immersive windows, drag & drop, style customization, ad removal
@@ -188,8 +188,7 @@ Support
 -------
 
 -   The most direct way to support me is getting Mole for Mac, my paid Mac cleanup app.
--   If Pake helped you, share it with friends or give it a star.
--   Got ideas or bugs? Open an issue or PR, feel free to contribute your best AI model.
+-   If Pake helped you, give it a star, share it, or open an issue or PR.
 -   I have two cats, TangYuan and Coke. If you think Pake delights your life, you can feed them canned food 🥩.
 
 These lovely people already did 🐱  

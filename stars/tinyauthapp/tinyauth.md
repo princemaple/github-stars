@@ -1,6 +1,6 @@
 ---
 project: tinyauth
-stars: 7503
+stars: 7526
 description: The tiniest authentication and authorization server you have ever seen.
 url: https://github.com/tinyauthapp/tinyauth
 ---
@@ -59,12 +59,17 @@ License
 
 Tinyauth is licensed under the GNU Affero General Public License v3.0. TL;DR — You may copy, distribute and modify the software as long as you track changes/dates in source files. Any modifications to or software including (via compiler) AGPL-licensed code must also be made available under the AGPL along with build & install instructions. If you run a modified version over a network, you must also make the source available to the users of that service. For more information about the license check the license file.
 
+Hosting Partners
+----------------
+
+If you use one of our partners, you can help support us while getting a great hosting deal.
+
 Sponsors
 --------
 
 A big thank you to the following people for providing me with more coffee:
 
-                            
+                              
 
 Acknowledgements
 ----------------

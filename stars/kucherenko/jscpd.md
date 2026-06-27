@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 5789
+stars: 5812
 description: Copy/paste detector for programming source code, supports 223 formats. AI-ready with token-efficient reporter, skill and MCP server.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -15,7 +15,7 @@ jscpd implements the Rabin-Karp algorithm to find duplicated code blocks across 
 Quick Start
 -----------
 
-# Install (all platforms — installs both jscpd and cpd commands)
+# Install (all platforms — installs the jscpd command)
 curl -fsSL https://jscpd.dev/install.sh | bash
 
 # TypeScript engine (Node.js, v4.x)
@@ -24,10 +24,9 @@ jscpd /path/to/code
 # or use without installing
 npx jscpd@4 /path/to/code
 
-# Rust engine (v5.x, 24-37x faster) — both jscpd and cpd commands
+# Rust engine (v5.x, 24-37x faster) — installs the jscpd command
 npm install -g jscpd@5
 jscpd /path/to/code
-cpd /path/to/code
 
 # Rust engine — cpd command only
 npm install -g cpd
@@ -92,7 +91,7 @@ Rust (v5)
 
 `jscpd`
 
-`jscpd` and `cpd` (both available)
+`jscpd` (from `jscpd@5`) or `cpd` (from `cpd`)
 
 **Speed**
 
@@ -130,14 +129,14 @@ No
 
 13
 
-`jscpd@5` installs both `jscpd` and `cpd` commands. The `cpd` npm package installs only the `cpd` command. Both contain the same Rust binary.
+`jscpd@5` installs the `jscpd` command. The `cpd` npm package installs the `cpd` command. Both contain the same Rust binary. For both command names from a single install, use crates.io: `cargo install jscpd`.
 
 What's New
 ----------
 
 ### v5.0.x — Rust Engine
 
-jscpd v5 is a ground-up Rust rewrite that ships as `jscpd@5` (installs both `jscpd` and `cpd` commands) or `cpd` (installs the `cpd` command only). Self-contained binary — no Node.js runtime required.
+jscpd v5 is a ground-up Rust rewrite that ships as `jscpd@5` (installs the `jscpd` command) or `cpd` (installs the `cpd` command). Self-contained binary — no Node.js runtime required.
 
 **Same interface, 24-37x faster:**
 
@@ -237,7 +236,6 @@ Who Uses jscpd
 -   MegaLinter — 100% open-source linter aggregator for CI, integrates jscpd
 -   OpenClaw — personal AI assistant for self-hosted devices
 -   Natural — NLP library for Node.js, uses jscpd for code quality
--   Nixpkgs — 140K+ package repo for NixOS, packages jscpd
 
 Performance
 -----------

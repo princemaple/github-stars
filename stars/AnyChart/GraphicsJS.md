@@ -1,6 +1,6 @@
 ---
 project: GraphicsJS
-stars: 993
+stars: 994
 description: A lightweight JavaScript graphics library with the intuitive API, based on SVG/VML technology.
 url: https://github.com/AnyChart/GraphicsJS
 ---

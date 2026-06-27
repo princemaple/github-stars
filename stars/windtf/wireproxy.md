@@ -1,6 +1,6 @@
 ---
 project: wireproxy
-stars: 5652
+stars: 5661
 description: Wireguard client that exposes itself as a socks5 proxy
 url: https://github.com/windtf/wireproxy
 ---
@@ -51,6 +51,7 @@ Feature
 
 -   TCP static routing for client and server
 -   SOCKS5/HTTP proxy (currently only CONNECT is supported)
+-   Transparent TLS (SNI) proxy
 
 TODO
 ====
@@ -167,6 +168,11 @@ BindAddress = 127.0.0.1:25345
 # Specifying certificate and key enables HTTPS
 #CertFile = ...
 #KeyFile = ...
+
+# SNI creates a transparent TLS proxy on your LAN, and all traffic would be routed via wireguard,
+# using Server Name Indication as routing destination.
+\[SNI\]
+BindAddress = 0.0.0.0:443
 
 Alternatively, if you already have a wireguard config, you can import it in the wireproxy config file like this:
 

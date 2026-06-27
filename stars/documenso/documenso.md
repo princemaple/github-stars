@@ -1,6 +1,6 @@
 ---
 project: documenso
-stars: 13498
+stars: 13573
 description: The Open Source DocuSign Alternative.
 url: https://github.com/documenso/documenso
 ---
@@ -23,17 +23,19 @@ Recognition
 Community and Next Steps 🎯
 ---------------------------
 
--   Check out the first source code release in this repository and test it.
+-   Try Documenso by self-hosting it or signing up at documenso.com.
 -   Tell us what you think in the Discussions.
--   Join the Discord server for any questions and getting to know to other community members.
+-   Join the Discord server for any questions and getting to know other community members.
 -   ⭐ the repository to help us raise awareness.
--   Spread the word on Twitter that Documenso is working towards a more open signing tool.
--   Fix or create issues, that are needed for the first production release.
+-   Open detailed issues to report bugs or propose features.
 
 Contributing
 ------------
 
--   To contribute, please see our contribution guide.
+> **Note**: We no longer accept external pull requests, aside from a small group of trusted contributors we reach out to directly. The best way to contribute is through detailed issues. Read Why We're Pausing External Pull Requests for the reasoning.
+
+-   Documenso stays open source. You can read, audit, run, and fork the code.
+-   To report issues or propose changes, see our contribution guide.
 
 Contact us
 ----------
@@ -43,17 +45,21 @@ Contact us if you are interested in our Enterprise plan for large organizations 
 Tech Stack
 ----------
 
--   Typescript - Language
--   ReactRouter - Framework
+-   TypeScript - Language
+-   React Router v7 - Framework
+-   Hono - Server
 -   Prisma - ORM
--   Tailwind - CSS
--   shadcn/ui - Component Library
+-   Tailwind CSS - CSS
+-   shadcn/ui + Radix UI - Component Library
 -   react-email - Email Templates
+-   Lingui - Internationalization
 -   tRPC - API
--   @documenso/pdf-sign - PDF Signatures (launching soon)
--   React-PDF - Viewing PDFs
--   PDF-Lib - PDF manipulation
+-   @libpdf/core - PDF Signatures
+-   pdf.js - Viewing PDFs
+-   @cantoo/pdf-lib - PDF manipulation
 -   Stripe - Payments
+-   Biome - Linting & Formatting
+-   Playwright - E2E Testing
 
 Local Development
 -----------------
@@ -145,6 +151,11 @@ For full instructions, requirements, and configuration details, see the Self Hos
 #### Koyeb
 
 #### Elestio
+
+Security
+--------
+
+If you believe you have found a security vulnerability in Documenso, please report it through our Security Policy. We prioritize private reports via GitHub Security Advisories. See SECURITY.md for scope and details.
 
 Troubleshooting
 ---------------

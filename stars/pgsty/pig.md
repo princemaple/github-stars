@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 194
+stars: 195
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---
@@ -10,7 +10,7 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL (& Extension) Package Manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 14 ~ 18 along with 524 extensions on (`amd64` / `arm64`) with native OS package manager
+Install PostgreSQL 14 ~ 18 along with 531 extensions on (`amd64` / `arm64`) with native OS package manager
 
 All commands support structured output (`-o yaml/json`) with self-describing schema, making it an **Agent-Friendly** PostgreSQL CLI tool. Also check the **Pigsty Extension Catalog** to get details about the available extensions.
 
@@ -29,7 +29,7 @@ $ pig repo add pigsty pgdg -u       # add pgdg & pigsty repo, then update repo c
 $ pig ext install pg18              # install PostgreSQL 18 kernels with native PGDG packages
 $ pig ext install pg\_duckdb -v 18   # install the pg\_duckdb extension (for current pg18)
 
-That's it. All set! Check the advanced usage for details and the full list of 524 available extensions.
+That's it. All set! Check the advanced usage for details and the full list of 531 available extensions.
 
 * * *
 
@@ -247,7 +247,7 @@ Take el for examples:
 "agens":               "agensgraph\_$v",
 "pgedge":              "pgedge\_$v spock\_$v lolor\_$v snowflake\_$v",
 "polardb":             "PolarDB",
-"orioledb":            "orioledb\_17 oriolepg\_17",
+"orioledb":            "orioledb\_$v oriolepg\_$v",
 "openhalodb":          "openhalodb\_14",
 "percona-core":        "percona-postgresql18,percona-postgresql18-server,percona-postgresql18-contrib,percona-postgresql18-plperl,percona-postgresql18-plpython3,percona-postgresql18-pltcl,percona-pg\_tde18",
 "percona-main":        "percona-postgresql18,percona-postgresql18-server,percona-postgresql18-contrib,percona-postgresql18-plperl,percona-postgresql18-plpython3,percona-postgresql18-pltcl,percona-pg\_tde18,percona-postgis35\_18,percona-postgis35\_18-client,percona-postgis35\_18-utils,percona-pgvector\_18,percona-wal2json18,percona-pg\_repack18,percona-pgaudit18,percona-pgaudit18\_set\_user,percona-pg\_stat\_monitor18,percona-pg\_gather",
@@ -322,7 +322,7 @@ vagrant@meta:~$ pig ext avail
 ✓ Found 297 packages available on u24.arm64
 
 Extension Availability on u24.aarch64 : https://pigsty.io/ext/os/u24.aarch64
-Showing 340 packages with 524 extensions  (green = PIGSTY, blue = PGDG)
+Showing 340 packages with 531 extensions  (green = PIGSTY, blue = PGDG)
 
 Pkg                     18          17          16          15          14      
 timescaledb             2.26.4      2.26.4      2.26.4      2.26.4      2.26.4

@@ -1,6 +1,6 @@
 ---
 project: tui.image-editor
-stars: 7652
+stars: 7659
 description: 🍞🎨 Full-featured photo image editor using canvas. It is really easy, and it comes with great filters.
 url: https://github.com/nhn/tui.image-editor
 ---

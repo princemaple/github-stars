@@ -1,6 +1,6 @@
 ---
 project: caddy-docker-proxy
-stars: 4545
+stars: 4549
 description: Caddy as a reverse proxy for Docker
 url: https://github.com/lucaslorentz/caddy-docker-proxy
 ---
@@ -643,7 +643,7 @@ _(env only)_
 
 `CADDY_ADMIN`
 
-Override Caddy's admin listen address
+Override Caddy's admin listen address, or `off` to disable the admin API. Enabled by default on `localhost:2019` (Caddy's default), which health checks and `/metrics` can rely on. The `admin` global option via labels (e.g. `caddy.admin: off`) is also respected
 
 _(env only)_
 

@@ -1,6 +1,6 @@
 ---
 project: ferret
-stars: 6009
+stars: 6007
 description: Declarative data automation language and Go runtime for structured extraction workflows.
 url: https://github.com/MontFerret/ferret
 ---

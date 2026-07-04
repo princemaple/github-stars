@@ -1,6 +1,6 @@
 ---
 project: black
-stars: 41585
+stars: 41689
 description: The uncompromising Python code formatter
 url: https://github.com/psf/black
 ---
@@ -102,7 +102,7 @@ Are we missing anyone? Let us know.
 Testimonials
 ------------
 
-**Mike Bayer**, author of `SQLAlchemy`:
+**Mike Bayer**, creator of `SQLAlchemy`:
 
 > I can't think of any single tool in my entire programming career that has given me a bigger productivity increase by its introduction. I can now do refactorings in about 1% of the keystrokes that it would have taken me previously when we had no way for code to format itself.
 
@@ -118,7 +118,7 @@ Testimonials
 
 > At least the name is good.
 
-**Kenneth Reitz**, creator of `requests` and `pipenv`:
+**Kenneth Reitz**, creator of `requests` and pipenv:
 
 > This vastly improves the formatting of our code. Thanks a ton!
 

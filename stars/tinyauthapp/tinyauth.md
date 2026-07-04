@@ -1,14 +1,14 @@
 ---
 project: tinyauth
-stars: 7526
-description: The tiniest authentication and authorization server you have ever seen.
+stars: 7728
+description: The tiniest OpenID Certified™ authorization and authentication server you have ever seen.
 url: https://github.com/tinyauthapp/tinyauth
 ---
 
 Tinyauth
 ========
 
-The tiniest authentication and authorization server you have ever seen.
+The tiniest OpenID Certified™ authorization and authentication server you have ever seen.
 
   
 
@@ -21,6 +21,8 @@ Tinyauth is in active development and configuration may change often. Please mak
 Note
 
 This is the main development branch. For the latest stable release, see the documentation or the latest stable tag.
+
+As of 2026-06-25, Tinyauth v5.1.0 is OpenID Certified™ for Basic OP. You can find the certification details here, test suite available here.
 
 Getting Started
 ---------------

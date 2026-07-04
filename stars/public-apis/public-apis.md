@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 444567
+stars: 446594
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -2406,6 +2406,16 @@ Yes
 
 Unknown
 
+BitPanda
+
+Cryptocurrency Information
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Bitmex
 
 Real-Time Cryptocurrency derivatives trading platform based in Hong Kong
@@ -3140,6 +3150,16 @@ Free currency conversion
 Yes
 
 Yes
+
+Exchangerate.dev
+
+Live & historical FX, 168 pairs back to 1999, Frankfurter-compatible, free 10k/mo
+
+No
+
+Yes
+
+Unknown
 
 Frankfurter
 
@@ -4210,6 +4230,16 @@ Really simple API to retrieve Open Graph data from an URL
 Yes
 
 Unknown
+
+OpenQR
+
+Generate QR codes and manage dynamic (editable) QR codes with scan analytics
+
+`apiKey`
+
+Yes
+
+Yes
 
 oyyi
 
@@ -5706,6 +5736,16 @@ Yes
 
 Unknown
 
+Solematica
+
+Compare Italian solar (photovoltaic) installer offers, energy prices (PUN/ARERA) and satellite roof data
+
+No
+
+Yes
+
+No
+
 Srp Energy
 
 Hourly usage energy report for Srp customers
@@ -6015,6 +6055,16 @@ Front accounting is multilingual and multicurrency software for small businesses
 Yes
 
 Yes
+
+Goldprice.dev
+
+Cross-validated gold, silver & copper spot, futures & 30-year history in 13 currencies
+
+No
+
+Yes
+
+Unknown
 
 Helium
 
@@ -11316,6 +11366,16 @@ Yes
 
 Yes
 
+Pan Africa Data
+
+Macroeconomic and subnational income distribution data for all 54 African countries
+
+`apiKey`
+
+Yes
+
+Unknown
+
 PeakMetrics
 
 News articles and public datasets
@@ -15141,7 +15201,7 @@ Unified traffic data from 65 US/CA jurisdictions: events, cameras, signs, bridge
 
 Yes
 
-Yes
+No
 
 Sabre for Developers
 

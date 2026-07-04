@@ -1,6 +1,6 @@
 ---
 project: pyo3
-stars: 15854
+stars: 15874
 description: Rust bindings for the Python interpreter
 url: https://github.com/PyO3/pyo3
 ---
@@ -204,10 +204,12 @@ Examples
 -   opendal _A data access layer that allows users to easily and efficiently retrieve data from various storage services in a unified way._
 -   orjson _Fast Python JSON library._
 -   ormsgpack _Fast Python msgpack library._
+-   pdfcrate _An ergonomic, high-level PDF generation library for Rust and Python — a Prawn-style layout API for composing documents, not low-level PDF plumbing._
 -   polars _Fast multi-threaded DataFrame library in Rust | Python | Node.js._
 -   pycrdt _Python bindings for the Rust CRDT implementation Yrs._
 -   pydantic-core _Core validation logic for pydantic written in Rust._
 -   primp _The fastest python HTTP client that can impersonate web browsers by mimicking their headers and TLS/JA3/JA4/HTTP2 fingerprints._
+-   quebec _A database-backed background job queue for Python, inspired by Rails' Solid Queue._
 -   radiate: _A high-performance evolution engine for genetic programming and evolutionary algorithms._
 -   rateslib _A fixed income library for Python using Rust extensions._
 -   river _Online machine learning in python, the computationally heavy statistics algorithms are implemented in Rust._

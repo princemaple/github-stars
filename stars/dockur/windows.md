@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 52141
+stars: 52328
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -18,6 +18,9 @@ Features ✨
 -   ISO downloader
 -   KVM acceleration
 -   Web-based viewer
+-   Automatic install
+-   Shared host folder
+-   USB pass through
 
 Video 📺
 --------
@@ -25,7 +28,7 @@ Video 📺
 Usage 🐳
 --------
 
-##### Via Docker Compose:
+##### Docker Compose:
 
 services:
   windows:
@@ -47,17 +50,28 @@ services:
     restart: always
     stop\_grace\_period: 2m
 
-##### Via Docker CLI:
+##### Docker CLI:
 
 docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kvm --device=/dev/net/tun --cap-add NET\_ADMIN -v "${PWD:-.}/windows:/storage" --stop-timeout 120 docker.io/dockurr/windows
 
-##### Via Kubernetes:
+##### Kubernetes:
 
 kubectl apply -f https://raw.githubusercontent.com/dockur/windows/refs/heads/master/kubernetes.yml
 
-##### Via Github Codespaces:
+##### GitHub Codespaces:
 
-##### Via a graphical installer:
+##### Graphical installer:
+
+Requirements ⚙️
+---------------
+
+-   A Linux host with KVM support, or Docker Desktop / Podman on Windows 11 with nested virtualization enabled.
+-   At least 4 GB of RAM available.
+-   At least 64 GB of free disk space.
+
+Note
+
+Docker Desktop on macOS and Windows 10 do not currently provide the required KVM support for this image.
 
 FAQ 💬
 ------
@@ -68,7 +82,7 @@ Very simple! These are the steps:
 
 -   Start the container and connect to port 8006 using your web browser.
     
--   Sit back and relax while the magic happens, the whole installation will be performed fully automatic.
+-   Sit back and relax while the magic happens, the whole installation will be performed fully automatically.
     
 -   Once you see the desktop, your Windows installation is ready for use.
     
@@ -80,7 +94,7 @@ Enjoy your brand new machine, and don't forget to star this repo!
 By default, Windows 11 Pro will be installed. But you can add the `VERSION` environment variable to your compose file, in order to specify an alternative Windows version to be downloaded:
 
 environment:
-  VERSION: "11"
+  VERSION: "10"
 
 Select from the values below:
 
@@ -220,7 +234,7 @@ environment:
 
 Tip
 
-This can also be used to resize the existing disk to a larger capacity without any data loss. However you will need to manually extend the disk partition afterwards, since the added disk space will appear as unallocated.
+This can also be used to resize an existing disk to a larger capacity without any data loss. However, you will need to manually extend the disk partition afterwards, since the added disk space will appear as unallocated.
 
 ### How do I share files with the host?
 
@@ -247,7 +261,7 @@ environment:
 
 By default, a user called `Docker` is created and its password is `admin`.
 
-If you want to use different credentials during installation, you can configure them in your compose file:
+If you want to set up different credentials during installation, you can configure them in your compose file:
 
 environment:
   USERNAME: "bill"
@@ -266,7 +280,7 @@ You can choose between: 🇦🇪 Arabic, 🇧🇬 Bulgarian, 🇨🇳 Chinese, �
 
 ### How do I select the keyboard layout?
 
-If you want to use a keyboard layout or locale that is not the default for your selected language, you can add `KEYBOARD` and `REGION` variables like this:
+If you want to set up a keyboard layout or locale that is not the default for your selected language, you can add `KEYBOARD` and `REGION` variables like this:
 
 environment:
   REGION: "en-US"
@@ -282,7 +296,7 @@ environment:
 Alternatively, you can also skip the download and use a local file instead, by binding it in your compose file in this way:
 
 volumes:
-  - ./example.iso:/boot.iso
+  - ./example.iso:/custom.iso
 
 Replace the example path `./example.iso` with the filename of your desired ISO file. The value of `VERSION` will be ignored in this case.
 
@@ -295,24 +309,24 @@ Then bind that folder in your compose file like this:
 volumes:
   -  ./example:/oem
 
-The example folder `./example` will be copied to `C:\OEM` and the containing `install.bat` will be executed during the last step of the automatic installation.
+The example folder `./example` will be copied to `C:\OEM` and the `install.bat` file inside that folder will be executed during the last step of the automatic installation.
 
 ### How do I perform a manual installation?
 
 It's recommended to stick to the automatic installation, as it adjusts various settings to prevent common issues when running Windows inside a virtual environment.
 
-However, if you insist on performing the installation manually at your own risk, add the following environment variable to your compose file:
+However, if you insist on performing the installation manually (at your own risk), add the following environment variable to your compose file:
 
 environment:
   MANUAL: "Y"
 
 ### How do I connect using RDP?
 
-The web-viewer is mainly meant to be used during installation, as its picture quality is low, and it has no audio or clipboard for example.
+The web viewer is mainly meant to be used during installation, as its picture quality is low, and it has no audio or clipboard for example.
 
 So for a better experience you can connect using any Microsoft Remote Desktop client to the IP of the container, using the username `Docker` and password `admin`.
 
-There is a RDP client for Android available from the Play Store and one for iOS in the Apple Store. For Linux you can use FreeRDP and on Windows just type `mstsc` in the search box.
+There is an RDP client for Android available from the Play Store and one for iOS in the Apple Store. For Linux you can use FreeRDP and on Windows just type `mstsc` in the search box.
 
 ### How do I assign an individual IP address to the container?
 
@@ -372,9 +386,9 @@ volumes:
   - ./example2:/storage2
   - ./example3:/storage3
 
-### How do I pass-through a disk?
+### How do I pass through a disk?
 
-It is possible to pass-through disk devices or partitions directly by adding them to your compose file in this way:
+You can pass through disk devices or partitions directly by adding them to your compose file in this way:
 
 devices:
   - /dev/sdb:/disk1
@@ -382,9 +396,9 @@ devices:
 
 Use `/disk1` if you want it to become your main drive (which will be formatted during installation), and use `/disk2` and higher to add them as secondary drives (which will stay untouched).
 
-### How do I pass-through a USB device?
+### How do I pass through a USB device?
 
-To pass-through a USB device, first lookup its vendor and product id via the `lsusb` command, then add them to your compose file like this:
+To pass through a USB device, first look up its vendor and product IDs via the `lsusb` command, then add them to your compose file like this:
 
 environment:
   ARGUMENTS: "\-device usb-host,vendorid=0x1234,productid=0x1234"
@@ -460,7 +474,7 @@ If you receive an error from `kvm-ok` indicating that KVM cannot be used, please
     
 -   you enabled "nested virtualization" if you are running the container inside a virtual machine.
     
--   you are not using a cloud provider, as most of them do not allow nested virtualization for their VPS's.
+-   you are not using a cloud provider, as most of them do not allow nested virtualization for their VPSs.
     
 
 If you did not receive any error from `kvm-ok` but the container still complains about a missing KVM device, it could help to add `privileged: true` to your compose file (or `sudo` to your `docker` command) to rule out any permission issue.
@@ -475,7 +489,9 @@ You can use qemus/qemu in that case.
 
 ### Is this project legal?
 
-Yes, this project contains only open-source code and does not distribute any copyrighted material. Any product keys found in the code are just generic placeholders provided by Microsoft for trial purposes. So under all applicable laws, this project will be considered legal.
+Yes, this project contains only open-source code and does not distribute Windows itself. Any product keys found in the code are generic installation keys published by Microsoft for trial purposes and are not valid activation licenses.
+
+You are responsible for ensuring that you have a valid Windows license and that your use complies with Microsoft's licensing terms.
 
 Stars 🌟
 --------

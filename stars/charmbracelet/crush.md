@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 25798
+stars: 26066
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -216,6 +216,10 @@ io.net
 
 Alibaba (Singapore)
 
+`ALIBABA_US_API_KEY`
+
+Alibaba (United States)
+
 `GROQ_API_KEY`
 
 Groq
@@ -267,6 +271,10 @@ Azure OpenAI models (optional when using Entra ID)
 `AZURE_OPENAI_API_VERSION`
 
 Azure OpenAI models
+
+`MOONSHOT_API_KEY`
+
+Moonshot
 
 ### Subscriptions
 

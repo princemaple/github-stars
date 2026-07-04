@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 14339
+stars: 14393
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -892,6 +892,14 @@ https://dualmark.dev
 
 维护中
 
+shopify-attribution-gap-backend
+
+基于 Cloudflare Workers + D1 的边缘数据收集后端，用于构建开放、透明的 Shopify iOS 归因差距基准。服务端计算归因差距、人工审核机制、中位数聚合，无需服务器。
+
+https://stackarchitect.xyz/shopify-ios-attribution-gap-benchmark/
+
+维护中
+
 文章
 --
 
@@ -1165,6 +1173,18 @@ Cloudflare-KV-Manager
 https://kv-demo.somecanadian.com
 
 有效中
+
+NodeWarden
+
+运行在 Cloudflare Workers 上的轻量 Bitwarden 兼容服务端，支持 D1、R2 和 Web Vault。
+
+维护中
+
+Warden Worker
+
+运行在 Cloudflare Workers 上的轻量 Bitwarden 兼容服务端实现。
+
+维护中
 
 CFWorkerACME
 

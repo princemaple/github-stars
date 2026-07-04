@@ -1,6 +1,6 @@
 ---
 project: broadway
-stars: 2655
+stars: 2659
 description: Concurrent and multi-stage data ingestion and data processing with Elixir
 url: https://github.com/elixir-broadway/broadway
 ---
@@ -85,7 +85,7 @@ defmodule MyBroadway do
   end
 end
 
-Once your Broadway module is defined, you just need to add it as a child of your application supervision tree as `{MyBroadway, []}`.
+Once your Broadway module is defined, add it as a child of your application supervision tree as `{MyBroadway, []}`.
 
 Comparison to Flow
 ------------------

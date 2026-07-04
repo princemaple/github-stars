@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 100973
+stars: 102714
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -8,6 +8,14 @@ url: https://github.com/browser-use/browser-use
 * * *
 
   
+
+**Browser Use CLI 3.0 is here.** Give your coding agent a browser it can use reliably.
+
+Paste this into Claude Code, Codex, etc:
+
+```
+Install or upgrade browser-use to the latest stable version with uv using Python 3.12, register the skill from `browser-use skill`, and connect it to my browser. Follow https://github.com/browser-use/browser-use if setup or connection fails.
+```
 
 🌤️ Want to skip the setup? Use our **cloud** for faster, scalable, stealth-enabled browser automation!
 
@@ -22,19 +30,10 @@ url: https://github.com/browser-use/browser-use
 👋 Human Quickstart
 ===================
 
-Browser Use 0.13 introduces a new beta agent powered by a Rust core and a browser harness built for current frontier models. It gives the model a real browser/computer action space, persistent tools, and recovery loops inspired by coding agents.
+**1\. Install Browser Use (Python>=3.11):**
 
-```
-Python API -> Rust core -> Browser harness -> Web task done
-```
-
-**1\. Install Browser Use with the native core runtime (Python>=3.11):**
-
-uv add "browser-use\[core\]"
-# or: pip install "browser-use\[core\]"
-browser
-
-The `[core]` extra installs the native Browser Use runtime for your platform.
+uv add browser-use
+# or: pip install browser-use
 
 **2\. \[Optional\] Get your API key from Browser Use Cloud:**
 
@@ -47,17 +46,11 @@ BROWSER_USE_API_KEY=your-key
 
 **3\. Run your first agent:**
 
-**Browser Use Terminal:**
-
-uv add "browser-use\[core\]"
-browser
-
 **Python Script:**
 
-from browser\_use.beta import Agent, BrowserProfile, ChatBrowserUse
-\# from browser\_use.beta import ChatOpenAI  # ChatOpenAI(model='gpt-5.5')
-\# from browser\_use.beta import ChatAnthropic  # ChatAnthropic(model='claude-opus-4-8')
 import asyncio
+
+from browser\_use import Agent, BrowserProfile, ChatBrowserUse
 
 async def main():
     agent \= Agent(
@@ -76,8 +69,6 @@ async def main():
 
 if \_\_name\_\_ \== "\_\_main\_\_":
     asyncio.run(main())
-
-Existing Python agent users can keep using `from browser_use import Agent`. The new Rust-powered beta agent is `from browser_use.beta import Agent`.
 
 Check out the library docs and the cloud docs for more!
 
@@ -155,24 +146,22 @@ uvx browser-use init --template default --output my\_agent.py
 💻 CLI
 ======
 
-Fast, persistent browser automation from the command line:
+**Browser Use CLI 3.0** lets your agents do work for you online with our highest accuracy yet. It is powered by Browser Harness, and it applies what we learned about agent harnesses and agent frameworks: the latest models do best when you give them freedom, rather than abstracting away complexity. We provide your agents with a direct, dependable surface for acting in the browser.
 
-browser-use open https://example.com    # Navigate to URL
-browser-use state                       # See clickable elements
-browser-use click 5                     # Click element by index
-browser-use type "Hello"                # Type text
-browser-use screenshot page.png         # Take screenshot
-browser-use close                       # Close browser
+browser-use <<'PY'
+new\_tab("https://example.com")
+print(page\_info())
+PY
 
-The CLI keeps the browser running between commands for fast iteration. See CLI docs for all commands.
+The CLI allows your agent to control the browser via Python, and it manages the browser in the background.
 
-### Claude Code Skill
+### Agent Skill
 
-For Claude Code, install the skill to enable AI-assisted browser automation:
+For Claude Code, Codex, and other agents, paste this prompt into your agent:
 
-mkdir -p ~/.claude/skills/browser-use
-curl -o ~/.claude/skills/browser-use/SKILL.md \\
-  https://raw.githubusercontent.com/browser-use/browser-use/main/skills/browser-use/SKILL.md
+```
+Install or upgrade browser-use to the latest stable version with uv using Python 3.12, register the skill from `browser-use skill`, and connect it to my browser. Follow https://github.com/browser-use/browser-use if setup or connection fails.
+```
 
   
 

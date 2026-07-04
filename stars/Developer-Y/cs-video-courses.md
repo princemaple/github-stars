@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 81975
+stars: 82264
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -495,6 +495,7 @@ Courses
     -   Probabilistic Machine Learning 2020 - University of Tübingen
     -   Statistical Machine Learning 2020 - Ulrike von Luxburg - University of Tübingen
     -   COMS W4995 - Applied Machine Learning - Spring 2020 - Columbia University
+    -   Introductory Applied Machine Learning - Edinburgh University
     -   Machine Learning for Engineers 2022 (YouTube)
     -   10-418 / 10-618 (Fall 2019) Machine Learning for Structured Data
     -   ORIE 4741/5741: Learning with Big Messy Data - Cornell
@@ -738,6 +739,7 @@ Courses
     -   UC Berkeley CS 194/294-267 Understanding Large Language Models Foundations and Safety spring 2024, by Dawn Song & Dan Hendrycks
     -   UC Berkeley CS 194/294-280 Advanced Large Language Model Agents Spring 2025 (YouTube)
     -   Introduction to Large Language Models (LLMs), IIT Delhi
+    -   CMU 10423 S24: Generative AI Videos
     -   CMU 10799 S26: Diffusion & Flow Matching
     -   6.S183: A Practical Introduction to Diffusion Models - MIT (YouTube, 2025 lectures)
     -   The Principles of Diffusion Models - Vizuara
@@ -804,6 +806,7 @@ Courses
     -   UC Berkeley EECS 127 / 227A Optimization Models in Engineering (Spring 2024 lectures)
     -   Modern Optimization and theory for Deep Learning
     -   Manifold Learning, Optimization and Information Geometry - Politecnico Milan - PhD level
+    -   Robust Optimization and Essentials of Numerical Nonsmooth Optimization - EUROPT Summer School 2021
 -   #### **Unsupervised Learning**
     
     -   CS294 Deep Unsupervised Learning Spring 2024

@@ -1,6 +1,6 @@
 ---
 project: theBeamBook
-stars: 4044
+stars: 4045
 description: A description of the Erlang Runtime System ERTS and the virtual Machine BEAM.
 url: https://github.com/happi/theBeamBook
 ---

@@ -1,6 +1,6 @@
 ---
 project: open-lovable
-stars: 26895
+stars: 27307
 description: 🔥 Clone and recreate any website as a modern React app in seconds
 url: https://github.com/firecrawl/open-lovable
 ---

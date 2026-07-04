@@ -1,27 +1,27 @@
 ---
 project: remotion
-stars: 51436
+stars: 52143
 description: 🎥      Make videos programmatically with React
 url: https://github.com/remotion-dev/remotion
 ---
 
-Remotion is a framework for **creating videos programmatically using React.**
+Video tools for the agent era.
 
-Why create videos in React?
----------------------------
+Video Creation
+--------------
 
--   **Leverage web technologies**: Use all of CSS, Canvas, SVG, WebGL, etc.
--   **Leverage programming**: Use variables, functions, APIs, math and algorithms to create new effects
--   **Leverage React**: Reusable components, Powerful composition, Fast Refresh, Package ecosystem
+-   **Make videos agentically**: Turn your idea into a video using your coding agent.
+-   **Make videos interactively**: Edit and animate using drag and drop.
+-   **Make videos programmatically**: Connect to data, and manage complexity with code.
 
-Created with Remotion
----------------------
+React Code is the source of truth. Switch your workflow at any point.
 
-"This video was made with code" _\- Fireship_ Watch • Source
+Video Automation
+----------------
 
-GitHub Unwrapped - Personalized Year in Review Try • Source
-
-_View more in the Remotion Showcase!_
+-   **Design systems**: Create a library of animated assets for your organization.
+-   **Batch rendering**: Render millions of videos on your own infrastructure.
+-   **Applications**: Publish a simple tool or a complex video editor.
 
 Get started
 -----------
@@ -31,6 +31,51 @@ If you already have Node.JS installed, type
 npx create-video@latest
 
 to get started. Otherwise, read the installation page in the documentation.
+
+Discover Remotion
+-----------------
+
+Remotion is extensively documented over more than 1000 pages.
+
+-   Get Started
+    -   Installation
+    -   Agent Skills
+    -   Prompts
+    -   Templates
+-   Components
+    -   Effects
+    -   Shapes
+    -   Transitions
+    -   Sound Effects
+    -   Captions
+    -   Fonts
+-   Rendering
+    -   Node.js APIs
+    -   Lambda
+    -   Vercel
+    -   Client-side rendering
+    -   Comparison of options
+-   Making apps
+    -   Player
+    -   Editor Starter
+    -   Mediabunny
+-   Community
+    -   Discord
+    -   Experts
+    -   Resources
+    -   Contributing
+    -   Follow us on X, YouTube, Instagram, LinkedIn
+-   Commercial
+    -   License
+    -   Store
+    -   About Remotion
+    -   Showcase
+-   Help
+    -   Support
+    -   Discord
+    -   Search
+    -   Ask AI
+    -   GitHub Issues
 
 Documentation
 -------------

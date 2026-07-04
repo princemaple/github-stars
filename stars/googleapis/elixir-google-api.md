@@ -1,12 +1,19 @@
 ---
 project: elixir-google-api
-stars: 1078
+stars: 1079
 description: Elixir client libraries for accessing Google APIs.
 url: https://github.com/googleapis/elixir-google-api
 ---
 
 GoogleApis
 ==========
+
+⚠️ DEPRECATION NOTICE ⚠️
+========================
+
+This repository has been formally archived and is no longer actively maintained. The client libraries provided here are provided "as-is" without support or guarantees of future updates.
+
+* * *
 
 This repository contains all the client libraries to interact with Google APIs. These client libraries are created under `clients/` and each should contain its own README.
 

@@ -1,6 +1,6 @@
 ---
 project: warpgate
-stars: 7246
+stars: 7277
 description: Fully transparent SSH, HTTPS, Kubernetes, MySQL and Postgres bastion/PAM that doesn't need additional client-side software
 url: https://github.com/warp-tech/warpgate
 ---
@@ -9,7 +9,7 @@ url: https://github.com/warp-tech/warpgate
 
   
 
-   
+     
 
 * * *
 
@@ -19,6 +19,7 @@ Warpgate is a smart & fully transparent SSH, HTTPS, Kubernetes, MySQL, PostgreSQ
 -   Warpgate will record every session for you to view (live) and replay later through a built-in admin web UI.
 -   Not a jump host - forwards connection straight to the target in a way that's fully transparent to the client.
 -   Native 2FA and SSO support (TOTP & OpenID Connect)
+-   Built-in brute-force protection with IP blocking and user lockout
 -   Single binary with no dependencies.
 -   Written in 100% safe Rust.
 
@@ -30,6 +31,15 @@ Getting started & downloads
 -   See the Getting started docs page (or Getting started on Docker).
 -   Release / beta binaries
 -   Nightly builds
+
+Documentation
+-------------
+
+Full documentation is available at warpgate.null.page, including:
+
+-   Login Protection - Configure brute-force protection
+-   SSO - Single Sign-On with OpenID Connect
+-   Tickets - Temporary access credentials
 
 How is Warpgate different from a jump host / VPN / Teleport?
 ------------------------------------------------------------
@@ -105,6 +115,14 @@ Non-interactive connections require using an SSH client wrapper or running a tun
 🟡 Depends on the provider
 
 SaaS
+
+✅ **Built-in brute-force protection**
+
+🟡 Requires fail2ban setup
+
+🟡 Depends on the provider
+
+✅ **Built-in brute-force protection**
 
 Reporting security issues
 -------------------------
@@ -257,6 +275,18 @@ Thanks goes to these wonderful people (emoji key):
 
   
 **rjourdan04**  
+💻
+
+  
+**theharold**  
+💻
+
+  
+**noammeltzer-ax**  
+💻
+
+  
+**Haoqian**  
 💻
 
 This project follows the all-contributors specification. Contributions of any kind welcome!

@@ -71,6 +71,14 @@ config :ex\_aws,
   json\_codec: Jason
   \# any configurations provided by https://github.com/ex-aws/ex\_aws
 
+### Setup an HTTP client
+
+Waffle uses `:hackney` by default to download remote files. You can configure it explicitly:
+
+config :waffle, :http\_client, Waffle.HTTPClient.Hackney
+
+You can also implement your own client by adopting the `Waffle.HTTPClient` behaviour.
+
 ### Define a definition module
 
 Waffle requires a **definition module** which contains the relevant functions to store and retrieve files:

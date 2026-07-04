@@ -1,6 +1,6 @@
 ---
 project: docker-android
-stars: 15435
+stars: 15498
 description: Android in docker solution with noVNC supported and video recording
 url: https://github.com/budtmo/docker-android
 ---

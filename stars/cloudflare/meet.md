@@ -1,6 +1,6 @@
 ---
 project: meet
-stars: 2304
+stars: 2301
 description: null
 url: https://github.com/cloudflare/meet
 ---

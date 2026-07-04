@@ -1,6 +1,6 @@
 ---
 project: dura
-stars: 4427
+stars: 4430
 description: You shouldn't ever lose your work if you're using Git
 url: https://github.com/tkellogg/dura
 ---

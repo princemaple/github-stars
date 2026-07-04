@@ -1,6 +1,6 @@
 ---
 project: volt
-stars: 175
+stars: 184
 description: Elixir-native frontend build tool — dev server, HMR, and production builds for JavaScript, TypeScript, Vue SFCs, and CSS. No Node.js required.
 url: https://github.com/elixir-volt/volt
 ---

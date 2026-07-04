@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 744
+stars: 769
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -101,7 +101,7 @@ Plugin System
 
 CAD-Viewer is built around a modular **plugin system** in `@mlightcad/cad-simple-viewer`. Plugins implement the `AcApPlugin` interface and hook into viewer lifecycle via `onLoad` / `onUnload`—typically to register commands, add UI, or wire export/import pipelines.
 
-Load plugins through `AcApDocManager.instance.pluginManager` (`loadPlugin`, `registerLazyPlugin`, or `plugins.fromConfig` when creating the document manager). Export-oriented plugins support **lazy loading**: register a small stub up front and download the heavy bundle only when the user runs the related command (for example `chtml`).
+Load plugins through `AcApDocManager.instance.pluginManager` (`loadPlugin`, `registerLazyPlugin`, or `plugins.fromConfig` when creating the document manager). Export-oriented plugins support **lazy loading**: register a small stub up front and download the heavy bundle only when the user runs the related command (for example `-chtml`, or when confirming export from the `chtml` dialog in `cad-viewer`).
 
 The monorepo ships several first-party plugins. Each focuses on one concern; combine them as needed. **Installation, registration, and API details live in each package’s README**—see the links below.
 
@@ -119,11 +119,17 @@ Commands / capabilities
 
 `layer`, default toolbar (view, measure, export, review, theme, locale)
 
+`@mlightcad/cad-agent-plugin`
+
+**Natural-language CAD agent** (AI chat panel + drawing tool calls)
+
+`agent`
+
 `@mlightcad/cad-html-plugin`
 
 Export drawings to **self-contained offline HTML**
 
-`chtml`
+`chtml` (dialog in `cad-viewer`), `-chtml` (command-line)
 
 `@mlightcad/cad-pdf-plugin`
 
@@ -152,9 +158,25 @@ All widgets are framework-agnostic (plain DOM). The full Vue `cad-viewer` app ha
 
 → **Quick start, toolbar customization, and options:** packages/cad-simple-ui-plugin/README.md
 
+### `@mlightcad/cad-agent-plugin` — AI drawing assistant
+
+`cad-agent-plugin` adds a **natural-language CAD agent** to `cad-simple-viewer`\-based apps. Users describe what they want in plain language; the agent calls CAD tools to inspect the drawing and create or modify geometry.
+
+It provides:
+
+-   A **lazy-loaded** `AcApPlugin` (trigger command: `agent`) so the AI bundle is not on the critical path
+-   A **Vue chat panel** (`AgentChatPanel`) built on the Vercel AI SDK (`Experimental_Agent` + `@ai-sdk/vue`)
+-   **Browser-side LLM configuration** — API keys for OpenAI, Anthropic, or OpenAI-compatible endpoints stay in the client (encrypted in `localStorage`)
+-   **Phase 1 CAD tools** — `get_drawing_context`; `draw_line`, `draw_circle`, `draw_arc`, `draw_rectangle`, `draw_polyline`, `draw_text`; `set_current_layer`, `create_layer`, `zoom_extents`
+-   **English / Chinese** UI strings via the plugin i18n layer
+
+The full Vue `cad-viewer` app registers the agent automatically when the package is installed (palette tab). `cad-simple-viewer-example` wires it into a dock tab via `cad-simple-ui-plugin`. Host apps call `registerLazyAgentPlugin` and `setAgentPaletteOpener` to mount the panel where they want.
+
+→ **Installation, registration, and tool list:** packages/cad-agent-plugin/README.md
+
 ### Export plugins (HTML / PDF / SVG)
 
-These plugins add export (and PDF import) commands to the same plugin manager. They are **lazy-loaded** so initial page weight stays small. The `cad-simple-viewer-example` demo registers all three export plugins plus `cad-simple-ui-plugin`; the full `cad-viewer` app registers the export plugins in its bootstrap.
+These plugins add export (and PDF import) commands to the same plugin manager. They are **lazy-loaded** so initial page weight stays small. The `cad-simple-viewer-example` demo registers all three export plugins, `cad-simple-ui-plugin`, and `cad-agent-plugin`; the full `cad-viewer` app registers the export plugins and the agent plugin (when installed) in its bootstrap.
 
 -   **HTML** — one-file offline viewer for sharing and archiving: packages/cad-html-plugin/README.md  
     (Headless CLI using the same pipeline: packages/cad-html-exporter-cli/README.md)
@@ -202,8 +224,10 @@ CAD-Viewer has some known limitations that users should be aware of:
     
     Save proxy graphics
     
-
-These issues are being tracked and will be addressed in future releases.
+-   **DWG File Size Limits**:
+    
+    -   Parsing DWG files with LibreDWG is memory-intensive and can easily exceed 2 GB of RAM. `libredwg-web` therefore enforces WASM heap memory limits; very large DWG files may fail to parse.
+    -   We have developed a proprietary DWG parser with significantly lower memory usage, support for larger DWG files, and more accurate parsing. If the open-source `libredwg-web` stack cannot meet your requirements, please email mlight.lee@outlook.com to discuss licensing the proprietary parser.
 
 Roadmap
 -------

@@ -1,6 +1,6 @@
 ---
 project: teenyicons
-stars: 1834
+stars: 1833
 description: Tiny minimal 1px icons designed to fit in the smallest places.
 url: https://github.com/teenyicons/teenyicons
 ---

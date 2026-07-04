@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 29245
+stars: 29458
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -239,20 +239,20 @@ If you enable TLS with a bind-mounted certificate directory, prepare that mount 
 mkdir -p certs
 chown -R 10001:10001 certs
 
-You can also use Docker Compose. Using the `docker-compose.yml` file in the root directory:
+You can also use Docker Compose. Using the `docker-compose-simple.yml` file in the root directory:
 
-docker compose --profile observability up -d
+docker compose -f docker-compose-simple.yml up -d
 
 Before running Compose with host bind mounts:
 
 -   Ensure every mounted host path is writable by `10001:10001`.
 -   If you enable TLS, ensure the certificate mount for `/opt/tls` is also readable by `10001:10001`.
 -   If matching host ownership is not practical, run the `rustfs` service with `user: "<host-uid>:<host-gid>"` instead.
--   `docker-compose-simple.yml` includes a `volume-permission-helper` service for named volumes. `docker-compose.yml` relies on you to prepare bind-mounted host paths in advance.
+-   `docker-compose-simple.yml` includes a `volume-permission-helper` service for named volumes. `docker-compose-simple.yml` relies on you to prepare bind-mounted host paths in advance.
 
 Similarly, you can run the command with podman
 
-podman compose --profile observability up -d
+podman compose -f docker-compose-simple.yml up -d
 
 Webhook notification quick start (Docker):
 

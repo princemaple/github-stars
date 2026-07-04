@@ -1,6 +1,6 @@
 ---
 project: quay
-stars: 2790
+stars: 2795
 description: Build, Store, and Distribute your Applications and Containers
 url: https://github.com/quay/quay
 ---
@@ -46,3 +46,62 @@ License
 -------
 
 Project Quay is under the Apache 2.0 license. See the LICENSE file for details.
+
+Contextification Addendum
+-------------------------
+
+### Repository Map
+
+flowchart LR
+    clients\[Docker, Podman, UI, API clients\]
+    app\[Flask application\]
+    api\[endpoints/api\]
+    registry\[endpoints/v2\]
+    data\[data/model and data/registry\_model\]
+    db\[(PostgreSQL)\]
+    redis\[(Redis)\]
+    storage\[storage backends\]
+    workers\[workers\]
+    ui\[web/ and static/\]
+
+    clients --> app
+    app --> api
+    app --> registry
+    app --> ui
+    api --> data
+    registry --> data
+    data --> db
+    data --> redis
+    registry --> storage
+    workers --> data
+    workers --> storage
+
+Loading
+
+Key paths: `data/database.py` is the schema source of truth, `endpoints/v2/` serves registry protocol traffic, `workers/` runs async jobs, `web/` is the React UI, and `config-tool/` validates config.
+
+### Development Shortcuts
+
+make local-dev-up
+make local-dev-up-with-clair
+TEST=true PYTHONPATH="." pytest path/to/test.py -v
+make unit-test
+make registry-test
+make types-test
+
+Local UI notes:
+
+-   Legacy Angular UI (`static/`) is started by `make local-dev-up` and is available at `http://localhost:8080`.
+    
+-   New React UI (`web/`) runs separately at `http://localhost:9000`; after `make local-dev-up`, run:
+    
+    cd web
+    npm install
+    npm start
+    
+-   If backend code changes are not reflected in the local stack, restart the Quay container:
+    
+    podman restart quay-quay
+    
+
+Related repos: quay-operator, quay-builder, quay-tests, quay-fbcs, and quay-konflux-components.

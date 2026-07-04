@@ -1,13 +1,13 @@
 ---
 project: Mailu
-stars: 7330
+stars: 7341
 description: Insular email distribution - mail server as Docker images
 url: https://github.com/Mailu/Mailu
 ---
 
 Mailu is a simple yet full-featured mail server as a set of Docker images. It is free software (both as in free beer and as in free speech), open to suggestions and external contributions. The project aims at providing people with an easily setup, easily maintained and full-featured mail server while not shipping proprietary software nor unrelated features often found in popular groupware.
 
-Most of the documentation is available on our Website, you can also try our demo server before setting up your own, and come talk to us on Matrix.
+Most of the documentation is available on our Website. You can also try our demo server before setting up your own.
 
 Features
 ========

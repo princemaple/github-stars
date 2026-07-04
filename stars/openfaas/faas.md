@@ -10,6 +10,8 @@ OpenFaaS ® - Serverless Functions Made Simple
 
 OpenFaaS® makes it easy for developers to deploy event-driven functions and microservices to Kubernetes without repetitive, boiler-plate coding. Package your code or an existing binary in an OCI-compatible image to get a highly scalable endpoint with auto-scaling and metrics.
 
+> "OpenFaaS Community Edition (CE) is licensed for individual exploration and hobbyist use. A 60 day limit applies for commercial PoCs. Commercial and production workloads require OpenFaaS Standard or OpenFaaS for Enterprises."
+
 **Highlights**
 
 -   Ease of use through UI portal and _one-click_ install
@@ -177,6 +179,12 @@ An alternative community dashboard is available here
 
 ### Press / Branding / Website Sponsorship
 
+-   OpenFaaS for commercial and internal use
+    
+    OpenFaaS Pro (Standard and For Enterprises) is fully featured, supported, and built for production. The Community Edition (CE) is licensed for a 60-day Proof of Concept (PoC) and limited experimentation.
+    
+    Learn more about OpenFaaS editions
+    
 -   Website Sponsorship 🌎
     
     If you'd like to gain visibility by displaying your logon on the openfaas.com homepage, feel free to reach out via email or browse the tiers via GitHub Sponsors.

@@ -1,6 +1,6 @@
 ---
 project: gyroflow
-stars: 9090
+stars: 9132
 description: Video stabilization using gyroscope data
 url: https://github.com/gyroflow/gyroflow
 ---

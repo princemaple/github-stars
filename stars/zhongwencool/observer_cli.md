@@ -26,7 +26,7 @@ Installation
 %% rebar.config
 {deps, \[observer\_cli\]}
 %% erlang.mk
-dep\_observer\_cli \= hex 1.8.7
+dep\_observer\_cli \= hex 1.8.8
 
 ### Elixir
 

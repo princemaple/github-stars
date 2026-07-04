@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 13788
+stars: 13886
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -11,6 +11,10 @@ Termix
 Self-hosted SSH management and remote desktop access
 
 English · 中文 · 日本語 · 한국어 · Français · Deutsch · Español · Português · Русский · العربية · हिन्दी · Türkçe · Tiếng Việt · Italiano
+
+  
+
+Termix is free and open source. If you find it useful, consider donating to help cover server costs and development time.
 
   
   
@@ -39,17 +43,23 @@ Features
 
 **Remote File Manager:** Manage files directly on remote servers with support for viewing and editing code, images, audio, and video. Upload, download, rename, delete, and move files seamlessly with sudo support. Includes support for moving files from server to server.
 
-**Docker Management:** Start, stop, pause, remove containers. View container stats. Control container using docker exec terminal. It was not made to replace Portainer or Dockge but rather to simply manage your containers compared to creating them.
+**Docker and Podman Management:** Start, stop, pause, remove containers. View container stats. Control containers using a docker exec terminal. Supports both Docker and Podman as the container runtime. It was not made to replace Portainer or Dockge but rather to simply manage your containers compared to creating them.
 
 **SSH Host Manager:** Save, organize, and manage your SSH connections with tags and folders (folder customization and nested folder support), and easily save reusable login info while being able to automate the deployment of SSH keys.
 
-**Host Metrics:** View CPU, memory, disk usage, network, uptime, system information, firewall, port monitor, log viewer, users/permissions, certificates, and many more which work on most Linux based servers.
+**Host Metrics:** View CPU, memory, disk usage, network, uptime, system information, firewall, port monitor, log viewer, users/permissions, certificates, and many more which work on most Linux based servers. Includes time-series history graphs and threshold-based alerts with ntfy and webhook support.
 
-**User Authentication:** Secure user management with admin controls and OIDC/LDAP/SSO (with access control) and 2FA (TOTP) support. View active user sessions across all platforms and revoke permissions. Link your OIDC/Local accounts together. View audit log of all users actions.
+**User Authentication:** Secure user management with admin controls and OIDC/LDAP/SSO (with access control), 2FA (TOTP), and passkey (WebAuthn) support. View active user sessions across all platforms and revoke permissions. Link your OIDC/Local accounts together. View audit log of all users actions.
 
 **Tailscale Integration:** List devices from your tailnet to quickly add them as hosts, and connect using Tailscale SSH as an authentication method, letting your tailnet ACLs handle authorization without storing credentials.
 
 **RBAC:** Create roles and share hosts across users/roles.
+
+**Serial Connections:** Connect to serial devices (routers, switches, microcontrollers, etc.) directly from the browser or desktop app. Configure baud rate, data bits, stop bits, and parity. Uses the Web Serial API in supported browsers or a native backend in the Electron app.
+
+**Alerts:** Set threshold-based alert rules on host metrics (CPU, memory, disk, etc.) and get notified via ntfy or webhooks when they fire. View firing and resolved alerts in a history log.
+
+**Homepage:** A fully customizable homepage with a drag-and-drop widget grid. Add widgets for host status, service links, clocks, notes, RSS feeds, weather, Docker containers, host metrics charts, embedded terminals, iframes, and more.
 
 **Database Encryption:** Backend stored as encrypted SQLite database files. View docs for more.
 
@@ -73,7 +83,8 @@ Features
 -   **Quick Connect** - Connect to a server without having to save the connection data
 -   **Command Palette** - Double tap left shift to quickly access SSH connections with your keyboard
 -   **Proxmox Integration** - Auto-add hosts into Termix from your Proxmox instance
--   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, host key verification, password autofill, OPKSSH, tmux, port knocking, terminal logging, etc.
+-   **SSH Feature Rich** - Supports jump hosts, Warpgate, TOTP based connections, SOCKS5, host key verification, password autofill, OPKSSH, tmux, port knocking, terminal logging, SSH agent forwarding, Bitwarden SSH agent, HashiCorp Vault SSH signing, and more.
+-   **Termix ID** - A sshid.io equivalent built into Termix. Claim a handle, publish your public SSH keys at a resolver URL, and use a built-in CA to issue SSH certificates.
 
   
 
@@ -186,7 +197,7 @@ Sponsors
 --------
 
   
-                       
+                           
 
   
 

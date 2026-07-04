@@ -1,6 +1,6 @@
 ---
 project: electric
-stars: 10244
+stars: 10254
 description: The agent platform built on sync.
 url: https://github.com/electric-sql/electric
 ---

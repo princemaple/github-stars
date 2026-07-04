@@ -1,6 +1,6 @@
 ---
 project: compodoc
-stars: 4113
+stars: 4115
 description: :notebook_with_decorative_cover: The missing documentation tool for your Angular, Nest & Stencil application
 url: https://github.com/compodoc/compodoc
 ---
@@ -25,23 +25,23 @@ The demo features documentation generated for a simple TodoMVC application.
 Features
 ========
 
--   **Clean, simple design** — Navigate the documentation on the left side, read it on the right.
+-   **Modern Angular support** — Documents standalone APIs, signal inputs and aliases, `styleUrl`, injectable metadata, and inheritance details.
     
--   **Beautiful themes** — Seven themes are available from well known documentation tools like Gitbook, Read the Docs and projects like Vagrant, Laravel, Postmark and Stripe.
+-   **Standalone-aware routing** — Generates route and dependency graphs for `provideRouter`, lazy routes, default-export route files, and classic NgModule routing.
     
--   **Search** — Includes a powerful search engine (lunr.js) for easily finding what you're looking for.
+-   **Complete project documentation** — Covers components, directives, pipes, modules, injectables, guards, interceptors, classes, interfaces, and routes.
     
--   **Automatic table of contents** — API table of contents is generated using elements found during files parsing.
+-   **Automatic table of contents** — Builds API navigation from the elements found while parsing your project.
     
--   **JSDoc light support** — Support for `@param`, `@returns`, `@link`, `@ignore` and `@example` tags.
+-   **Search** — Includes a powerful search engine (lunr.js) for quickly finding documented APIs.
     
--   **Documentation coverage** — Get the documentation coverage report of your project.
+-   **Themes** — Ships built-in themes inspired by Gitbook, Read the Docs, Vagrant, Laravel, Postmark, and Stripe.
     
--   **Angular CLI-friendly** — Supports Angular CLI projects out-of-the-box.
+-   **JSDoc and TypeScript rendering** — Handles common JSDoc tags, complex types, inherited docs, examples, custom tags, and richer interface documentation.
     
--   **Offline** — No server needed, no sources uploaded online, documentation generated entirely offline.
+-   **Documentation coverage** — Generates coverage reports and supports coverage checks for CI workflows.
     
--   **Open-source and on npm** — Use it directly in your project using npm and a single script—that's it!
+-   **Offline and developer-friendly output** — Supports Angular CLI projects, static offline docs, JSON export, and LLM-ready Markdown output.
     
 
 Documentation

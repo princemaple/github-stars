@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 2145
+stars: 2241
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -406,7 +406,7 @@ To restore a production database snapshot locally:
     $ source .env.local
     $ PGPASSWORD=postgres psql -h localhost -p "$PORT\_DB" -U supabase\_admin -d postgres < /path/to/backup.sql
     # …or for .dump archives:
-    $ PGPASSWORD=postgres pg\_restore -h localhost -p "$PORT\_DB" -U supabase\_admin -d postgres --no-owner /path/to/backup.dump
+    $ PGPASSWORD=postgres pg\_restore -h localhost -p "$PORT\_DB" -U supabase\_admin -d postgres /path/to/backup.dump
     
 5.  Regenerate types so app code reflects the restored schema:
     

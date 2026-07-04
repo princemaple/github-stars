@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8127
+stars: 8132
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -966,7 +966,6 @@ Documentation & Important Links
 
 -   Demo(sources)
 -   Nightly Demo
--   Demo index
 -   API documentation
 -   Tutorials
 -   Hosted builds on Google Hosted Libraries

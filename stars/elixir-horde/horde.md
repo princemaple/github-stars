@@ -1,6 +1,6 @@
 ---
 project: horde
-stars: 1486
+stars: 1489
 description: Horde is a distributed Supervisor and Registry backed by Postgres
 url: https://github.com/elixir-horde/horde
 ---

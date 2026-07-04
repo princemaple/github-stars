@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 33826
+stars: 34885
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -23,15 +23,8 @@ Maigret
 Sponsors
 --------
 
-**RapidProxy** provides high-performance residential proxies for Twitter scraping, Selenium automation, and web data extraction.  
-90M+ IPs • Smart rotation • Anti-block • Non-expiring traffic  
-**Special Offer:** Try it free — Plans from $0.65/GB. Use code `RAPID10` for 10% off.
-
-  
-
-**VaultProxies** — The proxy network ops teams reach for when they're tired of getting throttled, flagged, or guessed.  
-Enterprise-grade rotation • High uptime • Throttle-resistant routing  
-**Special Offer:** Plans from $1/GB — as low as $0.50/GB. Use code `50OFF` for 50% off.
+**711Proxy** provides reliable residential proxies for web scraping, username lookups, and public data collection. Over **100M** residential IPs across **200+** countries\*\* • High Success Rates • Fast & Reliable Connections.  
+**Special Offer**: Free trial available! Rotating residential proxies from just **$0.55/GB**. Unlimited residential proxies from **$15/hour** with no concurrency limits.
 
   
 
@@ -182,6 +175,7 @@ maigret user --json ndjson   # newline-delimited JSON (also: --json simple)
 maigret user --csv
 maigret user --txt
 maigret user --graph         # interactive D3 graph (HTML)
+maigret user --neo4j         # Neo4j Cypher script (graph database)
 
 # search on sites marked with tags photo & dating
 maigret user --tags photo,dating
@@ -198,6 +192,8 @@ maigret user1 user2 user3 -a
 
 # AI-assisted investigation summary (needs OPENAI\_API\_KEY)
 maigret user --ai
+
+`--neo4j` writes a `*_neo4j.cypher` script of the results graph; import it with `cypher-shell -u neo4j -p <password> < report_user_neo4j.cypher` or paste it into the Neo4j Browser. Re-imports are idempotent. See the Neo4j export docs.
 
 Run `maigret --help` for all options. Docs: CLI options, more examples. Running into 403s or timeouts? See TROUBLESHOOTING.md.
 

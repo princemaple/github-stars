@@ -1,208 +1,142 @@
 ---
 project: signoz
-stars: 27500
+stars: 27691
 description: SigNoz is an open-source observability platform native to OpenTelemetry with logs, traces and metrics in a single application. An open-source alternative to DataDog, NewRelic, etc. 🔥 🖥.   👉  Open source Application Performance Monitoring (APM) & Observability tool
 url: https://github.com/SigNoz/signoz
 ---
 
-  
-SigNoz
-=========
+中文 · Deutsch · Português
 
-All your logs, metrics, and traces in one place. Monitor your application, spot issues before they occur and troubleshoot downtime quickly with rich context. SigNoz is a cost-effective open-source alternative to Datadog and New Relic. Visit signoz.io for the full documentation, tutorials, and guide.
+SigNoz is an open-source observability platform built on OpenTelemetry. We’re building an enterprise-grade alternative to fragmented monitoring stacks, with logs, metrics, traces, alerts, and dashboards in one place.
 
-### **Documentation** • **ReadMe in Chinese** • **ReadMe in German** • **ReadMe in Portuguese** • **Slack Community** • **Twitter**
+### Choose how to run SigNoz
 
-Features
---------
+#### SigNoz Cloud (Recommended)
 
-### Application Performance Monitoring
+Fully managed SigNoz with a 30-day free trial, no credit card required, usage-based pricing that starts at $49, and regional data hosting.
 
-Use SigNoz APM to monitor your applications and services. It comes with out-of-box charts for key application metrics like p99 latency, error rate, Apdex and operations per second. You can also monitor the database and external calls made from your application. Read more.
+**Start free →**
 
-You can instrument your application with OpenTelemetry to get started.
+#### Enterprise
 
-### Logs Management
+Enterprise Cloud, BYOC, or Enterprise Self-Hosted with compliance, support, custom retention, RBAC, ingestion controls, data residency, and region selection.
 
-SigNoz can be used as a centralized log management solution. We use ClickHouse (used by likes of Uber & Cloudflare) as a datastore, ⎯ an extremely fast and highly optimized storage for logs data. Instantly search through all your logs using quick filters and a powerful query builder.
+**Explore Enterprise →**
 
-You can also create charts on your logs and monitor them with customized dashboards. Read more.
+#### Community
 
-### Distributed Tracing
+Free open-source SigNoz that runs in your own infrastructure. Deploy with Docker, Kubernetes, or Linux and keep full control of your data plane.
 
-Distributed Tracing is essential to troubleshoot issues in microservices applications. Powered by OpenTelemetry, distributed tracing in SigNoz can help you track user requests across services to help you identify performance bottlenecks.
+**Install SigNoz →**
 
-See user requests in a detailed breakdown with the help of Flamegraphs and Gantt Charts. Click on any span to see the entire trace represented beautifully, which will help you make sense of where issues actually occurred in the flow of requests.
+### What can you monitor?
 
-Read more.
+SigNoz helps teams debug production issues faster by connecting logs, metrics, traces, alerts, dashboards, exceptions, and agent-native workflows in one place.
 
-### Metrics and Dashboards
+#### APM Overview
 
-Ingest metrics from your infrastructure or applications and create customized dashboards to monitor them. Create visualization that suits your needs with a variety of panel types like pie chart, time-series, bar chart, etc.
+Monitor service latency, error rate, throughput, Apdex, top endpoints, database calls, and external calls.
 
-Create queries on your metrics data quickly with an easy-to-use metrics query builder. Add multiple queries and combine those queries with formulae to create really complex queries quickly.
+Learn more: APM documentation
 
-Read more.
+#### Log Management
 
-### LLM Observability
+Ingest, search, aggregate, and correlate logs with traces and metrics using a visual query builder.
 
-Monitor and debug your LLM applications with comprehensive observability. Track LLM calls, analyze token usage, monitor performance, and gain insights into your AI application's behavior in production.
+Learn more: Log management documentation
 
-SigNoz LLM observability helps you understand how your language models are performing, identify issues with prompts and responses, track token usage and costs, and optimize your AI applications for better performance and reliability.
+#### Metrics and Dashboards
 
-Get started with LLM Observability →
+Build dashboards for application, infrastructure, and custom metrics using Query Builder, PromQL, or ClickHouse SQL.
 
-### Alerts
+Learn more: Metrics documentation
 
-Use alerts in SigNoz to get notified when anything unusual happens in your application. You can set alerts on any type of telemetry signal (logs, metrics, traces), create thresholds and set up a notification channel to get notified. Advanced features like alert history and anomaly detection can help you create smarter alerts.
+#### Infrastructure Monitoring
 
-Alerts in SigNoz help you identify issues proactively so that you can address them before they reach your customers.
+Monitor Kubernetes clusters, pods, nodes, workloads, and host-level CPU, memory, disk, network, logs, and traces.
 
-Read more.
+Learn more: Infrastructure monitoring documentation
 
-### Exceptions Monitoring
+#### LLM and AI Observability
 
-Monitor exceptions automatically in Python, Java, Ruby, and Javascript. For other languages, just drop in a few lines of code and start monitoring exceptions.
+Trace LLM apps, RAG pipelines, prompts, tool calls, tokens, latency, and costs alongside application and infrastructure telemetry.
 
-See the detailed stack trace for all exceptions caught in your application. You can also log in custom attributes to add more context to your exceptions. For example, you can add attributes to identify users for which exceptions occurred.
+Learn more: LLM observability documentation
 
-Read more.
+#### Agent-Native Observability and MCP
 
-  
-  
+Use the SigNoz MCP server to bring telemetry into coding agents, or use Noz inside SigNoz to investigate incidents, tune alerts, and build dashboards with production context. Noz is available only on SigNoz Cloud.
 
-Why SigNoz?
------------
+Learn more: SigNoz MCP server docs · Agent skills docs
 
-SigNoz is a single tool for all your monitoring and observability needs. Here are a few reasons why you should choose SigNoz:
+#### Distributed Tracing
 
--   Single tool for observability(logs, metrics, and traces)
-    
--   Built on top of OpenTelemetry, the open-source standard which frees you from any type of vendor lock-in
-    
--   Correlated logs, metrics and traces for much richer context while debugging
-    
--   Uses ClickHouse (used by likes of Uber & Cloudflare) as datastore - an extremely fast and highly optimized storage for observability data
-    
--   DIY Query builder, PromQL, and ClickHouse queries to fulfill all your use-cases around querying observability data
-    
--   Open-Source - you can use open-source, our cloud service or a mix of both based on your use case
-    
+Follow requests across services with flamegraphs, waterfalls, span events, filters, and trace analytics.
 
-Getting Started
----------------
+Learn more: Distributed tracing documentation
 
-### Create a SigNoz Cloud Account
+#### Trace Funnels
 
-SigNoz cloud is the easiest way to get started with SigNoz. Our cloud service is for those users who want to spend more time in getting insights for their application performance without worrying about maintenance.
+Create funnels from traces to understand request-flow drop-offs, failed transitions, and systemic workflow issues.
 
-Get started for free
+Learn more: Trace funnels documentation
 
-### Deploy using Docker(self-hosted)
+Also monitor: **exceptions**, **alerts**, **external APIs**, and **integrations** for OpenTelemetry, Prometheus, Kubernetes, cloud providers, language SDKs, application frameworks, databases, and LLM tools.
 
-Please follow the steps listed here to install using docker
+### Why teams use SigNoz
 
-The troubleshooting instructions may be helpful if you face any issues.
+1.  **OpenTelemetry-native**  
+    Instrument once with open standards and keep ownership of your telemetry.
+2.  **Correlated signals**  
+    Move from service charts to traces, logs, infra metrics, and exceptions without switching tools.
+3.  **Single columnar database**  
+    Built for high-cardinality, high-volume observability workloads.
+4.  **Predictable pricing**  
+    No per-host pricing, no user-seat pricing, and no special pricing for custom metrics.
+5.  **Enterprise ready**  
+    SOC 2 Type II and HIPAA compliance, RBAC, ingestion controls, custom retention, support, BYOC, and self-hosting.
 
-### Deploy in Kubernetes using Helm(self-hosted)
+### Getting started
 
-Please follow the steps listed here to install using helm charts
+#### Start on Cloud
 
-  
-  
+Create a managed SigNoz workspace and get your first dashboard without running observability infrastructure.
 
-We also offer managed services in your infra. Check our pricing plans for all details.
+**Start free on SigNoz Cloud**
 
-Join our Slack community
-------------------------
+#### Self-host SigNoz
 
-Come say Hi to us on Slack 👋
+Run SigNoz in your own infrastructure with Foundry, Docker, Kubernetes, or Linux.
 
-  
-  
+**Foundry** · **Docker** · **Kubernetes** · **Linux**
 
-### Languages supported:
+#### Send data
 
-SigNoz supports all major programming languages for monitoring. Any framework and language supported by OpenTelemetry is supported by SigNoz. Find instructions for instrumenting different languages below:
+Instrument applications and infrastructure with OpenTelemetry, Prometheus, language SDKs, and integrations.
 
--   Java
--   Python
--   Node.js or Javascript
--   Go
--   PHP
--   .NET
--   Ruby
--   Elixir
--   Rust
--   Swift
+**Instrumentation** · **Integrations**
 
-You can find our entire documentation here.
+### Comparisons to familiar tools
 
-  
-  
+SigNoz is often adopted by teams moving from a stack of single-purpose tools or commercial platforms with unpredictable pricing.
 
-Comparisons to Familiar Tools
------------------------------
+**Prometheus**  
+Good if you just need metrics. SigNoz keeps metrics, logs, traces, dashboards, and alerts together so teams can debug with correlated context.
 
-### SigNoz vs Prometheus
+**Jaeger**  
+Jaeger only does distributed tracing. SigNoz adds metrics, logs, trace analytics, dashboards, alerts, exceptions, and trace-to-log workflows.
 
-Prometheus is good if you want to do just metrics. But if you want to have a seamless experience between metrics, logs and traces, then current experience of stitching together Prometheus & other tools is not great.
+**Elastic**  
+SigNoz uses columnar database for efficient observability analytics and high-cardinality log workloads, with 50% lower resource requirement compared to Elastic during ingestion. Check the detailed study.
 
-SigNoz is a one-stop solution for metrics and other telemetry signals. And because you will use the same standard(OpenTelemetry) to collect all telemetry signals, you can also correlate these signals to troubleshoot quickly.
-
-For example, if you see that there are issues with infrastructure metrics of your k8s cluster at a timestamp, you can jump to other signals like logs and traces to understand the issue quickly.
-
-### SigNoz vs Jaeger
-
-Jaeger only does distributed tracing. SigNoz supports metrics, traces and logs - all the 3 pillars of observability.
-
-Moreover, SigNoz has few more advanced features wrt Jaeger:
-
--   Jaegar UI doesn’t show any metrics on traces or on filtered traces
--   Jaeger can’t get aggregates on filtered traces. For example, p99 latency of requests which have tag - customer\_type='premium'. This can be done easily on SigNoz
--   You can also go from traces to logs easily in SigNoz
-
-### SigNoz vs Elastic
-
--   SigNoz Logs management are based on ClickHouse, a columnar OLAP datastore which makes aggregate log analytics queries much more efficient
--   50% lower resource requirement compared to Elastic during ingestion
-
-We have published benchmarks comparing Elastic with SigNoz. Check it out here
-
-### SigNoz vs Loki
-
--   SigNoz supports aggregations on high-cardinality data over a huge volume while loki doesn’t.
--   SigNoz supports indexes over high cardinality data and has no limitations on the number of indexes, while Loki reaches max streams with a few indexes added to it.
--   Searching over a huge volume of data is difficult and slow in Loki compared to SigNoz
-
-We have published benchmarks comparing Loki with SigNoz. Check it out here
-
-  
-  
+**Loki**  
+In the linked benchmark, SigNoz indexed all keys in the test setup, while Loki hit max stream errors when more labels were added. Check the detailed study.
 
 Contributing
 ------------
 
 We ❤️ contributions big or small. Please read CONTRIBUTING.md to get started with making contributions to SigNoz.
 
-Not sure how to get started? Just ping us on `#contributing` in our slack community
-
-  
-  
-
-Documentation
--------------
-
-You can find docs at https://signoz.io/docs/. If you need any clarification or find something missing, feel free to raise a GitHub issue with the label `documentation` or reach out to us at the community slack channel.
-
-  
-  
-
-Community
----------
-
-Join the slack community to know more about distributed tracing, observability, or SigNoz and to connect with other users and contributors.
-
-If you have any ideas, questions, or any feedback, please share on our Github Discussions
+Not sure how to get started? **Just ping us on `#contributing` in our slack community.**
 
 As always, thanks to our amazing contributors!

@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 22085
+stars: 22117
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -659,7 +659,7 @@ Removes an `observeDeep` event listener from this type.
 
 A shareable type that is optimized for shared editing on text. It allows to assign properties to ranges in the text. This makes it possible to implement rich-text bindings to this type.
 
-This type can also be transformed to the delta format. Similarly the YTextEvents compute changes as deltas.
+This type can also be transformed to a delta (lib0/delta). Similarly the events compute changes as deltas.
 
 const ytext = new Y.Text()
 
@@ -677,11 +677,11 @@ ytext.insert(0, 'bold text', { bold: true })
 
 Assign formatting attributes to a range in the text
 
-**`applyDelta(delta: Delta, opts:Object<string,any>)`**
+**`applyDelta(delta: Delta, [origin: any], [opts: {renderer: AbstractRenderer}])`**
 
-See Quill Delta Can set options for preventing remove ending newLines, default is true.
+Apply a delta (lib0/delta) on this shared type. The optional origin is stored on the transaction (`transaction.origin`) and forwarded verbatim on the emitted `'delta'` event, so listeners can recognize — and skip — changes they produced themselves (see the lib0 `RDT` spec). `opts.renderer` renders the content with attributions; positions in the delta are then interpreted relative to the attributed content.
 
-ytext.applyDelta(delta, { sanitize: false })
+ytext.applyDelta(delta.create().retain(5).insert('!').done(), origin)
 
 **`length:number`**
 
@@ -693,9 +693,9 @@ Transforms this type, without formatting options, into a string.
 
 See `toString`
 
-**`toDelta():Delta`**
+**`toDelta([opts: { renderer: AbstractRenderer }]):Delta`**
 
-Transforms this type to a Quill Delta
+Transforms this type to a delta (lib0/delta), optionally rendering attributed content with `opts.renderer`.
 
 **`observe(function(YTextEvent, Transaction):void)`**
 

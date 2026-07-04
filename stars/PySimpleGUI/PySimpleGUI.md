@@ -1,6 +1,6 @@
 ---
 project: PySimpleGUI
-stars: 13814
+stars: 13815
 description: Python GUIs for Humans! Create any GUI simple or complicated in a way that's intuitive.  Launched in 2018. NEW for 2026 - the LGPL3 Version 6.  Transforms tkinter, Qt, WxPython, and Remi into a simple, intuitive, and fun experience for both hobbyists and expert users. 
 url: https://github.com/PySimpleGUI/PySimpleGUI
 ---

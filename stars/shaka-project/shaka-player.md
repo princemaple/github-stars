@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8132
+stars: 8147
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -516,6 +516,7 @@ For details on the HLS format and these tags' meanings, see https://datatracker.
 -   `#EXT-X-DISCONTINUITY-SEQUENCE=<n>`
 -   `#EXT-X-BYTERANGE=<n>[@<o>]`
 -   `#EXT-X-MAP:<attribute-list>`
+-   `#EXT-X-I-FRAMES-ONLY` I-frame only playlists (clipped MP4 fragments are repaired)
 -   `#EXT-X-KEY:<attribute-list>` (`KEYFORMAT="identity",METHOD=SAMPLE-AES` is only supports with MP4 segments)
 -   `#EXT-X-PROGRAM-DATE-TIME:<attribute-list>`
 -   `#EXT-X-START:TIME-OFFSET=<n>`

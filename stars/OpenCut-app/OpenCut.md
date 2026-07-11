@@ -1,6 +1,6 @@
 ---
 project: OpenCut
-stars: 61536
+stars: 62158
 description: The open-source CapCut alternative
 url: https://github.com/OpenCut-app/OpenCut
 ---
@@ -22,7 +22,7 @@ Status
 -   Headless mode (automation, batch rendering)
 -   A scripting tab directly in the editor
 
-You can still find the previous version at opencut-app/opencut-classic, which is the one to reach for today. opencut.app still runs the classic version; the rewrite will live at new.opencut.app until it's ready to take over.
+You can still find the previous version at opencut-app/opencut-classic, which is the one to reach for today. opencut.app still runs the classic version. The rewrite will live at new.opencut.app until it's ready to take over.
 
 Development
 -----------
@@ -33,11 +33,11 @@ bash <(curl -fsSL https://moonrepo.dev/install/proto.sh)
 
 From the repo root:
 
-proto use    # installs bun + moon at the versions pinned in .prototools
-bun install
+proto use    # installs the tools pinned in .prototools
 
-moon run web:dev   # localhost:5173
-moon run api:dev   # localhost:8787
+moon run web:dev       # localhost:5173
+moon run api:dev       # localhost:8787
+moon run desktop:dev   # see apps/desktop/README.md
 
 Contributing
 ------------

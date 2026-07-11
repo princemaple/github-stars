@@ -1,6 +1,6 @@
 ---
 project: mercure
-stars: 5277
+stars: 5281
 description: 🪽 An open, easy, fast, reliable and battery-efficient solution for real-time communications
 url: https://github.com/dunglas/mercure
 ---

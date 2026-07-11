@@ -1,6 +1,6 @@
 ---
 project: prettymapp
-stars: 2780
+stars: 2783
 description: 🖼️ Create beautiful maps from OpenStreetMap data in a streamlit webapp
 url: https://github.com/chrieke/prettymapp
 ---
@@ -97,8 +97,10 @@ You can also customize the selection of OSM landcover classes that should be dis
 from prettymapp.settings import LANDCOVER\_CLASSES
 
 custom\_lc\_classes \= LANDCOVER\_CLASSES.copy()
-custom\_lc\_classes\["urban"\]\["building"\] \= False \# drops all building subclasses
-custom\_lc\_classes\["grassland"\]\["leisure"\] \= True \# Include all leisure subclasses
-custom\_lc\_classes\["grassland"\]\["natural"\] \= \["island"\] \# Selects only specific natural subclasses
+custom\_lc\_classes\["urban"\] \= {"building": False} \# drops all building subclasses
+custom\_lc\_classes\["grassland"\] \= {
+    "leisure": True,  \# Include all leisure subclasses
+    "natural": \["island"\],  \# Selects only specific natural subclasses
+}
 
 df \= get\_osm\_geometries(aoi\=aoi, landcover\_classes\=custom\_lc\_classes)

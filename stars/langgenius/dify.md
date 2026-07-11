@@ -1,6 +1,6 @@
 ---
 project: dify
-stars: 147668
+stars: 148521
 description: Production-ready platform for agentic workflow development.
 url: https://github.com/langgenius/dify
 ---
@@ -62,8 +62,6 @@ Using Dify
     
 -   **Dify for enterprise / organizations  
     **We provide additional enterprise-centric features. Send us an email to discuss your enterprise needs.  
-    
-    > For startups and small businesses using AWS, check out Dify Premium on AWS Marketplace and deploy it to your own AWS VPC with one click. It's an affordable AMI offering with the option to create apps with custom logo and branding.
     
 
 Staying ahead

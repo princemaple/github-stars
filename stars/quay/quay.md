@@ -1,6 +1,6 @@
 ---
 project: quay
-stars: 2795
+stars: 2796
 description: Build, Store, and Distribute your Applications and Containers
 url: https://github.com/quay/quay
 ---
@@ -39,7 +39,7 @@ Community
 -   Mailing List: quay-sig@googlegroups.com
 -   IRC: #quay on libera.chat
 -   Bug tracking: Red Hat JIRA
--   Security Issues: security@redhat.com
+-   Security Issues: See SECURITY.md
 -   Community meetings held the first Wednesday of every month 11:00 AM EST: meeting link
 
 License

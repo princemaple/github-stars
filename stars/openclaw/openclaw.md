@@ -1,14 +1,12 @@
 ---
 project: openclaw
-stars: 381727
+stars: 382622
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
 
 🦞 OpenClaw — Personal AI Assistant
 ===================================
-
-**EXFOLIATE! EXFOLIATE!**
 
 **OpenClaw** is a _personal AI assistant_ you run on your own devices. It answers you on the channels you already use. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
 

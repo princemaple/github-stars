@@ -1,6 +1,6 @@
 ---
 project: uPlot
-stars: 10292
+stars: 10319
 description: 📈 A small, fast chart for time series, lines, areas, ohlc & bars
 url: https://github.com/leeoniya/uPlot
 ---

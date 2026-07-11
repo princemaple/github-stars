@@ -1,6 +1,6 @@
 ---
 project: SandDance
-stars: 7140
+stars: 7137
 description: Visually explore, understand, and present your data.
 url: https://github.com/microsoft/SandDance
 ---

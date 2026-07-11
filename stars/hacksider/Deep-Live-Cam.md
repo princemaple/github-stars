@@ -1,6 +1,6 @@
 ---
 project: Deep-Live-Cam
-stars: 94592
+stars: 94810
 description: real time face swap and one-click video deepfake with only a single image
 url: https://github.com/hacksider/Deep-Live-Cam
 ---
@@ -97,7 +97,7 @@ This is more likely to work on your computer but will be slower as it utilizes t
 
 **2\. Clone the Repository**
 
-git clone https://github.com/hacksider/Deep-Live-Cam.git
+git clone --depth 1 https://github.com/hacksider/Deep-Live-Cam.git
 cd Deep-Live-Cam
 
 **3\. Download the Models**

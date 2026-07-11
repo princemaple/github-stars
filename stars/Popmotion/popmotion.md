@@ -1,6 +1,6 @@
 ---
 project: popmotion
-stars: 20172
+stars: 20166
 description: Simple animation libraries for delightful user interfaces
 url: https://github.com/Popmotion/popmotion
 ---

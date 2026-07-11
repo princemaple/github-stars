@@ -1,6 +1,6 @@
 ---
 project: shards
-stars: 297
+stars: 298
 description: Partitioned ETS tables for Erlang and Elixir
 url: https://github.com/cabol/shards
 ---

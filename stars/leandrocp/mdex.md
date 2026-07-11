@@ -1,6 +1,6 @@
 ---
 project: mdex
-stars: 430
+stars: 432
 description: Markdown for Elixir. Fast, Extensible, Phoenix-native. AI-ready. Built on top of comrak, ammonia, and lumis.
 url: https://github.com/leandrocp/mdex
 ---
@@ -218,45 +218,65 @@ Feature
 
 MDEx
 
+mdex\_native
+
 Earmark
 
 md
 
 cmark
 
+erlang-markdown
+
 Active
 
 ✅
 
-⚠️¹
+✅
+
+⚠️⁵
 
 ✅
 
 ❌
+
+✅
 
 Pure Elixir
 
-⚠️²
+⚠️⁶
+
+❌
 
 ✅
 
 ✅
 
 ❌
+
+✅
 
 Extensible
 
 ✅
 
+❌
+
 ✅
 
 ✅
 
 ❌
 
+⚠️⁹
+
 Syntax Highlighting
 
 ✅
+
+✅
+
+❌
 
 ❌
 
@@ -274,9 +294,17 @@ Code Block Decorators
 
 ❌
 
+❌
+
+❌
+
 Streaming (fragments)
 
 ✅
+
+❌
+
+❌
 
 ❌
 
@@ -294,6 +322,66 @@ Phoenix HEEx components
 
 ❌
 
+❌
+
+❌
+
+MDX (JS)
+
+❌
+
+❌
+
+❌
+
+❌
+
+❌
+
+✅
+
+Kramdown attributes
+
+❌
+
+❌
+
+✅⁸
+
+❌
+
+❌
+
+❌
+
+EEx support
+
+✅
+
+❌
+
+✅
+
+❌
+
+❌
+
+❌
+
+Custom syntax DSL
+
+❌
+
+❌
+
+❌
+
+✅
+
+❌
+
+❌
+
 AST
 
 ✅
@@ -302,19 +390,31 @@ AST
 
 ✅
 
+✅
+
 ❌
+
+✅
 
 AST to Markdown
 
 ✅
 
-⚠️³
+✅
+
+⚠️⁷
+
+❌
 
 ❌
 
 ❌
 
 To HTML
+
+✅
+
+✅
 
 ✅
 
@@ -334,15 +434,23 @@ To JSON
 
 ❌
 
+❌
+
+❌
+
 To XML
 
 ✅
 
+✅
+
 ❌
 
 ❌
 
 ✅
+
+❌
 
 To Manpage
 
@@ -352,7 +460,11 @@ To Manpage
 
 ❌
 
+❌
+
 ✅
+
+❌
 
 To LaTeX
 
@@ -362,11 +474,19 @@ To LaTeX
 
 ❌
 
+❌
+
 ✅
+
+❌
 
 To Quill Delta
 
 ✅
+
+❌
+
+❌
 
 ❌
 
@@ -384,17 +504,39 @@ To Slack
 
 ❌
 
+❌
+
+❌
+
 Emoji
 
 ✅
 
-❌
+✅
 
 ❌
 
 ❌
 
-GFM⁴
+❌
+
+❌
+
+GFM²
+
+✅
+
+✅
+
+✅
+
+❌
+
+❌
+
+✅
+
+GLFM³
 
 ✅
 
@@ -404,9 +546,15 @@ GFM⁴
 
 ❌
 
-GLFM⁵
+❌
 
-✅
+❌
+
+Discord⁴
+
+⚠️¹
+
+⚠️¹
 
 ❌
 
@@ -414,23 +562,17 @@ GLFM⁵
 
 ❌
 
-Discord⁶
-
-⚠️⁷
-
 ❌
 
-❌
-
-❌
-
-1.  Earmark is currently marked as retired
-2.  MDEx depends on mdex\_native which uses Rustler
-3.  Possible with earmark\_reversal
-4.  GitHub Flavored Markdown
-5.  GitLab Flavored Markdown
-6.  Discord Flavored Markdown
-7.  Partial support
+1.  Partial support
+2.  GitHub Flavored Markdown
+3.  GitLab Flavored Markdown
+4.  Discord Flavored Markdown
+5.  Earmark is currently marked as retired
+6.  MDEx depends on mdex\_native, which uses Rustler
+7.  Possible with earmark\_reversal
+8.  EarmarkParser supports Kramdown-style attributes
+9.  No custom plugin API
 
 Benchmark
 ---------

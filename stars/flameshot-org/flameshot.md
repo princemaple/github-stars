@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 30309
+stars: 30357
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---
@@ -23,6 +23,7 @@ Index
 -   Usage
     -   Usage on Windows
     -   Usage on Hyprland / Sway / wlroots
+    -   Usage on minimal X11 window managers
     -   CLI configuration
     -   Config file
 -   Keyboard Shortcuts
@@ -112,6 +113,10 @@ If you require console output, run `flameshot-cli.exe` instead. `flameshot-cli.e
 ### Usage on Hyprland / Sway / wlroots
 
 Please refer to this document for detailed instructions on how to set up Flameshot on Hyprland, Sway, and wlroots-based Wayland compositors.
+
+### Usage on minimal X11 window managers
+
+On minimal X11 window managers (i3, dwm, xmonad, bspwm, ...), capturing may fail because no portal backend implements the Screenshot interface (errors such as _"Could not locate the org.freedesktop.portal.Desktop service"_ or _"Screenshot portal timed out"_). Please refer to this document for the fix (enabling the legacy X11 capture).
 
 ### CLI configuration
 

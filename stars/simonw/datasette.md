@@ -1,6 +1,6 @@
 ---
 project: datasette
-stars: 11257
+stars: 11270
 description: An open source multi-tool for exploring and publishing data
 url: https://github.com/simonw/datasette
 ---

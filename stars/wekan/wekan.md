@@ -1,6 +1,6 @@
 ---
 project: wekan
-stars: 20981
+stars: 20990
 description: The Open Source kanban, built with Meteor. GitHub issues/PRs are only for FLOSS Developers, not for support, support is at https://wekan.fi/commercial-support/ . New English strings for new features at imports/i18n/data/en.i18n.json . Non-English translations at https://app.transifex.com/wekan/wekan only.
 url: https://github.com/wekan/wekan
 ---
@@ -103,7 +103,7 @@ We also welcome sponsors for features and bugfixes. By working directly with WeK
 Getting Started with Development
 --------------------------------
 
-The default branch uses Meteor 3.5-rc.2 with Node.js 24.x. See CHANGELOG.md for the latest runtime updates.
+The main branch uses Meteor 3.5 with Node.js 24.x. See CHANGELOG.md for the latest runtime updates.
 
 To contribute, create a fork and run `./rebuild-wekan.sh` (or `./rebuild-wekan.bat` on Windows) as detailed here. Once you're ready, please test your code and submit a pull request (PR).
 
@@ -134,11 +134,17 @@ curl https://install.meteor.com/ | sh
 
 ### Building WeKan
 
-The `rebuild-wekan.sh` script guides you through a three-stage process:
+The `rebuild-wekan.sh` script shows a two-level menu. The top level groups options into categories:
 
-1.  **Install dependencies (Option 1)** - Downloads all required Meteor packages and npm modules
-2.  **Build WeKan (Option 2)** - Compiles the application
-3.  **Run WeKan (Option 3)** - Starts the development server at http://localhost:4000
+```
+1) Setup   2) Dev server   3) Tests   4) Docker   5) Tools   6) Quit
+```
+
+You pick a category number, then the item number inside it (each submenu also has a `Back` entry). Building from source is a three-stage process:
+
+1.  **Setup -> Install dependencies** - Downloads all required Meteor packages and npm modules
+2.  **Setup -> Build WeKan** - Compiles the application
+3.  **Dev server -> localhost:3000** - Starts the development server at http://localhost:3000
 
 # Clone your fork
 git clone git@github.com:YOUR\_USERNAME/wekan.git
@@ -147,23 +153,25 @@ cd wekan
 # Make the script executable
 chmod +x rebuild-wekan.sh
 
-# Step 1: Install dependencies
+# Step 1: Install dependencies (Setup -> Install dependencies)
 ./rebuild-wekan.sh
-# Press 1 and Enter
+# Press 1 (Setup) and Enter, then 1 (Install dependencies) and Enter
 
-# Step 2: Build WeKan (after dependencies complete)
+# Step 2: Build WeKan (Setup -> Build WeKan, after dependencies complete)
 ./rebuild-wekan.sh
-# Press 2 and Enter
+# Press 1 (Setup) and Enter, then 2 (Build WeKan) and Enter
 
-# Step 3: Run WeKan in development mode
+# Step 3: Run WeKan in development mode (Dev server -> localhost:3000)
 ./rebuild-wekan.sh
-# Press 3 and Enter
+# Press 2 (Dev server) and Enter, then 1 (localhost:3000) and Enter
+
+If a dev server is already running on that port, the **Dev server** options stop it automatically and start a fresh server on the same port.
 
 ### WSL Users
 
 WSL users can use Snap Candidate. See install docs.
 
-The development server will start at http://localhost:4000. Any changes you make to the source code will automatically trigger a rebuild and refresh your browser.
+The development server will start at http://localhost:3000. Any changes you make to the source code will automatically trigger a rebuild and refresh your browser.
 
 Screenshot
 ----------

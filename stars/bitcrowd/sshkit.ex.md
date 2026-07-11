@@ -1,6 +1,6 @@
 ---
 project: sshkit.ex
-stars: 172
+stars: 173
 description: An Elixir toolkit for performing tasks on one or more servers, built on top of Erlang’s SSH application.
 url: https://github.com/bitcrowd/sshkit.ex
 ---

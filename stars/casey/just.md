@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 34586
+stars: 34705
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -163,6 +163,12 @@ Snap
 just
 
 `snap install --edge --classic just`
+
+Spack
+
+just
+
+`spack install just`
 
 uv
 
@@ -715,7 +721,7 @@ Variadic parameters can be assigned default values. These are overridden by argu
 test +FLAGS\='\-q':
   cargo test {{FLAGS}}
 
-The number of arguments a variadic parameter accepts may be limited with the `[arg(ARG, min=MIN)]` and `[arg(ARG, max=MAX)]` attributesmaster, which require lists to be enabled:
+The number of arguments a variadic parameter accepts may be limited with the `[arg(ARG, min=MIN)]` and `[arg(ARG, max=MAX)]` attributes1.56.0, which require lists to be enabled:
 
 set unstable
 set lists
@@ -1125,7 +1131,7 @@ bar:
 baz:
   sleep 1
 
-The number of simultaneously running recipes may be limited with the `--jobs` optionmaster.
+The number of simultaneously running recipes may be limited with the `--jobs` option1.56.0. The `num_jobs()` function returns the number of jobs, falling back to the empty list if `--jobs` was not passed.
 
 GNU `parallel` may be used to run recipe lines concurrently:
 
@@ -1170,7 +1176,7 @@ Available recipes:
     build # Build stuff
     test
 
-The value of `[doc]` may be a const expressionmaster.
+The value of `[doc]` may be a const expression1.56.0.
 
 ### Groups
 
@@ -1303,7 +1309,7 @@ This is useful for helper recipes which are only meant to be used as dependencie
 
 The `[android]`, `[dragonfly]`, `[freebsd]`, `[linux]`, `[macos]`, `[netbsd]`, `[openbsd]`, `[unix]`, and `[windows]` attributes are conditional attributes. By default, items are always enabled. An item with one or more conditional attributes will only be enabled when one or more of those conditional attributes is active.
 
-The conditional attributes originally applied only to recipes, but may now be applied to all top-level itemsmaster.
+The conditional attributes originally applied only to recipes, but may now be applied to all top-level items1.56.0.
 
 This can be used to write `justfile`s that behave differently depending on which operating system they run on. The `run` recipe in this `justfile` will compile and run `main.c`, using a different C compiler and using the correct output binary name for that compiler depending on the operating system:
 
@@ -1672,7 +1678,7 @@ The `[arg(flag)]` attribute makes the parameter a flag which does not take a val
 
 The `[arg(multiple)]` attribute allows an option or flag to be passed more than once, assigning the list of passed values to the parameter. When combined with `flag` or `value=VALUE`, `"true"` or `VALUE`, respectively, are repeated for each occurance of the flag.
 
-The `[arg(min=MIN)]` and `[arg(max=MAX)]` attributesmaster can be used to limit the number of times an option or flag may be passed.
+The `[arg(min=MIN)]` and `[arg(max=MAX)]` attributes1.56.0 can be used to limit the number of values an option or flag may receive.
 
 The value of `[arg(help)]` may be a list, in which case the help string is the elements of the list joined with spaces. If the list is empty, the argument has no help string.
 
@@ -2128,7 +2134,8 @@ Each recipe must be indented at least one level from the `recipe-name` but after
 
 Here's a justfile with a recipe indented with spaces, represented as `·`, and tabs, represented as `→`.
 
-set windows-shell := \["pwsh", "\-NoLogo", "\-NoProfileLoadTime", "\-Command"\]
+\[windows\]
+set shell := \["pwsh", "\-NoLogo", "\-NoProfileLoadTime", "\-Command"\]
 
 set ignore-comments
 
@@ -2305,11 +2312,11 @@ foo:
 There are a number of ways to configure the shell for shell recipes, which are the default when a recipe does not start with a `#!` shebang. Their precedence, from highest to lowest, is:
 
 1.  The `--shell` and `--shell-arg` command line options. Passing either of these will cause `just` to ignore any settings in the current justfile.
-2.  `set windows-shell := [...]`
+2.  `set windows-shell := [...]` (deprecated)
 3.  `set windows-powershell` (deprecated)
 4.  `set shell := [...]`
 
-Since `set windows-shell` has higher precedence than `set shell`, you can use `set windows-shell` to pick a shell on Windows, and `set shell` to pick a shell for all other platforms.
+Use the `[windows]` and `[unix]` attributes with `set shell` to use different a shells on Windows.
 
 ### Shell
 
@@ -2329,25 +2336,15 @@ foo:
 
 #### Windows Shell
 
-`just` uses `sh` on Windows by default. To use a different shell on Windows, use `windows-shell`:
+`just` uses `sh` on Windows by default. To use a different shell on Windows, use the `[windows]` attribute on the `shell` setting:
 
-set windows-shell := \["powershell.exe", "\-NoLogo", "\-Command"\]
+\[windows\]
+set shell := \["powershell.exe", "\-NoLogo", "\-Command"\]
 
 hello:
   Write-Host "Hello, world!"
 
 See powershell.just for a justfile that uses PowerShell on all platforms.
-
-#### Windows PowerShell
-
-_`set windows-powershell` uses the legacy `powershell.exe` binary, and is no longer recommended. See the `windows-shell` setting above for a more flexible way to control which shell is used on Windows._
-
-`just` uses `sh` on Windows by default. To use `powershell.exe` instead, set `windows-powershell` to true.
-
-set windows-powershell := true
-
-hello:
-  Write-Host "Hello, world!"
 
 #### Python 3
 
@@ -3348,6 +3345,7 @@ The keys of the cache key object are:
 -   `body`: evaluated recipe body
 -   `environment`: map of environment variable names to values
 -   `executor`: script interpreter or shebang
+-   `extension`: script file extension
 -   `extra`: user-supplied value
 -   `inputs`: map of file paths to content hashs
 -   `positional`: positional arguments
@@ -3462,13 +3460,13 @@ recipe
 
 Require values of argument `ARG` to be passed as `--LONG` option. If the parameter is variadic, the option is repeatable1.55.0master.
 
-`[arg(ARG, max="MAX")]`master
+`[arg(ARG, max="MAX")]`1.56.0
 
 recipe
 
 Allow at most `MAX` values to be passed to argument `ARG`. Requires `multiple` or a variadic parameter.
 
-`[arg(ARG, min="MIN")]`master
+`[arg(ARG, min="MIN")]`1.56.0
 
 recipe
 
@@ -3526,11 +3524,11 @@ Use recipe as module's default recipe.
 
 module, recipe
 
-Set recipe or module's documentation comment to `DOC`. May be a const expressionmaster.
+Set recipe or module's documentation comment to `DOC`. May be a const expression1.56.0.
 
 `[dragonfly]`1.47.0
 
-anymaster
+any1.56.0
 
 Enable item on DragonFly BSD.
 
@@ -3554,7 +3552,7 @@ Print error message if recipe fails regardless of `set no-exit-message`.
 
 `[freebsd]`1.47.0
 
-anymaster
+any1.56.0
 
 Enable item on FreeBSD.
 
@@ -3566,19 +3564,19 @@ Put recipe or module in group `NAME`.
 
 `[android]`1.50.0
 
-anymaster
+any1.56.0
 
 Enable item on Android.
 
 `[linux]`1.8.0
 
-anymaster
+any1.56.0
 
 Enable item on Linux.
 
 `[macos]`1.8.0
 
-anymaster
+any1.56.0
 
 Enable item on macOS.
 
@@ -3590,7 +3588,7 @@ Attach `METADATA` to recipe.
 
 `[netbsd]`1.47.0
 
-anymaster
+any1.56.0
 
 Enable item on NetBSD.
 
@@ -3614,7 +3612,7 @@ Override globally quiet recipes and always echo out the recipe.
 
 `[openbsd]`1.38.0
 
-anymaster
+any1.56.0
 
 Enable item on OpenBSD.
 
@@ -3656,13 +3654,13 @@ Execute recipe as a shell recipe, overriding `set default-script`.
 
 `[unix]`1.8.0
 
-anymaster
+any1.56.0
 
 Enable item on unixes. (Includes macOS).
 
 `[windows]`1.8.0
 
-anymaster
+any1.56.0
 
 Enable item on Windows.
 
@@ -3822,9 +3820,9 @@ boolean
 
 `false`
 
-Ignore recipe lines beginning with `#`.
+Ignore shell recipe lines beginning with `#`. Does not apply to script recipes.
 
-`indentation`master
+`indentation`1.56.0
 
 string
 
@@ -3926,7 +3924,7 @@ boolean
 
 `false`
 
-Use PowerShell on Windows as default shell. (Deprecated. Use `windows-shell` instead.)
+Use PowerShell on Windows as default shell. (Deprecated. Use the `[windows]` attribute on `set shell`.)
 
 `windows-shell`
 
@@ -3934,7 +3932,7 @@ Use PowerShell on Windows as default shell. (Deprecated. Use `windows-shell` ins
 
 \-
 
-Set the command used to invoke recipes and evaluate backticks.
+Set the command used to invoke recipes and evaluate backticks. (Deprecated. Use the `[windows]` attribute on `set shell`.)
 
 `working-directory`1.33.0
 
@@ -4051,6 +4049,8 @@ $ just
 #### Invocation Information
 
 -   `is_dependency()` - Returns the string `true` if the current recipe is being run as a dependency of another recipe, rather than being run directly, otherwise returns the string `false`.
+    
+-   `num_jobs()`1.56.0 — The value of `--jobs` or the empty list, `[]`, if it was not passed.
     
 -   `recipe_name()`1.53.0 - Returns the name of the current recipe.
     

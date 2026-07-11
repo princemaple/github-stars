@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 26066
+stars: 26467
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -156,9 +156,16 @@ Productivity may increase when using Crush and you may find yourself nerd sniped
 Getting Started
 ---------------
 
-The quickest way to get started is to grab an API key for your preferred provider such as Anthropic, OpenAI, Groq, OpenRouter, or Vercel AI Gateway and just start Crush. You'll be prompted to enter your API key.
+The quickest way to get started is to choose a Hyper model from model picker. Follow the steps to authenticate and you'll be good to go.
 
-That said, you can also set environment variables for preferred providers.
+Hyper, from Charm, is the official Crush provider. It’s subscription-based, with a free tier, and optimized for Crush. It’s privacy focused, with zero data retention (ZDR) is and designed to comply with GDPR. More on Hyper.
+
+API Keys
+--------
+
+You can also use Crush with many other providers such as Anthopic, OpenAI, Gemini, OpenRouter and so on. Press ctrl+l to open the model picker, choose the provider of your choice, and paste your API key.
+
+That said, you can also set environment variables for preferred providers:
 
 Environment Variable
 
@@ -184,10 +191,6 @@ Vercel AI Gateway
 
 Google Gemini
 
-`SYNTHETIC_API_KEY`
-
-Synthetic
-
 `ZAI_API_KEY`
 
 Z.ai
@@ -195,6 +198,10 @@ Z.ai
 `MINIMAX_API_KEY`
 
 MiniMax
+
+`SYNTHETIC_API_KEY`
+
+Synthetic
 
 `HF_TOKEN`
 
@@ -276,14 +283,7 @@ Azure OpenAI models
 
 Moonshot
 
-### Subscriptions
-
-If you prefer subscription-based usage, here are some plans that work well in Crush:
-
--   Synthetic
--   GLM Coding Plan
--   Kimi Code
--   MiniMax Coding Plan
+Also note that Crush can support nearly any provider, including Local Models. For more info see Custom Providers below.
 
 ### By the Way
 

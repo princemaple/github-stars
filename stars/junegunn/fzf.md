@@ -1,6 +1,6 @@
 ---
 project: fzf
-stars: 81487
+stars: 81644
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---

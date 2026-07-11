@@ -1,6 +1,6 @@
 ---
 project: duplicati
-stars: 14713
+stars: 14732
 description: Store securely encrypted backups in the cloud!
 url: https://github.com/duplicati/duplicati
 ---

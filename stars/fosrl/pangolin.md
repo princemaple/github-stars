@@ -1,6 +1,6 @@
 ---
 project: pangolin
-stars: 21572
+stars: 21665
 description: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.
 url: https://github.com/fosrl/pangolin
 ---
@@ -9,7 +9,7 @@ url: https://github.com/fosrl/pangolin
 
 **Get started with Pangolin at app.pangolin.net**
 
-Pangolin is an open-source, identity-based remote access platform built on WireGuard® that enables secure, seamless connectivity to private and public resources. Pangolin combines reverse proxy and VPN capabilities into one platform, providing browser-based access to web applications and client-based access to any private resources with NAT traversal, all with granular access controls.
+Pangolin is an open-source, identity-based remote access platform built on WireGuard® that enables secure connectivity to infrastructure anywhere. It combines reverse-proxy and VPN capabilities into one platform, providing browser-based access to web applications and client-based access to private resources with NAT traversal, all with granular access control.
 
 Installation
 ------------
@@ -32,17 +32,51 @@ Key Features
 
 Pangolin's site connectors provide gateways into networks so you can access any networked resources. Sites use outbound tunnels and intelligent NAT traversal to make networks behind restrictive firewalls available for authorized access without public IPs or open ports. Easily deploy a site as a binary or container on any platform.
 
+-   Lightweight user-space connector runs anywhere
+-   Punches through any firewall
+-   Doesn't require open ports or a public IP
+-   Strict network segmentation
+-   WireGuard-based
+-   Get alerts when a device or network resource goes down
+
 ### Browser-based reverse proxy access
 
-Expose web applications through identity and context-aware tunneled reverse proxies. Users access applications through any web browser with authentication and granular access control without installing a client. Pangolin handles routing, load balancing, health checking, and automatic SSL certificates without exposing your network directly to the internet.
+Expose HTTPS web applications and connect to VNC, RDP, and SSH entirely in the browser through identity and context-aware tunneled reverse proxies. Users access resources with authentication and granular access control without installing a client. Pangolin handles routing, load balancing, health checking, and automatic SSL certificates without exposing your network directly to the internet.
+
+-   Expose a web panel anywhere
+-   Access via any web browser
+-   Single sign-on across all resources
+-   HTTPS resources
+-   Remote desktop in the browser with VNC and RDP
+-   In-browser SSH terminal with privileged access management (PAM)
+-   PIN codes, passcodes, email OTP, geoblocking, allow-lists, and more
 
 ### Client-based private resource access
 
 Access private resources like SSH servers, databases, RDP, and entire network ranges through Pangolin clients. Intelligent NAT traversal enables connections even through restrictive firewalls, while DNS aliases provide friendly names and fast connections to resources across all your sites. Add redundancy by routing traffic through multiple connectors in your network.
 
+-   Peer-to-peer with intelligent NAT traversal
+-   Hosts/IPs and port ranges
+-   Network ranges/CIDRs
+-   Friendly DNS aliases for network addresses
+-   Privileged access management (PAM) with SSH resources
+-   Private HTTPS resources only accessible on the private network
+
 ### Give users and roles access to resources
 
-Use Pangolin's built in users or bring your own identity provider and set up role based access control (RBAC). Grant users access to specific resources, not entire networks. Unlike traditional VPNs that expose full network access, Pangolin's zero-trust model ensures users can only reach the applications, services, and routes you explicitly define.
+Use Pangolin's built-in users or bring your own identity provider and set up role-based access control (RBAC). Grant users access to specific resources, not entire networks. Unlike traditional VPNs that expose full network access, Pangolin's zero-trust model ensures users can only reach the applications, services, and routes you explicitly define.
+
+-   Bring your existing identity provider (IdP) or use Pangolin identities
+-   Sync users and roles from your IdP
+-   User- and role-based access control
+-   Full network audit and access logs
+
+### Find and launch resources from a personalized home page
+
+Give users a landing page to quickly find and open the resources they can access. Resources are grouped by site or label, searchable, and filterable, with grid or list views. Saved views capture filters, grouping, and layout as personal or organization-wide defaults.
+
+-   Single place for admins and non-admins to see accessible resources
+-   Create reusable views for common access patterns
 
 Download Clients
 ----------------

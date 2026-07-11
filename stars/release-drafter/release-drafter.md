@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3896
+stars: 3898
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -163,12 +163,6 @@ Characters to escape in `$TITLE` when inserting into `change-template` so that t
 Optional
 
 The template to use for when there’s no changes. Default: `"* No changes"`.
-
-`references`
-
-Optional
-
-The references to listen for configuration updates to `.github/release-drafter.yml`. Refer to References to learn more about this
 
 `categories`
 
@@ -487,19 +481,6 @@ The base name of of the base Ref associated with the pull request e.g. `master`.
 `$HEAD_REF_NAME`
 
 The head name of the head Ref associated with the pull request e.g. `my-bug-fix`.
-
-References
-----------
-
-**Note**: This is only relevant for GitHub app users as `references` is ignored when running as GitHub action due to GitHub workflows more powerful `on` conditions
-
-References takes an list and accepts strings and regex. If none are specified, we default to the repository’s default branch usually master.
-
-references:
-  - master
-  - v.+
-
-Currently matching against any `ref/heads/` and `ref/tags/` references behind the scene
 
 Categorize Changes
 ------------------

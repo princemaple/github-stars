@@ -1,6 +1,6 @@
 ---
 project: cldr
-stars: 473
+stars: 474
 description: Elixir implementation of CLDR/ICU
 url: https://github.com/elixir-cldr/cldr
 ---

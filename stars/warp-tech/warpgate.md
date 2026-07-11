@@ -1,6 +1,6 @@
 ---
 project: warpgate
-stars: 7277
+stars: 7332
 description: Fully transparent SSH, HTTPS, Kubernetes, MySQL and Postgres bastion/PAM that doesn't need additional client-side software
 url: https://github.com/warp-tech/warpgate
 ---
@@ -13,7 +13,7 @@ url: https://github.com/warp-tech/warpgate
 
 * * *
 
-Warpgate is a smart & fully transparent SSH, HTTPS, Kubernetes, MySQL, PostgreSQL bastion host that doesn't require a client app or an SSH wrapper.
+Warpgate is a smart & fully transparent SSH, HTTPS, Kubernetes, MySQL, PostgreSQL, RDP and VNC bastion host that doesn't require a client app or an SSH wrapper.
 
 -   Set it up in your DMZ, add user accounts and easily assign them to specific hosts and URLs within the network.
 -   Warpgate will record every session for you to view (live) and replay later through a built-in admin web UI.
@@ -137,7 +137,7 @@ Warpgate is being actively used in enterprise settings.
 How it works
 ------------
 
-Warpgate is a service that you deploy on the bastion/DMZ host, which will accept SSH, HTTPS, Kubernetes, MySQL and PostgreSQL connections and provide an (optional) web admin UI.
+Warpgate is a service that you deploy on the bastion/DMZ host, which will accept SSH, HTTPS, Kubernetes, MySQL, PostgreSQL, RDP and VNC connections and provide an (optional) web admin UI.
 
 Run `warpgate setup` to interactively generate a config file, including port bindings. See Getting started for details.
 
@@ -287,6 +287,10 @@ Thanks goes to these wonderful people (emoji key):
 
   
 **Haoqian**  
+💻
+
+  
+**Victor Coutellier**  
 💻
 
 This project follows the all-contributors specification. Contributions of any kind welcome!

@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1224
+stars: 1230
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -625,9 +625,10 @@ Mods (Require **Lovely**)
 ### Miscellaneous
 
 -   #1 Victory Royale! - On win screen, replaces the "YOU WIN!" text with "#1 VICTORY ROYALE!" and the default win music with fortnite default dance. by @Muddie
--   When the impostor is Sun - Renames The Sun tarot card to The Sus and replaces its texture. by @Muddie
 -   Cartomancer - Improved deck view and joker management with stacking and scrolling, capped deck pile and scoring flames customization. Made for long endless runs and crazy modded runs. by @stupxd
 -   Blueprint - Dynamically adjust Blueprint joker texture to the joker it is copying. by @stupxd
+-   Solatro - Turns the entire game into a game of Solitaire. by @bryanthaboi
+-   When the impostor is Sun - Renames The Sun tarot card to The Sus and replaces its texture. by @Muddie
 
 ### Translates
 

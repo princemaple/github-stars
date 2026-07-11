@@ -1,6 +1,6 @@
 ---
 project: mind-elixir-core
-stars: 3075
+stars: 3082
 description: ⚗ Mind Elixir is a JavaScript, framework-agnostic mind map core.
 url: https://github.com/SSShooter/mind-elixir-core
 ---

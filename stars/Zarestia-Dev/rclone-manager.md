@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 960
+stars: 967
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -11,7 +11,7 @@ RClone Manager
 🇺🇸 English • 🇹🇷 Türkçe • 🇨🇳 简体中文 • 🇫🇷 Français • 🇪🇸 Español • Help to translate • Crowdin
 
 **A powerful, cross-platform GUI for managing Rclone remotes with style and ease.**  
-_Built with Angular 21 + Tauri · Linux • Windows • macOS • ARM Support_
+_Built with Angular 22 + Tauri · Linux • Windows • macOS • ARM Support_
 
 * * *
 
@@ -140,6 +140,7 @@ License & Support
 
 -   **License:** Licensed under the GNU GPLv3 – free to use, modify, and distribute.
 -   **Support:** If you like this project, please consider leaving a ⭐ on GitHub!
+-   **Donate:** If RClone Manager saves you time, consider supporting development ❤️
 
 Made with ❤️ by the Zarestia Dev Team  
 Powered by Rclone | Built with Angular & Tauri

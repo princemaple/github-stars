@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 52328
+stars: 52406
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -15,12 +15,14 @@ Windows inside a Docker container.
 Features ✨
 ----------
 
--   ISO downloader
--   KVM acceleration
--   Web-based viewer
--   Automatic install
--   Shared host folder
--   USB pass through
+-   Runs Windows inside a Docker container
+-   Automatic download and hands-free installation
+-   Supports modern and legacy Windows releases
+-   Near-native performance with KVM acceleration
+-   Customizable CPU, memory, and storage allocation
+-   Dynamic memory allocation with memory ballooning
+-   USB passthrough and host folder sharing
+-   Supports NAT, user-mode, macvlan, and macvtap networking
 
 Video 📺
 --------
@@ -408,6 +410,10 @@ devices:
 Warning
 
 Adding a USB mass storage device before Windows Setup has finished may cause it to fail. Or worse: the drive can get formatted as the system disk, and all your data will be lost! So always keep them disconnected when launching the container for the first time.
+
+### Are these all available options?
+
+No. For a complete overview of all supported settings, see the environment variables page.
 
 ### How do I verify if my system supports KVM?
 

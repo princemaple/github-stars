@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7918
+stars: 7926
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -51,6 +51,7 @@ Table of Contents
 
 -   Quick Start
 -   Features
+-   Website & Live Demos
 -   Installation
 -   Build Outputs
 -   Usage
@@ -60,6 +61,8 @@ Table of Contents
 -   Development
 -   Contributors
 -   Sponsors
+-   Show your support
+-   Star History
 -   License
 
 Installation
@@ -397,6 +400,32 @@ Sponsors
 Special thanks to @megaphonecolin, @sdraper69, @reynaldichernando, @gamma-app, @jrjohnson, and @ryanander for supporting this project!
 
 If you'd like to support this project too, you can become a sponsor.
+
+Show your support
+-----------------
+
+If snapDOM saved you time, a ⭐ on GitHub helps other developers find it — that's the whole ask.
+
+Shipping something built with snapDOM? Add the badge to your README:
+
+\[!\[Built with snapDOM\](https://img.shields.io/badge/built%20with-snapDOM-blue)\](https://snapdom.dev)
+
+### Projects using snapDOM
+
+snapDOM runs in production across 290+ public repositories (GitHub dependents graph). A few notable ones, each verified from its own `package.json`:
+
+-   LobeHub — platform for operating AI agents
+-   Trilium Notes — hierarchical personal knowledge base
+-   Sealos — AI-native cloud operating system
+-   Tencent tmagic-editor — low-code page editor
+-   Playroom — JSX design tool by SEEK
+-   GPT-Vis — AI-friendly data viz by Ant Group's AntV
+-   Rabby Wallet — browser wallet for EVM chains
+-   uMap — OpenStreetMap map builder
+-   ListenBrainz — music tracker by MetaBrainz
+-   SnapDIFF — in-browser visual regression testing _(by Zumerlab)_
+
+See the full gallery at **snapdom.dev/made-with**. Shipping snapDOM? Open a PR to add your project — real, verifiable projects only.
 
 Star History
 ------------

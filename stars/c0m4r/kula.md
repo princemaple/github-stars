@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 1223
+stars: 1232
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -192,9 +192,9 @@ rm -f ${KULA\_INSTALL}
 
 ### Standalone
 
-wget https://github.com/c0m4r/kula/releases/download/0.18.4/kula-0.18.4-amd64.tar.gz
-echo "fbc2e9f92135c8067bc6917041ef7a5bf210140f0af7d54f25f55c2ff98fccb2 kula-0.18.4-amd64.tar.gz" | sha256sum -c || rm -f kula-0.18.4-amd64.tar.gz
-tar -xvf kula-0.18.4-amd64.tar.gz
+wget https://github.com/c0m4r/kula/releases/download/0.18.5/kula-0.18.5-amd64.tar.gz
+echo "3f0a134eeb161486ef5151dc39b5ca181300da73a73fe09586c114eb56ae9c74 kula-0.18.5-amd64.tar.gz" | sha256sum -c || rm -f kula-0.18.5-amd64.tar.gz
+tar -xvf kula-0.18.5-amd64.tar.gz
 cd kula
 ./kula
 
@@ -211,16 +211,16 @@ docker logs -f kula
 
 ### Debian / Ubuntu (.deb)
 
-wget https://github.com/c0m4r/kula/releases/download/0.18.4/kula-0.18.4-amd64.deb
-echo "896f01224dcdfcbbe766347d38d1820b78e47510a4e7f595a6496a8bd818c57d kula-0.18.4-amd64.deb" | sha256sum -c || rm -f kula-0.18.4-amd64.deb
-sudo dpkg -i kula-0.18.4-amd64.deb
+wget https://github.com/c0m4r/kula/releases/download/0.18.5/kula-0.18.5-amd64.deb
+echo "7314a959a14e81749a2f14b3cd89f2655709a98b057682daf63861a475803e41 kula-0.18.5-amd64.deb" | sha256sum -c || rm -f kula-0.18.5-amd64.deb
+sudo dpkg -i kula-0.18.5-amd64.deb
 journalctl -f -t kula
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-wget https://github.com/c0m4r/kula/releases/download/0.18.4/kula-0.18.4-x86\_64.rpm
-echo "fd83baf4c8087ea38adf2d6dc56d94a152244418b3e9c467eaaa1e1bc4f3d4fa kula-0.18.4-x86\_64.rpm" | sha256sum -c || rm -f kula-0.18.4-x86\_64.rpm
-sudo rpm -i kula-0.18.4-x86\_64.rpm
+wget https://github.com/c0m4r/kula/releases/download/0.18.5/kula-0.18.5-x86\_64.rpm
+echo "02f38e03d78df6be80f2fa3517ef95564ff8d0ce04a846b2ff2f16f3bef089c5 kula-0.18.5-x86\_64.rpm" | sha256sum -c || rm -f kula-0.18.5-x86\_64.rpm
+sudo rpm -i kula-0.18.5-x86\_64.rpm
 journalctl -f -t kula
 
 ### Arch Linux / Manjaro (AUR)

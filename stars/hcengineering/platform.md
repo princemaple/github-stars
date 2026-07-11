@@ -1,6 +1,6 @@
 ---
 project: platform
-stars: 26457
+stars: 26856
 description: Huly — All-in-One Project Management Platform (alternative to Linear, Jira, Slack, Notion, Motion)
 url: https://github.com/hcengineering/platform
 ---
@@ -107,6 +107,10 @@ Pre-requisites
     -   Node.js (v20.11.0 is required)
     -   Docker
     -   Docker Compose
+
+If you use `nvm`, run this after entering the repo to align your shell with the repository Node version:
+
+nvm use
 
 Verification
 ------------

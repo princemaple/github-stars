@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 82264
+stars: 82395
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -401,6 +401,7 @@ Courses
 -   15-780 - Graduate Artificial Intelligence, Spring 14, CMU
 -   CSE 592 Applications of Artificial Intelligence, Winter 2003 - University of Washington
 -   CS322 - Introduction to Artificial Intelligence, Winter 2012-13 - UBC (YouTube)
+-   CS 4731/7632: Game AI, Spring 2021, Georgia Tech
 -   CS 4804: Introduction to Artificial Intelligence, Fall 2016
 -   CS 5804: Introduction to Artificial Intelligence, Spring 2015
 -   Artificial Intelligence, Fall 2023 - FAU (Spring 2023) (Fall 2022) (Spring 2021) (Fall 2020) (Fall 2018) (Spring 2018)

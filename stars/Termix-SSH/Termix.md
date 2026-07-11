@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 13886
+stars: 13966
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---

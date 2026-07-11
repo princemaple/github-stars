@@ -1,6 +1,6 @@
 ---
 project: srs
-stars: 29024
+stars: 29042
 description: SRS is a simple, high-efficiency, real-time media server supporting RTMP, WebRTC, HLS, HTTP-FLV, HTTP-TS, SRT, MPEG-DASH, and GB28181, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711.
 url: https://github.com/ossrs/srs
 ---
@@ -44,19 +44,7 @@ If you'd like to use WebRTC, convert RTMP to WebRTC, or convert WebRTC to RTMP, 
 
 To learn more about RTMP, HLS, HTTP-FLV, SRT, MPEG-DASH, WebRTC protocols, clustering, HTTP API, DVR, and transcoding, please check the documents in English or Chinese.
 
-If you want to use an IDE, VSCode is recommended. VSCode supports macOS, and Linux platforms. The settings are ready. All you need to do is open the folder with VSCode and enjoy the efficiency brought by the IDE. See VSCode README for details.
-
-Sponsor
--------
-
-Would you like additional assistance from us? By becoming a sponsor or backer of SRS, we can provide you with the support you need:
-
--   Backer: $5 per month, online text chat support through Discord.
--   Sponsor: $100 per month, online text chat plus online meeting support.
-
-Please visit OpenCollective to become a backer or sponsor, and send us a direct message on Discord. We are currently providing support to the developers listed below:
-
-At SRS, our goal is to create a free, open-source community that helps developers all over the world build high-quality streaming and RTC platforms for their businesses.
+I recommend to use AI to understand and maintain your SRS, please follow the wiki AI Agent for details.
 
 Contributing
 ------------
@@ -82,6 +70,8 @@ A huge `THANK YOU` goes out to:
 -   Genes, Mabbott, and Michael Talyanksy for making and sharing State Threads.
 
 We're really thankful to everyone in the community for helping us find bugs and improve the project. To stay in touch and keep helping our community, please check out this guide.
+
+Of course, financial support is very important to us, so we can build the website and use AI tools to maintain the community. Please visit OpenCollective to become a backer or sponsor.
 
 LICENSE
 -------

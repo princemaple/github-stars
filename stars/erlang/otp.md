@@ -1,6 +1,6 @@
 ---
 project: otp
-stars: 12253
+stars: 12361
 description: Erlang/OTP
 url: https://github.com/erlang/otp
 ---

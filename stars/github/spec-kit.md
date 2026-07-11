@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 117981
+stars: 119574
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -487,7 +487,7 @@ specify init . --force --integration copilot
 # or
 specify init --here --force --integration copilot
 
-The CLI will check that your selected agent's CLI tool is installed (for integrations that require a CLI), such as Claude Code, Gemini CLI, Qwen Code, opencode, Codex CLI, Qoder CLI, Tabnine CLI, Kiro CLI, Pi Coding Agent, Oh My Pi, Forge, Goose, Mistral Vibe, or ZCode. If you don't have the required tool installed, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
+The CLI checks that the selected integration's required CLI tool is installed on your machine when that integration has `requires_cli: True`. If you do not have the required tool installed, or you prefer to get the templates without checking for the right tools, use `--ignore-agent-tools` with your command:
 
 specify init <project\_name\> --integration copilot --ignore-agent-tools
 

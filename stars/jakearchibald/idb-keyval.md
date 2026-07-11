@@ -1,6 +1,6 @@
 ---
 project: idb-keyval
-stars: 3201
+stars: 3207
 description: A super-simple-small promise-based keyval store implemented with IndexedDB
 url: https://github.com/jakearchibald/idb-keyval
 ---
@@ -31,7 +31,7 @@ If you're targeting IE10/11, use the compat version, and import a `Promise` poly
 
 // Import a Promise polyfill
 import 'es6-promise/auto';
-import { get, set } from 'idb-keyval/dist/esm-compat';
+import { get, set } from 'idb-keyval/compat';
 
 ### All bundles
 
@@ -42,6 +42,8 @@ A well-behaved bundler should automatically pick the ES module or the CJS module
 
 Legacy builds:
 
+-   `idb-keyval/compat` transpiled for older browsers; a well-behaved bundler will pick the ES module or CJS module as appropriate.
+-   `idb-keyval/umd` UMD module, transpiled for older browsers; a well-behaved bundler will pick the appropriate module.
 -   `idb-keyval/dist/compat.js` EcmaScript module, transpiled for older browsers.
 -   `idb-keyval/dist/compat.cjs` CommonJS module, transpiled for older browsers.
 -   `idb-keyval/dist/umd.js` UMD module, also transpiled for older browsers.

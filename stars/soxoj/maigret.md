@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 34885
+stars: 35264
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -23,12 +23,17 @@ Maigret
 Sponsors
 --------
 
-**711Proxy** provides reliable residential proxies for web scraping, username lookups, and public data collection. Over **100M** residential IPs across **200+** countries\*\* • High Success Rates • Fast & Reliable Connections.  
+**711Proxy** provides reliable residential proxies for web scraping, username lookups, and public data collection. Over **100M** residential IPs across **200+** countries • High Success Rates • Fast & Reliable Connections.  
 **Special Offer**: Free trial available! Rotating residential proxies from just **$0.55/GB**. Unlimited residential proxies from **$15/hour** with no concurrency limits.
 
   
 
 **9Proxy** provides residential proxies from just **$0.018/IP or $0.68/GB**. 20M+ IPs across 90+ countries. Sticky or rotating sessions, managed from desktop or mobile app.
+
+  
+
+**RapidProxy** provides high-performance residential proxies for Twitter scraping, Selenium automation, and web data extraction. 90M+ IPs • Smart rotation • Anti-block • Non-expiring traffic.  
+**Special Offer**: Try it free — Plans from $0.65/GB. Use code **RAPID10** for 10% off.
 
 Contents
 --------

@@ -1,6 +1,6 @@
 ---
 project: broadway
-stars: 2659
+stars: 2660
 description: Concurrent and multi-stage data ingestion and data processing with Elixir
 url: https://github.com/elixir-broadway/broadway
 ---

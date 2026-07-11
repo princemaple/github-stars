@@ -1,7 +1,7 @@
 ---
 project: filestash
-stars: 14351
-description: :file_folder: File Management Platform / Universal Data Access Layer (without FUSE)
+stars: 14365
+description: :file_folder: Universal File Storage Client
 url: https://github.com/mickael-kerjean/filestash
 ---
 
@@ -10,7 +10,9 @@ What is this?
 
 It started as a storage agnostic Dropbox-like file manager that works with every storage protocol: FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more.
 
-It grew into what we want to be the world's best file management platform, where everything that's not a fundamental truth of the universe lives in a plugin. Where other platforms are take-it-or-leave-it, ours gives you a rock solid core and a plugin system to handle opinions, so however deep requirements go, the only limit won't be technical but your own creativity.
+It grew into what we want to be the world's best file management platform. Around the core engine sit 3 pillars: the web client, a native drive client, and gateways to expose storages over any protocol.
+
+The engine follows one rule: everything that's not a fundamental truth of the universe lives in a plugin. Where other platforms are take-it-or-leave-it, ours gives you a rock solid core and a plugin system to handle opinions, so however deep requirements go, the only limit won't be technical but your own creativity.
 
 Key Features
 ============

@@ -1,6 +1,6 @@
 ---
 project: lua
-stars: 202
+stars: 206
 description: A Lua 5.3 runtime in pure Elixir
 url: https://github.com/tv-labs/lua
 ---
@@ -47,6 +47,10 @@ Tour
 ### Error messages with source and line
 
 Runtime errors raise `Lua.RuntimeException`, which carries the failing `:source` and `:line` so you can report exactly where a script broke:
+
+The `~LUA` sigil used below (and elsewhere in this tour) needs `import Lua`:
+
+import Lua
 
 try do
   Lua.eval!(~LUA"""
@@ -133,7 +137,7 @@ Sandboxing controls _which_ functions a script may call, but it does not stop a 
     iex> lua = Lua.new(max\_instructions: 1000) iex> {\[false, message\], \_lua} = Lua.eval!(lua, S\[return pcall(function() while true do end end)\]) iex> message = "instruction budget exceeded" true
     
 
-See the Sandboxing guide for details.
+See the runnable Sandboxing example, or the Security and sandboxing guide, for details.
 
 ### Metatables and metamethods
 
@@ -155,27 +159,27 @@ iex> result
 Coverage and status
 -------------------
 
-`Lua` targets Lua 5.3. The lexer, parser, register-based VM, value encoding/decoding, varargs, multiple returns, `_G`/`_ENV`, metatables, the string-pattern engine (`find`/`match`/`gmatch`/`gsub`), and the `string`, `table`, `math`, `os`, and `debug` standard libraries are implemented.
+`Lua` targets Lua 5.3. The lexer, parser, register-based VM, value encoding/decoding, varargs, multiple returns, `_G`/`_ENV`, metatables, the string-pattern engine (`find`/`match`/`gmatch`/`gsub`), and the `string`, `table`, `math`, `os`, `utf8`, and `debug` standard libraries are implemented.
 
 As a sandboxed _embedded_ VM, some standalone-interpreter behavior is a deliberate non-goal rather than a missing feature:
 
 -   **Standalone interpreter / `os.execute`** — there is no shell-out to the host.
--   **Host filesystem access** — `Lua` does not read your host filesystem. The `io.*` library and `require`/`dofile` are sandboxed by default and raise rather than touching disk; there is no host-OS file or module resolution.
+-   **Host filesystem access is deny-by-default** — `Lua` does not read your host filesystem unless you opt in. The `io.*` library and `require`/`dofile` are sandboxed by default and raise rather than touching disk, so out of the box there is no host-OS file or module resolution. When you _want_ it, you enable it explicitly: `Lua.set_lua_paths/2` configures where `require` resolves modules on disk, and `Lua.load_file!/2` loads a Lua file from the host.
 -   **Coroutines**, **garbage collection / weak tables**, and the **full `debug` library**.
 
-For the live Lua 5.3 official test-suite pass count and the rationale behind each deferral, see the `ROADMAP.md`. This release is `1.0.0-rc.0`.
+For the live Lua 5.3 official test-suite pass count and the rationale behind each deferral, see the `ROADMAP.md`.
 
 Examples
 --------
 
-Runnable, end-to-end scripts live in `examples/`. Run any of them with `mix run examples/<name>.exs`:
+End-to-end, runnable Livebook notebooks live in `guides/examples/`. Open any of them in Livebook, or read them rendered under **Examples** on HexDocs:
 
--   `examples/01_quickstart.exs` — eval some Lua and get the result.
--   `examples/02_userdata.exs` — pass an Elixir struct as userdata and call methods on it from Lua.
--   `examples/03_custom_stdlib.exs` — add an Elixir-defined function to the state and call it from Lua.
--   `examples/04_sandboxing.exs` — the default sandbox plus allowing specific `os.*` ops explicitly.
--   `examples/05_chunks.exs` — compile once, eval many times.
--   `examples/06_error_handling.exs` — `pcall`, structured exception fields, source/line attribution.
+-   `quickstart.livemd` — eval some Lua and get the result.
+-   `userdata.livemd` — pass an Elixir struct as userdata and call methods on it from Lua.
+-   `custom_stdlib.livemd` — add an Elixir-defined function to the state and call it from Lua.
+-   `sandboxing.livemd` — the default sandbox plus allowing specific `os.*` ops explicitly.
+-   `chunks.livemd` — compile once, eval many times.
+-   `error_handling.livemd` — `pcall`, structured exception fields, source/line attribution.
 
 Documentation
 -------------

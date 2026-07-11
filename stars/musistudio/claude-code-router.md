@@ -1,12 +1,19 @@
 ---
 project: claude-code-router
-stars: 35567
+stars: 35748
 description: Use Claude Code as the foundation for coding infrastructure, allowing you to decide how to interact with the model while enjoying updates from Anthropic.
 url: https://github.com/musistudio/claude-code-router
 ---
 
-Claude Code Router Desktop
-==========================
+Claude Code Router
+==================
+
+  
+**Kimi Code Subscription**  ·  **API Global**  ·  API China
+
+**Thanks to Kimi for sponsoring this project!** Kimi K2.7 Code is an open-source, coding-focused agentic model developed by Moonshot AI, with substantial gains on real-world long-horizon coding tasks and higher end-to-end success across complex software engineering workflows. It also cuts thinking-token usage by approximately 30% compared with K2.6. Inside CCR, Kimi ships as built-in provider presets: import the pay-as-you-go API or the Kimi Code subscription in one click and route your coding agent's requests to Kimi, the subscription endpoint passes straight through natively with no protocol conversion, API endpoints are adapted automatically, and your balance and subscription usage show up right in the CCR dashboard.
+
+CCR already supports Kimi. Visit the Kimi Open Platform (中文站 | Global) to try the API, or explore the cost-effective Coding Plan.
 
 Claude Code Router Desktop is a local gateway and desktop control panel for routing agent requests from Claude Code, Codex, ZCode, and compatible clients to the model provider you actually want to use.
 
@@ -120,6 +127,18 @@ A huge thank you to all our sponsors for their generous support.
 
   
 **TeamoRouter**
+
+  
+**code0.ai**
+
+  
+**claudeapi**
+
+  
+**Qiniu Cloud AI**
+
+  
+**Fenno.ai**
 
 #### Community Sponsors
 

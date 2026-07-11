@@ -1,6 +1,6 @@
 ---
 project: ProxyBridge
-stars: 5302
+stars: 5378
 description: Proxifier Alternative to redirect any Windows/MacOS/Linux TCP and UDP traffic to HTTP/Socks5 proxy
 url: https://github.com/InterceptSuite/ProxyBridge
 ---
@@ -90,6 +90,18 @@ x64 Kernel with NFQUEUE support
 
 curl -Lo deploy.sh https://raw.githubusercontent.com/InterceptSuite/ProxyBridge/refs/heads/master/Linux/deploy.sh && sudo bash deploy.sh
 
+#### macOS via Homebrew (official):
+
+brew install --cask proxybridge
+
+#### Windows via winget:
+
+winget install InterceptSuite.ProxyBridge
+
+Warning
+
+The winget package is **community-maintained and not official**. It may lag behind releases or be unverified. For guaranteed-latest, verified builds always use the Official Download Page.
+
 Note
 
 For historical versions, change logs, and direct access to raw assets, visit the GitHub Releases page.
@@ -126,7 +138,7 @@ Multiple **fake ProxyBridge download sources** have been identified. Some of the
 
 If you prefer not to use prebuilt binaries, you may safely build ProxyBridge yourself by following the **Contribution Guide** and compiling directly from the **official source code**.
 
-ProxyBridge does not communicate with any external servers except the GitHub API for update checks (triggered only on app launch or manual update checks);
+ProxyBridge does not communicate with any external servers except its own update feed at `https://download.interceptsuite.com/proxybridge.json` for update checks (triggered only on app launch or manual update checks);
 
 Documentation
 -------------
@@ -176,7 +188,7 @@ _Proxy Settings Configuration_
 _Proxy Rules Management_
 
   
-_Add/Edit Proxy Rule_
+_Proxy Tester_
 
 #### CLI
 
@@ -246,7 +258,7 @@ Credits
 
 Based on the StreamDump example from WinDivert: https://reqrypt.org/samples/streamdump.html
 
-The Windows GUI is built using Avalonia UI - a cross-platform XAML-based UI framework for .NET, enabling a modern and responsive user interface.
+The Windows GUI and CLI are written in native C using the Win32 API, keeping the footprint small and startup instant.
 
 **macOS Implementation:** Built using Apple's Network Extension framework for transparent proxy capabilities on macOS.
 

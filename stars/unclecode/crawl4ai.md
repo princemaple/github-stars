@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 70941
+stars: 72359
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -21,13 +21,13 @@ _We’ll be onboarding in phases and working closely with early users. Limited s
 
 Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
 
-✨ Check out latest update v0.9
+✨ Check out latest update v0.9.1
 
-✨ **New in v0.9**: Major secure-by-default release of the Docker API server. Auth is on by default, the server binds loopback unless given a token, and the request body is now an untrusted trust boundary. Breaking changes for the self-hosted server only; the pip library is unchanged. If you self-host the Docker API, read the migration guide before upgrading. Release notes →
+✨ **New in v0.9.1**: Patch release with 12 bug fixes across Docker, browser, and core. Adds `preserve_classes`/`preserve_tags` whitelist for PruningContentFilter, fixes Windows browser crash, Docker auth gate UI, HTTP timeout unit mismatch, and more. Release notes →
+
+✨ Recent v0.9.0: Major secure-by-default release of the Docker API server. Auth is on by default, the server binds loopback unless given a token, and the request body is now an untrusted trust boundary. Release notes →
 
 ✨ Recent v0.8.7: Security-hardening release. Fixes critical Docker API vulnerabilities (RCE, SSRF, auth bypass, file write, XSS, hardcoded JWT secret), adds DomainMapper, and ships scraping, deep-crawl, and LLM fixes. Release notes →
-
-✨ Recent v0.8.6: Security hotfix that replaced `litellm` with `unclecode-litellm` due to a PyPI supply chain compromise.
 
 ✨ Previous v0.8.0: Crash Recovery & Prefetch Mode! Deep crawl crash recovery with `resume_state` and `on_state_change` callbacks for long-running crawls. New `prefetch=True` mode for 5-10x faster URL discovery. Release notes →
 
@@ -478,16 +478,22 @@ async def test\_news\_crawl():
 
 * * *
 
-> **💡 Tip:** Some websites may use **CAPTCHA** based verification mechanisms to prevent automated access. If your workflow encounters such challenges, you may optionally integrate a third-party CAPTCHA-handling service such as **CapSolver**. They support reCAPTCHA v2/v3, Cloudflare Turnstile, Challenge, AWS WAF, and more. Please ensure that your usage complies with the target website’s terms of service and applicable laws.
-
 ✨ Recent Updates
 ----------------
 
+**Version 0.9.1 Release Highlights - Bug Fixes & PruningContentFilter Whitelist**
+
+A patch release with 12 bug fixes and one new feature. The new `preserve_classes` / `preserve_tags` parameters for `PruningContentFilter` let you whitelist CSS classes or HTML tags that should never be pruned — useful for protecting short metadata elements like author names and timestamps.
+
+Bug fixes span Docker (auth gate UI, supervisord/redis dirs, FastAPI compatibility, redis auth), browser (Windows channel crash, context snapshot leak), core (HTTP timeout unit mismatch, best-first ordering), and extraction (html2text table attributes).
+
+pip install -U crawl4ai
+
+Full v0.9.1 Release Notes →
+
 **Version 0.9.0 Release Highlights - Secure-by-Default Docker Server**
 
-A major, secure-by-default release of the Docker API server. The out-of-the-box deployment is hardened with defense in depth: authentication is on by default, the server binds loopback unless you give it a token, and the network request body is treated as an untrusted trust boundary. Request-supplied browser internals and hook code are gone; hooks are declarative, `output_path` is replaced by an artifact store, TLS verification is on, CORS is deny-by-default, and Redis is password-protected and loopback-only.
-
-This is a breaking release for the self-hosted Docker server only. The core pip library (SDK / in-process use) is unchanged. If you self-host the Docker API, read the migration guide before upgrading.
+A major, secure-by-default release of the Docker API server. The out-of-the-box deployment is hardened with defense in depth: authentication is on by default, the server binds loopback unless you give it a token, and the network request body is treated as an untrusted trust boundary.
 
 pip install -U crawl4ai
 
@@ -1092,9 +1098,19 @@ For more details, see our full mission statement.
 🌟 Current Sponsors
 -------------------
 
-### 🏢 Enterprise Sponsors & Partners
+### 🤝 Strategic Partners
 
-Our enterprise sponsors and technology partners help scale Crawl4AI to power production-grade data pipelines.
+These companies provide core infrastructure and technology that power Crawl4AI’s capabilities — from web access and proxy networks to AI tooling and data pipelines.
+
+Company
+
+About
+
+Massive is a web access API backed by millions of volunteer devices in 195+ countries. AI agents, models, and data pipelines use it to reach any site on the internet, reliably, in real time, and at scale.
+
+### 🏢 Enterprise Sponsors
+
+Our enterprise sponsors support Crawl4AI and help scale it to power production-grade data pipelines.
 
 Company
 
@@ -1102,27 +1118,9 @@ About
 
 Sponsorship Tier
 
-Leveraging Thordata ensures seamless compatibility with any AI/ML workflows and data infrastructure, massively accessing web data with 99.9% uptime, backed by one-on-one customer support.
-
-🥈 Silver
-
-NstProxy is a trusted proxy provider with over 110M+ real residential IPs, city-level targeting, 99.99% uptime, and low pricing at $0.1/GB, it delivers unmatched stability, scale, and cost-efficiency.
-
-🥈 Silver
-
-Scrapeless provides production-grade infrastructure for Crawling, Automation, and AI Agents, offering Scraping Browser, 4 Proxy Types and Universal Scraping API.
-
-🥈 Silver
-
-AI-powered Captcha solving service. Supports all major Captcha types, including reCAPTCHA, Cloudflare, and more
-
-🥉 Bronze
-
 Helps engineers and buyers find, compare, and source electronic & industrial parts in seconds, with specs, pricing, lead times & alternatives.
 
 🥇 Gold
-
-KidoCode
 
 Kidocode is a hybrid technology and entrepreneurship school for kids aged 5–18, offering both online and on-campus education.
 
@@ -1131,6 +1129,16 @@ Kidocode is a hybrid technology and entrepreneurship school for kids aged 5–18
 Singapore-based Aleph Null is Asia’s leading edtech hub, dedicated to student-centric, AI-driven education—empowering learners with the tools to thrive in a fast-changing world.
 
 🥇 Gold
+
+* * *
+
+### 💼 Become a Strategic Partner or Sponsor
+
+Interested in partnering with Crawl4AI?
+
+Whether you’re a proxy provider, AI infrastructure company, cloud platform, or an organization looking to support the Crawl4AI ecosystem, we’d love to hear from you.
+
+📩 Contact: hello@crawl4ai.com
 
 ### 🧑‍🤝 Individual Sponsors
 

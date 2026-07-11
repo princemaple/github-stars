@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 37836
+stars: 38291
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -654,6 +654,8 @@ agent-browser --session "$SESSION" --restore open twitter.com
 # Optional: validate restored state before auto-saving again
 agent-browser --session "$SESSION" --restore --restore-check-text Dashboard open twitter.com
 
+State is saved when the browser closes (explicit `close`, idle timeout, or daemon shutdown) and also periodically while the browser is open, so a browser window you close by hand still leaves a recent save behind. Periodic autosave waits for commands to settle, then saves at most once per `AGENT_BROWSER_AUTOSAVE_INTERVAL_MS` (default 30000; set to `0` to save only on close). Idle sessions keep saving on the same interval, so changes the page makes on its own (token refreshes, background requests) are captured too. It respects the `--restore-save` policy.
+
 ### State Encryption
 
 Encrypt saved session data at rest with AES-256-GCM:
@@ -675,6 +677,10 @@ Auto-save/load state persistence name
 `AGENT_BROWSER_RESTORE_SAVE`
 
 Restore save policy: `auto`, `always`, or `never`
+
+`AGENT_BROWSER_AUTOSAVE_INTERVAL_MS`
+
+Min ms between periodic autosaves (default: 30000, 0 disables)
 
 `AGENT_BROWSER_NAMESPACE`
 

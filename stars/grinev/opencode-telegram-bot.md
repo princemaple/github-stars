@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 883
+stars: 919
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -488,6 +488,14 @@ No
 
 `markdown`
 
+`INITIAL_SETTINGS_PRESET`
+
+JSON object that seeds default `/settings` values on first run (keys not yet persisted); see Runtime Settings
+
+No
+
+`{}`
+
 `CODE_FILE_MAX_SIZE_KB`
 
 Max file size (KB) to send as document
@@ -527,6 +535,14 @@ Optional language hint (empty = provider auto-detect)
 No
 
 —
+
+`STT_REQUEST_FORMAT`
+
+STT request format: `multipart` (standard OpenAI/Groq Whisper) or `json` (base64 `input_audio` body, e.g. OpenRouter)
+
+No
+
+`multipart`
 
 `STT_NOTE_PROMPT`
 
@@ -610,9 +626,14 @@ Runtime preferences are changed from `/settings` and stored in `settings.json`:
 
 -   Compact output mode
 -   Thinking content display
+-   Assistant run footer display
 -   Diff file attachments
 -   Response streaming mode: `edit` or `draft (experimental)`; applies only to final assistant replies, not thinking messages
 -   Audio replies: `off`, `all`, or `auto` when TTS is configured
+
+You can seed the initial defaults for any of these settings without hard-coding them in your Docker image by setting `INITIAL_SETTINGS_PRESET` to a JSON object. Only keys not yet persisted in `settings.json` are affected — settings the user has already changed via `/settings` are left untouched:
+
+INITIAL\_SETTINGS\_PRESET\={"showAssistantRunFooter":false,"compactOutputMode":true,"ttsMode":"auto"}
 
 ### Reverse Proxy (Optional)
 

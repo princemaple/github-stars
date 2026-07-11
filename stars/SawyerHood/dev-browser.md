@@ -1,6 +1,6 @@
 ---
 project: dev-browser
-stars: 6360
+stars: 6436
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
@@ -73,7 +73,15 @@ Windows npm installs download the native `dev-browser-windows-x64.exe` release a
 
 ### Using with AI agents
 
-After installing, just tell your agent to run `dev-browser --help` — the help output includes a full LLM usage guide with examples and API reference. No plugin or skill installation needed.
+After installing, tell your agent to run `dev-browser --help` — the help output includes the current LLM usage guide and API reference.
+
+For agents that discover local skills, install or refresh the embedded skill explicitly:
+
+dev-browser install-skill --codex   # ~/.codex/skills/dev-browser/SKILL.md
+dev-browser install-skill --claude  # ~/.claude/skills/dev-browser/SKILL.md
+dev-browser install-skill --agents  # ~/.agents/skills/dev-browser/SKILL.md
+
+Flags may be combined. With an interactive terminal, `dev-browser install-skill` prompts for targets. In non-interactive environments it updates all three locations, including Codex, so an older copied skill does not survive a CLI upgrade.
 
 Allowing dev-browser in Claude Code without permission prompts
 
@@ -114,7 +122,7 @@ You can also allow related commands in the same list:
 
 > **Tip:** If you've already been prompted and clicked "Always allow", Claude Code adds the specific command pattern automatically. The settings file approach lets you pre-approve it before the first run.
 
-Legacy plugin installation (Claude Code / Amp / Codex)
+Legacy Claude Code plugin installation
 
 ### Claude Code
 
@@ -124,18 +132,6 @@ Legacy plugin installation (Claude Code / Amp / Codex)
 ```
 
 Restart Claude Code after installation.
-
-### Amp / Codex
-
-Copy the skill to your skills directory:
-
-# For Amp: ~/.claude/skills | For Codex: ~/.codex/skills
-SKILLS\_DIR=~/.claude/skills  # or ~/.codex/skills
-
-mkdir -p $SKILLS\_DIR
-git clone https://github.com/sawyerhood/dev-browser /tmp/dev-browser-skill
-cp -r /tmp/dev-browser-skill/skills/dev-browser $SKILLS\_DIR/dev-browser
-rm -rf /tmp/dev-browser-skill
 
 Script API
 ----------

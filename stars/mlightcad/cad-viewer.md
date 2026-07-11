@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 769
+stars: 811
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -12,7 +12,7 @@ CAD-Viewer
 
 cad-viewer is `the first web-based DXF/DWG viewer and editor in the world that operates entirely in browser, without relying on any backend services`. By performing DWG/DXF parsing, geometry processing, and rendering directly in the browser, cad-viewer enables true serverless CAD viewing and editing, ideal for cloud apps, offline usage, and privacy-sensitive workflows.
 
-It also offers something you will rarely find in other CAD viewers—**one-click export to a single, self-contained HTML file**. The downloaded `.html` embeds the drawing snapshot and a lightweight viewer runtime, so recipients can open, pan, zoom, toggle layers, and measure distances in any modern browser with **no CAD app, no server, and no install**. Most desktop and web CAD viewers only let you view inside their own product; cad-viewer turns a live drawing into a portable, offline artifact you can email, archive, or drop on a static file host—ideal for sharing with clients, compliance archives, and air-gapped workflows.
+It also offers something you will rarely find in other CAD viewers—**one-click export to a single, self-contained HTML file**. The downloaded `.html` embeds the drawing snapshot and a lightweight viewer runtime, so recipients can open, pan, zoom, toggle layers, and measure distances in any modern browser with **no CAD app, no server, and no install**. Most desktop and web CAD viewers only let you view inside their own product; cad-viewer turns a live drawing into a portable, offline artifact you can email, archive, or drop on a static file host—ideal for sharing with clients, compliance archives, and air-gapped workflows. The offline viewer also uses far less memory than traditional desktop tools when opening the same drawing (see memory comparison below).
 
 -   **🌐 Live Demo**
 -   **🌐 API Docs**
@@ -183,6 +183,32 @@ These plugins add export (and PDF import) commands to the same plugin manager. T
 -   **PDF** — vector PDF export and PDF-to-CAD import: packages/cad-pdf-plugin/README.md
 -   **SVG** — vector SVG export: packages/cad-svg-plugin/README.md
 
+#### Self-contained HTML memory usage
+
+When opening the sample drawing `canteen.dwg`, memory consumption is roughly:
+
+Viewer
+
+Memory consumption
+
+AutoCAD 2020
+
+320 MB
+
+GstarCAD Viewer (浩辰看图王)
+
+246 MB
+
+Self-contained HTML (measure mode)
+
+56 MB
+
+Self-contained HTML (view mode)
+
+33 MB
+
+The offline HTML viewer uses about **83% less memory than AutoCAD 2020** and about **77% less than GstarCAD Viewer** in view mode, while still supporting pan/zoom, layer toggle, and distance measurement (measure mode).
+
 Performance
 -----------
 
@@ -227,7 +253,7 @@ CAD-Viewer has some known limitations that users should be aware of:
 -   **DWG File Size Limits**:
     
     -   Parsing DWG files with LibreDWG is memory-intensive and can easily exceed 2 GB of RAM. `libredwg-web` therefore enforces WASM heap memory limits; very large DWG files may fail to parse.
-    -   We have developed a proprietary DWG parser with significantly lower memory usage, support for larger DWG files, and more accurate parsing. If the open-source `libredwg-web` stack cannot meet your requirements, please email mlight.lee@outlook.com to discuss licensing the proprietary parser.
+    -   We offer a **proprietary DWG/DXF parser** with significantly lower memory usage, support for larger files, and more accurate parsing. It integrates with the same `@mlightcad/data-model` as the open-source converters and can replace the GPL-based `dxf-json-converter` and `libredwg-converter` stack for closed-source commercial products. See the commercial license document for scope, pricing, GPL compliance, and support terms.
 
 Roadmap
 -------
@@ -308,7 +334,7 @@ Legend:
 
 #### Snapping (OSNAP)
 
--   ⏳ Endpoint: Not working for INSERT entity yet.
+-   Endpoint
 -   Midpoint
 -   Center
 -   Intersection
@@ -450,4 +476,8 @@ Contributions are welcome! Please open issues or pull requests for bug fixes, ne
 License
 -------
 
-MIT
+The cad-viewer monorepo is primarily MIT licensed.
+
+The **default DXF/DWG loading path** in `@mlightcad/cad-simple-viewer` depends on GPL-3.0 packages (`dxf-json` / `@mlightcad/dxf-json-converter` for DXF, `libredwg-web` / `@mlightcad/libredwg-converter` for DWG). If you ship a closed-source product and cannot distribute GPL code to your customers, use the **proprietary DWG/DXF parser** instead — it replaces those converters and lets the rest of the stack remain MIT-only.
+
+→ **Commercial parser:** PROPRIETARY-PARSER.md (scope, licensing, pricing, integration, GPL compliance, support)

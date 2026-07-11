@@ -1,6 +1,6 @@
 ---
 project: vibetunnel
-stars: 4575
+stars: 4588
 description: Turn any browser into your terminal & command your agents on the go.
 url: https://github.com/amantus-ai/vibetunnel
 ---
@@ -765,7 +765,7 @@ Building from Source
 -   macOS 14.0+ (Sonoma) on Apple Silicon (M1+)
 -   Xcode 16.0+
 -   Node.js 22.12 through 24.x
--   Zig 0.16.0 (for building vt-fwd binary; install via `brew install zig` or from ziglang.org)
+-   Rustup; `native/vt-fwd/rust-toolchain.toml` installs the pinned Rust toolchain for the native forwarder
 
 ### Build Steps
 

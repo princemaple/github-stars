@@ -1,6 +1,6 @@
 ---
 project: volt
-stars: 184
+stars: 186
 description: Elixir-native frontend build tool — dev server, HMR, and production builds for JavaScript, TypeScript, Vue SFCs, and CSS. No Node.js required.
 url: https://github.com/elixir-volt/volt
 ---
@@ -34,7 +34,7 @@ mix igniter.install volt
 Or add the dep manually:
 
 def deps do
-  \[{:volt, "~> 0.14"}\]
+  \[{:volt, "~> 0.16"}\]
 end
 
 See the Getting Started guide for manual configuration.
@@ -74,6 +74,8 @@ config :volt, :server,
   prefix: "/assets",
   watch\_dirs: \["lib/"\]
 
+The `Volt.DevServer` Plug starts its supervised file watcher on the first development request. No Phoenix `:watchers` entry or separate frontend process is required.
+
 `Volt.static_path/2` resolves Volt-managed assets to source files in dev and content-hashed paths in production:
 
 <link phx-track-static rel\="stylesheet" href\={Volt.static\_path(@endpoint, "/assets/css/app.css")} />
@@ -107,7 +109,7 @@ See the examples for complete Phoenix projects with each framework.
 Developer tools
 ---------------
 
-JS/TS formatting and linting run as Rust NIFs. `mix format` handles Elixir and JavaScript together:
+JS/TS formatting, linting, and testing run inside the BEAM. `mix format` handles Elixir and JavaScript together:
 
 \# .formatter.exs
 \[plugins: \[Volt.Formatter\], inputs: \["assets/\*\*/\*.{js,ts,jsx,tsx}"\]\]
@@ -118,6 +120,20 @@ mix volt.js.check    # format + lint for CI
 mix volt.js.check --type-aware --type-check
 
 Project-specific lint rules can be written in Elixir with `OXC.Lint.Rule`. Type-aware TypeScript rules can run through `tsgolint` with `--type-aware`.
+
+JS/TS tests can be registered as ExUnit tests and run with the normal `mix test` command:
+
+\# test/test\_helper.exs
+ExUnit.start(exclude: \[:integration\])
+Volt.Test.ExUnit.install()
+
+import { test, expect } from 'volt:test'
+
+test('adds numbers', () \=> {
+  expect(1 + 2).toBe(3)
+})
+
+See the Testing guide for configuration and the supported API.
 
 Plugins
 -------

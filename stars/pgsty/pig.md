@@ -118,7 +118,7 @@ pig repo reload                  # reload repo catalog to latest version
 pig build repo                   # init build repo (=repo set -ru)
 pig build tool  \[mini|full|...\]  # init build toolset
 pig build proxy \[id@host:port \]  # init build proxy (optional)
-pig build rust                   # init rustc cargo
+pig build rust  \[-m\]             # init rustc cargo
 pig build pgrx  \[-v 0.19.1\]      # init pgrx
 pig build spec                   # init build spec repo
 pig build get   \[all|std|..\]     # get ext code tarball with prefixes
@@ -242,12 +242,13 @@ Take el for examples:
 "pgloader":            "pgloader",
 "pg\_timetable":        "pg\_timetable",
 "timescaledb-utils":   "timescaledb-tools timescaledb-event-streamer",
-"ivorysql":            "ivorysql5",
+"ivorysql":            "ivorysql-18",
 "agensgraph":          "agensgraph\_$v",
 "agens":               "agensgraph\_$v",
 "pgedge":              "pgedge\_$v spock\_$v lolor\_$v snowflake\_$v",
-"polardb":             "PolarDB",
-"orioledb":            "orioledb\_$v oriolepg\_$v",
+"polardb":             "polardb-17",
+"polar":               "polardb-17",
+"orioledb":            "orioledb-$v",
 "openhalodb":          "openhalodb\_14",
 "percona-core":        "percona-postgresql18,percona-postgresql18-server,percona-postgresql18-contrib,percona-postgresql18-plperl,percona-postgresql18-plpython3,percona-postgresql18-pltcl,percona-pg\_tde18",
 "percona-main":        "percona-postgresql18,percona-postgresql18-server,percona-postgresql18-contrib,percona-postgresql18-plperl,percona-postgresql18-plpython3,percona-postgresql18-pltcl,percona-pg\_tde18,percona-postgis35\_18,percona-postgis35\_18-client,percona-postgis35\_18-utils,percona-pgvector\_18,percona-wal2json18,percona-pg\_repack18,percona-pgaudit18,percona-pgaudit18\_set\_user,percona-pg\_stat\_monitor18,percona-pg\_gather",
@@ -540,7 +541,7 @@ CMD \["/bin/bash"\]
 
 RUN apt update && apt install -y ca-certificates vim ncdu wget curl rsync unzip && \\
     curl https://repo.pigsty.io/pig | bash -s && pig repo add --remove && apt clean
-RUN pig repo set && pig build tool && pig build spec && pig build rust && pig build pgrx -v 0.19.1
+RUN pig repo set && pig build tool && pig build spec && pig build rust -m && pig build pgrx -v 0.19.1
 
 docker build -t d13:latest .
 docker run --name=d13 -d -it d13:latest /bin/bash

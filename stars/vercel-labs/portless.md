@@ -1,6 +1,6 @@
 ---
 project: portless
-stars: 10039
+stars: 10090
 description: Replace port numbers with stable, named local URLs. For humans and agents.
 url: https://github.com/vercel-labs/portless
 ---

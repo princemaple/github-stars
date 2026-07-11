@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 59259
+stars: 59753
 description: 🤱🏻 Turn any webpage into a desktop app with one command.
 url: https://github.com/tw93/Pake
 ---
@@ -54,6 +54,10 @@ ProgramMusic Mac Windows Linux
 Excalidraw Mac Windows Linux
 
 XiaoHongShu Mac Windows Linux
+
+Notion Mac Windows Linux
+
+Flomo Mac Windows Linux
 
 🏂 You can download more applications from Releases. **Click here to expand the shortcuts reference!**  
 
@@ -147,7 +151,13 @@ Ctrl + Shift + Del
 
 Clear Cache & Restart
 
-In addition, double-click the title bar to switch to full-screen mode. For Mac users, you can also use the gesture to go to the previous or next page and drag the title bar to move the window. The new menu also offers options for navigation, zoom, and window controls.
+⌃ + ⌘ + F
+
+F11
+
+Toggle native window fullscreen
+
+In addition, double-click the title bar to switch to full-screen mode. On Windows and Linux, use `--hide-window-decorations` for a frameless window with a top drag region. For Mac users, you can also use the gesture to go to the previous or next page and drag the title bar to move the window. The new menu also offers options for navigation, zoom, and window controls.
 
 Command-Line Packaging
 ----------------------

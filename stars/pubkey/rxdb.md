@@ -1,6 +1,6 @@
 ---
 project: rxdb
-stars: 23245
+stars: 23264
 description: The local-first database that runs on every JS runtime and replicates with your existing backend - no vendor, no lock-in - https://rxdb.info/
 url: https://github.com/pubkey/rxdb
 ---
@@ -170,7 +170,7 @@ Get started now by reading the docs or exploring the example-projects.
 
 #### More content
 
-Angular Database, Frontend Database, localStorage, React Database, Browser Database, React Native Database, PWA Database, In-memory NoSQL database, JSON database, Angular IndexedDB, React IndexedDB, Optimistic UI, local database, React Native Encryption, Vue Database, jQuery Database, Vue IndexedDB, Firestore Alternative, Firebase Realtime Database Alternative, Ionic Storage
+Angular Database, Frontend Database, localStorage, React Database, Browser Database, React Native Database, PWA Database, In-memory NoSQL database, JSON database, Angular IndexedDB, React IndexedDB, Optimistic UI, local database, React Native Encryption, Vue Database, jQuery Database, Vue IndexedDB, Firestore Alternative, Firebase Realtime Database Alternative, Ionic Storage, Electron SQLite
 
 * * *
 

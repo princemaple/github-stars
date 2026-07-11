@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 102714
+stars: 104262
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -9,63 +9,80 @@ url: https://github.com/browser-use/browser-use
 
   
 
-**Browser Use CLI 3.0 is here.** Give your coding agent a browser it can use reliably.
+What can Browser Use do?
+========================
 
-Paste this into Claude Code, Codex, etc:
+Browser Use lets an AI agent use a web browser the same way you do — it opens pages, clicks buttons, types, and fills in forms. You describe the task, and it completes it. For example, you can have it:
 
-```
-Install or upgrade browser-use to the latest stable version with uv using Python 3.12, register the skill from `browser-use skill`, and connect it to my browser. Follow https://github.com/browser-use/browser-use if setup or connection fails.
-```
+### 📋 Fill Forms
 
-🌤️ Want to skip the setup? Use our **cloud** for faster, scalable, stealth-enabled browser automation!
+#### Task: "Fill in this job application with my resume and information."
 
-🤖 LLM Quickstart
-=================
+Example code ↗
 
-1.  Direct your favorite coding agent (Cursor, Claude Code, etc) to Agents.md
-2.  Prompt away!
+### 🍎 Shop for Groceries
+
+#### Task: "Put this list of items into my instacart."
+
+grocery-use-large.mp4
+
+Example code ↗
+
+### 💻 Be Your Personal Assistant
+
+#### Task: "Help me find parts for a custom PC."
+
+pc-use-large.mp4
+
+Example code ↗
 
   
 
-👋 Human Quickstart
-===================
+Quickstart
+==========
 
-**1\. Install Browser Use (Python>=3.11):**
+If you want to use Browser Use in your agent (Claude Code, Codex, Cursor, Hermes, OpenClaw, etc.), paste this prompt, and it sets everything up itself:
+
+```
+Install or upgrade browser-use to the latest stable version with uv using Python 3.12, run `browser-use skill install` to register the skill, and connect it to my browser. If setup or connection fails, follow https://github.com/browser-use/browser-harness/blob/main/install.md.
+```
+
+Then tell your agent what you want done.
+
+  
+
+Python library: the easiest way to automate the web
+===================================================
+
+Want to automate the web at scale, from your own code, and with any LLM? Use the Python library:
+
+**1\. Install Browser Use (Python >= 3.11):**
 
 uv add browser-use
 # or: pip install browser-use
 
-**2\. \[Optional\] Get your API key from Browser Use Cloud:**
+**2\. Add your LLM API key to `.env`**. Get one from Browser Use Cloud, or bring your own provider key:
 
-```
 # .env
-BROWSER_USE_API_KEY=your-key
-# GOOGLE_API_KEY=your-key
-# ANTHROPIC_API_KEY=your-key
-```
+BROWSER\_USE\_API\_KEY=your-key
+# GOOGLE\_API\_KEY=your-key
+# ANTHROPIC\_API\_KEY=your-key
 
 **3\. Run your first agent:**
 
-**Python Script:**
-
 import asyncio
 
-from browser\_use import Agent, BrowserProfile, ChatBrowserUse
+from browser\_use import Agent, ChatBrowserUse
 
 async def main():
     agent \= Agent(
         task\="Find the number of stars of the browser-use repo",
         llm\=ChatBrowserUse(model\='openai/gpt-5.5'),
-        \# llm=ChatBrowserUse(model='bu-2-0'),  # Browser Use's own optimized model
+        \# llm=ChatBrowserUse(model='bu-2-0'),  # Browser Use's optimized model
         \# llm=ChatOpenAI(model='gpt-5.5'),
-        \# llm=ChatAnthropic(model='claude-opus-4-8'),  # Sonnet also works well.
-        browser\_profile\=BrowserProfile(
-            headless\=False,
-            allowed\_domains\=\["\*.github.com"\],
-        ),
+        \# llm=ChatAnthropic(model='claude-opus-4-8'),  # Sonnet also works well
     )
     history \= await agent.run()
-    print(history.final\_result())
 
 if \_\_name\_\_ \== "\_\_main\_\_":
     asyncio.run(main())
@@ -79,11 +96,13 @@ Open Source vs Cloud
 
 We benchmark Browser Use across 100 real-world browser tasks. Full benchmark is open source: **browser-use/benchmark**.
 
+Browser Use is also **#1 on the Odysseys leaderboard** with an 87.4% average, ahead of computer-use agents from OpenAI, Anthropic, Google, and Microsoft. Odysseys measures the agent's performance on 200 long-horizon web tasks.
+
 **Use the Open-Source Agent**
 
--   You need custom tools or deep code-level integration
--   We recommend pairing with our cloud browsers for leading stealth, proxy rotation, and scaling
--   Or self-host the open-source agent fully on your own machines
+-   Free, and runs on your own machine
+-   Deep code-level integration and control: pick your LLM, customize the agent's behavior
+-   We recommend pairing it with our cloud browsers for leading stealth, proxy rotation, and scaling
 
 **Use the Fully-Hosted Cloud Agent (recommended)**
 
@@ -95,76 +114,6 @@ We benchmark Browser Use across 100 real-world browser tasks. Full benchmark is 
 
   
 
-Demos
-=====
-
-### 📋 Form-Filling
-
-#### Task = "Fill in this job application with my resume and information."
-
-Example code ↗
-
-### 🍎 Grocery-Shopping
-
-#### Task = "Put this list of items into my instacart."
-
-grocery-use-large.mp4
-
-Example code ↗
-
-### 💻 Personal-Assistant.
-
-#### Task = "Help me find parts for a custom PC."
-
-pc-use-large.mp4
-
-Example code ↗
-
-### 💡See more examples here ↗ and give us a star!
-
-  
-
-🚀 Template Quickstart
-======================
-
-**Want to get started even faster?** Generate a ready-to-run template:
-
-uvx browser-use init --template default
-
-This creates a `browser_use_default.py` file with a working example. Available templates:
-
--   `default` - Minimal setup to get started quickly
--   `advanced` - All configuration options with detailed comments
--   `tools` - Examples of custom tools and extending the agent
-
-You can also specify a custom output path:
-
-uvx browser-use init --template default --output my\_agent.py
-
-  
-
-💻 CLI
-======
-
-**Browser Use CLI 3.0** lets your agents do work for you online with our highest accuracy yet. It is powered by Browser Harness, and it applies what we learned about agent harnesses and agent frameworks: the latest models do best when you give them freedom, rather than abstracting away complexity. We provide your agents with a direct, dependable surface for acting in the browser.
-
-browser-use <<'PY'
-new\_tab("https://example.com")
-print(page\_info())
-PY
-
-The CLI allows your agent to control the browser via Python, and it manages the browser in the background.
-
-### Agent Skill
-
-For Claude Code, Codex, and other agents, paste this prompt into your agent:
-
-```
-Install or upgrade browser-use to the latest stable version with uv using Python 3.12, register the skill from `browser-use skill`, and connect it to my browser. Follow https://github.com/browser-use/browser-use if setup or connection fails.
-```
-
-  
-
 Integrations, hosting, custom tools, MCP, and more on our Docs ↗
 ----------------------------------------------------------------
 
@@ -172,6 +121,22 @@ Integrations, hosting, custom tools, MCP, and more on our Docs ↗
 
 FAQ
 ===
+
+**Should I use the CLI vs. the Python library?**
+
+**Use the CLI** if you already have an agent (Claude Code, Codex, Cursor, Hermes, OpenClaw, etc.) that you want to complete browser tasks for you. The agent installs the skill once (see Quickstart) and can then control the browser. Examples:
+
+-   "Upload this video to YouTube"
+-   "Compare these three laptops and give me a table with prices"
+-   "Fill in this job application with my resume"
+
+**Use the Python library** when you are building software that automates the web. Examples:
+
+-   Run many tasks on a schedule or in parallel (scraping, monitoring, QA)
+-   Embed a browser agent into your own product
+-   Custom tools, custom system prompts, structured output, fine-grained browser control
+
+Rule of thumb: one-off tasks through an agent → CLI. Repeatable automation in code → Python library.
 
 **What's the best model to use?**
 
@@ -250,6 +215,21 @@ For production use cases, use our Browser Use Cloud API which handles:
 -   Proxy rotation
 -   Stealth browser fingerprinting
 -   High-performance parallel execution
+
+  
+
+Citation
+--------
+
+If you use Browser Use in your research or project, please cite:
+
+@software{browser\_use2024,
+  author = {Müller, Magnus and Žunič, Gregor},
+  title = {Browser Use: Enable AI to control your browser},
+  year = {2024},
+  publisher = {GitHub},
+  url = {https://github.com/browser-use/browser-use}
+}
 
   
 

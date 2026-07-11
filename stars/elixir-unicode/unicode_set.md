@@ -112,7 +112,7 @@ Supported Unicode properties
 This version of `Unicode Set` supports the following enumerable unicode properties in unicode sets:
 
 -   `script` such as `[:script=arabic:]`, `\p{script=arabic}` or `[:arabic:]`
--   `block` such as `[:block=sudanese:]`, `\p{block=sudanese}`, `\p{IsSudanese}` or `[:IsSudanese:]`
+-   `block` such as `[:block=sundanese:]`, `\p{block=sundanese}`, `\p{IsSundanese}` or `[:IsSundanese:]`
 -   `general category` such as `[:Lu:]`, `\p{Lu}`, `[:gc=Lu:]` or `[:general category=Lu:]`
 -   `combining class` such as `[:ccc=230:]`
 
@@ -476,7 +476,7 @@ Warning: the set shown here is defined by excluding space, controls, and so on w
 
 print
 
-`\p{graph} \p{blank} -- \p{cntrl}`
+`\p{graph} \p{blank} - \p{cntrl}`
 
 Includes graph and space-like characters.
 
@@ -485,6 +485,10 @@ word
 `\p{alpha} \p{gc=Mark} \p{digit} \p{gc=Connector_Punctuation} \p{Join_Control}`
 
 This is only an approximation to Word Boundaries. The Connector Punctuation is added in for programming language identifiers, thus adding `_` and similar characters.
+
+> #### Note on `punct` {: .info}
+> 
+> `punct` uses the UTS #18 Annex C _POSIX-compatible_ definition shown above (`gc=Punctuation` plus `gc=Symbol` minus `alpha`), which matches ICU's POSIX `[:punct:]`. This deliberately differs from the UTS #18 _Standard_ recommendation, which is just `\p{gc=Punctuation}`: the POSIX definition additionally includes symbols such as `+ $ < = > ^ | ~` \``. This library keeps the POSIX behaviour for compatibility; if you want only punctuation, use` \\p{gc=Punctuation}\` directly.
 
 Additional Derived properties
 -----------------------------
@@ -744,9 +748,39 @@ uses a full type and value
 
 If the type or value is omitted, then the equals sign is also omitted. The short style is only used for Category and Script properties because these properties are very common and their omission is unambiguous.
 
-In actual practice, you can mix type names and values that are omitted, abbreviated, or full. For example, if Category=Unassigned you could use what is in the table explicitly, `\p{gc=Unassigned}`, `\p{Category=Cn}`, or `\p{Unassigned}`.
+In actual practice, you can mix type names and values that are omitted, abbreviated, or full. For example, if General\_Category=Unassigned you could use what is in the table explicitly, `\p{gc=Unassigned}`, `\p{General_Category=Cn}`, or `\p{Unassigned}`.
 
-When these are processed, case and whitespace are ignored so you may use them for clarity, if desired. For example, `\p{Category = Uppercase Letter}` or `\p{Category = uppercase letter}`.
+When these are processed, case is ignored and whitespace within a name or value is treated as an underscore, so you may use them for clarity, if desired. For example, `\p{General_Category=Uppercase Letter}` or `\p{gc=uppercase letter}`.
+
+Conformance
+-----------
+
+This library implements the UnicodeSet syntax defined by CLDR TR35 and aligns with UTS #18 Level 1 and the draft UTS #61 formalization. It has been reviewed and tested against the ICU reference implementation. The following notes describe deliberate tailorings and current limitations.
+
+### Supported
+
+-   Bracketed sets, character ranges, and union by juxtaposition.
+-   Complement (`[^...]`), applied to code points (not string members).
+-   Set operations — union, intersection (`&`), and set difference (`-`) — with equal precedence binding strictly left-to-right, matching TR35. Group with nested `[...]` to override.
+-   POSIX (`[:prop:]`, `[:^prop:]`) and Perl (`\p{...}`, `\P{...}`) property syntax, including `type=value`, the `≠` (U+2260) operator, and the `Is`/`In` prefixes. Property and value names are matched loosely (case, whitespace, `_` and `-` are ignored per UAX44-LM3).
+-   Properties: general category (including group categories such as `L`), script, block, canonical combining class (numeric and named), and the boolean/enumerated properties provided by the `unicode` library (`Word_Break`, `Grapheme_Cluster_Break`, `Line_Break`, `Sentence_Break`, `East_Asian_Width`, `Indic_Syllabic_Category`, `Indic_Conjunct_Break`, the binary properties, and more).
+-   String members (`{abc}`), string ranges (`{ab}-{cd}`), and the empty-string member (`{}`).
+-   Single-quote quoting: text within `'...'` is literal and `''` is a literal quote.
+-   Escapes: `\uHHHH`, `\UHHHHHHHH`, `\xH`/`\xHH`, single- and multi-codepoint bracketed `\u{...}`/`\x{...}`, octal `\0ooo`, `\cX` control escapes, and the named control escapes `\a \b \e \f \n \r \t \v`. Any other `\<char>` is the literal character.
+-   `\N{NAME}` named-codepoint escapes when built against `unicode ~> 2.0` (which provides the character-name table).
+
+### Tailorings
+
+-   Set operations use the single-character `&` and `-` operators (as in a standalone UnicodeSet), not the `&&`/`--` operators used inside ICU _regular-expression_ character classes.
+-   `[]` and `[-]` are both the empty set. A hyphen elsewhere at the start or end of a set (`[-a]`, `[a-]`, `[a-z-]`) is a literal hyphen, matching ICU.
+-   String ranges (`{ab}-{cd}`) are supported as an extension; their endpoints must be the same length.
+-   `[:punct:]` uses the UTS #18 POSIX-compatible definition (matching ICU's POSIX `[:punct:]`); see the note in the "Compatibility Property Names" section above.
+
+### Current limitations
+
+-   `\N{NAME}` is only resolved when the `unicode` dependency is version 2.0 or later; on earlier versions it returns a clean error. Names of algorithmically-named characters (CJK ideographs, Hangul syllables) and control characters are not resolvable.
+-   The `Script_Extensions` (`scx`), `Age`, `Numeric_Value`, and `Numeric_Type` properties are not resolvable because the underlying `unicode` library does not yet provide their data.
+-   Malformed or unsupported syntax returns `{:error, _}` rather than raising.
 
 Installation
 ------------

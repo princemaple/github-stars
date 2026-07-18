@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 149359
+stars: 152789
 description: The API to search, scrape, and interact with the web at scale. 🔥
 url: https://github.com/firecrawl/firecrawl
 ---
@@ -537,6 +537,69 @@ results.data.web.forEach(result \=> {
     console.log(\`${result.title}: ${result.url}\`);
 });
 
+### Go
+
+Install the SDK:
+
+go get github.com/firecrawl/firecrawl/apps/go-sdk
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+
+	firecrawl "github.com/firecrawl/firecrawl/apps/go-sdk"
+	"github.com/firecrawl/firecrawl/apps/go-sdk/option"
+)
+
+func main() {
+	// Create a client (reads FIRECRAWL\_API\_KEY from environment)
+	client, err := firecrawl.NewClient(option.WithAPIKey("fc-YOUR\_API\_KEY"))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	ctx := context.Background()
+
+	// Scrape a single URL
+	doc, err := client.Scrape(ctx, "https://firecrawl.dev", &firecrawl.ScrapeOptions{
+		Formats: \[\]string{"markdown"},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(doc.Markdown)
+
+	// Use the Agent for autonomous data gathering
+	agent, err := client.Agent(ctx, &firecrawl.AgentOptions{
+		Prompt: "Find the founders of Stripe",
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(agent.Data)
+
+	// Crawl a website (automatically waits for completion)
+	job, err := client.Crawl(ctx, "https://docs.firecrawl.dev", &firecrawl.CrawlOptions{
+		Limit: firecrawl.Int(50),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Crawled %d pages\\n", len(job.Data))
+
+	// Search the web
+	results, err := client.Search(ctx, "best AI data tools 2024", &firecrawl.SearchOptions{
+		Limit: firecrawl.Int(10),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(results)
+}
+
 ### Java
 
 Add the dependency (Gradle/Maven):
@@ -649,9 +712,92 @@ async fn main() -> Result<(), Box<dyn std::error::Error\>\> {
     Ok(())
 }
 
-### Community SDKs
+### Ruby
 
--   Go SDK
+Install the SDK:
+
+gem install firecrawl-sdk
+
+require "firecrawl"
+
+client \= Firecrawl::Client.new(api\_key: "fc-YOUR\_API\_KEY")
+
+\# Scrape a single URL
+doc \= client.scrape("https://firecrawl.dev",
+  Firecrawl::Models::ScrapeOptions.new(formats: \["markdown"\]))
+puts doc.markdown
+
+\# Use the Agent for autonomous data gathering
+result \= client.agent(
+  Firecrawl::Models::AgentOptions.new(prompt: "Find the founders of Stripe"))
+puts result.data
+
+\# Crawl a website (automatically waits for completion)
+job \= client.crawl("https://docs.firecrawl.dev",
+  Firecrawl::Models::CrawlOptions.new(limit: 50))
+job.data.each { |d| puts d.metadata.source\_url }
+
+\# Search the web
+results \= client.search("best AI data tools 2024",
+  Firecrawl::Models::SearchOptions.new(limit: 10))
+puts results
+
+### .NET
+
+Install the SDK:
+
+dotnet add package firecrawl-sdk
+
+using Firecrawl;
+using Firecrawl.Models;
+
+var client \= new FirecrawlClient("fc-YOUR\_API\_KEY");
+
+// Scrape a single URL
+var doc \= await client.ScrapeAsync("https://firecrawl.dev",
+    new ScrapeOptions { Formats \= new List<object\> { "markdown" } });
+Console.WriteLine(doc.Markdown);
+
+// Crawl a website (automatically waits for completion)
+var job \= await client.CrawlAsync("https://docs.firecrawl.dev",
+    new CrawlOptions { Limit \= 50 });
+Console.WriteLine($"Crawled {job.Data.Count} pages");
+
+// Search the web
+var results \= await client.SearchAsync("best AI data tools 2024",
+    new SearchOptions { Limit \= 10 });
+Console.WriteLine(results);
+
+### PHP
+
+Install the SDK:
+
+composer require firecrawl/firecrawl-sdk
+
+<?php
+
+use Firecrawl\\Client\\FirecrawlClient;
+use Firecrawl\\Models\\ScrapeOptions;
+use Firecrawl\\Models\\CrawlOptions;
+use Firecrawl\\Models\\SearchOptions;
+
+$client = FirecrawlClient::create(apiKey: 'fc-YOUR\_API\_KEY');
+
+// Scrape a single URL
+$doc = $client\->scrape('https://firecrawl.dev', ScrapeOptions::with(
+    formats: \['markdown'\],
+));
+echo $doc\->getMarkdown();
+
+// Crawl a website (automatically waits for completion)
+$job = $client\->crawl('https://docs.firecrawl.dev', CrawlOptions::with(limit: 50));
+foreach ($job\->getData() as $page) {
+    echo $page\->getMetadata()\['sourceURL'\] . "\\n";
+}
+
+// Search the web
+$results = $client\->search('best AI data tools 2024', SearchOptions::with(limit: 10));
+print\_r($results);
 
 * * *
 

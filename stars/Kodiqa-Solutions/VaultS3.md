@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 723
+stars: 782
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -240,6 +240,7 @@ Features
 -   **Graceful shutdown**: Drains in-flight requests on SIGTERM/SIGINT with configurable timeout
 -   **TLS support**: Optional HTTPS with configurable cert/key paths
 -   **Separate dashboard port**: Optionally serve the Web UI + its API on a dedicated port (`server.console_port`, e.g. 9001) apart from the S3 API, so each can have its own firewall rules / TLS / reverse proxy (MinIO-style)
+-   **Reverse-proxy subpath**: Host the whole app under a subpath (`server.base_path`, e.g. `/vaults3`) so the dashboard works behind `https://example.com/vaults3/dashboard/`; asset URLs, SPA routes, and API calls are rewritten at serve time (also auto-detects the proxy's `X-Forwarded-Prefix`)
 -   **Object versioning**: Per-bucket versioning with version IDs, delete markers, version-specific GET/DELETE/HEAD
 -   **Object locking (WORM)**: Legal hold and retention (GOVERNANCE/COMPLIANCE) to prevent deletion
 -   **Lifecycle rules**: Per-bucket object expiration (auto-delete after N days) and aborting incomplete multipart uploads after N days (S3 `AbortIncompleteMultipartUpload`, reclaims the parts left by killed/failed clients), run by a background worker
@@ -262,7 +263,7 @@ Features
     -   📖 See the **Scaling & Operations Guide** for multi-disk erasure coding, multi-node cluster setup, large-prefix listing, and lost-disk / lost-server recovery runbooks
 -   **Active-active replication**: Bidirectional site-to-site sync with vector clocks for causal ordering, pluggable conflict resolution (last-writer-wins, largest-object, site-preference), and change log for efficient delta sync
 -   **Async replication**: One-way async replication to peer VaultS3 instances with BoltDB-backed queue, retry with exponential backoff, and loop prevention
--   **CLI tool**: Standalone `vaults3-cli` binary for bucket, object, user, and replication management without AWS CLI, plus `vaults3-cli info` for server version and storage capacity (used / free / total)
+-   **CLI tool**: Standalone `vaults3-cli` binary for bucket, object, user, and replication management without AWS CLI, plus `vaults3-cli info` for server version and storage capacity (used / free / total) and `vaults3-cli cluster` for day-2 cluster operations (status, join, leave, drain/undrain a member, rebalance, decommission — see docs/SCALING.md)
 -   **Capacity overview**: `GET /api/v1/system` and the dashboard Stats page report the version and on-disk capacity (total / used / free, aggregated across the data, cold-tier, and erasure directories) alongside logical object usage, so you can see how full the storage is at a glance. In a cluster, `GET /api/v1/cluster/info` (and the same dashboard panel / `vaults3-cli info`) aggregate capacity across all nodes with a per-node breakdown, an `mc admin info`\-style view
 -   **Presigned upload restrictions**: Enforce max file size, content type whitelist, and key prefix on presigned PUT URLs
 -   **Full-text search**: In-memory search index over object metadata, tags, content type, and key patterns with incremental updates
@@ -805,19 +806,31 @@ Done
 
 Cluster Status
 
-`GET /cluster/status`
+`GET /cluster/status`, `GET /api/v1/cluster/status`
 
 Done
 
 Cluster Join
 
-`POST /cluster/join`
+`POST /cluster/join`, `POST /api/v1/cluster/join`
 
 Done
 
 Cluster Leave
 
-`POST /cluster/leave`
+`POST /cluster/leave`, `POST /api/v1/cluster/leave`
+
+Done
+
+Cluster Drain / Undrain
+
+`POST /api/v1/cluster/{drain,undrain}`
+
+Done
+
+Cluster Rebalance
+
+`POST /api/v1/cluster/rebalance`
 
 Done
 
@@ -1168,6 +1181,12 @@ Bind address
 `VAULTS3_DOMAIN`
 
 Domain for virtual-hosted URLs
+
+_(empty)_
+
+`VAULTS3_BASE_PATH`
+
+Reverse-proxy subpath (e.g. `/vaults3`)
 
 _(empty)_
 
@@ -1589,6 +1608,13 @@ vaults3-cli user delete alice
 vaults3-cli replication status
 vaults3-cli replication queue
 
+# Cluster operations (see docs/SCALING.md)
+vaults3-cli cluster status                     # members, leader, drain state
+vaults3-cli cluster join node-3 10.0.0.4:7000  # add a member (against the leader)
+vaults3-cli cluster drain node-2               # stop a node accepting writes (reads continue)
+vaults3-cli cluster rebalance                  # move objects to their correct owner
+vaults3-cli cluster decommission node-2        # guided drain + rebalance before replacing a node
+
 Build both binaries with `make build` or just the CLI with `make cli`.
 
 ### Presigned Upload Restrictions
@@ -1929,7 +1955,7 @@ Project Structure
 ```
 VaultS3/
 ├── cmd/vaults3/main.go        — Server entry point
-├── cmd/vaults3-cli/           — CLI tool (bucket, object, user, replication commands)
+├── cmd/vaults3-cli/           — CLI tool (bucket, object, user, replication, cluster commands)
 ├── internal/
 │   ├── config/                — YAML config loader
 │   ├── server/                — HTTP server, routing, and auto-TLS
@@ -2052,7 +2078,7 @@ Roadmap
 -   IP allowlist/blocklist (global and per-user CIDR restrictions, IPv4/IPv6)
 -   S3 event notifications (per-bucket webhooks, event type + prefix/suffix filtering, retry with backoff)
 -   Async replication (one-way to peer VaultS3 instances, BoltDB queue, retry with exponential backoff, loop prevention)
--   CLI tool (`vaults3-cli`, bucket, object, user, replication management)
+-   CLI tool (`vaults3-cli`, bucket, object, user, replication, cluster management)
 -   Presigned upload restrictions (max size, content type whitelist, key prefix enforcement)
 -   Full-text search (in-memory index over keys, content types, tags. `GET /api/v1/search`)
 -   Webhook virus scanning (ClamAV/VirusTotal integration, quarantine bucket, fail-open/closed modes)

@@ -1,6 +1,6 @@
 ---
 project: localsend
-stars: 85074
+stars: 85514
 description: An open-source cross-platform alternative to AirDrop
 url: https://github.com/localsend/localsend
 ---
@@ -15,10 +15,10 @@ English (Default) • Español • فارسی • Filipino • Français • Ind
 LocalSend is a free, open-source app that allows you to securely share files and messages with nearby devices over your local network without needing an internet connection.
 
 -   About
--   Sponsors
 -   Screenshots
 -   Download
 -   How It Works
+-   Dependency Hierarchy
 -   Getting Started
 -   Contributing
     -   Translation
@@ -35,11 +35,6 @@ About
 -----
 
 LocalSend is a cross-platform app that enables secure communication between devices using a REST API and HTTPS encryption. Unlike other messaging apps that rely on external servers, LocalSend doesn't require an internet connection or third-party servers, making it a fast and reliable solution for local communication.
-
-Sponsors
---------
-
-Browser testing via
 
 Screenshots
 -----------
@@ -196,6 +191,9 @@ How It Works
 LocalSend uses a secure communication protocol that allows devices to communicate with each other using a REST API. All data is sent securely over HTTPS, and the TLS/SSL certificate is generated on the fly on each device, ensuring maximum security.
 
 For more information on the LocalSend Protocol, see the documentation.
+
+Dependency Hierarchy
+--------------------
 
 Getting Started
 ---------------

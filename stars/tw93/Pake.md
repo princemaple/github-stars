@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 59753
+stars: 60027
 description: 🤱🏻 Turn any webpage into a desktop app with one command.
 url: https://github.com/tw93/Pake
 ---
@@ -172,6 +172,14 @@ pake https://github.com --name GitHub
 pake https://weekly.tw93.fun --name Weekly --icon https://cdn.tw93.fun/pake/weekly.icns --width 1200 --height 800 --hide-title-bar
 
 First-time packaging requires environment setup and may be slower, subsequent builds are fast. For complete parameter documentation, see CLI Usage Guide. Don't want to use CLI? Try GitHub Actions Online Building.
+
+Using Pake from a script or AI agent? Pass `--json` for machine-readable results, describe apps declaratively with `--config app.json` (schema), and package local build output directly with `pake ./dist --name MyTool`. See llms.txt for the full agent contract. Claude Code users can install the official skill with `/plugin marketplace add tw93/Pake` and `/plugin install pake@pake`.
+
+Copy this to your AI agent to get started:
+
+```
+Use Pake (npm i -g pake-cli) to package webpages as desktop apps. Read https://raw.githubusercontent.com/tw93/Pake/main/llms.txt first; always run pake with --json and parse stdout as a single JSON object. Package <url-or-local-dist> into an app named <AppName>.
+```
 
 Development
 -----------

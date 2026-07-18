@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7926
+stars: 7946
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -62,7 +62,6 @@ Table of Contents
 -   Contributors
 -   Sponsors
 -   Show your support
--   Star History
 -   License
 
 Installation
@@ -217,7 +216,211 @@ Returns a WebP image
 
 Triggers a download
 
-📖 **Full API & every option → snapdom.dev/docs**
+### Options at a glance
+
+All options are optional and can be passed to `snapdom(el, options)` or any shortcut method.
+
+Option
+
+Type
+
+Default
+
+Description
+
+`scale`
+
+`number`
+
+`1`
+
+Output scale multiplier
+
+`dpr`
+
+`number`
+
+`devicePixelRatio`
+
+Pixel density of the rasterized output
+
+`width` / `height`
+
+`number`
+
+`null`
+
+Target output size (keeps aspect ratio if only one is set)
+
+`backgroundColor`
+
+`string`
+
+`null` (`#ffffff` for JPEG/WebP)
+
+Background fill
+
+`quality`
+
+`number`
+
+`0.92`
+
+JPEG/WebP quality (0–1)
+
+`format`
+
+`'png' | 'jpeg' | 'webp' | 'svg'`
+
+`'png'`
+
+Format for `download()`
+
+`type`
+
+`string`
+
+`'svg'`
+
+Blob type for `toBlob()` (`'png'`, `'jpeg'`…)
+
+`filename`
+
+`string`
+
+`'snapDOM'`
+
+Download filename
+
+`embedFonts`
+
+`boolean`
+
+`false`
+
+Inline `@font-face` so text renders with your real fonts
+
+`iconFonts`
+
+`string | RegExp | array`
+
+`[]`
+
+Icon font families (always embedded)
+
+`localFonts`
+
+`array`
+
+`[]`
+
+Explicit fonts: `{ family, src, weight?, style? }`
+
+`excludeFonts`
+
+`object`
+
+—
+
+Skip fonts by family / domain / subset
+
+`exclude`
+
+`string[]`
+
+`[]`
+
+CSS selectors to leave out of the capture
+
+`filter`
+
+`(el) => boolean`
+
+`null`
+
+Keep-predicate (return `false` to drop a node)
+
+`excludeMode` / `filterMode`
+
+`'hide' | 'remove'`
+
+`'hide'`
+
+How excluded nodes are handled
+
+`clip`
+
+`'viewport' | {x, y, width, height}`
+
+`null`
+
+Capture only a region; offscreen content is pruned
+
+`compress`
+
+`boolean`
+
+`true`
+
+Downsample inlined images to their visible resolution
+
+`useProxy`
+
+`string`
+
+`''`
+
+CORS proxy prefix for cross-origin images
+
+`fallbackURL`
+
+`string | fn`
+
+—
+
+Fallback image for broken `<img>`
+
+`cache`
+
+`'soft' | 'auto' | 'full' | 'disabled'`
+
+`'soft'`
+
+Cache policy between captures
+
+`outerTransforms`
+
+`boolean`
+
+`true`
+
+Keep root translate/rotate in the output
+
+`outerShadows`
+
+`boolean`
+
+`false`
+
+Expand bounds to include root shadows/blur/outline
+
+`fast`
+
+`boolean`
+
+`true`
+
+Skip idle delays for faster capture
+
+`plugins`
+
+`array`
+
+—
+
+Per-capture plugins (override globals by name)
+
+📖 **Full API & every option, explained with examples → snapdom.dev/docs**
 
 Limitations
 -----------
@@ -404,15 +607,15 @@ If you'd like to support this project too, you can become a sponsor.
 Show your support
 -----------------
 
-If snapDOM saved you time, a ⭐ on GitHub helps other developers find it — that's the whole ask.
+If SnapDOM saved you time, a ⭐ on GitHub helps other developers find it — that's the whole ask.
 
-Shipping something built with snapDOM? Add the badge to your README:
+Shipping something built with SnapDOM? Add the badge to your README:
 
-\[!\[Built with snapDOM\](https://img.shields.io/badge/built%20with-snapDOM-blue)\](https://snapdom.dev)
+\[!\[Built with SnapDOM\](https://img.shields.io/badge/built%20with-SnapDOM-blue)\](https://snapdom.dev)
 
-### Projects using snapDOM
+### Projects using SnapDOM
 
-snapDOM runs in production across 290+ public repositories (GitHub dependents graph). A few notable ones, each verified from its own `package.json`:
+SnapDOM runs in production across 290+ public repositories (GitHub dependents graph). A few notable ones, each verified from its own `package.json`:
 
 -   LobeHub — platform for operating AI agents
 -   Trilium Notes — hierarchical personal knowledge base
@@ -425,10 +628,7 @@ snapDOM runs in production across 290+ public repositories (GitHub dependents gr
 -   ListenBrainz — music tracker by MetaBrainz
 -   SnapDIFF — in-browser visual regression testing _(by Zumerlab)_
 
-See the full gallery at **snapdom.dev/made-with**. Shipping snapDOM? Open a PR to add your project — real, verifiable projects only.
-
-Star History
-------------
+See the full gallery at **snapdom.dev/made-with**. Shipping SnapDOM? Open a PR to add your project — real, verifiable projects only.
 
 License
 -------

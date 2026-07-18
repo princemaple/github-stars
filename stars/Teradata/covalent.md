@@ -1,6 +1,6 @@
 ---
 project: covalent
-stars: 2224
+stars: 2225
 description: Covalent - A Design System for Teradata
 url: https://github.com/Teradata/covalent
 ---

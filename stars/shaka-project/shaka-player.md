@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8147
+stars: 8156
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -946,6 +946,7 @@ VR modes supported:
 -   Equirectangular projection with 360 degrees of horizontal field of view.
 -   Half equirectangular projection with 180 degrees of horizontal field of view.
 -   Cubemap projection with 360 degrees of horizontal field of view.
+-   Fisheye projection, used for regular fisheye content, parametric immersive (`prim`) content, and Apple Immersive Video (`aiv`).
 
 NOTES:
 

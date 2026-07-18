@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 38291
+stars: 38711
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -457,7 +457,7 @@ Common tools include:
 -   `agent_browser_eval`
 -   `agent_browser_close`
 
-Each tool has typed fields such as `url`, `selector`, `text`, `key`, and `session`, so MCP clients show meaningful approval prompts instead of raw command arrays. Each tool also accepts `extraArgs` for advanced CLI flags and exact CLI parity. Tool discovery is paginated and includes read-only/open-world annotations so modern MCP clients can load the large typed surface incrementally.
+Each tool has typed fields such as `url`, `selector`, `text`, `key`, `session`, and `allowedDomains`, so MCP clients show meaningful approval prompts instead of raw command arrays. The common `allowedDomains` array maps to `--allowed-domains` and activates the same WebRTC containment and launch-mode restrictions. Each tool also accepts `extraArgs` for advanced CLI flags and exact CLI parity. Tool discovery is paginated and includes read-only/open-world annotations so modern MCP clients can load the large typed surface incrementally.
 
 Example MCP client config:
 
@@ -706,7 +706,7 @@ agent-browser includes security features for safe AI agent deployments. All feat
 -   **Authentication Vault**: Store credentials locally (always encrypted), reference by name. The LLM never sees passwords. `auth login` navigates with `load` and then waits for login form selectors to appear (SPA-friendly, timeout follows the default action timeout). A key is auto-generated at `~/.agent-browser/.encryption-key` if `AGENT_BROWSER_ENCRYPTION_KEY` is not set: `echo "pass" | agent-browser auth save github --url https://github.com/login --username user --password-stdin` then `agent-browser auth login github`
 -   **Plugin System**: Extend agent-browser with external executable plugins. Plugins run out-of-process over the `agent-browser.plugin.v1` stdio JSON protocol and declare capabilities such as `credential.read`, `browser.provider`, `launch.mutate`, or `command.run`.
 -   **Content Boundary Markers**: Wrap page output in delimiters so LLMs can distinguish tool output from untrusted content: `--content-boundaries`
--   **Domain Allowlist**: Restrict navigation to trusted domains (wildcards like `*.example.com` also match the bare domain): `--allowed-domains "example.com,*.example.com"`. Sub-resource requests (scripts, images, fetch) and WebSocket/EventSource connections to non-allowed domains are also blocked. Include any CDN domains your target pages depend on (e.g., `*.cdn.example.com`).
+-   **Domain Allowlist**: Restrict navigation to trusted domains (wildcards like `*.example.com` also match the bare domain): `--allowed-domains "example.com,*.example.com"`. Sub-resource requests (scripts, images, fetch), WebSocket/EventSource connections, and `sendBeacon` calls to non-allowed domains are blocked. WebRTC peer connections are disabled in supported Chromium sessions while the allowlist is active to prevent STUN, TURN, and DNS traffic from bypassing HTTP interception. Dedicated and shared workers are guarded with a bootstrap wrapper; if a page CSP forbids that wrapper, the worker fails closed rather than running without the allowlist guard. Pre-existing CDP sessions, auto-connect, Chrome profiles, direct-page provider plugins, agent-browser restore or state-file replay, raw Chrome args that select profiles, restore sessions, or open startup pages, iOS, and Safari reject this option because agent-browser cannot install equivalent containment before page scripts run. Include any CDN domains your target pages depend on (e.g., `*.cdn.example.com`).
 -   **Action Policy**: Gate destructive actions with a static policy file: `--action-policy ./policy.json`
 -   **Action Confirmation**: Require explicit approval for sensitive action categories: `--confirm-actions eval,download`
 -   **Output Length Limits**: Prevent context flooding: `--max-output 50000`
@@ -725,7 +725,7 @@ Max characters for page output
 
 `AGENT_BROWSER_ALLOWED_DOMAINS`
 
-Comma-separated allowed domain patterns
+Comma-separated allowed domain patterns; requires a fresh controllable browser context without profile/session startup args, restore/state replay, or direct-page provider plugins
 
 `AGENT_BROWSER_ACTION_POLICY`
 
@@ -1000,6 +1000,10 @@ Screenshot format: `png`, `jpeg` (or `AGENT_BROWSER_SCREENSHOT_FORMAT` env)
 
 Show browser window (not headless) (or `AGENT_BROWSER_HEADED` env)
 
+`--webgpu`
+
+Enable WebGPU; SwiftShader software Vulkan on Linux, no GPU required (or `AGENT_BROWSER_WEBGPU` env)
+
 `--cdp <port|url>`
 
 Connect via Chrome DevTools Protocol (port or WebSocket URL)
@@ -1026,7 +1030,7 @@ Truncate page output to N characters (or `AGENT_BROWSER_MAX_OUTPUT` env)
 
 `--allowed-domains <list>`
 
-Comma-separated allowed domain patterns (or `AGENT_BROWSER_ALLOWED_DOMAINS` env)
+Comma-separated allowed domain patterns; also disables WebRTC peer connections in supported Chromium sessions and rejects CDP, auto-connect, Chrome profiles, restore/state replay, direct-page provider plugins, unsafe startup `--args`, iOS, and Safari (or `AGENT_BROWSER_ALLOWED_DOMAINS` env)
 
 `--action-policy <path>`
 
@@ -1279,7 +1283,35 @@ agent-browser open example.com --headed
 
 This opens a visible browser window instead of running headless.
 
+On Linux hosts with no display (servers, containers), `--headed` still works: when `DISPLAY` is unset and Xvfb is installed, agent-browser starts a private virtual display for the browser and cleans it up on close (opt out with `AGENT_BROWSER_NO_XVFB=1`). Needed for WebGPU screenshots, and useful for extensions that misbehave headless.
+
 > **Note:** Browser extensions work in both headed and headless mode (Chrome's `--headless=new`).
+
+WebGPU
+------
+
+Headless Chrome does not expose WebGPU by default, so pages using it (three.js `WebGPURenderer`, Babylon.js, etc.) silently render black. The `--webgpu` flag enables a launch preset that makes WebGPU work, including in GPU-less containers and CI:
+
+agent-browser --webgpu open https://my-webgpu-app.example.com
+agent-browser screenshot app.png
+
+On macOS and Windows this uses the hardware Metal/D3D backend. On Linux it routes WebGPU through SwiftShader's software Vulkan (no GPU needed), which requires the system Vulkan loader and Mesa ICD:
+
+apt-get install -y libvulkan1 mesa-vulkan-drivers
+
+One upstream caveat: headless Chrome cannot capture WebGPU canvas presentation in screenshots on Windows and Linux (rendering and in-page readbacks work; the capture is black). Screenshots of WebGPU pages work headless on macOS; on Windows run `--headed` in a logged-in desktop session; on Linux just add `--headed` — when no `DISPLAY` is set and Xvfb is installed, agent-browser starts a private virtual display automatically (opt out with `AGENT_BROWSER_NO_XVFB=1`).
+
+Verify the full pipeline (adapter, render pass, and screenshot capture) with:
+
+agent-browser doctor --webgpu
+
+Notes for WebGPU pages:
+
+-   WebGPU only exists in secure contexts (`https://`, `http://localhost`, or `file://`).
+-   three.js `WebGPURenderer` initializes asynchronously and silently falls back to WebGL2 when no adapter is available — wait for the app to render its first frame before taking a screenshot.
+-   To prefer a real GPU on Linux instead of SwiftShader, override both the Vulkan driver and the adapter with `--args "--use-vulkan=native,--use-webgpu-adapter=default"` (user args win over the preset; `--use-webgpu-adapter` alone still enumerates only SwiftShader).
+
+See the WebGPU docs page for the full platform matrix and container recipe.
 
 Authenticated Sessions
 ----------------------
@@ -1340,9 +1372,20 @@ const result \= await withAgentBrowserSandbox(async (sandbox) \=> {
   return runAgentBrowserCommand(sandbox, \["screenshot"\]);
 });
 
-Install `@agent-browser/sandbox` and `@vercel/sandbox` in the consuming app. See the sandbox helper example for minimal Eve and Vercel Sandbox usage, or the environments example for a full UI demo with a deploy-to-Vercel button.
+Install `@agent-browser/sandbox` and `@vercel/sandbox` in the consuming app. See the sandbox helper example for minimal Vercel Sandbox usage, or the environments example for a full UI demo with a deploy-to-Vercel button.
 
-Fresh Vercel and Eve sandboxes install Chromium system dependencies by default. Pass `installSystemDependencies: false` only when your sandbox image already includes those libraries.
+Fresh Vercel and eve sandboxes install Chromium system dependencies by default. Pass `installSystemDependencies: false` only when your sandbox image already includes those libraries.
+
+### eve extension
+
+Give an eve agent the full browser tool set by mounting the `@agent-browser/eve` extension:
+
+// agent/extensions/browser.ts
+import browser from "@agent-browser/eve";
+
+export default browser({});
+
+This composes ~20 namespaced tools into the agent — `browser__navigate`, `browser__snapshot`, `browser__click`, `browser__fill`, `browser__find`, `browser__screenshot`, and more — all running agent-browser inside the agent's sandbox. agent-browser installs automatically on first use; pre-install it in `agent/sandbox.ts` with the `@agent-browser/eve/sandbox` helpers to bake the cost into the sandbox template instead. Configuration (domain allowlists, output limits, session naming) and per-tool overrides are covered in the package README, and the eve example is a complete app with the extension mounted.
 
 ### Serverless (AWS Lambda)
 

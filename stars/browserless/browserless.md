@@ -1,6 +1,6 @@
 ---
 project: browserless
-stars: 13451
+stars: 13489
 description: Deploy headless browsers in Docker. Run on our cloud or bring your own. Free for non-commercial uses.
 url: https://github.com/browserless/browserless
 ---
@@ -55,7 +55,7 @@ await browser.close();
 import pw from 'playwright-core';
 
 const browser \= await pw.firefox.connect(
-  'ws://localhost:3000/firefox/playwright'
+  'ws://localhost:3000/firefox/playwright',
 );
 
 const page \= await browser.newPage();

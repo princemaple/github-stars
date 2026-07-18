@@ -1,6 +1,6 @@
 ---
 project: fucking-algorithm
-stars: 134789
+stars: 134879
 description: Crack LeetCode, not only how, but also why. 
 url: https://github.com/labuladong/fucking-algorithm
 ---

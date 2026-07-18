@@ -1,6 +1,6 @@
 ---
 project: quickbeam
-stars: 404
+stars: 405
 description: JavaScript runtime for the BEAM — Web APIs backed by OTP, native DOM, and a built-in TypeScript toolchain.
 url: https://github.com/elixir-volt/quickbeam
 ---
@@ -277,7 +277,7 @@ QuickBEAM.Context.start\_link(pool: pool, apis: \[:beam, :url\])    \# 108 KB
 QuickBEAM.Context.start\_link(pool: pool, apis: false)            \#  58 KB
 QuickBEAM.Context.start\_link(pool: pool)                         \# 429 KB (all browser APIs)
 
-Available groups: `:fetch`, `:websocket`, `:worker`, `:channel`, `:eventsource`, `:url`, `:crypto`, `:compression`, `:buffer`, `:dom`, `:console`, `:storage`, `:locks`. Dependencies auto-resolve.
+Available groups: `:fetch`, `:websocket`, `:worker`, `:channel`, `:eventsource`, `:intl`, `:url`, `:crypto`, `:compression`, `:buffer`, `:dom`, `:console`, `:storage`, `:locks`. Dependencies auto-resolve.
 
 ### Per-context resource limits
 
@@ -470,6 +470,10 @@ GenServer + monitors
 `localStorage`
 
 ETS
+
+`Intl.Segmenter` (`grapheme` granularity)
+
+`unicode-segmenter` 0.17.0
 
 `crypto.subtle`
 
@@ -758,6 +762,12 @@ Memory limits, reduction limits, timeouts
 
 Development
 -----------
+
+Update the vendored `unicode-segmenter` implementation without Node.js:
+
+elixir dev/update\_unicode\_segmenter.exs VERSION
+
+Run the project quality gate:
 
 mix ci
 

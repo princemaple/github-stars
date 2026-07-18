@@ -1,9 +1,30 @@
 ---
 project: public-apis
-stars: 449037
+stars: 451194
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
+
+APILayer Unified Suite in now Live! 🎉 🥳
+=========================================
+
+APILayer unified suite allows you to integrate production-grade REST APIs using **One Account, One Dashboard, and One API key.** Whether you need to geocode an address, validate an email, fetch a flight, pull stock market data, or scrape a search result.
+
+Sign up and start building today!
+
+Fork our official APILayer Postman Collection and get started in under 60 seconds.
+
+### APIs Covered Under APILayer Suite!
+
+-   IPstack
+-   Markestack
+-   Aviationstack
+-   Positionstack
+-   Mediastack
+-   Mailboxlayer
+-   Countrylayer
+-   Serpstack
+-   Scrapestack
 
 Try Public APIs for free
 ========================

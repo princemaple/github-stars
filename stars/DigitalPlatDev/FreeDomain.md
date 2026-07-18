@@ -1,6 +1,6 @@
 ---
 project: FreeDomain
-stars: 184947
+stars: 186646
 description: DigitalPlat FreeDomain: Free Domain For Everyone
 url: https://github.com/DigitalPlatDev/FreeDomain
 ---
@@ -10,7 +10,7 @@ url: https://github.com/DigitalPlatDev/FreeDomain
 
 Welcome to **DigitalPlat FreeDomain**, where we believe everyone deserves a digital identity. Whether you're an individual, or an organization, we’re offering free domain names to bring your ideas to life – no strings attached!
 
-With FreeDomain, you’re free to register a unique domain and host it with your favorite DNS provider, like Cloudflare, FreeDNS by Afraid.org, or Hostry. Get online with complete freedom, and keep your wallet happy.
+With FreeDomain, you can register a unique domain and manage its records through a DNS provider that supports custom nameservers.
 
 ### ✔️ Why Free Domains?
 
@@ -39,6 +39,12 @@ Jump in and register your domain by visiting our site:
 ➡️ DigitalPlat FreeDomain Dashboard
 
 📝 Read our tutorial
+
+* * *
+
+### 📚 Learning Guide
+
+Follow the complete book-style learning path in LEARN.md, from DigitalPlat FreeDomain setup to general DNS, website, email, operations, and advanced topics.
 
 * * *
 
@@ -87,3 +93,10 @@ Over time, it grew into something people actually rely on, and running it turned
 
 I wrote a bit about how it evolved here:  
 https://dev.to/edwardhsing/i-bought-a-domain-at-15-now-it-powers-400000-users-7ol
+
+* * *
+
+Source Code
+-----------
+
+DigitalPlat Domain OSS is open source at DigitalPlatDev/Domain-OSS. Visit the repository to access the latest source code.

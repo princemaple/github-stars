@@ -1,6 +1,6 @@
 ---
 project: TurboDiffusion
-stars: 3556
+stars: 3573
 description: TurboDiffusion: 100–200× Acceleration for Video Diffusion Models
 url: https://github.com/thu-ml/TurboDiffusion
 ---
@@ -57,6 +57,13 @@ Huggingface Model
 720p
 
 Note: All checkpoints support generating videos at 480p or 720p. The "Best Resolution" column indicates the resolution at which the model provides the best video quality.
+
+TurboT2AV
+---------
+
+The `TurboT2AV` directory provides LTX-2 text-to-audio-video teacher and distilled-student inference, together with the validated SageSLA, FastNorm, and TileLang W8A8 acceleration path.
+
+TurboT2AV uses an isolated Pixi environment and does not modify the main TurboDiffusion runtime. See `TurboT2AV/README.md` for installation, checkpoints, demos, and reproducibility instructions.
 
 Installation
 ------------

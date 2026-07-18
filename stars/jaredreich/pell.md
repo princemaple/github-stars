@@ -1,6 +1,6 @@
 ---
 project: pell
-stars: 12049
+stars: 12051
 description: 📝 the simplest and smallest WYSIWYG text editor for web, with no dependencies
 url: https://github.com/jaredreich/pell
 ---

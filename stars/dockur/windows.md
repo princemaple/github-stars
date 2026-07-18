@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 52406
+stars: 52488
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -67,13 +67,14 @@ kubectl apply -f https://raw.githubusercontent.com/dockur/windows/refs/heads/mas
 Requirements ⚙️
 ---------------
 
--   A Linux host with KVM support, or Docker Desktop / Podman on Windows 11 with nested virtualization enabled.
--   At least 4 GB of RAM available.
+-   Docker or Podman on a Linux host with KVM support.
+-   Docker Desktop or Podman (Desktop) on Windows 11 with nested virtualization enabled.
+-   At least 4 GB of available RAM.
 -   At least 64 GB of free disk space.
 
 Note
 
-Docker Desktop on macOS and Windows 10 do not currently provide the required KVM support for this image.
+Docker Desktop on Linux, macOS, and Windows 10 does not currently provide KVM access to containers and is therefore not supported.
 
 FAQ 💬
 ------
@@ -259,6 +260,23 @@ environment:
   RAM\_SIZE: "8G"
   CPU\_CORES: "4"
 
+### How do I enable audio?
+
+Audio is disabled by default unless you are using RDP. To stream it to the browser, add the following environment variable:
+
+environment:
+  AUDIO: "Y"
+
+Then enable **Audio** under **Settings → Advanced** in the web viewer. The stream is only active while this option is enabled, so it uses no extra bandwidth otherwise.
+
+### How do I connect using RDP?
+
+The web viewer is mainly intended for use during installation, since it is less responsive than RDP and does not support features such as clipboard sharing.
+
+So for a better experience you can connect using any Microsoft Remote Desktop client to the IP of the container, using the username `Docker` and password `admin`.
+
+There is an RDP client for Android available from the Play Store and one for iOS in the Apple Store. For Linux you can use FreeRDP and on Windows just type `mstsc` in the search box.
+
 ### How do I configure the username and password?
 
 By default, a user called `Docker` is created and its password is `admin`.
@@ -268,6 +286,19 @@ If you want to set up different credentials during installation, you can configu
 environment:
   USERNAME: "bill"
   PASSWORD: "gates"
+
+When `DOMAIN` is set, these variables are used as domain credentials instead.
+
+### How do I join an Active Directory domain?
+
+Windows can automatically join an Active Directory domain during installation. Specify the domain name in your compose file:
+
+environment:
+  DOMAIN: "example.com"
+
+Use the domain name, such as `example.com`, rather than a URL. The supplied account is added to the local Administrators group and automatically signed in after installation.
+
+Windows must be able to resolve and reach the domain controller through the domain's DNS server.
 
 ### How do I select the Windows language?
 
@@ -302,16 +333,21 @@ volumes:
 
 Replace the example path `./example.iso` with the filename of your desired ISO file. The value of `VERSION` will be ignored in this case.
 
-### How do I run a script after installation?
+### How do I run a command after installation?
 
-To run your own script after installation, you can create a file called `install.bat` and place it in a folder together with any additional files it needs (software to be installed for example).
+To execute a single command during the final step of the automatic installation, add the `COMMAND` environment variable:
+
+environment:
+  COMMAND: 'reg add "HKLM\\Software\\Example" /v Enabled /t REG\_DWORD /d 1 /f'
+
+To run a script or include additional files, create a file called `install.bat` and place it in a folder together with any files it needs, such as software to be installed.
 
 Then bind that folder in your compose file like this:
 
 volumes:
-  -  ./example:/oem
+  - ./example:/oem
 
-The example folder `./example` will be copied to `C:\OEM` and the `install.bat` file inside that folder will be executed during the last step of the automatic installation.
+The example folder `./example` will be copied to `C:\OEM` and the `install.bat` file inside it will be executed during the final step of the automatic installation.
 
 ### How do I perform a manual installation?
 
@@ -321,14 +357,6 @@ However, if you insist on performing the installation manually (at your own risk
 
 environment:
   MANUAL: "Y"
-
-### How do I connect using RDP?
-
-The web viewer is mainly meant to be used during installation, as its picture quality is low, and it has no audio or clipboard for example.
-
-So for a better experience you can connect using any Microsoft Remote Desktop client to the IP of the container, using the username `Docker` and password `admin`.
-
-There is an RDP client for Android available from the Play Store and one for iOS in the Apple Store. For Linux you can use FreeRDP and on Windows just type `mstsc` in the search box.
 
 ### How do I assign an individual IP address to the container?
 
@@ -411,79 +439,42 @@ Warning
 
 Adding a USB mass storage device before Windows Setup has finished may cause it to fail. Or worse: the drive can get formatted as the system disk, and all your data will be lost! So always keep them disconnected when launching the container for the first time.
 
+### How do I enable dynamic memory allocation?
+
+By default, the VM is allocated the full amount of RAM configured via `RAM_SIZE` for its entire lifetime.
+
+However, you can enable memory ballooning if you want the container to dynamically reclaim unused guest RAM based on host memory pressure.
+
 ### Are these all available options?
 
 No. For a complete overview of all supported settings, see the environment variables page.
 
-### How do I verify if my system supports KVM?
+### How do I verify that KVM is available?
 
-First check if your software is compatible using this chart:
+First, make sure your platform and container runtime meet the requirements listed above.
 
-**Product**
-
-**Linux**
-
-**Win11**
-
-**Win10**
-
-**macOS**
-
-Docker CLI
-
-✅
-
-✅
-
-❌
-
-❌
-
-Docker Desktop
-
-❌
-
-✅
-
-❌
-
-❌
-
-Podman CLI
-
-✅
-
-✅
-
-❌
-
-❌
-
-Podman Desktop
-
-✅
-
-✅
-
-❌
-
-❌
-
-After that you can run the following commands in Linux to check your system:
+On a Linux host, install `cpu-checker` and run:
 
 sudo apt install cpu-checker
 sudo kvm-ok
 
-If you receive an error from `kvm-ok` indicating that KVM cannot be used, please check whether:
+A working configuration should report:
 
--   the virtualization extensions (`Intel VT-x` or `AMD SVM`) are enabled in your BIOS.
-    
--   you enabled "nested virtualization" if you are running the container inside a virtual machine.
-    
--   you are not using a cloud provider, as most of them do not allow nested virtualization for their VPSs.
-    
+```
+KVM acceleration can be used
+```
 
-If you did not receive any error from `kvm-ok` but the container still complains about a missing KVM device, it could help to add `privileged: true` to your compose file (or `sudo` to your `docker` command) to rule out any permission issue.
+You can also verify that the KVM device exists:
+
+ls -l /dev/kvm
+
+If KVM is unavailable, check whether:
+
+-   Hardware virtualization (`Intel VT-x` or `AMD-V`) is enabled in your BIOS or UEFI.
+-   Nested virtualization is enabled when the host itself is a virtual machine.
+-   Your VPS or cloud provider supports nested virtualization.
+
+If `kvm-ok` succeeds but the container still reports that KVM is unavailable, you can temporarily add `privileged: true` to your Compose file to rule out a permission or device-access issue.
 
 ### How do I run macOS in a container?
 

@@ -1,6 +1,6 @@
 ---
 project: difftastic
-stars: 25622
+stars: 25663
 description: a structural diff that understands syntax 🟥🟩
 url: https://github.com/Wilfred/difftastic
 ---
@@ -77,7 +77,7 @@ $ difft foo1.c foo2.c
 
 ### Can difftastic help me with merge conflicts?
 
-Yes! As of version 0.50, difftastic understands merge conflict markers (i.e. `<<<<<<<`, `=======` and `>>>>>>>`).
+Yes! As of version 0.50 (released 2023-08-16), difftastic understands merge conflict markers (i.e. `<<<<<<<`, `=======` and `>>>>>>>`).
 
 Pass your file with conflicts as a single argument to difftastic. Difftastic will construct the two conflicting files and diff those.
 

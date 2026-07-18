@@ -1,6 +1,6 @@
 ---
 project: opendataloader-pdf
-stars: 27004
+stars: 27452
 description: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 url: https://github.com/opendataloader-project/opendataloader-pdf
 ---
@@ -507,6 +507,8 @@ Hybrid Mode: #1 Accuracy for Complex PDFs
 
 Hybrid mode combines fast local Java processing with AI backends. Simple pages stay local (0.02s); complex pages route to AI for +90% table accuracy.
 
+> **Don't combine with `--use-struct-tree` on tagged PDFs.** `--use-struct-tree` takes precedence, so the hybrid backend is **not** called (a warning is logged). If you want the hybrid backend, drop `--use-struct-tree`.
+
 pip install -U "opendataloader-pdf\[hybrid\]"
 
 **Terminal 1** — Start the backend server:
@@ -669,6 +671,8 @@ Advanced Features
 When a PDF has structure tags, OpenDataLoader extracts the **exact layout** the author intended — no guessing, no heuristics. Headings, lists, tables, and reading order are preserved from the source.
 
 > **Output quality depends on tag quality.** Not all tagged PDFs are well-tagged. For PDFs with sparse or incorrect tags, the default heuristic mode or `--hybrid docling-fast` often produces better results.
+
+> **`--use-struct-tree` takes precedence over `--hybrid`.** If both are set on a tagged PDF, the structure tree is used and the hybrid backend is **not** called (a well-tagged PDF already carries reading order and structure). Drop `--use-struct-tree` if you want the hybrid backend instead.
 
 \# Batch all files in one call — each convert() spawns a JVM process, so repeated calls are slow
 opendataloader\_pdf.convert(

@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 104262
+stars: 105425
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -20,21 +20,19 @@ Browser Use lets an AI agent use a web browser the same way you do — it opens 
 
 Example code ↗
 
-### 🍎 Shop for Groceries
+### 🍎 Extract data
 
-#### Task: "Put this list of items into my instacart."
+#### Task: "Extract structured data about my followers and export it as a CSV."
 
-grocery-use-large.mp4
+extract-followers.mp4
 
-Example code ↗
+Browser Use Cloud Docs ↗
 
-### 💻 Be Your Personal Assistant
+### 💻 QA Automation
 
-#### Task: "Help me find parts for a custom PC."
+#### Task: "QA test my local website and report any bugs, usability issues, and visual inconsistencies."
 
-pc-use-large.mp4
-
-Example code ↗
+Browser Use CLI ↗
 
   
 

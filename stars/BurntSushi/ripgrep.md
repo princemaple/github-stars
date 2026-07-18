@@ -1,6 +1,6 @@
 ---
 project: ripgrep
-stars: 66023
+stars: 66312
 description: ripgrep recursively searches directories for a regex pattern while respecting your gitignore
 url: https://github.com/BurntSushi/ripgrep
 ---
@@ -503,7 +503,7 @@ $ sudo xbps-install -Syv ripgrep
 
 If you're a **Rust programmer**, ripgrep can be installed with `cargo`.
 
--   Note that the minimum supported version of Rust for ripgrep is **1.85.0**, although ripgrep may work with older versions.
+-   Note that the minimum supported version of Rust for ripgrep is **1.96.0**, although ripgrep may work with older versions.
 -   Note that the binary may be bigger than expected because it contains debug symbols. This is intentional. To remove debug symbols and therefore reduce the file size, run `strip` on the binary.
 
 ```
@@ -518,7 +518,7 @@ $ cargo binstall ripgrep
 
 ### Building
 
-ripgrep is written in Rust, so you'll need to grab a Rust installation in order to compile it. ripgrep compiles with Rust 1.85.0 (stable) or newer. In general, ripgrep tracks the latest stable release of the Rust compiler.
+ripgrep is written in Rust, so you'll need to grab a Rust installation in order to compile it. ripgrep compiles with Rust 1.96.0 (stable) or newer. In general, ripgrep tracks the latest stable release of the Rust compiler.
 
 To build ripgrep:
 

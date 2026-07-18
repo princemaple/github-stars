@@ -1,6 +1,6 @@
 ---
 project: BroadcastChannel
-stars: 2053
+stars: 2051
 description: Turn your Telegram Channel into a MicroBlog.
 url: https://github.com/miantiao-me/BroadcastChannel
 ---
@@ -13,6 +13,8 @@ BroadcastChannel
 * * *
 
 English | 简体中文
+
+**Contents:** Features · Demo · Tech Stack · Deployment · Configuration · Themes · FAQs · Sponsor
 
 ✨ Features
 ----------
@@ -74,7 +76,13 @@ BroadcastChannel supports deployment on serverless platforms like Cloudflare Wor
 
 -   Framework: Astro
 -   CMS: Telegram Channels
--   Template: Sepia
+-   Theme inspiration and CSS compatibility: Bear Blog (independently implemented, with no official affiliation or Bear source files included)
+-   Optional theme: Sepia
+-   Optional theme inspiration: Terminal
+-   Optional theme inspiration: Aria
+-   Optional theme visual inspiration: Hacker News by Y Combinator, independently implemented with no official affiliation
+-   Optional theme visual inspiration: Telegram public channel previews, independently implemented with no official affiliation with Telegram Messenger Inc.
+-   Optional theme visual inspiration: Zed's Agentic Engineering page, independently implemented with no official affiliation with Zed Industries, Inc.
 
 🏗️ Deployment
 --------------
@@ -87,12 +95,14 @@ BroadcastChannel supports deployment on serverless platforms like Cloudflare Wor
 ### Serverless
 
 1.  Fork this project to your GitHub
-2.  Create a project on Cloudflare Workers/Netlify/Vercel
+2.  Create a project on Cloudflare Workers/Netlify/Vercel/EdgeOne
 3.  Select the `BroadcastChannel` project and the `Astro` framework
-4.  Configure the environment variable `CHANNEL` with your channel name. This is the minimal configuration, for more configurations see the options below
+4.  Configure the environment variable `CHANNEL` with your channel name. This is the minimal configuration; see Configuration for more
 5.  Save and deploy
-6.  Bind a domain (optional).
-7.  Update code, refer to the official GitHub documentation Syncing a fork branch from the web UI.
+6.  Bind a domain (optional)
+7.  Update code, refer to the official GitHub documentation Syncing a fork branch from the web UI
+
+EdgeOne is supported and detected automatically through std-env's `edgeone_pages` provider or the platform-provided `EDGEONE_PROJECT_ID`/`EO_MAKERS` variables. Set `SERVER_ADAPTER` only when you need to override automatic adapter detection.
 
 Cloudflare Workers minimal commands:
 
@@ -105,69 +115,124 @@ Configure `CHANNEL` and other runtime values in the Workers dashboard or with `p
 ⚒️ Configuration
 ----------------
 
-#\# Telegram Channel Username, must be configured. The string of characters following t.me/
+### Minimal
+
+Only `CHANNEL` is required. It is the public Telegram channel username (the string after `t.me/`).
+
 CHANNEL\=miantiao\_me
 
-#\# Language and timezone settings. Use an Intl/BCP 47 locale, for example en or zh-CN
+### Full reference
+
+Optional variables. Also see `.env.example`.
+
+#\# Required
+CHANNEL\=miantiao\_me
+
+#\# Language and timezone (Intl/BCP 47 locale, e.g. en or zh-CN)
 LOCALE\=en
 TIMEZONE\=America/New\_York
 
-#\# Social media usernames
+#\# Social usernames
 TELEGRAM\=miantiao-me
 TWITTER\=miantiao-me
 GITHUB\=miantiao-me
 MASTODON\=mastodon.social/@Mastodon
 BLUESKY\=bsky.app
 
-#\# The following two social media need to be URLs
+#\# Social URLs (full URLs required)
 DISCORD\=https://DISCORD.com
 PODCAST\=https://PODCAST.com
 
-#\# Header and footer code injection, supports HTML
-FOOTER\_INJECT\=
+#\# Trusted-admin raw HTML injection (header / footer)
 HEADER\_INJECT\=
+FOOTER\_INJECT\=
 
-#\# SEO configuration options, can prevent search engines from indexing content
+#\# SEO
 NOFOLLOW\=false
 NOINDEX\=false
 
-#\# Hide Telegram channel description
+#\# UI
 HIDE\_DESCRIPTION\=false
+COMMENTS\=true
+REACTIONS\=true
+RSS\_BEAUTIFY\=true
 
-#\# Telegram host name and static resource proxy, not recommended to modify
-TELEGRAM\_HOST\=telegram.dog
-STATIC\_PROXY\=
+#\# Tags, links, and navigation (comma / semicolon separated)
+TAGS\=tag1,tag2,tag3
+LINKS\=Title1,URL1;Title2,URL2;Title3,URL3;
+NAVS\=Title1,URL1;Title2,URL2;Title3,URL3;
 
-#\# Enable Google Site Search
+#\# Search
 GOOGLE\_SEARCH\_SITE\=memo.miantiao.me
 
-#\# Enable tags page, separate tags with commas
-TAGS\=tag1,tag2,tag3
+#\# Advanced (usually leave as-is)
+TELEGRAM\_HOST\=telegram.dog
+STATIC\_PROXY\=
+# Override automatic adapter detection when needed.
+SERVER\_ADAPTER\=
+# Append hostname-only proxy targets to the defaults, separated by commas (no protocol, port, or path).
+TARGET\_WHITELIST\=a.com,b.com
 
-#\# Show comments
-COMMENTS\=true
+🎨 Themes
+---------
 
-#\# Show reactions
-REACTIONS\=true
+Base is always loaded. Leave `HEADER_INJECT` empty to use Base, or load **exactly one** built-in override:
 
-#\# List of links in the Links page, Separate using commas and semicolons
-LINKS\=Title1,URL1;Title2,URL3;Title3,URL3;
+Theme
 
-#\# Sidebar Navigation Item, Separate using commas and semicolons
-NAVS\=Title1,URL1;Title2,URL3;Title3,URL3;
+Path
 
-#\# Enable RSS beautify
-RSS\_BEAUTIFY\=true
+Sepia
+
+`/themes/sepia.css`
+
+Aria
+
+`/themes/aria.css`
+
+Terminal Amber
+
+`/themes/terminal-amber.css`
+
+Terminal Green
+
+`/themes/terminal-green.css`
+
+Terminal Cyan
+
+`/themes/terminal-cyan.css`
+
+Terminal Magenta
+
+`/themes/terminal-magenta.css`
+
+HN News
+
+`/themes/hn-news.css`
+
+TG Channel
+
+`/themes/tg-channel.css`
+
+ZAE
+
+`/themes/zae.css`
+
+HEADER\_INJECT\='<link rel="stylesheet" href="/themes/aria.css">'
+
+HN News, TG Channel, and ZAE are fixed-light themes. Do not load `/themes/terminal-base.css` directly; there is no `/themes/terminal.css`.
+
+Full configuration, light/dark behavior, platform dashboard values, custom CSS, and security notes: **THEMES.md**. Theme credits: **NOTICE.md**.
 
 🙋🏻 FAQs
 ---------
 
 1.  Why is the content empty after deployment?
-    -   Check if the channel is public, it must be public
-    -   The channel username is a string, not a number
-    -   Turn off the "Restricting Saving Content" setting in the channel
-    -   Redeploy after modifying environment variables
-    -   Telegram blocks public display of some sensitive channels, you can verify by visiting `https://t.me/s/channelusername`.
+    -   The channel must be **public**
+    -   The channel username is a **string**, not a number
+    -   Turn off **Restricting Saving Content** in the channel settings
+    -   Redeploy after changing environment variables
+    -   Telegram may block public display of some sensitive channels; verify at `https://t.me/s/channelusername`
 
 ☕ Sponsor
 ---------

@@ -1,6 +1,6 @@
 ---
 project: con_cache
-stars: 926
+stars: 927
 description: ets based key/value cache with row level isolated writes and ttl support
 url: https://github.com/sasa1977/con_cache
 ---

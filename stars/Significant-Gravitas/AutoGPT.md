@@ -1,226 +1,278 @@
 ---
 project: AutoGPT
-stars: 185478
+stars: 185599
 description: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.
 url: https://github.com/Significant-Gravitas/AutoGPT
 ---
 
-AutoGPT: Build, Deploy, and Run AI Agents
-=========================================
+AutoGPT — AI agents that finish the work
+========================================
 
-   
+**Get 10 hours back every week.**  
+Describe what you want done. AutoGPT builds the agent, runs it, and reports back.
 
-Deutsch | Español | français | 日本語 | 한국어 | Português | Русский | 中文
+**Get started** · Tour · Pricing · Docs · Discord · Self-host
 
-**AutoGPT** is a powerful platform that allows you to create, deploy, and manage continuous AI agents that automate complex workflows.
+* * *
 
-Hosting Options
----------------
+The open-source platform for AI agents
+--------------------------------------
 
--   Download to self-host (Free!)
--   Join the Waitlist for the cloud-hosted beta (Closed Beta - Public release Coming Soon!)
+AutoGPT lets you build, deploy, and run AI agents that carry out complete workflows. Describe an outcome in plain English or shape every step in the visual builder, then run the agent on demand, on a schedule, or from a trigger.
 
-How to Self-Host the AutoGPT Platform
--------------------------------------
+**185,000+ GitHub stars. Cited by:**
+
+“Next frontier of prompt engineering imo: ‘AutoGPTs’.”
+
+**Andrej Karpathy**, founding member of OpenAI
+
+“If you have a phone you can run AutoGPT. You don't even need to learn how to code.”
+
+**Amjad Masad**, co-founder & CEO of Replit
+
+“AutoGPT might be the next big step in AI.”
+
+**Lior Alexander**, CEO of AlphaSignal
+
+* * *
+
+Four surfaces, one platform
+---------------------------
+
+  
+**AutoPilot**  
+Describe the job in plain English and turn the conversation into a working agent.
+
+  
+**Agents**  
+See every agent, run, cost, and action that needs your attention.
+
+  
+**Marketplace**  
+Start from proven agents, add one to your library, and customize it for your work.
+
+  
+**Build**  
+Drag, connect, branch, and inspect blocks for exact control over every step.
+
+* * *
+
+Get started
+-----------
+
+### AutoGPT Platform — public, hosted, and managed
+
+The hosted Platform is publicly available. We manage the infrastructure, model access, credentials, reliability, and updates so you can focus on the work your agents perform.
+
+**Get started on AutoGPT Platform →**
+
+Take the interactive tour →
+
+-   AutoPilot, Agents, Marketplace, and Build
+-   45+ connected platforms and hundreds of AI models
+-   No model API keys or infrastructure setup
+-   Agents that run on demand, on schedules, and from triggers
+
+The hosted Platform is a paid service with usage-based agent runs. Compare plans and pricing →
+
+### Self-host AutoGPT
 
 Note
 
-Setting up and hosting the AutoGPT Platform yourself is a technical process. If you'd rather something that just works, we recommend joining the waitlist for the cloud-hosted beta.
+Self-hosting is the free path. You provide the infrastructure and model API keys, and you maintain the deployment. If you want zero setup, use the managed Platform.
 
-### System Requirements
+**macOS and Linux:**
 
-Before proceeding with the installation, ensure your system meets the following requirements:
-
-#### Hardware Requirements
-
--   CPU: 4+ cores recommended
--   RAM: Minimum 8GB, 16GB recommended
--   Storage: At least 10GB of free space
-
-#### Software Requirements
-
--   Operating Systems:
-    -   Linux (Ubuntu 20.04 or newer recommended)
-    -   macOS (10.15 or newer)
-    -   Windows 10/11 with WSL2
--   Required Software (with minimum versions):
-    -   Docker Engine (20.10.0 or newer)
-    -   Docker Compose (2.0.0 or newer)
-    -   Git (2.30 or newer)
-    -   Node.js (16.x or newer)
-    -   npm (8.x or newer)
-    -   VSCode (1.60 or newer) or any modern code editor
-
-#### Network Requirements
-
--   Stable internet connection
--   Access to required ports (will be configured in Docker)
--   Ability to make outbound HTTPS connections
-
-### Updated Setup Instructions:
-
-We've moved to a fully maintained and regularly updated documentation site.
-
-👉 Follow the official self-hosting guide here
-
-This tutorial assumes you have Docker, VSCode, git and npm installed.
-
-* * *
-
-#### ⚡ Quick Setup with One-Line Script (Recommended for Local Hosting)
-
-Skip the manual steps and get started in minutes using our automatic setup script.
-
-For macOS/Linux:
-
-```
 curl -fsSL https://setup.agpt.co/install.sh -o install.sh && bash install.sh
-```
 
-For Windows (PowerShell):
+**Windows PowerShell:**
 
-```
-powershell -c "iwr https://setup.agpt.co/install.bat -o install.bat; ./install.bat"
-```
+powershell \-c "iwr https://setup.agpt.co/install.bat -o install.bat; ./install.bat"
 
-This will install dependencies, configure Docker, and launch your local instance — all in one go.
-
-### 🧱 AutoGPT Frontend
-
-The AutoGPT frontend is where users interact with our powerful AI automation platform. It offers multiple ways to engage with and leverage our AI agents. This is the interface where you'll bring your AI automation ideas to life:
-
-**Agent Builder:** For those who want to customize, our intuitive, low-code interface allows you to design and configure your own AI agents.
-
-**Workflow Management:** Build, modify, and optimize your automation workflows with ease. You build your agent by connecting blocks, where each block performs a single action.
-
-**Deployment Controls:** Manage the lifecycle of your agents, from testing to production.
-
-**Ready-to-Use Agents:** Don't want to build? Simply select from our library of pre-configured agents and put them to work immediately.
-
-**Agent Interaction:** Whether you've built your own or are using pre-configured agents, easily run and interact with them through our user-friendly interface.
-
-**Monitoring and Analytics:** Keep track of your agents' performance and gain insights to continually improve your automation processes.
-
-Read this guide to learn how to build your own custom blocks.
-
-### 💽 AutoGPT Server
-
-The AutoGPT Server is the powerhouse of our platform This is where your agents run. Once deployed, agents can be triggered by external sources and can operate continuously. It contains all the essential components that make AutoGPT run smoothly.
-
-**Source Code:** The core logic that drives our agents and automation processes.
-
-**Infrastructure:** Robust systems that ensure reliable and scalable performance.
-
-**Marketplace:** A comprehensive marketplace where you can find and deploy a wide range of pre-built agents.
-
-### 🐙 Example Agents
-
-Here are two examples of what you can do with AutoGPT:
-
-1.  **Generate Viral Videos from Trending Topics**
-    
-    -   This agent reads topics on Reddit.
-    -   It identifies trending topics.
-    -   It then automatically creates a short-form video based on the content.
-2.  **Identify Top Quotes from Videos for Social Media**
-    
-    -   This agent subscribes to your YouTube channel.
-    -   When you post a new video, it transcribes it.
-    -   It uses AI to identify the most impactful quotes to generate a summary.
-    -   Then, it writes a post to automatically publish to your social media.
-
-These examples show just a glimpse of what you can achieve with AutoGPT! You can create customized workflows to build agents for any use case.
+Read the self-hosting guide →
 
 * * *
 
-### **License Overview:**
+Managed Platform vs. self-hosting
+---------------------------------
 
-🛡️ **Polyform Shield License:** All code and content within the `autogpt_platform` folder is licensed under the Polyform Shield License. This new project is our in-developlemt platform for building, deploying and managing agents.  
-_Read more about this effort_
+**AutoGPT Platform**
 
-🦉 **MIT License:** All other portions of the AutoGPT repository (i.e., everything outside the `autogpt_platform` folder) are licensed under the MIT License. This includes the original stand-alone AutoGPT Agent, along with projects such as Forge, agbenchmark and the AutoGPT Classic GUI.  
-We also publish additional work under the MIT Licence in other repositories, such as GravitasML which is developed for and used in the AutoGPT Platform. See also our MIT Licenced Code Ability project.
+**Self-hosted**
 
-* * *
+Access
 
-### Mission
+Public signup
 
-Our mission is to provide the tools, so that you can focus on what matters:
+Clone and install
 
--   🏗️ **Building** - Lay the foundation for something amazing.
--   🧪 **Testing** - Fine-tune your agent to perfection.
--   🤝 **Delegating** - Let AI work for you, and have your ideas come to life.
+Cost
 
-Be part of the revolution! **AutoGPT** is here to stay, at the forefront of AI innovation.
+Paid plan plus agent usage
 
-**📖 Documentation**  |  **🚀 Contributing**
+No license fee; pay your own infrastructure and model providers
 
-* * *
+Setup
 
-🤖 AutoGPT Classic
-------------------
+Managed
 
-> Below is information about the classic version of AutoGPT.
+Docker and configuration required
 
-**🛠️ Build your own Agent - Quickstart**
+Model access
 
-### 🏗️ Forge
+Built in
 
-**Forge your own agent!** – Forge is a ready-to-go toolkit to build your own agent application. It handles most of the boilerplate code, letting you channel all your creativity into the things that set _your_ agent apart. All tutorials are located here. Components from `forge` can also be used individually to speed up development and reduce boilerplate in your agent project.
+Bring your own API keys
 
-🚀 **Getting Started with Forge** – This guide will walk you through the process of creating your own agent and using the benchmark and user interface.
+Updates and operations
 
-📘 Learn More about Forge
+Managed by AutoGPT
 
-### 🎯 Benchmark
+Managed by you
 
-**Measure your agent's performance!** The `agbenchmark` can be used with any agent that supports the agent protocol, and the integration with the project's CLI makes it even easier to use with AutoGPT and forge-based agents. The benchmark offers a stringent testing environment. Our framework allows for autonomous, objective performance evaluations, ensuring your agents are primed for real-world action.
+Core builder and agent runtime
 
-📦 `agbenchmark` on Pypi  |  📘 Learn More about the Benchmark
+Included
 
-### 💻 UI
+Included
 
-**Makes agents easy to use!** The `frontend` gives you a user-friendly interface to control and monitor your agents. It connects to agents through the agent protocol, ensuring compatibility with many agents from both inside and outside of our ecosystem.
+Data and infrastructure control
 
-The frontend works out-of-the-box with all agents in the repo. Just use the CLI to run your agent of choice!
+Hosted by AutoGPT
 
-📘 Learn More about the Frontend
+Runs on your infrastructure
 
-### ⌨️ CLI
+Support
 
-To make it as easy as possible to use all of the tools offered by the repository, a CLI is included at the root of the repo:
+Plan-dependent
 
-$ ./run
-Usage: cli.py \[OPTIONS\] COMMAND \[ARGS\]...
+Community support
 
-Options:
-  --help  Show this message and exit.
-
-Commands:
-  agent      Commands to create, start and stop agents
-  benchmark  Commands to start the benchmark and list tests and categories
-  setup      Installs dependencies needed for your system.
-
-Just clone the repo, install dependencies with `./run setup`, and you should be good to go!
-
-🤔 Questions? Problems? Suggestions?
-------------------------------------
-
-### Get help - Discord 💬
-
-To report a bug or request a feature, create a GitHub Issue. Please ensure someone else hasn't created an issue for the same topic.
-
-🤝 Sister projects
-------------------
-
-### 🔄 Agent Protocol
-
-To maintain a uniform standard and ensure seamless compatibility with many current and future applications, AutoGPT employs the agent protocol standard by the AI Engineer Foundation. This standardizes the communication pathways from your agent to the frontend and benchmark.
+Both paths use the same repository. Choose the managed Platform when you want agents running immediately; self-host when infrastructure control matters more than operational convenience.
 
 * * *
 
-Stars stats
------------
+Why the hosted Platform is paid
+-------------------------------
 
-⚡ Contributors
---------------
+Every agent run consumes real model usage, compute, storage, secrets management, and operational support. The managed Platform covers that infrastructure and funds continued development of the open-source project.
+
+Self-hosting remains available without a license fee for people and teams that want to provide and operate those resources themselves.
+
+* * *
+
+What you can automate
+---------------------
+
+Area
+
+Example
+
+**Executive operations**
+
+Prepare a daily brief from internal and external signals
+
+**Sales**
+
+Research every account before tomorrow's meetings
+
+**Marketing**
+
+Turn a launch brief into campaign drafts across channels
+
+**Engineering**
+
+Triage incidents and start with a likely cause
+
+**Customer support**
+
+Draft replies, collect context, and flag escalations
+
+**Research**
+
+Monitor sources and return structured reports when something changes
+
+* * *
+
+Integrations
+------------
+
+Connect the apps that are yours. AutoGPT provides access to hundreds of AI models and connects agents to 45+ platforms, including:
+
+`Gmail` · `Google Calendar` · `Google Docs` · `Google Sheets` · `GitHub` · `Slack` · `Discord` · `Notion` · `HubSpot` · `Linear` · `Airtable` · `Jira` · `Salesforce` · `Stripe` · `Webflow`
+
+Explore the integrations →
+
+* * *
+
+Community and support
+---------------------
+
+Resource
+
+Link
+
+Discord
+
+Join the AutoGPT community
+
+Documentation
+
+docs.agpt.co
+
+Bug reports
+
+GitHub Issues
+
+Feature requests
+
+GitHub Discussions
+
+Contributing
+
+CONTRIBUTING.md
+
+* * *
+
+License
+-------
+
+Component
+
+License
+
+What it means
+
+`autogpt_platform/`
+
+Polyform Shield
+
+Free for personal and internal business use; cannot be sold as a competing hosted service
+
+`classic/` and everything else
+
+MIT
+
+Permissive open-source use
+
+* * *
+
+AutoGPT Classic
+---------------
+
+Looking for the original standalone AutoGPT agent? It remains available in `classic/` under the MIT License.
+
+-   Build an agent with Forge
+-   Benchmark an agent with `agbenchmark`
+-   Explore the Classic project
+
+* * *
+
+Contributors
+------------
+
+**Get started with AutoGPT →**
+
+* * *
+
+Deutsch | Español | français | 日本語 | 한국어 | Português | Русский | 中文

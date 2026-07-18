@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 919
+stars: 943
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -87,7 +87,7 @@ npx @grinev/opencode-telegram-bot@latest
 
 > Quick start is for npm usage. You do not need to clone this repository. If you run this command from the source directory (repository root), it may fail with `opencode-telegram: not found`. To run from sources, use the Development section.
 
-On first launch, an interactive wizard will guide you through the configuration — it asks for interface language first, then your bot token, user ID, OpenCode API URL, and optional OpenCode server credentials (username/password). After that, you're ready to go. Open your bot in Telegram and start sending tasks.
+If required configuration is not supplied through process environment variables or an `.env` file, an interactive wizard will guide you through setup. It asks for interface language first, then your bot token, user ID, OpenCode API URL, and optional OpenCode server credentials (username/password). After that, you're ready to go. Open your bot in Telegram and start sending tasks.
 
 #### Alternative: Global Install
 
@@ -266,7 +266,7 @@ Configuration
 
 ### Environment Variables
 
-When installed via npm, the configuration wizard handles the initial setup. The `.env` file is stored in your platform's app data directory:
+Configuration can be provided through process environment variables or an `.env` file. Process environment values take precedence. When installed via npm, the configuration wizard handles any missing required values and stores the generated `.env` file in your platform's app data directory:
 
 -   **macOS:** `~/Library/Application Support/opencode-telegram-bot/.env`
 -   **Windows:** `%APPDATA%\opencode-telegram-bot\.env`
@@ -488,6 +488,14 @@ No
 
 `markdown`
 
+`MESSAGE_MERGE_WINDOW_MS`
+
+Merge Telegram-split long text messages into one prompt after this wait window (ms); `0` disables merging
+
+No
+
+`1500`
+
 `INITIAL_SETTINGS_PRESET`
 
 JSON object that seeds default `/settings` values on first run (keys not yet persisted); see Runtime Settings
@@ -547,6 +555,22 @@ No
 `STT_NOTE_PROMPT`
 
 Optional note prepended to the LLM prompt as `[Note: ...]` for voice transcriptions; empty / `false` / `0` disable it
+
+No
+
+—
+
+`DOC_EXTRACTOR_URL`
+
+Document text extraction API URL (enables PDF/DOCX/PPTX extraction)
+
+No
+
+—
+
+`DOC_EXTRACTOR_API_KEY`
+
+API key for the document extractor (optional for self-hosted extractors)
 
 No
 
@@ -725,6 +749,20 @@ Supported provider examples (Whisper-compatible):
     -   `STT_MODEL=openai/whisper-large-v3`
 
 If STT variables are not set, voice/audio transcription is disabled and the bot will ask you to configure STT.
+
+### Document Text Extraction (Optional)
+
+If `DOC_EXTRACTOR_URL` is set, the bot will extract text from PDF, DOCX, PPTX, and other document files using an external API when the current model does not natively support document input.
+
+The API contract is:
+
+-   **Endpoint:** `POST {DOC_EXTRACTOR_URL}`
+-   **Content-Type:** `multipart/form-data`
+-   **Field:** `file` — the document binary
+-   **Authorization:** `Bearer {DOC_EXTRACTOR_API_KEY}` (only sent when a key is configured)
+-   **Response:** JSON `{ "text": "extracted content..." }`
+
+If the extractor is not configured and the model doesn't support documents, the bot replies with a notice and forwards only the caption text.
 
 ### Model Configuration
 

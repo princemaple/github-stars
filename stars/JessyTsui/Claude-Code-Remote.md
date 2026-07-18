@@ -1,6 +1,6 @@
 ---
 project: Claude-Code-Remote
-stars: 1269
+stars: 1271
 description: Control Claude Code remotely via email、discord、telegram. Start tasks locally, receive notifications when Claude completes them, and send new commands by simply replying to emails.
 url: https://github.com/JessyTsui/Claude-Code-Remote
 ---

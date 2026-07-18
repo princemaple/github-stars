@@ -1,6 +1,6 @@
 ---
 project: portless
-stars: 10090
+stars: 10166
 description: Replace port numbers with stable, named local URLs. For humans and agents.
 url: https://github.com/vercel-labs/portless
 ---
@@ -37,6 +37,8 @@ HTTPS with HTTP/2 is enabled by default. On first run, portless generates a loca
 The proxy auto-starts when you run an app. A random port (4000-4999) is assigned via the `PORT` environment variable. Most frameworks (Next.js, Express, Nuxt, etc.) respect this automatically. For frameworks that ignore `PORT` (Vite, VitePlus, Astro, React Router, Angular, Expo, React Native), portless auto-injects the right `--port` flag and, when needed, a matching `--host` flag.
 
 When auto-starting, portless reuses the configuration (port, TLS, TLDs) from the most recent proxy run, so a restart or reboot does not silently revert to defaults. Explicit env vars (`PORTLESS_PORT`, `PORTLESS_HTTPS`, etc.) always take priority.
+
+Portless stores per-user state in `~/.portless`. When the proxy runs under sudo, it resolves this path from the invoking user's home so the proxy and unprivileged app processes share the same route registrations.
 
 In non-interactive environments (no TTY, or `CI=1`), portless exits with a descriptive error instead of prompting, so task runners like turborepo and CI scripts fail early with a clear message.
 
@@ -262,10 +264,14 @@ Loading
 2.  **Run apps**: `portless <name> <command>` assigns a free port and registers with the proxy
 3.  **Access via URL**: `https://<name>.localhost` routes through the proxy to your app
 
+Outside LAN mode, the proxy and its HTTP redirect listener bind only to the IPv4 and IPv6 loopback addresses, `127.0.0.1` and `::1`. They do not accept connections through LAN, VPN, or other network interfaces.
+
 HTTP/2 + HTTPS
 --------------
 
 HTTPS with HTTP/2 is enabled by default. Browsers limit HTTP/1.1 to 6 connections per host, which bottlenecks dev servers that serve many unbundled files (Vite, Nuxt, etc.). HTTP/2 multiplexes all requests over a single connection.
+
+WebSockets work over both protocol versions, so dev server HMR (Next.js, Vite, etc.) works through the proxy: HTTP/1.1 `Upgrade` requests are forwarded as-is, and WebSockets opened over an HTTP/2 connection use extended CONNECT (RFC 8441).
 
 On first run, portless generates a local CA and adds it to your system trust store. No browser warnings. No manual setup.
 
@@ -278,7 +284,7 @@ portless proxy start --no-tls
 # If you skipped the trust prompt on first run, trust the CA later
 portless trust
 
-On Linux, `portless trust` supports Debian/Ubuntu, Arch, Fedora/RHEL/CentOS, and openSUSE (via `update-ca-certificates` or `update-ca-trust`). On Windows, it uses `certutil` to add the CA to the system trust store.
+On Linux, `portless trust` supports Debian/Ubuntu, Arch, Fedora/RHEL/CentOS, and openSUSE (via `update-ca-certificates` or `update-ca-trust`). On Windows, it uses `certutil` to add the CA to the system trust store. On WSL, it updates both the Linux trust store and the Windows current-user Root store so Windows browsers trust portless HTTPS certificates.
 
 Start at OS startup
 -------------------
@@ -303,7 +309,7 @@ portless proxy start --lan
 portless proxy start --lan --https
 portless proxy start --lan --ip 192.168.1.42
 
-`--lan` switches the proxy to mDNS discovery: services are advertised as `<name>.local` and reachable from any device on the same network. Portless auto-detects your LAN IP and follows Wi-Fi/IP changes automatically, but you can pin another address with `--ip <address>` or by exporting `PORTLESS_LAN_IP`. Set `PORTLESS_LAN=1` in your shell (0/1 boolean) to make LAN mode the default whenever the proxy starts.
+`--lan` explicitly binds the proxy to the IPv4 and IPv6 unspecified addresses, `0.0.0.0` and `::`, and switches to mDNS discovery. This makes services available as `<name>.local` to devices on the same network. Portless auto-detects your LAN IP and follows Wi-Fi/IP changes automatically, but you can pin another address with `--ip <address>` or by exporting `PORTLESS_LAN_IP`. Set `PORTLESS_LAN=1` in your shell (0/1 boolean) to make LAN mode the default whenever the proxy starts.
 
 Portless remembers LAN mode via `proxy.lan`, so if you stop a LAN proxy and start it again, it stays in LAN mode. All proxy settings (port, TLS, TLDs, LAN) are persisted and reused on auto-start unless overridden by explicit flags or env vars. Use `PORTLESS_LAN=0` for one start to switch back to `.localhost` mode. If a proxy is already running with different explicit LAN/TLS/TLD settings, portless warns and asks you to stop it first.
 
@@ -454,7 +460,7 @@ To remove portless data from your machine (proxy state under `~/.portless` and t
 
 portless clean
 
-macOS/Linux may prompt for `sudo`. Custom certificate paths passed with `--cert` and `--key` are not deleted.
+macOS/Linux may prompt for `sudo`. Custom certificate paths passed with `--cert` and `--key` are not deleted. If trust-store removal fails, portless retains its CA certificate and key so a later `portless clean` can safely retry.
 
 Safari / DNS
 ------------

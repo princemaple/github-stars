@@ -1,35 +1,39 @@
 ---
 project: posthog
-stars: 35427
-description: 🦔 PostHog is an all-in-one developer platform for building successful products. We offer product analytics, web analytics, session replay, error tracking, feature flags, experimentation, surveys, data warehouse, a CDP, and an AI product assistant to help debug your code, ship features faster, and keep all your usage and customer data in one stack.
+stars: 36566
+description: :hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.
 url: https://github.com/PostHog/posthog
 ---
 
 Docs - Community - Roadmap - Why PostHog? - Changelog - Bug reports
 
-PostHog is an all-in-one, open source platform for building successful products
--------------------------------------------------------------------------------
+PostHog is the open source platform for building self-driving products
+----------------------------------------------------------------------
 
-PostHog provides every tool you need to build a successful product including:
+PostHog provides every tool you need to build a successful product, and captures all the context agents need to proactively diagnose problems, uncover opportunities, and ship fixes:
 
--   Product Analytics: Autocapture or manually instrument event-based analytics to understand user behavior and analyze data with visualization or SQL.
--   Web Analytics: Monitor web traffic and user sessions with a GA-like dashboard. Easily monitor conversion, web vitals, and revenue.
--   Session Replays: Watch real user sessions of interactions with your website or mobile app to diagnose issues and understand user behavior.
--   Feature Flags: Safely roll out features to select users or cohorts with feature flags.
+-   Self-driving mode: Turn signals in your product data (errors, rage clicks, failed queries, and more) into researched reports and pull requests you review and merge.
+-   Product analytics: Autocapture or manually instrument event-based analytics to understand user behavior and analyze data with visualization or SQL.
+-   Web analytics: Monitor web traffic and user sessions with a GA-like dashboard. Easily monitor conversion, web vitals, and revenue.
+-   Session replays: Watch real user sessions of interactions with your website or mobile app to diagnose issues and understand user behavior.
+-   Feature flags: Safely roll out features to select users or cohorts with feature flags.
 -   Experiments: Test changes and measure their statistical impact on goal metrics. Set up experiments with no-code too.
--   Error Tracking: Track errors, get alerts, and resolve issues to improve your product.
+-   Error tracking: Track errors, get alerts, and resolve issues to improve your product.
+-   Logs: Ingest, search, and analyze log data alongside the rest of your product data.
 -   Surveys: Ask anything with our collection of no-code survey templates, or build custom surveys with our survey builder.
 -   Data warehouse: Sync data from external tools like Stripe, Hubspot, your data warehouse, and more. Query it alongside your product data.
 -   Data pipelines: Run custom filters and transformations on your incoming data. Send it to 25+ tools or any webhook in real time or batch export large amounts to your warehouse.
 -   AI observability: Capture traces, generations, latency, and cost for your LLM-powered app.
 -   Workflows: Create workflows that automate actions or send messages to your users.
 
-Best of all, all of this is free to use with a generous monthly free tier for each product. Get started by signing up for PostHog Cloud US or PostHog Cloud EU.
+You can steer it all from Slack, web, desktop (PostHog Code), or your own editor via the MCP.
+
+Best of all, all of this is free to use with a generous monthly free tier for each tool. Get started by signing up for PostHog Cloud US or PostHog Cloud EU.
 
 Table of Contents
 -----------------
 
--   PostHog is an all-in-one, open source platform for building successful products
+-   PostHog is the open source platform for building self-driving products
 -   Table of Contents
 -   Getting started with PostHog
     -   PostHog Cloud (Recommended)
@@ -60,7 +64,7 @@ We _do not_ provide customer support or offer guarantees for open source deploym
 Setting up PostHog
 ------------------
 
-Once you've got a PostHog instance, you can set it up by installing our JavaScript web snippet, one of our SDKs, or by using our API.
+Once you've got a PostHog instance, you can set it up by installing our JavaScript web snippet, one of our SDKs, or by using our API. You can also connect the MCP to bring PostHog into Claude Code, Cursor, or any MCP-compatible agent.
 
 We have SDKs and libraries for popular languages and frameworks like:
 

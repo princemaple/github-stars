@@ -1,6 +1,6 @@
 ---
 project: data-formulator
-stars: 15918
+stars: 15956
 description: 🪄 Data Formulator is an interactive AI-powered data analysis system makes it easy to connect, explore and visualize data.
 url: https://github.com/microsoft/data-formulator
 ---
@@ -26,32 +26,30 @@ Data Formulator makes it simple: **connect any data, ask anything, get charts yo
 
 Data.Formulator-0.7-1080p.mp4
 
+Tip
+
+**Love the charts?** They're built on **Flint** — our open-source visualization language that compiles compact, semantic chart specs into polished Vega-Lite, ECharts, and Chart.js. Explore the project site or drop it into your own app.
+
 News 🔥🔥🔥
 -----------
 
-\[05-28-2026\] **Data Formulator 0.7** — turn ANY data into insights in five easy steps:
+\[07-17-2026\] **Data Formulator 0.8 alpha 2** — A more connected, conversational way to work with data:
 
-1.  **Connect.** Governed, reusable connections to databases, warehouses, BI systems, object stores, and files (Superset, Kusto, Cosmos DB, MySQL, PostgreSQL, MSSQL, BigQuery, S3, Azure Blob, …). Need a custom source? Point your coding agent at the data loader plugin guide.
-2.  **Load.** Ask the **data-loading agent** to find tables from connected databases, or extract data from Excel files, images, websites, and text.
-3.  **Explore.** A unified **Data Agent** with thread memory inspects data, runs sandboxed code, and weaves explanation, exploration, and recommendation into one fluid conversation — grounded in your context. The **Data Thread** keeps questions, intermediate results, and charts navigable: revisit earlier steps, branch into alternatives, and compare side by side.
-4.  **Refine.** 30+ chart types (area, streamgraph, candlestick, radar, maps, KPI, …) via a new semantic chart engine, plus a **style-refinement agent** that turns rough charts into presentation-ready visuals through natural language.
-5.  **Share.** Build reports and export as image or PDF to tell the story.
+-   **Explore large datasets through conversation.** Connect a database, then ask the agent to find the right tables, filter the data, or update your selection as your question evolves. You can review the resulting filters, previews, and data sources before anything is loaded.
+-   **Keep the whole analysis in one conversation.** Agents can load data without losing track of what you asked. Questions, explanations, and results stay together in the Data Thread, so you can pick up from any step or branch into a new question, column, or chart.
+-   **Choose a chart that fits the question.** The gallery now includes bullet, connected scatter, ECDF, Gantt, range area, slope, sparkline, and violin charts, along with better recommendations. Files you attach also stay available to the analyst as the exploration continues.
+-   **Spend less time troubleshooting.** This release improves long-running sessions, model routing, data isolation, installation across platforms, dependency security, and MySQL data freshness. Persistent logs and an in-app log viewer make problems easier to track down.
 
-➕ **Persistent sessions & workspaces** — identity-isolated, saved across restarts. Data Formulator is your de facto data analysis pane.
+> Preview with `pip install --pre data_formulator==0.8.0a2` or `uvx --from data_formulator==0.8.0a2 data_formulator`.
 
-**Multilingual UI** — Data Formulator now speaks Chinese in addition to English (没错，DF现在会说中文了！). More languages on the way — contributions welcome.
-
-> Install with `pip install data_formulator` or run instantly with `uvx data_formulator`.
-
-Tip
-
-**Are you a developer?** Join us to shape the future of AI-powered data exploration! We're looking for help with new agents, data connectors, chart templates, and more. Check out the Developers' Guide and our open issues.
+> Install the latest stable release (0.7) with `pip install data_formulator` or run instantly with `uvx data_formulator`.
 
 Previous Updates
 ----------------
 
 Here are milestones that lead to the current design:
 
+-   **v0.7** (05-28-2026): Turn ANY data into insights in five steps — connect governed data sources, load via agents, explore with the unified `DataAgent` + Data Thread, refine 30+ chart types (semantic chart engine powered by Flint) with a style-refinement agent, and share as reports. Plus persistent sessions & workspaces and a multilingual (English/Chinese) UI.
 -   **v0.7 alpha 2** (05-11-2026): Early preview of data connectors, the unified `DataAgent` with thread memory, persistent workspaces, the semantic chart engine, and experimental knowledge distillation.
 -   **v0.6** (Demo): Real-time insights from live data — connect to URLs and databases with automatic refresh
 -   **uv support**: Faster installation with uv — `uvx data_formulator` or `uv pip install data_formulator`
@@ -116,32 +114,6 @@ Using Data Formulator
 Besides uploading csv, tsv or xlsx files that contain structured data, you can ask Data Formulator to extract data from screenshots, text blocks or websites, or load data from databases use connectors. Then you are ready to explore. Ask visualizaiton questions, edit charts, or delegate some exploration tasks to agents. Then, create reports to share your insights.
 
 data-formulator-tutorial.mp4
-
-Research Papers
----------------
-
--   Data Formulator 2: Iteratively Creating Rich Visualizations with AI
-
-```
-@article{wang2024dataformulator2iteratively,
-      title={Data Formulator 2: Iteratively Creating Rich Visualizations with AI}, 
-      author={Chenglong Wang and Bongshin Lee and Steven Drucker and Dan Marshall and Jianfeng Gao},
-      year={2024},
-      booktitle={ArXiv preprint arXiv:2408.16119},
-}
-```
-
--   Data Formulator: AI-powered Concept-driven Visualization Authoring
-
-```
-@article{wang2023data,
-  title={Data Formulator: AI-powered Concept-driven Visualization Authoring},
-  author={Wang, Chenglong and Thompson, John and Lee, Bongshin},
-  journal={IEEE Transactions on Visualization and Computer Graphics},
-  year={2023},
-  publisher={IEEE}
-}
-```
 
 Contributing
 ------------

@@ -1,9 +1,11 @@
 ---
 project: TradingAgents
-stars: 92364
+stars: 93546
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
+
+  
 
   
 
@@ -26,11 +28,11 @@ News
 -   \[2026-02\] **TradingAgents v0.2.0** released with multi-provider LLM support (GPT-5.x, Gemini 3.x, Claude 4.x, Grok 4.x) and improved system architecture.
 -   \[2026-01\] **Trading-R1** Technical Report released, with Terminal expected to land soon.
 
+🚀 TradingAgents | ⚡ Installation & CLI | 🎬 Demo | 📦 Package Usage | 🤝 Contributing | 📄 Citation
+
 > 🎉 **TradingAgents** officially released! We have received numerous inquiries about the work, and we would like to express our thanks for the enthusiasm in our community.
 > 
 > So we decided to fully open-source the framework. Looking forward to building impactful projects with you!
-
-🚀 TradingAgents | ⚡ Installation & CLI | 🎬 Demo | 📦 Package Usage | 🤝 Contributing | 📄 Citation
 
 TradingAgents Framework
 -----------------------

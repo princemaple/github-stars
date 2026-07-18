@@ -1,6 +1,6 @@
 ---
 project: beszel
-stars: 23450
+stars: 23579
 description: Lightweight server monitoring with historical data, docker stats, and alerts.
 url: https://github.com/henrygd/beszel
 ---

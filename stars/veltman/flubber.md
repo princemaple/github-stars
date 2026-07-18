@@ -1,6 +1,6 @@
 ---
 project: flubber
-stars: 6924
+stars: 6923
 description: Tools for smoother shape animations.
 url: https://github.com/veltman/flubber
 ---

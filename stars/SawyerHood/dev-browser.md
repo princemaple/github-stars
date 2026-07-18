@@ -1,6 +1,6 @@
 ---
 project: dev-browser
-stars: 6436
+stars: 6450
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
@@ -82,6 +82,23 @@ dev-browser install-skill --claude  # ~/.claude/skills/dev-browser/SKILL.md
 dev-browser install-skill --agents  # ~/.agents/skills/dev-browser/SKILL.md
 
 Flags may be combined. With an interactive terminal, `dev-browser install-skill` prompts for targets. In non-interactive environments it updates all three locations, including Codex, so an older copied skill does not survive a CLI upgrade.
+
+### Idle browser cleanup
+
+Daemon-launched named Chromium instances can be closed automatically after they have been idle for a configured duration:
+
+dev-browser --idle-timeout 5m < script.js
+DEV\_BROWSER\_IDLE\_TIMEOUT\_MS=300000 dev-browser status
+
+The flag accepts `30s`, `5m`, `1h`, or raw milliseconds. You can also set a user default in `~/.dev-browser/config.json`:
+
+{
+  "idleTimeout": "5m"
+}
+
+Precedence is `--idle-timeout`, then `DEV_BROWSER_IDLE_TIMEOUT_MS`, then `idleTimeout` in the user config, then disabled. Set any source to `0` to disable cleanup. The effective setting is sent to an already-running daemon and shown by `dev-browser status`.
+
+Cleanup is applied independently to each named browser. Activity is measured from both the start and completion of each request, so running requests are never reaped. Only Chromium instances launched by dev-browser are eligible; browsers attached with `--connect` are never closed by idle cleanup. Closing an idle browser does not delete its profile directory, cookies, or login state, and the next request relaunches it from the same persistent profile. `dev-browser stop` keeps its existing behavior of stopping the daemon and all managed browser connections.
 
 Allowing dev-browser in Claude Code without permission prompts
 

@@ -1,6 +1,6 @@
 ---
 project: pretext
-stars: 49058
+stars: 49208
 description: Fast, accurate & comprehensive text measurement & layout
 url: https://github.com/chenglou/pretext
 ---

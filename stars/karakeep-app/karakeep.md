@@ -1,6 +1,6 @@
 ---
 project: karakeep
-stars: 27309
+stars: 27534
 description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 url: https://github.com/karakeep-app/karakeep
 ---
@@ -34,8 +34,6 @@ Features
 -   ⬇️ Bookmark importers from Chrome, Pocket, Linkwarden, Omnivore, Tab Session Manager.
 -   🔄 Automatic sync with browser bookmarks via floccus.
 -   \[Planned\] Offline reading on mobile, semantic search across bookmarks, ...
-
-**⚠️ This app is under heavy development.**
 
 Documentation
 -------------

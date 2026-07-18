@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 73164
+stars: 73361
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -33,6 +33,7 @@ Start cloud training:
 
 -   **Colab (free)**: https://colab.research.google.com/drive/1eRTPn37ltBbYsISy9Aw2NuI2Aq5CQrD9?usp=sharing
 -   **PAI-DSW (free trial)**: https://gallery.pai-ml.com/#/preview/deepLearning/nlp/llama\_factory
+-   **AMD GPU Cloud (free credits)**: https://github.com/AMD-AIM/AMD\_Developers\_Notebooks/blob/main/en/AMD\_developer\_LLaMAFactory\_note\_en.md
 
 Read technical notes:
 

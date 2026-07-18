@@ -32,6 +32,10 @@ url: https://github.com/simonwep/pickr
 
 ### Status of this project
 
+Warning
+
+As of `v1.10.0` there is no `es5` version anymore. If you need to support older browsers consult the docs for your bundler to transpile dependencies.
+
 Important
 
 This project might continue to get important security- and bug-related updates but its _feature set_ is frozen, and it's highly unlikely that it'll get new features or enhancements.
@@ -72,13 +76,10 @@ import '@simonwep/pickr/dist/themes/classic.min.css';   // 'classic' theme
 import '@simonwep/pickr/dist/themes/monolith.min.css';  // 'monolith' theme
 import '@simonwep/pickr/dist/themes/nano.min.css';      // 'nano' theme
 
-// Modern or es5 bundle (pay attention to the note below!)
+// Your bundler will pick the correct import for you
 import Pickr from '@simonwep/pickr';
-import Pickr from '@simonwep/pickr/dist/pickr.es5.min';
 
 * * *
-
-> Attention: The es5-bundle (e.g. legacy version) is quite big (around a triple of the modern bundle). Please take into consideration to use the modern version and add polyfills later to your final bundle! (Or better: give a hint to users that they should use the latest browsers). Browsers such as IE are **not supported** (at least not officially).
 
 ### Browser
 
@@ -89,11 +90,11 @@ jsdelivr:
 <link rel\="stylesheet" href\="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/monolith.min.css"/> <!-- 'monolith' theme -->
 <link rel\="stylesheet" href\="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme -->
 
-<!-- Modern or es5 bundle -->
+<!-- ES6 or UMD module -->
+<script src\="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.mjs" type\="module"\></script\>
 <script src\="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"\></script\>
-<script src\="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.es5.min.js"\></script\>
 
-Be sure to load the `pickr.min.js` (or the es5 version) **after** `pickr.min.css`. Moreover the `script` tag doesn't work with the `defer` attribute.
+Be sure to load the `pickr.min.js` **after** `pickr.min.css`. Moreover the `script` tag doesn't work with the `defer` attribute.
 
 Usage
 -----

@@ -1,6 +1,6 @@
 ---
 project: buildawesome
-stars: 19763
+stars: 19782
 description: A simpler site generator. Transforms a directory of templates (of varying types) into HTML.
 url: https://github.com/11ty/buildawesome
 ---

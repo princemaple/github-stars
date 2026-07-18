@@ -1,6 +1,6 @@
 ---
 project: restic
-stars: 34956
+stars: 35062
 description: Fast, secure, efficient backup program
 url: https://github.com/restic/restic
 ---
@@ -83,7 +83,7 @@ The binaries released with each restic version starting at 0.6.1 are reproducibl
 News
 ----
 
-You can follow the restic project on Mastodon @resticbackup or subscribe to the project blog.
+You can follow the restic project on Mastodon @restic or subscribe to the project blog.
 
 License
 -------

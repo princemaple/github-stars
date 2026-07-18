@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 34705
+stars: 34816
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -1695,6 +1695,7 @@ In `[env(variable, value)]` if `value` is `[]`, `variable` is not set. Otherwise
 -   `env(keys, default)` Checks for the environment variables named in `keys` in order and returns the value of the first that is set. Returns `default` if none are set or an error if `default` is omitted.
 -   `is_dependency()` - Returns the canonical booleans.
 -   `join_list(value, separator)` - Joins `value` into a single string. Elements are joined with `separator`, or with a single space if `separator` is omitted.
+-   `len(value)` - Returns the number of elements in `value`.
 -   `path_exists()` - Returns the canonical booleans.
 -   `prepend()` - Applies to each list element individually and does not split elements on whitespace.
 -   `quote()` - Applies to each list element individually.

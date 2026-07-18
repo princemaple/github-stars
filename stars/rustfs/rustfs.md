@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 29727
+stars: 29961
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -224,7 +224,7 @@ chown -R 10001:10001 data logs
 docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
 
 # Using specific version
-docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-beta.8
+docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-beta.10
 
 If you use podman instead of docker, you can install the RustFS with the below command
 
@@ -308,7 +308,7 @@ make help-docker                      # Show all Docker-related commands
 
 Follow the instructions in the Helm Chart README to install RustFS on a Kubernetes cluster.
 
-For scanner pacing, cycle budgets, bitrot cadence, lifecycle transition status, and single-node single-disk idle CPU tuning, see Scanner Runtime Controls. For repeatable scanner-pressure validation, see Scanner Benchmark Runbook.
+For scanner pacing, cycle budgets, bitrot cadence, lifecycle transition status, and single-node single-disk idle CPU tuning, see Scanner Runtime Controls. For repeatable scanner-pressure validation, see Scanner Benchmark Runbook. For drive timeout knobs on slow storage — including the walk stall budget that governs `ListObjects` on large prefixes — see Drive Timeout Tuning.
 
 ### 5\. Nix Flake (Option 5)
 

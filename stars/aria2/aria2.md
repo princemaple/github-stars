@@ -1,6 +1,6 @@
 ---
 project: aria2
-stars: 41415
+stars: 41472
 description: aria2 is a lightweight multi-protocol & multi-source, cross platform download utility operated in command-line. It supports HTTP/HTTPS, FTP, SFTP, BitTorrent and Metalink.
 url: https://github.com/aria2/aria2
 ---

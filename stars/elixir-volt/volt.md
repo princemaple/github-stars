@@ -8,12 +8,12 @@ url: https://github.com/elixir-volt/volt
 Volt ⚡
 ======
 
-Vite-level frontend tooling that runs inside the BEAM. One dep replaces esbuild, the Tailwind CLI, and Node.js with Rust NIFs powered by OXC, LightningCSS, and QuickBEAM for embedded JavaScript runtimes.
+Vite-level frontend tooling that runs inside the BEAM. One dep replaces esbuild, the Sass and Tailwind CLIs, and Node.js with Rust NIFs powered by OXC, LightningCSS, grass, and QuickBEAM for embedded JavaScript runtimes.
 
 mix igniter.install volt
 mix phx.server
 
-The installer configures everything. No binaries to download, no extra processes to manage.
+The installer configures everything. No binaries to download, no extra processes to manage. Volt requires Elixir 1.18 or later and Erlang/OTP 27 or later.
 
 Why Volt
 --------
@@ -34,7 +34,7 @@ mix igniter.install volt
 Or add the dep manually:
 
 def deps do
-  \[{:volt, "~> 0.16"}\]
+  \[{:volt, "~> 0.17"}\]
 end
 
 See the Getting Started guide for manual configuration.

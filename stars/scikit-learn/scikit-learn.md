@@ -1,6 +1,6 @@
 ---
 project: scikit-learn
-stars: 66693
+stars: 66716
 description: scikit-learn: machine learning in Python
 url: https://github.com/scikit-learn/scikit-learn
 ---
@@ -9,7 +9,7 @@ url: https://github.com/scikit-learn/scikit-learn
 
 The project was started in 2007 by David Cournapeau as a Google Summer of Code project, and since then many volunteers have contributed. See the About us page for a list of core contributors.
 
-It is currently maintained by a team of volunteers.
+It is currently maintained by a community of contributors, with volunteers but also support from several organisations.
 
 Website: https://scikit-learn.org
 
@@ -87,8 +87,6 @@ Project History
 ---------------
 
 The project was started in 2007 by David Cournapeau as a Google Summer of Code project, and since then many volunteers have contributed. See the About us page for a list of core contributors.
-
-The project is currently maintained by a team of volunteers.
 
 **Note**: scikit-learn was previously referred to as scikits.learn.
 

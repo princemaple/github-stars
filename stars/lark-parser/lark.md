@@ -1,6 +1,6 @@
 ---
 project: lark
-stars: 5931
+stars: 5934
 description: Lark is a parsing toolkit for Python, built with a focus on ergonomics, performance and modularity.
 url: https://github.com/lark-parser/lark
 ---

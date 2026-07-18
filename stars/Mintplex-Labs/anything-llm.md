@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 63127
+stars: 63512
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -95,6 +95,7 @@ Cool Features of AnythingLLM
 -   Lemonade by AMD
 -   Minimax
 -   Cerebras (chat models)
+-   oMLX
 
 **Embedder models:**
 

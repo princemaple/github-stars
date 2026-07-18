@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3898
+stars: 3905
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -81,7 +81,7 @@ categories:
       label: "major"
   - type: "version-resolver"
     semver-increment: "patch"
-change-template: "\- $TITLE @$AUTHOR (#$NUMBER)"
+change-template: "\- $TITLE (#$NUMBER) $AUTHORS"
 change-title-escapes: '\\<\*\_&' # You can add # and @ to disable mentions, and add \` to disable code blocks.
 template: |
   ## Changes
@@ -150,7 +150,25 @@ The template to use when calculating the next version number for the release. Us
 
 Optional
 
-The template to use for each merged pull request. Use change template variables to insert values. Default: `"* $TITLE (#$NUMBER) @$AUTHOR"`.
+The template to use for each merged pull request. Use change template variables to insert values. Default: `"* $TITLE (#$NUMBER) $AUTHORS"`.
+
+`change-author-template`
+
+Optional
+
+The template to use for each author in `$AUTHORS`. Supports `$AUTHOR` for the raw login/name and `$AUTHOR_MENTION` for a GitHub-formatted mention. Default: `"$AUTHOR_MENTION"`.
+
+`change-authors-separator`
+
+Optional
+
+The separator between authors in `$AUTHORS`. Default: `", "`. Use `"\n"` with a list-style `change-author-template` for multiline output.
+
+`change-authors-final-separator`
+
+Optional
+
+A different separator before the final author in `$AUTHORS`, e.g. `" and "` produces `@octocat, @cchanche and @jetersen`. Defaults to `change-authors-separator`.
 
 `change-title-escapes`
 
@@ -175,6 +193,12 @@ Define how changes are filtered, grouped, and versioned. Categories support `typ
 Optional
 
 Exclude specific usernames from the generated `$CONTRIBUTORS` variable. Refer to Exclude Contributors to learn more about this option.
+
+`new-contributor-template`
+
+Optional
+
+The template to use for each new contributor in `$NEW_CONTRIBUTORS`. Use new contributor template variables to insert values. Default: `"* $AUTHOR_MENTION made their first contribution in #$NUMBER"`.
 
 `no-contributors-template`
 
@@ -228,7 +252,7 @@ Mark the release as latest. Only works for published releases. Can be one of: `t
 
 Optional
 
-The release target, i.e. branch or commit it should point to. Default: the ref that release-drafter runs for, e.g. `refs/heads/master` if configured to run on pushes to `master`.
+The release target, i.e. branch, commit SHA, or fully qualified tag or pull request ref it should point to. Tag and pull request refs are resolved to commit SHAs. Pull request merge refs always run in dry-run mode because they point to ephemeral merge commits; set `dry-run: true` explicitly to acknowledge output-only behavior and suppress the warning. Defaults to the branch that release-drafter runs for, e.g. `master` when configured to run on pushes to `master`.
 
 `filter-by-range`
 
@@ -270,6 +294,10 @@ The markdown list of pull requests that have been merged.
 `$CONTRIBUTORS`
 
 A comma separated list of contributors to this release (pull request authors, commit authors, and commit committers).
+
+`$NEW_CONTRIBUTORS`
+
+A Markdown list of pull request authors making their first contribution and the corresponding pull request.
 
 `$PREVIOUS_TAG`
 
@@ -445,6 +473,35 @@ The example above:
 -   uses the category with no `when` as the fallback when nothing else matches
 -   picks the highest semver increment across matching categories
 
+New Contributor Template Variables
+----------------------------------
+
+You can use any of the following variables in `new-contributor-template`:
+
+Variable
+
+Description
+
+`$AUTHOR`
+
+The new contributor’s username, e.g. `gracehopper`.
+
+`$AUTHOR_MENTION`
+
+The new contributor’s GitHub mention, e.g. `@gracehopper`.
+
+`$AUTHOR_URL`
+
+The URL of the new contributor’s GitHub profile, e.g. `https://github.com/gracehopper`.
+
+`$NUMBER`
+
+The number of the contributor’s first pull request, e.g. `42`.
+
+`$URL`
+
+The URL of the contributor’s first pull request, e.g. `https://github.com/octocat/repo/pull/42`.
+
 Change Template Variables
 -------------------------
 
@@ -458,6 +515,10 @@ Description
 
 The number of the pull request, e.g. `42`.
 
+`$CATEGORY`
+
+The title of the category that matched the pull request, preserving its configured case. Empty for uncategorized pull requests.
+
 `$TITLE`
 
 The title of the pull request, e.g. `Add alien technology`. Any characters excluding @ and # matching `change-title-escapes` will be prepended with a backslash so that they will appear verbatim instead of being interpreted as markdown format characters. @s and #s if present in `change-title-escapes` will be appended with an HTML comment so that they don't become mentions.
@@ -465,6 +526,14 @@ The title of the pull request, e.g. `Add alien technology`. Any characters exclu
 `$AUTHOR`
 
 The pull request author’s username, e.g. `gracehopper`.
+
+`$AUTHOR_URL`
+
+The pull request author’s GitHub profile URL, e.g. `https://github.com/gracehopper`.
+
+`$AUTHORS`
+
+The pull request author and its associated commit authors rendered with `change-author-template` and joined with `change-authors-separator`, with the pull request author first.
 
 `$BODY`
 
@@ -481,6 +550,26 @@ The base name of of the base Ref associated with the pull request e.g. `master`.
 `$HEAD_REF_NAME`
 
 The head name of the head Ref associated with the pull request e.g. `my-bug-fix`.
+
+For a multiline author list, render each author with `$AUTHOR` and join them with a newline:
+
+categories:
+  - title: bug
+    when:
+      label: bug
+  - title: todo
+category-template: ""
+change-template: |-
+  - type: $CATEGORY
+    message: |-
+      $TITLE
+    pull: $NUMBER
+    authors:
+      $AUTHORS
+change-author-template: "\- $AUTHOR"
+change-authors-separator: "\\n    "
+
+Use `$AUTHOR_MENTION` instead of `$AUTHOR` in `change-author-template` when GitHub mentions are desired. GitHub App bots are rendered as linked mentions, for example `[@dependabot[bot]](https://github.com/apps/dependabot)`. `$CATEGORY` preserves `categories[].title`; configure the title with the casing required by the output.
 
 Categorize Changes
 ------------------
@@ -844,7 +933,7 @@ A string indicating whether the release being created or updated should be marke
 
 `commitish`
 
-A string specifying the target branch for the release being created.
+The release target: a branch, commit SHA, or fully qualified tag or pull request ref. Tag and pull request refs are resolved to commit SHAs. Pull request merge refs force output-only dry-run mode and disable publishing.
 
 `header`
 

@@ -1,6 +1,6 @@
 ---
 project: lua
-stars: 206
+stars: 208
 description: A Lua 5.3 runtime in pure Elixir
 url: https://github.com/tv-labs/lua
 ---
@@ -19,9 +19,11 @@ Add `lua` to your dependencies in `mix.exs`:
 
 def deps do
   \[
-    {:lua, "~> 1.0.0-rc"}
+    {:lua, "~> 1.0.0"}
   \]
 end
+
+Upgrading from `0.4.0` or earlier? See the Migrating to 1.0 guide.
 
 Quickstart
 ----------
@@ -62,14 +64,11 @@ rescue
     e.line    \# => 2
     e.source  \# => "<eval>" (chunk name)
 
-    \# e.message is a formatted, colorized frame (ANSI codes elided here):
     #
-    \#   Lua runtime error: Runtime Error
-    #
-    \#     at <eval>:2:
+    \#   Lua runtime error: at <eval>:2:
     #
     \#     runtime error: something went wrong
-    e.message
+    Exception.message(e)
 end
 
 Lua-level error handling works too — `pcall` catches the error and returns it as a value:

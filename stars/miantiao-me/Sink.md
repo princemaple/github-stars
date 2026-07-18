@@ -1,6 +1,6 @@
 ---
 project: Sink
-stars: 6900
+stars: 6953
 description: ⚡ A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.
 url: https://github.com/miantiao-me/Sink
 ---
@@ -10,6 +10,8 @@ url: https://github.com/miantiao-me/Sink
 
 **A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.**
 
+Website · Documentation · API Reference
+
 * * *
 
 ✨ Features
@@ -18,15 +20,23 @@ url: https://github.com/miantiao-me/Sink
 -   **🔗 URL Shortening:** Compress your URLs to their minimal length.
 -   **📈 Analytics:** Monitor link analytics and gather insightful statistics.
 -   **☁️ Serverless:** Deploy without the need for traditional servers.
--   **🎨 Customizable Slug:** Support personalized slugs, UTM parameters, and case sensitivity.
--   **🪄 AI Assistance:** Generate slugs and OpenGraph metadata from page content.
+-   **🎨 Customizable Slug:** Support personalized slugs, UTM parameters, and optional case-sensitive slug matching through configuration.
+-   **🪄 AI Assistance:** Optionally use Cloudflare Workers AI to generate slugs and OpenGraph metadata from page content.
 -   **⏰ Link Control:** Set expirations, passwords, and unsafe-link warning pages.
 -   **📱 Smart Routing:** Redirect visitors by device or country.
 -   **🖼️ Social Preview:** Customize social previews with titles, descriptions, and images.
--   **📊 Real-time Analytics:** Live 3D globe and real-time event logs.
+-   **📊 Near-real-time Analytics:** Display a live 3D globe and event logs using 10-second analytics polling and client-side replay, not SSE or WebSocket.
 -   **🔲 QR Code:** Generate QR codes for your short links.
--   **📦 Import/Export:** Bulk link migration via JSON and access analytics via CSV.
+-   **📦 Import/Export:** Transfer links via JSON and export access analytics via CSV.
 -   **🌍 Multi-language:** Full i18n support for dashboard and redirect pages.
+
+Tip
+
+**Who is Sink for?**
+
+Sink focuses on **individuals and small teams** who want a simple, self-hosted shortener on Cloudflare.
+
+For professional / business needs (managed service, multi-user, SLA, and more), use **S.EE**.
 
 🪧 Demo
 -------
@@ -40,9 +50,12 @@ Site Token: SinkCool
 🧱 Technologies Used
 --------------------
 
--   **Framework**: Nuxt
--   **Database**: Cloudflare Workers KV
+-   **Framework**: Nuxt 4
+-   **Database**: Cloudflare D1 is the authoritative link store; Workers KV is a write-through read cache
+-   **ORM**: Drizzle ORM
 -   **Analytics Engine**: Cloudflare Workers Analytics Engine
+-   **Object Storage**: Cloudflare R2 for optional logical JSON snapshots
+-   **AI**: Optional Cloudflare Workers AI
 -   **UI Components**: shadcn-vue
 -   **Styling:** Tailwind CSS
 -   **Deployment**: Cloudflare
@@ -58,7 +71,7 @@ We welcome your contributions and PRs.
 -   Apple Shortcuts - Sink Shortcuts
 -   iOS App - Sink
 -   Enhanced Link Management (with Cloudflare D1)
--   Analytics Enhancements (Support for merging filter conditions)
+-   Analytics Enhancements (Multi-link filtering)
 -   Dashboard Performance Optimization (Infinite loading)
 -   API, migration, backup, and redirect tests
 
@@ -77,7 +90,7 @@ Configuration Docs
 🔌 API
 ------
 
-API Docs
+API Docs · Live Scalar Reference for the public demo instance
 
 🤖 AI Skills
 ------------
@@ -91,9 +104,9 @@ npx skills add miantiao-me/sink
 
 We currently do not support native MCP Server, but we have OpenAPI documentation, and you can use the following method to support MCP.
 
-> Replace the domain name in `OPENAPI_SPEC_URL` with your own domain name.
+> Replace the domain name in `OPENAPI_SPEC_URL` and the `API_KEY` below with your own instance configuration.
 > 
-> The `API_KEY` is the same as the `NUXT_SITE_TOKEN` in the environment variables.
+> The `API_KEY` is the same as the `NUXT_SITE_TOKEN` in your instance's environment variables.
 
 {
   "mcpServers": {

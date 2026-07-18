@@ -1,6 +1,6 @@
 ---
 project: wekan
-stars: 20990
+stars: 20998
 description: The Open Source kanban, built with Meteor. GitHub issues/PRs are only for FLOSS Developers, not for support, support is at https://wekan.fi/commercial-support/ . New English strings for new features at imports/i18n/data/en.i18n.json . Non-English translations at https://app.transifex.com/wekan/wekan only.
 url: https://github.com/wekan/wekan
 ---
@@ -74,7 +74,7 @@ Since WeKan ® is a free software, you don’t have to trust us with your data a
 
 -   WeKan ® is used in most countries of the world.
 -   WeKan ® largest user has 30k users using WeKan ® in their company.
--   WeKan ® has been translated to about 105 languages.
+-   WeKan ® has been translated to 154 languages.
 -   Features: WeKan ® has real-time user interface.
 -   Platforms: WeKan ® supports many platforms. WeKan ® is critical part of new platforms Wekan is currently being integrated to.
 

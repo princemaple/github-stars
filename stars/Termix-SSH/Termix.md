@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 14085
+stars: 14154
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -49,11 +49,11 @@ Features
 
 **Host Metrics:** View CPU, memory, disk usage, network, uptime, system information, firewall, port monitor, log viewer, users/permissions, certificates, and many more which work on most Linux based servers. Includes time-series history graphs and threshold-based alerts with ntfy and webhook support.
 
-**User Authentication:** Secure user management with admin controls and OIDC/LDAP/SSO (with access control), 2FA (TOTP), and passkey (WebAuthn) support. View active user sessions across all platforms and revoke permissions. Link your OIDC/Local accounts together. View audit log of all users actions.
+**User Authentication:** Secure user management with admin controls (can edit other users information) and OIDC/LDAP/SSO (with access control), 2FA (TOTP), and passkey (WebAuthn) support. View active user sessions across all platforms and revoke permissions. Link your OIDC/Local accounts together. View audit log of all users actions.
 
 **Tailscale Integration:** List devices from your tailnet to quickly add them as hosts, and connect using Tailscale SSH as an authentication method, letting your tailnet ACLs handle authorization without storing credentials.
 
-**RBAC:** Create roles and share hosts across users/roles.
+**RBAC/Sharing:** Create roles and share hosts across users/roles. Supports all auth types and all host protocols.
 
 **Serial Connections:** Connect to serial devices (routers, switches, microcontrollers, etc.) directly from the browser or desktop app. Configure baud rate, data bits, stop bits, and parity. Uses the Web Serial API in supported browsers or a native backend in the Electron app.
 
@@ -166,9 +166,26 @@ networks:
 Donate
 ------
 
-Termix is free and open source with no subscriptions or paid plans. If you find it useful, consider donating to help cover server costs, domains, and development time.
+Termix is free and open source with no subscriptions or paid plans. If you find it useful, consider donating to help cover server costs, domains, and development time. Donations also help fund the time to research and learn what's needed to build features like SAML, Kubernetes, and Agent support. Track progress and donate below.
 
 Donate
+
+  
+
+Sponsors
+--------
+
+Interested in a paid placement to support development? Email mail@termix.site.
+
+  
+                           
+
+  
+
+Support
+-------
+
+If you need help or want to request a feature with Termix, visit the Issues page, log in, and press `New Issue`. Please be as detailed as possible in your issue, preferably written in English. You can also join the Discord server and visit the support channel, however, response times may be longer.
 
   
 
@@ -190,21 +207,6 @@ Planned Features
 ----------------
 
 See Projects for all planned features. If you are looking to contribute, see Contributing.
-
-  
-
-Sponsors
---------
-
-  
-                           
-
-  
-
-Support
--------
-
-If you need help or want to request a feature with Termix, visit the Issues page, log in, and press `New Issue`. Please be as detailed as possible in your issue, preferably written in English. You can also join the Discord server and visit the support channel, however, response times may be longer.
 
   
 

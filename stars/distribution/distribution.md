@@ -1,6 +1,6 @@
 ---
 project: distribution
-stars: 10522
+stars: 10531
 description: The toolkit to pack, ship, store, and deliver container content
 url: https://github.com/distribution/distribution
 ---

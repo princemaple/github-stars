@@ -1,6 +1,6 @@
 ---
 project: atuin
-stars: 30628
+stars: 30770
 description: ✨ Making your shell magical
 url: https://github.com/atuinsh/atuin
 ---
@@ -47,15 +47,10 @@ Documentation
 -   Import history
 -   Basic usage
 
-Supported Shells
-----------------
+Supported platforms
+-------------------
 
--   zsh
--   bash
--   fish
--   nushell
--   xonsh
--   powershell (tier 2 support)
+Atuin supports zsh, bash, fish, nushell, xonsh, and PowerShell. See Supported platforms for the full matrix and what each tier means.
 
 Community
 ---------

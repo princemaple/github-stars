@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 34816
+stars: 34947
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -35,7 +35,7 @@ Yay, all your tests passed!
     
 -   Errors are specific and informative, and syntax errors are reported along with their source context.
     
--   Recipes can accept command line arguments, including \[flags and options\](#recipe-flags-and-options.
+-   Recipes can accept command line arguments, including flags and options.
     
 -   `just` has a rich expression language and many built-in-functions.
     
@@ -2546,6 +2546,8 @@ $ just foo
 $ just bar
 /subdir
 
+Note that this does not affect dotenv file search, or the working directory of backtick and `shell()` invocations.
+
 Use `set no-cd`1.51.0 to make all recipes in the current module default to the same behavior.
 
 `set no-cd` and `set working-directory` can be overridden on a per-recipe basis with the `[no-cd]` and `[working-directory]` attributes.
@@ -2609,6 +2611,8 @@ commit file:
   git commit
 
 Can be used with paths that are relative to the current directory, because `[no-cd]` prevents `just` from changing the current directory when executing `commit`.
+
+Note that this does not affect dotenv file search, or the working directory of backtick and `shell()` invocations.
 
 Organization
 ------------

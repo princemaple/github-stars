@@ -1,6 +1,6 @@
 ---
 project: docker-pgautoupgrade
-stars: 1166
+stars: 1168
 description: A PostgreSQL Docker container that automatically upgrades your database
 url: https://github.com/pgautoupgrade/docker-pgautoupgrade
 ---

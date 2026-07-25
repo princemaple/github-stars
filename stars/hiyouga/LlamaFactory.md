@@ -1,11 +1,22 @@
 ---
 project: LlamaFactory
-stars: 73361
+stars: 73511
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
 
 ### Used by Amazon, NVIDIA, Aliyun, etc.
+
+* * *
+
+### Check our new open-source project —  
+🐧 PenguinHarness: Your desktop agent that automatically builds agents for just $0.02 of tokens!
+
+Follow our project: https://github.com/Prism-Shadow/penguin-harness
+
+rag\_en.mp4
+
+* * *
 
 ### Supporters ❤️
 
@@ -1113,12 +1124,16 @@ To install LLaMA Factory on Ascend NPU devices, please upgrade Python to version
 You can also download the pre-built Docker images:
 
 # Docker Hub
-docker pull hiyouga/llamafactory:latest-npu-a2
-docker pull hiyouga/llamafactory:latest-npu-a3
+docker pull hiyouga/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A2-ubuntu-py3.11
+docker pull hiyouga/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A3-ubuntu-py3.11
+docker pull hiyouga/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A2-openeuler-py3.11
+docker pull hiyouga/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A3-openeuler-py3.11
 
 # quay.io
-docker pull quay.io/ascend/llamafactory:latest-npu-a2
-docker pull quay.io/ascend/llamafactory:latest-npu-a3
+docker pull quay.io/ascend/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A2-ubuntu-py3.11
+docker pull quay.io/ascend/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A3-ubuntu-py3.11
+docker pull quay.io/ascend/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A2-openeuler-py3.11
+docker pull quay.io/ascend/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A3-openeuler-py3.11
 
 #### Install BitsAndBytes
 
@@ -1188,11 +1203,25 @@ cd docker/docker-cuda/
 docker compose up -d
 docker compose exec llamafactory bash
 
-For Ascend NPU users:
+For Ascend NPU users (A2 with Ubuntu by default):
 
 cd docker/docker-npu/
-docker compose up -d
-docker compose exec llamafactory bash
+docker compose up -d llamafactory-a2-ubuntu
+docker compose exec llamafactory-a2-ubuntu bash
+
+Other NPU variants can be started with their corresponding profiles and services:
+
+# A3 with Ubuntu
+docker compose --profile a3 up -d llamafactory-a3-ubuntu
+docker compose exec llamafactory-a3-ubuntu bash
+
+# A2 with openEuler
+docker compose --profile openeuler up -d llamafactory-a2-openeuler
+docker compose exec llamafactory-a2-openeuler bash
+
+# A3 with openEuler
+docker compose --profile a3-openeuler up -d llamafactory-a3-openeuler
+docker compose exec llamafactory-a3-openeuler bash
 
 For AMD ROCm users:
 
@@ -1444,6 +1473,3 @@ Acknowledgement
 ---------------
 
 This repo benefits from PEFT, TRL, QLoRA and FastChat. Thanks for their wonderful works.
-
-Star History
-------------

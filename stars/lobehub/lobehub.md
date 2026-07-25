@@ -1,6 +1,6 @@
 ---
 project: lobehub
-stars: 80483
+stars: 80804
 description: 🤯 LobeHub is your Chief Agent Operator, organizing your agents into 7×24 operations by hiring, scheduling, and reporting on your entire AI team.
 url: https://github.com/lobehub/lobehub
 ---
@@ -38,6 +38,7 @@ Table of contents
     -   `A` Deploying with Vercel, Zeabur , Sealos or Alibaba Cloud
     -   `B` Deploying with Docker
     -   Environment Variable
+    -   Obtain OpenAI API Key
 -   📦 Ecosystem
 -   🧩 Plugins
 -   ⌨️ Local Development
@@ -212,6 +213,57 @@ Used to control the model list. Use `+` to add a model, `-` to hide a model, and
 Note
 
 The complete list of environment variables can be found in the 📘 Environment Variables
+
+### Obtain OpenAI API Key
+
+An API Key is required to chat with LLMs in LobeHub. This section uses the OpenAI model provider as an example to briefly introduce how to obtain an API Key.
+
+#### `A` Via the Official OpenAI Channel
+
+-   Sign up for an OpenAI account; you will need an international phone number and a non-mainland-China email address;
+-   After signing up, go to the API Keys page and click `Create new secret key` to create a new API Key:
+
+Step 1: Open the creation dialog
+
+Step 2: Create the API Key
+
+Step 3: Get the API Key
+
+-   Fill this API Key into the LobeHub API Key configuration and you are ready to go.
+
+Tip
+
+Newly registered accounts usually come with a $5 free credit, but it is only valid for three months. If you want to keep using your API Key long-term, you need to bind a credit card to complete payment. Since OpenAI only supports foreign-currency credit cards, you will need to find a suitable payment channel yourself, which is not covered in detail here.
+
+  
+
+#### `B` Via an OpenAI Third-Party Proxy
+
+If you find signing up for an OpenAI account or binding a foreign-currency credit card troublesome, you can consider using a well-known OpenAI third-party proxy to obtain an API Key, which can effectively lower the barrier to getting one. At the same time, however, once you use a third-party service, you may also need to bear its potential risks — please decide based on your own actual situation. Below is a list of common third-party model proxies for your reference:
+
+Provider
+
+Features
+
+Proxy URL
+
+Link
+
+**AIHubMix**
+
+Uses the OpenAI enterprise API; all models site-wide at **14% off** the official price (incl. GPT-5.6 and Claude Fable 5)
+
+`https://aihubmix.com/v1`
+
+Get
+
+Warning
+
+**Disclaimer**: The OpenAI API Keys recommended here are provided by third-party proxies, so we are not responsible for the **validity** or **security** of these API Keys. Please bear the risks of purchasing and using them yourself.
+
+Note
+
+If you are a model service provider and believe your service is stable enough and reasonably priced, feel free to contact us — we will consider recommending it after trying and testing it ourselves.
 
 📦 Ecosystem
 ------------

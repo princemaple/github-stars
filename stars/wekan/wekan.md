@@ -1,6 +1,6 @@
 ---
 project: wekan
-stars: 20998
+stars: 21000
 description: The Open Source kanban, built with Meteor. GitHub issues/PRs are only for FLOSS Developers, not for support, support is at https://wekan.fi/commercial-support/ . New English strings for new features at imports/i18n/data/en.i18n.json . Non-English translations at https://app.transifex.com/wekan/wekan only.
 url: https://github.com/wekan/wekan
 ---
@@ -105,7 +105,7 @@ Getting Started with Development
 
 The main branch uses Meteor 3.5 with Node.js 24.x. See CHANGELOG.md for the latest runtime updates.
 
-To contribute, create a fork and run `./rebuild-wekan.sh` (or `./rebuild-wekan.bat` on Windows) as detailed here. Once you're ready, please test your code and submit a pull request (PR).
+To contribute, create a fork and run `./build.sh` (or `./build.bat` on Windows) as detailed here. Once you're ready, please test your code and submit a pull request (PR).
 
 Please refer to the developer documentation for more information.
 
@@ -134,7 +134,7 @@ curl https://install.meteor.com/ | sh
 
 ### Building WeKan
 
-The `rebuild-wekan.sh` script shows a two-level menu. The top level groups options into categories:
+The `build.sh` script shows a two-level menu. The top level groups options into categories:
 
 ```
 1) Setup   2) Dev server   3) Tests   4) Docker   5) Tools   6) Quit
@@ -151,18 +151,18 @@ git clone git@github.com:YOUR\_USERNAME/wekan.git
 cd wekan
 
 # Make the script executable
-chmod +x rebuild-wekan.sh
+chmod +x build.sh
 
 # Step 1: Install dependencies (Setup -> Install dependencies)
-./rebuild-wekan.sh
+./build.sh
 # Press 1 (Setup) and Enter, then 1 (Install dependencies) and Enter
 
 # Step 2: Build WeKan (Setup -> Build WeKan, after dependencies complete)
-./rebuild-wekan.sh
+./build.sh
 # Press 1 (Setup) and Enter, then 2 (Build WeKan) and Enter
 
 # Step 3: Run WeKan in development mode (Dev server -> localhost:3000)
-./rebuild-wekan.sh
+./build.sh
 # Press 2 (Dev server) and Enter, then 1 (localhost:3000) and Enter
 
 If a dev server is already running on that port, the **Dev server** options stop it automatically and start a fresh server on the same port.

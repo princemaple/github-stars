@@ -1,6 +1,6 @@
 ---
 project: html-audio
-stars: 167
+stars: 168
 description: Web audio API pitch shifter
 url: https://github.com/urtzurd/html-audio
 ---

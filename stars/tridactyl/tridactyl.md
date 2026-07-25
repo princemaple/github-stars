@@ -1,6 +1,6 @@
 ---
 project: tridactyl
-stars: 6272
+stars: 6276
 description: A Vim-like interface for Firefox, inspired by Vimperator/Pentadactyl.
 url: https://github.com/tridactyl/tridactyl
 ---
@@ -40,7 +40,7 @@ Click this in Firefox to install our "beta" builds. These betas used to be updat
 
 ### Extra features through Native Messaging
 
-If you want to use advanced features such as edit-in-Vim, you'll also need to install the native messenger or executable, instructions for which can be found by typing `:installnative` and hitting enter once you are in Tridactyl. Arch users can install the AUR package `firefox-tridactyl-native` instead.
+If you want to use advanced features such as edit-in-Vim, you'll also need to install the native messenger or executable, instructions for which can be found by typing `:nativeinstall` and hitting enter once you are in Tridactyl. Arch users can install the AUR package `firefox-tridactyl-native` instead.
 
 #### Containerized/sandboxed Firefox Installations
 
@@ -70,7 +70,7 @@ First look
 
 Type `:help` or press `<F1>` for online help once you're in, or `:tutor` for a friendly introduction. You might also find the unofficial Tridactyl Memrise course (requires login) useful for memorising keybinds.
 
-Remember that Tridactyl cannot run on any page on about:\*, data:\*, view-source:\* and file:\*. We're sorry about that and we're working with Firefox to improve this situation by removing restrictions on existing APIs and developing a new API.
+Remember that Tridactyl cannot run on any page on about:\*, data:\*, view-source:\* and file:\*. We're sorry about that :(
 
 If you're enjoying Tridactyl, or not, please leave a review on the AMO.
 
@@ -101,11 +101,11 @@ You can try `:help key` to know more about `key`. If it is an existing binding, 
 -   `gi` — scroll to and focus the last-used input on the page
 -   `r`/`R` — reload page or hard reload page
 -   `yy` — copy the current page URL to the clipboard
--   `[[`/`]]` — navigate forward/backward though paginated pages, for example comics, multi-part articles, search result pages, etc.
+-   `[[`/`]]` — navigate backward/forward though paginated pages, for example comics, multi-part articles, search result pages, etc.
 -   `]c`/`[c` — increment/decrement the current URL by 1
 -   `gu` — go to the parent of the current URL
 -   `gU` — go to the root domain of the current URL
--   `gr` — open Firefox reader mode (note: Tridactyl will not work in this mode)
+-   `gr` — open Firefox reader mode (note: Tridactyl will only work on our own `:reader` command which has complicated security implications)
 -   `zi`/`zo`/`zz` — zoom in/out/reset zoom
 -   `<C-f>`/`<C-b>` — jump to the next/previous part of the page
 -   `g?` — Apply Caesar cipher to page (run `g?` again to switch back)
@@ -152,7 +152,7 @@ If you want to use Firefox's default `<C-b>` binding to open the bookmarks sideb
 -   `u` — undo the last tab/window closure
 -   `gt`/`gT` — go to the next/previous tab
 -   `g^ OR g0`/`g$` — go to the first/last tab
--   `ga` — go to the tab currently playing audio
+-   `ga` — go to the tab currently playing audio, or the one that most recently stopped
 -   `<C-^>` — go to the last active tab
 -   `b` — bring up a list of open tabs in the current window; you can type the tab ID or part of the title or URL to choose a tab
 
@@ -175,7 +175,7 @@ Additionally, you can hint elements matching a custom CSS selector with `:hint -
 
 ### Binding custom commands
 
-You can bind your own shortcuts in normal mode with the `:bind` command. For example `:bind J tabprev` to bind `J` to switch to the previous tab. See `:help bind` for details about this command.
+You can bind your own shortcuts in normal mode with the `:bind` command. For example `:bind gD composite tabduplicate; tabdetach` to duplicate and detach the current tab. See `:help bind` for details about this command.
 
 WebExtension-related issues
 ---------------------------
@@ -218,7 +218,7 @@ Frequently asked questions (FAQ)
     
 -   Can I import/export settings, and does Tridactyl use an external configuration file just like Vimperator?
     
-    Yes. `:source --url [URL]` accepts a URL (which must contain only an RC file, e.g. `raw.githubusercontent.com/...`). If you have `native` working, `$XDG_CONFIG_HOME/tridactyl/tridactylrc` or `~/.tridactylrc` will be read at startup via an `autocmd` and `source`. There is an example file available on our repository.
+    Yes. `:source --url [URL]` accepts a URL (which must contain only an RC file, e.g. `raw.githubusercontent.com/...`). If you have `native` working, `$XDG_CONFIG_HOME/tridactyl/tridactylrc` or `~/.tridactylrc` will be read at startup via an `autocmd` and `source`. Run `:findrc` to see which local RC file this automatic search selected. There is an example file available on our repository, or you can search GitHub for other RC files (requires login).
     
     There's also `mkt` which exports your configuration to a file which may be read with `source`. (NB: this currently requires `native`).
     
@@ -227,6 +227,7 @@ Frequently asked questions (FAQ)
     To use one of the built in themes use: `:colors <color>`. The current options are:
     
     -   default
+    -   auto
     -   dark (authored by @furgerf)
     -   shydactyl (authored by @atrnh)
     -   greenmat (authored by @caputchinefrobles)
@@ -234,12 +235,14 @@ Frequently asked questions (FAQ)
     -   quake
     -   quakelight
     -   midnight (authored by @karizma)
+    -   vimium
+    -   tokyonight
     
     Tridactyl can also load themes from disk or URL. You could use this for example to load one of the themes originally authored by @bezmi (tridactyl/base16-tridactyl). See `:help colors` for more information.
     
 -   How to remap keybindings? or How can I bind keys using the control/alt key modifiers (eg: `ctrl+^`)?
     
-    You can remap keys in normal, ignore, input and insert mode with `:bind --mode=$mode $key $excmd`. Hint mode and the command line are currently special and can't be rebound. See `:help bind` for more information.
+    You can remap keys with `:bind --mode=$mode $key $excmd`. See `:help bind` for more information.
     
     Modifiers can be bound like this: `:bind <C-f> scrollpage 1`. Special keys can be bound too: `:bind <F3> colors dark` and with modifiers: `:bind <S-F3> colors default` and with multiple modifiers: `:bind <SA-F3> composite set hintchars 1234567890 | set hintfiltermode vimperator-reflow`
     
@@ -271,7 +274,7 @@ Frequently asked questions (FAQ)
     
 -   Can I change proxy via commands?
     
-    Not yet, but this feature will eventually be implemented.
+    Yes, see `:help proxyadd`
     
 -   How do I disable Tridactyl on certain sites?
     
@@ -281,7 +284,7 @@ Frequently asked questions (FAQ)
     
 -   How can I list the current bindings?
     
-    `viewconfig nmaps` works OK, but Tridactyl commands won't work on the shown page for "security reasons". We'll eventually provide a better way. See #98.
+    `viewconfig nmaps` works OK, but Tridactyl commands won't work on the shown page for "security reasons". We'll eventually provide a better way. See #98. You can also look at `:bind` completions and `:apropos`
     
 -   How can I know which mode I'm in/have a status line?
     
@@ -289,7 +292,7 @@ Frequently asked questions (FAQ)
     
 -   Does anyone actually use Tridactyl?
     
-    In addition to the developers, some other people do. Mozilla keeps tabs on stable users here, but, as of a while ago, you can't see that link if you aren't listed as a Tridactyl developer on the AMO. The maintainers guess the number of unstable users from unique IPs downloading the betas each week when they feel like it. Last time they checked there were 4600 of them.
+    In addition to the developers, some other people do. Mozilla keeps tabs on stable users here, but, as of a while ago, you can't see that link if you aren't listed as a Tridactyl developer on the AMO. The maintainers guess the number of unstable users from unique IPs downloading the betas each week when they feel like it. Last time they checked there were 4600 of them. Unscientifically extrapolating from Arch linux's pop contest for package installations gives us an estimate of around 50,000 users.
     
 -   How do I prevent websites from stealing focus?
     
@@ -339,6 +342,8 @@ If you want to build a signed copy (e.g. for the non-developer release), you can
 
 You can build unsigned copies with `scripts/sign nosign{stable,beta}`. NB: The `stable` versus `beta` part of the argument tells our build process which extension ID to use (and therefore which settings to use). If you want a stable build, make sure you are on the latest tag, i.e. `git checkout $(git tag | grep '^[0-9]\+\.[0-9]\+\.[0-9]\+$' | sort -t. -k 1,1n -k 2,2n -k 3,3n | tail -1)`.
 
+Maintainers create the next release after fetching tags with `scripts/version.js next {0,1,2} [release name]` and committing the changed manifest. Beta builds use that version while retaining the release name in their displayed version. Once its changelog entry is ready, `scripts/version.js release` dates the entry, commits it, and tags the version already in `src/manifest.json`.
+
 If you are on a distribution which builds Firefox with `--with-unsigned-addon-scopes=` set to `app` and/or `system` (which is most of them by users: Arch, Debian, Ubuntu), you can install your unsigned copy of Tridactyl with `scripts/install.sh [directory]`. If you're on Arch, the correct directory is probably selected by default; on other distributions you might have to go hunting, but it probably looks like `/usr/lib/firefox/browser/extensions`.
 
 ### Building on Windows
@@ -347,7 +352,6 @@ If you are on a distribution which builds Firefox with `--with-unsigned-addon-sc
     
 -   Install NodeJS for Windows
     
-    -   Current 8.11.1 LTS seems to work fine
 -   Launch the installation steps described above from MinTTY shell
     
     -   Also known as "Git Bash"
@@ -364,7 +368,7 @@ You can speed up the build process after your first build by using `yarn run reb
 
 ### Committing
 
-A pre-commit hook is added by `yarn install` that simply runs `yarn test`. If you know that your commit doesn't break the tests you can commit with `git commit -n` to ignore the hooks. If you're making a PR, travis will check your build anyway.
+A pre-commit hook is added by `yarn install` that simply runs `yarn test`. If you know that your commit doesn't break the tests you can commit with `git commit -n` to ignore the hooks. If you're making a PR, GitHub will check your build anyway once a maintainer has approved it.
 
 ### Documentation
 

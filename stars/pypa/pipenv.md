@@ -1,6 +1,6 @@
 ---
 project: pipenv
-stars: 25051
+stars: 25046
 description:  Python Development Workflow for Humans.
 url: https://github.com/pypa/pipenv
 ---
@@ -416,7 +416,7 @@ pipenv shell
 
 If you would like to convert a project that currently uses a requirements.txt file to use Pipenv, install Pipenv and run:
 
-pipenv install requirements.txt
+pipenv install -r requirements.txt
 
 This will create a Pipfile and install the specified requirements.
 

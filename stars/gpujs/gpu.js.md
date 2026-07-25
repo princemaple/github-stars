@@ -1,6 +1,6 @@
 ---
 project: gpu.js
-stars: 15361
+stars: 15359
 description: GPU Accelerated JavaScript
 url: https://github.com/gpujs/gpu.js
 ---
@@ -146,6 +146,19 @@ GPU.js in the wild, all around the net. Add yours here!
 -   Caesar Cipher GPU.js Example
 -   Matrix Multiplication GPU.js + Angular Example
 -   Conway's game of life
+-   Animated parallel raytracer in TypeScript and GPU.js
+-   Bilinear interpolation on an image
+
+More examples with screenshots: gpu.rocks examples gallery
+
+### Community projects
+
+Libraries and tools built on GPU.js:
+
+-   gpujs-real-renderer — real-time rendering of graphs, drawing boards, and more on the GPU
+-   gpujs-hive-compute — distribute a GPU.js computation across multiple machines via WebRTC
+
+A note on CodePen: its JavaScript "loop protection" rewrites loops inside kernel functions (injecting `window.CP.shouldStopExecution(...)`), which breaks kernel transpilation. Disable loop protection in the pen's JS settings, or use Observable/JSFiddle instead. ||||||| 6d7dde3
 
 Installation
 ------------
@@ -451,6 +464,11 @@ Accepting Input
     
     const { input } \= require('gpu.js');
     const value \= input(flattenedArray, \[width, height, depth\]);
+    
+    -   **Memory layout**: the dimensions are `[x, y, z]` where `x` is the fastest-varying (innermost) index — element `(x, y, z)` lives at `flattenedArray[x + width * (y + height * z)]`. A kernel access `arg[i][j][k]` reads `z = i`, `y = j`, `x = k`, so `input(flat, [X, Y, Z])` is equivalent to a nested array of shape `[Z][Y][X]`:
+    
+    input(new Float32Array(\[1,2, 3,4, 5,6, 7,8\]), \[2, 2, 2\])
+    // same as: \[ \[\[1,2\],\[3,4\]\], \[\[5,6\],\[7,8\]\] \]
     
 -   HTML Image
 -   Array of HTML Images
@@ -1005,6 +1023,13 @@ This is a list of the supported ones:
 -   `Math.pow()`
 -   `Math.random()`
     -   A note on random. We use a plugin to generate random. Random seeded _and_ generated, _both from the GPU_, is not as good as random from the CPU as there are more things that the CPU can seed random from. However, we seed random on the GPU, _from a random value in the CPU_. We then seed the subsequent randoms from the previous random value. So we seed from CPU, and generate from GPU. Which is still not as good as CPU, but closer. While this isn't perfect, it should suffice in most scenarios. In any case, we must give thanks to RandomPower, and this issue, for assisting in improving our implementation of random.
+    -   **Seeding random**: for reproducible results, give a kernel your own seed with `kernel.setRandomSeed(seed)` or the `randomSeed` kernel setting:
+        
+        const kernel \= gpu.createKernel(function() {
+          return Math.random();
+        }, { output: \[64\], randomSeed: 42 });
+        
+        A seeded kernel draws from a deterministic stream: consecutive runs still produce different values, but recreating the kernel (or calling `setRandomSeed` again) with the same seed replays the exact same sequence of runs. Seeding requires a GPU mode (`gpu`, `webgl`, `webgl2`, `headlessgl`); in `cpu` mode `Math.random()` stays unseeded and a warning is logged.
 -   `Math.round()`
 -   `Math.sign()`
 -   `Math.sin()`
@@ -1146,6 +1171,8 @@ Full API Reference
 ------------------
 
 You can find a complete API reference here.
+
+The reference is generated from the source with `npm run docs` and hosted from the gpu.rocks repository (`public/api/`).
 
 How possible in node?
 ---------------------

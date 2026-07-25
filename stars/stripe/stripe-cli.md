@@ -1,6 +1,6 @@
 ---
 project: stripe-cli
-stars: 2120
+stars: 2124
 description: A command-line tool for Stripe
 url: https://github.com/stripe/stripe-cli
 ---
@@ -34,17 +34,31 @@ npx @stripe/cli login
 
 ### macOS
 
-Stripe CLI is available on macOS via Homebrew:
+**Homebrew:**
 
-brew install stripe/stripe-cli/stripe
+brew install stripe
 
 ### Linux
 
-Refer to the installation instructions for available Linux installation options.
+**apt (Debian, Ubuntu):**
+
+curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg \> /dev/null
+echo "deb \[signed-by=/usr/share/keyrings/stripe.gpg\] https://packages.stripe.dev/stripe-cli-debian-local stable main" | sudo tee -a /etc/apt/sources.list.d/stripe.list
+sudo apt update
+sudo apt install stripe
+
+**yum/dnf (RedHat, Fedora, CentOS):**
+
+echo -e "\[Stripe\]\\nname=stripe\\nbaseurl=https://packages.stripe.dev/stripe-cli-rpm-local/\\nenabled=1\\ngpgcheck=0" | sudo tee -a /etc/yum.repos.d/stripe.repo
+sudo yum install stripe
 
 ### Windows
 
-Stripe CLI is available on Windows via the Scoop package manager:
+**WinGet:**
+
+winget install Stripe.StripeCLI
+
+**Scoop:**
 
 scoop bucket add stripe https://github.com/stripe/scoop-stripe-cli.git
 scoop install stripe
@@ -103,7 +117,68 @@ docker run --rm -it -v stripe-config://root/.config/stripe/ -v stripe-gpg://root
 
 ### Without package managers
 
-Instructions are also available for installing and using the CLI without a package manager.
+Download the latest release for your platform from the GitHub Releases page.
+
+**macOS:**
+
+tar -xvf stripe\_X.X.X\_mac-os\_ARCH.tar.gz
+
+Optionally move the `stripe` binary to `/usr/local/bin` for global access.
+
+**Linux:**
+
+tar -xvf stripe\_X.X.X\_linux\_x86\_64.tar.gz
+
+Move the `stripe` binary to a directory on your `PATH`.
+
+**Windows:**
+
+Unzip `stripe_X.X.X_windows_x86_64.zip` and add the path containing `stripe.exe` to your `Path` environment variable.
+
+> **Note:** Anti-virus software may flag the binary as unsafe. This is a false positive; see issue #692 for details.
+
+Upgrading
+---------
+
+### npm (macOS, Linux, Windows)
+
+npm install -g @stripe/cli
+
+### macOS
+
+**Homebrew:**
+
+brew upgrade stripe
+
+### Linux
+
+**apt (Debian, Ubuntu):**
+
+sudo apt update && sudo apt upgrade stripe
+
+**yum/dnf (RedHat, Fedora, CentOS):**
+
+yum update stripe
+
+### Windows
+
+**WinGet:**
+
+winget upgrade Stripe.StripeCLI
+
+**Scoop:**
+
+scoop update stripe
+
+### Docker
+
+docker pull stripe/stripe-cli:latest
+
+Because Docker containers are ephemeral, the `stripe login` command isn't supported. Use the `--api-key` flag instead.
+
+### Without package managers
+
+Download the latest release for your platform from the GitHub Releases page and replace your existing binary.
 
 Usage
 -----

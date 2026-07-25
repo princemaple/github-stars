@@ -1,6 +1,6 @@
 ---
 project: nanoid
-stars: 26886
+stars: 26905
 description: A tiny (118 bytes), secure, URL-friendly, unique string ID generator for JavaScript
 url: https://github.com/ai/nanoid
 ---
@@ -25,7 +25,7 @@ model.id \= nanoid() //=> "V1StGXR8\_Z5jdHi6B-myT"
 
 * * *
 
-  Made at **Evil Martians**, product consulting for **developer tools**.
+  Nano ID is built by **Evil Martians**, an American design and engineering consultancy for **developer tools, AI, and cybersecurity startups**.
 
 * * *
 

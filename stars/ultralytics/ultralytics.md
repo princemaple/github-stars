@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 59623
+stars: 59872
 description: Ultralytics YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -75,7 +75,7 @@ Discover more examples in the YOLO Python Docs.
 ✨ Models
 --------
 
-Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on COCO for Detection, Segmentation, and Pose Estimation. Semantic Segmentation models are pretrained on Cityscapes, and Classification models are pretrained on ImageNet. Tracking mode is compatible with Detection, Segmentation, and Pose models. All Models download automatically from the latest Ultralytics release on first use.
+Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on COCO for Detection, Segmentation, and Pose Estimation. Semantic Segmentation models are pretrained on Cityscapes, Depth Estimation models are pretrained on a broad multi-dataset mix and evaluated on NYU Depth V2, and Classification models are pretrained on ImageNet. Tracking mode is compatible with Detection, Segmentation, and Pose models. All Models download automatically from the latest Ultralytics release on first use.
 
   
   
@@ -392,6 +392,132 @@ YOLO26x-sem
     Reproduce with `yolo semantic val data=cityscapes.yaml device=0 imgsz=2048`
 -   **Speed** metrics are averaged over Cityscapes validation images using an RTX3090 instance.  
     Reproduce with `yolo semantic val data=cityscapes.yaml batch=1 device=0|cpu imgsz=2048`
+
+Depth Estimation (NYU Depth V2)
+
+See the Depth Estimation Docs for usage examples. These models are pretrained on a broad multi-dataset mix and evaluated on the NYU Depth V2 Eigen test split, predicting per-pixel depth in meters.
+
+Model
+
+size  
+(pixels)
+
+delta1NYU
+
+abs\_relNYU
+
+rmseNYU
+
+Speed  
+CPU ONNX  
+(ms)
+
+Speed  
+T4 TensorRT10  
+(ms)
+
+params  
+(M)
+
+FLOPs  
+(B)
+
+YOLO26n-depth
+
+768
+
+0.882
+
+0.109
+
+0.414
+
+272.0 ± 27.2
+
+2.7 ± 0.1
+
+6.4
+
+46.9
+
+YOLO26s-depth
+
+768
+
+0.896
+
+0.104
+
+0.399
+
+393.7 ± 13.1
+
+3.8 ± 0.0
+
+13.2
+
+67.9
+
+YOLO26m-depth
+
+768
+
+0.921
+
+0.089
+
+0.364
+
+621.5 ± 49.7
+
+6.0 ± 0.1
+
+23.3
+
+130.7
+
+YOLO26l-depth
+
+768
+
+0.930
+
+0.083
+
+0.351
+
+821.9 ± 50.7
+
+7.7 ± 0.1
+
+27.7
+
+157.2
+
+YOLO26x-depth
+
+768
+
+0.933
+
+0.080
+
+0.344
+
+1240.9 ± 73.3
+
+13.6 ± 0.2
+
+57.0
+
+302.0
+
+-   **delta1NYU** is the percentage of pixels where the predicted depth is within a factor of 1.25 of the ground truth, on the NYU Depth V2 Eigen test split (654 images) with multi-scale + horizontal-flip TTA and log-least-squares alignment.
+-   Single-scale accuracy without TTA is reproducible with `yolo depth val model=yolo26n-depth.pt data=nyu-depth.yaml imgsz=768 device=0` (substitute `model=` for each size), which uses median (scale-only) alignment and scores lower: delta1 0.785 (n), 0.786 (s), 0.827 (m), 0.839 (l), 0.843 (x).
+-   **abs\_rel** is the mean absolute relative error between predicted and ground-truth depth values.
+-   **rmse** is the root mean squared error in meters.
+-   **Speed** is inference-only latency (pre/post-processing excluded) at `imgsz=768`, `batch=1`, reported as mean ± std over timed runs after warmup. **CPU ONNX** is ONNX Runtime fp32 on a 32-core Intel Xeon (Skylake); **T4 TensorRT10** is TensorRT fp16 on a Tesla T4.
+-   **params** and **FLOPs** are measured at 768×768, the training resolution of the released weights.
 
 Classification (ImageNet)
 

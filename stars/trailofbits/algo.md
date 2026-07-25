@@ -1,6 +1,6 @@
 ---
 project: algo
-stars: 30325
+stars: 30329
 description: Set up a personal VPN in the cloud
 url: https://github.com/trailofbits/algo
 ---

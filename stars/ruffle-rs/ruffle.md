@@ -1,6 +1,6 @@
 ---
 project: ruffle
-stars: 18320
+stars: 18340
 description: A Flash Player emulator written in Rust
 url: https://github.com/ruffle-rs/ruffle
 ---

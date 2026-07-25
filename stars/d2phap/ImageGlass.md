@@ -1,6 +1,6 @@
 ---
 project: ImageGlass
-stars: 13773
+stars: 13832
 description: 🏞 A fast, open-source, modern image viewer for 90+ formats – including WEBP, GIF, SVG, AVIF, JXL, HEIC and more – built for smooth browsing across Windows, macOS, and Linux.
 url: https://github.com/d2phap/ImageGlass
 ---
@@ -30,13 +30,17 @@ Caution
 
 ### Security Alert: Fake Repositories and AI Threat Mitigation
 
-Automated malicious campaigns are actively deploying AI tools to impersonate trusted software. They stand up fake GitHub profiles and standalone Gists designed to trick users into downloading compromised packages. I need your help to protect the community by keeping these safety rules in mind:
+Automated malicious campaigns are actively deploying AI tools to impersonate trusted software. They stand up fake GitHub profiles and Gists designed to trick users into downloading compromised packages.
 
--   **Only use official channels**: Always download ImageGlass directly from the official website (https://imageglass.org). Never download binaries from third-party mirrors, unverified GitHub forks, or standalone GitHub Gists.
--   **Verify the repository source:** The only authentic spaces for this project on GitHub are the official d2phap/ImageGlass repository and the ImageGlass Organization. Any other profile or fork promising 'portable patches', 'extended releases', or alternative mirrors is completely unauthorized and highly likely to contain malware.
+-   **Only use official channels**: Always download ImageGlass directly from the (official website). Never download binaries from third-party mirrors, unverified GitHub forks, or standalone GitHub Gists.
+-   **Verify the repo source:** The only authentic spaces for this project on GitHub are the official d2phap/ImageGlass repository and the ImageGlass Organization. Any other profile or fork promising 'portable patches', 'extended releases', or alternative mirrors is completely unauthorized and highly likely to contain malware.
 -   **Check the URL**: Double-check your browser address bar to ensure you are not visiting a typosquatted domain.
 
-If you identify an unauthorized mirror, submit a report immediately to help keep the community safe.
+  
+
+Important
+
+### ImageGlass 10 Release Plans: Classic Stays Free, Pro Is Coming
 
 Download
 --------

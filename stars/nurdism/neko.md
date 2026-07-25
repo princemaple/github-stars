@@ -1,6 +1,6 @@
 ---
 project: neko
-stars: 2077
+stars: 2078
 description: A self hosted virtual browser (rabb.it clone) that runs in docker.
 url: https://github.com/nurdism/neko
 ---

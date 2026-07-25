@@ -1,18 +1,11 @@
 ---
 project: superfile
-stars: 18671
+stars: 19887
 description: Pretty fancy and modern terminal file manager
 url: https://github.com/yorukot/superfile
 ---
 
 #### superfile is supported by the community.
-
-Special thanks to:  
-  
-
-### Warp, the AI terminal for developers
-
-Available for macOS, Linux, & Windows  
 
 * * *
 
@@ -50,7 +43,7 @@ Content
 -   Troubleshooting
 -   Uninstalling
     -   macOS and Linux
-    -   Window
+    -   Windows
 -   Contributing
 -   Thanks
     -   Support
@@ -183,7 +176,7 @@ bash -c "$(curl -sLo- https://superfile.dev/uninstall.sh)"
 
 If you want to inspect the script, see : uninstall.sh
 
-### Window
+### Windows
 
 To uninstall superfile on Windows, use this powershell script.
 

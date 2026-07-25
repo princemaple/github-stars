@@ -1,6 +1,6 @@
 ---
 project: tinyauth
-stars: 7906
+stars: 7993
 description: The tiniest OpenID Certified™ authorization and authentication server you have ever seen.
 url: https://github.com/tinyauthapp/tinyauth
 ---

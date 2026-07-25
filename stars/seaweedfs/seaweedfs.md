@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 33575
+stars: 33708
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -524,7 +524,7 @@ Back to TOC
 
 ### Compared to MinIO
 
-Please note, as Apr 25, 2026 MinIO ceased developement. It's strongly discouraged to use that unmaintained software with multiple security bugs.
+Please note, as Apr 25, 2026 MinIO ceased development. It's strongly discouraged to use that unmaintained software with multiple security bugs.
 
 MinIO followed AWS S3 closely and was ideal for testing for S3 API. It had good UI, policies, versionings, etc. SeaweedFS is trying to catch up here.
 

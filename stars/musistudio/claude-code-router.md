@@ -1,151 +1,166 @@
 ---
 project: claude-code-router
-stars: 35892
+stars: 36184
 description: One local control plane for every AI agent: route across models, fuse new capabilities, orchestrate tools, and stay fully in control.
 url: https://github.com/musistudio/claude-code-router
 ---
 
-Claude Code Router
-==================
-
   
 **Kimi Code Subscription**  ·  **API Global**  ·  API China
 
-**Thanks to Kimi for sponsoring this project!** Kimi K2.7 Code is an open-source, coding-focused agentic model developed by Moonshot AI, with substantial gains on real-world long-horizon coding tasks and higher end-to-end success across complex software engineering workflows. It also cuts thinking-token usage by approximately 30% compared with K2.6. Inside CCR, Kimi ships as built-in provider presets: import the pay-as-you-go API or the Kimi Code subscription in one click and route your coding agent's requests to Kimi, the subscription endpoint passes straight through natively with no protocol conversion, API endpoints are adapted automatically, and your balance and subscription usage show up right in the CCR dashboard.
+**Thanks to Kimi for sponsoring this project!** Kimi K3 is Moonshot AI's most capable model and the world's first open 3T-class model. With 2.8 trillion parameters, native vision, and a 1-million-token context window, K3 delivers frontier performance across long-horizon coding, knowledge work, and reasoning. Inside CCR, Kimi ships as a built-in provider preset: import the pay-as-you-go API or Kimi Code subscription in one click and route your coding agent's requests to Kimi. The subscription endpoint passes through natively without protocol conversion, API endpoints are adapted automatically, and account balance and subscription usage are visible in the CCR dashboard.
 
-CCR already supports Kimi. Visit the Kimi Open Platform (中文站 | Global) to try the API, or explore the cost-effective Coding Plan.
+CCR already includes Kimi provider presets. Visit the Kimi Open Platform (中文站 | Global) to try the API, or explore the Kimi Code subscription.
 
-Claude Code Router Desktop is a local control plane for coding agents. It gives Claude Code, Codex, Grok CLI, ZCode, and compatible API clients one stable local endpoint, then lets you decide which provider, model, routing policy, tool stack, and account should handle each request.
+Claude Code Router
+==================
 
-Instead of wiring every agent to every model service by hand, CCR centralizes the model layer on your own machine: provider presets, custom endpoints, credential pools, fallback chains, Fusion-enhanced models, MCP tools, request logs, account usage, and desktop launch profiles all live in one app.
+### Manage every agent and provider from one place.
 
-What CCR Helps You Do
----------------------
+Connect Claude Code, Codex, Grok CLI, Kimi CLI, OpenCode, ZCode, and compatible API clients to the providers you choose—then route, fail over, extend, and observe every request from one app.
 
-Goal
+  
 
-CCR gives you
+Why use Claude Code Router?
+---------------------------
 
-Keep the same agent workflow while switching models
+Claude Code Router (CCR) is a local model gateway and control plane for coding agents. It gives Claude Code, Codex, Grok CLI, Kimi CLI, OpenCode, ZCode, and compatible API clients **one stable local endpoint**, while you manage the providers, models, accounts, routing rules, and tools behind it from one place.
 
-Local profiles for Claude Code, Codex, Grok CLI, and ZCode, with CLI/app launch entries and per-profile model selection
+Use CCR to:
 
-Try many providers without rebuilding config every time
+-   **Manage all agents and providers together** instead of maintaining a separate model configuration for every client.
+-   **Switch providers or models without changing your workflow** or repeatedly editing agent configuration files.
+-   **Keep requests running** with retries, credential pools, key rotation, and ordered fallback models.
+-   **Add capabilities to existing models** with Fusion vision, web search, MCP tools, and ToolHub.
+-   **See what actually happened** through request logs, resolved routes, latency, token usage, cost estimates, and account status.
 
-Built-in provider presets, custom OpenAI/Anthropic/Gemini-compatible endpoints, protocol probing, model discovery, and connectivity checks
+CCR supports OpenAI Chat / Responses, Anthropic Messages, Gemini Generate Content / Interactions, OpenRouter, DeepSeek, SiliconFlow, Moonshot, Kimi Code, Mistral, Z.AI, Bailian, and custom compatible providers.
 
-Make routing a runtime policy
+**Supported Agents**
 
-Built-in agent routing, conditional rules, request rewrites, model-prefix routing, retries, and fallback model chains
+  
+**Claude Code (CLI & APP)**
 
-Control cost and quota pressure
+  
+**Codex (CLI & APP)**
 
-Credential pools, key rotation, local usage limits, account balance snapshots, token/cost dashboards, and tray status
+  
+**Grok CLI (CLI)**
 
-Upgrade a model without replacing it
+  
+**Kimi CLI (CLI)**
 
-Fusion models that add vision, web search, or selected MCP tools to an existing base model
+  
+**OpenCode (CLI & APP)**
 
-Keep large tool sets usable
-
-ToolHub, a compact MCP entry point that lets agents resolve and invoke the tools needed for the current task
-
-Debug what actually happened
-
-Request logs, resolved provider/model fields, latency, token usage, estimated cost, network capture, and agent observability
-
-Why Use CCR
------------
-
--   **One gateway for your agent stack**: point clients at CCR once, then move routing, models, keys, and providers from scattered client configs into a single desktop UI.
--   **Provider freedom without workflow churn**: use OpenAI Chat/Responses, Anthropic Messages, Gemini Generate Content/Interactions, OpenRouter, DeepSeek, SiliconFlow, Moonshot, Kimi Code, Mistral, Z.AI, Bailian, and custom compatible providers.
--   **Reliability policies you can see and change**: define when a request should be rewritten, retried, or moved to another model, then verify the result in local logs.
--   **Operational visibility for AI work**: track requests, tokens, cost estimates, success rate, latency, model distribution, provider usage, and account balances from the dashboard or tray.
--   **Agent-native tools and extensions**: add Fusion capabilities, expose dynamic MCP tools through ToolHub, automate the built-in browser, relay agents through IM bots, or install local extensions.
-
-Feature Highlights
-------------------
-
--   **Agent profiles**: create profiles for Claude Code, Codex, Grok CLI, and ZCode with model overrides, scopes, CLI/app launch surfaces, environment settings, and multi-instance app workflows.
--   **Provider management**: add preset providers or custom endpoints; probe supported protocols; detect model lists; run real connectivity checks; manage single keys or credential pools; import local agent login state where supported.
--   **Model catalog**: search all configured models, edit model descriptions, and use those descriptions to guide Claude Code subagent, Task, and Workflow model selection.
--   **Routing engine**: combine built-in agent routing, request-header/body conditions, model-prefix routing, request rewrites, retry policy, and ordered fallback targets.
--   **Fusion models**: publish reusable virtual models that keep a base model's behavior while adding vision, hosted web search, or selected MCP tools.
--   **ToolHub**: merge multiple MCP servers into one dynamic MCP server so agents can resolve tools only when a task needs them; desktop builds can also expose built-in browser automation and Chrome login-state import.
--   **API keys and quotas**: create CCR client keys with expiration and local request/token/image limits, separate from upstream provider credentials.
--   **Logs and observability**: inspect request/response details, resolved provider and model, credential, status, latency, token usage, estimated cost, tool calls, and agent execution traces.
--   **Proxy and networking**: run CCR as a local HTTP/HTTPS proxy, optionally install the CA certificate, route supported API traffic through CCR, and capture network exchanges for debugging.
--   **Bot relay**: connect agent profiles to supported IM platforms including Weixin iLink, WeCom, Slack, Discord, Telegram, LINE, Feishu, and DingTalk.
--   **Extensions**: install wrapper plugins and core gateway plugins that can register local routes, proxy routes, provider account connectors, apps, and virtual models.
-
-Documentation
--------------
-
-Read the full documentation at ccrdesk.top, including the CLI reference and Docker deployment guide.
-
-Download And Install
---------------------
-
-1.  Open the GitHub Releases page.
-2.  Download the package for your platform:
-    -   macOS Apple Silicon: `Claude-Code-Router_<version>-mac-Apple-Silicon-arm64.dmg` or `.zip`
-    -   macOS Intel: `Claude-Code-Router_<version>-mac-Intel-x64.dmg` or `.zip`
-    -   Windows: `Claude Code Router_<version>.exe`
-    -   Linux: `Claude Code Router_<version>.AppImage`
-3.  Install and launch **Claude Code Router**.
-4.  On first launch, CCR creates its local configuration database:
-    -   macOS/Linux: `~/.claude-code-router/config.sqlite`
-    -   Windows: `%APPDATA%\claude-code-router\config.sqlite`
-
-CCR stores runtime configuration in SQLite. A legacy `config.json` is read only once for migration when no SQLite config exists.
-
-After the service is started from the **Server** page, CCR listens on `http://127.0.0.1:3456` by default. The **Server** page controls the gateway `Host`, `Port`, proxy mode, system proxy, network capture, and CA certificate status.
-
-CLI And Docker
---------------
-
-The npm CLI requires Node.js 22 or newer and provides the browser management UI, gateway, and Agent Config launch commands without Electron:
-
-npm install -g @musistudio/claude-code-router
-ccr ui
-
-The CLI management UI defaults to `http://127.0.0.1:3458`, while its model gateway defaults to `http://127.0.0.1:3456`. See the complete CLI reference for background/foreground service commands, options, profile launching, authentication, and data locations.
-
-To run the browser UI and gateway behind one Nginx port with persistent Docker storage:
-
-docker compose up -d --build
-
-Docker exposes both management and gateway routes at `http://127.0.0.1:3458` by default. Read the Docker deployment guide before remote exposure; it covers the internal port topology, management and gateway authentication, `CCR_PUBLIC_BASE_URL`, volumes, backup/restore, upgrades, and health checks.
+  
+**ZCode (APP)**
 
 Quick Start
 -----------
 
-CCR can be configured entirely from the desktop UI. Use this setup order for a clean first run.
+### Desktop app (recommended)
 
-### 1\. Add a provider
+1.  **Download Claude Code Router for macOS, Windows, or Linux, then launch the app.**
+    
+      
+    **Windows**
+    
+      
+    **Linux**
+    
+      
+    **macOS (Apple Silicon)**
+    
+      
+    **macOS (Intel)**
+    
+2.  Open **Providers → Add Provider**. Choose a built-in preset or a custom endpoint, enter the API key, select the protocol and models, then save.
+    
+3.  Open **Server** and click **Start**. The local model gateway listens on `http://127.0.0.1:3456` by default.
+    
+4.  Open **Agent Config**, choose Claude Code, Codex, Grok CLI, Kimi CLI, OpenCode, or ZCode, select a model, and apply the profile.
+    
+5.  Start using your agent. Open **Logs** to confirm the resolved provider, model, status, tokens, latency, and errors.
+    
 
-Open **Providers**, click **Add Provider**, then choose a built-in preset, import a supported local agent login state, or select **Other / custom API endpoint**. Fill in the provider name, base URL, protocol, API key, and model list. Run protocol probing and model connectivity checks when available, then save the provider.
+Your agent is now connected to CCR. To add conditions, retries, request rewrites, or fallback models, open **Routing**.
 
-### 2\. Configure routing
+### CLI
 
-Open **Routing** to enable built-in agent routes, add conditional rules, configure request rewrites, and set fallback behavior. Use **Add Routing Rule** for request conditions, model-prefix routing, or rule-level fallback targets.
+The npm CLI requires Node.js 22 or newer. It starts the same gateway and a browser-based management UI without Electron:
 
-### 3\. Start the gateway
+npm install -g @musistudio/claude-code-router
+ccr ui
 
-Open **Server** and click **Start**. After the page shows Running, CCR listens on `http://127.0.0.1:3456` by default. Enable **Auto start** if you want CCR to start the local gateway whenever the desktop app opens.
+Open `http://127.0.0.1:3458`, then follow the same **Providers → Server → Agent Config** flow above. The model gateway remains at `http://127.0.0.1:3456`. See the CLI reference for service modes, authentication, and profile commands.
 
-### 4\. Connect your agent tool
+### Docker
 
-Open **Agent Config** and choose the client you want to use. Configure Claude Code, Codex, Grok CLI, or ZCode, select the target model and effect scope, then apply the config. For app entries, use **Open Agent** to launch the target app through CCR.
+docker compose up -d --build
 
-### 5\. Monitor and adjust
+Docker exposes the management UI and gateway routes through `http://127.0.0.1:3458` by default. Read the Docker deployment guide before exposing CCR remotely.
 
-Use **Settings → Logs & Observability** to enable request logs and agent observability. Use **Logs** to confirm `request model`, `resolved provider`, `resolved model`, status, tokens, latency, and errors. Use the dashboard and tray window for token, cost, model distribution, and account status.
+How it works
+------------
 
-Acknowledgements
-----------------
+```
+Claude Code · Codex · Grok CLI · Kimi CLI · OpenCode · ZCode · Compatible API clients
+                              │
+                              ▼
+                 Claude Code Router :3456
+          Profiles · Routing · Credentials · Tools · Logs
+                              │
+                              ▼
+             Selected provider, model, and account
+```
 
-Codex support is powered by musistudio/codexl.
+Core capabilities
+-----------------
+
+Area
+
+Highlights
+
+**Agents**
+
+Profiles for Claude Code, Codex, Grok CLI, Kimi CLI, OpenCode, and ZCode; model overrides; scopes; environment settings; CLI and app launch entries; multi-instance workflows
+
+**Providers**
+
+Presets and custom endpoints; protocol probing; model discovery; connectivity checks; local login import where supported; single keys and credential pools
+
+**Models & routing**
+
+Searchable catalog; model descriptions for task selection; conditions on headers and bodies; prefixes; rewrites; retries; ordered fallbacks
+
+**Tools & extensions**
+
+Fusion models; ToolHub; built-in browser automation; Chrome login-state import; wrapper and core gateway plugins; local routes and virtual models
+
+**Access & quotas**
+
+Separate CCR client keys with expiration and local request, token, and image limits
+
+**Observability**
+
+Request and response details; resolved provider, model, and credential; status; latency; tokens; estimated cost; tool calls; agent traces
+
+**AgentClaw**
+
+Agent relay through Weixin iLink, WeCom, Slack, Discord, Telegram, LINE, Feishu, and DingTalk
+
+Go deeper when you are ready
+----------------------------
+
+The complete documentation lives at **ccrdesk.top**.
+
+-   Install and launch CCR
+-   Configure providers
+-   Explore routing and configuration
+-   Use the CLI
+-   Deploy with Docker
+-   Troubleshoot common issues
 
 Support & Sponsoring
 --------------------

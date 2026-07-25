@@ -1,6 +1,6 @@
 ---
 project: langextract
-stars: 37183
+stars: 37831
 description: A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.
 url: https://github.com/google/langextract
 ---
@@ -26,12 +26,16 @@ Table of Contents
 -   Community Providers
 -   Contributing
 -   Testing
+-   How to Cite
 -   Disclaimer
 
 Introduction
 ------------
 
 LangExtract is a Python library that uses LLMs to extract structured information from unstructured text documents based on user-defined instructions. It processes materials such as clinical notes or reports, identifying and organizing key details while ensuring the extracted data corresponds to the source text.
+
+**Try the live demo →**  
+Run grounded extraction on _Romeo and Juliet_ in your browser, no install required.
 
 Why LangExtract?
 ----------------
@@ -385,6 +389,8 @@ Contributing
 
 Contributions are welcome! See CONTRIBUTING.md to get started with development, testing, and pull requests. You must sign a Contributor License Agreement before submitting patches.
 
+Thanks to everyone who has contributed.
+
 Testing
 -------
 
@@ -441,6 +447,22 @@ Run linting before submitting PRs:
 pylint --rcfile=.pylintrc langextract tests
 
 See CONTRIBUTING.md for full development guidelines.
+
+How to Cite
+-----------
+
+If you use LangExtract in your research, please cite it:
+
+@software{goel\_langextract,
+  author  = {Goel, Akshay},
+  title   = {{LangExtract}},
+  year    = {2026},
+  version = {1.6.0},
+  doi     = {10.5281/zenodo.21126643},
+  url     = {https://github.com/google/langextract}
+}
+
+Cite the version you used — each release has its own DOI on Zenodo. If your style rejects `@software`, use `@misc`.
 
 Disclaimer
 ----------

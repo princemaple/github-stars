@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 982
+stars: 998
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -8,7 +8,7 @@ url: https://github.com/Zarestia-Dev/rclone-manager
 RClone Manager
 ==============
 
-🇺🇸 English • 🇹🇷 Türkçe • 🇨🇳 简体中文 • 🇫🇷 Français • 🇪🇸 Español • Help to translate • Crowdin
+🇺🇸 English • 🇹🇷 Türkçe • 🇨🇳 简体中文 • 🇫🇷 Français • 🇪🇸 Español • 🇷🇺 Русский • Help to translate • Crowdin
 
 **A powerful, cross-platform GUI for managing Rclone remotes with style and ease.**  
 _Built with Angular 22 + Tauri · Linux • Windows • macOS • ARM Support_
@@ -77,7 +77,7 @@ Install Command / Download
 
 **Homebrew**
 
-`brew tap Zarestia-Dev/zarestia && brew install --cask rclone-manager`
+`brew tap Zarestia-Dev/zarestia && brew trust zarestia-dev/zarestia && brew install --cask rclone-manager`
 
 **Direct Download**
 

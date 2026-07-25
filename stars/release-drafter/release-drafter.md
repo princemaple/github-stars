@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3905
+stars: 3911
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -634,13 +634,17 @@ Each category can define a `when` condition as either:
 -   a single condition object
 -   an array of condition objects, where matching any one condition is enough
 
-Within one condition, label and path predicates are combined with AND logic.
+Within one condition, conventional commit, label, and path predicates are combined with AND logic.
 
 The condition keys are:
 
 Key
 
 Description
+
+`conventional`
+
+Conventional commit predicates to compare against the change title or message.
 
 `label`
 
@@ -660,7 +664,7 @@ Shorthand for one `paths` entry.
 
 `paths`
 
-Glob patterns to compare against the files changed by the pull request.
+Glob patterns to compare against the files changed by the change.
 
 `paths-mode`
 
@@ -670,9 +674,11 @@ categories:
   - title: "🚀 Features"
     semver-increment: "minor"
     when:
-      labels:
-        - "feature"
-        - "enhancement"
+      - conventional:
+          type: "feat"
+      - labels:
+          - "feature"
+          - "enhancement"
   - title: "🐛 Bug Fixes"
     when:
       - labels:
@@ -692,6 +698,25 @@ categories:
       label: "skip-changelog"
 
 The `labels-mode` and `paths-mode` options control how the configured labels or path patterns are compared. `any` is the default. Path matching operates on the pull request's changed files.
+
+The `conventional` option parses the pull request title as a conventional commit header. Set it to `true` to match any conventional title, or configure `type`/`types`, `scope`/`scopes`, and `breaking`:
+
+categories:
+  - title: "Conventional Changes"
+    when:
+      conventional: true
+  - title: "🚀 Features"
+    semver-increment: "minor"
+    when:
+      conventional:
+        type: "feat"
+  - title: "💥 Breaking API Changes"
+    semver-increment: "major"
+    when:
+      conventional:
+        type: "feat"
+        scope: "api"
+        breaking: true
 
 Within a condition, `label` is shorthand for a single `labels` entry. If both `label` and `labels` are present, they are combined before `labels-mode` is applied. With the default `labels-mode: any`, `labels: ["feature", "enhancement"]` matches pull requests carrying either label.
 

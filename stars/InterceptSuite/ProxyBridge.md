@@ -1,6 +1,6 @@
 ---
 project: ProxyBridge
-stars: 5469
+stars: 5547
 description: Proxifier Alternative to redirect any Windows/MacOS/Linux TCP and UDP traffic to HTTP/Socks5 proxy
 url: https://github.com/InterceptSuite/ProxyBridge
 ---

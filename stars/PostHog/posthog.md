@@ -1,6 +1,6 @@
 ---
 project: posthog
-stars: 36566
+stars: 37315
 description: :hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.
 url: https://github.com/PostHog/posthog
 ---
@@ -26,7 +26,7 @@ PostHog provides every tool you need to build a successful product, and captures
 -   AI observability: Capture traces, generations, latency, and cost for your LLM-powered app.
 -   Workflows: Create workflows that automate actions or send messages to your users.
 
-You can steer it all from Slack, web, desktop (PostHog Code), or your own editor via the MCP.
+You can steer it all from Slack, web, desktop (PostHog Desktop), or your own editor via the MCP.
 
 Best of all, all of this is free to use with a generous monthly free tier for each tool. Get started by signing up for PostHog Cloud US or PostHog Cloud EU.
 

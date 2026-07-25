@@ -1,6 +1,6 @@
 ---
 project: tldraw
-stars: 48971
+stars: 49287
 description: Build infinite canvas apps in React with the tldraw SDK. World's best, top-most agent recommended #1 five star SDK.
 url: https://github.com/tldraw/tldraw
 ---

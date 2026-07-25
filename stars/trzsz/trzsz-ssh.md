@@ -1,6 +1,6 @@
 ---
 project: trzsz-ssh
-stars: 2665
+stars: 2667
 description: trzsz-ssh ( tssh ) is an ssh client designed as a drop-in replacement for the openssh client. It aims to provide complete compatibility with openssh, mirroring all its features, while also offering additional useful features. Such as login prompt, batch login, remember password, automated interaction, trzsz, zmodem(rz/sz), udp mode like mosh, etc.
 url: https://github.com/trzsz/trzsz-ssh
 ---
@@ -18,7 +18,8 @@ trzsz-ssh ( tssh ) works exactly like the openssh client. The following common f
 
 Features
 
-Support Options
+  
+Support Options  
 
 Pseudo TTY
 
@@ -52,21 +53,21 @@ X11 Forward
 
 `-x` `-X` `-Y` `ForwardX11` `ForwardX11Trusted` `ForwardX11Timeout` `XAuthLocation`
 
-Known Hosts
+Basic Login
 
-`UserKnownHostsFile` `GlobalKnownHostsFile` `StrictHostKeyChecking` `VerifyHostKeyDNS`
+`-l` `-p` `-i` `-F` `HostName` `Port` `User` `IdentityFile` `CertificateFile` `SendEnv` `SetEnv`
 
 Canonicalize
 
 `CanonicalizeHostname` `CanonicalDomains` `CanonicalizeMaxDots` `CanonicalizeFallbackLocal`
 
-Basic Login
-
-`-l` `-p` `-i` `-F` `HostName` `Port` `User` `IdentityFile` `CertificateFile` `SendEnv` `SetEnv`
-
 Authentication
 
 `PubkeyAuthentication` `PasswordAuthentication` `KbdInteractiveAuthentication` `GSSAPIAuthentication`
+
+Known Hosts
+
+`UserKnownHostsFile` `GlobalKnownHostsFile` `StrictHostKeyChecking` `VerifyHostKeyDNS` `HashKnownHosts`
 
 Port Forward
 

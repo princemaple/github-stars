@@ -32,7 +32,7 @@ To get started, add `flop` to your dependencies list in your project's `mix.exs`
 
 def deps do
   \[
-    {:flop, "~> 0.26.4"}
+    {:flop, "~> 0.26.5"}
   \]
 end
 

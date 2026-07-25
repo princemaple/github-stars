@@ -1,6 +1,6 @@
 ---
 project: shimmy
-stars: 5644
+stars: 5698
 description: ⚡ Pure-Rust WebGPU inference engine — OpenAI-API compatible, GGUF native, runs on any GPU. No Python. No llama.cpp. Single binary.
 url: https://github.com/Michael-A-Kuykendall/shimmy
 ---
@@ -31,7 +31,7 @@ Table of Contents
 -----------------
 
 -   What Is Shimmy?
--   🔥 Airframe Engine (v2.0)
+-   🔥 Airframe Engine (v0.2.10)
 -   ⚡ TurboShimmy INT4 KV (v2.1)
 -   🎯 Supported Models
 -   📦 Migrating from v1.x
@@ -59,10 +59,12 @@ Shimmy is a **single-binary** that provides **100% OpenAI-compatible endpoints**
 
 **⚡ NEW in v2.1.0**: TurboShimmy INT4 KV — ~7× less KV cache VRAM with one flag. Run Llama-3.2-3B on 4 GB GPUs.
 
-🔥 Airframe Engine (v0.2.7)
----------------------------
+**⚡ NEW in v2.3.0**: Adapter selection fix (prefers discrete GPU over integrated), grammar control hooks, 357 passing tests.
 
-Starting in v2.0.0, Shimmy's default inference engine is **Airframe** — a pure-Rust WebGPU (WGSL) transformer runtime built from scratch. **v0.2.7** brings the Inference Saturation Fabric (ISF) refit and TDR transport integration to production.
+🔥 Airframe Engine (v0.2.10)
+----------------------------
+
+Starting in v2.0.0, Shimmy's default inference engine is **Airframe** — a pure-Rust WebGPU (WGSL) transformer runtime built from scratch. **v0.2.10** brings the GPU gibberish fix (dequant front-padding), f16→f32 dequant correction, Q5\_0 quant slot, fabric dispatch rules, and golden-vault certification (10/10 models).
 
 **See airframe CHANGELOG for full release notes.**
 
@@ -555,7 +557,7 @@ git clone https://github.com/Michael-A-Kuykendall/shimmy
 cd shimmy
 cargo build --release
 
-> **Note**: The Airframe GPU engine is a private dependency and **cannot be built from source** by public users. The pre-built release binaries already include Airframe compiled in — download those to get full GPU acceleration. `cargo install shimmy` installs the huggingface engine variant from crates.io.
+> **Note**: The Airframe GPU engine is a public crate on crates.io and builds from source automatically. `cargo install shimmy` installs the huggingface engine variant from crates.io; for the full GPU build use the pre-built release binaries or clone and build with `cargo build --release`.
 
 ### GPU Acceleration
 
@@ -894,7 +896,7 @@ Colon-separated extra model search paths
 
 `airframe`
 
-`airframe` (default) or `llama` (legacy path)
+`airframe` (only engine; llama.cpp removed v2.0)
 
 `SHIMMY_ROPE_SCALE`
 
@@ -947,7 +949,7 @@ Technical Architecture
 
 -   **🧠 MOE CPU Offloading**: Hybrid GPU/CPU processing for large models (70B+)
 -   **🎯 Smart Model Filtering**: Automatically excludes non-language models (Stable Diffusion, Whisper, CLIP)
--   **🛡️ 6-Gate Release Validation**: Constitutional quality limits ensure reliability
+-   **🛡️ Coordinated Release Process**: Airframe + Shimmy released in concert via `scripts/release-coordinated.sh`
 -   **⚡ Smart Model Preloading**: Background loading with usage tracking for instant model switching
 -   **💾 Response Caching**: LRU + TTL cache delivering 20-40% performance gains on repeat queries
 -   **🚀 Integration Templates**: One-command deployment for Docker, Kubernetes, Railway, Fly.io, FastAPI, Express
@@ -1164,12 +1166,11 @@ Shimmy maintains high code quality through comprehensive testing:
 
 Run the complete test suite:
 
-# Using cargo aliases
-cargo test-quick           # Quick development tests
+# Full test suite (default features = GPU engine)
+cargo test --features airframe,huggingface
 
-# Using Makefile  
-make test                  # Full test suite
-make test-quick            # Quick development tests
+# Quick CPU-only tests (no GPU required)
+cargo test --lib --no-default-features --features huggingface -- --test-threads=1
 
 See our testing approach for technical details.
 

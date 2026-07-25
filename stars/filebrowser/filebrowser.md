@@ -1,6 +1,6 @@
 ---
 project: filebrowser
-stars: 35587
+stars: 35675
 description: 📂 Web File Browser
 url: https://github.com/filebrowser/filebrowser
 ---
@@ -20,7 +20,7 @@ This project is a finished product which fulfills its goal: be a single binary w
 -   It can take a while until someone gets back to you. Please be patient.
 -   Issues are meant to track bugs. Unrelated issues will be converted into discussions.
 -   The priority is triaging issues, addressing security issues and reviewing pull requests meant to solve bugs.
--   No new features are planned. Pull requests for new features are not guaranteed to be reviewed.
+-   No new features are planned. Pull requests for new features will not be reviewed.
 
 Please read @hacdias' personal reflection on the project status.
 

@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 383398
+stars: 384118
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -8,67 +8,70 @@ url: https://github.com/openclaw/openclaw
 🦞 OpenClaw — Personal AI Assistant
 ===================================
 
-**OpenClaw** is a _personal AI assistant_ you run on your own devices. It answers you on the channels you already use. It can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
+**OpenClaw** is a _personal AI assistant_ that learns and grows with you, running on your own devices — developed in the open by the OpenClaw Foundation, a non-profit. It answers you on the channels you already use, can speak and listen on macOS/iOS/Android, and can render a live Canvas you control. The Gateway is just the control plane — the product is the assistant.
 
 If you want a personal, single-user assistant that feels local, fast, and always-on, this is it.
 
-Supported channels include: WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat, QQ, WebChat.
+Supported channels: WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, SMS (Twilio), IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, ClickClack, Raft, Reef, QQ, and the built-in WebChat.
 
-Website · Docs · Vision · Third-party notices · DeepWiki · Getting Started · Updating · Showcase · FAQ · Onboarding · Nix · Docker · Discord
-
-New install? Start here: Getting started
-
-Preferred setup: run `openclaw onboard` in your terminal. OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills. It is the recommended CLI setup path and works on **macOS, Linux, and Windows**. Windows desktop users can start with the native Windows Hub companion app for setup, tray status, chat, node mode, and local MCP mode. Works with npm, pnpm, or bun.
+Website · Docs · Getting Started · Onboarding · Updating · Showcase · FAQ · Vision · DeepWiki · Docker · Nix · Third-party notices · Discord
 
 Sponsors
 --------
 
-**Subscriptions (OAuth):**
-
--   **OpenAI** (ChatGPT/Codex)
-
-Model note: while many providers and models are supported, prefer a current flagship model from the provider you trust and already use. See Onboarding.
-
-Install (recommended)
----------------------
+Install
+-------
 
 Runtime: **Node 24.15+ (recommended), Node 22.22.3+, or Node 25.9+**.
 
+# macOS / Linux
+curl -fsSL https://openclaw.ai/install.sh | bash
+
+# Windows (PowerShell)
+iwr \-useb https://openclaw.ai/install.ps1 | iex
+
+Or install via a package manager (npm, pnpm, or bun all work):
+
 npm install -g openclaw@latest
-# or: pnpm add -g openclaw@latest
+
+Then run onboarding:
 
 openclaw onboard --install-daemon
 
-OpenClaw Onboard installs the Gateway daemon (launchd/systemd user service) so it stays running.
+OpenClaw Onboard guides you step by step through setting up the gateway, workspace, channels, and skills on **macOS, Linux, and Windows**, and installs the Gateway daemon (launchd/systemd user service/Scheduled Task) so it stays running. Windows desktop users can also start with the native Windows Hub companion app for setup, tray status, chat, node mode, and local MCP mode.
+
+Full beginner guide (auth, pairing, channels): Getting started.
 
 Quick start (TL;DR)
 -------------------
 
-Runtime: **Node 24.15+ (recommended), Node 22.22.3+, or Node 25.9+**.
+After onboarding, the Gateway runs as a daemon:
 
-Full beginner guide (auth, pairing, channels): Getting started
+openclaw gateway status   # expect: running on port 18789
+openclaw dashboard        # open the Control UI
 
-Recommended daemon mode:
+Send a test message or talk to the assistant:
 
-openclaw onboard --install-daemon
-openclaw gateway status
+# Send a message
+openclaw message send --target +1234567890 --message "Hello from OpenClaw"
+
+# Talk to the assistant (optionally deliver the reply to any connected channel)
+openclaw agent --message "Ship checklist" --thinking high
 
 Foreground/debug mode:
 
 openclaw gateway stop
 openclaw gateway --port 18789 --verbose
 
-Send a test message or ask the assistant after either startup mode is running:
+Upgrading? Run `openclaw update` — see the Updating guide — then `openclaw doctor`.
 
-# Send a message
-openclaw message send --target +1234567890 --message "Hello from OpenClaw"
+Models
+------
 
-# Talk to the assistant (optionally deliver back to any connected channel: WhatsApp/Telegram/Slack/Discord/Google Chat/Signal/iMessage/IRC/Microsoft Teams/Matrix/Feishu/LINE/Mattermost/Nextcloud Talk/Nostr/Synology Chat/Tlon/Twitch/Zalo/Zalo Personal/WeChat/QQ/WebChat)
-openclaw agent --message "Ship checklist" --thinking high
-
-Upgrading? Updating guide (and run `openclaw doctor`).
-
-Models config + CLI: Models. Auth profile rotation + fallbacks: Model failover.
+-   Bring the provider you already use: Anthropic, OpenAI, Google (Gemini), xAI (Grok), OpenRouter, GitHub Copilot, MiniMax, and any OpenAI- or Anthropic-compatible endpoint. Details: Model providers.
+-   Sign in with a subscription (OAuth) instead of an API key: **Anthropic (Claude Pro/Max)**, **OpenAI (ChatGPT/Codex)**, and **GitHub Copilot**.
+-   Model note: prefer a current flagship model from the provider you trust and already use. See Onboarding.
+-   Models config + CLI: Models. Auth profile rotation + fallbacks: Model failover.
 
 Security defaults (DM access)
 -----------------------------
@@ -77,19 +80,26 @@ OpenClaw connects to real messaging surfaces. Treat inbound DMs as **untrusted i
 
 Full security guide: Security. Before remote exposure, use the Gateway exposure runbook.
 
-Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack:
+Default behavior on DM-capable channels (Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Google Chat/Slack/…):
 
--   **DM pairing** (`dmPolicy="pairing"` / `channels.discord.dmPolicy="pairing"` / `channels.slack.dmPolicy="pairing"`; legacy: `channels.discord.dm.policy`, `channels.slack.dm.policy`): unknown senders receive a short pairing code and the bot does not process their message.
+-   **DM pairing** (`dmPolicy: "pairing"`, e.g. `channels.discord.dmPolicy`): unknown senders receive a short pairing code and the bot does not process their message.
 -   Approve with: `openclaw pairing approve <channel> <code>` (then the sender is added to a local allowlist store).
--   Public inbound DMs require an explicit opt-in: set `dmPolicy="open"` and include `"*"` in the channel allowlist (`allowFrom` / `channels.discord.allowFrom` / `channels.slack.allowFrom`; legacy: `channels.discord.dm.allowFrom`, `channels.slack.dm.allowFrom`).
+-   Public inbound DMs require an explicit opt-in: set `dmPolicy: "open"` and include `"*"` in the channel allowlist (`allowFrom`, e.g. `channels.discord.allowFrom`).
 
 Run `openclaw doctor` to surface risky/misconfigured DM policies.
+
+### Sandboxing (groups + multi-user surfaces)
+
+-   Default: tools run on the host for the `main` session, so the agent has full access when it is just you.
+-   Group/channel safety: set `agents.defaults.sandbox.mode: "non-main"` to run non-`main` sessions inside sandboxes. Docker is the default sandbox backend; SSH and OpenShell backends are also available.
+-   Typical sandbox default: allow `bash`, `process`, `read`, `write`, `edit`, and session tools; deny `browser`, `canvas`, `nodes`, `cron`, `gateway`, and channel actions.
+-   Before exposing anything remotely, read Security, the Gateway exposure runbook, Sandboxing, and Configuration.
 
 Highlights
 ----------
 
 -   **Local-first Gateway** — single control plane for sessions, channels, tools, and events.
--   **Multi-channel inbox** — WhatsApp, Telegram, Slack, Discord, Google Chat, Signal, iMessage, IRC, Microsoft Teams, Matrix, Feishu, LINE, Mattermost, Nextcloud Talk, Nostr, Synology Chat, Tlon, Twitch, Zalo, Zalo Personal, WeChat, QQ, WebChat, macOS, iOS/Android.
+-   **Multi-channel inbox** — 25+ channels through bundled plugins (see the list above), plus macOS, iOS, and Android nodes.
 -   **Multi-agent routing** — route inbound channels/accounts/peers to isolated agents (workspaces + per-agent sessions).
 -   **Voice Wake + Talk Mode** — wake words on macOS/iOS and continuous voice on Android (ElevenLabs + system TTS fallback).
 -   **Live Canvas** — agent-driven visual workspace with A2UI.
@@ -97,18 +107,10 @@ Highlights
 -   **Companion apps** — Windows Hub, macOS menu bar app, and iOS/Android nodes.
 -   **Onboarding + skills** — onboarding-driven setup with bundled/managed/workspace skills.
 
-Security model (important)
---------------------------
-
--   Default: tools run on the host for the `main` session, so the agent has full access when it is just you.
--   Group/channel safety: set `agents.defaults.sandbox.mode: "non-main"` to run non-`main` sessions inside sandboxes. Docker is the default sandbox backend; SSH and OpenShell backends are also available.
--   Typical sandbox default: allow `bash`, `process`, `read`, `write`, `edit`, `sessions_list`, `sessions_history`, `sessions_send`, `sessions_spawn`; deny `browser`, `canvas`, `nodes`, `cron`, `discord`, `gateway`.
--   Before exposing anything remotely, read Security, Gateway exposure runbook, Sandboxing, and Configuration.
-
 Operator quick refs
 -------------------
 
--   Chat commands: `/status`, `/new`, `/reset`, `/compact`, `/think <level>`, `/verbose on|off`, `/trace on|off`, `/usage off|tokens|full`, `/restart`, `/activation mention|always`
+-   Chat commands: `/status`, `/new`, `/reset`, `/compact`, `/think <level>`, `/verbose on|off|full`, `/trace on|off|raw`, `/usage off|tokens|full|cost`, `/restart`, `/activation mention|always`
 -   Session tools: `sessions_list`, `sessions_history`, `sessions_send`
 -   Skills registry: ClawHub
 -   Architecture overview: Architecture
@@ -185,14 +187,15 @@ pnpm ui:build
 
 Note: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary, while `pnpm gateway:watch` rebuilds the runtime on demand during the dev loop.
 
-Development channels
---------------------
+Release channels
+----------------
 
--   **stable**: tagged releases (`vYYYY.M.D` or `vYYYY.M.D-<patch>`), npm dist-tag `latest`.
--   **beta**: prerelease tags (`vYYYY.M.D-beta.N`), npm dist-tag `beta` (macOS app may be missing).
+-   **stable**: tagged releases (`vYYYY.M.PATCH` — `PATCH` is a sequential release number, not the calendar day), npm dist-tag `latest`.
+-   **extended-stable**: the trailing supported month's maintenance releases, npm dist-tag `extended-stable`.
+-   **beta**: prerelease tags (`vYYYY.M.PATCH-beta.N`), npm dist-tag `beta` (macOS app may be missing).
 -   **dev**: moving head of `main`, npm dist-tag `dev` (when published).
 
-Switch channels (git + npm): `openclaw update --channel stable|beta|dev`. Details: Development channels.
+Switch channels (git + npm): `openclaw update --channel stable|extended-stable|beta|dev`. Details: Release channels.
 
 Agent workspace + skills
 ------------------------
@@ -207,8 +210,10 @@ Configuration
 Minimal `~/.openclaw/openclaw.json` (model + defaults):
 
 {
-  agent: {
-    model: "<provider>/<model-id>",
+  agents: {
+    defaults: {
+      model: "<provider>/<model-id>",
+    },
   },
 }
 
@@ -220,7 +225,7 @@ Star History
 Molty
 -----
 
-OpenClaw was built for **Molty**, a space lobster AI assistant. 🦞 by Peter Steinberger and the community.
+OpenClaw was built for **Molty**, a space lobster AI assistant, by Peter Steinberger and the community. 🦞
 
 -   openclaw.ai
 -   soul.md
@@ -230,8 +235,8 @@ OpenClaw was built for **Molty**, a space lobster AI assistant. 🦞 by Peter St
 Community
 ---------
 
-See CONTRIBUTING.md for guidelines, maintainers, and how to submit PRs. Use the issue chooser for bugs, docs bugs, and feature requests; ask setup/support questions in Discord; and report vulnerabilities through SECURITY.md. PRs should link the relevant issue when possible and follow the PR template with problem, impact, and evidence. AI/vibe-coded PRs welcome! 🤖
+See CONTRIBUTING.md for guidelines, maintainers, and how to submit PRs. Use the issue chooser for bugs, docs bugs, and feature requests; ask setup/support questions in Discord; and report vulnerabilities through SECURITY.md. Most new features fit best as plugins built on the plugin SDK and shared via ClawHub, keeping core lean. PRs should link the relevant issue when possible and follow the PR template with problem, impact, and evidence. AI/vibe-coded PRs welcome! 🤖
 
-Special thanks to Mario Zechner for his support and for pi-mono. Special thanks to Adam Doppelt for the lobster.bot domain.
+Special thanks to Mario Zechner for his support and for pi. Special thanks to Adam Doppelt for the lobster.bot domain.
 
 Thanks to all clawtributors:

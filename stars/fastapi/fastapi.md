@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 100646
+stars: 100881
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -96,13 +96,15 @@ FastAPI stands on the shoulders of giants:
 Installation
 ------------
 
-Create and activate a virtual environment and then install FastAPI:
+First, install `uv`, and then add FastAPI to your project:
 
-$ pip install "fastapi\[standard\]"
+$ uv add "fastapi\[standard\]"
 
 \---> 100%
 
 **Note**: Make sure you put `"fastapi[standard]"` in quotes to ensure it works in all terminals.
+
+If you prefer to use `pip`, install `fastapi[standard]` inside a virtual environment. See the installation guide for the alternative steps.
 
 Example
 -------
@@ -147,7 +149,7 @@ If you don't know, check the _"In a hurry?"_ section about `async` and `await` i
 
 Run the server with:
 
-$ fastapi dev
+$ uv run fastapi dev
 
  ╭────────── FastAPI CLI - Development mode ───────────╮
  │                                                     │
@@ -354,7 +356,7 @@ For a more complete example including more features, see the Tutorial - User Gui
 
 You can optionally deploy your FastAPI app to FastAPI Cloud with a single command. 🚀
 
-$ fastapi deploy
+$ uv run fastapi deploy
 
 Deploying to FastAPI Cloud...
 
@@ -396,7 +398,7 @@ FastAPI depends on Pydantic and Starlette.
 
 ### `standard` Dependencies
 
-When you install FastAPI with `pip install "fastapi[standard]"` it comes with the `standard` group of optional dependencies:
+When you install FastAPI with `uv add "fastapi[standard]"` it comes with the `standard` group of optional dependencies:
 
 Used by Pydantic:
 
@@ -416,11 +418,11 @@ Used by FastAPI:
 
 ### Without `standard` Dependencies
 
-If you don't want to include the `standard` optional dependencies, you can install with `pip install fastapi` instead of `pip install "fastapi[standard]"`.
+If you don't want to include the `standard` optional dependencies, you can install with `uv add fastapi` instead of `uv add "fastapi[standard]"`.
 
 ### Without `fastapi-cloud-cli`
 
-If you want to install FastAPI with the standard dependencies but without the `fastapi-cloud-cli`, you can install with `pip install "fastapi[standard-no-fastapi-cloud-cli]"`.
+If you want to install FastAPI with the standard dependencies but without the `fastapi-cloud-cli`, you can install with `uv add "fastapi[standard-no-fastapi-cloud-cli]"`.
 
 ### Additional Optional Dependencies
 

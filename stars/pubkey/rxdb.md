@@ -1,6 +1,6 @@
 ---
 project: rxdb
-stars: 23276
+stars: 23293
 description: The local-first database that runs on every JS runtime and replicates with your existing backend - no vendor, no lock-in - https://rxdb.info/
 url: https://github.com/pubkey/rxdb
 ---
@@ -62,7 +62,8 @@ Attachments
 ORM  
 Conflict Handling  
 Middleware  
-Signals
+Signals  
+TanStack DB
 
 State  
 Backup  
@@ -87,8 +88,8 @@ npm install rxdb rxjs --save
 
 #### Store data
 
-import { 
-  createRxDatabase
+import {
+    createRxDatabase
 } from 'rxdb/plugins/core';
 
 /\*\*
@@ -96,7 +97,9 @@ import {
  \* In other JavaScript runtimes, we can use different storages:
  \* @link https://rxdb.info/rx-storage.html
  \*/
-import { getRxStorageLocalstorage } from 'rxdb/plugins/storage-localstorage';
+import {
+    getRxStorageLocalstorage
+} from 'rxdb/plugins/storage-localstorage';
 
 // create a database
 const db \= await createRxDatabase({
@@ -170,7 +173,7 @@ Get started now by reading the docs or exploring the example-projects.
 
 #### More content
 
-Angular Database, Frontend Database, localStorage, React Database, Browser Database, React Native Database, PWA Database, In-memory NoSQL database, JSON database, Angular IndexedDB, React IndexedDB, Optimistic UI, local database, React Native Encryption, Vue Database, jQuery Database, Vue IndexedDB, Firestore Alternative, Firebase Realtime Database Alternative, Ionic Storage, Electron SQLite
+Angular Database, Frontend Database, localStorage, React Database, Browser Database, React Native Database, PWA Database, In-memory NoSQL database, JSON database, Angular IndexedDB, React IndexedDB, Optimistic UI, local database, React Native Encryption, Vue Database, jQuery Database, Vue IndexedDB, Firestore Alternative, Firebase Realtime Database Alternative, Ionic Storage, Electron SQLite, TanStack DB Offline
 
 * * *
 

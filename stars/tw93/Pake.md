@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 60027
+stars: 60214
 description: 🤱🏻 Turn any webpage into a desktop app with one command.
 url: https://github.com/tw93/Pake
 ---
@@ -178,7 +178,7 @@ Using Pake from a script or AI agent? Pass `--json` for machine-readable results
 Copy this to your AI agent to get started:
 
 ```
-Use Pake (npm i -g pake-cli) to package webpages as desktop apps. Read https://raw.githubusercontent.com/tw93/Pake/main/llms.txt first; always run pake with --json and parse stdout as a single JSON object. Package <url-or-local-dist> into an app named <AppName>.
+Use Pake (npm i -g pake-cli) to package webpages as desktop apps. Read https://unpkg.com/pake-cli@latest/llms.txt first; always run pake with --json and parse stdout as a single JSON object. Package <url-or-local-dist> into an app named <AppName>.
 ```
 
 Development

@@ -1,6 +1,6 @@
 ---
 project: rspack
-stars: 12813
+stars: 12822
 description: Fast Rust-based bundler for the web with a modernized webpack API 🦀
 url: https://github.com/web-infra-dev/rspack
 ---
@@ -27,7 +27,7 @@ Read Introduction for details.
 🦀 Rstack
 ---------
 
-Rstack is a unified JavaScript toolchain centered on Rspack, with high performance and consistent architecture.
+Rspack is part of Rstack, the fast, unified JavaScript toolchain for developers and agents.
 
 Name
 

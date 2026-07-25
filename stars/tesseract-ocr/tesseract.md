@@ -1,6 +1,6 @@
 ---
 project: tesseract
-stars: 75430
+stars: 75551
 description: Tesseract Open Source OCR Engine (main repository)
 url: https://github.com/tesseract-ocr/tesseract
 ---
@@ -116,7 +116,7 @@ limitations under the License.
 
 **NOTE**: This software depends on other packages that may be licensed under different open source licenses.
 
-Tesseract uses Leptonica library which essentially uses a BSD 2-clause license.
+Tesseract uses the Leptonica library which essentially uses a BSD 2-clause license.
 
 Dependencies
 ------------

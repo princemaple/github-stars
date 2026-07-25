@@ -1,6 +1,6 @@
 ---
 project: PaddleOCR
-stars: 85760
+stars: 86247
 description: Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages.
 url: https://github.com/PaddlePaddle/PaddleOCR
 ---
@@ -39,7 +39,13 @@ English | 简体中文 | 繁體中文 | 日本語 | 한국어 | Français | Ру
 📣 Recent updates
 -----------------
 
-### 🔥 2026.06.11: Release of PaddleOCR 3.7.0
+### 🔥 2026.07.22: HPD-Parsing is now available
+
+-   **HPD-Parsing** is a lightweight vision-language model designed for high-throughput document parsing. It adopts a hierarchical parallel decoding paradigm and Progressive Multi-Token Prediction (P-MTP), achieving a peak throughput of 4,752 tokens/s on public benchmarks while maintaining competitive parsing accuracy.
+-   HPD-Parsing supports both OpenAI-compatible serving and local inference through a customized vLLM runtime, making it suitable for document parsing scenarios with high demands on inference efficiency and deployment throughput.
+-   See the HPD-Parsing usage tutorial for environment setup, serving, and local inference instructions.
+
+**2026.06.11: Release of PaddleOCR 3.7.0**
 
 -   PP-OCRv6 highlights:
     

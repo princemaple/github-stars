@@ -1,6 +1,6 @@
 ---
 project: quickbeam
-stars: 405
+stars: 404
 description: JavaScript runtime for the BEAM — Web APIs backed by OTP, native DOM, and a built-in TypeScript toolchain.
 url: https://github.com/elixir-volt/quickbeam
 ---
@@ -33,6 +33,43 @@ QuickBEAM.eval(rt, "function greet(name) { return 'hi ' + name }")
 {:ok, "hi world"} \= QuickBEAM.call(rt, "greet", \["world"\])
 
 QuickBEAM.stop(rt)
+
+Isolated BEAM execution
+-----------------------
+
+`QuickBEAM.VM` decodes QuickJS bytecode and evaluates it with an isolated BEAM interpreter. Each evaluation owns its JavaScript heap, globals, jobs, handlers, and resource accounting. Long-lived SSR bundles can be pinned explicitly so request processes copy only a lightweight handle:
+
+{:ok, source} \= File.read("priv/server.js")
+{:ok, program} \= QuickBEAM.VM.compile(source, filename: "server.js")
+{:ok, pinned} \= QuickBEAM.VM.pin(program)
+
+try do
+  QuickBEAM.VM.call(pinned, "render", \[%{title: "Catalog"}\],
+    profile: :ssr,
+    handlers: %{"load\_props" \=> fn \[\] \-> %{title: "Catalog"} end},
+    max\_steps: 20\_000\_000,
+    memory\_limit: 64 \* 1024 \* 1024,
+    timeout: 2\_000
+  )
+after
+  QuickBEAM.VM.unpin(pinned)
+end
+
+The program store is fixed-capacity and has no implicit eviction or fallback. Applications should have one supervised lifecycle owner pin each bundle during startup and unpin it during replacement or normal shutdown.
+
+`QuickBEAM.VM.call/4` deliberately mirrors `QuickBEAM.call/4`, but their lifecycles differ: native calls reuse persistent JavaScript state, while every VM call initializes a fresh heap from the immutable program before invoking the global function.
+
+### Isolated VM limitations
+
+-   Programs and serialized bytecode are locked to the exact vendored QuickJS bytecode version and ABI fingerprint. Recompile programs when upgrading.
+-   Source compilation uses a short-lived native QuickJS compiler; execution is performed by the BEAM interpreter.
+-   Each `eval` or `call` owns fresh globals, heap objects, jobs, and handlers. Mutations never persist into another evaluation.
+-   The BEAM interpreter implements a bounded, tested JavaScript subset rather than every native QuickJS feature. Unsupported bytecode and semantics fail explicitly without falling back to native execution.
+-   `memory_limit` bounds deterministic logical VM allocation. It is distinct from endpoint BEAM process memory, which is reported by `measure/2` and `measure_call/4`. Each evaluation permits at most 64 concurrently outstanding asynchronous `Beam.call` handler operations.
+-   `:core` and `:ssr` select fixed builtin profiles. They do not expose the full browser, Node.js, DOM, WASM, or native-addon surfaces of a native runtime.
+-   Pinned storage has fixed capacity and residency budgets, no implicit eviction, and no stale-handle fallback.
+
+The bounded BEAM compiler remains an internal, release-quarantined benchmark and conformance tier. It is not selectable through the public `QuickBEAM.VM` evaluation options; production evaluation always uses the interpreter.
 
 BEAM integration
 ----------------

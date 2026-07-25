@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 833
+stars: 858
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -168,7 +168,7 @@ It provides:
 -   A **Vue chat panel** (`AgentChatPanel`) built on the Vercel AI SDK (`Experimental_Agent` + `@ai-sdk/vue`)
 -   **Browser-side LLM configuration** — API keys for OpenAI, Anthropic, or OpenAI-compatible endpoints stay in the client (encrypted in `localStorage`)
 -   **Phase 1 CAD tools** — `get_drawing_context`; `draw_line`, `draw_circle`, `draw_arc`, `draw_rectangle`, `draw_polyline`, `draw_text`; `set_current_layer`, `create_layer`, `zoom_extents`
--   **English / Chinese** UI strings via the plugin i18n layer
+-   **English / Chinese / Turkish / Czech** UI strings via the plugin i18n layer
 
 The full Vue `cad-viewer` app registers the agent automatically when the package is installed (palette tab). `cad-simple-viewer-example` wires it into a dock tab via `cad-simple-ui-plugin`. Host apps call `registerLazyAgentPlugin` and `setAgentPaletteOpener` to mount the panel where they want.
 
@@ -228,9 +228,6 @@ Known Issues
 
 CAD-Viewer has some known limitations that users should be aware of:
 
--   **Unsupported Entities**:
-    
-    -   **XRefs**: External references (XRefs) are not currently supported. This is mainly because file access in the browser works differently from desktop CAD applications. Support for XRefs is planned for a future release.
 -   **DWG File Compatibility**:
     
     -   Some DWG drawings may fail to open due to bugs in the underlying LibreDWG library. This is a known limitation of the current DWG parsing implementation. If you find those issues, please log one issue on CAD-Viewer issues page or LibreDWG issues page.
@@ -253,7 +250,7 @@ CAD-Viewer has some known limitations that users should be aware of:
 -   **DWG File Size Limits**:
     
     -   Parsing DWG files with LibreDWG is memory-intensive and can easily exceed 2 GB of RAM. `libredwg-web` therefore enforces WASM heap memory limits; very large DWG files may fail to parse.
-    -   We offer a **proprietary DWG/DXF parser** with significantly lower memory usage, support for larger files, and more accurate parsing. It integrates with the same `@mlightcad/data-model` as the open-source converters and can replace the GPL-based `dxf-json-converter` and `libredwg-converter` stack for closed-source commercial products. See the commercial license document for scope, pricing, GPL compliance, and support terms.
+    -   We offer a **proprietary DWG parser** with significantly lower memory usage, support for larger files, and more accurate parsing. It integrates with the same `@mlightcad/data-model` as the open-source converters and can replace the GPL-based `libredwg-converter` stack for closed-source commercial products. See the commercial license document for scope, pricing, GPL compliance, and support terms.
 
 Roadmap
 -------
@@ -478,6 +475,6 @@ License
 
 The cad-viewer monorepo is primarily MIT licensed.
 
-The **default DXF/DWG loading path** in `@mlightcad/cad-simple-viewer` depends on GPL-3.0 packages (`dxf-json` / `@mlightcad/dxf-json-converter` for DXF, `libredwg-web` / `@mlightcad/libredwg-converter` for DWG). If you ship a closed-source product and cannot distribute GPL code to your customers, use the **proprietary DWG/DXF parser** instead — it replaces those converters and lets the rest of the stack remain MIT-only.
+DXF loading uses the built-in MIT parser in `@mlightcad/data-model`. The **default DWG loading path** in `@mlightcad/cad-simple-viewer` depends on GPL-3.0 packages (`libredwg-web` / `@mlightcad/libredwg-converter`). If you ship a closed-source product and cannot distribute GPL code to your customers, use the **proprietary DWG parser** instead — it replaces that converter and lets the rest of the stack remain MIT-only.
 
 → **Commercial parser:** PROPRIETARY-PARSER.md (scope, licensing, pricing, integration, GPL compliance, support)

@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 30883
+stars: 31125
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---
@@ -55,7 +55,7 @@ $ ~/.local/bin/mise --version
  / / / / / / (\_\_  )  \_\_/\_\_\_\_\_/  \_\_/ / / /\_\_\_\_\_/ /\_/ / / /\_/ / /\_\_/  \_\_/
 /\_/ /\_/ /\_/\_/\_\_\_\_/\\\_\_\_/      \\\_\_\_/\_/ /\_/     / .\_\_\_/\_/\\\_\_,\_/\\\_\_\_/\\\_\_\_/
                                             /\_/                 by @jdx
-2026.7.10 macos-arm64 (2026-07-17)
+2026.7.13 macos-arm64 (2026-07-24)
 
 Hook mise into your shell (pick the right one for your shell):
 

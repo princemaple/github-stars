@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 782
+stars: 794
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -240,11 +240,11 @@ Features
 -   **Graceful shutdown**: Drains in-flight requests on SIGTERM/SIGINT with configurable timeout
 -   **TLS support**: Optional HTTPS with configurable cert/key paths
 -   **Separate dashboard port**: Optionally serve the Web UI + its API on a dedicated port (`server.console_port`, e.g. 9001) apart from the S3 API, so each can have its own firewall rules / TLS / reverse proxy (MinIO-style)
--   **Reverse-proxy subpath**: Host the whole app under a subpath (`server.base_path`, e.g. `/vaults3`) so the dashboard works behind `https://example.com/vaults3/dashboard/`; asset URLs, SPA routes, and API calls are rewritten at serve time (also auto-detects the proxy's `X-Forwarded-Prefix`)
+-   **Reverse-proxy subpath**: Host the whole app under a subpath (`server.base_path`, e.g. `/vaults3`) so both the dashboard (`https://example.com/vaults3/dashboard/`) and the S3 API work behind it — asset URLs and SPA routes are rewritten at serve time, and S3 SigV4 signatures are verified against the original (pre-strip) path (optionally auto-detect the subpath from the proxy's `X-Forwarded-Prefix` with `server.trust_forwarded_prefix`, off by default since that header is client-supplied)
 -   **Object versioning**: Per-bucket versioning with version IDs, delete markers, version-specific GET/DELETE/HEAD
 -   **Object locking (WORM)**: Legal hold and retention (GOVERNANCE/COMPLIANCE) to prevent deletion
 -   **Lifecycle rules**: Per-bucket object expiration (auto-delete after N days) and aborting incomplete multipart uploads after N days (S3 `AbortIncompleteMultipartUpload`, reclaims the parts left by killed/failed clients), run by a background worker
--   **Zstandard compression**: Transparent compress-on-write, decompress-on-read with zstd (better ratio and speed than gzip). Objects written by older gzip builds are still read transparently (codec auto-detected by magic number)
+-   **Zstandard compression**: Transparent compress-on-write, decompress-on-read with zstd (better ratio and speed than gzip). Reads **stream** the decoder, so GET time-to-first-byte stays flat regardless of object size (no whole-object buffering). Objects written by older gzip builds are still read transparently (codec auto-detected by magic number)
 -   **Small-file packing (experimental)**: Optionally pack objects up to a size threshold into large append-only **volume** files (each as an independent zstd frame) with byte-offset locations in BoltDB, plus background dead-space **compaction** (`POST /api/v1/compact`), avoids the per-file overhead (inodes, syscalls, disk blocks) of millions of tiny objects. Larger objects fall through to individual files. Not yet composable with encryption or erasure coding (skipped if either is enabled)
 -   **Scales to millions of objects**: Listing and storage stats are served from a sorted BoltDB metadata index with maintained per-bucket counters (size/count updated incrementally on every write), never a filesystem walk. So dashboard stats are O(1) and the object browser pages in milliseconds regardless of bucket size, verified at 1M+ objects (stats `13s → 0.4ms`)
 -   **Access logging**: Structured JSON lines log file of all S3 operations
@@ -1190,6 +1190,12 @@ Reverse-proxy subpath (e.g. `/vaults3`)
 
 _(empty)_
 
+`VAULTS3_TRUST_FORWARDED_PREFIX`
+
+Auto-detect subpath from `X-Forwarded-Prefix`
+
+`false`
+
 `VAULTS3_DATA_DIR`
 
 Object storage directory
@@ -1225,6 +1231,18 @@ _(disabled)_
 Log level (`debug`, `info`, `warn`, `error`)
 
 `info`
+
+`VAULTS3_TRACE_FORWARD`
+
+Log per-hop latency (DNS/connect/reuse/TTFB) for proxied cluster reads
+
+`0`
+
+`VAULTS3_TRACE_READS`
+
+Log the cause (`meta_nil` vs `data_missing`) of cluster `GET`/`HEAD` 404s
+
+`0`
 
 ### Storage requirements
 

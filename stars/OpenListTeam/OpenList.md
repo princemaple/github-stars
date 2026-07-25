@@ -1,6 +1,6 @@
 ---
 project: OpenList
-stars: 23586
+stars: 23693
 description: A new AList Fork to Anti Trust Crisis
 url: https://github.com/OpenListTeam/OpenList
 ---
@@ -70,7 +70,7 @@ Features
     -   MediaFire
     -   Mediatrack
     -   ProtonDrive
-    -   139yun (Personal, Family, Group)
+    -   139yun (Personal, Family, Group, Share)
     -   YandexDisk
     -   BaiduNetdisk
     -   Terabox

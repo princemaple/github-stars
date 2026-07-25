@@ -1,6 +1,6 @@
 ---
 project: coolify
-stars: 58860
+stars: 59520
 description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
@@ -69,50 +69,51 @@ Thank you so much!
 
 ### Huge Sponsors
 
+-   Context.dev - Web scraping API for AI agents
+-   SerpAPI - Google Search API — Scrape Google and other search engines from our fast, easy, and complete API.
 -   MVPS - Cheap VPS servers at the highest possible quality
--   SerpAPI - Google Search API — Scrape Google and other search engines from our fast, easy, and complete API
--   Seibert Group - Boost productivity company-wide with AI agents like Claude Code
 -   ScreenshotOne - Screenshot API for devs
 -   PrivateAlps - Cloud Services Provider, VPS, servers infrastructure for people who care about privacy and control
+-   Seibert Group - Boost productivity company-wide with AI agents like Claude Code
+-   Contabo - Cloud VPS & dedicated servers at unbeatable prices
 
 ### Big Sponsors
 
--   23M - Your experts for high-availability hosting solutions!
--   American Cloud - US-based cloud infrastructure services
--   Arcjet - Advanced web security and performance solutions
--   BC Direct - Your trusted technology consulting partner
--   Blacksmith - Infrastructure automation platform
--   Capture.page - Fast & Reliable Screenshot API for Developers
+-   Cloudways - Managed cloud hosting platform by DigitalOcean
 -   ByteBase - Database CI/CD and Security at Scale
--   CodeRabbit - Cut Code Review Time & Bugs in Half
--   COMIT - New York Times award–winning contractor
--   CompAI - Open source compliance automation platform
--   Convex - Open-source reactive database for web app developers
--   Darweb - 3D CPQ solutions for ecommerce design
--   Dataforest Cloud - Deploy cloud servers as seeds independently in seconds. Enterprise hardware, premium network, 100% made in Germany.
--   Formbricks - The open source feedback platform
--   GoldenVM - Premium virtual machine hosting solutions
--   Greptile - The AI Code Reviewer
--   Hetzner - Server, cloud, hosting, and data center solutions
--   Hostinger - Web hosting and VPS solutions
--   JobsCollider - 30,000+ remote jobs for developers
--   Juxtdigital - Digital PR & AI Authority Building Agency
--   LiquidWeb - Premium managed hosting solutions
--   Logto - The better identity infrastructure for developers
--   LumaDock - Fast and reliable virtual server hosting
--   Macarne - Best IP Transit & Carrier Ethernet Solutions for Simplified Network Connectivity
--   Mobb - Secure Your AI-Generated Code to Unlock Dev Productivity
--   PetroSky Cloud - Open source cloud deployment solutions
--   PFGLabs - Build Real Projects with Golang
 -   Ramnode - High Performance Cloud VPS Hosting
--   SaasyKit - Complete SaaS starter kit for developers
--   SupaGuide - Your comprehensive guide to Supabase
--   Supadata AI - Scrape YouTube, web, and files. Get AI-ready, clean data
--   Syntax.fm - Podcast for web developers
--   Tigris - Modern developer data platform
+-   23M - Your experts for high-availability hosting solutions!
+-   Macarne - Best IP Transit & Carrier Ethernet Solutions for Simplified Network Connectivity
+-   Hetzner - Server, cloud, hosting, and data center solutions
+-   Logto - The better identity infrastructure for developers
+-   Supadata - Scrape YouTube, web, and files. Get AI-ready, clean data for your next project.
 -   Tolgee - The open source localization platform
+-   Best Consultant - Your trusted technology consulting partner
+-   ArcJet - Advanced web security and performance solutions
+-   SupaGuide - Your comprehensive guide to Supabase
+-   CodeRabbit - Cut Code Review Time & Bugs in Half
+-   Convex - Convex is the open-source reactive database for web app developers.
+-   GoldenVM - Premium virtual machine hosting solutions
+-   Comit International - New York Times award–winning contractor!
+-   Compai - The open source compliance automation platform that does everything you need to get compliant, fast. Open source alternative to Drata & Vanta.
+-   Tigris - Modern S3 Alternative
+-   Blacksmith - Infrastructure automation platform
+-   JobsCollider - 30,000+ remote jobs for developers
+-   Darweb - Design. Develop. Deliver. Specialized in 3D CPQ Solutions for eCommerce.
+-   Hostinger - Web hosting and VPS solutions
+-   Mobb - Secure Your AI-Generated Code to Unlock Dev Productivity
 -   Ubicloud - Open source cloud infrastructure platform
--   VPSDime - Affordable high-performance VPS hosting solutions
+-   PFGLabs - Build Real Projects with Golang
+-   JuxtDigital - Digital PR & AI Authority Building Agency
+-   SaasyKit - Complete SaaS starter kit for developers
+-   American Cloud - US-based cloud infrastructure services
+-   LiquidWeb - Premium managed hosting solutions
+-   Greptile - The AI Code Reviewer
+-   VPSDime - Cheap VPS Hosting - 4GB for $5/month
+-   dataforest Cloud - Deploy cloud servers as seeds independently in seconds. Enterprise hardware, premium network, 100% made in Germany.
+-   ISHosting - Hosting and VPS solutions
+-   PetroSky Cloud - Open source cloud deployment solutions
+-   QuickSrv - Fast and reliable server hosting
 
 ### Small Sponsors
 

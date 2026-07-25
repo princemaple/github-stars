@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 451194
+stars: 452530
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -1017,9 +1017,29 @@ Yes
 
 Unknown
 
+Thisispaper
+
+Curated architecture, design, photography and art projects with visual-similarity and taste metadata
+
+`apiKey`
+
+Yes
+
+Yes
+
 UpRes
 
 AI image upscaling to 8K with 18 models (Real-ESRGAN, SeedVR2, AuraSR)
+
+`apiKey`
+
+Yes
+
+Yes
+
+Text-till-Kladdesign
+
+AI fashion design generator — transform Swedish text into clothing concepts
 
 `apiKey`
 
@@ -2467,6 +2487,16 @@ Yes
 
 Unknown
 
+BlazePhoenix
+
+On-chain DEX aggregator quotes and route execution data
+
+`No`
+
+Yes
+
+Yes
+
 Block Lottos
 
 On-chain lottery, draw history, jackpot and advertising endpoints
@@ -3016,6 +3046,16 @@ Cryptocurrencies Prices
 Yes
 
 Unknown
+
+Zennet
+
+x402 pay-per-use APIs: Polymarket signals, CEX/DEX spreads, contract risk scores, gas oracle
+
+No
+
+Yes
+
+Yes
 
 ZMOK
 
@@ -4172,6 +4212,16 @@ Yes
 
 Unknown
 
+MyIPRightNow
+
+Public IP address with network, location, and connection details
+
+No
+
+Yes
+
+Yes
+
 Nationalize.io
 
 Estimate the nationality of a first name
@@ -4351,6 +4401,16 @@ No
 Yes
 
 Unknown
+
+QR Code Crafter
+
+Generate static QR codes in SVG, PNG, JPG, WebP, PDF, or EPS
+
+No
+
+Yes
+
+Yes
 
 Qrcode Monkey
 
@@ -5987,6 +6047,16 @@ Yes
 
 Yes
 
+Dino.markets
+
+Matched Kalshi and Polymarket prediction-market data, cross-venue spreads
+
+`apiKey`
+
+Yes
+
+No
+
 Econdb
 
 Global macroeconomic data
@@ -6332,6 +6402,16 @@ Tax Data
 Instant VAT number and tax validation across the globe
 
 `apiKey`
+
+Yes
+
+Unknown
+
+Top 5 Stocks
+
+Daily AI-ranked stock and crypto watchlists
+
+No
 
 Yes
 
@@ -8867,6 +8947,16 @@ Yes
 
 Unknown
 
+Disclosed Capitol
+
+US congressional & executive-branch stock trade disclosures (STOCK Act + OGE)
+
+`apiKey`
+
+Yes
+
+No
+
 District of Columbia Open Data
 
 Contains D.C. government public datasets, including crime, GIS, financial data, and so on
@@ -10027,6 +10117,16 @@ Yes
 
 Unknown
 
+Artificial Intelligence Jobs
+
+Live AI/ML job listings from 260+ companies' own career pages, with salary, location, remote and seniority filters
+
+No
+
+Yes
+
+Yes
+
 Careerjet
 
 Job search engine
@@ -10056,6 +10156,16 @@ Job board
 Yes
 
 Unknown
+
+freehire
+
+Open-source search engine aggregating tech jobs from company ATS boards
+
+No
+
+Yes
+
+No
 
 GraphQL Jobs
 
@@ -10136,6 +10246,16 @@ Job board aggregator
 Yes
 
 Unknown
+
+TechRole Index
+
+Russian IT profession, vacancy publication and salary aggregates
+
+No
+
+Yes
+
+Yes
 
 The Muse
 
@@ -11012,6 +11132,16 @@ Yes
 
 Unknown
 
+Newsflash
+
+Deduplicated news events from 260+ sources with corroboration/confidence scores for AI agents
+
+`apiKey`
+
+Yes
+
+No
+
 NewsX
 
 Get or Search Latest Breaking News with ML Powered Summaries 🤖
@@ -11297,6 +11427,16 @@ Yes
 
 Yes
 
+MostExpensiveWatches
+
+Documented luxury watch auction records, live listings, valuations and price indices
+
+No
+
+Yes
+
+Yes
+
 ModelPartFinder Error Codes
 
 Lookup appliance and equipment error codes by brand and code, with recommended replacement parts
@@ -11456,6 +11596,16 @@ No
 Yes
 
 Unknown
+
+Tilth
+
+Free daily UK fertiliser price index across nine grades, CC BY 4.0 licensed
+
+No
+
+Yes
+
+Yes
 
 Umeå Open Data
 
@@ -12342,6 +12492,16 @@ Yes
 
 Unknown
 
+Tinify.dev
+
+Image compression, resize and crop API with usage metadata
+
+`apiKey`
+
+Yes
+
+No
+
 Unsplash
 
 Photography
@@ -12682,6 +12842,16 @@ Yes
 
 Yes
 
+OrbitalWiki
+
+Catalog of 16,000+ satellites merging CelesTrak, GCAT, Wikidata; free tier included
+
+`apiKey`
+
+Yes
+
+Yes
+
 Purple Air
 
 Real Time Air Quality Monitoring
@@ -12741,6 +12911,16 @@ No
 Yes
 
 No
+
+Tallytopia
+
+Calculators for finance, health, math, space and sports with step-by-step results
+
+No
+
+Yes
+
+Yes
 
 Times Adder
 
@@ -12977,6 +13157,16 @@ Yes
 
 Yes
 
+FOFA
+
+Search engine for Internet connected assets and devices
+
+`apiKey`
+
+Yes
+
+Unknown
+
 FraudLabs Pro
 
 Screen order information using AI to detect frauds
@@ -13036,6 +13226,16 @@ No
 Yes
 
 Yes
+
+Hybrid Analysis
+
+File and URL malware analysis powered by Falcon Sandbox
+
+`apiKey`
+
+Yes
+
+Unknown
 
 HaveIBeenPwned
 
@@ -13180,6 +13380,16 @@ Unknown
 Spyse
 
 Access data on all Internet assets and build powerful attack surface management applications
+
+`apiKey`
+
+Yes
+
+Unknown
+
+SSL Domain Health Check
+
+SSL certificate validity, domain WHOIS status, and DNS record checks for any domain
 
 `apiKey`
 
@@ -13699,6 +13909,16 @@ Yes
 
 Unknown
 
+PostLake
+
+One API to publish, schedule, and read analytics across every major social network
+
+`apiKey`
+
+Yes
+
+No
+
 Product Hunt
 
 The best new products in tech
@@ -14024,6 +14244,16 @@ Yes
 
 Unknown
 
+Lumify
+
+Real-time sports intelligence: scores, odds, betting splits & AI bet analysis across 8 sports
+
+`apiKey`
+
+Yes
+
+No
+
 MLB Records and Stats
 
 Current and historical MLB statistics
@@ -14063,6 +14293,16 @@ No
 Yes
 
 Unknown
+
+Odds-API
+
+Real-time sports betting odds from 265+ bookmakers across 34 sports via REST and WebSocket
+
+`apiKey`
+
+Yes
+
+Yes
 
 Oddsmagnet
 
@@ -14298,6 +14538,16 @@ Auth
 HTTPS
 
 CORS
+
+AddressMock
+
+Random US, Hong Kong and Cape Verde addresses with matched city, state and ZIP
+
+No
+
+Yes
+
+Yes
 
 Bacon Ipsum
 
@@ -14704,6 +14954,16 @@ Yes
 
 Yes
 
+Langbly
+
+Context-aware text translation and language detection for 100+ languages
+
+`apiKey`
+
+Yes
+
+Yes
+
 Lecto Translation
 
 Translation API with free tier and reasonable prices
@@ -15047,6 +15307,16 @@ Unknown
 Compare Flight Prices
 
 API for comparing flight prices across platforms
+
+`apiKey`
+
+Yes
+
+Unknown
+
+CruiseFeed
+
+Normalized cruise line inventory: ships, sailings, itineraries, ports and lead-in fares
 
 `apiKey`
 
@@ -16583,6 +16853,16 @@ No
 Yes
 
 Unknown
+
+Meltema
+
+Multi-model weather: GFS, ECMWF AIFS/IFS and a 31-member GEFS ensemble, keyless point forecasts
+
+No
+
+Yes
+
+No
 
 Meteorologisk Institutt
 

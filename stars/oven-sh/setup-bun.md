@@ -1,6 +1,6 @@
 ---
 project: setup-bun
-stars: 706
+stars: 709
 description: Set up your GitHub Actions workflow with a specific version of Bun
 url: https://github.com/oven-sh/setup-bun
 ---

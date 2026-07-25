@@ -1,6 +1,6 @@
 ---
 project: pytudes
-stars: 24382
+stars: 24386
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
@@ -54,13 +54,31 @@ co nb
 
 2026
 
-Project Euler #3: Largest prime factor
+Largest prime factor
 
 co nb
 
 2026
 
-Project Euler 1–100
+Project Euler #1–100 by Fable LLM
+
+co nb
+
+2026
+
+Project Euler #1–100 by Kimi LLM
+
+co nb
+
+2026
+
+Project Euler #1–100 by Opus LLM
+
+co nb
+
+2026
+
+Project Euler #1–100 by a Human
 
 co nb
 
@@ -252,13 +270,31 @@ co nb
 
 2026
 
-Project Euler 1–100
+Project Euler #1–100 by a Human
 
 co nb
 
 2026
 
-Project Euler #3: Largest prime factor
+Project Euler #1–100 by Fable LLM
+
+co nb
+
+2026
+
+Project Euler #1–100 by Opus LLM
+
+co nb
+
+2026
+
+Project Euler #1–100 by Kimi LLM
+
+co nb
+
+2026
+
+Largest prime factor
 
 Open
 

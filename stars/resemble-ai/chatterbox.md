@@ -1,6 +1,6 @@
 ---
 project: chatterbox
-stars: 25563
+stars: 25703
 description: SoTA open-source TTS
 url: https://github.com/resemble-ai/chatterbox
 ---
@@ -29,6 +29,8 @@ Alongside V3, we are releasing the **Single Language Pack**: dedicated finetunes
 For low-latency English voice agents, **Chatterbox-Turbo** is our most efficient model. Built on a streamlined 350M parameter architecture, **Turbo** delivers high-quality speech with less compute and VRAM than our previous models. We have also distilled the speech-token-to-mel decoder, previously a bottleneck, reducing generation from 10 steps to just **one**, while retaining high-fidelity audio output.
 
 **Paralinguistic tags** are now native to the Turbo model, allowing you to use `[cough]`, `[laugh]`, `[chuckle]`, and more to add distinct realism. While Turbo was built primarily for low-latency voice agents, it excels at narration and creative workflows.
+
+For the most resource-constrained deployments, **Chatterbox-Nano** shares Turbo's architecture in an even smaller 110M parameter package. It targets on-device and CPU inference — running **3x faster than realtime on 8 CPU cores** — while keeping the same single-step decoder and native paralinguistic tag support. Nano is the recommended model when memory and latency budgets are tightest.
 
 If you like the model but need to scale or tune it for higher accuracy, check out our competitively priced TTS service (link). It delivers reliable performance with ultra-low latency of sub 200ms—ideal for production use in agents, applications, or interactive media.
 
@@ -63,6 +65,20 @@ Zero-shot voice agents, Production
 Demo
 
 Listen
+
+**Chatterbox-Nano**
+
+**110M**
+
+**English**
+
+Same architecture as Turbo, Paralinguistic Tags, Runs on CPU (3x realtime on 8 cores)
+
+On-device / CPU inference, tight latency & memory budgets
+
+Model
+
+—
 
 **Chatterbox-Multilingual V3** (Language list)
 
@@ -142,6 +158,25 @@ wav \= model.generate(text, audio\_prompt\_path\="your\_10s\_ref\_clip.wav")
 
 ta.save("test-turbo.wav", wav, model.sr)
 
+##### Chatterbox-Nano
+
+Nano shares Turbo's architecture and is loaded through the same `ChatterboxTurboTTS` class by passing `nano=True`:
+
+import torchaudio as ta
+import torch
+from chatterbox.tts\_turbo import ChatterboxTurboTTS
+
+\# Load the Nano model (also runs on CPU: device="cpu")
+model \= ChatterboxTurboTTS.from\_pretrained(device\="cuda", nano\=True)
+
+\# Generate with Paralinguistic Tags
+text \= "Hi there, Sarah here from MochaFone calling you back \[chuckle\], have you got one minute to chat about the billing issue?"
+
+\# Generate audio (requires a reference clip for voice cloning)
+wav \= model.generate(text, audio\_prompt\_path\="your\_10s\_ref\_clip.wav")
+
+ta.save("test-nano.wav", wav, model.sr)
+
 ##### Chatterbox and Chatterbox-Multilingual
 
 import torchaudio as ta
@@ -174,7 +209,7 @@ AUDIO\_PROMPT\_PATH \= "YOUR\_FILE.wav"
 wav \= model.generate(text, audio\_prompt\_path\=AUDIO\_PROMPT\_PATH)
 ta.save("test-2.wav", wav, model.sr)
 
-See `example_tts.py` and `example_vc.py` for more examples.
+See `example_tts.py`, `example_tts_turbo.py`, `example_tts_nano.py`, and `example_vc.py` for more examples.
 
 Supported Languages
 -------------------

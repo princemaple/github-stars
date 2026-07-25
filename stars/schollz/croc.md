@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 35601
+stars: 38452
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -16,7 +16,7 @@ About
 
 -   Allows **any two computers** to transfer data (using a relay)
 -   Provides **end-to-end encryption** (using PAKE)
--   Enables easy **cross-platform** transfers (Windows, Linux, Mac)
+-   Enables easy **cross-platform** transfers (Windows, Linux, Mac, Browser)
 -   Allows **multiple file** transfers
 -   Allows **resuming transfers** that are interrupted
 -   No need for local server or port-forwarding
@@ -25,12 +25,19 @@ About
 
 For more information about `croc`, see my blog post or read a recent interview I did.
 
+No-install
+----------
+
+You can use croc without installing anything at getcroc.com.
+
+The browser version is fully compatible with the CLI, so you can send and receive files between them.
+
 Install
 -------
 
 You can download the latest release for your system, or install a release from the command-line:
 
-curl https://getcroc.schollz.com | bash
+curl https://getcroc.com | bash
 
 ### On macOS
 
@@ -72,7 +79,7 @@ environment.systemPackages \= \[
 First, install dependencies:
 
 apk add bash coreutils
-wget -qO- https://getcroc.schollz.com | bash
+wget -qO- https://getcroc.com | bash
 
 ### On Arch Linux
 
@@ -130,7 +137,10 @@ go install github.com/schollz/croc/v10@latest
 
 ### On Android
 
-There is a 3rd-party F-Droid app available to download.
+There are two F-Droid apps available:
+
+-   crocgui — original port (Go, basic UI)
+-   croc-app — native Kotlin/Jetpack Compose client with a modern, mobile-first interface
 
 Usage
 -----
@@ -171,6 +181,12 @@ To automatically overwrite files without prompting, use the `--overwrite` flag:
 
 croc --yes --overwrite <code\>
 
+#### Keep Both Files Without Prompt
+
+To keep an existing file and receive the incoming one under a new name (e.g. `video (1).mkv`), use the `--rename` flag:
+
+croc --yes --rename <code\>
+
 #### Excluding Folders
 
 To exclude folders from being sent, use the `--exclude` flag with comma-delimited exclusions:
@@ -204,6 +220,8 @@ croc send \[file1\] \[file2\] \[file3\] \[folder1\] \[folder2\]
 To show QR code (for mobile devices), use:
 
 croc send --qr \[file(s)-or-folder\]
+
+The QR code opens `https://getcroc.com/?code=...`, where the web client automatically connects in receive-only mode.
 
 #### Use a Proxy
 
@@ -266,6 +284,16 @@ croc --pass YOURPASSWORD --relay "myreal.example.com:9009" send \[filename\]
 To use custom ports, set `CROC_PORTS` (comma-separated) or `CROC_PORT` (base port):
 
 docker run -d -p 9010-9011:9010-9011 -e CROC\_PORTS='9010,9011' -e CROC\_PASS='YOURPASSWORD' docker.io/schollz/croc
+
+#### Web client
+
+The React/Vite client in `web/` can send and receive multiple files with normal croc CLI peers. The production client and its WebAssembly protocol runtime are embedded in every `croc` binary. One command serves both the site and its same-origin WebSocket relay:
+
+croc serve getcroc.com
+
+This binds to `127.0.0.1:9014` by default for an HTTPS reverse proxy. `/` serves the website and `/ws` bridges to `croc.schollz.com`. For a directly accessible local development server, `croc serve localhost:5173` binds and serves on `localhost:5173`. Use `--bind`, `--relay`, and `--ports` before the website address to customize the local listener or upstream croc relay.
+
+See `web/README.md` for frontend development, embedded asset generation, custom relay, and reverse-proxy instructions.
 
 Acknowledgements
 ----------------

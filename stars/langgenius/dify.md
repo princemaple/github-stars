@@ -1,7 +1,7 @@
 ---
 project: dify
-stars: 149257
-description: Production-ready platform for agentic workflow development.
+stars: 150239
+description: Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.
 url: https://github.com/langgenius/dify
 ---
 
@@ -19,7 +19,7 @@ Quick start
 
   
 
-The easiest way to start the Dify server is through Docker Compose. Before running Dify with the following commands, make sure that Docker and Docker Compose are installed on your machine:
+The easiest way to start the Dify server is through Docker Compose. Before running Dify with the following commands, make sure that Docker and Docker Compose v2.24.0 or later are installed on your machine:
 
 cd dify
 cd docker

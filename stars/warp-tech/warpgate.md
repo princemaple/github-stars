@@ -1,6 +1,6 @@
 ---
 project: warpgate
-stars: 7366
+stars: 7408
 description: Fully transparent SSH, HTTPS, Kubernetes, MySQL and Postgres bastion/PAM that doesn't need additional client-side software
 url: https://github.com/warp-tech/warpgate
 ---

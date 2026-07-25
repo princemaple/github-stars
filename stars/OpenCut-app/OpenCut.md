@@ -1,6 +1,6 @@
 ---
 project: OpenCut
-stars: 75399
+stars: 78698
 description: The open-source CapCut alternative
 url: https://github.com/OpenCut-app/OpenCut
 ---
@@ -29,7 +29,17 @@ Development
 
 Install proto if you haven't already:
 
+**Linux, macOS, WSL:**
+
 bash <(curl -fsSL https://moonrepo.dev/install/proto.sh)
+
+**Windows (PowerShell):**
+
+irm https://moonrepo.dev/install/proto.ps1 | iex
+
+If shims fail to run, allow local scripts for your user:
+
+Set-ExecutionPolicy \-Scope CurrentUser RemoteSigned
 
 From the repo root:
 

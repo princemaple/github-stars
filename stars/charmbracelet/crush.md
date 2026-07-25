@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 26605
+stars: 26849
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -147,6 +147,12 @@ Or just install it with Go:
 
 ```
 go install github.com/charmbracelet/crush@latest
+```
+
+On illumos (OpenIndiana, OmniOS), the command above works as-is. Only native OS notifications are unavailable there; terminal-based notifications (OSC) and the terminal bell still work. On Oracle Solaris, add `-tags sqlite3_dotlk` so the local database uses dot-file locking:
+
+```
+go install -tags sqlite3_dotlk github.com/charmbracelet/crush@latest
 ```
 
 Warning
@@ -400,6 +406,39 @@ Provider `extra_body` is a non-expanding JSON passthrough; put env-driven values
     }
   }
 }
+
+#### MCP OAuth
+
+HTTP and SSE MCP servers that require OAuth can use Crush's built-in authorization-code flow instead of a static `Authorization` header. Set `"oauth": true` to enable it:
+
+{
+  "mcp": {
+    "linear": {
+      "type": "http",
+      "url": "https://mcp.linear.app/mcp",
+      "oauth": true
+    }
+  }
+}
+
+##### Pre-registered clients
+
+Some servers (GitHub, Slack) don't support dynamic client registration. For those, register an OAuth app with the provider and supply the credentials directly. All values support shell expansion:
+
+{
+  "mcp": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "oauth": true,
+      "oauth\_client\_id": "Iv1.abc123def456",
+      "oauth\_client\_secret": "$GITHUB\_MCP\_SECRET",
+      "oauth\_callback\_port": 40704
+    }
+  }
+}
+
+When `oauth_client_id` is set, Crush skips dynamic client registration and authenticates as the specified client. When omitted, Crush attempts dynamic registration automatically (works with Linear, Notion, and other servers that support RFC 7591).
 
 ### Hooks
 

@@ -1,6 +1,6 @@
 ---
 project: lua
-stars: 208
+stars: 210
 description: A Lua 5.3 runtime in pure Elixir
 url: https://github.com/tv-labs/lua
 ---

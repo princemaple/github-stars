@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 38711
+stars: 39189
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -173,23 +173,24 @@ agent-browser is checked <sel\>        # Check if checked
 ### Find Elements (Semantic Locators)
 
 agent-browser find role <role\> <action\> \[value\]       # By ARIA role
-agent-browser find text <text\> <action\>               # By text content
+agent-browser find text <text\> <action\> \[value\]       # By text content
 agent-browser find label <label\> <action\> \[value\]     # By label
 agent-browser find placeholder <ph\> <action\> \[value\]  # By placeholder
-agent-browser find alt <text\> <action\>                # By alt text
-agent-browser find title <text\> <action\>              # By title attr
+agent-browser find alt <text\> <action\> \[value\]        # By alt text
+agent-browser find title <text\> <action\> \[value\]      # By title attr
 agent-browser find testid <id\> <action\> \[value\]       # By data-testid
 agent-browser find first <sel\> <action\> \[value\]       # First match
 agent-browser find last <sel\> <action\> \[value\]        # Last match
 agent-browser find nth <n\> <sel\> <action\> \[value\]     # Nth match
 
-**Actions:** `click`, `fill`, `type`, `hover`, `focus`, `check`, `uncheck`, `text`
+**Actions:** `click`, `fill`, `check`, `hover`, `text`
 
-**Options:** `--name <name>` (filter role by accessible name), `--exact` (require exact text match)
+**Options:** `--name <name>` (filter role by accessible name), `--exact` (exact, case-sensitive match; for `role` it applies to the accessible name, whose default is a case-insensitive substring)
 
 **Examples:**
 
 agent-browser find role button click --name "Submit"
+agent-browser find role heading text --name "Skills"     # implicit roles work: <h2>=heading, <ul>=list, top-level <header>=banner
 agent-browser find text "Sign In" click
 agent-browser find label "Email" fill "test@test.com"
 agent-browser find first ".item" click
@@ -280,7 +281,9 @@ agent-browser network requests --type xhr,fetch  # Filter by resource type
 agent-browser network requests --method POST   # Filter by HTTP method
 agent-browser network requests --status 2xx    # Filter by status (200, 2xx, 400-499)
 agent-browser network request <requestId\>      # View full request/response detail
-agent-browser network har start                # Start HAR recording
+agent-browser network har start                # Start HAR recording (embeds text response bodies)
+agent-browser network har start --content all  # Embed all response bodies (binary as base64)
+agent-browser network har start --content none # Metadata only, no bodies
 agent-browser network har stop \[output.har\]    # Stop and save HAR (temp path if omitted)
 
 ### Tabs & Windows
@@ -301,6 +304,8 @@ agent-browser tab docs               # switch to the docs tab
 agent-browser snapshot               # populate refs for docs
 agent-browser click @e3              # click uses docs's refs
 agent-browser tab close docs         # close by label
+
+Switching to a tab discarded by Chrome's Memory Saver reactivates it, since a discarded tab has no renderer to drive. Reactivation reloads the discarded page and resets its unsaved state, and the switch result reports `"revived": true`. A tab whose page is paused by a JavaScript dialog is alive rather than discarded, so the switch leaves it untouched and reports `"dialogBlocked": true`; resolve the dialog with `dialog accept` or `dialog dismiss` before interacting. Closing the active tab onto a discarded successor revives it the same way and reports `"activeTabRevived": true`.
 
 ### Frames
 
@@ -391,6 +396,34 @@ Each `react ...` subcommand requires `--enable react-devtools` to have been pass
 
 Works on any React app — Next.js, Remix, Vite+React, CRA, TanStack Start, React Native Web, etc. `vitals` and `pushstate` are framework-agnostic. `vitals` prints a summary by default; pass `--json` for the full structured payload.
 
+### Accessibility audits
+
+Run an axe-core accessibility audit against the current page or a URL. The axe-core engine is embedded in the binary, so it works offline and under strict CSP. It runs private partial audits across the page's frame tree and merges serialized results without page messaging, so page-provided `window.axe` values remain intact and iframe violations retain their frame selector paths. Accessibility audits require a CDP browser and are not available with Safari or iOS WebDriver sessions.
+
+agent-browser a11y                                 # Audit the current page
+agent-browser a11y https://example.com             # Navigate, then audit
+agent-browser a11y --tags wcag2a,wcag2aa           # Only rules with these axe tags
+agent-browser a11y --selector "#main"              # Scope the audit to a subtree
+agent-browser a11y example.com --json              # Full structured results
+
+The default output lists each violation with its impact, rule id, fix guidance URL, and the CSS selectors of failing nodes:
+
+```
+url: https://example.com/
+axe-core: 4.12.1  violations: 2  incomplete: 0  passes: 24
+
+[critical] image-alt: Images must have alternative text (3 nodes)
+  https://dequeuniversity.com/rules/axe/4.12/image-alt
+  - img.hero
+  - #logo > img
+  - footer img
+[serious] color-contrast: Elements must meet minimum color contrast ratio thresholds (1 node)
+  https://dequeuniversity.com/rules/axe/4.12/color-contrast
+  - .nav a.muted
+```
+
+`--json` returns the same data structured for automation (`counts`, `violations`, `incomplete`, each violation's `nodes` with `target`, `html`, and `failureSummary`). Each `target` preserves axe's selector path arrays, including nested arrays for shadow DOM boundaries. Rules that axe could not evaluate automatically are reported under `incomplete` for manual review.
+
 ### Init scripts
 
 agent-browser open --init-script <path\>           # Register page init script before first navigation
@@ -436,7 +469,7 @@ Profiles:
 -   `core` — Default. Navigation, snapshots, interaction, waits, reads, screenshots, JavaScript eval, close, tab basics, and profile discovery
 -   `network` — Network routes, request inspection, HAR, headers, credentials, offline
 -   `state` — Cookies, storage, auth, saved state, sessions, profiles, skills
--   `debug` — Console/errors, tracing, profiling, recording, clipboard, plugins, doctor, dashboard, install, upgrade, chat, diff, batch, confirm/deny
+-   `debug` — Console/errors, tracing, profiling, recording, a11y audit, clipboard, plugins, doctor, dashboard, install, upgrade, chat, diff, batch, confirm/deny
 -   `tabs` — Back/forward/reload, tabs, windows, frames, dialogs
 -   `react` — React tree/inspect/renders/suspense, vitals, pushstate
 -   `mobile` — Viewport/device/geolocation/media, touch, swipe, mouse, keyboard
@@ -1048,6 +1081,10 @@ Interactive confirmation prompts; auto-denies if stdin is not a TTY (or `AGENT_B
 
 Browser engine: `chrome` (default), `lightpanda` (or `AGENT_BROWSER_ENGINE` env)
 
+`--idle-timeout <time>`
+
+Shut down the daemon after inactivity (`10s`, `3m`, `1h`, or raw ms). Defaults to `1h`; use `0` to disable (or `AGENT_BROWSER_IDLE_TIMEOUT_MS` env)
+
 `--no-auto-dialog`
 
 Disable automatic dismissal of `alert`/`beforeunload` dialogs (or `AGENT_BROWSER_NO_AUTO_DIALOG` env)
@@ -1553,7 +1590,7 @@ agent-browser uses a client-daemon architecture:
 1.  **Rust CLI** - Parses commands, communicates with daemon
 2.  **Rust Daemon** - Pure Rust daemon using direct CDP, no Node.js required
 
-The daemon starts automatically on first command and persists between commands for fast subsequent operations. To auto-shutdown the daemon after a period of inactivity, set `AGENT_BROWSER_IDLE_TIMEOUT_MS` (value in milliseconds). When set, the daemon closes the browser and exits after receiving no commands for the specified duration.
+The daemon starts automatically on first command and persists between commands for fast subsequent operations. After **1 hour** with no commands or dashboard input it saves configured restore state, closes the browser, and exits, so an integration that dies without calling `close` cannot leak the daemon and its browser indefinitely; the next command starts a fresh daemon and configured state restore works as usual. A session without `--restore` or another restore key does not save browser state, so its transient state and open tabs are discarded at shutdown. Set `--idle-timeout` to a duration such as `30s`, `5m`, or `1h`, or set `AGENT_BROWSER_IDLE_TIMEOUT_MS` to a value in milliseconds. Use `0` to disable idle shutdown entirely. The default never closes a headed browser, including Safari and iOS WebDriver sessions, or a user-attached browser because those may be in direct human use. Provider-owned cloud browsers remain eligible for cleanup. An explicitly set timeout applies to every browser.
 
 **Browser Engine:** Uses Chrome (from Chrome for Testing) by default. The `--engine` flag selects between `chrome` and `lightpanda`. Supported browsers: Chromium/Chrome (via CDP) and Safari (via WebDriver for iOS).
 

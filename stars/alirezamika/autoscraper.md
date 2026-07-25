@@ -1,6 +1,6 @@
 ---
 project: autoscraper
-stars: 7648
+stars: 7729
 description: A Smart, Automatic, Fast and Lightweight Web Scraper for Python
 url: https://github.com/alirezamika/autoscraper
 ---

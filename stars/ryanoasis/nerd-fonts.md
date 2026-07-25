@@ -1,6 +1,6 @@
 ---
 project: nerd-fonts
-stars: 63749
+stars: 63836
 description: Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more
 url: https://github.com/ryanoasis/nerd-fonts
 ---
@@ -95,6 +95,8 @@ Features
 
 Glyph Sets
 ----------
+
+The currently used sets are listed in `src/glyphs/README.md`.
 
 🔍 🔍 You can search for glyphs easily on NerdFonts.com via the Cheat Sheet
 

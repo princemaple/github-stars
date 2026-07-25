@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 52488
+stars: 52570
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -248,7 +248,7 @@ To select a folder on the host for this purpose, include the following bind moun
 volumes:
   -  ./example:/shared
 
-Replace the example path `./example` with your desired shared folder, which then will become visible as `Shared`.
+Replace the example path `./example` with your desired shared folder, which then will become visible as `Shared` on the desktop and as drive `Z:`.
 
 ### How do I change the amount of CPU or RAM?
 
@@ -295,8 +295,9 @@ Windows can automatically join an Active Directory domain during installation. S
 
 environment:
   DOMAIN: "example.com"
+  DOMAIN\_OU: "OU=Virtual Machines,OU=Servers,DC=example,DC=com"
 
-Use the domain name, such as `example.com`, rather than a URL. The supplied account is added to the local Administrators group and automatically signed in after installation.
+Use the domain name, such as `example.com`, rather than a URL. The supplied account is added to the local Administrators group and automatically signed in after installation. `DOMAIN_OU` is optional and specifies where the computer account should be created.
 
 Windows must be able to resolve and reach the domain controller through the domain's DNS server.
 

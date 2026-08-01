@@ -1,6 +1,6 @@
 ---
 project: coturn
-stars: 14239
+stars: 14262
 description: coturn TURN server project
 url: https://github.com/coturn/coturn
 ---
@@ -42,7 +42,7 @@ coturn requires following dependencies to be installed first
 
 Optional
 
--   openssl (to support TLS and DTLS, authorized STUN and TURN)
+-   openssl 3.0 or newer (to support TLS and DTLS, authorized STUN and TURN); older OpenSSL versions are not supported
 -   MariaDB/MySQL (user database)
 -   Hiredis (user database, monitoring)
 -   SQLite (user database)
@@ -60,10 +60,11 @@ Features
 
 STUN specs:
 
--   RFC 3489 - "classic" STUN
+-   RFC 3489 - "classic" STUN (DEPRECATED, opt-in via `--rfc3489-compatibility`; scheduled for removal in the next major release — see docs/rfc3489-deprecation.md)
 -   RFC 5389 - base "new" STUN specs
 -   RFC 5769 - test vectors for STUN protocol testing
 -   RFC 5780 - NAT behavior discovery support
+-   RFC 7350 - DTLS as transport for STUN & TURN
 -   RFC 7443 - ALPN support for STUN & TURN
 -   RFC 7635 - oAuth third-party TURN/STUN authorization
 
@@ -75,7 +76,7 @@ TURN specs:
 -   RFC 7443 - ALPN support for STUN & TURN
 -   RFC 7635 - oAuth third-party TURN/STUN authorization
 -   RFC 8016 - Mobility with Traversal Using Relays around NAT (TURN)
--   DTLS support (http://tools.ietf.org/html/draft-petithuguenin-tram-turn-dtls-00)
+-   RFC 7350 - DTLS as transport for STUN & TURN
 -   TURN REST API (http://tools.ietf.org/html/draft-uberti-behave-turn-rest-00)
 -   Origin field in TURN (Multi-tenant TURN Server) (https://tools.ietf.org/html/draft-ietf-tram-stun-origin-06)
 -   TURN Bandwidth draft specs (http://tools.ietf.org/html/draft-thomson-tram-turn-bandwidth-01)
@@ -94,7 +95,7 @@ The implementation fully supports the following client-to-TURN-server protocols:
 -   UDP (per RFC 5766)
 -   TCP (per RFC 5766 and RFC 6062)
 -   TLS (per RFC 5766 and RFC 6062): including TLS1.3; ECDHE is supported.
--   DTLS1.0 and DTLS1.2 (http://tools.ietf.org/html/draft-petithuguenin-tram-turn-dtls-00)
+-   DTLS1.0 and DTLS1.2 (per RFC 7350)
 -   SCTP (experimental implementation).
 
 Relay protocols:

@@ -1,6 +1,6 @@
 ---
 project: caddy-waf
-stars: 789
+stars: 794
 description: Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
 url: https://github.com/fabriziosalmi/caddy-waf
 ---
@@ -10,10 +10,10 @@ Caddy WAF
 
 A Web Application Firewall middleware for the Caddy web server, written in Go.
 
--   **Module ID**: `http.handlers.waf`
+-   **Module ID**: `http.handlers.waf` — registered in Caddy's package registry, so `caddy add-package` and the download page both work
 -   **Go module path**: `github.com/fabriziosalmi/caddy-waf`
--   **Current version**: `v0.3.3` (see `caddywaf.go` — `const wafVersion`)
--   **License**: AGPL-3.0
+-   **Current version**: `v0.3.10` (see `caddywaf.go` — `const wafVersion`)
+-   **License**: AGPL-3.0 — note this is a copyleft licence; check it suits your deployment before integrating
 
 * * *
 
@@ -97,6 +97,7 @@ Engineering notes
 -   **Linear-time regex**: rules are compiled by Go's `regexp` (RE2). No catastrophic backtracking.
 -   **Wait-free counters**: per-rule hit counts use `atomic.Int64` stored in a `sync.Map`.
 -   **Bounded body reads**: request bodies are read through `io.LimitReader` (`max_request_body_size`, default 10 MiB) and restored with `io.MultiReader` so downstream handlers still see the full body.
+-   **Bounded response buffering**: the response body is only held in memory when a Phase 4 rule exists to inspect it, and never past `max_response_body_size` (default 10 MiB). Beyond that — or as soon as the upstream flushes — the WAF releases what it holds and streams the rest, so memory never scales with the response size.
 -   **Zero-copy body string**: the body is exposed to rule matching via `unsafe.String` to avoid an allocation per request.
 -   **Circuit breaker for GeoIP**: `geoip_fail_open` controls whether a GeoIP lookup failure blocks the request or allows it through.
 -   **Panic recovery**: `ServeHTTP` installs a deferred recovery that returns `500 Internal Server Error` on panic.
@@ -118,7 +119,7 @@ A representative provisioning log:
 ```
 INFO  Provisioning WAF middleware     {"log_level":"info","log_path":"debug.json","log_json":true,"anomaly_threshold":20}
 INFO  http.handlers.waf  Tor exit nodes updated  {"count":1093}
-INFO  WAF middleware version  {"version":"v0.3.3"}
+INFO  WAF middleware version  {"version":"v0.3.10"}
 INFO  Rate limit configuration  {"requests":100,"window":10,"cleanup_interval":300,"paths":["/api/v1/.*"],"match_all_paths":false}
 WARN  GeoIP database not found. Country blacklisting/whitelisting will be disabled  {"path":"GeoLite2-Country.mmdb"}
 INFO  IP blacklist loaded     {"path":"ip_blacklist.txt","valid_entries":223770,"invalid_entries":0,"total_lines":223770}
@@ -134,22 +135,22 @@ Installation
 
 ### Requirements
 
--   Go **1.25** or newer (`go.mod` declares `go 1.25`)
--   Caddy **v2.11.x** or newer (current build uses `github.com/caddyserver/caddy/v2 v2.11.2`)
+-   Go **1.25.1** or newer (`go.mod` declares `go 1.25.1`, propagated from `caddy/v2` which requires it)
+-   Caddy **v2.11.x** or newer (current build uses `github.com/caddyserver/caddy/v2 v2.11.4`)
 -   `xcaddy` for building Caddy with plugins
 
-### Option 1 — Build with xcaddy (recommended)
+### Method 1 — Build with xcaddy (recommended)
 
 go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
 xcaddy build --with github.com/fabriziosalmi/caddy-waf
 ./caddy list-modules | grep waf   # expect: http.handlers.waf
 
-### Option 2 — Quick script
+### Method 2 — Quick script
 
 curl -fsSL -H "Pragma: no-cache" \\
   https://raw.githubusercontent.com/fabriziosalmi/caddy-waf/refs/heads/main/install.sh | bash
 
-### Option 3 — Build from source
+### Method 3 — Build from source
 
 git clone https://github.com/fabriziosalmi/caddy-waf.git
 cd caddy-waf
@@ -159,9 +160,23 @@ xcaddy build --with github.com/fabriziosalmi/caddy-waf=./
 ./caddy fmt --overwrite
 ./caddy run
 
-### `caddy add-package`
+### Method 4 — `caddy add-package`
 
-This module is **not registered** in Caddy's official package registry; `caddy add-package github.com/fabriziosalmi/caddy-waf` will fail with `HTTP 400: ... is not a registered Caddy module package path`. Use one of the build options above. See `docs/add-package-guide.md` for details.
+The module is registered in Caddy's package registry, so an existing Caddy v2.7+ binary can pull it in without a Go toolchain:
+
+caddy add-package github.com/fabriziosalmi/caddy-waf
+caddy list-modules | grep waf   # expect: http.handlers.waf
+
+It is also selectable on caddyserver.com/download. See `docs/add-package-guide.md` for version pinning, removal, and when to prefer `xcaddy` instead.
+
+### Method 5 — Docker
+
+Images are published to GitHub Container Registry on every release tag, for `linux/amd64` and `linux/arm64`:
+
+docker pull ghcr.io/fabriziosalmi/caddy-waf:0.3.10
+docker run --rm -p 8080:8080 ghcr.io/fabriziosalmi/caddy-waf:0.3.10
+
+Tags are `0.3.10`, `0.3` and `latest` — note there is **no `v` prefix**, unlike the Go module version. Pin an exact version in anything you deploy. See `docs/docker.md` for volumes, Compose, and hot reload.
 
 * * *
 
@@ -206,9 +221,15 @@ A fully annotated example is provided in `Caddyfile` and `caddyfile.example`.
 Documentation
 -------------
 
+**fabriziosalmi.github.io/caddy-waf** — the same pages as below, with full-text search and cross-linking. The Markdown under `docs/` remains the source and stays readable on GitHub.
+
 Document
 
 Topic
+
+`docs/introduction.md`
+
+What the middleware does and where it sits in the request pipeline.
 
 `docs/installation.md`
 
@@ -268,7 +289,7 @@ Building and running with Docker / Docker Compose.
 
 `docs/add-package-guide.md`
 
-Status of `caddy add-package` registration.
+Installing with `caddy add-package`.
 
 `docs/caddytest.md`
 
@@ -293,10 +314,14 @@ Project layout
 ├── tor.go                 Periodic Tor exit-node list fetcher
 ├── logging.go             Async log worker, sensitive-data redaction
 ├── helpers.go             IP parsing helpers
+├── debug_waf.go           Debug helpers for rule evaluation
+├── assets.go              Embedded dashboard assets (build tag)
+├── assets_stub.go         No-op asset provider for builds without the dashboard
 ├── types.go               Public types (Middleware, Rule, RateLimit, ...)
 ├── doc.go                 Package documentation
 ├── rules.json             Default rule set (used by Caddyfile)
 ├── rules/                 Modular rule files by category
+├── ui/                    Dashboard, with third-party assets vendored same-origin
 ├── ip_blacklist.txt       Default IP blacklist
 ├── dns_blacklist.txt      Default DNS blacklist
 ├── tor_blacklist.txt      Tor exit-node cache (auto-managed)
@@ -337,7 +362,11 @@ See `CONTRIBUTING.md` for the workflow and `CODE_OF_CONDUCT.md`.
 Security
 --------
 
-For vulnerability disclosure see `SECURITY.md`. Reports may be sent to `fabrizio.salmi@gmail.com` or as a private GitHub Security Advisory; please do not open a public issue.
+Please do not open a public issue for a vulnerability. Use private vulnerability reporting — it is enabled on this repository, so it works for anyone without special permissions — or email `fabrizio.salmi@gmail.com`. Full policy in `SECURITY.md`.
+
+Only the latest release receives security fixes; there are no backport branches. Published advisories are listed under Security → Advisories.
+
+**Upgrade note:** v0.3.3 and earlier are affected by GHSA-gfj3-cmff-q8wh, a high-severity unauthenticated denial of service (unbounded response buffering, CVSS 7.5). Fixed in v0.3.4.
 
 License
 -------

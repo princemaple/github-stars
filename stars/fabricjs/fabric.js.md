@@ -1,6 +1,6 @@
 ---
 project: fabric.js
-stars: 31343
+stars: 31356
 description: Javascript Canvas Library, SVG-to-Canvas (& canvas-to-SVG) Parser
 url: https://github.com/fabricjs/fabric.js
 ---
@@ -20,9 +20,7 @@ Special Thanks
 
 Here is a section for recognition of companies or individuals that support fabricJS with a sponsorship
 
-### Warp, built for coding with multiple AI agents
-
-Available for MacOS, Linux, & Windows  
+Atlas Cloud is a full-modal AI inference platform that gives developers a single AI API to access video generation, image generation, and LLM APIs. Instead of managing multiple vendor integrations, you connect once and get unified access to 300+ curated models across all modalities. Check out Atlas Cloud's new coding plan promotion for more budget-friendly API access：https://www.atlascloud.ai/console/coding-plan
 
 Features
 --------
@@ -91,11 +89,72 @@ Fabric.js does not use polyfills by default, or tries to keep it at minimum. the
 Installation
 ------------
 
+For new applications, install the environment-specific package:
+
+# Browser applications
+npm install @fabricjs/browser
+
+# Node.js applications
+npm install @fabricjs/node
+
+The legacy `fabric` package remains supported for existing applications:
+
 $ npm install fabric --save
 # or use yarn
 $ yarn add fabric
 # or use pnpm
 $ pnpm add fabric
+
+Packages and migration
+----------------------
+
+Package
+
+Role
+
+`fabric`
+
+Legacy compatibility facade. It re-exports `@fabricjs/browser`.
+
+`@fabricjs/browser`
+
+Preferred entrypoint for new browser applications.
+
+`@fabricjs/node`
+
+Preferred entrypoint for new Node.js applications. It owns the Node-specific dependencies.
+
+`@fabricjs/core`
+
+Shared, environment-neutral runtime used by the browser and Node packages. It is intended for advanced and shared dependencies.
+
+Extension packages
+
+Optional features imported individually, such as `@fabricjs/aligning-guidelines`.
+
+Existing imports continue to work:
+
+import { Canvas } from 'fabric';
+import { StaticCanvas } from 'fabric/node';
+
+New applications should prefer the explicit entrypoints:
+
+import { Canvas } from '@fabricjs/browser';
+import { StaticCanvas } from '@fabricjs/node';
+import { AligningGuidelines } from '@fabricjs/aligning-guidelines';
+
+The `fabric` and `fabric/node` facades share the same class identities as their corresponding workspace packages. Keep `fabric` and every `@fabricjs/*` package on matching versions; mixing mismatched versions can load separate runtimes.
+
+`@fabricjs/core` has no Node-specific runtime dependencies, but it is not a DOM-free API. Advanced consumers using core APIs that touch DOM or canvas must provide a suitable environment implementation.
+
+### Legacy distribution files
+
+The ESM `fabric` and `fabric/node` entries are small compatibility facades over the workspace packages. The legacy standalone files remain available for existing usage:
+
+-   `dist/index.js` and `dist/index.min.js` are full browser UMD builds from `@fabricjs/browser`, for `<script>` tags and `require('fabric')`.
+-   `dist/index.node.cjs` is the legacy CommonJS compatibility build for `require('fabric/node')`.
+
+New ESM applications should continue to import `@fabricjs/browser` or `@fabricjs/node` directly.
 
 #### Browser
 
@@ -105,7 +164,7 @@ See browser modules for using es6 imports in the browser or use a dedicated bund
 
 We strongly recommend to run your applications only LTS versions of node.
 
-Said so the minimum supported version of node is 18. We bump up the minimum version of node with a Major release only when the dependencies force us to do so.
+Said so the minimum supported version of node is 20. We bump up the minimum version of node with a Major release only when the dependencies force us to do so.
 
 Fabric.js depends on node-canvas for a canvas implementation (`HTMLCanvasElement` replacement) and jsdom for a `window` implementation on node. This means that you may encounter `node-canvas` limitations and bugs.
 
@@ -114,11 +173,15 @@ Follow these instructions to get `node-canvas` up and running.
 Quick Start
 -----------
 
-// v6
-import { Canvas, Rect } from 'fabric'; // browser
-import { StaticCanvas, Rect } from 'fabric/node'; // node
+// Preferred entrypoints for new applications
+import { Canvas } from '@fabricjs/browser';
+import { StaticCanvas } from '@fabricjs/node';
 
-// v5
+// Supported compatibility entrypoints
+import { Canvas } from 'fabric';
+import { StaticCanvas } from 'fabric/node';
+
+// v5 compatibility
 import { fabric } from 'fabric';
 
 **Plain HTML**

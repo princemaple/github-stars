@@ -1,6 +1,6 @@
 ---
 project: req
-stars: 1321
+stars: 1323
 description: Req is a batteries-included HTTP client for Elixir.
 url: https://github.com/wojtekmach/req
 ---
@@ -56,17 +56,15 @@ Features
     
 -   Retries on errors (via `retry` step.)
     
--   Raise on unexpected response status (via `expect` step.)
+-   Raise on 4xx/5xx errors (via `handle_http_errors` step.)
     
 -   Verify response body against a checksum (via `checksum` step.)
     
--   Basic HTTP caching (via `cache` step.)
-    
 -   Easily create test stubs (see `Req.Test`.)
     
--   Running against a plug (via `run_plug` step.)
+-   Running against a plug (via `Req.Plug` adapter.)
     
--   Pluggable adapters. By default, Req uses Finch (via `run_finch` step.)
+-   Pluggable adapters. By default, Req uses Finch (via `Req.Finch` adapter.)
     
 
 Usage
@@ -188,7 +186,7 @@ See `Req.Request` module documentation for more information on low-level API, re
 Configuration
 -------------
 
-Req supports many configuration options, see `Req.new/1` for a full list and see each step for more details. In particular, if you are looking for slightly lower level HTTP options such as timeouts, pool sizes, and certificates, see the `run_finch` documentation.
+Req supports many configuration options, see `Req.new/1` for a full list and see each step for more details. In particular, if you are looking for slightly lower level HTTP options such as timeouts, pool sizes, and certificates, see the `Req.Finch` documentation.
 
 Related Packages
 ----------------

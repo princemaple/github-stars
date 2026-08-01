@@ -1,6 +1,6 @@
 ---
 project: city-roads
-stars: 9447
+stars: 9456
 description: Visualization of all roads within any city
 url: https://github.com/anvaka/city-roads
 ---

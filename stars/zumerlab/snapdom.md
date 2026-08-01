@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7962
+stars: 7972
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -661,7 +661,7 @@ Shipping something built with SnapDOM? Add the badge to your README:
 
 ### Projects using SnapDOM
 
-SnapDOM runs in production across 290+ public repositories (GitHub dependents graph). A few notable ones, each verified from its own `package.json`:
+SnapDOM runs in production across 250+ public repositories (GitHub dependents graph). A few notable ones, each verified from its own `package.json`:
 
 -   LobeHub — platform for operating AI agents
 -   Trilium Notes — hierarchical personal knowledge base
@@ -672,6 +672,8 @@ SnapDOM runs in production across 290+ public repositories (GitHub dependents gr
 -   Rabby Wallet — browser wallet for EVM chains
 -   uMap — OpenStreetMap map builder
 -   ListenBrainz — music tracker by MetaBrainz
+-   Mind Elixir — mind-map core; recommends SnapDOM for image export
+-   Kong UI Components — Kong's dashboard renderer exports PDFs with SnapDOM
 -   SnapDIFF — in-browser visual regression testing _(by Zumerlab)_
 
 See the full gallery at **snapdom.dev/made-with**. Shipping SnapDOM? Open a PR to add your project — real, verifiable projects only.

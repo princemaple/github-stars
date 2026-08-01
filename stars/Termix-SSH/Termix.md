@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 14154
+stars: 14580
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -70,6 +70,10 @@ Features
 **Persistent Tabs:** SSH sessions and tabs stay open across devices/refreshes if enabled in user profile.
 
 **Languages:** Built-in support ~30 languages (managed by Crowdin).
+
+**Session Sharing:** Share a live terminal, RDP, VNC, or Telnet session with others in real time. Share via a link (joined anonymously, no account needed) or with a specific Termix user, and choose read-only or read-write access. Shares can expire automatically or be revoked at any time, and session sharing can be toggled globally or per-host.
+
+**Desktop Standalone + 2-Way Sync:** The Electron desktop app runs fully standalone with its own local backend and database, no server required. Optionally connect it to a remote Termix server for automatic two-way sync of hosts, credentials, snippets, and more, and choose whether SSH connections are started locally or through the remote server.
 
   
 **More features**  
@@ -160,6 +164,21 @@ volumes:
 networks:
   termix-net:
     driver: bridge
+
+### Cloud Hosting
+
+You can also run the Termix server on a cloud VPS instead of inside your own network. If Termix runs on the network it manages, an outage takes Termix with it, and your hosts and saved sessions are stuck inside the system you are trying to fix. Hosting it externally keeps it reachable no matter what happens to your network, and gives you a static IP and access from anywhere without a VPN or port forward.
+
+GINERNET is a sponsor of Termix, and there is a full step by step guide for deploying to their VPS platform in the docs.
+
+  
+
+Telemetry
+---------
+
+Termix sends a small anonymous usage ping once every 24 hours to help understand how many instances are running and which features are actually used. This only includes a randomly generated instance ID, a count of users and hosts, the app version, and whether certain features (terminal, file manager, tunnels, docker, etc.) were used in the last 24 hours. It never includes usernames, hostnames, IP addresses, credentials, or any other identifying or connection data.
+
+This is opt-out and enabled by default. You can disable it at any time in Admin Settings under **General**.
 
   
 

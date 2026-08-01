@@ -1,6 +1,6 @@
 ---
 project: css.gg
-stars: 10029
+stars: 10028
 description: 700+ Pure CSS, SVG & Figma UI Icons, 6000+ glyphs, patterns, colors and layouts.
 url: https://github.com/astrit/css.gg
 ---

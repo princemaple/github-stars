@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 858
+stars: 877
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -8,14 +8,15 @@ url: https://github.com/mlightcad/cad-viewer
 CAD-Viewer
 ==========
 
-简体中文
+English | 简体中文 | 日本語 | 한국어 | Español | Português | Русский | Čeština
 
 cad-viewer is `the first web-based DXF/DWG viewer and editor in the world that operates entirely in browser, without relying on any backend services`. By performing DWG/DXF parsing, geometry processing, and rendering directly in the browser, cad-viewer enables true serverless CAD viewing and editing, ideal for cloud apps, offline usage, and privacy-sensitive workflows.
 
 It also offers something you will rarely find in other CAD viewers—**one-click export to a single, self-contained HTML file**. The downloaded `.html` embeds the drawing snapshot and a lightweight viewer runtime, so recipients can open, pan, zoom, toggle layers, and measure distances in any modern browser with **no CAD app, no server, and no install**. Most desktop and web CAD viewers only let you view inside their own product; cad-viewer turns a live drawing into a portable, offline artifact you can email, archive, or drop on a static file host—ideal for sharing with clients, compliance archives, and air-gapped workflows. The offline viewer also uses far less memory than traditional desktop tools when opening the same drawing (see memory comparison below).
 
+-   **🌐 Home Page**
 -   **🌐 Live Demo**
--   **🌐 API Docs**
+-   **🌐 API Docs**: Read the Docs (versioned) · GitHub Pages (latest/dev)
 -   **🌐 Wiki**
 -   X (Twitter): @mlightcad
 -   YouTube: @mlightcad
@@ -32,6 +33,17 @@ The Thingraph team builds production DWG/DXF viewers and platform integrations o
     -   Cursor — same extension via Open VSX
     -   Confluence — embed DWG/DXF previews on pages
     -   Windows Explorer — thumbnail and preview in File Explorer
+
+Community apps & integrations:
+
+-   flyfish-dev/cad-viewer — Production-oriented browser CAD viewer for DWG, DXF, DWF, DWFx and XPS (live demo)
+-   Nextcloud CAD Viewer — Native Nextcloud app for viewing DWG/DXF in the browser (App Store)
+
+Community Linux desktop packages:
+
+-   CAD Viewer AppImage — Electron-based AppImage for Linux (~114 MB), tested on Fedora
+-   cad-viewer (AUR) — Arch Linux source package using system Electron (~5.4 MB)
+-   cad-viewer-bin (AUR) — Arch Linux binary package with bundled fonts/templates for fully offline drawing open
 
 Features
 --------
@@ -226,31 +238,51 @@ These optimizations enable CAD-Viewer to smoothly render complex CAD drawings wi
 Known Issues
 ------------
 
-CAD-Viewer has some known limitations that users should be aware of:
+The default open-source DWG path is based on LibreDWG. It works well for many drawings, but its entity coverage is still limited, the WASM bundle is much larger, startup is slower, memory usage is high, and very large DWG files may hit out-of-memory errors. It also introduces GPL licensing considerations for commercial closed-source products.
 
--   **DWG File Compatibility**:
-    
-    -   Some DWG drawings may fail to open due to bugs in the underlying LibreDWG library. This is a known limitation of the current DWG parsing implementation. If you find those issues, please log one issue on CAD-Viewer issues page or LibreDWG issues page.
-    -   Drawings that contain third-party custom entities (e.g., Tianzheng drawings in the Chinese architecture and construction industry) may not display correctly unless proxy graphics are saved. When saving such drawings, ensure the system variable `PROXYGRAPHICS` is set to `1`. If proxy graphics are embedded in the file, CAD-Viewer can display them.
-    
-    Whether proxy graphics are written when saving a DWG is controlled by the system variable `PROXYGRAPHICS`:
-    
-    Value
-    
-    Meaning
-    
-    0
-    
-    Do not save proxy graphics
-    
-    1
-    
-    Save proxy graphics
-    
--   **DWG File Size Limits**:
-    
-    -   Parsing DWG files with LibreDWG is memory-intensive and can easily exceed 2 GB of RAM. `libredwg-web` therefore enforces WASM heap memory limits; very large DWG files may fail to parse.
-    -   We offer a **proprietary DWG parser** with significantly lower memory usage, support for larger files, and more accurate parsing. It integrates with the same `@mlightcad/data-model` as the open-source converters and can replace the GPL-based `libredwg-converter` stack for closed-source commercial products. See the commercial license document for scope, pricing, GPL compliance, and support terms.
+If you need better compatibility, lower memory usage, large-file support, or a cleaner commercial licensing story, see our **proprietary DWG parser**.
+
+Item
+
+LibreDWG-based parser
+
+Proprietary DWG parser
+
+Supported entities
+
+Limited coverage
+
+Broader coverage
+
+Bundle size
+
+~13 MB
+
+~437 KB
+
+Load speed
+
+Slower startup
+
+Much faster startup
+
+Memory usage
+
+Higher
+
+Lower
+
+Large DWG files
+
+May OOM on large files
+
+No such issue
+
+License
+
+GPL propagation risk
+
+No GPL propagation issue
 
 Roadmap
 -------

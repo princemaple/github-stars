@@ -1,6 +1,6 @@
 ---
 project: litestream
-stars: 13966
+stars: 14156
 description: Streaming replication for SQLite.
 url: https://github.com/benbjohnson/litestream
 ---
@@ -18,6 +18,11 @@ Contributing
 ------------
 
 We welcome bug reports, fixes, and patches! Please see our Contributing Guide for details on how to contribute.
+
+Security
+--------
+
+Please do not open a public issue for security vulnerabilities. Report them privately through GitHub's private vulnerability reporting, which keeps the report visible only to you and the maintainers until a fix is released. See our Security Policy for what to include and what to expect.
 
 Acknowledgements
 ----------------

@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 123797
+stars: 124909
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -11,6 +11,8 @@ url: https://github.com/github/spec-kit
 ### _Define what to build before building it — with any AI coding agent._
 
 **An open source toolkit for building high-quality software with any AI coding agent — a ready-to-use spec-driven process (or bring your own), endlessly extensible, community-driven, and built for your whole organization.**
+
+**English** · 简体中文
 
 * * *
 

@@ -1,6 +1,6 @@
 ---
 project: javascript-algorithms
-stars: 196331
+stars: 196363
 description: 📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings
 url: https://github.com/trekhleb/javascript-algorithms
 ---
@@ -627,16 +627,12 @@ Yes
 
 k - length of longest key
 
-Project Backers
----------------
-
-> You may support this project via ❤️️ GitHub or ❤️️ Patreon.
-
-Folks who are backing this project `∑ = 1`
-
 Author
 ------
 
 @trekhleb
 
-A few more projects and articles about JavaScript and algorithms on trekhleb.dev
+A few more projects and articles about JavaScript and algorithms on trekhleb.dev:
+
+-   🧠 yesbrainer.ai – council of AI models for the decisions that aren’t no-brainers (BYOK, private, no account)
+-   ✍🏻 okso.app – drawing app to express, grasp, and organize your thoughts and ideas

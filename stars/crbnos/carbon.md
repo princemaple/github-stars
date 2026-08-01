@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 2283
+stars: 2289
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -234,9 +234,11 @@ $ pnpm install       # install dependencies
 1.  **Toolchain + native build deps** (macOS):
     
     $ curl --proto '\=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh   # Rust, if not already installed
-    $ brew install fcl cmake ninja                                     # collision libs (+ libccd/eigen/octomap) and build tools
+    $ brew install fcl cmake ninja draco                               # collision libs (+ libccd/eigen/octomap), build tools, Draco mesh compression
     
-    On Linux, install the equivalents from your package manager: `libfcl-dev libccd-dev libeigen3-dev liboctomap-dev cmake ninja-build` plus a C/C++ toolchain.
+    On Linux, install the equivalents from your package manager: `libfcl-dev libccd-dev libeigen3-dev liboctomap-dev libdraco-dev cmake ninja-build` plus a C/C++ toolchain.
+    
+    `./setup.sh` already installs Draco on macOS. If yours lives outside the Homebrew keg (`/opt/homebrew/opt/draco` on arm64), point `draco-bridge`'s build at it with `DRACO_PREFIX=/path/to/draco cargo build`.
     
 2.  **Build OCCT once** — a patched static OpenCASCADE, cached in `~/.cache/carbon-occt`. Slow (~15–30 min) but one-time per machine; re-running is a no-op once cached:
     
@@ -521,19 +523,6 @@ const { data, error } \= await carbon
   .from("item")
   .select("\*")
   .eq("companyId", companyId);
-
-Translations
-------------
-
-In order to run `pnpm run translate` you must first run:
-
-brew install ollama
-brew services start ollama
-ollama pull llama3.2
-curl http://localhost:11434/api/tags
-npx linguito config set \\
-  llmSettings.provider=ollama \\
-  llmSettings.url=http://127.0.0.1:11434/api
 
 Migration Notes
 ---------------

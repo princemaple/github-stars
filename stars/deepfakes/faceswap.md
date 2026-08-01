@@ -1,6 +1,6 @@
 ---
 project: faceswap
-stars: 55363
+stars: 57188
 description: Deepfakes Software For All
 url: https://github.com/deepfakes/faceswap
 ---

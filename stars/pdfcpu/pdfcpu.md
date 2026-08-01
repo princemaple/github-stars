@@ -1,29 +1,33 @@
 ---
 project: pdfcpu
-stars: 8727
+stars: 8744
 description: PDF tooling for Go and the command line.
 url: https://github.com/pdfcpu/pdfcpu
 ---
 
+> **Try the v0.14.0-rc.1 pre-release.**
+
 pdfcpu: PDF tooling for Go and the command line
 ===============================================
 
-pdfcpu provides a Go API and command-line tools for working with PDF files.
+pdfcpu is a PDF processing library and command-line tool written in Go. It supports validation, optimization, encryption, signing, document assembly, content extraction, and other common PDF operations.
 
-It supports PDFs across versions. PDF 2.0 (ISO-32000-2) validation support is basic and continuously improving.
+pdfcpu supports PDF versions through PDF 2.0 (ISO 32000-2). PDF 2.0 validation support is basic and continuously improving.
+
+  Horst Rutter, the maintainer of pdfcpu, is a member of the PDF Association.
 
 * * *
 
 Installation
 ------------
 
-### CLI
+Command-line interface
 
-👉 CLI Installation instructions
+Go API
 
-### Go API
+**CLI Installation instructions**
 
-👉 API Installation instructions
+**API Installation instructions**
 
 * * *
 
@@ -59,23 +63,23 @@ Features
 -   Resize and rotate pages
 -   Add and remove stamps and watermarks
 -   Validate signature integrity, report signature evidence, and remove signatures
--   Manage attachments and more...
+-   Manage attachments and portfolios
 
-In Action
----------
+Examples
+--------
 
-Common operations and examples:
+Selected examples:
 
            
   
-           
+         
   
  
 
 * * *
 
-Command Set
------------
+Commands
+--------
 
 Complete list of supported commands:
 
@@ -172,7 +176,7 @@ zoom
 Motivation
 ----------
 
-pdfcpu aims to provide comprehensive PDF processing capabilities implemented in Go.
+pdfcpu aims to provide comprehensive PDF processing capabilities implemented in Go for both individual files and automated batch processing.
 
 It focuses on correctness, robustness and independence from external dependencies.
 
@@ -192,6 +196,8 @@ Documentation
 
 -   Project documentation: https://pdfcpu.io
 -   Changelog: https://pdfcpu.io/changelog
+-   Contributing guidelines
+-   Security policy
 
 ### CLI
 
@@ -213,234 +219,28 @@ Documentation
 Contributing
 ------------
 
-Contributions are welcome.
+Contributions are welcome. See the contributing guidelines and the complete list of contributors.
 
--   Report bugs or propose changes via issues
--   Discuss ideas on the discussion board
--   For PRs, please open an issue or discussion first
+### Reporting PDF issues
 
-### Guidelines
+For triage, we use Adobe Acrobat Reader and macOS Preview as practical compatibility references.  
+Reports are especially helpful when a PDF opens in either application but cannot be processed by pdfcpu, as these cases may reveal opportunities to improve validation or parser compatibility.  
+If neither application can open the PDF, it is unlikely that pdfcpu will be able to process it reliably.
 
--   Base your work on the latest commit
--   Include verbose output (`pdfcpu cmd -vv ...`) and a sample PDF when reporting issues
--   Please sign your commits
-
-### Reporting crashes
-
-Crashes may occur due to the wide variety of PDF producers and formats in use, including older or non-compliant files. In many cases this is related to validation issues or edge cases in the parser.
-
-Even with relaxed validation, some files cannot be processed. These cases are essential for improving pdfcpu by extending validation and handling additional real-world PDFs.
-
-If you encounter a crash, please report it.
-
-Start by validating the file using the CLI:
+Start by validating the file:
 
 pdfcpu validate -vv <file.pdf\>
 
-Include in your report:
-
--   the command used
--   verbose output (`-vv`)
--   a sanitized sample PDF
-
-If validation crashes for a PDF that opens in Adobe Reader or macOS Preview, it is likely we can extend relaxed validation and provide a fix.
-
-If the file cannot be opened by both Adobe Reader and macOS Preview, we cannot support it.
-
-Please include a sample PDF to reproduce the issue whenever possible.
+Include the command, its verbose output, and a sample PDF with the report.  
+Please submit only files that you have permission to share and that contain no confidential information or personal data.
 
 * * *
 
-Contributors
-------------
+Security
+--------
 
-Thanks 💚 to all contributors:
-
-  
-**Horst Rutter**
-
-  
-**haldyr**
-
-  
-**Vyacheslav**
-
-  
-**Erik Unger**
-
-  
-**Richard Wilkes**
-
-  
-**minenok-tutu**
-
-  
-**Mateusz Burniak**
-
-  
-**Dmitry Harnitski**
-
-  
-**ryarnyah**
-
-  
-**Sam Giffney**
-
-  
-**Carlos Eduardo Witte**
-
-  
-**minusworld**
-
-  
-**Witold Konior**
-
-  
-**joonas.fi**
-
-  
-**Henrik Reinstädtler**
-
-  
-**VMorozov-wh**
-
-  
-**Benoit KUGLER**
-
-  
-**Adam Greenhall**
-
-  
-**moritamori**
-
-  
-**JanBaryla**
-
-  
-**TheDiscordian**
-
-  
-**Rafael Garcia Argente**
-
-  
-**truyet**
-
-  
-**Christian Nicola**
-
-  
-**Benjamin Krill**
-
-  
-**Peter Wyatt**
-
-  
-**Kroum Tzanev**
-
-  
-**Stefan Huber**
-
-  
-**Juan Iscar**
-
-  
-**Eng Zer Jun**
-
-  
-**Dmitry Ivanov**
-
-  
-**Rene Kaufmann**
-
-  
-**Christian Heusel**
-
-  
-**Chris**
-
-  
-**Lukasz Czaplinski**
-
-  
-**Joel Silva Schutz**
-
-  
-**semvis123**
-
-  
-**guangwu**
-
-  
-**Yoshiki Nakagawa**
-
-  
-**Steve van Loben Sels**
-
-  
-**Yaofu**
-
-  
-**vsenko**
-
-  
-**Alexis Hildebrandt**
-
-  
-**Sivukhin Nikita**
-
-  
-**Joachim Bauch**
-
-  
-**kalimit**
-
-  
-**Andreas Erhard**
-
-  
-**Matsumoto Toshi**
-
-  
-**Carl Wilson**
-
-  
-**LNAhri**
-
-  
-**vishal**
-
-  
-**Andreas Deininger**
-
-  
-**Robert Raines**
-
-  
-**Frank Anderson**
-
-  
-**Sven Lilienthal**
-
-  
-**Florian Kinder**
-
-  
-**mdmcconnell**
-
-  
-**Bradley Erickson**
-
-  
-**doronbehar**
-
-  
-**joeyave**
-
-  
-**Zhenbang Wei**
-
-  
-**HarishTeens**
+Please do not report security vulnerabilities through public GitHub issues.  
+See the security policy for private reporting instructions.
 
 * * *
 

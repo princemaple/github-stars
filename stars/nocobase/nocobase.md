@@ -1,11 +1,11 @@
 ---
 project: nocobase
-stars: 23443
+stars: 23521
 description: NocoBase is an open-source AI + no-code platform for building business systems fast. Instead of generating everything from scratch, AI works on top of production-proven infrastructure and a WYSIWYG no-code interface, so you get both speed and reliability.
 url: https://github.com/nocobase/nocobase
 ---
 
-English | 简体中文 | 日本語 | Français | Español | Português | Bahasa Indonesia | Tiếng Việt | Deutsch
+English | 简体中文 | 日本語 | Français | Español | Português | Português (BR) | Bahasa Indonesia | Tiếng Việt | Deutsch
 
 NocoBase-v2.2-EN.mp4
 

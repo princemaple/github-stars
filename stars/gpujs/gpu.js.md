@@ -1,6 +1,6 @@
 ---
 project: gpu.js
-stars: 15359
+stars: 15361
 description: GPU Accelerated JavaScript
 url: https://github.com/gpujs/gpu.js
 ---
@@ -9,6 +9,8 @@ GPU.js
 ======
 
 GPU.js is a JavaScript Acceleration library for GPGPU (General purpose computing on GPUs) in JavaScript for Web and Node. GPU.js automatically transpiles simple JavaScript functions into shader language and compiles them so they run on your GPU. In case a GPU is not available, the functions will still run in regular JavaScript. For some more quick concepts, see Quick Concepts on the wiki.
+
+**New to GPU programming?** **Learn GPGPU in your browser** — a free, hands-on course that teaches the subject itself, not just this library. See Learn GPGPU below.
 
 What is this sorcery?
 =====================
@@ -73,11 +75,64 @@ const c \= multiplyMatrix(a, b) as number\[\]\[\];
 
 Click here for more typescript examples.
 
+v3 Will Be Async by Default
+---------------------------
+
+Warning
+
+**The next major version of GPU.js will make every kernel call return a `Promise`.** This is a breaking API change: synchronous kernel calls as you write them today will not survive the v3 upgrade unchanged. Code written against `mode: 'async'` (new in 2.20.0) already conforms and will run on v3 unchanged — the migration guide below is five steps.
+
+This breaks the API you are using today, so it warrants both notice and an apology. We owe you the apology because the original synchronous design was not forward-thinking, and we should have started async in the first place. A GPU is an asynchronous device: you hand it work, and the results are ready later. WebGL let this library pretend otherwise — `readPixels` silently freezes the page until the GPU catches up, and we built our API on that pretense because it made the first example look like an ordinary function call. The cost has been paid by every user since: every kernel readback blocks the main thread for its full duration (measurably ~96% of a readback-heavy loop frozen, in one stall as long as the whole loop), and WebGPU — which has no synchronous readback at all, correctly — cannot be offered under the synchronous contract except as a walled-off special mode. An async-first API would have cost one `await` in the examples and none of this debt.
+
+v3 corrects the mistake: async everywhere, one contract, every backend. The WebGL backends keep a synchronous escape hatch (`setAsyncMode(false)`) through the migration; WebGPU can never offer one.
+
+### Why WebGPU is worth breaking the API for
+
+Async-by-default is not an aesthetic preference — it is the price of making WebGPU a first-class backend instead of a walled-off special mode, and WebGPU earns that price twice over.
+
+**Performance.** Measured on the same kernels, same machine (Apple M1 Max), against our own WebGL2 backend at its best:
+
+-   1024×1024 matrix multiplication including readback: **3× faster** (6.3 ms vs 18.5 ms; 370× vs the CPU).
+-   A three-kernel pipeline chain, end to end: **4× faster** (9.0 ms vs 36.6 ms) — readback, WebGL's most expensive step, is dramatically cheaper.
+-   And the readback that remains no longer freezes the page: it happens off the main thread by construction, not as a 100 ms stall the UI must absorb.
+
+**Accuracy.** This one matters more than the speed. Every GPU backend before WebGPU computes by pretending a fragment shader is a compute unit, and this library carries years of scar tissue from that pretense — workarounds you may be relying on without knowing it:
+
+-   **No more lossy packing.** In `precision: 'unsigned'` mode, every float in and out of a kernel is encoded into an 8-bit-per-channel RGBA pixel and decoded on the far side — a quantizing round-trip. WebGPU kernels read and write raw IEEE-754 `f32` storage buffers; there is no encode step to lose bits in.
+-   **Integer math that is actually integer.** GLSL fragment shaders forced float emulation of integers — the `fixIntegerDivisionAccuracy` setting exists because some GPUs return `2.999…` for `9/3` and this library has to patch around them card by card. WGSL has true 32-bit integers with exact division. No setting, no patch, correct by construction.
+-   **Exact addressing.** Fragment-shader kernels locate your data by float texture-coordinate arithmetic, which is where a whole family of large-array off-by-one bugs has historically lived. A WGSL kernel indexes its buffer with an integer thread id — `data[i]` means element `i`, at any size.
+-   **A smaller surface for driver bugs.** GLSL from this library is recompiled by whatever shader stack each machine ships — an eight-year-old wrong-results bug on Windows (#300) traced to Microsoft's `d3dcompiler_47.dll` miscompiling a nested texture read, and it was invisible on every other platform. WGSL is a smaller, more rigorously specified language with a conformance-tested compilation path; entire categories of that risk simply do not apply to compute shaders reading storage buffers.
+
+The synchronous API is the only thing standing between users and those improvements being the default. That is why it goes.
+
+### Migrating a sync kernel to async
+
+The v3 contract is available today — opt in with `mode: 'async'` (or `asyncMode: true` per kernel) and your code is already v3-shaped:
+
+// v2 (sync)
+const gpu \= new GPU();
+const kernel \= gpu.createKernel(fn).setOutput(\[512, 512\]);
+const result \= kernel(a, b);
+
+// v3 (async) — works today with { mode: 'async' }
+const gpu \= new GPU({ mode: 'async' });
+const kernel \= gpu.createKernel(fn).setOutput(\[512, 512\]);
+const result \= await kernel(a, b);
+
+1.  **`await` every kernel call.** The resolved value has exactly the shape the sync call returned — nothing else about your code changes. Callers become `async` functions; at the top level, wrap in an async IIFE or use top-level `await`.
+2.  **Sequential loops just gain the `await`:** `for (…) { total = await step(total); }` — iteration order and semantics are unchanged.
+3.  **Pipeline results: `await result.toArray()`.** `await` is harmless on the synchronous backends' textures, so this form is portable across all backends today.
+4.  **Chains of kernels: keep `pipeline: true` and await only the end.** Handles pass between kernels without readback, exactly as before; you pay one `await` at the final readback instead of a main-thread stall at every stage.
+5.  **Library authors:** return the Promise; don't resolve it on your callers' behalf. Code written against `mode: 'async'` in v2 will run unchanged on v3.
+
 Table of Contents
 =================
 
 Notice documentation is off? We do try our hardest, but if you find something, please bring it to our attention, or _become a contributor_!
 
+-   v3 Will Be Async by Default
+-   Learn GPGPU
+-   Supported Backends
 -   Demos
 -   Installation
 -   `GPU` Settings
@@ -107,6 +162,8 @@ Notice documentation is off? We do try our hardest, but if you find something, p
 -   Typescript Typings
 -   Destructured Assignments
 -   Dealing With Transpilation
+-   WebGPU
+-   Asynchronous Kernels
 -   Full API reference
 -   How possible in node
 -   Testing
@@ -115,6 +172,100 @@ Notice documentation is off? We do try our hardest, but if you find something, p
 -   Contributing
 -   Terms Explained
 -   License
+
+Learn GPGPU
+-----------
+
+**Learn GPGPU in your browser** — a free, hands-on course built on GPU.js. Fifteen lessons across three modules, roughly ten hours, with no toolchain to install: you write real kernels in the page and run them on your own GPU, with the results in front of you.
+
+The point worth making is that **it teaches GPGPU, not just this library**. GPU.js is the vehicle, chosen because JavaScript in a browser is the shortest path from "no setup" to "code running on your GPU" — but what you take away is the subject itself, and it transfers:
+
+-   **The mental model is universal.** A kernel is one function run across a grid of threads; `this.thread` is CUDA's `threadIdx`/`blockIdx`, WGSL's `global_invocation_id`, and OpenCL's `get_global_id()` wearing different clothes. Once you think in kernels, the syntax is a detail.
+-   **The hard-won lessons are hardware lessons, not API lessons.** Why moving data usually costs more than computing on it, why keeping intermediate results on the device (pipelining) changes everything, why a parallel reduction is shaped the way it is, why float precision bites, and how to measure a GPU honestly instead of timing an unsynchronized queue — every one of those is as true in CUDA or Metal as it is here.
+-   **The algorithms are the canonical ones.** Matrix multiply, reductions, convolution, Monte Carlo, N-body, cellular automata, reaction–diffusion, ray marching — the same worked examples you meet in any GPU course, just without a two-hour install first.
+
+module
+
+lessons
+
+**1 — Fundamentals**
+
+Hello, Kernel · Data In, Data Out · Thinking in Parallel · Pipelines & Textures · Measuring Speed Honestly
+
+**2 — Real algorithms**
+
+Matrix Multiply · Reductions · Convolution & Filters · Monte Carlo Methods · N-Body Gravity
+
+**3 — Graphics**
+
+Pixels from Scratch · Escape-Time Fractals · Cellular Automata · Reaction–Diffusion · Ray-Marched Metaballs
+
+Start at Hello, Kernel — if you can write a JavaScript `for` loop, you have the prerequisites.
+
+Supported Backends
+------------------
+
+Representative performance factor: 1024×1024 matrix multiplication including readback, versus the CPU backend on the same machine (Apple M1 Max, Chromium; your hardware will vary — run `node scripts/benchmark-webgpu.mjs` for yours).
+
+Backend
+
+Environment
+
+Technology
+
+Perf factor
+
+Notes
+
+`webgpu` **New in 2.20.0!**
+
+Browser
+
+WGSL compute shaders
+
+**~370×**
+
+Async API; opt-in via `mode: 'webgpu'` or automatic via `mode: 'async'`
+
+`webgl2`
+
+Browser
+
+GLSL ES 3.00 fragment shaders
+
+~127×
+
+The default browser backend. 2.20.0 renders scalar single-precision kernels to `R32F` and reads back one float per value where the driver allows
+
+`webgl`
+
+Browser
+
+GLSL ES 1.00 fragment shaders
+
+~87×
+
+Fallback for older browsers
+
+`headlessgl`
+
+Node
+
+GLSL ES 1.00 via ANGLE
+
+~123×
+
+The default Node backend
+
+`cpu`
+
+Anywhere
+
+Plain JavaScript
+
+1×
+
+Guaranteed fallback; also the reference for correctness
 
 Demos
 -----
@@ -202,11 +353,21 @@ Settings are an object used to create an instance of `GPU`. Example: `new GPU(se
 -   `canvas`: `HTMLCanvasElement`. Optional. For sharing canvas. Example: use THREE.js and GPU.js on same canvas.
 -   `context`: `WebGL2RenderingContext` or `WebGLRenderingContext`. For sharing rendering context. Example: use THREE.js and GPU.js on same rendering context.
 -   `mode`: Defaults to 'gpu', other values generally for debugging:
+    
     -   'dev' **New in V2!**: VERY IMPORTANT! Use this so you can breakpoint and debug your kernel! This wraps your javascript in loops but DOES NOT transpile your code, so debugging is much easier.
     -   'webgl': Use the `WebGLKernel` for transpiling a kernel
     -   'webgl2': Use the `WebGL2Kernel` for transpiling a kernel
     -   'headlessgl' **New in V2!**: Use the `HeadlessGLKernel` for transpiling a kernel
     -   'cpu': Use the `CPUKernel` for transpiling a kernel
+    -   'webgpu' **New!**: Use the `WebGPUKernel` — kernels compile to WGSL compute shaders over storage buffers. Explicit opt-in only, never auto-selected, because every kernel call returns a `Promise` of its result (WebGPU readback is inherently asynchronous). Check `GPU.isWebGPUSupported` (synchronous, `navigator.gpu` presence) or `await GPU.isWebGPUAvailable()` (requests an actual adapter).
+    -   'async' **New!**: Auto-selection under the Promise contract. Picks the best available backend (webgl2 → webgl → cpu), turns `asyncMode` on for every kernel, and upgrades a kernel to webgpu on its first call if an adapter answers — falling back to the proven backend if the upgraded kernel cannot handle it. Write `await kernel(...)` once and the same code runs everywhere:
+    
+    const gpu \= new GPU({ mode: 'async' });
+    const kernel \= gpu.createKernel(function(a) {
+      return a\[this.thread.x\] \* 2;
+    }).setOutput(\[64\]);
+    const result \= await kernel(myArray); // webgpu, webgl2 or cpu underneath
+    
 -   `onIstanbulCoverageVariable`: Removed in v2.11.0, use v8 coverage
 -   `removeIstanbulCoverage`: Removed in v2.11.0, use v8 coverage
 
@@ -229,6 +390,7 @@ Settings are an object used to create a `kernel` or `kernelMap`. Example: `gpu.c
     
     kernel(texture);
     
+-   `asyncMode` or `kernel.setAsyncMode(boolean)` **New!**: boolean, default = `false` - every call to the kernel returns a `Promise` of the usual result. On `webgl2` the readback goes through a pixel-pack buffer and a fence, so the main thread stays free while the GPU works (a synchronous kernel call blocks it for the whole readback); on `webgpu` kernels are always asynchronous; the other backends resolve their synchronous result so the calling contract is uniform everywhere. Adds a small per-readback latency on webgl2 (fence completion granularity) in exchange for the unblocked main thread — pipeline intermediate kernels and await only final results where that matters. See `mode: 'async'` for automatic backend selection under this contract.
 -   `graphical` or `kernel.setGraphical(boolean)`: boolean, default = `false`
 -   `loopMaxIterations` or `kernel.setLoopMaxIterations(number)`: number, default = 1000
 -   `constants` or `kernel.setConstants(object)`: object, default = null
@@ -1167,6 +1329,60 @@ Transpilation doesn't do the best job of keeping code beautiful. To aid in this 
 
 -   When a transpiler such as Babel changes `myCall()` to `(0, _myCall.myCall)`, it is gracefully handled.
 
+WebGPU
+------
+
+**New in 2.20.0!**
+
+WebGPU is what this library always wanted underneath: real compute shaders over real buffers. Every other GPU backend here works by drawing a full-screen quad and abusing a fragment shader as a compute unit — values packed into texture pixels on the way in, unpacked on the way out. The WebGPU backend compiles your kernel to a WGSL compute shader reading and writing `f32` storage buffers directly, and it shows: on an Apple M1 Max, a 1024×1024 matrix multiplication including readback runs about **3× faster than the WebGL2 backend** and 370× faster than the CPU.
+
+Because WebGPU has no synchronous readback (correctly — see v3 Will Be Async by Default), kernel calls in this mode return a `Promise` of the usual result:
+
+const gpu \= new GPU({ mode: 'webgpu' });
+const kernel \= gpu.createKernel(function(a, b) {
+  let sum \= 0;
+  for (let i \= 0; i < 512; i++) {
+    sum += a\[this.thread.y\]\[i\] \* b\[i\]\[this.thread.x\];
+  }
+  return sum;
+}).setOutput(\[512, 512\]);
+
+const c \= await kernel(a, b); // same result shapes as every other backend
+
+Feature detection is two-tier, because `navigator.gpu` can exist on a machine with no usable adapter:
+
+GPU.isWebGPUSupported;        // sync: the API surface exists
+await GPU.isWebGPUAvailable(); // async: an adapter actually answered
+
+`pipeline: true` resolves to a GPU-resident buffer handle that passes straight into downstream kernels with no readback, and `await handle.toArray()` reads it back when you want the values. Large 1D outputs dispatch past the 65,535-workgroup limit automatically.
+
+The mode is explicit opt-in and is never auto-selected — a synchronous caller handed a Promise would fail in silent, confusing ways. If you want automatic selection, that is exactly what `mode: 'async'` is for. Not yet supported (each throws a clear error): kernel maps, `graphical`, `toString()`, `precision: 'unsigned'`, `Math.random`.
+
+Asynchronous Kernels
+--------------------
+
+**New in 2.20.0!**
+
+Async is a property any kernel can have, on any backend. `asyncMode: true` (or `kernel.setAsyncMode(true)`) makes every call return a `Promise` of the usual result:
+
+const kernel \= gpu.createKernel(fn, { output: \[64\], asyncMode: true });
+const result \= await kernel(myArray);
+
+What that buys depends on the backend, but the contract never changes:
+
+-   **webgl2** — the readback becomes genuinely non-blocking: results are read through a pixel-pack buffer behind a GPU fence, and the main thread keeps running while the GPU works. In a readback-heavy loop that froze the page for 105 ms straight, the same loop under `asyncMode` never stalls the main thread longer than 5 ms (measure yours: `node scripts/benchmark-async.mjs`). The trade is a few milliseconds of added latency per readback, so pipeline intermediate kernels and await only final results where throughput matters.
+-   **webgpu** — kernels are natively asynchronous; `asyncMode` is always on.
+-   **cpu, webgl, headlessgl** — the synchronous result is resolved, so the calling contract stays uniform and your code stays portable.
+
+`mode: 'async'` puts the whole `GPU` instance under this contract and picks the backend for you — the best synchronously-provable one immediately (webgl2 → webgl → cpu), upgraded to WebGPU on a kernel's first call if an adapter actually answers. The Promise contract is exactly what buys the room for that probe. A kernel the WebGPU backend cannot take yet (a kernel map, say) simply stays on the proven backend:
+
+const gpu \= new GPU({ mode: 'async' });
+const kernel \= gpu.createKernel(function(a) {
+  return a\[this.thread.x\] \* 2;
+}).setOutput(\[64\]);
+
+const result \= await kernel(myArray); // webgpu, webgl2 or cpu underneath — same code
+
 Full API Reference
 ------------------
 
@@ -1188,13 +1404,60 @@ Terms Explained
 Testing
 -------
 
-Testing is done (right now) manually, (help wanted here if you can!), using the following:
+-   For node, run `npm test`, or narrow it down with one of:
+    -   `npx qunit test/features`
+    -   `npx qunit test/internal`
+    -   `npx qunit test/issues`
+-   For browser, set up a webserver on the root of the gpu.js project and visit http://url/test/all.html
 
--   For browser, setup a webserver on the root of the gpu.js project and visit http://url/test/all.html
--   For node, run either of the 3 commands:
-    -   `yarn test test/features`
-    -   `yarn test test/internal`
-    -   `yarn test test/issues`
+### Real browsers and devices
+
+Because gpu.js ultimately depends on whatever the GPU driver behind a WebGL context does, it is also tested on real browsers and real mobile devices on BrowserStack.
+
+**This project is tested with BrowserStack.**
+
+To run it yourself you need a BrowserStack Automate account:
+
+npm run make                  # the devices test dist/, so build it first
+export BROWSERSTACK\_USERNAME=...
+export BROWSERSTACK\_ACCESS\_KEY=...
+npm run test:browserstack      # smoke suite on real iOS/Android devices
+
+The runner serves this checkout over a BrowserStack Local tunnel, so the devices exercise your working copy rather than a published build. Options:
+
+Command
+
+What it does
+
+`npm run test:browserstack`
+
+Smoke suite on the real-device set
+
+`npm run test:browserstack:desktop`
+
+Smoke suite on desktop Chrome/Firefox/Edge/Safari
+
+`node test/browserstack/run.js --browsers=all`
+
+Both sets
+
+`node test/browserstack/run.js --only=iPhone`
+
+Only targets whose name matches
+
+`node test/browserstack/run.js --suite=visual`
+
+Visual regression: compares rendered output against each device's own CPU render
+
+`node test/browserstack/run.js --suite=qunit`
+
+The full `test/all.html` suite instead of the smoke suite
+
+The smoke suite (`test/browserstack/smoke.html`) covers kernel compilation and execution in `cpu`, `webgl` and `webgl2` modes: 1D/2D/3D output, loops and branching, `Math` built-ins, constants and custom functions, typed-array and `input()` arguments, dynamic output, texture pipelines, graphical output, kernel maps, and both precision modes.
+
+The visual suite (`test/browserstack/visual.html`) renders a flat fill, a gradient and a Mandelbrot in each GPU mode and compares them against the same device's CPU render, which is bit-identical across hardware. Pixel-exact comparison between devices does not work — GPUs disagree by a least significant bit on ordinary rounding — so it asserts against measured tolerances instead.
+
+Targets live in `test/browserstack/browsers.js`. Results are written to `browserstack-results.json`.
 
 Building
 --------

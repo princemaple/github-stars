@@ -1,6 +1,6 @@
 ---
 project: claude-code-router
-stars: 36184
+stars: 36328
 description: One local control plane for every AI agent: route across models, fuse new capabilities, orchestrate tools, and stay fully in control.
 url: https://github.com/musistudio/claude-code-router
 ---
@@ -17,14 +17,14 @@ Claude Code Router
 
 ### Manage every agent and provider from one place.
 
-Connect Claude Code, Codex, Grok CLI, Kimi CLI, OpenCode, ZCode, and compatible API clients to the providers you choose—then route, fail over, extend, and observe every request from one app.
+Connect Claude Code, Claude Design, Codex, Grok CLI, Kimi CLI, Kilo Code, OpenCode, Pi, ZCode, and compatible API clients to the providers you choose—then route, fail over, extend, and observe every request from one app.
 
   
 
 Why use Claude Code Router?
 ---------------------------
 
-Claude Code Router (CCR) is a local model gateway and control plane for coding agents. It gives Claude Code, Codex, Grok CLI, Kimi CLI, OpenCode, ZCode, and compatible API clients **one stable local endpoint**, while you manage the providers, models, accounts, routing rules, and tools behind it from one place.
+Claude Code Router (CCR) is a local model gateway and control plane for coding agents. It gives Claude Code, Claude Design, Codex, Grok CLI, Kimi CLI, Kilo Code, OpenCode, Pi, ZCode, and compatible API clients **one stable local endpoint**, while you manage the providers, models, accounts, routing rules, and tools behind it from one place.
 
 Use CCR to:
 
@@ -51,10 +51,19 @@ CCR supports OpenAI Chat / Responses, Anthropic Messages, Gemini Generate Conten
 **Kimi CLI (CLI)**
 
   
+**Kilo Code (CLI)**
+
+  
 **OpenCode (CLI & APP)**
 
   
+**Pi (CLI)**
+
+  
 **ZCode (APP)**
+
+  
+**Claude Design (APP)**
 
 Quick Start
 -----------
@@ -79,7 +88,7 @@ Quick Start
     
 3.  Open **Server** and click **Start**. The local model gateway listens on `http://127.0.0.1:3456` by default.
     
-4.  Open **Agent Config**, choose Claude Code, Codex, Grok CLI, Kimi CLI, OpenCode, or ZCode, select a model, and apply the profile.
+4.  Open **Agent Config**, choose Claude Code, Claude Design, Codex, Grok CLI, Kimi CLI, Kilo Code, OpenCode, Pi, or ZCode, select a model, and apply the profile.
     
 5.  Start using your agent. Open **Logs** to confirm the resolved provider, model, status, tokens, latency, and errors.
     
@@ -93,7 +102,7 @@ The npm CLI requires Node.js 22 or newer. It starts the same gateway and a brows
 npm install -g @musistudio/claude-code-router
 ccr ui
 
-Open `http://127.0.0.1:3458`, then follow the same **Providers → Server → Agent Config** flow above. The model gateway remains at `http://127.0.0.1:3456`. See the CLI reference for service modes, authentication, and profile commands.
+Open `http://127.0.0.1:3458`, then follow the same **Providers → Server → Agent Profiles** flow above. The model gateway remains at `http://127.0.0.1:3456`. See the CLI reference for service modes, authentication, and profile commands.
 
 ### Docker
 
@@ -101,11 +110,36 @@ docker compose up -d --build
 
 Docker exposes the management UI and gateway routes through `http://127.0.0.1:3458` by default. Read the Docker deployment guide before exposing CCR remotely.
 
+Build desktop apps
+------------------
+
+Install Node.js 22+, then run `npm ci`.
+
+Target
+
+Command
+
+Output
+
+macOS local DMG/ZIP
+
+`npm run build:app:mac`
+
+`release-local/`
+
+Windows local NSIS installer
+
+`npm run build:app:win`
+
+`release-local/`
+
+Windows app packaging must run on Windows x64 because `better-sqlite3` ships a native Electron module. The release workflow builds macOS on macOS runners and Windows on `windows-latest` when a `v*` tag is pushed.
+
 How it works
 ------------
 
 ```
-Claude Code · Codex · Grok CLI · Kimi CLI · OpenCode · ZCode · Compatible API clients
+Claude Code · Claude Design · Codex · Grok CLI · Kimi CLI · Kilo Code · OpenCode · Pi · ZCode · Compatible API clients
                               │
                               ▼
                  Claude Code Router :3456
@@ -124,7 +158,7 @@ Highlights
 
 **Agents**
 
-Profiles for Claude Code, Codex, Grok CLI, Kimi CLI, OpenCode, and ZCode; model overrides; scopes; environment settings; CLI and app launch entries; multi-instance workflows
+Profiles for Claude Code, Claude Design, Codex, Grok CLI, Kimi CLI, Kilo Code, OpenCode, Pi, and ZCode; model overrides; scopes; environment settings; CLI and app launch entries; multi-instance workflows
 
 **Providers**
 
@@ -213,6 +247,9 @@ A huge thank you to all our sponsors for their generous support.
 
   
 **Unity2.Ai**
+
+  
+**无限星河**
 
 #### Community Sponsors
 

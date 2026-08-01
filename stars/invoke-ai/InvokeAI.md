@@ -1,6 +1,6 @@
 ---
 project: InvokeAI
-stars: 27660
+stars: 27710
 description: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.
 url: https://github.com/invoke-ai/InvokeAI
 ---
@@ -72,9 +72,14 @@ Invoke features an organized gallery system for easily storing, accessing, and r
 -   Flux.2 Klein 9B
 -   Z-Image Turbo
 -   Z-Image Base
+-   Krea 2 Turbo
+-   Krea 2 Raw
 -   Anima
 -   Qwen Image
 -   Qwen Image Edit
+-   Ideogram 4
+-   ERNIE-Image
+-   ERNIE-Image-Turbo
 -   Nano Banana (API Only)
 -   GPT Image (API Only)
 -   Wan (API Only)
@@ -108,6 +113,7 @@ We very much thank the following sponsors:
 ### Backers ($15/mo)
 
 -   apokolypsse
+-   Romeotechguy
 
 ### Power Users ($50/mo)
 

@@ -1,6 +1,6 @@
 ---
 project: WebChat
-stars: 2359
+stars: 2375
 description: 💬 Chat with anyone on any website.
 url: https://github.com/molvqingtai/WebChat
 ---
@@ -8,64 +8,50 @@ url: https://github.com/molvqingtai/WebChat
 WebChat
 =======
 
-> Chat with anyone on any website
+> Chat with anyone on any website.
 
-This is an anonymous chat browser extension that is decentralized and serverless, utilizing WebRTC for end-to-end encrypted communication. It prioritizes privacy, with all data stored locally.
+WebChat is a decentralized browser extension that lets people visiting the same website chat anonymously. It uses WebRTC for end-to-end encrypted, peer-to-peer communication, so there is no central chat server and your data remains on your device.
 
-The aim is to add chat room functionality to any website, you'll never feel alone again.
+Turn any website into a shared chat room and connect with the people who are already there.
 
-### Install
+Install
+-------
 
-**Install from Store**
+Chrome Web Store  ·  Microsoft Edge Add-ons  ·  Firefox Add-ons
 
--   Chrome Web Store
--   Edge Web Store
--   Firefox Addons
+Usage
+-----
 
-**Manual Installation**
+After installing WebChat, a ghost icon appears in the bottom-right corner of each website. Select it to join that site's chat room and talk with other visitors.
 
-1.  Go to the GitHub repository (Releases)
-2.  Click on the "Assets" button and select "web-chat-\*.zip"
-3.  Extract the ZIP file to a folder on your computer
-4.  Open the extension management page in your browser (usually chrome://extensions/)
-    -   Enable "Developer mode"
-    -   Click "Load unpacked" and select the folder you just extracted
-
-### Usage
-
-After installing the extension, you'll see a ghost icon in the bottom-right corner of any website. Click it, and you'll be able to chat happily with others on the same site!
-
-### Video
+Demo
+----
 
 web-chat.mp4
 
-### Community
+Community
+---------
 
-Join our Discord community to discuss WebChat and connect with other users:
+Join the WebChat Discord community to share feedback, ask questions, and meet other users.
 
-Discord
+Built With
+----------
 
-### Standing on the Shoulders of Giants
+WebChat builds on these excellent open-source projects:
 
-In addition to the good idea of decentralized chat, it also leverages some fantastic technologies.
+-   **Remesh** provides the DDD-inspired state model that keeps application logic independent from the React UI.
+-   **shadcn/ui** provides accessible, customizable UI building blocks.
+-   **WXT** provides the cross-browser extension framework and build tooling.
+-   **Comctx** provides RPC communication across the extension's JavaScript contexts.
+-   **Artico** provides the flexible WebRTC foundation for peer-to-peer communication.
+-   **ugly-avatar** generates WebChat's distinctive random avatars.
 
--   **remesh**: A framework in JavaScript that implements DDD principles, achieving true separation of UI and logic, allowing for easy implementation of the UI part, such as rewriting it in Vue, due to its independence from the UI.
-    
--   **shadcn/ui**: A beautiful UI library and a pioneer of the no-install concept, offering unmatched convenience in customizing styles.
-    
--   **wxt**: This is the best framework I’ve used for building browser extensions, bar none.
-    
--   **trystero**: The core dependency for implementing decentralized communication, enabling connections to decentralized networks like IPFS, torrent, Nostr, etc.
-    
--   **Artico**: A flexible set of libraries that help you create your own WebRTC-based solutions
-    
--   **ugly-avatar**: Use it to create stunning random avatars.
-    
+Sponsors
+--------
 
-### Sponsors
+WebChat is an open-source project sustained by its contributors and sponsors.
 
-WebChat is a open source project with its ongoing development made possible entirely by the support of these awesome backers.
+License
+-------
 
-### License
-
-This project is licensed under the MIT License - see the LICENSE file for details
+WebChat is available under the MIT License.

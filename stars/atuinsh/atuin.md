@@ -1,6 +1,6 @@
 ---
 project: atuin
-stars: 30770
+stars: 30955
 description: ✨ Making your shell magical
 url: https://github.com/atuinsh/atuin
 ---
@@ -8,8 +8,6 @@ url: https://github.com/atuinsh/atuin
 _magical shell history_
 
 * * *
-
-English | 简体中文
 
 Atuin replaces your existing shell history with a SQLite database, and records additional context for your commands. Additionally, it provides optional and _fully encrypted_ synchronisation of your history between machines, via an Atuin server.
 
@@ -87,11 +85,6 @@ Then restart your shell!
 Note
 
 **For Bash users**: The above sets up `bash-preexec` for necessary hooks, but `bash-preexec` has limitations. For details, please see the Bash section of the shell plugin documentation.
-
-Security
-========
-
-If you find any security issues, we'd appreciate it if you could alert ellie@atuin.sh
 
 Related projects
 ================

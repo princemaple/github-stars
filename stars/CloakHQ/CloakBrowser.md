@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 29158
+stars: 29491
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -118,7 +118,7 @@ page.goto("https://example.com")
 
 * * *
 
-Latest: v0.5.2 — 71 source-level stealth patches (Chromium 150.0.7871.114.3 — all platforms)
+Latest: v0.5.3 — 71 source-level stealth patches (Chromium 150.0.7871.114.3 — all platforms)
 --------------------------------------------------------------------------------------------
 
 -   **CloakBrowser Pro** — the latest binary (Chromium 150.0.7871.114.3, 71 source-level patches) is available to Pro subscribers on **Linux, Windows, and macOS**. Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest build automatically. See CloakBrowser Pro
@@ -969,10 +969,6 @@ Brand version (UA + Client Hints)
 
 Client Hints platform version
 
-`--fingerprint-location`
-
-Geolocation coordinates
-
 `--fingerprint-timezone`
 
 Timezone (e.g. `America/New_York`)
@@ -988,10 +984,6 @@ Override storage quota in MB — affects `storage.estimate()`, `storageBuckets`,
 `--fingerprint-taskbar-height`
 
 Override taskbar height (binary defaults: Win=48, Mac=95, Linux=0)
-
-`--fingerprint-fonts-dir`
-
-Path to directory containing target-platform fonts (see Font Setup on Linux)
 
 `--fingerprint-windows-font-metrics`
 
@@ -1029,23 +1021,25 @@ Access closed shadow DOM elements
 
 ### Font Setup on Linux
 
-**Required for aggressive anti-bot sites (Kasada, Akamai).** These systems render emoji on a hidden canvas and hash the pixel output. Minimal Linux environments (Docker, cloud VMs) often lack emoji and extended fonts, producing hashes that don't match any real browser. Install standard font packages to fix this:
+On Linux, CloakBrowser spoofs the **Windows** platform by default. Two font layers matter, and most setups only do the first:
+
+**1\. Baseline (minimal) — emoji + CJK canvas fonts.** Aggressive anti-bot systems (Kasada, Akamai) render emoji on a hidden canvas and hash the pixel output. Minimal Linux environments (Docker, cloud VMs) lack these, producing hashes that don't match any real browser. This is the floor, not the finish line:
 
 sudo apt install -y fonts-noto-color-emoji fonts-freefont-ttf fonts-unifont \\
     fonts-ipafont-gothic fonts-wqy-zenhei fonts-tlwg-loma-otf
 
 The Docker image (`cloakhq/cloakbrowser`) ships with these pre-installed. If you run the binary directly on a Linux server or in a custom Docker image, install them manually.
 
-**Optional: Windows fonts for CreepJS font enumeration.** The packages above fix anti-bot canvas checks but won't improve your CreepJS font score. For that, you need actual Windows fonts (Segoe UI, Calibri, Bahnschrift, etc.) from a Windows machine's `C:\Windows\Fonts\` directory — `ttf-mscorefonts-installer` only has old XP-era fonts and isn't enough.
+**2\. Real Windows fonts — strongly recommended (required for `--fingerprint-windows-font-metrics`).** Since the Linux default persona is Windows, a Windows browser with no Windows fonts is itself a bot tell: font-fingerprinting anti-bot (FingerprintJS) flags the mismatch, and CreepJS font enumeration scores poorly. The apt packages above do **not** provide these — they are Microsoft-proprietary and cannot be installed from a package repo, and `ttf-mscorefonts-installer` only has old XP-era fonts (not enough).
+
+Copy the fonts from a real Windows machine's `C:\Windows\Fonts\` directory. The wrapper keeps warning until it finds all of: **Segoe UI, Segoe UI Light, Calibri, Marlett, MS UI Gothic, Franklin Gothic, Consolas, Courier New** (copying the whole `Fonts` folder covers these and more):
 
 mkdir -p ~/.local/share/fonts/windows
 cp /path/to/windows/fonts/\*.ttf ~/.local/share/fonts/windows/
 cp /path/to/windows/fonts/\*.TTF ~/.local/share/fonts/windows/
 fc-cache -f  # mandatory for manually copied fonts
 
-browser \= launch(
-    args\=\["--fingerprint-fonts-dir=/home/user/.local/share/fonts/windows"\],
-)
+Confirm they registered with `fc-list | grep -i "segoe\|calibri\|consolas"`. Once all are present the warning stops on its own; set `CLOAKBROWSER_SUPPRESS_FONT_WARNING=1` to silence it if you accept the tradeoff.
 
 ### Examples
 
@@ -1768,6 +1762,7 @@ Contributors
 -   @sparanoid — Docker Xvfb lock cleanup
 -   @Kumario1 — cloakserve idle cleanup for seeded profiles
 -   @0xlally — security reports (cloakserve path traversal, WebSocket origin bypass)
+-   @ishiko732 — HTTP proxy credentials in GeoIP resolution
 
 Star History
 ------------

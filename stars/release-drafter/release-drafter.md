@@ -1,11 +1,11 @@
 ---
 project: release-drafter
-stars: 3911
+stars: 3917
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
 
-Drafts your next release notes as pull requests are merged into master.
+Drafts your next release notes as pull requests are merged into your branch(es).
 
 Usage
 -----
@@ -18,7 +18,6 @@ on:
   push:
     branches:
       - main
-      - master
 
 # Permissions for default token (secrets.GITHUB\_TOKEN)
 permissions:
@@ -54,34 +53,34 @@ As pull requests are merged, a draft release is kept up-to-date listing the chan
 
 The following is a more complicated configuration, which categorises the changes into headings, and automatically suggests the next version number:
 
-name-template: "v$RESOLVED\_VERSION 🌈"
-tag-template: "v$RESOLVED\_VERSION"
+name-template: 'v$RESOLVED\_VERSION 🌈'
+tag-template: 'v$RESOLVED\_VERSION'
 categories:
-  - title: "🚀 Features"
+  - title: '🚀 Features'
     semver-increment: minor
     when:
       labels:
-        - "feature"
-        - "enhancement"
-  - title: "🐛 Bug Fixes"
+        - 'feature'
+        - 'enhancement'
+  - title: '🐛 Bug Fixes'
     when:
       labels:
-        - "fix"
-        - "bugfix"
-        - "bug"
-  - title: "🧰 Maintenance"
+        - 'fix'
+        - 'bugfix'
+        - 'bug'
+  - title: '🧰 Maintenance'
     when:
-      label: "chore"
-  - type: "pre-exclude"
+      label: 'chore'
+  - type: 'pre-exclude'
     when:
-      label: "skip-changelog"
-  - type: "version-resolver"
-    semver-increment: "major"
+      label: 'skip-changelog'
+  - type: 'version-resolver'
+    semver-increment: 'major'
     when:
-      label: "major"
-  - type: "version-resolver"
-    semver-increment: "patch"
-change-template: "\- $TITLE (#$NUMBER) $AUTHORS"
+      label: 'major'
+  - type: 'version-resolver'
+    semver-increment: 'patch'
+change-template: '\- $TITLE (#$NUMBER) $AUTHORS'
 change-title-escapes: '\\<\*\_&' # You can add # and @ to disable mentions, and add \` to disable code blocks.
 template: |
   ## Changes
@@ -200,6 +199,12 @@ Optional
 
 The template to use for each new contributor in `$NEW_CONTRIBUTORS`. Use new contributor template variables to insert values. Default: `"* $AUTHOR_MENTION made their first contribution in #$NUMBER"`.
 
+`no-new-contributor-template`
+
+Optional
+
+The template to use for `$NEW_CONTRIBUTORS` when there are no new contributors to list. Default: `"* No new contributors"`.
+
 `no-contributors-template`
 
 Optional
@@ -252,7 +257,7 @@ Mark the release as latest. Only works for published releases. Can be one of: `t
 
 Optional
 
-The release target, i.e. branch, commit SHA, or fully qualified tag or pull request ref it should point to. Tag and pull request refs are resolved to commit SHAs. Pull request merge refs always run in dry-run mode because they point to ephemeral merge commits; set `dry-run: true` explicitly to acknowledge output-only behavior and suppress the warning. Defaults to the branch that release-drafter runs for, e.g. `master` when configured to run on pushes to `master`.
+The release target, i.e. branch, commit SHA, or fully qualified tag or pull request ref it should point to. Tag and pull request refs are resolved to commit SHAs. Pull request merge refs always run in dry-run mode because they point to ephemeral merge commits; set `dry-run: true` explicitly to acknowledge output-only behavior and suppress the warning. Defaults to the branch that release-drafter runs for, e.g. `main` when configured to run on pushes to `main`.
 
 `filter-by-range`
 
@@ -428,13 +433,13 @@ The prerelease suffix (for example `-rc.0`) or an empty string.
 
 You may want to use this when producing non semver output.
 
-version-template: "ver $MAJOR"
+version-template: 'ver $MAJOR'
 
 Important
 
 If you want the next release-drafter run to parse your version, stick to versions parseable by semver.coerce() (we enbale `loose` mode)
 
-semver.coerce("ver 1", true); // { version: '1.0.0' }
+semver.coerce('ver 1', true) // { version: '1.0.0' }
 
 If you simply want a verbose title for your releases, use the `name-template` config, and leave versions strictly semver-compliant.
 
@@ -452,20 +457,20 @@ Before version resolution runs, any `pre-include` and `pre-exclude` categories f
 Category order matters when `exclusive: true` is used. Exclusivity is evaluated independently for changelog categories and version-resolver categories.
 
 categories:
-  - type: "version-resolver"
-    semver-increment: "major"
+  - type: 'version-resolver'
+    semver-increment: 'major'
     when:
-      label: "major"
-  - type: "version-resolver"
-    semver-increment: "minor"
+      label: 'major'
+  - type: 'version-resolver'
+    semver-increment: 'minor'
     when:
-      label: "minor"
-  - type: "version-resolver"
-    semver-increment: "patch"
+      label: 'minor'
+  - type: 'version-resolver'
+    semver-increment: 'patch'
     when:
-      label: "patch"
-  - type: "version-resolver"
-    semver-increment: "patch"
+      label: 'patch'
+  - type: 'version-resolver'
+    semver-increment: 'patch'
 
 The example above:
 
@@ -545,7 +550,7 @@ The URL of the pull request e.g. `https://github.com/octocat/repo/pull/42`.
 
 `$BASE_REF_NAME`
 
-The base name of of the base Ref associated with the pull request e.g. `master`.
+The base name of of the base Ref associated with the pull request e.g. `main`.
 
 `$HEAD_REF_NAME`
 
@@ -558,7 +563,7 @@ categories:
     when:
       label: bug
   - title: todo
-category-template: ""
+category-template: ''
 change-template: |-
   - type: $CATEGORY
     message: |-
@@ -566,7 +571,7 @@ change-template: |-
     pull: $NUMBER
     authors:
       $AUTHORS
-change-author-template: "\- $AUTHOR"
+change-author-template: '\- $AUTHOR'
 change-authors-separator: "\\n    "
 
 Use `$AUTHOR_MENTION` instead of `$AUTHOR` in `change-author-template` when GitHub mentions are desired. GitHub App bots are rendered as linked mentions, for example `[@dependabot[bot]](https://github.com/apps/dependabot)`. `$CATEGORY` preserves `categories[].title`; configure the title with the casing required by the output.
@@ -671,51 +676,51 @@ Glob patterns to compare against the files changed by the change.
 How the configured paths are matched. Defaults to `any`.
 
 categories:
-  - title: "🚀 Features"
-    semver-increment: "minor"
+  - title: '🚀 Features'
+    semver-increment: 'minor'
     when:
       - conventional:
-          type: "feat"
+          type: 'feat'
       - labels:
-          - "feature"
-          - "enhancement"
-  - title: "🐛 Bug Fixes"
+          - 'feature'
+          - 'enhancement'
+  - title: '🐛 Bug Fixes'
     when:
       - labels:
-          - "bug"
-          - "fix"
+          - 'bug'
+          - 'fix'
       - labels:
-          - "regression"
+          - 'regression'
         paths:
-          - "src/\*\*"
-  - title: "⬆️ Dependencies"
+          - 'src/\*\*'
+  - title: '⬆️ Dependencies'
     collapse-after: 0
     exclusive: true
     when:
-      label: "dependencies"
-  - type: "pre-exclude"
+      label: 'dependencies'
+  - type: 'pre-exclude'
     when:
-      label: "skip-changelog"
+      label: 'skip-changelog'
 
 The `labels-mode` and `paths-mode` options control how the configured labels or path patterns are compared. `any` is the default. Path matching operates on the pull request's changed files.
 
 The `conventional` option parses the pull request title as a conventional commit header. Set it to `true` to match any conventional title, or configure `type`/`types`, `scope`/`scopes`, and `breaking`:
 
 categories:
-  - title: "Conventional Changes"
+  - title: 'Conventional Changes'
     when:
       conventional: true
-  - title: "🚀 Features"
-    semver-increment: "minor"
+  - title: '🚀 Features'
+    semver-increment: 'minor'
     when:
       conventional:
-        type: "feat"
-  - title: "💥 Breaking API Changes"
-    semver-increment: "major"
+        type: 'feat'
+  - title: '💥 Breaking API Changes'
+    semver-increment: 'major'
     when:
       conventional:
-        type: "feat"
-        scope: "api"
+        type: 'feat'
+        scope: 'api'
         breaking: true
 
 Within a condition, `label` is shorthand for a single `labels` entry. If both `label` and `labels` are present, they are combined before `labels-mode` is applied. With the default `labels-mode: any`, `labels: ["feature", "enhancement"]` matches pull requests carrying either label.
@@ -744,10 +749,10 @@ Adding such labels to your PRs can be automated by using the embedded Autolabele
 Optionally you can add a `collapse-after` entry to your category item, if the category has more than the defined `collapse-after` pull requests then it will show all pull requests collapsed for that category. Setting `collapse-after` to `0` will always collapse the category regardless of the number of pull requests, and setting it to `-1` disables collapsing. Append the `collapse-after` integer to your category as following:
 
 categories:
-  - title: "⬆️ Dependencies"
+  - title: '⬆️ Dependencies'
     collapse-after: 3
     when:
-      label: "dependencies"
+      label: 'dependencies'
 
 Exclude Changes
 ---------------
@@ -755,9 +760,9 @@ Exclude Changes
 The recommended way to exclude changes is a `type: pre-exclude` category. For example, append the following to your `.github/release-drafter.yml` file:
 
 categories:
-  - type: "pre-exclude"
+  - type: 'pre-exclude'
     when:
-      label: "skip-changelog"
+      label: 'skip-changelog'
 
 Changes with the label "skip-changelog" will now be excluded from the release draft.
 
@@ -767,10 +772,10 @@ Include Changes
 The recommended way to include only a subset of changes is a `type: pre-include` category. Only changes that match at least one `pre-include` category are kept for the rest of the pipeline. For example, append the following to your `.github/release-drafter.yml` file:
 
 categories:
-  - type: "pre-include"
+  - type: 'pre-include'
     when:
       labels:
-        - "app-foo"
+        - 'app-foo'
 
 Changes with the label "app-foo" will be the only changes included in the release draft.
 
@@ -780,7 +785,7 @@ Exclude Contributors
 By default, the `$CONTRIBUTORS` variable will contain the names or usernames of all the contributors of a release. The `exclude-contributors` option allows you to remove certain usernames from that list. This can be useful if don't wish to include yourself, to better highlight only the third-party contributions.
 
 exclude-contributors:
-  - "myusername"
+  - 'myusername'
 
 Replacers
 ---------
@@ -789,10 +794,10 @@ You can search and replace content in the generated changelog body, using regula
 
 replacers:
   - search: '/CVE-(\\d{4})-(\\d+)/g'
-    replace: "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-$1-$2"
-  - search: "myname"
-    replace: "My Name"
-  - search: "/- (\[a-z\])/g"
+    replace: 'https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-$1-$2'
+  - search: 'myname'
+    replace: 'My Name'
+  - search: '/- (\[a-z\])/g'
     replace: '\- \\u$1' # Uppercase the first letter of each changelog entry
 
 `search` will be parsed to a RegExp, and `replace` supports substitution in the same flavour VSCode does.
@@ -828,21 +833,21 @@ Available matchers are `files` (glob), `branch` (regex), `title` (regex) and `bo
 
 # .github/release-drafter.yml
 autolabeler:
-  - label: "chore"
+  - label: 'chore'
     files:
-      - "\*.md"
+      - '\*.md'
     branch:
       - '/docs{0,1}\\/.+/'
-  - label: "bug"
+  - label: 'bug'
     branch:
       - '/fix\\/.+/'
     title:
-      - "/fix/i"
-  - label: "enhancement"
+      - '/fix/i'
+  - label: 'enhancement'
     branch:
       - '/feature\\/.+/'
     body:
-      - "/JIRA-\[0-9\]{1,4}/"
+      - '/JIRA-\[0-9\]{1,4}/'
 
 # ... rest of release-drafter config
 
@@ -874,7 +879,7 @@ jobs:
       - uses: release-drafter/release-drafter@v6
         with:
           prerelease: true
-          prerelease-identifier: "rc" # Use semver identifiers : alpha, beta, rc, etc
+          prerelease-identifier: 'rc' # Use semver identifiers : alpha, beta, rc, etc
 
 Here, both jobs run in parallel every time you add changes to the configured branch.
 

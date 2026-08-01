@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 7770
+stars: 7831
 description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---
@@ -134,6 +134,8 @@ docker run -d \\
   --restart unless-stopped \\
   databasus/databasus:latest
 
+_The same image lives on GitHub's registry — use `ghcr.io/databasus/databasus:latest` if Docker Hub rate-limits your pull._
+
 This single command will:
 
 -   ✅ Start Databasus
@@ -167,6 +169,8 @@ docker compose up -d
 ### Option 4: Kubernetes with Helm
 
 For Kubernetes deployments, install directly from the OCI registry.
+
+_Add `--set image.repository=ghcr.io/databasus/databasus` to any of the commands below to pull image from GHCR instead of Docker Hub._
 
 **With ClusterIP + port-forward (development/testing):**
 

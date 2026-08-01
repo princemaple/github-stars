@@ -1,6 +1,6 @@
 ---
 project: Files
-stars: 44429
+stars: 44513
 description: A modern file manager that helps users organize their files and folders.
 url: https://github.com/files-community/Files
 ---

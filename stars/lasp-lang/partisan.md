@@ -1,6 +1,6 @@
 ---
 project: partisan
-stars: 1044
+stars: 1045
 description: High-performance, high-scalability distributed computing for the BEAM.
 url: https://github.com/lasp-lang/partisan
 ---
@@ -22,9 +22,21 @@ Partisan is a runtime system that enables greater scalability and reduced latenc
 Getting started
 ---------------
 
-See the documentation for Partisan at hex.pm.
+The full documentation is published at hexdocs.pm/partisan. The Installation tutorial walks through adding Partisan as a dependency from rebar3 or Mix and explains how the build-time OTP modules generator (`partisan_gen_server`, `partisan_gen_statem`, …) is wired up.
 
-Alternatively you can build the documentation yourself locally using `make docs`. The resulting documentation will be found in the `docs` directory, just open the `index.html` file with your preferred web browser.
+In short, for an Erlang project add the dep:
+
+%% rebar.config
+{deps, \[{partisan, "6.0.0"}\]}.
+
+For an Elixir project:
+
+\# mix.exs
+defp deps, do: \[{:partisan, "~> 6.0"}\]
+
+Then `rebar3 compile` (or `mix deps.get && mix compile`). On every compile Partisan automatically generates Partisan-flavoured copies of OTP's `gen_server`, `gen_statem`, `supervisor`, etc. into its own `ebin/` — no extra configuration is required on the consumer side. See the Installation tutorial for the details of how that works and when you would care.
+
+You can build the docs locally with `make docs`; the result lands in `doc/` (open `doc/index.html`).
 
 Why do we need Partisan?
 ------------------------
@@ -82,7 +94,7 @@ Partisan was designed to increase scalability, reduce latency and improve failur
 Requirements
 ------------
 
--   Erlang/OTP 24+
+-   Erlang/OTP 27+ (tested on 27, 28 and 29)
 
 Who is using Partisan
 ---------------------

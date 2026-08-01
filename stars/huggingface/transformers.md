@@ -1,6 +1,6 @@
 ---
 project: transformers
-stars: 162975
+stars: 163225
 description: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. 
 url: https://github.com/huggingface/transformers
 ---
@@ -31,7 +31,7 @@ Explore the Hub today to find a model and use Transformers to help you get start
 Installation
 ------------
 
-Transformers works with Python 3.10+, and PyTorch 2.4+.
+Transformers works with Python 3.10+, and PyTorch 2.5+.
 
 Create and activate a virtual environment with venv or uv, a fast Rust-based Python package and project manager.
 

@@ -1,6 +1,6 @@
 ---
 project: karakeep
-stars: 27726
+stars: 27970
 description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 url: https://github.com/karakeep-app/karakeep
 ---
@@ -10,30 +10,30 @@ Karakeep (previously Hoarder) is a self-hostable bookmark-everything app with a 
 Features
 --------
 
--   🔗 Bookmark links, take simple notes and store images and pdfs.
--   ⬇️ Automatic fetching for link titles, descriptions and images.
--   📋 Sort your bookmarks into lists.
--   👥 Collaborate with others on the same list.
--   🔎 Full text search of all the content stored.
--   ✨ LLM-based automatic tagging and summarization. With supports for local models using ollama!
--   🤖 LLM Agents (e.g. OpenClaw, Hermes) friendly with powerful CLI, and official skills.
--   ⚙️ Rule-based engine for customized management.
--   🎆 OCR for extracting text from images.
--   🔖 Chrome plugin, Firefox addon, and Safari extension for quick bookmarking.
--   📱 An iOS app, and an Android app.
--   📰 Auto hoarding from RSS feeds.
--   🔌 REST API and multiple clients.
--   🌐 Multi-language support.
--   🖍️ Mark and store highlights from your hoarded content.
--   🗄️ Full page archival (using monolith) to protect against link rot.
--   ▶️ Auto video archiving using yt-dlp.
--   ☑️ Bulk actions support.
--   🔐 SSO support.
--   🌙 Dark mode support.
--   💾 Self-hosting first.
--   ⬇️ Bookmark importers from Chrome, Pocket, Linkwarden, Omnivore, Tab Session Manager.
--   🔄 Automatic sync with browser bookmarks via floccus.
--   \[Planned\] Offline reading on mobile, semantic search across bookmarks, ...
+-   Bookmark links, take simple notes and store images and pdfs.
+-   Automatic fetching for link titles, descriptions and images.
+-   Sort your bookmarks into lists.
+-   Collaborate with others on the same list.
+-   Full text & semantic search of all the content stored.
+-   LLM-based automatic tagging and summarization. With supports for local models using ollama!
+-   LLM Agents (e.g. OpenClaw, Hermes) friendly with powerful CLI, and official skills.
+-   Rule-based engine for customized management.
+-   OCR for extracting text from images.
+-   Chrome plugin, Firefox addon, and Safari extension for quick bookmarking.
+-   An iOS app, and an Android app.
+-   Mobile offline reading.
+-   Auto hoarding from RSS feeds.
+-   REST API and multiple clients.
+-   Multi-language support.
+-   Mark and store highlights from your hoarded content.
+-   Full page archival (using monolith) to protect against link rot.
+-   Auto video archiving using yt-dlp.
+-   Bulk actions support.
+-   SSO support.
+-   Dark mode support.
+-   Self-hosting first.
+-   Bookmark importers from Chrome, Pocket, Linkwarden, Omnivore, Tab Session Manager.
+-   Automatic sync with browser bookmarks via floccus.
 
 Documentation
 -------------

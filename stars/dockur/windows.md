@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 52570
+stars: 52706
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -60,9 +60,11 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
 
 kubectl apply -f https://raw.githubusercontent.com/dockur/windows/refs/heads/master/kubernetes.yml
 
-##### GitHub Codespaces:
+##### Desktop applications
 
-##### Graphical installer:
+For a complete graphical desktop experience, see WinBoat, WinPodX, or WinApps. Each of these projects uses this container as its backend.
+
+##### GitHub Codespaces:
 
 Requirements ⚙️
 ---------------
@@ -214,6 +216,30 @@ Windows Server 2008
 Windows Server 2003
 
 0.6 GB
+
+`core11`
+
+Tiny11 Core
+
+3.0 GB
+
+`tiny11`
+
+Tiny11
+
+5.3 GB
+
+`tiny10`
+
+Tiny10
+
+3.6 GB
+
+`reactos`
+
+ReactOS
+
+0.1 GB
 
 Tip
 

@@ -1,6 +1,6 @@
 ---
 project: supabase
-stars: 106977
+stars: 107374
 description: The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.
 url: https://github.com/supabase/supabase
 ---
@@ -56,7 +56,7 @@ Supabase is a hosted platform. You can sign up and start using Supabase without 
 -   Storage a RESTful API for managing files in S3, with Postgres handling permissions.
 -   pg\_graphql a PostgreSQL extension that exposes a GraphQL API.
 -   postgres-meta is a RESTful API for managing your Postgres, allowing you to fetch tables, add roles, and run queries, etc.
--   Kong is a cloud-native API gateway.
+-   Envoy is a cloud-native, high-performance edge and service proxy.
 
 #### Client libraries
 

@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 384118
+stars: 384842
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -201,7 +201,7 @@ Agent workspace + skills
 ------------------------
 
 -   Workspace root: `~/.openclaw/workspace` (configurable via `agents.defaults.workspace`).
--   Injected prompt files: `AGENTS.md`, `SOUL.md`, `TOOLS.md`.
+-   Injected prompt files: `AGENTS.md`, `SOUL.md`, and other workspace context files.
 -   Skills: `~/.openclaw/workspace/skills/<skill>/SKILL.md`.
 
 Configuration
@@ -221,6 +221,8 @@ Full configuration reference (all keys + examples).
 
 Star History
 ------------
+
+View OpenClaw's star history.
 
 Molty
 -----

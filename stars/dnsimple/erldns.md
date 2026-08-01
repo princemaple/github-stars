@@ -1,6 +1,6 @@
 ---
 project: erldns
-stars: 490
+stars: 491
 description: DNS server, in Erlang.
 url: https://github.com/dnsimple/erldns
 ---
@@ -115,6 +115,59 @@ AXFR Support
 ------------
 
 AXFR zone transfers are not currently implemented. The current implementation (`m:erldns_axfr`) is a stub.
+
+Platform notes
+--------------
+
+`erldns` adjusts its socket options and socket counts to the host platform,
+
+Platform
+
+Wildcard `ip => any` binds
+
+Sockets per listener
+
+Load spread across them
+
+Linux
+
+dual-stack, one socket
+
+`parallel_factor × schedulers`
+
+yes
+
+FreeBSD
+
+one socket per family
+
+`parallel_factor × schedulers`
+
+yes
+
+macOS, NetBSD
+
+dual-stack, one socket
+
+`parallel_factor × schedulers`
+
+**no**
+
+OpenBSD
+
+IPv4 only
+
+`parallel_factor × schedulers`
+
+**no**
+
+Windows
+
+IPv4 only
+
+one
+
+**no**
 
 Tests
 -----

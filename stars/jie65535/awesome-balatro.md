@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1234
+stars: 1239
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -305,6 +305,7 @@ Mods (Require **Steamodded**)
 -   Balatro Hand Preview - Adds a window showing the possible poker hands that you can make with your current hand! by @Toeler
 -   Balatro Hand Preview RU - Russian translation for Balatro Hand Preview by @ZarenOFF
 -   Balatro Safety - Presents a confirmation dialogue when you select a dangerous action (like using ankh or hex). by @Zei33
+-   Balatro Stats - Records your all-time personal best for every scaling Joker (shown right on the card) and every poker hand level, and expands the Card Stats screen to page through every card instead of the top 10. by @jagodben
 -   BalatrOverlay - Helpful game overlay. by @cantlookback
 -   Brainstorm Reroll Button - For use with Brainstorm. Adds an Auto Reroll button to the escape menu and game over screen. by @Jdbye
 -   Colour Selector - Mod for selecting and changing the colours of the main menu background. by @EmperorGesar
@@ -353,9 +354,13 @@ Mods (Require **Steamodded**)
     
 -   Betmma Jokers - 5 More Jokers! by @Betmma
     
+-   Betmma Jokers Mobile Friendly - The same Betmma mods with compatible shaders, allowing them to work on mobile devices. by @RakibRyan
+    
 -   BIG BANG | trailer - Once there was an explosion. A bang which caused a naneinf in a round. (2 jokers & 1 challenge). by @ZJWCY
     
 -   CheesyJokers - Might as well make my own joker pack since so may other people are doing it. by @ilikecheese
+    
+-   Colored Card Pack - 7 3 common, 2 uncommon, and 2 rare jokers similar to Red Card, by @benjistokman
     
 -   D6 Jokers | discord - Adds D6 Jokers that have their effects determined by a die roll. by @ItsFlowwey
     
@@ -508,6 +513,7 @@ Mods (Require **Steamodded**)
 ### Vouchers
 
 -   Betmma Vouchers - 10 More Vouchers! by @Betmma
+-   Betmma Vouchers Mobile Friendly - The same Betmma Vouchers mod with compatible shaders, allowing it to work on mobile devices. by @RakibRyan
 -   Loop - Adds a new voucher called Loop, allowing certain vouchers to be re-redeemed in the same run. by `@jenwalter666`
 
 ### Utils
@@ -607,8 +613,10 @@ Mods (Require **Lovely**)
 ### Functional
 
 -   Advanced Screen Shake - Advanced Screen Shake is a mod that allows you to set the level of your screenshake unreasonably high. by @DeveloperRowan
+-   Alternative Speed Toggle - Adds a draggable HUD checkbox and rebindable shortcut to force an alternative game speed while playing a blind. by @PixeledLobster
 -   Brainstorm | discord - Brainstorm allows for super-fast rerolling through the use of an in-game key bind. by @OceanRamen
 -   Green Needle - Green Needle is a powerful seed search mod inspired by Brainstorm, with multi-platform native search engine. by @lafiosca
+-   Quick Hand Selector - Adds an in-run panel with buttons to select any available poker hand, suit or combination in one click, with rebindable keyboard shortcuts for every action. by @PixeledLobster
 -   Talisman | discord - Talisman is a mod for Balatro that increases the score cap from ~10^308 to ~10^10^308, allowing for endless runs to go past "naneinf" and Ante 39. by @MathIsFun\_
 -   typist - typist is an implementation of fully keyboard-driven UX for Balatro and includes a lot of QoL shortcuts as well. by @kasimeka
 

@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 794
+stars: 802
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -197,7 +197,7 @@ Hot/cold migration, transparent promotion, and full/incremental backup are teste
 
 🟡 Beta
 
-Metadata writes replicate via Raft consensus (writes accepted on any node via leader-forwarding), object data is placed/served by a live-membership hash ring, inter-node calls are authenticated, and on Kubernetes the cluster auto-forms (leader bootstrap + auto-join + self-heal). Validated end-to-end on a real 3-node cluster: leader election & failover, node recovery with catch-up, cross-node reads, and concurrent load. Still operationally newer, not yet stress/scale/multi-region hardened, so validate against your workload before trusting it as the only copy of critical data.
+Metadata writes replicate via Raft consensus (writes accepted on any node via leader-forwarding), object data is placed/served by a live-membership hash ring, inter-node calls are authenticated, and on Kubernetes the cluster auto-forms (leader bootstrap + auto-join + self-heal). Validated end-to-end on a real 3-node cluster: leader election & failover, node recovery with catch-up, cross-node reads, and concurrent load, including a 10,000-write list-then-write-then-read workload behind a gateway with a node restarted mid-run. Still operationally newer, not yet stress/scale/multi-region hardened, so validate against your workload before trusting it as the only copy of critical data.
 
 **Active-active replication**
 
@@ -218,7 +218,7 @@ Features
 -   **AES-256-GCM encryption at rest**: SSE-S3 (static key) and SSE-KMS (HashiCorp Vault or local key provider) encryption modes
 -   **Per-bucket encryption keys**: For bucket-per-tenant setups, each bucket can be encrypted with its own key that is **not shared** with other tenants (or opt out and stay plaintext). Envelope encryption (master KEK wraps a per-bucket data key). Opt in per bucket via `PUT /{bucket}?encryption` or the dashboard. Supports key rotation and crypto-shredding. Enable with `encryption.per_bucket: true`, see design doc
 -   **SSE-C (customer-provided keys)**: Operator-blind per-object encryption: the client supplies the key per request (`x-amz-server-side-encryption-customer-*`). The server encrypts/decrypts with it and stores only the key's MD5, never the key
--   **Bucket policies**: Public-read, private, custom S3-compatible JSON policies
+-   **Bucket policies**: Public-read, private, custom S3-compatible JSON policies. Supports the standard AWS `Principal` forms (`"*"`, `{"AWS": "*"}`, `{"AWS": ["*"]}`), wildcard actions, explicit `Deny` precedence, and per-bucket `Resource` matching. Granting `s3:GetObject` to everyone makes objects publicly readable and `s3:ListBucket` makes the listing public, as separate permissions; bucket sub-resources (`?policy`, `?acl`, ...) always require authentication. **Public Access Block** (`BlockPublicPolicy` / `RestrictPublicBuckets`) overrides any policy and blocks anonymous access
 -   **Quota management**: Per-bucket size and object count limits
 -   **Rate limiting**: Token bucket rate limiter per client IP and per access key to prevent abuse
 -   **S3 Select**: Execute SQL queries on CSV, JSON, and Parquet objects without downloading the full file
@@ -235,8 +235,10 @@ Features
 -   **Per-bucket Prometheus metrics**: Request counts, bytes in/out, and errors with bucket labels at `/metrics`
 -   **Prometheus metrics**: `/metrics` endpoint with storage, request, and runtime stats
 -   **Presigned URLs**: Pre-authenticated URL generation
--   **Web dashboard**: Built-in React UI at `/dashboard/` with home overview page, file browser (grid or list layout with file-type icons, sortable columns, pagination, file preview, metadata panel, version history panel with diff viewer/rollback/tagging, multi-select, bulk delete, bulk zip download, breadcrumb navigation), drag-and-drop file and folder upload (streamed straight to storage so large files work, with subfolder structure preserved), copy-to-clipboard buttons, access key management, activity log, storage stats with auto-refresh, read-only settings viewer, IAM management, audit trail viewer (sortable, paginated), search (sortable, paginated), notifications, replication status, lambda triggers, backup management, bucket config (versioning toggle with status indicator, lifecycle editor, CORS editor), keyboard shortcuts (`/` search, `?` help), toast notifications (success/error/info), dark/light theme, collapsible sidebar, remember-me sign-in, responsive layout
+-   **Web dashboard**: Built-in React UI at `/dashboard/` with home overview page, file browser (grid or list layout with file-type icons, sortable columns, pagination, file preview, metadata panel, version history panel with diff viewer/rollback/tagging, multi-select, bulk delete, bulk zip download, breadcrumb navigation), drag-and-drop file and folder upload (streamed straight to storage so large files work, with subfolder structure preserved), copy-to-clipboard buttons, access key management, activity log, storage stats with auto-refresh, read-only settings viewer, IAM management, audit trail viewer (sortable, paginated), search (sortable, paginated), notifications, replication status, lambda triggers, backup management, bucket config (versioning toggle with status indicator, lifecycle editor, CORS editor), keyboard shortcuts (`/` search, `?` help), toast notifications (success/error/info), dark/light theme, language switcher, collapsible sidebar, remember-me sign-in, responsive layout
+-   **Dashboard in your language**: The Web UI ships **English, German, French, and Simplified Chinese**, picked automatically from the browser's language and switchable from the top bar (the choice is remembered). Adding a language is one JSON file and no code, see Translating the dashboard
 -   **Health checks**: `/health` (liveness) and `/ready` (readiness) endpoints for load balancers and Kubernetes
+-   **Buckets on first start**: Declare the buckets a deployment needs (`VAULTS3_DEFAULT_BUCKETS=app-data,backups`, `storage.default_buckets`, or the chart's `defaultBuckets`) and the missing ones are created while the server starts, so a container needs no init container or one-off S3 client call to become usable. Existing buckets are never touched, and an invalid name or a failed create stops startup instead of coming up quietly incomplete
 -   **Graceful shutdown**: Drains in-flight requests on SIGTERM/SIGINT with configurable timeout
 -   **TLS support**: Optional HTTPS with configurable cert/key paths
 -   **Separate dashboard port**: Optionally serve the Web UI + its API on a dedicated port (`server.console_port`, e.g. 9001) apart from the S3 API, so each can have its own firewall rules / TLS / reverse proxy (MinIO-style)
@@ -256,15 +258,15 @@ Features
 -   **IP allowlist/blocklist**: Global and per-user CIDR-based IP restrictions with IPv4/IPv6 support
 -   **S3 event notifications**: Per-bucket webhook notifications on object mutations with event type and key prefix/suffix filtering, plus Kafka, NATS, Redis, AMQP/RabbitMQ, PostgreSQL, and Elasticsearch backends
 -   **Raft clustering**: Multi-node cluster with Hashicorp Raft consensus for strongly consistent distributed metadata, automatic leader election, and node join/leave via HTTP API
--   **Consistent hashing**: xxhash64-based hash ring with virtual nodes for automatic data placement and request routing across cluster nodes via reverse proxy
--   **Erasure coding**: Reed-Solomon encoding (configurable data/parity shards) for disk-failure protection with background healer that auto-reconstructs degraded objects
--   **High availability**: Automatic failure detection (health probes with suspect/down state machine), failover proxy routing to healthy replicas, and background rebalancer for membership changes
+-   **Consistent hashing**: xxhash64-based hash ring with virtual nodes for automatic data placement and request routing across cluster nodes via reverse proxy. A read whose data has not yet been copied to the node serving it is fetched from a holder that has it, so a `GET` never reports "not found" for an object that was just written, and a hop that fails before any response reaches the client is retried against the object's other holders instead of surfacing as a gateway error
+-   **Erasure coding**: Reed-Solomon encoding (configurable data/parity shards) for disk-failure protection with background healer that auto-reconstructs degraded objects. Reads **stream** the data shards, so GET time-to-first-byte stays flat regardless of object size, and fall back to parity reconstruction only when a shard is actually missing. **Settable per bucket** alongside replica count (`vaults3-cli bucket durability`), so scratch data can be stored once while the buckets that matter keep their parity and copies: on a 3-node cluster with 4+2 coding and 3 replicas, the same data costs 4.52x with the defaults and 1.00x with both turned off
+-   **High availability**: Automatic failure detection (health probes with suspect/down state machine), failover proxy routing to healthy replicas, and background rebalancer for membership changes. Inter-node traffic shares a pooled HTTP transport (connection reuse instead of a new socket per call), and a node that genuinely cannot serve a request answers `503 SlowDown` with an S3 error document, which every mainstream SDK retries on its own
 -   **Scalable listing**: Object listing is served from the sorted BoltDB metadata index (seek to the page, `O(log n + page_size)`), so `ListObjectsV2` page latency stays flat (~0.7 ms per 1000-key page) whether a prefix holds a thousand or **a hundred million** objects (measured, not extrapolated), no full-bucket scan
     -   📖 See the **Scaling & Operations Guide** for multi-disk erasure coding, multi-node cluster setup, large-prefix listing, and lost-disk / lost-server recovery runbooks
 -   **Active-active replication**: Bidirectional site-to-site sync with vector clocks for causal ordering, pluggable conflict resolution (last-writer-wins, largest-object, site-preference), and change log for efficient delta sync
 -   **Async replication**: One-way async replication to peer VaultS3 instances with BoltDB-backed queue, retry with exponential backoff, and loop prevention
 -   **CLI tool**: Standalone `vaults3-cli` binary for bucket, object, user, and replication management without AWS CLI, plus `vaults3-cli info` for server version and storage capacity (used / free / total) and `vaults3-cli cluster` for day-2 cluster operations (status, join, leave, drain/undrain a member, rebalance, decommission — see docs/SCALING.md)
--   **Capacity overview**: `GET /api/v1/system` and the dashboard Stats page report the version and on-disk capacity (total / used / free, aggregated across the data, cold-tier, and erasure directories) alongside logical object usage, so you can see how full the storage is at a glance. In a cluster, `GET /api/v1/cluster/info` (and the same dashboard panel / `vaults3-cli info`) aggregate capacity across all nodes with a per-node breakdown, an `mc admin info`\-style view
+-   **Capacity overview**: `GET /api/v1/system` and the dashboard Stats page report the version and storage usage; in a cluster, `GET /api/v1/cluster/info` (the same dashboard panel, and `vaults3-cli info`) roll it up across all nodes with a per-node breakdown, an `mc admin info`\-style view. Three sizes are reported separately because they answer different questions and are not meant to match: **logical** (each object's current version, counted once cluster-wide, since object metadata is the same on every node), **VaultS3 on disk** (what its data, metadata, erasure, cold-tier and Raft directories actually occupy, summed per node, so it includes replicas, parity shards and non-current versions), and **filesystems** (statfs of the whole volumes, which usually also hold the OS, container images and logs). The middle figure is the one to compare against logical for a real amplification ratio, with a per-directory split to tell object data apart from metadata and Raft logs. It comes from a cached background walk, `storage.usage_scan_interval_secs` (default 300, `0` disables it), and is also exported as `vaults3_disk_usage_bytes{dir=...}`
 -   **Presigned upload restrictions**: Enforce max file size, content type whitelist, and key prefix on presigned PUT URLs
 -   **Full-text search**: In-memory search index over object metadata, tags, content type, and key patterns with incremental updates
 -   **Semantic / vector search (optional)**: Embeds object text via any OpenAI-compatible endpoint (Ollama, llama.cpp, OpenAI…) and serves similarity search + RAG retrieval from `POST /api/v1/vectors/query`, all in the single binary, no external vector database. Searchable from the dashboard (Keyword / Semantic toggle)
@@ -276,7 +278,7 @@ Features
 -   **Backup scheduler**: Scheduled full/incremental backups to local directory targets with cron-like scheduling and backup history
 -   **Git-like versioning**: Visual diff between object versions (text and binary), version tagging with labels, one-click rollback to any version
 -   **FUSE mount**: Mount VaultS3 buckets as local filesystem directories with read/write support, lazy loading, and SigV4 authentication. LRU block cache (256KB blocks, configurable size), metadata cache with TTL, kernel attribute caching, and SigV4 derived key caching for fast repeated reads
--   **OIDC/JWT SSO**: Sign in to the dashboard with external identity providers (Google, Keycloak, Auth0) via OpenID Connect. RS256 JWT verification with JWKS auto-discovery and caching. Email domain filtering, auto-create users, OIDC group to policy mapping.
+-   **OIDC/JWT SSO**: Sign in to the dashboard with external identity providers (Google, Keycloak, Auth0, Authentik) via OpenID Connect, using the **authorization-code flow with PKCE** (validated end-to-end against a real Keycloak and a real Authentik). The PKCE verifier, nonce and client secret never leave the server, and the login state is sealed so a login started on one cluster node can finish on another. The authorization endpoint, expected issuer and requested scopes all come from the provider's discovery document, so providers that serve a global authorization endpoint separate from each application's issuer need no rewrite rules, and a scope the provider does not define is never requested. RS256 JWT verification with JWKS auto-discovery and caching. Email domain filtering, auto-create users, OIDC group to policy mapping.
 -   **Lambda compute triggers**: Webhook-based function triggers on S3 events. Call external URLs with event payload and optional object body, optionally store the response as a new object. Per-bucket trigger configuration with event type and key prefix/suffix filtering. Worker pool with non-blocking dispatch.
 -   **SVG dashboard charts**: Pure SVG bar chart (per-bucket sizes), donut chart (request method distribution), and sparkline (request activity) on the stats page, zero dependencies
 -   **GitHub Actions CI**: Automated build, test, lint, and coverage on push/PR
@@ -290,9 +292,10 @@ Features
 -   **Dashboard API rate limiting**: Uses existing token bucket rate limiter on `/api/v1/` endpoints, returns 429 when exceeded
 -   **Input validation**: DNS-compatible bucket name validation (3-63 chars, lowercase, no leading/trailing hyphen) and object key validation (max 1024 chars, no null bytes)
 -   **RAM optimization**: Slim search index with LRU eviction cap (50K entries default), batched last-access updates (30s flush interval), configurable Go memory limit (`GOMEMLIMIT`)
+-   **Streaming uploads**: A `PUT` streams to disk while its checksums are computed in passing, and compression encodes as the object flows through, so peak memory scales with concurrency rather than with concurrency multiplied by object size. A 64 MiB object at 32 concurrent uploads no longer costs gigabytes of buffered copies (SSE-C and uploads with no declared length still buffer by necessity)
 -   **GetObjectAttributes**: Returns object size, ETag, and storage class. Used internally by AWS SDK v2
 -   **Bucket encryption config**: Per-bucket server-side encryption configuration (AES256, aws:kms) via `PUT/GET/DELETE /{bucket}?encryption`
--   **Public access block**: Per-bucket public access block with 4 boolean flags (BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets)
+-   **Public access block**: Per-bucket public access block with 4 boolean flags (BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets). `BlockPublicPolicy` and `RestrictPublicBuckets` are enforced: either one blocks anonymous access to the bucket regardless of its policy. The two ACL flags are accepted and stored for API compatibility but have no effect, since VaultS3 uses policies rather than ACLs (`PUT ?acl` is a no-op)
 -   **Bucket logging config**: Per-bucket access logging configuration with target bucket and prefix
 -   **User metadata**: Custom `x-amz-meta-*` headers on PUT/GET/HEAD
 -   **Conditional requests**: `If-Modified-Since`, `If-None-Match` (304), `If-Match`, `If-None-Match` (412) on GET and PUT
@@ -465,6 +468,12 @@ Done
 Bucket Quota
 
 `PUT/GET /{bucket}?quota`
+
+Done
+
+Bucket Durability (erasure + replicas)
+
+`PUT/GET /{bucket}?durability`
 
 Done
 
@@ -720,7 +729,13 @@ OIDC Config
 
 Done
 
-OIDC Login
+OIDC Login (code flow)
+
+`POST /api/v1/auth/oidc/start`, `POST /api/v1/auth/oidc/callback`
+
+Done
+
+OIDC Login (implicit)
 
 `POST /api/v1/auth/oidc`
 
@@ -1074,6 +1089,34 @@ curl http://localhost:9000/metrics
 
 Exposes: request counts by method, bytes in/out, per-bucket storage size and object counts, per-bucket request/bytes/error counters, quota usage, Go runtime stats (goroutines, memory, GC).
 
+Storage is reported both ways, which is what makes growth diagnosable:
+
+Series
+
+Measures
+
+`vaults3_storage_size_bytes_total`
+
+**Logical**: each object's current version, counted once.
+
+`vaults3_disk_usage_bytes{dir="..."}`
+
+**Physical**: what that directory actually occupies on disk, per data / metadata / erasure / cold-tier / Raft directory. Includes replicas, parity shards and non-current versions.
+
+`vaults3_disk_usage_files{dir="..."}`
+
+File count behind the figure above.
+
+`vaults3_disk_usage_bytes_total`
+
+Physical total for this node.
+
+`vaults3_disk_usage_scanned_timestamp_seconds`
+
+When the footprint was last measured, so a stale reading is detectable.
+
+Graphing physical against logical shows amplification directly. The `vaults3_disk_usage_*` series come from a cached background walk and are absent when `storage.usage_scan_interval_secs` is `0`.
+
 ### Web Dashboard
 
 The built-in dashboard is available at `http://localhost:9000/dashboard/`. Login with your admin credentials. Features:
@@ -1090,14 +1133,25 @@ The built-in dashboard is available at `http://localhost:9000/dashboard/`. Login
 -   Lambda triggers, status overview, trigger table with event filtering
 -   Backups, status cards, history table, manual trigger button
 -   Activity log, real-time S3 operation feed with auto-refresh
--   Storage stats, total storage, per-bucket breakdown, runtime metrics, auto-refresh toggle (30s)
+-   Storage stats, logical size, VaultS3's measured on-disk footprint and total filesystem usage side by side (with a per-directory and per-node breakdown), per-bucket breakdown, runtime metrics, auto-refresh toggle (30s)
 -   Migrate, import buckets from any S3-compatible source with live progress and a Cancel button for in-flight jobs
 -   Version indicator, the running version is shown at the bottom of the sidebar, with an "update available" hint linking to releases
 -   Dark/light theme, toggle with system preference detection
+-   Language, English, German, French, Simplified Chinese, detected from the browser and switchable in the top bar
 -   Responsive layout, mobile-friendly with collapsible sidebar
 -   JWT-based authentication (24h tokens)
 
 The dashboard is embedded into the binary, no separate web server needed.
+
+#### Language
+
+The dashboard picks a language from the browser on first load and falls back to English. Change it with the selector in the top bar; the choice is stored per browser, so different people using the same server can each read it in their own language. There is no server-side setting.
+
+Shipping today: **English, Deutsch, Francais, and simplified Chinese**. The non-English files were drafted without a native-speaker review, so corrections are welcome.
+
+**Adding a language takes one JSON file and no code**: copy `web/src/i18n/locales/en.json`, translate the values, and add one entry to `LOCALES` in `web/src/i18n/index.tsx`. Any key you leave out falls back to English, so a partial translation is fine to send. See Translating the dashboard for the full steps and the test that checks a locale file.
+
+Server-side output (S3 API error codes, log lines) is English only.
 
 #### Screenshots
 
@@ -1143,6 +1197,26 @@ docker build -t vaults3 .
 docker run -p 9000:9000 -v ./data:/data -v ./metadata:/metadata vaults3
 
 Images are automatically published to Docker Hub on every push to `main`.
+
+#### Buckets on First Start
+
+A fresh container has no buckets, which normally means an init container or a one-off S3 client call before the app can write anything. Name the buckets you need instead and VaultS3 creates the missing ones while it starts:
+
+docker run -p 9000:9000 \\
+  -e VAULTS3\_DEFAULT\_BUCKETS=app-data,backups \\
+  -v ./data:/data -v ./metadata:/metadata \\
+  eniz1806/vaults3
+
+or in `vaults3.yaml`:
+
+storage:
+  default\_buckets: \["app-data", "backups"\]
+
+-   Buckets that already exist are left completely alone: no data, policy, versioning, or lifecycle setting is touched, so the variable is safe to keep in place across restarts and upgrades.
+-   Removing a name from the list never deletes anything.
+-   The setting means "these buckets must exist", so if you delete one while its name is still listed, the next restart creates it again, empty. Take the name out of the list first if you mean the deletion to stick.
+-   An invalid bucket name, or a bucket that cannot be created, stops startup with an error naming the bucket, rather than starting up quietly incomplete.
+-   On a cluster, creation is a replicated write like any other, so the nodes agree on one bucket no matter how many of them boot with the same setting.
 
 #### Environment Variables
 
@@ -1208,6 +1282,18 @@ BoltDB metadata directory
 
 `./metadata`
 
+`VAULTS3_DEFAULT_BUCKETS`
+
+Comma-separated buckets to create on startup if missing
+
+_(none)_
+
+`VAULTS3_USAGE_SCAN_INTERVAL_SECS`
+
+How often VaultS3 may re-measure its own on-disk footprint (0 disables)
+
+`300`
+
 `VAULTS3_ENCRYPTION_KEY`
 
 64-char hex key (enables encryption)
@@ -1244,6 +1330,12 @@ Log the cause (`meta_nil` vs `data_missing`) of cluster `GET`/`HEAD` 404s
 
 `0`
 
+`VAULTS3_OIDC_CLIENT_SECRET`
+
+OAuth client secret for SSO (keeps it out of the config file)
+
+_(public client)_
+
 ### Storage requirements
 
 VaultS3 stores each object as a regular **file** under `data_dir` and keeps metadata in a **BoltDB** file under `metadata_dir`, so both must point at a **mounted filesystem**, not a raw block device. Format the disk first (**XFS recommended**. `ext4` also works) and mount it, then point `data_dir` at a directory on the mount. This is the same model as MinIO.
@@ -1258,10 +1350,13 @@ Deploy with the bundled **Helm chart** or a single **plain-manifest** quickstart
 # Helm (configurable, production-grade)
 helm install vaults3 ./deploy/helm/vaults3 \\
   --namespace vaults3 --create-namespace \\
-  --set auth.secretKey="$(openssl rand -hex 20)"
+  --set auth.secretKey="$(openssl rand -hex 20)" \\
+  --set defaultBuckets="{app-data,backups}"
 
 # Or plain manifests (single-node, no Helm)
 kubectl apply -f deploy/k8s/quickstart.yaml
+
+`defaultBuckets` creates those buckets on startup if they are missing, so the release needs no init container to become usable. See Buckets on First Start.
 
 Both deploy a StatefulSet (S3 API + dashboard on port `9000`), admin keys via a Secret, `vaults3.yaml` via a ConfigMap, persistent volumes for `/data` and `/metadata`, liveness/readiness probes (`/health`, `/ready`), and an optional Ingress + Prometheus ServiceMonitor. See `deploy/README.md` and the chart reference.
 
@@ -1344,6 +1439,8 @@ compression:
   enabled: true
 
 All objects are transparently compressed (zstd) on write and decompressed on read. Objects written by older gzip builds are still read correctly. Works with encryption (data is compressed then encrypted on disk).
+
+Both directions stream, so a large object costs a compression window rather than a copy of itself: peak memory scales with concurrency, not with concurrency multiplied by object size. An upload that does not declare its length falls back to buffering, because the decompressed size has to be recorded in the frame header for reads to stream.
 
 ### Small-file packing (experimental)
 
@@ -1615,6 +1712,8 @@ vaults3-cli object get my-bucket docs/readme.md ./downloaded.md
 vaults3-cli object cp my-bucket/file.txt my-bucket/copy.txt
 vaults3-cli object rm my-bucket docs/readme.md
 vaults3-cli object presign my-bucket file.txt --expires=3600
+vaults3-cli object verify my-bucket                   # find objects that list but cannot be read (metadata/data desync)
+vaults3-cli object verify my-bucket --repair          # remove orphaned metadata for unreadable objects
 
 # IAM user operations
 vaults3-cli user list
@@ -1627,6 +1726,7 @@ vaults3-cli replication status
 vaults3-cli replication queue
 
 # Cluster operations (see docs/SCALING.md)
+vaults3-cli bucket durability scratch --erasure=off --replicas=1  # store this bucket once
 vaults3-cli cluster status                     # members, leader, drain state
 vaults3-cli cluster join node-3 10.0.0.4:7000  # add a member (against the leader)
 vaults3-cli cluster drain node-2               # stop a node accepting writes (reads continue)
@@ -1939,6 +2039,7 @@ VaultS3 is designed with security in mind:
 -   **Backup scheduler thread safety**: Atomic bool prevents concurrent backup races
 -   **OIDC admin name reservation**: OIDC users cannot claim the "admin" username
 -   **OIDC domain validation enforcement**: Tokens without email are rejected when domain filtering is enabled
+-   **OIDC code flow hardening**: The authorization code is redeemed server-side, so the ID token never travels through the browser. The PKCE verifier, nonce and client secret stay on the server; the CSRF state is sealed with AES-GCM and expires after 15 minutes, so it cannot be read, forged, or replayed from another deployment. The ID token's nonce is checked against the login that requested it
 -   **CORS port restriction**: Localhost CORS only allowed on the server's own port
 -   **Presigned URL credential isolation**: Presigned URLs use a dedicated non-admin key, preventing privilege escalation
 -   **CORS Host header protection**: Origin validation uses configured server address, not attacker-controlled Host header
@@ -1963,7 +2064,7 @@ VaultS3 is designed with security in mind:
 -   **Content-MD5 validation**: Server-side integrity verification on PUT rejects corrupted uploads
 -   **S3 Checksum API**: CRC32, CRC32C, SHA1, SHA256 checksums verified on upload and returned on download
 -   **Conditional request handling**: `If-Match`/`If-None-Match` ETag checks prevent lost updates (412 Precondition Failed)
--   **Dependency hygiene**: Dashboard dependencies kept current against Dependabot advisories (latest: `react-router` 7.17.0 closing 6 alerts, turbo-stream RCE, RSC/Location XSS, `__manifest`/single-fetch DoS, protocol-relative open redirect)
+-   **Dependency hygiene**: Dashboard dependencies kept current against Dependabot advisories (latest: `react-router` 7.18.1 and `postcss` 8.5.24, closing a backslash open redirect in `<Link>`/`useNavigate`, an unauthenticated route-matching DoS, an SSR hydration constructor injection, an RSCErrorHandler XSS, and a postcss path traversal; earlier: `react-router` 7.17.0 closing 6 alerts, turbo-stream RCE, RSC/Location XSS, `__manifest`/single-fetch DoS, protocol-relative open redirect). The one advisory left open is a **React Server Components CSRF bypass** that is only patched in `react-router` 8.x: the dashboard is a client-rendered SPA and never uses RSC mode, so it is not affected, and 8.x would additionally require Node 22.22+ and dropping `react-router-dom`
 
 See SECURITY.md for vulnerability reporting policy and deployment best practices.
 

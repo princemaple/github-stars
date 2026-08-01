@@ -1,6 +1,6 @@
 ---
 project: nerd-fonts
-stars: 63836
+stars: 63915
 description: Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more
 url: https://github.com/ryanoasis/nerd-fonts
 ---
@@ -123,7 +123,7 @@ ver
 
 0xProto
 
-2.300
+2.502
 
 NO
 
@@ -139,7 +139,7 @@ AdwaitaMono Nerd Font
 
 Adwaita Mono
 
-32.4
+34.1
 
 NO
 
@@ -147,7 +147,15 @@ Agave Nerd Font
 
 Agave
 
-37
+38
+
+NO
+
+AnnotationMono Nerd Font
+
+Annotation Mono
+
+0.4
 
 NO
 
@@ -247,17 +255,17 @@ Cousine Nerd Font
 
 Cousine
 
-1.211
+1.241
 
 NO
 
-D2Coding Nerd Font
+D2Koding Nerd Font
 
 D2Coding
 
 1.3.2
 
-NO
+YES
 
 DaddyTimeMono Nerd Font
 
@@ -271,7 +279,7 @@ DepartureMono Nerd Font
 
 Departure Mono
 
-1.422
+1.500
 
 NO
 
@@ -327,7 +335,7 @@ GeistMono Nerd Font
 
 Geist Mono
 
-1.401
+1.702
 
 NO
 
@@ -344,6 +352,14 @@ Gohu Nerd Font
 Gohu TTF, Gohu
 
 2.0
+
+NO
+
+GoogleSansCode Nerd Font
+
+Google Sans Code
+
+7.001
 
 NO
 
@@ -407,7 +423,7 @@ Inconsolata LGC Nerd Font
 
 Inconsolata LGC
 
-1.13
+3.201
 
 NO
 
@@ -423,7 +439,7 @@ Iosevka Nerd Font
 
 Iosevka
 
-33.2.1
+34.8.0
 
 NO
 
@@ -431,7 +447,7 @@ IosevkaTerm Nerd Font
 
 Iosevka Term
 
-33.2.1
+34.8.0
 
 NO
 
@@ -439,7 +455,7 @@ IosevkaTermSlab Nerd Font
 
 Iosevka Term Slab
 
-33.2.1
+34.8.0
 
 NO
 
@@ -471,7 +487,7 @@ Lilex Nerd Font
 
 Lilex
 
-2.600
+2.700
 
 NO
 
@@ -495,7 +511,7 @@ Monaspice Nerd Font
 
 Monaspace
 
-1.200
+1.400
 
 YES
 
@@ -527,7 +543,7 @@ M+ Nerd Font
 
 MPlus Fonts
 
-1.007
+1.100
 
 NO
 
@@ -607,7 +623,7 @@ SpaceMono Nerd Font
 
 Space Mono
 
-1.001
+1.003
 
 NO
 
@@ -648,6 +664,14 @@ UbuntuSans Nerd Font
 Ubuntu Sans
 
 1.006
+
+NO
+
+UbuntuSansM Nerd Font
+
+Ubuntu Sans Mono
+
+1.100
 
 NO
 

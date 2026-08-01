@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 155976
+stars: 159081
 description: The API to search, scrape, and interact with the web at scale. 🔥
 url: https://github.com/firecrawl/firecrawl
 ---
@@ -170,7 +170,7 @@ Output:
 ```
 # Firecrawl
 
-Firecrawl helps AI systems search, scrape, and interact with the web.
+Firecrawl helps AI agents search, scrape, and interact with the web.
 
 ## Features
 - Search: Find information across the web

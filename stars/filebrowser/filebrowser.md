@@ -1,33 +1,38 @@
 ---
 project: filebrowser
-stars: 35675
-description: 📂 Web File Browser
+stars: 35737
+description: File Browser provides a file managing interface within a specified directory and it can be used to upload, delete, preview and edit your files.
 url: https://github.com/filebrowser/filebrowser
 ---
 
+Warning
+
+**File Browser is archived on 2026-09-01**. The last planned release has already shipped. There will be no further releases, bug fixes, or security fixes.
+
 File Browser provides a file managing interface within a specified directory and it can be used to upload, delete, preview and edit your files. It is a **create-your-own-cloud**\-kind of software where you can just install it on your server, direct it to a path and access your files through a nice web interface.
+
+**Background:** Goodbye File Browser, for Real This Time, July 2026.
+
+Security
+--------
+
+Published advisories are listed under security advisories, and reporting instructions are in SECURITY.md. Two known issue classes remain unaddressed and will not be fixed:
+
+-   **Command execution, runner, and hooks.** This feature is plagued with vulnerabilities across many published advisories, and would need a full rewrite to be made safe. It is disabled by default; if you re-enable it with `--disable-exec=false`, treat the ability to run commands as equivalent to shell access on the host. Background: #5199.
+-   **Session and JWT handling.** Sessions are self-contained JWTs rather than server-side identifiers, so they cannot be revoked, which means that logout, password changes, and renewal leave previously issued tokens valid until they expire, and the same refresh token can be redeemed repeatedly. Assume a leaked token is valid until expiry. Background: #5216.
+
+If you keep running File Browser, treat it as unmaintained software:
+
+-   **Do not expose it directly to the internet.** Put it behind a reverse proxy that terminates TLS and performs its own authentication.
+-   **Keep the command runner disabled.** It is off by default, so leave it off. See #5199 and `docs/command-execution.md`.
+-   **Run it unprivileged, inside a container**, with only the directory you intend to serve mounted into it.
 
 Documentation
 -------------
 
-Documentation on how to install, configure, and contribute to this project is hosted at filebrowser.org.
+Documentation on how to install, configure, and build this project lives in `docs` in this repository.
 
-Project Status
---------------
-
-This project is a finished product which fulfills its goal: be a single binary web File Browser which can be run by anyone anywhere. That means that File Browser is currently on **maintenance-only** mode. Therefore, please note the following:
-
--   It can take a while until someone gets back to you. Please be patient.
--   Issues are meant to track bugs. Unrelated issues will be converted into discussions.
--   The priority is triaging issues, addressing security issues and reviewing pull requests meant to solve bugs.
--   No new features are planned. Pull requests for new features will not be reviewed.
-
-Please read @hacdias' personal reflection on the project status.
-
-Contributing
-------------
-
-Contributions are always welcome. To start contributing to this project, read our guidelines first.
+CONTRIBUTING.md documents how to build and develop the project, which remains useful to anyone forking it.
 
 License
 -------

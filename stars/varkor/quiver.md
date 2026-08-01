@@ -1,6 +1,6 @@
 ---
 project: quiver
-stars: 3593
+stars: 3600
 description: A modern commutative diagram editor for the web.
 url: https://github.com/varkor/quiver
 ---
@@ -78,5 +78,6 @@ Thanks to
 -   Nathan Corbyn, for adding the ability to export embeddable diagrams to HTML.
 -   Paolo Brasolin, for adding offline support.
 -   Carl Davidson, for discussing and prototyping loop rendering.
+-   Huangxin Dong, for improving the interface for custom macros.
 -   Pantelis Panayiotou and QuantumSoul, for prototyping dark themes.
 -   Everyone who has improved **quiver** by submitting pull requests, reporting issues or suggesting improvements.

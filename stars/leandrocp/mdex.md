@@ -1,6 +1,6 @@
 ---
 project: mdex
-stars: 436
+stars: 438
 description: Markdown for Elixir. Fast, Extensible, Phoenix-native. AI-ready. Built on top of comrak, ammonia, and lumis.
 url: https://github.com/leandrocp/mdex
 ---

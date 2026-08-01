@@ -1,6 +1,6 @@
 ---
 project: stripe-cli
-stars: 2124
+stars: 2134
 description: A command-line tool for Stripe
 url: https://github.com/stripe/stripe-cli
 ---
@@ -226,7 +226,7 @@ Got feedback for us? Please don't hesitate to tell us on feedback.
 Contributing
 ------------
 
-See Developing the Stripe CLI for more info on how to make contributions to this project.
+See CONTRIBUTING.md for details on developing the Stripe CLI. All contributions are governed by the code of conduct.
 
 License
 -------

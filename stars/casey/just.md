@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 34947
+stars: 35066
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -3155,6 +3155,30 @@ two
 
 The argument to `--timestamp-format` is a `strftime`\-style format string, see the `chrono` library docs for details.
 
+The `[timestamp]` attributemaster can be used to enable timestamps for a specific recipe:
+
+\[timestamp\]
+foo:
+  echo hello
+
+```
+$ just foo
+[07:28:46] echo hello
+hello
+```
+
+Which may include a format string:
+
+\[timestamp('%H:%M:%S%.3f')\]
+foo:
+  echo hello
+
+```
+$ just foo
+[07:28:46.487] echo hello
+hello
+```
+
 ### Signal Handling
 
 Signals are messages sent to running programs to trigger specific behavior. For example, `SIGINT` is sent to all processes in the terminal foreground process group when `ctrl-c` is pressed.
@@ -3656,6 +3680,18 @@ Execute recipe as script. See script recipes for more details.
 recipe
 
 Execute recipe as a shell recipe, overriding `set default-script`.
+
+`[timestamp(FORMAT)]`master
+
+recipe
+
+Print command timestamps with format `FORMAT`. `FORMAT` may be an expression.
+
+`[timestamp]`master
+
+recipe
+
+Print command timestamps.
 
 `[unix]`1.8.0
 

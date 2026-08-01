@@ -1,6 +1,6 @@
 ---
 project: tauri
-stars: 109490
+stars: 109776
 description: Build smaller, faster, and more secure desktop and mobile applications with a web frontend.
 url: https://github.com/tauri-apps/tauri
 ---

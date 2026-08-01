@@ -1,6 +1,6 @@
 ---
 project: scikit-learn
-stars: 66784
+stars: 66850
 description: scikit-learn: machine learning in Python
 url: https://github.com/scikit-learn/scikit-learn
 ---
@@ -77,7 +77,7 @@ pytest sklearn
 
 See the web page https://scikit-learn.org/dev/developers/contributing.html#testing-and-improving-test-coverage for more information.
 
-> Random number generation can be controlled during testing by setting the `SKLEARN_SEED` environment variable.
+Random number generation can be controlled during testing by setting the `SKLEARN_SEED` environment variable. See https://scikit-learn.org/dev/developers/global\_configuration.html#sklearn-seed for details.
 
 ### Submitting a Pull Request
 

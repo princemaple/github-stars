@@ -1,6 +1,6 @@
 ---
 project: pyo3
-stars: 15954
+stars: 15968
 description: Rust bindings for the Python interpreter
 url: https://github.com/PyO3/pyo3
 ---
@@ -95,6 +95,8 @@ $ python
 >>> import string\_sum
 >>> string\_sum.sum\_as\_string(5, 20)
 '25'
+
+When checking runtime performance, run `maturin develop --release` to build with optimizations.
 
 To make changes to the package, just edit the Rust source code and then re-run `maturin develop` to recompile.
 

@@ -1,6 +1,6 @@
 ---
 project: dragonfly
-stars: 30912
+stars: 30943
 description: A modern replacement for Redis and Memcached
 url: https://github.com/dragonflydb/dragonfly
 ---
@@ -26,10 +26,10 @@ Contents
 -   Benchmarks
 -   Quick start
 -   Configuration
--   Roadmap and status
 -   Design decisions
 -   Background
 -   Build from source
+-   Contributors
 
 Benchmarks
 ----------
@@ -277,17 +277,6 @@ Arguments can be also provided via:
 
 For more options like logs management or TLS support, run `dragonfly --help`.
 
-Roadmap and status
-------------------
-
-Dragonfly currently supports ~185 Redis commands and all Memcached commands besides `cas`. Almost on par with the Redis 5 API, Dragonfly's next milestone will be to stabilize basic functionality and implement the replication API. If there is a command you need that is not implemented yet, please open an issue.
-
-For Dragonfly-native replication, we are designing a distributed log format that will support order-of-magnitude higher speeds.
-
-Following the replication feature, we will continue adding missing commands for Redis versions 3-6 APIs.
-
-Please see our Command Reference for the current commands supported by Dragonfly.
-
 Design decisions
 ----------------
 
@@ -334,3 +323,8 @@ Once we had built the foundation for Dragonfly and we were happy with its perfor
 
 And finally,  
 _Our mission is to build a well-designed, ultra-fast, cost-efficient in-memory datastore for cloud workloads that takes advantage of the latest hardware advancements. We intend to address the pain points of current solutions while preserving their product APIs and propositions._
+
+Contributors
+------------
+
+Thanks to all the contributors to Dragonfly project!

@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 1247
+stars: 1248
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -192,9 +192,9 @@ rm -f ${KULA\_INSTALL}
 
 ### Standalone
 
-wget https://github.com/c0m4r/kula/releases/download/0.18.6/kula-0.18.6-amd64.tar.gz
-echo "7f1341bb479cb5a73740ff205c0848f0e3137a03b52347f341674efb9bebd605 kula-0.18.6-amd64.tar.gz" | sha256sum -c || rm -f kula-0.18.6-amd64.tar.gz
-tar -xvf kula-0.18.6-amd64.tar.gz
+wget https://github.com/c0m4r/kula/releases/download/0.18.8/kula-0.18.8-amd64.tar.gz
+echo "45ce3a6a06be92caec938d6d01884da0d81f1092ee9741c73b4ee03566411316 kula-0.18.8-amd64.tar.gz" | sha256sum -c || rm -f kula-0.18.8-amd64.tar.gz
+tar -xvf kula-0.18.8-amd64.tar.gz
 cd kula
 ./kula
 
@@ -211,16 +211,16 @@ docker logs -f kula
 
 ### Debian / Ubuntu (.deb)
 
-wget https://github.com/c0m4r/kula/releases/download/0.18.6/kula-0.18.6-amd64.deb
-echo "2d1aba6a839a0144fb27f0fb7a8ef695f7073700d504cae8efd2ab17eeb6a5f0 kula-0.18.6-amd64.deb" | sha256sum -c || rm -f kula-0.18.6-amd64.deb
-sudo dpkg -i kula-0.18.6-amd64.deb
+wget https://github.com/c0m4r/kula/releases/download/0.18.8/kula-0.18.8-amd64.deb
+echo "c78a0027c65db1ab293ff8000561e4a3033b25054272526831271b9fa8ed9bae kula-0.18.8-amd64.deb" | sha256sum -c || rm -f kula-0.18.8-amd64.deb
+sudo dpkg -i kula-0.18.8-amd64.deb
 journalctl -f -t kula
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-wget https://github.com/c0m4r/kula/releases/download/0.18.6/kula-0.18.6-x86\_64.rpm
-echo "89dc22ed3d58c74e6c3ce5dc24c52abdedd6be53549bab2998c644995ce4b8d4 kula-0.18.6-x86\_64.rpm" | sha256sum -c || rm -f kula-0.18.6-x86\_64.rpm
-sudo rpm -i kula-0.18.6-x86\_64.rpm
+wget https://github.com/c0m4r/kula/releases/download/0.18.8/kula-0.18.8-x86\_64.rpm
+echo "5777fe149b059a62b84825a974ae43ce2bf2fc0cafc9680af9fcf948f70f0fd4 kula-0.18.8-x86\_64.rpm" | sha256sum -c || rm -f kula-0.18.8-x86\_64.rpm
+sudo rpm -i kula-0.18.8-x86\_64.rpm
 journalctl -f -t kula
 
 ### Arch Linux / Manjaro (AUR)
@@ -267,6 +267,8 @@ export KULA\_PORT="27960"
 ### TUI
 
 ./kula tui
+
+The terminal monitor is designed for a fast live read rather than as a second web dashboard. Its overview keeps CPU, memory, traffic, storage pressure, host health, and short-term trends visible in a standard terminal.
 
 ### Inspect storage
 

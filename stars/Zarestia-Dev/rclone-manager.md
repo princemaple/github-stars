@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 998
+stars: 1017
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -8,10 +8,10 @@ url: https://github.com/Zarestia-Dev/rclone-manager
 RClone Manager
 ==============
 
-🇺🇸 English • 🇹🇷 Türkçe • 🇨🇳 简体中文 • 🇫🇷 Français • 🇪🇸 Español • 🇷🇺 Русский • Help to translate • Crowdin
+🇺🇸 English • 🇹🇷 Türkçe • 🇨🇳 简体中文 • 🇫🇷 Français • 🇪🇸 Español • 🇧🇷 Português-Brasil • 🇷🇺 Русский • 🇯🇵 日本語 • Help to translate • Crowdin
 
 **A powerful, cross-platform GUI for managing Rclone remotes with style and ease.**  
-_Built with Angular 22 + Tauri · Linux • Windows • macOS • ARM Support_
+_Built with Angular 22 + Tauri · Linux • Windows • macOS • Android (Beta) • ARM Support_
 
 * * *
 
@@ -111,6 +111,20 @@ Installer / Portable EXE
 
 > 📚 **Guide:** Wiki: Installation - Windows (WinFsp mounting requirements & SmartScreen)
 
+### Android (Beta)
+
+Source
+
+Version
+
+Install Command / Download
+
+**Direct Download**
+
+APK Downloads (arm64-v8a, armeabi-v7a, x86\_64, x86)
+
+> 📚 **Guide:** Wiki: Android Support (Beta) (Go engine / librclone details & setup)
+
 > 🛠️ **System Requirements:** Mounting drives requires WinFsp (Windows), macFUSE (macOS), or FUSE3 (Linux). Rclone itself is downloaded automatically if missing. See Wiki: System Requirements.
 
 * * *
@@ -132,6 +146,7 @@ We welcome contributions of all forms!
 -   🌍 **Translations:** Join the Crowdin Project or read the Translation Guide.
 -   🐛 **Bugs & Features:** Open an issue or check the Project Board.
 -   🔧 **Code changes:** Please read CONTRIBUTING.md before submitting a Pull Request.
+-   👥 **Contributors:** Check out CONTRIBUTORS.md to see everyone who has helped build RClone Manager.
 
 * * *
 

@@ -1,6 +1,6 @@
 ---
 project: edgeever
-stars: 626
+stars: 731
 description: Serverless, 100% free, and open-source Evernote alternative on Cloudflare with native MCP | 无需服务器、0费用、原生支持 AI Agent 的开源自托管『印象笔记』
 url: https://github.com/tianma-if/edgeever
 ---
@@ -57,7 +57,7 @@ Features
 -   **Batch Operations & Flexible Sorting**: Easily merge or relocate multiple notes, with drag-and-drop notebook reordering.
 -   **Offline Drafts & Queueing**: Draft and edit uninterrupted while offline; changes automatically sync once reconnected.
 -   **Multi-Tenant Account Isolation**: Host multiple user accounts on a single instance with strictly partitioned spaces and clean admin account management.
--   **Everywhere You Need It**: Chrome/Edge Web Clipper published on Chrome Web Store; installable as a PWA; native mobile apps (iOS/Android) arriving soon with Android APK downloadable on GitHub Releases.
+-   **Everywhere You Need It**: Chrome/Edge Web Clipper published on Chrome Web Store, with a Firefox-compatible build available from source; installable as a PWA; native Android app available on Google Play, with APKs also downloadable from GitHub Releases; iOS app currently under App Store review; native desktop apps available for Apple Silicon and Intel Macs.
 
 Deployment
 ----------
@@ -74,7 +74,7 @@ Copy this prompt into an AI Agent configured with GitHub and Cloudflare MCP serv
 Deploy EdgeEver online:
 1. Fork https://github.com/tianma-if/edgeever.
 2. Import the Fork into Cloudflare Workers & Pages.
-3. Configure D1, R2, the `EDGE_EVER_AUTH_PASSWORD` Worker Secret, and the production `main` build.
+3. Configure D1, R2, `EDGE_EVER_AUTH_USERNAME` (prefilled as `admin`, customizable), the `EDGE_EVER_AUTH_PASSWORD` Worker Secret, and the production `main` build.
 4. Start the first build and verify `/api/health`, `/api/openapi.json`, and login.
 5. Enable and run `Update deployed EdgeEver` once.
 ```
@@ -87,10 +87,14 @@ Complete setup in 4 simple web steps:
 
 1.  **Fork the Repository**: Click **Fork** at the top right of GitHub to fork EdgeEver into your personal account.
 2.  **Import into Cloudflare**: Log into the Cloudflare Dashboard, navigate to **Workers & Pages**, and choose to import your Fork repository.
-3.  **Bind Resources & Password**: Bind the D1 database (`DB`), R2 bucket (`RESOURCES`), and set the Worker Secret `EDGE_EVER_AUTH_PASSWORD` as your admin password.
+3.  **Bind Resources & Credentials**: Bind the D1 database (`DB`), R2 bucket (`RESOURCES`), set `EDGE_EVER_AUTH_USERNAME` (default `admin`, customizable), and set the Worker Secret `EDGE_EVER_AUTH_PASSWORD` as your admin password.
 4.  **Build & Verify**: Start the first build with default settings. Once complete, visit `/api/health` to verify a `200` response before logging in.
 
 > 📖 For full step-by-step instructions and configuration details, see the Online Deployment Guide.
+
+* * *
+
+> 💡 **Deployment Tip (Cloudflare R2 Billing)**: Although Cloudflare R2 offers a generous free tier that note-taking workloads are unlikely to ever exceed, it requires binding a payment method (such as a dual-currency credit card) to activate. Based on personal experience, for users in mainland China, VISA cards from China Merchants Bank (CMB) or Shanghai Pudong Development Bank (SPDB) are typically the fastest to get verified (and most of these cards have no annual fees or easily waivable ones, so there are no extra holding costs).
 
 Multi-Account Login
 -------------------
@@ -106,19 +110,21 @@ EdgeEver can be installed as a PWA on desktop or mobile home screens. On desktop
 
 > Common pitfall: When installing the PWA on mobile, Chrome or Edge is recommended. Other mobile browsers may encounter compatibility issues or unexpected errors during installation.
 
-Chrome/Edge Web Clipper
------------------------
+Browser Web Clipper
+-------------------
 
 The Chrome/Edge web clipper is officially published. You can install it directly from the link below (Microsoft Edge users can also install directly from the Chrome Web Store):
 
 -   Chrome Web Store Link
 
+The same clipper code also supports Firefox. Until the Firefox Add-ons listing is published, see the extension development guide to build and temporarily load the Firefox package from source.
+
 Native Clients
 --------------
 
-The initial app version is complete and currently under store review.
+The Android app is now available on Google Play, with signed APKs also available from GitHub Releases. The iOS app has been submitted and is currently under App Store review.
 
-The desktop app remains on the roadmap and is planned to use Tauri.
+The macOS app is available from GitHub Releases for both Apple Silicon and Intel Macs. The Windows version will be released once the code-signing certificate issue is resolved.
 
 Tech Stack
 ----------
@@ -128,7 +134,8 @@ Tech Stack
 -   Frontend: Vite, React, React Router, TanStack Query, Tailwind CSS, shadcn/ui, and Radix UI.
 -   Editor: TipTap / ProseMirror with Markdown support; PWA uses vite-plugin-pwa, Workbox, and Dexie.
 -   Mobile app: Expo + React Native, with SQLite local storage and incremental sync.
--   Web clipper: Manifest V3, Mozilla Readability, and Turndown for Chrome and Microsoft Edge.
+-   Native desktop app: Electron + Rust sidecar combines a consistent cross-platform experience with high-performance local data services; SQLite enables offline editing, incremental sync when back online, and local backups.
+-   Web clipper: Manifest V3, Mozilla Readability, and Turndown for Chrome, Microsoft Edge, and Firefox.
 -   Backend: Cloudflare Workers, Hono, Zod, D1, and R2, with REST API, OpenAPI, and Remote MCP.
 
 Quick Start
@@ -160,15 +167,19 @@ Project Structure
 
 ```
 apps/web          Vite + React frontend, PWA, offline drafts, and sync queue
-apps/extension    Chrome/Edge Manifest V3 web clipper
+apps/extension    Chrome/Edge/Firefox Manifest V3 web clipper
 apps/api          Cloudflare Worker + Hono API, OpenAPI, MCP endpoint
 apps/mobile       Expo + React Native mobile app
+apps/desktop      Electron desktop shell, preload bridge, and native packaging
 apps/site         Astro official website, deployable independently
 packages/client   Shared API client for web and mobile apps
 packages/shared   Shared types, Zod schemas, TipTap / Markdown conversion
+crates/desktop-sidecar
+                   Rust sidecar for local SQLite, offline data, backups, and resources
 scripts           Wrangler wrapper, password hash, CLI, MCP stdio bridge, Evernote ENEX import
 migrations        D1 database migrations
-docs              OpenAPI schema, migration guides, and deployment docs
+docs              OpenAPI schema, architecture, migration, and deployment docs
+.github/workflows CI for web, mobile, desktop packaging, deployment, and releases
 wrangler.toml     Cloudflare Workers, Assets, D1, R2 configuration
 ```
 
@@ -199,7 +210,7 @@ Repository file: docs/openapi.json.
 MCP
 ---
 
-Create an API token in **Profile** -> **MCP settings**, then copy either the token or full MCP configuration into your AI Agent so it can install the MCP server and read or organize notes with permission.
+Create an API token in **Profile** -> **MCP settings**, then give the token or full MCP configuration to your AI Agent. Once connected, the Agent can securely read, organize, and import notes within your account permissions. Repeating the same import will not create duplicate notes.
 
 With MCP, EdgeEver can also connect to tools such as Notion databases and Feishu Bitable, turning scattered ideas, information, and materials from everyday notes into structured data that is easier to organize, search, and manage.
 
@@ -216,6 +227,7 @@ Migration
 If you want to migrate notes from other platforms to EdgeEver, please refer to the following simple migration guides:
 
 -   **Evernote Migration**: Please refer to docs/evernote-migration-guide.md
+-   **flomo Migration**: Please refer to docs/flomo-migration-guide.md
 -   **Memos Migration**: Please refer to docs/memos-migration-guide.md
 -   **Notion Migration**: Please refer to docs/notion-migration-guide.md
 
@@ -232,7 +244,6 @@ Docker Deployment Roadmap
 Acknowledgements
 ----------------
 
--   The visual design of the editor themes is inspired by gzh-design-skill.
 -   The "Minimal Emerald" theme typography layout is inspired by obsidian-minimal.
 -   The "Outline Emerald" theme typography layout is inspired by Outline.
 

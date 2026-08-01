@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 39189
+stars: 39715
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -1528,6 +1528,40 @@ To bind to a specific port, set `AGENT_BROWSER_STREAM_PORT`:
 
 AGENT\_BROWSER\_STREAM\_PORT=9223 agent-browser open example.com
 
+Frame encoding is daemon-wide:
+
+Variable
+
+Default
+
+Description
+
+`AGENT_BROWSER_STREAM_QUALITY`
+
+`80`
+
+JPEG quality, 0 to 100
+
+`AGENT_BROWSER_STREAM_MAX_WIDTH`
+
+the viewport
+
+Caps frame width in pixels
+
+`AGENT_BROWSER_STREAM_MAX_HEIGHT`
+
+the viewport
+
+Caps frame height in pixels
+
+Width and height cap the encoded frame and leave the page size alone, so a portrait or HiDPI viewport keeps its resolution unless you cap it. The live stream requests jpeg. An explicit `screencast_start` reconfigures the same screencast, so a client can see the format change mid-stream. On a busy page at 1280x720, quality 80 costs about 54 KB per frame, quality 20 about 25 KB, and quality 20 at 640x360 about 9 KB.
+
+# Cheaper frames for a constrained link
+AGENT\_BROWSER\_STREAM\_QUALITY=20 \\
+AGENT\_BROWSER\_STREAM\_MAX\_WIDTH=640 \\
+AGENT\_BROWSER\_STREAM\_MAX\_HEIGHT=360 \\
+agent-browser open example.com
+
 You can also manage streaming at runtime with `stream enable`, `stream disable`, and `stream status`:
 
 agent-browser stream enable --port 9223   # Re-enable on a specific port
@@ -1543,6 +1577,7 @@ Connect to `ws://localhost:9223` to receive frames and send input:
 
 {
   "type": "frame",
+  "seq": 41,
   "data": "<base64-encoded-jpeg>",
   "metadata": {
     "deviceWidth": 1280,
@@ -1550,9 +1585,12 @@ Connect to `ws://localhost:9223` to receive frames and send input:
     "pageScaleFactor": 1,
     "offsetTop": 0,
     "scrollOffsetX": 0,
-    "scrollOffsetY": 0
+    "scrollOffsetY": 0,
+    "timestamp": 1785038682238
   }
 }
+
+`seq` is a monotonic frame id, echoed back in an `ack` message under ack pacing. `metadata.timestamp` is the capture time in epoch milliseconds, so a client can tell how old a frame is by the time it draws it.
 
 **Send mouse events:**
 
@@ -1581,6 +1619,15 @@ Connect to `ws://localhost:9223` to receive frames and send input:
   "eventType": "touchStart",
   "touchPoints": \[{ "x": 100, "y": 200 }\]
 }
+
+**Cap the frame rate (per client):**
+
+{
+  "type": "config",
+  "maxFps": 10
+}
+
+Frames are delivered latest-first: the server picks the newest frame at send time, so frames produced while an earlier one is still being written are skipped rather than queued. `maxFps` (1 to 120, `0` = uncapped) limits delivery for that client only. A client that sends `{"type":"config","pacing":"ack"}` receives one frame at a time and acknowledges it with `{"type":"ack","seq":N}`, so nothing stale reaches the socket even if that client stalls; in the default push pacing, frames already handed to the transport are still delivered in order. Both settings can also be declared on the URL (`ws://127.0.0.1:<port>/?pacing=ack&maxFps=10`), which is the only way to cover the connection's opening frame. Input events are read on a dedicated task per connection, so clicks and keystrokes dispatch immediately even while frames are mid-write to a slow client. They are sent to the browser without waiting for its reply, so a click stays responsive behind a burst of mouse moves, and ordering is preserved.
 
 Architecture
 ------------

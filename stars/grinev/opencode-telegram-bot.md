@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 960
+stars: 977
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -52,7 +52,7 @@ Planned features currently in development are listed in Current Task List.
 Prerequisites
 -------------
 
--   **Node.js 20+** — download
+-   **Node.js 22+** — download
 -   **OpenCode** — install from opencode.ai or GitHub
 -   **Telegram Bot** — you'll create one during setup (takes 1 minute)
 
@@ -432,6 +432,14 @@ No
 
 `10`
 
+`MODELS_LIST_LIMIT`
+
+Providers and provider models per page in the model picker
+
+No
+
+`10`
+
 `TASK_LIMIT`
 
 Maximum number of scheduled tasks that can exist at once
@@ -659,6 +667,8 @@ You can seed the initial defaults for any of these settings without hard-coding 
 
 INITIAL\_SETTINGS\_PRESET\={"showAssistantRunFooter":false,"compactOutputMode":true,"ttsMode":"auto"}
 
+Settings are written atomically: the new content goes to a temporary file that then replaces `settings.json`, and the previous version is kept as `settings.json.bak`. A crash during a write can never leave a truncated file — the bot falls back to the backup on the next start. If both `settings.json` and `settings.json.bak` are unreadable, the bot refuses to start instead of overwriting them, and the error names the file so you can fix or remove it manually.
+
 ### Reverse Proxy (Optional)
 
 For environments that block `api.telegram.org` but allow your own HTTPS endpoint (corporate networks, restricted regions), you can route Bot API traffic through a reverse proxy you control. This is an alternative to the SOCKS/HTTP forward proxy configured with `TELEGRAM_PROXY_URL`.
@@ -823,6 +833,10 @@ Preview auto-generated release notes
 
 ESLint check (zero warnings policy)
 
+`npm run typecheck`
+
+Type-check `src` and `tests`
+
 `npm run format`
 
 Format code with Prettier
@@ -871,6 +885,15 @@ Community
 ---------
 
 Have questions, want to share your experience using the bot, or have an idea for a feature? Join the Telegram group for announcements and discussions, or start a thread in GitHub Discussions.
+
+Support
+-------
+
+This project is free and open source. Development and testing run on paid AI model subscriptions, and donations go directly toward those.
+
+If you find this bot useful, you can support it here: Donate
+
+Any amount helps — thank you!
 
 License
 -------

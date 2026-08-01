@@ -1,6 +1,6 @@
 ---
 project: mox
-stars: 5762
+stars: 5765
 description: modern full-featured open source secure mail server for low-maintenance self-hosted email
 url: https://github.com/mjl-/mox
 ---
@@ -122,7 +122,6 @@ Roadmap
 -   Recognize common deliverability issues and help postmasters solve them
 -   JMAP, IMAP OBJECTID extension, IMAP JMAPACCESS extension
 -   Calendaring with CalDAV/iCal
--   Introbox, to which first-time senders are delivered
 -   Add special IMAP mailbox ("Queue?") that contains queued but undelivered messages, updated with IMAP flags/keywords/tags and message headers.
 -   External addresses in aliases/lists.
 -   Autoresponder (out of office/vacation)

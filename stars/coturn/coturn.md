@@ -1,6 +1,6 @@
 ---
 project: coturn
-stars: 14262
+stars: 14277
 description: coturn TURN server project
 url: https://github.com/coturn/coturn
 ---
@@ -95,7 +95,7 @@ The implementation fully supports the following client-to-TURN-server protocols:
 -   UDP (per RFC 5766)
 -   TCP (per RFC 5766 and RFC 6062)
 -   TLS (per RFC 5766 and RFC 6062): including TLS1.3; ECDHE is supported.
--   DTLS1.0 and DTLS1.2 (per RFC 7350)
+-   DTLS1.0 and DTLS1.2 (per RFC 7350): the DTLS listeners are not started unless `--dtls` is given.
 -   SCTP (experimental implementation).
 
 Relay protocols:

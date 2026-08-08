@@ -1,6 +1,6 @@
 ---
 project: flop
-stars: 810
+stars: 811
 description: Filtering, ordering and pagination for Ecto
 url: https://github.com/woylie/flop
 ---
@@ -32,7 +32,7 @@ To get started, add `flop` to your dependencies list in your project's `mix.exs`
 
 def deps do
   \[
-    {:flop, "~> 0.26.5"}
+    {:flop, "~> 0.26.6"}
   \]
 end
 

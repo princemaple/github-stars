@@ -1,6 +1,6 @@
 ---
 project: putting-the-you-in-cpu
-stars: 5523
+stars: 5534
 description: A technical explainer by @kognise of how your computer runs programs, from start to finish.
 url: https://github.com/hackclub/putting-the-you-in-cpu
 ---

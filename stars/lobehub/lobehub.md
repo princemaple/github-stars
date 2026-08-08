@@ -1,6 +1,6 @@
 ---
 project: lobehub
-stars: 81053
+stars: 81428
 description: 🤯 LobeHub is your Chief Agent Operator, organizing your agents into 7×24 operations by hiring, scheduling, and reporting on your entire AI team.
 url: https://github.com/lobehub/lobehub
 ---

@@ -1,6 +1,6 @@
 ---
 project: pdf.js
-stars: 53653
+stars: 53696
 description: PDF Reader in JavaScript
 url: https://github.com/mozilla/pdf.js
 ---
@@ -36,6 +36,10 @@ Please note that the "Modern browsers" version assumes native support for the la
     
 -   Older browsers: https://mozilla.github.io/pdf.js/legacy/web/viewer.html
     
+
+Note
+
+Open new files via the menu (the ">>" icon) or by dragging and dropping.
 
 ### Browser Extensions
 

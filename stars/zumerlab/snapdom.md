@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 7972
+stars: 7986
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -55,7 +55,7 @@ Table of Contents
 -   Installation
 -   Build Outputs
 -   Usage
--   Documentation — full API, Options, Plugins & Cache reference on snapdom.dev/docs
+-   Documentation: full API, Options, Plugins & Cache reference on snapdom.dev/docs
 -   Limitations
 -   Performance Benchmarks
 -   Development
@@ -178,7 +178,7 @@ When capturing elements that reference **external stylesheets** (e.g., Google Fo
 ### Why is this needed?
 
 -   Browsers block JavaScript (including SnapDOM) from reading the binary data of cross‑origin fonts or images unless the server explicitly allows it via `Access-Control-Allow-Origin`.
--   SnapDOM relies on Canvas, which enforces strict CORS policies — unlike the browser's rendering engine, which is more permissive for on‑screen display.
+-   SnapDOM relies on Canvas, which enforces strict CORS policies. The browser's rendering engine is more permissive for on‑screen display.
 
 ### How to fix it
 
@@ -195,12 +195,14 @@ Add the `crossorigin="anonymous"` attribute to the `<link>` tag when loading ext
 Documentation
 -------------
 
-The full reference lives on **snapdom.dev/docs** — kept there so it stays in sync and searchable:
+The full reference lives on **snapdom.dev/docs**, kept there so it stays in sync and searchable:
 
--   **API reference** — the `snapdom()` reusable object, shortcut methods, and exporter-specific options.
--   **Options** — every capture option (`scale`, `dpr`, `embedFonts`, `useProxy`, `exclude`/`filter`, `compress`, `outerTransforms`, `outerShadows`, `cache`…) explained with examples.
--   **Plugins** — build, register and ship custom plugins and export formats. Browse community plugins on the plugins page.
--   **Cache & preCache** — control caching between captures and preload resources.
+-   **API reference**: the `snapdom()` reusable object, shortcut methods, and exporter-specific options.
+-   **Options**: every capture option (`scale`, `dpr`, `embedFonts`, `useProxy`, `exclude`/`filter`, `compress`, `outerTransforms`, `outerShadows`, `cache`…) explained with examples.
+-   **Plugins**: build, register and ship custom plugins and export formats. Browse community plugins on the plugins page.
+-   **Cache & preCache**: control caching between captures and preload resources.
+
+Popular guides: **capture before creating a PDF** · **SnapDOM vs modern-screenshot** · **how SnapDOM captures the DOM**
 
 ### API at a glance
 
@@ -342,7 +344,7 @@ Explicit fonts: `{ family, src, weight?, style? }`
 
 `object`
 
-—
+none
 
 Skip fonts by family / domain / subset
 
@@ -398,7 +400,7 @@ CORS proxy prefix for cross-origin images
 
 `string | fn`
 
-—
+none
 
 Fallback image for broken `<img>`
 
@@ -440,7 +442,7 @@ Skip idle delays for faster capture
 
 `false`
 
-Measure the clone against the live DOM and pin any diverging box to its real size. Fixes rare text re-wrap/layout drift at the cost of roughly doubling capture time — snapdom warns once (`console.warn`) if it detects a capture that could benefit from it
+Measure the clone against the live DOM and pin any diverging box to its real size. Fixes rare text re-wrap/layout drift at the cost of roughly doubling capture time. snapdom warns once (`console.warn`) if it detects a capture that could benefit from it
 
 `burst`
 
@@ -448,7 +450,7 @@ Measure the clone against the live DOM and pin any diverging box to its real siz
 
 `false`
 
-Memoizes repeated captures of this element via a scoped MutationObserver — an unchanged repeat skips the pipeline entirely. Without it, snapdom warns once if the same element is captured 3+ times within 2s
+Memoizes repeated captures of this element via a scoped MutationObserver, so an unchanged repeat skips the pipeline entirely. Without it, snapdom warns once if the same element is captured 3+ times within 2s
 
 `invalidate`
 
@@ -462,7 +464,7 @@ With `burst: true`, forces a fresh capture for changes automatic tracking can't 
 
 `array`
 
-—
+none
 
 Per-capture plugins (override globals by name)
 
@@ -474,7 +476,7 @@ Limitations
 -   External images should be CORS-accessible (use `useProxy` option for handling CORS denied)
 -   When WebP format is used on Safari, it will fallback to PNG rendering.
 -   `@font-face` CSS rule is well supported, but if need to use JS `FontFace()`, see this workaround `#43`
--   **Safari**: captures with `embedFonts` or background/mask images run slower due to WebKit #219770 (font decode timing). SnapDOM does pre-captures + `drawImage` to prime the pipeline; configurable via `safariWarmupAttempts` (default 3).
+-   **Safari**: captures with `embedFonts` or background/mask images run slower due to WebKit #219770 (font decode timing). SnapDOM waits for the fonts the element actually uses and verifies the first canvas draw, so there is nothing to configure.
 -   **Custom scrollbar styles** (`::-webkit-scrollbar`): Applied only when the element has _not_ been scrolled. When scrolled, the viewport content is captured without the scrollbar.
 
 Performance Benchmarks
@@ -653,7 +655,7 @@ If you'd like to support this project too, you can become a sponsor.
 Show your support
 -----------------
 
-If SnapDOM saved you time, a ⭐ on GitHub helps other developers find it — that's the whole ask.
+If SnapDOM saved you time, a ⭐ on GitHub helps other developers find it. That's the whole ask.
 
 Shipping something built with SnapDOM? Add the badge to your README:
 
@@ -663,20 +665,20 @@ Shipping something built with SnapDOM? Add the badge to your README:
 
 SnapDOM runs in production across 250+ public repositories (GitHub dependents graph). A few notable ones, each verified from its own `package.json`:
 
--   LobeHub — platform for operating AI agents
--   Trilium Notes — hierarchical personal knowledge base
--   Sealos — AI-native cloud operating system
--   Tencent tmagic-editor — low-code page editor
--   Playroom — JSX design tool by SEEK
--   GPT-Vis — AI-friendly data viz by Ant Group's AntV
--   Rabby Wallet — browser wallet for EVM chains
--   uMap — OpenStreetMap map builder
--   ListenBrainz — music tracker by MetaBrainz
--   Mind Elixir — mind-map core; recommends SnapDOM for image export
--   Kong UI Components — Kong's dashboard renderer exports PDFs with SnapDOM
--   SnapDIFF — in-browser visual regression testing _(by Zumerlab)_
+-   LobeHub: platform for operating AI agents
+-   Trilium Notes: hierarchical personal knowledge base
+-   Sealos: AI-native cloud operating system
+-   Tencent tmagic-editor: low-code page editor
+-   Playroom: JSX design tool by SEEK
+-   GPT-Vis: AI-friendly data viz by Ant Group's AntV
+-   Rabby Wallet: browser wallet for EVM chains
+-   uMap: OpenStreetMap map builder
+-   ListenBrainz: music tracker by MetaBrainz
+-   Mind Elixir: mind-map core; recommends SnapDOM for image export
+-   Kong UI Components: Kong's dashboard renderer exports PDFs with SnapDOM
+-   SnapDIFF: in-browser visual regression testing _(by Zumerlab)_
 
-See the full gallery at **snapdom.dev/made-with**. Shipping SnapDOM? Open a PR to add your project — real, verifiable projects only.
+See the full gallery at **snapdom.dev/made-with**. Shipping SnapDOM? Open a PR to add your project. Real, verifiable projects only.
 
 License
 -------

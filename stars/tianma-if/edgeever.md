@@ -1,6 +1,6 @@
 ---
 project: edgeever
-stars: 731
+stars: 932
 description: Serverless, 100% free, and open-source Evernote alternative on Cloudflare with native MCP | 无需服务器、0费用、原生支持 AI Agent 的开源自托管『印象笔记』
 url: https://github.com/tianma-if/edgeever
 ---
@@ -36,7 +36,7 @@ Online Demo
 
 -   Demo: https://demo.edgeever.org
 
-The public demo resets every Monday at 1:00 AM (China Standard Time) and restores sample notes. Do not store private content there.
+The public demo resets every day at 3:00 AM (China Standard Time) and restores sample notes. Do not store private content there.
 
 Features
 --------
@@ -50,14 +50,17 @@ Features
 -   **Unlimited Nested Notebooks**: Organize your knowledge with arbitrary folder depth.
 -   **One-Click Rich Copy for Newsletters & Blogs**: Designed for creators to convert notes into beautifully formatted rich text with inline CSS, ready to paste directly into Substack, Medium, WordPress, or newsletter editors without extra tools.
 -   **Seamless Dual-View Editor**: Switch effortlessly between intuitive rich text editing and Markdown source code on desktop.
+-   **Convenient Single-Note Export**: Export the current note directly as Markdown or PDF for standalone storage, sharing, or publishing.
 -   **Native Mermaid Diagram Rendering**: Render clear flowcharts, sequence diagrams, and mind maps directly in notes, preserving clean, editable source code across Markdown and rich text views.
 -   **Revision History**: Inspect and restore previous iterations of your notes with built-in version tracking.
+-   **Public Note Sharing**: Share a note publicly and stop sharing it at any time.
+-   **WeChat Article Clipping on Mobile**: Share a WeChat Official Account article to EdgeEver on your phone to extract its content and save it as an editable note.
 -   **Smart Local Image Compression**: Client-side WebP compression reduces file sizes by 50%-90% before uploading, saving storage and speeding up page loads without extra server costs.
 -   **Universal File Attachments**: Attach and preview PDFs, Office documents, zip files, audio, and video directly within notes.
 -   **Batch Operations & Flexible Sorting**: Easily merge or relocate multiple notes, with drag-and-drop notebook reordering.
 -   **Offline Drafts & Queueing**: Draft and edit uninterrupted while offline; changes automatically sync once reconnected.
 -   **Multi-Tenant Account Isolation**: Host multiple user accounts on a single instance with strictly partitioned spaces and clean admin account management.
--   **Everywhere You Need It**: Chrome/Edge Web Clipper published on Chrome Web Store, with a Firefox-compatible build available from source; installable as a PWA; native Android app available on Google Play, with APKs also downloadable from GitHub Releases; iOS app currently under App Store review; native desktop apps available for Apple Silicon and Intel Macs.
+-   **Everywhere You Need It**: Available on the Web, Android, and macOS, with the iOS app under App Store review and Windows coming soon; the Web Clipper supports Chrome, Edge, and Firefox.
 
 Deployment
 ----------
@@ -103,28 +106,31 @@ Once deployed, a single instance supports multi-account login.
 
 The instance administrator can create, disable, or reset member accounts in **Profile** -> **User accounts**. Each member gets a fully isolated personal workspace, including notebooks, notes, attachments, Trash, import/export, and MCP tokens.
 
-PWA Installation
-----------------
-
-EdgeEver can be installed as a PWA on desktop or mobile home screens. On desktop, open the site in Chrome or Edge and use the install icon in the address bar. On Android, open it in Chrome, use the three-dot menu, and choose **Add to Home screen** or **Install**. Avoid installing from embedded browsers such as WeChat.
-
-> Common pitfall: When installing the PWA on mobile, Chrome or Edge is recommended. Other mobile browsers may encounter compatibility issues or unexpected errors during installation.
-
 Browser Web Clipper
 -------------------
 
-The Chrome/Edge web clipper is officially published. You can install it directly from the link below (Microsoft Edge users can also install directly from the Chrome Web Store):
+The Web Clipper is officially published for Chrome, Microsoft Edge, and Firefox. Install it from the store for your browser (Microsoft Edge users can install the Chrome Web Store version directly):
 
 -   Chrome Web Store Link
+-   Firefox Add-ons Link
 
-The same clipper code also supports Firefox. Until the Firefox Add-ons listing is published, see the extension development guide to build and temporarily load the Firefox package from source.
+Developers can also use the extension development guide to build and load the extension from source.
 
 Native Clients
 --------------
 
-The Android app is now available on Google Play, with signed APKs also available from GitHub Releases. The iOS app has been submitted and is currently under App Store review.
+Native clients offer a smoother, more reliable experience with deeper system integration, local storage, and offline editing. Changes sync incrementally when connectivity returns, making them ideal for frequent use and unreliable network conditions.
 
-The macOS app is available from GitHub Releases for both Apple Silicon and Intel Macs. The Windows version will be released once the code-signing certificate issue is resolved.
+The Android app is now available on Google Play, with signed APKs also available from GitHub Releases. The iOS client is a native SwiftUI app in `apps/ios` and has been submitted for App Store review.
+
+The macOS app is available from GitHub Releases. The Windows version will be released once the code-signing certificate issue is resolved.
+
+On platforms without a native client, EdgeEver can be installed as a PWA using Chrome or Edge.
+
+Community and Feedback
+----------------------
+
+-   Bugs, feature requests, and deployment issues: GitHub Issues
 
 Tech Stack
 ----------
@@ -133,7 +139,8 @@ Tech Stack
 -   Official site: Astro static site in `apps/site`, deployable to Cloudflare Pages.
 -   Frontend: Vite, React, React Router, TanStack Query, Tailwind CSS, shadcn/ui, and Radix UI.
 -   Editor: TipTap / ProseMirror with Markdown support; PWA uses vite-plugin-pwa, Workbox, and Dexie.
--   Mobile app: Expo + React Native, with SQLite local storage and incremental sync.
+-   Android app: Expo + React Native in `apps/mobile`, with SQLite local storage and incremental sync.
+-   iOS app: Native SwiftUI in `apps/ios` (iOS 17+), with a packaged TipTap EditorBundle, GRDB local mirror/outbox, and Android-aligned shell chrome.
 -   Native desktop app: Electron + Rust sidecar combines a consistent cross-platform experience with high-performance local data services; SQLite enables offline editing, incremental sync when back online, and local backups.
 -   Web clipper: Manifest V3, Mozilla Readability, and Turndown for Chrome, Microsoft Edge, and Firefox.
 -   Backend: Cloudflare Workers, Hono, Zod, D1, and R2, with REST API, OpenAPI, and Remote MCP.
@@ -169,7 +176,8 @@ Project Structure
 apps/web          Vite + React frontend, PWA, offline drafts, and sync queue
 apps/extension    Chrome/Edge/Firefox Manifest V3 web clipper
 apps/api          Cloudflare Worker + Hono API, OpenAPI, MCP endpoint
-apps/mobile       Expo + React Native mobile app
+apps/mobile       Expo + React Native Android app
+apps/ios          Native SwiftUI iOS app (TipTap EditorBundle, GRDB)
 apps/desktop      Electron desktop shell, preload bridge, and native packaging
 apps/site         Astro official website, deployable independently
 packages/client   Shared API client for web and mobile apps
@@ -179,7 +187,7 @@ crates/desktop-sidecar
 scripts           Wrangler wrapper, password hash, CLI, MCP stdio bridge, Evernote ENEX import
 migrations        D1 database migrations
 docs              OpenAPI schema, architecture, migration, and deployment docs
-.github/workflows CI for web, mobile, desktop packaging, deployment, and releases
+.github/workflows CI for web, mobile, iOS, desktop packaging, deployment, and releases
 wrangler.toml     Cloudflare Workers, Assets, D1, R2 configuration
 ```
 
@@ -221,6 +229,13 @@ Image compression happens in the Web client before upload and is controlled by t
 
 EdgeEver avoids Worker-side image processing to reduce compute and image-processing quota usage. REST API and MCP upload paths store the file content provided by the client without additional server-side compression.
 
+Advanced Object Storage
+-----------------------
+
+The instance owner can open **Settings → Advanced → OSS object storage** to send new images and attachments to an S3-compatible service such as Alibaba Cloud OSS, Tencent COS, AWS S3, MinIO, or R2. Existing resources stay in their original store, so changing the default does not migrate or break historical attachments.
+
+Before saving third-party credentials on a Cloudflare deployment, configure the `EDGE_EVER_STORAGE_ENCRYPTION_KEY` Worker Secret with a random value of at least 32 characters. EdgeEver uses this instance-level key to encrypt the access secret stored in D1. Keep the key stable and backed up; it is required to read resources that use the external store.
+
 Migration
 ---------
 
@@ -230,11 +245,6 @@ If you want to migrate notes from other platforms to EdgeEver, please refer to t
 -   **flomo Migration**: Please refer to docs/flomo-migration-guide.md
 -   **Memos Migration**: Please refer to docs/memos-migration-guide.md
 -   **Notion Migration**: Please refer to docs/notion-migration-guide.md
-
-Community and Feedback
-----------------------
-
--   Bugs, feature requests, and deployment issues: GitHub Issues
 
 Docker Deployment Roadmap
 -------------------------

@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 22271
+stars: 22322
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -60,7 +60,7 @@ Who is using Yjs
 -   JupyterGIS Collaborative GIS (Geographic Information System) editor in Jupyter
 -   Hyperquery A collaborative data workspace for sharing analyses, documentation, spreadsheets, and dashboards.
 -   Nosgestesclimat The french carbon footprint calculator has a group P2P mode based on yjs
--   oorja.io Online meeting spaces extensible with collaborative apps, end-to-end encrypted.
+-   SupaKit Spaces for every idea, task, or project.
 -   LegendKeeper Collaborative campaign planner and worldbuilding app for tabletop RPGs.
 -   IllumiDesk Build courses and content with A.I.
 -   btw Open-source Medium alternative

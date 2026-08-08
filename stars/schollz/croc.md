@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 39241
+stars: 39524
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -148,6 +148,8 @@ There are F-Droid apps available:
 Community made desktop apps:
 
 -   Croc GUI — unofficial desktop GUI for macOS, Windows, and Linux that bundles the `croc` binary for drag-and-drop transfers, QR codes, LAN mode, and relay/proxy options.
+-   croc-desktop — unofficial desktop GUI for Linux, macOS, and Windows (experimental iOS/Android) built with Wails v3; embeds croc in-process for send/receive, QR codes, history, logs, and optional relay hosting.
+-   Swamp Swap — unofficial PyQt6 GUI desktop app for macOS, Windows, and Linux, requires installing `croc` on its own normally in order to use. Made to be compact and simple.
 
 Usage
 -----
@@ -316,20 +318,20 @@ docker run -d -p 9010-9011:9010-9011 -e CROC\_PORTS='9010,9011' -e CROC\_PASS='Y
 
 #### Web client
 
-The React/Vite client in `web/` can send and receive multiple files with normal croc CLI peers. The production client and its WebAssembly protocol runtime are embedded in every `croc` binary. One command serves both the site and its same-origin WebSocket relay:
+The React/Vite client in `web/` can send and receive multiple files with normal croc CLI peers. The production client and its WebAssembly protocol runtime are bundled only in the standalone `croc-web` server, keeping generated assets and web-server code out of the cross-platform `croc` binary. Linux amd64 builds of `croc-web` are published separately with each release. It serves both the site and its same-origin WebSocket relay:
 
-croc serve getcroc.com
+croc-web getcroc.com
 
-This binds to `127.0.0.1:9014` by default for an HTTPS reverse proxy. `/` serves the website and `/ws` bridges to `ipv4.getcroc.com`. For a directly accessible local development server, `croc serve localhost:5173` binds and serves on `localhost:5173`. Use `--bind`, `--relay`, and `--ports` before the website address to customize the local listener or upstream croc relay.
+This binds to `127.0.0.1:9014` by default for an HTTPS reverse proxy. `/` serves the website and `/ws` bridges to `ipv4.getcroc.com`. For a directly accessible local development server, `croc-web localhost:5173` binds and serves on `localhost:5173`. Use `--bind`, `--relay`, and `--ports` before the website address to customize the local listener or upstream croc relay.
 
-See `web/README.md` for frontend development, embedded asset generation, custom relay, and reverse-proxy instructions.
+Run `make build-web` to generate the ignored production assets and build a local server. See `web/README.md` for frontend development, custom relay, and reverse-proxy instructions.
 
 Deployment
 ----------
 
 ### Disco
 
-Disco is used to deploy. The root `Dockerfile` and `disco.json` deploy the web client and TCP relay as two Disco services built from the same image. Disco serves the website over HTTPS, while relay ports 9009-9017 are published directly as TCP ports.
+Disco is used to deploy. The root `Dockerfile` and `disco.json` deploy the `croc-web` web client and `croc` TCP relay as two Disco services built from the same image. Disco serves the website over HTTPS, while relay ports 9009-9017 are published directly as TCP ports.
 
 Set the deployment environment variables with:
 

@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 802
+stars: 821
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -265,7 +265,7 @@ Features
     -   📖 See the **Scaling & Operations Guide** for multi-disk erasure coding, multi-node cluster setup, large-prefix listing, and lost-disk / lost-server recovery runbooks
 -   **Active-active replication**: Bidirectional site-to-site sync with vector clocks for causal ordering, pluggable conflict resolution (last-writer-wins, largest-object, site-preference), and change log for efficient delta sync
 -   **Async replication**: One-way async replication to peer VaultS3 instances with BoltDB-backed queue, retry with exponential backoff, and loop prevention
--   **CLI tool**: Standalone `vaults3-cli` binary for bucket, object, user, and replication management without AWS CLI, plus `vaults3-cli info` for server version and storage capacity (used / free / total) and `vaults3-cli cluster` for day-2 cluster operations (status, join, leave, drain/undrain a member, rebalance, decommission — see docs/SCALING.md)
+-   **CLI tool**: Standalone `vaults3-cli` binary for bucket, object, user, and replication management without AWS CLI, plus `vaults3-cli info` for server version and storage capacity (used / free / total), `vaults3-cli cluster` for day-2 cluster operations (status, join, leave, drain/undrain a member, rebalance, decommission — see docs/SCALING.md), and `vaults3-cli storage reclaim` to free data files that no metadata refers to any more
 -   **Capacity overview**: `GET /api/v1/system` and the dashboard Stats page report the version and storage usage; in a cluster, `GET /api/v1/cluster/info` (the same dashboard panel, and `vaults3-cli info`) roll it up across all nodes with a per-node breakdown, an `mc admin info`\-style view. Three sizes are reported separately because they answer different questions and are not meant to match: **logical** (each object's current version, counted once cluster-wide, since object metadata is the same on every node), **VaultS3 on disk** (what its data, metadata, erasure, cold-tier and Raft directories actually occupy, summed per node, so it includes replicas, parity shards and non-current versions), and **filesystems** (statfs of the whole volumes, which usually also hold the OS, container images and logs). The middle figure is the one to compare against logical for a real amplification ratio, with a per-directory split to tell object data apart from metadata and Raft logs. It comes from a cached background walk, `storage.usage_scan_interval_secs` (default 300, `0` disables it), and is also exported as `vaults3_disk_usage_bytes{dir=...}`
 -   **Presigned upload restrictions**: Enforce max file size, content type whitelist, and key prefix on presigned PUT URLs
 -   **Full-text search**: In-memory search index over object metadata, tags, content type, and key patterns with incremental updates
@@ -291,7 +291,7 @@ Features
 -   **CORS origin validation**: Dashboard API restricts Access-Control-Allow-Origin to same-origin and localhost (replaces wildcard `*`)
 -   **Dashboard API rate limiting**: Uses existing token bucket rate limiter on `/api/v1/` endpoints, returns 429 when exceeded
 -   **Input validation**: DNS-compatible bucket name validation (3-63 chars, lowercase, no leading/trailing hyphen) and object key validation (max 1024 chars, no null bytes)
--   **RAM optimization**: Slim search index with LRU eviction cap (50K entries default), batched last-access updates (30s flush interval), configurable Go memory limit (`GOMEMLIMIT`)
+-   **RAM optimization**: Slim search index with LRU eviction cap (50K entries default), batched last-access updates (30s flush interval), configurable Go memory limit (`GOMEMLIMIT`). Uploads stream rather than buffer, so peak memory scales with concurrency and not with object size, and a clustered node restores its metadata snapshot in bounded batches, so **startup memory is flat in the size of the cluster** (restoring 1.6M objects peaks at ~66 MB). When measuring in a container, read `anon` from `memory.stat`: `memory.current` includes page cache and will sit near the limit under write load by design (benchmarks guide)
 -   **Streaming uploads**: A `PUT` streams to disk while its checksums are computed in passing, and compression encodes as the object flows through, so peak memory scales with concurrency rather than with concurrency multiplied by object size. A 64 MiB object at 32 concurrent uploads no longer costs gigabytes of buffered copies (SSE-C and uploads with no declared length still buffer by necessity)
 -   **GetObjectAttributes**: Returns object size, ETag, and storage class. Used internally by AWS SDK v2
 -   **Bucket encryption config**: Per-bucket server-side encryption configuration (AES256, aws:kms) via `PUT/GET/DELETE /{bucket}?encryption`
@@ -343,6 +343,7 @@ Features
 -   **Request tracing**: Server-Sent Events at `/api/v1/trace` for per-request latency tracing
 -   **Health diagnostics**: Detailed system diagnostics at `/api/v1/diagnostics` (disk, memory, goroutines, DB stats)
 -   **Manual heal API**: `POST /api/v1/heal` to trigger erasure-coded object repair on demand
+-   **Orphan reclaim**: `POST /api/v1/reclaim` (or `vaults3-cli storage reclaim`) finds data files that no metadata refers to any more and frees them, scanning every node in a cluster. Reports by default; `?apply=true` deletes, and nothing written in the last 24h is ever touched
 -   **Speedtest**: `POST /api/v1/speedtest` to benchmark storage throughput
 -   **Batch operations**: Bulk delete and copy processor for large-scale object operations
 -   **PROXY protocol v1**: Accept PROXY protocol connections for real client IP behind load balancers
@@ -1714,6 +1715,10 @@ vaults3-cli object rm my-bucket docs/readme.md
 vaults3-cli object presign my-bucket file.txt --expires=3600
 vaults3-cli object verify my-bucket                   # find objects that list but cannot be read (metadata/data desync)
 vaults3-cli object verify my-bucket --repair          # remove orphaned metadata for unreadable objects
+
+# Storage maintenance
+vaults3-cli storage reclaim                    # report data files no metadata refers to (dry run)
+vaults3-cli storage reclaim --apply            # delete them and free the space
 
 # IAM user operations
 vaults3-cli user list

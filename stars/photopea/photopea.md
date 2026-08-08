@@ -1,6 +1,6 @@
 ---
 project: photopea
-stars: 8379
+stars: 8388
 description: Photopea is online image editor
 url: https://github.com/photopea/photopea
 ---

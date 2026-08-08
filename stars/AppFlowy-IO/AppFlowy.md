@@ -1,6 +1,6 @@
 ---
 project: AppFlowy
-stars: 74744
+stars: 75106
 description: Bring projects, wikis, and teams together with AI. AppFlowy is the AI collaborative workspace where you achieve more without losing control of your data. The leading open source Notion alternative.
 url: https://github.com/AppFlowy-IO/AppFlowy
 ---

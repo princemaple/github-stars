@@ -1,6 +1,6 @@
 ---
 project: starship
-stars: 59174
+stars: 59312
 description: ☄🌌️  The minimal, blazing-fast, and infinitely customizable prompt for any shell!
 url: https://github.com/starship/starship
 ---
@@ -343,6 +343,10 @@ Please check out these previous works that helped inspire the creation of starsh
 -----------
 
 Support this project by becoming a sponsor. Your name or logo will show up here with a link to your website.
+
+**Supporter Tier**
+
+-   Alex Holmes
 
 🔒 Code Signing Policy
 ----------------------

@@ -1,6 +1,6 @@
 ---
 project: ImageGlass
-stars: 13883
+stars: 13967
 description: 🏞 A fast, open-source, modern image viewer for 90+ formats – including WEBP, GIF, SVG, AVIF, JXL, HEIC and more – built for smooth browsing across Windows, macOS, and Linux.
 url: https://github.com/d2phap/ImageGlass
 ---
@@ -26,6 +26,8 @@ ImageGlass is a fast, modern, open-source image viewer built for Windows, macOS,
 
 Prefer the classic installer? Grab it from **imageglass.org/download**.
 
+📢 Official: ImageGlass 10 Release Plans, Pricing, Features, and Privacy
+
 Caution
 
 ### Security Alert: Fake Repositories and AI Threat Mitigation
@@ -37,10 +39,6 @@ Automated malicious campaigns are actively deploying AI tools to impersonate tru
 -   **Check the URL**: Double-check your browser address bar to ensure you are not visiting a typosquatted domain.
 
   
-
-Important
-
-### ImageGlass 10 Release Plans: Classic Stays Free, Pro Is Coming
 
 Download
 --------

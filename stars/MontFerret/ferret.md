@@ -1,6 +1,6 @@
 ---
 project: ferret
-stars: 6013
+stars: 6010
 description: Declarative data automation language and Go runtime for structured extraction workflows.
 url: https://github.com/MontFerret/ferret
 ---
@@ -124,3 +124,8 @@ The compatibility layer is intended as a migration aid, not the long-term prefer
 Ferret v2 is currently in active development.
 
 Alpha releases are intended for early adopters, experimentation, and feedback. Some APIs and language features may still change before the stable v2 release.
+
+Support Ferret
+--------------
+
+Ferret is supported by organizations and community members who help fund its continued development. View all supporters.

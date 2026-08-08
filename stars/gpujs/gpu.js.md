@@ -1,6 +1,6 @@
 ---
 project: gpu.js
-stars: 15361
+stars: 15365
 description: GPU Accelerated JavaScript
 url: https://github.com/gpujs/gpu.js
 ---
@@ -80,7 +80,7 @@ v3 Will Be Async by Default
 
 Warning
 
-**The next major version of GPU.js will make every kernel call return a `Promise`.** This is a breaking API change: synchronous kernel calls as you write them today will not survive the v3 upgrade unchanged. Code written against `mode: 'async'` (new in 2.20.0) already conforms and will run on v3 unchanged — the migration guide below is five steps.
+**The next major version of GPU.js will make every kernel call return a `Promise`.** This is a breaking API change: synchronous kernel calls as you write them today will not survive the v3 upgrade unchanged. Code written against `mode: 'async'` (new in 2.20.0) already conforms and will run on v3 unchanged — the migration guide below is six steps.
 
 This breaks the API you are using today, so it warrants both notice and an apology. We owe you the apology because the original synchronous design was not forward-thinking, and we should have started async in the first place. A GPU is an asynchronous device: you hand it work, and the results are ready later. WebGL let this library pretend otherwise — `readPixels` silently freezes the page until the GPU catches up, and we built our API on that pretense because it made the first example look like an ordinary function call. The cost has been paid by every user since: every kernel readback blocks the main thread for its full duration (measurably ~96% of a readback-heavy loop frozen, in one stall as long as the whole loop), and WebGPU — which has no synchronous readback at all, correctly — cannot be offered under the synchronous contract except as a walled-off special mode. An async-first API would have cost one `await` in the examples and none of this debt.
 
@@ -123,7 +123,8 @@ const result \= await kernel(a, b);
 2.  **Sequential loops just gain the `await`:** `for (…) { total = await step(total); }` — iteration order and semantics are unchanged.
 3.  **Pipeline results: `await result.toArray()`.** `await` is harmless on the synchronous backends' textures, so this form is portable across all backends today.
 4.  **Chains of kernels: keep `pipeline: true` and await only the end.** Handles pass between kernels without readback, exactly as before; you pay one `await` at the final readback instead of a main-thread stall at every stage.
-5.  **Library authors:** return the Promise; don't resolve it on your callers' behalf. Code written against `mode: 'async'` in v2 will run unchanged on v3.
+5.  **Graphical kernels: `await kernel.getPixels()`.** Under the async contract `getPixels()` returns a Promise on every backend — resolved immediately on the GL and cpu backends, genuinely asynchronous on webgpu — so the awaited form is the portable one. (A graphical kernel call itself stays fire-and-forget: an un-awaited `kernel()` per animation frame is fine.)
+6.  **Library authors:** return the Promise; don't resolve it on your callers' behalf. Code written against `mode: 'async'` in v2 will run unchanged on v3.
 
 Table of Contents
 =================
@@ -163,6 +164,8 @@ Notice documentation is off? We do try our hardest, but if you find something, p
 -   Destructured Assignments
 -   Dealing With Transpilation
 -   WebGPU
+-   WebAssembly
+-   Pipeline Compilation
 -   Asynchronous Kernels
 -   Full API reference
 -   How possible in node
@@ -256,6 +259,14 @@ GLSL ES 1.00 via ANGLE
 ~123×
 
 The default Node backend
+
+`webasm` **New!**
+
+Anywhere
+
+WebAssembly + f32x4 SIMD + threads
+
+Auto-selected only where no GL backend works; explicit via `mode: 'webasm'`. Threads engage under the async contract
 
 `cpu`
 
@@ -360,7 +371,8 @@ Settings are an object used to create an instance of `GPU`. Example: `new GPU(se
     -   'headlessgl' **New in V2!**: Use the `HeadlessGLKernel` for transpiling a kernel
     -   'cpu': Use the `CPUKernel` for transpiling a kernel
     -   'webgpu' **New!**: Use the `WebGPUKernel` — kernels compile to WGSL compute shaders over storage buffers. Explicit opt-in only, never auto-selected, because every kernel call returns a `Promise` of its result (WebGPU readback is inherently asynchronous). Check `GPU.isWebGPUSupported` (synchronous, `navigator.gpu` presence) or `await GPU.isWebGPUAvailable()` (requests an actual adapter).
-    -   'async' **New!**: Auto-selection under the Promise contract. Picks the best available backend (webgl2 → webgl → cpu), turns `asyncMode` on for every kernel, and upgrades a kernel to webgpu on its first call if an adapter answers — falling back to the proven backend if the upgraded kernel cannot handle it. Write `await kernel(...)` once and the same code runs everywhere:
+    -   'webasm' **New!**: Use the `WebAssemblyKernel` — kernels compile to WebAssembly bytecode with f32x4 SIMD, and split across a worker pool under the async contract. Last in the automatic fallback chain, one step above `cpu`. See WebAssembly.
+    -   'async' **New!**: Auto-selection under the Promise contract. Picks the best available backend (headlessgl → webgl2 → webgl → webasm → cpu), turns `asyncMode` on for every kernel, and upgrades a kernel to webgpu on its first call if an adapter answers — falling back to the proven backend if the upgraded kernel cannot handle it. Write `await kernel(...)` once and the same code runs everywhere:
     
     const gpu \= new GPU({ mode: 'async' });
     const kernel \= gpu.createKernel(function(a) {
@@ -1328,6 +1340,7 @@ Dealing With Transpilation
 Transpilation doesn't do the best job of keeping code beautiful. To aid in this endeavor GPU.js can handle some scenarios to still aid you harnessing the GPU in less than ideal circumstances. Here is a list of a few things that GPU.js does to fix transpilation:
 
 -   When a transpiler such as Babel changes `myCall()` to `(0, _myCall.myCall)`, it is gracefully handled.
+-   When a minifier such as esbuild or terser folds statements into expressions — `if (c) { x = 1; }` into `c && (x = 1)`, statement sequences into comma expressions, if/else into a ternary of assignments — the kernel compiles anyway: the statements are unfolded back before translation, on every backend. So kernels that reach `createKernel` through a minified bundle work the same as in development.
 
 WebGPU
 ------
@@ -1356,7 +1369,95 @@ await GPU.isWebGPUAvailable(); // async: an adapter actually answered
 
 `pipeline: true` resolves to a GPU-resident buffer handle that passes straight into downstream kernels with no readback, and `await handle.toArray()` reads it back when you want the values. Large 1D outputs dispatch past the 65,535-workgroup limit automatically.
 
-The mode is explicit opt-in and is never auto-selected — a synchronous caller handed a Promise would fail in silent, confusing ways. If you want automatic selection, that is exactly what `mode: 'async'` is for. Not yet supported (each throws a clear error): kernel maps, `graphical`, `toString()`, `precision: 'unsigned'`, `Math.random`.
+The mode is explicit opt-in and is never auto-selected — a synchronous caller handed a Promise would fail in silent, confusing ways. If you want automatic selection, that is exactly what `mode: 'async'` is for. Graphical mode works: the kernel writes `this.color(...)` into a storage buffer and a fixed render pass presents it to the kernel's canvas — with one API difference, `getPixels()` returns a **Promise** (WebGPU readback is asynchronous). Since presentation needs no readback, an un-awaited `kernel()` per animation frame works. `Math.random()` works, and differently than on the GL backends: it is a PCG generator in integer WGSL, so with `randomSeed` the stream is **bit-exact across runs and drivers** — the GL backends' float-hash generator cannot promise that. Not yet supported (each throws a clear error): kernel maps, `toString()`, `precision: 'unsigned'`.
+
+WebAssembly
+-----------
+
+**New!**
+
+The `webasm` backend compiles your kernel to a WebAssembly module and runs it on the CPU — but not the way the `cpu` backend does. Three things separate it from transpiled JavaScript:
+
+-   **f32x4 SIMD.** Every kernel also compiles to a vectorized body that computes four cells per step, divergent control flow handled with lane masks the way real SIMD hardware does it. The scalar and vector paths are bit-identical — same operations, same order, per cell.
+-   **Threads, under the async contract.** With `asyncMode: true` (or `mode: 'async'`), a kernel with at least 4096 output cells splits across a lazy worker pool over one shared `WebAssembly.Memory` — `worker_threads` in Node, `Worker` in the browser (which needs the usual cross-origin isolation headers for `SharedArrayBuffer`). Results are identical whatever the split, `Math.random()` included. The main thread never blocks. Synchronous calls stay synchronous, single-threaded, and still SIMD.
+-   **f32 semantics for free.** Wasm arithmetic _is_ IEEE-754 `f32`, so results match the GPU backends' float model without the rounding shims the `cpu` backend needs.
+
+`Math.random()` is the same PCG generator as the webgpu backend, in native i32 arithmetic: with `randomSeed` the stream is bit-exact across runs, platforms, and thread counts.
+
+Honesty about where it sits: any working GL backend outranks it. In auto-selection (`mode: 'gpu'`, default, or `'async'`) it is chosen only where no GL context exists — a Node build without headless-gl, a browser with WebGL disabled — one step above the `cpu` fallback. Opt in explicitly to benchmark it:
+
+const gpu \= new GPU({ mode: 'webasm' });
+const kernel \= gpu.createKernel(function(a, b) {
+  let sum \= 0;
+  for (let i \= 0; i < 512; i++) {
+    sum += a\[this.thread.y\]\[i\] \* b\[i\]\[this.thread.x\];
+  }
+  return sum;
+}).setOutput(\[512, 512\]);
+
+const c \= kernel(a, b);        // synchronous, SIMD
+
+A kernel is priced by the work it describes. A scatter algorithm rewritten gather-style so every thread computes its own cell — compaction as a binary search per output slot, a histogram as a per-bin scan — does log-factor or bin-count times the reads of the plain loop it replaces; a GL backend hides that multiplier under thousands of parallel threads, while cpu and webasm execute it serially and pay it in full. Measured against hand-written JavaScript of the _same_ transposed algorithm, the cpu backend is within 2% and webasm within ±1.5× (its SIMD gather is often faster) — the cost is the transposition, not the transpilation. When cpu or webasm is a likely destination, prefer the direct algorithm over the GPU-shaped rewrite.
+
+`GPU.isWebAssemblySupported` reports the platform answer. `pipeline: true` is accepted the way the cpu backend accepts it: there is no device memory to pipeline into, so the result is a plain typed array (a fresh copy per call) that passes straight into downstream kernels. Not yet supported: graphical mode, kernel maps, and texture/image arguments all **degrade to the cpu backend** — in auto modes and under explicit `mode: 'webasm'` alike — the console warning names the reason and `kernel.kernel.fallbackReason` carries it queryably; a graphical fallback renders into the kernel's own canvas; `toString()` throws. Threaded runs accept a `poolSize` setting to cap the worker pool (defaults to `hardwareConcurrency`, or 4 when it cannot be read). `precision: 'unsigned'` is accepted and computed as single precision — wasm has no packed storage to be lossy in.
+
+Pipeline Compilation
+--------------------
+
+**New!**
+
+`gpu.createPipeline` compiles a whole multi-kernel computation — loops included — into one callable plan:
+
+const sweep \= gpu.createKernel(function(u, q) {
+  const x \= this.thread.x, y \= this.thread.y;
+  if (x \=== 0 || y \=== 0 || x \=== this.constants.hi || y \=== this.constants.hi) return u\[y\]\[x\];
+  return 0.25 \* (u\[y\]\[x \- 1\] + u\[y\]\[x + 1\] + u\[y \- 1\]\[x\] + u\[y + 1\]\[x\] + q\[y\]\[x\]);
+}, { constants: { hi: 1023 }, output: \[1024, 1024\] });
+
+const solve \= gpu.createPipeline(function(u, q) {
+  for (let s \= 0; s < this.constants.sweeps; s++) {
+    u \= sweep(u, q);
+  }
+  return u;
+}, { constants: { sweeps: 512 } });
+
+const result \= await solve(u0, q);   // one launch, fences inside, one readback
+
+The orchestration function runs **once**, at build time (the first call), with opaque handles standing in for its arguments. The kernel calls it makes are recorded — nothing executes — and plain JS control flow simply unrolls: the loop above records 512 steps over ONE kernel and two alternating buffers (a step that would overwrite data a later step still reads gets double-buffering automatically; liveness is static because the unrolled plan is a DAG). Every later call executes the compiled plan without re-entering your code, intermediates never leave device memory, and you pay one readback at the end. Return a handle, an Array of handles, or a plain object of handles — the call resolves to the same shape holding plain results. Not to be confused with Pipelining: `pipeline: true` keeps one kernel's _output_ resident and leaves the orchestration to you per call; `createPipeline` compiles the orchestration itself. Inner kernels do **not** need `pipeline: true` — intermediate residency is the pipeline's business, and kernels stay shared between pipelines and direct use.
+
+Because orchestration is tracing, not running, these are the rules — each violation throws at build, naming itself:
+
+-   **A handle cannot be read.** Elements, properties, `.toArray()` — anything that would need the value throws `pipeline intermediate results cannot be read during orchestration`. A handle's only legal destinations are a kernel argument and the return value.
+-   **A handle cannot be used in arithmetic or a condition.** `if (u > 0)`, `u + 1`, `` `${u}` `` — anything that coerces throws. Loop bounds and branches must come from `this.constants`, pipeline settings, or plain captured values.
+-   **`Math.random()` throws during orchestration.** A trace-time draw would freeze one number into every later call; orchestration must be deterministic. `Math.random()` _inside kernels_ is untouched — seeds are drawn per call, per step, at execution time.
+-   **Only kernel calls are recorded, and only kernels created by the same `GPU` instance.** Anything else a handle escapes into throws where detection is possible — handles are frozen, own-property-free class instances, so nearly any use trips a trap — but a function that merely stores a handle without touching it is beyond detection; what it stored is useless anyway.
+-   **Non-handle values freeze into the plan at trace time.** `this.constants` are trace-time facts (`sweeps: 512` above _is_ the unroll count) — change them with `pipeline.setConstants({...})`, which invalidates the plan and re-traces on the next call, exactly the settings contract kernels already follow. Closure-captured values behave the same way: snapshotted when the trace reads them, like constants. Arguments passed to the _pipeline_ are sampled at call time and uploaded once per call.
+
+Calling a pipeline **always returns a Promise** — the async contract — and concurrent calls to one pipeline serialize in call order, like threaded kernels. `pipeline.destroy()` releases the plan's buffers and instances, and `gpu.destroy()` reaches pipelines the way it reaches kernels.
+
+Every backend runs pipelines. The reference path (`executorKind: 'generic'`) walks the plan through the normal kernel machinery — private per-pipeline kernel instances with `pipeline: true` forced on, your kernel's settings never observably touched — so on GL it is textures end-to-end. On **webasm** the plan _fuses_: every step compiles over one shared `WebAssembly.Memory` laid out `[pipeline args | plan buffers]`, passes run back-to-back with intermediates never copied out between steps (`'fused-sync'`), and where wasm threads are available the worker pool executes the _whole plan_ per worker with Atomics-based barriers between steps — one dispatch per pipeline call, no main-thread round trip per pass (`'fused-threaded'`). Anything the webasm backend cannot take degrades to the generic executor under its usual contract: the reason is queryable at `pipeline.fallbackReason`, and `pipeline.executorKind` tells you which executor actually ran.
+
+### Reading what actually executed
+
+Introspection is **supported API**, not plan internals — it exists precisely so a correctness harness can assert the backend it asked for is the backend that ran (the guard that caught seventeen silent CPU degradations in #868):
+
+-   `pipeline.executorKind` — `'fused-threaded'` / `'fused-sync'` (webasm), `'fused-encoder'` (webgpu), or `'generic'` (every backend, and the degradation target of the fused executors).
+-   `pipeline.backend` — the mode of the kernels that actually execute, derived from the executor that ran; under degradation it says `'cpu'`, exactly like `kernel.kernel.constructor.mode` does for kernels.
+-   `pipeline.fallbackReason` — why a fused executor declined this plan, `null` while fused.
+-   `createPipeline(fn, { threads: false })` pins the webasm lowering to its sync path, for callers (benchmarks, mainly) whose comparisons must stay single-threaded.
+
+What the fusion buys, measured on the gauntlet's jacobi and heat benches rewritten via `createPipeline` (checksums identical to the per-pass versions): **5.7× on heat threaded, 5.2× on jacobi** (heat 890 ms vs 5073 ms per-pass, jacobi 387 ms vs 1997 ms — and 2.8×/3.2× over plain JavaScript on rows the webasm backend previously lost), against the same kernels called per pass on webasm. The per-pass costs it deletes are exactly the ones that dominate short passes — a task round-trip through the worker pool per call, argument re-upload, and a readback per step — leaving the arithmetic, which was already SIMD.
+
+On **webgpu** the same benches run **1.55–1.62×** over per-pass chaining (jacobi 28 ms vs 44, heat 37 vs 60) — a smaller multiplier because webgpu's per-pass baseline already pipelines on the GPU queue; the encoder fusion removes the per-call JS, bind, and submit overhead that remains, and long chains feel it most (a 12,289-pass wavefront ran **10× faster** migrated). On the **GL backends** the generic executor runs at parity with a hand-rolled two-kernel ping-pong — the pattern it generates for you — so the ergonomic win is the whole win there: one kernel and a plain loop replace duplicate kernels, upload kernels, and manual texture juggling, with identical results and no leaked per-step textures.
+
+Not in v1, stated plainly:
+
+-   **No mid-plan readback.** The plan runs start to finish; you cannot inspect an intermediate and stop early. The name `this.check` on the orchestration context is **reserved** for this: the future design records `this.check(handle, predicate)` as a checkpoint step where the executor reads back a small reduction every N passes and ends the plan early when the predicate answers converged — residual thresholds in iterative solvers, without surrendering the fused loop. Nothing you write today should put a `check` on the orchestration `this`.
+-   **No graphical kernels inside pipelines** — throws at build.
+-   **No kernel maps inside pipelines** — throws at build.
+-   **`toString()` is deferred** — a pipeline cannot be exported as source yet.
+
+On webgpu, pipelines compile to the `fused-encoder` executor: every step is recorded as a compute pass into ONE command encoder over persistent storage buffers (ping-pong steps alternate between two static bind groups), one `queue.submit` runs the whole plan, and the results come back through a single `mapAsync` readback. Anything the encoder cannot take statically — GPU-resident handles as pipeline arguments, vector-returning intermediates — degrades to the generic executor with the reason in `fallbackReason`.
 
 Asynchronous Kernels
 --------------------
@@ -1374,7 +1475,7 @@ What that buys depends on the backend, but the contract never changes:
 -   **webgpu** — kernels are natively asynchronous; `asyncMode` is always on.
 -   **cpu, webgl, headlessgl** — the synchronous result is resolved, so the calling contract stays uniform and your code stays portable.
 
-`mode: 'async'` puts the whole `GPU` instance under this contract and picks the backend for you — the best synchronously-provable one immediately (webgl2 → webgl → cpu), upgraded to WebGPU on a kernel's first call if an adapter actually answers. The Promise contract is exactly what buys the room for that probe. A kernel the WebGPU backend cannot take yet (a kernel map, say) simply stays on the proven backend:
+`mode: 'async'` puts the whole `GPU` instance under this contract and picks the backend for you — the best synchronously-provable one immediately (headlessgl → webgl2 → webgl → webasm → cpu), upgraded to WebGPU on a kernel's first call if an adapter actually answers. On a GL-less platform that means webasm, where the async contract also unlocks its worker-pool threading — see the WebAssembly section for the SharedArrayBuffer caveat. **Graphical kernels bind at creation instead**: a canvas is permanently committed to its first context type, so the backend is decided before `kernel.canvas` is ever exposed — `await GPU.isWebGPUAvailable()` before `createKernel` to guarantee the probe has settled; a kernel created before it settles stays on the proven backend, and either way the canvas never changes identity. The Promise contract is exactly what buys the room for that probe. A kernel the WebGPU backend cannot take yet (a kernel map, say) simply stays on the proven backend:
 
 const gpu \= new GPU({ mode: 'async' });
 const kernel \= gpu.createKernel(function(a) {

@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 35066
+stars: 35196
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -3155,7 +3155,7 @@ two
 
 The argument to `--timestamp-format` is a `strftime`\-style format string, see the `chrono` library docs for details.
 
-The `[timestamp]` attributemaster can be used to enable timestamps for a specific recipe:
+The `[timestamp]` attribute1.58.0 can be used to enable timestamps for a specific recipe:
 
 \[timestamp\]
 foo:
@@ -3681,13 +3681,13 @@ recipe
 
 Execute recipe as a shell recipe, overriding `set default-script`.
 
-`[timestamp(FORMAT)]`master
+`[timestamp(FORMAT)]`1.58.0
 
 recipe
 
 Print command timestamps with format `FORMAT`. `FORMAT` may be an expression.
 
-`[timestamp]`master
+`[timestamp]`1.58.0
 
 recipe
 

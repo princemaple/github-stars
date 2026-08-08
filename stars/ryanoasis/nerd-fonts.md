@@ -1,6 +1,6 @@
 ---
 project: nerd-fonts
-stars: 63915
+stars: 64034
 description: Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more
 url: https://github.com/ryanoasis/nerd-fonts
 ---
@@ -961,7 +961,7 @@ The resulting font's family (aka font name) will be set to the original family a
 Full options follow, see also **page explaining all options**:
 
 ```
-Nerd Fonts Patcher v3.4.0-91 (4.22.1) (ff 20230101)
+Nerd Fonts Patcher v3.5.0-16 (4.27.2) (ff 20230101)
 usage: font-patcher [--careful] [--debug [{0,1,2,3}]] [--extension EXTENSION]
                     [--help] [--makegroups [{-1,0,1,2,3,4,5,6}]] [--mono]
                     [--outputdir OUTPUTDIR] [--quiet] [--single-width-glyphs]
@@ -972,16 +972,16 @@ usage: font-patcher [--careful] [--debug [{0,1,2,3}]] [--extension EXTENSION]
                     [--powerlineextra] [--powersymbols] [--weather]
                     [--adjust-line-height] [--boxdrawing] [--cell CELLOPT]
                     [--configfile CONFIGFILE] [--custom CUSTOM] [--dry]
-                    [--glyphdir GLYPHDIR] [--has-no-italic]
-                    [--metrics {HHEA,TYPO,WIN}] [--name FORCE_NAME]
-                    [--postprocess POSTPROCESS] [--removeligs]
+                    [--experimental EXPERIMENTAL] [--glyphdir GLYPHDIR]
+                    [--has-no-italic] [--metrics {HHEA,TYPO,WIN}]
+                    [--name FORCE_NAME] [--postprocess POSTPROCESS] [--removeligs]
                     [--xavgcharwidth [XAVGWIDTH]] [--progressbars | --no-progressbars]
                     font
 
 Nerd Fonts Font Patcher: patches a given font with programming and development related glyphs
 
 * Website: https://www.nerdfonts.com
-* Version: 3.4.0-88
+* Version: 3.5.0-16
 * Development Website: https://github.com/ryanoasis/nerd-fonts
 * Changelog: https://github.com/ryanoasis/nerd-fonts/blob/-/changelog.md
 
@@ -1031,8 +1031,10 @@ Expert Options:
                         Specify a file path for configuration file (see sample: src/config.sample.cfg)
   --custom CUSTOM       Specify a custom symbol font, all glyphs will be copied; absolute path suggested
   --dry                 Do neither patch nor store the font, to check naming
+  --experimental EXPERIMENTAL
+                        Enable experimental/unstable feature, get hints with "?" or "help"
   --glyphdir GLYPHDIR   Path to glyphs to be used for patching
-  --has-no-italic       Font family does not have Italic (but Oblique), to help create correct RIBBI set
+  --has-no-italic       Font family does not have Italic (but Oblique/Slanted), to help create correct RIBBI set
   --metrics {HHEA,TYPO,WIN}
                         Select vertical metrics source (for problematic cases)
   --name FORCE_NAME     Specify naming source ('full', 'postscript', 'filename', or concrete free name-string)
@@ -1097,6 +1099,7 @@ Usage: ./gotta-patch-em-all-font-patcher!.sh [OPTION] [FILTER]
 
     OPTION:
         -c, --checkfont     Create the font(s) in check-fonts/ instead
+        -p, --purge         Force purging of the destination in patched-fonts/
         -t, --keeptime      Try to preserve timestamp of previously patched
                             font in patched-fonts/ directory
         -v, --verbose       Show more information when running
@@ -1115,6 +1118,11 @@ Usage: ./gotta-patch-em-all-font-patcher!.sh [OPTION] [FILTER]
         the filter are processed only.
           Example ./gotta-patch-em-all-font-patcher\!.sh "/iosevka"
           Process all font files that are in directory "iosevka"
+
+    ENVIRONMENT:
+        NERDFONTS: You can supply any font-patcher arguments here that will
+            be appended to all internal font-patcher calls. For example
+            NERDFONTS="--dry --debug 2" ./gotta-patch-em-all-font-patcher!.sh
 ```
 
 Contributing

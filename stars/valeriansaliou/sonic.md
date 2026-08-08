@@ -1,6 +1,6 @@
 ---
 project: sonic
-stars: 21292
+stars: 21299
 description: 🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM.
 url: https://github.com/valeriansaliou/sonic
 ---
@@ -117,7 +117,7 @@ docker pull valeriansaliou/sonic:v1.7.4
 
 Then, seed it a configuration file and run it (replace `/path/to/your/sonic/config.cfg` with the path to your configuration file):
 
-docker run -p 1491:1491 -v /path/to/your/sonic/config.cfg:/etc/sonic.cfg -v /path/to/your/sonic/store/:/var/lib/sonic/store/ valeriansaliou/sonic:v1.4.9
+docker run -p 1491:1491 -v /path/to/your/sonic/config.cfg:/etc/sonic/config.toml -v /path/to/your/sonic/store/:/var/lib/sonic/store/ valeriansaliou/sonic:v1.4.9
 
 In the configuration file, ensure that:
 

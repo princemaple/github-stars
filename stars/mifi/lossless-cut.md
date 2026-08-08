@@ -1,6 +1,6 @@
 ---
 project: lossless-cut
-stars: 42542
+stars: 42742
 description: The swiss army knife of lossless video/audio editing
 url: https://github.com/mifi/lossless-cut
 ---
@@ -109,7 +109,7 @@ Download
 
 If you want to support my continued work on LosslessCut, and you want the advantage of a secure and simple installation process with automatic, stable updates, consider getting it from your favorite store:
 
-For Linux these are some alternatives:
+For Linux I publish to the Snap Store:
 
 If you prefer to download the executables manually, this will of course always be free (see also supported operating systems):
 
@@ -119,7 +119,7 @@ If you prefer to download the executables manually, this will of course always b
 -   More releases - Note that APPX (Windows) and PKG (macOS) do **not** work)
 -   Latest nightly builds 🧪
 
-Note that the above are the only official downloads. Difference between App Stores and GitHub download? Please see FAQ.
+Note that the above are the only official downloads. There are also unofficial releases like Flathub (not maintained by me). Difference between App Stores and GitHub download? Please see FAQ.
 
 LosslessCut is maintained by me alone and will always remain free and open source. If it's useful to you, consider supporting my work. Alternatively donate to the FFmpeg team because they are doing the world a huge favor.
 

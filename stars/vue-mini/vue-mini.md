@@ -1,6 +1,6 @@
 ---
 project: vue-mini
-stars: 2075
+stars: 2080
 description: 基于 Vue 3 的小程序框架。简单，强大，高性能。
 url: https://github.com/vue-mini/vue-mini
 ---
@@ -71,6 +71,8 @@ Vue Mini 已经被很多公司和团队应用在了生产环境，其中不乏�
 彼翼
 
 九善农植有机生活
+
+一句早晚安
 
 添加
 

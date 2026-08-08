@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 14436
+stars: 14451
 description: :file_folder: Universal File Storage Client
 url: https://github.com/mickael-kerjean/filestash
 ---

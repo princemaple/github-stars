@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 453988
+stars: 455092
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -1057,16 +1057,6 @@ Yes
 
 Unknown
 
-xColors
-
-Generate & convert colors
-
-No
-
-Yes
-
-Yes
-
 **⬆ Back to Index**  
   
 
@@ -1206,6 +1196,16 @@ No
 Yes
 
 Unknown
+
+ClearTrace
+
+Cross-frontend DEX attribution and execution quality data across Ethereum and L2s
+
+No
+
+Yes
+
+Yes
 
 Covalent
 
@@ -1502,16 +1502,6 @@ Yes
 
 Yes
 
-Rig Veda
-
-Gods and poets, their categories, and the verse meters, with the mandal and sukta number
-
-No
-
-Yes
-
-Unknown
-
 Runyankole Bible
 
 Free REST API for the Runyankore-Rukiga Bible — 66 books, 31106 verses
@@ -1551,16 +1541,6 @@ No
 Yes
 
 Yes
-
-Vedic Society
-
-Descriptions of all nouns (names, places, animals, things) from vedic literature
-
-No
-
-Yes
-
-Unknown
 
 Wizard World
 
@@ -1646,6 +1626,16 @@ Hire freelancers to get work done
 Yes
 
 Unknown
+
+Funding Signals
+
+Companies that just raised funding, scored as sales leads, from public SEC filings
+
+`apiKey`
+
+Yes
+
+No
 
 Gmail
 
@@ -1866,6 +1856,16 @@ Boards, lists and cards to help you organize and prioritize your projects
 Yes
 
 Unknown
+
+Village
+
+Person and company enrichment plus warm introduction paths through your network
+
+`apiKey`
+
+Yes
+
+Yes
 
 **⬆ Back to Index**  
   
@@ -2436,6 +2436,16 @@ No
 Yes
 
 Unknown
+
+Bitcoin Halving
+
+Halving era, block reward, and schedule arithmetic for any Bitcoin block height
+
+No
+
+Yes
+
+Yes
 
 Bitfinex
 
@@ -3037,6 +3047,26 @@ Yes
 
 Unknown
 
+ScriptMasterLabs x402
+
+100+ SEC, DeFi, crypto, and macro endpoints for AI agents via x402 micropayments
+
+`apiKey`
+
+Yes
+
+Yes
+
+ScriptMasterLabs MCP
+
+Model Context Protocol server with web search, social search & LLM chat paid via x402
+
+`apiKey`
+
+Yes
+
+Yes
+
 WorldCoinIndex
 
 Cryptocurrencies Prices
@@ -3337,6 +3367,16 @@ No
 
 Unknown
 
+SchemaShield
+
+Read-only preflight for breaking schema changes and downstream query impact
+
+`apiKey`
+
+Yes
+
+Unknown
+
 US Autocomplete
 
 Enter address data quickly with real-time address suggestions
@@ -3415,6 +3455,16 @@ Yes
 Amazonscraperapi
 
 Amazon product, search & batch scraping API with residential proxies (1000 free)
+
+`apiKey`
+
+Yes
+
+No
+
+AmberOne
+
+Turn any website into a build-ready Android, iOS, PWA or Electron app project
 
 `apiKey`
 
@@ -3602,6 +3652,16 @@ Yes
 
 No
 
+Cloudflare
+
+Manage DNS, CDN, Workers and other services; documented with an official OpenAPI 3.0 spec
+
+`apiKey`
+
+Yes
+
+No
+
 Cloudflare Trace
 
 Get IP Address, Timestamp, User Agent, Country Code, IATA, HTTP Version, TLS/SSL Version & More
@@ -3662,6 +3722,16 @@ Yes
 
 Yes
 
+Diagrams.so
+
+Generate editable draw.io architecture diagrams from text or infrastructure code
+
+`apiKey`
+
+Yes
+
+No
+
 DigitalOcean Status
 
 Status of all DigitalOcean services
@@ -3691,6 +3761,16 @@ No
 Yes
 
 Unknown
+
+dotsweep
+
+Domain availability across 1200+ TLDs with registration and renewal prices
+
+No
+
+Yes
+
+Yes
 
 DownStatus
 
@@ -4352,6 +4432,16 @@ Yes
 
 Unknown
 
+ProxyForge
+
+Free auto-updating list of live-tested proxies (HTTP/HTTPS/SOCKS4/SOCKS5), refreshed every 6 h
+
+No
+
+Yes
+
+Yes
+
 ProxyKingdom
 
 Rotating Proxy API that produces a working proxy on every request
@@ -4712,6 +4802,16 @@ Yes
 
 Yes
 
+Utilorax
+
+203 JSON endpoints: hashing, encoding, unit conversion, text, dates and file conversion
+
+`apiKey`
+
+Yes
+
+Yes
+
 Wandbox
 
 Code compiler supporting 35+ languages mentioned at wandbox.org
@@ -5022,6 +5122,16 @@ Yes
 
 No
 
+DocStruct
+
+AI extraction of invoices, receipts, bank statements & contracts into structured JSON/CSV
+
+No
+
+Yes
+
+Yes
+
 Flowdash
 
 Automate business workflows
@@ -5202,6 +5312,16 @@ Yes
 
 Unknown
 
+RunConvert
+
+Convert video, audio, image, and document files programmatically
+
+`apiKey`
+
+Yes
+
+No
+
 Todoist
 
 Todo Lists
@@ -5296,6 +5416,16 @@ Email address validation
 Yes
 
 Unknown
+
+AGPC Domain Check
+
+Check a domain's SPF, DKIM, DMARC and MX with a graded shareable report
+
+No
+
+Yes
+
+Yes
 
 Cloudmersive Validate
 
@@ -5439,9 +5569,9 @@ Unknown
 
 Mailtrap
 
-A service for the safe testing of emails sent from the development and staging environments
+Email API and SMTP for sending transactional and bulk emails, with email testing sandbox for safe development
 
-`apiKey`
+apiKey
 
 Yes
 
@@ -6157,6 +6287,16 @@ Yes
 
 Unknown
 
+Halal Terminal
+
+Shariah-compliant stock and ETF screening across 5 methodologies, zakat and purification
+
+`apiKey`
+
+Yes
+
+Yes
+
 Helium
 
 News with media bias scoring, balanced news synthesis, live market data, AI options pricing
@@ -6179,13 +6319,13 @@ Yes
 
 IBANforge
 
-IBAN validation and BIC/SWIFT lookup for 75+ countries with 121K+ bank entries
+IBAN validation and BIC/SWIFT lookup for 89 countries with 121k+ BIC entries
+
+`apiKey`
+
+Yes
 
 No
-
-Yes
-
-Yes
 
 IEX Cloud
 
@@ -6477,6 +6617,16 @@ Yes
 
 Yes
 
+Zelothorn
+
+Plain-English explanations of US public companies with SEC filings and earnings data
+
+No
+
+Yes
+
+Yes
+
 Zoho Books
 
 Online accounting software, built for your business
@@ -6551,6 +6701,16 @@ Recipe Search
 Yes
 
 Unknown
+
+Food Info
+
+Nutrition data for millions of foods from six national food composition datasets
+
+`apiKey`
+
+Yes
+
+No
 
 Foodish
 
@@ -8707,6 +8867,16 @@ HTTPS
 
 CORS
 
+AI Law Tracker
+
+AI regulation laws by jurisdiction (US, EU, global) as read-only JSON; free tier
+
+apiKey
+
+Yes
+
+Unknown
+
 Bank Negara Malaysia Open Data
 
 Malaysia Central Bank Open Data
@@ -9056,6 +9226,16 @@ International firearm injury prevention and policy
 Yes
 
 Unknown
+
+Indian Mandi Prices
+
+Free, keyless daily wholesale mandi prices for 5 Indian states, sourced from data.gov.in
+
+No
+
+Yes
+
+Yes
 
 Indian Pincode
 
@@ -9637,6 +9817,16 @@ Yes
 
 Unknown
 
+Tollmint
+
+Advertising, subscription, AI-disclosure and accessibility rules across the US, EU and UK
+
+No
+
+Yes
+
+Yes
+
 UK Companies House
 
 UK Companies House Data from the UK government
@@ -9891,6 +10081,16 @@ Food and nutrition data API with recipe search
 Yes
 
 Unknown
+
+ERstat
+
+Live Canadian emergency room closures and service disruptions, by province
+
+`apiKey`
+
+Yes
+
+Yes
 
 FoodData Central
 
@@ -10322,6 +10522,16 @@ HTTPS
 
 CORS
 
+AI Economics Tools
+
+Token cost, LLM energy, agent-hour and Proof-Adjusted Autonomy calculators by Michał Piszczek
+
+No
+
+Yes
+
+Yes
+
 AI For Thai
 
 Free Various Thai AI API
@@ -10581,6 +10791,16 @@ Face Detection, Face Recognition and Face Grouping
 Yes
 
 Unknown
+
+Statlyte
+
+Live pricing, context windows and model ids for major LLM APIs
+
+No
+
+Yes
+
+Yes
 
 TensorFeed
 
@@ -11042,6 +11262,16 @@ Yes
 
 Yes
 
+DataCube AI
+
+Daily curated AI industry news, funding rounds and trends in 8 languages
+
+No
+
+Yes
+
+No
+
 Feedbin
 
 RSS reader
@@ -11337,6 +11567,16 @@ Yes
 
 Yes
 
+EOSL
+
+Hardware end-of-sale and end-of-service-life dates by part number, source-linked
+
+No
+
+Yes
+
+Yes
+
 French Address Search
 
 Address search via the French Government
@@ -11556,6 +11796,16 @@ Recreational areas, federal lands, historic sites, museums, and other attraction
 Yes
 
 Unknown
+
+Registrum
+
+UK company data: profiles, directors, PSC, iXBRL-parsed financials, ECCTA status
+
+`apiKey`
+
+Yes
+
+No
 
 Scoop.it
 
@@ -13552,6 +13802,16 @@ Yes
 
 Unknown
 
+Marketplace Fee Data
+
+Seller fee schedules for 21 e-commerce marketplaces and payment processors as JSON
+
+No
+
+Yes
+
+Yes
+
 Mercadolibre
 
 Manage sales, ads, products, services and Shops
@@ -13929,11 +14189,31 @@ Yes
 
 Unknown
 
+Publora
+
+Publish and schedule posts to ten social networks from one endpoint
+
+`apiKey`
+
+Yes
+
+No
+
 Reddit
 
 Homepage of the internet
 
 `OAuth`
+
+Yes
+
+Unknown
+
+RedditAPIs
+
+Reddit data API: subreddit listings, post/comment/community/user search, comment trees, top posts
+
+`apiKey`
 
 Yes
 
@@ -14039,6 +14319,16 @@ Yes
 
 Unknown
 
+TweetAPI
+
+Public Twitter data for posts, profiles, followers, search, lists and communities
+
+`apiKey`
+
+Yes
+
+No
+
 Twitch
 
 Game Streaming API
@@ -14079,6 +14369,16 @@ Yes
 
 Yes
 
+XFlux
+
+Read X/Twitter profiles, search, timelines; account monitors with signed webhooks
+
+`apiKey`
+
+Yes
+
+No
+
 **⬆ Back to Index**  
   
 
@@ -14117,6 +14417,16 @@ Unknown
 balldontlie
 
 Balldontlie provides access to stats data from the NBA
+
+No
+
+Yes
+
+Yes
+
+Bet Better
+
+Sports model win probabilities and fair odds across 13 leagues
 
 No
 
@@ -14728,6 +15038,16 @@ No
 Yes
 
 Unknown
+
+restful-api
+
+Fake REST API for testing and prototyping with CRUD endpoints
+
+No
+
+Yes
+
+No
 
 RoboHash
 

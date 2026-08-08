@@ -1,6 +1,6 @@
 ---
 project: chisel
-stars: 16333
+stars: 16368
 description: A fast TCP/UDP tunnel over HTTP
 url: https://github.com/jpillora/chisel
 ---
@@ -370,7 +370,7 @@ $ chisel client --help
 
 Encryption is always enabled. When you start up a chisel server, it will generate an in-memory ECDSA public/private key pair. The public key fingerprint (base64 encoded SHA256) will be displayed as the server starts. Instead of generating a random key, the server may optionally specify a key file, using the `--keyfile` option. When clients connect, they will also display the server's public key fingerprint. The client can force a particular fingerprint using the `--fingerprint` option. Legacy MD5 fingerprints are still accepted but must be the full 16-octet colon form — truncated prefixes are rejected. See the `--help` above for more information.
 
-The server also caps inbound websocket message sizes before authentication (`CHISEL_WS_READ_LIMIT`, default 64KB), so unauthenticated peers cannot exhaust memory with oversized frames.
+The server also caps inbound websocket message sizes before authentication (`CHISEL_WS_READ_LIMIT`, default 512 KiB), so unauthenticated peers cannot exhaust memory with oversized messages. The default sits comfortably above `x/crypto/ssh`'s 256 KiB maximum transport packet, so no valid SSH packet is ever rejected. Only `0` disables the limit; negative values fall back to the safe default.
 
 ### Authentication
 
@@ -509,9 +509,9 @@ tcp dial timeout for tunnel targets
 
 both
 
-`65536`
+`524288`
 
-max inbound websocket message bytes (0 = no limit)
+max inbound websocket message bytes (0 = no limit; negative = default)
 
 `WS_BUFF_SIZE`
 

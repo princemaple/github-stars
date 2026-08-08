@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 33287
+stars: 33613
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -141,14 +141,14 @@ await browser.disconnect();
 
 Because the agent runs inside the same process as the browser, every tool call is a direct operation and you retain Lightpanda's speed and memory advantage.
 
-The output of an agent session is a PandaScript: vanilla JavaScript with a small set of native browser primitives built directly into Lightpanda. Run `/save` to export one from your current session, then replay it with `lightpanda agent <script>.js`. Scripts are deterministic and token-free, so you can prototype with the LLM and ship the output to production without a model at runtime.
+The output of an agent session is a PandaScript: vanilla JavaScript with a small set of native browser primitives built directly into Lightpanda. Run `/save` to export one from your current session, then replay it with `lightpanda run <script>.js`. Scripts are deterministic and token-free, so you can prototype with the LLM and ship the output to production without a model at runtime.
 
 It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Hugging Face, and local models via Ollama. You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
 
 ./lightpanda agent                                    # auto-detects API key from env
 ./lightpanda agent --task "top story on news.ycombinator.com?"
 ./lightpanda agent --no-llm                           # basic REPL, no LLM
-./lightpanda agent session.js                         # run a recorded script
+./lightpanda run session.js                           # run a recorded script
 ./lightpanda agent --provider gemini --task "..."     # force a specific provider
 VERTEX\_API\_KEY=... ./lightpanda agent --provider vertex             # Vertex AI, express mode
 GOOGLE\_CLOUD\_PROJECT=my-proj ./lightpanda agent --provider vertex   # Vertex AI, token via gcloud auth

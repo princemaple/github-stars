@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 60109
+stars: 60376
 description: Ultralytics YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -75,7 +75,7 @@ Discover more examples in the YOLO Python Docs.
 ✨ Models
 --------
 
-Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on COCO for Detection, Segmentation, and Pose Estimation. Semantic Segmentation models are pretrained on Cityscapes, Depth Estimation models are pretrained on a broad multi-dataset mix and evaluated on NYU Depth V2, and Classification models are pretrained on ImageNet. Tracking mode is compatible with Detection, Segmentation, and Pose models. All Models download automatically from the latest Ultralytics release on first use.
+Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on COCO for Detection, Segmentation, and Pose Estimation. Semantic Segmentation models are pretrained on Cityscapes, Depth Estimation models are pretrained on a broad multi-dataset mix and evaluated on NYU Depth V2, and Classification models are pretrained on ImageNet. Tracking mode is compatible with Detection, Segmentation, Pose, and OBB models. All Models download automatically from the latest Ultralytics release on first use.
 
   
   

@@ -1,6 +1,6 @@
 ---
 project: btop
-stars: 33755
+stars: 33883
 description: A monitor of resources
 url: https://github.com/aristocratos/btop
 ---
@@ -36,7 +36,7 @@ News
 
 ##### 22 March 2026
 
-Updated contributing guidlines for AI generated code:
+Updated contributing guidelines for AI generated code:
 
 -   Submissions where any of the code is AI generated must be marked with \[AI generated\].
     
@@ -51,7 +51,7 @@ Updated contributing guidlines for AI generated code:
 
 ##### 4 December 2025
 
-Since there is a increasing amount of AI generated/assisted PR's, the following guidlines have been added to CONTRIBUTING.md:
+Since there is a increasing amount of AI generated/assisted PR's, the following guidelines have been added to CONTRIBUTING.md:
 
 -   Submissions where the majority of the code is AI generated must be marked with \[AI generated\].
     

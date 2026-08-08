@@ -1,6 +1,6 @@
 ---
 project: TurboDiffusion
-stars: 3593
+stars: 3603
 description: TurboDiffusion: 100–200× Acceleration for Video Diffusion Models
 url: https://github.com/thu-ml/TurboDiffusion
 ---
@@ -57,13 +57,6 @@ Huggingface Model
 720p
 
 Note: All checkpoints support generating videos at 480p or 720p. The "Best Resolution" column indicates the resolution at which the model provides the best video quality.
-
-TurboT2AV
----------
-
-The `TurboT2AV` directory provides LTX-2 text-to-audio-video teacher and distilled-student inference, together with the validated SageSLA, FastNorm, and TileLang W8A8 acceleration path.
-
-TurboT2AV uses an isolated Pixi environment and does not modify the main TurboDiffusion runtime. See `TurboT2AV/README.md` for installation, checkpoints, demos, and reproducibility instructions.
 
 Installation
 ------------
@@ -401,6 +394,10 @@ ComfyUI Integration
 
 We thank the community effort Comfyui\_turbodiffusion for integrating TurboDiffusion into ComfyUI.
 
+#### TurboT2VA
+
+The `turbot2va` directory provides LTX-2 text-to-audio-video distillation and inference. turbot2va uses an isolated environment and does not modify the main TurboDiffusion runtime. See `turbot2va/README.md` for installation, checkpoints, demos, and reproducibility instructions.
+
 Roadmap
 -------
 
@@ -408,10 +405,9 @@ We're actively working on the following features and improvements:
 
 -   Organize and release training code
 -   Optimize infrastructure to support flattened context parallel
+-   Acceleration for MiniMax-H3
 -   vLLM-Omni integration
--   Support for more video generation models
 -   Support for autoregressive video generation models
--   More hardware-level operator optimizations
 
 We welcome community members to help maintain and extend TurboDiffusion. Welcome to join the TurboDiffusion Team and contribute together!
 

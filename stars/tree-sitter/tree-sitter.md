@@ -1,6 +1,6 @@
 ---
 project: tree-sitter
-stars: 26508
+stars: 26583
 description: An incremental parsing system for programming tools
 url: https://github.com/tree-sitter/tree-sitter
 ---

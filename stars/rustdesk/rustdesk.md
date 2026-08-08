@@ -1,6 +1,6 @@
 ---
 project: rustdesk
-stars: 119388
+stars: 119913
 description: An open-source remote desktop application designed for self-hosting, as an alternative to TeamViewer.
 url: https://github.com/rustdesk/rustdesk
 ---
@@ -30,7 +30,7 @@ RustDesk welcomes contribution from everyone. See CONTRIBUTING.md for help getti
 Dependencies
 ------------
 
-Desktop versions use Flutter or Sciter (deprecated) for GUI, this tutorial is for Sciter only, since it is easier and more friendly to start. Check out our CI for building Flutter version.
+Desktop versions use Flutter or Sciter (deprecated) for GUI. This tutorial is for Sciter only, since it is easier and more friendly to start. Check out our CI for building the Flutter version.
 
 Please download Sciter dynamic library yourself.
 

@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 36050
+stars: 36259
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -22,6 +22,9 @@ Maigret
 
 Sponsors
 --------
+
+**IPcook** provides reliable residential proxies for online research, username discovery, and public data collection workflows. High success rates • 99.99% uptime • Response time under 0.5s • Monthly & Pay-as-you-go • Non-expiring traffic • Up to 10 free sub-accounts for team collaboration • Residential proxies from $0.3–$3.2/GB.  
+**Special Offer**: FREE 100MB trial available. Use code WELCOME20 for 20% off.
 
 **711Proxy** provides reliable residential proxies for web scraping, username lookups, and public data collection. Over **100M** residential IPs across **200+** countries • High Success Rates • Fast & Reliable Connections.  
 **Special Offer**: Free trial available! Rotating residential proxies from just **$0.55/GB**. Unlimited residential proxies from **$15/hour** with no concurrency limits.

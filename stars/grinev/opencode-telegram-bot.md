@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 977
+stars: 1008
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -18,7 +18,7 @@ Scheduled tasks support. Turns the bot into a lightweight OpenClaw alternative f
 
 Platforms: macOS, Windows, Linux
 
-Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`), Français (`fr`), Русский (`ru`), 简体中文 (`zh`)
+Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`), Français (`fr`), Italiano (`it`), Português (Brasil) (`pt`), Русский (`ru`), 简体中文 (`zh`)
 
 > I use boardown, my open-source Markdown-based task board, to plan and track this project. It stores tasks in plain `.md` files and can be used as a VS Code extension or a desktop app.
 
@@ -30,7 +30,7 @@ Features
 -   **Track live session** — follow a live OpenCode CLI session; see Track Existing Session
 -   **Background session notifications** — get short notifications when detached or non-current sessions in the current project/worktree reply, ask questions, or request permissions
 -   **Live status** — pinned message with current project/worktree, model, context usage, and changed files list, updated in real time
--   **Model switching** — pick models from OpenCode favorites and recent history directly in the chat (favorites are shown first)
+-   **Model switching** — pick models from OpenCode favorites and recent history directly in the chat (favorites are shown first), or browse all models by provider
 -   **Agent modes** — switch between Plan and Build modes on the fly
 -   **Subagent activity** — watch live subagent progress in chat, including the current task, agent, model, and active tool step
 -   **Custom Commands** — run OpenCode custom commands (and built-ins like `init`/`review`) from an inline menu with confirmation
@@ -40,19 +40,21 @@ Features
 -   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, and optionally enable spoken replies in `/settings`
 -   **File attachments** — send images, PDF documents, and text-based files to OpenCode, including multiple files in one Telegram album
 -   **Scheduled tasks** — schedule prompts to run later or on a recurring interval; see Scheduled Tasks
+-   **Message queue** — enable in `/settings` to hold messages sent while the agent is busy, send them one by one afterwards, and manage them from the bottom keyboard
 -   **Context control** — compact context when it gets too large, right from the chat
 -   **Input flow control** — when an interactive flow is active, the bot accepts only relevant input to keep context consistent and avoid accidental actions
 -   **Git worktree switching** — browse and switch between existing git worktrees for the current repository with `/worktree`
 -   **Security** — strict user ID whitelist; no one else can access your bot, even if they find it
 -   **Localization** — UI localization is supported for multiple languages (`BOT_LOCALE`)
 -   **Interactive file browser** — use `/ls` to browse files and directories inside the current project, open subdirectories, go back, and download files by tapping them
+-   **Attach a file to your next prompt** — tap **📎 Attach to next prompt** on a text file in `/ls`, and it is sent to OpenCode together with your next message, once
 
 Planned features currently in development are listed in Current Task List.
 
 Prerequisites
 -------------
 
--   **Node.js 22+** — download
+-   **Node.js 22.14+** — download
 -   **OpenCode** — install from opencode.ai or GitHub
 -   **Telegram Bot** — you'll create one during setup (takes 1 minute)
 
@@ -260,7 +262,7 @@ Configuration
 
 ### Localization
 
--   Supported locales: `en`, `ar`, `de`, `es`, `fr`, `ru`, `zh`
+-   Supported locales: `en`, `ar`, `de`, `es`, `fr`, `it`, `pt`, `ru`, `zh`
 -   The setup wizard asks for language first
 -   You can change locale later with `BOT_LOCALE`
 
@@ -386,7 +388,7 @@ Yes
 
 `BOT_LOCALE`
 
-Bot UI language (supported locale code, e.g. `en`, `ar`, `de`, `es`, `fr`, `ru`, `zh`)
+Bot UI language (supported locale code, e.g. `en`, `ar`, `de`, `es`, `fr`, `it`, `pt`, `ru`, `zh`)
 
 No
 
@@ -662,6 +664,9 @@ Runtime preferences are changed from `/settings` and stored in `settings.json`:
 -   Diff file attachments
 -   Response streaming mode: `edit` or `draft (experimental)`; applies only to final assistant replies, not thinking messages
 -   Audio replies: `off`, `all`, or `auto` when TTS is configured
+-   Message queue: hold text messages sent while the agent is busy instead of rejecting them
+
+With the message queue enabled, plain text sent while the agent is busy is held (up to 5 messages) instead of being turned down. Queued messages appear as buttons above the usual bottom-keyboard grid — tap one to drop it. They are sent one at a time as each run finishes, and the queue is cleared by `/abort` or a session/project switch.
 
 You can seed the initial defaults for any of these settings without hard-coding them in your Docker image by setting `INITIAL_SETTINGS_PRESET` to a JSON object. Only keys not yet persisted in `settings.json` are affected — settings the user has already changed via `/settings` are left untouched:
 
@@ -785,6 +790,8 @@ The model picker uses OpenCode local model state (`favorite` + `recent`):
 
 To add a model to favorites, open OpenCode TUI (`opencode`), go to model selection, and press **Cmd+F/Ctrl+F** on the model.
 
+To pick a model that is neither a favorite nor recent, tap **🗂 Providers** in the model picker: it lists the connected providers, then the models of the selected one, both paginated by `MODELS_LIST_LIMIT`.
+
 Security
 --------
 
@@ -824,6 +831,10 @@ Compile TypeScript
 `npm start`
 
 Run compiled code
+
+`npm run release:prepare`
+
+Bump version and seed release notes
 
 `npm run release:notes:preview`
 

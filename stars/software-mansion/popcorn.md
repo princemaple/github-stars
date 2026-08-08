@@ -1,6 +1,6 @@
 ---
 project: popcorn
-stars: 687
+stars: 695
 description: Running Elixir in the browser
 url: https://github.com/software-mansion/popcorn
 ---
@@ -29,9 +29,9 @@ See also third-party examples:
 Repository Structure
 --------------------
 
--   **`popcorn/elixir/`** - Elixir library used to patch OTP and Elixir stdlib, create .avm bundles and containing JS interop API.
--   **`popcorn/js/`** - JavaScript library loads the VM in Wasm, manages its isolation, and bridges JS and Elixir.
--   **`otp/`** - temporary location for integration with BEAM/OTP.
+-   **`popcorn-2/elixir/`** - Elixir library used to patch OTP and Elixir stdlib, create .avm bundles and containing JS interop API.
+-   **`popcorn-2/js/`** - JavaScript library loads the VM in Wasm, manages its isolation, and bridges JS and Elixir.
+-   **`popcorn/`** - integration with BEAM/OTP.
 -   **`examples/`** - Example projects showcasing Popcorn features, hosted at popcorn.swmansion.com. Examples use development version of Popcorn.
 -   **`landing-page/`** - Popcorn landing page.
 -   **`language-tour/`** - Interactive Elixir language tour running purely in the browser.

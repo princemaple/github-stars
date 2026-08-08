@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 29491
+stars: 29765
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -118,7 +118,7 @@ page.goto("https://example.com")
 
 * * *
 
-Latest: v0.5.3 — 71 source-level stealth patches (Chromium 150.0.7871.114.3 — all platforms)
+Latest: v0.5.6 — 71 source-level stealth patches (Chromium 150.0.7871.114.3 — all platforms)
 --------------------------------------------------------------------------------------------
 
 -   **CloakBrowser Pro** — the latest binary (Chromium 150.0.7871.114.3, 71 source-level patches) is available to Pro subscribers on **Linux, Windows, and macOS**. Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest build automatically. See CloakBrowser Pro
@@ -608,7 +608,7 @@ python -m cloakbrowser clear-cache  # Remove cached binaries
 
 `login` with no argument prompts you to paste a license key or press Enter to get a free key via a GitHub sign-in; `login <key>` saves a key directly. Both validate the key, then store it at `~/.cloakbrowser/license.key` so every launch picks it up.
 
-`info` reports the binary that will actually launch given your license, runs a quick launch test (and flags missing system libraries on Linux), shows your license tier, and checks fonts, GeoIP, and optional dependencies. Add `--quick` to skip the launch test or `--json` for machine-readable output.
+`info` reports the binary that will actually launch given your license, runs a quick launch test (and flags missing system libraries on Linux), shows your license tier, and checks fonts, GeoIP, and optional dependencies. Add `--quick` to skip the launch test or `--json` for machine-readable output. Add `--proxy <url>` to resolve the exit IP, timezone, and locale a launch would apply through that proxy (the same `geoip=True` resolution; downloads the GeoIP DB if not cached) — useful for confirming a proxy hands you a timezone/locale that matches its exit IP.
 
 `CLOAKBROWSER_RELEASE_CHANNEL=preview` also applies to `install`, `info`, and `update`. `info` shows the exact version that will launch and whether Preview resolved to Stable for the current platform.
 
@@ -1035,9 +1035,8 @@ The Docker image (`cloakhq/cloakbrowser`) ships with these pre-installed. If you
 Copy the fonts from a real Windows machine's `C:\Windows\Fonts\` directory. The wrapper keeps warning until it finds all of: **Segoe UI, Segoe UI Light, Calibri, Marlett, MS UI Gothic, Franklin Gothic, Consolas, Courier New** (copying the whole `Fonts` folder covers these and more):
 
 mkdir -p ~/.local/share/fonts/windows
-cp /path/to/windows/fonts/\*.ttf ~/.local/share/fonts/windows/
-cp /path/to/windows/fonts/\*.TTF ~/.local/share/fonts/windows/
-fc-cache -f  # mandatory for manually copied fonts
+cp -r /path/to/windows/Fonts/. ~/.local/share/fonts/windows/
+fc-cache -f
 
 Confirm they registered with `fc-list | grep -i "segoe\|calibri\|consolas"`. Once all are present the warning stops on its own; set `CLOAKBROWSER_SUPPRESS_FONT_WARNING=1` to silence it if you accept the tradeoff.
 

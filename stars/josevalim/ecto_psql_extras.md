@@ -2,11 +2,15 @@
 project: ecto_psql_extras
 stars: 393
 description: Ecto PostgreSQL database performance insights. Locks, index usage, buffer cache hit ratios, vacuum stats and more.
-url: https://github.com/pawurb/ecto_psql_extras
+url: https://github.com/josevalim/ecto_psql_extras
 ---
 
 Ecto PSQL Extras
 ================
+
+> ⚠️ This project is no longer actively maintained.
+> 
+> Existing releases will remain available on Hex.
 
 Elixir port of Heroku PG Extras. The goal of this project is to provide powerful insights into the PostgreSQL database for Elixir apps that are not using the Heroku PostgreSQL plugin.
 

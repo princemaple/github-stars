@@ -1,6 +1,6 @@
 ---
 project: InvokeAI
-stars: 27710
+stars: 27785
 description: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.
 url: https://github.com/invoke-ai/InvokeAI
 ---
@@ -68,6 +68,7 @@ Invoke features an organized gallery system for easily storing, accessing, and r
 -   Flux.1 Krea
 -   Flux Redux
 -   Flux Fill
+-   Flux.2 Dev
 -   Flux.2 Klein 4B
 -   Flux.2 Klein 9B
 -   Z-Image Turbo
@@ -118,6 +119,7 @@ We very much thank the following sponsors:
 ### Power Users ($50/mo)
 
 -   mickr777
+-   Astroburner
 
 Thanks
 ------

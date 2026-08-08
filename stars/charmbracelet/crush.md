@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 27012
+stars: 27192
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -410,16 +410,16 @@ Crush also supports Model Context Protocol (MCP) servers through three transport
 
 # Add a local MCP server that runs a Node.js script.
 mcp add filesystem --command node --args /path/to/mcp-server.js \\
-  --timeout 120 --disabled-tools some-tool-name --env NODE\_ENV production
+  --timeout 10 --disabled-tools some-tool-name --env NODE\_ENV production
 
 # Add a GitHub MCP server that uses an API token.
 mcp add github --type http --url "https://api.githubcopilot.com/mcp/" \\
-  --timeout 120 --header Authorization "Bearer $GH\_PAT" \\
+  --timeout 10 --header Authorization "Bearer $GH\_PAT" \\
   --disabled-tools create\_issue --disabled-tools create\_pull\_request
 
 # Add a streaming MCP server that uses SSE.
 mcp add streaming-service --type sse --url "https://example.com/mcp/sse" \\
-  --timeout 120 --header API-Key "$API\_KEY"
+  --timeout 10 --header API-Key "$API\_KEY"
 
 #### MCP OAuth
 

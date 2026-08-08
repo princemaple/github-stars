@@ -1,6 +1,6 @@
 ---
 project: builder
-stars: 2210
+stars: 2220
 description: Craft beautiful websites effortlessly with an intuitive visual builder and publish them instantly
 url: https://github.com/frappe/builder
 ---
@@ -124,3 +124,4 @@ yarn dev --host
 -   Documentation
 -   Figma Plugin (Beta)
 -   Frappe Script Editor
+-   Translations

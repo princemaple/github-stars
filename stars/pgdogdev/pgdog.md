@@ -1,6 +1,6 @@
 ---
 project: pgdog
-stars: 5366
+stars: 5396
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
@@ -131,7 +131,7 @@ Health checks maximize database availability and protect against bad network con
 
 📘 **Single endpoint**
 
-PgDog uses `pg_query`, which includes the PostgreSQL native parser. By parsing queries, PgDog can detect writes (e.g. `INSERT`, `UPDATE`, `CREATE TABLE`, etc.) and send them to the primary, leaving the replicas to serve reads (`SELECT`). This allows applications to connect to the same PgDog deployment for both reads and writes.
+PgDog uses `pg_raw_parse`, which includes the PostgreSQL native parser. By parsing queries, PgDog can detect writes (e.g. `INSERT`, `UPDATE`, `CREATE TABLE`, etc.) and send them to the primary, leaving the replicas to serve reads (`SELECT`). This allows applications to connect to the same PgDog deployment for both reads and writes.
 
 ##### Transactions
 
@@ -549,7 +549,12 @@ Cutover can be done atomically with multiple PgDog containers because `RELOAD` d
 
 📘 **Metrics**
 
-PgDog exposes both the standard PgBouncer-style admin database, an OpenMetrics endpoint and can push metrics to an OTEL endpoint. The admin database isn't 100% compatible, so we recommend you use either OpenMetrics or OTEL ingestion for monitoring. Example Datadog configuration and dashboard are included.
+PgDog exposes both the standard PgBouncer-style admin database, an OpenMetrics endpoint and can push metrics to an OTEL endpoint. The admin database isn't 100% compatible, so we recommend you use either OpenMetrics or OTEL ingestion for monitoring.
+
+We include two examples:
+
+-   Datadog configuration and dashboard
+-   Graphana + Prometheus configuration and dashboard
 
 Running PgDog locally
 ---------------------

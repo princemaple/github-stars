@@ -110,7 +110,11 @@ Ng Icon Version
 
 21.x.x
 
-33.x.x
+33.x.x - 34.x.x
+
+22.x.x
+
+35.x.x
 
 > **Note**: Ng Icons relies on modern browser features and is designed to work on evergreen browsers. We do not support older browsers such as IE11.
 

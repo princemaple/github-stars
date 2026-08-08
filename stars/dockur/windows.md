@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 52706
+stars: 52793
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -71,8 +71,8 @@ Requirements ⚙️
 
 -   Docker or Podman on a Linux host with KVM support.
 -   Docker Desktop or Podman (Desktop) on Windows 11 with nested virtualization enabled.
--   At least 4 GB of available RAM.
--   At least 64 GB of free disk space.
+-   At least 2 GB of available RAM.
+-   At least 32 GB of free disk space.
 
 Note
 
@@ -375,15 +375,6 @@ volumes:
   - ./example:/oem
 
 The example folder `./example` will be copied to `C:\OEM` and the `install.bat` file inside it will be executed during the final step of the automatic installation.
-
-### How do I perform a manual installation?
-
-It's recommended to stick to the automatic installation, as it adjusts various settings to prevent common issues when running Windows inside a virtual environment.
-
-However, if you insist on performing the installation manually (at your own risk), add the following environment variable to your compose file:
-
-environment:
-  MANUAL: "Y"
 
 ### How do I assign an individual IP address to the container?
 

@@ -1,6 +1,6 @@
 ---
 project: stack-on-a-budget
-stars: 12357
+stars: 12384
 description: A collection of services with great free tiers for developers on a budget. Sponsored by Mockoon, the best mock API tool. https://mockoon.com
 url: https://github.com/255kb/stack-on-a-budget
 ---
@@ -139,11 +139,12 @@ Table of Contents
 -   **Emailing**
     -   Elastic Email
     -   Emaillabs
+    -   Mailazy
+    -   Mailtrap
     -   Parsio Email Parser
     -   Postmark
     -   SendGrid
     -   SparkPost
-    -   Mailazy
 -   **Error Reporting**
     -   Bugsnag
     -   LogRocket
@@ -176,7 +177,6 @@ Table of Contents
     -   Geocodio
     -   ipapi.is
     -   Let's Encrypt
-    -   Mailtrap
     -   ostr.io
     -   QRMint
     -   Svix

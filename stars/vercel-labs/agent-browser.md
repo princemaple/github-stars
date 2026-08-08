@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 39715
+stars: 40206
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---

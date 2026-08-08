@@ -1,6 +1,6 @@
 ---
 project: hls.js
-stars: 16855
+stars: 16868
 description: HLS.js is a JavaScript library that plays HLS in browsers with support for MSE.
 url: https://github.com/video-dev/hls.js
 ---

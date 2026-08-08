@@ -1,6 +1,6 @@
 ---
 project: pytorch
-stars: 102112
+stars: 102283
 description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
 url: https://github.com/pytorch/pytorch
 ---
@@ -363,7 +363,7 @@ Please note that PyTorch uses shared memory to share data between processes, so 
 
 **NOTE:** Must be built with a Docker version >= 23.0
 
-The Dockerfile is supplied to build images with CUDA 12.1 support and cuDNN v9. You can pass `PYTHON_VERSION=x.y` make variable to specify which Python version is to be used by Miniconda, or leave it unset to use the default, as the Dockerfile uses system Python.
+The Dockerfile is supplied to build images with CUDA 12.6 support and cuDNN v9. You can pass `PYTHON_VERSION=x.y` make variable to specify which Python version is to be used by Miniconda, or leave it unset to use the default, as the Dockerfile uses system Python.
 
 make -f docker.Makefile
 # images are tagged as docker.io/${your\_docker\_username}/pytorch

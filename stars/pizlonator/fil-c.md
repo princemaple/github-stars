@@ -1,11 +1,11 @@
 ---
 project: fil-c
-stars: 3738
+stars: 3771
 description: Fil-C: completely compatible memory safety for C and C++
 url: https://github.com/pizlonator/fil-c
 ---
 
-Fil-C 0.681
+Fil-C 0.682
 ===========
 
 Fil-C is a fanatically compatible memory-safe implementation of C and C++. Lots of software compiles and runs with Fil-C with zero or minimal changes. All memory safety errors are caught as Fil-C panics. Fil-C achieves this using a combination of concurrent garbage collection and invisible capabilities (each pointer in memory has a corresponding capability, not visible to the C address space). Every fundamental C operation (as seen in LLVM IR) is checked against the capability. Fil-C has no `unsafe` statement and only limited FFI to unsafe code.
@@ -14,7 +14,7 @@ Fil-C is special because:
 
 -   Fil-C achieves full safety with no escape hatches. There is no `unsafe` keyword in Fil-C that could be used to turn off protections. Linking to unsafe code is severely restricted.
     
--   Fil-C's capability-based approach achieves a similar level of safety to hardware capabilities like CHERI, except that it runs on stock hardware (X86\_64, currently).
+-   Fil-C's capability-based approach achieves a similar level of safety to hardware capabilities like CHERI, except that it runs on stock hardware (X86\_64 or ARM64 with 4K page size, currently).
     
 -   Fil-C is engineered to prevent memory safety bugs from being used for exploitation rather than just simply flagging them often enough to find bugs. This makes Fil-C different from AddressSanitizer, HWAsan, or MTE, which can all be bypassed by attackers. The key difference that makes this possible is that Fil-C is capability based (so each pointer knows what range of memory it may access, and how it may access it) rather than tag based (where pointer accesses are allowed if they hit valid memory).
     
@@ -31,9 +31,9 @@ You can fetch the source for the compiler, runtime, libc++/libc++abi, libc (musl
 Requirements
 ------------
 
-Fil-C only works on Linux/X86\_64.
+Fil-C only works on Linux/X86\_64 or Linux/ARM64 with 4K page size.
 
-Previous versions worked on Darwin/ARM64 and FreeBSD, but now I'm focusing just on Linux/X86\_64 because it allows me to do a more faithful job of implementing libc. There's nothing fundamentally stopping Fil-C from working on ARM or OSes other than Linux.
+Previous versions worked on Darwin/ARM64 and FreeBSD, but now I'm focusing just on Linux because it allows me to do a more faithful job of implementing libc. There's nothing fundamentally stopping Fil-C from working on other architectures or OSes other than Linux.
 
 Getting Started
 ---------------
@@ -46,9 +46,9 @@ If you downloaded Fil-C binaries, run:
 
 This has a different effect depending on which binary distribution you selected:
 
--   In case of the classic musl-based distribution (`filc-0.681-linux-x86_64.tar.xz`), this sets up Fil-C to run in the current directory.
+-   In case of the classic musl-based distribution (`filc-0.682-linux-x86_64.tar.xz` or `filc-0.682-linux-aarch64.tar.xz`), this sets up Fil-C to run in the current directory.
     
--   In case of the /opt/fil glibc-based distribution (`optfil-0.681-linux-x86_64.tar.xz`), this sets up Fil-C in `/opt/fil`.
+-   In case of the /opt/fil glibc-based distribution (`optfil-0.682-linux-x86_64.tar.xz`), this sets up Fil-C in `/opt/fil`.
     
 
 If you downloaded Fil-C source, run:

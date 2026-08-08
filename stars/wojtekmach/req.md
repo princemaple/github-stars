@@ -13,7 +13,7 @@ Req is a batteries-included HTTP client for Elixir.
 With just a couple lines of code:
 
 Mix.install(\[
-  {:req, "~> 0.5.0"}
+  {:req, "~> 0.7.0"}
 \])
 
 Req.get!("https://api.github.com/repos/wojtekmach/req").body\["description"\]
@@ -83,20 +83,20 @@ If you want to use Req in a Mix project, you can add the above dependency to you
 
 Here's an example POST with JSON data:
 
-iex\> Req.post!("https://httpbin.org/post", json: %{x: 1, y: 2}).body\["json"\]
+iex\> Req.post!("https://httpbingo.org/post", json: %{x: 1, y: 2}).body\["json"\]
 %{"x" \=> 1, "y" \=> 2}
 
 You can stream request body:
 
 iex\> stream \= Stream.duplicate("foo", 3)
-iex\> Req.post!("https://httpbin.org/post", body: stream).body\["data"\]
+iex\> Req.post!("https://httpbingo.org/post", body: stream, headers: \[content\_type: "text/plain"\]).body\["data"\]
 "foofoofoo"
 
 and stream the response body:
 
-iex\> resp \= Req.get!("http://httpbin.org/stream/2", into: IO.stream())
-\# output: {"url": "http://httpbin.org/stream/2", ...}
-\# output: {"url": "http://httpbin.org/stream/2", ...}
+iex\> resp \= Req.get!("http://httpbingo.org/stream/2", into: IO.stream())
+\# output: {"url": "http://httpbingo.org/stream/2", ...}
+\# output: {"url": "http://httpbingo.org/stream/2", ...}
 iex\> resp.status
 200
 iex\> resp.body

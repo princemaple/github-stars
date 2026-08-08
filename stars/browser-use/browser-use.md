@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 107513
+stars: 108349
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -110,6 +110,11 @@ Browser Use is also **#1 on the Odysseys leaderboard** with an 87.4% average, ah
 -   1000+ integrations (Gmail, Slack, Notion, and more)
 -   Persistent filesystem and memory
 
+curl -X POST https://api.browser-use.com/api/v4/runs \\
+  -H "X-Browser-Use-API-Key: $BROWSER\_USE\_API\_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"task": "Your task"}'
+
   
 
 Integrations, hosting, custom tools, MCP, and more on our Docs ↗
@@ -194,7 +199,7 @@ Check out our authentication examples:
 
 -   Using real browser profiles - Reuse your existing Chrome profile with saved logins
 -   If you want to use temporary accounts with inbox, choose AgentMail
--   To sync your auth profile with the remote browser, run `curl -fsSL https://browser-use.com/profile.sh | BROWSER_USE_API_KEY=XXXX sh` (replace XXXX with your API key)
+-   To sync your auth profile with a remote browser, install `profile-use` for your platform from the official releases, then follow the profile sync guide.
 
 These examples show how to maintain sessions and handle authentication seamlessly.
 

@@ -1,6 +1,6 @@
 ---
 project: ferron
-stars: 2104
+stars: 2109
 description: A fast, modern, and easily configurable web server with automatic TLS.
 url: https://github.com/ferronweb/ferron
 ---

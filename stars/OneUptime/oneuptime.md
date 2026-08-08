@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 7395
+stars: 7435
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -84,7 +84,7 @@ Traces, logs, and metrics are correlated down to the exact span: a slow `SELECT 
 
 ### 5 · Auto-Fix — _the fix, drafted for you_
 
-The AI agent opens a pull request with the fix, linked to the incident, with tests green — you review and merge. Like an SRE that never sleeps.
+The AI agent opens a pull request with the fix, linked to the incident, verified against your repository's configured build and test commands before it opens — you review and merge. Like an SRE that never sleeps.
 
 * * *
 

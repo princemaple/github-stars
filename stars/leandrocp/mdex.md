@@ -1,6 +1,6 @@
 ---
 project: mdex
-stars: 440
+stars: 441
 description: Markdown for Elixir. Fast, Extensible, Phoenix-native. AI-ready. Built on top of comrak, ammonia, and lumis.
 url: https://github.com/leandrocp/mdex
 ---
@@ -49,6 +49,7 @@ Plugins
 -   mdex\_video\_embed - Privacy-respecting video embeds from code blocks
 -   mdex\_custom\_heading\_id - Custom heading IDs for markdown headings
 -   mdex\_mermex - Render Mermaid diagrams server-side using Mermex (Rust NIF)
+-   mdex\_multiline\_cells - Multi-line cells in Markdown tables with inline/block Markdown rendering
 
 Installation
 ------------

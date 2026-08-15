@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 197
+stars: 200
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---
@@ -10,7 +10,7 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL (& Extension) Package Manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 14 ~ 18 along with 562 packaged extensions on (`amd64` / `arm64`) with native OS package manager.
+Install PostgreSQL 14 ~ 18 along with 575 packaged extensions on (`amd64` / `arm64`) with native OS package manager.
 
 All commands support structured output (`-o yaml/json`) with self-describing schema, making it an **Agent-Friendly** PostgreSQL CLI tool. Also explore the full **PGEXT.CLOUD directory** of 2,230 catalogued PostgreSQL extensions.
 
@@ -19,7 +19,7 @@ All commands support structured output (`-o yaml/json`) with self-describing sch
 Get Started
 -----------
 
-**Install** the `pig` package first, (you can also use the `apt` / `yum` or just copy the binary)
+**Install** the `pig` package first, (you can also use `apt` / `dnf` or just copy the binary)
 
 curl -fsSL https://repo.pigsty.io/pig | bash
 
@@ -29,7 +29,7 @@ $ pig repo add pigsty pgdg -u       # add pgdg & pigsty repo, then update repo c
 $ pig ext install pg18              # install PostgreSQL 18 kernels with native PGDG packages
 $ pig ext install pg\_duckdb -v 18   # install the pg\_duckdb extension (for current pg18)
 
-That's it. All set! Check the advanced usage for details and the full list of 562 packaged extensions.
+That's it. All set! Check the advanced usage for details and the full list of 575 packaged extensions.
 
 * * *
 
@@ -60,7 +60,7 @@ enabled = 1
 gpgcheck = 0
 module\_hotfixes=1
 EOF
-sudo yum makecache; sudo yum install -y pig
+sudo dnf makecache; sudo dnf install -y pig
 
 > For mainland China users: consider replacing `repo.pigsty.io` with `repo.pigsty.cc`.
 
@@ -298,7 +298,7 @@ vagrant@meta:~$ pig ext avail
 ✓ Found 402 packages available on u24.arm64
 
 Extension Availability on u24.aarch64 : https://pigsty.io/ext/os/u24.aarch64
-Showing 405 packages with 562 extensions  (green = PIGSTY, blue = PGDG)
+Showing 405 packages with 575 extensions  (green = PIGSTY, blue = PGDG)
 
 Pkg                     18          17          16          15          14      
 timescaledb             2.26.4      2.26.4      2.26.4      2.26.4      2.26.4
@@ -443,11 +443,11 @@ repo\_upstream:  # Available Repo: 23
   - { name: security       ,description: 'Ubuntu Security'    ,module: node     ,releases: \[22,24,26\]          ,arch: \[aarch64\]         ,baseurl: 'http://ports.ubuntu.com/ubuntu-ports/ ${distro\_codename}-security    main restricted universe multiverse' }
   - { name: pgdg           ,description: 'PGDG'               ,module: pgsql    ,releases: \[11,12,13,22,24,26\] ,arch: \[x86\_64, aarch64\] ,baseurl: 'http://apt.postgresql.org/pub/repos/apt/ ${distro\_codename}-pgdg main' }
   - { name: pgdg-beta      ,description: 'PGDG Beta'          ,module: beta     ,releases: \[11,12,13,22,24,26\] ,arch: \[x86\_64, aarch64\] ,baseurl: 'http://apt.postgresql.org/pub/repos/apt/ ${distro\_codename}-pgdg-testing main 19' }
-  - { name: timescaledb    ,description: 'TimescaleDB'        ,module: extra    ,releases: \[11,12,13,22,24\]    ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://packagecloud.io/timescale/timescaledb/${distro\_name}/ ${distro\_codename} main' }
-  - { name: percona        ,description: 'Percona TDE'        ,module: percona  ,releases: \[12,13,22,24\]       ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://repo.pigsty.io/apt/percona ${distro\_codename} main' }
+  - { name: timescaledb    ,description: 'TimescaleDB'        ,module: extra    ,releases: \[11,12,13,22,24,26\] ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://packagecloud.io/timescale/timescaledb/${distro\_name}/ ${distro\_codename} main' }
+  - { name: percona        ,description: 'Percona TDE'        ,module: percona  ,releases: \[12,13,22,24,26\]    ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://repo.percona.com/ppg-18.4/apt ${distro\_codename} main' }
   - { name: groonga        ,description: 'Groonga Ubuntu'     ,module: groonga  ,releases: \[22,24\]             ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://ppa.launchpadcontent.net/groonga/ppa/ubuntu/ ${distro\_codename} main' }
   - { name: mongo          ,description: 'MongoDB'            ,module: mongo    ,releases: \[12,22,24\]          ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://repo.mongodb.org/apt/${distro\_name} ${distro\_codename}/mongodb-org/8.0 multiverse' }
-  - { name: redis          ,description: 'Redis'              ,module: redis    ,releases: \[11,12,22,24\]       ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://packages.redis.io/deb ${distro\_codename} main' }
+  - { name: redis          ,description: 'Redis'              ,module: redis    ,releases: \[11,12,22,24,26\]    ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://packages.redis.io/deb ${distro\_codename} main' }
   - { name: llvm           ,description: 'LLVM'               ,module: llvm     ,releases: \[11,12,13,22,24,26\] ,arch: \[x86\_64, aarch64\] ,baseurl: 'http://apt.llvm.org/${distro\_codename}/ llvm-toolchain-${distro\_codename} main' }
   - { name: haproxyu       ,description: 'Haproxy Ubuntu'     ,module: haproxy  ,releases: \[24,26\]             ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://ppa.launchpadcontent.net/vbernat/haproxy-3.2/ubuntu/ ${distro\_codename} main' }
   - { name: grafana        ,description: 'Grafana'            ,module: grafana  ,releases: \[11,12,13,22,24,26\] ,arch: \[x86\_64, aarch64\] ,baseurl: 'https://apt.grafana.com stable main' }

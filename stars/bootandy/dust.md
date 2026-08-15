@@ -1,6 +1,6 @@
 ---
 project: dust
-stars: 12100
+stars: 12123
 description: A more intuitive version of du in rust
 url: https://github.com/bootandy/dust
 ---
@@ -50,11 +50,19 @@ curl -sSfL https://raw.githubusercontent.com/bootandy/dust/refs/heads/master/ins
 
 -   `brew install dust`
 
+#### DNF (Fedora Linux)
+
+-   `sudo dnf install du-dust`
+
 #### Snap Ubuntu and supported systems
 
 -   `snap install dust`
 
 Note: `dust` installed through `snap` can only access files stored in the `/home` directory. See danie-dejager/dust-snap#2 for more information.
+
+#### mise
+
+-   `mise use -g dust`
 
 #### Pacstall (Debian/Ubuntu)
 
@@ -117,6 +125,7 @@ Usage: dust -B (--bars-on-right - Percent bars moved to right side of screen)
 Usage: dust -i (Do not show hidden files)
 Usage: dust -c (No colors [monochrome])
 Usage: dust -C (Force colors)
+Usage: dust --dim (Dim the percent bars to reduce brightness on dark terminals)
 Usage: dust -f (Count files instead of diskspace [Counts by inode, to include duplicate inodes use dust -f -s])
 Usage: dust -t (Group by filetype)
 Usage: dust -z 10M (min-size, Only include files larger than 10M)
@@ -137,12 +146,15 @@ Usage: dust --collapse=node-modules will keep the node-modules folder collapsed 
 Config file
 -----------
 
-Dust has a config file where the above options can be set. Either: `~/.config/dust/config.toml` or `~/.dust.toml`
+Dust has a config file where the above options can be set. Either: `$XDG_CONFIG_HOME/dust/config.toml` (falling back to `~/.config/dust/config.toml`) or `~/.dust.toml`
 
 ```
 $ cat ~/.config/dust/config.toml
 reverse=true
+limit-filesystem=true
 ```
+
+Keys use the long flag name in kebab-case. See config/config.toml for a fuller sample.
 
 Alternatives
 ------------

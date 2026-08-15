@@ -1,6 +1,6 @@
 ---
 project: uppy
-stars: 30914
+stars: 30921
 description: The next open source file uploader for web browsers :dog: 
 url: https://github.com/transloadit/uppy
 ---
@@ -63,7 +63,7 @@ Features
 -   Lightweight, modular plugin-based architecture, light on dependencies ⚡
 -   Resumable file uploads via the open tus standard, so large uploads survive network hiccups
 -   Supports picking files from: Webcam, Dropbox, Box, Google Drive, bypassing the user’s device where possible, syncing between servers directly via @uppy/companion
--   Works great with file encoding and processing backends, such as Transloadit, works great without (all you need is to roll your own Apache/Nginx/Node/FFmpeg/etc backend)
+-   Works great with file encoding and processing backends, such as Transloadit, which handles encoding, conversion and delivery for you; works great without one too, if you would rather run and scale your own Apache/Nginx/Node/FFmpeg pipeline
 -   Sleek user interface ✨
 -   Optional file recovery (after a browser crash) with Golden Retriever
 -   Speaks several languages (i18n) 🌍

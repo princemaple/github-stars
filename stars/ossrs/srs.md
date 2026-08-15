@@ -1,14 +1,14 @@
 ---
 project: srs
-stars: 29111
-description: SRS is a simple, high-efficiency, real-time media server supporting RTMP, WebRTC, HLS, HTTP-FLV, HTTP-TS, SRT, MPEG-DASH, and GB28181, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711.
+stars: 29141
+description: SRS is a simple, high-performance, AI-driven real-time media server supporting RTMP, WebRTC, HLS, HTTP-FLV, HTTP-TS, SRT, MPEG-DASH, and GB28181, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711.
 url: https://github.com/ossrs/srs
 ---
 
 SRS(Simple Realtime Server)
 ===========================
 
-SRS/8.0 (Free) is a simple, high-efficiency, and real-time video server, supporting RTMP/WebRTC/HLS/HTTP-FLV/SRT/MPEG-DASH/GB28181, Linux/macOS, X86\_64/ARMv7/AARCH64/M1/RISCV/LOONGARCH/MIPS, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711, and essential features.
+SRS/8.0 (Free) is a simple, high-performance, AI-driven real-time media server. It supports RTMP, WebRTC, HLS, HTTP-FLV, SRT, MPEG-DASH, and GB28181 on Linux and macOS across x86\_64, ARMv7, AArch64, Apple M1, RISC-V, LoongArch, and MIPS architectures. Supported codecs include H.264, H.265, AV1, VP9, AAC, Opus, and G.711. See the complete list of features.
 
 > Note: For more details on the single-node architecture for SRS, please visit the following link.
 
@@ -43,6 +43,9 @@ Play the following streams using media players:
 If you'd like to use WebRTC, convert RTMP to WebRTC, or convert WebRTC to RTMP, please check out the wiki documentation in either English or Chinese.
 
 To learn more about RTMP, HLS, HTTP-FLV, SRT, MPEG-DASH, WebRTC protocols, clustering, HTTP API, DVR, and transcoding, please check the documents in English or Chinese.
+
+AI Agent
+--------
 
 I recommend to use AI to understand and maintain your SRS, please follow the wiki AI Agent for details.
 
@@ -81,6 +84,8 @@ SRS is licenced under MIT, and some third-party libraries are distributed under 
 Releases
 --------
 
+-   2026-08-12, Release v7.0-d0, v7.0-d0, 7.0 dev0, v7.0.157, 313784 lines.
+-   2026-08-12, Release v6.0-r1, v6.0-r1, 6.0 release1, v6.0.191, 171396 lines.
 -   2025-12-03, Release v6.0-r0, v6.0-r0, 6.0 release0, v6.0.184, 170962 lines.
 -   2025-11-03, Release v6.0-b3, v6.0-b3, 6.0 beta3, v6.0.183, 170957 lines.
 -   2025-10-16, Release v6.0-b2, v6.0-b2, 6.0 beta2, v6.0.181, 170948 lines.

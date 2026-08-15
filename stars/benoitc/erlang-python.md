@@ -680,6 +680,7 @@ Documentation
 -   Threading
 -   Logging and Tracing
 -   Asyncio Event Loop - Erlang-native asyncio with TCP/UDP support
+-   Worker Loops - Long-lived loops in owngil contexts, serving on sockets Erlang owns
 -   Reactor - FD-based protocol handling
 -   Security - Sandbox and blocked operations
 -   Changelog

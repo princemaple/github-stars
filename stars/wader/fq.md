@@ -1,26 +1,24 @@
 ---
 project: fq
-stars: 10553
-description: jq for binary formats - tool, language and decoders for working with binary and text formats
+stars: 10557
+description: fq - jq for binary formats. Tool, language and decoders for working with binary formats.
 url: https://github.com/wader/fq
 ---
 
 fq
 ==
 
-Tool, language and decoders for working with binary data.
-
-TLDR: it aims to be jq, hexdump, dd and gdb for files combined into one.
+Tool, language and decoders for working with binary formats.
 
 Basic usage is `fq . file`, `fq d file` or `fq 'some query' file ...`.
 
-For details see usage.md.
+For details see the manual, also available as `man fq` and as AsciiDoc.
 
 ### Background
 
-fq is inspired by the jq tool and language and allows you to work with binary formats in the same way. In addition to using jq expressions it can also present decoded tree structures, transform, slice and concatenate binary data. It also supports nested formats and features an interactive REPL with auto-completion of functions and names.
+fq is a tool, language, and decoders for working with binary formats and data. In most cases it behaves and feels similar to jq and it also uses the same expression language. To get the most out of fq it's recommended to learn more about jq.
 
-It was originally designed to query, inspect and debug media codecs and containers like MP4, FLAC and JPEG but has since been extended to support a variety of formats like executables, packet captures (with TCP reassembly) and serialization formats like JSON, YAML, XML, CBOR, protobuf. In addition it also has functions to work with URLs, convert to/from hex, number bases, search for patterns etc.
+It features a structural hex viewer, nested format decoding, slicing and concatenating binary data, bit-level decoding and an interactive REPL with auto-completion.
 
 ### Goals
 
@@ -40,7 +38,7 @@ aac\_frame, adts, adts\_frame, aiff, amf0, apev2, apple\_bookmark, ar, asn1\_ber
 
 It can also work with some common text formats like URLs, hex, base64, PEM etc and for some serialization formats like XML, YAML, etc. it can transform both from and to jq values.
 
-For details see formats.md and usage.md.
+For details see the manual.
 
 Presentations and media
 -----------------------

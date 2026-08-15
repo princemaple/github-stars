@@ -1,6 +1,6 @@
 ---
 project: posthog
-stars: 37563
+stars: 37699
 description: :hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.
 url: https://github.com/PostHog/posthog
 ---
@@ -116,7 +116,7 @@ We <3 contributions big and small:
 
 -   Vote on features or get early access to beta functionality in our roadmap
 -   Open a PR (see our instructions on developing PostHog locally)
--   Submit a feature request or bug report
+-   Submit a feature request on our roadmap or a bug report
 
 For an overview of the codebase structure, see monorepo layout and products.
 

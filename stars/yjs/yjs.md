@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 22322
+stars: 22354
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---

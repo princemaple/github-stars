@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 73919
+stars: 74129
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -78,7 +78,7 @@ Table of Contents
     -   Download from Modelers Hub
     -   Use W&B Logger
     -   Use SwanLab Logger
--   Projects using LLaMA Factory
+-   Projects using LlamaFactory
 -   License
 -   Citation
 -   Acknowledgement
@@ -114,23 +114,23 @@ Blogs
 
 Tip
 
-Now we have a dedicated blog for LLaMA Factory!
+Now we have a dedicated blog for LlamaFactory!
 
 Website: https://blog.llamafactory.net/en/
 
--   💡 KTransformers Fine-Tuning × LLaMA Factory: Fine-tuning 1000 Billion models with 2 4090-GPU + CPU (English)
--   💡 Easy Dataset × LLaMA Factory: Enabling LLMs to Efficiently Learn Domain Knowledge (English)
--   💡 DataFlow × LLaMA Factory: Producing High-Quality Data for LLM Training with a Data Preparation Pipeline (English) | 中文
--   💡 DataFlex × LLaMA Factory: A Data-Centric Dynamic Training System Built on LLaMA-Factory (English) | 中文
--   A One-Stop Code-Free Model Reinforcement Learning and Deployment Platform based on LLaMA-Factory and EasyR1 (Chinese)
--   How Apoidea Group enhances visual information extraction from banking documents with multimodal models using LLaMA-Factory on Amazon SageMaker HyperPod (English)
+-   💡 KTransformers Fine-Tuning × LlamaFactory: Fine-tuning 1000 Billion models with 2 4090-GPU + CPU (English)
+-   💡 Easy Dataset × LlamaFactory: Enabling LLMs to Efficiently Learn Domain Knowledge (English)
+-   💡 DataFlow × LlamaFactory: Producing High-Quality Data for LLM Training with a Data Preparation Pipeline (English) | 中文
+-   💡 DataFlex × LlamaFactory: A Data-Centric Dynamic Training System Built on LlamaFactory (English) | 中文
+-   A One-Stop Code-Free Model Reinforcement Learning and Deployment Platform based on LlamaFactory and EasyR1 (Chinese)
+-   How Apoidea Group enhances visual information extraction from banking documents with multimodal models using LlamaFactory on Amazon SageMaker HyperPod (English)
 
 All Blogs
 
--   LLaMA Factory: Fine-tuning the DeepSeek-R1-Distill-Qwen-7B Model for News Classifier (Chinese)
--   A One-Stop Code-Free Model Fine-Tuning & Deployment Platform based on SageMaker and LLaMA-Factory (Chinese)
--   LLaMA Factory Multi-Modal Fine-Tuning Practice: Fine-Tuning Qwen2-VL for Personal Tourist Guide (Chinese)
--   LLaMA Factory: Fine-tuning Llama3 for Role-Playing (Chinese)
+-   LlamaFactory: Fine-tuning the DeepSeek-R1-Distill-Qwen-7B Model for News Classifier (Chinese)
+-   A One-Stop Code-Free Model Fine-Tuning & Deployment Platform based on SageMaker and LlamaFactory (Chinese)
+-   LlamaFactory Multi-Modal Fine-Tuning Practice: Fine-Tuning Qwen2-VL for Personal Tourist Guide (Chinese)
+-   LlamaFactory: Fine-tuning Llama3 for Role-Playing (Chinese)
 
 Changelog
 ---------
@@ -209,7 +209,7 @@ Full Changelog
 
 \[24/04/26\] We supported fine-tuning the **LLaVA-1.5** multimodal LLMs. See examples for usage.
 
-\[24/04/22\] We provided a **Colab notebook** for fine-tuning the Llama-3 model on a free T4 GPU. Two Llama-3-derived models fine-tuned using LLaMA Factory are available at Hugging Face, check Llama3-8B-Chinese-Chat and Llama3-Chinese for details.
+\[24/04/22\] We provided a **Colab notebook** for fine-tuning the Llama-3 model on a free T4 GPU. Two Llama-3-derived models fine-tuned using LlamaFactory are available at Hugging Face, check Llama3-8B-Chinese-Chat and Llama3-Chinese for details.
 
 \[24/04/21\] We supported **Mixture-of-Depths** according to AstraMindAI's implementation. See examples for usage.
 
@@ -233,7 +233,7 @@ Full Changelog
 
 \[24/02/15\] We supported **block expansion** proposed by LLaMA Pro. See examples for usage.
 
-\[24/02/05\] Qwen1.5 (Qwen2 beta version) series models are supported in LLaMA-Factory. Check this blog post for details.
+\[24/02/05\] Qwen1.5 (Qwen2 beta version) series models are supported in LlamaFactory. Check this blog post for details.
 
 \[24/01/18\] We supported **agent tuning** for most models, equipping model with tool using abilities by fine-tuning with `dataset: glaive_toolcall_en`.
 
@@ -271,7 +271,7 @@ Full Changelog
 
 Tip
 
-If you cannot use the latest feature, please pull the latest code and install LLaMA-Factory again.
+If you cannot use the latest feature, please pull the latest code and install LlamaFactory again.
 
 Supported Models
 ----------------
@@ -1119,21 +1119,21 @@ To enable FlashAttention-2 on the Windows platform, please use the script from f
 
 For Ascend NPU users
 
-To install LLaMA Factory on Ascend NPU devices, please upgrade Python to version 3.10 or higher: `pip install -r requirements/npu.txt`. Additionally, you need to install the **Ascend CANN Toolkit and Kernels**. Please follow the installation tutorial.
+To install LlamaFactory on Ascend NPU devices, please use Python 3.12 and install the extra dependencies with `pip install -r requirements/npu.txt`. Additionally, you need to install the **Ascend CANN Toolkit and Kernels**. Please follow the installation tutorial.
 
 You can also download the pre-built Docker images:
 
 # Docker Hub
-docker pull hiyouga/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A2-ubuntu-py3.11
-docker pull hiyouga/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A3-ubuntu-py3.11
-docker pull hiyouga/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A2-openeuler-py3.11
-docker pull hiyouga/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A3-openeuler-py3.11
+docker pull hiyouga/llamafactory:latest-910b-ubuntu
+docker pull hiyouga/llamafactory:latest-a3-ubuntu
+docker pull hiyouga/llamafactory:latest-910b-openeuler
+docker pull hiyouga/llamafactory:latest-a3-openeuler
 
 # quay.io
-docker pull quay.io/ascend/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A2-ubuntu-py3.11
-docker pull quay.io/ascend/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A3-ubuntu-py3.11
-docker pull quay.io/ascend/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A2-openeuler-py3.11
-docker pull quay.io/ascend/llamafactory:latest-cann9.0.0-torch\_npu2.7.1-A3-openeuler-py3.11
+docker pull quay.io/ascend/llamafactory:latest-910b-ubuntu
+docker pull quay.io/ascend/llamafactory:latest-a3-ubuntu
+docker pull quay.io/ascend/llamafactory:latest-910b-openeuler
+docker pull quay.io/ascend/llamafactory:latest-a3-openeuler
 
 #### Install BitsAndBytes
 
@@ -1203,25 +1203,25 @@ cd docker/docker-cuda/
 docker compose up -d
 docker compose exec llamafactory bash
 
-For Ascend NPU users (A2 with Ubuntu by default):
+For Ascend NPU users:
 
 cd docker/docker-npu/
-docker compose up -d llamafactory-a2-ubuntu
-docker compose exec llamafactory-a2-ubuntu bash
 
-Other NPU variants can be started with their corresponding profiles and services:
+# A2 with Ubuntu
+docker compose --profile a2-ubuntu up -d
+docker compose --profile a2-ubuntu exec llamafactory-a2-ubuntu bash
 
 # A3 with Ubuntu
-docker compose --profile a3 up -d llamafactory-a3-ubuntu
-docker compose exec llamafactory-a3-ubuntu bash
+docker compose --profile a3-ubuntu up -d
+docker compose --profile a3-ubuntu exec llamafactory-a3-ubuntu bash
 
 # A2 with openEuler
-docker compose --profile openeuler up -d llamafactory-a2-openeuler
-docker compose exec llamafactory-a2-openeuler bash
+docker compose --profile a2-openeuler up -d
+docker compose --profile a2-openeuler exec llamafactory-a2-openeuler bash
 
 # A3 with openEuler
-docker compose --profile a3-openeuler up -d llamafactory-a3-openeuler
-docker compose exec llamafactory-a3-openeuler bash
+docker compose --profile a3-openeuler up -d
+docker compose --profile a3-openeuler exec llamafactory-a3-openeuler bash
 
 For AMD ROCm users:
 
@@ -1341,8 +1341,8 @@ When launching training tasks, you can log in to SwanLab in three ways:
 2.  Set the environment variable `SWANLAB_API_KEY` to your API key.
 3.  Use the `swanlab login` command to complete the login.
 
-Projects using LLaMA Factory
-----------------------------
+Projects using LlamaFactory
+---------------------------
 
 If you have a project that should be incorporated, please contact via email or create a pull request.
 
@@ -1440,7 +1440,7 @@ Click to show
 90.  **Chinese-LLaVA-Med**: A multimodal large language model specialized in Chinese medical domain, based on LLaVA-1.5-7B.
 91.  **AutoRE**: A document-level relation extraction system based on large language models.
 92.  **NVIDIA RTX AI Toolkit**: SDKs for fine-tuning LLMs on Windows PC for NVIDIA RTX.
-93.  **LazyLLM**: An easy and lazy way for building multi-agent LLMs applications and supports model fine-tuning via LLaMA Factory.
+93.  **LazyLLM**: An easy and lazy way for building multi-agent LLMs applications and supports model fine-tuning via LlamaFactory.
 94.  **RAG-Retrieval**: A full pipeline for RAG retrieval model fine-tuning, inference, and distillation. \[blog\]
 95.  **360-LLaMA-Factory**: A modified library that supports long sequence SFT & DPO using ring attention.
 96.  **Sky-T1**: An o1-like model fine-tuned by NovaSky AI with very small cost.

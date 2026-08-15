@@ -1,6 +1,6 @@
 ---
 project: sonic
-stars: 21299
+stars: 21313
 description: 🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM.
 url: https://github.com/valeriansaliou/sonic
 ---
@@ -14,7 +14,7 @@ Sonic can be used as a simple alternative to super-heavy and full-featured searc
 
 A strong attention to performance and code cleanliness has been given when designing Sonic. It aims at being crash-free, super-fast and puts minimum strain on server resources (our measurements have shown that Sonic - when under load - responds to search queries in the μs range, eats ~30MB RAM and has a low CPU footprint; see our benchmarks).
 
-_Tested at Rust version: `rustc 1.95.0 (59807616e 2026-04-14)`_
+_Tested at Rust version: `rustc 1.96.1 (31fca3adb 2026-06-26)`_
 
 **🇫🇷 Crafted in Nantes, France.**
 
@@ -164,17 +164,21 @@ Sonic distributes official Sonic integration libraries for your programming lang
 
 -   **NodeJS**:
     -   **node-sonic-channel** by @valeriansaliou
+        -   Battle tested by Crisp
+-   **Rust**:
+    -   **sonic\_client** by @RemiBardon
+        -   Modern and flexible implementation, maintained alongside Sonic
 -   **PHP**:
     -   **psonic** by @ppshobi
--   **Rust**:
-    -   **sonic-channel** by @pleshevskiy
 
 #### 2️⃣ Community Libraries
 
 You can find below a list of Sonic integrations provided by the community (many thanks to them!):
 
 -   **Rust**:
+    -   **sonic-channel** by @pleshevskiy
     -   **sonic\_client** by @FrontMage
+        -   Replaced by **sonic\_client** by @RemiBardon, many thanks again for the ownership transfer!
 -   **Python**:
     -   **asonic** by @moshe
     -   **python-sonic-client** by @xmonader

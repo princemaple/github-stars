@@ -1,6 +1,6 @@
 ---
 project: nimble_parsec
-stars: 877
+stars: 878
 description: A simple and fast library for text-based parser combinators
 url: https://github.com/dashbitco/nimble_parsec
 ---
@@ -55,13 +55,13 @@ If you add `debug: true` to `defparsec/3`, it will print the generated clauses, 
 defp datetime\_\_0(<<x0, x1, x2, x3, "-", x4, x5, "-", x6, x7, "T",
                    x8, x9, ":", x10, x11, ":", x12, x13, rest::binary\>>,
                  acc, stack, comb\_\_context, comb\_\_line, comb\_\_column)
-     when x0 \>= 48 and x0 <= 57 and (x1 \>= 48 and x1 <= 57) and
-         (x2 \>= 48 and x2 <= 57) and (x3 \>= 48 and x3 <= 57) and
-         (x4 \>= 48 and x4 <= 57) and (x5 \>= 48 and x5 <= 57) and
-         (x6 \>= 48 and x6 <= 57) and (x7 \>= 48 and x7 <= 57) and
-         (x8 \>= 48 and x8 <= 57) and (x9 \>= 48 and x9 <= 57) and
-         (x10 \>= 48 and x10 <= 57) and (x11 \>= 48 and x11 <= 57) and
-         (x12 \>= 48 and x12 <= 57) and (x13 \>= 48 and x13 <= 57) do
+     when x0 \>= ?0 and x0 <= ?9 and (x1 \>= ?0 and x1 <= ?9) and
+         (x2 \>= ?0 and x2 <= ?9) and (x3 \>= ?0 and x3 <= ?9) and
+         (x4 \>= ?0 and x4 <= ?9) and (x5 \>= ?0 and x5 <= ?9) and
+         (x6 \>= ?0 and x6 <= ?9) and (x7 \>= ?0 and x7 <= ?9) and
+         (x8 \>= ?0 and x8 <= ?9) and (x9 \>= ?0 and x9 <= ?9) and
+         (x10 \>= ?0 and x10 <= ?9) and (x11 \>= ?0 and x11 <= ?9) and
+         (x12 \>= ?0 and x12 <= ?9) and (x13 \>= ?0 and x13 <= ?9) do
   datetime\_\_1(
     rest,
     \[(x13 \- 48) \* 1 + (x12 \- 48) \* 10, (x11 \- 48) \* 1 + (x10 \- 48) \* 10,

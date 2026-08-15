@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 36259
+stars: 36791
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -26,17 +26,10 @@ Sponsors
 **IPcook** provides reliable residential proxies for online research, username discovery, and public data collection workflows. High success rates • 99.99% uptime • Response time under 0.5s • Monthly & Pay-as-you-go • Non-expiring traffic • Up to 10 free sub-accounts for team collaboration • Residential proxies from $0.3–$3.2/GB.  
 **Special Offer**: FREE 100MB trial available. Use code WELCOME20 for 20% off.
 
-**711Proxy** provides reliable residential proxies for web scraping, username lookups, and public data collection. Over **100M** residential IPs across **200+** countries • High Success Rates • Fast & Reliable Connections.  
-**Special Offer**: Free trial available! Rotating residential proxies from just **$0.55/GB**. Unlimited residential proxies from **$15/hour** with no concurrency limits.
-
-  
-
-**9Proxy** provides residential proxies from just **$0.018/IP or $0.68/GB**. 20M+ IPs across 90+ countries. Sticky or rotating sessions, managed from desktop or mobile app.
-
   
 
 **RapidProxy** provides high-performance residential proxies for Twitter scraping, Selenium automation, and web data extraction. 90M+ IPs • Smart rotation • Anti-block • Non-expiring traffic.  
-**Special Offer**: Try it free — Plans from $0.65/GB. Use code **RAPID10** for 10% off.
+**Special Offer**: Try it free — Plans from $0.65/GB. Use code **RAPID10** for 10% off.
 
 Contents
 --------
@@ -173,10 +166,10 @@ Usage
 
 ### Examples
 
-# make HTML, PDF, and Xmind8 reports
+# make HTML, PDF, and XMind reports
 maigret user --html
 maigret user --pdf
-maigret user --xmind #Output not compatible with xmind 2022+
+maigret user --xmind # legacy XML with a manifest for XMind 2022+ readers
 
 # machine-readable exports
 maigret user --json ndjson   # newline-delimited JSON (also: --json simple)
@@ -208,6 +201,10 @@ Run `maigret --help` for all options. Docs: CLI options, more examples. Running 
 ### Web interface
 
 Maigret has a built-in web UI with a results graph and downloadable reports.
+
+Don't want to run it yourself? Deploy the published `soxoj/maigret:web` Docker image as a hosted app in one click:
+
+Runs on Render's free tier (spins down after 15 min idle, spins back up on the next request). No login is set up on the instance, so anyone with the URL can use it.
 
 Web Interface Screenshots
 

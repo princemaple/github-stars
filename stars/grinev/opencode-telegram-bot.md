@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1008
+stars: 1036
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -492,7 +492,7 @@ No
 
 `MESSAGE_FORMAT_MODE`
 
-Assistant reply formatting mode: `markdown` (Telegram MarkdownV2) or `raw`
+Assistant reply formatting mode: `markdown` (native Telegram rich blocks) or `raw` (plain text)
 
 No
 

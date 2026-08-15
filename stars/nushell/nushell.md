@@ -1,6 +1,6 @@
 ---
 project: nushell
-stars: 40232
+stars: 40274
 description: A new type of shell
 url: https://github.com/nushell/nushell
 ---
@@ -57,7 +57,7 @@ For details about which platforms the Nushell team actively supports, see our pl
 Configuration
 -------------
 
-The default configurations can be found at sample\_config which are the configuration files one gets when they startup Nushell for the first time.
+The default configurations can be found at sample\_config which are the configuration files one gets when they start up Nushell for the first time.
 
 It sets all of the default configuration to run Nushell. From here one can then customize this file for their specific needs.
 

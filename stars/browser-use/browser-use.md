@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 108349
+stars: 109341
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -12,7 +12,7 @@ url: https://github.com/browser-use/browser-use
 What can Browser Use do?
 ========================
 
-Browser Use lets an AI agent use a web browser the same way you do — it opens pages, clicks buttons, types, and fills in forms. You describe the task, and it completes it. For example, you can have it:
+Browser Use lets an AI agent use a web browser the same way humans do — it opens pages, clicks buttons, types, and fills in forms. You describe the task, and it completes it. For example, you can have it:
 
 ### 📋 Fill Forms
 
@@ -24,15 +24,9 @@ Example code ↗
 
 #### Task: "Extract structured data about my followers and export it as a CSV."
 
-extract-followers.mp4
+extract-followers-from-3.5.mp4
 
 Browser Use Cloud Docs ↗
-
-### 💻 QA Automation
-
-#### Task: "QA test my local website and report any bugs, usability issues, and visual inconsistencies."
-
-Browser Use CLI ↗
 
   
 
@@ -76,7 +70,7 @@ async def main():
     agent \= Agent(
         task\="Find the number of stars of the browser-use repo",
         llm\=ChatBrowserUse(model\='openai/gpt-5.5'),
-        \# llm=ChatBrowserUse(model='bu-2-0'),  # Browser Use's optimized model
+        \# llm=ChatBrowserUse(model='bu-2-0-mini-preview'),  # Browser Use's optimized model
         \# llm=ChatOpenAI(model='gpt-5.5'),
         \# llm=ChatAnthropic(model='claude-opus-4-8'),  # Sonnet also works well
     )

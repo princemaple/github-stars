@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 101413
+stars: 101614
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -67,11 +67,6 @@ Kevin Glisson, Marc Vilanova, Forest Monsen - **Netflix** (ref)
 Deon Pillsbury - **Cisco** (ref)
 
 * * *
-
-FastAPI Conf
-------------
-
-**FastAPI Conf '26** is happening on **October 28, 2026** in **Amsterdam, NL**. All about FastAPI, right from the source. 🎤
 
 FastAPI mini documentary
 ------------------------

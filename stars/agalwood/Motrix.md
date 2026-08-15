@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 52403
+stars: 52469
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---
@@ -8,344 +8,286 @@ url: https://github.com/agalwood/Motrix
 Motrix
 ======
 
-A full-featured download manager
---------------------------------
+A modern, full-featured download manager that stays simple to use
 
 English | 简体中文
 
-Motrix is a full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc.
+Overview
+--------
 
-Motrix has a clean and easy to use interface. I hope you will like it 👻.
+Motrix is a clean, full-featured desktop download manager for HTTP, FTP, BitTorrent, magnet links, and more.
 
-✈️ Official Website | 📖 Manual
+**Motrix Turbo** is Motrix v2, rebuilt from the ground up with Electron, React, and TypeScript while keeping the clean, straightforward experience of v1. The download core is independent of the UI. Browser extensions and command-line tools communicate with the app over **MDXP** (Motrix Download eXchange Protocol), an open protocol built on JSON-RPC 2.0, while plugins run in isolated sandboxes.
 
-💽 Installation
+The same core powers two ways to run Motrix:
+
+-   **Desktop app:** Runs on macOS, Windows, and Linux
+-   **Headless server:** Runs without a desktop environment, either directly on Node.js or in Docker, and includes a web UI for NAS devices and home servers
+
+🧪 Beta testing
 ---------------
 
-Download from GitHub Releases and install it.
+Motrix Turbo v2 is currently in beta. Download v2.0.0-beta.8 from GitHub Releases and read the full release notes before installing it.
 
-### Windows
+Back up your existing Motrix data and downloads before testing. Migration from Motrix v1 data has not yet been validated, so do not use your only copy of v1 data with this beta. When practical, test v2 in parallel using a separate OS account, machine, or Docker data directory.
 
-It is recommended to install Motrix using the installation package (Motrix-Setup-x.y.z.exe) to ensure a complete experience, such as associating torrent files, capturing magnet links, etc.
+Screenshots
+-----------
 
-If you use package management tools to manage applications on Windows, such as Chocolatey, scoop. You can use them to install Motrix.
+### Dashboard
 
-#### Chocolatey
+### Downloads
 
-Thanks to @Yato for continuing to maintain the Motrix Chocolatey package. To install motrix, run the following command from the `command line` or from `PowerShell`:
-
-# Install
-choco install motrix
-
-# Upgrade
-choco upgrade motrix
-
-#### scoop
-
-If you prefer the portable version, you can use scoop (need Windows 7+) to install Motrix.
-
-scoop bucket add extras
-scoop install motrix
-
-### macOS
-
-The macOS users can install Motrix using `brew`, thanks to PR of @Mitscherlich.
-
-brew update && brew install motrix
-
-#### Auto Update
-
-Since Motrix v1.8.0 and later versions changed the App BundleID ( `net.agalwood.Motrix` => `app.motrix.native` ), the automatic update of Motrix v1.6.11 will fail. Motrix Install Assistant will help you install the latest Motrix application.
-
-### Linux
-
-You can download the `AppImage` (for all Linux distributions) or `snap` to install Motrix, see GitHub/release for more Linux installation package formats.
-
-Motrix may need to run with `sudo` for the first time in Linux because there is no permission to create the download session file (`/var/cache/aria2.session`).
-
-If you want to build from source code, please read the **Build** section.
-
-#### AppImage
-
-The latest version of Motrix AppImage requires you to manually perform desktop integration. Please check the documentation of AppImageLauncher .
-
-> Desktop Integration Since electron-builder 21 desktop integration is not a part of produced AppImage file. AppImageLauncher is the recommended way to integrate AppImages.
-
-Deepin 20 Beta users failed to install Motrix, please follow the steps below:
-
-Open the `Terminal`, paste and run the following command to install Motrix again.
-
-sudo apt --fix-broken install
-
-#### Snap
-
-Motrix has been listed on Snapcraft , Ubuntu users recommend downloading from the Snap Store.
-
-Tips for v1.5.10
-
-The tray may not display the indicator normally, which makes it inconvenient to exit the application.
-
-Please unchecked Preferences--Basic Settings--Hide App Menu (Windows & Linux Only), click Save & Apply. Then click "Exit" in the File menu to exit the application.
-
-Please update to v1.5.12 and above, you can use the keyboard shortcut Ctrl + q to quickly exit the application.
-
-#### AUR
-
-For Arch Linux users, Motrix is available in aur, thanks to the maintainer @weearc.
-
-Run the following command to install:
-
-yay -S motrix
-
-#### Flatpak
-
-Thanks to the PR of @proletarius101, Motrix has been listed Flathub, Linux users who like the Flatpak can try it.
-
-# Install
-flatpak install flathub net.agalwood.Motrix
-
-# Run
-flatpak run net.agalwood.Motrix
+### Settings
 
 ✨ Features
 ----------
 
--   🕹 Simple and clear user interface
--   🦄 Supports BitTorrent & Magnet
--   ☑️ BitTorrent selective download
--   📡 Update tracker list every day automatically
--   🔌 UPnP & NAT-PMP Port Mapping
--   🎛 Up to 10 concurrent download tasks
--   🚀 Supports 64 threads in a single task
--   🚥 Supports speed limit
--   🕶 Mock User-Agent
--   🔔 Download completed Notification
--   💻 Ready for Touch Bar (Mac only)
--   🤖 Resident system tray for quick operation
--   📟 Tray speed meter displays real-time speed (Mac only)
--   🌑 Dark mode
--   🗑 Delete related files when removing tasks (optional)
--   🌍 I18n, View supported languages.
--   🛠 More features in development
+-   🕹 Clean, intuitive interface with dark mode
+-   🦄 BitTorrent downloads with per-file selection, plus magnet link support
+-   📡 Built-in tracker list management with automatic updates and health checks
+-   🔌 UPnP and NAT-PMP port mapping
+-   🚥 Upload and download limits with multiple speed-limit profiles
+-   💾 SQLite-backed sessions that restore downloads after a restart
+-   📊 Customizable Dashboard with transfer stats, live activity, and task tiles
+-   🔔 System notifications when downloads finish, plus an in-app notification center
+-   🧩 QuickJS-based plugin sandboxing, fine-grained permissions, and an in-app marketplace
+-   🌐 Chrome and Firefox extensions that hand browser downloads off to Motrix in one click
+-   ⌨️ Official `@motrix/cli` client for everyday shell use and AI agents
+-   🐳 Docker-ready headless server with secure device-code pairing for remote CLI and agent clients
+-   🎬 Extensible URL Resolver plugins for extracting media from supported sites
+-   🤖 System tray integration and launch at startup
+-   🌍 Simplified Chinese and English UI, with more languages planned
+-   🔗 Handlers for `motrix://` and `magnet:` links, plus `.torrent` file associations
 
-🖥 User Interface
------------------
+🧩 Ecosystem
+------------
 
-⌨️ Development
+Motrix extends beyond the desktop app with a shared protocol library, command-line client, browser extensions, and a complete plugin toolchain:
+
+Project
+
+Distribution
+
+What it does
+
+`@motrix/mdxp`
+
+npm package
+
+Defines the shared JSON-RPC 2.0 wire schemas and Zod types for MDXP, with helpers for bidirectional connections
+
+`@motrix/cli`
+
+npm package
+
+Provides the `motrix` command, automatically discovers a local desktop app, and pairs with remote instances
+
+Motrix Browser Extension
+
+Browser extension
+
+Intercepts downloads in Chrome and Firefox (Manifest V3), hands them off to Motrix, and pairs securely with the desktop app over native messaging
+
+Motrix Plugin SDK
+
+Four npm packages
+
+Includes `@motrix/plugin-manifest-schema`, `@motrix/plugin-api`, `@motrix/plugin-cli`, and `create-motrix-plugin` for developing, testing, and packaging plugins
+
+Builtin Plugins
+
+Signed `.moext` packages
+
+Includes three official plugins: **Filename Template** for renaming files from a template before they are saved, **Page Scraper** for extracting direct file links from HTML pages, and **URL Resolver** as the foundation for site-specific media resolution
+
+Plugin Registry
+
+Public JSON feed
+
+Publishes plugin listings and install metadata at `dl.motrix.app/registry/plugins.json` for both the website and the in-app marketplace
+
+### CLI quick start
+
+npm install -g @motrix/cli    # Requires Node.js 22 or later
+
+motrix add https://example.com/file.iso --save-dir ~/Downloads
+motrix list                   # List downloads
+motrix watch --stats          # Stream live progress as NDJSON
+motrix pair --name my-nas     # Pair with a remote or headless instance
+
+### Build a plugin
+
+pnpm create motrix-plugin my-plugin
+
+Plugins run inside a QuickJS sandbox. Each plugin declares the host capabilities it needs in its manifest, such as notifications, secret storage, or FFmpeg detection. Motrix asks the user before granting access. See the Plugin SDK documentation for development workflows, starter templates, packaging, and publishing.
+
+📦 Installation
+---------------
+
+### Desktop app
+
+Download Motrix from motrix.app and choose the package for your operating system. Most Mac users should choose the Apple Silicon build; Intel builds are available for older Macs with Intel processors.
+
+The current beta desktop packages are distributed through the GitHub prerelease linked above, with Snap available from its edge channel. Choose the package that matches your operating system and architecture:
+
+Platform
+
+Architectures
+
+Packages / channel
+
+Recommendation
+
+macOS 12+
+
+`arm64` (Apple Silicon), `x64` (Intel)
+
+`.dmg` / `.zip`
+
+Use the `.dmg` matching your Mac; choose `x64` only for an Intel-based Mac
+
+Windows
+
+`x64`
+
+`.exe` (NSIS installer) / `.zip`
+
+Use the `.exe` installer for a normal installation or `.zip` for a manually extracted copy
+
+Linux
+
+`x64`, `arm64`
+
+`.deb` / `.rpm`; Snap `latest/edge`
+
+Use `.deb` on Debian or Ubuntu, `.rpm` on Fedora or openSUSE, or the edge Snap for beta testing
+
+This beta does not publish an AppImage. Flatpak is validated separately and is not published by the release tag. Windows `arm64` and all 32-bit packages are not available. Windows `x64` packages are unsigned and may trigger a Windows SmartScreen warning.
+
+### Command-line client
+
+npm install -g @motrix/cli
+
+You can also install it from Settings → Integration → Command-line tools in the desktop app.
+
+### Headless server with Docker
+
+Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR. Beta releases publish only the immutable version tag and do not update `latest`; the included `compose.yaml` keeps Server state separate from downloaded resources:
+
+mkdir -p motrix-data downloads
+sudo chown 1000:1000 motrix-data downloads
+export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.8'
+export MOTRIX\_PUBLIC\_URL='http://nas.example.lan:8080'
+docker compose pull server
+docker compose up -d --wait
+
+The runtime is non-root, supports a read-only root filesystem, validates mount permissions before accepting work, and preserves downloads, sessions, and installed plugins across container replacement. The standard direct-LAN setup publishes the Web service on port 8080 and MDXP on port 16801. Set `MOTRIX_PUBLIC_URL` to the Web approval URL that remote clients can actually reach; the Compose files do not substitute a misleading localhost URL.
+
+If the Web approval URL is temporarily unavailable, an SSH operator can list and approve the exact client code without exposing another port:
+
+docker compose exec server motrix-admin pairing pending
+docker compose exec server motrix-admin pairing approve ABCD-EFGH
+
+Remote CLI and agent clients pair through the device-code flow. Browser extensions pair with the desktop app through native messaging; first-time extension pairing is not provided by the headless server. Direct HTTP is appropriate only on a trusted LAN. Internet or untrusted-LAN access requires a TLS reverse proxy and firewall rules around the origin ports. See the Docker Server deployment guide for ownership setup, Docker Hub/GHCR image and tag selection, DSM 7 and fnOS installation, ports, diagnostics, and backup/upgrade instructions.
+
+🛠 Development
 --------------
 
-### Clone Code
+Development requires Node.js 22 or later and pnpm. Use the pnpm version specified by the `packageManager` field in `package.json`.
 
-git clone git@github.com:agalwood/Motrix.git
-
-### Install Dependencies
-
+git clone https://github.com/agalwood/Motrix.git
 cd Motrix
-yarn
 
-> Error: Electron failed to install correctly, please delete node\_modules/electron and try installing again
+pnpm install     # Install dependencies, download aria2 for your platform, and rebuild native modules
+pnpm start       # Start the Electron app in development mode with Vite HMR in the renderer
 
-`Electron` failed to install correctly, please refer to electron/electron#8466 (comment)
+pnpm test        # Run the Vitest unit tests
+pnpm test:e2e    # Run the Playwright E2E tests
+pnpm run lint    # Run Biome checks
 
-### Dev Mode
+pnpm build       # Fetch signed built-in plugins, then build the native host and four Vite targets
 
-yarn run dev
+### Preview the in-window application menu on macOS
 
-### Build Release
+Windows and Linux render the application menu inside the Motrix window. To preview that chrome while developing on macOS, start the app with the preview flag enabled:
 
-yarn run build
+MOTRIX\_PREVIEW\_MAC\_MENU=1 pnpm start
 
-#### Build for Apple Silicon
+The flag hides the main window's macOS traffic-light buttons and enables the renderer dropdown menu. Restart the development process after changing the flag because both Electron and Vite read it at startup.
 
-yarn run build:applesilicon
+This mode is intended for layout and command-item debugging. Electron routes macOS role items through AppKit's native menu, so role-backed actions such as **Window → Minimize** do not behave identically when invoked from the preview dropdown. Validate those native role actions on Windows or Linux.
 
-After building, the application will be found in the project's `release` directory.
+See the scripts in `package.json` for the available packaging commands. Platform-specific settings for macOS, Windows, and Linux live in `electron-builder.json`.
 
-🛠 Technology Stack
--------------------
-
--   Electron
--   Vue + VueX + Element
--   Aria2
-
-☑️ TODO
--------
-
-Development Roadmap see: Trello
-
-🤝 Contribute
+🔧 Tech stack
 -------------
 
-If you are interested in participating in joint development, PR and Forks are welcome!
+Area
 
-🌍 Internationalization
------------------------
+Stack
 
-Translations into versions for other languages are welcome 🧐! Please read the translation guide before starting translations.
+Desktop shell
 
-Key
+Electron 43
 
-Name
+UI
 
-Status
+React 19 + Tailwind CSS 4 + shadcn/ui
 
-ar
+Language
 
-Arabic
+TypeScript in strict mode
 
-✔️ @hadialqattan, @AhmedElTabarani
+Build system
 
-bg
+Vite 8 with separate main, preload, worker, and renderer targets
 
-Българският език
+Validation
 
-✔️ @null-none
+Zod 4 for settings, IPC payloads, and wire schemas
 
-ca
+Download engine
 
-Català
+A Motrix-maintained fork of aria2, bundled with the app
 
-✔️ @marcizhu
+Persistence
 
-de
+better-sqlite3 for download session storage and recovery
 
-Deutsch
+Plugin sandbox
 
-✔️ @Schloemicher
+quickjs-emscripten
 
-el
+Server runtime
 
-Ελληνικά
+Node.js + Fastify + WebSocket
 
-✔️ @Likecinema
+Internationalization
 
-en-US
+i18next + react-i18next
 
-English
+Quality tooling
 
-✔️
+Biome, Vitest, and Playwright
 
-es
+The codebase has four strict layers. CI enforces the dependency boundaries between them, keeping the core portable and leaving a clear path for a future Rust rewrite:
 
-Español
+```
+renderer (React UI)
+   │  IPC via window.motrix
+app core (tasks, settings, plugins, bridge)
+   │
+engine adapter
+   │
+aria2 (download engine)
+```
 
-✔️ @Chofito
-
-fa
-
-فارسی
-
-✔️ @Nima-Ra
-
-fr
-
-Français
-
-✔️ @gpatarin
-
-hu
-
-Hungarian
-
-✔️ @zalnaRs
-
-id
-
-Indonesia
-
-✔️ @aarestu
-
-it
-
-Italiano
-
-✔️ @blackcat-917
-
-ja
-
-日本語
-
-✔️ @hbkrkzk
-
-ko
-
-한국어
-
-✔️ @KOZ39
-
-nb
-
-Norsk Bokmål
-
-✔️ @rubjo
-
-nl
-
-Nederlands
-
-✔️ @nickbouwhuis
-
-pl
-
-Polski
-
-✔️ @KanarekLife
-
-pt-BR
-
-Portuguese (Brazil)
-
-✔️ @andrenoberto
-
-ro
-
-Română
-
-✔️ @alyn3d
-
-ru
-
-Русский
-
-✔️ @bladeaweb
-
-th
-
-แบบไทย
-
-✔️ @nxanywhere
-
-tr
-
-Türkçe
-
-✔️ @abdullah
-
-uk
-
-Українська
-
-✔️ @bladeaweb
-
-vi
-
-Tiếng Việt
-
-✔️ @duythanhvn
-
-zh-CN
-
-简体中文
-
-✔️
-
-zh-TW
-
-繁體中文
-
-✔️ @Yukaii @5idereal
+The Electron desktop app and the Node.js headless server share the same core. Platform-specific capabilities such as notifications and secret storage have separate implementations with consistent behavior.
 
 📜 License
 ----------
 
-MIT Copyright (c) 2018-present Dr\_rOot
+MIT © 2018-present Dr\_rOot
+
+See `THIRD_PARTY_NOTICES.md` for third-party license information. Release packages also include a generated dependency inventory, consolidated license texts, and an SPDX 2.3 SBOM under `legal/`.

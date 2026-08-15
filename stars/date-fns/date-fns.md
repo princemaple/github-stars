@@ -1,6 +1,6 @@
 ---
 project: date-fns
-stars: 36620
+stars: 36624
 description: ⏳ Modern JavaScript date utility library ⌛️
 url: https://github.com/date-fns/date-fns
 ---
@@ -24,6 +24,12 @@ It's like Lodash for dates
 -   **TypeScript**: The library is 100% TypeScript with brand-new handcrafted types.
 -   **I18n**: Dozens of locales. Include only what you need.
 -   and many more benefits
+
+* * *
+
+Sponsored by:
+
+* * *
 
 import { compareAsc, format } from "date-fns";
 
@@ -50,8 +56,6 @@ Docs
 ----
 
 See date-fns.org for more details, API, and other docs.
-
-  
 
 License
 -------

@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 33613
+stars: 33915
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -307,7 +307,7 @@ make end2end
 
 Lightpanda is tested against the standardized Web Platform Tests.
 
-We use a fork including a custom `testharnessreport.js`.
+We use a fork including a custom `testharnessreport.js`. Results are published daily.
 
 For reference, you can easily execute a WPT test case with your browser via wpt.live.
 

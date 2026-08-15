@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 39524
+stars: 39805
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -131,9 +131,9 @@ You can also just paste it in the terminal for current session. On first run Doc
 
 ### Build from Source
 
-If you prefer, you can install Go and build from source (requires Go 1.22+):
+If you prefer, you can install Go and build from source (requires Go 1.26+):
 
-go install github.com/schollz/croc/v10@latest
+go install github.com/schollz/croc/v11@latest
 
 ### On Android
 
@@ -173,14 +173,16 @@ The code phrase is used to establish password-authenticated key agreement (PAKE)
 When an immediate peer-to-peer transfer is inconvenient, `croc` can upload regular files as client-side encrypted ciphertext:
 
 croc send --store \[file1\] \[file2\]
+croc send --store --store-downloads 3 \[file1\] \[file2\]
+croc send --store --store-expiration 3d \[file1\] \[file2\]
 
-The command prints a browser link and a CLI token. The transfer expires after 24 hours or after the first receiver downloads, authenticates, and verifies every file—whichever happens first. Run `croc` with no arguments and paste the token at the prompt to receive it. For automation, keep the token out of the process list:
+The command prints a browser link and a CLI token. The transfer expires after the selected lifetime, measured from successful upload completion, or after its configured number of receivers download, authenticate, and verify every file—whichever happens first. The lifetime defaults to one day and accepts whole minutes (`m`), hours (`h`), days (`d`), or weeks (`w`). The download limit defaults to one. Both values are subject to server policy. Run `croc` with no arguments and paste the token at the prompt to receive it. For automation, keep the token out of the process list:
 
 CROC\_STORE\_TOKEN='croc-store-v1....' croc --out ./downloads
 
-The browser link has the form `https://host/s/id#v1.decryption-key`. The decryption key is after `#` because URL fragments are not included in HTTP requests, so the storage service gets the opaque transfer ID but not the key. The full link is still a secret: anyone who has it can decrypt and claim the one allowed download.
+The browser link has the form `https://host/s/id#v1.decryption-key`. The decryption key is after `#` because URL fragments are not included in HTTP requests, so the storage service gets the opaque transfer ID but not the key. The full link is still a secret: anyone who has it can decrypt the files and claim one of the allowed downloads.
 
-Until a transfer is downloaded or expires, its sender can delete it with the locally saved revoke receipt:
+While a transfer remains available, its sender can delete it with the locally saved revoke receipt:
 
 croc --revoke \[transfer-id\]
 
@@ -336,15 +338,14 @@ Disco is used to deploy. The root `Dockerfile` and `disco.json` deploy the `croc
 Set the deployment environment variables with:
 
 disco env:set \\
-  STORE\_DIR=/www/croc/storage \\
   SITE\_URL=yoururl.com \\
   CROC\_RELAY\_PORTS=9009,9010,9011,9012,9013,9014,9015,9016,9017 \\
   CROC\_PASS=yourpass \\
   --project croc
 
-`SITE_URL` must be the public website hostname without `https://`. Change the project name if it is not `croc`. The storage directory is intentionally not attached to a Disco volume, so stored transfers are erased whenever the container is replaced.
+`SITE_URL` must be the public website hostname without `https://`. Change the project name if it is not `croc`. The `web` service mounts the named `croc-store` volume at `/www/croc/storage`, which is also its configured `--store-dir`, so stored ciphertext and metadata survive container replacement and redeployment. The `web` service also reserves published TCP port 9020 and maps it to unused container port 65535. This deliberate port collision makes Disco stop the previous volume-owning web service before starting its replacement, avoiding concurrent access to the store. Port 9020 carries no application traffic and should remain blocked by the server firewall.
 
-The ports in `CROC_RELAY_PORTS` must match the `publishedPorts` entries in `disco.json`; Disco cannot generate host port mappings from an environment variable. Make sure the same TCP ports are also open in the server's firewall or cloud security group.
+The ports in `CROC_RELAY_PORTS` must match the `publishedPorts` entries in the `relay` service in `disco.json`; do not include the web service's deployment-only port 9020. Disco cannot generate host port mappings from an environment variable. Make sure the relay TCP ports are also open in the server's firewall or cloud security group.
 
 Acknowledgements
 ----------------

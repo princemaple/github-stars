@@ -1,6 +1,6 @@
 ---
 project: xh
-stars: 8001
+stars: 8018
 description: Friendly and fast tool for sending HTTP requests
 url: https://github.com/ducaale/xh
 ---

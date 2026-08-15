@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 15871
+stars: 15917
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -87,6 +87,7 @@ And there's an ever-growing list of plugins and integrations:
 -   Go
 -   Hapi
 -   Hono
+-   Java
 -   Laravel Scribe
 -   Laravel
 -   Micronaut
@@ -238,7 +239,7 @@ We are API nerds. You too? Let's chat on Discord: https://discord.gg/scalar
 
 Contributions are welcome! Read the `CONTRIBUTING` guide.
 
-**Top 10 Contributors (April 2025)**
+**Top Contributors (Last Month)**
 
   
   

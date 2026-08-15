@@ -1,6 +1,6 @@
 ---
 project: dragonfly
-stars: 30980
+stars: 31000
 description: A modern replacement for Redis and Memcached
 url: https://github.com/dragonflydb/dragonfly
 ---

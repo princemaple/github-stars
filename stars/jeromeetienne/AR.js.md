@@ -1,6 +1,6 @@
 ---
 project: AR.js
-stars: 15795
+stars: 15794
 description: Efficient Augmented Reality for the Web - 60fps on mobile!
 url: https://github.com/jeromeetienne/AR.js
 ---

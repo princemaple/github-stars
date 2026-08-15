@@ -1,6 +1,6 @@
 ---
 project: WebChat
-stars: 2401
+stars: 2477
 description: 💬 Chat with anyone on any website.
 url: https://github.com/molvqingtai/WebChat
 ---
@@ -47,11 +47,6 @@ WebChat builds on these excellent open-source projects:
 -   **Comctx** provides RPC communication across the extension's JavaScript contexts.
 -   **Artico** provides the flexible WebRTC foundation for peer-to-peer communication.
 -   **ugly-avatar** generates WebChat's distinctive random avatars.
-
-Sponsors
---------
-
-WebChat is an open-source project sustained by its contributors and sponsors.
 
 License
 -------

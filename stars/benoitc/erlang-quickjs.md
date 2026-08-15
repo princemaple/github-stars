@@ -10,7 +10,7 @@ erlang-quickjs
 
 QuickJS JavaScript engine for Erlang.
 
-This library embeds the QuickJS-NG JavaScript engine (v0.14.0) as an Erlang NIF, allowing you to evaluate JavaScript code directly from Erlang.
+This library embeds the QuickJS-NG JavaScript engine (v0.16.1) as an Erlang NIF, allowing you to evaluate JavaScript code directly from Erlang.
 
 Features
 --------
@@ -534,7 +534,9 @@ Contexts are managed as Erlang NIF resources with automatic cleanup:
 Benchmarks
 ----------
 
-Apple M4 Pro, Erlang/OTP 28, quickjs-ng v0.14.0, 1000 iterations per benchmark after a 100-iteration warmup.
+Apple M4 Pro, Erlang/OTP 29, quickjs-ng v0.16.1, release build, 1000 iterations per benchmark after a 100-iteration warmup.
+
+Each iteration creates a context, does the work, and destroys it, so these figures are dominated by context lifecycle rather than by JavaScript execution. Reuse a context and per-call cost drops by roughly an order of magnitude.
 
 ### Core operations
 
@@ -550,123 +552,123 @@ P99 (ms)
 
 eval\_simple
 
-1,445
+4,133
 
-0.692
+0.242
 
-0.741
+0.301
 
-0.809
+0.371
 
 eval\_complex
 
-1,412
+4,076
 
-0.708
+0.245
 
-0.756
+0.304
 
-0.810
+0.356
 
 eval\_bindings\_small (5 vars)
 
-1,445
+4,201
 
-0.692
+0.238
 
-0.757
+0.281
 
-0.816
+0.336
 
 eval\_bindings\_large (50 vars)
 
-1,279
+3,363
 
-0.782
+0.297
 
-0.846
+0.364
 
-0.939
+0.422
 
 call\_no\_args
 
-1,424
+4,122
 
-0.702
+0.243
 
-0.757
+0.300
 
-0.816
+0.353
 
 call\_with\_args (5 args)
 
-1,429
+4,092
 
-0.700
+0.244
 
-0.733
+0.303
 
-0.783
+0.363
 
 call\_many\_args (20 args)
 
-1,391
+3,796
 
-0.719
+0.263
 
-0.754
+0.336
 
-0.804
+0.398
 
 type\_convert\_simple
 
-1,450
+4,182
 
-0.689
+0.239
 
-0.710
+0.284
 
-0.739
+0.348
 
 type\_convert\_array (1000 elem)
 
-1,403
+3,964
 
-0.713
+0.252
 
-0.741
+0.300
 
-0.773
+0.357
 
 type\_convert\_nested
 
-1,388
+4,054
 
-0.721
+0.247
 
-0.781
+0.293
 
-0.864
+0.353
 
 context\_create
 
-1,442
+4,108
 
-0.694
+0.243
 
-0.745
+0.297
 
-0.810
+0.365
 
 module\_require\_cached
 
-1,399
+3,999
 
-0.715
+0.250
 
-0.761
+0.305
 
-0.802
+0.370
 
 ### Erlang function registration
 
@@ -682,43 +684,43 @@ P99 (ms)
 
 register\_function\_simple
 
-1,402
+4,112
 
-0.713
+0.243
 
-0.752
+0.288
 
-0.845
+0.378
 
 register\_function\_complex\_args
 
-1,373
+3,816
 
-0.728
+0.262
 
-0.773
+0.327
 
-1.180
+0.784
 
 register\_function\_nested (5 calls)
 
-1,350
+3,791
 
-0.741
+0.264
 
-0.790
+0.326
 
-0.854
+0.408
 
 register\_function\_many\_calls (10)
 
-11,969
+34,193
 
-0.835
+0.292
 
-0.926
+0.370
 
-1.163
+0.453
 
 ### Event framework
 
@@ -734,33 +736,33 @@ P99 (ms)
 
 event\_emit
 
-1,247
+2,619
 
-0.802
+0.382
 
-0.860
+0.498
 
-0.921
+0.608
 
 event\_send
 
-1,424
+4,078
 
-0.702
+0.245
 
-0.738
+0.308
 
-0.786
+0.365
 
 console\_log
 
-1,242
+2,672
 
-0.805
+0.374
 
-0.856
+0.489
 
-0.914
+0.601
 
 ### CBOR
 
@@ -776,45 +778,45 @@ P99 (ms)
 
 cbor\_encode\_simple
 
-1,353
+3,703
 
-0.739
+0.270
 
-0.783
+0.328
 
-0.837
+0.378
 
 cbor\_encode\_complex
 
-1,175
+3,306
 
-0.851
+0.302
 
-0.901
+0.351
 
-0.993
+0.387
 
 cbor\_decode\_simple
 
-1,187
+3,513
 
-0.843
+0.285
 
-1.029
+0.337
 
-1.100
+0.391
 
 cbor\_roundtrip
 
-1,139
+3,369
 
-0.878
+0.297
 
-1.107
+0.357
 
-1.332
+0.431
 
-The CBOR codec is a JS shim, not a native C path; it lags duktape's built-in CBOR by roughly 35% on this micro-bench. The other operations sit ~15-25% behind duktape on per-call latency in exchange for full ES2023 support.
+The CBOR codec is a JS shim rather than a native C path, so it stays the slowest of these operations. The duktape comparison that used to appear here was measured before the engine was built with optimization and is no longer meaningful; it has not been re-run.
 
 ### Concurrency
 
@@ -830,23 +832,23 @@ P99 (ms)
 
 concurrent\_same\_context (10 procs)
 
-98,859
+149,004
 
-1.012
+0.671
 
-1.234
+0.995
 
-1.334
+1.108
 
 concurrent\_many\_contexts (10 procs)
 
-22,321
+42,368
 
-4.480
+2.360
 
-4.763
+2.671
 
-5.111
+2.852
 
 Run benchmarks yourself:
 

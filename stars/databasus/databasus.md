@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 7874
+stars: 7924
 description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---
@@ -58,7 +58,7 @@ Databasus performs a real restore to confirm backups are usable, not just intact
 
 ### 📱 **Notifications** (view supported)
 
--   **Multiple channels**: Email, Telegram, Slack, Discord, webhooks
+-   **Multiple channels**: Email, Telegram, Slack, Discord, Teams, Mattermost, webhooks
 -   **Real-time updates**: Success and failure notifications
 -   **Team integration**: Perfect for DevOps workflows
 
@@ -85,7 +85,7 @@ Databasus performs a real restore to confirm backups are usable, not just intact
 ### 💾 **Supported databases**
 
 -   **PostgreSQL**: 14, 15, 16, 17 and 18 (physical and logical)
--   **MySQL**: 5.7 and 8 (logical only)
+-   **MySQL**: 5.7, 8.0, 8.4 and 9 (logical only)
 -   **MariaDB**: 10, 11 and 12 (logical only)
 -   **MongoDB**: 4.2+, 5, 6, 7 and 8 (logical only)
 
@@ -209,7 +209,7 @@ For more options (NodePort, TLS, HTTPRoute for Gateway API), see the Helm chart 
 4.  **Set database connection**: Enter your database credentials and connection details
 5.  **Choose storage**: Select where to store your backups (local, S3, Google Drive, etc.)
 6.  **Configure retention policy**: Choose time period, count or GFS to control how long backups are kept
-7.  **Add notifications** (optional): Configure email, Telegram, Slack, or webhook notifications
+7.  **Add notifications** (optional): Configure email, Telegram, Slack, Mattermost or webhook notifications
 8.  **Save and start**: Databasus will validate settings and begin the backup schedule
 
 ### 🔑 Resetting password (docs)

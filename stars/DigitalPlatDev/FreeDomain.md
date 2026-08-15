@@ -1,16 +1,20 @@
 ---
 project: FreeDomain
-stars: 191722
-description: DigitalPlat FreeDomain: Free Domain For Everyone
+stars: 193323
+description: Free domain registration and practical DNS learning resources for everyone.
 url: https://github.com/DigitalPlatDev/FreeDomain
 ---
 
-🌐 Welcome to DigitalPlat Domain
---------------------------------
+DigitalPlat FreeDomain
+======================
 
-Welcome to **DigitalPlat FreeDomain**, where we believe everyone deserves a digital identity. Whether you're an individual, or an organization, we’re offering free domain names to bring your ideas to life – no strings attached!
+Free domain registration and practical DNS learning resources for everyone.
 
-With FreeDomain, you can register a unique domain and manage its records through a DNS provider that supports custom nameservers.
+Register a domain, connect your preferred DNS provider through custom nameservers, and use the included learning guide to take a project from registration to deployment.
+
+Register a domain · Read the tutorial · Browse the learning guide · View the application source
+
+> This repository contains the public information and learning resources for DigitalPlat FreeDomain. The application source code is maintained separately in DigitalPlatDev/Domain-OSS.
 
 ### ✔️ Why Free Domains?
 
@@ -56,19 +60,19 @@ With over 500,000 domains already registered, DigitalPlat FreeDomain is a truste
 
 ### ❔ FAQ
 
-Check FAQ Page
+Read the FAQ.
 
 * * *
 
 ### 🤝 Join Our Community!
 
-🆕 Join our official DigitalPlat FreeDomain Discord server today! Be the first to know about the latest updates, get support, and connect with the community. Got questions? Facing challenges? Or just want to share what you're building? Come hang out with us 🚀
+Join our official DigitalPlat FreeDomain Discord server for updates, support, and project discussions. You can also use GitHub Discussions for public questions and ideas.
 
 ⚠️ **Security Notice** Our previous Telegram account and group were compromised and are no longer under our control. Please **do not trust any messages, links, or announcements** from Telegram, especially anything related to bonuses, earnings, or external sites. We are no longer using Telegram as an official communication channel.
 
 * * *
 
-### ⏭️ What's next
+### ⏭️ What's Next?
 
 We might introduce more domain options and free hosting in the future to help as many people as possible!
 
@@ -99,4 +103,6 @@ https://dev.to/edwardhsing/i-bought-a-domain-at-15-now-it-powers-400000-users-7o
 Source Code
 -----------
 
-DigitalPlat Domain OSS is open source at DigitalPlatDev/Domain-OSS. Visit the repository to access the latest source code.
+The DigitalPlat Domain application is open source at DigitalPlatDev/Domain-OSS.
+
+Documentation improvements to this repository are welcome. See CONTRIBUTING.md before opening a pull request.

@@ -1,6 +1,6 @@
 ---
 project: req
-stars: 1323
+stars: 1324
 description: Req is a batteries-included HTTP client for Elixir.
 url: https://github.com/wojtekmach/req
 ---
@@ -73,7 +73,7 @@ Usage
 The easiest way to use Req is with `Mix.install/2` (requires Elixir v1.12+):
 
 Mix.install(\[
-  {:req, "~> 0.5.0"}
+  {:req, "~> 0.7.0"}
 \])
 
 Req.get!("https://api.github.com/repos/wojtekmach/req").body\["description"\]
@@ -136,7 +136,7 @@ Custom steps can be packaged into plugins so that they are even easier to use by
 Here is how they can be used:
 
 Mix.install(\[
-  {:req, "~> 0.5.0"},
+  {:req, "~> 0.7.0"},
   {:req\_easyhtml, "~> 0.2.0"},
   {:req\_s3, "~> 0.2.3"},
   {:req\_hex, "~> 0.2.0"},

@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 125893
+stars: 129159
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -79,7 +79,7 @@ Bare `specify self upgrade` executes immediately, matching the no-prompt behavio
 
 ### 3\. Establish project principles
 
-Launch your coding agent in the project directory. Most agents expose spec-kit as `/speckit.*` slash commands; Codex CLI in skills mode uses `$speckit-*` instead; GitHub Copilot CLI uses `/agents` to select the agent or address it directly in a prompt.
+Launch your coding agent in the project directory. Most agents expose spec-kit as `/speckit.*` slash commands; Codex CLI and Command Code in skills mode use `$speckit-*` instead; GitHub Copilot CLI uses `/agents` to select the agent or address it directly in a prompt.
 
 Use the **`/speckit.constitution`** command to create your project's governing principles and development guidelines that will guide all subsequent development.
 
@@ -327,7 +327,7 @@ Authors validate and package bundles locally. Distribution is hosting the built 
 specify bundle validate --path ./my-bundle      # structural + reference checks
 specify bundle build --path ./my-bundle         # produce a versioned .zip artifact
 
-Four ready-to-read example manifests live under `examples/bundles/` (product manager, business analyst, security researcher, developer).
+Four ready-to-read example bundle manifests live under `examples/bundles/` (product manager, business analyst, security researcher, developer). These are bundle packaging examples, not filled generated feature specs; for end-to-end community examples, see the community walkthroughs.
 
 Key guarantees: `info` shows exactly what `install` adds (transparency); installs are idempotent and confined to the project root; `remove` never touches components another installed bundle still needs; and all consume/author commands work **offline** against local or pinned sources.
 

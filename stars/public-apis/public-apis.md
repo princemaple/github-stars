@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 455092
+stars: 460102
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -697,6 +697,16 @@ Google Safe Browsing
 Google Link/Domain Flagging
 
 `apiKey`
+
+Yes
+
+Unknown
+
+IPWhois.net Blacklist
+
+Community IP blacklist to check and report abusive IP addresses
+
+No
 
 Yes
 
@@ -1676,6 +1686,16 @@ Generate PDF, JSON & UBL invoices in 11 languages from one JSON POST
 Yes
 
 No
+
+Legal Sandbox Georgia
+
+Find verified legal specialists in Georgia from natural-language queries
+
+No
+
+Yes
+
+Yes
 
 Mailchimp
 
@@ -2667,6 +2687,16 @@ Yes
 
 Unknown
 
+CoinLobster
+
+Live executed whale trades across 15 exchanges and on-chain DEX with an unusualness radar
+
+No
+
+Yes
+
+Yes
+
 Coinlore
 
 Cryptocurrencies prices, volume and more
@@ -2956,6 +2986,16 @@ Cryptocurrency info, place order
 Yes
 
 Unknown
+
+monerometrics
+
+Reorg-aware Monero (XMR) network metrics, mining-pool centralization and chain reorganizations
+
+No
+
+Yes
+
+Yes
 
 Nexchange
 
@@ -3742,6 +3782,16 @@ Yes
 
 Unknown
 
+DigMyName
+
+Domain availability and registrar pricing across 52 TLDs
+
+No
+
+Yes
+
+Yes
+
 Docker Hub
 
 Interact with Docker Hub
@@ -4392,6 +4442,16 @@ Yes
 
 Yes
 
+OutageDeck
+
+Live status and incidents for 170+ cloud and SaaS providers from official feeds
+
+No
+
+Yes
+
+Yes
+
 oyyi
 
 API for Fake Data, image/video conversion, optimization, pdf optimization and thumbnail generation
@@ -4407,6 +4467,16 @@ PageCDN
 Public API for javascript, css and font libraries on PageCDN
 
 `apiKey`
+
+Yes
+
+Yes
+
+Phone Specs
+
+Real-time smartphone specifications database for 263 devices
+
+No
 
 Yes
 
@@ -4792,6 +4862,16 @@ Yes
 
 Unknown
 
+TinyMind Agent Tools
+
+Free APIs by an AI agent on a VPS: actor lookup, word-of-the-day, poems, jokes, ping
+
+No
+
+Yes
+
+Yes
+
 Tyk
 
 Api and service management platform
@@ -4821,6 +4901,16 @@ No
 Yes
 
 Unknown
+
+Web Metadata & Contact Extractor
+
+Extract SEO metadata, contact emails, social links, and tech stack (<200ms)
+
+`apiKey`
+
+Yes
+
+Yes
 
 Webclaw
 
@@ -5427,6 +5517,16 @@ Yes
 
 Yes
 
+Atomic Mail
+
+Email for AI agents: programmatic inbox creation and send/receive over JMAP
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Cloudmersive Validate
 
 Validate email addresses, phone numbers, VAT numbers and domain names
@@ -5655,6 +5755,16 @@ Unknown
 Corporate Buzz Words
 
 REST API for Corporate Buzz Words
+
+No
+
+Yes
+
+Yes
+
+CosmyDay Astrology
+
+Natal charts and sky events computed from Swiss Ephemeris
 
 No
 
@@ -6227,6 +6337,16 @@ Yes
 
 Unknown
 
+Filingrail
+
+SEC EDGAR filings, XBRL financials, Form 4 insider trades, 8-K events and 13F holdings
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Finage
 
 Finage is a stock, currency, cryptocurrency, indices, and ETFs real-time & historical data provider
@@ -6406,6 +6526,16 @@ The Moov API makes it simple for platforms to send, receive, and store money
 Yes
 
 Unknown
+
+NORTH7 Agent
+
+Trading signals, market analysis and geopolitical intelligence
+
+`apiKey`
+
+Yes
+
+Yes
 
 Nordigen
 
@@ -7466,6 +7596,16 @@ No
 No
 
 Unknown
+
+KrakenKeys
+
+Steam game key price comparison across 20+ stores, deals, and price history
+
+`apiKey`
+
+Yes
+
+No
 
 Lichess
 
@@ -10542,6 +10682,16 @@ Yes
 
 Yes
 
+BRAINIALL
+
+PT-BR and Spanish audio transcription with diarization and SRT/VTT
+
+`apiKey`
+
+Yes
+
+Yes
+
 Clarifai
 
 Computer Vision
@@ -10591,6 +10741,16 @@ Natural Language Processing
 Yes
 
 Unknown
+
+DreamThreads
+
+Parse dreams into structured entities, emotions, agency, threat, and outcomes
+
+No
+
+Yes
+
+Yes
 
 EXUDE-API
 
@@ -11607,6 +11767,16 @@ Yes
 
 Unknown
 
+i6eal Open AI Data
+
+Open datasets on AI policy, regulation and public-sector adoption in Germany and the EU
+
+No
+
+Yes
+
+Yes
+
 Joshua Project
 
 People groups of the world with the fewest followers of Christ
@@ -11642,6 +11812,16 @@ LinkPreview
 Get JSON formatted summary with title, description and preview image for any requested URL
 
 `apiKey`
+
+Yes
+
+Yes
+
+LottoLens PH
+
+Fixed Philippine PCSO historical results and normal draw schedules
+
+No
 
 Yes
 
@@ -12902,6 +13082,16 @@ Yes
 
 Unknown
 
+CycleCalcs
+
+Interpreted astronomy: sun and moon times, moon phases, planets, eclipses, seasons
+
+No
+
+Yes
+
+Yes
+
 GBIF
 
 Global Biodiversity Information Facility
@@ -13211,6 +13401,16 @@ No
 Yes
 
 No
+
+VedIntel™ AstroAPI
+
+Vedic astrology computation — birth charts, dashas, panchang, AI narratives
+
+`apiKey`
+
+Yes
+
+Yes
 
 World Bank
 
@@ -14249,6 +14449,16 @@ Yes
 
 Unknown
 
+SocialSwarm
+
+Turn articles into ready-to-post X thread drafts with different hooks
+
+`apiKey`
+
+Yes
+
+No
+
 TamTam
 
 Bot API to interact with TamTam
@@ -14348,6 +14558,16 @@ Read and write Twitter data
 Yes
 
 No
+
+TwitterAPIs
+
+Twitter / X data API: search, profiles, timelines, followers, DMs, write actions
+
+`apiKey`
+
+Yes
+
+Unknown
 
 vk
 
@@ -14653,6 +14873,16 @@ No
 Yes
 
 Yes
+
+PlayerElo
+
+Player-level Elo ratings, predictions and history for 176 football leagues
+
+`apiKey`
+
+Yes
+
+Unknown
 
 Premier League Standings
 
@@ -15614,6 +15844,16 @@ Yes
 
 Unknown
 
+Can I enter
+
+Visa and entry requirements for 199 passports, cited to official sources, verified daily
+
+No
+
+Yes
+
+Yes
+
 Community Transit
 
 Transitland API
@@ -15833,6 +16073,16 @@ Schiphol
 Yes
 
 Unknown
+
+Strait of Hormuz Ship Monitor
+
+Live AIS vessel traffic, crossings and oil flow through the Strait of Hormuz
+
+No
+
+Yes
+
+No
 
 Tankerkoenig
 
@@ -17143,6 +17393,16 @@ Weather
 Yes
 
 Unknown
+
+Hail History
+
+Radar-detected hail history for any US address from NOAA NEXRAD Level-III hail detections, by year
+
+No
+
+Yes
+
+Yes
 
 HG Weather
 

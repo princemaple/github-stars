@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 35196
+stars: 35304
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -3385,6 +3385,8 @@ All keys other than `extra` and `inputs` are populated automatically.
 
 Cache key objects for invoked recipes can be printed to standard error with `just -vv`.
 
+The environment variables included in `environment` may be controlled with `[cache(environment = EXPRESSION])`master.
+
 The value of `extra` may be supplied with `[cache(extra = EXPRESSION)]`, where `EXPRESSION` is an arbitrary expression evaluated with recipe arguments in scope. Changes to the value of `extra` will cause a cache miss.
 
 Before `just` runs a cached recipe, it creates a cache key, hashes it, and looks for the corresponding cache entry.
@@ -3420,6 +3422,24 @@ just --clean bar bob
 
 # '::'-separated paths may also be used
 just --clean bar::bob
+
+### Adding and Removing Environment Variables
+
+By default, environment variables which are exported or unexported in the `justfile` are included in the cache key, and environment variables exported outside the `justfile` and inherited by `just` are not included.
+
+Environment variables can be added or removed from the cache key using `[cache(environment = EXPRESSION)]`master.
+
+In this example, the environment variable `foo` will not be included in the cache key, but `PATH` will:
+
+set unstable
+set lists
+
+export foo := 'bar'
+
+\[script\]
+\[cache(environment = \['PATH'\])\]
+build:
+  cc lib.c main.c -o main
 
 ### Input Files
 

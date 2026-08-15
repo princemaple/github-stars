@@ -1,6 +1,6 @@
 ---
 project: spandex
-stars: 346
+stars: 347
 description: A platform agnostic tracing library
 url: https://github.com/spandex-project/spandex
 ---

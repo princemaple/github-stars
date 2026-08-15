@@ -1,6 +1,6 @@
 ---
 project: VERT
-stars: 15344
+stars: 15365
 description: The next-generation file converter. Open source, fully local* and free forever.
 url: https://github.com/VERT-sh/VERT
 ---

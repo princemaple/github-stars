@@ -1,6 +1,6 @@
 ---
 project: ferret
-stars: 6010
+stars: 6007
 description: Declarative data automation language and Go runtime for structured extraction workflows.
 url: https://github.com/MontFerret/ferret
 ---
@@ -31,21 +31,22 @@ Ferret v2 is currently in alpha. You can try the new syntax in the playground an
 What is it?
 -----------
 
-Ferret is a declarative runtime for structured data extraction and automation.
+Ferret is a declarative-first, expression-oriented embedded language and runtime for data automation.
 
-It lets you query web pages, browser state, documents, APIs, and host-provided data sources with a dedicated query language, then return the result as structured data.
+FQL combines querying, transformation, synchronization, and structured results with host-defined values and capabilities. Applications can embed the runtime and decide exactly which functions, modules, data, and external operations a program can use.
 
-Instead of writing page-specific glue code for browser control, DOM traversal, waiting, extraction, and transformation, Ferret lets you describe the data you want and run that workflow from the CLI, a worker, or an embedded Go application.
+The language keeps a declarative core and adds domain-oriented orchestration plus constrained mutable state for automation that cannot be expressed as a pure data transformation. It is deliberately focused rather than a general-purpose scripting language.
 
 ### Features
 
--   Declarative query language for structured data workflows
--   Support for static pages, dynamic pages, and browser-driven extraction
--   CLI tooling, including formatting and debugging support
--   Embeddable Go runtime for integrating Ferret into applications
--   Extensible module, function, and runtime capability system
--   Structured results for testing, analytics, AI/ML, and automation pipelines
--   Portable execution model with a focused VM
+-   Purpose-built declarative language for querying, transforming, synchronizing, and automating structured data
+-   Embeddable Go runtime with reusable compiled plans and isolated execution sessions
+-   Capability-based host values for exposing application objects, resources, and external systems directly to FQL
+-   Unified query model for browsers, APIs, databases, documents, and custom data sources
+-   Extensible runtime through namespaced functions, modules, hooks, and custom value types
+-   Event-driven synchronization and dispatch for interacting with asynchronous and stateful resources
+-   Managed resource lifecycle for files, connections, cursors, streams, and other host resources
+-   Bytecode VM and portable programs for efficient repeated execution and precompiled artifacts
 
 Getting started
 ---------------
@@ -84,7 +85,7 @@ func main() {
 	}
 	defer eng.Close()
 
-	plan, err := eng.Compile(\`RETURN 1 + 1\`)
+	plan, err := eng.Compile(\`return 1 + 1\`)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -105,25 +106,30 @@ func main() {
 
 ### Migration from v1
 
-Ferret v2 introduces a new architecture and public API, so embedding it directly is different from v1.
+Ferret v2 introduces a new architecture and public API, so existing Go applications should migrate in two stages: first to the v2 compatibility API, then incrementally to the native v2 API.
 
-To make migration easier, v2 includes a compat module that provides a v1-style API. Its goal is to make upgrades incremental instead of forcing a full rewrite up front.
+Run the `ferret migrate` command from anywhere inside the application's Go module:
 
-For many projects, the easiest migration path will be:
+ferret migrate --dry-run # List the files that would change
+ferret migrate --print   # Print a unified diff without changing files
+ferret migrate           # Apply the migration
 
--   switch imports from v1 to the compat package
--   get the project compiling again
--   migrate incrementally to the native v2 API over time
+The command rewrites the documented v1 imports to their v2 compatibility packages, updates `go.mod` and `go.sum` as required by those rewrites, and formats changed Go files. Generated, vendored, and nested-module files are left untouched. Unsupported v1 imports are reported as manual follow-up; if the project vendors dependencies, run `go mod vendor` after applying the migration.
 
-A small helper script for rewriting import paths is planned to simplify this process further.
+This is only the mechanical compatibility stage. The command does not convert application logic to the native v2 API or migrate drivers and other unsupported v1 packages. Running it again on an already-migrated compatibility project is a no-op and does not upgrade the Ferret v2 dependency merely because the CLI is newer.
 
-The compatibility layer is intended as a migration aid, not the long-term preferred API. New projects should use the native v2 packages directly.
+After applying the migration, address any reported manual follow-up, build and test the application, and then migrate to the native v2 API over time. The compatibility layer is a migration aid, not the long-term preferred API; new projects should use the native v2 packages directly.
 
 ### Alpha status
 
 Ferret v2 is currently in active development.
 
 Alpha releases are intended for early adopters, experimentation, and feedback. Some APIs and language features may still change before the stable v2 release.
+
+Maintainers
+-----------
+
+-   Versioned Ferret Core API Reference
 
 Support Ferret
 --------------

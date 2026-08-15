@@ -1,6 +1,6 @@
 ---
 project: rasa
-stars: 21289
+stars: 21297
 description: 💬   Open source machine learning framework to automate text- and voice-based conversations: NLU, dialogue management, connect to Slack, Facebook, and more - Create chatbots and voice assistants
 url: https://github.com/RasaHQ/rasa
 ---

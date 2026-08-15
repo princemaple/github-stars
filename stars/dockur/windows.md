@@ -1,6 +1,6 @@
 ---
 project: windows
-stars: 52793
+stars: 52876
 description: Windows inside a Docker container.
 url: https://github.com/dockur/windows
 ---
@@ -174,6 +174,24 @@ Windows XP Professional
 Windows 2000 Professional
 
 0.4 GB
+
+`me`
+
+Windows ME
+
+0.5 GB
+
+`98`
+
+Windows 98
+
+0.7 GB
+
+`95`
+
+Windows 95
+
+0.6 GB
 
 `2025`
 

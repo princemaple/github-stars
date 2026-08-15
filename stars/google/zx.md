@@ -1,6 +1,6 @@
 ---
 project: zx
-stars: 45652
+stars: 45670
 description: A tool for writing better scripts
 url: https://github.com/google/zx
 ---
@@ -48,13 +48,13 @@ Compatibility
     -   Bun >= 1.0.0
     -   Deno 1.x, 2.x
     -   GraalVM Node.js
--   Some kind of bash or PowerShell
+-   Bash or PowerShell
 -   Both CJS or ESM modules in JS or TS
 
 See also
 --------
 
--   🔥 crow.watch — a computing-focused community, link aggregation and discussion, join.
+-   MAML — JSON for config, with comments, multiline strings, unquoted keys, and optional commas.
 
 License
 -------

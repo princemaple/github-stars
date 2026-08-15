@@ -1,6 +1,6 @@
 ---
 project: RustPython
-stars: 22251
+stars: 22281
 description: A Python Interpreter written in Rust
 url: https://github.com/RustPython/RustPython
 ---
@@ -30,7 +30,7 @@ git config core.symlinks true
 Then you can change into the RustPython directory and run the demo (Note: `--release` is needed to prevent stack overflow on Windows):
 
 $ cd RustPython
-$ cargo run --release demo\_closures.py
+$ cargo run --release -- -c 'print("Hello, RustPython!")'
 Hello, RustPython!
 
 Or use the interactive shell:

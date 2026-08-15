@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 29765
+stars: 30115
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -118,10 +118,11 @@ page.goto("https://example.com")
 
 * * *
 
-Latest: v0.5.6 — 71 source-level stealth patches (Chromium 150.0.7871.114.3 — all platforms)
---------------------------------------------------------------------------------------------
+Latest: v0.5.7 — 71 source-level stealth patches (Chromium 150.0.7871.114.6 — Linux + Windows)
+----------------------------------------------------------------------------------------------
 
--   **CloakBrowser Pro** — the latest binary (Chromium 150.0.7871.114.3, 71 source-level patches) is available to Pro subscribers on **Linux, Windows, and macOS**. Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest build automatically. See CloakBrowser Pro
+-   **CloakBrowser Pro Stable** — Chromium `150.0.7871.114.6` on Linux x64, Linux ARM64, and Windows x64; macOS remains on `150.0.7871.114.3`. Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest Stable build for your platform automatically. See CloakBrowser Pro
+-   **CloakBrowser Pro Preview** — Chromium `151.0.7922.108.2` on Linux x64, Linux ARM64, and Windows x64. Opt in with `release_channel="preview"` or `CLOAKBROWSER_RELEASE_CHANNEL=preview`; macOS safely falls back to Stable.
 -   **.NET 8 / C# client** — CloakBrowser now ships as a NuGet package (`CloakBrowser`), mirroring the Python and JS wrappers.
 -   **71 fingerprint patches** — rendering consistency improvements across Linux and Windows, corrected GPU/display/graphics parameters to match stock Chrome profiles
 -   **Windows native GPU passthrough** — real hardware values pass through directly instead of being spoofed, matching real browser behavior
@@ -1473,7 +1474,7 @@ Fix
 
 Stale binary/wrapper, missing current FPJS patches, or poor proxy IP reputation
 
-Upgrade to the latest Pro binary (`150.0.7871.114.3+`), use a residential proxy with `geoip=True`, and use the config below.
+Upgrade to the latest Pro binary for your platform, use a residential proxy with `geoip=True`, and use the config below.
 
 **Browser tampering**
 

@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 909
+stars: 938
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -15,7 +15,7 @@ cad-viewer is `the first web-based DXF/DWG viewer and editor in the world that o
 It also offers something you will rarely find in other CAD viewers—**one-click export to a single, self-contained HTML file**. The downloaded `.html` embeds the drawing snapshot and a lightweight viewer runtime, so recipients can open, pan, zoom, toggle layers, and measure distances in any modern browser with **no CAD app, no server, and no install**. Most desktop and web CAD viewers only let you view inside their own product; cad-viewer turns a live drawing into a portable, offline artifact you can email, archive, or drop on a static file host—ideal for sharing with clients, compliance archives, and air-gapped workflows. The offline viewer also uses far less memory than traditional desktop tools when opening the same drawing (see memory comparison below).
 
 -   **🌐 Home Page**
--   **🌐 Live Demo**
+-   **🌐 Live Demo**: Netlify · GitHub Pages
 -   **🌐 API Docs**: Read the Docs (versioned) · GitHub Pages (latest/dev)
 -   **🌐 Wiki**
 -   X (Twitter): @mlightcad
@@ -127,9 +127,9 @@ Commands / capabilities
 
 `@mlightcad/cad-simple-ui-plugin`
 
-**Toolbar & layer manager UI** for `cad-simple-viewer` (plain DOM, no Vue/React)
+**Toolbar, layer manager & review palette UI** for `cad-simple-viewer` (plain DOM, no Vue/React)
 
-`layer`, default toolbar (view, measure, export, review, theme, locale)
+`layer`, `markuppanel`, default toolbar (view, measure, export, review, theme, locale)
 
 `@mlightcad/cad-agent-plugin`
 
@@ -162,9 +162,9 @@ Export drawings to **self-contained offline HTML**
 It provides:
 
 -   A **configurable toolbar** (placement on any edge, default CAD commands, nested menus, custom items)
--   A **floating layer manager** (layer on/off, ACI color picker, zoom-to-layer on double-click)
+-   A **dock panel** with a **layer manager** tab (layer on/off, ACI color picker, zoom-to-layer on double-click) and a **review palette** tab (markup list, status, comments)
 -   **Theme sync** with the `COLORTHEME` sysvar and `--ml-ui-*` CSS tokens on your host element
--   **Locale sync** with `AcApI18n` (English / Chinese)
+-   **Locale sync** with `AcApI18n` (English / Chinese / Czech / Turkish)
 
 All widgets are framework-agnostic (plain DOM). The full Vue `cad-viewer` app has its own Element Plus UI and does not require this plugin; use `cad-simple-ui-plugin` when you build on `cad-simple-viewer` directly.
 
@@ -191,7 +191,7 @@ The full Vue `cad-viewer` app registers the agent automatically when the package
 These plugins add export (and PDF import) commands to the same plugin manager. They are **lazy-loaded** so initial page weight stays small. The `cad-simple-viewer-example` demo registers all three export plugins, `cad-simple-ui-plugin`, and `cad-agent-plugin`; the full `cad-viewer` app registers the export plugins and the agent plugin (when installed) in its bootstrap.
 
 -   **HTML** — one-file offline viewer for sharing and archiving: packages/cad-html-plugin/README.md  
-    (Headless CLI using the same pipeline: packages/cad-html-exporter-cli/README.md)
+    (Headless CLI using the same pipeline: packages/cad-simple-viewer-cli/README.md)
 -   **PDF** — vector PDF export and PDF-to-CAD import: packages/cad-pdf-plugin/README.md
 -   **SVG** — vector SVG export: packages/cad-svg-plugin/README.md
 
@@ -238,7 +238,7 @@ These optimizations enable CAD-Viewer to smoothly render complex CAD drawings wi
 Known Issues
 ------------
 
-The default open-source DWG path is based on LibreDWG. It works well for many drawings, but its entity coverage is still limited, the WASM bundle is much larger, startup is slower, memory usage is high, and very large DWG files may hit out-of-memory errors. It also introduces GPL licensing considerations for commercial closed-source products.
+The default open-source DWG path is based on LibreDWG via the optional `@mlightcad/libredwg-converter` package. It works well for many drawings, but its entity coverage is still limited, the WASM bundle is much larger, startup is slower, memory usage is high, and very large DWG files may hit out-of-memory errors. It also introduces GPL licensing considerations for commercial closed-source products. `@mlightcad/cad-simple-viewer` does **not** depend on or register that converter by default — host apps (see the example packages) opt in explicitly.
 
 If you need better compatibility, lower memory usage, large-file support, or a cleaner commercial licensing story, see our **proprietary DWG parser**.
 
@@ -507,6 +507,6 @@ License
 
 The cad-viewer monorepo is primarily MIT licensed.
 
-DXF loading uses the built-in MIT parser in `@mlightcad/data-model`. The **default DWG loading path** in `@mlightcad/cad-simple-viewer` depends on GPL-3.0 packages (`libredwg-web` / `@mlightcad/libredwg-converter`). If you ship a closed-source product and cannot distribute GPL code to your customers, use the **proprietary DWG parser** instead — it replaces that converter and lets the rest of the stack remain MIT-only.
+DXF loading uses the built-in MIT parser in `@mlightcad/data-model`. DWG loading is **opt-in**: `@mlightcad/cad-simple-viewer` does not depend on GPL LibreDWG packages. Hosts that want open-source DWG support add `@mlightcad/libredwg-converter` (GPL-3.0) themselves, deploy its worker + wasm, and register the converter. If you ship a closed-source product and cannot distribute GPL code to your customers, use the **proprietary DWG parser** instead.
 
 → **Commercial parser:** PROPRIETARY-PARSER.md (scope, licensing, pricing, integration, GPL compliance, support)

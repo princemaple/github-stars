@@ -32,7 +32,7 @@ To get started, add `flop` to your dependencies list in your project's `mix.exs`
 
 def deps do
   \[
-    {:flop, "~> 0.26.6"}
+    {:flop, "~> 0.27.2"}
   \]
 end
 
@@ -41,6 +41,44 @@ You can also configure a default repo for Flop by adding the following line to y
 config :flop, repo: MyApp.Repo
 
 Instead of configuring Flop globally, you can also use a configuration module. Please refer to the Flop module documentation for more information.
+
+### Compatibility
+
+This package is tested against the Elixir and OTP versions that are still supported upstream. Older versions down to the requirement in `mix.exs` may still work, but they are not covered by CI and not officially supported.
+
+### Supported databases
+
+Database
+
+Status
+
+Postgres
+
+Supported and tested in CI
+
+MySQL
+
+Supported and tested in CI
+
+SQLite
+
+Supported and tested in CI
+
+Flop builds queries with `Ecto.Query` and only uses a couple of fragments to bridge the gap between databases. The library might work with more Ecto adapter, but it is only tested with the databases listed above.
+
+Some behavior depends on the used adapter.
+
+#### MySQL
+
+Configure the repo with the charset and the collation your columns use, or cursor pagination over a string column raises `Illegal mix of collations`:
+
+config :my\_app, MyApp.Repo,
+  charset: "utf8mb4",
+  collation: "utf8mb4\_0900\_ai\_ci"
+
+MySQL cannot use an index for the array operators, which compile to `JSON_CONTAINS`, or for the `:asc_nulls_last` and `:desc_nulls_first` order directions, which add an `IS NULL` sort key because MySQL has neither `NULLS FIRST` nor `NULLS LAST`.
+
+`{:array, :binary_id}` does not work, because the adapter writes a `binary_id` as raw bytes and the JSON encoder rejects them. See `Flop.Filter` for the array operators.
 
 Usage
 -----
@@ -319,7 +357,7 @@ Development
 
 Pull requests are welcome, but for non-trivial changes like new features or API changes, please open an issue first and describe what you plan to do. Otherwise, you risk spending time on development work that might not be accepted.
 
-The database tests require running Postgres and MySQL instances. There is a docker compose configuration you can use:
+The database tests require running Postgres and MySQL instances. SQLite runs from a file and needs nothing. There is a docker compose configuration you can use:
 
 docker compose up
 
@@ -329,17 +367,20 @@ mix format --check-formatted
 mix credo
 mix compile --warnings-as-errors
 mix test --warnings-as-errors
-mix test.postgres --warnings-as-errors
+mix hex.audit
+mix docs --warnings-as-errors
 mix dialyzer
 
-Note that the tests are split up. `mix test` only tests common functionality without database interaction, and `mix test.{adapter}` runs tests that involve database queries.
+Note that the tests are split up. The common functionality is tested without database interaction, and each Ecto adapter has its own suite that runs the tests involving database queries.
 
--   `mix test` - common functionality
+`mix test` runs the common tests and the adapters that are expected to pass, which is every adapter at the moment.
+
+-   `mix test` - common functionality and all supported adapters
+-   `mix test.base` - common functionality only (runs without database)
 -   `mix test.postgres`
 -   `mix test.mysql`
 -   `mix test.sqlite`
--   `mix test.all` - all database adapters
 
-At the moment, only `mix test` and `mix test.postgres` are required to pass.
+`mix test` is required to pass.
 
 For general contribution guidelines, refer to https://github.com/woylie/.github/blob/main/CONTRIBUTING.md.

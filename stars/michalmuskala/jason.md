@@ -1,6 +1,6 @@
 ---
 project: jason
-stars: 1678
+stars: 1679
 description: A blazing fast JSON parser and generator in pure Elixir.
 url: https://github.com/michalmuskala/jason
 ---

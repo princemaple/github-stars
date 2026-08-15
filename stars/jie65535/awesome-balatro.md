@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1240
+stars: 1244
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -75,6 +75,7 @@ Tools
 
 -   Balatro Calculator - Calculate the best score for any Balatro hand. by @Saffron
 -   Balatro HQ - Web tools for Balatro: a score calculator with side-by-side build comparison, a free seed analyzer with AI playstyle advice, and a seed vault that saves seeds with their build summary and notes. by @o98k-ok
+-   BalatroLab - A bilingual (English/中文) Balatro database companion: 278 searchable cards, consumables, vouchers, decks, and poker hands with local media and source-reviewed relationships, plus a deterministic score calculator, joker synergy finder, unlock tracker, deck builder, and seed vault. by @Max179
 -   Balatro Mobile Maker - Create a mobile Balatro app from your Steam version of Balatro. by @blake502
 -   Balatro Modpack Manager - Install, update, and customize modpacks in one streamlined tool. by \[@Dimserene\]
 -   Balatro Seed Oracle - Balatro Seed Searcher with visual drag&drop filter builder coded in C# and AvaloniaUI. by @OptimusPi
@@ -324,7 +325,6 @@ Mods (Require **Steamodded**)
 -   JCursor - Allow customize the cursor. by @Jie65535
 -   Jimbo's Histories | Run Reviewer - Review run after it has ended. by @MilcK
 -   Jimbo's Metrics - Graph your plays over time, and view your previous hands. by @CraftedCart
--   JokerDisplay - Adds a small window under vanilla Jokers that displays useful information. by @nh6574
 -   JokerSellValue - QOL mod for Jokers in Buffoon Packs and the shop. by @OppositeWolf770
 -   Main Menu Tweaks - Minor changes to the main menu screen. by `@termisaal`
 -   Manual Flip - Adds a hotkey function to flip selected playing cards and Jokers. by @ssyangchn
@@ -622,6 +622,7 @@ Mods (Require **Lovely**)
 
 ### GUI
 
+-   JokerDisplay - Adds a small window under vanilla Jokers that displays useful information. by @nh6574
 -   Malverk - Malverk is an all-in-one texture manager. With an inbuilt API for AltTextures and TexturePacks, Malverk integrates a simple UI to customise which textures are applied to your game whenever you wish. by @Eremel\_
 -   Planet Card Cash-Out Mod discord - "Use" a planet card while the cash-out animations play. by @antler5
 -   Readabletro - Readabletro improves readability of the game, especially on lower res screens (Steam Deck) by using a more legible vector typeface and smoothly upscaled card textures. by @bladeSk

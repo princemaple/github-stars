@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 64502
+stars: 64739
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -243,8 +243,6 @@ Basically, if telemetry is disabled we don't collect anything. However, dependin
 
 💖 Sponsors
 -----------
-
-### Premium Sponsors
 
 ### All Sponsors
 

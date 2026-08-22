@@ -1,6 +1,6 @@
 ---
 project: umami
-stars: 38202
+stars: 38322
 description: Umami is a privacy-first analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place — no cookies, no surveillance, self-hosted or in the cloud.
 url: https://github.com/umami-software/umami
 ---
@@ -40,6 +40,8 @@ Create an `.env` file with the following:
 DATABASE\_URL=connection-url
 
 Optional: set `API_URL` to change the base URL used by internal UI API calls. Relative paths are served under `BASE_PATH`; absolute URLs are proxied through the local `/api` route. For example, `API_URL=/internal-api` or `API_URL=https://api.example.com/api`.
+
+Optional: set `TWO_FACTOR_ENCRYPTION_KEY` to a 64-character hex string to enable two-factor authentication. Generate one with `openssl rand -hex 32`. Two-factor authentication is unavailable and cannot be required until this key is set.
 
 The connection URL format:
 

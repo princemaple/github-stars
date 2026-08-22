@@ -1,6 +1,6 @@
 ---
 project: artico
-stars: 114
+stars: 115
 description: Artico - WebRTC made simple
 url: https://github.com/matallui/artico
 ---

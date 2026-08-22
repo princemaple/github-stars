@@ -1,6 +1,6 @@
 ---
 project: immich
-stars: 110638
+stars: 112364
 description: High performance self-hosted photo and video management solution.
 url: https://github.com/immich-app/immich
 ---

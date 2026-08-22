@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 74129
+stars: 74291
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---

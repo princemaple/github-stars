@@ -1,6 +1,6 @@
 ---
 project: isomorphic-git
-stars: 8324
+stars: 8333
 description: A pure JavaScript implementation of git for node and browsers!
 url: https://github.com/isomorphic-git/isomorphic-git
 ---
@@ -111,7 +111,7 @@ import git from 'isomorphic-git'
 // or
 import \* as git from 'isomorphic-git'
 // or
-import {plugins, clone, commit, push} from 'isomorphic-git'
+import {add, clone, commit, push} from 'isomorphic-git'
 
 View the full Getting Started guide on the docs website.
 

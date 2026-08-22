@@ -1,6 +1,6 @@
 ---
 project: filebrowser
-stars: 35869
+stars: 35922
 description: File Browser provides a file managing interface within a specified directory and it can be used to upload, delete, preview and edit your files.
 url: https://github.com/filebrowser/filebrowser
 ---

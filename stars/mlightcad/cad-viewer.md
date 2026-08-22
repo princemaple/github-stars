@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 938
+stars: 951
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -16,7 +16,7 @@ It also offers something you will rarely find in other CAD viewers—**one-click
 
 -   **🌐 Home Page**
 -   **🌐 Live Demo**: Netlify · GitHub Pages
--   **🌐 API Docs**: Read the Docs (versioned) · GitHub Pages (latest/dev)
+-   **🌐 API Docs**: Read the Docs (versioned) · GitHub Pages (latest/dev) · MCP Server
 -   **🌐 Wiki**
 -   X (Twitter): @mlightcad
 -   YouTube: @mlightcad
@@ -57,6 +57,19 @@ Features
 -   Offline and online editing workflows
 -   THREE.js 3D rendering engines with advanced optimization techniques
 -   Designed for extensibility and integration with platforms like CMS, Notion, and WeChat
+
+Embed DWG/DXF with One Line of Code
+-----------------------------------
+
+Add DWG/DXF viewing to any website with a single `<iframe>`—no CAD backend, no uploading drawings to a third-party cloud. The file is fetched from **your** URL and parsed entirely in the visitor’s browser, with review tools (pan, zoom, measure, annotate) ready out of the box.
+
+<iframe
+  src\="https://mlightcad.com/embed.html?url=https://example.com/plans/floor.dwg&mode=review&toolbar=1"
+  style\="width:100%;height:600px;border:0"
+  allowfullscreen\>
+</iframe\>
+
+Walkthrough and live playground: Embed DWG/DXF on Your Website Without Uploading a Single Byte.
 
 Getting Started
 ---------------

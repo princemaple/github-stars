@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 52469
+stars: 54322
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---
@@ -27,7 +27,7 @@ The same core powers two ways to run Motrix:
 🧪 Beta testing
 ---------------
 
-Motrix Turbo v2 is currently in beta. Download v2.0.0-beta.8 from GitHub Releases and read the full release notes before installing it.
+Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.22 from GitHub Releases and read the full release notes before installing it.
 
 Back up your existing Motrix data and downloads before testing. Migration from Motrix v1 data has not yet been validated, so do not use your only copy of v1 data with this beta. When practical, test v2 in parallel using a separate OS account, machine, or Docker data directory.
 
@@ -118,9 +118,18 @@ motrix pair --name my-nas     # Pair with a remote or headless instance
 
 ### Build a plugin
 
-pnpm create motrix-plugin my-plugin
+The Motrix Plugin SDK provides the TypeScript API, manifest schema, project scaffolder, and CLI used throughout the plugin development workflow:
 
-Plugins run inside a QuickJS sandbox. Each plugin declares the host capabilities it needs in its manifest, such as notifications, secret storage, or FFmpeg detection. Motrix asks the user before granting access. See the Plugin SDK documentation for development workflows, starter templates, packaging, and publishing.
+pnpm create motrix-plugin my-plugin
+cd my-plugin && pnpm install
+pnpm dev                         # Watch-build and launch Motrix with the plugin
+pnpm exec motrix-plugin validate # Validate motrix-plugin.json
+pnpm run pack                    # Create dist/<id>-<version>.moext
+pnpm exec motrix-plugin lint     # Check the packed bundle
+
+The default scaffold starts with a `beforeCreate` URL resolver. Pass `post-action` after the project name to start with an `afterComplete` notification plugin instead. Plugins can hook into `beforeCreate`, `beforeFinalize`, `afterComplete`, and `onError`, contribute callable commands and settings, and access the runtime through the `motrix:plugin-api` virtual module.
+
+Plugins are bundled as a single ES2020 module and run inside a QuickJS sandbox without Node.js APIs or direct file and network access. Declare activation events, required capabilities, and URL-scoped host permissions in `motrix-plugin.json`; Motrix shows those requests to the user before granting access. See the Plugin SDK documentation for templates, the manifest and runtime API references, localization, sandbox constraints, packaging, and distribution.
 
 📦 Installation
 ---------------
@@ -129,7 +138,7 @@ Plugins run inside a QuickJS sandbox. Each plugin declares the host capabilities
 
 Download Motrix from motrix.app and choose the package for your operating system. Most Mac users should choose the Apple Silicon build; Intel builds are available for older Macs with Intel processors.
 
-The current beta desktop packages are distributed through the GitHub prerelease linked above, with Snap available from its edge channel. Choose the package that matches your operating system and architecture:
+After the remaining release gates pass, the current beta desktop packages will be distributed through the GitHub prerelease linked above. Snap is not published for this beta; prerelease tag runs stop after source validation and do not build or publish Snap artifacts. Choose the package that matches your operating system and architecture:
 
 Platform
 
@@ -159,11 +168,11 @@ Linux
 
 `x64`, `arm64`
 
-`.deb` / `.rpm`; Snap `latest/edge`
+`.AppImage` / `.deb` / `.rpm`
 
-Use `.deb` on Debian or Ubuntu, `.rpm` on Fedora or openSUSE, or the edge Snap for beta testing
+Use the portable `.AppImage` on any distribution, `.deb` on Debian or Ubuntu, or `.rpm` on Fedora or openSUSE
 
-This beta does not publish an AppImage. Flatpak is validated separately and is not published by the release tag. Windows `arm64` and all 32-bit packages are not available. Windows `x64` packages are unsigned and may trigger a Windows SmartScreen warning.
+The `.AppImage` asks on first launch whether to register its desktop entry and URL-scheme handlers under your user data directory; declining leaves your system untouched. You can enable or remove this desktop integration at any time from Settings → Integration. This beta does not publish a Snap. Flatpak is validated separately and is not published by the release tag. Windows `arm64` and all 32-bit packages are not available. Windows `x64` packages are unsigned and may trigger a Windows SmartScreen warning.
 
 ### Command-line client
 
@@ -177,7 +186,7 @@ Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR
 
 mkdir -p motrix-data downloads
 sudo chown 1000:1000 motrix-data downloads
-export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.8'
+export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.22'
 export MOTRIX\_PUBLIC\_URL='http://nas.example.lan:8080'
 docker compose pull server
 docker compose up -d --wait
@@ -214,7 +223,7 @@ Windows and Linux render the application menu inside the Motrix window. To previ
 
 MOTRIX\_PREVIEW\_MAC\_MENU=1 pnpm start
 
-The flag hides the main window's macOS traffic-light buttons and enables the renderer dropdown menu. Restart the development process after changing the flag because both Electron and Vite read it at startup.
+The flag hides the main window's macOS traffic-light buttons, enables the renderer dropdown menu, and shows the custom window controls used on Windows and Linux. Collapse the sidebar in this mode to check the application menu, attached actions, drag region, and caption-control safe areas together. Restart the development process after changing the flag because both Electron and Vite read it at startup.
 
 This mode is intended for layout and command-item debugging. Electron routes macOS role items through AppKit's native menu, so role-backed actions such as **Window → Minimize** do not behave identically when invoked from the preview dropdown. Validate those native role actions on Windows or Linux.
 
@@ -275,11 +284,11 @@ The codebase has four strict layers. CI enforces the dependency boundaries betwe
 
 ```
 renderer (React UI)
-   │  IPC via window.motrix
+   |  IPC via window.motrix
 app core (tasks, settings, plugins, bridge)
-   │
+   |
 engine adapter
-   │
+   |
 aria2 (download engine)
 ```
 

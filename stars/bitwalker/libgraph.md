@@ -1,6 +1,6 @@
 ---
 project: libgraph
-stars: 569
+stars: 570
 description: A graph data structure library for Elixir projects
 url: https://github.com/bitwalker/libgraph
 ---

@@ -1,6 +1,6 @@
 ---
 project: quickbeam
-stars: 413
+stars: 414
 description: JavaScript runtime for the BEAM — Web APIs backed by OTP, native DOM, and a built-in TypeScript toolchain.
 url: https://github.com/elixir-volt/quickbeam
 ---

@@ -1,7 +1,7 @@
 ---
 project: spark-joy
-stars: 9797
-description: ✨😂 2000+ ways to add design flair, user delight, and whimsy to your product.
+stars: 9795
+description: Archived — Spark Joy now lives on Forge.
 url: https://github.com/swyxio/spark-joy
 ---
 

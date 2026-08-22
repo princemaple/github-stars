@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6007
+stars: 6042
 description: Copy/paste detector for programming source code, supports 223 formats. AI-ready with token-efficient reporter, skill and MCP server.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -154,6 +154,7 @@ jscpd v5 is a ground-up Rust rewrite that ships as `jscpd@5` (installs the `jscp
 -   **`--workers`** — control parallelism for file tokenization and detection (default: auto, uses all CPU cores; not available in v4)
 -   **13 reporters**: `console`, `console-full`, `json`, `xml`, `csv`, `html`, `markdown`, `badge`, `sarif`, `ai`, `xcode`, `threshold`, `silent`
 -   **AI reporter** — token-efficient output for LLM pipelines (~79% fewer tokens than console)
+-   **`--mcp`** — built-in MCP server over stdio: point your AI assistant at the binary and it can check snippets for duplication against your codebase (see docs)
 -   **`--summary`** — codebase summary: top files and folders by tokens, lines, size, and a complexity estimate — refactoring hotspots straight from the scan (see docs)
 -   **Self-contained binary** — prebuilt for 6 platforms (macOS arm64/x64, Linux arm64/x64, Windows x64)
 
@@ -334,6 +335,8 @@ See AI-Ready docs for full details.
 
 Contributing
 ------------
+
+See CONTRIBUTING.md for the development setup (Rust and TypeScript), the test policy, and the requirements for acceptable pull requests. Security issues go through the security policy, not public issues.
 
 1.  Fork the repo kucherenko/jscpd
 2.  Clone forked version (`git clone https://github.com/{your-id}/jscpd`)

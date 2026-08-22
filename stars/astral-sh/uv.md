@@ -1,6 +1,6 @@
 ---
 project: uv
-stars: 88762
+stars: 88973
 description: An extremely fast Python package and project manager, written in Rust.
 url: https://github.com/astral-sh/uv
 ---

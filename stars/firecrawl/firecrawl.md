@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 167779
+stars: 170939
 description: The context API to search, scrape, and interact with the web at scale. 🔥
 url: https://github.com/firecrawl/firecrawl
 ---
@@ -356,13 +356,13 @@ Cost
 
 Best For
 
-`spark-1-mini` (default)
+`spark-1-mini`
 
 60% cheaper
 
 Most tasks
 
-`spark-1-pro`
+`spark-1-pro` (default)
 
 Standard
 
@@ -806,10 +806,11 @@ Integrations
 
 **Agents & AI Tools**
 
--   Firecrawl Skill
--   Firecrawl CLI Skills
--   Firecrawl Workflows
+-   Firecrawl Skills Catalog — install with `npx skills add firecrawl/skills`
+-   Firecrawl CLI
 -   Firecrawl MCP
+
+The build skills (integrating Firecrawl into product code) are authored in this repo under `skills/` and mirrored into the catalog by CI. Contributing skills? CLI skills (including the research/developer index skills) → PR `firecrawl/cli`. Build/SDK skills → PR this repo (`skills/`). Workflow skills → PR `firecrawl/firecrawl-workflows`. The catalog (`firecrawl/skills`) is read-only — never PR it directly.
 
 **Platforms**
 

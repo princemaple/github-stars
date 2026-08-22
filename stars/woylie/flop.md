@@ -1,6 +1,6 @@
 ---
 project: flop
-stars: 811
+stars: 810
 description: Filtering, ordering and pagination for Ecto
 url: https://github.com/woylie/flop
 ---
@@ -21,7 +21,7 @@ Features
 -   **Configurable filterable and sortable fields:** Only applies parameters to the fields that were explicitly configured as filterable or sortable.
 -   **Join fields:** Allows the application of pagination, sort, and filter parameters on any named binding. Provides functions to help you to avoid unnecessary join clauses.
 -   **Compound fields:** Provides the ability to apply filter parameters on multiple string fields, for example for a full name filter.
--   **Custom fields:** Provides an escape hatch for filters that Flop is not able to build on its own.
+-   **Custom fields:** Provides an escape hatch for filtering and ordering that Flop is not able to build on its own.
 -   **Relay connection formatter:** Formats the connection in Relay style, providing edges, nodes, and page info.
 -   **UI helpers and URL builders through Flop Phoenix:** Pagination, sortable tables and filter forms.
 
@@ -36,7 +36,11 @@ def deps do
   \]
 end
 
-You can also configure a default repo for Flop by adding the following line to your config file:
+Enable debug checks in `config/dev.exs` and `config/test.exs`:
+
+config :flop, debug: true
+
+You can also configure a default repo for Flop by adding the following line to `config/config.exs`:
 
 config :flop, repo: MyApp.Repo
 

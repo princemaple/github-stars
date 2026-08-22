@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 64739
+stars: 65063
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -176,6 +176,8 @@ RepoCloud
 Elestio
 
 Northflank
+
+Sealos
 
 or set up a production AnythingLLM instance without Docker →
 

@@ -23,7 +23,7 @@ Installation
 Add dependency to your project's `mix.exs`:
 
 def deps do
-  \[{:xml\_builder, "~> 2.1"}\]
+  \[{:xml\_builder, "~> 2.4"}\]
 end
 
 Examples

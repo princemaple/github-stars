@@ -1,6 +1,6 @@
 ---
 project: claude-code-router
-stars: 36675
+stars: 36826
 description: One local control plane for every AI agent: route across models, fuse new capabilities, orchestrate tools, and stay fully in control.
 url: https://github.com/musistudio/claude-code-router
 ---

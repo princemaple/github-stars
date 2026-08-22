@@ -1,6 +1,6 @@
 ---
 project: benchee
-stars: 1513
+stars: 1514
 description: Easy and extensible benchmarking in Elixir providing you with lots of statistics!
 url: https://github.com/bencheeorg/benchee
 ---

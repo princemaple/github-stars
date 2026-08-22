@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 40674
+stars: 41144
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -1018,6 +1018,14 @@ Hosts to bypass proxy (or `AGENT_BROWSER_PROXY_BYPASS` env)
 
 Ignore HTTPS certificate errors (useful for self-signed certs)
 
+`--ca-cert <path>`
+
+Trust a CA certificate or PEM bundle for locally launched Chromium on Linux; later commands in the same running session retain it when omitted (or `AGENT_BROWSER_CA_CERT` env)
+
+`--no-ca-cert`
+
+Clear CA trust retained by the running browser session (or `AGENT_BROWSER_CLEAR_CA_CERT`)
+
 `--allow-file-access`
 
 Allow file:// URLs to access local files (Chromium only)
@@ -1218,6 +1226,15 @@ Create an `agent-browser.json` file to set persistent defaults instead of repeat
     }
   \]
 }
+
+**Example proxy CA configuration:**
+
+{
+  "proxy": "http://localhost:8080",
+  "caCert": "/etc/ssl/certs/proxy-ca.crt"
+}
+
+`caCert` remains effective for later commands in the same running session. Use `"clearCaCert": true`, `--no-ca-cert`, or `AGENT_BROWSER_CLEAR_CA_CERT=1` to remove it. Setting, changing, or clearing the CA relaunches Chromium without restarting the daemon. Repeating the same certificate content, including from a different path, reuses the current browser. On Linux, `agent-browser install --with-deps` installs the required `certutil`; otherwise install `libnss3-tools` on Debian/Ubuntu or `nss-tools` on RPM Linux.
 
 Use `--config <path>` or `AGENT_BROWSER_CONFIG` to load a specific config file instead of the defaults:
 

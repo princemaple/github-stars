@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 7924
+stars: 8084
 description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---
@@ -75,6 +75,7 @@ Databasus performs a real restore to confirm backups are usable, not just intact
 -   **Access management**: Control who can view or manage specific databases with role-based permissions
 -   **Audit logs**: Track all system activities and changes made by users
 -   **User roles**: Assign viewer, member, admin or owner roles within workspaces
+-   **OpenTelemetry logs**: Export application and audit logs to an external system (by default they are also written to a local file)
 
 ### 🎨 **UX-Friendly**
 
@@ -94,6 +95,7 @@ Databasus performs a real restore to confirm backups are usable, not just intact
 -   **Docker-based**: Easy deployment and management
 -   **Privacy-first**: All your data stays on your infrastructure
 -   **Open source**: Apache 2.0 licensed, inspect every line of code
+-   **Build-in SSH**: Connect to your databasus via SSH tunnel
 
 ### 📦 Installation (docs)
 

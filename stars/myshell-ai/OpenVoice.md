@@ -1,6 +1,6 @@
 ---
 project: OpenVoice
-stars: 37148
+stars: 37183
 description: Instant voice cloning by MIT and MyShell. Audio foundation model.
 url: https://github.com/myshell-ai/OpenVoice
 ---

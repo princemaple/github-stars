@@ -1,6 +1,6 @@
 ---
 project: kepler.gl
-stars: 11969
+stars: 11982
 description: Kepler.gl is a powerful open source geospatial analysis tool for large-scale data sets.
 url: https://github.com/keplergl/kepler.gl
 ---
@@ -70,8 +70,7 @@ Kepler.gl uses Redux to manage its internal state, along with react-palm middlew
 You need to add `taskMiddleware` of `react-palm` to your store too. We are actively working on a solution where `react-palm` will not be required, however it is still a very lightweight side effects management tool that is easier to test than react-thunk.
 
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
-import keplerGlReducer from '@kepler.gl/reducers';
-import {enhanceReduxMiddleware} from '@kepler.gl/middleware';
+import keplerGlReducer, {enhanceReduxMiddleware} from '@kepler.gl/reducers';
 
 const initialState \= {};
 const reducers \= combineReducers({

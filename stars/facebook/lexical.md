@@ -1,6 +1,6 @@
 ---
 project: lexical
-stars: 23763
+stars: 23786
 description: Lexical is an extensible text editor framework that provides excellent reliability, accessibility and performance.
 url: https://github.com/facebook/lexical
 ---
@@ -26,6 +26,10 @@ Features
 
 Quick Start
 -----------
+
+For framework-agnostic usage, start with the Vanilla JS quick start or the Vanilla JS example.
+
+For React applications, install Lexical with the official React bindings:
 
 npm install lexical @lexical/react
 

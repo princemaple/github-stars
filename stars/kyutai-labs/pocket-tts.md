@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 8618
+stars: 8877
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---

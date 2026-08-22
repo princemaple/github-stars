@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 109341
+stars: 110141
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---

@@ -1,6 +1,6 @@
 ---
 project: AFFiNE
-stars: 71568
+stars: 71766
 description: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. 
 url: https://github.com/toeverything/AFFiNE
 ---
@@ -103,7 +103,7 @@ A place to ask, learn and engage with others
 
 Calling all developers, testers, tech writers and more! Contributions of all types are more than welcome, you can read more in docs/types-of-contributions.md. If you are interested in contributing code, read our docs/CONTRIBUTING.md and feel free to check out our GitHub issues to get stuck in to show us what you’re made of.
 
-**Before you start contributing, please make sure you have read and accepted our Contributor License Agreement. To indicate your agreement, simply edit this file and submit a pull request.**
+**Before you start contributing, please sign our Contributor License Agreement — it takes less than a minute with your GitHub account. Pull requests cannot be merged until every committer has signed (the `license/cla` check on your PR). Full text: CLA.md.**
 
 For **bug reports**, **feature requests** and other **suggestions** you can also create a new issue and choose the most appropriate template for your feedback.
 

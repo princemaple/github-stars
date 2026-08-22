@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8196
+stars: 8203
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -535,7 +535,7 @@ MOQT Streaming Format (MSF) (Experimental)
 
 Features supported:
 
--   Media over QUIC Transport draft-14 and draft-16
+-   Media over QUIC Transport draft-16 and draft-18 (plus draft-14, deprecated and removed in v6)
 -   MSF draft-1 and CMSF draft-1
 -   Audio, Video and Text
 -   ABR

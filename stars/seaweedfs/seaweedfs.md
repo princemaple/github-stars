@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 34075
+stars: 34210
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -48,7 +48,7 @@ Table of Contents
     -   Compared to GlusterFS, Ceph
     -   Compared to GlusterFS
     -   Compared to Ceph
-    -   Compared to Minio
+    -   Compared to MinIO, RustFS
 -   Dev Plan
 -   Installation Guide
 -   Disk Related Topics
@@ -69,7 +69,7 @@ AWS\_SECRET\_ACCESS\_KEY=secret \\
 S3\_BUCKET=my-bucket \\
 ./weed mini -dir=/data
 
-That's it — the S3 endpoint is at http://localhost:8333, `my-bucket` already exists, and `admin`/`secret` are valid credentials. `S3_BUCKET` accepts a comma-separated list (e.g. `raw,processed`); use `S3_TABLE_BUCKET` for S3 Tables (Iceberg) buckets. Drop any of the env vars to skip that piece (no AWS keys → S3 runs in unauthenticated "Allow All" mode for development).
+That's it — the S3 endpoint is at http://localhost:8333, `my-bucket` already exists, and `admin`/`secret` are valid credentials. `S3_BUCKET` accepts a comma-separated list (e.g. `raw,processed`); use `S3_TABLE_BUCKET` for S3 Tables buckets, each `name` or `name:FORMAT` where the format is `ICEBERG` (the default) or `LANCE`. Drop any of the env vars to skip that piece (no AWS keys → S3 runs in unauthenticated "Allow All" mode for development).
 
 The same command starts everything else too:
 
@@ -458,7 +458,15 @@ No
 
 MinIO
 
-separate meta file for each file
+separate meta file per drive for each file
+
+Yes
+
+No
+
+RustFS
+
+separate meta file per drive for each file
 
 Yes
 
@@ -522,23 +530,25 @@ linearly scalable, Customizable, O(1) or O(logN)
 
 Back to TOC
 
-### Compared to MinIO
+### Compared to MinIO, RustFS
 
-Please note, as Apr 25, 2026 MinIO ceased development. It's strongly discouraged to use that unmaintained software with multiple security bugs.
+Please note, as Apr 25, 2026 MinIO ceased development. It's strongly discouraged to use that unmaintained software with multiple security bugs. RustFS is a MinIO reimplementation in Rust, Apache 2.0 licensed and still developed, keeping MinIO's storage model down to a byte-compatible on-disk format. So the points below apply to both.
 
 MinIO followed AWS S3 closely and was ideal for testing for S3 API. It had good UI, policies, versionings, etc. SeaweedFS is trying to catch up here.
 
-MinIO metadata were in simple files. Each file write will incur extra writes to corresponding meta file.
+The metadata are in simple files. Each file write incurs extra writes to the corresponding meta file, on every drive of the erasure set. Changing only tags or retention rewrites that meta file on all of them, so the write amplification does not shrink with object size.
 
-MinIO did not have optimization for lots of small files. The files were simply stored as is to local disks. Plus the extra meta file and shards for erasure coding, it only amplifies the LOSF problem.
+There is no optimization for lots of small files. The files are simply stored as is to local disks. Plus the extra meta file and shards for erasure coding, it only amplifies the LOSF problem.
 
-MinIO had multiple disk IO to read one file. SeaweedFS has O(1) disk reads, even for erasure coded files.
+Multiple disk IO are needed to read one file. SeaweedFS has O(1) disk reads, even for erasure coded files.
 
-MinIO had full-time erasure coding. SeaweedFS uses replication on hot data for faster speed and optionally applies erasure coding on warm data.
+Erasure coding is full-time. SeaweedFS uses replication on hot data for faster speed and optionally applies erasure coding on warm data.
 
-MinIO did not have POSIX-like API support.
+No POSIX-like API support.
 
-MinIO had specific requirements on storage layout. It is not flexible to adjust capacity. In SeaweedFS, just start one volume server pointing to the master. That's all.
+There are specific requirements on storage layout, which makes it hard to scale out and to maintain. An erasure set must be 2 to 16 drives and must divide the drive list symmetrically, and capacity grows or shrinks a whole pool at a time. In SeaweedFS, just start one volume server pointing to the master. That's all.
+
+Back to TOC
 
 Dev Plan
 --------

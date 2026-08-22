@@ -1,6 +1,6 @@
 ---
 project: RustPython
-stars: 22281
+stars: 22296
 description: A Python Interpreter written in Rust
 url: https://github.com/RustPython/RustPython
 ---
@@ -85,7 +85,7 @@ cargo build --target wasm32-wasip1 --no-default-features --features freeze-stdli
 
 Run by wasmer
 
-wasmer run --dir \`pwd\` -- target/wasm32-wasip1/release/rustpython.wasm \`pwd\`/extra\_tests/snippets/stdlib\_random.py
+wasmer run --volume \`pwd\` -- target/wasm32-wasip1/release/rustpython.wasm \`pwd\`/extra\_tests/snippets/stdlib\_random.py
 
 Run by wapm
 

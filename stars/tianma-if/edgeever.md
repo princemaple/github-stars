@@ -1,6 +1,6 @@
 ---
 project: edgeever
-stars: 1171
+stars: 1224
 description: Serverless, 100% free, and open-source Evernote alternative on Cloudflare with native MCP | 无需服务器、0费用、原生支持 AI Agent 的开源自托管『印象笔记』
 url: https://github.com/tianma-if/edgeever
 ---
@@ -10,11 +10,11 @@ EdgeEver
 
 简体中文 | English
 
-> **EdgeEver: A serverless, 100% free, open-source, and AI-native self-hosted Evernote alternative.**
+> **EdgeEver: An open-source, AI-native, and portable self-hosted Evernote alternative.**
 
 EdgeEver is a modern, open-source notes workspace built for effortless knowledge management. It revives the beloved Evernote-style three-pane layout while offering an open data architecture and seamless AI Agent integration for complete ownership and smart productivity.
 
-> 💡 **Serverless & 100% Free Forever** EdgeEver uses a pure Serverless architecture. **No server purchase or VPS rental is required**, and there is no need to configure Docker or SSL certificates. By running within Cloudflare's free quotas, personal use is **100% free with zero maintenance**.
+> 💡 **Serverless & 100% Free Forever** EdgeEver can run within Cloudflare's free quotas with no server purchase or VPS maintenance. Users who prefer a VPS, NAS, or home server can deploy the same application with Docker.
 
 > ⭐ If EdgeEver is useful to you, consider giving it a Star. Your support helps more people discover the project.
 
@@ -41,7 +41,7 @@ The public demo resets every day at 3:00 AM (China Standard Time) and restores s
 Features
 --------
 
--   **Zero Server, Zero Ops, Truly Free**: Powered by Cloudflare Serverless. No cloud servers to rent or maintain. Free tiers easily accommodate up to 150k notes and 50k images with blazing-fast global edge delivery.
+-   **Deploy Your Way**: Run the same application on Cloudflare's free serverless platform or with Docker on a VPS, NAS, or home server—without forking the product code.
 -   **Open Data, No Vendor Lock-in**: Built on standard SQLite with complete REST API, MCP, and CLI access. Your knowledge is stored transparently and accessible anytime without being locked to a single app.
 -   **Lossless ZIP Backup & Portability**: Export your complete library as a clean archive containing Markdown, Front Matter, nested folders, relative attachment links, and version histories for instant restoration anywhere.
 -   **Native AI Agent Synergy**: Deep integration with Model Context Protocol (MCP) allows AI tools like Claude Code, Codex, and Antigravity to read, organize, and summarize your notes, or sync seamlessly with Notion and Feishu Bitable.
@@ -61,14 +61,14 @@ Features
 -   **Batch Operations & Flexible Sorting**: Easily merge or relocate multiple notes, with drag-and-drop notebook reordering.
 -   **Offline Drafts & Queueing**: Draft and edit uninterrupted while offline; changes automatically sync once reconnected.
 -   **Multi-Tenant Account Isolation**: Host multiple user accounts on a single instance with strictly partitioned spaces and clean admin account management.
--   **Everywhere You Need It**: Available on the Web, Android, and macOS, with the iOS app under App Store review and Windows coming soon; the Web Clipper supports Chrome, Edge, and Firefox.
+-   **Everywhere You Need It**: Available on the Web, Android, macOS, and iOS, with Windows coming soon; the Web Clipper supports Chrome, Edge, and Firefox.
 
 Deployment
 ----------
 
-EdgeEver uses a pure Serverless architecture that runs entirely within Cloudflare's free tiers. **No VPS or server rental is required, and there is no need to configure Docker or SSL certificates.**
+Cloudflare is the recommended zero-server deployment. Docker is available for users who prefer a VPS, NAS, or home server.
 
-You can deploy online using either of the following two options:
+For Cloudflare, choose either of the following online deployment options:
 
 ### Option A: Deploy with an AI Agent (Recommended)
 
@@ -78,8 +78,8 @@ Copy the prompt below directly into an AI Agent (such as Codex, Claude, Cursor, 
 Deploy EdgeEver online:
 1. Fork https://github.com/tianma-if/edgeever.
 2. Import the Fork into Cloudflare Workers & Pages.
-3. Configure D1, R2, `EDGE_EVER_AUTH_USERNAME` (prefilled as `admin`, customizable),
-   the `EDGE_EVER_AUTH_PASSWORD` Worker Secret, and the production `main` build.
+3. Create D1 `edgeever` and R2 `edgeever-resources`, set the
+   `EDGE_EVER_AUTH_PASSWORD` Worker Secret, and configure the production `main` build.
 4. Start the first build and verify `/api/health`, `/api/openapi.json`, and login.
 5. Enable and manually run the GitHub Actions workflow named `Update deployed EdgeEver`
    once so the Fork can automatically receive the latest EdgeEver features and fixes.
@@ -94,14 +94,28 @@ Complete setup in 5 simple web steps:
 1.  **Fork the Repository**: Click **Fork** at the top right of GitHub to fork EdgeEver into your personal account.
 2.  **Enable Actions**: Open the Fork's **Actions** tab and click **I understand my workflows, go ahead and enable them** so the GitHub Actions workflow named **Update deployed EdgeEver** can run automatically, keeping you up to date with the latest **EdgeEver** features and fixes.
 3.  **Import into Cloudflare**: Log into the Cloudflare Dashboard, navigate to **Workers & Pages**, and choose to import your Fork repository.
-4.  **Bind Resources & Credentials**: Bind the D1 database (`DB`), R2 bucket (`RESOURCES`), set `EDGE_EVER_AUTH_USERNAME` (default `admin`, customizable), and set the Worker Secret `EDGE_EVER_AUTH_PASSWORD` as your admin password.
+4.  **Create Resources & Credentials**: Create D1 `edgeever` and R2 `edgeever-resources`, then set the Worker Secret `EDGE_EVER_AUTH_PASSWORD` as your admin password. The deploy command creates the bindings; do not edit Fork files.
 5.  **Build & Verify**: Start the first build with default settings. Once complete, visit `/api/health` to verify a `200` response before logging in.
 
 > 📖 For full step-by-step instructions and configuration details, see the Online Deployment Guide.
 
-* * *
+> 💡 **Cloudflare R2 Activation**: Although Cloudflare R2 offers a generous free storage allowance that note-taking workloads remain completely within, you must first activate an R2 subscription and add a payment method. Cloudflare officially supports UnionPay, Visa, Mastercard, and other cards, as well as PayPal, Apple Pay, Google Pay, and other payment methods.
 
-> 💡 **Deployment Tip (Cloudflare R2 Billing)**: Although Cloudflare R2 offers a generous free storage allowance that note-taking workloads are unlikely to ever exceed, you must first activate an R2 subscription and add a payment method. Cloudflare officially supports UnionPay, Visa, Mastercard, and other cards, as well as PayPal, Apple Pay, Google Pay, and other payment methods.
+### Option C: Docker on a VPS or NAS
+
+For a VPS or NAS outside mainland China, use the GitHub-hosted installer and GHCR image:
+
+curl -fsSL https://edgeever.org/install.sh | bash
+
+For a VPS or NAS located in mainland China, use the Tencent COS installer and Tencent TCR image for faster, more reliable downloads:
+
+curl -fsSL https://edgeever-installer-1256854452.cos.ap-guangzhou.myqcloud.com/install.sh | bash -s -- --mirror tcr
+
+Both commands pull the latest image, generate an administrator password, start EdgeEver with Docker Compose, and schedule daily automatic updates.
+
+See the Docker deployment guide for manual deployment and configuration.
+
+* * *
 
 Multi-Account Login
 -------------------
@@ -115,8 +129,7 @@ Browser Web Clipper
 
 The Web Clipper is officially published for Chrome, Microsoft Edge, and Firefox. Install it from the store for your browser (Microsoft Edge users can install the Chrome Web Store version directly):
 
--   Chrome Web Store Link
--   Firefox Add-ons Link
+     
 
 Developers can also use the extension development guide to build and load the extension from source.
 
@@ -125,7 +138,7 @@ Native Clients
 
 Native clients offer a smoother, more reliable experience with deeper system integration, local storage, and offline editing. Changes sync incrementally when connectivity returns, making them ideal for frequent use and unreliable network conditions.
 
-The Android app is now available on Google Play, with signed APKs also available from GitHub Releases. The iOS client is a native SwiftUI app in `apps/ios` and has been submitted for App Store review.
+The Android app is now available on Google Play, with signed APKs also available from GitHub Releases. The iOS app is available on the App Store; use a non-mainland China Apple ID to download it.
 
 The macOS app is available from GitHub Releases. The Windows version will be released once the code-signing certificate issue is resolved.
 
@@ -135,6 +148,7 @@ Community and Feedback
 ----------------------
 
 -   Bugs, feature requests, and deployment issues: GitHub Issues
+-   Code contributions: read the Contribution Guide. If your Fork is also used to deploy EdgeEver, keep its `main` branch deployment-only. Create a separate branch from the official `upstream/main` for synchronization, development, and pull requests; do not develop on or Sync fork the deployment `main`.
 
 ### WeChat Community Group
 
@@ -153,7 +167,7 @@ Tech Stack
 -   iOS app: Native SwiftUI in `apps/ios` (iOS 17+), with a packaged TipTap EditorBundle, GRDB local mirror/outbox, and Android-aligned shell chrome.
 -   Native desktop app: Electron + Rust sidecar combines a consistent cross-platform experience with high-performance local data services; SQLite enables offline editing, incremental sync when back online, and local backups.
 -   Web clipper: Manifest V3, Mozilla Readability, and Turndown for Chrome, Microsoft Edge, and Firefox.
--   Backend: Cloudflare Workers, Hono, Zod, D1, and R2, with REST API, OpenAPI, and Remote MCP.
+-   Backend: one Hono/Zod business application with REST API, OpenAPI, and Remote MCP; Cloudflare uses Workers/D1/R2, while Docker uses Bun/SQLite/local files or S3.
 
 Quick Start
 -----------
@@ -177,7 +191,7 @@ packages/shared   Shared types, Zod schemas, TipTap / Markdown conversion
 crates/desktop-sidecar
                    Rust sidecar for local SQLite, offline data, backups, and resources
 scripts           Wrangler wrapper, password hash, CLI, MCP stdio bridge, Evernote ENEX import
-migrations        D1 database migrations
+migrations        Shared append-only D1/SQLite database migrations
 docs              OpenAPI schema, architecture, migration, and deployment docs
 .github/workflows CI for web, mobile, iOS, desktop packaging, deployment, and releases
 wrangler.toml     Cloudflare Workers, Assets, D1, R2 configuration
@@ -207,6 +221,11 @@ https://your-domain/api/openapi.json
 
 Repository file: docs/openapi.json.
 
+Plugin Development Preview
+--------------------------
+
+The standalone Plugin Marketplace supports trusted client plugins and code-free theme packages installed from its verified index, a public GitHub repository, or a manifest URL. Plugins can query and update notes, work with editor selections, register commands and custom panels, use encrypted secret storage, and make allowlisted network requests. A unified top-right desktop entry includes recently used actions. Cron and background jobs are intentionally deferred. See Plugin Development.
+
 MCP
 ---
 
@@ -215,15 +234,6 @@ Create an API token in **Profile** -> **MCP settings**, then give the token or f
 The Remote MCP endpoint supports the stateless `2026-07-28` protocol while retaining the handshake-based 2025 revisions for existing clients.
 
 With MCP, EdgeEver can also connect to tools such as Notion databases and Feishu Bitable, turning scattered ideas, information, and materials from everyday notes into structured data that is easier to organize, search, and manage.
-
-Bring Your Own AI Models
-------------------------
-
-Open **Profile → AI Integrations** to add one or more OpenAI-compatible, Anthropic Messages, or Google Gemini services with your own Base URLs and API keys. Third-party API relays are also supported. Each service can contain multiple models: discover them from the provider's model-list endpoint or enter a model ID manually. A service-level switch temporarily makes all of its models unavailable, while the workspace default selects the model used for note AI.
-
-Note AI includes six focused built-in prompts across Web, Android, and iOS: summarize, translate, polish, make concise, convert to Xiaohongshu style, and convert to X (Twitter) style. You can add custom prompts for more specialized workflows. Editors on all three platforms can also run AI directly on selected text and replace only that selection. Results stream into a reviewable draft that you can retry, refine with a follow-up instruction, append, or explicitly accept as a replacement. Translation uses a language picker whose default follows the interface language: Chinese defaults to English, while English defaults to Simplified Chinese.
-
-AI requests are sent by the EdgeEver server rather than directly by the browser or native client. Model credentials are isolated by personal workspace and encrypted before being stored. Standard deployments automatically derive an AI-specific encryption key from the existing instance authentication secret, so no additional deployment variable is required. The same AI business code runs in Cloudflare Workers and the planned Docker/Bun runtime.
 
 Image Compression
 -----------------
@@ -235,9 +245,7 @@ EdgeEver avoids Worker-side image processing to reduce compute and image-process
 Advanced Object Storage
 -----------------------
 
-The instance owner can open **Settings → Advanced → OSS object storage** to send new images and attachments to an S3-compatible service such as Alibaba Cloud OSS, Tencent COS, AWS S3, MinIO, or R2. Existing resources stay in their original store, so changing the default does not migrate or break historical attachments.
-
-Before saving third-party object-storage credentials on a Cloudflare deployment, configure the `EDGE_EVER_STORAGE_ENCRYPTION_KEY` Worker Secret with a random value of at least 32 characters. EdgeEver uses this instance-level key to encrypt the access secret stored in D1. Keep the key stable and backed up; changing it makes previously saved object-storage credentials unusable.
+The instance owner can configure S3-compatible object storage under **Settings → Advanced → OSS object storage**. Changing storage does not migrate or affect existing attachments. Cloudflare deployments must also configure an `EDGE_EVER_STORAGE_ENCRYPTION_KEY` Worker Secret of at least 32 characters.
 
 Migration
 ---------
@@ -249,10 +257,10 @@ If you want to migrate notes from other platforms to EdgeEver, please refer to t
 -   **Memos Migration**: Please refer to docs/memos-migration-guide.md
 -   **Notion Migration**: Please refer to docs/notion-migration-guide.md
 
-Docker Deployment Roadmap
--------------------------
+Docker Deployment
+-----------------
 
-> 🐳 Docker-based self-hosting for VPS, NAS, and home servers is planned but is not yet a supported release. An experimental Bun runtime is already available for adapter development, with SQLite + local files or S3-compatible storage; PostgreSQL remains reserved at the contract level. See Self-hosting and Docker architecture.
+Docker runs the same frontend, API routes, services, authentication, MCP implementation, and migrations as Cloudflare. The container uses SQLite with local files or S3-compatible attachment storage and supports `amd64` and `arm64`. See Deploy EdgeEver with Docker and Self-hosting and Docker architecture.
 
 Acknowledgements
 ----------------

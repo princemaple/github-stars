@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 460102
+stars: 468603
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -957,6 +957,16 @@ Yes
 
 Unknown
 
+Iconify
+
+Search and fetch SVG icons from 200+ open source icon sets
+
+No
+
+Yes
+
+Yes
+
 Icons8
 
 Icons (find "search icon" hyperlink in page)
@@ -1232,6 +1242,16 @@ Etherscan
 Ethereum explorer API
 
 `apiKey`
+
+Yes
+
+Yes
+
+Get Started with Web3
+
+Bilingual Web3 lessons, glossary search and role-based learning paths
+
+No
 
 Yes
 
@@ -3377,6 +3397,16 @@ Yes
 
 Unknown
 
+Attestwire
+
+Validate EN 16931 e-invoices: XRechnung, ZUGFeRD, Factur-X, Peppol BIS
+
+`apiKey`
+
+Yes
+
+Yes
+
 Lob.com
 
 US Address Verification
@@ -3416,6 +3446,16 @@ Read-only preflight for breaking schema changes and downstream query impact
 Yes
 
 Unknown
+
+Temsor
+
+Validates Turkish national ID, tax number, IBAN, phone, plate and parses addresses
+
+`apiKey`
+
+Yes
+
+Yes
 
 US Autocomplete
 
@@ -4312,6 +4352,16 @@ Yes
 
 Unknown
 
+Micro-SaaS AI Suite
+
+8 serverless AI APIs for sentiment analysis, copy generation, email verification, & OCR
+
+`apiKey`
+
+Yes
+
+Unknown
+
 MicroENV
 
 Fake Rest API for developers
@@ -4437,6 +4487,16 @@ OpenQR
 Generate QR codes and manage dynamic (editable) QR codes with scan analytics
 
 `apiKey`
+
+Yes
+
+Yes
+
+Orca Scan
+
+Generate barcode images (QR, Code 128, EAN, Data Matrix and more) in SVG, PNG, JPG or PDF
+
+No
 
 Yes
 
@@ -5707,6 +5767,16 @@ Yes
 
 Unknown
 
+uchecker
+
+Bulk email verification with full SMTP server responses
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Verifier
 
 Verifies that a given email is real
@@ -5996,6 +6066,16 @@ Air quality and weather data
 Yes
 
 Unknown
+
+kanari
+
+Real-time worldwide wildfire detections, water bomber tracking and open fire archive
+
+No
+
+Yes
+
+Yes
 
 Luchtmeetnet
 
@@ -7767,6 +7847,16 @@ Yes
 
 Unknown
 
+PokéSprite
+
+Database of Pokémon sprites and icons
+
+No
+
+Yes
+
+Yes
+
 Psychonauts
 
 Psychonauts World Characters Information and PSI Powers
@@ -7826,6 +7916,16 @@ RAWG.io
 Yes
 
 Unknown
+
+Rblxdb
+
+Verified Roblox music codes and decal IDs with live working status
+
+No
+
+Yes
+
+Yes
 
 Rick and Morty
 
@@ -7916,6 +8016,16 @@ No
 Yes
 
 No
+
+SteamGPT
+
+Steam profiles, SteamID conversion, VAC/game bans, FACEIT stats and friends
+
+No
+
+Yes
+
+Yes
 
 SuperHeroes
 
@@ -8602,6 +8712,16 @@ Yes
 
 Unknown
 
+ipwhois
+
+IP geolocation with country, city, coordinates, ISP, timezone and flag data
+
+No
+
+Yes
+
+Yes
+
 Kakao Maps
 
 Kakao Maps provide multiple APIs for Korean maps
@@ -9276,6 +9396,16 @@ No
 Yes
 
 Unknown
+
+DistrictAPI
+
+US school districts and schools by address, with enrollment and boundaries
+
+`apiKey`
+
+Yes
+
+Yes
 
 eCourtsIndia
 
@@ -10016,6 +10146,16 @@ No
 Yes
 
 Unknown
+
+Vett
+
+Screen names & companies against OFAC, PEP, watchlists & recalls
+
+No
+
+Yes
+
+Yes
 
 **⬆ Back to Index**  
   
@@ -10765,6 +10905,16 @@ Yes
 GoldBean
 
 OCR, Translation, NLP & ERNIE LLM via Baidu AI (free tier available)
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Google Gemini
+
+Multimodal generative AI for text, vision, and code generation
 
 `apiKey`
 
@@ -11716,6 +11866,16 @@ No
 Yes
 
 Unknown
+
+CuttingToolsAI
+
+Cross-brand carbide insert grade equivalents by ISO application class
+
+No
+
+Yes
+
+Yes
 
 Enigma Public
 
@@ -12832,6 +12992,16 @@ Yes
 
 Yes
 
+Pexafy
+
+Semantic image search across 9+ free stock photo sources with a unified JSON schema
+
+`apiKey`
+
+Yes
+
+Yes
+
 Pexels
 
 Free Stock Photos and Videos
@@ -13537,6 +13707,16 @@ Yes
 
 Unknown
 
+CSR.plus
+
+Generate certificate signing requests and private keys without OpenSSL
+
+No
+
+Yes
+
+Yes
+
 dead-drop
 
 Ephemeral zero-knowledge encrypted data sharing
@@ -14055,6 +14235,16 @@ Unknown
 Shopee
 
 Shopee's official API for integration of various services from Shopee
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Sparepilot
+
+Spare parts catalog, OEM cross-references & price comparison for garden power equipment
 
 `apiKey`
 
@@ -14739,6 +14929,16 @@ Football (Soccer) Videos
 Embed codes for goals and highlights from Premier League, Bundesliga, Serie A and many more
 
 No
+
+Yes
+
+Yes
+
+Football Charts
+
+Tables, results, model probabilities and Monte Carlo season projections for 93 leagues
+
+`apiKey`
 
 Yes
 
@@ -17069,6 +17269,16 @@ Yes
 
 Unknown
 
+Shotstack
+
+Cloud video editing API to create and render videos programmatically
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Simkl
 
 Movie, TV and Anime data
@@ -17238,6 +17448,16 @@ Unofficial Netflix Online Global Search, Search all netflix regions in one place
 Yes
 
 Yes
+
+VidWords
+
+YouTube transcripts and subtitles as TXT, SRT, VTT or DOCX, plus AI video analysis
+
+`apiKey`
+
+Yes
+
+No
 
 Vimeo
 
@@ -17633,6 +17853,16 @@ Weather
 Yes
 
 Unknown
+
+World Time & Weather
+
+Current weather, local time, UTC offset and DST rules for 400 cities as static JSON
+
+No
+
+Yes
+
+Yes
 
 wttr.in
 

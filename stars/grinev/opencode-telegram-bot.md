@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1036
+stars: 1068
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -18,7 +18,7 @@ Scheduled tasks support. Turns the bot into a lightweight OpenClaw alternative f
 
 Platforms: macOS, Windows, Linux
 
-Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`), Français (`fr`), Italiano (`it`), Português (Brasil) (`pt`), Русский (`ru`), 简体中文 (`zh`)
+Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`), Français (`fr`), Italiano (`it`), 한국어 (`ko`), Português (Brasil) (`pt`), Русский (`ru`), 简体中文 (`zh`)
 
 > I use boardown, my open-source Markdown-based task board, to plan and track this project. It stores tasks in plain `.md` files and can be used as a VS Code extension or a desktop app.
 
@@ -262,7 +262,7 @@ Configuration
 
 ### Localization
 
--   Supported locales: `en`, `ar`, `de`, `es`, `fr`, `it`, `pt`, `ru`, `zh`
+-   Supported locales: `en`, `ar`, `de`, `es`, `fr`, `it`, `ko`, `pt`, `ru`, `zh`
 -   The setup wizard asks for language first
 -   You can change locale later with `BOT_LOCALE`
 
@@ -388,7 +388,7 @@ Yes
 
 `BOT_LOCALE`
 
-Bot UI language (supported locale code, e.g. `en`, `ar`, `de`, `es`, `fr`, `it`, `pt`, `ru`, `zh`)
+Bot UI language (supported locale code, e.g. `en`, `ar`, `de`, `es`, `fr`, `it`, `ko`, `pt`, `ru`, `zh`)
 
 No
 

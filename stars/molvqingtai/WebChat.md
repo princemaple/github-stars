@@ -1,6 +1,6 @@
 ---
 project: WebChat
-stars: 2477
+stars: 2555
 description: 💬 Chat with anyone on any website.
 url: https://github.com/molvqingtai/WebChat
 ---
@@ -45,7 +45,8 @@ WebChat builds on these excellent open-source projects:
 -   **shadcn/ui** provides accessible, customizable UI building blocks.
 -   **WXT** provides the cross-browser extension framework and build tooling.
 -   **Comctx** provides RPC communication across the extension's JavaScript contexts.
--   **Artico** provides the flexible WebRTC foundation for peer-to-peer communication.
+-   **Artico** provides the default WebRTC room transport.
+-   **Trystero** remains a supported WebRTC room transport using its default Nostr strategy.
 -   **ugly-avatar** generates WebChat's distinctive random avatars.
 
 License

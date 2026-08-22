@@ -1,6 +1,6 @@
 ---
 project: wireproxy
-stars: 5752
+stars: 5763
 description: Wireguard client that exposes itself as a socks5 proxy
 url: https://github.com/windtf/wireproxy
 ---
@@ -18,21 +18,7 @@ What is this
 Main Sponsor
 ============
 
-**Use code `WELCOME20` for 20% OFF.** Start with a **FREE 100MB Trial****.**
-
-IPcook is a proxy provider offering Residential Proxies, ISP Proxies, and Datacenter Proxies for developers and businesses. Its global network helps clients leverage stable, high-quality IP resources to improve the success rate of their target websites. Whether you're collecting public web data, running large-scale automation, verifying ads, or managing multiple accounts. IPcook provides reliable proxy solutions with flexible pricing, with residential proxies available for as low as **$0.5/GB**.
-
-IPcook proxy is sourced from real residential IPs, supports flexible IP rotation or sticky sessions, and works with HTTP, HTTPS, and SOCKS5 protocols. Developers can quickly integrate IPcook through APIs and popular automation frameworks, while an intuitive dashboard simplifies traffic monitoring, usage management, and team collaboration.
-
-**Key Features**
-
--   Global average response time < 0.5s, with latency as low as 50ms in major regions
--   99.99% uptime for reliable and uninterrupted connectivity
--   500 concurrent threads (scalable to 100,000 at max)
--   55M+ real residential IPs across 185+ countries and regions
--   Up to 24-hour Sticky Sessions for long-running tasks
--   Up to 10 free sub-accounts for team collaboration
--   Flexible IP rotation by request or custom time intervals
+RapidProxy is a residential proxy platform with 90M+ real IPs across 200+ countries. It supports rotation, geo-targeting, and high concurrency to improve scraping success and reduce bans. Start your free trial today!
 
 Why you might want this
 =======================
@@ -153,6 +139,20 @@ BindAddress = 127.0.0.1:25344
 # Avoid using spaces in the password field
 #Password = ...
 
+# Domain whitelist routing (optional). When TunnelDomains is set, only connections
+# whose destination host matches one of the patterns are routed through wireguard;
+# every other connection is dialed directly over your normal network. When
+# TunnelDomains is unset, all traffic is routed through wireguard (default).
+# Each TunnelDomains line is a single, full Go regular expression (RE2). Repeat
+# the key for multiple patterns; do NOT comma-separate (so quantifiers like {2,4}
+# keep working). Matching is case-insensitive and a trailing dot is ignored.
+#TunnelDomains = ^(.\*\\.)?example\\.com$
+#TunnelDomains = ^ipinfo\\.io$
+# Set LogDomains = true to log every connection's destination host and whether it
+# was routed to the TUNNEL or DIRECT. Useful for discovering which domains your
+# apps reach before writing TunnelDomains. Off by default.
+#LogDomains = true
+
 # http creates a http proxy on your LAN, and all traffic would be routed via wireguard.
 \[http\]
 BindAddress = 127.0.0.1:25345
@@ -167,10 +167,18 @@ BindAddress = 127.0.0.1:25345
 #CertFile = ...
 #KeyFile = ...
 
+# TunnelDomains / LogDomains work here too (same semantics as \[Socks5\] above).
+#TunnelDomains = ^(.\*\\.)?example\\.com$
+#LogDomains = true
+
 # SNI creates a transparent TLS proxy on your LAN, and all traffic would be routed via wireguard,
 # using Server Name Indication as routing destination.
 \[SNI\]
 BindAddress = 0.0.0.0:443
+
+# TunnelDomains / LogDomains work here too, matched against the TLS SNI hostname.
+#TunnelDomains = ^(.\*\\.)?example\\.com$
+#LogDomains = true
 
 Alternatively, if you already have a wireguard config, you can import it in the wireproxy config file like this:
 

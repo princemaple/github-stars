@@ -1,6 +1,6 @@
 ---
 project: glpi
-stars: 6228
+stars: 6251
 description: GLPI is a Free Asset and IT Management Software package, Data center management, ITIL Service Desk, licenses tracking and software auditing.
 url: https://github.com/glpi-project/glpi
 ---

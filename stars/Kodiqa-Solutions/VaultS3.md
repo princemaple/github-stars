@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 833
+stars: 1138
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -160,6 +160,48 @@ No
 
 > ¹ MinIO removed the admin console from its Community Edition in 2025 and archived the open-source repository in February 2026. Full management now requires the paid AIStor product. This comparison reflects publicly available information as of **June 2026**, please open an issue if a cell is out of date.
 
+### How this compares to Amazon S3
+
+S3 is the API VaultS3 implements, not a competitor you would swap it for. If you are weighing self-hosting against S3 itself, these are the trade-offs, and most of them favour S3:
+
+VaultS3
+
+Amazon S3
+
+Durability
+
+Your disks and configuration
+
+11 nines, across 3+ availability zones by default
+
+Scale
+
+~10M objects per node, a billion needs ~30 nodes
+
+Effectively unlimited
+
+Operations & compliance
+
+Yours, including any certification
+
+No infrastructure to run. AWS is certified, your configuration still isn't
+
+Cost
+
+Hardware. **No per-request or egress charges**
+
+Per GB, per request, per GB egressed
+
+Exit path
+
+Ordinary files and a BoltDB index behind the S3 API
+
+S3 API
+
+**Self-hosting wins when** egress or request charges dominate your bill, when the data has to stay on hardware you control, when clients are on the same network as the storage, or when you need a cost that does not move with traffic. **S3 wins** when you want durability and availability you do not have to engineer, scale you do not have to plan for, or an audit whose scope stops at your own configuration instead of reaching all the way down to the disks.
+
+> S3 figures reflect publicly available AWS information as of **August 2026**, please open an issue if a cell is out of date. AWS changes storage classes and pricing more often than the projects in the table above change features.
+
 make build && ./vaults3
 # Server at http://localhost:9000
 # Dashboard at http://localhost:9000/dashboard/
@@ -199,6 +241,12 @@ Hot/cold migration, transparent promotion, and full/incremental backup are teste
 
 Metadata writes replicate via Raft consensus (writes accepted on any node via leader-forwarding), object data is placed/served by a live-membership hash ring, inter-node calls are authenticated, and on Kubernetes the cluster auto-forms (leader bootstrap + auto-join + self-heal). Validated end-to-end on a real 3-node cluster: leader election & failover, node recovery with catch-up, cross-node reads, and concurrent load, including a 10,000-write list-then-write-then-read workload behind a gateway with a node restarted mid-run. Still operationally newer, not yet stress/scale/multi-region hardened, so validate against your workload before trusting it as the only copy of critical data.
 
+**Sharded metadata** (`cluster.metadata_shards > 1`)
+
+🟠 New in 4.4.54
+
+Splits object metadata across independent Raft groups so metadata capacity grows with the cluster instead of every node holding the whole index. Validated on real three-node clusters, local and in containers: shard assignment, group membership reconciliation, routed reads and writes from a node holding no copy of a shard, and an unreachable shard reporting `503` rather than a phantom `404`. Newer than everything above it, and the shard count is fixed when the cluster first commits its assignment, so treat it as opt-in for new clusters you can validate. Off by default.
+
 **Active-active replication**
 
 🟡 Beta
@@ -206,6 +254,25 @@ Metadata writes replicate via Raft consensus (writes accepted on any node via le
 Vector-clock conflict resolution is unit-tested. The cross-site sync worker is less exercised in the wild.
 
 **Recommendation:** run single-node (optionally with erasure coding across local disks) for production data you care about, and treat clustering/active-active as advanced opt-in features you validate first. Always keep an independent backup. See the **Scaling & Operations Guide** for redundancy layering and recovery runbooks, and the **Benchmarks guide** for a reproducible way to measure throughput and RAM on your own hardware.
+
+Project and support
+-------------------
+
+VaultS3 is a Kodiqa Solutions project. Copyright (C) 2026 Kodiqa Solutions, licensed under the GNU Affero General Public License v3.0.
+
+**The storage engine is AGPL-3.0 and stays that way.** Every feature documented in this README is in the open-source binary. Nothing here is behind a licence key, and nothing here is going to move behind one.
+
+Separate paid products, for organisations that want them, are listed at vaults3.com/enterprise: a multi-cluster Fleet Console, a Kubernetes Operator, a multi-tenant Gateway, and a Compliance Pack. They are in early access, and they are add-ons around the engine rather than pieces taken out of it. Commercial enquiries: **support@vaults3.com**.
+
+### What happens if this project stops
+
+A fair question to ask of any storage software before you put data in it, and it deserves a concrete answer rather than reassurance:
+
+-   **The licence cannot be revoked.** VaultS3 is AGPL-3.0. Every release stays available, forkable and buildable by anyone, whatever happens to the people who wrote it.
+-   **There is nothing around it to go stale.** One static binary, no control plane, no external services, no account to keep, nothing that phones home. It keeps running on the machine you put it on.
+-   **Your data is not locked in a format anyone has to reverse-engineer.** Objects are ordinary files on disk and the index is a BoltDB file, served over the S3 API. Migrating away is `rclone sync` or `aws s3 sync` to anything else that speaks S3, at whatever pace you like, with the source still serving reads the whole time.
+
+That exit path is the reason to be comfortable adopting it, and it is worth checking for any storage product you evaluate, including this one.
 
 Features
 --------
@@ -248,7 +315,7 @@ Features
 -   **Lifecycle rules**: Per-bucket object expiration (auto-delete after N days) and aborting incomplete multipart uploads after N days (S3 `AbortIncompleteMultipartUpload`, reclaims the parts left by killed/failed clients), run by a background worker
 -   **Zstandard compression**: Transparent compress-on-write, decompress-on-read with zstd (better ratio and speed than gzip). Reads **stream** the decoder, so GET time-to-first-byte stays flat regardless of object size (no whole-object buffering). Objects written by older gzip builds are still read transparently (codec auto-detected by magic number)
 -   **Small-file packing (experimental)**: Optionally pack objects up to a size threshold into large append-only **volume** files (each as an independent zstd frame) with byte-offset locations in BoltDB, plus background dead-space **compaction** (`POST /api/v1/compact`), avoids the per-file overhead (inodes, syscalls, disk blocks) of millions of tiny objects. Larger objects fall through to individual files. Not yet composable with encryption or erasure coding (skipped if either is enabled)
--   **Scales to millions of objects**: Listing and storage stats are served from a sorted BoltDB metadata index with maintained per-bucket counters (size/count updated incrementally on every write), never a filesystem walk. So dashboard stats are O(1) and the object browser pages in milliseconds regardless of bucket size, verified at 1M+ objects (stats `13s → 0.4ms`)
+-   **Scales to millions of objects**: Listing and storage stats are served from a sorted BoltDB metadata index with maintained per-bucket counters (size/count updated incrementally on every write), never a filesystem walk. So dashboard stats are O(1) and the object browser pages in milliseconds regardless of bucket size, verified at 1M+ objects (stats `13s → 0.4ms`). Metadata costs about 600 bytes per object and, in a cluster, is replicated to every node by default (object data is sharded, metadata is not), so roughly 10M objects per node is comfortable and 100M is workable with NVMe and enough RAM. Past that, `cluster.metadata_shards` splits the object metadata across independent Raft groups so each node holds only the shards it is a member of. See docs/SCALING.md
 -   **Access logging**: Structured JSON lines log file of all S3 operations
 -   **Static website hosting**: Serve index/error documents from buckets, no auth required
 -   **IAM users, groups & policies**: Fine-grained access control with S3-compatible policy evaluation, default deny, wildcard matching
@@ -257,7 +324,7 @@ Features
 -   **Audit trail**: Persistent audit log with filtering by user, bucket, time range. Auto-pruning via lifecycle worker
 -   **IP allowlist/blocklist**: Global and per-user CIDR-based IP restrictions with IPv4/IPv6 support
 -   **S3 event notifications**: Per-bucket webhook notifications on object mutations with event type and key prefix/suffix filtering, plus Kafka, NATS, Redis, AMQP/RabbitMQ, PostgreSQL, and Elasticsearch backends
--   **Raft clustering**: Multi-node cluster with Hashicorp Raft consensus for strongly consistent distributed metadata, automatic leader election, and node join/leave via HTTP API
+-   **Raft clustering**: Multi-node cluster with Hashicorp Raft consensus for strongly consistent distributed metadata, automatic leader election, and node join/leave via HTTP API. Optionally shards the object metadata across independent Raft groups (`cluster.metadata_shards`) so metadata capacity grows with the cluster instead of every node holding a copy of the whole index. See docs/design/sharded-metadata.md
 -   **Consistent hashing**: xxhash64-based hash ring with virtual nodes for automatic data placement and request routing across cluster nodes via reverse proxy. A read whose data has not yet been copied to the node serving it is fetched from a holder that has it, so a `GET` never reports "not found" for an object that was just written, and a hop that fails before any response reaches the client is retried against the object's other holders instead of surfacing as a gateway error
 -   **Erasure coding**: Reed-Solomon encoding (configurable data/parity shards) for disk-failure protection with background healer that auto-reconstructs degraded objects. Reads **stream** the data shards, so GET time-to-first-byte stays flat regardless of object size, and fall back to parity reconstruction only when a shard is actually missing. **Settable per bucket** alongside replica count (`vaults3-cli bucket durability`), so scratch data can be stored once while the buckets that matter keep their parity and copies: on a 3-node cluster with 4+2 coding and 3 replicas, the same data costs 4.52x with the defaults and 1.00x with both turned off
 -   **High availability**: Automatic failure detection (health probes with suspect/down state machine), failover proxy routing to healthy replicas, and background rebalancer for membership changes. Inter-node traffic shares a pooled HTTP transport (connection reuse instead of a new socket per call), and a node that genuinely cannot serve a request answers `503 SlowDown` with an S3 error document, which every mainstream SDK retries on its own
@@ -343,7 +410,7 @@ Features
 -   **Request tracing**: Server-Sent Events at `/api/v1/trace` for per-request latency tracing
 -   **Health diagnostics**: Detailed system diagnostics at `/api/v1/diagnostics` (disk, memory, goroutines, DB stats)
 -   **Manual heal API**: `POST /api/v1/heal` to trigger erasure-coded object repair on demand
--   **Orphan reclaim**: `POST /api/v1/reclaim` (or `vaults3-cli storage reclaim`) finds data files that no metadata refers to any more and frees them, scanning every node in a cluster. Reports by default; `?apply=true` deletes, and nothing written in the last 24h is ever touched
+-   **Orphan reclaim**: `POST /api/v1/reclaim` (or `vaults3-cli storage reclaim`) finds data files that no metadata refers to any more and frees them, scanning every node in a cluster. Reports by default; `?apply=true` deletes, and nothing written in the last 24h is ever touched. A file is deleted only when metadata positively says it is gone: if a lookup cannot be answered at all, the whole bucket is reported `incomplete` and nothing in it is touched
 -   **Speedtest**: `POST /api/v1/speedtest` to benchmark storage throughput
 -   **Batch operations**: Bulk delete and copy processor for large-scale object operations
 -   **PROXY protocol v1**: Accept PROXY protocol connections for real client IP behind load balancers
@@ -951,11 +1018,35 @@ make build
 
 ./vaults3
 
-Server starts on `http://localhost:9000` by default.
+That is the whole first run. With no config file present VaultS3 starts on its built-in defaults, creates the directories it needs, and generates an admin secret for this installation, which it prints once:
+
+```
+──────────────────────────────────────────────────────────────
+ VaultS3 generated an admin secret for this new installation.
+ It is shown once. Store it somewhere safe.
+
+   Access key:  vaults3-admin
+   Secret key:  4936c03e56b8ab52579aea4ab24e2eb24ac652788fb741c8
+
+   Dashboard:   http://127.0.0.1:9000/dashboard/
+──────────────────────────────────────────────────────────────
+```
+
+The secret is stored with the metadata, so later starts reuse it. Set `VAULTS3_ACCESS_KEY` and `VAULTS3_SECRET_KEY` to use credentials of your own, or change them from the dashboard.
+
+### Write a config file
+
+`vaults3 setup` asks a handful of questions, creates the directories, and writes a config containing only what you chose:
+
+./vaults3 setup                  # interactive
+./vaults3 setup --non-interactive --data-dir ./data --default-bucket local
+./vaults3 -config vaults3.yaml   # then start with it
+
+It writes the file `0600` because it holds the admin secret, and refuses to overwrite an existing config unless you pass `--force`.
 
 ### Configure
 
-Edit `configs/vaults3.yaml`:
+For the full annotated set of options, edit `configs/vaults3.yaml`:
 
 server:
   address: "0.0.0.0"
@@ -973,7 +1064,7 @@ storage:
 
 auth:
   admin\_access\_key: "vaults3-admin"
-  admin\_secret\_key: "vaults3-secret-change-me"
+  admin\_secret\_key: ""   # empty: generated on first start and stored
 
 encryption:
   enabled: false
@@ -1015,6 +1106,8 @@ cluster:
   peer\_apis:               # nodeID → "host:apiPort"
     node-2: "host2:9000"
     node-3: "host3:9000"
+  metadata\_shards: 1       # >1 splits object metadata across that many Raft groups
+  metadata\_replicas: 3     # nodes holding each shard
   placement:
     replica\_count: 3
     read\_quorum: 2
@@ -1743,6 +1836,7 @@ vaults3-cli cluster join node-3 10.0.0.4:7000  # add a member (against the leade
 vaults3-cli cluster drain node-2               # stop a node accepting writes (reads continue)
 vaults3-cli cluster rebalance                  # move objects to their correct owner
 vaults3-cli cluster decommission node-2        # guided drain + rebalance before replacing a node
+vaults3-cli cluster shards                     # how object metadata is distributed across the cluster
 
 Build both binaries with `make build` or just the CLI with `make cli`.
 
@@ -2161,6 +2255,104 @@ auto\_update:
 
 The current/latest version is also exposed at `GET /api/v1/version`.
 
+### Upgrading to 4.4.56 (security release)
+
+**This release closes 14 findings from an external security assessment, several of them remotely exploitable against a default deployment.** The full list is in CHANGELOG.md. Upgrading is strongly recommended, and a few things change behaviour, so read this first.
+
+#### Before you upgrade
+
+**Set `cluster.secret` on every node of a clustered deployment.** This is the one change that stops a server booting. Inter-node endpoints authenticate with it and now fail closed, so a clustered node with no secret exits at startup with an error naming the setting. Use the same value on every node, ideally from a secret manager. The Helm chart already derives one, so chart users need do nothing.
+
+cluster:
+  enabled: true
+  secret: "a-shared-value"      # or VAULTS3\_CLUSTER\_SECRET
+
+Single-node deployments are unaffected.
+
+#### After you upgrade
+
+**Rotate the admin credentials if this installation ever ran with `vaults3-secret-change-me`.** 4.4.55 stopped shipping that secret, but an installation that already booted with it has it persisted, and persisted credentials win over configuration, so upgrading does not replace it. Change it from the dashboard, or set `VAULTS3_ACCESS_KEY` and `VAULTS3_SECRET_KEY`.
+
+**Everyone is logged out once.** The console signing key is now random per installation instead of derived from the admin secret, so existing dashboard sessions stop working. Users log in again. Nothing else is affected.
+
+#### If something stops working, this is probably why
+
+Each of these was a security fix, and each can look like a regression.
+
+Symptom
+
+Cause
+
+What to do
+
+A non-admin dashboard user gets 403 on a bucket
+
+The console now enforces IAM policies, as the S3 API always did. Any authenticated user used to reach any bucket
+
+Give the user a policy covering the buckets they need
+
+OIDC login fails
+
+The implicit flow is disabled. The authorization-code flow, which the dashboard uses, is unaffected
+
+Use the code flow, or set `oidc.allow_implicit_flow: true` if your provider supports nothing newer
+
+Per-bucket panels in Prometheus go blank
+
+Anonymous scrapes no longer receive the per-bucket series, which carry bucket names, sizes and counts
+
+Send `X-Cluster-Secret` with the scrape, or set `metrics.public_bucket_labels: true`
+
+A migration from an internal source fails
+
+Loopback, private and link-local destinations are blocked by default, because a caller-supplied endpoint was a server-side request primitive
+
+Re-run the job with private sources allowed
+
+An STS credential has less access than before
+
+Session policies are now enforced. A scoped session used to inherit the full permissions of the user it came from
+
+Widen the session policy if the access was intended
+
+An STS request returns 403
+
+`X-Amz-Security-Token` is now verified. Standard SDKs send it automatically
+
+Send the session token that was issued with the key
+
+A copy returns 403
+
+A copy now requires `s3:GetObject` on its source, not only write on the destination
+
+Grant read on the source bucket
+
+An IAM policy now denies what it used to allow
+
+`Condition`, `NotAction` and `NotResource` are now evaluated. They used to be ignored, so a restriction you wrote was not being applied
+
+The policy is now doing what it says. Adjust it if the restriction was not intended
+
+Automation gets 429 on login
+
+Ten failed logins from one address earn a fifteen-minute lockout
+
+Fix the credentials the automation is using
+
+### Upgrading to 4.4.55
+
+**A server that has never had an admin secret now generates one** rather than falling back to the example secret from these docs. If your installation already has credentials, whether persisted, configured, or set from the dashboard, nothing changes: those still win. Only a genuinely new installation gets a generated secret, which it prints once at startup and then stores.
+
+If you were relying on `vaults3-secret-change-me`, set `VAULTS3_ACCESS_KEY` and `VAULTS3_SECRET_KEY` explicitly, or read the generated secret from the first start's output.
+
+### Upgrading to 4.4.54
+
+One behaviour change is worth knowing before you upgrade, because it is visible in your storage numbers:
+
+**On a versioning-enabled bucket, a multi-object delete now writes a delete marker and keeps the data**, which is what a single `DELETE` has always done and what S3 specifies. Before this it removed the object outright, so a bulk delete freed space. After upgrading it will not, and the space is released when the versions are expired, either by a lifecycle rule (`NoncurrentVersionExpiration`) or by deleting versions explicitly. Buckets without versioning are unaffected.
+
+Nothing else needs action. Metadata sharding is off unless you set `cluster.metadata_shards` above 1, and the server refuses to start if you set it on a node whose metadata store already holds objects, so an upgrade cannot enable it by accident.
+
 Contributing
 ------------
 
@@ -2321,3 +2513,14 @@ Roadmap
 -   S3 Select on Parquet files (parquet-go, row group iteration, columnar to record conversion)
 -   Integration test suite (26 end-to-end tests with real SigV4 signing, filesystem storage, BoltDB metadata)
 -   Race detection in CI (`go test -race`)
+-   `vaults3 setup`: interactive and scripted first-run configuration, with a generated per-installation admin secret instead of a published default
+-   Sharded metadata (`cluster.metadata_shards`): object metadata split across independent Raft groups so metadata capacity grows with the cluster, with per-shard membership reconciliation, all groups sharing one Raft port, and an unreachable shard reported as unavailable rather than empty
+
+License
+-------
+
+Copyright (C) 2026 Kodiqa Solutions.
+
+VaultS3 is free software, licensed under the **GNU Affero General Public License v3.0**. You may use, modify and redistribute it, including commercially, provided you preserve the licence and copyright notices, state your changes, and release the source of anything you derive from it under the same licence. The AGPL adds one condition the GPL does not: if you run a modified version as a network service, the users of that service are entitled to its source.
+
+The full text is in LICENSE, and NOTICE carries the copyright statement. Separate paid add-ons are described under Project and support and are not covered by this licence.

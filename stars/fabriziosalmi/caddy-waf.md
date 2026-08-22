@@ -1,6 +1,6 @@
 ---
 project: caddy-waf
-stars: 801
+stars: 803
 description: Caddy WAF (Regex Rules, IP and DNS filtering, Rate Limiting, GeoIP, Tor, Anomaly Detection)
 url: https://github.com/fabriziosalmi/caddy-waf
 ---
@@ -10,9 +10,9 @@ Caddy WAF
 
 A Web Application Firewall middleware for the Caddy web server, written in Go.
 
--   **Module ID**: `http.handlers.waf` — registered in Caddy's package registry, so `caddy add-package` and the download page both work
+-   **Module ID**: `http.handlers.waf` — registered in Caddy's package registry, so the module is selectable on the download page
 -   **Go module path**: `github.com/fabriziosalmi/caddy-waf`
--   **Current version**: `v0.3.10` (see `caddywaf.go` — `const wafVersion`)
+-   **Current version**: `v0.4.1` (see `caddywaf.go` — `const wafVersion`)
 -   **License**: AGPL-3.0 — note this is a copyleft licence; check it suits your deployment before integrating
 
 * * *
@@ -119,7 +119,7 @@ A representative provisioning log:
 ```
 INFO  Provisioning WAF middleware     {"log_level":"info","log_path":"debug.json","log_json":true,"anomaly_threshold":20}
 INFO  http.handlers.waf  Tor exit nodes updated  {"count":1093}
-INFO  WAF middleware version  {"version":"v0.3.10"}
+INFO  WAF middleware version  {"version":"v0.4.1"}
 INFO  Rate limit configuration  {"requests":100,"window":10,"cleanup_interval":300,"paths":["/api/v1/.*"],"match_all_paths":false}
 WARN  GeoIP database not found. Country blacklisting/whitelisting will be disabled  {"path":"GeoLite2-Country.mmdb"}
 INFO  IP blacklist loaded     {"path":"ip_blacklist.txt","valid_entries":223770,"invalid_entries":0,"total_lines":223770}
@@ -162,6 +162,12 @@ xcaddy build --with github.com/fabriziosalmi/caddy-waf=./
 
 ### Method 4 — `caddy add-package`
 
+Important
+
+**Prefer `xcaddy` or the container image.** Caddy's maintainers have proposed moving `add-package`, `remove-package` and `upgrade` out of Caddy's core to discourage their use (caddyserver/caddy#7010): the commands call Caddy's shared build server, and using them in CI/CD is an anti-pattern. Raised for this project in #138 by a Caddy maintainer.
+
+The command works today and the module remains registered, so this section stays accurate. Treat it as a convenience for one-off, hand-operated installs — not as the way to build or deploy caddy-waf.
+
 The module is registered in Caddy's package registry, so an existing Caddy v2.7+ binary can pull it in without a Go toolchain:
 
 caddy add-package github.com/fabriziosalmi/caddy-waf
@@ -173,10 +179,10 @@ It is also selectable on caddyserver.com/download. See `docs/add-package-guide.m
 
 Images are published to GitHub Container Registry on every release tag, for `linux/amd64` and `linux/arm64`:
 
-docker pull ghcr.io/fabriziosalmi/caddy-waf:0.3.10
-docker run --rm -p 8080:8080 ghcr.io/fabriziosalmi/caddy-waf:0.3.10
+docker pull ghcr.io/fabriziosalmi/caddy-waf:0.4.1
+docker run --rm -p 8080:8080 ghcr.io/fabriziosalmi/caddy-waf:0.4.1
 
-Tags are `0.3.10`, `0.3` and `latest` — note there is **no `v` prefix**, unlike the Go module version. Pin an exact version in anything you deploy. See `docs/docker.md` for volumes, Compose, and hot reload.
+Tags are `0.4.1`, `0.4` and `latest` — note there is **no `v` prefix**, unlike the Go module version. Pin an exact version in anything you deploy. See `docs/docker.md` for volumes, Compose, and hot reload.
 
 * * *
 

@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 39805
+stars: 40043
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -39,6 +39,8 @@ You can download the latest release for your system, or install a release from t
 
 curl https://getcroc.com | bash
 
+When the CLI sends or receives a transfer, it checks for a newer croc release at most once every 24 hours. The check runs in the background and any update notice is shown after the transfer finishes. Network and release-service failures are ignored; `--quiet` suppresses the notice.
+
 ### On macOS
 
 Using Homebrew:
@@ -52,13 +54,11 @@ sudo port install croc
 
 ### On Windows
 
-You can install the latest release with Scoop, Chocolatey, or Winget:
+You can install the latest release with Scoop or Chocolatey:
 
 scoop install croc
 
 choco install croc
-
-winget install schollz.croc
 
 ### Using nix-env
 
@@ -81,6 +81,13 @@ First, install dependencies:
 apk add bash coreutils
 wget -qO- https://getcroc.com | bash
 
+### On Debian
+
+Install from the pkg.haus APT archive:
+
+# Add the repository (see https://pkg.haus for setup instructions)
+sudo apt install croc
+
 ### On Arch Linux
 
 Install with `pacman`:
@@ -92,12 +99,6 @@ pacman -S croc
 Install with `dnf`:
 
 dnf install croc
-
-### On Gentoo
-
-Install with `portage`:
-
-emerge net-misc/croc
 
 ### On Termux
 
@@ -131,7 +132,7 @@ You can also just paste it in the terminal for current session. On first run Doc
 
 ### Build from Source
 
-If you prefer, you can install Go and build from source (requires Go 1.26+):
+If you prefer, you can install Go and build from source (requires Go 1.27+):
 
 go install github.com/schollz/croc/v11@latest
 
@@ -203,6 +204,8 @@ croc --classic
 You can send with your own code phrase (must be at least 6 characters):
 
 croc send --code \[code-phrase\] \[file(s)-or-folder\]
+
+For default public transfers, SHA-256 of the exact code modulo the ordered three-relay pool determines which deployment both peers use. An automatically generated sender probes all three relays and generates a normal EFF code that maps to the first healthy one to respond. A custom code maps directly without probing or fallback. `--relay`, `CROC_RELAY`, `--ip`, and local-only transfers bypass this public routing rule. The generated sender caches the winning address in `best-relay` alongside croc's other configuration files, then reuses it without probing. A relay connection failure removes the cache so the following send measures the pool again; deleting the file also forces a new measurement.
 
 #### Allow Overwriting Without Prompt
 
@@ -324,7 +327,7 @@ The React/Vite client in `web/` can send and receive multiple files with normal 
 
 croc-web getcroc.com
 
-This binds to `127.0.0.1:9014` by default for an HTTPS reverse proxy. `/` serves the website and `/ws` bridges to `ipv4.getcroc.com`. For a directly accessible local development server, `croc-web localhost:5173` binds and serves on `localhost:5173`. Use `--bind`, `--relay`, and `--ports` before the website address to customize the local listener or upstream croc relay.
+This binds to `127.0.0.1:9014` by default for an HTTPS reverse proxy. `/` serves the website and `/ws` bridges to the code-selected public relay at `1.getcroc.com`, `2.getcroc.com`, `3.getcroc.com`, or `4.getcroc.com`. For a directly accessible local development server, `croc-web localhost:5173` binds and serves on `localhost:5173`. Use `--bind`, `--relays`, and `--ports` before the website address to customize the local listener or upstream croc relay.
 
 Run `make build-web` to generate the ignored production assets and build a local server. See `web/README.md` for frontend development, custom relay, and reverse-proxy instructions.
 

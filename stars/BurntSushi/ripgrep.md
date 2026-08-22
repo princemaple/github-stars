@@ -1,6 +1,6 @@
 ---
 project: ripgrep
-stars: 67311
+stars: 67500
 description: ripgrep recursively searches directories for a regex pattern while respecting your gitignore
 url: https://github.com/BurntSushi/ripgrep
 ---

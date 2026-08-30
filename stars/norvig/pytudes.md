@@ -98,17 +98,89 @@ co nb
 
 Advent of Code 2025: AI LLM Edition
 
+co nb
+
+2025
+
+Advent of Code 2025: AI LLM Edition
+
 Open
 
 Year
 
-Programming Examples
+Large Language Models
 
 co nb
 
 2022
 
 AlphaCode Automated Programming
+
+co nb
+
+2025
+
+Advent of Code 2025: AI LLM Edition
+
+co nb
+
+2019
+
+Effectiveness of Language Models
+
+co nb
+
+2018
+
+How to Do Things with Words: NLP in Python
+
+co nb
+
+2024
+
+The Languages of English, Math, and Programming
+
+co nb
+
+2024
+
+LLMs, Theory of Mind, and Cheryl's Birthday
+
+co nb
+
+2023
+
+One Letter Off
+
+co nb
+
+2026
+
+Project Euler #1–100 by a Human
+
+co nb
+
+2026
+
+Project Euler #1–100 by Fable LLM
+
+co nb
+
+2026
+
+Project Euler #1–100 by Opus LLM
+
+co nb
+
+2026
+
+Project Euler #1–100 by Kimi LLM
+
+Open
+
+Year
+
+Programming Examples
 
 co nb
 
@@ -160,9 +232,9 @@ Generating and Solving Mazes
 
 co nb
 
-2024
+2026
 
-The Languages of English, Math, and Programming
+Largest prime factor
 
 co nb
 
@@ -198,7 +270,7 @@ Open
 
 Year
 
-Advent of Code and Project Euler
+Advent of Code
 
 co nb
 
@@ -266,47 +338,11 @@ co nb
 
 Advent of Code Utilities
 
-co nb
-
-2026
-
-Project Euler #1–100 by a Human
-
-co nb
-
-2026
-
-Project Euler #1–100 by Fable LLM
-
-co nb
-
-2026
-
-Project Euler #1–100 by Opus LLM
-
-co nb
-
-2026
-
-Project Euler #1–100 by Kimi LLM
-
-co nb
-
-2026
-
-Largest prime factor
-
 Open
 
 Year
 
 Probability and Uncertainty
-
-co nb
-
-2019
-
-Effectiveness of Language Models
 
 co nb
 
@@ -412,12 +448,6 @@ How to Count Things
 
 co nb
 
-2021
-
-KenKen (Sudoku-like Puzzle)
-
-co nb
-
 2024
 
 Number Bracelets Game
@@ -448,27 +478,9 @@ Stubborn number endings
 
 co nb
 
-2021
-
-Star Battle (Sudoku-like Puzzle)
-
-co nb
-
-2006
-
-Sudoku
-
-co nb
-
-2021
-
-Sudoku: 200,000 puzzles/second in Java
-
-co nb
-
 2020
 
-Square Sum Puzzle
+Square Sum Chain Puzzle
 
 co nb
 
@@ -484,12 +496,6 @@ When Cheryl Met Eve: A Birthday Story
 
 co nb
 
-2024
-
-LLMs, Theory of Mind, and Cheryl's Birthday
-
-co nb
-
 2015
 
 xkcd 1313: Regex Golf
@@ -499,6 +505,36 @@ co nb
 2015
 
 xkcd 1313: Regex Golf (Part 2: Infinite Problems)
+
+Open
+
+Year
+
+Sudoku and Similar Puzzles
+
+co nb
+
+2006
+
+Sudoku
+
+co nb
+
+2021
+
+Sudoku: 400,000 puzzles/second in Java
+
+co nb
+
+2021
+
+KenKen (Sudoku-like Puzzle)
+
+co nb
+
+2021
+
+Star Battle (Sudoku-like Puzzle)
 
 Open
 
@@ -544,21 +580,9 @@ Ghost: A Word game
 
 co nb
 
-2018
-
-How to Do Things with Words: NLP in Python
-
-co nb
-
 2015
 
 Let's Code About Bike Locks
-
-co nb
-
-2023
-
-One Letter Off
 
 co nb
 

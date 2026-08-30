@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 387145
+stars: 388014
 description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -8,9 +8,9 @@ url: https://github.com/openclaw/openclaw
 OpenClaw 🦞 — Your assistant, on your devices, in your chats
 ============================================================
 
-OpenClaw is a personal AI assistant that runs on your devices and meets you in the channels you already use. It is designed for a single operator and connects models, tools, messaging channels, and optional companion apps through one Gateway.
+OpenClaw is an AI assistant that runs on your devices and meets you in the channels you already use. It connects models, tools, messaging channels, and optional companion apps through one Gateway, for a single operator or for a team whose members trust each other: the same gateway runs as a personal assistant on one laptop or as a shared team deployment, and configuration is the only difference. The architecture case — trusted gateway, untrusted execution, deterministic policy — is in Why OpenClaw.
 
-Website · Docs · Getting started · Showcase · FAQ · Vision · DeepWiki
+Website · Docs · Getting started · Why OpenClaw · Showcase · FAQ · Vision · DeepWiki
 
 Install
 -------

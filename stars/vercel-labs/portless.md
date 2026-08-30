@@ -1,6 +1,6 @@
 ---
 project: portless
-stars: 11270
+stars: 11345
 description: Replace port numbers with stable, named local URLs. For humans and agents.
 url: https://github.com/vercel-labs/portless
 ---
@@ -192,6 +192,8 @@ With a `portless.json`, you can simplify to:
 }
 
 Then run `portless` or `portless run` to go through the proxy.
+
+When you press Ctrl+C, portless forwards the interrupt and waits for the command's process tree to exit. Press Ctrl+C again to forward another interrupt. Any remaining descendants are terminated after a short grace period.
 
 Subdomains
 ----------
@@ -486,7 +488,7 @@ If Safari can't find your `.localhost` URL:
 portless hosts sync    # Add current routes to /etc/hosts
 portless hosts clean   # Clean up later
 
-Auto-syncs `/etc/hosts` for route hostnames by default (`.localhost`, custom TLDs, LAN `.local`). Set `PORTLESS_SYNC_HOSTS=0` to disable.
+Auto-syncs `/etc/hosts` for route hostnames by default (`.localhost`, custom TLDs, LAN `.local`). Set `PORTLESS_SYNC_HOSTS=0` to disable. If a route hostname will not resolve, the command that registered it warns and points you to `portless hosts sync`.
 
 Troubleshooting
 ---------------

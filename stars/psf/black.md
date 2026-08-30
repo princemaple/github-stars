@@ -1,6 +1,6 @@
 ---
 project: black
-stars: 41815
+stars: 41821
 description: The uncompromising Python code formatter
 url: https://github.com/psf/black
 ---

@@ -1,6 +1,6 @@
 ---
 project: documenso
-stars: 14666
+stars: 14805
 description: The Open Source DocuSign Alternative.
 url: https://github.com/documenso/documenso
 ---
@@ -144,13 +144,9 @@ For full instructions, requirements, and configuration details, see the Self Hos
 
 ### One-Click Deploys
 
-#### Railway
+Note
 
-#### Render
-
-#### Koyeb
-
-#### Elestio
+Want to see another provider listed here? Please open a provider request instead of a PR so the community can signal interest. PRs adding deploy badges without a prior issue will be closed.
 
 Security
 --------

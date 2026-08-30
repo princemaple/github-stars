@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40043
+stars: 40143
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -14,7 +14,7 @@ About
 
 `croc` is a tool that allows any two computers to simply and securely transfer files and folders. AFAIK, _croc_ is the only CLI file-transfer tool that does **all** of the following:
 
--   Allows **any two computers** to transfer data (using a relay)
+-   Allows **any two computers** to transfer data (p2p with relay fallback)
 -   Provides **end-to-end encryption** (using PAKE)
 -   Enables easy **cross-platform** transfers (Windows, Linux, Mac, Browser)
 -   Allows **multiple file** transfers
@@ -264,6 +264,12 @@ The QR code opens `https://getcroc.com/?code=...`, where the web client automati
 You can send files via a proxy by adding `--socks5`:
 
 croc --socks5 "127.0.0.1:9050" send SOMEFILE
+
+**Sponsored by SX.org.**
+
+### Data transport selection
+
+The native CLI defaults to `--transport auto`. After the normal three-word-code PAKE handshake, two compatible native clients create PAKE-bound Tailcat node identities and open one or more TCP streams over an in-process Tailscale userspace WireGuard network. Magicsock starts through DERP and promotes the connection to a direct UDP path whenever NAT traversal succeeds. If the peer is a browser, an older client, or Tailcat setup fails, both clients use croc's existing relay data ports. The public spelling `--transport derp` is retained; in strict mode it requires Tailcat support and disables croc-relay fallback. Public DERP is best effort and may apply fairness limits; see Tailscale's DERP reference and performance guidance.
 
 #### Change Encryption Curve
 

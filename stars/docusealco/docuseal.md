@@ -1,6 +1,6 @@
 ---
 project: docuseal
-stars: 18333
+stars: 18404
 description: Open source DocuSign alternative. Create, fill, and sign digital documents ✍️
 url: https://github.com/docusealco/docuseal
 ---

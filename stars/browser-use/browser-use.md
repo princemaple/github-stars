@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 110141
+stars: 111668
 description: 🌐 Make websites accessible for AI agents. Automate tasks online with ease.
 url: https://github.com/browser-use/browser-use
 ---
@@ -103,6 +103,7 @@ Browser Use is also **#1 on the Odysseys leaderboard** with an 87.4% average, ah
 -   Best stealth with proxy rotation and captcha solving
 -   1000+ integrations (Gmail, Slack, Notion, and more)
 -   Persistent filesystem and memory
+-   Rerunnable scripts fetch live data, even when sites change (guide)
 
 curl -X POST https://api.browser-use.com/api/v4/runs \\
   -H "X-Browser-Use-API-Key: $BROWSER\_USE\_API\_KEY" \\

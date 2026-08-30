@@ -21,6 +21,16 @@ def deps do
   \]
 end
 
+### Installing with Igniter
+
+If you use Igniter, a single command adds the dependency, generates a `MyApp.RateLimit` module and adds it to your application's supervision tree:
+
+mix igniter.install hammer
+
+Pass `--backend atomic` or `--backend redis` to pick a backend other than the default `:ets`. The `redis` option also adds the `hammer_backend_redis` dependency. If Hammer is already in your project, run `mix hammer.install` directly.
+
+Hammer has no global configuration: each limit is defined where it is checked, with `MyApp.RateLimit.hit(key, scale, limit)`. See the Tutorial for how to compose keys and use the limiter as a plug.
+
 Available Backends
 ------------------
 

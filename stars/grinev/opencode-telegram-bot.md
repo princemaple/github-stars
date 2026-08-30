@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1068
+stars: 1111
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -46,6 +46,7 @@ Features
 -   **Git worktree switching** — browse and switch between existing git worktrees for the current repository with `/worktree`
 -   **Security** — strict user ID whitelist; no one else can access your bot, even if they find it
 -   **Localization** — UI localization is supported for multiple languages (`BOT_LOCALE`)
+-   **Docker support** — run the bot as a container while OpenCode stays on the host; see Docker Deployment
 -   **Interactive file browser** — use `/ls` to browse files and directories inside the current project, open subdirectories, go back, and download files by tapping them
 -   **Attach a file to your next prompt** — tap **📎 Attach to next prompt** on a text file in `/ls`, and it is sent to OpenCode together with your next message, once
 
@@ -212,7 +213,7 @@ Start the local OpenCode server on the bot machine
 
 `/opencode_stop`
 
-Stop the local OpenCode server on the bot machine
+Stop the local OpenCode server, including during a run
 
 `/help`
 
@@ -481,14 +482,6 @@ Track detached/non-current sessions in the current selected project/worktree and
 No
 
 `true`
-
-`RESPONSE_STREAM_THROTTLE_MS`
-
-Stream update throttle in milliseconds for assistant, thinking, and tool message edits
-
-No
-
-`1000`
 
 `MESSAGE_FORMAT_MODE`
 
@@ -813,6 +806,56 @@ cp .env.example .env
 Build and run:
 
 npm run dev
+
+### Docker Deployment
+
+The bot can also be run as a container using Docker and Docker Compose. The image contains **only the Telegram bot**. OpenCode stays on the host and must already be running before you start the container (`opencode serve --port 4096`). `/opencode_start` and `/opencode_stop` do not work from inside the container.
+
+git clone https://github.com/grinev/opencode-telegram-bot.git
+cd opencode-telegram-bot
+cp .env.example .env
+# Edit .env with your bot token, user ID, and model settings
+
+`.env` stays on the host. It is injected at runtime and is not copied into the image.
+
+**Linux** (OpenCode on the host at `127.0.0.1:4096`):
+
+docker compose up -d --build
+
+**macOS / Windows (Docker Desktop):** host networking does not reach OpenCode on the Windows/macOS localhost. Use the Desktop override, which talks to the host via `host.docker.internal`:
+
+docker compose -f docker-compose.yml -f docker-compose.desktop.yml up -d --build
+
+Follow logs:
+
+docker compose logs -f opencode-bot
+
+Stop:
+
+docker compose down
+
+#### Persistence
+
+Runtime state (settings, logs, SQLite databases) is stored in a Docker named volume `opencode-bot-data` mapped to `/app/data` inside the container. The volume is created automatically on first run. It is the bot's own state, not your project files. OpenCode on the host continues to edit projects on the host disk.
+
+#### Configuration
+
+All configuration is provided through environment variables in the `.env` file. Compose also sets `OPENCODE_TELEGRAM_CONTAINER=1` so the bot can warn about commands that need the host filesystem or a local OpenCode process.
+
+-   `OPENCODE_API_URL` — URL of the OpenCode server. On Linux with the default compose file this is `http://127.0.0.1:4096` via `network_mode: host`. The Desktop override sets `http://host.docker.internal:4096`.
+
+#### Commands that are not available in Docker
+
+These need the bot process to see host project paths or to spawn/stop `opencode` in the same machine namespace. The default image does neither, so the bot replies with a warning instead of a generic error:
+
+-   `/open` — directory browser to add a project
+-   `/ls` — project file browser / download / attach
+-   `/opencode_start` and `/opencode_stop`
+-   `/worktree`
+
+`/projects`, `/sessions`, prompts, and live updates still go through the OpenCode HTTP API and work as usual.
+
+Port 4096 is **not** exposed by the bot image; it belongs to the OpenCode server, which runs separately.
 
 ### Available Scripts
 

@@ -1,6 +1,6 @@
 ---
 project: simple-peer
-stars: 7804
+stars: 7803
 description: 📡 Simple WebRTC video, voice, and data channels
 url: https://github.com/feross/simple-peer
 ---

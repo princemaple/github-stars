@@ -1,6 +1,6 @@
 ---
 project: joplin
-stars: 56053
+stars: 56154
 description: Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.
 url: https://github.com/laurent22/joplin
 ---

@@ -1,6 +1,6 @@
 ---
 project: goaccess
-stars: 20830
+stars: 20880
 description: GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 url: https://github.com/allinurl/goaccess
 ---
@@ -64,7 +64,7 @@ GoAccess parses the specified web log file and outputs the data to the X termina
 
 GoAccess allows any custom log format string. Predefined options include, but not limited to:
 
--   Amazon CloudFront (Download Distribution).
+-   Amazon CloudFront standard logs (legacy fixed schema).
 -   Amazon Simple Storage Service (S3)
 -   AWS Elastic Load Balancing
 -   Combined Log Format (XLF/ELF) Apache | Nginx

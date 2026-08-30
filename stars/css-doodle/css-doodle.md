@@ -1,6 +1,6 @@
 ---
 project: css-doodle
-stars: 6028
+stars: 6030
 description: A web component for visual art and creative coding
 url: https://github.com/css-doodle/css-doodle
 ---

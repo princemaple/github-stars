@@ -1,6 +1,6 @@
 ---
 project: edgeever
-stars: 1224
+stars: 1299
 description: Serverless, 100% free, and open-source Evernote alternative on Cloudflare with native MCP | 无需服务器、0费用、原生支持 AI Agent 的开源自托管『印象笔记』
 url: https://github.com/tianma-if/edgeever
 ---
@@ -41,11 +41,12 @@ The public demo resets every day at 3:00 AM (China Standard Time) and restores s
 Features
 --------
 
--   **Deploy Your Way**: Run the same application on Cloudflare's free serverless platform or with Docker on a VPS, NAS, or home server—without forking the product code.
+-   **Deploy Your Way**: Run the same application on Cloudflare's free serverless platform or with Docker on a VPS, NAS, or home server. Based on Cloudflare's free storage allowances, a personal deployment can hold roughly 150,000 short notes and 50,000 images; Docker storage scales on demand to easily support millions of notes and a vast image library.
 -   **Open Data, No Vendor Lock-in**: Built on standard SQLite with complete REST API, MCP, and CLI access. Your knowledge is stored transparently and accessible anytime without being locked to a single app.
 -   **Lossless ZIP Backup & Portability**: Export your complete library as a clean archive containing Markdown, Front Matter, nested folders, relative attachment links, and version histories for instant restoration anywhere.
 -   **Native AI Agent Synergy**: Deep integration with Model Context Protocol (MCP) allows AI tools like Claude Code, Codex, and Antigravity to read, organize, and summarize your notes, or sync seamlessly with Notion and Feishu Bitable.
 -   **Bring Your Own AI Models**: Connect OpenAI, Anthropic, or Gemini-compatible services and third-party API relays to empower your editor with smart note summarization, key point extraction, proofreading, translation, and text continuation on full notes or selected text.
+-   **Plugin Extensibility**: Install client plugins and themes from the Plugin Marketplace to extend note actions, editor commands, custom panels, and more.
 -   **Unlimited Multi-Device Sync**: No commercial device caps or paywalls. Enjoy seamless synchronization across PC, tablet, and mobile via web, PWA, or browser.
 -   **Classic Three-Pane Layout & Focus Mode**: Clean navigation featuring notebook trees, note lists, and an expansive editor, with a desktop focus mode to eliminate distractions.
 -   **Unlimited Nested Notebooks**: Organize your knowledge with arbitrary folder depth.
@@ -95,7 +96,7 @@ Complete setup in 5 simple web steps:
 2.  **Enable Actions**: Open the Fork's **Actions** tab and click **I understand my workflows, go ahead and enable them** so the GitHub Actions workflow named **Update deployed EdgeEver** can run automatically, keeping you up to date with the latest **EdgeEver** features and fixes.
 3.  **Import into Cloudflare**: Log into the Cloudflare Dashboard, navigate to **Workers & Pages**, and choose to import your Fork repository.
 4.  **Create Resources & Credentials**: Create D1 `edgeever` and R2 `edgeever-resources`, then set the Worker Secret `EDGE_EVER_AUTH_PASSWORD` as your admin password. The deploy command creates the bindings; do not edit Fork files.
-5.  **Build & Verify**: Start the first build with default settings. Once complete, visit `/api/health` to verify a `200` response before logging in.
+5.  **Build & Verify**: Start the first build after importing the repository. Once complete, visit `/api/health` to verify a `200` response before logging in.
 
 > 📖 For full step-by-step instructions and configuration details, see the Online Deployment Guide.
 
@@ -103,15 +104,13 @@ Complete setup in 5 simple web steps:
 
 ### Option C: Docker on a VPS or NAS
 
-For a VPS or NAS outside mainland China, use the GitHub-hosted installer and GHCR image:
+Use the GitHub-hosted installer and the official GHCR image:
 
 curl -fsSL https://edgeever.org/install.sh | bash
 
-For a VPS or NAS located in mainland China, use the Tencent COS installer and Tencent TCR image for faster, more reliable downloads:
+The command pulls the latest image, generates an administrator password, starts EdgeEver with Docker Compose, and schedules daily automatic updates.
 
-curl -fsSL https://edgeever-installer-1256854452.cos.ap-guangzhou.myqcloud.com/install.sh | bash -s -- --mirror tcr
-
-Both commands pull the latest image, generate an administrator password, start EdgeEver with Docker Compose, and schedule daily automatic updates.
+The official EdgeEver container image is hosted on GitHub Container Registry (GHCR). Some network environments in mainland China may experience slow connections or timeouts. If the image cannot be pulled normally, configure an available network proxy or a trusted registry mirror before deployment. Users are responsible for evaluating the availability and security of third-party network and registry services.
 
 See the Docker deployment guide for manual deployment and configuration.
 
@@ -131,8 +130,6 @@ The Web Clipper is officially published for Chrome, Microsoft Edge, and Firefox.
 
      
 
-Developers can also use the extension development guide to build and load the extension from source.
-
 Native Clients
 --------------
 
@@ -150,11 +147,11 @@ Community and Feedback
 -   Bugs, feature requests, and deployment issues: GitHub Issues
 -   Code contributions: read the Contribution Guide. If your Fork is also used to deploy EdgeEver, keep its `main` branch deployment-only. Create a separate branch from the official `upstream/main` for synchronization, development, and pull requests; do not develop on or Sync fork the deployment `main`.
 
-### WeChat Community Group
+### Telegram Community
 
-Welcome to the EdgeEver AI community group, home to many Vibe Coding builders and AI enthusiasts. Join us to discuss the EdgeEver experience, real-world AI Agent applications, cost-effective or free AI resources, and automation workflows.
+Welcome to the EdgeEver community. Join us to discuss the EdgeEver experience, real-world AI Agent applications, cost-effective or free AI resources, and automation workflows.
 
-> The group QR code is valid for 7 days. If it has expired, add WeChat `m1245207870` and include “EdgeEver group” in your request.
+👉 Join the EdgeEver Telegram group
 
 Tech Stack
 ----------
@@ -221,19 +218,12 @@ https://your-domain/api/openapi.json
 
 Repository file: docs/openapi.json.
 
-Plugin Development Preview
---------------------------
-
-The standalone Plugin Marketplace supports trusted client plugins and code-free theme packages installed from its verified index, a public GitHub repository, or a manifest URL. Plugins can query and update notes, work with editor selections, register commands and custom panels, use encrypted secret storage, and make allowlisted network requests. A unified top-right desktop entry includes recently used actions. Cron and background jobs are intentionally deferred. See Plugin Development.
-
 MCP
 ---
 
-Create an API token in **Profile** -> **MCP settings**, then give the token or full MCP configuration to your AI Agent. Once connected, the Agent can securely read, organize, and import notes within your account permissions. MCP also exposes full management of reusable note templates and AI instructions: agents can list, inspect, create, update, and delete both, create a note from a template, and restore missing built-in AI instructions. Template and instruction reads use the `read:memos` scope, while changes use `write:memos`. Repeating the same memo import will not create duplicate notes.
+Create an API token in **Profile** -> **MCP settings** and give it to your AI Agent. The Agent can then securely read, organize, and import notes, manage note templates and AI instructions, and connect your notes with tools such as Notion databases and Feishu Bitable—all within your account permissions.
 
-The Remote MCP endpoint supports the stateless `2026-07-28` protocol while retaining the handshake-based 2025 revisions for existing clients.
-
-With MCP, EdgeEver can also connect to tools such as Notion databases and Feishu Bitable, turning scattered ideas, information, and materials from everyday notes into structured data that is easier to organize, search, and manage.
+> Let your ideas run free: ask an AI Agent to organize fleeting thoughts, build a personal knowledge graph, create a profile from your notes, or tag them automatically.
 
 Image Compression
 -----------------
@@ -245,7 +235,7 @@ EdgeEver avoids Worker-side image processing to reduce compute and image-process
 Advanced Object Storage
 -----------------------
 
-The instance owner can configure S3-compatible object storage under **Settings → Advanced → OSS object storage**. Changing storage does not migrate or affect existing attachments. Cloudflare deployments must also configure an `EDGE_EVER_STORAGE_ENCRYPTION_KEY` Worker Secret of at least 32 characters.
+The instance owner can configure S3-compatible object storage under **Settings → Advanced → OSS object storage**. Changing storage does not migrate or affect existing attachments.
 
 Migration
 ---------
@@ -262,13 +252,26 @@ Docker Deployment
 
 Docker runs the same frontend, API routes, services, authentication, MCP implementation, and migrations as Cloudflare. The container uses SQLite with local files or S3-compatible attachment storage and supports `amd64` and `arm64`. See Deploy EdgeEver with Docker and Self-hosting and Docker architecture.
 
+Sync Timing
+-----------
+
+Web, PWA, and desktop upload memo edits after 30 seconds of inactivity and check for remote changes every 5 minutes while visible; focus and manual refresh remain immediate. Adjust `DEFERRED_MEMO_SYNC_DELAY_MS` and `BACKGROUND_WORKSPACE_REFRESH_INTERVAL_MS` in `apps/web/src/lib/workspace-refresh.ts`.
+
 Acknowledgements
 ----------------
 
 -   The "Minimal Emerald" theme typography layout is inspired by obsidian-minimal.
 -   The "Outline Emerald" theme typography layout is inspired by Outline.
+-   The "Classic Blue & White" theme is inspired by the early StackEdit/Bootstrap Markdown typography style, with Chinese typography details informed by Marxico.
+
+Trademark and Brand Use
+-----------------------
+
+The EdgeEver name, logo, and other brand identifiers distinguish the official project. Forks and modified versions may state that they are based on EdgeEver, but must not imply official status or mislead users. The open-source license does not grant trademark rights; other uses require prior written permission from the project maintainers.
 
 Disclaimer
 ----------
 
 EdgeEver is an independent open-source note-taking application developed and maintained by individuals and the community. It is not affiliated with, authorized, sponsored, or endorsed by Evernote Corporation or its affiliates.
+
+EdgeEver is self-hosted software. Except for official demo instances, project maintainers do not host, control, or review user content. Content stored or displayed by an instance is the responsibility of its users or operators and does not represent the maintainers' views.

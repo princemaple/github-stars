@@ -1,6 +1,6 @@
 ---
 project: imagor
-stars: 4006
+stars: 4013
 description: Fast, secure image processing server and Go library, using libvips
 url: https://github.com/cshum/imagor
 ---
@@ -10,7 +10,7 @@ imagor
 
 imagor is a fast, secure image processing server and Go library.
 
-imagor uses one of the most efficient image processing libraries, libvips, with the Go binding vipsgen, which is also available for low-level libvips operations directly in Go. It is typically 4-8x faster than using the quickest ImageMagick settings. imagor implements libvips streaming to facilitate parallel processing pipelines and achieve high network throughput. Benchmarks show imagor is one of the fastest image processing servers.
+imagor uses one of the most efficient image processing libraries, libvips with the Go binding vipsgen. It is typically 4-8x faster than using the quickest ImageMagick settings. imagor implements libvips streaming to facilitate parallel processing pipelines and achieve high network throughput. Benchmarks show imagor is one of the fastest image processing servers.
 
 imagor features a ton of image processing use cases, available as a HTTP server with first-class Docker support. It adopts the thumbor URL syntax representing a high-performance drop-in replacement.
 
@@ -38,6 +38,20 @@ http://localhost:8000/unsafe/30x40:100x150/filters:fill(cyan)/raw.githubusercont
 http://localhost:8000/unsafe/fit-in/200x150/filters:fill(yellow):watermark(raw.githubusercontent.com/cshum/imagor/master/testdata/gopher-front.png,repeat,bottom,0,40,40)/raw.githubusercontent.com/cshum/imagor/master/testdata/dancing-banana.gif
 ```
 
-Tip
+Documentation
+-------------
 
-**Full documentation at docs.imagor.net** — Image Endpoint · Filters · Storage · Security · Configuration
+Full documentation is available at docs.imagor.net.
+
+-   Image Endpoint
+-   Filters
+-   Storage
+-   Security
+-   Configuration
+
+Commercial Support
+------------------
+
+If your team is using imagor in production and needs help with architecture, custom imagor components, multi-tenant setups, migration, or performance tuning, commercial support and consulting are available. See the Commercial Support page for details.
+
+For bugs and feature requests, please continue to use GitHub issues. For consulting inquiries, contact imagor@cshum.com.

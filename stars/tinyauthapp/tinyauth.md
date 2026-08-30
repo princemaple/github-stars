@@ -1,6 +1,6 @@
 ---
 project: tinyauth
-stars: 8151
+stars: 8181
 description: The tiniest OpenID Certified™ authorization and authentication server you have ever seen.
 url: https://github.com/tinyauthapp/tinyauth
 ---
@@ -78,7 +78,6 @@ A huge thank you to selfh.st for their generous donation to Tinyauth.
 
 -   JetBrains for Open-Source
 -   CodeRabbit AI
--   Dosu
 -   InstaPods - Deploy Tinyauth from 3$/month
 
 Acknowledgements

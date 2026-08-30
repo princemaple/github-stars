@@ -1,6 +1,6 @@
 ---
 project: uppy
-stars: 30925
+stars: 30940
 description: The next open source file uploader for web browsers :dog: 
 url: https://github.com/transloadit/uppy
 ---
@@ -84,7 +84,7 @@ Alternatively, you can also use a pre-built bundle from Transloadit’s CDN: Sma
 
 <!-- 1. Add CSS to \`<head>\` -->
 <link
-  href\="https://releases.transloadit.com/uppy/v5.2.4/uppy.min.css"
+  href\="https://releases.transloadit.com/uppy/v6.0.0/uppy.min.css"
   rel\="stylesheet"
 />
 
@@ -95,7 +95,7 @@ Alternatively, you can also use a pre-built bundle from Transloadit’s CDN: Sma
     Uppy,
     Dashboard,
     Tus,
-  } from 'https://releases.transloadit.com/uppy/v5.2.4/uppy.min.mjs'
+  } from 'https://releases.transloadit.com/uppy/v6.0.0/uppy.min.mjs'
 
   const uppy \= new Uppy()
   uppy.use(Dashboard, { target: '#files-drag-drop' })
@@ -140,7 +140,7 @@ The ⓒ mark means that `@uppy/companion`, a server-side component, is needed fo
 
 ### File Processing
 
--   `Transloadit` — support for Transloadit’s robust file uploading and encoding backend
+-   `Transloadit` — creates Assemblies that upload files to Transloadit’s encoding backend. See the integration guide for JavaScript, React, Next.js, Vue, and Angular examples with server-signed Assembly options
 
 ### Miscellaneous
 

@@ -1,6 +1,6 @@
 ---
 project: cc-switch
-stars: 128858
+stars: 130088
 description: A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io
 url: https://github.com/farion1231/cc-switch
 ---

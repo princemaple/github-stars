@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 137966
+stars: 138204
 description: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows
 url: https://github.com/microsoft/PowerToys
 ---
@@ -73,6 +73,8 @@ Shortcut Guide
 
 Text Extractor
 
+Window Hopper
+
 Workspaces
 
 ZoomIt
@@ -114,7 +116,7 @@ To see what's new, check out the release notes.
 🛣️ Roadmap
 -----------
 
-We are planning some nice new features and improvements for the next releases – a brand-new Shortcut Guide experience, ensuring it's easier to find and install Command Palette extensions and so much more! Stay tuned for v0.100!
+For v0.102, we're working on modernizing several utilities with WinUI 3, expanding Command Palette with tabs and JavaScript/TypeScript extensions, and adding new productivity improvements across PowerToys.
 
 ❤️ PowerToys Community
 ----------------------

@@ -1,6 +1,6 @@
 ---
 project: redroid-doc
-stars: 6705
+stars: 6741
 description: redroid (Remote-Android) is a multi-arch, GPU enabled, Android in Cloud solution. Track issues / docs here
 url: https://github.com/remote-android/redroid-doc
 ---

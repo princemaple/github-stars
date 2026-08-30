@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 34197
+stars: 34311
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -99,7 +99,7 @@ docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightl
 
 ./lightpanda fetch --obey-robots --dump html --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/
 
-You can use `--dump markdown` to convert directly into markdown. `--wait-until`, `--wait-ms`, `--wait-selector` and `--wait-script` are available to adjust waiting time before dump.
+You can use `--dump markdown` to convert directly into markdown, or `--dump png > page.png` or `--dump pdf > page.pdf` for a text-only rendering of the page. `--wait-until`, `--wait-ms`, `--wait-selector` and `--wait-script` are available to adjust waiting time before dump.
 
 ### Start a CDP server
 
@@ -143,15 +143,18 @@ Because the agent runs inside the same process as the browser, every tool call i
 
 The output of an agent session is a PandaScript: vanilla JavaScript with a small set of native browser primitives built directly into Lightpanda. Run `/save` to export one from your current session, then replay it with `lightpanda run <script>.js`. Scripts are deterministic and token-free, so you can prototype with the LLM and ship the output to production without a model at runtime.
 
-It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Hugging Face, and local models via Ollama. You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
+It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Mistral, Hugging Face, the Vercel AI Gateway (one key for hundreds of models from every major lab), any OpenAI-compatible endpoint via `OPENAI_BASE_URL`, and local models via Ollama or llama.cpp. You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
 
 ./lightpanda agent                                    # auto-detects API key from env
 ./lightpanda agent --task "top story on news.ycombinator.com?"
 ./lightpanda agent --no-llm                           # basic REPL, no LLM
 ./lightpanda run session.js                           # run a recorded script
 ./lightpanda agent --provider gemini --task "..."     # force a specific provider
+./lightpanda agent --list-models                      # models available for the detected provider
 VERTEX\_API\_KEY=... ./lightpanda agent --provider vertex             # Vertex AI, express mode
 GOOGLE\_CLOUD\_PROJECT=my-proj ./lightpanda agent --provider vertex   # Vertex AI, token via gcloud auth
+AI\_GATEWAY\_API\_KEY=... ./lightpanda agent --provider vercel --model moonshotai/kimi-k2   # any model behind Vercel AI Gateway
+OPENAI\_BASE\_URL=https://my-gateway/v1 OPENAI\_API\_KEY=... ./lightpanda agent            # any OpenAI-compatible server
 
 ### Native MCP and skill
 

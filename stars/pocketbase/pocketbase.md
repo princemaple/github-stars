@@ -1,6 +1,6 @@
 ---
 project: pocketbase
-stars: 60770
+stars: 60881
 description: Open Source realtime backend in 1 file
 url: https://github.com/pocketbase/pocketbase
 ---
@@ -43,7 +43,7 @@ PocketBase is distributed as a regular Go library package which allows you to bu
 
 Here is a minimal example:
 
-1.  Install Go 1.25+ (_if you haven't already_)
+1.  Install Go 1.27+ (_if you haven't already_)
     
 2.  Create a new project directory with the following `main.go` file inside it:
     
@@ -86,31 +86,97 @@ _For more details please refer to Extend with Go._
 
 To build the minimal standalone executable, like the prebuilt ones in the releases page, you can simply run `go build` inside the `examples/base` directory:
 
-1.  Install Go 1.25+ (_if you haven't already_)
+1.  Install Go 1.27+ (_if you haven't already_)
 2.  Clone/download the repo
 3.  Navigate to `examples/base`
-4.  Run `GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build` (_https://go.dev/doc/install/source#environment_)
+4.  Run `CGO_ENABLED=0 go build` to build a binary for your current environment _(or to target other platforms use `GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build`; see https://go.dev/doc/install/source#environment)_
 5.  Start the created executable by running `./base serve`.
 
 Note that the supported build targets by the pure Go SQLite driver at the moment are:
 
-```
-darwin  amd64
-darwin  arm64
-freebsd amd64
-freebsd arm64
-linux   386
-linux   amd64
-linux   arm
-linux   arm64
-linux   loong64
-linux   ppc64le
-linux   riscv64
-linux   s390x
-windows 386
-windows amd64
-windows arm64
-```
+GOOS
+
+GOARCH
+
+darwin
+
+amd64
+
+darwin
+
+arm64
+
+freebsd
+
+386
+
+freebsd
+
+amd64
+
+freebsd
+
+arm
+
+freebsd
+
+arm64
+
+linux
+
+386
+
+linux
+
+amd64
+
+linux
+
+arm
+
+linux
+
+arm64
+
+linux
+
+loong64
+
+linux
+
+ppc64le
+
+linux
+
+riscv64
+
+linux
+
+s390x
+
+netbsd
+
+amd64
+
+openbsd
+
+amd64
+
+openbsd
+
+arm64
+
+windows
+
+386
+
+windows
+
+amd64
+
+windows
+
+arm64
 
 ### Testing
 
@@ -125,7 +191,7 @@ Security
 
 If you discover a security vulnerability within PocketBase, please send an e-mail to **support at pocketbase.io**.
 
-All reports will be promptly addressed and you'll be credited in the fix release notes.
+You could find more details in the project Security policy.
 
 Contributing
 ------------

@@ -1,6 +1,6 @@
 ---
 project: sonic
-stars: 21316
+stars: 21325
 description: 🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM.
 url: https://github.com/valeriansaliou/sonic
 ---
@@ -14,7 +14,7 @@ Sonic can be used as a simple alternative to super-heavy and full-featured searc
 
 A strong attention to performance and code cleanliness has been given when designing Sonic. It aims at being crash-free, super-fast and puts minimum strain on server resources (our measurements have shown that Sonic - when under load - responds to search queries in the μs range, eats ~30MB RAM and has a low CPU footprint; see our benchmarks).
 
-_Tested at Rust version: `rustc 1.96.1 (31fca3adb 2026-06-26)`_
+_Tested at Rust version: `rustc 1.98.0 (88d9e12ae 2026-08-18)`_
 
 **🇫🇷 Crafted in Nantes, France.**
 

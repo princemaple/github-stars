@@ -1,6 +1,6 @@
 ---
 project: pangolin
-stars: 22428
+stars: 22548
 description: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.
 url: https://github.com/fosrl/pangolin
 ---
@@ -61,6 +61,17 @@ Access private resources like SSH servers, databases, RDP, and entire network ra
 -   Friendly DNS aliases for network addresses
 -   Privileged access management (PAM) with SSH resources
 -   Private HTTPS resources only accessible on the private network
+
+### Identity-aware AI gateway
+
+Put an identity-aware proxy in front of public cloud (OpenAI, Anthropic, Gemini, etc.) and self-hosted model servers (Ollama, vLLM, Mistral, etc.) so coding agents and AI clients call a single Pangolin URL. Publish it as a public resource with personal API keys, or keep it private on a client tunnel where the connected client is the credential for keyless access. Budgets, session history, and usage analytics sit in front of every call.
+
+-   Access self-hosted models (vLLM, Ollama, etc) alongside cloud models (OpenAI, Anthropic, etc) in one place
+-   Keyless access by authenticating users with the Pangolin desktop client
+-   Or, provide users with personal API keys
+-   Control costs and token usage by setting budgets
+-   Audit with detailed session history and analytics
+-   Integrate AI clients and coding agents (Claude Code, Codex, OpenCode, etc)
 
 ### Give users and roles access to resources
 

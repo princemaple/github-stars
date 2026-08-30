@@ -195,7 +195,7 @@ Optionally, to automatically present some lines as output without providing the 
 
 To add Emoji-Toolkit library to your `package.json` use the following command.
 
-npm install emoji-toolkit@^10.0.0 --save
+npm install emoji-toolkit@^11.0.0 --save
 
 To activate Emoji-Toolkit for emoji suppport you will need to include...
 

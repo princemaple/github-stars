@@ -1,6 +1,6 @@
 ---
 project: flop
-stars: 810
+stars: 811
 description: Filtering, ordering and pagination for Ecto
 url: https://github.com/woylie/flop
 ---
@@ -32,7 +32,7 @@ To get started, add `flop` to your dependencies list in your project's `mix.exs`
 
 def deps do
   \[
-    {:flop, "~> 0.27.2"}
+    {:flop, "~> 0.28.0"}
   \]
 end
 
@@ -68,7 +68,7 @@ SQLite
 
 Supported and tested in CI
 
-Flop builds queries with `Ecto.Query` and only uses a couple of fragments to bridge the gap between databases. The library might work with more Ecto adapter, but it is only tested with the databases listed above.
+Flop builds queries with `Ecto.Query` and only uses a couple of fragments to bridge the gap between databases. The library might work with other Ecto adapters, but it is only tested with the databases listed above.
 
 Some behavior depends on the used adapter.
 

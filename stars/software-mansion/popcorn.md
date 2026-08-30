@@ -1,6 +1,6 @@
 ---
 project: popcorn
-stars: 701
+stars: 717
 description: Running Elixir in the browser
 url: https://github.com/software-mansion/popcorn
 ---

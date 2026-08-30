@@ -1,6 +1,6 @@
 ---
 project: analytics
-stars: 28708
+stars: 28797
 description: Open source, privacy-first web analytics. Lightweight, cookie-free Google Analytics alternative. Self-hosted or cloud.
 url: https://github.com/plausible/analytics
 ---
@@ -131,9 +131,9 @@ You have full control and can host your instance on any server in any country th
 
 **Data portability**
 
-You see all your site stats and metrics on our modern-looking, simple to use and fast loading dashboard. You can only see the stats aggregated in the dashboard. You can download the stats using the CSV export, stats API or the Looker Studio Connector.
+You see all your site stats and metrics on our modern-looking, simple to use and fast loading dashboard. You can only see the stats aggregated in the dashboard. You can download the stats using the CSV export, stats API or the Data Studio Connector.
 
-Do you want access to the raw data? Self-hosting gives you that option. You can take the data directly from the ClickHouse database. The Looker Studio Connector is not available.
+Do you want access to the raw data? Self-hosting gives you that option. You can take the data directly from the ClickHouse database. The Data Studio Connector is not available.
 
 **Premium support**
 

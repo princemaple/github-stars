@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 74291
+stars: 74443
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -10,7 +10,7 @@ url: https://github.com/hiyouga/LlamaFactory
 * * *
 
 ### Check our new open-source project —  
-🐧 PenguinHarness: Your desktop agent that automatically builds agents for just $0.02 of tokens!
+🐧 PenguinHarness: Local-first multi-agent app development platform - create, fine-tune, deploy AI apps automatically!
 
 Follow our project: https://github.com/Prism-Shadow/penguin-harness
 

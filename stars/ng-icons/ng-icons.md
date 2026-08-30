@@ -1,6 +1,6 @@
 ---
 project: ng-icons
-stars: 593
+stars: 596
 description: The ultimate icon library for Angular
 url: https://github.com/ng-icons/ng-icons
 ---
@@ -8,7 +8,7 @@ url: https://github.com/ng-icons/ng-icons
 Ng Icons
 ========
 
-The all-in-one icon library for Angular. This allows you to use icons from multiple icon sets with a single icon component. Containing over 107,700 icons for you to use in your projects.
+The all-in-one icon library for Angular. This allows you to use icons from multiple icon sets with a single icon component. Containing over 115,600 icons for you to use in your projects.
 
 📖 Documentation · 🔍 Browse icons · 📦 Icon sets
 
@@ -53,6 +53,8 @@ Currently, we support the following libraries:
 -   Coolicons
 -   Fluent UI
 -   PrimeIcons
+-   Keyline Icons
+-   Reicon
 
 Got suggestions for additional iconsets? Create an issue and we can consider adding them!
 
@@ -295,6 +297,14 @@ CC-BY-4.0
 MIT
 
 `@ng-icons/primeicons`
+
+MIT
+
+`@ng-icons/keyline-icons`
+
+MIT
+
+`@ng-icons/reicon`
 
 MIT
 

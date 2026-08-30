@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83149
+stars: 83230
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -451,6 +451,7 @@ Courses
     -   ECE 364 - Programming Methods for Machine Learning, Spring 2025, UIUC
     -   undergraduate machine learning at UBC 2012, Nando de Freitas
     -   CS 229 - Machine Learning - Stanford University (Autumn 2018)
+    -   CSE 151A Introduction to Machine Learning, Prof Jingbo Shang - UCSD
     -   CS 189/289A Introduction to Machine Learning, Prof Jonathan Shewchuk - UCBerkeley
     -   CS 189/289A: Intro to Machine Learning - UC Berkeley - Spring 2026
     -   CPSC 340: Machine Learning and Data Mining (2018) - UBC
@@ -646,7 +647,7 @@ Courses
     -   Special topics in ML (Reinforcement Learning) IIT madras
     -   CS885 Reinforcement Learning - Spring 2018 - University of Waterloo
     -   CS 224R - Deep Reinforcement Learning- Stanford (YouTube)
-    -   CS 285 - Deep Reinforcement Learning- UC Berkeley
+    -   CS 285 - Deep Reinforcement Learning- UC Berkeley (Spring 2026) (Fall 2019)
     -   CS 294 112 - Reinforcement Learning
     -   NUS CS 6101 - Deep Reinforcement Learning
     -   ECE 8851: Reinforcement Learning
@@ -1177,6 +1178,8 @@ Courses
 -   2023 High Performance Computing Course Prof Dr - Ing Morris Riedel (2022)
 -   High Performance Computing | Udacity
 -   UCLA Stats 205 Hierarchical Linear Models spring 2024, by Jingyi Jessica Li
+-   Stanford AA 203 Optimal and Learning-Based Control, by Marco Pavone, Daniele Gammelli (Videos - Sp 2026)
+-   FSU EML 4930 / 5930 Applied Optimal Control spring 2025, by Christian Hubicki (Spring 2023)
 -   UF EML 6934 Optimal Control spring 2012, by Anil V. Rao
 -   Real-World Algorithms for IoT and Data Science - UIUC
 

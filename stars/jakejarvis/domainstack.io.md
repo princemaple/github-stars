@@ -1,6 +1,6 @@
 ---
 project: domainstack.io
-stars: 284
+stars: 285
 description: 🧰 All-in-one domain name intelligence as a service
 url: https://github.com/jakejarvis/domainstack.io
 ---
@@ -31,39 +31,24 @@ Tech Stack
 -   **Next.js 16** (App Router), **React 19**, **TypeScript**
 -   **Tailwind CSS v4** + **Base UI**
 -   **tRPC** + **TanStack Query** & **TanStack Table**
--   **Postgres** (PlanetScale) + **Drizzle ORM** + **Upstash Redis** (rate limiting)
+-   **PlanetScale Postgres** + **Drizzle** + **Upstash Redis** (rate limiting)
 -   **Better Auth** (OAuth)
 -   **Polar** (subscriptions)
--   **Workflow DevKit** (background jobs)
--   **AI SDK** + **AI Gateway**
--   **Resend** + **React Email**
+-   **Workflow SDK** (background jobs)
+-   **AI SDK** + **Vercel AI Gateway** (Stacky bot)
+-   **Resend** (email notifications)
+-   **mapcn** + **CARTO Basemaps** (web maps)
+-   **Logo.dev** (provider icons)
+-   **IPLocate.io** (geolocation)
+-   **PostHog** (telemetry)
 -   **Vercel** (Edge Config, Blob Storage)
--   **mapcn** + **CARTO Basemaps**
--   **Logo.dev**
--   **IPLocate.io**
--   **PostHog** (analytics)
 -   **Turborepo** (monorepo)
 -   **Vitest** + **Playwright** (testing), **oxlint/oxfmt** (linting)
 
-Project Structure
------------------
-
-This is a **Turborepo monorepo**:
-
-```
-domainstack.io/
-├── apps/
-│   └── web/                 # Next.js application
-├── packages/
-│   ├── constants/           # Shared constants (enums, TTLs, validation)
-│   ├── types/               # Shared TypeScript types
-│   ├── typescript-config/   # Shared TypeScript configs
-│   └── ui/                  # Shared UI primitives
-└── turbo.json               # Turborepo task configuration
-```
-
 Development
 -----------
+
+This is a **Turborepo monorepo**.
 
 ### 1\. Clone & install
 

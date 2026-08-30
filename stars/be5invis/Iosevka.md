@@ -1,6 +1,6 @@
 ---
 project: Iosevka
-stars: 22656
+stars: 22691
 description: Versatile typeface for code, from code.
 url: https://github.com/be5invis/Iosevka
 ---
@@ -45,6 +45,7 @@ _Disclaimer: This repository does not maintain any package manager distribution.
     -   Ubuntu Linux: Install one of the fonts-iosevka packages.
     -   Void Linux: Install the font with `xbps-install font-iosevka`.
     -   Fedora: Install the font(s) from the COPR here. Run `dnf search iosevka` to discover available fonts and `dnf install` to install the chosen one(s).
+    -   openSUSE Tumbleweed: iosevka-fonts package produces many variants, run `zypper se 'iosevka*fonts'` to discover available fonts, and `zypper in` to install the chosen one(s).
 -   **FreeBSD**: The font can be installed with `pkg install iosevka`.
 -   **OpenBSD**: Run `pkg_info -Q iosevka` to see which Iosevka packages are available. Use `pkg_add` to install the chosen package(s).
 

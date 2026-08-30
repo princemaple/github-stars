@@ -27,7 +27,7 @@ The full documentation is published at hexdocs.pm/partisan. The Installation tut
 In short, for an Erlang project add the dep:
 
 %% rebar.config
-{deps, \[{partisan, "6.1.0"}\]}.
+{deps, \[{partisan, "6.2.0"}\]}.
 
 For an Elixir project:
 

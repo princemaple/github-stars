@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 31307
+stars: 31529
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -224,7 +224,7 @@ chown -R 10001:10001 data logs
 docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
 
 # Using specific version
-docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-rc.3
+docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-rc.4
 
 If you use podman instead of docker, you can install the RustFS with the below command
 
@@ -326,6 +326,19 @@ nix build github:rustfs/rustfs
 # Or from a local checkout
 nix build
 nix run
+
+The flake also exports a NixOS module and the RustFS `rc` client. Add the module to your system and provide credentials through runtime files (for example, sops-nix or agenix) so secrets are never stored in the Nix store:
+
+imports \= \[ inputs.rustfs.nixosModules.rustfs \];
+
+services.rustfs \= {
+  enable \= true;
+  accessKeyFile \= "/run/secrets/rustfs-access-key";
+  secretKeyFile \= "/run/secrets/rustfs-secret-key";
+  volumes \= \[ "/var/lib/rustfs" \];
+};
+
+Install the S3-compatible client with `nix profile install github:rustfs/rustfs#rustfs-client` (the executable is named `rc`), or use `inputs.rustfs.packages.${pkgs.system}.rustfs-client` in a system configuration.
 
 ### 6\. X-CMD (Option 6)
 

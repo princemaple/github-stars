@@ -1,6 +1,6 @@
 ---
 project: waffle
-stars: 821
+stars: 822
 description: Flexible file upload and attachment library for Elixir
 url: https://github.com/elixir-waffle/waffle
 ---
@@ -32,7 +32,7 @@ Add the `:waffle` dependency to `mix.exs`.
 
 **mix.exs**
 
-{:waffle, "== 2.0.0-rc.1"},
+{:waffle, "~> 2.0"},
 {:waffle\_ecto, "~> 0.0"}
 
 Configure file storage

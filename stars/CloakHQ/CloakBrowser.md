@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 30593
+stars: 30949
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -118,7 +118,7 @@ page.goto("https://example.com")
 
 * * *
 
-Latest: v0.5.8 — 73 source-level stealth patches (Chromium 151.0.7922.108.2 — Linux + Windows)
+Latest: v0.5.9 — 73 source-level stealth patches (Chromium 151.0.7922.108.2 — Linux + Windows)
 ----------------------------------------------------------------------------------------------
 
 -   **CloakBrowser Pro Stable** — Chromium `151.0.7922.108.2` on Linux x64, Linux ARM64, and Windows x64; macOS remains on `150.0.7871.114.3`. Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest Stable build for your platform automatically. See CloakBrowser Pro

@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6042
+stars: 6068
 description: Copy/paste detector for programming source code, supports 223 formats. AI-ready with token-efficient reporter, skill and MCP server.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -156,7 +156,7 @@ jscpd v5 is a ground-up Rust rewrite that ships as `jscpd@5` (installs the `jscp
 -   **AI reporter** — token-efficient output for LLM pipelines (~79% fewer tokens than console)
 -   **`--mcp`** — built-in MCP server over stdio: point your AI assistant at the binary and it can check snippets for duplication against your codebase (see docs)
 -   **`--summary`** — codebase summary: top files and folders by tokens, lines, size, and a complexity estimate — refactoring hotspots straight from the scan (see docs)
--   **Self-contained binary** — prebuilt for 6 platforms (macOS arm64/x64, Linux arm64/x64, Windows x64)
+-   **Self-contained binary** — prebuilt for 7 platforms (macOS arm64/x64, Linux arm64/x64, Windows arm64/x64)
 
 **Not yet in v5** (use v4 for these):
 
@@ -233,11 +233,25 @@ Rust-powered engine (v5.x) — also available as `jscpd@5`
 Who Uses jscpd
 --------------
 
+The `jscpd` npm package is downloaded **10M+ times per month**, and ~5,000 repositories declare it on GitHub's dependents graph.
+
+**Bundled by analysis platforms:**
+
 -   GitHub Super Linter — official GitHub linter aggregator, bundles jscpd as its copy/paste detector
+-   MegaLinter — open-source linter aggregator for CI, ships jscpd in every flavor including `ci_light`
 -   Codacy — automated code analysis platform, jscpd powers the duplication engine
--   MegaLinter — 100% open-source linter aggregator for CI, integrates jscpd
--   OpenClaw — personal AI assistant for self-hosted devices
--   Natural — NLP library for Node.js, uses jscpd for code quality
+
+**Used in notable projects:**
+
+-   OpenClaw — personal AI assistant, runs jscpd as a duplication gate in its check scripts
+-   DeepSeek Harness — DeepSeek's plugin harness, jscpd config in CI
+-   degit — Rich Harris's project scaffolder
+-   MEGA webclient — the MEGA.nz web client
+-   Microsoft TypeAgent
+-   Salesforce DX VS Code
+-   Alibaba AppWorks — embeds jscpd as a library
+-   OVHcloud manager — OVHcloud's customer control panel
+-   KiroCrew — self-improving persistent development workspace
 
 Performance
 -----------

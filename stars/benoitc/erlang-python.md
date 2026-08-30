@@ -1,6 +1,6 @@
 ---
 project: erlang-python
-stars: 103
+stars: 105
 description: Execute Python from Erlang using dirty NIFs with GIL-aware execution, rate limiting, and free-threading support
 url: https://github.com/benoitc/erlang-python
 ---
@@ -50,6 +50,8 @@ Building
 --------
 
 rebar3 compile
+
+To work on erlang\_python itself (tests, CI matrix, FreeBSD VM, how to add a NIF, an `erlang.*` function, an option, a suite or a guide), see docs/contributing.md.
 
 Quick Start
 -----------
@@ -624,6 +626,12 @@ Dedicated pthread per context, main interpreter namespace (default)
 
 Dedicated pthread + subinterpreter with its own GIL, true parallelism
 
+`isolated`
+
+Any
+
+CPython in a child OS process: killable, rlimit-bounded, crash-contained
+
 %% Default: worker mode (recommended)
 %% With free-threaded Python (3.13t+), provides true parallelism automatically
 {ok, Ctx} \= py\_context:new(#{}).
@@ -631,6 +639,13 @@ Dedicated pthread + subinterpreter with its own GIL, true parallelism
 %% OWN\_GIL mode for true parallelism (Python 3.14+ required)
 %% Each context runs in its own pthread with independent GIL
 {ok, Ctx} \= py\_context:new(#{mode \=> owngil}).
+
+%% Isolated mode: a child process per context. A stuck call is killed, a
+%% segfault only takes the child down, rlimits bound memory and CPU.
+{ok, Ctx} \= py\_context:new(#{mode \=> isolated, kill\_after \=> 1000,
+                             rlimits \=> #{as \=> 512 \* 1024 \* 1024}}).
+
+**Isolated mode** is the only mode with a hard bound: `py_context:interrupt/1` stops a blocking C call, and `SIGKILL` is the backstop. It costs a process per context (about 16 MB and 40 ms to start) and roughly twice the call latency. Bulk data crosses through shared memory (`py_shm`, with the optional iommap dependency). See Isolated Contexts.
 
 **Worker mode is recommended** because it works with any Python version and automatically benefits from free-threaded Python (3.13t+) when available. Each context owns a dedicated pthread, providing stable thread affinity for libraries with thread-local state (numpy, torch, tensorflow).
 
@@ -660,6 +675,12 @@ One pthread per context; true parallelism on free-threaded 3.13t+
 
 Per-interpreter GIL, true parallelism across contexts
 
+`isolated`
+
+Any
+
+One OS process per context, parallel and failure-isolated
+
 Error Handling
 --------------
 
@@ -670,6 +691,7 @@ Error Handling
 Documentation
 -------------
 
+-   Architecture, Code map, Glossary - how the pieces fit
 -   Getting Started
 -   Process-Bound Environments - Isolated Python state per Erlang process
 -   AI Integration Guide
@@ -681,6 +703,7 @@ Documentation
 -   Logging and Tracing
 -   Asyncio Event Loop - Erlang-native asyncio with TCP/UDP support
 -   Worker Loops - Long-lived loops in owngil contexts, serving on sockets Erlang owns
+-   Isolated Contexts - Python in a child process: kill, rlimits, crash containment
 -   Reactor - FD-based protocol handling
 -   Security - Sandbox and blocked operations
 -   Changelog

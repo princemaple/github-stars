@@ -1,6 +1,6 @@
 ---
 project: happy
-stars: 23465
+stars: 23548
 description: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured
 url: https://github.com/slopus/happy
 ---
@@ -10,7 +10,7 @@ Mobile and Web Client for Claude Code & Codex
 
 #### Use Claude Code or Codex from anywhere with end-to-end encryption.
 
-📱 **iOS App** • 🤖 **Android App** • 🌐 **Web App** • 🎥 **See a Demo** • 📚 **Documentation** • 💬 **Discord**
+🖥️ **macOS App** • 📱 **iOS App** • 🤖 **Android App** • 🌐 **Web App** • 🎥 **See a Demo** • 📚 **Documentation** • 💬 **Discord**
 
 ### Step 1: Download App
 
@@ -29,6 +29,10 @@ happy claude
 # or
 happy codex
 
+### Step 4 (optional): Get the desktop app
+
+Prefer a native app over the terminal? **Download Happy for macOS** — conversations beside the files, diffs, terminals, and previews your work actually touches.
+
 How does it work?
 -----------------
 
@@ -46,6 +50,7 @@ On your computer, run `happy` instead of `claude` or `happy codex` instead of `c
 📦 Project Components
 ---------------------
 
+-   **Happy Desktop** - Native macOS app (download)
 -   **Happy App** - Web UI + mobile client (Expo)
 -   **Happy CLI** - Command-line interface for Claude Code and Codex
 -   **Happy Agent** - Remote agent control CLI (create, send, monitor sessions)

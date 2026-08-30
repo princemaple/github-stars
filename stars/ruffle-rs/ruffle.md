@@ -1,6 +1,6 @@
 ---
 project: ruffle
-stars: 18441
+stars: 18472
 description: A Flash Player emulator written in Rust
 url: https://github.com/ruffle-rs/ruffle
 ---
@@ -82,6 +82,13 @@ To run a specific SWF file, pass the SWF path as an argument:
 `cargo run --release --package=ruffle_desktop -- test.swf`
 
 To build in debug mode, simply omit `--release` from the command.
+
+Desktop has a few optional features which you can specify via `--features`, comma separated:
+
+-   `tracy`: Enables profiling to Tracy. You may need to expand the log filter to see everything, e.g. `RUST_LOG="warn,ruffle=debug"`
+-   `tracy_images`: Enables Tracy frame captures. Implies `tracy`.
+-   `tracy_avm`: Enables profiling AVM execution with Tracy. Implies `tracy`.
+-   `render_debug_labels`: Enables debug labels during rendering, useful for debugging graphics with renderdoc or similar.
 
 #### macOS
 

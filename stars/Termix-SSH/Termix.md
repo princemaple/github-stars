@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 14866
+stars: 14952
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -144,6 +144,8 @@ Installation
 ------------
 
 Visit the Termix Docs for full installation instructions across all platforms.
+
+Deploying to Kubernetes? The Helm chart is in `charts/termix`, and setup instructions covering Ingress, Traefik, Argo CD, GitHub Actions, and GitLab CI are at docs.termix.site/install/server/kubernetes.
 
 Sample Docker Compose file (you can omit `guacd` and the network if you don't plan on using remote desktop features):
 

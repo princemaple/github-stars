@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 27584
+stars: 27789
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -324,10 +324,10 @@ if \[\[ $HOSTNAME \== "babysquid" \]\]; then
     source ~/my-stuff/babysquid.sh
 fi
 
-# Add an MCP server, with a GitHub API token stored in 1password.
+# Add an MCP server, with a GitHub API token stored in 1Password.
 mcp add github \\
   --type http \\
-  --url "https://api.githubcopilot.com/mcp/" \\
+  --url "https://api.github.com/mcp/" \\
   --header Authorization "Bearer $(op read 'op://my-secret-key')"
 
 Configuration can be added either local to the project itself, or globally, with the following priority:
@@ -413,7 +413,7 @@ mcp add filesystem --command node --args /path/to/mcp-server.js \\
   --timeout 10 --disabled-tools some-tool-name --env NODE\_ENV production
 
 # Add a GitHub MCP server that uses an API token.
-mcp add github --type http --url "https://api.githubcopilot.com/mcp/" \\
+mcp add github --type http --url https://api.github.com/mcp/ \\
   --timeout 10 --header Authorization "Bearer $GH\_PAT" \\
   --disabled-tools create\_issue --disabled-tools create\_pull\_request
 
@@ -443,7 +443,7 @@ Some servers (GitHub, Slack) don't support dynamic client registration. For thos
   "mcp": {
     "github": {
       "type": "http",
-      "url": "https://api.githubcopilot.com/mcp/",
+      "url": "https://api.github.com/mcp/",
       "oauth": true,
       "oauth\_client\_id": "Iv1.abc123def456",
       "oauth\_client\_secret": "$GITHUB\_MCP\_SECRET",
@@ -453,6 +453,12 @@ Some servers (GitHub, Slack) don't support dynamic client registration. For thos
 }
 
 When `oauth_client_id` is set, Crush skips dynamic client registration and authenticates as the specified client. When omitted, Crush attempts dynamic registration automatically (works with Linear, Notion, and other servers that support RFC 7591).
+
+#### Sessionless servers
+
+Some HTTP MCP servers are sessionless — they never issue a `Mcp-Session-Id` and reject the `subscriptions/listen` stream Crush opens for list-changed notifications, which would otherwise break the connection. Crush auto-detects known sessionless servers (GitHub MCP, `api.githubcopilot.com/mcp`), so those need no extra configuration.
+
+For other sessionless servers, mark them explicitly with `"sessionless": true` (or `--sessionless true` in `crushrc`); set it to `false` to force the default behavior for an auto-detected URL. The tradeoff is that a sessionless server won't push live tool/prompt/resource list-changed notifications.
 
 ### Hooks
 
@@ -779,6 +785,12 @@ Provider Auto-Updates
 ---------------------
 
 By default, Crush automatically checks for the latest and greatest list of providers and models from Catwalk, the open source Crush provider database. This means that when new providers and models are available, or when model metadata changes, Crush automatically updates your local configuration.
+
+### Custom provider catalog
+
+You can also override Catwalk default URL (for testing, using a fork).
+
+You can do so by setting `CATWALK_URL` enviromental variable. (e.g. `export CATWALK_URL=http://localhost:8000`)
 
 ### Disabling automatic provider updates
 

@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 60864
+stars: 61074
 description: Ultralytics YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -13,7 +13,7 @@ url: https://github.com/ultralytics/ultralytics
 
   
 
-Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at object detection, tracking, instance segmentation, semantic segmentation, image classification, and pose estimation tasks.
+Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at object detection, instance segmentation, semantic segmentation, image classification, and pose estimation tasks, and can track detected objects across video frames.
 
 Find detailed documentation in the Ultralytics Docs. Get support via GitHub Issues. Join discussions on Discord, Reddit, and the Ultralytics Community Forums!
 

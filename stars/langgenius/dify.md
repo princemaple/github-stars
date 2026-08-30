@@ -1,6 +1,6 @@
 ---
 project: dify
-stars: 153216
+stars: 153842
 description: Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.
 url: https://github.com/langgenius/dify
 ---
@@ -72,80 +72,29 @@ Star Dify on GitHub and be instantly notified of new releases.
 Advanced Setup
 --------------
 
-### Custom configurations
-
-If you need to customize the configuration, edit `docker/.env`. The essential startup defaults live in `docker/.env.example`, and optional advanced variables are split under `docker/envs/` by theme. After making any changes, re-run `docker compose up -d` from the `docker` directory. You can find the full list of available environment variables here.
-
-### Metrics Monitoring with Grafana
-
-Import the dashboard to Grafana, using Dify's PostgreSQL database as data source, to monitor metrics in granularity of apps, tenants, messages, and more.
-
--   Grafana Dashboard by @bowenliang123
-
-### Deployment with Kubernetes
-
-If you'd like to configure a highly available setup, there are community-contributed Helm Charts and YAML files which allow Dify to be deployed on Kubernetes.
-
--   Helm Chart by @LeoQuote
--   Helm Chart by @BorisPolonsky
--   Helm Chart by @magicsong
--   YAML file by @Winson-030
--   YAML file by @wyy-holding
--   🚀 NEW! YAML files (Supports Dify v1.6.0) by @Zhoneym
-
-#### Using Terraform for Deployment
-
-Deploy Dify to Cloud Platform with a single click using terraform
-
-##### Azure Global
-
--   Azure Terraform by @nikawang
-
-##### Google Cloud
-
--   Google Cloud Terraform by @sotazum
-
-#### Using AWS CDK for Deployment
-
-Deploy Dify to AWS with CDK
-
-##### AWS
-
--   AWS CDK by @KevinZhao (EKS based)
--   AWS CDK by @tmokmss (ECS based)
-
-#### Using Alibaba Cloud Computing Nest
-
-Quickly deploy Dify to Alibaba cloud with Alibaba Cloud Computing Nest
-
-#### Using Alibaba Cloud Data Management
-
-One-Click deploy Dify to Alibaba Cloud with Alibaba Cloud Data Management
-
-#### Deploy to AKS with Azure Devops Pipeline
-
-One-Click deploy Dify to AKS with Azure Devops Pipeline Helm Chart by @LeoZhang
-
-#### Using Sealos for Deployment
-
-Deploy Dify with one click using the Sealos App Store
+For custom configuration, observability, and deployment options, see Advanced Setup.
 
 Contributing
 ------------
 
-For those who'd like to contribute code, see our Contribution Guide. At the same time, please consider supporting Dify by sharing it on social media and at events and conferences.
+Dify welcomes contributions of all kinds:
 
-> We are looking for contributors to help translate Dify into languages other than Mandarin or English. If you are interested in helping, please see the i18n README for more information, and leave us a comment in the `global-users` channel of our Discord Community Server.
+-   **Code**: Read the Contribution Guide, then browse good first issues.
+-   **Ideas and feedback**: Start or join a GitHub Discussion.
+-   **Translations**: Follow the internationalization guide to add or update a locale.
+-   **Community**: Share the apps you build, help other users, and spread the word about Dify.
+
+### Contributors
 
 Community & contact
 -------------------
 
--   GitHub Discussion. Best for: sharing feedback and asking questions.
--   GitHub Issues. Best for: bugs you encounter using Dify.AI, and feature proposals. See our Contribution Guide.
--   Discord. Best for: sharing your applications and hanging out with the community.
--   X(Twitter). Best for: sharing your applications and hanging out with the community.
+Choose the channel that best fits your question:
 
-**Contributors**
+-   GitHub Discussions: Get help, share feedback, and propose ideas.
+-   GitHub Issues: Report reproducible bugs and track engineering work. Read the Contribution Guide before opening one.
+-   Discord: Chat in real time, share your apps, and connect with other Dify users.
+-   X: Follow Dify for release news and project updates.
 
 Star History
 ------------

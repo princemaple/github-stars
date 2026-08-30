@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 8877
+stars: 9211
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -13,6 +13,10 @@ A lightweight text-to-speech (TTS) application designed to run efficiently on CP
 Supports Python 3.10, 3.11, 3.12, 3.13 and 3.14. Requires PyTorch 2.5+. Does not require the gpu version of PyTorch.
 
 🔊 Demo | 🐱‍💻GitHub Repository | 🤗 Hugging Face Model Card | ⚙️ Tech report | 📄 Paper | 📚 Documentation
+
+Note
+
+**New (August 2026):** We've released the training code! Check out `training/` to start training your own models. Open a PR to add your model to the Models trained by the community section.
 
 Main takeaways
 --------------
@@ -41,7 +45,7 @@ Trying it with the CLI
 
 ### The `generate` command
 
-You can use pocket-tts directly from the command line. We recommend using `uv` as it installs any dependencies on the fly in an isolated environment (uv installation instructions here). You can also use `pip install pocket-tts` to install it manually.
+You can use pocket-tts directly from the command line. We recommend using `uv` as it installs any dependencies on the fly in an isolated environment (uv installation instructions here). You can also use `pip install pocket-tts` to install it manually. On Linux, see CPU-only installation to avoid pulling in the CUDA build of PyTorch.
 
 This will generate a wav file `./tts_output.wav` saying the default text with the default voice, and display some speed statistics.
 
@@ -49,7 +53,7 @@ uvx pocket-tts generate
 # or if you installed it manually with pip:
 pocket-tts generate
 
-Modify the voice with `--voice` and the text with `--text`. We provide a small catalog of voices. Choose a pretrained language model with `--language` when running `generate`, `export-voice`, or `serve` (default: `english`). Non-english languages have also biggers 24 layers variants that are higher quality but slower. You can select them by using for example `--language italian_24l`. The `--config` option accepts only a local YAML path for custom weights.
+Modify the voice with `--voice` and the text with `--text`. We provide a small catalog of voices. Choose a pretrained language model with `--language` when running `generate`, `export-voice`, or `serve` (default: `english`). Non-english languages have also biggers 24 layers variants that are higher quality but slower. You can select them by using for example `--language italian_24l`. The `--config` option accepts a local YAML path, an `https://` URL, or an `hf://` path (e.g. `hf://<repo_id>/<path>[@revision]`) for custom weights.
 
 You can take a look at this page which details the licenses for each voice.
 
@@ -110,6 +114,28 @@ Install the package with
 pip install pocket-tts
 # or
 uv add pocket-tts
+
+### CPU-only installation
+
+On Linux, PyPI serves the CUDA build of PyTorch by default, so `pip install pocket-tts` also downloads the `nvidia-*` CUDA runtime wheels, even though pocket-tts runs on CPU. This adds several gigabytes to the install (with torch 2.13, roughly 3 GB instead of 200 MB). Installing from the PyTorch CPU index pulls the CPU build and no NVIDIA packages:
+
+pip install pocket-tts --extra-index-url https://download.pytorch.org/whl/cpu
+
+To run the CLI without installing, pass the same index to `uvx`:
+
+uvx --index https://download.pytorch.org/whl/cpu pocket-tts generate
+
+With `uv`, declare the index explicitly in your project:
+
+\[\[tool.uv.index\]\]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+\[tool.uv.sources\]
+torch = \[{ index = "pytorch-cpu" }\]
+
+This is not needed on macOS or Windows, where the default PyTorch wheels are already CPU-only.
 
 You can use this package as a simple Python library to generate audio from text.
 
@@ -203,6 +229,33 @@ Alterative implementations
 -   PocketTTS.cpp by @VolgaGerm - Single-file C++ runtime using ONNX Runtime, with CLI, HTTP server, and FFI C API.
 -   sherpa-onnx by @csukuangfj - Run PocketTTS on **Windows, macOS, Linux**, and embedded boards (Raspberry Pi, Jetson, RK3588, etc.) with bindings for 12 programming languages: **C++, C, Python, JavaScript, Java, C#, Kotlin, Swift, Go, Dart, Rust, Pascal**, plus WebAssembly.
 -   pocket-tts-csharp by @TheAjaykrishnanR - A C# port of Pocket TTS implemented using TorchSharp and TorchSharp.PyBridge for ease of use as a library in .NET projects.
+
+Models trained by the community
+-------------------------------
+
+To use a community model, just use the `--config` argument and point it to the url of the model's yaml file. For example:
+
+uvx pocket-tts generate --config https://raw.githubusercontent.com/kyutai-labs/pocket-tts/refs/heads/main/pocket\_tts/config/english\_2026-04.yaml
+
+It also works with huggingface urls like `hf://kyutai/pocket-tts/config/english_2026-04.yaml` or local paths like `./english_2026-04.yaml`.
+
+The pre-made voices listed above are embeddings precomputed with our released weights, so they are not available for community models. With `--config`, `--voice` defaults to alba's audio file, which any model can clone. Pass your own audio file to `--voice` to use another voice.
+
+We recommend inserting the commit hash somehow in the url to avoid breaking changes by the model authors. For example:
+
+uvx pocket-tts generate --config https://raw.githubusercontent.com/kyutai-labs/pocket-tts/891886a61a1ed45fd429a0a63bd96181e6cff637/pocket\_tts/config/english\_2026-04.yaml
+
+or with `hf://...`
+
+uvx pocket-tts generate --config hf://user/repo/config\_file.yaml@commit\_hash
+
+### List of community-trained models
+
+-   pocket-tts-czech by @vvolhejn (trained internally at Kyutai):
+
+uvx pocket-tts generate --config hf://vvolhejn/pocket-tts-czech/czech.yaml@7b7760dd0fe994a0800f2fdbc837dc4b8f219d1c
+
+Want your model here? Head to the training Readme to get started!
 
 Projects using Pocket TTS
 -------------------------

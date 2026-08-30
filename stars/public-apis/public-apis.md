@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 468603
+stars: 472791
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -2587,6 +2587,16 @@ Yes
 
 Unknown
 
+BTCGlobe
+
+Bitcoin height, fees, mempool and peer data served live from two self-hosted nodes
+
+No
+
+Yes
+
+Yes
+
 btcnode.uk
 
 Bitcoin blockchain data, fees, mempool, SEC insider trades, Reddit sentiment. x402 micropayments for paid endpoints.
@@ -3247,6 +3257,16 @@ Currency-api
 Free Currency Exchange Rates API with 150+ Currencies & No Rate Limits
 
 No
+
+Yes
+
+Yes
+
+CurrencyBeacon
+
+Real-time and historical currency exchange rates with free tier
+
+`apiKey`
 
 Yes
 
@@ -5767,6 +5787,16 @@ Yes
 
 Unknown
 
+SMTPfast
+
+Send transactional email, manage contacts and broadcasts, free 3,000 emails/month
+
+`apiKey`
+
+Yes
+
+Yes
+
 uchecker
 
 Bulk email verification with full SMTP server responses
@@ -6407,6 +6437,16 @@ Yes
 
 Unknown
 
+EOD Historical Data
+
+Real-time and historical stock market data with 150+ exchanges
+
+`apiKey`
+
+Yes
+
+Yes
+
 Fed Treasury
 
 U.S. Department of the Treasury Data
@@ -6576,6 +6616,16 @@ Klarna payment and shopping service
 Yes
 
 Unknown
+
+LiquiLens
+
+Public-record bank and lender failure-risk evidence
+
+No
+
+Yes
+
+Yes
 
 MercadoPago
 
@@ -6750,6 +6800,16 @@ Yes
 Tax Data
 
 Instant VAT number and tax validation across the globe
+
+`apiKey`
+
+Yes
+
+Unknown
+
+TickerLayer
+
+Real-time and historical market data for stocks, forex, crypto and more
 
 `apiKey`
 
@@ -13362,6 +13422,16 @@ Yes
 
 No
 
+NASA InSight
+
+Mars weather data from InSight lander
+
+`apiKey`
+
+Yes
+
+Yes
+
 NASA ADS
 
 NASA Astrophysics Data System
@@ -14639,6 +14709,16 @@ Yes
 
 Unknown
 
+SocialCrawl
+
+Social and commerce data from 50+ platforms in one JSON schema
+
+`apiKey`
+
+Yes
+
+Yes
+
 SocialSwarm
 
 Turn articles into ready-to-post X thread drafts with different hooks
@@ -14803,6 +14883,16 @@ Auth
 HTTPS
 
 CORS
+
+5DollarFootball
+
+Football fixtures, results, standings and historical odds with corner and card lines
+
+`apiKey`
+
+Yes
+
+Yes
 
 API-FOOTBALL
 
@@ -17189,6 +17279,16 @@ Yes
 
 No
 
+KinoPipe
+
+Typed hosted video editing operations for agents and automation
+
+`apiKey`
+
+Yes
+
+No
+
 Lucifer Quotes
 
 Returns Lucifer quotes
@@ -17707,6 +17807,16 @@ Yes
 Open-Meteo
 
 Global weather forecast API for non-commercial use
+
+No
+
+Yes
+
+Yes
+
+Open-Meteo Ensemble
+
+Weather ensemble forecasts from multiple models
 
 No
 

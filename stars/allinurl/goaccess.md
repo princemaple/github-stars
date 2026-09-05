@@ -1,6 +1,6 @@
 ---
 project: goaccess
-stars: 20880
+stars: 20909
 description: GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 url: https://github.com/allinurl/goaccess
 ---
@@ -402,6 +402,8 @@ GoAccess has the ability the output real-time data in the HTML report. You can e
 
 The process of generating a real-time HTML report is very similar to the process of creating a static report. Only `--real-time-html` is needed to make it real-time.
 
+The General panel displays `Total Requests / Req/s` while following live logs. The request rate is sampled once per second from changes in Total Requests and starts after the initial import, so historical parsing speed is not reported as live traffic. `--html-refresh` controls how often those samples reach the browser, not the sampling window itself.
+
 ```
 # goaccess access.log -o /usr/share/nginx/html/your_site/report.html --real-time-html
 ```
@@ -547,6 +549,8 @@ GoAccess has the ability to process logs incrementally through its internal stor
 
 1.  A dataset must be persisted first with `--persist`, then the same dataset can be loaded with.
 2.  `--restore`. If new data is passed (piped or through a log file), it will append it to the original dataset.
+
+The `--http-method` and `--http-protocol` settings must match those used to create the database because they determine how request keys are grouped.
 
 ##### NOTES
 

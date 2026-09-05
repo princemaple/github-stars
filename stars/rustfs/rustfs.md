@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 31529
+stars: 31760
 description: 🚀2.3x faster than MinIO for 4KB object payloads. RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -27,6 +27,8 @@ Feature & Status
 -   **Open Source**: Licensed under Apache 2.0, encouraging unrestricted community contributions and commercial usage.
 -   **User-Friendly**: Designed with simplicity in mind for easy deployment and management.
 
+Status legend: ✅ Available — shipped and covered by CI gates; 🧪 Preview — shipped behind an opt-in flag or with a bounded compatibility claim.
+
 Feature
 
 Status
@@ -39,7 +41,7 @@ Status
 
 ✅ Available
 
-**Bitrot Protection**
+**Distributed Mode**
 
 ✅ Available
 
@@ -55,39 +57,87 @@ Status
 
 ✅ Available
 
-**Bucket Replication**
+**Bitrot Protection**
 
 ✅ Available
 
-**Logging**
+**Object Lock (WORM)**
 
 ✅ Available
 
-**Lifecycle Management**
-
-🚧 Under Testing
-
-**Event Notifications**
+**Healing & Scanner**
 
 ✅ Available
 
-**Distributed Mode**
+**Server-Side Encryption**
 
-🚧 Under Testing
+✅ Available
 
-**K8s Helm Charts**
+**Pool Expansion / Decommission**
 
 ✅ Available
 
 **RustFS KMS**
 
-🚧 Under Testing
+✅ Available
+
+**Bucket Replication**
+
+✅ Available
+
+**Lifecycle Management (ILM)**
+
+✅ Available
+
+**Site Replication**
+
+✅ Available
+
+**ILM Tiering (Remote S3)**
+
+✅ Available
+
+**Bucket Quota**
+
+✅ Available
+
+**S3 Select**
+
+✅ Available
+
+**Event Notifications**
+
+✅ Available
+
+**S3 Tables (Iceberg REST)**
+
+🧪 Preview
+
+**Audit Logging**
+
+✅ Available
+
+**IAM / Policies**
+
+✅ Available
+
+**Logging & Observability**
+
+✅ Available
+
+**OIDC / SSO**
+
+✅ Available
+
+**Web Console**
+
+✅ Available
 
 **Keystone Auth**
 
 ✅ Available
 
-**Multi-Tenancy**
+**K8s Helm Charts**
 
 ✅ Available
 
@@ -95,9 +145,28 @@ Status
 
 ✅ Available
 
-**Swift Metadata Ops**
+**FTPS / WebDAV**
 
-🚧 Partial
+✅ Available
+
+**Multi-Tenancy**
+
+✅ Available
+
+**SFTP**
+
+✅ Available
+
+**MinIO On-Disk Compatibility**
+
+🧪 Preview
+
+Notes:
+
+-   **RustFS KMS**: Vault (KV2 / Transit) and AWS KMS backends are supported for production. The `Local` and `Static` backends are for development and testing only. See KMS backend security properties.
+-   **Swift API / SFTP**: opt-in cargo features (`--features swift`, `--features sftp`, or `full`). FTPS and WebDAV are enabled in the default build.
+-   **S3 Tables**: ships as an Iceberg REST Catalog with automated PyIceberg and DuckDB coverage; other engines and vendor profiles carry bounded claims listed in the S3 Tables support matrix.
+-   **MinIO On-Disk Compatibility**: gated behind the `rio-v2` feature and not part of the default build. Objects MinIO encrypted are not readable by RustFS. See MinIO file-format interoperability.
 
 RustFS vs MinIO Performance
 ---------------------------
@@ -224,7 +293,7 @@ chown -R 10001:10001 data logs
 docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
 
 # Using specific version
-docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-rc.4
+docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.0-rc.5
 
 If you use podman instead of docker, you can install the RustFS with the below command
 

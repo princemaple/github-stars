@@ -1,16 +1,20 @@
 ---
 project: pgdog
-stars: 5450
+stars: 5465
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
 
-PgDog is a proxy for scaling PostgreSQL. It supports connection pooling, load balancing queries and sharding entire databases. Written in Rust, PgDog is fast, secure and can manage thousands of connections on commodity hardware.
+PgDog is an open source proxy for scaling PostgreSQL. It supports connection pooling, load balancing queries and sharding entire databases. Written in Rust, PgDog is fast, secure and can manage thousands of connections on commodity hardware.
 
 Documentation
 -------------
 
 📘 PgDog documentation can be **found here**. Any questions? Chat with us on **Discord**.
+
+##### Enterprise edition
+
+🏢 Enterprise edition (EE) documentation is available **here**. Changelog is available **here**.
 
 Quick start
 -----------
@@ -649,6 +653,10 @@ PgDog is free and open source software, licensed under the AGPL v3. While often 
 You can freely use PgDog to power your PostgreSQL databases without having to share any source code, including proprietary work product or any PgDog modifications you make.
 
 AGPL was written specifically for organizations that offer PgDog _as a public service_ (e.g. database cloud providers) and require those organizations to share any modifications they make to PgDog, including new features and bug fixes.
+
+### Enterprise edition
+
+If your organization doesn't allow AGPL software, PgDog is also available under an enterprise license.
 
 Contributions
 -------------

@@ -1,6 +1,6 @@
 ---
 project: imagor
-stars: 4013
+stars: 4015
 description: Fast, secure image processing server and Go library, using libvips
 url: https://github.com/cshum/imagor
 ---
@@ -48,10 +48,3 @@ Full documentation is available at docs.imagor.net.
 -   Storage
 -   Security
 -   Configuration
-
-Commercial Support
-------------------
-
-If your team is using imagor in production and needs help with architecture, custom imagor components, multi-tenant setups, migration, or performance tuning, commercial support and consulting are available. See the Commercial Support page for details.
-
-For bugs and feature requests, please continue to use GitHub issues. For consulting inquiries, contact imagor@cshum.com.

@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 27789
+stars: 27924
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -358,7 +358,7 @@ Windows
 
 (Crush respects the XDG Base Directory Specification, so your paths may differ depending on your `XDG_CONFIG_HOME` value. Data directories such as `~/.local/share/crush` and `%LOCALAPPDATA%\crush` contain JSON state only; Crush does not execute a `crushrc` from them.)
 
-What about the old JSON format? It’s still supported, but it should be consdiered deprecated. See: the config docs for details.
+What about the old JSON format? It’s still supported, but it should be considered deprecated. See: the config docs for details.
 
 Tip
 

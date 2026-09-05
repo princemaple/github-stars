@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40143
+stars: 40242
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -8,6 +8,8 @@ url: https://github.com/schollz/croc
   
 
 **This project’s future depends on community support. Become a sponsor today.**
+
+Supporting organizations:
 
 About
 -----
@@ -94,12 +96,6 @@ Install with `pacman`:
 
 pacman -S croc
 
-### On Fedora
-
-Install with `dnf`:
-
-dnf install croc
-
 ### On Termux
 
 Install with `pkg`:
@@ -166,6 +162,22 @@ Then, to receive the file (or folder) on another computer, run:
 croc code-phrase
 
 The code phrase is used to establish password-authenticated key agreement (PAKE) which generates a secret key for the sender and recipient to use for end-to-end encryption.
+
+### Share a terminal with `croc ssh`
+
+On Linux, macOS, FreeBSD, or OpenBSD, start a shared terminal with:
+
+croc ssh
+
+The host receives separate six-word invitations for read/write and read-only participants. On Unix, a participant keeps the invitation out of the process list by joining with the command croc prints:
+
+CROC\_SECRET='six-word-invitation' croc ssh
+
+Everyone sees one persistent terminal. Multiple read/write participants may type; read-only participants receive the same output but their input is discarded.
+
+This does not expose an SSH daemon or require an account, public IP, inbound port, or SSH key setup. The invitation authenticates an ephemeral Tailcat WireGuard path and pins an ephemeral SSH host key. Tailcat uses DERP when it cannot establish a direct path; if Tailcat itself is unavailable, the client reauthenticates and carries the pinned SSH stream over the ordinary croc relay. Remote commands, forwarding, and SFTP are disabled. Anyone who receives an invitation has the role printed beside it until the host stops, so treat both invitations as secrets.
+
+See the SSH sharing design and security guide for protocol, reconnection, platform, relay, and threat-model details.
 
 ### Customizations & Options
 
@@ -329,7 +341,7 @@ docker run -d -p 9010-9011:9010-9011 -e CROC\_PORTS='9010,9011' -e CROC\_PASS='Y
 
 #### Web client
 
-The React/Vite client in `web/` can send and receive multiple files with normal croc CLI peers. The production client and its WebAssembly protocol runtime are bundled only in the standalone `croc-web` server, keeping generated assets and web-server code out of the cross-platform `croc` binary. Linux amd64 builds of `croc-web` are published separately with each release. It serves both the site and its same-origin WebSocket relay:
+The React/Vite client in `web/` can send and receive multiple files and join `croc ssh` sessions hosted by normal CLI peers. The production client and its WebAssembly protocol runtime are bundled only in the standalone `croc-web` server, keeping generated assets and web-server code out of the cross-platform `croc` binary. Linux amd64 builds of `croc-web` are published separately with each release. It serves both the site and its same-origin WebSocket relay:
 
 croc-web getcroc.com
 

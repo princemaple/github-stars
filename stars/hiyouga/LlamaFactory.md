@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 74443
+stars: 74590
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -12,7 +12,7 @@ url: https://github.com/hiyouga/LlamaFactory
 ### Check our new open-source project —  
 🐧 PenguinHarness: Local-first multi-agent app development platform - create, fine-tune, deploy AI apps automatically!
 
-Follow our project: https://github.com/Prism-Shadow/penguin-harness
+Follow us and give us a star ⭐: https://github.com/Prism-Shadow/penguin-harness
 
 rag\_en.mp4
 
@@ -460,7 +460,7 @@ MiniCPM 4/5
 
 0.5B/1B/8B
 
-cpm4/empty
+cpm4/minicpm5
 
 MiniCPM-o/MiniCPM-V 4.5
 

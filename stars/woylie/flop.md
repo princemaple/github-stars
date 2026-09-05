@@ -1,6 +1,6 @@
 ---
 project: flop
-stars: 811
+stars: 812
 description: Filtering, ordering and pagination for Ecto
 url: https://github.com/woylie/flop
 ---
@@ -32,7 +32,7 @@ To get started, add `flop` to your dependencies list in your project's `mix.exs`
 
 def deps do
   \[
-    {:flop, "~> 0.28.0"}
+    {:flop, "~> 0.29.0"}
   \]
 end
 
@@ -89,16 +89,16 @@ Usage
 
 ### Define sortable and filterable fields
 
-To define sortable and filterable fields in your Ecto schema, you can derive `Flop.Schema`. This step is optional but highly recommended, particularly when the parameters passed to Flop's functions are user-provided. Deriving `Flop.Schema` ensures that Flop applies filtering and sorting parameters only to the fields you've explicitly configured.
+To define sortable and filterable fields in your Ecto schema, you can use `Flop.Schema`. This step is optional but highly recommended, particularly when the parameters passed to Flop's functions are user-provided. Using `Flop.Schema` ensures that Flop applies filtering and sorting parameters only to the fields you've explicitly configured.
 
 defmodule MyApp.Pet do
   use Ecto.Schema
+  use Flop.Schema
 
-  @derive {
-    Flop.Schema,
+  @flop\_options \[
     filterable: \[:name, :species\],
     sortable: \[:name, :age, :species\]
-  }
+  \]
 
   schema "pets" do
     field :name, :string
@@ -129,7 +129,7 @@ defmodule MyApp.Pets do
   end
 end
 
-The `for` option sets the Ecto schema for which you derived `Flop.Schema`. If you haven't derived `Flop.Schema` as described above, this option can be omitted. However, this is not recommended unless all parameters are generated internally and are guaranteed to be safe.
+The `for` option sets the Ecto schema that uses `Flop.Schema`. If you haven't set up `Flop.Schema` as described above, this option can be omitted. However, this is not recommended unless all parameters are generated internally and are guaranteed to be safe.
 
 On success, `Flop.validate_and_run/3` returns an `:ok` tuple. The second element of this tuple is another tuple containing the fetched data and metadata.
 

@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 15109
+stars: 15119
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.14. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -627,10 +627,6 @@ Let's call the basename of the main path, and entry point. The names of these mu
 
 This allows to combine very different programs into one.
 
-Note
-
-This feature is still experimental. Use with care and report your findings should you encounter anything that is undesirable behavior
-
 This mode works with standalone, onefile, and mere acceleration. It does not work with module mode.
 
 #### Use Case 7 - Building with GitHub Workflows
@@ -1109,7 +1105,7 @@ The most important ones are supported, more can certainly be added.
 
 #### Caching compilation results
 
-The C compiler, when invoked with the same input files, will take a long time and much CPU to compile over and over. Make sure you are having `ccache` installed and configured when using gcc (even on Windows). It will make repeated compilations much faster, even if things are not yet perfect, i.e. changes to the program can cause many C files to change, requiring a new compilation instead of using the cached result.
+The C compiler, when invoked with the same input files, will take a long time and much CPU to compile over and over. Make sure you are having `ccache` installed and configured when using gcc (even on Windows). It will make repeated compilations much faster, but changes to the program can cause many C files to change, requiring a new compilation instead of using the cached result.
 
 On Windows, with gcc, Nuitka supports using `ccache.exe`, which it will offer to download from an official source and install it automatically. This is the recommended way of using it on Windows, as other versions may cause issues e.g. hanging.
 
@@ -1280,13 +1276,293 @@ Nuitka will automatically target the architecture of the Python you are using. I
 
 The C compiler will be picked to match that more or less automatically. If you specify it explicitly, and it mismatches, you will get a warning about the mismatch and informed that your compiler choice was rejected.
 
+#### Targeting a CPU Architecture Baseline
+
+By default, Nuitka creates binaries that run on older machines of the same architecture, using the baseline ISA of the target architecture. The option `--target-arch=...` selects a higher baseline ISA, e.g. `x86-64-v3`, for better speed on newer CPUs, at the cost of no longer running on older ones. This is not for cross compilation, which requires a Python of the target architecture anyway.
+
+Note
+
+Check your C compiler's documentation for the valid values, wrong ones cause build errors.
+
 ### Compilation Report
 
 When you use `--report=compilation-report.xml` Nuitka will create an XML file with detailed information about the compilation and packaging process. This is growing in completeness with every release and exposes module usage attempts, timings of the compilation, plugin influences, data file paths, DLLs, and reasons why things are included or not.
 
 At this time, the report contains absolute paths in some places, with your private information. The goal is to make this blended out by default because we also want to become able to compare compilation reports from different setups, e.g. with updated packages, and see the changes to Nuitka. The report is, however, recommended for your bug reporting.
 
-Also, another form is available, where the report is free form and according to a Jinja2 template of yours, and one that is included in Nuitka. The same information as used to produce the XML file is accessible. However, right now, this is not yet documented, but we plan to add a table with the data. For a reader of the source code that is familiar with Jinja2, however, it will be easy to do it now already.
+Also, another form is available, where the report is free form and according to a Jinja2 template of yours, and one that is included in Nuitka. The same information as used to produce the XML file is accessible.
+
+For the template, the data is a dictionary with the same information as used for the XML report. The authoritative list is the `_getReportInputData` function in `nuitka/reports/Reports.py` of the Nuitka repository. These are its entries:
+
+Entry
+
+Content
+
+`module_names`
+
+Full names of all compiled modules
+
+`module_kinds`
+
+Module full name to its node kind name
+
+`module_sources`
+
+Module full name to its source reference
+
+`module_inclusion_infos`
+
+Module full name to inclusion information
+
+`module_plugin_influences`
+
+Module full name to plugin influences
+
+`module_timing_infos`
+
+Module full name to optimization timing information
+
+`module_generation_timing_infos`
+
+Module full name to code generation timing information
+
+`module_usages`
+
+Module full name to used modules
+
+`module_distributions`
+
+Module full name to used distributions
+
+`distribution_modules`
+
+Distribution name to modules from it
+
+`module_distribution_usages`
+
+Module full name to distributions of used modules
+
+`module_distribution_names`
+
+Module full name to used distribution names
+
+`all_distributions`
+
+All used distributions, sorted
+
+`module_distribution_installers`
+
+Distribution name to its installer name
+
+`module_distribution_vendored`
+
+Distribution name to whether it is vendored
+
+`module_exclusions`
+
+Module full name to excluded module and reason
+
+`included_metadata`
+
+Distribution name to included metadata reasons
+
+`memory_infos`
+
+Memory usage information
+
+`python_exe`
+
+Python executable used
+
+`python_flavor`
+
+Python flavor name
+
+`python_version`
+
+Full Python version
+
+`os_name`
+
+Operating system name
+
+`arch_name`
+
+Architecture name
+
+`gil`
+
+Whether the used Python has the GIL
+
+`filesystem_encoding`
+
+Filesystem encoding
+
+`os_release`
+
+Operating system release string
+
+`nuitka_version`
+
+Nuitka version
+
+`nuitka_commercial_version`
+
+Nuitka commercial version or "not installed"
+
+`nuitka_aborted`
+
+Whether the compilation was aborted
+
+`nuitka_exception`
+
+Exception that aborted the compilation, if any
+
+`user_data`
+
+User data from `--report-user-provided`
+
+`data_composer`
+
+Data composer report values
+
+`output_run_filename`
+
+Result filename that is to be run
+
+`backend_executable`
+
+Backend executable filename
+
+`backend_executable_size`
+
+Backend executable size in bytes
+
+`onefile_executable`
+
+Onefile executable filename, if onefile mode
+
+`onefile_executable_size`
+
+Onefile executable size in bytes
+
+`onefile_resource_mode`
+
+Resource mode used for the onefile binary
+
+`onefile_reproducible`
+
+Whether the onefile binary is reproducible
+
+`onefile_source_dir`
+
+Onefile source directory path, if onefile mode
+
+`scons_error_report_data`
+
+Scons error report data
+
+`scons_resource_usage_data`
+
+Scons resource usage data
+
+`scons_ccache_stats`
+
+ccache statistics per module
+
+`installer_executable`
+
+Installer filename, if one was created
+
+`installer_backend`
+
+Installer backend name
+
+`installer_tool_version`
+
+Installer tool version
+
+`c_compiler`
+
+C compiler used
+
+`cpp_flags`
+
+Pre-processor flags
+
+`c_flags`
+
+C flags
+
+`cc_flags`
+
+C compiler flags
+
+`cxx_flags`
+
+C++ compiler flags
+
+`ld_flags`
+
+Linker flags
+
+`the_cc_name`
+
+C compiler name
+
+`the_compiler`
+
+C compiler binary
+
+`backend_resource_mode`
+
+Resource mode used for the backend binary
+
+`backend_reproducible`
+
+Whether the backend binary is reproducible
+
+`module_object_sizes`
+
+Object sizes per module
+
+`compilation_mode`
+
+Compilation mode used
+
+`performance_totals`
+
+Timing totals for optimization passes, code generation, C compilation, and linking
+
+`linker_cpu`
+
+Linker CPU usage information from Scons resource usage
+
+On top of these, the template has the following helper functions available:
+
+Function
+
+Purpose
+
+`get_distribution_license`
+
+Get the license text of a distribution
+
+`get_distribution_name`
+
+Get the name of a distribution
+
+`get_distribution_version`
+
+Get the version of a distribution
+
+`quoted`
+
+Quote a list of strings
+
+`len`
+
+Check the length of lists
 
 If you have a template, you can use it like this `--report-template=your_template.rst.j2:your_report.rst` and of course, the usage of restructured text, is only an example. You can use Markdown, your own XML, or whatever you see fit. Nuitka will just expand the template with the compilation report data.
 

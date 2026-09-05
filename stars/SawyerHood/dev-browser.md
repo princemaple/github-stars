@@ -1,147 +1,93 @@
 ---
 project: dev-browser
-stars: 6570
+stars: 6590
 description: A Claude Skill to give your agent the ability to use a web browser
 url: https://github.com/SawyerHood/dev-browser
 ---
 
 Brought to you by Do Browser.
 
-A browser automation tool that lets AI agents and developers control browsers with sandboxed JavaScript scripts.
+`dev-browser` lets coding agents control Chrome with short JavaScript scripts. The browser stays open between calls, so an agent can navigate once, inspect the page, act, and verify the result without starting over each time.
 
 **Key features:**
 
--   **Sandboxed execution** - Scripts run in a QuickJS WASM sandbox with no host access
--   **Persistent pages** - Navigate once, interact across multiple scripts
--   **Auto-connect** - Connect to your running Chrome or launch a fresh Chromium
--   **Full Playwright API** - goto, click, fill, locators, evaluate, screenshots, and more
+-   **Persistent pages.** Named tabs carry state across scripts.
+-   **Compact snapshots.** Accessibility trees give agents readable output and stable element refs.
+-   **Real Puppeteer.** Scripts use the Puppeteer Page API plus a small set of agent-focused helpers.
+-   **Launch or attach.** Start an isolated Chrome profile or connect to a browser you already have open.
 
 Demo
 ----
 
 dev-browser-sheet-small.mp4
 
-CLI Installation
+CLI installation
 ----------------
 
 npm install -g dev-browser
-dev-browser install    # installs Playwright + Chromium
+dev-browser install    # only needed if dev-browser cannot find Chrome
+
+The release binary includes Bun and Puppeteer. Node is not required after installation. macOS and glibc Linux are supported; Windows and musl Linux are not yet supported.
+
+Snap-packaged Chromium cannot read the default `~/.dev-browser/v1` directory. On Ubuntu, use `dev-browser install` or point `DEV_BROWSER_CHROME` at another Chrome binary.
+
+If your package manager blocks lifecycle scripts, run `npm rebuild -g dev-browser`, `pnpm approve-builds -g dev-browser`, or `bun pm -g trust dev-browser`. The CLI will also try to download its binary on first use. For a private mirror, set `DEV_BROWSER_DOWNLOAD_BASE`; set `DEV_BROWSER_SKIP_DOWNLOAD=1` if you install the binary yourself.
 
 ### Quick start
 
 # Launch a headless browser and run a script
 dev-browser --headless <<'EOF'
 const page = await browser.getPage("main");
-await page.goto("https://example.com", { waitUntil: "domcontentloaded" });
+await page.goto("https://example.com");
 console.log(await page.title());
 EOF
 
-# Connect to your running Chrome (enable at chrome://inspect/#remote-debugging)
+# Attach to Chrome started with \`dev-browser chrome\`
+dev-browser chrome
 dev-browser --connect <<'EOF'
-const tabs = await browser.listPages();
-console.log(JSON.stringify(tabs, null, 2));
+console.log(await browser.listPages());
 EOF
 
-### PowerShell (Windows)
+Chrome 136 and newer ignore remote-debugging flags on the default profile. `dev-browser chrome` handles this by using a dedicated profile and checking that Chrome actually started.
 
-@"
-const page = await browser.getPage("main");
-await page.goto("https://example.com", { waitUntil: "domcontentloaded" });
-console.log(await page.title());
-"@ | dev\-browser
+### Using it with coding agents
 
-With `--connect`:
+Tell the agent to run `dev-browser --help`. The built-in guide covers the current API and the preferred look → act → verify workflow.
 
-@"
-const page = await browser.getPage("main");
-console.log(await page.title());
-"@ | dev\-browser \--connect
-
-### Windows notes
-
-PowerShell install:
-
-npm install \-g dev\-browser
-dev\-browser install
-
-To attach to a running Chrome instance on Windows:
-
-chrome.exe \--remote\-debugging\-port\=9222
-dev\-browser \--connect
-
-Windows npm installs download the native `dev-browser-windows-x64.exe` release asset during `postinstall`, and the generated npm shims invoke that executable directly.
-
-### Using with AI agents
-
-After installing, tell your agent to run `dev-browser --help` — the help output includes the current LLM usage guide and API reference.
-
-For agents that discover local skills, install or refresh the embedded skill explicitly:
+Agents that discover local skills can install the bundled skill explicitly:
 
 dev-browser install-skill --codex   # ~/.codex/skills/dev-browser/SKILL.md
 dev-browser install-skill --claude  # ~/.claude/skills/dev-browser/SKILL.md
 dev-browser install-skill --agents  # ~/.agents/skills/dev-browser/SKILL.md
 
-Flags may be combined. With an interactive terminal, `dev-browser install-skill` prompts for targets. In non-interactive environments it updates all three locations, including Codex, so an older copied skill does not survive a CLI upgrade.
+Run `dev-browser install-skill` without flags to update all three locations.
 
 ### Idle browser cleanup
 
-Daemon-launched named Chromium instances can be closed automatically after they have been idle for a configured duration:
+Launched browsers close after 30 minutes without a script by default. Change that per command, in the environment, or in `~/.dev-browser/v1/config.json`:
 
 dev-browser --idle-timeout 5m < script.js
-DEV\_BROWSER\_IDLE\_TIMEOUT\_MS=300000 dev-browser status
-
-The flag accepts `30s`, `5m`, `1h`, or raw milliseconds. You can also set a user default in `~/.dev-browser/config.json`:
+DEV\_BROWSER\_IDLE\_TIMEOUT=1h dev-browser -e 'await browser.listPages()'
 
 {
   "idleTimeout": "5m"
 }
 
-Precedence is `--idle-timeout`, then `DEV_BROWSER_IDLE_TIMEOUT_MS`, then `idleTimeout` in the user config, then disabled. Set any source to `0` to disable cleanup. The effective setting is sent to an already-running daemon and shown by `dev-browser status`.
-
-Cleanup is applied independently to each named browser. Activity is measured from both the start and completion of each request, so running requests are never reaped. Only Chromium instances launched by dev-browser are eligible; browsers attached with `--connect` are never closed by idle cleanup. Closing an idle browser does not delete its profile directory, cookies, or login state, and the next request relaunches it from the same persistent profile. `dev-browser stop` keeps its existing behavior of stopping the daemon and all managed browser connections.
+Durations accept `30s`, `5m`, `1h`, or raw milliseconds. Set the value to `0` to keep a launched browser open until `dev-browser stop`. Attached browsers are never closed by idle cleanup. Profiles, cookies, and login state remain on disk when a launched browser closes.
 
 Allowing dev-browser in Claude Code without permission prompts
 
-By default, Claude Code asks for approval each time it runs a bash command. You can pre-approve `dev-browser` so it runs without permission checks by adding it to the `allow` list in your settings.
-
-**Per-project** — add to `.claude/settings.json` in your project root:
+Add `dev-browser` to the `allow` list in `.claude/settings.json` for one project or `~/.claude/settings.json` for every project:
 
 {
   "permissions": {
-    "allow": \[
-      "Bash(dev-browser \*)"
-    \]
+    "allow": \["Bash(dev-browser \*)"\]
   }
 }
 
-**Per-user (global)** — add to `~/.claude/settings.json`:
-
-{
-  "permissions": {
-    "allow": \[
-      "Bash(dev-browser \*)"
-    \]
-  }
-}
-
-The pattern `Bash(dev-browser *)` matches any command starting with `dev-browser` followed by arguments (e.g. `dev-browser --headless`, `dev-browser --connect`). This is safe because dev-browser scripts run in a sandboxed QuickJS WASM environment with no host filesystem or network access.
-
-You can also allow related commands in the same list:
-
-{
-  "permissions": {
-    "allow": \[
-      "Bash(dev-browser \*)",
-      "Bash(npx dev-browser \*)"
-    \]
-  }
-}
-
-> **Tip:** If you've already been prompted and clicked "Always allow", Claude Code adds the specific command pattern automatically. The settings file approach lets you pre-approve it before the first run.
+This allows any matching command without another prompt. Only do this where you trust the scripts being run: `node:vm` gives each script fresh globals, but it is not a security sandbox.
 
 Legacy Claude Code plugin installation
-
-### Claude Code
 
 ```
 /plugin marketplace add sawyerhood/dev-browser
@@ -153,83 +99,114 @@ Restart Claude Code after installation.
 Script API
 ----------
 
-Scripts run in a sandboxed QuickJS runtime (not Node.js). Available globals:
+Scripts get these globals:
 
 // Browser control
-browser.getPage(nameOrId)    // Get/create named page, or connect to tab by targetId
-browser.newPage()            // Create anonymous page (cleaned up after script)
-browser.listPages()          // List all tabs: \[{id, url, title, name}\]
+browser.getPage(nameOrId)    // Get/create a named page, or attach by target ID
+browser.newPage()            // Create an anonymous page; close it yourself
+browser.listPages()          // \[{ id, url, title, name }\]
 browser.closePage(name)      // Close a named page
 
-// File I/O (restricted to ~/.dev-browser/tmp/)
-await saveScreenshot(buf, name)   // Save screenshot buffer, returns path
-await writeFile(name, data)       // Write file, returns path
-await readFile(name)              // Read file, returns content
+// File I/O, restricted to ~/.dev-browser/v1/tmp
+saveFile(name, data)
+readFile(name)
 
 // Output
-console.log/warn/error/info       // Routed to CLI stdout/stderr
+console.log()
+console.warn()
+console.error()
 
-Pages are full Playwright Page objects — `goto`, `click`, `fill`, `locator`, `evaluate`, `screenshot`, and everything else, including `page.snapshotForAI({ track?, depth?, timeout? })`, which returns `{ full, incremental? }` for AI-friendly page snapshots.
+Top-level `await` works, and the last expression becomes the command result. Pages are real Puppeteer Page objects with a few additions:
 
-Every page also exposes two computer-use toolsets:
+await page.snapshot({ interactive: true }) // Accessibility tree with refs such as e12
+await page.click("ref/e12")                 // Refs work in Puppeteer selector methods
+await page.ref("e12")                       // ElementHandle for a ref
+await page.shot()                           // JPEG path and CSS-pixel dimensions
+await page.waitForLoad()                    // Wait for navigation, requests, and DOM activity to settle
+await page.fill("#email", "me@example.com")
 
--   `page.cua.*` — pixel/vision tier: `screenshot()` saves a JPEG whose pixels map 1:1 onto CSS coordinates at any DPR and returns `{ path, width, height }`; `click`, `doubleClick`, `drag`, `move`, `scroll`, `keypress`, and `type` act at those coordinates.
--   `page.domCua.*` — DOM-id tier: `getVisibleDom()` snapshots visible interactive elements as pseudo-HTML lines with `node_id=N`; `click`, `doubleClick`, and `scroll` act by node id (ids are only valid against the latest snapshot of the current document), plus `type` and `keypress` for the focused element.
+Each command runs in a fresh `node:vm` context inside the daemon. This keeps script globals separate, but it is not a security boundary. When a command finishes or times out, its page, locator, browser-context, and registry operations are closed so detached work cannot interfere with the next command.
+
+Scripts may run concurrently. Browser and page creation are serialized, as are input operations on different tabs through a bring-to-front lock. Two scripts using the same named page can still interleave.
+
+See `dev-browser --help` for the full API, error behavior, configuration, JSON output, MCP tools, and examples.
+
+Connecting to an existing browser
+---------------------------------
+
+`--connect` accepts auto-discovery, a port, an HTTP URL, a WebSocket URL, or a raw CDP Unix socket:
+
+dev-browser chrome --profile work
+dev-browser --connect -e 'await browser.listPages()'
+dev-browser --connect 9222 -e 'await browser.listPages()'
+dev-browser --connect 'wss://provider.example?token=…' -e 'await browser.listPages()'
+
+Attached browsers belong to the user. dev-browser extends only the tabs a script asks for and never closes the browser because of an idle timeout. Credentials are redacted from logs and status output, while differently authenticated endpoints remain separate sessions.
+
+MCP
+---
+
+claude mcp add dev-browser -- dev-browser mcp --headless
+
+The server exposes `dev_browser_run`, `dev_browser_pages`, `dev_browser_browsers`, `dev_browser_stop`, and `dev_browser_help` over the same warm daemon as the CLI.
+
+Upgrading to 1.0
+----------------
+
+Version 1.0 replaces the Playwright/QuickJS implementation from dev-browser 0.2 with the Puppeteer/Bun implementation developed as doobie. Its state lives under `~/.dev-browser/v1`, separate from both older installations.
+
+To copy durable doobie state:
+
+doobie stop
+dev-browser migrate-from-doobie
+
+`migrate-from-doobie` leaves `~/.doobie` untouched. Scripts written for dev-browser 0.2 need to replace helpers such as `snapshotForAI()` and `getByRef()` with `snapshot()` and `ref/eN`. Computer-use helpers under `page.cua` and `page.domCua` are not part of 1.0.
 
 Benchmarks
 ----------
 
-Method
+Measured on Linux with a headless browser and warm daemon, medians of 9 runs:
+
+Scenario
 
 Time
 
-Cost
+Empty script
 
-Turns
+~13 ms
 
-Success
+`getPage("x")` + `page.title()`
 
-**Dev Browser**
+~14 ms
 
-3m 53s
+`page.snapshot()` on a SERP-like page
 
-$0.88
+~18 ms
 
-29
+`page.shot()`
 
-100%
+~36 ms
 
-Playwright MCP
+Cold daemon and Chrome launch
 
-4m 31s
+~280 ms
 
-$1.45
+Run them with `bun run build && bun run bench/run.ts --runs 9`. The older end-to-end comparison is in dev-browser-eval.
 
-51
+Development
+-----------
 
-100%
+bun install
+bun run dev -- -e '1+1'
+bun test
+bun run build
 
-Playwright Skill
+Design notes live in docs/design-decisions.md.
 
-8m 07s
+Releasing
+---------
 
-$1.45
-
-38
-
-67%
-
-Claude Chrome Extension
-
-12m 54s
-
-$2.81
-
-80
-
-100%
-
-_See dev-browser-eval for methodology._
+See RELEASING.md for release-candidate testing, npm trusted publishing, and post-release verification.
 
 License
 -------

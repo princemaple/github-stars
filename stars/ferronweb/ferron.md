@@ -1,157 +1,110 @@
 ---
 project: ferron
-stars: 2123
-description: A fast, modern, and easily configurable web server with automatic TLS.
+stars: 2129
+description: A fast, modern web server built for production debugging.
 url: https://github.com/ferronweb/ferron
 ---
 
-**Ferron** - a fast, modern, and easily configurable web server with automatic TLS
-
-* * *
+**Ferron** - a fast, modern web server built for production debugging.
+======================================================================
 
 Why Ferron?
 -----------
 
--   **High performance** - thoroughly optimized for speed with support for high concurrency.
--   **Memory-safe** - built with Rust, which is a programming language that can offer strong memory safety guarantees.
--   **Automatic TLS** - automatic SSL/TLS certificate acquisition and renewal with Let's Encrypt integration.
--   **Easy configuration** - simple, intuitive configuration with sensible, secure defaults and comprehensive documentation.
--   **Extensibility** - modular architecture for easy customization.
--   **Powerful reverse proxy** - advanced reverse proxy capabilities with support for load balancing and health checks.
+Built to set up quickly, behave predictably, and hold up reliably in production.
 
-Installing Ferron from pre-built binaries
------------------------------------------
+-   **Readable configuration** - set up websites and reverse proxies with a clear, compact config that avoids sprawl and hidden surprises.
+-   **Automatic TLS** - certificates are issued and renewed automatically. You get clear signals when it works (or doesn't).
+-   **First-class observability** - see exactly what happened with any request. Traces cover every layer and link directly to the relevant logs.
+-   **Predictable performance** - fast and consistent under load, right out of the box. No runtime tuning required.
+-   **Memory-safe** - entire categories of memory-related security holes simply don't exist in Ferron (it's built with Rust).
+-   **Reliable in production** - handles messy real-world traffic, upstream failures, and protocol edge cases predictably.
 
-The easiest way to install Ferron is installing it from pre-built binaries.
+Tip
 
-Below are the different ways to install Ferron:
-
--   Installer (GNU/Linux)
--   Installer (Windows Server)
--   Package managers (Debian/Ubuntu)
--   Package managers (RHEL/Fedora)
--   Docker
--   Package managers (community)
--   Manual installation
+Ferron is designed around two core principles: **ease of setup** (get a working config in minutes) and **ease of debugging** (when something goes wrong, find the root cause fast).
 
 Configuration examples
 ----------------------
 
-### Basic static file serving
+### Static file serving
 
-// Example configuration with static file serving. Replace "example.com" with your domain name.
+```
 example.com {
-    root "/var/www/html" // Replace "/var/www/html" with the directory containing your static files
+    root "/var/www/html"
+
+    # If uncommented, directory listing is enabled.
+    #directory_listing
 }
+```
 
-### Basic reverse proxying
+### Reverse proxy
 
-// Example configuration with reverse proxy. Replace "example.com" with your domain name.
-example.com {
-    proxy "http://localhost:3000/" // Replace "http://localhost:3000" with the backend server URL
+```
+api.example.com {
+    proxy http://localhost:8080
 }
+```
 
-### More examples
+More examples are available in the configuration documentation.
 
-You can find more configuration examples for common use cases in the Ferron documentation.
+Installing Ferron (pre-built)
+-----------------------------
 
-Building Ferron from source
----------------------------
+The most convenient way to get started with Ferron is to use the installer script for Linux:
 
-You can clone the repository and explore the existing code:
+sudo bash -c "$(curl -fsSL https://get.ferron.sh/v3)"
 
-git clone https://github.com/ferronweb/ferron.git
-cd ferron
+See the full instructions in the Linux installation documentation.
 
-You can then build and run the web server using Cargo:
-
-cargo run --manifest-path build/prepare/Cargo.toml
-cd build/workspace
-cargo update # If you experience crate conflicts
-cargo build -r --target-dir ../../target
-cd ..
-cp configs/ferron.test.kdl ferron.kdl
-target/release/ferron
-
-You can also, for convenience, use `make`:
-
-make build # Build the web server
-make build-dev # Build the web server, for development and debugging
-make run # Run the web server
-make run-dev # Run the web server, for development and debugging
-make smoketest # Perform a smoke test
-make smoketest-dev # Perform a smoke test, for development and debugging
-make package # Package the web server to a ZIP archive (run it after building it)
-make package-deb # Package the web server to a Debian package (run it after building it)
-make package-rpm # Package the web server to an RPM package (run it after building it)
-make installer # Build installers for Ferron 2
-
-Or a `build.ps1` build script, if you're on Windows:
-
-REM Build the web server
-powershell -ExecutionPolicy Bypass .\\build.ps1 Build
-
-REM Build the web server, for development and debugging
-powershell -ExecutionPolicy Bypass .\\build.ps1 BuildDev
-
-REM Run the web server
-powershell -ExecutionPolicy Bypass .\\build.ps1 Run
-
-REM Run the web server, for development and debugging
-powershell -ExecutionPolicy Bypass .\\build.ps1 RunDev
-
-REM Perform a smoke test
-powershell -ExecutionPolicy Bypass .\\build.ps1 Smoketest
-
-REM Perform a smoke test, for development and debugging
-powershell -ExecutionPolicy Bypass .\\build.ps1 SmoketestDev
-
-REM Package the web server to a ZIP archive (run it after building it)
-powershell -ExecutionPolicy Bypass .\\build.ps1 Package
-
-REM Build installers for Ferron 2
-powershell -ExecutionPolicy Bypass .\\build.ps1 Installer
-
-You can also create a ZIP archive that can be used by the Ferron installer:
-
-make build-with-package
-
-Or if you're on Windows:
-
-powershell -ExecutionPolicy Bypass .\\build.ps1 BuildWithPackage
-
-The ZIP archive will be located in the `dist` directory.
-
-You can also cross-compile the web server for a different target:
-
-# Replace "i686-unknown-linux-gnu" with the target (as defined by the Rust target triple) you want to build for
-make build TARGET="i686-unknown-linux-gnu" CARGO\_FINAL="cross"
-
-It's also possible to use only Cargo to build the web server, although you wouldn't be able to use external modules:
-
-cargo build -r
-./target/release/ferron
-
-For compilation notes, see the compilation notes page.
-
-Modules
--------
-
-If you would like to develop Ferron modules, you can find the Ferron module development notes.
-
-Server configuration
+Building from source
 --------------------
 
-You can check the Ferron documentation to see configuration properties used by Ferron.
+git clone https://github.com/ferronweb/ferron -b develop-3.x
+cd ferron
+git submodule update --init --recursive
+cargo build --workspace
+
+Run the server:
+
+cargo run -p ferron -- run -c ferron.conf
+cargo run -p ferron -- run -c ferron.conf --verbose  # with debug logging
+
+Other CLI commands:
+
+cargo run -p ferron -- validate -c ferron.conf   # validate without starting
+cargo run -p ferron -- adapt -c ferron.conf      # output config as JSON
+cargo run -p ferron -- daemon -c ferron.conf --pid-file /var/run/ferron.pid  # Unix daemon
+
+Run tests and checks:
+
+cargo test --workspace
+cargo fmt --all --check
+cargo clippy --workspace --all-targets -- -D warnings
+
+Package Ferron for distribution (requires `just`):
+
+just package # Archive (.zip for Windows, .tar.gz for Unix)
+just package-deb # Debian package
+just package-rpm # RPM package
+just package-windows # Windows installer
+just installer # Linux installer
+
+Cross-build optimized binaries for Ferron (see README for the build files; available on Linux only):
+
+just cross-build
+
+Configuration
+-------------
+
+The full directive reference is in docs/configuration/.
 
 Contributing
 ------------
 
-See Ferron contribution page for details.
-
-Below is a list of contributors to Ferron. **Thank you to all of them!**
+Feedback, bug reports, and testing are welcome. When reporting issues, include your configuration file, `--verbose` output, and steps to reproduce.
 
 License
 -------
 
-Ferron is licensed under the MIT License. See `LICENSE` for details.
+MIT. See `LICENSE` for details.

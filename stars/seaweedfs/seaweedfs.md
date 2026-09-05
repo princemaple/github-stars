@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 34346
+stars: 34483
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -8,370 +8,266 @@ url: https://github.com/seaweedfs/seaweedfs
 SeaweedFS
 =========
 
-Sponsor SeaweedFS via Patreon
------------------------------
-
-SeaweedFS is an independent Apache-licensed open source project with its ongoing development made possible entirely thanks to the support of these awesome backers. If you'd like to grow SeaweedFS even stronger, please consider joining our sponsors on Patreon.
-
-Your support will be really appreciated by me and other supporters!
-
-### Gold Sponsors
-
-* * *
-
--   Download Binaries for different platforms
--   SeaweedFS on Slack
--   SeaweedFS on Twitter
--   SeaweedFS on Telegram
--   SeaweedFS on Reddit
--   SeaweedFS Mailing List
--   Wiki Documentation
--   SeaweedFS White Paper
--   SeaweedFS Introduction Slides 2025.5
--   SeaweedFS Introduction Slides 2021.5
--   SeaweedFS Introduction Slides 2019.3
-
-Table of Contents
-=================
-
--   Quick Start
-    -   Quick Start with weed mini
-    -   Quick Start for S3 API on Docker
--   Introduction
--   Features
-    -   Additional Features
-    -   Filer Features
--   Example: Using Seaweed Blob Store
--   Architecture
--   Compared to Other File Systems
-    -   Compared to HDFS
-    -   Compared to GlusterFS, Ceph
-    -   Compared to GlusterFS
-    -   Compared to Ceph
-    -   Compared to MinIO, RustFS
--   Dev Plan
--   Installation Guide
--   Disk Related Topics
--   Benchmark
--   Enterprise
--   License
-
-Quick Start
-===========
-
-Quick Start with weed mini
---------------------------
-
-Download the latest binary from https://github.com/seaweedfs/seaweedfs/releases and unzip the single `weed` (or `weed.exe`) file, or run `go install github.com/seaweedfs/seaweedfs/weed@latest`. Then start a ready-to-use S3 object store with credentials and a pre-created bucket in one command:
-
-AWS\_ACCESS\_KEY\_ID=admin \\
-AWS\_SECRET\_ACCESS\_KEY=secret \\
-S3\_BUCKET=my-bucket \\
-./weed mini -dir=/data
-
-That's it — the S3 endpoint is at http://localhost:8333, `my-bucket` already exists, and `admin`/`secret` are valid credentials. `S3_BUCKET` accepts a comma-separated list (e.g. `raw,processed`); use `S3_TABLE_BUCKET` for S3 Tables buckets, each `name` or `name:FORMAT` where the format is `ICEBERG` (the default) or `LANCE`. Drop any of the env vars to skip that piece (no AWS keys → S3 runs in unauthenticated "Allow All" mode for development).
-
-The same command starts everything else too:
-
--   **S3 Endpoint**: http://localhost:8333
--   **Master UI**: http://localhost:9333
--   **Volume Server**: http://localhost:9340
--   **Filer UI**: http://localhost:8888
--   **WebDAV**: http://localhost:7333
--   **Admin UI**: http://localhost:23646
-
-> macOS: if the binary is quarantined, run `xattr -d com.apple.quarantine ./weed` first.
-
-Perfect for development, testing, learning SeaweedFS, and single-node deployments. To scale out, add more volume servers by running `weed volume -dir="/some/data/dir2" -master="<master_host>:9333" -port=8081` locally, on another machine, or on thousands of machines.
-
-Quick Start for S3 API on Docker
---------------------------------
-
-docker run -p 8333:8333 \\
-  -e AWS\_ACCESS\_KEY\_ID=admin \\
-  -e AWS\_SECRET\_ACCESS\_KEY=secret \\
-  -e S3\_BUCKET=my-bucket \\
-  chrislusf/seaweedfs
-
-Same behavior as the `weed mini` command above — the S3 endpoint is at http://localhost:8333 with `my-bucket` pre-created. Drop the env vars to run anonymously for development.
-
-Introduction
-============
-
 SeaweedFS is a simple and highly scalable distributed file system. There are two objectives:
 
 1.  to store billions of files!
 2.  to serve the files fast!
 
-SeaweedFS started as a blob store to handle small files efficiently. Instead of managing all file metadata in a central master, the central master only manages volumes on volume servers, and these volume servers manage files and their metadata. This relieves concurrency pressure from the central master and spreads file metadata into volume servers, allowing faster file access (O(1), usually just one disk read operation).
+One `weed` binary serves an S3 object store, a POSIX file system, and a lakehouse with S3 Tables, all over the same data. Each blob is one disk read away, capacity grows by starting another volume server, and cloud storage can be cached or tiered transparently.
 
-There is only 40 bytes of disk storage overhead for each file's metadata. It is so simple with O(1) disk reads that you are welcome to challenge the performance with your actual use cases.
+-   Download Binaries for different platforms
+-   Wiki Documentation
+-   Community: Slack, Twitter, Telegram, Reddit, Mailing List
+-   SeaweedFS White Paper and introduction slides: 2025.5, 2021.5, 2019.3
 
-SeaweedFS started by implementing Facebook's Haystack design paper. Also, SeaweedFS implements erasure coding with ideas from f4: Facebook’s Warm BLOB Storage System, and has a lot of similarities with Facebook’s Tectonic Filesystem and Google's Colossus File System
+Table of Contents
+=================
 
-On top of the blob store, optional Filer can support directories and POSIX attributes. Filer is a separate linearly-scalable stateless server with customizable metadata stores, e.g., MySql, Postgres, Redis, Cassandra, HBase, Mongodb, Elastic Search, LevelDB, RocksDB, Sqlite, MemSql, TiDB, Etcd, CockroachDB, YDB, etc.
+-   Quick Start
+    -   One command
+    -   Docker
+    -   Docker Compose
+    -   Kubernetes with Helm
+    -   Build from source
+    -   Scale out
+-   Why SeaweedFS
+    -   Fast
+    -   Scalable
+    -   The most complete S3 API
+    -   A data warehouse with S3 Tables
+    -   A fast cache for cloud storage
+    -   Active-active replication and more
+-   Architecture
+-   Compared to Other Systems
+    -   Compared to HDFS
+    -   Compared to GlusterFS, Ceph
+    -   Compared to MooseFS
+    -   Compared to Ceph
+    -   Compared to MinIO, RustFS
+-   Benchmark
+-   Enterprise
+-   License
+-   Sponsors
 
-SeaweedFS can transparently integrate with the cloud. With hot data on local cluster, and warm data on the cloud with O(1) access time, SeaweedFS can achieve both fast local access time and elastic cloud storage capacity. What's more, the cloud storage access API cost is minimized. Faster and cheaper than direct cloud storage!
+Quick Start
+===========
 
-SeaweedFS also ships a built-in **Iceberg REST Catalog**, turning the same cluster into a self-contained lakehouse. Spark, Trino, Dremio, DuckDB, and RisingWave can query Iceberg tables directly — no Hive Metastore, Glue, or external catalog service required. Storage and table metadata live in one system, simplifying on-prem and small-team analytics stacks.
+One command
+-----------
 
-Back to TOC
+Download the latest binary from the releases page and unzip the single `weed` (or `weed.exe`) file, or let the install script put it in `/usr/local/bin`:
 
-Features
-========
+curl -fsSL https://raw.githubusercontent.com/seaweedfs/seaweedfs/master/install.sh | bash
 
-Additional Blob Store Features
-------------------------------
+Then start a ready-to-use S3 object store:
 
--   Support different replication levels, with rack and data center aware.
--   Automatic master servers failover - no single point of failure (SPOF).
--   Automatic compression depending on file MIME type.
--   Automatic compaction to reclaim disk space after deletion or update.
--   Automatic entry TTL expiration.
--   Flexible Capacity Expansion: Any server with some disk space can add to the total storage space.
--   Adding/Removing servers does **not** cause any data re-balancing unless triggered by admin commands.
--   Optional picture resizing.
--   Support ETag, Accept-Range, Last-Modified, etc.
--   Support in-memory/leveldb/readonly mode tuning for memory/performance balance.
--   Support rebalancing the writable and readonly volumes.
--   Customizable Multiple Storage Tiers: Customizable storage disk types to balance performance and cost.
--   Transparent cloud integration: unlimited capacity via tiered cloud storage for warm data.
--   Erasure Coding for warm storage Rack-Aware 10.4 erasure coding reduces storage cost and increases availability. Enterprise version can customize EC ratio.
+AWS\_ACCESS\_KEY\_ID=admin \\
+AWS\_SECRET\_ACCESS\_KEY=secret \\
+S3\_BUCKET=my-bucket \\
+./weed mini -dir=./data
 
-Back to TOC
+That's it. The S3 endpoint is at http://localhost:8333, `my-bucket` exists, and `admin`/`secret` are valid credentials:
 
-Filer Features
+AWS\_ACCESS\_KEY\_ID=admin AWS\_SECRET\_ACCESS\_KEY=secret \\
+  aws --endpoint-url http://localhost:8333 s3 cp README.md s3://my-bucket/
+
+The same process also runs the master, a volume server, the filer, WebDAV, the Iceberg REST catalog, and the Admin UI. Add `S3_TABLE_BUCKET=warehouse` to also create an Iceberg table bucket, or `warehouse:LANCE` for a Lance one. Drop the AWS keys to run without authentication for development.
+
+> macOS: if the binary is quarantined, run `xattr -d com.apple.quarantine ./weed` first.
+
+`weed mini` is auto-tuned for one node and is fine for single-node production, such as an S3 gateway that issues presigned URLs. See Quick Start with weed mini.
+
+Docker
+------
+
+docker run -p 8333:8333 -v weed-data:/data \\
+  -e AWS\_ACCESS\_KEY\_ID=admin \\
+  -e AWS\_SECRET\_ACCESS\_KEY=secret \\
+  -e S3\_BUCKET=my-bucket \\
+  chrislusf/seaweedfs
+
+Same behavior as the `weed mini` command above.
+
+Docker Compose
 --------------
 
--   Filer server provides "normal" directories and files via HTTP.
--   File TTL automatically expires file metadata and actual file data.
--   Mount filer reads and writes files directly as a local directory via FUSE.
--   Filer Store Replication enables HA for filer meta data stores.
--   Active-Active Replication enables asynchronous one-way or two-way cross cluster continuous replication.
--   Amazon S3 compatible API accesses files with S3 tooling.
--   Hadoop Compatible File System accesses files from Hadoop/Spark/Flink/etc or even runs HBase.
--   Async Replication To Cloud has extremely fast local access and backups to Amazon S3, Google Cloud Storage, Azure, BackBlaze.
--   WebDAV accesses as a mapped drive on Mac and Windows, or from mobile devices.
--   AES256-GCM Encrypted Storage safely stores the encrypted data.
--   Super Large Files stores large or super large files in tens of TB.
--   Cloud Drive mounts cloud storage to local cluster, cached for fast read and write with asynchronous write back.
--   Gateway to Remote Object Store mirrors bucket operations to remote object storage, in addition to Cloud Drive
+To run master, volume server, filer, S3, and WebDAV as separate services:
 
-Data Lakehouse Features
------------------------
+wget https://raw.githubusercontent.com/seaweedfs/seaweedfs/master/docker/seaweedfs-compose.yml
+wget -P prometheus https://raw.githubusercontent.com/seaweedfs/seaweedfs/master/docker/prometheus/prometheus.yml
+docker compose -f seaweedfs-compose.yml -p seaweedfs up
 
--   S3 Table Buckets expose a dedicated namespace for Iceberg tables with strict layout validation.
--   Built-in Iceberg REST Catalog runs alongside the S3 endpoint — no external metastore needed.
--   Native integrations with Apache Spark, Trino, Dremio, DuckDB, and RisingWave.
--   Automated table maintenance: compaction, snapshot expiration, orphan removal, manifest rewriting.
--   Granular IAM at the bucket, namespace, and table level via standard S3 bucket policies.
+Docker Compose for S3 adds credentials, and the docker/compose folder has variants for replication, mounts, message queues, and more.
 
-Kubernetes
-----------
+Kubernetes with Helm
+--------------------
 
--   Kubernetes CSI Driver A Container Storage Interface (CSI) Driver.
--   SeaweedFS Operator
+helm repo add seaweedfs https://seaweedfs.github.io/seaweedfs/helm
+helm install seaweedfs seaweedfs/seaweedfs -n seaweedfs --create-namespace -f values.yaml
 
-Back to TOC
+A production-shaped `values.yaml` for a three-node cluster: two copies of every write, three masters, and an S3 endpoint with credentials and a bucket.
 
-Example: Using Seaweed Blob Store
----------------------------------
+global:
+  seaweedfs:
+    enableReplication: true
+    replicationPlacement: "001"   # one extra copy on another server; "002" for two
 
-By default, the master node runs on port 9333, and the volume nodes run on port 8080. Let's start one master node, and two volume nodes on port 8080 and 8081. Ideally, they should be started from different machines. We'll use localhost as an example.
+master:
+  replicas: 3
+  data:
+    type: persistentVolumeClaim   # the cluster's default storage class; add storageClass to pick one
+    size: 1Gi
 
-SeaweedFS uses HTTP REST operations to read, write, and delete. The responses are in JSON or JSONP format.
+volume:
+  replicas: 3                     # at least 1 + the sum of the replication digits
+  dataDirs:
+    - name: data
+      type: persistentVolumeClaim
+      size: 500Gi
+      maxVolumes: 0               # size the volume count from the disk
 
-### Start Master Server
+filer:
+  replicas: 2
+  data:
+    type: persistentVolumeClaim
+    size: 20Gi
 
-```
-> ./weed master
-```
+s3:
+  enabled: true
+  replicas: 2
+  enableAuth: true
+  credentials:
+    admin:
+      accessKey: admin
+      secretKey: change-me
+  createBuckets:
+    - name: app-storage
 
-### Start Volume Servers
+The S3 endpoint is the `seaweedfs-s3` service on port 8333. Helm Chart Recipes has values for a development cluster, a lakehouse with the Iceberg catalog exposed, filer metadata on PostgreSQL, and node-local disks. The SeaweedFS Operator and the CSI driver are the other Kubernetes paths.
 
-```
-> weed volume -dir="/tmp/data1" -max=5  -master="localhost:9333" -port=8080 &
-> weed volume -dir="/tmp/data2" -max=10 -master="localhost:9333" -port=8081 &
-```
+Build from source
+-----------------
 
-### Write A Blob
+git clone https://github.com/seaweedfs/seaweedfs.git
+cd seaweedfs/weed && make install
 
-A blob, also referred as a needle, a chunk, or mistakenly as a file, is just a byte array. It can have attributes, such as name, mime type, create or update time, etc. But basically it is just a byte array of a relatively small size, such as 2 MB ~ 64 MB. The size is not fixed.
+`weed` lands in `$GOPATH/bin`. Getting Started covers running master, volume, filer, and S3 as separate processes.
 
-To upload a blob: first, send a HTTP POST, PUT, or GET request to `/dir/assign` to get an `fid` and a volume server URL:
+Scale out
+---------
 
-```
-> curl http://localhost:9333/dir/assign
-{"count":1,"fid":"3,01637037d6","url":"127.0.0.1:8080","publicUrl":"localhost:8080"}
-```
+Capacity is a volume server. Start one on any machine with disk and point it at the master:
 
-Second, to store the blob content, send a HTTP multi-part POST request to `url + '/' + fid` from the response:
+weed volume -dir=/data -master=<master\_host\>:9333
 
-```
-> curl -F file=@/home/chris/myphoto.jpg http://127.0.0.1:8080/3,01637037d6
-{"name":"myphoto.jpg","size":43234,"eTag":"1cc0118e"}
-```
-
-To update, send another POST request with updated blob content.
-
-For deletion, send an HTTP DELETE request to the same `url + '/' + fid` URL:
-
-```
-> curl -X DELETE http://127.0.0.1:8080/3,01637037d6
-```
-
-### Save Blob Id
-
-Now, you can save the `fid`, 3,01637037d6 in this case, to a database field.
-
-The number 3 at the start represents a volume id. After the comma, it's one file key, 01, and a file cookie, 637037d6.
-
-The volume id is an unsigned 32-bit integer. The file key is an unsigned 64-bit integer. The file cookie is an unsigned 32-bit integer, used to prevent URL guessing.
-
-The file key and file cookie are both coded in hex. You can store the <volume id, file key, file cookie> tuple in your own format, or simply store the `fid` as a string.
-
-If stored as a string, in theory, you would need 8+1+16+8=33 bytes. A char(33) would be enough, if not more than enough, since most uses will not need 2^32 volumes.
-
-If space is really a concern, you can store the file id in the binary format. You would need one 4-byte integer for volume id, 8-byte long number for file key, and a 4-byte integer for the file cookie. So 16 bytes are more than enough.
-
-### Read a Blob
-
-Here is an example of how to render the URL.
-
-First look up the volume server's URLs by the file's volumeId:
-
-```
-> curl http://localhost:9333/dir/lookup?volumeId=3
-{"volumeId":"3","locations":[{"publicUrl":"localhost:8080","url":"localhost:8080"}]}
-```
-
-Since (usually) there are not too many volume servers, and volumes don't move often, you can cache the results most of the time. Depending on the replication type, one volume can have multiple replica locations. Just randomly pick one location to read.
-
-Now you can take the public URL, render the URL or directly read from the volume server via URL:
-
-```
- http://localhost:8080/3,01637037d6.jpg
-```
-
-Notice we add a file extension ".jpg" here. It's optional and just one way for the client to specify the file content type.
-
-If you want a nicer URL, you can use one of these alternative URL formats:
-
-```
- http://localhost:8080/3/01637037d6/my_preferred_name.jpg
- http://localhost:8080/3/01637037d6.jpg
- http://localhost:8080/3,01637037d6.jpg
- http://localhost:8080/3/01637037d6
- http://localhost:8080/3,01637037d6
-```
-
-If you want to get a scaled version of an image, you can add some params:
-
-```
-http://localhost:8080/3/01637037d6.jpg?height=200&width=200
-http://localhost:8080/3/01637037d6.jpg?height=200&width=200&mode=fit
-http://localhost:8080/3/01637037d6.jpg?height=200&width=200&mode=fill
-```
-
-### Rack-Aware and Data Center-Aware Replication
-
-SeaweedFS applies the replication strategy at a volume level. So, when you are getting a blob id, you can specify the replication strategy. For example:
-
-```
-curl http://localhost:9333/dir/assign?replication=001
-```
-
-The replication parameter options are:
-
-```
-000: no replication
-001: replicate once on the same rack
-010: replicate once on a different rack, but same data center
-100: replicate once on a different data center
-200: replicate twice on two different data center
-110: replicate once on a different rack, and once on a different data center
-```
-
-More details about replication can be found on the wiki.
-
-You can also set the default replication strategy when starting the master server.
-
-### Allocate Blob Key on Specific Data Center
-
-Volume servers can be started with a specific data center name:
-
-```
- weed volume -dir=/tmp/1 -port=8080 -dataCenter=dc1
- weed volume -dir=/tmp/2 -port=8081 -dataCenter=dc2
-```
-
-When requesting a blob key, an optional "dataCenter" parameter can limit the assigned volume to the specific data center. For example, this specifies that the assigned volume should be limited to 'dc1':
-
-```
- http://localhost:9333/dir/assign?dataCenter=dc1
-```
-
-### Other Features
-
--   No Single Point of Failure
--   Insert with your own keys
--   Chunking large files
--   Collection as a Simple Name Space
+Nothing rebalances until you ask it to. Throughput is a filer or S3 gateway; they are stateless, so run as many as you need behind a load balancer. Production Setup walks through a multi-node cluster.
 
 Back to TOC
 
-Blob Store Architecture
------------------------
+Why SeaweedFS
+=============
 
-Usually distributed file systems split each file into chunks. A central server keeps a mapping of filenames to chunks, and also which chunks each chunk server has.
+Fast
+----
 
-The main drawback is that the central server can't handle many small files efficiently, and since all read requests need to go through the central master, so it might not scale well for many concurrent users.
+-   One disk read per blob. A small file is one blob; a large file is split into chunks of a few MB, each its own blob. A volume server keeps a 16-byte index entry per blob in memory and reads it in a single seek, also for erasure-coded data.
+-   The master is not in the read path. Clients cache the volume-to-server mapping and talk to volume servers directly.
+-   40 bytes of metadata per file on disk. Small files are packed into append-only volume files, so there is no per-file inode, no per-file metadata file, no fragmentation, and writes are SSD friendly.
+-   Hot data is replicated; erasure coding is applied to warm data in the background, so writes never pay the encoding cost.
+-   The Rust volume server is a drop-in for higher throughput and lower tail latency on the same on-disk format.
 
-Instead of managing chunks, SeaweedFS manages data volumes in the master server. Each data volume is 32GB in size, and can hold a lot of blobs. And each storage node can have many data volumes. So the master node only needs to store the metadata about the volumes, which is a fairly small amount of data and is generally stable.
+On one laptop, `weed benchmark` writes 1KB files at 15,700 per second and reads them back at 47,000 per second, and a mixed S3 warp run totals 3.2 GiB/s. Numbers are in the Benchmark section; throughput grows with volume servers and gateways.
 
-The actual blob metadata, which are the blob volume, offset, and size, is stored in each volume on volume servers. Since each volume server only manages metadata of blobs on its own disk, with only 16 bytes for each blob, all access can read the metadata just from memory and only needs one disk operation to actually read file data.
+Scalable
+--------
 
-For comparison, consider that an xfs inode structure in Linux is 536 bytes.
+-   The master tracks volumes, not files. A cluster with billions of files has a few thousand volumes, so the master stays small. One master is enough for most clusters; run three for Raft failover.
+-   Adding a server adds capacity with no data reshuffle. Balancing, vacuum, erasure coding, and repair run on demand from `weed shell` or the maintenance worker.
+-   Filer and S3 gateways are stateless and scale linearly. Directory metadata lives in a store you already run: LevelDB, RocksDB, SQLite, MySQL, PostgreSQL, Cassandra, HBase, MongoDB, Redis, Elasticsearch, etcd, TiKV, FoundationDB, YDB, ArangoDB, Tarantool, and MySQL or PostgreSQL compatible databases such as TiDB, CockroachDB, and MemSQL.
+-   Rack and data center aware replication, tiered storage across disk types, and transparent cloud tiering for unlimited capacity.
+-   Files from a byte to tens of TB. Volumes up to 8TB with the large-disk build.
 
-### Master Server and Volume Server
+The most complete S3 API
+------------------------
 
-The architecture is fairly simple. The actual data is stored in volumes on storage nodes. One volume server can have multiple volumes, and can both support read and write access with basic authentication.
+The S3 gateway implements the object, bucket, S3 Tables, IAM, and STS APIs on one endpoint, so the AWS SDKs and CLI, rclone, restic, Spark, and Trino work unchanged.
 
-All volumes are managed by a master server. The master server contains the volume id to volume server mapping. This is fairly static information, and can be easily cached.
+API
 
-On each write request, the master server also generates a file key, which is a growing 64-bit unsigned integer. Since write requests are not generally as frequent as read requests, one master server should be able to handle the concurrency well.
+Operations
 
-### Write and Read files
+S3 bucket and object
 
-When a client sends a write request, the master server returns (volume id, file key, file cookie, volume node URL) for the blob. The client then contacts the volume node and POSTs the blob content.
+73
 
-When a client needs to read a blob based on (volume id, file key, file cookie), it asks the master server by the volume id for the (volume node URL, volume node public URL), or retrieves this from a cache. Then the client can GET the content, or just render the URL on web pages and let browsers fetch the content.
+S3 Tables
 
-### Saving memory
+36
 
-All blob metadata stored on a volume server is readable from memory without disk access. Each file takes just a 16-byte map entry of <64bit key, 32bit offset, 32bit size>. Of course, each map entry has its own space cost for the map. But usually the disk space runs out before the memory does.
+IAM
 
-### Tiered Storage to the cloud
+39
 
-The local volume servers are much faster, while cloud storages have elastic capacity and are actually more cost-efficient if not accessed often (usually free to upload, but relatively costly to access). With the append-only structure and O(1) access time, SeaweedFS can take advantage of both local and cloud storage by offloading the warm data to the cloud.
+STS
 
-Usually hot data are fresh and warm data are old. SeaweedFS puts the newly created volumes on local servers, and optionally upload the older volumes on the cloud. If the older data are accessed less often, this literally gives you unlimited capacity with limited local servers, and still fast for new data.
+5
 
-With the O(1) access time, the network latency cost is kept at minimum.
+-   Versioning, Object Lock with retention and legal hold, lifecycle rules, tagging, CORS, conditional reads and writes, checksums, presigned URLs, browser POST uploads, multipart uploads, and an atomic RenameObject.
+-   Bucket policies with conditions and variables; IAM users, groups, and policies; STS with OIDC, LDAP, and Kubernetes service accounts.
+-   SSE-S3, SSE-KMS, and SSE-C server-side encryption, with OpenBao and Vault, AWS KMS, Azure Key Vault, and GCP KMS as key providers.
+-   Audit log, bucket quota, and rate limiting.
+-   Each bucket is its own collection, so deleting a bucket is instant.
 
-If the hot/warm data is split as 20/80, with 20 servers, you can achieve storage capacity of 100 servers. That's a cost saving of 80%! Or you can repurpose the 80 servers to store new data also, and get 5X storage throughput.
+The full operation list is in Amazon S3 API, and Supported APIs vs MinIO compares. The S3 compatibility suite and the SDK, IAM, SSE, policy, and Spark integration tests run in CI on every change.
 
-Back to TOC
+A data warehouse with S3 Tables
+-------------------------------
 
-SeaweedFS Filer
----------------
+SeaweedFS is a lakehouse in one system. S3 Table Buckets hold Apache Iceberg tables by default, or Lance tables for vectors and multimodal data, and the built-in Iceberg REST Catalog and Lance namespace serve them directly. There is no Hive Metastore, Glue, or separate catalog service to deploy, secure, and back up.
 
-Built on top of the blob store, SeaweedFS Filer adds directory structure to create a file system. The directory structure is an interface that is implemented in many key-value stores or databases.
+-   Query engines operate on the same tables at the same time: Spark, Trino, Dremio, DuckDB, Apache Doris, RisingWave, ClickHouse, and LanceDB. Catalog commits are atomic compare-and-swap, so concurrent writers are safe. Lakekeeper can front the same storage with STS-vended credentials.
+-   Automated table maintenance: compaction, snapshot expiration, orphan file removal, and manifest rewriting, configured per bucket or table through the S3 Tables maintenance APIs, and the same for Lance.
+-   IAM at the bucket, namespace, and table level with standard bucket policies, see S3 Tables Security.
+-   A Hadoop compatible file system for Spark, Flink, and HBase.
 
-The content of a file is mapped to one or many blobs, distributed to multiple volumes on multiple volume servers.
+`S3_TABLE_BUCKET=warehouse ./weed mini -dir=./data` brings the whole stack up on a laptop.
 
-Compared to Other File Systems
+A fast cache for cloud storage
 ------------------------------
+
+Cloud Drive mounts a bucket from S3, Google Cloud Storage, Azure, Backblaze B2, Wasabi, Storj, or any S3-compatible store into SeaweedFS and serves it at local speed:
+
+-   Metadata is pulled once, so listing, stat, and directory walks cost no cloud API calls.
+-   File content is downloaded once, on first read or warmed by folder, name pattern, size, or age, and cached with the capacity of the whole cluster: cache everything, no churn.
+-   Local writes complete at local latency and are written back to the cloud asynchronously in the cloud's native layout, so other tools keep reading the bucket directly.
+-   Uncache by the same rules to free local disk while keeping the metadata.
+
+Cloud Tier goes the other direction, moving whole warm volumes to cloud storage while keeping one-read access, and the Gateway to Remote Object Storage mirrors every bucket to a remote store. Faster and cheaper than reading the cloud directly.
+
+Active-active replication and more
+----------------------------------
+
+-   Active-active or active-passive replication between clusters, continuous and resumable, for the whole tree or chosen folders, across data centers.
+-   Filer store replication for metadata HA, async backup to cloud storage, metadata backup, and change data capture with webhooks on every metadata event.
+-   The same data as a FUSE mount on Linux, macOS, and Windows, over WebDAV, SFTP, HDFS, HTTP, and TUS resumable uploads; on Kubernetes through the CSI driver and Operator.
+-   AES256-GCM encryption at rest, TLS and mTLS between components, JWT-signed volume access, and FIPS builds.
+-   Admin UI, Prometheus metrics, TTL per file or volume, automatic compression and compaction, and seaweed-up for bare-metal clusters.
+
+Back to TOC
+
+Architecture
+============
+
+-   **Master** servers, one or a Raft group of three, track which volume lives on which volume server and hand out file ids. They are not in the read path.
+-   **Volume** servers store blobs in append-only volume files, keep a 16-byte in-memory index per blob, and replicate or erasure-code at the volume level.
+-   **Filer** servers add directories and files on top, with metadata in a store of your choice, and expose HTTP, S3, WebDAV, SFTP, FUSE, and the table catalogs.
+
+The blob store started from Facebook's Haystack, erasure coding takes ideas from f4, and the whole has a lot in common with Tectonic and Colossus. How file ids are assigned, written, and looked up, and why a master that tracks volumes scales, is in Blob Store Architecture; the services are in Components and the white paper.
+
+Back to TOC
+
+Compared to Other Systems
+=========================
 
 Most other distributed file systems seem more complicated than necessary.
 
@@ -379,9 +275,8 @@ SeaweedFS is meant to be fast and simple, in both setup and operation. If you do
 
 SeaweedFS is constantly moving forward. Same with other systems. These comparisons can be outdated quickly. Please help to keep them updated.
 
-Back to TOC
-
-### Compared to HDFS
+Compared to HDFS
+----------------
 
 HDFS uses the chunk approach for each file, and is ideal for storing large files.
 
@@ -389,9 +284,8 @@ SeaweedFS is ideal for serving relatively smaller files quickly and concurrently
 
 SeaweedFS can also store extra large files by splitting them into manageable data chunks, and store the file ids of the data chunks into a meta chunk. This is managed by "weed upload/download" tool, and the weed master or volume servers are agnostic about it.
 
-Back to TOC
-
-### Compared to GlusterFS, Ceph
+Compared to GlusterFS, Ceph
+---------------------------
 
 The architectures are mostly the same. SeaweedFS aims to store and read files fast, with a simple and flat architecture. The main differences are
 
@@ -472,25 +366,17 @@ Yes
 
 No
 
-Back to TOC
+GlusterFS stores files, both directories and content, in configurable volumes called "bricks". It hashes the path and filename into ids, and assigned to virtual volumes, and then mapped to "bricks".
 
-### Compared to GlusterFS
-
-GlusterFS stores files, both directories and content, in configurable volumes called "bricks".
-
-GlusterFS hashes the path and filename into ids, and assigned to virtual volumes, and then mapped to "bricks".
-
-Back to TOC
-
-### Compared to MooseFS
+Compared to MooseFS
+-------------------
 
 MooseFS chooses to neglect small file issue. From moosefs 3.0 manual, "even a small file will occupy 64KiB plus additionally 4KiB of checksums and 1KiB for the header", because it "was initially designed for keeping large amounts (like several thousands) of very big files"
 
 MooseFS Master Server keeps all meta data in memory. Same issue as HDFS namenode.
 
-Back to TOC
-
-### Compared to Ceph
+Compared to Ceph
+----------------
 
 Ceph can be setup similar to SeaweedFS as a key->blob store. It is much more complicated, with the need to support layers on top of it. Here is a more detailed comparison
 
@@ -528,9 +414,8 @@ Ceph FS
 
 linearly scalable, Customizable, O(1) or O(logN)
 
-Back to TOC
-
-### Compared to MinIO, RustFS
+Compared to MinIO, RustFS
+-------------------------
 
 Please note, as Apr 25, 2026 MinIO ceased development. It's strongly discouraged to use that unmaintained software with multiple security bugs. RustFS is a MinIO reimplementation in Rust, Apache 2.0 licensed and still developed, keeping MinIO's storage model down to a byte-compatible on-disk format. So the points below apply to both.
 
@@ -550,116 +435,36 @@ There are specific requirements on storage layout, which makes it hard to scale 
 
 Back to TOC
 
-Dev Plan
---------
-
--   More tools and documentation, on how to manage and scale the system.
--   Read and write stream data.
--   Support structured data.
-
-This is a super exciting project! And we need helpers and support!
-
-Back to TOC
-
-Installation Guide
-------------------
-
-> Installation guide for users who are not familiar with golang
-
-Step 1: install go on your machine and setup the environment by following the instructions at:
-
-https://golang.org/doc/install
-
-make sure to define your $GOPATH
-
-Step 2: checkout this repo:
-
-git clone https://github.com/seaweedfs/seaweedfs.git
-
-Step 3: download, compile, and install the project by executing the following command
-
-cd seaweedfs/weed && make install
-
-Once this is done, you will find the executable "weed" in your `$GOPATH/bin` directory
-
-For more installation options, including how to run with Docker, see the Getting Started guide.
-
-Back to TOC
-
-Disk Related Topics
--------------------
-
-### Hard Drive Performance
-
-When testing read performance on SeaweedFS, it basically becomes a performance test of your hard drive's random read speed. Hard drives usually get 100MB/s~200MB/s.
-
-### Solid State Disk
-
-To modify or delete small files, SSD must delete a whole block at a time, and move content in existing blocks to a new block. SSD is fast when brand new, but will get fragmented over time and you have to garbage collect, compacting blocks. SeaweedFS is friendly to SSD since it is append-only. Deletion and compaction are done on volume level in the background, not slowing reading and not causing fragmentation.
-
-Back to TOC
-
 Benchmark
----------
+=========
 
-My Own Unscientific Single Machine Results on Mac Book with Solid State Disk, CPU: 1 Intel Core i7 2.6GHz.
+Unscientific single-machine numbers from a MacBook with an SSD. `weed benchmark`, 1 million 1KB files, concurrency 16:
 
-Write 1 million 1KB file:
+Requests per second
 
-```
-Concurrency Level:      16
-Time taken for tests:   66.753 seconds
-Completed requests:      1048576
-Failed requests:        0
-Total transferred:      1106789009 bytes
-Requests per second:    15708.23 [#/sec]
-Transfer rate:          16191.69 [Kbytes/sec]
+p50
 
-Connection Times (ms)
-              min      avg        max      std
-Total:        0.3      1.0       84.3      0.9
+p99
 
-Percentage of the requests served within a certain time (ms)
-   50%      0.8 ms
-   66%      1.0 ms
-   75%      1.1 ms
-   80%      1.2 ms
-   90%      1.4 ms
-   95%      1.7 ms
-   98%      2.1 ms
-   99%      2.6 ms
-  100%     84.3 ms
-```
+Write
 
-Randomly read 1 million files:
+15,708
+
+0.8 ms
+
+2.6 ms
+
+Random read
+
+47,019
+
+0.3 ms
+
+0.7 ms
+
+`make benchmark` runs warp mixed S3 traffic against a local `weed server`:
 
 ```
-Concurrency Level:      16
-Time taken for tests:   22.301 seconds
-Completed requests:      1048576
-Failed requests:        0
-Total transferred:      1106812873 bytes
-Requests per second:    47019.38 [#/sec]
-Transfer rate:          48467.57 [Kbytes/sec]
-
-Connection Times (ms)
-              min      avg        max      std
-Total:        0.0      0.3       54.1      0.2
-
-Percentage of the requests served within a certain time (ms)
-   50%      0.3 ms
-   90%      0.4 ms
-   98%      0.6 ms
-   99%      0.7 ms
-  100%     54.1 ms
-```
-
-### Run WARP and launch a mixed benchmark.
-
-```
-make benchmark
-warp: Benchmark data written to "warp-mixed-2025-12-05[194844]-kBpU.csv.zst"
-
 Mixed operations.
 Operation: DELETE, 10%, Concurrency: 20, Ran 42s.
  * Throughput: 55.13 obj/s
@@ -676,17 +481,19 @@ Operation: STAT, 30%, Concurrency: 20, Ran 42s.
 Cluster Total: 3302.88 MiB/s, 550.51 obj/s over 43s.
 ```
 
+Read throughput is bounded by the random read speed of the disks, and grows with every volume server added. More numbers, including multi-node, FUSE, and Hadoop, are in Benchmarks, S3 API Benchmark, FIO benchmark, and Independent Benchmarks.
+
 Back to TOC
 
 Enterprise
-----------
+==========
 
 For enterprise users, please visit seaweedfs.com for the SeaweedFS Enterprise Edition, which has advanced features, including data recovery, self-healing storage, customizable erasure coding, EC vacuum and repair, etc.
 
 Back to TOC
 
 License
--------
+=======
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
@@ -700,5 +507,18 @@ The text of this page is available for modification and reuse under the terms of
 
 Back to TOC
 
-Stargazers over time
---------------------
+Sponsors
+========
+
+### Sponsor SeaweedFS via Patreon
+
+SeaweedFS is an independent Apache-licensed open source project with its ongoing development made possible entirely thanks to the support of these awesome backers. If you'd like to grow SeaweedFS even stronger, please consider joining our sponsors on Patreon.
+
+Your support will be really appreciated by me and other supporters!
+
+### Gold Sponsors
+
+Back to TOC
+
+Star History
+------------

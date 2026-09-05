@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 8369
+stars: 8429
 description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---
@@ -10,6 +10,8 @@ url: https://github.com/databasus/databasus
 Databasus is a free, open source and self-hosted tool to backup PostgreSQL. Make backups with different storages (S3, Google Drive, FTP, etc.) and notifications about progress (Slack, Discord, Telegram, etc.). With a focus on Point-in-Time Recovery at low RPO/RTO
 
   
+
+**English** • Русский • Español • Português • 中文 • Français
 
 Features • Installation • Usage • License • Contributing
 

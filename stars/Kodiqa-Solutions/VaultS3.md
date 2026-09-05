@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 1544
+stars: 1591
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -184,9 +184,9 @@ No config file is needed. VaultS3 starts on its built-in defaults, creates the d
 
 Prefer a package or a plain binary? Every release ships `.deb`, `.rpm` and `.apk` packages, static binaries for Linux, macOS and Windows, an SPDX SBOM per platform, and a Sigstore provenance bundle you can verify offline:
 
-sudo apt install ./vaults3\_4.4.66\_amd64.deb
+sudo apt install ./vaults3\_4.4.69\_amd64.deb
 sudo systemctl enable --now vaults3
-gh attestation verify vaults3\_4.4.66\_amd64.deb --repo Kodiqa-Solutions/VaultS3
+gh attestation verify vaults3\_4.4.69\_amd64.deb --repo Kodiqa-Solutions/VaultS3
 
 Building from source is `make build`. Kubernetes is a Helm chart or a single manifest. All of it, plus the disk layout to use in production, is in the **installation guide**.
 
@@ -205,7 +205,7 @@ File browser, drag-and-drop upload, stats, IAM, audit, search, backups, in Engli
 
 **Access control**
 
-IAM users, groups and policies, OIDC/JWT SSO, LDAP, STS, per-bucket CORS, IP allowlists, audit trail. Guide
+IAM users, groups and policies, OIDC/JWT SSO, STS, external authorization webhook, per-bucket CORS, IP allowlists, audit trail. Guide
 
 **Encryption**
 

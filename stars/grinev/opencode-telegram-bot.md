@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1111
+stars: 1131
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -141,7 +141,7 @@ Description
 
 `/status`
 
-Server health, current project, session, and model info
+Bot version, server health, current project, session, and model info
 
 `/new`
 
@@ -266,6 +266,18 @@ Configuration
 -   Supported locales: `en`, `ar`, `de`, `es`, `fr`, `it`, `ko`, `pt`, `ru`, `zh`
 -   The setup wizard asks for language first
 -   You can change locale later with `BOT_LOCALE`
+
+### Local JSON Commands
+
+Trusted local commands live in `<appHome>/local-commands/`, one JSON file per command. The filename becomes the command name, so `quota.json` appears as `/quota` in Telegram’s command menu after the bot restarts:
+
+{
+  "description": "Show provider quota limits",
+  "exec": "node /home/you/bin/quota.js",
+  "allowWhenBusy": true
+}
+
+`description` and `exec` are required; `description` is a single line of at most 256 characters. Extra fields are ignored. Commands run through the platform shell with the bot’s OS permissions and inherited environment, from `<appHome>`; treat every file in this directory as trusted code. They receive no Telegram text or attachments, never invoke OpenCode, time out after 30 seconds, and are not listed in `/help` or `/commands`. `allowWhenBusy` defaults to `false`; it permits a command while OpenCode is working but never during an active bot interaction.
 
 ### Environment Variables
 
@@ -418,6 +430,14 @@ Projects per page in `/projects`
 No
 
 `10`
+
+`PROJECTS_EXCLUDED_PATHS`
+
+Comma-separated absolute paths hidden from `/projects` (exact worktree match)
+
+No
+
+_(none)_
 
 `OPEN_BROWSER_ROOTS`
 
@@ -657,9 +677,9 @@ Runtime preferences are changed from `/settings` and stored in `settings.json`:
 -   Diff file attachments
 -   Response streaming mode: `edit` or `draft (experimental)`; applies only to final assistant replies, not thinking messages
 -   Audio replies: `off`, `all`, or `auto` when TTS is configured
--   Message queue: hold text messages sent while the agent is busy instead of rejecting them
+-   Message queue: hold text, voice, photos, rich formatted messages with photos, documents, and media groups sent while the agent is busy instead of rejecting them
 
-With the message queue enabled, plain text sent while the agent is busy is held (up to 5 messages) instead of being turned down. Queued messages appear as buttons above the usual bottom-keyboard grid — tap one to drop it. They are sent one at a time as each run finishes, and the queue is cleared by `/abort` or a session/project switch.
+With the message queue enabled, text, transcribed voice, photos, rich formatted messages with photos, supported documents, and media groups sent while the agent is busy are held instead of being turned down. The queue holds at most `MAX_QUEUED_PROMPTS` (5) items and 20 MiB of raw Telegram media bytes in total; the limit is checked from reliable Telegram `file_size` metadata before media is downloaded or prepared, while base64 data-URI expansion is not counted. Queued media without a reliable source size is refused while the task is busy. Queued messages appear as buttons above the usual bottom-keyboard grid — tap one to drop it. They are sent one at a time as each run finishes, and the queue is cleared by `/abort` or a session/project switch.
 
 You can seed the initial defaults for any of these settings without hard-coding them in your Docker image by setting `INITIAL_SETTINGS_PRESET` to a JSON object. Only keys not yet persisted in `settings.json` are affected — settings the user has already changed via `/settings` are left untouched:
 

@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 37144
+stars: 37316
 description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
 url: https://github.com/soxoj/maigret
 ---
@@ -112,6 +112,15 @@ Video guide: https://youtu.be/qIgwTZOmMmM.
 ### Cloud Shells
 
 Run Maigret in the browser via cloud shells or Jupyter notebooks:
+
+### Snap (Linux)
+
+sudo snap install maigret
+
+# usage
+maigret username
+
+Available for amd64 and arm64, no Python required. The snap is strictly confined and can write inside your home directory, so run it from there. For USB drives, connect the interface once with `sudo snap connect maigret:removable-media`.
 
 ### Local installation (pip)
 

@@ -1,6 +1,6 @@
 ---
 project: video.js
-stars: 39869
+stars: 39877
 description: Video.js - open source HTML5 video player
 url: https://github.com/videojs/video.js
 ---

@@ -1,6 +1,6 @@
 ---
 project: ngx-markdown
-stars: 1191
+stars: 1193
 description: Angular markdown component/directive/pipe/service to parse static, dynamic or remote content to HTML with syntax highlight and more...
 url: https://github.com/jfcere/ngx-markdown
 ---
@@ -219,11 +219,17 @@ Using `markdown` component and/or directive, you will be able to use the `emoji`
 
 ### Math rendering
 
-> 🔔 Math rendering is **optional**, skip this step if you are not planning to use it
+> ⚠️ Math rendering is **optional**, and no KaTeX packages are required if you are not planning to use it. However, Angular applications using the Vite-based application builder may need to add `marked-katex-extension` to `externalDependencies` in the `build.options` section of `angular.json`:
+> 
+> {
+>   "externalDependencies": \["marked-katex-extension"\]
+> }
 
 To add KaTeX math rendering support to your application install the KaTeX runtime and the parser extension:
 
 npm install katex@^0.16.0 marked-katex-extension@^5.0.0 --save
+
+Applications using the `katex` property must install both `katex` and `marked-katex-extension`.
 
 To activate KaTeX math rendering you need to include the KaTeX stylesheet:
 

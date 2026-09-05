@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 65372
+stars: 65659
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -89,7 +89,7 @@ Cool Features of AnythingLLM
 -   Moonshot AI
 -   Microsoft Foundry Local
 -   CometAPI (chat models)
--   Docker Model Runner
+-   llmman
 -   PrivateModeAI (chat models)
 -   SambaNova Cloud (chat models)
 -   Lemonade by AMD

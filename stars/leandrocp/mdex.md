@@ -33,7 +33,7 @@ Features
 -   Discord Flavored Markdown (Partial)
 -   Wiki-style links
 -   Phoenix HEEx components and expressions
--   Streaming incomplete fragments
+-   Native Elixir Stream for Markdown chunks
 -   Emoji shortcodes
 -   Built-in Syntax Highlighting with Lumis or Syntect
 -   Code Block Decorators
@@ -138,10 +138,18 @@ iex\> ~MD\[\# Hello :smile:\]
 
 #### Streaming
 
-iex\> MDEx.new(streaming: true)
-...\> |> MDEx.Document.put\_markdown("\*\*Install")
-...\> |> MDEx.to\_html!()
-"<p><strong>Install</strong></p>"
+iex\> \["# Install \*\*MD", "Ex\*\*\\n\\n\`{:mdex,", " \\"~> 0.12\\"}\`\\n\\n", "Enjoy!"\]
+...\> |> MDEx.stream()
+...\> |> Enum.map(fn {id, document} \-> {id, MDEx.to\_html!(document)} end)
+\[
+  {0, "<h1>Install <strong>MD</strong></h1>"},
+  {0, "<h1>Install <strong>MDEx</strong></h1>"},
+  {1, "<p><code>{:mdex,</code></p>"},
+  {1, "<p><code>{:mdex, &quot;~&gt; 0.12&quot;}</code></p>"},
+  {2, "<p>Enjoy!</p>"}
+\]
+
+Streaming guide
 
 Examples and Guides
 -------------------

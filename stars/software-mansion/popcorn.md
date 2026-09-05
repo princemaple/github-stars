@@ -1,6 +1,6 @@
 ---
 project: popcorn
-stars: 717
+stars: 719
 description: Running Elixir in the browser
 url: https://github.com/software-mansion/popcorn
 ---
@@ -10,6 +10,10 @@ url: https://github.com/software-mansion/popcorn
 Popcorn is early stages and may break. Please report an issue if it does. Contributions are very welcome, but please open an issue before committing too much effort.
 
 Under the hood, Popcorn runs AtomVM, a tiny Erlang VM.
+
+### OTP prerelease
+
+The upcoming `0.4.0-next.0` release uses OTP/BEAM instead of AtomVM. It ships both `core` and `crypto` runtime variants, selected with the bundler plugin's `runtimeVariant` option. See the OTP setup guide for installation and configuration. The stable npm channel remains on AtomVM.
 
 Documentation
 -------------

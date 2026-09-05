@@ -1,6 +1,6 @@
 ---
 project: pgbouncer
-stars: 4342
+stars: 4348
 description: lightweight connection pooler for PostgreSQL
 url: https://github.com/pgbouncer/pgbouncer
 ---
@@ -203,7 +203,7 @@ The LDAP build option is currently not supported on Windows.
 Running on Windows
 ------------------
 
-Running from the command line goes as usual, except that the `-d` (daemonize), `-R` (reboot), and `-u` (switch user) switches will not work.
+Running from the command line goes as usual, except that the `-d` (daemonize) and `-u` (switch user) switches will not work.
 
 To run PgBouncer as a Windows service, you need to configure the `service_name` parameter to set a name for the service. Then:
 

@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 54823
+stars: 55173
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---
@@ -27,7 +27,7 @@ The same core powers two ways to run Motrix:
 🧪 Beta testing
 ---------------
 
-Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.28 from GitHub Releases and read the full release notes before installing it.
+Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.32 from GitHub Releases and read the full release notes before installing it.
 
 Back up your existing Motrix data and downloads before testing. Migration from Motrix v1 data has not yet been validated, so do not use your only copy of v1 data with this beta. When practical, test v2 in parallel using a separate OS account, machine, or Docker data directory.
 
@@ -52,7 +52,7 @@ Screenshots
 -   📊 Customizable Dashboard with transfer stats, live activity, and task tiles
 -   🔔 System notifications when downloads finish, plus an in-app notification center
 -   🧩 QuickJS-based plugin sandboxing, fine-grained permissions, and an in-app marketplace
--   🌐 Chrome and Firefox extensions that hand browser downloads off to Motrix in one click
+-   🌐 Motrix Extension for Chrome and Firefox hands browser downloads off to Motrix in one click
 -   ⌨️ Official `@motrix/cli` client for everyday shell use and AI agents
 -   🐳 Docker-ready headless server with secure device-code pairing for remote CLI and agent clients
 -   🎬 Extensible URL Resolver plugins for extracting media from supported sites
@@ -83,7 +83,7 @@ npm package
 
 Provides the `motrix` command, automatically discovers a local desktop app, and pairs with remote instances
 
-Motrix Browser Extension
+Motrix Extension
 
 Browser extension
 
@@ -148,7 +148,7 @@ Packages / channel
 
 Recommendation
 
-macOS 12+
+macOS 13+
 
 `arm64` (Apple Silicon), `x64` (Intel)
 
@@ -194,7 +194,7 @@ Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR
 
 mkdir -p motrix-data downloads
 sudo chown 1000:1000 motrix-data downloads
-export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.28'
+export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.32'
 export MOTRIX\_PUBLIC\_URL='http://nas.example.lan:8080'
 docker compose pull server
 docker compose up -d --wait
@@ -206,7 +206,7 @@ If the Web approval URL is temporarily unavailable, an SSH operator can list and
 docker compose exec server motrix-admin pairing pending
 docker compose exec server motrix-admin pairing approve ABCD-EFGH
 
-Remote CLI and agent clients pair through the device-code flow. Browser extensions pair with the desktop app through native messaging; first-time extension pairing is not provided by the headless server. Direct HTTP is appropriate only on a trusted LAN. Internet or untrusted-LAN access requires a TLS reverse proxy and firewall rules around the origin ports. See the Docker Server deployment guide for ownership setup, Docker Hub/GHCR image and tag selection, DSM 7 and fnOS installation, ports, diagnostics, and backup/upgrade instructions.
+Remote CLI and agent clients pair through the device-code flow. Browser extensions can pair with the headless Server when `MOTRIX_REMOTE_EXTENSION_ENABLED=true` and `MOTRIX_REMOTE_EXTENSION_PUBLIC_URL` is the WS/WSS address entered in the Extension. HTTPS remains the default operator requirement. A direct trusted-LAN HTTP operator additionally requires `MOTRIX_ALLOW_INSECURE_OPERATOR_HTTP=true` and produces a startup warning; never enable it on the Internet or an untrusted LAN. Internet access requires a TLS reverse proxy and firewall rules around the origin ports. See the Docker Server deployment guide for ownership setup, Docker Hub/GHCR image and tag selection, DSM 7 and fnOS installation, ports, diagnostics, and backup/upgrade instructions.
 
 🛠 Development
 --------------
@@ -246,7 +246,7 @@ Stack
 
 Desktop shell
 
-Electron 43
+Electron 44
 
 UI
 

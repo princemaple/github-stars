@@ -1,6 +1,6 @@
 ---
 project: documenso
-stars: 14805
+stars: 14904
 description: The Open Source DocuSign Alternative.
 url: https://github.com/documenso/documenso
 ---
@@ -68,7 +68,7 @@ Local Development
 
 To run Documenso locally, you will need
 
--   Node.js (v22 or above)
+-   Node.js (v24 or above)
 -   Postgres SQL Database
 -   Docker (optional)
 

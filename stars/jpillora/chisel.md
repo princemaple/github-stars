@@ -1,6 +1,6 @@
 ---
 project: chisel
-stars: 16465
+stars: 16492
 description: A fast TCP/UDP tunnel over HTTP
 url: https://github.com/jpillora/chisel
 ---
@@ -531,19 +531,19 @@ max udp packet bytes
 
 `UDP_DEADLINE`
 
-exit node
+both
 
 `15s`
 
-udp flow read deadline and idle-sweep age
+udp flow read deadline and return-peer expiry
 
 `UDP_MAX_CONNS`
 
-exit node
+both
 
 `100`
 
-max concurrent udp flows per tunnel
+max udp flows or return peers per tunnel
 
 `SHUTDOWN_GRACE`
 

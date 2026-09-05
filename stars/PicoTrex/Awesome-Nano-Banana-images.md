@@ -1,6 +1,6 @@
 ---
 project: Awesome-Nano-Banana-images
-stars: 23598
+stars: 23648
 description: A curated collection of fun and creative examples generated with Nano Banana & Nano Banana Pro🍌, Gemini-2.5-flash-image based model. We also release Nano-consistent-150K openly to support the community's development of image generation and unified models(click to website to see our blog)
 url: https://github.com/PicoTrex/Awesome-Nano-Banana-images
 ---
@@ -23,6 +23,7 @@ Note
 📰 News
 -------
 
+-   **2026年09月01日：** 我们发布了 **Editable-Design** ，这是一个可以通过鼠标自由交互的Design设计Skill，兼具Coding Agent与图像生成模型的优势。
 -   **2025年12月13日：** 7️⃣ 第七次仓库更新
 -   **2025年11月26日：** 6️⃣ 第六次仓库更新
 -   **2025年9月24日：** 5️⃣ 第五次仓库更新

@@ -1,6 +1,6 @@
 ---
 project: turndown
-stars: 11407
+stars: 11425
 description: 🛏 An HTML to Markdown converter written in JavaScript
 url: https://github.com/mixmark-io/turndown
 ---

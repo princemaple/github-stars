@@ -1,6 +1,6 @@
 ---
 project: kepler.gl
-stars: 11989
+stars: 11996
 description: Kepler.gl is a powerful open source geospatial analysis tool for large-scale data sets.
 url: https://github.com/keplergl/kepler.gl
 ---
@@ -65,9 +65,9 @@ Here are the basic steps to import kepler.gl into your app. You also take a look
 
 ### 1\. Mount reducer
 
-Kepler.gl uses Redux to manage its internal state, along with react-palm middleware to handle side effects.
+Kepler.gl uses Redux to manage its internal state, along with a built-in task middleware to handle async side effects.
 
-You need to add `taskMiddleware` of `react-palm` to your store too. We are actively working on a solution where `react-palm` will not be required, however it is still a very lightweight side effects management tool that is easier to test than react-thunk.
+You need to add `taskMiddleware` to your store. The easiest way is via `enhanceReduxMiddleware` from `@kepler.gl/reducers`:
 
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import keplerGlReducer, {enhanceReduxMiddleware} from '@kepler.gl/reducers';

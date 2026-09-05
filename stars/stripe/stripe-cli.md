@@ -1,6 +1,6 @@
 ---
 project: stripe-cli
-stars: 2163
+stars: 2172
 description: A command-line tool for Stripe
 url: https://github.com/stripe/stripe-cli
 ---
@@ -179,6 +179,59 @@ Because Docker containers are ephemeral, the `stripe login` command isn't suppor
 ### Without package managers
 
 Download the latest release for your platform from the GitHub Releases page and replace your existing binary.
+
+Uninstalling
+------------
+
+### 1\. Remove your plugins
+
+Package managers only remove the `stripe` binary; they leave installed plugins behind. Remove plugins first, while the `stripe` binary is still available:
+
+stripe plugin uninstall --all
+
+### 2\. Remove the CLI
+
+**npm (macOS, Linux, Windows):**
+
+npm uninstall -g @stripe/cli
+
+**Homebrew (macOS):**
+
+brew uninstall stripe
+
+**apt (Debian, Ubuntu):**
+
+sudo apt remove stripe
+
+**yum/dnf (RedHat, Fedora, CentOS):**
+
+sudo yum remove stripe
+
+**WinGet (Windows):**
+
+winget uninstall Stripe.StripeCLI
+
+**Scoop (Windows):**
+
+scoop uninstall stripe
+
+**Docker:**
+
+docker rmi stripe/stripe-cli
+
+**Without package managers:**
+
+Delete the `stripe` binary you downloaded.
+
+### 3\. Optionally remove configuration and credentials
+
+Uninstalling the CLI intentionally keeps your configuration, so reinstalling preserves your projects and settings. It is only removed if you remove it yourself:
+
+# Clear stored credentials for every project you are logged into
+stripe logout --all
+
+# Remove all remaining CLI configuration
+rm -rf "${XDG\_CONFIG\_HOME:-$HOME/.config}/stripe"
 
 Usage
 -----

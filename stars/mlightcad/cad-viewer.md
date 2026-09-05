@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 981
+stars: 1011
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -16,7 +16,7 @@ It also offers something you will rarely find in other CAD viewers—**one-click
 
 -   **🌐 Home Page**
 -   **🌐 Live Demo**: Netlify · GitHub Pages
--   **🌐 API Docs**: Read the Docs (versioned) · GitHub Pages (latest/dev) · MCP Server
+-   **🌐 API Docs**: Read the Docs (versioned) · MCP Server
 -   **🌐 Wiki**
 -   X (Twitter): @mlightcad
 -   YouTube: @mlightcad
@@ -107,6 +107,8 @@ pnpm preview:simple
 
 How to Use
 ----------
+
+New to CAD Viewer? The **User Guide** provides step-by-step instructions for the viewer interface, desktop and touch operations, markup, and measurement tools.
 
 ### Desktop Browser Operations
 

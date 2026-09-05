@@ -1,6 +1,6 @@
 ---
 project: date_time_parser
-stars: 79
+stars: 78
 description: Parse strings into DateTime, NaiveDateTime, Date, or Time  https://hexdocs.pm/date_time_parser
 url: https://github.com/taxjar/date_time_parser
 ---

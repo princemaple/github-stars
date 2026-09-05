@@ -1,6 +1,6 @@
 ---
 project: automerge
-stars: 6543
+stars: 6567
 description: A JSON-like data structure (a CRDT) that can be modified concurrently by different users, and merged again automatically. 
 url: https://github.com/automerge/automerge
 ---
@@ -132,6 +132,19 @@ docs:open:wasm      | Open refreshed docs
 
 $ rustc --version
 rustc 1.82.0 (f6e511eec 2024-10-15) # latest at time of writing
+
+CI entry points are also exposed by the flake. GitHub Actions invokes these same commands, so on Linux the complete non-Windows CI suite can be run with:
+
+$ nix run .#ci
+
+Individual jobs can be run while iterating, for example:
+
+$ nix run .#ci-fmt
+$ nix run .#ci-lint
+$ nix run .#ci-js-tests
+$ nix run .#ci-node18-packaging-test
+
+On macOS, `nix run .#ci` runs the native host test used by the macOS CI job. The native Windows job remains separate because Nix under WSL would test Linux rather than Windows.
 
 Contributing
 ------------

@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 61074
+stars: 61314
 description: Ultralytics YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -13,7 +13,7 @@ url: https://github.com/ultralytics/ultralytics
 
   
 
-Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at object detection, instance segmentation, semantic segmentation, image classification, and pose estimation tasks, and can track detected objects across video frames.
+Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at object detection, instance segmentation, semantic segmentation, depth estimation, image classification, and pose estimation tasks, and can track detected objects across video frames.
 
 Find detailed documentation in the Ultralytics Docs. Get support via GitHub Issues. Join discussions on Discord, Reddit, and the Ultralytics Community Forums!
 
@@ -122,7 +122,7 @@ YOLO26n
 
 2.4
 
-5.4
+5.5
 
 YOLO26s
 
@@ -138,7 +138,7 @@ YOLO26s
 
 9.5
 
-20.7
+20.9
 
 YOLO26m
 
@@ -154,7 +154,7 @@ YOLO26m
 
 20.4
 
-68.2
+68.4
 
 YOLO26l
 
@@ -170,7 +170,7 @@ YOLO26l
 
 24.8
 
-86.4
+86.8
 
 YOLO26x
 
@@ -186,7 +186,7 @@ YOLO26x
 
 55.7
 
-193.9
+194.4
 
 -   **mAPval** values refer to single-model single-scale performance on the COCO val2017 dataset. See YOLO Performance Metrics for details.  
     Reproduce with `yolo val detect data=coco.yaml device=0`
@@ -236,7 +236,7 @@ YOLO26n-seg
 
 2.7
 
-9.1
+9.3
 
 YOLO26s-seg
 
@@ -252,7 +252,7 @@ YOLO26s-seg
 
 10.4
 
-34.2
+34.5
 
 YOLO26m-seg
 
@@ -268,7 +268,7 @@ YOLO26m-seg
 
 23.6
 
-121.5
+121.7
 
 YOLO26l-seg
 
@@ -284,7 +284,7 @@ YOLO26l-seg
 
 28.0
 
-139.8
+140.1
 
 YOLO26x-seg
 
@@ -300,7 +300,7 @@ YOLO26x-seg
 
 62.8
 
-313.5
+314.0
 
 -   **mAPval** values are for single-model single-scale on the COCO val2017 dataset. See YOLO Performance Metrics for details.  
     Reproduce with `yolo val segment data=coco.yaml device=0`
@@ -338,7 +338,7 @@ YOLO26n-sem
 
 1.6
 
-22.7
+23.8
 
 YOLO26s-sem
 
@@ -350,7 +350,7 @@ YOLO26s-sem
 
 6.5
 
-88.8
+91.0
 
 YOLO26m-sem
 
@@ -362,7 +362,7 @@ YOLO26m-sem
 
 14.3
 
-304.5
+305.5
 
 YOLO26l-sem
 
@@ -372,9 +372,9 @@ YOLO26l-sem
 
 26.5 ± 0.1
 
-17.9
+17.8
 
-384.7
+388.2
 
 YOLO26x-sem
 
@@ -384,9 +384,9 @@ YOLO26x-sem
 
 48.9 ± 0.2
 
-40.2
+40.1
 
-861.7
+866.9
 
 -   **mIoUval** values are for single-model single-scale on the Cityscapes validation set.  
     Reproduce with `yolo semantic val data=cityscapes.yaml device=0 imgsz=2048`
@@ -436,7 +436,7 @@ YOLO26n-depth
 
 2.7 ± 0.1
 
-6.4
+6.3
 
 46.9
 
@@ -456,7 +456,7 @@ YOLO26s-depth
 
 13.2
 
-67.9
+68.0
 
 YOLO26m-depth
 
@@ -474,7 +474,7 @@ YOLO26m-depth
 
 23.3
 
-130.7
+130.4
 
 YOLO26l-depth
 
@@ -492,7 +492,7 @@ YOLO26l-depth
 
 27.7
 
-157.2
+157.0
 
 YOLO26x-depth
 
@@ -510,7 +510,7 @@ YOLO26x-depth
 
 57.0
 
-302.0
+301.7
 
 -   **delta1NYU** is the percentage of pixels where the predicted depth is within a factor of 1.25 of the ground truth, on the NYU Depth V2 Eigen test split (654 images) with multi-scale + horizontal-flip TTA and log-least-squares alignment.
 -   Single-scale accuracy without TTA is reproducible with `yolo depth val model=yolo26n-depth.pt data=nyu-depth.yaml imgsz=768 device=0` (substitute `model=` for each size), which uses median (scale-only) alignment and scores lower: delta1 0.785 (n), 0.786 (s), 0.827 (m), 0.839 (l), 0.843 (x).
@@ -562,7 +562,7 @@ YOLO26n-cls
 
 2.8
 
-0.5
+0.4
 
 YOLO26s-cls
 
@@ -578,7 +578,7 @@ YOLO26s-cls
 
 6.7
 
-1.6
+1.5
 
 YOLO26m-cls
 
@@ -594,7 +594,7 @@ YOLO26m-cls
 
 11.6
 
-4.9
+4.8
 
 YOLO26l-cls
 
@@ -610,7 +610,7 @@ YOLO26l-cls
 
 14.1
 
-6.2
+6.0
 
 YOLO26x-cls
 
@@ -626,7 +626,7 @@ YOLO26x-cls
 
 29.6
 
-13.6
+13.5
 
 -   **acc** values represent model accuracy on the ImageNet dataset validation set.  
     Reproduce with `yolo val classify data=path/to/ImageNet device=0`
@@ -676,7 +676,7 @@ YOLO26n-pose
 
 2.9
 
-7.5
+7.6
 
 YOLO26s-pose
 
@@ -692,7 +692,7 @@ YOLO26s-pose
 
 10.4
 
-23.9
+24.1
 
 YOLO26m-pose
 
@@ -708,7 +708,7 @@ YOLO26m-pose
 
 21.5
 
-73.1
+73.3
 
 YOLO26l-pose
 
@@ -724,7 +724,7 @@ YOLO26l-pose
 
 25.9
 
-91.3
+91.7
 
 YOLO26x-pose
 
@@ -740,7 +740,7 @@ YOLO26x-pose
 
 57.6
 
-201.7
+202.3
 
 -   **mAPval** values are for single-model single-scale on the COCO Keypoints val2017 dataset. See YOLO Performance Metrics for details.  
     Reproduce with `yolo val pose data=coco-pose.yaml device=0`
@@ -788,9 +788,9 @@ YOLO26n-obb
 
 2.8 ± 0.0
 
-2.5
+2.4
 
-14.0
+14.8
 
 YOLO26s-obb
 
@@ -806,7 +806,7 @@ YOLO26s-obb
 
 9.8
 
-55.1
+56.7
 
 YOLO26m-obb
 
@@ -822,7 +822,7 @@ YOLO26m-obb
 
 21.2
 
-183.3
+184.9
 
 YOLO26l-obb
 
@@ -838,7 +838,7 @@ YOLO26l-obb
 
 25.6
 
-230.0
+232.4
 
 YOLO26x-obb
 
@@ -854,7 +854,7 @@ YOLO26x-obb
 
 57.6
 
-516.5
+520.1
 
 -   **mAPtest** values are for single-model multiscale performance on the DOTAv1 test set.  
     Reproduce by `yolo val obb data=DOTAv1.yaml device=0 split=test` and submit merged results to the DOTA evaluation server.

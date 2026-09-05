@@ -1,6 +1,6 @@
 ---
 project: cloudflare_temp_email
-stars: 11583
+stars: 11639
 description: CloudFlare free temp domain email 免费收发 临时域名邮箱 支持附件 IMAP SMTP TelegramBot
 url: https://github.com/dreamhunter2333/cloudflare_temp_email
 ---

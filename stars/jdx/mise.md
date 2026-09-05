@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 33217
+stars: 33509
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---
@@ -23,7 +23,7 @@ View all sponsors
 
 Tip
 
-My latest project, aube just hit stable! It's the fastest Node.js package manager with strong security defaults and is compatible with npm/pnpm/yarn lockfiles!
+Rust builds filling every checkout's `target/`? Mr Boxington gives Cargo one shared, self-pruning cache across worktrees, local builds, and CI.
 
 What is it?
 -----------
@@ -58,7 +58,7 @@ $ ~/.local/bin/mise --version
  / / / / / / (\_\_  )  \_\_/\_\_\_\_\_/  \_\_/ / / /\_\_\_\_\_/ /\_/ / / /\_/ / /\_\_/  \_\_/
 /\_/ /\_/ /\_/\_/\_\_\_\_/\\\_\_\_/      \\\_\_\_/\_/ /\_/     / .\_\_\_/\_/\\\_\_,\_/\\\_\_\_/\\\_\_\_/
                                             /\_/                 by @jdx
-2026.8.14 macos-arm64 (2026-08-25)
+2026.9.1 macos-arm64 (2026-09-02)
 
 Hook mise into your shell (pick the right one for your shell):
 

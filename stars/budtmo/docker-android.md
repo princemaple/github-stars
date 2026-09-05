@@ -1,7 +1,7 @@
 ---
 project: docker-android
-stars: 15794
-description: Android in docker solution with noVNC supported and video recording
+stars: 15827
+description: Android in docker solution with noVNC supported, video recording and mcp server
 url: https://github.com/budtmo/docker-android
 ---
 
@@ -17,6 +17,7 @@ Advantages of using this project
 5.  Integrated with other cloud solutions, e.g. Genymotion Cloud
 6.  It can be used to build Android project
 7.  It can be used to run unit and UI-Test with different test-frameworks, e.g. Appium, Espresso, etc.
+8.  It support mcp server (beta-version)
 
 List of Docker-Images
 ---------------------
@@ -84,6 +85,14 @@ budtmo/docker-android:emulator\_14.0\_<release\_version>
 budtmo/docker-android:genymotion
 
 budtmo/docker-android:genymotion\_<release\_version>
+
+\-
+
+\-
+
+budtmo/docker-android:mcp
+
+budtmo/docker-android:mcp\_<release\_version>
 
 List of Devices
 ---------------
@@ -341,6 +350,13 @@ Yes (soon)
 Helpful for debugging
 
 This document contains detail information about how to use docker-android-pro.
+
+SPONSORS
+--------
+
+**Swiftproxy** — **Swiftproxy** provides high-quality residential proxies for Android testing, automation, and location-based workflows. With **90M+ residential IPs**, HTTP(S)/SOCKS5 support, flexible targeting, and **non-expiring traffic**, Swiftproxy helps users test apps and online services from different locations. **Try Swiftproxy for free today** and get **10% off with code PROXY90**.
+
+Learn more about Swiftproxy →
 
 LICENSE
 -------

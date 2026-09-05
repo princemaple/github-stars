@@ -1,6 +1,6 @@
 ---
 project: gitea
-stars: 57674
+stars: 57836
 description: Git with a cup of tea! Painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, package registry and CI/CD
 url: https://github.com/go-gitea/gitea
 ---
@@ -57,9 +57,9 @@ Translating
 
 Translations are done through Crowdin. If you want to translate to a new language, ask one of the managers in the Crowdin project to add a new language there.
 
-You can also just create an issue for adding a language or ask on Discord on the #translation channel. If you need context or find some translation issues, you can leave a comment on the string or ask on Discord. For general translation questions there is a section in the docs. Currently a bit empty, but we hope to fill it as questions pop up.
+You can also just create an issue for adding a language or ask on Discord on the #translation channel. If you need context or find some translation issues, you can leave a comment on the string or ask on Discord.
 
-Get more information from documentation.
+Get more information from the translation section of our contributing guide.
 
 Official and Third-Party Projects
 ---------------------------------
@@ -101,7 +101,7 @@ Gitea is pronounced /ɡɪ’ti:/ as in "gi-tea" with a hard g.
 
 For dynamic config options, you can change it on your admin panel's configuration section.
 
-For static config options, you can edit your `app.ini` file and resart the instance. See app.example.ini or configuration documentation for more details.
+For static config options, you can edit your `app.ini` file and restart the instance. See app.example.ini or configuration documentation for more details.
 
 **Where can I find the security patches?**
 

@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 41552
+stars: 42008
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -129,12 +129,33 @@ agent-browser snapshot                # Accessibility tree with refs (best for A
 agent-browser eval <js\>               # Run JavaScript (-b for base64, --stdin for piped input)
 agent-browser connect <port\>          # Connect to browser via CDP
 agent-browser stream enable \[--port <port\>\]  # Start runtime WebSocket streaming
+agent-browser webmcp list                     # List experimental page tools
+agent-browser webmcp invoke <tool\> --params @input.json
 agent-browser stream status           # Show runtime streaming state and bound port
 agent-browser stream disable          # Stop runtime WebSocket streaming
 agent-browser close                   # Close browser (aliases: quit, exit)
 agent-browser close --all             # Close all active sessions
 agent-browser chat "<instruction>"    # AI chat: natural language browser control (single-shot)
 agent-browser chat                    # AI chat: interactive REPL mode
+
+### WebMCP (experimental)
+
+WebMCP tools are ready by default in agent-browser-managed Chrome. Use `--no-webmcp` to disable the launch features.
+
+agent-browser open https://example.com
+agent-browser webmcp list
+agent-browser webmcp invoke search --params '{"query":"browser agents"}'
+agent-browser webmcp invoke slow\_tool --params @input.json --detach
+agent-browser webmcp result <invocation-id\>
+agent-browser webmcp cancel <invocation-id\>
+
+Use `--frame <frame-id>` when duplicate tool names are registered in multiple frames. Page-provided descriptions, schemas, annotations, and results are untrusted. Page JavaScript registers `readOnlyHint` and `untrustedContentHint`; CDP exposes those claims as `readOnly` and `untrustedContent`. The page tool executor owns authorization, and the agent host must confirm consequential actions.
+
+The optional MCP profile keeps these generic tools out of the default profile:
+
+agent-browser mcp --tools core,webmcp
+
+For sites without WebMCP tools, load the generation and validation workflow with `agent-browser skills get webmcp-gen`.
 
 ### Get Info
 
@@ -343,6 +364,10 @@ agent-browser trace start             # Start recording trace
 agent-browser trace stop \[path\]       # Stop and save trace
 agent-browser profiler start          # Start Chrome DevTools profiling
 agent-browser profiler stop \[path\]    # Stop and save profile (.json)
+agent-browser record start ./demo.webm           # Start video recording at 30 fps
+agent-browser record start ./demo.webm --fps 60  # 60 fps for motion-heavy takes (1-60 allowed)
+agent-browser record stop                        # Stop and save the video
+agent-browser record restart ./take2.webm        # Stop the current recording, start a new one
 agent-browser console                 # View console messages (log, error, warn, info)
 agent-browser console --json          # JSON output with raw CDP args for programmatic access
 agent-browser console --clear         # Clear console
@@ -1071,6 +1096,10 @@ Show browser window (not headless) (or `AGENT_BROWSER_HEADED` env)
 
 Enable WebGPU; SwiftShader software Vulkan on Linux, no GPU required (or `AGENT_BROWSER_WEBGPU` env)
 
+`--no-webmcp`
+
+Disable experimental WebMCP support, which is enabled by default for locally launched Chrome (or `AGENT_BROWSER_NO_WEBMCP` env)
+
 `--cdp <port|url>`
 
 Connect via Chrome DevTools Protocol (port or WebSocket URL)
@@ -1166,7 +1195,28 @@ agent-browser open example.com
 # Stop the dashboard
 agent-browser dashboard stop
 
-The dashboard runs as a standalone background process on port 4848, independent of browser sessions. It stays available even when no sessions are running, and it works from `http://localhost:4848` or a proxied/forwarded URL that reaches the dashboard server, such as `https://dashboard.agent-browser.localhost` or a Coder workspace URL. The browser stays on the dashboard origin; session-specific tabs, status, and stream traffic are proxied internally, so session ports do not need to be exposed.
+Option
+
+Description
+
+`--port <n>`
+
+Dashboard port from 1 to 65535. The default is 4848.
+
+`--allowed-origins <origins>`
+
+Comma-separated exact HTTPS origins allowed to access a reverse-proxied dashboard. Every entry must be valid. Without this option, only loopback origins are accepted.
+
+The dashboard runs as a standalone background process on port 4848, independent of browser sessions. It stays available even when no sessions are running. Local dashboard origins (`localhost`, `127.0.0.1`, and `[::1]`) work without configuration. If you expose it through a reverse proxy or forwarded URL, explicitly allow the browser origin so the server can reject cross-origin requests and DNS-rebinding attacks:
+
+agent-browser dashboard start --allowed-origins https://dashboard.example.com
+# Or: AGENT\_BROWSER\_DASHBOARD\_ALLOWED\_ORIGINS=https://dashboard.example.com agent-browser dashboard start
+
+The command prints private access URLs only for the allowed external origins. Open the matching URL once to establish the browser session; it includes an unguessable access token in its fragment. The browser stores it in a Secure, host-bound, same-site cookie for dashboard API and stream requests. Keep these URLs private and configure your reverse proxy to redact cookies from logs. Loopback URLs do not require or receive this token, so open `http://localhost:<port>` directly for local access. The browser stays on the dashboard origin; session-specific tabs, status, and stream traffic are proxied internally, so session ports do not need to be exposed.
+
+Repeated starts with the same settings reuse the running dashboard. To change the port or allowed origins, run `agent-browser dashboard stop` before starting it with the new settings.
+
+Dashboard options are validated strictly. Unknown options, invalid ports, missing values, and malformed allowed origins fail without starting the server.
 
 The dashboard displays:
 
@@ -1533,6 +1583,8 @@ The `--cdp` flag accepts either:
 
 -   A port number (e.g., `9222`) for local connections via `http://localhost:{port}`
 -   A full WebSocket URL (e.g., `wss://...` or `ws://...`) for remote browser services
+
+Root WebSocket endpoints accept query strings with or without an explicit slash, so both `wss://browser-service.com?token=...` and `wss://browser-service.com/?token=...` work.
 
 This enables control of:
 

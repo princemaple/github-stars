@@ -1,45 +1,26 @@
 ---
 project: ToolJet
-stars: 40790
-description: ToolJet is the open-source foundation of ToolJet AI - the enterprise app generation platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀
+stars: 40848
+description: Open-source foundation of ToolJet AI - the enterprise app generation platform for internal tools, dashboards, business applications, workflows and AI agents. Build visually, from a prompt, or from Claude Code, Codex and Cursor over MCP 🚀
 url: https://github.com/ToolJet/ToolJet
 ---
 
-ToolJet is the open-source foundation of ToolJet AI - the AI-native platform for building and deploying internal tools, workflows and AI agents. The community edition provides a powerful visual builder, drag-and-drop UI, and integrations with databases, APIs, SaaS apps, and object storage. For AI-powered UI generation, query building, debugging, and enterprise features, see ToolJet AI.
+ToolJet is an open-source platform for building internal tools: admin panels, dashboards, and operational apps that run on your existing databases, APIs, and SaaS systems.
+
+Build them by prompting. ToolJet AI turns a description into pages, queries, and components, and the coding agent you already use can do the same through ToolJet's MCP server. Agents build against ToolJet's real component and data contracts rather than emitting free-form code, so what you get is an actual ToolJet app: one your team keeps editing in the visual builder, under the same permissions, environments, and version history as everything else.
+
+Self-host it, or use ToolJet Cloud.
 
 ⭐ If you find ToolJet useful, please consider giving us a star on GitHub! Your support helps us continue to innovate and deliver exciting features.
 
-Features
---------
+Build with your coding agent
+----------------------------
 
-### Community Edition (CE)
+ToolJet ships a Model Context Protocol server, so the coding agent you already use can build ToolJet apps directly: generating pages, queries, and components from a prompt, and modifying existing apps in place.
 
--   **Visual App Builder:** 60+ responsive components (Tables, Charts, Forms, Lists, Progress Bars, and more).
--   **ToolJet Database:** Built-in no-code database.
--   **Multi-page Apps & Multiplayer Editing:** Build complex apps collaboratively.
--   **80+ Data Sources:** Connect to databases, APIs, cloud storage, and SaaS tools.
--   **Flexible Deployment:** Self-host with Docker, Kubernetes, AWS, GCP, Azure, and more.
--   **Collaboration Tools:** Inline comments, mentions, and granular access control.
--   **Extensibility:** Create plugins and connectors with the ToolJet CLI.
--   **Code Anywhere:** Run JavaScript and Python inside your apps.
--   **Secure by Design:** AES-256-GCM encryption, proxy-only data flow, SSO support.
+Works with **Claude Code**, **Codex**, and **Grok Build** as plugins that bundle ToolJet's app-builder skill, and with **Cursor** or any other MCP-compatible client over the MCP server alone. Agents build against ToolJet's governed first-party contracts, so they work from the platform's real schemas instead of guessing at them, and operations run on your own model subscription rather than drawing down ToolJet AI credits.
 
-### ToolJet AI (Enterprise)
-
-Everything in CE, plus:
-
--   **AI App Generation:** Create apps instantly from natural language prompts.
--   **AI Query Builder:** Generate and transform queries with AI assistance.
--   **AI Debugging:** Identify and fix issues with one click.
--   **Agent Builder:** Create intelligent agents to automate workflows and orchestrate processes.
--   **Enterprise-grade Security & Compliance:** SOC 2 and GDPR readiness, audit logs, and advanced access control.
--   **User Management:** Role-based access (RBAC), custom groups, and granular app/data permissions.
--   **Multi-environment Management:** Seamless dev/stage/prod environments.
--   **GitSync & CI/CD:** Integrate with GitHub/GitLab for version control and streamlined deployments.
--   **Branding & Customization:** White-labeling, and custom theming for organizational branding.
--   **Fine-Grained Access Control:** Secure data and actions at the row, component, page, and query levels.
--   **Embedded Apps:** Embed ToolJet apps securely within other applications or portals.
--   **Enterprise Support:** SLAs, priority bug fixes, and onboarding assistance.
+ToolJet MCP is currently in beta. See the ToolJet MCP guide to set it up.
 
 * * *
 
@@ -61,6 +42,42 @@ docker run \\
   tooljet/try:ee-lts-latest
 
 _For users upgrading their ToolJet version, we recommend choosing the LTS version over the latest version. The LTS version ensures stability with production bug fixes, security patches, and performance enhancements._
+
+Features
+--------
+
+### Community Edition (CE)
+
+-   **Visual App Builder:** 80+ responsive components (Tables, Charts, Forms, Lists, Progress Bars, and more).
+-   **ToolJet Database:** Built-in no-code database.
+-   **Multi-page Apps & Multiplayer Editing:** Build complex apps collaboratively.
+-   **90+ Data Sources:** Connect to databases, APIs, cloud storage, and SaaS tools.
+-   **Flexible Deployment:** Self-host with Docker, Kubernetes, AWS, GCP, Azure, and more.
+-   **Collaboration Tools:** Inline comments, mentions, and granular access control.
+-   **Extensibility:** Create plugins and connectors with the ToolJet CLI.
+-   **Code Anywhere:** Run JavaScript and Python inside your apps.
+-   **Secure by Design:** AES-256-GCM encryption, proxy-only data flow, SSO support.
+
+### ToolJet AI (Enterprise)
+
+Everything in CE, plus:
+
+-   **AI App Generation:** Create apps instantly from natural language prompts.
+-   **AI Query Builder:** Generate and transform queries with AI assistance.
+-   **AI Debugging:** Identify and fix issues with one click.
+-   **Agent Builder:** Create intelligent agents to automate workflows and orchestrate processes.
+-   **Workflows:** Automate multi-step processes with branching logic, on a schedule or triggered by webhook.
+-   **Modules:** Build reusable units of UI and logic once, then use them across multiple apps.
+-   **Enterprise-grade Security & Compliance:** SOC 2 and GDPR readiness, audit logs, and advanced access control.
+-   **User Management:** Role-based access (RBAC), custom groups, SCIM provisioning, and granular app/data permissions.
+-   **Multi-environment Management:** Seamless dev/stage/prod environments.
+-   **GitSync & CI/CD:** Integrate with GitHub/GitLab for version control, app version history, and streamlined deployments.
+-   **Branding & Customization:** White-labeling, custom domains, and custom theming for organizational branding.
+-   **Fine-Grained Access Control:** Secure data and actions at the row, component, page, and query levels.
+-   **Embedded Apps:** Embed ToolJet apps securely within other applications or portals.
+-   **Enterprise Support:** SLAs, priority bug fixes, and onboarding assistance.
+
+* * *
 
 Tutorials and examples
 ----------------------

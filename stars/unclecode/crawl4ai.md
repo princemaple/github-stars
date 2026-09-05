@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 79938
+stars: 81591
 description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -21,9 +21,11 @@ _We’ll be onboarding in phases and working closely with early users. Limited s
 
 Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
 
-✨ Check out latest update v0.9.2
+✨ Check out latest update v0.9.3
 
-✨ **New in v0.9.2**: Maintenance patch release. Fixes a `MemoryAdaptiveDispatcher` task/page leak when a streaming crawl is closed, Docker Playground "Advanced Config" and Monitor WebSocket auth, Playwright headless-shell packaging, and GPU (`ENABLE_GPU=true`) Docker builds. Release notes →
+✨ **New in v0.9.3**: Security release. Closes five coordinated-disclosure advisories: arbitrary file write, SSRF, and denial of service in the PDF processing path, plus two XSS issues in the Docker Playground. Also ships 33 bug fixes across the Docker server, crawler, and PDF handling. No new features, no breaking changes. Release notes →
+
+✨ Recent v0.9.2: Maintenance patch release. Fixes a `MemoryAdaptiveDispatcher` task/page leak when a streaming crawl is closed, Docker Playground "Advanced Config" and Monitor WebSocket auth, Playwright headless-shell packaging, and GPU (`ENABLE_GPU=true`) Docker builds. Release notes →
 
 ✨ Recent v0.9.0: Major secure-by-default release of the Docker API server. Auth is on by default, the server binds loopback unless given a token, and the request body is now an untrusted trust boundary. Release notes →
 
@@ -480,6 +482,18 @@ async def test\_news\_crawl():
 
 ✨ Recent Updates
 ----------------
+
+**Version 0.9.3 Release Highlights - Security Release**
+
+A security release closing five coordinated-disclosure advisories. Four are in the PDF processing path: an arbitrary file write through `PDFContentScrapingStrategy` image-write fields, an SSRF where the PDF download followed redirects into internal addresses, a denial of service from unbounded PDF size and page count, and an XSS from unescaped PDF text in `cleaned_html`. The fifth is a DOM-based XSS in the Docker Playground that could expose the operator's API token.
+
+It also carries 33 bug fixes that accumulated since 0.9.2: PDF scraping now works out of the box on the Docker server, the egress proxy chains through an upstream proxy, failed crawl results are reported instead of dropped, a Playwright driver leak on failed browser launch is fixed, and PDF crawls are no longer wrongly flagged as anti-bot blocks.
+
+No new features, no breaking changes. Two defaults changed: PDF downloads now cap at 100 MiB and 2000 pages, and the Docker `limits.wall_clock_s` is now 300 seconds instead of 0.
+
+pip install -U crawl4ai
+
+Full v0.9.3 Release Notes →
 
 **Version 0.9.2 Release Highlights - Maintenance Bug Fixes**
 

@@ -1,6 +1,6 @@
 ---
 project: open-webui
-stars: 150347
+stars: 151061
 description: User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
 url: https://github.com/open-webui/open-webui
 ---
@@ -8,15 +8,13 @@ url: https://github.com/open-webui/open-webui
 Open WebUI 👋
 =============
 
-**Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
+Open WebUI is **a home for AI**, a self-hosted AI platform that's **extensible**, **feature-rich**, user-friendly, and built to run **entirely offline**. With support for **Ollama** and **OpenAI-compatible APIs**, it gives you a powerful, provider-agnostic interface for both local and cloud-based models.
 
 Passionate about open-source AI? Join our team →
 
 Tip
 
 **Looking for an Enterprise Plan?** – **Speak with Our Sales Team Today!**
-
-Get **enhanced capabilities**, including **custom theming and branding**, **Service Level Agreement (SLA) support**, **Long-Term Support (LTS) versions**, and **more!**
 
 For more information, be sure to check out our Open WebUI Documentation.
 

@@ -1,6 +1,6 @@
 ---
 project: nerd-fonts
-stars: 64458
+stars: 64528
 description: Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more
 url: https://github.com/ryanoasis/nerd-fonts
 ---
@@ -27,15 +27,14 @@ Table of Contents
 **Installation Options**
 
 -   **1 - Release Archive Download**
--   **2 - Homebrew Fonts (macOS (OS X))**
--   **3 - Chocolatey or Scoop (Windows)**
--   **4 - Arch Linux Repository (Extra, AUR)**
--   **5 - PowerShell Installer (Multi-Platform)**
--   **6 - Ad Hoc Curl Download**
--   **7 - Install Script**
--   **8 - Use Fontfallback**
--   **9 - Clone Repo**
--   **10 - Patch Your Own Font**
+-   **2 - Homebrew Fonts (macOS/Linux)**
+-   **3 - Install Script**
+-   **4 - Chocolatey or Scoop (Windows)**
+-   **5 - Arch Linux Repository (Extra, AUR)**
+-   **6 - PowerShell Installer (Multi-Platform)**
+-   **7 - Use Fontfallback**
+-   **8 - Clone Repo**
+-   **9 - Patch Your Own Font**
 
 **Features**
 
@@ -70,15 +69,14 @@ Nerd Fonts takes popular programming fonts and adds a bunch of Glyphs. There is 
 _If you..._
 
 -   `Option 1.` want to download a **font family** package of variations (bold, italic, etc.) see download an archive
--   `Option 2.` are on **macOS** and want to use **Homebrew** see Homebrew Fonts
--   `Option 3.` are on **Windows** and want to use **Chocolatey** or **Scoop** see Unofficial Chocolatey or Scoop Repositories
--   `Option 4.` are on **Arch Linux** and want to use **Extra packages** see Arch Extra Repositories
--   `Option 5.` are using **PowerShell** and want an **interactive setup** or **use in scripts** see the PowerShell Installer
--   `Option 6.` want to use the **`curl` command** or use in **scripts** see Ad Hoc Curl Download
--   `Option 7.` want to **automate** installing or use in **scripts** see the Install Script
--   `Option 8.` want to install only one font for all fonts see Font Fallback
--   `Option 9.` want **complete control** then see cloning the repo
--   `Option 10.` want to patch your own font see the Font Patcher
+-   `Option 2.` are on **macOS** or **Linux** and want to use **Homebrew** see Homebrew Fonts
+-   `Option 3.` want to **automate** installing or use in **scripts** see the Install Script
+-   `Option 4.` are on **Windows** and want to use **Chocolatey** or **Scoop** see Unofficial Chocolatey or Scoop Repositories
+-   `Option 5.` are on **Arch Linux** and want to use **Extra packages** see Arch Extra Repositories
+-   `Option 6.` are using **PowerShell** and want an **interactive setup** or **use in scripts** see the PowerShell Installer
+-   `Option 7.` want to install only one font for all fonts see Font Fallback
+-   `Option 8.` want **complete control** then see cloning the repo
+-   `Option 9.` want to patch your own font see the Font Patcher
 
 Features
 --------
@@ -725,15 +723,42 @@ curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBra
 
 ### `Option 2: Homebrew Fonts`
 
-> Best option if on **macOS** and want to use **Homebrew**.
+> Best option if you want to use **Homebrew**.
 
-All fonts are available via Homebrew Cask on macOS (OS X)
+All fonts are available via Homebrew Cask on macOS or Linux
 
 brew install font-hack-nerd-font
 
 _On Linux you have to add `--cask` after `install`._
 
-### `Option 3: Unofficial Chocolatey or Scoop Repositories`
+### `Option 3: Install Script`
+
+To install fonts from (latest) release use this script.
+
+> Best option if you want to **automate** installing or for use in **scripts**.
+
+Only available for Linux / MacOS. It downloads the release artifacts of the latest or any other release and installs the files.
+
+If you install all patched Fonts: _Warning: This is a lot of Fonts adding up to a large size_
+
+The script is a standalone tool that you can download individually, use like the following. No need to clone the complete repository (which does not contain all patched fonts anyhow).
+
+curl -s https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh -o install.sh
+chmod u+x install.sh
+./install.sh --help
+
+Examples:
+
+./install.sh list
+./install.sh install <FontName\>
+./install.sh install Hack
+./install.sh install HeavyData
+./install.sh install all
+./install.sh install # interactive mode
+VERBOSE=3 ./install.sh install DaddyTimeMono
+GH\_RELEASE\_TAG=v3.2.1 ./install.sh list
+
+### `Option 4: Unofficial Chocolatey or Scoop Repositories`
 
 > Option for **Windows** and wanting to use **Chocolatey** or **Scoop**.
 
@@ -746,13 +771,13 @@ Scoop users can download fonts using the Scoop bucket for Nerd Fonts:
 scoop bucket add nerd\-fonts
 scoop install Hack\-NF
 
-### `Option 4: Arch Extra Repository`
+### `Option 5: Arch Extra Repository`
 
 > Option for **Arch Linux** and wanting to use **Extra packages**.
 
 Most fonts are available via Arch Extra packages. Some special packages are in AUR.
 
-### `Option 5: PowerShell Installer`
+### `Option 6: PowerShell Installer`
 
 > Best option for **interactive setup guidance** or **automating** installations through **PowerShell scripts**.
 
@@ -784,59 +809,7 @@ To install specific fonts directly, use the following command:
 
 & (\[scriptblock\]::Create((iwr 'https://to.loredo.me/Install-NerdFont.ps1'))) \-Name hack, heavy\-data
 
-### `Option 6: Ad Hoc Curl Download`
-
-> Option if you want to use the **`curl` command** or for use in **scripts**.
-
-_Note_: Will not work to get newer fonts as they are not inside the repo anymore.
-
-#### Linux
-
-mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
-
-_Note:_ deprecated alternative paths: `~/.fonts`
-
-#### macOS (OS X)
-
-cd ~/Library/Fonts && curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/DroidSansMono/DroidSansMNerdFont-Regular.otf
-
-### `Option 7: Install Script`
-
-> Best option if you want to **automate** installing or for use in **scripts**.
-
-_Note_:
-
--   **Requires (shallow) cloning** the repo as of now :-(
--   Will not work to get newer fonts as they are not inside the repo anymore.
-
-#### All fonts:
-
--   Installs all the patched Fonts (_Warning: This is a lot of Fonts adding up to a large size_)
-
-./install.sh
-
-or, in PowerShell (Windows only):
-
-./install.ps1
-
-#### Single font:
-
--   Installs a single Font of your choice
-
-./install.sh <FontName\>
-./install.sh Hack
-./install.sh HeavyData
-
-or, in PowerShell (Windows only):
-
-./install.ps1 <FontName\>
-./install.ps1 Hack
-./install.ps1 HeavyData
-./install.ps1 FiraCode, Hack
-./install.ps1 DejaVuSansMono \-WhatIf
-
-### `Option 8: Font Fallback`
+### `Option 7: Font Fallback`
 
 Most systems have a mechanism to search for an alternative font when the current font does not have a glyph that is needed. For example you edit a Latin text and insert a Chinese character, that glyph is taken not from your active font (it does not have it) but from some other font.
 
@@ -847,7 +820,7 @@ For fontconfig based systems like Linux you can improve the behavior with the `1
 -   Pro: One symbol font is sufficient for all text fonts
 -   Con: Scaling and placement of the fallback symbols can be hit or miss
 
-### `Option 9: Clone the Repo`
+### `Option 8: Clone the Repo`
 
 > Best option for **full control**, **all** or **some** of the fonts, or **contributing** to development.
 
@@ -869,7 +842,7 @@ git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
 cd nerd-fonts
 git sparse-checkout add patched-fonts/JetBrainsMono
 
-### `Option 10: Patch Your Own Font`
+### `Option 9: Patch Your Own Font`
 
 > The option for **patching** your **own font** or fully **customizing** the patched font.
 

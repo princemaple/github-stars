@@ -1,6 +1,6 @@
 ---
 project: tinyauth
-stars: 8181
+stars: 8204
 description: The tiniest OpenID Certified™ authorization and authentication server you have ever seen.
 url: https://github.com/tinyauthapp/tinyauth
 ---
@@ -85,4 +85,4 @@ Acknowledgements
 
 -   **Freepik** for providing the police hat and badge.
 -   **Renee French** for the original gopher logo.
--   **Syrhu** for providing the background image of the app.
+-   Siru Zhou for providing the background image of the app.

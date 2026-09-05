@@ -13,7 +13,7 @@ Combination of these two repos: S3 Upload Action and Cloudflare R2 Upload.
 
 Important
 
-Node.js 20 is now required to run this action.
+Node.js 24 is now required to run this action.
 
 Usage
 -----

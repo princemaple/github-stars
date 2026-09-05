@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 14560
+stars: 14596
 description: :file_folder: Universal File Storage Client
 url: https://github.com/mickael-kerjean/filestash
 ---
@@ -8,11 +8,13 @@ url: https://github.com/mickael-kerjean/filestash
 What is this?
 =============
 
-It started as a storage agnostic Dropbox-like file manager that works with every storage protocol: FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more.
+Filestash started as a storage agnostic Dropbox-like file manager that speaks every storage protocol (FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more). It grew into what we want to be the world's best file management platform, centered around **3 pillars**:
 
-It grew into what we want to be the world's best file management platform. Around the core engine sit 3 pillars: the web client, a native drive client, and gateways to expose storages over any protocol.
+1.  **Web client** _(the file manager available from your browser)_: documentation / screenshot
+2.  **Native client** _(to sync your data on your device)_: repo / screenshots for mac, windows, linux, android & iphone
+3.  **Gateways** _(to expose your storages over any protocol)_: showcase
 
-The engine follows one rule: everything that's not a fundamental truth of the universe lives in a plugin. Where other platforms are take-it-or-leave-it, ours gives you a rock solid core and a plugin system to handle opinions, so however deep requirements go, the only limit won't be technical but your own creativity.
+The philosophy that guides this project is: "anything that's not a fundamental truth of the universe lives in a plugin". That keeps the core lean and fast, and the opinions replaceable, so when your requirements get deep or weird, the answer is a plugin, not a fork.
 
 Key Features
 ============
@@ -39,40 +41,68 @@ Key Features
 -   Themes:  
     
 -   AI features for search, smart folders and OCRs.
--   ... and much much more (versioning, audit, public site, antivirus, quota, chat, chromecast support, on demand video transcoding, mounting shared links as network drive, ....)  
+-   ... and much much more (versioning, audit, public site, antivirus, quota, chat, chromecast support, on demand video transcoding, mounting shared links as network drive, ...)  
     As a rule of thumb, if your problem involves files, we either already have a plugin for it or can make a plugin for it
+
+Plugins
+=======
+
+**Malleability** isn't an afterthought, it's the whole architecture:
+
+> anything that's not a fundamental truth of the universe lives in a plugin
+
+Taken literally, the "truths of the universe" are a set of core interfaces, one for every key component of Filestash, and they're yours to implement (storage, authentication, authorisation, search, thumbnailing, apps, middleware, frontend changes, ...)
+
+The oldest one is the storage interface, the one at work whenever you connect to a storage:
+
+type IBackend interface {
+	Ls(path string) (\[\]os.FileInfo, error)
+	Stat(path string) (os.FileInfo, error)
+	Cat(path string) (io.ReadCloser, error)
+	Mkdir(path string) error
+	Rm(path string) error
+	Mv(from string, to string) error
+	Save(path string, file io.Reader) error
+	Touch(path string) error
+}
+
+Historically, plugins were made in Go and compiled in. Today there's a second path: runtime plugins, a zip you drop in the plugins folder. The zip can reshape the frontend and it can carry wasm implementing the very same core interfaces. That wasm runs in a VM with tight control on permissions: no declared network host, no way to phone home. Installing a plugin doesn't mean trusting it with everything.
+
+For example:
+
+use filestash::\*;
+
+#\[derive(Default)\]
+pub struct Plugin;
+
+impl Authorisation for Plugin {
+    fn ls(&self, \_ctx: &Context, path: &str) -> Decision {
+        self.check(path)
+    }
+    fn cat(&self, \_ctx: &Context, path: &str) -> Decision { ... }
+    fn stat(&self, \_ctx: &Context, path: &str) -> Decision { ... }
+}
+
+impl Plugin {
+    fn check(&self, path: &str) -> Decision {
+        if path.split("/").any(|segment| segment == "top\_secret") {
+            log::warn!("\[TOPSECRET\] access denied !!");
+            return Decision::Deny;
+        }
+        Decision::Allow
+    }
+}
+
+register!(Plugin: Authorisation);
+
+These few lines give you a readonly view of your data where every folder named "top\_secret" is off limits. For more examples, browse the plugin folder, the runtime plugin cookbook, and the plugin marketplace.
+
+And to be clear, code is the power-user path, there are no code options
 
 Getting Started
 ===============
 
 To install Filestash, head to the Getting started guide. If you want to leverage plugins, head over to the inventory, or learn about developing your own plugins.
-
-If you want guidance and expert help on your file management problem, book a call and let's figure out if Filestash is the right platform for you.
-
-Vision & Philosophy
-===================
-
-Our goal is simple: **to build the best file management platform ever made. Period.** But "best" means different things to different people, so we made everything pluggable. The core defines interfaces, plugins implement them. Disagree with our implementation? Write your own. Anything that isn't a fundamental truth of the universe and might spark a debate belongs in a plugin. Literally every piece listed in the key features is a plugin you can swap for another implementation or remove entirely.
-
-Say you want to give your users a Dropbox like experience on top of your existing FTP server (remember the FTP guy during the Dropbox launch on HN?). All the FTP plugin does is implement this interface:
-
-type IBackend interface {
-	Ls(path string) (\[\]os.FileInfo, error)           // list files in a folder
-	Stat(path string) (os.FileInfo, error)           // file stat
-	Cat(path string) (io.ReadCloser, error)          // download a file
-	Mkdir(path string) error                         // create a folder
-	Rm(path string) error                            // remove something
-	Mv(from string, to string) error                 // rename something
-	Save(path string, file io.Reader) error          // save a file
-	Touch(path string) error                         // create a file
-
-	// I have omitted 2 other methods, a first one to enable connections reuse and
-	// another one to declare what should the login form be like.
-}
-
-There are interfaces you can implement for every key component of Filestash: from storage, to authentication, authorisation, custom apps, search, thumbnailing, frontend patches, middleware, endpoint creation and a few others documented in the plugin development guide.
-
-To see what's currently installed in your instance, head over to /about. The inventory of plugins is documented here
 
 Support
 =======
@@ -83,7 +113,12 @@ Support
     -   Bitcoin: `3LX5KGmSmHDj5EuXrmUvcg77EJxCxmdsgW`
     -   Open Collective
 
+Why
+===
+
+Familiar with the infamous comment from Dropbox's launch on HN? In my memory it goes like this:
+
 Credits
 =======
 
-Filestash stands on the shoulder of: contributors, folks developing awesome libraries, a whole bunch of C stuff (the C standard library, libjpeg, libpng, libgif, libraw and many more), fontawesome, material, Browser stack to let us test on real devices, and the many guys from Nebraska and elsewhere who have been thanklessly maintaining the critical pieces that Filestash sits on top:
+Filestash stands on the shoulder of: contributors, folks developing awesome libraries, BrandonM, a whole bunch of C stuff (the C standard library, libjpeg, libpng, libgif, libraw and many more), fontawesome, material, Browser stack to let us test on real devices, and the many guys from Nebraska and elsewhere who have been thanklessly maintaining the critical pieces that Filestash sits on top:

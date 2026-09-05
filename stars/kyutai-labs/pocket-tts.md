@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 9211
+stars: 9372
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -229,6 +229,8 @@ Alterative implementations
 -   PocketTTS.cpp by @VolgaGerm - Single-file C++ runtime using ONNX Runtime, with CLI, HTTP server, and FFI C API.
 -   sherpa-onnx by @csukuangfj - Run PocketTTS on **Windows, macOS, Linux**, and embedded boards (Raspberry Pi, Jetson, RK3588, etc.) with bindings for 12 programming languages: **C++, C, Python, JavaScript, Java, C#, Kotlin, Swift, Go, Dart, Rust, Pascal**, plus WebAssembly.
 -   pocket-tts-csharp by @TheAjaykrishnanR - A C# port of Pocket TTS implemented using TorchSharp and TorchSharp.PyBridge for ease of use as a library in .NET projects.
+-   pocket-tts-timestamped by @dpm63 - A fork that adds support for word-level timestamps.
+-   Pocket-TTS-LiteRT by @john-rocky - LiteRT (.tflite) graphs that run on Android phone GPUs through the LiteRT CompiledModel API, ~1x real-time on a Pixel 8a, with Python and Kotlin usage snippets.
 
 Models trained by the community
 -------------------------------
@@ -253,7 +255,21 @@ uvx pocket-tts generate --config hf://user/repo/config\_file.yaml@commit\_hash
 
 -   pocket-tts-czech by @vvolhejn (trained internally at Kyutai):
 
-uvx pocket-tts generate --config hf://vvolhejn/pocket-tts-czech/czech.yaml@7b7760dd0fe994a0800f2fdbc837dc4b8f219d1c
+uvx pocket-tts generate \\
+  --config hf://vvolhejn/pocket-tts-czech/czech.yaml@7b7760dd0fe994a0800f2fdbc837dc4b8f219d1c \\
+  --text "Dnešek je velmi dobrý den"
+
+-   Pocket TTS Hindi by Saryps Labs (community research release):
+
+uvx pocket-tts generate \\
+  --config hf://saryps-labs/pocket-tts-hindi/config.yaml@dbaa326069d20bfbdaeb625613736773741a24ea \\
+  --text "आज का दिन बहुत अच्छा है"
+
+-   Pocket TTS Korean 300M by @seastar105 (community research release):
+
+uvx pocket-tts generate \\
+  --config hf://seastar105/pocket-tts-korean-300m/korean.yaml@df328c817a02866f20a6f74e5183e0a1fc6f6435 \\
+  --text "안녕하세요. 한국어 음성 합성 모델입니다."
 
 Want your model here? Head to the training Readme to get started!
 

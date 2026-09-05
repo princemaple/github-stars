@@ -1,6 +1,6 @@
 ---
 project: node-red
-stars: 23596
+stars: 23621
 description: Low-code programming for event-driven applications
 url: https://github.com/node-red/node-red
 ---
@@ -79,8 +79,6 @@ Contributing
 Before raising a pull-request, please read our contributing guide.
 
 This project adheres to the Contributor Covenant 1.4. By participating, you are expected to uphold this code. Please report unacceptable behavior to any of the project's core team at team@nodered.org.
-
-### Star history
 
 ### Contributors
 

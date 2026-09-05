@@ -1,6 +1,6 @@
 ---
 project: theBeamBook
-stars: 4050
+stars: 4051
 description: A description of the Erlang Runtime System ERTS and the virtual Machine BEAM.
 url: https://github.com/happi/theBeamBook
 ---
@@ -168,3 +168,5 @@ There was more interest than I had expected, though, and fortunately, also sever
 Watch this space for further news and to see the whole book take shape.
 
 \-- Erik Stenman aka Happi
+
+The author also writes fiction as Frank Able; his novel _The Chain_, a thriller about code, coercion and the machinery of modern money, is at readthechain.com.

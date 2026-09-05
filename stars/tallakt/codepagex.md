@@ -1,6 +1,6 @@
 ---
 project: codepagex
-stars: 120
+stars: 121
 description: Elixir string encoding conversion - like iconv but pure Elixir
 url: https://github.com/tallakt/codepagex
 ---

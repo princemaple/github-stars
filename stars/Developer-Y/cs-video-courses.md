@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83230
+stars: 83422
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -449,6 +449,7 @@ Courses
     -   CS 582 - Machine Learning for Bioinformatics, Fall 2024, UIUC
     -   CMPUT 267 Machine Learning - Fall 2024 - University of Alberta (Youtube)
     -   ECE 364 - Programming Methods for Machine Learning, Spring 2025, UIUC
+    -   EML 4930/5930 - Machine Learning: Introduction and Application, Fall 2025, FSU
     -   undergraduate machine learning at UBC 2012, Nando de Freitas
     -   CS 229 - Machine Learning - Stanford University (Autumn 2018)
     -   CSE 151A Introduction to Machine Learning, Prof Jingbo Shang - UCSD

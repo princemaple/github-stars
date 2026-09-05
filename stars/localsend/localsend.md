@@ -1,6 +1,6 @@
 ---
 project: localsend
-stars: 89684
+stars: 90148
 description: An open-source cross-platform alternative to AirDrop
 url: https://github.com/localsend/localsend
 ---
@@ -10,7 +10,7 @@ LocalSend
 
 Homepage • Discord • GitHub • Codeberg
 
-English (Default) • Беларуская • Español • فارسی • Filipino • Français • Indonesia • Italiano • 日本語 • ភាសាខ្មែរ • 한국어 • Polski • Português Brasil • Русский • ภาษาไทย • Türkçe • Українська • Tiếng Việt • 中文
+English (Default) • 中文
 
 LocalSend is a free, open-source app that allows you to securely share files and messages with nearby devices over your local network without needing an internet connection.
 
@@ -178,6 +178,8 @@ Any
 
 Allow
 
+On Linux, for example with `ufw`: `sudo ufw allow 53317`. With `firewalld`: `sudo firewall-cmd --permanent --add-port=53317/tcp`, `sudo firewall-cmd --permanent --add-port=53317/udp`, then `sudo firewall-cmd --reload`.
+
 Also make sure to disable AP isolation on your router. It should be usually disabled by default but some routers may have it enabled (especially guest networks). See troubleshooting for more information.
 
 **Portable Mode**
@@ -297,6 +299,22 @@ macOS, iOS
 Any
 
 You can try to toggle the "Local Network" permission under "Privacy" in the OS settings.
+
+Device not visible
+
+Any
+
+Any
+
+If a VPN is active, allow local/LAN traffic or temporarily disable the VPN. Some VPNs block local network connections by default.
+
+Device not visible
+
+Any
+
+Any
+
+Use manual sending to enter the receiver's IP address directly. If that works, add the device to favorites so it is probed directly.
 
 Speed too slow
 

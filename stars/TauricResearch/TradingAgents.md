@@ -1,6 +1,6 @@
 ---
 project: TradingAgents
-stars: 101711
+stars: 102615
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
@@ -19,7 +19,8 @@ TradingAgents: Multi-Agents LLM Financial Trading Framework
 News
 ----
 
--   \[2026-07\] **TradingAgents v0.3.1** released with correctness and stability fixes: Alpha Vantage look-ahead filtering, graph-router crash-safety, graph-shape-aware checkpoint resume, working crypto sentiment sources, a configurable LLM retry budget, Bedrock API-key auth, and Claude Sonnet 5 / Fable 5 support. See CHANGELOG.md for the full list.
+-   \[2026-08\] **TradingAgents v0.4.0** released with look-ahead / point-in-time fixes across FRED macro, social sentiment, and the decision-log memory; clearer decision signals; working CLI checkpoint resume; Trader price grounding; and the GPT-5.6 and GLM-5.3 models. See CHANGELOG.md for the full list.
+-   \[2026-07\] **TradingAgents v0.3.1** released with correctness and stability fixes: Alpha Vantage look-ahead filtering, graph-router crash-safety, graph-shape-aware checkpoint resume, working crypto sentiment sources, a configurable LLM retry budget, Bedrock API-key auth, and Claude Sonnet 5 / Fable 5 support.
 -   \[2026-06\] **TradingAgents v0.3.0** released with a verified data-access contract, an expanded provider registry (NVIDIA, Kimi, Groq, Mistral, Bedrock, and any OpenAI-compatible endpoint), FRED and Polymarket data vendors, a current-generation model catalog, and a CI gate.
 -   \[2026-05\] **TradingAgents v0.2.5** released with the grounded Sentiment Analyst, GPT-5.5 etc. model coverage, Qwen/GLM/MiniMax dual-region support, `TRADINGAGENTS_*` env-var configurability with API-key auto-detection, remote Ollama support, non-US alpha benchmarks, and ticker path-traversal hardening.
 -   \[2026-04\] **TradingAgents v0.2.4** released with structured-output agents (Research Manager, Trader, Portfolio Manager), LangGraph checkpoint resume, persistent decision log, DeepSeek/Qwen/GLM/Azure provider support, Docker, and a Windows UTF-8 encoding fix.
@@ -171,8 +172,8 @@ from tradingagents.default\_config import DEFAULT\_CONFIG
 
 config \= DEFAULT\_CONFIG.copy()
 config\["llm\_provider"\] \= "openai"        \# e.g. openai, google, anthropic, deepseek, groq, ollama; openai\_compatible covers any OpenAI-compatible endpoint (vLLM, LM Studio, llama.cpp, ...)
-config\["deep\_think\_llm"\] \= "gpt-5.5"     \# Model for complex reasoning
-config\["quick\_think\_llm"\] \= "gpt-5.4-mini" \# Model for quick tasks
+config\["deep\_think\_llm"\] \= "gpt-5.6"      \# Model for complex reasoning
+config\["quick\_think\_llm"\] \= "gpt-5.6-luna" \# Model for quick tasks
 config\["max\_debate\_rounds"\] \= 2
 
 ta \= TradingAgentsGraph(debug\=True, config\=config)

@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 34311
+stars: 34483
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -202,7 +202,7 @@ Lightpanda is in Beta and currently a work in progress. Stability and coverage a
 
 Here are the key features we have implemented:
 
--   CORS #2015
+-   CORS (enable with `--experimental-features cors`)
 -   HTTP loader (Libcurl)
 -   HTML parser (html5ever)
 -   DOM tree

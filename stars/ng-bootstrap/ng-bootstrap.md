@@ -1,6 +1,6 @@
 ---
 project: ng-bootstrap
-stars: 8228
+stars: 8227
 description: Angular powered Bootstrap
 url: https://github.com/ng-bootstrap/ng-bootstrap
 ---

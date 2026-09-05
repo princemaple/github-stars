@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 472791
+stars: 475880
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -1707,6 +1707,16 @@ Yes
 
 No
 
+Katalis UK Company Enrichment
+
+Verified UK company profiles with an AI summary and accuracy score, from Companies House data
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Legal Sandbox Georgia
 
 Find verified legal specialists in Georgia from natural-language queries
@@ -1876,6 +1886,16 @@ No
 Yes
 
 Unknown
+
+TradeDataHub
+
+U.S. contractor datasets with a free discovery API for coverage, pricing and masked previews
+
+No
+
+Yes
+
+Yes
 
 Tomba email finder
 
@@ -2837,6 +2857,16 @@ Yes
 
 Unknown
 
+DefiLlama
+
+Open and transparent DeFi data, TVL, coin prices, volumes, and yields
+
+No
+
+Yes
+
+Yes
+
 dYdX
 
 Decentralized cryptocurrency exchange
@@ -3242,6 +3272,16 @@ Yes
 
 Unknown
 
+api-mint
+
+Free utility APIs: timezone, forex rates, crypto prices, page metadata
+
+No
+
+Yes
+
+Yes
+
 Bank of Russia
 
 Exchange rates and currency conversion
@@ -3612,6 +3652,16 @@ Yes
 
 Unknown
 
+Aquanode
+
+Live GPU rental prices and availability across nine cloud providers
+
+No
+
+Yes
+
+No
+
 Azure DevOps
 
 The Azure DevOps basic components of a REST API request/response pair
@@ -3812,6 +3862,26 @@ Yes
 
 Yes
 
+crates.io
+
+Rust crate versions, downloads and dependency metadata
+
+No
+
+Yes
+
+Yes
+
+Crawl Readiness
+
+Check if AI crawlers (ChatGPT, Claude, Perplexity, 30+ others) can access any website
+
+`apiKey`
+
+Yes
+
+Yes
+
 Databricks
 
 Service to manage your databricks account,clusters, notebooks, jobs and workspaces
@@ -3911,6 +3981,16 @@ Provide numerous capabilities for important testing and monitoring methods for w
 Yes
 
 Unknown
+
+GcrawlAI
+
+Web scraping, SERP API, screenshots, URL to Markdown and prebuilt extractors
+
+`apiKey`
+
+Yes
+
+Yes
 
 Genderize.io
 
@@ -4322,6 +4402,16 @@ Yes
 
 Yes
 
+Labelixa
+
+Render, validate and generate Zebra ZPL label barcodes as PNG/PDF
+
+`apiKey`
+
+Yes
+
+Yes
+
 License-API
 
 Unofficial REST API for choosealicense.com
@@ -4542,6 +4632,16 @@ Yes
 
 Yes
 
+Packagist
+
+PHP Composer package versions and dist metadata
+
+No
+
+Yes
+
+No
+
 PageCDN
 
 Public API for javascript, css and font libraries on PageCDN
@@ -4652,6 +4752,16 @@ Yes
 
 Yes
 
+QR Codes
+
+Generate QR codes via a single GET request, with logo embedding and custom colors
+
+`apiKey`
+
+Yes
+
+No
+
 Qrcode Monkey
 
 Integrate custom and unique looking QR codes into your system or workflow
@@ -4705,6 +4815,16 @@ Unknown
 RSS feed to JSON
 
 Returns RSS feed in JSON format using feed URL
+
+No
+
+Yes
+
+Yes
+
+RubyGems
+
+Ruby gem metadata, versions, dependencies and search
 
 No
 
@@ -4782,6 +4902,16 @@ Yes
 
 Unknown
 
+Scrax
+
+Web scraping API that only bills for successful scrapes
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Screenshot
 
 Take programmatic screenshots of web pages from any website
@@ -4831,6 +4961,16 @@ Easy google sheets integration
 Yes
 
 Unknown
+
+Shotanvil
+
+Screenshot, PDF and HTML rendering API with a free tier, API key or x402 auth
+
+`apiKey`
+
+Yes
+
+No
 
 SHOUTCLOUD
 
@@ -5451,6 +5591,16 @@ Data from XML or JSON to PDF, HTML or Image
 Yes
 
 Unknown
+
+PrintSocket
+
+Send PDFs, ZPL labels and ESC/POS receipts to your own printers from any language; free tier
+
+`apiKey`
+
+Yes
+
+No
 
 Renderly
 
@@ -6077,6 +6227,16 @@ Yes
 
 Unknown
 
+gridcarbon
+
+Hourly grid carbon intensity in gCO2eq/kWh for 45 zones in Europe, the US and Great Britain
+
+No
+
+Yes
+
+Yes
+
 GrünstromIndex
 
 Green Power Index for Germany (Grünstromindex/GSI)
@@ -6136,6 +6296,16 @@ Open air quality data
 Yes
 
 Unknown
+
+Open-Meteo
+
+Free weather API for non-commercial use
+
+No
+
+Yes
+
+Yes
 
 PM2.5 Open Data Portal
 
@@ -6206,6 +6376,16 @@ No
 Yes
 
 Unknown
+
+WattFigure
+
+US electricity rates by state, with appliance and EV charging running costs
+
+No
+
+Yes
+
+Yes
 
 Website Carbon
 
@@ -6447,6 +6627,16 @@ Yes
 
 Yes
 
+FarmDash
+
+DeFi intelligence, protocol risk, yield simulation plus 84 MCP agent tools, free Scout tier
+
+`apiKey`
+
+Yes
+
+Yes
+
 Fed Treasury
 
 U.S. Department of the Treasury Data
@@ -6517,6 +6707,26 @@ Yes
 
 Yes
 
+Futures Clock
+
+Trading hours and session windows for 65 futures products on 16 global exchanges
+
+No
+
+Yes
+
+Yes
+
+FXNewsBias
+
+AI-scored news sentiment for the 8 major forex currencies, refreshed every 3 hours
+
+`apiKey`
+
+Yes
+
+Yes
+
 Goldprice.dev
 
 Cross-validated gold, silver & copper spot, futures & 30-year history in 13 currencies
@@ -6537,6 +6747,16 @@ Yes
 
 Yes
 
+Helious
+
+US Treasury auction results with the tail and bidder split, plus scored economic releases
+
+No
+
+Yes
+
+Yes
+
 Helium
 
 News with media bias scoring, balanced news synthesis, live market data, AI options pricing
@@ -6552,6 +6772,16 @@ Hotstoks
 Stock market data powered by SQL
 
 `apiKey`
+
+Yes
+
+Yes
+
+IBAN Analyzer
+
+Resolve an IBAN to its bank name, BIC, city and address for 60+ countries
+
+No
 
 Yes
 
@@ -6616,6 +6846,16 @@ Klarna payment and shopping service
 Yes
 
 Unknown
+
+KmalServico Gold Price Dataset
+
+Current gold price per gram at 6 purities for 188 countries, JSON, no auth
+
+No
+
+Yes
+
+No
 
 LiquiLens
 
@@ -6686,6 +6926,16 @@ Equity, index, futures, options symbology from Bloomberg LP
 Yes
 
 Yes
+
+PIT Financial State
+
+Point-in-time quarterly revenue for 20 U.S. issuers
+
+`apiKey`
+
+Yes
+
+Unknown
 
 Plaid
 
@@ -6846,6 +7096,16 @@ Stock market data (real-time & historical)
 Yes
 
 Unknown
+
+US Mortgage Calculator
+
+Mortgage payment, amortization, affordability and 50-state property tax data
+
+No
+
+Yes
+
+Yes
 
 VAT Validation
 
@@ -7436,6 +7696,16 @@ Provides information about Player stats , Match stats, Rankings for Dota 2
 Yes
 
 Unknown
+
+DotaSense Timings
+
+Reviewed Dota 2 objective timings in JSON and CSV
+
+No
+
+Yes
+
+Yes
 
 Dungeons and Dragons
 
@@ -8186,6 +8456,16 @@ No
 Yes
 
 Unknown
+
+Worth the Rip
+
+Sealed trading-card product prices and expected value across 10 TCGs, refreshed every 2 hours
+
+No
+
+Yes
+
+Yes
 
 xkcd
 
@@ -8952,6 +9232,16 @@ Yes
 
 Yes
 
+PontoFato
+
+Brazilian postal codes (CEP) with IBGE coordinates, addresses and the companies registered there
+
+No
+
+Yes
+
+No
+
 positionstack
 
 Forward & Reverse Batch Geocoding REST API
@@ -9217,6 +9507,16 @@ No
 
 Unknown
 
+Bidledger
+
+Every open public tender in the European Union, rebuilt daily from the official TED data
+
+No
+
+Yes
+
+Yes
+
 Brazil
 
 Community driven API for Brazil Public Data
@@ -9472,6 +9772,16 @@ eCourtsIndia
 Indian court case status, judgments, and hearing schedule API
 
 `apiKey`
+
+Yes
+
+Yes
+
+EditalMD
+
+Brazilian public procurement (PNCP) notices as Markdown with deadlines and requirements
+
+No
 
 Yes
 
@@ -10137,6 +10447,16 @@ Yes
 
 Yes
 
+Radar CNPJ
+
+Brazilian companies (CNPJ) lookup and search, with a market check by area and monitoring
+
+No
+
+Yes
+
+No
+
 Represent by Open North
 
 Find Canadian Government Representatives
@@ -10432,6 +10752,16 @@ Yes
 
 Yes
 
+FindSaunaPlunge
+
+US cold plunge and sauna venues with dated, source-quoted temperatures and prices
+
+No
+
+Yes
+
+Yes
+
 FoodData Central
 
 National Nutrient Database for Standard Reference
@@ -10595,6 +10925,16 @@ Unknown
 Quarantine
 
 Coronavirus API with free COVID-19 live updates
+
+No
+
+Yes
+
+Yes
+
+Urgences Québec
+
+Hourly emergency room occupancy, stretcher counts and wait times for every hospital in Quebec, Canada
 
 No
 
@@ -11097,6 +11437,16 @@ MessengerX.io
 A FREE API for developers to build and monetize personalized ML based chat apps
 
 `apiKey`
+
+Yes
+
+Yes
+
+Modelfax
+
+LLM pricing, context windows and deprecation dates, schema-validated and updated daily
+
+No
 
 Yes
 
@@ -11847,6 +12197,16 @@ No
 
 Unknown
 
+49 Gallery Historical Data
+
+Normalized historical records and 25 daily-updated reference series
+
+No
+
+Yes
+
+Yes
+
 AcreLens
 
 Land suitability scoring API for any US property: off-grid, rural, recreational, investment
@@ -11896,6 +12256,16 @@ No
 Yes
 
 Unknown
+
+BTU Graph
+
+Source-reviewed energy company knowledge graph and directory exports
+
+No
+
+Yes
+
+Yes
 
 Callook.info
 
@@ -12177,6 +12547,16 @@ Yes
 
 Unknown
 
+PayCrunch
+
+US wages for 1,008 occupations and by state, from BLS OEWS May 2025, static JSON, CC BY 4.0
+
+No
+
+Yes
+
+Yes
+
 PeakMetrics
 
 News articles and public datasets
@@ -12186,6 +12566,16 @@ News articles and public datasets
 Yes
 
 Unknown
+
+PublicDataHub
+
+US public schools, hospitals and federal agency budgets as JSON/CSV, with provenance
+
+No
+
+Yes
+
+Yes
 
 Recreation Information Database
 
@@ -13322,6 +13712,16 @@ Yes
 
 Yes
 
+Europe PMC
+
+Life-science literature search with abstracts, citations and full-text links
+
+No
+
+Yes
+
+Yes
+
 GBIF
 
 Global Biodiversity Information Facility
@@ -14017,6 +14417,16 @@ Yes
 
 Unknown
 
+Neetix Liveliness
+
+Face liveness, presentation-attack detection and 1:1 face match for identity verification
+
+`apiKey`
+
+Yes
+
+No
+
 Passwordinator
 
 Generate random passwords of varying complexities
@@ -14092,6 +14502,16 @@ SSL Domain Health Check
 SSL certificate validity, domain WHOIS status, and DNS record checks for any domain
 
 `apiKey`
+
+Yes
+
+Unknown
+
+SSL Labs
+
+Deep SSL/TLS server analysis with A+ to F grading
+
+No
 
 Yes
 
@@ -15144,6 +15564,16 @@ Yes
 
 Yes
 
+OpenFoot API
+
+Football fixtures, results, standings, lineups, live events and shot-level xG across 75 competitions
+
+`apiKey`
+
+Yes
+
+Yes
+
 OpenLigaDB
 
 Crowd sourced sports league results
@@ -15449,6 +15879,16 @@ Yes
 
 Unknown
 
+flaky
+
+Fake REST API with chaos controls: force any status code, add latency, or a failure rate
+
+No
+
+Yes
+
+Yes
+
 GeneradorDNI
 
 Data generator API. Profiles, vehicles, banks and cards, etc
@@ -15468,6 +15908,16 @@ No
 Yes
 
 No
+
+JsonFabrica
+
+Generate realistic relational synthetic JSON test data from reusable templates
+
+`apiKey`
+
+Yes
+
+Unknown
 
 JSONPlaceholder
 
@@ -16064,6 +16514,16 @@ Yes
 
 Yes
 
+Aviation Safety Data
+
+164,068 aircraft accident narratives from 128 official investigation authorities, plus FAA data
+
+No
+
+Yes
+
+Yes
+
 AviationAPI
 
 FAA Aeronautical Charts and Publications, Airport Information, and Airport Weather
@@ -16253,6 +16713,16 @@ Singapore transport information
 No
 
 Unknown
+
+LiveTrafficCam
+
+Live US state DOT traffic cameras with verified live status and measured uptime
+
+No
+
+Yes
+
+No
 
 Metro Lisboa
 
@@ -16774,6 +17244,16 @@ Yes
 
 No
 
+Wander Atlas
+
+Hourly quiet and busy crowd windows for 620+ tourist attractions in 20 countries
+
+No
+
+Yes
+
+Yes
+
 **⬆ Back to Index**  
   
 
@@ -17278,6 +17758,16 @@ Create and edit videos programmatically: watermarks,resizing,slideshows,voice-ov
 Yes
 
 No
+
+KPainter
+
+Create video, image, and interactive app outputs from prompts or source files
+
+`apiKey`
+
+Yes
+
+Yes
 
 KinoPipe
 
@@ -17963,6 +18453,16 @@ Weather
 Yes
 
 Unknown
+
+WeatherTotals
+
+Measured US snow, rain, hail and aurora totals by state and city
+
+No
+
+Yes
+
+Yes
 
 World Time & Weather
 

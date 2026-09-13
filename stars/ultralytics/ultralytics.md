@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 61314
+stars: 61537
 description: Ultralytics YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -13,7 +13,7 @@ url: https://github.com/ultralytics/ultralytics
 
   
 
-Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at object detection, instance segmentation, semantic segmentation, depth estimation, image classification, and pose estimation tasks, and can track detected objects across video frames.
+Ultralytics creates cutting-edge, state-of-the-art (SOTA) YOLO models built on years of foundational research in computer vision and AI. Constantly updated for performance and flexibility, our models are **fast**, **accurate**, and **easy to use**. They excel at object detection, instance segmentation, semantic segmentation, depth estimation, image classification, pose estimation, and oriented object detection tasks, and can track detected objects across video frames.
 
 Find detailed documentation in the Ultralytics Docs. Get support via GitHub Issues. Join discussions on Discord, Reddit, and the Ultralytics Community Forums!
 
@@ -75,7 +75,9 @@ Discover more examples in the YOLO Python Docs.
 ✨ Models
 --------
 
-Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on COCO for Detection, Segmentation, and Pose Estimation. Semantic Segmentation models are pretrained on Cityscapes, Depth Estimation models are pretrained on a broad multi-dataset mix and evaluated on NYU Depth V2, and Classification models are pretrained on ImageNet. Tracking mode is compatible with Detection, Segmentation, Pose, and OBB models. All Models download automatically from the latest Ultralytics release on first use.
+> **YOLO27 — Coming Soon:** Preview the upcoming family, currently undergoing final R&D. Models are not yet available, and no launch date is set.
+
+Ultralytics supports a wide range of YOLO models, from early versions like YOLOv3 to the latest YOLO26. The tables below showcase YOLO26 models pretrained on COCO for Detection, Segmentation, and Pose Estimation. Semantic Segmentation models are pretrained on Cityscapes, Depth Estimation models are pretrained on a broad multi-dataset mix and evaluated on NYU Depth V2, Classification models are pretrained on ImageNet, and OBB models are pretrained on DOTAv1. Tracking mode is compatible with Detection, Segmentation, Pose, and OBB models. The listed pretrained models download automatically from the latest Ultralytics release on first use.
 
   
   
@@ -513,7 +515,7 @@ YOLO26x-depth
 301.7
 
 -   **delta1NYU** is the percentage of pixels where the predicted depth is within a factor of 1.25 of the ground truth, on the NYU Depth V2 Eigen test split (654 images) with multi-scale + horizontal-flip TTA and log-least-squares alignment.
--   Single-scale accuracy without TTA is reproducible with `yolo depth val model=yolo26n-depth.pt data=nyu-depth.yaml imgsz=768 device=0` (substitute `model=` for each size), which uses median (scale-only) alignment and scores lower: delta1 0.785 (n), 0.786 (s), 0.827 (m), 0.839 (l), 0.843 (x).
+-   Single-scale accuracy without TTA is reproducible with `yolo depth val model=yolo26n-depth.pt data=nyu-depth.yaml imgsz=768 device=0` (substitute `model=` for each size), which uses median (scale-only) alignment and scores lower: delta1 0.783 (n), 0.793 (s), 0.840 (m), 0.853 (l), 0.860 (x).
 -   **abs\_rel** is the mean absolute relative error between predicted and ground-truth depth values.
 -   **rmse** is the root mean squared error in meters.
 -   **Speed** is inference-only latency (pre/post-processing excluded) at `imgsz=768`, `batch=1`, reported as mean ± std over timed runs after warmup. **CPU ONNX** is ONNX Runtime fp32 on a 32-core Intel Xeon (Skylake); **T4 TensorRT10** is TensorRT fp16 on a Tesla T4.

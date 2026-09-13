@@ -1,6 +1,6 @@
 ---
 project: swarm
-stars: 1253
+stars: 1254
 description: Easy clustering, registration, and distribution of worker processes for Erlang/Elixir
 url: https://github.com/bitwalker/swarm
 ---

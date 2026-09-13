@@ -1,6 +1,6 @@
 ---
 project: opendataloader-pdf
-stars: 28957
+stars: 29104
 description: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 url: https://github.com/opendataloader-project/opendataloader-pdf
 ---
@@ -456,6 +456,16 @@ Hybrid + picture
 
 `opendataloader-pdf --hybrid docling-fast --hybrid-mode full file1.pdf file2.pdf folder/`
 
+Nested sections for RAG chunking
+
+Hybrid + heading levels
+
+`pip install "opendataloader-pdf[hybrid]"`
+
+`opendataloader-pdf-hybrid --port 5002 --heading-hierarchy`
+
+`opendataloader-pdf --hybrid docling-fast file1.pdf file2.pdf folder/`
+
 Untagged PDFs needing accessibility
 
 Auto-tagging → Tagged PDF
@@ -582,6 +592,28 @@ Output in JSON:
 }
 
 > Uses SmolVLM (256M), a lightweight vision model. Custom prompts supported via `--picture-description-prompt`.
+
+### Heading Hierarchy
+
+The layout model labels a region as a section header without a depth, so by default every heading comes back at level 1 and subsections sit at the same depth as the document title. Flat headings make it hard to tell a section title from a document title when chunking for RAG.
+
+`--heading-hierarchy` infers the depth — from the PDF outline first, then section numbering (`1.` → `1.1` → `1.1.1`), then visual style:
+
+# Server
+opendataloader-pdf-hybrid --port 5002 --heading-hierarchy
+
+# Client — no extra flag needed
+opendataloader-pdf --hybrid docling-fast file1.pdf file2.pdf folder/
+
+  # 3. Methodology
+\- # 3.1. Multi-Object Rectification Network
++ ## 3.1. Multi-Object Rectification Network
+\- # Abstract
++ ## Abstract
+
+Numbering covers numbered sections; style is what pulls an unnumbered `Abstract` or `References` out from under the document title.
+
+Off by default, so existing output is unchanged. Levels are capped at H6.
 
 ### Hancom Data Loader Integration — Coming Soon
 

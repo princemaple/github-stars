@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 1591
+stars: 1601
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -40,13 +40,13 @@ SeaweedFS
 
 Garage
 
-GitHub stars
+GitHub stars³
 
-1.3k
+1.6k
 
 61k¹
 
-2.5k
+2.7k
 
 31k
 
@@ -111,6 +111,8 @@ Components to run
 1
 
 > ¹ MinIO removed the admin console from its Community Edition in 2025 and archived the open-source repository in February 2026, so its star count reflects a project that is no longer developed in the open. Full management now requires the paid AIStor product. ² Measured August 2026 on one host, all six idle with no traffic, Docker working set after a 110 second settle, second reading taken to confirm the figures had stopped moving. **Memory under load is higher for every one of them**: VaultS3 peaks around 185 MiB writing 64 MiB objects at concurrency 16. Reproduce it with `docker stats --no-stream`.
+
+> ³ Star counts read from each project's repository on 11 September 2026. Garage is developed on its own Forgejo instance, so its figure comes from the official GitHub mirror at `deuxfleurs-org/garage`.
 
 ### When to pick something else
 
@@ -184,9 +186,9 @@ No config file is needed. VaultS3 starts on its built-in defaults, creates the d
 
 Prefer a package or a plain binary? Every release ships `.deb`, `.rpm` and `.apk` packages, static binaries for Linux, macOS and Windows, an SPDX SBOM per platform, and a Sigstore provenance bundle you can verify offline:
 
-sudo apt install ./vaults3\_4.4.69\_amd64.deb
+sudo apt install ./vaults3\_4.4.75\_amd64.deb
 sudo systemctl enable --now vaults3
-gh attestation verify vaults3\_4.4.69\_amd64.deb --repo Kodiqa-Solutions/VaultS3
+gh attestation verify vaults3\_4.4.75\_amd64.deb --repo Kodiqa-Solutions/VaultS3
 
 Building from source is `make build`. Kubernetes is a Helm chart or a single manifest. All of it, plus the disk layout to use in production, is in the **installation guide**.
 
@@ -213,7 +215,7 @@ AES-256-GCM at rest, SSE-S3, SSE-KMS, SSE-C, and per-bucket keys with rotation a
 
 **Durability**
 
-Reed-Solomon erasure coding with a background healer, per-bucket replica counts, orphan reclaim. Guide
+Reed-Solomon erasure coding with a background healer, per-bucket replica counts with automatic repair after a node is lost, orphan reclaim. Guide
 
 **Clustering**
 
@@ -258,7 +260,7 @@ Notes
 
 ✅ Stable
 
-The default deployment. Broad test coverage. Runs in production today. **One known edge case:** deleting an object that was written _before_ versioning was enabled on its bucket writes a delete marker with no version record behind it, so removing that marker later cannot bring the object back and its bytes are left orphaned on disk. Turn versioning on before you need it, and `vaults3-cli storage reclaim` frees anything already stranded.
+The default deployment. Broad test coverage. Runs in production today.
 
 **Erasure coding** (single-node, multi-disk)
 
@@ -276,7 +278,7 @@ Hot/cold migration, transparent promotion, and full/incremental backup are teste
 
 🟡 Beta
 
-Metadata writes replicate via Raft consensus (writes accepted on any node via leader-forwarding), object data is placed/served by a live-membership hash ring, inter-node calls are authenticated, and on Kubernetes the cluster auto-forms (leader bootstrap + auto-join + self-heal). Validated end-to-end on a real 3-node cluster: leader election & failover, node recovery with catch-up, cross-node reads, and concurrent load, including a 10,000-write list-then-write-then-read workload behind a gateway with a node restarted mid-run. **One known issue:** overwriting an existing key and reading it straight back can return the _previous_ bytes carrying the _new_ object's `ETag` and `Last-Modified`, because the metadata read waits for replication but a data file already present on the serving node is handed back without checking that it is still current. It converges in about two seconds. Enabling versioning on the bucket avoids it, since a versioned read is keyed by version ID and falls through to a node that actually holds those bytes. Still operationally newer, not yet stress/scale/multi-region hardened, so validate against your workload before trusting it as the only copy of critical data.
+Metadata writes replicate via Raft consensus (writes accepted on any node via leader-forwarding), object data is placed/served by a live-membership hash ring, inter-node calls are authenticated, and on Kubernetes the cluster auto-forms (leader bootstrap + auto-join + self-heal). Validated end-to-end on a real 3-node cluster: leader election & failover, node recovery with catch-up, cross-node reads, and concurrent load, including a 10,000-write list-then-write-then-read workload behind a gateway with a node restarted mid-run. Overwriting a key and reading it straight back used to be able to return the _previous_ bytes under the _new_ object's `ETag`, because a data file already present on the serving node was handed back without checking that it was still current. A node now compares what it holds against the authoritative metadata and routes the read to a holder that has the current bytes, answering `503 SlowDown` only if none can be reached yet, which every S3 SDK retries. Measured on a real three-node cluster: 24 of 40 immediate cross-node reads returned stale bytes before, 0 of 40 after, converging in a median of 2 ms. Still operationally newer, not yet stress/scale/multi-region hardened, so validate against your workload before trusting it as the only copy of critical data.
 
 **Sharded metadata** (`cluster.metadata_shards > 1`)
 

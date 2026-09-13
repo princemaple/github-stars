@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 8084
+stars: 8107
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -62,6 +62,7 @@ Table of Contents
 -   Contributors
 -   Sponsors
 -   Show your support
+-   Acknowledgments
 -   License
 
 Installation
@@ -688,6 +689,11 @@ SnapDOM runs in production across 250+ public repositories (GitHub dependents gr
 -   SnapDIFF: in-browser visual regression testing _(by Zumerlab)_
 
 See the full gallery at **snapdom.dev/made-with**. Shipping SnapDOM? Open a PR to add your project. Real, verifiable projects only.
+
+Acknowledgments
+---------------
+
+Thanks to Anthropic and OpenAI for supporting my open-source work by providing premium access to Claude and ChatGPT.
 
 License
 -------

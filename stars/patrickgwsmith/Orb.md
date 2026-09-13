@@ -2,7 +2,7 @@
 project: Orb
 stars: 304
 description: Write WebAssembly with Elixir
-url: https://github.com/royalicing/Orb
+url: https://github.com/patrickgwsmith/Orb
 ---
 
 Orb: Write Composable WebAssembly using Elixir

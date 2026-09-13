@@ -1,6 +1,6 @@
 ---
 project: stripe-cli
-stars: 2172
+stars: 2179
 description: A command-line tool for Stripe
 url: https://github.com/stripe/stripe-cli
 ---
@@ -253,9 +253,6 @@ The Stripe CLI supports a broad range of commands. Below are some of the most us
 -   `trigger`
 -   `logs tail`
 -   `events resend`
--   `samples`
--   `serve`
--   `status`
 -   `config`
 -   `open`
 -   `get`, `post` & `delete` commands

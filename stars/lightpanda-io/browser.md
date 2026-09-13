@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 34483
+stars: 35307
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -32,7 +32,7 @@ Memory (peak, 100 pages)
 
 2GB
 
-~16 less
+~16x less
 
 Execution time (100 pages)
 
@@ -135,6 +135,12 @@ await frame.close();
 await context.close();
 await browser.disconnect();
 
+#### Start a webdriver Bidi server
+
+Use `--protocol webdriver` to enable Bidi support. You can start both, CDP and Bidi, with `--protocol webdriver --protocol cdp`
+
+./lightpanda serve --obey-robots --log-format pretty  --log-level info --host 127.0.0.1 --port 9222 --protocol webdriver
+
 ### Agent mode
 
 `lightpanda agent` lets you drive the browser with a native agent. Describe what you want in plain English or with slash commands, and it controls the browser: navigating pages, clicking through flows, filling forms, extracting structured data. Think of it as a robot you're directing to use the web, more than a chatbot you're having a conversation with.
@@ -198,9 +204,7 @@ Set `LIGHTPANDA_DISABLE_CORE_DUMP` (to any value) to suppress crash core dumps b
 Status
 ------
 
-Lightpanda is in Beta and currently a work in progress. Stability and coverage are improving and many websites now work. You may still encounter errors or crashes. Please open an issue with specifics if so.
-
-Here are the key features we have implemented:
+Here are the key features we have implemented. For full details, see our Web Platform Tests results.
 
 -   CORS (enable with `--experimental-features cors`)
 -   HTTP loader (Libcurl)
@@ -211,7 +215,7 @@ Here are the key features we have implemented:
 -   Ajax
     -   XHR API
     -   Fetch API
--   DOM dump
+-   DOM and Markdown dump
 -   CDP/websockets server
 -   Click
 -   Input form
@@ -220,8 +224,8 @@ Here are the key features we have implemented:
 -   Proxy support
 -   Network interception
 -   Respect `robots.txt` with option `--obey-robots`
-
-NOTE: There are hundreds of Web APIs. Developing a browser (even just for headless mode) is a huge task. Coverage will increase over time.
+-   CDP and Webdriver Bidi
+-   Adblocker
 
 Build from sources
 ------------------

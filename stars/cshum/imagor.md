@@ -1,6 +1,6 @@
 ---
 project: imagor
-stars: 4015
+stars: 4023
 description: Fast, secure image processing server and Go library, using libvips
 url: https://github.com/cshum/imagor
 ---
@@ -12,7 +12,7 @@ imagor is a fast, secure image processing server and Go library.
 
 imagor uses one of the most efficient image processing libraries, libvips with the Go binding vipsgen. It is typically 4-8x faster than using the quickest ImageMagick settings. imagor implements libvips streaming to facilitate parallel processing pipelines and achieve high network throughput. Benchmarks show imagor is one of the fastest image processing servers.
 
-imagor features a ton of image processing use cases, available as a HTTP server with first-class Docker support. It adopts the thumbor URL syntax representing a high-performance drop-in replacement.
+imagor supports a wide range of image-processing use cases, available as a HTTP server with first-class Docker support. It adopts the thumbor URL syntax representing a high-performance drop-in replacement.
 
 imagor is built with speed, security and extensibility in mind. Alongside there is imagorvideo bringing video thumbnail capability through ffmpeg C bindings.
 

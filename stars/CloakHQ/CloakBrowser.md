@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 31208
+stars: 31397
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -23,7 +23,7 @@ _Cloudflare Turnstile — 3 live tests passing (headed mode, macOS)_
 Drop-in Playwright/Puppeteer replacement for Python and JavaScript.  
 Same API, same code — just swap the import. **3 lines of code, 30 seconds to unblock.**
 
--   **73 source-level C++ patches** — canvas, WebGL, audio, fonts, GPU, screen, WebRTC, network timing, automation signals, CDP input behavior
+-   **87 source-level C++ patches** — canvas, WebGL, audio, fonts, GPU, screen, WebRTC, network timing, automation signals, CDP input behavior
 -   **`humanize=True`** — human-like mouse curves, keyboard timing, and scroll patterns. One flag, behavioral detection passes
 -   **Pro: 0.9 reCAPTCHA v3 score** — human-level, server-verified
 -   **Passes Cloudflare Turnstile**, FingerprintJS, BrowserScan — tested against 30+ detection sites
@@ -118,14 +118,13 @@ page.goto("https://example.com")
 
 * * *
 
-Latest: v0.5.10 — 73 source-level stealth patches (Chromium 151.0.7922.108.3)
+Latest: v0.5.10 — 87 source-level stealth patches (Chromium 151.0.7922.108.6)
 -----------------------------------------------------------------------------
 
--   **CloakBrowser Pro Stable** — Chromium `151.0.7922.108.3` on Linux x64, Linux ARM64, Windows x64, and macOS. Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest Stable build for your platform automatically. See CloakBrowser Pro
--   **CloakBrowser Pro Preview** — Chromium `151.0.7922.108.4` on Linux x64 and Linux ARM64; Windows x64 and macOS track `151.0.7922.108.3`. Opt in with `release_channel="preview"` or `CLOAKBROWSER_RELEASE_CHANNEL=preview`.
+-   **CloakBrowser Pro Stable** — Chromium `151.0.7922.108.6` on Linux x64, Linux ARM64, and Windows x64; macOS on `151.0.7922.108.3`. Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest Stable build for your platform automatically. See CloakBrowser Pro
 -   **.NET 8 / C# client** — CloakBrowser now ships as a NuGet package (`CloakBrowser`), mirroring the Python and JS wrappers.
--   **Chromium 151 upgrade** — rebased the full patch set onto Chromium 151 (Linux + Windows), re-validated against reference data; macOS remains on the Chromium 150 Stable line
--   **73 fingerprint patches** — rendering consistency improvements across Linux and Windows, corrected GPU/display/graphics parameters to match stock Chrome profiles
+-   **Chromium 151 upgrade** — rebased the full patch set onto Chromium 151 (Linux, Windows, and macOS), re-validated against reference data
+-   **87 fingerprint patches** — rendering consistency improvements across Linux and Windows, corrected GPU/display/graphics parameters to match stock Chrome profiles
 -   **Windows native GPU passthrough** — real hardware values pass through directly instead of being spoofed, matching real browser behavior
 -   **HTTP proxy inline credentials** — new network-layer support for proxies with inline authentication
 -   **`extension_paths`** — load Chrome extensions in all launch functions
@@ -433,7 +432,7 @@ CloakBrowser is a thin wrapper (Python + JavaScript) around a custom-built Chrom
 3.  **Every launch** → Playwright or Puppeteer starts with our binary + stealth args
 4.  **You write code** → standard Playwright/Puppeteer API, nothing new to learn
 
-The binary includes 73 source-level patches covering canvas, WebGL, audio, fonts, GPU, screen properties, WebRTC, network timing, hardware reporting, automation signal removal, and CDP input behavior mimicking.
+The binary includes 87 source-level patches covering canvas, WebGL, audio, fonts, GPU, screen properties, WebRTC, network timing, hardware reporting, automation signal removal, and CDP input behavior mimicking.
 
 These are compiled into the Chromium binary — not injected via JavaScript, not set via flags.
 
@@ -906,6 +905,8 @@ Explicit flags override individual auto-generated values. The seed fills in ever
 
 The binary detects its platform at compile time — a macOS binary reports as macOS with Apple GPU, a Linux binary reports as Linux with NVIDIA GPU. The **wrapper** overrides this on Linux by passing `--fingerprint-platform=windows`, so sessions appear as Windows desktops (more common fingerprint, harder to cluster). Use `--fingerprint-platform` for cross-platform spoofing when running the binary directly.
 
+**macOS persona (a second identity).** Alongside the Windows persona, pass `--fingerprint-platform=macos` to present as a Mac — lined up with real Mac hardware across graphics, media, fonts, text, screen, and device features. Two things to set up: install the Mac fonts (the same way the Windows persona needs Windows fonts — see Font Setup on Linux; a persona without its fonts is a common cause of blocks), and for the most realistic result give it a large display — on a 4K screen it reports at the DPR most real Macs use. Having both the Windows and macOS personas gives you two strong identities to rotate between.
+
 > **Tip: Use a fixed seed when revisiting the same site.** A random seed makes every session look like a different device — which can be suspicious when hitting the same site repeatedly from the same IP. For reCAPTCHA v3 Enterprise and similar scoring systems, a fixed seed produces a consistent fingerprint across sessions, making you look like a returning visitor:
 > 
 > browser \= launch(args\=\["--fingerprint=12345"\])
@@ -1032,6 +1033,14 @@ Disable noise injection (canvas, WebGL, audio, client rects) while keeping the d
 
 **Chromium 148+ binary only (all platforms).** Route the Pro license/session calls through your `--proxy-server` instead of direct to cloakbrowser.dev. Off by default (these calls go direct, so they never spend proxy bandwidth or touch your scraping session).
 
+`--fingerprint-transparent-proxy`
+
+**Chromium 151+ binary only.** A stronger way of connecting through your `--proxy-server`, for sites and providers that block every proxy you try. Off by default; enable it alongside `--proxy-server`.
+
+`--fingerprint-portable-cookies`
+
+**Chromium 151+ binary only.** Encrypt cookies with a machine-independent key so a copied profile keeps its logins across machines. Turn it on from the first launch — it changes how cookies are written, so a cookie is only portable if this was set when it was saved.
+
 `--enable-blink-features=FakeShadowRoot`
 
 Access closed shadow DOM elements
@@ -1057,7 +1066,25 @@ mkdir -p ~/.local/share/fonts/windows
 cp -r /path/to/windows/Fonts/. ~/.local/share/fonts/windows/
 fc-cache -f
 
+**In Docker or an image build**, copy to a system font dir instead — it is user-independent and matches where the image's own fonts live (our published image installs its fonts under `/usr/share/fonts/`):
+
+COPY windows-fonts/ /usr/local/share/fonts/windows/
+RUN fc-cache -f
+
 Confirm they registered with `fc-list | grep -i "segoe\|calibri\|consolas"`. Once all are present the warning stops on its own; set `CLOAKBROWSER_SUPPRESS_FONT_WARNING=1` to silence it if you accept the tradeoff.
+
+**3\. Real Mac fonts — for the macOS persona (`--fingerprint-platform=macos`).** If you run the macOS persona, install the real Mac fonts, the same way the Windows persona needs Windows fonts — a Mac browser with no Mac fonts is a bot tell. Copy them from a real Mac's font folders (`/System/Library/Fonts/`, `/System/Library/Fonts/Supplemental/`, `/Library/Fonts/`) into `~/.local/share/fonts`, then run `fc-cache -f`:
+
+mkdir -p ~/.local/share/fonts/mac
+cp -r /path/to/mac/Fonts/. ~/.local/share/fonts/mac/
+fc-cache -f
+
+**In Docker or an image build**, copy to a system font dir instead (user-independent, matches where the image's own fonts live under `/usr/share/fonts/`):
+
+COPY mac-fonts/ /usr/local/share/fonts/mac/
+RUN fc-cache -f
+
+`cloakbrowser info` reports how many it finds (`Mac fonts: N/total`) and names the ones it looks for (Helvetica Neue, Menlo, and the SF/Apple system fonts among them). Several Mac fonts (Arial, Georgia, Times New Roman, Courier New, Tahoma) also ship on Windows, so a partial count on a Windows-provisioned host is normal.
 
 ### Examples
 
@@ -1219,7 +1246,7 @@ Linux x86\_64
 
 Chromium 146 (58 patches)
 
-Chromium 151 (73 patches)
+Chromium 151 (87 patches)
 
 ✅
 
@@ -1227,7 +1254,7 @@ Linux arm64 (RPi, Graviton)
 
 Chromium 146 (58 patches)
 
-Chromium 151 (73 patches)
+Chromium 151 (87 patches)
 
 ✅
 
@@ -1235,7 +1262,7 @@ macOS arm64 (Apple Silicon)
 
 Chromium 145 (26 patches)
 
-Chromium 150 (71 patches)
+Chromium 151 (87 patches)
 
 ✅
 
@@ -1243,7 +1270,7 @@ macOS x86\_64 (Intel)
 
 Chromium 145 (26 patches)
 
-Chromium 150 (71 patches)
+Chromium 151 (87 patches)
 
 ✅
 
@@ -1251,7 +1278,7 @@ Windows x86\_64
 
 Chromium 146 (58 patches)
 
-Chromium 151 (73 patches)
+Chromium 151 (87 patches)
 
 ✅
 

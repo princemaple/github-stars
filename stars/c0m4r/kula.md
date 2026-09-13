@@ -87,6 +87,8 @@ Monitor anything with custom metrics
 
 Note: Monitoring NVIDIA GPUs might require additional setup. Check GPU monitoring.
 
+The dashboard's **System Info** button opens a dedicated current-hardware page: motherboard and firmware, CPU topology and caches, memory modules, drives and filesystem usage, network addresses and utilization, PCI/USB devices, sensors, and power supplies. A friendly summary comes first, while low-level identifiers and counters stay available under technical details. It refreshes while open and works independently of chart history. See System Info.
+
 * * *
 
 🪩 How It Works
@@ -114,7 +116,7 @@ Note: Monitoring NVIDIA GPUs might require additional setup. Check GPU monitorin
     │                       ╰──(HTTP/WS)─► |   Dashboard   |
     ▼                                      ╰───────────────╯
 ╭──────────┬──────────┬──────────╮
-│  Tier 1  │  Tier 2  │  Tier 3  │
+│  Tier 0  │  Tier 1  │  Tier 2  │
 │    1s    │    1m    │    5m    │
 │  250 MB  │  150 MB  │  50 MB   │
 ╰──────────┴──────────┴──────────╯
@@ -128,25 +130,36 @@ Kula is powered by a custom-built, high-performance **ring-buffer** storage syst
 
 To maximize efficiency, Kula employs a multi-tiered architecture that intelligently downsamples older data:
 
--   **Tier 1** — Raw 1-second samples (default 250 MB)
--   **Tier 2** — 1-minute metrics aggregation (Avg/Min/Max) (default 150 MB)
--   **Tier 3** — 5-minute metrics aggregation (Avg/Min/Max) (default 50 MB)
+-   **Tier 0** — Raw 1-second samples (default 250 MB)
+-   **Tier 1** — 1-minute metric rollups (default 150 MB)
+-   **Tier 2** — 5-minute metric rollups (default 50 MB)
+
+Rollups use explicit per-field policies: sampled gauges and rates are duration-weighted, monotonic counters and metadata retain their latest value, and Min/Max are per-series extrema. Dynamic devices and applications are matched by stable identity, so a missing member is not fabricated as zero. Legacy rollups remain readable but do not advertise Min/Max as valid.
+
+Scheduled backups are optional: `backup.enabled` copies the tier files into a timestamped directory under `<storage.directory>/backup` on a crontab schedule, with a configurable per-tier depth, retention window, and gzip compression.
 
 ### HTTP server
 
-The HTTP server on backend exposes a REST API and a WebSocket endpoint for live streaming. Authentication is optional. When enabled, Kula uses Argon2id password hashing, secure session cookies, token-only session validation with sliding expiration, and hashed-at-rest session persistence. Authenticated API access can also use a bearer session token via the `Authorization` header.
+The HTTP server on backend exposes a REST API and a WebSocket endpoint for live streaming. Authentication is optional. When enabled, Kula uses Argon2id password hashing, secure session cookies, token-only session validation with sliding expiration bounded by an absolute session lifetime (`session_max_lifetime`, 7 days by default), and hashed-at-rest session persistence. Authenticated API access can also use a bearer session token via the `Authorization` header.
 
 ### Dashboard
 
 The frontend is a single-page application embedded in the binary. Built on Chart.js with custom SVG gauges, it connects via WebSocket for live updates and falls back to history API for longer time ranges. Features include:
 
--   Interactive zoom with drag-select (auto-pauses live stream)
--   Focus mode to display only specific charts of interest
+-   Live/Back/Forward/Zoom out navigation with exact shareable ranges
+-   Straight historical lines with trusted Min–Max bands and explicit gaps
+-   Bucket-aware tooltips and Local/UTC timestamps, with secondary choices in Customization
+-   Drag, modifier-wheel, touch/pinch, and keyboard pan/zoom plus a shared pinnable crosshair
+-   Accessible chart names and keyboard exploration; Data tables and CSV are opt-in
+-   Chart updates limited to the viewport, with plot-width sampling and full-range live refreshes
+-   Focus mode to display only specific charts and request only their history sections
 -   Configurable Y-axis bounds (Manual limits or Auto-detect)
 -   Per-device selectors for Network, Disk I/O, and Thermal monitoring
 -   Grid / stacked list layout toggle
--   Alert system for clock sync, low entropy, and system overload
+-   Alert system for clock sync, low entropy, load above core count, and high CPU/memory/swap usage
 -   Modern aesthetics with light/dark theme support
+-   Customization menu for per-browser appearance, accessibility, and chart options
+-   26 UI languages with a header language selector
 -   Optional AI assistant powered by a local Ollama model (see below)
 -   Prometheus exporter endpoint for scraping into existing observability stacks
 
@@ -264,19 +277,41 @@ export KULA\_LISTEN="127.0.0.1"
 export KULA\_PORT="27960"
 ./kula
 
+The default command is `serve` (`./kula serve`). Global flags are `-config <path>` to select another configuration file and `-version` (or `-v`) to print the version.
+
 ### TUI
 
 ./kula tui
 
-The terminal monitor is designed for a fast live read rather than as a second web dashboard. Its overview keeps CPU, memory, traffic, storage pressure, host health, and short-term trends visible in a standard terminal.
+The terminal monitor is designed for a fast live read rather than as a second web dashboard. Its overview keeps CPU, memory, traffic, storage pressure, host health, and short-term trends visible in a standard terminal. Numbered tabs switch between the Overview, CPU, Memory, Network, Storage, Processes, and GPU views.
 
 ### Inspect storage
 
 ./kula inspect
 
+The report includes each tier's configured resolution, current recorded range, estimated maximum coverage, and ETA until the tier first fills. Estimates assume continuous collection and use the average encoded record size observed so far. Use `./kula inspect --verbose` to also decode and print the latest recorded metrics from every tier.
+
+### List disks
+
+./kula disks
+
+Lists available disks and partitions supported by Kula with their persistent IDs. Copy IDs into `collection.devices` to select drives across reboots. The command ignores configured device filters and works without a config file or running daemon. Devices without a unique ID are marked `unavailable (unstable kernel name)`. Virtual, logical and optical devices excluded by the disk collector are omitted.
+
 ### Prometheus metrics
 
 See: Prometheus metrics for more info.
+
+Disk I/O and temperature metrics use the persistent disk ID as the `device` label value. `kula_disk_info{device="...",kernel_name="sda",identity_source="wwid"} 1` maps that ID to the current kernel name. Unidentified disks use `device="kernel:sda"` and `identity_source="kernel"`. Upgrading to 0.20.0 starts new disk metric series; update dashboards and alert rules that filter by old `device="sda"` values.
+
+### Persistent disk identities
+
+Kula tracks disk I/O and temperatures by hardware identity so history follows the drive when Linux changes names such as `sda` or `nvme0n1`. The JSON API retains `name` as the kernel name and adds `id`; selectors show the name with the ID in their tooltip. Discovery reads sysfs directly, preferring WWID, NVMe namespace UUID/NGUID/EUI, then vendor/model/serial. NVMe serial fallback includes the namespace number. No external tools or raw block-device access are required.
+
+Automatic discovery needs no configuration change. To monitor particular drives, copy IDs from `kula disks` (or `disk.devices[].id` in `/api/current`) into `collection.devices`. Legacy kernel names still work as filters but may select a different drive after reboot. Explicit partitions use the parent ID followed by `:part:<number>`; this tracks a numbered partition on that drive, not a filesystem across repartitioning. Filesystem capacity history continues to follow mount points.
+
+Disks without usable identifiers, or with duplicate identifiers, remain visible as **unstable** with a warning and kernel-name history. Their API `id` is absent; cross-reboot physical identity cannot be guaranteed for these devices. Duplicate paths to the same storage are treated as ambiguous, not combined as multipath I/O. Containers must expose the corresponding host sysfs metadata to obtain stable IDs.
+
+Existing tier files remain readable. Old records have no physical identity and stay in separate name-based series: Kula cannot safely assign their history to today's drives. New physical-disk series therefore begin at upgrade. The binary format extension is backward-readable by the new version; older binaries cannot read the newly extended records, so retain a pre-upgrade backup if downgrading.
 
 ### Health endpoints
 
@@ -335,12 +370,12 @@ All settings live in `config.yaml`. See `config.example.yaml` for defaults.
 ./addons/check.sh
 
 # Build
-./addonsh.build.sh
+./addons/build.sh
 
-# Build dev (Binary size: ~20MB)
+# Build dev (Binary size: ~21MB)
 CGO\_ENABLED=0 go build -o kula ./cmd/kula/
 
-# Build prod (Binary size: ~14MB, xz: ~4MB)
+# Build prod (Binary size: ~15MB, xz: ~5MB)
 CGO\_ENABLED=0 go build -trimpath -ldflags="\-s -w" -buildvcs=false -o kula ./cmd/kula/
 
 ### Updating Dependencies
@@ -358,6 +393,11 @@ go test -race ./...
 
 # Run the full storage benchmark suite (default: 3s per bench)
 ./addons/benchmark.sh
+
+# Generate a repeatable realistic history fixture in an isolated directory
+KULA\_DIRECTORY=/tmp/kula-mock go run ./cmd/gen-mock-data \\
+  -config config.example.yaml -duration 6h -yes \\
+  -seed 1263881281 -start 2026-09-07T00:00:00Z
 
 # Python scripts formatter and linters
 black addons/\*.py

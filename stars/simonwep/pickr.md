@@ -1,6 +1,6 @@
 ---
 project: pickr
-stars: 4489
+stars: 4487
 description: 🎨 Pickr - A simple, multi-themed, responsive and hackable Color-Picker library. No dependencies, no jQuery. Compatible with all CSS Frameworks e.g. Bootstrap, Materialize. Supports alpha channel, rgba, hsla, hsva and more!
 url: https://github.com/simonwep/pickr
 ---
@@ -40,7 +40,7 @@ Important
 
 This project might continue to get important security- and bug-related updates but its _feature set_ is frozen, and it's highly unlikely that it'll get new features or enhancements.
 
-The reason behind this decision is the way this tool has been build (monolithic, the core is one single file, everything is in plain JS etc.) which makes it incredible hard to maintain, tests become impossible at this stage without a complete rewrite, and the fun is gone at such a level of cramped complexity.
+The reason behind this decision is the way this tool has been built (monolithic, the core is one single file, everything is in plain JS etc.) which makes it incredibly hard to maintain, tests become impossible at this stage without a complete rewrite, and the fun is gone at such a level of cramped complexity.
 
 Personally I recommend building these UI-Related "widgets" directly into the app with the framework you're using which takes more time but in return gives you full power of how it should work and look like. Frameworks such as (p)react, vue and svelte will make it a breeze to develop such things within a day.
 
@@ -147,7 +147,7 @@ const pickr \= Pickr.create({
 Events
 ------
 
-Since version `0.4.x` Pickr is event-driven. Use the `on(event, cb)` and `off(event, cb)` functions to bind / unbind eventlistener.
+Since version `0.4.x` Pickr is event-driven. Use the `on(event, cb)` and `off(event, cb)` functions to bind / unbind event listener.
 
 Event
 
@@ -352,7 +352,7 @@ const pickr \= new Pickr({
             rgba: false, // Display 'input/output format as rgba' button (red green blue and alpha)
             hsla: false, // Display 'input/output format as hsla' button (hue saturation lightness and alpha)
             hsva: false, // Display 'input/output format as hsva' button (hue saturation value and alpha)
-            cmyk: false, // Display 'input/output format as cmyk' button (cyan mangenta yellow key )
+            cmyk: false, // Display 'input/output format as cmyk' button (cyan magenta yellow key )
 
             input: false, // Display input/output textbox which shows the selected color value.
             // the format of the input is determined by defaultRepresentation,
@@ -464,8 +464,8 @@ Static methods
 -   on(elements`:HTMLElement(s)`, events`:String(s)`, fn`:Function`\[, options `:Object`\]) _\- Attach an event handler function._
 -   off(elements`:HTMLElement(s)`, event`:String(s)`, fn`:Function`\[, options `:Object`\]) _\- Remove an event handler._
 -   createElementFromString(html`:String`)`:HTMLElement` _\- Creates an new HTML Element out of this string._
--   eventPath(evt`:Event`)`:[HTMLElement]` _\- A polyfill for the event-path event propery._
--   createFromTemplate(str`:String`) _\- See inline doumentation._
+-   eventPath(evt`:Event`)`:[HTMLElement]` _\- A polyfill for the event-path event property._
+-   createFromTemplate(str`:String`) _\- See inline documentation._
 -   resolveElement(val`:String|HTMLElement`) _\- Resolves a `HTMLElement`, supports `>>>` as shadow dom selector._
 -   adjustableInputNumbers(el`:InputElement`, mapper`:Function`) _\- Creates the possibility to change the numbers in an inputfield via mouse scrolling. The mapper function takes three arguments: the matched number, an multiplier and the index of the match._
 

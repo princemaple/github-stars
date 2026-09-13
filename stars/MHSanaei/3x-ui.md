@@ -1,6 +1,6 @@
 ---
 project: 3x-ui
-stars: 45941
+stars: 46255
 description: Supporting multi-protocol multi-user(Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun, MTProto، AmneziaWG) 
 url: https://github.com/MHSanaei/3x-ui
 ---
@@ -260,6 +260,7 @@ Community Tools
 Tools and integrations built by the community around 3x-ui.
 
 -   terraform-provider-3x-ui (License: **MIT**): _Manage inbounds, clients, panel settings, and Xray configuration as code with Terraform / OpenTofu._
+-   3X-UI Manager (License: **MIT**): _Native Android client for 3x-ui — dashboard, inbounds, clients with QR sharing, nodes and multi-panel management. Available on F-Droid._
 
 Support project
 ---------------
@@ -268,5 +269,5 @@ Support project
 
   
 
-Stargazers over Time
---------------------
+Star History
+------------

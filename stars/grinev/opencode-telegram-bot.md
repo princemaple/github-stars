@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1131
+stars: 1152
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -32,7 +32,7 @@ Features
 -   **Live status** — pinned message with current project/worktree, model, context usage, and changed files list, updated in real time
 -   **Model switching** — pick models from OpenCode favorites and recent history directly in the chat (favorites are shown first), or browse all models by provider
 -   **Agent modes** — switch between Plan and Build modes on the fly
--   **Subagent activity** — watch live subagent progress in chat, including the current task, agent, model, and active tool step
+-   **Subagent activity** — watch live subagent progress in chat, including the current task, agent, model (with variant when set), and active tool step
 -   **Custom Commands** — run OpenCode custom commands (and built-ins like `init`/`review`) from an inline menu with confirmation
 -   **Skills Catalog** — browse OpenCode skills from an inline menu and run them immediately or with arguments in the next message
 -   **Interactive Q&A** — answer agent questions and approve permissions via inline buttons
@@ -672,6 +672,7 @@ Logs are written to `./logs` when running from sources and to the runtime config
 Runtime preferences are changed from `/settings` and stored in `settings.json`:
 
 -   Compact output mode
+-   Delete progress on finish: available while compact output mode is on, removes the progress message when the run completes
 -   Thinking content display
 -   Assistant run footer display
 -   Diff file attachments

@@ -1,6 +1,6 @@
 ---
 project: markmap
-stars: 13098
+stars: 13110
 description: Build mindmaps with plain text
 url: https://github.com/markmap/markmap
 ---
@@ -26,6 +26,7 @@ Markmap is also available in:
 -   Emacs: eaf-markmap -- powered by EAF
 -   MCP Server: markmap-mcp-server \- powered by MCP TypeScript SDK
 -   AI agents: mindmap-skills - generate an interactive Markmap from a file, URL, or topic, without leaving your AI agent
+-   Web: text2diagram - describe a mindmap in plain language and get an interactive Markmap in the browser, no install
 
 Usage
 -----

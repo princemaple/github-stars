@@ -1,6 +1,6 @@
 ---
 project: OpenSpeedy
-stars: 17579
+stars: 17736
 description: 🎮 An open-source game speed modifier.
 url: https://github.com/game1024/OpenSpeedy
 ---
@@ -40,6 +40,10 @@ openspeedy
 📥 **Method 2: Manual Download**
 
 Visit the Releases page to download the latest version.
+
+🎮 **Method 3: Steam (Optional)**
+
+Get it on the Steam store. This is an optional way to install.
 
 💻 System Requirements
 ======================

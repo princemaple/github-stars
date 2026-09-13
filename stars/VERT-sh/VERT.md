@@ -1,6 +1,6 @@
 ---
 project: VERT
-stars: 15530
+stars: 15585
 description: The next-generation file converter. Open source, fully local* and free forever.
 url: https://github.com/VERT-sh/VERT
 ---
@@ -38,6 +38,11 @@ Documentation
 -   Getting Started
 -   Using Docker
 -   Video Conversion
+
+Contributing
+------------
+
+Refer to our contributing guidelines before opening an issue or pull request here: CONTRIBUTING.md
 
 License
 -------

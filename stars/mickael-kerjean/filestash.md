@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 14596
+stars: 14658
 description: :file_folder: Universal File Storage Client
 url: https://github.com/mickael-kerjean/filestash
 ---
@@ -8,13 +8,13 @@ url: https://github.com/mickael-kerjean/filestash
 What is this?
 =============
 
-Filestash started as a storage agnostic Dropbox-like file manager that speaks every storage protocol (FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more). It grew into what we want to be the world's best file management platform, centered around **3 pillars**:
+Filestash started as a storage agnostic Dropbox-like file manager that speaks every storage protocol (FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more). It grew into what we want to be the world's best file management platform, centered around **3 separate products**:
 
-1.  **Web client** _(the file manager available from your browser)_: documentation / screenshot
+1.  **Web client** _(the file manager available from your browser)_: documentation / screenshot / demo
 2.  **Native client** _(to sync your data on your device)_: repo / screenshots for mac, windows, linux, android & iphone
 3.  **Gateways** _(to expose your storages over any protocol)_: showcase
 
-The philosophy that guides this project is: "anything that's not a fundamental truth of the universe lives in a plugin". That keeps the core lean and fast, and the opinions replaceable, so when your requirements get deep or weird, the answer is a plugin, not a fork.
+The philosophy that guides this project is: "anything that's not a fundamental truth of the universe lives in a plugin". That keeps the core lean and fast, and the opinions replaceable, so when your requirements get deep or weird, the answer is a plugin, not a fork. You only carry the bloat you really need.
 
 Key Features
 ============
@@ -41,8 +41,7 @@ Key Features
 -   Themes:  
     
 -   AI features for search, smart folders and OCRs.
--   ... and much much more (versioning, audit, public site, antivirus, quota, chat, chromecast support, on demand video transcoding, mounting shared links as network drive, ...)  
-    As a rule of thumb, if your problem involves files, we either already have a plugin for it or can make a plugin for it
+-   ... and much much more (versioning, audit, public site, antivirus, quota, chat, chromecast support, on demand video transcoding, mounting shared links as network drive, ...) As a rule of thumb, if your problem involves files, we either already have a plugin for it or can make a plugin for it
 
 Plugins
 =======

@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 388971
+stars: 389528
 description: The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -8,7 +8,9 @@ url: https://github.com/openclaw/openclaw
 OpenClaw 🦞 — Your assistant, on your devices, in your chats
 ============================================================
 
-OpenClaw is an AI assistant that runs on your devices and meets you in the channels you already use. It connects models, tools, messaging channels, and optional companion apps through one Gateway, for a single operator or for a team whose members trust each other: the same gateway runs as a personal assistant on one laptop or as a shared team deployment, and configuration is the only difference. The architecture case — trusted gateway, untrusted execution, deterministic policy — is in Why OpenClaw.
+OpenClaw is an open-source AI assistant that runs on your own computer and meets you in the channels you already use: Discord, iMessage, Slack, Teams, Telegram, WhatsApp, and 20+ more, plus native apps for macOS, iOS, Android, Windows, and Linux. One Gateway runs it as a personal assistant on a laptop or as a shared team deployment; configuration is the only difference.
+
+**Yours, with no catch.** State, memory, and credentials live on your hardware. Models and agent harnesses (Claude, Codex, local models) are plugins you can swap without changing anything else. Your prompts go to the model provider and chat platforms you configure, plus any diagnostics export you enable yourself; by default OpenClaw itself phones home for nothing but a daily version check, anonymous feature statistics are opt-in, and `update.checkOnStart: false` disables both (what OpenClaw sends). OpenClaw is stewarded by the OpenClaw Foundation, an independent 501(c)(3), and has no paid tier, hosted service, or token. The architecture case — trusted gateway, untrusted execution, deterministic policy — is in Why OpenClaw.
 
 Website · Docs · Getting started · Why OpenClaw · Showcase · FAQ · Vision · DeepWiki
 
@@ -23,7 +25,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 # Windows PowerShell
 iwr \-useb https://openclaw.ai/install.ps1 | iex
 
-Already manage Node.js? Install the published package instead (Node 22.22.3+, 24.15+, or 25.9+):
+Already manage Node.js? Install the published package instead (Node 24.16+ or 26.1+; Node 26 recommended):
 
 npm install -g openclaw@latest --allow-scripts=openclaw
 
@@ -104,10 +106,15 @@ pnpm ui:build
 
 See CONTRIBUTING.md for the contribution workflow and the source setup guide for the development loop.
 
+Governance
+----------
+
+OpenClaw is developed in the open by the OpenClaw Foundation, an independent 501(c)(3). The Foundation employs the core team and signs releases. Donors and infrastructure sponsors support the Foundation; none of them own or direct the project. OpenAI is a donor, not an owner.
+
 Community
 ---------
 
-OpenClaw is developed in the open by the OpenClaw Foundation, a non-profit. See CONTRIBUTING.md for maintainers and contribution guidelines; AI-assisted PRs are welcome.
+See CONTRIBUTING.md for maintainers and contribution guidelines; AI-assisted PRs are welcome.
 
 Use the issue chooser for bugs and feature requests, ask setup questions in Discord, and report vulnerabilities through SECURITY.md. New capabilities usually belong in plugins built on the plugin SDK and shared through ClawHub.
 
@@ -115,8 +122,10 @@ OpenClaw was built for **Molty**, a space lobster AI assistant, by Peter Steinbe
 
 Special thanks to Mario Zechner for his support and for pi, and to Adam Doppelt for the lobster.bot domain.
 
-Sponsors
---------
+Donors and sponsors
+-------------------
+
+The Foundation is funded by donors including the University of Michigan, OpenAI, Amazon, Red Hat, Offline Holdings, and Lobster Computer Company, with infrastructure support from GitHub, NVIDIA, Vercel, Blacksmith, and Convex.
 
 Contributors
 ------------

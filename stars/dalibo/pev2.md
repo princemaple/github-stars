@@ -1,6 +1,6 @@
 ---
 project: pev2
-stars: 3585
+stars: 3591
 description: Postgres Explain Visualizer 2
 url: https://github.com/dalibo/pev2
 ---
@@ -40,7 +40,7 @@ Integrated in a web application
 <link rel\="stylesheet" href\="https://unpkg.com/pev2/dist/pev2.css" />
 
 <div id\="app" class\="d-flex flex-column vh-100"\>
-  <pev2 :plan-source\="plan" plan-query\="" />
+  <pev2 :plan-source\="plan" plan-query\="" :plan-comment\="comment" />
 </div\>
 
 <script\>
@@ -55,6 +55,7 @@ Integrated in a web application
     data() {
       return {
         plan: plan,
+        comment: "Uses the production work\_mem setting",
       }
     },
   })
@@ -87,6 +88,7 @@ export default {
   data() {
     return {
       plan: plan,
+      comment: "Uses the production work\_mem setting",
       query: query,
     }
   },
@@ -95,7 +97,7 @@ export default {
 Then add the `PEV2` component to your template:
 
 <div id\="app"\>
-  <pev2 :plan-source\="plan" :plan-query\="query"\></pev2\>
+  <pev2 :plan-source\="plan" :plan-query\="query" :plan-comment\="comment"\></pev2\>
 </div\>
 
 `PEV2` requires `Bootstrap (CSS)` to work so don't forget to add the following in you header (or load them with your favorite bundler).

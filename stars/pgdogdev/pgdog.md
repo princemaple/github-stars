@@ -1,6 +1,6 @@
 ---
 project: pgdog
-stars: 5465
+stars: 5481
 description: PostgreSQL connection pooler, load balancer and database sharder.
 url: https://github.com/pgdogdev/pgdog
 ---
@@ -459,7 +459,7 @@ CTEs
 
 No
 
-The same CTE is executed on all shards.
+The same CTE is executed on all shards. Data-modifying CTEs on omnisharded tables reach every shard.
 
 #### Using `COPY`
 

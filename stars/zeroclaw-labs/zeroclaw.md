@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 32734
+stars: 32776
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -10,7 +10,7 @@ url: https://github.com/zeroclaw-labs/zeroclaw
 
 **You own the agent. You own the data. You own the machine it runs on.**
 
-Docs · Philosophy · Quick start · Architecture · Discord
+Website · Docs · Philosophy · Quick start · Architecture · Discord
 
 * * *
 

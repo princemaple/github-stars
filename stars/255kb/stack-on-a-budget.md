@@ -1,6 +1,6 @@
 ---
 project: stack-on-a-budget
-stars: 12444
+stars: 12449
 description: A collection of services with great free tiers for developers on a budget. Sponsored by Mockoon, the best mock API tool. https://mockoon.com
 url: https://github.com/255kb/stack-on-a-budget
 ---
@@ -84,6 +84,7 @@ Table of Contents
     -   FakeJSON
     -   Image Charts
     -   Localizely
+    -   Motomarks
     -   OGForge
     -   prismic.io
     -   Sanity
@@ -195,6 +196,7 @@ Table of Contents
     -   Google Stackdriver
     -   Healthchecks.io
     -   Honeybadger.io
+    -   Keptick
     -   Librato
     -   MonitorMonk
     -   New Relic

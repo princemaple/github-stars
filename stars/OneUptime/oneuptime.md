@@ -1,11 +1,11 @@
 ---
 project: oneuptime
-stars: 7562
+stars: 7599
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
 
-English · 简体中文 · 繁體中文 · 日本語 · 한국어 · Español · Français · Deutsch · Português · Italiano · Русский · हिन्दी · Nederlands · Dansk · Svenska · Norsk
+English · 简体中文 · 繁體中文 · 日本語 · 한국어 · Español · Français · Deutsch · Português · Italiano · Русский · हिन्दी · فارسی · Nederlands · Dansk · Svenska · Norsk
 
 ### Agentic observability — one open-source platform for uptime, incidents, on-call, status pages, logs, traces, metrics & APM.
 
@@ -206,6 +206,7 @@ Drop in copy-paste, **OpenTelemetry-based** agents to watch everything your serv
 -   **Docker** — a single agent auto-discovers every container and ships metrics & logs. Docs →
 -   **Podman** — same one-agent auto-discovery via Podman's Docker-compatible socket. Docs →
 -   **Proxmox** — nodes, VMs, containers, storage, HA state, backup coverage & replication health. Docs →
+-   **VMware** — vCenter, ESXi hosts, virtual machines, datastores, clusters, resource pools & vSAN. Docs →
 -   **Ceph** — cluster health, capacity forecasts, and OSD/pool/PG/monitor visibility. Docs →
 
 * * *

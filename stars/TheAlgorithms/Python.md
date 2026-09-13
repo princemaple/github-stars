@@ -1,6 +1,6 @@
 ---
 project: Python
-stars: 224290
+stars: 224516
 description: All Algorithms implemented in Python
 url: https://github.com/TheAlgorithms/Python
 ---
@@ -22,7 +22,7 @@ Implementations are for learning purposes only. They may be less efficient than 
 🌐 Community Channels
 ---------------------
 
-We are on Discord and Gitter! Community channels are a great way for you to ask questions and get help. Please join us!
+We are on Discord! Community channels are a great way for you to ask questions and get help. Please join us!
 
 📜 List of Algorithms
 ---------------------

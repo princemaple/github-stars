@@ -1,6 +1,6 @@
 ---
 project: syslog-ng
-stars: 2369
+stars: 2372
 description: syslog-ng is an enhanced log daemon, supporting a wide range of input and output methods: syslog, unstructured text, queueing, SQL & NoSQL.
 url: https://github.com/syslog-ng/syslog-ng
 ---
@@ -259,16 +259,6 @@ Debian 12
 debian-bookworm-arm64
 
 arm64
-
-stable
-
-nightly
-
-Debian 11
-
-debian-bullseye
-
-x86-64
 
 stable
 

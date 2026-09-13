@@ -1,6 +1,6 @@
 ---
 project: builder
-stars: 2334
+stars: 2347
 description: Craft beautiful websites effortlessly with an intuitive visual builder and publish them instantly
 url: https://github.com/frappe/builder
 ---

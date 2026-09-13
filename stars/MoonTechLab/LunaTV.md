@@ -1,6 +1,6 @@
 ---
 project: LunaTV
-stars: 9377
+stars: 10420
 description: 本项目采用 CC BY-NC-SA 协议，禁止任何商业化行为，任何衍生项目必须保留本项目地址并以相同协议开源
 url: https://github.com/MoonTechLab/LunaTV
 ---
@@ -529,7 +529,9 @@ AndroidTV 使用
 License
 -------
 
-MIT © 2025 MoonTV & Contributors
+CC BY-NC-SA 4.0 © 2025 MoonTV & Contributors
+
+本项目采用 知识共享 署名-非商业性使用-相同方式共享 4.0 国际许可协议：禁止任何商业化行为；任何衍生项目必须保留本项目地址与版权署名，并以相同协议开源。
 
 致谢
 --

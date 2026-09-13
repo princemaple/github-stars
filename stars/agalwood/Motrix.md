@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 55173
+stars: 55473
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---
@@ -27,7 +27,7 @@ The same core powers two ways to run Motrix:
 🧪 Beta testing
 ---------------
 
-Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.32 from GitHub Releases and read the full release notes before installing it.
+Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.37 from GitHub Releases and read the full release notes before installing it.
 
 Back up your existing Motrix data and downloads before testing. Migration from Motrix v1 data has not yet been validated, so do not use your only copy of v1 data with this beta. When practical, test v2 in parallel using a separate OS account, machine, or Docker data directory.
 
@@ -52,7 +52,7 @@ Screenshots
 -   📊 Customizable Dashboard with transfer stats, live activity, and task tiles
 -   🔔 System notifications when downloads finish, plus an in-app notification center
 -   🧩 QuickJS-based plugin sandboxing, fine-grained permissions, and an in-app marketplace
--   🌐 Motrix Extension for Chrome and Firefox hands browser downloads off to Motrix in one click
+-   🌐 Motrix Extension for Chrome, Edge, and Firefox hands browser downloads off to Motrix in one click
 -   ⌨️ Official `@motrix/cli` client for everyday shell use and AI agents
 -   🐳 Docker-ready headless server with secure device-code pairing for remote CLI and agent clients
 -   🎬 Extensible URL Resolver plugins for extracting media from supported sites
@@ -87,7 +87,7 @@ Motrix Extension
 
 Browser extension
 
-Intercepts downloads in Chrome and Firefox (Manifest V3), hands them off to Motrix, and pairs securely with the desktop app over native messaging
+Intercepts downloads in Chrome, Edge, and Firefox (Manifest V3), hands them off to Motrix, and pairs securely with the desktop app over native messaging
 
 Motrix Plugin SDK
 
@@ -130,6 +130,17 @@ pnpm exec motrix-plugin lint     # Check the packed bundle
 The default scaffold starts with a `beforeCreate` URL resolver. Pass `post-action` after the project name to start with an `afterComplete` notification plugin instead. Plugins can hook into `beforeCreate`, `beforeFinalize`, `afterComplete`, and `onError`, contribute callable commands and settings, and access the runtime through the `motrix:plugin-api` virtual module.
 
 Plugins are bundled as a single ES2020 module and run inside a QuickJS sandbox without Node.js APIs or direct file and network access. Declare activation events, required capabilities, and URL-scoped host permissions in `motrix-plugin.json`; Motrix shows those requests to the user before granting access. See the Plugin SDK documentation for templates, the manifest and runtime API references, localization, sandbox constraints, packaging, and distribution.
+
+Browser extension
+-----------------
+
+Motrix Extension is available from the official browser stores for use with Motrix 2:
+
+-   Chrome Web Store
+-   Microsoft Edge Add-ons
+-   Firefox Add-ons
+
+For installation and pairing, see the browser extension guide. Development builds remain available from the extension repository.
 
 📦 Installation
 ---------------
@@ -180,6 +191,14 @@ Linux (Snap Store)
 
 Install the strictly confined beta with `sudo snap install motrix --edge`
 
+Arch Linux / Omarchy
+
+`x64`, `arm64`
+
+`.pacman`
+
+Install the native Arch package with `sudo pacman -U ./Motrix-<version>-<arch>.pacman`; see the Arch installation guide
+
 The `.AppImage` asks on first launch whether to register its desktop entry and URL-scheme handlers under your user data directory; declining leaves your system untouched. You can enable or remove this desktop integration at any time from Settings → Integration. The Snap Store package is strictly confined. Its approved `personal-files` interface permits Motrix to register Native Messaging hosts for supported browsers; it does not grant general access to files outside the normal Snap interfaces. Flatpak is validated separately and is not published by the release tag. Windows `arm64` and all 32-bit packages are not available. Windows `x64` packages are unsigned and may trigger a Windows SmartScreen warning.
 
 ### Command-line client
@@ -194,7 +213,7 @@ Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR
 
 mkdir -p motrix-data downloads
 sudo chown 1000:1000 motrix-data downloads
-export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.32'
+export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.37'
 export MOTRIX\_PUBLIC\_URL='http://nas.example.lan:8080'
 docker compose pull server
 docker compose up -d --wait

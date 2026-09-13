@@ -1,6 +1,6 @@
 ---
 project: hysteria
-stars: 22439
+stars: 22470
 description: Hysteria is powerful, lightning-fast, and censorship-resistant open-source proxy software
 url: https://github.com/HyNetworks/hysteria
 ---

@@ -1,6 +1,6 @@
 ---
 project: beekeeper-studio
-stars: 23555
+stars: 23605
 description: Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows.
 url: https://github.com/beekeeper-studio/beekeeper-studio
 ---
@@ -309,6 +309,8 @@ Beekeeper Studio Community Edition (the code in this repository) is licensed und
 Beekeeper Studio Ultimate Edition contains extra features and is licensed under a commercial end user agreement (EULA).
 
 Beekeeper Studio's trademarks (words marks and logos) are not open source. See our trademark guidelines for more information.
+
+Third party assets bundled with the app, such as the database icons, are credited in ATTRIBUTIONS.md.
 
 Trademark Guidelines
 --------------------

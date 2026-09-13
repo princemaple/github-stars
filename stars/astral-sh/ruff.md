@@ -1,6 +1,6 @@
 ---
 project: ruff
-stars: 49504
+stars: 49613
 description: An extremely fast Python linter and code formatter, written in Rust.
 url: https://github.com/astral-sh/ruff
 ---
@@ -37,8 +37,6 @@ Ruff is extremely actively developed and used in major open-source projects like
 -   Hugging Face
 -   Pandas
 -   SciPy
-
-...and many more.
 
 Ruff is backed by Astral, the creators of uv and ty.
 
@@ -78,7 +76,7 @@ For more, see the documentation.
 4.  Contributing
 5.  Support
 6.  Acknowledgements
-7.  Who's Using Ruff?
+7.  Show Your Support
 8.  License
 
 Getting Started
@@ -92,8 +90,8 @@ Ruff is available as `ruff` on PyPI.
 
 Invoke Ruff directly with `uvx`:
 
-uvx ruff@0.16.6 check   # Lint all files in the current directory.
-uvx ruff@0.16.6 format  # Format all files in the current directory.
+uvx ruff@0.16.7 check   # Lint all files in the current directory.
+uvx ruff@0.16.7 format  # Format all files in the current directory.
 
 Or install Ruff with `uv` (recommended), `pip`, or `pipx`:
 
@@ -116,8 +114,8 @@ curl -LsSf https://astral.sh/ruff/install.sh | sh
 powershell -c "irm https://astral.sh/ruff/install.ps1 | iex"
 
 # For a specific version.
-curl -LsSf https://astral.sh/ruff/0.16.6/install.sh | sh
-powershell -c "irm https://astral.sh/ruff/0.16.6/install.ps1 | iex"
+curl -LsSf https://astral.sh/ruff/0.16.7/install.sh | sh
+powershell -c "irm https://astral.sh/ruff/0.16.7/install.ps1 | iex"
 
 You can also install Ruff via Homebrew, Conda, and with a variety of other package managers.
 
@@ -143,7 +141,7 @@ Ruff can also be used as a pre-commit hook via `ruff-pre-commit`:
 
 \- repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev: v0.16.6
+  rev: v0.16.7
   hooks:
     # Run the linter.
     - id: ruff-check
@@ -345,107 +343,8 @@ Ruff is the beneficiary of a large number of contributors.
 
 Ruff is released under the MIT license.
 
-Who's Using Ruff?
+Show Your Support
 -----------------
-
-Ruff is used by a number of major open-source projects and companies, including:
-
--   Albumentations
--   Amazon (AWS SAM)
--   Anki
--   Anthropic (Python SDK)
--   Apache Airflow
--   AstraZeneca (Magnus)
--   Babel
--   Benchling (Refac)
--   Bokeh
--   Capital One (datacompy)
--   CrowdCent (NumerBlox)
--   Cryptography (PyCA)
--   CERN (Indico)
--   DVC
--   Dagger
--   Dagster
--   Databricks (MLflow)
--   Dify
--   FastAPI
--   Godot
--   Gradio
--   Great Expectations
--   HTTPX
--   Hatch
--   Home Assistant
--   Hugging Face (Transformers, Datasets, Diffusers)
--   IBM (Qiskit)
--   ING Bank (popmon, probatus)
--   Ibis
--   ivy
--   JAX
--   Jupyter
--   Kraken Tech
--   LangChain
--   Litestar
--   LlamaIndex
--   Matrix (Synapse)
--   MegaLinter
--   Meltano (Meltano CLI, Singer SDK)
--   Microsoft (Semantic Kernel, ONNX Runtime, LightGBM)
--   Modern Treasury (Python SDK)
--   Mozilla (Firefox)
--   Mypy
--   Nautobot
--   Netflix (Dispatch)
--   Neon
--   Nokia
--   NoneBot
--   NumPyro
--   ONNX
--   OpenBB
--   Open Wine Components
--   PDM
--   PaddlePaddle
--   Pandas
--   Pillow
--   Poetry
--   Polars
--   PostHog
--   Prefect (Python SDK, Marvin)
--   PyInstaller
--   PyMC
--   PyMC-Marketing
--   pytest
--   PyTorch
--   Pydantic
--   Pylint
--   PyScripter
--   PyVista
--   Reflex
--   River
--   Rippling
--   Robyn
--   Saleor
--   Scale AI (Launch SDK)
--   SciPy
--   Snowflake (SnowCLI)
--   Sphinx
--   Stable Baselines3
--   Starlette
--   Streamlit
--   The Algorithms
--   Vega-Altair
--   Weblate
--   WordPress (Openverse)
--   ZenML
--   Zulip
--   build (PyPA)
--   cibuildwheel (PyPA)
--   delta-rs
--   featuretools
--   meson-python
--   nox
--   pip
-
-### Show Your Support
 
 If you're using Ruff, consider adding the Ruff badge to your project's `README.md`:
 

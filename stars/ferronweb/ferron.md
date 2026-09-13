@@ -1,12 +1,14 @@
 ---
 project: ferron
-stars: 2129
+stars: 2136
 description: A fast, modern web server built for production debugging.
 url: https://github.com/ferronweb/ferron
 ---
 
 **Ferron** - a fast, modern web server built for production debugging.
 ======================================================================
+
+English | Polski
 
 Why Ferron?
 -----------
@@ -102,7 +104,7 @@ The full directive reference is in docs/configuration/.
 Contributing
 ------------
 
-Feedback, bug reports, and testing are welcome. When reporting issues, include your configuration file, `--verbose` output, and steps to reproduce.
+Feedback, bug reports, and testing are welcome. When reporting issues, include your configuration file, `--verbose` output, and steps to reproduce. See CONTRIBUTING.md for setup, checks, and guidelines.
 
 License
 -------

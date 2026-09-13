@@ -1,6 +1,6 @@
 ---
 project: flameshot
-stars: 30780
+stars: 30837
 description: Powerful yet simple to use screenshot software :desktop_computer: :camera_flash:
 url: https://github.com/flameshot-org/flameshot
 ---
@@ -443,7 +443,13 @@ There are packages available in the repository of some Linux distributions:
 ### macOS
 
 -   MacPorts: `sudo port selfupdate && sudo port install flameshot`
--   Homebrew: `brew install --cask flameshot`
+-   Homebrew:
+
+```
+brew tap flameshot-org/flameshot
+brew trust --cask flameshot-org/flameshot/flameshot-org-flameshot
+brew install  flameshot-org-flameshot
+```
 
 **Note** that because of macOS security features, you may not be able to open flameshot when installed using brew. If you see the message `“flameshot” cannot be opened because the developer cannot be verified.` you will need to follow the steps below:
 

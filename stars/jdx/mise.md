@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 33509
+stars: 33839
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---
@@ -21,150 +21,132 @@ View all sponsors
 
 * * *
 
-Tip
+What is mise?
+-------------
 
-Rust builds filling every checkout's `target/`? Mr Boxington gives Cargo one shared, self-pruning cache across worktrees, local builds, and CI.
+mise manages your development tools, environment variables, and project tasks. Declare them in `mise.toml`, commit the file, and use the same setup in your shell, your editor, and CI.
 
-What is it?
------------
+-   **Tools:** install Node.js, Python, Go, and hundreds more, with different versions for each project.
+-   **Environments:** set project environment variables and load `.env` files.
+-   **Tasks:** run build, test, and other commands with the tools and environment they need.
+-   **Bootstrap:** declare machine setup, including system packages, dotfiles, and services.
 
-`mise` prepares your development environment before each command runs. It keeps project tools, environment variables, and tasks in one `mise.toml` file so new shells, checkouts, and CI jobs all start from the same setup.
-
--   Install and switch between dev tools like node, python, cmake, terraform, and hundreds more.
--   Load environment variables per project directory, including values from `.env` files and other sources.
--   Define and run tasks for building, testing, linting, and deploying projects.
-
-Demo
-----
-
-The following demo shows how to install and use `mise` to manage multiple versions of `node` on the same system. Note that calling `which node` gives us a real path to node, not a shim.
-
-It also shows that you can use `mise` to install and many other tools such as `jq`, `terraform`, or `go`.
-
-See demo transcript.
+Use the parts you need. Start with one tool or task and add more to the same config.
 
 Quickstart
 ----------
 
-### Install mise
+### 1\. Install mise
 
-See Getting started for more options.
+On macOS or Linux:
 
-$ curl https://mise.run | sh
-$ ~/.local/bin/mise --version
-              \_                                        \_\_
-   \_\_\_\_ \_\_\_  (\_)\_\_\_\_\_\_\_        \_\_\_  \_\_\_\_        \_\_\_\_  / /\_\_\_ \_\_\_\_\_\_\_\_\_
-  / \_\_ \`\_\_ \\/ / \_\_\_/ \_ \\\_\_\_\_\_\_/ \_ \\/ \_\_ \\\_\_\_\_\_\_/ \_\_ \\/ / \_\_ \`/ \_\_\_/ \_ \\
- / / / / / / (\_\_  )  \_\_/\_\_\_\_\_/  \_\_/ / / /\_\_\_\_\_/ /\_/ / / /\_/ / /\_\_/  \_\_/
-/\_/ /\_/ /\_/\_/\_\_\_\_/\\\_\_\_/      \\\_\_\_/\_/ /\_/     / .\_\_\_/\_/\\\_\_,\_/\\\_\_\_/\\\_\_\_/
-                                            /\_/                 by @jdx
-2026.9.1 macos-arm64 (2026-09-02)
+curl https://mise.run | sh
+~/.local/bin/mise --version
 
-Hook mise into your shell (pick the right one for your shell):
+On Windows, install with `winget install jdx.mise`. See the installation guide for package managers and other installation methods.
 
-\# note this assumes mise is located at ~/.local/bin/mise
-# which is what https://mise.run does by default
-echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
-echo 'eval "$(~/.local/bin/mise activate zsh)"' >> ~/.zshrc
-echo '~/.local/bin/mise activate fish | source' >> ~/.config/fish/config.fish
-echo '~/.local/bin/mise activate pwsh | Out-String | Invoke-Expression' >> ~/.config/powershell/Microsoft.PowerShell\_profile.ps1
+The examples below use `mise`. If it isn't on your `PATH` yet, use `~/.local/bin/mise` instead on macOS or Linux.
 
-### Execute commands with specific tools
+### 2\. Try a tool
 
-$ mise exec node@26 -- node -v
-mise node@26.x.x ✓ installed
-v26.x.x
+mise exec node@24 -- node --version
 
-### Install tools
+This installs Node.js if needed and runs it for this command, without changing your project configuration. No shell activation is required.
 
-$ mise use --global node@26 go@1
-$ node -v
-v26.x.x
-$ go version
-go version go1.x.x macos/arm64
+For an existing project that already has a reviewed `mise.toml`, run `mise install` from its directory and `mise tasks ls` to discover its tasks.
 
-See dev tools for more examples.
+### 3\. Give a project its own environment
 
-### Manage environment variables
+In a project directory, create `mise.toml`:
 
-# mise.toml
-\[env\]
-SOME\_VAR = "foo"
-
-$ mise set SOME\_VAR=bar
-$ echo $SOME\_VAR
-bar
-
-Note that `mise` can also load `.env` files.
-
-### Run tasks
-
-# mise.toml
-\[tasks.build\]
-description = "build the project"
-run = "echo building..."
-
-$ mise run build
-building...
-
-See tasks for more information.
-
-### Example mise project
-
-Here is a combined example to give you an idea of how you can use mise to manage your a project's tools, environment, and tasks.
-
-# mise.toml
 \[tools\]
-terraform = "1"
-aws-cli = "2"
+node = "24"
 
 \[env\]
-TF\_WORKSPACE = "development"
-AWS\_REGION = "us-west-2"
-AWS\_PROFILE = "dev"
+NODE\_ENV = "development"
 
-\[tasks.plan\]
-description = "Run terraform plan with configured workspace"
-run = """
-terraform init
-terraform workspace select $TF\_WORKSPACE
-terraform plan
-"""
+\[tasks.hello\]
+description = "Print the project's Node.js version and environment"
+run = '''node -e "console.log(process.version, process.env.NODE\_ENV)"'''
 
-\[tasks.validate\]
-description = "Validate AWS credentials and terraform config"
-run = """
-aws sts get-caller-identity
-terraform validate
-"""
+Run the task:
 
-\[tasks.deploy\]
-description = "Deploy infrastructure after validation"
-depends = \["validate", "plan"\]
-run = "terraform apply -auto-approve"
+mise run hello
 
-Run it with:
+mise installs the configured tool if needed, loads `NODE_ENV`, and runs the task. The output includes the Node.js version and `development`. Commit `mise.toml` so teammates and CI can run the same command.
 
-mise install # install tools specified in mise.toml
-mise run deploy
+To add tools later, run `mise use python@3.14` from the project directory. Use `mise use --global` to set personal defaults. Version requests such as `"24"` select a release in that series; use exact pins or a lockfile when you need everyone to use the same resolved version.
 
-Find more examples in the mise cookbook.
+### 4\. Activate your shell (optional)
 
-Full Documentation
-------------------
+Activation makes project tools and environment variables available directly when you enter a directory. For an installation from `mise.run`, add **one** of these lines to the corresponding shell config:
 
-See mise.jdx.dev
+# ~/.bashrc
+eval "$(~/.local/bin/mise activate bash)"
+
+# ~/.zshrc
+eval "$(~/.local/bin/mise activate zsh)"
+
+# ~/.config/fish/config.fish
+~/.local/bin/mise activate fish | source
+
+Restart your shell, then run `node --version` inside the project. For PowerShell and other installation methods, follow the shell setup guide.
+
+Check your project setup
+------------------------
+
+mise config ls
+mise ls --current
+mise exec -- node --version
+
+These show which configuration files are loaded, which versions are selected, and whether the tool runs in the project environment. If `mise exec` works but `node --version` does not, check shell activation with `mise doctor`.
+
+Where to go next
+----------------
+
+I want to…
+
+Read
+
+Set up mise for the first time
+
+Getting started
+
+Add mise to an existing project
+
+Walkthrough
+
+Understand configuration and overrides
+
+Configuration
+
+Use mise in an editor or CI
+
+IDE integration · Continuous integration
+
+Find a command or solve a problem
+
+CLI reference · Troubleshooting
+
+Contribute to mise
+
+Contributing · Writing docs
+
+Demo
+----
+
+Watch mise install tools and switch Node.js versions as you change directories.
+
+A text transcript is also available.
 
 GitHub Issues & Discussions
 ---------------------------
 
-Due to the volume of issue submissions mise received, using GitHub Issues became unsustainable for the project. Instead, mise uses GitHub Discussions which provide a more community-centric platform for communication and require less management on the part of the maintainers.
+Use GitHub Discussions for support and feature requests. GitHub Issues are not used for new reports.
 
-Please note the following discussion categories, which match how issues are often used:
-
--   Announcements
--   Ideas: for feature requests, etc.
--   Troubleshooting & Bug Reports
+-   Troubleshooting & Bug Reports: include a minimal config, the command you ran, expected behavior, and relevant error output. See the troubleshooting guide first.
+-   Ideas: suggest a feature or describe a workflow mise could support.
+-   Announcements: follow project updates.
 
 Special Thanks
 --------------

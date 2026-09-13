@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40242
+stars: 40310
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -41,7 +41,7 @@ You can download the latest release for your system, or install a release from t
 
 curl https://getcroc.com | bash
 
-When the CLI sends or receives a transfer, it checks for a newer croc release at most once every 24 hours. The check runs in the background and any update notice is shown after the transfer finishes. Network and release-service failures are ignored; `--quiet` suppresses the notice.
+When the CLI sends or receives a transfer, it checks for a newer croc release at most once every 24 hours. The check runs in the background and any update notice is shown after the transfer finishes. Run `croc update --check` at any time to check explicitly. Installations made by the command above can use `croc update` (`croc upgrade` is an alias) to verify and install a stable release when the executable is user-writable; pass `--yes` to skip confirmation. Package-managed and other installations are never overwritten; the command prints the appropriate upgrade guidance instead. Network and release-service failures in background checks are ignored; `--quiet` suppresses the notice.
 
 ### On macOS
 
@@ -185,9 +185,11 @@ See the SSH sharing design and security guide for protocol, reconnection, platfo
 
 When an immediate peer-to-peer transfer is inconvenient, `croc` can upload regular files as client-side encrypted ciphertext:
 
-croc send --store \[file1\] \[file2\]
-croc send --store --store-downloads 3 \[file1\] \[file2\]
-croc send --store --store-expiration 3d \[file1\] \[file2\]
+croc store \[file1\] \[file2\]
+croc store --downloads 3 --expiration 3d \[file1\] \[file2\]
+croc store --url https://files.example.com \[file1\] \[file2\]
+
+The original `croc send --store` syntax remains supported, with `--store-downloads`, `--store-expiration`, and `--store-url` settings.
 
 The command prints a browser link and a CLI token. The transfer expires after the selected lifetime, measured from successful upload completion, or after its configured number of receivers download, authenticate, and verify every file—whichever happens first. The lifetime defaults to one day and accepts whole minutes (`m`), hours (`h`), days (`d`), or weeks (`w`). The download limit defaults to one. Both values are subject to server policy. Run `croc` with no arguments and paste the token at the prompt to receive it. For automation, keep the token out of the process list:
 
@@ -199,7 +201,7 @@ While a transfer remains available, its sender can delete it with the locally sa
 
 croc --revoke \[transfer-id\]
 
-Stored mode is opt-in and separate from croc's normal live relay transfers. A self-hosted service can be selected with `--store-url` or `CROC_STORE_URL`. See the stored-transfer design and operator guide for protocol, privacy, limits, and deployment details.
+Stored mode is opt-in and separate from croc's normal live relay transfers. A self-hosted service can be selected with `croc store --url` (or `croc send --store --store-url`) or `CROC_STORE_URL`. See the stored-transfer design and operator guide for protocol, privacy, limits, and deployment details.
 
 #### Using `croc` on Linux or macOS
 
@@ -276,6 +278,10 @@ The QR code opens `https://getcroc.com/?code=...`, where the web client automati
 You can send files via a proxy by adding `--socks5`:
 
 croc --socks5 "127.0.0.1:9050" send SOMEFILE
+
+Relay hostnames are resolved by the proxy, so the client does not need a working DNS server to reach the relay. Bare `host:port`, `socks5://host:port`, and `socks5h://host:port` all use proxy-side relay DNS. Use an IP address for the proxy itself when local DNS is unavailable. Set `--socks5` on both peers (or use the `SOCKS5_PROXY` environment variable).
+
+For a network that only permits proxy traffic, use `--transport relay` on the sender to use the SOCKS5-capable relay transport for file data. The browser client uses the browser's proxy settings for its WebSocket gateway connection; the native CLI flag does not configure the browser.
 
 **Sponsored by SX.org.**
 

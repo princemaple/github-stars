@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 1011
+stars: 1027
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -45,6 +45,14 @@ Community Linux desktop packages:
 -   cad-viewer (AUR) — Arch Linux source package using system Electron (~5.4 MB)
 -   cad-viewer-bin (AUR) — Arch Linux binary package with bundled fonts/templates for fully offline drawing open
 
+### Demo Apps
+
+Official sample apps that show how to integrate cad-viewer into your own product:
+
+-   cad-simple-viewer-example — Minimal vanilla TypeScript host for `@mlightcad/cad-simple-viewer`: open local or CDN DXF/DWG, drive commands from a small toolbar, and lazy-load HTML/PDF/SVG export plugins without the full Vue UI.
+-   cad-viewer-example — Full-featured Vue 3 app built on `@mlightcad/cad-viewer` with menus, ribbons, dialogs, command line, and status bar (live demo).
+-   cad-viewer-nextjs-demo — Next.js “CAD drive” demo: chunked resumable DWG/DXF upload, SQLite-backed file list with preview thumbnails, and open drawings either with **live browser parse** (`cad-simple-viewer`) or **server-side ACEX prerender** (faster load, lower memory).
+
 Features
 --------
 
@@ -53,6 +61,7 @@ Features
 -   **Enhanced data security** - Files never leave your device, ensuring complete privacy
 -   **Easy integration** - No server setup or backend infrastructure needed
 -   Modular architecture for seamless third-party integration
+-   **Mobile layout & touch** — Responsive phone/tablet UI and touch gestures (pinch-to-zoom, single-finger pan, tap to select) built into `@mlightcad/cad-simple-viewer`, so mobile browsers work without a separate app
 -   **Export to offline HTML** — Export the current drawing as one self-contained `.html` file with an embedded viewer (pan/zoom, zoom extents, layers, distance measure, EN/ZH UI). Opens offline in any browser; no cad-viewer instance or backend required.
 -   Offline and online editing workflows
 -   THREE.js 3D rendering engines with advanced optimization techniques
@@ -500,7 +509,7 @@ Legend:
 
 -   ⏳ Google Drive Integration
 -   WeChat Mini Program viewer
--   Mobile browser support (read-only)
+-   Mobile browser support (responsive layout & touch)
 
 ### Documentation & Community
 

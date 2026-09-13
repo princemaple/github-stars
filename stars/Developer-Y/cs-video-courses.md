@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83422
+stars: 83480
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -570,6 +570,7 @@ Courses
     -   CAP6673 - Data Mining and Machine Learning - FAU(Video lectures)
     -   CS 412 - Introduction to Data Mining - UIUC
     -   CS 512 - Data Mining Principles - UIUC (YouTube)
+    -   MGTA 415 - Analyzing Unstructured Data - UCSD
 -   #### **Probabilistic Graphical Modeling**
     
     -   CS 6190 - Probabilistic Modeling, Spring 2016, University of Utah
@@ -596,6 +597,7 @@ Courses
     -   Deep learning at Oxford 2015 - Nando de Freitas
     -   Self-Driving Cars — Andreas Geiger, 2021/22 (YouTube)
     -   6.S094: Deep Learning for Self-Driving Cars - MIT
+    -   6.S985: How to AI Almost Anything/Multimodal AI - MIT
     -   CS294-129 Designing, Visualizing and Understanding Deep Neural Networks (YouTube)
     -   CS230: Deep Learning - Autumn 2018 - Stanford University
     -   CS230: Deep Learning - Autumn 2025 - Stanford University
@@ -916,6 +918,7 @@ Courses
     -   Vector Calculus for Engineers - HKUST
 -   **Discrete Math**
     -   6.042J - Mathematics for Computer Science, MIT OCW
+    -   6.1200J - Mathematics for Computer Science, MIT OCW (Spring 24 videos)
     -   18.200 - Principles of Discrete Applied Mathematics, MIT OCW
     -   CS 2050 Discrete Mathematics, Georgia Tech Videos - Su 2024
     -   UC Berkeley Computer Science 70, Discrete Mathematics and Probability Theory - Fall 2025 (YouTube)
@@ -983,6 +986,7 @@ Courses
 -   **Linear Algebra**
     -   Mathematical Foundations of Machine Learning (Fall 2021) - University of Chicago - Rebecca Willett
     -   Mathematical Foundations of Machine Learning (Fall 2025) - Rebecca Willett - University of Chicago
+    -   NSF CBMS 2025 - Computational Mathematics and AI, Lars Ruthotto, Emory University (Fall 25 videos)
     -   18.06 - Linear Algebra, Prof. Gilbert Strang, MIT OCW
     -   18.065 Matrix Methods in Data Analysis, Signal Processing, and Machine Learning - MIT OCW
     -   University of Wisconsin-Madison ECE/CS/ME 532 Matrix Methods in Machine Learning fall 2017, by Laurent Lessard

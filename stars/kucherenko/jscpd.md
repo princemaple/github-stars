@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6147
+stars: 6197
 description: Copy/paste detector for source code. 220+ languages, Rust engine, SARIF/HTML/badge reporters, GitHub Action, MCP server for AI agents.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -8,11 +8,13 @@ url: https://github.com/kucherenko/jscpd
 jscpd
 =====
 
-> Copy/paste detector for programming source code. 220+ formats, Rust engine, self-contained binary, AI-ready with MCP server and token-efficient reporter.
+> Copy/paste detector for programming source code. 220+ formats, language-aware tokenization, exact, renamed and near-miss clones, Rust engine, self-contained binary, AI-ready with MCP server and token-efficient reporter.
 
 **Documentation:** https://jscpd.dev
 
-jscpd implements the Rabin-Karp algorithm to find duplicated code blocks across files.
+jscpd reads code the way its language defines it, not as plain text. Each of the 224 formats is tokenized with its own comment and string syntax, so `#` in Python, `--` in SQL or `'` in Visual Basic opens a comment only where the language says so. JavaScript, TypeScript, JSX and TSX go through the oxc parser, which handles template literals, regular expressions, JSX and decorators, and can erase TypeScript-only syntax so a `.ts` file matches its `.js` twin. Vue, Svelte, Astro, Markdown and Razor files are split into their embedded languages first, and each block is tokenized as the language it contains. Identifiers, keywords and literals are classified, which is what lets the renamed-clone pass replace names while keeping keywords in place.
+
+On that token stream jscpd runs the Rabin-Karp algorithm to find duplicated blocks across files. Opt-in passes extend it to blocks that differ only in names or values (Type-2) and to copies with a few edited lines or the same function structure (Type-3), each reported with its kind and a similarity score. See How detection works.
 
 Quick Start
 -----------
@@ -49,6 +51,12 @@ npm (`cpd` command)
 `npm install -g cpd`
 
 Same binary, exposed as `cpd`
+
+PyPI
+
+`pip install jscpd`
+
+Platform wheels with both commands; also `pipx install jscpd`, `uv tool install jscpd`, or `uvx jscpd .` to run without installing
 
 Cargo
 
@@ -113,23 +121,35 @@ Supported formats
 
 All 224 formats with their file extensions
 
+Runnable demos
+
+One `fixtures/<feature>-demo/` directory per feature, each README lists the commands with their expected output
+
 Features
 --------
 
-jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime required — under two npm names (`jscpd` installs the `jscpd` command, `cpd` installs `cpd`), on crates.io, Homebrew, Nix, Docker, and as a GitHub Action.
+jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime required — under two npm names (`jscpd` installs the `jscpd` command, `cpd` installs `cpd`), on PyPI, crates.io, Homebrew, Nix, Docker, and as a GitHub Action.
 
+-   **Language-aware tokenization** — per-format comment and string syntax for all 224 formats, the oxc parser for JavaScript/TypeScript/JSX/TSX, embedded-language extraction for Vue, Svelte, Astro, Markdown and Razor, and keyword/identifier/literal classification, so a clone is a repeated sequence of _language tokens_, never a repeated run of text (see How detection works)
 -   **224 language formats** with cross-format detection (Vue SFC, Svelte, Astro, Markdown) and `--cross-formats` groups to match clones across JavaScript and TypeScript
 -   **Prebuilt for 8 platforms** — macOS arm64/x64, Linux arm64/x64 (glibc and musl), Windows arm64/x64
+-   **Type-2 clones** — `--ignore-identifiers`, `--ignore-literals` and `--ignore-annotations` find blocks that differ only in names, literal values or annotations, reported as `renamed` (see docs)
+-   **Type-3 near-miss clones** — `--max-gap-lines N` merges a copy with a few inserted or changed lines into one `similar` clone with a similarity score; `--similarity 0.85` compares whole JavaScript/TypeScript functions by syntax-tree structure, so renames and scattered edits are still caught (see docs)
+-   **Clone kinds in every reporter** — `exact`, `renamed` or `similar` in the console, JSON (`kind`, `similarity`, `method`), XML, HTML, Xcode, SARIF (`jscpd/duplicate-code`, `jscpd/renamed-code`, `jscpd/similar-code`) and Code Climate output; default runs report only `exact` clones and are unchanged
 -   **15 reporters**: `console`, `console-full`, `json`, `xml`, `csv`, `html`, `markdown`, `badge`, `sarif`, `codeclimate`, `openmetrics`, `ai`, `xcode`, `threshold`, `silent`
 -   **Clone baseline** — gate CI on _new_ duplication only. `--baseline .jscpd-baseline.json` with `--fail-on-new-clones[=N]` tolerates legacy clones and fails the build on regressions; `--baseline-from-ref origin/main` does the same without a committed file (see docs)
+-   **Exit codes you can gate on** — an unknown `--format`, a missing scan path and a reporter that cannot write its file exit 1 instead of passing with an empty report; `--fail-on-empty` fails a scan that analyzed no files (see Exit codes)
 -   **GitLab-ready reporters** — `codeclimate` (`gl-code-quality-report.json`) and `openmetrics` (`jscpd-metrics.txt`) plug into `artifacts:reports`
 -   **Git blame** with side-by-side author comparison (`--blame --reporters console-full`)
+-   **`--history`** — duplication trend over git history: `jscpd src --history v5.0.0..HEAD` scans every commit in the range and prints a sparkline, a per-commit table with the change between points, the overall trend, and how far `--threshold` could be tightened (see docs)
 -   **`--summary`** — codebase summary: top files and folders by tokens, lines, size, and a complexity estimate — refactoring hotspots straight from the scan (see docs)
--   **`--mcp`** — built-in MCP server over stdio: point your AI assistant at the binary and it can check snippets for duplication against your codebase (see docs)
+-   **`--mcp`** — built-in MCP server over stdio with fully described tools: point your AI assistant at the binary and it can check snippets for duplication against your codebase, or find structurally similar functions with a `similarity` argument (see docs)
 -   **AI reporter** — token-efficient output for LLM pipelines (~79% fewer tokens than console)
--   **`--skip-isolated`** — ignore duplication between monorepo folders owned by different teams
+-   **`--skip-local`** — report only clones that cross the scan roots: with `jscpd packages/api packages/web --skip-local`, pairs inside one of the two trees are dropped and only api-to-web duplication remains
+-   **`--skip-isolated`** — ignore duplication between monorepo folders owned by different teams (`--skip-isolated "packages/team-a|packages/team-b"`)
 -   **`--workers`** — control parallelism for file tokenization and detection (default: all CPU cores)
 -   **Config discovery** — `.jscpd.json`, `.config/jscpd.json`, or the `jscpd` key in `package.json`
+-   **Quiet in pipelines** — tips and sponsor lines print only on an interactive terminal; `--no-tips`, `CI` or `JSCPD_NO_TIPS` switch them off everywhere
 
 See the Rust docs for the full CLI reference and `rust/CHANGELOG.md` for release notes.
 
@@ -163,6 +183,12 @@ jscpd-<platform>
 npm
 
 Platform binary packages pulled in as optional dependencies: `jscpd-darwin-arm64`, `jscpd-darwin-x64`, `jscpd-linux-x64-gnu`, `jscpd-linux-arm64-gnu`, `jscpd-linux-x64-musl`, `jscpd-linux-arm64-musl`, `jscpd-windows-x64-msvc`, `jscpd-windows-arm64-msvc`
+
+jscpd
+
+PyPI
+
+Platform wheels repacked from the release binaries; installs both `jscpd` and `cpd` commands
 
 jscpd
 
@@ -339,9 +365,23 @@ After installation, ask your agent to "find and fix code duplication" and it wil
 
 ### MCP Server
 
-`jscpd --mcp /path/to/project` scans once and serves the Model Context Protocol over stdio, so an assistant can check any snippet for duplication against the codebase on demand.
+`jscpd --mcp /path/to/project` scans once and serves the Model Context Protocol over stdio, so an assistant can check any snippet for duplication against the codebase on demand, list a file's clones, re-scan the working directory, and look for structurally similar functions by passing `similarity`.
 
 See AI-Ready docs for full details.
+
+Citation
+--------
+
+If jscpd is part of your research, cite it via the repository's `CITATION.cff` (GitHub's "Cite this repository" button produces BibTeX and APA) or with:
+
+@software{jscpd,
+  title        = {jscpd: copy/paste detector for programming source code},
+  author       = {Kucherenko, Andrey},
+  year         = {2026},
+  version      = {5.2.0},
+  license      = {MIT},
+  url          = {https://github.com/kucherenko/jscpd},
+}
 
 Contributing
 ------------

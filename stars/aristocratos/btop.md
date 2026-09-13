@@ -1,6 +1,6 @@
 ---
 project: btop
-stars: 34414
+stars: 34550
 description: A monitor of resources
 url: https://github.com/aristocratos/btop
 ---
@@ -1459,7 +1459,7 @@ background\_update = true
 custom\_cpu\_name = ""
 
 #\* Optional filter for shown disks, should be full path of a mountpoint, separate multiple values with whitespace " ".
-#\* Only disks matching the filter will be shown. Prepend exclude= to only show disks not matching the filter. Examples: disk\_filter="/boot /home/user", disks\_filter="exclude=/boot /home/user"
+#\* Only disks matching the filter will be shown. Prepend exclude= to only show disks not matching the filter. Examples: disks\_filter="/boot /home/user", disks\_filter="exclude=/boot /home/user"
 disks\_filter = ""
 
 #\* Show graphs instead of meters for memory values.

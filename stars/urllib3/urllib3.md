@@ -1,6 +1,6 @@
 ---
 project: urllib3
-stars: 4053
+stars: 4055
 description: urllib3 is a user-friendly HTTP client library for Python
 url: https://github.com/urllib3/urllib3
 ---
@@ -59,7 +59,9 @@ urllib3 has a community Discord channel for asking questions and collaborating w
 Contributing
 ------------
 
-urllib3 happily accepts contributions. Please see our contributing documentation for some tips on getting started.
+urllib3 welcomes contributions. Please read our contributing documentation before starting work.
+
+Check for existing pull requests addressing the same issue, and share feedback and suggestions in the existing pull request and issue. Duplicate pull requests, including alternative solutions, will be rejected without review unless a maintainer has approved opening an alternative pull request in advance.
 
 Security Disclosures
 --------------------

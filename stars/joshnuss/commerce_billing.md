@@ -1,6 +1,6 @@
 ---
 project: commerce_billing
-stars: 183
+stars: 184
 description: A payment processing library for Elixir
 url: https://github.com/joshnuss/commerce_billing
 ---

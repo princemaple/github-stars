@@ -1,6 +1,6 @@
 ---
 project: wedge
-stars: 241
+stars: 239
 description: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 url: https://github.com/WedgeServer/wedge
 ---

@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3933
+stars: 3936
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -1053,6 +1053,11 @@ GitHub Enterprise Server (GHES)
 -------------------------------
 
 The GitHub Actions runtime creates the GitHub client through the GitHub adapter. It passes the action token and the runtime `GITHUB_SERVER_URL`, `GITHUB_API_URL`, and `GITHUB_GRAPHQL_URL` values to the GitHub adapter. If the GitHub Enterprise Server instance supports the required REST and GraphQL APIs, the same workflow can target it without `github.com`\-specific configuration.
+
+Adopters
+--------
+
+A non-exhaustive list of the projects and organizations using Release Drafter lives in ADOPTERS.md. If you use Release Drafter, please add yourself.
 
 Contributing
 ------------

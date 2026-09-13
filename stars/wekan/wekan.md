@@ -1,6 +1,6 @@
 ---
 project: wekan
-stars: 21073
+stars: 21076
 description: The Open Source kanban, built with Meteor. GitHub issues/PRs are only for FLOSS Developers, not for support, support is at https://wekan.fi/commercial-support/ . PR source translation to imports/i18n/data/en.i18n.json, other translations at https://app.transifex.com/wekan/wekan
 url: https://github.com/wekan/wekan
 ---
@@ -17,8 +17,22 @@ Docker Containers
 -----------------
 
 -   GitHub
--   Quay
+
+```
+image: ghcr.io/wekan/wekan:latest
+```
+
 -   Docker Hub
+
+```
+image: wekanteam/wekan:latest
+```
+
+-   RedHat Quay.io
+
+```
+image: quay.io/wekan/wekan:latest
+```
 
 docker-compose.yml at https://github.com/wekan/wekan/blob/main/docker-compose.yml
 
@@ -66,7 +80,7 @@ FAQ
 About WeKan ®
 -------------
 
-WeKan ® is a completely Open Source and Free software collaborative kanban board application with MIT license.
+WeKan ® is a completely \[Open Source\]\[open\_source\] and \[Free software\]\[free\_software\] collaborative kanban board application with MIT license.
 
 Whether you’re maintaining a personal todo list, planning your holidays with some friends, or working in a team on your next revolutionary idea, Kanban boards are an unbeatable tool to keep your things organized. They give you a visual overview of the current state of your project, and make you productive by allowing you to focus on the few items that matter the most.
 
@@ -74,8 +88,8 @@ Since WeKan ® is a free software, you don’t have to trust us with your data a
 
 -   WeKan ® is used in most countries of the world.
 -   WeKan ® largest user has 30k users using WeKan ® in their company.
--   WeKan ® has been translated to 234 languages, 198 of them essentially complete.
--   Features: WeKan ® has real-time user interface.
+-   WeKan ® has been translated to 234 languages, 234 of them essentially complete.
+-   \[Features\]\[https://github.com/wekan/wekan/tree/main/docs/Features\]: WeKan ® has real-time user interface.
 -   Platforms: WeKan ® supports many platforms. WeKan ® is critical part of new platforms Wekan is currently being integrated to.
 
 Requirements
@@ -120,18 +134,6 @@ Before building WeKan from source, ensure you have:
 -   **Node.js 24.x** - WeKan requires Node.js 24.x
 -   **Meteor** - the JavaScript framework WeKan is built with
 
-### Installing Node.js 24.x
-
-# Using nvm (recommended)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-source ~/.zshrc  # or ~/.bashrc
-nvm install 24
-nvm use 24
-
-### Installing Meteor
-
-curl https://install.meteor.com/ | sh
-
 ### Building WeKan
 
 The `build.sh` script shows a two-level menu. The top level groups options into categories:
@@ -170,13 +172,6 @@ If a dev server is already running on that port, the **Dev server** options stop
 ### WSL Users
 
 WSL users can use Snap Candidate. See install docs.
-
-The development server will start at http://localhost:3000. Any changes you make to the source code will automatically trigger a rebuild and refresh your browser.
-
-Screenshot
-----------
-
-More screenshots at Features page
 
 License
 -------

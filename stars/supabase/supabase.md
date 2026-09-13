@@ -1,6 +1,6 @@
 ---
 project: supabase
-stars: 108879
+stars: 109090
 description: The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.
 url: https://github.com/supabase/supabase
 ---
@@ -100,15 +100,15 @@ Flutter
 
 supabase-flutter
 
-postgrest-dart
+postgrest
 
-gotrue-dart
+supabase\_auth
 
-realtime-dart
+supabase\_realtime
 
-storage-dart
+supabase\_storage
 
-functions-dart
+supabase\_functions
 
 Swift
 

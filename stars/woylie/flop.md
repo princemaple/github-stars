@@ -1,6 +1,6 @@
 ---
 project: flop
-stars: 812
+stars: 814
 description: Filtering, ordering and pagination for Ecto
 url: https://github.com/woylie/flop
 ---
@@ -38,7 +38,7 @@ end
 
 Enable debug checks in `config/dev.exs` and `config/test.exs`:
 
-config :flop, debug: true
+config :flop, diagnostics: true
 
 You can also configure a default repo for Flop by adding the following line to `config/config.exs`:
 

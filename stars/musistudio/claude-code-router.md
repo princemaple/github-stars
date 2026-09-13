@@ -1,6 +1,6 @@
 ---
 project: claude-code-router
-stars: 37093
+stars: 37212
 description: One local control plane for every AI agent: route across models, fuse new capabilities, orchestrate tools, and stay fully in control.
 url: https://github.com/musistudio/claude-code-router
 ---
@@ -109,9 +109,9 @@ Open `http://127.0.0.1:3458`, then follow the same **Providers → Server → Ag
 
 ### Docker
 
-docker compose up -d --build
+npm run docker:compose:up
 
-Docker exposes the management UI and gateway routes through `http://127.0.0.1:3458` by default. Read the Docker deployment guide before exposing CCR remotely.
+Docker exposes the management UI and gateway routes through `http://127.0.0.1:3458` by default. The npm script prepares the local plugin-capable ai-gateway runtime before building the image when `../../next-ai/gateway` exists. Read the Docker deployment guide before exposing CCR remotely.
 
 Build desktop apps
 ------------------

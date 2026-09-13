@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 9372
+stars: 9483
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -253,23 +253,41 @@ uvx pocket-tts generate --config hf://user/repo/config\_file.yaml@commit\_hash
 
 ### List of community-trained models
 
--   pocket-tts-czech by @vvolhejn (trained internally at Kyutai):
+Pocket TTS Czech by @vvolhejn (trained internally at Kyutai)
 
 uvx pocket-tts generate \\
   --config hf://vvolhejn/pocket-tts-czech/czech.yaml@7b7760dd0fe994a0800f2fdbc837dc4b8f219d1c \\
   --text "Dnešek je velmi dobrý den"
 
--   Pocket TTS Hindi by Saryps Labs (community research release):
+Pocket TTS Hindi by Saryps Labs (community research release)
 
 uvx pocket-tts generate \\
   --config hf://saryps-labs/pocket-tts-hindi/config.yaml@dbaa326069d20bfbdaeb625613736773741a24ea \\
   --text "आज का दिन बहुत अच्छा है"
 
--   Pocket TTS Korean 300M by @seastar105 (community research release):
+Pocket TTS Korean 300M by @seastar105 (community research release)
 
 uvx pocket-tts generate \\
   --config hf://seastar105/pocket-tts-korean-300m/korean.yaml@df328c817a02866f20a6f74e5183e0a1fc6f6435 \\
   --text "안녕하세요. 한국어 음성 합성 모델입니다."
+
+Pocket TTS Persian (Farsi) by @mallahyari (community research release)
+
+uvx --with soundfile pocket-tts generate --config hf://mehdi-hf/pocket-tts-farsi/farsi.yaml@3c59d06b3177b21c5cd0df9e9e3e899f4d361c1c \\
+    --voice hf://mehdi-hf/pocket-tts-farsi/example\_voice.wav --text "سلام، حال شما چطور است؟"
+
+Pocket TTS Indonesian by @anak10thn (community research release), 6 layers
+
+uvx pocket-tts generate \\
+  --config hf://anak10thn/pocket-tts-indonesian/indonesian\_6l.yaml@6196fe14c6c2108332c16d33c864c8901c044aaa \\
+  --text "Selamat pagi. Ini model sintesis suara bahasa Indonesia."
+
+Pocket TTS Estonian by @cbentes (community research release)
+
+uvx pocket-tts generate \\
+  --config hf://cbentes/pocket-tts-estonian/estonian.yaml@8934022f1befb3dc568351e3b88e48a9edb94d7d \\
+  --voice hf://cbentes/pocket-tts-estonian/voices/et\_f\_reporter.wav@8934022f1befb3dc568351e3b88e48a9edb94d7d \\
+  --text "Tere! Mina olen eesti keele kõnesüntesaator ja töötan tavalises arvutis kiiremini kui reaalajas."
 
 Want your model here? Head to the training Readme to get started!
 

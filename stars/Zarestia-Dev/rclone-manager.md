@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 1081
+stars: 1105
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---

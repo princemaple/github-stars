@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 475880
+stars: 479410
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -1037,6 +1037,16 @@ Yes
 
 Unknown
 
+Smithsonian Open Access
+
+Smithsonian collection metadata and open-access digital media
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Thisispaper
 
 Curated architecture, design, photography and art projects with visual-similarity and taste metadata
@@ -1696,6 +1706,16 @@ Post to and update maintenance and incidents on your status page through an HTTP
 Yes
 
 Unknown
+
+InvoiceIn
+
+Parse and validate received e-invoices: XRechnung, ZUGFeRD, Peppol, FatturaPA, KSeF
+
+`apiKey`
+
+Yes
+
+Yes
 
 Invovate
 
@@ -3652,6 +3672,16 @@ Yes
 
 Unknown
 
+APIzone
+
+Independent uptime & status monitoring for 200+ popular APIs
+
+No
+
+Yes
+
+Yes
+
 Aquanode
 
 Live GPU rental prices and availability across nine cloud providers
@@ -4552,6 +4582,16 @@ Yes
 
 Unknown
 
+NuGet
+
+.NET package versions, metadata and search
+
+No
+
+Yes
+
+Yes
+
 OneSignal
 
 Self-serve customer engagement solution for Push Notifications, Email, SMS & In-App
@@ -4645,6 +4685,16 @@ No
 PageCDN
 
 Public API for javascript, css and font libraries on PageCDN
+
+`apiKey`
+
+Yes
+
+Yes
+
+Peak
+
+Cloudflare Turnstile and 5-second challenge solving, pay per successful solve, 1,000 free solves
 
 `apiKey`
 
@@ -5757,6 +5807,16 @@ Yes
 
 Unknown
 
+Best Temp Mail
+
+Disposable inboxes for automated email testing, with OTP extraction
+
+No
+
+Yes
+
+No
+
 Cloudmersive Validate
 
 Validate email addresses, phone numbers, VAT numbers and domain names
@@ -5987,6 +6047,16 @@ Anycrap
 35,000+ absurdist AI-generated product concepts with names, descriptions, and images
 
 `apiKey`
+
+Yes
+
+Yes
+
+Bucketlist Dream of the Day
+
+Daily travel and life-experience inspiration with canonical links and images
+
+No
 
 Yes
 
@@ -6622,6 +6692,16 @@ EOD Historical Data
 Real-time and historical stock market data with 150+ exchanges
 
 `apiKey`
+
+Yes
+
+Yes
+
+EstimateTax
+
+US federal, state and local income tax calculation for 2026, with the source of every figure
+
+No
 
 Yes
 
@@ -10487,6 +10567,16 @@ Yes
 
 Unknown
 
+UK Legislation Changes
+
+Point-in-time amendment history for UK law
+
+No
+
+Yes
+
+Yes
+
 US Presidential Election Data by TogaTech
 
 Basic candidate data and live electoral vote counts for top two parties in US presidential election
@@ -11076,6 +11166,16 @@ Job aggregator
 Yes
 
 Unknown
+
+Jobven
+
+Job postings tracked as roles open and close, with webhooks on changes, from employer career pages
+
+`apiKey`
+
+Yes
+
+Yes
 
 Jooble
 
@@ -12607,6 +12707,16 @@ No
 
 Unknown
 
+SlashYear
+
+86,902 historical events as JSON, each quoted from a cited Wikipedia revision
+
+No
+
+Yes
+
+Yes
+
 Socrata
 
 Access to Open Data from Governments, Non-profits and NGOs around the world
@@ -12827,6 +12937,16 @@ GitHub ReadMe Stats
 Add dynamically generated statistics to your GitHub profile ReadMe
 
 No
+
+Yes
+
+Yes
+
+Libraries.io
+
+Metadata, dependencies and release history for open-source packages across 30+ managers
+
+`apiKey`
 
 Yes
 
@@ -13522,6 +13642,16 @@ No
 
 Unknown
 
+Screenshot Studio
+
+Capture web pages as images through a public HTTP API
+
+No
+
+Yes
+
+No
+
 shutterstock
 
 Stock Photos and Videos
@@ -13951,6 +14081,16 @@ No
 Yes
 
 Yes
+
+Semantic Scholar
+
+Academic search engine for papers, authors, and citations
+
+No
+
+Yes
+
+Unknown
 
 SHARE
 
@@ -15059,6 +15199,16 @@ Yes
 
 No
 
+Postproxy
+
+Publish posts, comments, DMs, and more
+
+`apiKey`
+
+Yes
+
+No
+
 Product Hunt
 
 The best new products in tech
@@ -15208,6 +15358,16 @@ A freecycling community with thousands of free items posted every day
 Yes
 
 Yes
+
+TrendsMCP
+
+Live keyword trend data from Google, TikTok, YouTube, Amazon and Reddit
+
+`apiKey`
+
+Yes
+
+Unknown
 
 Tumblr
 
@@ -16304,6 +16464,16 @@ Yes
 
 Yes
 
+ToHuman
+
+Rewrite AI-assisted drafts into natural, human-sounding text that reads like you wrote it
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Watson Natural Language Understanding
 
 Natural language processing for advanced text analysis
@@ -16507,6 +16677,16 @@ Unknown
 Apimetro
 
 Geospatial data for Mexico City public transport system (Metro, Metrobús, Cablebús, RTP, etc.)
+
+No
+
+Yes
+
+Yes
+
+ArcNautical
+
+Screen any ship by IMO for OFAC/EU/UN/UK sanctions, ownership opacity and a vetting grade
 
 No
 
@@ -17254,6 +17434,16 @@ Yes
 
 Yes
 
+Windsock
+
+Aircraft valuations, FAA registry lookups, cost of ownership and aviation market data
+
+`apiKey`
+
+Yes
+
+Unknown
+
 **⬆ Back to Index**  
   
 
@@ -17583,6 +17773,16 @@ Lock and unlock vehicles and get data like odometer reading and location. Works 
 Yes
 
 Yes
+
+Wheelwise
+
+UK used-car listings with fair-price grade, 36-month resale forecast and true monthly cost per advert
+
+No
+
+Yes
+
+No
 
 **⬆ Back to Index**  
   
@@ -18244,6 +18444,16 @@ Yes
 
 Unknown
 
+KNMI
+
+Dutch weather, radar and climate data
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Meltema
 
 Multi-model weather: GFS, ECMWF AIFS/IFS and a 31-member GEFS ensemble, keyless point forecasts
@@ -18253,6 +18463,16 @@ No
 Yes
 
 No
+
+Météo-France
+
+French weather forecasts and alerts
+
+`apiKey`
+
+Yes
+
+Unknown
 
 Meteorologisk Institutt
 

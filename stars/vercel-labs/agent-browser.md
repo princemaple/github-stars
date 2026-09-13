@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 42008
+stars: 42463
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -113,7 +113,7 @@ agent-browser keyboard inserttext <text\>  # Insert text without key events (no 
 agent-browser keydown <key\>           # Hold key down
 agent-browser keyup <key\>             # Release key
 agent-browser hover <sel\>             # Hover element
-agent-browser select <sel> <val\>      # Select dropdown option
+agent-browser select <sel> <val\>      # Select dropdown by value or visible label
 agent-browser check <sel\>             # Check checkbox
 agent-browser uncheck <sel\>           # Uncheck checkbox
 agent-browser scroll <dir\> \[px\]       # Scroll (up/down/left/right, --selector <sel>)
@@ -140,7 +140,7 @@ agent-browser chat                    # AI chat: interactive REPL mode
 
 ### WebMCP (experimental)
 
-WebMCP tools are ready by default in agent-browser-managed Chrome. Use `--no-webmcp` to disable the launch features.
+WebMCP tools are ready by default in agent-browser-managed Chrome. Use `--no-webmcp` to disable the launch features. After a successful navigation, text output advertises when tools are available. JSON output includes `data.webmcp` with `experimental`, `available`, and `toolCount`.
 
 agent-browser open https://example.com
 agent-browser webmcp list
@@ -223,14 +223,20 @@ agent-browser wait <selector\>         # Wait for element to be visible
 agent-browser wait <ms\>               # Wait for time (milliseconds)
 agent-browser wait --text "Welcome"   # Wait for text to appear (substring match)
 agent-browser wait --url "\*\*/dash"    # Wait for URL pattern
-agent-browser wait --load networkidle # Wait for load state
+agent-browser wait --load domcontentloaded # Wait for the DOM lifecycle event
+agent-browser wait --load load        # Wait for the page load event
 agent-browser wait --fn "window.ready === true"  # Wait for JS condition
+
+# Use networkidle only when the page is known to become quiet
+agent-browser wait --load networkidle
 
 # Wait for text/element to disappear
 agent-browser wait --fn "!document.body.innerText.includes('Loading...')"
 agent-browser wait "#spinner" --state hidden
 
 **Load states:** `load`, `domcontentloaded`, `networkidle`
+
+After a page change, prefer a selector, text, URL, or JavaScript condition that represents the state you need. Use `load` or `domcontentloaded` when the lifecycle event is the milestone. `networkidle` is supported for pages known to become quiet, but SSE, WebSockets, polling, and long-polling can keep it from resolving.
 
 ### Batch Execution
 
@@ -271,8 +277,10 @@ agent-browser set device <name\>       # Emulate device ("iPhone 14")
 agent-browser set geo <lat\> <lng\>     # Set geolocation
 agent-browser set offline \[on|off\]    # Toggle offline mode
 agent-browser set headers <json\>      # Extra HTTP headers
-agent-browser set credentials <u\> <p\> # HTTP basic auth
+agent-browser set credentials <u\> <p\> # HTTP basic auth for current and future tabs
 agent-browser set media \[dark|light\]  # Emulate color scheme
+
+`set credentials` applies HTTP Basic Authentication to the current tab and tabs opened later. `set offline off` and `set headers '{}'` restore the default setup for future tabs.
 
 ### Cookies & Storage
 
@@ -326,6 +334,8 @@ agent-browser snapshot               # populate refs for docs
 agent-browser click @e3              # click uses docs's refs
 agent-browser tab close docs         # close by label
 
+Tabs opened through `tab new` or `click --new-tab` inherit the session's user agent, headers, HTTP credentials, init scripts, routes, and emulation overrides before their first document loads.
+
 `tab list --json` also reports each tab's CDP `targetId`, and target ids are accepted anywhere a tab ref is accepted (`tab <targetId>`, `tab close <targetId>`). Unlike `t<N>` ids, which are per-daemon counters, target ids stay stable across daemon restarts, so they're the right handle for scripts coordinating multiple sessions on one browser.
 
 Switching to a tab discarded by Chrome's Memory Saver reactivates it, since a discarded tab has no renderer to drive. Reactivation reloads the discarded page and resets its unsaved state, and the switch result reports `"revived": true`. A tab whose page is paused by a JavaScript dialog is alive rather than discarded, so the switch leaves it untouched and reports `"dialogBlocked": true`; resolve the dialog with `dialog accept` or `dialog dismiss` before interacting. Closing the active tab onto a discarded successor revives it the same way and reports `"activeTabRevived": true`.
@@ -355,7 +365,7 @@ agent-browser diff screenshot --baseline b.png -o d.png  # Save diff image to cu
 agent-browser diff screenshot --baseline b.png -t 0.2    # Adjust color threshold (0-1)
 agent-browser diff url https://v1.com https://v2.com     # Compare two URLs (snapshot diff)
 agent-browser diff url https://v1.com https://v2.com --screenshot  # Also visual diff
-agent-browser diff url https://v1.com https://v2.com --wait-until networkidle  # Custom wait strategy
+agent-browser diff url https://v1.com https://v2.com --wait-until load  # Custom wait strategy
 agent-browser diff url https://v1.com https://v2.com --selector "#main"  # Scope to element
 
 ### Debug
@@ -364,7 +374,7 @@ agent-browser trace start             # Start recording trace
 agent-browser trace stop \[path\]       # Stop and save trace
 agent-browser profiler start          # Start Chrome DevTools profiling
 agent-browser profiler stop \[path\]    # Stop and save profile (.json)
-agent-browser record start ./demo.webm           # Start video recording at 30 fps
+agent-browser record start ./demo.webm           # Start video recording at 30 fps (.webm or .mp4; needs ffmpeg on PATH)
 agent-browser record start ./demo.webm --fps 60  # 60 fps for motion-heavy takes (1-60 allowed)
 agent-browser record stop                        # Stop and save the video
 agent-browser record restart ./take2.webm        # Stop the current recording, start a new one
@@ -456,7 +466,9 @@ axe-core: 4.12.1  violations: 2  incomplete: 0  passes: 24
 agent-browser open --init-script <path\>           # Register page init script before first navigation
                                                   # (repeatable; also AGENT\_BROWSER\_INIT\_SCRIPTS env)
 agent-browser addinitscript <js\>                  # Register at runtime (returns identifier)
-agent-browser removeinitscript <identifier\>       # Remove a previously registered init script
+agent-browser removeinitscript <identifier\>       # Remove from every tab in the session
+
+Runtime init-script identifiers are session-wide. `removeinitscript` removes the script from every open tab where it was registered and prevents it from being replayed into tabs opened later.
 
 ### Setup
 
@@ -592,6 +604,30 @@ Load a previously saved state JSON on launch
 Store credentials locally (encrypted), login by name
 
 `auth save` / `auth login`
+
+### Stateful auth vault login
+
+By default, `auth login` navigates to the effective credential URL before it locates the form. Use `--no-navigate` after an in-page click, challenge clearance, consent dismissal, or other stateful setup that must survive credential entry:
+
+agent-browser open https://example.com/
+agent-browser click "a\[href='/login'\]"
+agent-browser auth login work --no-navigate
+
+`--no-navigate` suppresses only that initial navigation. It requires an existing active top-level HTTP(S) page, waits for and fills the same selectors, clicks submit, and allows submission to navigate. The effective credential URL is checked as an origin constraint using scheme, host, and effective port. Paths, queries, and fragments may differ. A command-level `--url` takes precedence over stored or provider metadata, which is useful when a stateful flow reaches a hosted identity provider:
+
+agent-browser open https://identity.example.com/start
+agent-browser click "button.continue"
+agent-browser auth login work --credential-provider vault --item "Work" --no-navigate --url https://identity.example.com/login
+
+Provider credentials are still resolved directly by the daemon and remain out of process arguments and normal output.
+
+Auth login option
+
+Description
+
+`--no-navigate`
+
+Use the active top-level page without the initial navigation and require its origin to match the effective credential URL. Form submission may still navigate.
 
 ### Import auth from your browser
 
@@ -787,7 +823,7 @@ Security
 
 agent-browser includes security features for safe AI agent deployments. All features are opt-in, and existing workflows are unaffected until you explicitly enable a feature:
 
--   **Authentication Vault**: Store credentials locally (always encrypted), reference by name. The LLM never sees passwords. `auth login` navigates with `load` and then waits for login form selectors to appear (SPA-friendly, timeout follows the default action timeout). A key is auto-generated at `~/.agent-browser/.encryption-key` if `AGENT_BROWSER_ENCRYPTION_KEY` is not set: `echo "pass" | agent-browser auth save github --url https://github.com/login --username user --password-stdin` then `agent-browser auth login github`
+-   **Authentication Vault**: Store credentials locally (always encrypted), reference by name. The LLM never sees passwords. `auth login` navigates with `load` and then waits for login form selectors to appear (SPA-friendly, timeout follows the default action timeout). Use `auth login <name> --no-navigate` to preserve an already prepared active page after its origin is checked against the credential URL. A key is auto-generated at `~/.agent-browser/.encryption-key` if `AGENT_BROWSER_ENCRYPTION_KEY` is not set: `echo "pass" | agent-browser auth save github --url https://github.com/login --username user --password-stdin` then `agent-browser auth login github`
 -   **Plugin System**: Extend agent-browser with external executable plugins. Plugins run out-of-process over the `agent-browser.plugin.v1` stdio JSON protocol and declare capabilities such as `credential.read`, `browser.provider`, `launch.mutate`, or `command.run`.
 -   **Content Boundary Markers**: Wrap page output in delimiters so LLMs can distinguish tool output from untrusted content: `--content-boundaries`
 -   **Domain Allowlist**: Restrict navigation to trusted domains (wildcards like `*.example.com` also match the bare domain): `--allowed-domains "example.com,*.example.com"`. Sub-resource requests (scripts, images, fetch), WebSocket/EventSource connections, and `sendBeacon` calls to non-allowed domains are blocked. WebRTC peer connections are disabled in supported Chromium sessions while the allowlist is active to prevent STUN, TURN, and DNS traffic from bypassing HTTP interception. Dedicated and shared workers are guarded with a bootstrap wrapper; if a page CSP forbids that wrapper, the worker fails closed rather than running without the allowlist guard. Pre-existing CDP sessions, auto-connect, Chrome profiles, direct-page provider plugins, agent-browser restore or state-file replay, raw Chrome args that select profiles, restore sessions, or open startup pages, iOS, and Safari reject this option because agent-browser cannot install equivalent containment before page scripts run. Include any CDN domains your target pages depend on (e.g., `*.cdn.example.com`).
@@ -877,6 +913,7 @@ Use a credential provider plugin for one login:
 
 agent-browser auth login my-app --credential-provider vault --item "My App"
 agent-browser auth login my-app --credential-provider vault --item "My App" --url https://app.example.com/login --username-selector "#email" --password-selector "#password" --submit-selector "button\[type=submit\]"
+agent-browser auth login my-app --credential-provider vault --item "My App" --no-navigate --url https://identity.example.com/login
 
 Use a browser provider plugin:
 
@@ -1090,7 +1127,7 @@ Screenshot format: `png`, `jpeg` (or `AGENT_BROWSER_SCREENSHOT_FORMAT` env)
 
 `--headed`
 
-Show browser window (not headless) (or `AGENT_BROWSER_HEADED` env)
+Show browser window on the interactive desktop (or `AGENT_BROWSER_HEADED` env)
 
 `--webgpu`
 
@@ -1402,13 +1439,13 @@ agent-browser snapshot -i --json
 Commands can be chained with `&&` in a single shell invocation. The browser persists via a background daemon, so chaining is safe and more efficient:
 
 # Open, wait for load, and snapshot in one call
-agent-browser open example.com && agent-browser wait --load networkidle && agent-browser snapshot -i
+agent-browser open example.com && agent-browser wait --load domcontentloaded && agent-browser snapshot -i
 
 # Chain multiple interactions
 agent-browser fill @e1 "user@example.com" && agent-browser fill @e2 "pass" && agent-browser click @e3
 
 # Navigate and screenshot
-agent-browser open example.com && agent-browser wait --load networkidle && agent-browser screenshot page.png
+agent-browser open example.com && agent-browser wait --load load && agent-browser screenshot page.png
 
 Use `&&` when you don't need intermediate output. Run commands separately when you need to parse output first (e.g., snapshot to discover refs before interacting).
 
@@ -1484,6 +1521,8 @@ agent-browser set headers '{"X-Custom-Header": "value"}'
 
 Custom Browser Executable
 -------------------------
+
+On Windows, agent-browser launches headless Chrome on a private desktop so hidden browser windows cannot leave visible rectangles on your desktop, including with affected Chrome 150 builds. This also applies to custom executables and windows opened later in the session. Headed browsers, including sessions with extensions, use the interactive desktop. Chrome processes launched by agent-browser belong to a Windows Job Object and are terminated when their daemon exits or is forcibly killed. Browsers connected through `--cdp` or `--auto-connect` remain externally owned.
 
 Use a custom browser executable instead of the bundled Chromium. This is useful for:
 

@@ -1,6 +1,6 @@
 ---
 project: litgpt
-stars: 13654
+stars: 13659
 description: 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.
 url: https://github.com/Lightning-AI/litgpt
 ---
@@ -581,7 +581,7 @@ Read the full finetuning docs
 Deploy an LLM
 -------------
 
-Deploy a pretrained or finetune LLM to use it in real-world applications. Deploy, automatically sets up a web server that can be accessed by a website or app.
+Deploy a pretrained or finetuned LLM to use it in real-world applications. Deploy automatically sets up a web server that can be accessed by a website or app.
 
 # deploy an out-of-the-box LLM
 litgpt serve microsoft/phi-2
@@ -608,7 +608,7 @@ Read the full deploy docs.
 Evaluate an LLM
 ---------------
 
-Evaluate an LLM to test its performance on various tasks to see how well it understands and generates text. Simply put, we can evaluate things like how well would it do in college-level chemistry, coding, etc... (MMLU, Truthful QA, etc...)
+Evaluate an LLM to test its performance on various tasks to see how well it understands and generates text. Simply put, we can evaluate things like how well it would do in college-level chemistry, coding, etc... (MMLU, Truthful QA, etc...)
 
 litgpt evaluate microsoft/phi-2 --tasks 'truthfulqa\_mc2,mmlu'
 

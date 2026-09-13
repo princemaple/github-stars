@@ -1,6 +1,6 @@
 ---
 project: docker-android
-stars: 15827
+stars: 15842
 description: Android in docker solution with noVNC supported, video recording and mcp server
 url: https://github.com/budtmo/docker-android
 ---
@@ -357,6 +357,10 @@ SPONSORS
 **Swiftproxy** — **Swiftproxy** provides high-quality residential proxies for Android testing, automation, and location-based workflows. With **90M+ residential IPs**, HTTP(S)/SOCKS5 support, flexible targeting, and **non-expiring traffic**, Swiftproxy helps users test apps and online services from different locations. **Try Swiftproxy for free today** and get **10% off with code PROXY90**.
 
 Learn more about Swiftproxy →
+
+**RapidProxy** — **RapidProxy** is a high-performance proxy provider built for automation and multi-account operations, offering clean residential proxies and native static ISP IPs. Access 90 million+ residential IPs worldwide, with intelligent rotation, sticky sessions, and support for high-concurrency requests. Ideal for web scraping, browser automation, social media account management, e-commerce, and bulk account registration. Residential proxies start at just $0.55/GB, with bandwidth that never expires. **Use code RAPID10 for 10% off**.
+
+Learn more about Rapidproxy →
 
 LICENSE
 -------

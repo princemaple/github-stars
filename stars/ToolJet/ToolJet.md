@@ -1,6 +1,6 @@
 ---
 project: ToolJet
-stars: 40848
+stars: 40893
 description: Open-source foundation of ToolJet AI - the enterprise app generation platform for internal tools, dashboards, business applications, workflows and AI agents. Build visually, from a prompt, or from Claude Code, Codex and Cursor over MCP 🚀
 url: https://github.com/ToolJet/ToolJet
 ---

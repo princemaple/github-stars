@@ -1,6 +1,6 @@
 ---
 project: trzsz-ssh
-stars: 2710
+stars: 2715
 description: trzsz-ssh ( tssh ) is an ssh client designed as a drop-in replacement for the openssh client. It aims to provide complete compatibility with openssh, mirroring all its features, while also offering additional useful features. Such as login prompt, batch login, remember password, automated interaction, trzsz, zmodem(rz/sz), udp mode like mosh, etc.
 url: https://github.com/trzsz/trzsz-ssh
 ---
@@ -250,7 +250,7 @@ UDP 端口转发
     
     mamba install -c conda-forge tssh
     
--   Install with Go ( Requires go 1.25 or later )
+-   Install with Go ( Requires go 1.26 or later )
     
     `go install github.com/trzsz/trzsz-ssh/cmd/tssh@latest`
     
@@ -262,7 +262,7 @@ UDP 端口转发
     
     The binaries are usually located in ~/go/bin/ ( C:\\Users\\your\_name\\go\\bin\\ on Windows ).
     
--   Build from source ( Requires go 1.25 or later )
+-   Build from source ( Requires go 1.26 or later )
     
     `sudo make install`
     

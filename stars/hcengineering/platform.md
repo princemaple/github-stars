@@ -1,6 +1,6 @@
 ---
 project: platform
-stars: 27647
+stars: 27722
 description: Huly — All-in-One Project Management Platform (alternative to Linear, Jira, Slack, Notion, Motion)
 url: https://github.com/hcengineering/platform
 ---
@@ -12,15 +12,13 @@ Huly Platform
 
 Important
 
-**Hosted Huly is shutting down — please migrate your data.**
+**Hosted Huly has shut down.**
 
-The hosted Huly service is being discontinued because its hosting is no longer being funded. If you keep important data on the hosted platform, export and back it up, and migrate as soon as possible — we can help you move to either a self-hosted setup or a hosted option.
+The hosted Huly service has been discontinued because its hosting is no longer funded. The hosted platform is no longer available.
 
-Not sure how? Follow the backup & restore guide for step-by-step instructions on downloading your backup and restoring it elsewhere.
+You can continue using Huly with a self-hosted setup or another hosted option. For backup and restoration instructions, see the backup & restore guide.
 
-The service shutdown is expected on **July 20**. Please make sure to export and migrate your data before then rather than wait until the last day.
-
-Have questions or want updates? Join the Huly community to discuss migration and stay informed, or email us at artem@hardcoreeng.com with any questions. This affects only the hosted **Huly** service — self-hosted deployments are not affected.
+Have questions or need help? Join the Huly community to discuss migration options and get support.
 
 About
 -----

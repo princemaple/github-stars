@@ -1,6 +1,6 @@
 ---
 project: ImageGlass
-stars: 14337
+stars: 14422
 description: 🏞 A fast, open-source, modern image viewer for 90+ formats – including WEBP, GIF, SVG, AVIF, JXL, HEIC and more – built for smooth browsing across Windows, macOS, and Linux.
 url: https://github.com/d2phap/ImageGlass
 ---
@@ -19,6 +19,10 @@ ImageGlass is a fast, modern, open-source image viewer built for Windows, macOS,
 **🌐 Website**  •  **📥 Pricing**  •  **📚 Docs**  •  **💬 Discord**  •  **💖 Donate**
 
   
+
+  
+
+👉 Compare all plans and features at imageglass.org/pricing.
 
   
 
@@ -86,6 +90,8 @@ The `develop` branch contains the latest commits, while the `prod` branch holds 
 
 -   Visual Studio 2026 for Windows build
 -   VS Code for macOS, Linux build
+-   Run a task from VS Code to build, publish, or pack the app
+    -   Note: for debug builds, copy the contents of `source/__assets/__app/` into the build output folder, beside the ImageGlass executable, before launching it.
 
 **Version 9**: Located in `v9` folder
 

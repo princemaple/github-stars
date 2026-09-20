@@ -1,6 +1,6 @@
 ---
 project: file_system
-stars: 278
+stars: 279
 description: Filesystem monitor for elixir
 url: https://github.com/falood/file_system
 ---

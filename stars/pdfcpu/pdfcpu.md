@@ -1,6 +1,6 @@
 ---
 project: pdfcpu
-stars: 8835
+stars: 8845
 description: PDF tooling for Go and the command line.
 url: https://github.com/pdfcpu/pdfcpu
 ---

@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6197
+stars: 6244
 description: Copy/paste detector for source code. 220+ languages, Rust engine, SARIF/HTML/badge reporters, GitHub Action, MCP server for AI agents.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -8,13 +8,13 @@ url: https://github.com/kucherenko/jscpd
 jscpd
 =====
 
-> Copy/paste detector for programming source code. 220+ formats, language-aware tokenization, exact, renamed and near-miss clones, Rust engine, self-contained binary, AI-ready with MCP server and token-efficient reporter.
+> Duplicate code detector for 220+ languages — plus dead code, complexity hotspots, duplication trends over git history, and one health score for the whole codebase. Rust engine, self-contained binary, AI-ready with an MCP server and a token-efficient reporter.
 
 **Documentation:** https://jscpd.dev
 
-jscpd reads code the way its language defines it, not as plain text. Each of the 224 formats is tokenized with its own comment and string syntax, so `#` in Python, `--` in SQL or `'` in Visual Basic opens a comment only where the language says so. JavaScript, TypeScript, JSX and TSX go through the oxc parser, which handles template literals, regular expressions, JSX and decorators, and can erase TypeScript-only syntax so a `.ts` file matches its `.js` twin. Vue, Svelte, Astro, Markdown and Razor files are split into their embedded languages first, and each block is tokenized as the language it contains. Identifiers, keywords and literals are classified, which is what lets the renamed-clone pass replace names while keeping keywords in place.
+jscpd tokenizes each of its 224 supported formats the way that language defines it — its own comment and string rules, not generic text — then finds duplicated token sequences across files with a rolling Rabin-Karp hash. Opt-in passes catch copies that differ only in names or values (Type-2) or that have a few edited lines (Type-3). See How detection works for the full mechanism, and Supported formats for the full list.
 
-On that token stream jscpd runs the Rabin-Karp algorithm to find duplicated blocks across files. Opt-in passes extend it to blocks that differ only in names or values (Type-2) and to copies with a few edited lines or the same function structure (Type-3), each reported with its kind and a similarity score. See How detection works.
+Beyond duplicates, jscpd also finds dead code (`--dead-code`), ranks files by complexity (`--complexity`), tracks duplication over git history (`--history`), and rolls it all into one health score (`--health`) — see Features below.
 
 Quick Start
 -----------
@@ -99,7 +99,7 @@ Description
 
 Rust engine
 
-Installation, CLI reference, reporters, baseline, summary, blame, config file
+Installation, CLI reference, reporters, baseline, summary, complexity, dashboard, blame, config file
 
 AI-Ready
 
@@ -130,25 +130,39 @@ Features
 
 jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime required — under two npm names (`jscpd` installs the `jscpd` command, `cpd` installs `cpd`), on PyPI, crates.io, Homebrew, Nix, Docker, and as a GitHub Action.
 
+### Duplicate detection
+
 -   **Language-aware tokenization** — per-format comment and string syntax for all 224 formats, the oxc parser for JavaScript/TypeScript/JSX/TSX, embedded-language extraction for Vue, Svelte, Astro, Markdown and Razor, and keyword/identifier/literal classification, so a clone is a repeated sequence of _language tokens_, never a repeated run of text (see How detection works)
--   **224 language formats** with cross-format detection (Vue SFC, Svelte, Astro, Markdown) and `--cross-formats` groups to match clones across JavaScript and TypeScript
--   **Prebuilt for 8 platforms** — macOS arm64/x64, Linux arm64/x64 (glibc and musl), Windows arm64/x64
+-   **224 language formats**, with cross-format detection (Vue SFC, Svelte, Astro, Markdown) and `--cross-formats` groups to match clones across JavaScript and TypeScript
 -   **Type-2 clones** — `--ignore-identifiers`, `--ignore-literals` and `--ignore-annotations` find blocks that differ only in names, literal values or annotations, reported as `renamed` (see docs)
--   **Type-3 near-miss clones** — `--max-gap-lines N` merges a copy with a few inserted or changed lines into one `similar` clone with a similarity score; `--similarity 0.85` compares whole JavaScript/TypeScript functions by syntax-tree structure, so renames and scattered edits are still caught (see docs)
--   **Clone kinds in every reporter** — `exact`, `renamed` or `similar` in the console, JSON (`kind`, `similarity`, `method`), XML, HTML, Xcode, SARIF (`jscpd/duplicate-code`, `jscpd/renamed-code`, `jscpd/similar-code`) and Code Climate output; default runs report only `exact` clones and are unchanged
+-   **Type-3 near-miss clones** — `--max-gap-lines N` merges a copy with a few inserted or changed lines into one `similar` clone with a similarity score; `--similarity 0.85` compares whole JavaScript/TypeScript functions by syntax-tree structure, catching renames and scattered edits too (see docs)
+-   **Clone kinds everywhere** — `exact`, `renamed` or `similar` in the console, JSON (`kind`, `similarity`, `method`), XML, HTML, Xcode, SARIF (`jscpd/duplicate-code`, `jscpd/renamed-code`, `jscpd/similar-code`) and Code Climate output; default runs still report only `exact` clones
+-   **`--kind`** — keep only the clone kinds you care about: `--kind renamed`, or `--kind gap,ast` for near-miss clones only. Statistics and `--threshold` follow the filter; a kind whose detector is off warns, an unknown kind errors (see docs)
 -   **15 reporters**: `console`, `console-full`, `json`, `xml`, `csv`, `html`, `markdown`, `badge`, `sarif`, `codeclimate`, `openmetrics`, `ai`, `xcode`, `threshold`, `silent`
--   **Clone baseline** — gate CI on _new_ duplication only. `--baseline .jscpd-baseline.json` with `--fail-on-new-clones[=N]` tolerates legacy clones and fails the build on regressions; `--baseline-from-ref origin/main` does the same without a committed file (see docs)
--   **Exit codes you can gate on** — an unknown `--format`, a missing scan path and a reporter that cannot write its file exit 1 instead of passing with an empty report; `--fail-on-empty` fails a scan that analyzed no files (see Exit codes)
+-   **Clone baseline** — gate CI on _new_ duplication only. `--baseline .jscpd-baseline.json --fail-on-new-clones[=N]` tolerates legacy clones and fails the build on regressions; `--baseline-from-ref origin/main` does the same without a committed file (see docs)
+-   **Exit codes you can gate on** — an unknown `--format`, a missing scan path or a reporter that can't write its file now exit 1 instead of passing with an empty report; `--fail-on-empty` fails a scan that analyzed no files (see Exit codes)
 -   **GitLab-ready reporters** — `codeclimate` (`gl-code-quality-report.json`) and `openmetrics` (`jscpd-metrics.txt`) plug into `artifacts:reports`
 -   **Git blame** with side-by-side author comparison (`--blame --reporters console-full`)
+-   **`--skip-local`** — report only clones that cross the scan roots: `jscpd packages/api packages/web --skip-local` drops pairs inside either tree, keeping only api-to-web duplication
+-   **`--skip-isolated`** — ignore duplication between monorepo folders owned by different teams (`--skip-isolated "packages/team-a|packages/team-b"`)
+
+### Beyond duplication
+
 -   **`--history`** — duplication trend over git history: `jscpd src --history v5.0.0..HEAD` scans every commit in the range and prints a sparkline, a per-commit table with the change between points, the overall trend, and how far `--threshold` could be tightened (see docs)
--   **`--summary`** — codebase summary: top files and folders by tokens, lines, size, and a complexity estimate — refactoring hotspots straight from the scan (see docs)
+-   **`--dead-code`** — find code nothing runs, not just code written twice: unused files, exports, declarations and imports across JavaScript, TypeScript and Python. Builds the import graph from your entry points (`package.json`, `pyproject.toml`, framework conventions) and walks it, so dead code cascades — a helper whose only caller is dead gets reported too, each finding with a confidence score and, below 100, why it might be wrong. Also ships standalone as `basta` (see docs)
+-   **`--summary`** — refactoring hotspots straight from the scan: top files and folders by tokens, lines, size, and a complexity estimate (see docs)
+-   **`--complexity`** — the complexity ranking alone, without clone detection: most complex files and folders from one tokenizing pass, in the console, `ai` or `json` (see docs)
+-   **`--health`** — one 0-100 score with a grade, from the share of code that's duplicated, dead, or concentrated in complex files; size-aware, calibrated on 42 open-source projects, extensible with coverage, test or security metrics via `--health-input`. Console badge, JSON, SVG badge (see docs)
+-   **`--dashboard`** — the whole picture on one screen, under the health badge: project size, duplication by clone kind with the most duplicated files, the most complex files, and dead code by category for JavaScript, TypeScript and Python (see docs)
+
+### AI and operations
+
 -   **`--mcp`** — built-in MCP server over stdio with fully described tools: point your AI assistant at the binary and it can check snippets for duplication against your codebase, or find structurally similar functions with a `similarity` argument (see docs)
 -   **AI reporter** — token-efficient output for LLM pipelines (~79% fewer tokens than console)
--   **`--skip-local`** — report only clones that cross the scan roots: with `jscpd packages/api packages/web --skip-local`, pairs inside one of the two trees are dropped and only api-to-web duplication remains
--   **`--skip-isolated`** — ignore duplication between monorepo folders owned by different teams (`--skip-isolated "packages/team-a|packages/team-b"`)
+-   **Prebuilt for 8 platforms** — macOS arm64/x64, Linux arm64/x64 (glibc and musl), Windows arm64/x64
 -   **`--workers`** — control parallelism for file tokenization and detection (default: all CPU cores)
 -   **Config discovery** — `.jscpd.json`, `.config/jscpd.json`, or the `jscpd` key in `package.json`
+-   **Symbolic links are skipped unless `--follow-symlinks`** — v4 followed them by default. With the flag, a file reached through a link is reported by the path it was found at, and a file reachable through several paths is counted once
 -   **Quiet in pipelines** — tips and sponsor lines print only on an interactive terminal; `--no-tips`, `CI` or `JSCPD_NO_TIPS` switch them off everywhere
 
 See the Rust docs for the full CLI reference and `rust/CHANGELOG.md` for release notes.
@@ -218,7 +232,13 @@ cpd-reporter
 
 crates.io
 
-Output formatting (15 reporters)
+Output formatting (15 reporters, duplication and dead code)
+
+basta
+
+npm / crates.io
+
+Dead code detection — unused files, exports, symbols and imports for JavaScript, TypeScript and Python. Installs the `basta` command; the same engine backs `jscpd --dead-code`
 
 Who Uses jscpd
 --------------
@@ -338,10 +358,11 @@ Token-efficient output for LLM pipelines (~79% fewer tokens than the default con
 
 jscpd --reporters ai /path/to/source              # compact clone list
 jscpd --reporters ai --summary /path/to/source    # + compact codebase summary
+jscpd --reporters ai --complexity /path/to/source # most complex files, no clone detection
 
 ### Agent Skills
 
-Two installable skills that teach AI coding assistants how to use jscpd and refactor detected duplications:
+Installable skills that teach AI coding assistants how to use jscpd, refactor detected duplications, and clean up a codebase more broadly:
 
 Skill
 
@@ -361,7 +382,13 @@ Guided refactoring workflow — read clones, choose strategy, apply, verify
 
 `npx skills add kucherenko/jscpd --skill dry-refactoring`
 
-After installation, ask your agent to "find and fix code duplication" and it will invoke jscpd with the right options and act on the results.
+`codebase-refactoring`
+
+Broader health pass — fix duplication, then remove/refactor dead code, then simplify the biggest/most complex files, prioritized from `--health`
+
+`npx skills add kucherenko/jscpd --skill codebase-refactoring`
+
+After installation, ask your agent to "find and fix code duplication" and it will invoke jscpd with the right options and act on the results — or "clean up this codebase" for the broader pass.
 
 ### MCP Server
 
@@ -378,7 +405,7 @@ If jscpd is part of your research, cite it via the repository's `CITATION.cff` (
   title        = {jscpd: copy/paste detector for programming source code},
   author       = {Kucherenko, Andrey},
   year         = {2026},
-  version      = {5.2.0},
+  version      = {5.3.0},
   license      = {MIT},
   url          = {https://github.com/kucherenko/jscpd},
 }

@@ -1,6 +1,6 @@
 ---
 project: ferret
-stars: 6010
+stars: 6013
 description: Declarative data automation language and Go runtime for structured extraction workflows.
 url: https://github.com/MontFerret/ferret
 ---
@@ -132,6 +132,7 @@ Alpha releases are intended for early adopters, experimentation, and feedback. S
 Maintainers
 -----------
 
+-   Maintainer documentation
 -   Versioned Ferret Core API Reference
 
 Support Ferret

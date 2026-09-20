@@ -1,14 +1,14 @@
 ---
 project: Sink
-stars: 7116
-description: ⚡ A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.
+stars: 7147
+description: ⚡ A Simple, Speedy, Secure, and Serverless Link Shortener with Analytics, Running Entirely on Cloudflare.
 url: https://github.com/miantiao-me/Sink
 ---
 
 ⚡ Sink
 ======
 
-**A Simple / Speedy / Secure Link Shortener with Analytics, 100% run on Cloudflare.**
+**A Simple, Speedy, Secure, and Serverless Link Shortener with Analytics, Running Entirely on Cloudflare.**
 
 Website · Documentation · API Reference
 
@@ -46,6 +46,11 @@ Experience the demo at Sink.Cool. Log in using the Site Token below:
 Site Token: SinkCool
 
 **Screenshots**
+
+🔀 Sibling versions
+-------------------
+
+Sink and Slite are sibling versions of the same link-management and analytics project. Sink runs on Cloudflare's serverless platform, while Slite runs as a local Node.js 24+/Docker process. They keep features, API contracts, and file organization compatible with each other wherever practical. Neither version is a legacy branch, and Slite is not a fork replacement for Sink.
 
 🧱 Technologies Used
 --------------------
@@ -137,8 +142,13 @@ FAQs
 3.  **Astroship**
 4.  **Tailark**
 
+📄 License
+----------
+
+AGPL-3.0-only © miantiao-me
+
 ☕ Sponsor
 ---------
 
-1.  Follow Me on X(Twitter).
-2.  Become a sponsor to on GitHub.
+1.  Follow Me on X (Twitter).
+2.  Become a sponsor on GitHub.

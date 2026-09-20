@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40310
+stars: 40386
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -78,17 +78,33 @@ environment.systemPackages \= \[
 
 ### On Alpine Linux
 
-First, install dependencies:
+Enable the community repository for your Alpine release, then install:
 
-apk add bash coreutils
-wget -qO- https://getcroc.com | bash
+apk add croc
 
-### On Debian
+Check the Alpine package index for your branch's version. Stable branches can carry older releases; see the distribution status before selecting one.
 
-Install from the pkg.haus APT archive:
+### On Debian and Ubuntu
 
-# Add the repository (see https://pkg.haus for setup instructions)
+The pkg.haus archive provides third-party Debian packages. Follow its repository setup and supported-release instructions before running:
+
 sudo apt install croc
+
+For a release that includes upstream `.deb` downloads, download the file matching `dpkg --print-architecture` from the release page. Replace `VERSION` and `ARCH` below with the downloaded filename:
+
+sudo apt install ./croc\_VERSION-1\_ARCH.deb
+
+This downloaded-package method also applies to older Debian and Ubuntu releases that do not provide croc in their configured repositories. It does not add an APT repository; download a newer package to upgrade it.
+
+### On Fedora and openSUSE
+
+For a release that includes upstream `.rpm` downloads, choose the file matching `rpm --eval '%{_arch}'` from the release page. Replace `VERSION` and `ARCH` with the downloaded filename:
+
+sudo dnf install ./croc-VERSION-1.ARCH.rpm
+# On openSUSE:
+sudo zypper install ./croc-VERSION-1.ARCH.rpm
+
+These downloads install the CLI, manual, license notices, and shell completions. They require `ca-certificates` and start no background services. Upgrade them through the package manager; `croc update` leaves package-owned binaries intact. See Linux packaging for architectures and verification.
 
 ### On Arch Linux
 
@@ -284,6 +300,8 @@ Relay hostnames are resolved by the proxy, so the client does not need a working
 For a network that only permits proxy traffic, use `--transport relay` on the sender to use the SOCKS5-capable relay transport for file data. The browser client uses the browser's proxy settings for its WebSocket gateway connection; the native CLI flag does not configure the browser.
 
 **Sponsored by SX.org.**
+
+**Sponsored by RapidProxy.**
 
 ### Data transport selection
 

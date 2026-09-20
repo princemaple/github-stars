@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 7599
+stars: 7630
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -58,7 +58,7 @@ Sentry
 
 **Error Tracking** — exceptions with full stack traces and context
 
-All of it is **100% open source (Apache 2.0)** and free to self-host.
+All of it is **open source (Apache 2.0)** and free to self-host in the Community Edition.
 
 * * *
 
@@ -230,18 +230,26 @@ Free & open source
 
 Contact sales
 
+**License**
+
+Apache 2.0
+
+Apache 2.0, plus the OneUptime Enterprise License for the `ee/` directory
+
 **Features**
 
-Full feature set
+Everything in the box above — monitoring, status pages, incidents, on-call, logs, traces, metrics, error tracking, workflows & AI
 
-Full feature set + hardened images, priority support, custom features & data residency
+Everything in Community + SAML & OIDC single sign-on, SCIM provisioning, audit logs, team compliance & instance health dashboards, with priority support, custom features & data residency
+
+Enterprise features live in the `ee/` directory and ship only in the Enterprise image. See Community vs. Enterprise Edition for the full comparison.
 
 * * *
 
 💡 Why OneUptime?
 -----------------
 
-Our mission is simple: **reduce downtime and help more products succeed.** Instead of duct-taping seven vendors together, you get one platform that helps you understand _why_ things break, respond to incidents fast, and cut operational toil — fully open source, so you own your data and your stack.
+Our mission is simple: **reduce downtime and help more products succeed.** Instead of duct-taping seven vendors together, you get one platform that helps you understand _why_ things break, respond to incidents fast, and cut operational toil — open source at its core (Apache 2.0), so you own your data and your stack.
 
 * * *
 
@@ -270,6 +278,6 @@ If OneUptime is useful to you:
 📄 License
 ----------
 
-OneUptime is licensed under the Apache License 2.0.
+OneUptime is open source under the Apache License 2.0, except for the `ee/` directory. That directory holds the Enterprise Edition and is licensed under the OneUptime Enterprise License. The Community Edition image contains no code from `ee/`. The root `LICENSE` file sets out this split.
 
 Made with ❤️ by the OneUptime team and contributors.

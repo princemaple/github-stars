@@ -1,6 +1,6 @@
 ---
 project: zincsearch
-stars: 17884
+stars: 17879
 description: ZincSearch . A lightweight alternative to elasticsearch that requires minimal resources, written in Go.
 url: https://github.com/zincsearch/zincsearch
 ---
@@ -10,9 +10,9 @@ url: https://github.com/zincsearch/zincsearch
 ZincSearch
 ==========
 
-ZincSearch is a search engine that does full text indexing. It is a lightweight alternative to Elasticsearch and runs using a fraction of the resources. It uses bluge as the underlying indexing library.
+ZincSearch is a search engine that does full text indexing. It is a lightweight alternative to Elasticsearch and runs using a fraction of the resources. It uses bluge (via the vcaesar/riot fork) as the underlying indexing library.
 
-It is very simple and easy to operate as opposed to Elasticsearch which requires a couple dozen knobs to understand and tune which you can get up and running in 2 minutes
+It is very simple and easy to operate as opposed to Elasticsearch which requires a couple dozen knobs to understand and tune. You can get ZincSearch up and running in 2 minutes.
 
 It is a drop-in replacement for Elasticsearch if you are just ingesting data using APIs and searching using kibana (Kibana is not supported with ZincSearch. ZincSearch provides its own UI).
 
@@ -26,9 +26,11 @@ While Elasticsearch is a very good product, it is complex and requires lots of r
 Features:
 =========
 
+go + gin + react
+
 1.  Provides full text indexing capability
 2.  Single binary for installation and running. Binaries available under releases for multiple platforms.
-3.  Web UI for querying data written in Vue
+3.  Web UI for querying data written in React (embedded in the binary)
 4.  Compatibility with Elasticsearch APIs for ingestion of data (single record and bulk API)
 5.  Out of the box authentication
 6.  Schema less - No need to define schema upfront and different documents in the same index can have different fields.
@@ -61,6 +63,21 @@ Releases
 ========
 
 ZincSearch has hundreds of production installations.
+
+Build
+-----
+
+-   CI (lint, `go test` on Linux/macOS/Windows, coverage): `.github/workflows/ci.yml` → https://github.com/zincsearch/zincsearch/actions/workflows/ci.yml
+-   Nightly dev image `ghcr.io/zincsearch/zincsearch-dev:nightly`: `.github/workflows/nightly.yml` → https://github.com/zincsearch/zincsearch/actions/workflows/nightly.yml
+-   Release (`v*` tags, goreleaser, `ghcr.io/zincsearch/zincsearch`): `.github/workflows/release.yml` → https://github.com/zincsearch/zincsearch/actions/workflows/release.yml
+
+> **Note — Nightly / dev-image (push) fails on forks:**
+> 
+> ```
+> Error: buildx failed with: ERROR: failed to build: failed to solve: failed to push ghcr.io/zincsearch/zincsearch-dev:0.4.11-8792c59-dev: denied: permission_denied: The requested installation does not exist.
+> ```
+> 
+> The workflow logs in to GHCR with the repository's `GITHUB_TOKEN`, which can only push packages under the owner of the repository running the workflow. On a fork the token has no access to the `zincsearch` org, so the push is denied. Either run the workflow from `zincsearch/zincsearch`, or change `env.IMAGE` in `nightly.yml` to `ghcr.io/<your-owner>/zincsearch-dev` (and make sure the package is linked to the repo / the repo has `packages: write`).
 
 ZincSearch Vs OpenObserve
 =========================
@@ -136,7 +153,7 @@ Community
 
 -   How to develop and contribute to ZincSearch
     
-    Check the contributing guide . Also check the roadmap items
+    Check the contributing guide. Also check the roadmap
     
 
 Examples

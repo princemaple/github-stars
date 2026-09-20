@@ -1,6 +1,6 @@
 ---
 project: pixijs
-stars: 48147
+stars: 48189
 description: The HTML5 Creation Engine: Create beautiful digital content with the fastest, most flexible 2D WebGL renderer.
 url: https://github.com/pixijs/pixijs
 ---
@@ -81,6 +81,23 @@ import { Application, Assets, Sprite } from 'pixi.js';
         bunny.rotation += 0.1 \* time.deltaTime;
     });
 })();
+
+### TypeScript
+
+PixiJS supports WebGPU, so its type declarations depend on the WebGPU types. Where those come from depends on your TypeScript version.
+
+**TypeScript 5:** no WebGPU types are built in, so PixiJS adds `@webgpu/types` for you. No additional setup required.
+
+**TypeScript 6 and 7:** the WebGPU types are built into the `"dom"` library, but some releases leave parts out, such as `GPUTextureUsage`. Use `@types/web`, which has the full set, in place of `"dom"`. Remove `@webgpu/types` from `types` if it's there, since it conflicts with the built-in types.
+
+npm install --save-dev @types/web
+
+{
+  "compilerOptions": {
+    "lib": \["esnext"\],
+    "types": \["@types/web"\]
+  }
+}
 
 ### Contribute
 

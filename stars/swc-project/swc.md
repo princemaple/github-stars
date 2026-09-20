@@ -1,6 +1,6 @@
 ---
 project: swc
-stars: 34192
+stars: 34200
 description: Rust-based platform for the Web
 url: https://github.com/swc-project/swc
 ---
@@ -37,6 +37,8 @@ Documentation
 =============
 
 Check out the documentation in the website.
+
+Native npm packages use self-loading compressed addons on x64 and arm64 macOS, Windows MSVC, and Linux GNU/musl. The first load materializes the verified original addon; package names and JavaScript APIs stay the same. See native addon carriers for the supported-target boundary and `SWC_NATIVE_BINDING_CACHE`.
 
 Features
 ========

@@ -1,6 +1,6 @@
 ---
 project: awesome-angular-components
-stars: 3190
+stars: 3189
 description: Catalog of Angular 2+ Components & Libraries
 url: https://github.com/brillout/awesome-angular-components
 ---

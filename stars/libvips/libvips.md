@@ -1,6 +1,6 @@
 ---
 project: libvips
-stars: 11635
+stars: 11656
 description: A fast image processing library with low memory needs.
 url: https://github.com/libvips/libvips
 ---
@@ -60,6 +60,10 @@ vips-ffm
 Nim
 
 libvips-nim
+
+Rust
+
+vips-rs
 
 libvips is used as an image processing engine by:
 

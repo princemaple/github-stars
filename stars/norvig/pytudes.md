@@ -1,6 +1,6 @@
 ---
 project: pytudes
-stars: 24409
+stars: 24414
 description: Python programs, usually short, of considerable difficulty, to perfect particular skills.
 url: https://github.com/norvig/pytudes
 ---
@@ -49,6 +49,12 @@ co nb
 2026
 
 Did you solve it? R y clvr ngh t rd ths sntnc?
+
+co nb
+
+2026
+
+Integer Palindromes
 
 co nb
 
@@ -127,6 +133,12 @@ co nb
 2018
 
 How to Do Things with Words: NLP in Python
+
+co nb
+
+2026
+
+Integer Palindromes
 
 co nb
 

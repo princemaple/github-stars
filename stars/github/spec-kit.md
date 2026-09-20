@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 136063
+stars: 137969
 description: 💫 Toolkit to help you get started with Spec-Driven Development
 url: https://github.com/github/spec-kit
 ---
@@ -8,554 +8,140 @@ url: https://github.com/github/spec-kit
 🌱 Spec Kit
 ===========
 
-### _Define what to build before building it — with any AI coding agent._
-
-**An open source toolkit for building high-quality software with any AI coding agent — a ready-to-use spec-driven process (or bring your own), endlessly extensible, community-driven, and built for your whole organization.**
+### _Build with a spec, fix a bug, or assess an idea — with your coding agent._
 
 **English** · 简体中文
 
-Note
+Spec Kit is an open source toolkit that gives AI coding agents structured processes, reusable templates, and documented outcomes. Start with one of the three processes below, customize it, or bring your own.
 
-**One year of Spec Kit — and 1.0.0**
-
-One year after the first commit, Spec Kit has reached 1.0.0 — not because the work is finished or its shape is frozen, but because the project has grown into something coherent, useful, and shaped by far more people than those who started it.
-
-The lead maintainer's personal anniversary post, _Spec Kit Turns One — and Ships 1.0.0_, defines what 1.0.0 actually means for the project: **it is now just a number**. As agents make adapting to change dramatically cheaper, the value moves from stability to adaptability.
-
-To everyone who has used Spec Kit, challenged its assumptions, reported a problem, contributed code or documentation, created an extension or preset, shared an idea, or helped someone else get started: **thank you**. This milestone belongs to the community that carried the project through its first year and continues to shape where it goes next.
-
-* * *
-
-Table of Contents
------------------
-
--   🤔 What is Spec-Driven Development?
--   🐞 Bug Fixing with Spec Kit
--   💡 Assessing Ideas with Spec Kit
--   ⚡ Get Started
--   📽️ Video Overview
--   🌍 Community
--   🤖 Supported AI Coding Agent Integrations
--   🔧 Specify CLI Reference
--   🧩 Making Spec Kit Your Own: Extensions & Presets
--   📦 Bundles: Role-Based Setups
--   📚 Core Philosophy
--   🪞 Does Spec Kit Use Spec Kit?
--   🌟 Development Phases
--   🎯 Experimental Goals
--   🔧 Prerequisites
--   📖 Learn More
--   💬 Support
--   🙏 Acknowledgements
--   📄 License
-
-🤔 What is Spec-Driven Development?
------------------------------------
-
-Spec-Driven Development **flips the script** on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: **specifications become executable**, directly generating working implementations rather than just guiding them.
-
-### SDD Quickstart
-
-Replace `vX.Y.Z` with the latest release tag, keeping the leading `v`.
-
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
-specify init my-project --integration copilot
-cd my-project
-
-Launch your coding agent in the project directory, then:
-
-1.  **Establish** your project principles once (`/speckit-constitution`). This is a one-time step per project.
-2.  **Specify** what you want to build (`/speckit-specify`).
-3.  **Plan** how you will build it (`/speckit-plan`).
-4.  **Break down** the plan into actionable tasks (`/speckit-tasks`).
-5.  **Implement** the tasks (`/speckit-implement`).
-6.  **Converge** the implementation against the spec, plan, and tasks (`/speckit-converge`).
-
-Note
-
-Repeat steps 4 and 5 until `/speckit-converge` reports **Converged**.
-
-🐞 Bug Fixing with Spec Kit
----------------------------
-
-Bug fixes are risky when an agent jumps straight from a report to a patch without validating the diagnosis or confirming that the fix resolves the original symptom. The bundled, opt-in bug extension provides a repeatable **assess → fix → test** workflow that keeps each fix scoped, evidence-based, and documented from root cause through verification.
-
-### Bug Fix Quickstart
-
-Replace `vX.Y.Z` with the latest release tag, keeping the leading `v`.
-
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
-specify init my-project --integration copilot
-cd my-project
-specify extension add bug
-
-Launch your coding agent in the project directory, then:
-
-1.  **Assess** the bug (`/speckit-bug-assess "<bug report>" slug=login-crash`).
-2.  **Fix** the assessed cause (`/speckit-bug-fix slug=login-crash`).
-3.  **Test** the fix (`/speckit-bug-test slug=login-crash`).
-
-💡 Assessing Ideas with Spec Kit
---------------------------------
-
-Good ideas deserve evidence before commitment, whether or not they become software. The bundled, opt-in assess extension turns a raw idea into a documented **go / needs-clarification / kill** decision through an independent **intake → research → define → shape → decide** workflow.
-
-### Idea Assessment Quickstart
-
-Replace `vX.Y.Z` with the latest release tag, keeping the leading `v`.
-
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
-specify init my-project --integration copilot
-cd my-project
-specify extension add assess
-
-Launch your coding agent in the project directory, then:
-
-1.  **Intake** the idea (`/speckit-assess-intake "<idea>" slug=offline-mode`).
-2.  **Research** supporting and opposing evidence (`/speckit-assess-research slug=offline-mode`).
-3.  **Define** the problem, goals, and success metrics (`/speckit-assess-define slug=offline-mode`).
-4.  **Shape** possible solutions and their trade-offs (`/speckit-assess-shape slug=offline-mode`).
-5.  **Decide** whether to proceed, clarify, or stop (`/speckit-assess-decide slug=offline-mode`).
-
-Note
-
-Idea assessment is standalone. If you choose to build an idea with a **go** decision, you can hand it off to `/speckit-specify`.
-
-⚡ Get Started
--------------
-
-### 1\. Install Specify CLI
-
-Requires **uv** (install uv). Replace `vX.Y.Z` with the latest release tag from Releases — keep the leading `v` (for example, `v0.12.11`, not `0.12.11`):
-
-uv tool install specify-cli --from git+https://github.com/github/spec-kit.git@vX.Y.Z
-
-Prefer installing from PyPI? The `specify-cli` package is also published there:
-
-uv tool install specify-cli
-
-See the Installation Guide for alternative methods, verification, upgrade, and troubleshooting.
-
-### 2\. Initialize a project
-
-specify init my-project --integration copilot
-cd my-project
-
-For CI or AI agent harnesses (no keyboard, or a PTY that cannot send arrow keys), pass `--non-interactive` so init never hangs on a picker. Combine with `--force` when initializing into a non-empty directory:
-
-specify init my-project --non-interactive --ignore-agent-tools
-specify init --here --force --non-interactive --integration claude
-
-To check for updates or upgrade the installed CLI, use the self-management commands. See the Upgrade Guide for detailed scenarios and customization options.
-
-# Check whether a newer release is available (read-only — does not modify anything)
-specify self check
-
-# Preview what would run, without actually upgrading
-specify self upgrade --dry-run
-
-# Upgrade in place to the latest stable release (auto-detects uv tool vs pipx install)
-specify self upgrade
-
-# Or pin a specific release tag (replace vX.Y.Z\[suffix\] with your desired release tag)
-specify self upgrade --tag vX.Y.Z\[suffix\]
-
-Bare `specify self upgrade` executes immediately, matching the no-prompt behavior of commands like `pip install -U` and `npm update`. For `uv tool` installs, it runs `uv tool install specify-cli --force --from <git ref>` under the hood so pinned release tags work, including dev, alpha/beta/rc, or build metadata suffixes. `uvx` (ephemeral) runs and source checkouts are detected and produce path-specific guidance instead of running an installer. Set `SPECIFY_UPGRADE_TIMEOUT_SECS` to cap how long the installer subprocess may run (default: no timeout — interrupt with `Ctrl+C` if needed).
-
-### 3\. Establish project principles
-
-Launch your coding agent in the project directory. Most agents expose spec-kit as `/speckit.*` slash commands; Codex CLI and Command Code in skills mode use `$speckit-*` instead; GitHub Copilot CLI uses `/agents` to select the agent or address it directly in a prompt.
-
-Use the **`/speckit.constitution`** command to create your project's governing principles and development guidelines that will guide all subsequent development.
-
-/speckit.constitution Create principles focused on code quality, testing standards, user experience consistency, and performance requirements
-
-### 4\. Create the spec
-
-Use the **`/speckit.specify`** command to describe what you want to build. Focus on the **what** and **why**, not the tech stack.
-
-/speckit.specify Build an application that can help me organize my photos in separate photo albums. Albums are grouped by date and can be re-organized by dragging and dropping on the main page. Albums are never in other nested albums. Within each album, photos are previewed in a tile-like interface.
-
-### 5\. Create a technical implementation plan
-
-Use the **`/speckit.plan`** command to provide your tech stack and architecture choices.
-
-/speckit.plan The application uses Vite with minimal number of libraries. Use vanilla HTML, CSS, and JavaScript as much as possible. Images are not uploaded anywhere and metadata is stored in a local SQLite database.
-
-### 6\. Break down into tasks
-
-Use **`/speckit.tasks`** to create an actionable task list from your implementation plan.
-
-/speckit.tasks
-
-### 7\. Execute implementation
-
-Use **`/speckit.implement`** to execute all tasks and build your feature according to the plan.
-
-/speckit.implement
-
-For detailed step-by-step instructions, see our comprehensive guide.
-
-📽️ Video Overview
-------------------
-
-Want to see Spec Kit in action? Watch our video overview!
-
-🌍 Community
-------------
-
-Explore community-contributed resources on the Spec Kit docs site:
-
--   Extensions — commands, hooks, and capabilities
--   Presets — template and terminology overrides
--   Bundles — role and team stacks composed from existing components
--   Walkthroughs — end-to-end SDD scenarios
--   Friends — projects that extend or build on Spec Kit
-
-Note
-
-Community contributions are independently created and maintained by their respective authors. Review source code before installation and use at your own discretion.
-
-Want to contribute? See the Extension Publishing Guide, the Presets Publishing Guide, or the Community Bundles guide.
-
-🤖 Supported AI Coding Agent Integrations
------------------------------------------
-
-Spec Kit works with 30+ AI coding agents — both CLI tools and IDE-based assistants. See the full list with notes and usage details in the Supported AI Coding Agent Integrations guide.
-
-Run `specify integration list` to see all available integrations in your installed version.
-
-Available Slash Commands
-------------------------
-
-After running `specify init`, your AI coding agent will have access to these slash commands for structured development. For integrations that support skills mode, passing `--integration <agent> --integration-options="--skills"` installs agent skills instead of slash-command prompt files.
-
-### Core Commands
-
-Essential commands for the Spec-Driven Development workflow:
-
-Command
-
-Agent Skill
-
-Description
-
-`/speckit.constitution`
-
-`speckit-constitution`
-
-Create or update project governing principles and development guidelines
-
-`/speckit.specify`
-
-`speckit-specify`
-
-Define what you want to build (requirements and user stories)
-
-`/speckit.plan`
-
-`speckit-plan`
-
-Create technical implementation plans with your chosen tech stack
-
-`/speckit.tasks`
-
-`speckit-tasks`
-
-Generate actionable task lists for implementation
-
-`/speckit.taskstoissues`
-
-`speckit-taskstoissues`
-
-Convert generated task lists into GitHub issues for tracking and execution
-
-`/speckit.implement`
-
-`speckit-implement`
-
-Execute all tasks to build the feature according to the plan
-
-`/speckit.converge`
-
-`speckit-converge`
-
-Assess the codebase against spec/plan/tasks and append remaining work as new tasks
-
-### Optional Commands
-
-Additional commands for enhanced quality and validation:
-
-Command
-
-Agent Skill
-
-Description
-
-`/speckit.clarify`
-
-`speckit-clarify`
-
-Clarify underspecified areas (recommended before `/speckit.plan`; formerly `/quizme`)
-
-`/speckit.analyze`
-
-`speckit-analyze`
-
-Cross-artifact consistency & coverage analysis (run after `/speckit.tasks`, before `/speckit.implement`)
-
-`/speckit.checklist`
-
-`speckit-checklist`
-
-Generate custom quality checklists that validate requirements completeness, clarity, and consistency (like "unit tests for English")
-
-🔧 Specify CLI Reference
-------------------------
-
-For full command details, options, and examples, see the CLI Reference.
-
-🧩 Making Spec Kit Your Own: Extensions & Presets
--------------------------------------------------
-
-Spec Kit can be tailored to your needs through two complementary systems — **extensions** and **presets** — plus project-local overrides for one-off adjustments:
-
-Priority
-
-Component Type
-
-Location
-
-⬆ 1
-
-Project-Local Overrides
-
-`.specify/templates/overrides/`
-
-2
-
-Presets — Customize core & extensions
-
-`.specify/presets/templates/`
-
-3
-
-Extensions — Add new capabilities
-
-`.specify/extensions/templates/`
-
-⬇ 4
-
-Spec Kit Core — Built-in SDD commands & templates
-
-`.specify/templates/`
-
--   **Templates** are resolved at **runtime** — Spec Kit walks the stack top-down and uses the first match.
--   Project-local overrides (`.specify/templates/overrides/`) let you make one-off adjustments for a single project without creating a full preset.
--   **Extension/preset commands** are applied at **install time** — when you run `specify extension add` or `specify preset add`, command files are written into agent directories (e.g., `.claude/commands/`).
--   If multiple presets or extensions provide the same command, the highest-priority version wins. On removal, the next-highest-priority version is restored automatically.
--   If no overrides or customizations exist, Spec Kit uses its core defaults.
-
-### Extensions — Add New Capabilities
-
-Use **extensions** when you need functionality that goes beyond Spec Kit's core. Extensions introduce new commands and templates — for example, adding domain-specific workflows that are not covered by the built-in SDD commands, integrating with external tools, or adding entirely new development phases. They expand _what Spec Kit can do_.
-
-# Search available extensions
-specify extension search
-
-# Install an extension
-specify extension add <extension-name\>
-
-For example, extensions could add Jira integration, post-implementation code review, V-Model test traceability, or project health diagnostics.
-
-See the Extensions reference for the full command guide. Browse the community extensions for what's available.
-
-### Presets — Customize Existing Workflows
-
-Use **presets** when you want to change _how_ Spec Kit works without adding new capabilities. Presets override the templates and commands that ship with the core _and_ with installed extensions — for example, enforcing a compliance-oriented spec format, using domain-specific terminology, or applying organizational standards to plans and tasks. They customize the artifacts and instructions that Spec Kit and its extensions produce.
-
-# Search available presets
-specify preset search
-
-# Install a preset
-specify preset add <preset-name\>
-
-For example, presets could restructure spec templates to require regulatory traceability, adapt the workflow to fit the methodology you use (e.g., Agile, Kanban, Waterfall, jobs-to-be-done, or domain-driven design), add mandatory security review gates to plans, enforce test-first task ordering, or localize the entire workflow to a different language. The pirate-speak demo shows just how deep the customization can go. Multiple presets can be stacked with priority ordering.
-
-See the Presets reference for the full command guide, including resolution order and priority stacking.
-
-📦 Bundles: Role-Based Setups
------------------------------
-
-Extensions and presets are individual building blocks. A **bundle** packages a curated set of them — extensions, presets, steps, and workflows — into a single, versioned, role-oriented setup so a whole team persona (product manager, business analyst, security researcher, developer, …) can be provisioned with one command.
-
-A bundle is described by a hand-written `bundle.yml` manifest. It pins each component to a version and, optionally, targets a specific integration; a bundle with no `integration` is **agnostic** and inherits whatever integration the project already uses.
-
-# Discover bundles in the active catalog stack
-specify bundle search \[<query\>\]
-
-# Inspect the exact component set a bundle will add (equals what install does)
-specify bundle info <bundle-id\>
-
-# Install a bundle's full component set in one operation
-specify bundle install <bundle-id\>
-
-# See what's installed, then update or remove non-destructively
-specify bundle list
-specify bundle update <bundle-id\>     # or --all
-specify bundle remove <bundle-id\>     # removes only this bundle's components
-
-Bundles resolve from a **priority-ordered catalog stack** (project > user > built-in). Each source carries an install policy: `install-allowed` sources can be installed from, while `discovery-only` sources are visible in `search`/`info` but refuse installation. Manage the stack with `specify bundle catalog list|add|remove`.
-
-Authors validate and package bundles locally. Distribution is hosting the built artifact and adding a catalog source; community bundle submissions use the Bundle Submission issue template so required component catalogs and install evidence can be reviewed:
-
-specify bundle validate --path ./my-bundle      # structural + reference checks
-specify bundle build --path ./my-bundle         # produce a versioned .zip artifact
-
-Four ready-to-read example bundle manifests live under `examples/bundles/` (product manager, business analyst, security researcher, developer). These are bundle packaging examples, not filled generated feature specs; for end-to-end community examples, see the community walkthroughs.
-
-Key guarantees: `info` shows exactly what `install` adds (transparency); installs are idempotent and confined to the project root; `remove` never touches components another installed bundle still needs; and all consume/author commands work **offline** against local or pinned sources.
-
-### When to Use Which
-
-Goal
-
-Use
-
-Add a brand-new command or workflow
-
-Extension
-
-Customize the format of specs, plans, or tasks
-
-Preset
-
-Integrate an external tool or service
-
-Extension
-
-Enforce organizational or regulatory standards
-
-Preset
-
-Ship reusable domain-specific templates
-
-Either — presets for template overrides, extensions for templates bundled with new commands
-
-Provision a complete role-based setup in one command
-
-Bundle
-
-📚 Core Philosophy
-------------------
-
-Spec-Driven Development is a structured process that emphasizes:
-
--   **Intent-driven development** where specifications define the "_what_" before the "_how_"
--   **Rich specification creation** using guardrails and organizational principles
--   **Multi-step refinement** rather than one-shot code generation from prompts
--   **Heavy reliance** on advanced AI model capabilities for specification interpretation
-
-🪞 Does Spec Kit Use Spec Kit?
-------------------------------
-
-Yes — we dogfood Spec Kit while developing Spec Kit, especially for substantial features and changes to the development workflow. Contributors are asked to test relevant changes through the Spec-Driven Development commands. The feature assessment workflow is currently the automated dogfooding path: its setup uses the CLI from the current checkout to initialize Copilot and install the `assess` extension, after which Copilot follows the generated assessment skills against feature requests. The other agentic workflows currently operate independently of the Specify CLI.
-
-This does not mean every change goes through the full workflow. Small fixes can use the normal issue, pull request, review, and test process. Dogfooding scaffolding and artifacts under `.github/agents/`, `.github/prompts/`, `.github/copilot-instructions.md`, `.grok/`, `.specify/`, and `specs/` are intentionally gitignored. The automated assessment workflow is ephemeral and neither commits nor pushes its generated Copilot skills, so its output does not enter repository history. See the contributor development workflow for the validation expectations.
-
-🌟 Development Phases
----------------------
-
-Phase
-
-Focus
-
-Key Activities
-
-**0-to-1 Development** ("Greenfield")
-
-Generate from scratch
-
--   Start with high-level requirements
--   Generate specifications
--   Plan implementation steps
--   Build production-ready applications
-
-**Creative Exploration**
-
-Parallel implementations
-
--   Explore diverse solutions
--   Support multiple technology stacks & architectures
--   Experiment with UX patterns
-
-**Iterative Enhancement** ("Brownfield")
-
-Brownfield modernization
-
--   Add features iteratively
--   Modernize legacy systems
--   Adapt processes
-
-For existing projects, keep Spec Kit tooling updates separate from feature artifact evolution: refresh managed project files when upgrading, and update `specs/` artifacts when intended behavior changes. The Evolving Specs guide describes the recommended brownfield loop.
-
-🎯 Experimental Goals
----------------------
-
-Our research and experimentation focus on:
-
-### Technology independence
-
--   Create applications using diverse technology stacks
--   Validate the hypothesis that Spec-Driven Development is a process not tied to specific technologies, programming languages, or frameworks
-
-### Enterprise constraints
-
--   Demonstrate mission-critical application development
--   Incorporate organizational constraints (cloud providers, tech stacks, engineering practices)
--   Support enterprise design systems and compliance requirements
-
-### User-centric development
-
--   Build applications for different user cohorts and preferences
--   Support various development approaches (from vibe-coding to AI-native development)
-
-### Creative & iterative processes
-
--   Validate the concept of parallel implementation exploration
--   Provide robust iterative feature development workflows
--   Extend processes to handle upgrades and modernization tasks
-
-🔧 Prerequisites
-----------------
-
--   **Linux/macOS/Windows**
--   Supported AI coding agent.
--   uv for package management (recommended) or pipx for persistent installation
--   Python 3.11+
--   Git
-
-If you encounter issues with an agent, please open an issue so we can refine the integration.
-
-📖 Learn More
--------------
-
--   **Complete Spec-Driven Development Methodology** - Deep dive into the full process
--   **Quick Start Guide** - Step-by-step implementation walkthrough
-
-* * *
-
-💬 Support
-----------
-
-For support, please open a GitHub issue. We welcome bug reports, feature requests, and questions about using Spec-Driven Development.
-
-🙏 Acknowledgements
+Choose your process
 -------------------
 
-This project is heavily influenced by and based on the work and research of John Lam.
+What you need
 
-📄 License
+Process
+
+Outcome
+
+Build a feature or application
+
+Spec-Driven Development
+
+A specification carried through planning, implementation, and convergence
+
+Diagnose and repair broken behavior
+
+Bug fixing
+
+An assessed cause, scoped fix, and recorded verification
+
+Decide whether an idea deserves investment
+
+Idea assessment
+
+An evidence-backed go, clarify, or stop decision
+
+These are **independent entry points**, not three mandatory phases. SDD ships in core; bug fixing and assessment are bundled extensions you install when needed.
+
+Get started
+-----------
+
+You need **Python 3.11+**, **uv**, and a supported AI coding agent on Linux, macOS, or Windows. For **CLI setup only**, run this in your terminal to install Spec Kit and create a project:
+
+uv tool install specify-cli
+specify init my-project --integration copilot
+cd my-project
+
+The examples use **GitHub Copilot's default skills mode**. Replace `copilot` with your integration key to use another supported agent.
+
+Already have code? Follow the existing-project guide. For pinned releases, other installers, CI, or troubleshooting, see Installation. To update an existing installation, see Upgrade.
+
+Now **launch your coding agent in the project directory** and choose a process below. Invoke each `/speckit-*` **skill in your agent's chat**, one at a time, and review the result before continuing. These are agent skills, not terminal commands. Other agents and modes may use different invocation syntax.
+
+Spec-Driven Development
+-----------------------
+
+Define **what and why** before deciding **how** to build it. SDD turns your requirements into a specification, a technical plan, and actionable tasks, then guides implementation against those artifacts.
+
+**Constitution once per project; specify → plan → tasks → implement → converge per feature.**
+
+Invoke these skills in your agent's chat:
+
+```
+/speckit-constitution Create principles focused on code quality, testing, and maintainability.
+/speckit-specify Build a photo organizer with albums grouped by date and a tile preview of each album.
+/speckit-plan Use Vite with vanilla JavaScript. Keep images local and store metadata in SQLite.
+/speckit-tasks
+/speckit-implement
+/speckit-converge
+```
+
+Repeat **implement → converge** until convergence reports **Converged**. Add clarification, checklists, and consistency analysis when you need extra quality gates.
+
+SDD walkthrough · Command reference
+
+Bug fixing
 ----------
 
-This project is licensed under the terms of the MIT open source license. Please refer to the LICENSE file for the full terms.
+Keep diagnosis, repair, and verification separate so the agent fixes the assessed cause and checks the original symptom. No SDD feature workflow is required first.
+
+**CLI setup (terminal):** install the opt-in extension from the project directory:
+
+specify extension add bug
+
+Then invoke the **assess → fix → test** skills in your agent's chat:
+
+```
+/speckit-bug-assess "Submitting an empty password crashes the login form." slug=login-crash
+/speckit-bug-fix slug=login-crash
+/speckit-bug-test slug=login-crash
+```
+
+The reports live in `.specify/bugs/login-crash/`. Review the final verdict: `verified`, `partial`, or `failed`. Missing verification is not a successful fix.
+
+Bug-fixing walkthrough · Command reference
+
+Idea assessment
+---------------
+
+Gather evidence before committing to an idea, whether or not it becomes software. This standalone process works even in a project with no source code.
+
+**CLI setup (terminal):** install the opt-in extension from the project directory:
+
+specify extension add assess
+
+Then invoke the **intake → research → define → shape → decide** skills in your agent's chat:
+
+```
+/speckit-assess-intake "Let users work offline and sync when they reconnect." slug=offline-mode
+/speckit-assess-research slug=offline-mode
+/speckit-assess-define slug=offline-mode
+/speckit-assess-shape slug=offline-mode
+/speckit-assess-decide slug=offline-mode
+```
+
+The artifacts live in `.specify/assessments/offline-mode/`, ending in a **go / needs-clarification / kill** decision. Resolve unknowns by refining the existing Markdown artifacts directly or with the agent, rather than regenerating whole stages. A `go` decision can be handed to `/speckit-specify` if you choose to build it; stopping with a documented reason is also a useful result.
+
+Assessment walkthrough · Command reference
+
+Customize or bring your own process
+-----------------------------------
+
+**Extensions** add capabilities, **presets** adapt existing behavior, **workflows** automate steps, and **bundles** package a role-based setup. Use project-local overrides for one-off template changes.
+
+Customization guide · Community extensions, presets, bundles, and walkthroughs
+
+Documentation
+-------------
+
+-   CLI reference and process commands
+-   SDD philosophy, full methodology, and evolving existing specs
+-   Video overview and project history
+-   How Spec Kit uses Spec Kit
+
+Support and contributing
+------------------------
+
+Report a bug or request a feature · Contributing guide · Code of conduct
+
+Spec Kit is MIT licensed.

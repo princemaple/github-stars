@@ -1,6 +1,6 @@
 ---
 project: shimmy
-stars: 5867
+stars: 5892
 description: ⚡ Pure-Rust WebGPU inference engine — OpenAI-API compatible, GGUF native, runs on any GPU. No Python. No llama.cpp. Single binary.
 url: https://github.com/Michael-A-Kuykendall/shimmy
 ---

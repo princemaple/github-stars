@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1152
+stars: 1171
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. Scheduled tasks support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -18,7 +18,7 @@ Scheduled tasks support. Turns the bot into a lightweight OpenClaw alternative f
 
 Platforms: macOS, Windows, Linux
 
-Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`), Français (`fr`), Italiano (`it`), 한국어 (`ko`), Português (Brasil) (`pt`), Русский (`ru`), 简体中文 (`zh`)
+Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`), Français (`fr`), Bahasa Indonesia (`id`), Italiano (`it`), 한국어 (`ko`), Português (Brasil) (`pt`), Русский (`ru`), Türkçe (`tr`), 简体中文 (`zh`)
 
 > I use boardown, my open-source Markdown-based task board, to plan and track this project. It stores tasks in plain `.md` files and can be used as a VS Code extension or a desktop app.
 
@@ -263,7 +263,7 @@ Configuration
 
 ### Localization
 
--   Supported locales: `en`, `ar`, `de`, `es`, `fr`, `it`, `ko`, `pt`, `ru`, `zh`
+-   Supported locales: `en`, `ar`, `de`, `es`, `fr`, `id`, `it`, `ko`, `pt`, `ru`, `tr`, `zh`
 -   The setup wizard asks for language first
 -   You can change locale later with `BOT_LOCALE`
 
@@ -401,7 +401,7 @@ Yes
 
 `BOT_LOCALE`
 
-Bot UI language (supported locale code, e.g. `en`, `ar`, `de`, `es`, `fr`, `it`, `ko`, `pt`, `ru`, `zh`)
+Bot UI language (supported locale code, e.g. `en`, `ar`, `de`, `es`, `fr`, `id`, `it`, `ko`, `pt`, `ru`, `tr`, `zh`)
 
 No
 
@@ -671,10 +671,11 @@ Logs are written to `./logs` when running from sources and to the runtime config
 
 Runtime preferences are changed from `/settings` and stored in `settings.json`:
 
--   Compact output mode
+-   Compact output mode: the progress message appears as soon as the model starts thinking or writing
 -   Delete progress on finish: available while compact output mode is on, removes the progress message when the run completes
 -   Thinking content display
 -   Assistant run footer display
+-   Pin session dashboard
 -   Diff file attachments
 -   Response streaming mode: `edit` or `draft (experimental)`; applies only to final assistant replies, not thinking messages
 -   Audio replies: `off`, `all`, or `auto` when TTS is configured
@@ -684,7 +685,7 @@ With the message queue enabled, text, transcribed voice, photos, rich formatted 
 
 You can seed the initial defaults for any of these settings without hard-coding them in your Docker image by setting `INITIAL_SETTINGS_PRESET` to a JSON object. Only keys not yet persisted in `settings.json` are affected — settings the user has already changed via `/settings` are left untouched:
 
-INITIAL\_SETTINGS\_PRESET\={"showAssistantRunFooter":false,"compactOutputMode":true,"ttsMode":"auto"}
+INITIAL\_SETTINGS\_PRESET\={"showAssistantRunFooter":false,"compactOutputMode":true,"ttsMode":"auto","pinnedDashboardEnabled":true}
 
 Settings are written atomically: the new content goes to a temporary file that then replaces `settings.json`, and the previous version is kept as `settings.json.bak`. A crash during a write can never leave a truncated file — the bot falls back to the backup on the next start. If both `settings.json` and `settings.json.bak` are unreadable, the bot refuses to start instead of overwriting them, and the error names the file so you can fix or remove it manually.
 

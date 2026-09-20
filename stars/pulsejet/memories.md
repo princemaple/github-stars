@@ -1,6 +1,6 @@
 ---
 project: memories
-stars: 3837
+stars: 3840
 description: Fast, modern and advanced photo management suite. Runs as a Nextcloud app.
 url: https://github.com/pulsejet/memories
 ---

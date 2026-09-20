@@ -1,6 +1,6 @@
 ---
 project: dozzle
-stars: 14358
+stars: 14432
 description: Realtime log viewer for containers.  Supports Docker, Swarm and K8s. 
 url: https://github.com/amir20/dozzle
 ---
@@ -214,16 +214,16 @@ Want to contribute? Great! Dozzle has two parts: a **Go backend** that talks to 
 
 ### 1\. Install the prerequisites
 
-You'll need Go (1.25+), Node.js (with pnpm), and protoc.
+You'll need Go (1.25+), Node.js, Bun, and protoc.
 
 On macOS, you can install everything in one go:
 
-brew install go node pnpm protobuf
+brew install go node oven-sh/bun/bun protobuf
 
 On Linux (Debian/Ubuntu):
 
 sudo apt install golang nodejs protobuf-compiler
-npm install -g pnpm
+curl -fsSL https://bun.com/install | bash
 
 On Windows, we recommend using WSL2 and following the Linux instructions.
 
@@ -231,7 +231,7 @@ On Windows, we recommend using WSL2 and following the Linux instructions.
 
 git clone https://github.com/amir20/dozzle.git
 cd dozzle
-pnpm install                # installs frontend dependencies
+bun install                 # installs frontend dependencies
 go install tool             # installs Go build tools listed in go.mod (air, protoc-gen-go, etc.)
 make generate               # generates TLS certificates and protobuf code (only needed once)
 
@@ -250,3 +250,15 @@ Try editing `assets/pages/index.vue` and saving — the browser updates instantl
 -   **Nothing shows up at localhost:3100** — make sure Docker is running and the socket is accessible at `/var/run/docker.sock`.
 -   **`make generate` fails** — confirm `protoc` is on your PATH (`protoc --version`).
 -   **Still stuck?** Open a question in GitHub Discussions — we're happy to help.
+
+Adding App Icons
+----------------
+
+Dozzle shows a logo next to containers whose image it recognizes. Icons are vendored from homarr-labs/dashboard-icons into `assets/icons/apps/`, and matching happens in `assets/utils/appIcons.ts`.
+
+The repo ships an `add-app-icon` skill in `.claude/skills/`. To add icons with an AI coding agent, paste this prompt and fill in the images:
+
+```
+Use the add-app-icon skill in .claude/skills/add-app-icon/SKILL.md to add app icons
+for these container images: <image1>, <image2>
+```

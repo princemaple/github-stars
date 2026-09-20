@@ -1,6 +1,6 @@
 ---
 project: stripe-cli
-stars: 2179
+stars: 2182
 description: A command-line tool for Stripe
 url: https://github.com/stripe/stripe-cli
 ---

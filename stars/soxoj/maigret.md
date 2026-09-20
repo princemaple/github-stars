@@ -1,7 +1,7 @@
 ---
 project: maigret
-stars: 37480
-description: 🕵️‍♂️ Collect a dossier on a person by username from 3000+ sites
+stars: 37814
+description: 🕵️‍♂️ Collect a dossier on a person by username from 6K websites
 url: https://github.com/soxoj/maigret
 ---
 
@@ -14,7 +14,11 @@ Maigret
 
   
 
-**English** · 简体中文
+**English** · 简体中文 · Français
+
+  
+
+📖 **Documentation**
 
   
 
@@ -32,6 +36,9 @@ Sponsors
 
 **MangoProxy** is a Residential, ISP, Mobile and Datacenter proxy service designed for professional tasks where stability, speed, and anonymity matter.  
 **Promo code**: SOXOJ - 8% off Static ISP proxies
+
+**Thordata** provides reliable residential proxies for OSINT research, username lookup, and public data collection workflows. Access **100M+ real residential IPs** across **195+ countries** **unlimited concurrent connections**with 99.99% uptime and stable connections, Rotating + Sticky Sessions, and high success rates.  
+**Special Offer:** Free 3-day trial + **10% OFF** with code **SOXOJ10**.
 
 Contents
 --------
@@ -62,7 +69,7 @@ See also: Quick start.
 Main features
 -------------
 
--   Supports 3,000+ sites (see full list). A default run checks the 500 highest-ranked sites by traffic; pass `-a` to scan everything, or `--tags` to narrow by category/country.
+-   Supports 5,900 sites (see full list). A default run checks the 500 highest-ranked sites by traffic; pass `-a` to scan everything, or `--tags` to narrow by category/country.
 -   Embeddable in Python projects — import `maigret` and run searches programmatically (see library usage).
 -   Extracts all available information about the account owner from profile pages and site APIs, including links to other accounts.
 -   Performs recursive search using discovered usernames and other IDs.

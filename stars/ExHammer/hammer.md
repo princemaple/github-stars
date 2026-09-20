@@ -1,6 +1,6 @@
 ---
 project: hammer
-stars: 919
+stars: 920
 description: An Elixir rate-limiter with pluggable backends
 url: https://github.com/ExHammer/hammer
 ---

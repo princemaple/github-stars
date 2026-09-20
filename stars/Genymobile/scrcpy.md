@@ -1,6 +1,6 @@
 ---
 project: scrcpy
-stars: 149482
+stars: 150019
 description: Display and control your Android device
 url: https://github.com/Genymobile/scrcpy
 ---

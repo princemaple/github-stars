@@ -1,6 +1,6 @@
 ---
 project: TradingAgents
-stars: 104807
+stars: 107616
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
@@ -19,8 +19,12 @@ TradingAgents: Multi-Agents LLM Financial Trading Framework
 News
 ----
 
--   \[2026-08\] **TradingAgents v0.4.0** released with look-ahead / point-in-time fixes across FRED macro, social sentiment, and the decision-log memory; clearer decision signals; working CLI checkpoint resume; Trader price grounding; and the GPT-5.6 and GLM-5.3 models. See CHANGELOG.md for the full list.
+-   \[2026-09\] **TradingAgents v0.5.0** released with point-in-time integrity across every dated path, SEC EDGAR fundamentals served as filed, backtesting over a ticker and date grid, portfolio-aware runs, and current model lineups across every provider. See CHANGELOG.md for the full list.
+-   \[2026-08\] **TradingAgents v0.4.0** released with look-ahead / point-in-time fixes across FRED macro, social sentiment, and the decision-log memory; clearer decision signals; working CLI checkpoint resume; Trader price grounding; and the GPT-5.6 and GLM-5.3 models.
 -   \[2026-07\] **TradingAgents v0.3.1** released with correctness and stability fixes: Alpha Vantage look-ahead filtering, graph-router crash-safety, graph-shape-aware checkpoint resume, working crypto sentiment sources, a configurable LLM retry budget, Bedrock API-key auth, and Claude Sonnet 5 / Fable 5 support.
+
+Earlier releases
+
 -   \[2026-06\] **TradingAgents v0.3.0** released with a verified data-access contract, an expanded provider registry (NVIDIA, Kimi, Groq, Mistral, Bedrock, and any OpenAI-compatible endpoint), FRED and Polymarket data vendors, a current-generation model catalog, and a CI gate.
 -   \[2026-05\] **TradingAgents v0.2.5** released with the grounded Sentiment Analyst, GPT-5.5 etc. model coverage, Qwen/GLM/MiniMax dual-region support, `TRADINGAGENTS_*` env-var configurability with API-key auto-detection, remote Ollama support, non-US alpha benchmarks, and ticker path-traversal hardening.
 -   \[2026-04\] **TradingAgents v0.2.4** released with structured-output agents (Research Manager, Trader, Portfolio Manager), LangGraph checkpoint resume, persistent decision log, DeepSeek/Qwen/GLM/Azure provider support, Docker, and a Windows UTF-8 encoding fix.
@@ -79,7 +83,12 @@ Create a virtual environment in any of your favorite environment managers:
 conda create -n tradingagents python=3.12
 conda activate tradingagents
 
-Install the package and its dependencies:
+Or with uv:
+
+uv venv --python 3.12
+source .venv/bin/activate
+
+Install the package and its dependencies (`uv pip install .` with uv):
 
 pip install .
 
@@ -89,6 +98,8 @@ Alternatively, run with Docker:
 
 cp .env.example .env  # add your API keys
 docker compose run --rm tradingagents
+
+After updating the repository, rebuild the image with `docker compose build`.
 
 For local models with Ollama:
 
@@ -110,6 +121,11 @@ export ZHIPU\_CN\_API\_KEY=...        # GLM via BigModel (China, open.bigmodel.c
 export MINIMAX\_API\_KEY=...         # MiniMax — Global (api.minimax.io)
 export MINIMAX\_CN\_API\_KEY=...      # MiniMax — China (api.minimaxi.com)
 export OPENROUTER\_API\_KEY=...      # OpenRouter
+export MISTRAL\_API\_KEY=...         # Mistral
+export MOONSHOT\_API\_KEY=...        # Kimi (Moonshot)
+export GROQ\_API\_KEY=...            # Groq
+export NVIDIA\_API\_KEY=...          # NVIDIA NIM
+export FRED\_API\_KEY=...            # FRED macro data (free, optional)
 export ALPHA\_VANTAGE\_API\_KEY=...   # Alpha Vantage
 
 For Azure OpenAI, copy `.env.enterprise.example` to `.env.enterprise` and fill in your credentials.
@@ -131,7 +147,7 @@ Launch the interactive CLI:
 tradingagents          # installed command
 python -m cli.main     # alternative: run directly from source
 
-You will see a screen where you can select your desired tickers, analysis date, LLM provider, research depth, and more.
+You will see a screen where you can select your desired tickers, analysis date, LLM provider, research depth, and more. Your previous run's answers come back as the defaults, so pressing Enter accepts them. The `TRADINGAGENTS_*` variables in `.env` still skip their step entirely.
 
 ### Markets and tickers
 
@@ -162,7 +178,7 @@ from tradingagents.default\_config import DEFAULT\_CONFIG
 ta \= TradingAgentsGraph(debug\=True, config\=DEFAULT\_CONFIG.copy())
 
 \# forward propagate
-\_, decision \= ta.propagate("NVDA", "2026-01-15")
+\_, decision \= ta.propagate("NVDA", "2026-09-01")
 print(decision)
 
 You can also adjust the default configuration to set your own choice of LLMs, debate rounds, etc.
@@ -177,10 +193,41 @@ config\["quick\_think\_llm"\] \= "gpt-5.6-luna" \# Model for quick tasks
 config\["max\_debate\_rounds"\] \= 2
 
 ta \= TradingAgentsGraph(debug\=True, config\=config)
-\_, decision \= ta.propagate("NVDA", "2026-01-15")
+\_, decision \= ta.propagate("NVDA", "2026-09-01")
 print(decision)
 
 See `tradingagents/default_config.py` for all configuration options.
+
+### Fundamentals as filed
+
+US company statements can come from SEC EDGAR, which records the date every figure was filed. A run dated in the past then reads the statements exactly as they stood that day: a fiscal year that has ended but has not been filed yet is not served, and a figure restated later still reads as first reported. Apple's 2008 total assets were filed as $39.6B and restated to $36.2B in 2010, so a run dated in between reads $39.6B.
+
+EDGAR needs no account or API key. Add the vendor to the chain:
+
+config\["data\_vendors"\]\["fundamental\_data"\] \= "sec\_edgar,yfinance"
+
+SEC asks callers to identify themselves and refuses requests that carry no contact address, so a default one is sent. Set your own so SEC can reach you rather than the project:
+
+SEC\_EDGAR\_USER\_AGENT="Your Name your@email.com"
+
+It covers companies that file with the SEC, including foreign companies listed in the US. Anything else, such as Hong Kong or A-share listings, falls through to the next vendor in the chain. EDGAR's machine-readable filings begin in 2009, and a fourth quarter is reported as unavailable rather than derived, because filers publish it only inside the annual figure.
+
+### Current holdings
+
+By default the agents do not know what you hold, so their guidance is written for a reader who applies it to their own position. Pass a portfolio to have the trader, the risk analysts and the portfolio manager work against your actual book.
+
+from tradingagents.portfolio import PortfolioContext
+
+portfolio \= PortfolioContext.model\_validate({
+    "cash": 25000.0,
+    "currency": "USD",
+    "positions": \[{"ticker": "NVDA", "quantity": 120, "average\_price": 150.0}\],
+})
+\_, decision \= ta.propagate("NVDA", "2026-09-01", portfolio\=portfolio)
+
+The CLI takes the same content as a JSON file: `tradingagents --portfolio my_book.json`.
+
+An empty `positions` list means a flat book, which is different from passing nothing. A run without a portfolio is never treated as flat.
 
 Persistence and Recovery
 ------------------------
@@ -189,23 +236,41 @@ TradingAgents persists two kinds of state across runs.
 
 ### Decision log
 
-The decision log is always on. Each completed run appends its decision to `~/.tradingagents/memory/trading_memory.md`. On the next run for the same ticker, TradingAgents fetches the realised return (raw and alpha vs SPY), generates a one-paragraph reflection, and injects the most recent same-ticker decisions plus recent cross-ticker lessons into the Portfolio Manager prompt, so each analysis carries forward what worked and what didn't.
+The decision log is always on. Each completed run appends its decision to `~/.tradingagents/memory/trading_memory.md`. On the next run for the same ticker, TradingAgents fetches the realised return (raw, and alpha against the instrument's regional benchmark), generates a one-paragraph reflection, and injects the most recent same-ticker decisions plus recent cross-ticker lessons into the Portfolio Manager prompt, so each analysis carries forward what worked and what didn't.
 
 Override the path with `TRADINGAGENTS_MEMORY_LOG_PATH`.
 
 ### Checkpoint resume
 
-Checkpoint resume is opt-in via `--checkpoint`. When enabled, LangGraph saves state after each node so a crashed or interrupted run resumes from the last successful step instead of starting over. On a resume run you will see `Resuming from step N for <TICKER> on <date>` in the logs; on a new run you will see `Starting fresh`. Checkpoints are cleared automatically on successful completion.
+Checkpoint resume is opt-in via `--checkpoint`. When enabled, LangGraph saves state after each node so a crashed or interrupted run resumes from the last successful step instead of starting over. The run view says whether it resumed a saved run or started fresh. Checkpoints are cleared automatically on successful completion.
 
 Per-ticker SQLite databases live at `~/.tradingagents/cache/checkpoints/<TICKER>.db` (override the base with `TRADINGAGENTS_CACHE_DIR`). Use `--clear-checkpoints` to reset all of them before a run.
 
-tradingagents analyze --checkpoint           # enable for this run
-tradingagents analyze --clear-checkpoints    # reset before running
+tradingagents --checkpoint           # enable for this run
+tradingagents --clear-checkpoints    # reset before running
 
 config \= DEFAULT\_CONFIG.copy()
 config\["checkpoint\_enabled"\] \= True
 ta \= TradingAgentsGraph(config\=config)
-\_, decision \= ta.propagate("NVDA", "2026-01-15")
+\_, decision \= ta.propagate("NVDA", "2026-09-01")
+
+Evaluating decisions over time
+------------------------------
+
+One run gives one decision, which cannot tell you whether the system decides well. `run_backtest` runs the same pipeline over a grid of tickers and dates, writes to a decision log of its own, and scores the decisions whose holding window has since traded.
+
+from tradingagents.backtest import iter\_grid, run\_backtest, summarize
+from tradingagents.agents.utils.memory import TradingMemoryLog
+
+dates \= iter\_grid("2026-06-01", "2026-08-01", every\_n\_days\=7)
+result \= run\_backtest(\["NVDA", "AAPL"\], dates, config, selected\_analysts\=\["market", "news"\])
+print(summarize(TradingMemoryLog({"memory\_log\_path": str(result.log\_path)})).render())
+
+From the CLI:
+
+tradingagents backtest NVDA,AAPL --start 2026-06-01 --end 2026-08-01 --every 7
+
+Each cell is scored on realized alpha against the instrument's regional benchmark, grouped by rating. Your own decision log is never written to, and re-running the same grid with `run_id=result.run_id` skips the cells that already ran, so an interrupted sweep continues where it stopped.
 
 Reproducibility
 ---------------
@@ -216,13 +281,13 @@ Language model sampling is non-deterministic. Even at a fixed temperature, provi
 
 Live data moves. News, StockTwits, and Reddit return different content as time passes, so a run today sees different inputs than a run last week even for the same historical trade date. Pin the analysis date to hold the price and indicator window fixed, but the social and news sources still reflect "now".
 
-To reduce variation you can lower the sampling temperature. Set `temperature` in your config (or `TRADINGAGENTS_TEMPERATURE` in `.env`); lower values make models that honor it more repeatable. The current curated models are reasoning-first and largely ignore temperature, so for tighter reproducibility use a non-reasoning model, which you can set explicitly via the Custom model ID option.
+To reduce variation you can lower the sampling temperature. Set `temperature` in your config (or `TRADINGAGENTS_TEMPERATURE` in `.env`); lower values make models that honor it more repeatable. The current curated models are reasoning-first and largely ignore temperature, so for tighter reproducibility name a non-reasoning model in your config, or in `TRADINGAGENTS_DEEP_THINK_LLM` and `TRADINGAGENTS_QUICK_THINK_LLM`. Any model ID your provider serves is accepted, whether or not the picker lists it.
 
 config \= DEFAULT\_CONFIG.copy()
 config\["llm\_provider"\] \= "openai"
 config\["temperature"\] \= 0.0
-\# Reasoning models ignore temperature. For tighter reproducibility, set a
-\# non-reasoning deep/quick model explicitly (e.g. via the Custom model ID option).
+\# Reasoning models ignore temperature. For tighter reproducibility, name a
+\# non-reasoning model in deep\_think\_llm / quick\_think\_llm.
 
 What does not vary anymore: the analyzed company identity is resolved deterministically from the ticker before any agent runs, and the market analyst grounds exact price and indicator claims in a verified data snapshot. Earlier reports of "different companies" or fabricated price levels across runs are addressed by these two mechanisms.
 

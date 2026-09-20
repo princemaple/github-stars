@@ -1,6 +1,6 @@
 ---
 project: usql
-stars: 10111
+stars: 10117
 description: Universal command-line interface for SQL databases
 url: https://github.com/xo/usql
 ---
@@ -210,7 +210,7 @@ Oracle Database
 
 `or`, `ora`, `oci`, `oci8`, `odpi`, `odpi-c`
 
-github.com/sijms/go-ora/v2
+github.com/sijms/go-ora/v3
 
 SQLite3
 
@@ -338,6 +338,14 @@ Cznic QL
 
 modernc.org/ql
 
+Dameng DM8
+
+`dameng`
+
+`dm`, `dm8`
+
+github.com/godoes/gorm-dameng/dm8
+
 Databend
 
 `databend`
@@ -456,7 +464,7 @@ Presto
 
 `pr`, `prs`, `prestos`, `prestodb`, `prestodbs`
 
-github.com/prestodb/presto-go-client/presto
+github.com/prestodb/presto-go-client/v2
 
 RamSQL
 
@@ -488,7 +496,7 @@ Snowflake
 
 `sf`
 
-github.com/snowflakedb/gosnowflake
+github.com/snowflakedb/gosnowflake/v2
 
 Trino
 

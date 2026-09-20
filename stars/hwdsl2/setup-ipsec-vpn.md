@@ -1,6 +1,6 @@
 ---
 project: setup-ipsec-vpn
-stars: 28474
+stars: 28528
 description: Set up your own IPsec VPN server in just a few minutes, with IPsec/L2TP, Cisco IPsec and IKEv2. Supports Ubuntu, Debian, CentOS/RHEL, Alpine Linux and Raspberry Pi OS. Includes client config and management scripts.
 url: https://github.com/hwdsl2/setup-ipsec-vpn
 ---
@@ -28,14 +28,13 @@ We will use Libreswan as the IPsec server, and xl2tpd as the L2TP provider.
 
 -   Docker VPN: IPsec VPN, WireGuard, OpenVPN, Headscale
 -   AI: Self-Hosted AI Stack for local LLMs, chat, RAG, voice and AI tools
--   📚 Related reading: Privacy Tools in the Age of AI
 
-> 📘 **New book:** The Self-Hosted AI Builder’s Guide. A practical guide to building, securing, and operating your own private AI stack.
+> 📘 Interested in self-hosted AI? The Self-Hosted AI Builder’s Guide: **$0.99/£0.99 ebook through Sept. 20** (US/UK). A practical guide to building, securing, and operating your own private AI stack.
 
 Quick start
 -----------
 
-First, prepare your Linux server\* with an install of a supported OS.
+Start with a Linux server\* running a supported operating system.
 
 Use this one-liner to set up an IPsec VPN server:
 
@@ -43,9 +42,7 @@ wget https://get.vpnsetup.net -O vpn.sh && sudo sh vpn.sh
 
 Your VPN login details will be randomly generated, and displayed when finished.
 
-Tip
-
-Optionally install WireGuard, OpenVPN and/or Headscale on the same server.
+**Tip:** Optionally install WireGuard, OpenVPN and/or Headscale on the same server.
 
 See the script in action (terminal recording).
 
@@ -107,7 +104,7 @@ A pre-built Docker image is also available. Advanced users can install on a Rasp
 
 Warning
 
-**DO NOT** run these scripts on your PC or Mac! They should only be used on a server!
+Run these scripts on the Linux server that will host your VPN. Do not run them on your personal PC or Mac.
 
 Installation
 ------------
@@ -141,9 +138,7 @@ VPN\_USER='your\_vpn\_username' \\
 VPN\_PASSWORD='your\_vpn\_password' \\
 sh vpn.sh
 
-Tip
-
-Optionally install WireGuard, OpenVPN and/or Headscale on the same server. If your server runs CentOS Stream, Rocky Linux or AlmaLinux, first install OpenVPN/WireGuard, then install the IPsec VPN.
+**Tip:** Optionally install WireGuard, OpenVPN and/or Headscale on the same server. If your server runs CentOS Stream, Rocky Linux or AlmaLinux, first install OpenVPN/WireGuard, then install the IPsec VPN.
 
 Click here if you are unable to download.
 
@@ -450,7 +445,7 @@ Get your computer or device to use the VPN. Please refer to:
 
 **Configure IPsec/XAuth ("Cisco IPsec") VPN Clients**
 
-**Read 📖 VPN book to access extra content.**
+**Read 📘 VPN book to access extra content.**
 
 Enjoy your very own VPN! ✨🎉🚀✨
 

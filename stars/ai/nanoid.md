@@ -1,6 +1,6 @@
 ---
 project: nanoid
-stars: 26966
+stars: 26976
 description: A tiny (118 bytes), secure, URL-friendly, unique string ID generator for JavaScript
 url: https://github.com/ai/nanoid
 ---
@@ -14,14 +14,14 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 > “An amazing level of senseless perfectionism, which is simply impossible not to respect.”
 
--   **Small.** 118 bytes (minified and brotlied). No dependencies. Size Limit controls the size.
+-   **Small.** 127 bytes (minified and brotlied). No dependencies. Size Limit controls the size.
 -   **Fast.** 50% faster than native `crypto.randomUUID()`.
 -   **Safe.** It uses hardware random generator. Can be used in clusters.
 -   **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`). So ID size was reduced from 36 to 21 symbols.
 -   **Portable.** Nano ID was ported to over 20 programming languages.
 
-import { nanoid } from 'nanoid'
-model.id \= nanoid() //=> "V1StGXR8\_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id \= nanoid(); //=> "V1StGXR8\_Z5jdHi6B-myT"
 
 * * *
 
@@ -113,7 +113,7 @@ npx jsr add @sitnik/nanoid
 You can use it in Node.js, Deno, Bun, etc.
 
 // Replace \`nanoid\` to \`@sitnik/nanoid\` in all imports
-import { nanoid } from '@sitnik/nanoid'
+import { nanoid } from "@sitnik/nanoid";
 
 For Deno install it by `deno add jsr:@sitnik/nanoid` or import from `jsr:@sitnik/nanoid`.
 
@@ -121,19 +121,19 @@ For Deno install it by `deno add jsr:@sitnik/nanoid` or import from `jsr:@sitnik
 
 For quick hacks, you can load Nano ID from CDN. Though, it is not recommended to be used in production because of the lower loading performance.
 
-import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 
 API
 ---
 
 By default, Nano ID uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID with 21 characters (to have a collision probability similar to UUID v4).
 
-import { nanoid } from 'nanoid'
-model.id \= nanoid() //=> "V1StGXR8\_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id \= nanoid(); //=> "V1StGXR8\_Z5jdHi6B-myT"
 
 If you want to reduce the ID size (and increase collisions probability), you can pass the size as an argument.
 
-nanoid(10) //=> "IRFa-VaY2b"
+nanoid(10); //=> "IRFa-VaY2b"
 
 Don’t forget to check the safety of your ID size in our ID collision probability calculator.
 
@@ -143,13 +143,13 @@ You can also use a custom alphabet or a random generator.
 
 `customAlphabet` returns a function that allows you to create `nanoid` with your own alphabet and ID size.
 
-import { customAlphabet } from 'nanoid'
-const nanoid \= customAlphabet('1234567890abcdef', 10)
-model.id \= nanoid() //=> "4f90d13a42"
+import { customAlphabet } from "nanoid";
+const nanoid \= customAlphabet("1234567890abcdef", 10);
+model.id \= nanoid(); //=> "4f90d13a42"
 
-import { customAlphabet } from 'nanoid/non-secure'
-const nanoid \= customAlphabet('1234567890abcdef', 10)
-user.id \= nanoid()
+import { customAlphabet } from "nanoid/non-secure";
+const nanoid \= customAlphabet("1234567890abcdef", 10);
+user.id \= nanoid();
 
 Check the safety of your custom alphabet and ID size in our ID collision probability calculator. For more alphabets, check out the options in `nanoid-dictionary`.
 
@@ -157,9 +157,9 @@ Alphabet must contain from 1 to 256 symbols. Otherwise, the security of the inte
 
 In addition to setting a default size, you can change the ID size when calling the function:
 
-import { customAlphabet } from 'nanoid'
-const nanoid \= customAlphabet('1234567890abcdef', 10)
-model.id \= nanoid(5) //=> "f01a2"
+import { customAlphabet } from "nanoid";
+const nanoid \= customAlphabet("1234567890abcdef", 10);
+model.id \= nanoid(5); //=> "f01a2"
 
 ### Custom Random Bytes Generator
 
@@ -167,21 +167,21 @@ model.id \= nanoid(5) //=> "f01a2"
 
 In this example, a seed-based generator is used:
 
-import { customRandom } from 'nanoid'
+import { customRandom } from "nanoid";
 
-const rng \= seedrandom(seed)
-const nanoid \= customRandom('abcdef', 10, size \=> {
-  return new Uint8Array(size).map(() \=> 256 \* rng())
-})
+const rng \= seedrandom(seed);
+const nanoid \= customRandom("abcdef", 10, (size) \=> {
+  return new Uint8Array(size).map(() \=> 256 \* rng());
+});
 
-nanoid() //=> "fbaefaadeb"
+nanoid(); //=> "fbaefaadeb"
 
 `random` callback must accept the array size and return an array with random numbers.
 
 If you want to use the same URL-friendly symbols with `customRandom`, you can get the default alphabet using the `urlAlphabet`.
 
-import { customRandom, urlAlphabet } from 'nanoid'
-const nanoid \= customRandom(urlAlphabet, 10, random)
+import { customRandom, urlAlphabet } from "nanoid";
+const nanoid \= customRandom(urlAlphabet, 10, random);
 
 Note, that between Nano ID versions we may change random generator call sequence. If you are using seed-based generators, we do not guarantee the same result.
 
@@ -189,8 +189,8 @@ Note, that between Nano ID versions we may change random generator call sequence
 
 Nano ID uses hardware random bytes generation for security and low collision probability. If you are not so concerned with security, you can use it for environments without hardware random generators.
 
-import { nanoid } from 'nanoid/non-secure'
-const id \= nanoid() //=> "Uakgb\_J5m9g-0JDMbcJqLJ"
+import { nanoid } from "nanoid/non-secure";
+const id \= nanoid(); //=> "Uakgb\_J5m9g-0JDMbcJqLJ"
 
 Note, that non-secure version is _slower_ than secure. Use it only if you have to.
 
@@ -204,31 +204,31 @@ There’s no correct way to use Nano ID for React `key` prop since it should be 
 function Todos({ todos }) {
   return (
     <ul\>
-      {todos.map(todo \=> (
+      {todos.map((todo) \=> (
         <li key\={nanoid()}\>
-          {' '}
+          {" "}
           /\* DON’T DO IT \*/
           {todo.text}
         </li\>
       ))}
     </ul\>
-  )
+  );
 }
 
 You should rather try to reach for stable ID inside your list item.
 
-const todoItems \= todos.map(todo \=> <li key\={todo.id}\>{todo.text}</li\>)
+const todoItems \= todos.map((todo) \=> <li key\={todo.id}\>{todo.text}</li\>);
 
 In case you don’t have stable IDs you'd rather use index as `key` instead of `nanoid()`:
 
 const todoItems \= todos.map((text, index) \=> (
   <li key\={index}\>
-    {' '}
-    /\* Still not recommended but preferred over nanoid(). Only do this if items
-    have no stable IDs. \*/
+    {" "}
+    /\* Still not recommended but preferred over nanoid(). Only do this if items have no stable IDs.
+    \*/
     {text}
   </li\>
-))
+));
 
 In case you just need random IDs to link elements like labels and input fields together, `useId` is recommended. That hook was added in React 18.
 
@@ -239,8 +239,8 @@ React Native does not have built-in random generator. The following polyfill wor
 1.  Check `react-native-get-random-values` docs and install it.
 2.  Import it before Nano ID.
 
-import 'react-native-get-random-values'
-import { nanoid } from 'nanoid'
+import "react-native-get-random-values";
+import { nanoid } from "nanoid";
 
 ### PouchDB and CouchDB
 
@@ -275,22 +275,22 @@ bccbcabaabaccab
 
 Nano ID allows casting generated strings into opaque strings in TypeScript. For example:
 
-declare const userIdBrand: unique symbol
-type UserId \= string & { \[userIdBrand\]: true }
+declare const userIdBrand: unique symbol;
+type UserId \= string & { \[userIdBrand\]: true };
 
 // Use explicit type parameter:
-mockUser(nanoid<UserId\>())
+mockUser(nanoid<UserId\>());
 
 interface User {
-  id: UserId
-  name: string
+  id: UserId;
+  name: string;
 }
 
 const user: User \= {
   // Automatically casts to UserId:
   id: nanoid(),
-  name: 'Alice'
-}
+  name: "Alice",
+};
 
 ### Other Programming Languages
 

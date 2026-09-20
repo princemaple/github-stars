@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 479410
+stars: 481636
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -182,265 +182,11 @@ HTTPS
 
 CORS
 
-AdoptAPet
+| Axolotl | Collection of axolotl pictures and facts | No | Yes | No | | Cat Facts | Daily cat facts | No | Yes | No | | | Cat Facts | Random cat facts | No | Yes | Yes |
 
-Resource to help get pets adopted
+| Cats | Pictures of cats from Tumblr | `apiKey` | Yes | No | | Dog Facts | Random dog facts | No | Yes | Yes | | Dog Facts | Random facts of Dogs | No | Yes | Yes | | Dogs | Based on the Stanford Dogs Dataset | No | Yes | Yes | | eBird | Retrieve recent or notable birding observations within a region | `apiKey` | Yes | No | | FishWatch | Information and pictures about individual fish species | No | Yes | Yes | | HTTP Cat | Cat for every HTTP Status | No | Yes | Yes | | HTTP Dog | Dogs for every HTTP response status code | No | Yes | Yes | | IUCN | IUCN Red List of Threatened Species | `apiKey` | Yes | No | | MeowFacts | Get random cat facts | No | Yes | No | | Movebank | Movement and Migration data of animals | No | Yes | Yes |
 
-`apiKey`
-
-Yes
-
-Yes
-
-Axolotl
-
-Collection of axolotl pictures and facts
-
-No
-
-Yes
-
-No
-
-Cat Facts
-
-Daily cat facts
-
-No
-
-Yes
-
-No
-
-Cat Facts
-
-Random cat facts
-
-No
-
-Yes
-
-Yes
-
-Cataas
-
-Cat as a service (cats pictures and gifs)
-
-No
-
-Yes
-
-No
-
-Cats
-
-Pictures of cats from Tumblr
-
-`apiKey`
-
-Yes
-
-No
-
-Dog Facts
-
-Random dog facts
-
-No
-
-Yes
-
-Yes
-
-Dog Facts
-
-Random facts of Dogs
-
-No
-
-Yes
-
-Yes
-
-Dogs
-
-Based on the Stanford Dogs Dataset
-
-No
-
-Yes
-
-Yes
-
-eBird
-
-Retrieve recent or notable birding observations within a region
-
-`apiKey`
-
-Yes
-
-No
-
-FishWatch
-
-Information and pictures about individual fish species
-
-No
-
-Yes
-
-Yes
-
-HTTP Cat
-
-Cat for every HTTP Status
-
-No
-
-Yes
-
-Yes
-
-HTTP Dog
-
-Dogs for every HTTP response status code
-
-No
-
-Yes
-
-Yes
-
-IUCN
-
-IUCN Red List of Threatened Species
-
-`apiKey`
-
-No
-
-No
-
-MeowFacts
-
-Get random cat facts
-
-No
-
-Yes
-
-No
-
-Movebank
-
-Movement and Migration data of animals
-
-No
-
-Yes
-
-Yes
-
-Petfinder
-
-Petfinder is dedicated to helping pets find homes, another resource to get pets adopted
-
-`apiKey`
-
-Yes
-
-Yes
-
-PlaceBear
-
-Placeholder bear pictures
-
-No
-
-Yes
-
-Yes
-
-PlaceDog
-
-Placeholder Dog pictures
-
-No
-
-Yes
-
-Yes
-
-RandomDog
-
-Random pictures of dogs
-
-No
-
-Yes
-
-Yes
-
-RandomDuck
-
-Random pictures of ducks
-
-No
-
-Yes
-
-No
-
-RandomFox
-
-Random pictures of foxes
-
-No
-
-Yes
-
-No
-
-RescueGroups
-
-Adoption
-
-No
-
-Yes
-
-Unknown
-
-Shibe.Online
-
-Random pictures of Shiba Inu, cats or birds
-
-No
-
-Yes
-
-Yes
-
-The Dog
-
-A public service all about Dogs, free to use when making your fancy new App, Website or Service
-
-`apiKey`
-
-Yes
-
-No
-
-xeno-canto
-
-Bird recordings
-
-No
-
-Yes
-
-Unknown
+| PlaceBear | Placeholder bear pictures | No | Yes | Yes | | PlaceDog | Placeholder Dog pictures | No | Yes | Yes | | RandomDog | Random pictures of dogs | No | Yes | Yes | | RandomDuck | Random pictures of ducks | No | Yes | No | | RandomFox | Random pictures of foxes | No | Yes | No | | RescueGroups | Adoption | No | Yes | Unknown | | Shibe.Online | Random pictures of Shiba Inu, cats or birds | No | Yes | Yes | | The Dog | A public service all about Dogs, free to use when making your fancy new App, Website or Service | `apiKey` | Yes | No | | xeno-canto | Bird recordings | No | Yes | Unknown |
 
 **⬆ Back to Index**  
   
@@ -926,6 +672,16 @@ European Museum and Galleries content
 Yes
 
 Unknown
+
+Face Shape Guide Lookup
+
+Read-only lookup for published face-shape guide records
+
+No
+
+Yes
+
+Yes
 
 Harvard Art Museums
 
@@ -1677,6 +1433,16 @@ Yes
 
 No
 
+GlobalEntity
+
+Official company data from 56 European business registers as normalized JSON
+
+`apiKey`
+
+Yes
+
+Yes
+
 Gmail
 
 Flexible, RESTful access to the user's inbox
@@ -1736,6 +1502,16 @@ Verified UK company profiles with an AI summary and accuracy score, from Compani
 Yes
 
 Unknown
+
+KontragentPro
+
+Russian company data from state registers by INN or OGRN: profile, finances, timeline
+
+No
+
+Yes
+
+Yes
 
 Legal Sandbox Georgia
 
@@ -2451,7 +2227,7 @@ Yes
 
 API for querying decentralize exchange
 
-No
+`apiKey`
 
 Yes
 
@@ -2787,6 +2563,16 @@ Yes
 
 Unknown
 
+CoinNudge
+
+Current crypto market breadth, funding and open-interest research datasets
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Coinpaprika
 
 Cryptocurrencies prices, volume and more
@@ -2826,6 +2612,16 @@ No
 Yes
 
 Unknown
+
+CorpStacking
+
+Corporate, government and ETF Bitcoin, Ethereum and Solana treasury disclosures
+
+No
+
+Yes
+
+Yes
 
 CryptAPI
 
@@ -2876,6 +2672,16 @@ No
 Yes
 
 Unknown
+
+Deep Blue Alpha
+
+Real-time Ethereum whale wallet tracking, DEX trades, net flow, and conviction scoring
+
+`apiKey`
+
+Yes
+
+Yes
 
 DefiLlama
 
@@ -2946,6 +2752,16 @@ Exchange rates between 162 currency & 300 crypto currency update each 5 min, acc
 Yes
 
 Unknown
+
+HostDeFi
+
+Free A+–F token-safety grades across Solana and EVM chains
+
+No
+
+Yes
+
+Yes
 
 Huobi
 
@@ -3147,6 +2963,16 @@ Yes
 
 Unknown
 
+SoloLuck
+
+Bitcoin solo mining pool stats, per-address miner stats and an open dataset of solo-mined blocks
+
+No
+
+Yes
+
+Yes
+
 Technical Analysis
 
 Cryptocurrency prices and technical analysis
@@ -3156,6 +2982,16 @@ Cryptocurrency prices and technical analysis
 Yes
 
 No
+
+The Coin Analysis
+
+Live and historical cryptocurrency prices, market caps, volatility and drawdown
+
+`apiKey`
+
+Yes
+
+Yes
 
 VALR
 
@@ -3412,6 +3248,16 @@ Yes
 
 No
 
+FXpeek
+
+Source-linked historical reference exchange rates with CSV, JSON and an MCP server
+
+No
+
+Yes
+
+Unknown
+
 National Bank of Poland
 
 A collection of currency exchange rates (data in XML and JSON)
@@ -3595,6 +3441,26 @@ Unknown
 24 Pull Requests
 
 Project to promote open source collaboration during December
+
+No
+
+Yes
+
+Yes
+
+Aether Bridge
+
+Autonomous agent team management and API workflow orchestration
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Agent Nexus
+
+Continuously probed registry of APIs, MCP servers and CLIs callable by agents
 
 No
 
@@ -4002,6 +3868,26 @@ Yes
 
 Yes
 
+Fair Draw
+
+Verifiable random draws bound to the drand public randomness beacon
+
+No
+
+Yes
+
+Yes
+
+Framejet
+
+Website screenshot API with cookie banners and chat widgets removed; free tier
+
+`apiKey`
+
+Yes
+
+No
+
 GeekFlare
 
 Provide numerous capabilities for important testing and monitoring methods for websites
@@ -4181,6 +4067,16 @@ REST API to programmatically create apps, provision add-ons and perform other ta
 Yes
 
 Yes
+
+Hex
+
+Elixir and Erlang package versions and docs
+
+No
+
+Yes
+
+Unknown
 
 host-t.com
 
@@ -4362,6 +4258,16 @@ Yes
 
 Unknown
 
+Is This Site Down?
+
+Check if any website is down, from two continents; live status, uptime history and TLS expiry
+
+No
+
+Yes
+
+Yes
+
 isitdownstatus
 
 Check if websites and online services are currently down
@@ -4445,6 +4351,16 @@ Yes
 License-API
 
 Unofficial REST API for choosealicense.com
+
+No
+
+Yes
+
+No
+
+Litport Free Proxy
+
+Live-tested HTTP, SOCKS4, and SOCKS5 proxies with latency, uptime, and geolocation
 
 No
 
@@ -4542,9 +4458,29 @@ Yes
 
 Yes
 
+NameGender
+
+Gender from a first name, full name, email or username, with probability
+
+`apiKey`
+
+Yes
+
+Yes
+
 Nationalize.io
 
 Estimate the nationality of a first name
+
+No
+
+Yes
+
+Yes
+
+Nerdulator
+
+Everything derivable from one value: numbers, dates, colours, UUIDs, cron expressions
 
 No
 
@@ -4852,6 +4788,16 @@ Yes
 
 No
 
+Renderwolf
+
+Screenshots, PDFs, dynamic images, QR codes and video from URLs or HTML
+
+`apiKey`
+
+Yes
+
+No
+
 ReqRes
 
 A hosted REST-API ready to respond to your AJAX requests
@@ -4982,6 +4928,16 @@ Yes
 
 Yes
 
+SegmentLite
+
+Lightweight event routing and webhook fan-out API alternative to Segment
+
+`apiKey`
+
+Yes
+
+Yes
+
 Serialif Color
 
 Color conversion, complementary, grayscale and contrasted text
@@ -4991,6 +4947,16 @@ No
 Yes
 
 No
+
+Serply
+
+Google, Bing, News, Scholar and Maps search results and page scraping as JSON
+
+`apiKey`
+
+Yes
+
+Yes
 
 serpstack
 
@@ -5317,6 +5283,16 @@ Yes
 
 No
 
+SayItVid
+
+English video pronunciation search with timestamps, IPA phonetics and subtitle context
+
+`apiKey`
+
+Yes
+
+Yes
+
 Synonyms
 
 Synonyms, thesaurus and antonyms information for any given word
@@ -5492,6 +5468,16 @@ Yes
 
 Yes
 
+FaturaPDF
+
+Generate Brazilian invoice/receipt PDFs with checksum-validated CPF/CNPJ and PIX QR
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Flowdash
 
 Automate business workflows
@@ -5601,6 +5587,16 @@ HTML and URL to PDF API with templates and a free tier
 Yes
 
 Yes
+
+PDFMint
+
+HTML, Markdown or a URL to PDF or PNG, with a no-key demo endpoint and a free tier
+
+`apiKey`
+
+Yes
+
+No
 
 Pocket
 
@@ -5847,6 +5843,16 @@ Yes
 
 Unknown
 
+Email Spam Tester
+
+Send a test message and get a spam score, 41 checks with RFC citations and a fix plan
+
+No
+
+Yes
+
+Yes
+
 EmailJS
 
 Send emails directly from client-side JavaScript without a backend server
@@ -5862,6 +5868,16 @@ Email Validation
 Validate email addresses for deliverability and spam
 
 `apiKey`
+
+Yes
+
+Yes
+
+Email Validator by LifeStep
+
+Validate email syntax and MX, detect disposable/role addresses, suggest typo fixes
+
+No
 
 Yes
 
@@ -5896,6 +5912,16 @@ API for free email forwarding service
 Yes
 
 Unknown
+
+inboxsink
+
+Disposable inboxes for end-to-end tests that wait for the email and extract OTP codes
+
+`apiKey`
+
+Yes
+
+No
 
 Kickbox
 
@@ -5977,6 +6003,16 @@ Yes
 
 No
 
+RankFabrik Verify
+
+Validate email addresses for deliverability, syntax and disposable detection
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Sendgrid
 
 A cloud-based SMTP provider that allows you to send emails without having to maintain email servers
@@ -6026,6 +6062,16 @@ Verifies that a given email is real
 Yes
 
 Yes
+
+Xeramail Temp Mail
+
+Temp email address REST API for privacy, testing, automation with OTP extraction
+
+`apiKey`
+
+Yes
+
+No
 
 **⬆ Back to Index**  
   
@@ -6297,11 +6343,11 @@ Yes
 
 Unknown
 
-gridcarbon
+GridHub
 
-Hourly grid carbon intensity in gCO2eq/kWh for 45 zones in Europe, the US and Great Britain
+Live wholesale electricity prices and demand across 25 grid zones
 
-No
+`apiKey`
 
 Yes
 
@@ -6587,6 +6633,16 @@ Yes
 
 Unknown
 
+Banking Access Index
+
+Which US business banking providers accept founders by country of residence, with sources
+
+No
+
+Yes
+
+Yes
+
 Billplz
 
 Payment platform
@@ -6657,6 +6713,16 @@ Yes
 
 No
 
+Drillr
+
+Fundamentals, filings, earnings, ownership and events for US, China and Japan equities
+
+`apiKey`
+
+Yes
+
+No
+
 Econdb
 
 Global macroeconomic data
@@ -6676,16 +6742,6 @@ Live economic data — CPI, PPI, energy, treasury rates, BTC premium
 Yes
 
 Yes
-
-Edgrapi
-
-Clean SEC EDGAR company financials, ratios, filings and 10-K/10-Q sections as normalized JSON
-
-`apiKey`
-
-Yes
-
-Unknown
 
 EOD Historical Data
 
@@ -7127,6 +7183,16 @@ Yes
 
 Yes
 
+Sales Tax Calculator
+
+Computes exact sales tax amounts and breakdowns for checkout and billing
+
+`apiKey`
+
+Yes
+
+Yes
+
 Tax Data
 
 Instant VAT number and tax validation across the globe
@@ -7197,6 +7263,16 @@ Yes
 
 Yes
 
+VoxOdds
+
+Polymarket and Kalshi odds, all-in executable quotes, EV checks and audited forecast scores
+
+No
+
+Yes
+
+No
+
 WallstreetBets
 
 WallstreetBets Stock Comments Sentiment Analysis
@@ -7206,6 +7282,26 @@ No
 Yes
 
 Unknown
+
+XFINLAB
+
+Market events, sentiment, technical analysis and macro data for stocks
+
+`apiKey`
+
+Yes
+
+Unknown
+
+XOOMAR
+
+US market data from SEC, FINRA, CFTC and the Fed: filings, insiders, earnings dates, short interest
+
+No
+
+Yes
+
+Yes
 
 Yahoo Finance
 
@@ -8662,6 +8758,16 @@ Yes
 
 Yes
 
+AtlasFetch
+
+Reverse geocode coordinates to country, region and municipality with ISO 3166 codes
+
+`apiKey`
+
+Yes
+
+No
+
 Battuta
 
 A (country/region/city) in-cascade location API
@@ -9082,6 +9188,16 @@ Yes
 
 Yes
 
+IP99
+
+IP geolocation with proxy, VPN and datacenter risk and the age of the evidence
+
+No
+
+Yes
+
+Yes
+
 ipapi.co
 
 Find IP address location information
@@ -9452,6 +9568,16 @@ Yes
 
 Yes
 
+TrustyData
+
+French address checks, INSEE company search and routing on official open data
+
+`apiKey`
+
+Yes
+
+Yes
+
 Uebermaps
 
 Discover and share maps with friends
@@ -9461,6 +9587,16 @@ Discover and share maps with friends
 Yes
 
 Unknown
+
+Unblock Master IP
+
+IP geolocation plus datacenter and VPN detection for any IPv4 or IPv6 address
+
+No
+
+Yes
+
+Yes
 
 US ZipCode
 
@@ -9857,6 +9993,16 @@ Yes
 
 Yes
 
+Edgrapi
+
+US government data as JSON: SAM.gov contract opportunities, USAspending awards, Grants.gov grants
+
+`apiKey`
+
+Yes
+
+Yes
+
 EditalMD
 
 Brazilian public procurement (PNCP) notices as Markdown with deadlines and requirements
@@ -9876,6 +10022,16 @@ No
 Yes
 
 Unknown
+
+EU VAT Rates by Commodity Code
+
+EU VAT rates mapped to CN and CPA commodity codes, all 27 member states
+
+`No`
+
+Yes
+
+Yes
 
 FastDOL
 
@@ -10547,6 +10703,16 @@ Yes
 
 Unknown
 
+Right to Disconnect
+
+Right-to-disconnect employment law by EU country: binding status, statute, and sanctions
+
+No
+
+Yes
+
+Yes
+
 Tollmint
 
 Advertising, subscription, AI-disclosure and accessibility rules across the US, EU and UK
@@ -11022,6 +11188,26 @@ Yes
 
 Yes
 
+Stanza DSCSA Verifier
+
+Verify FDA DSCSA and EU FMD pharmaceutical serialization barcodes
+
+`apiKey`
+
+Yes
+
+No
+
+Stanza UDI Decoder
+
+Decode and validate FDA GUDID and EU MDR medical device UDI barcodes
+
+`apiKey`
+
+Yes
+
+No
+
 Urgences Québec
 
 Hourly emergency room occupancy, stretcher counts and wait times for every hospital in Quebec, Canada
@@ -11167,6 +11353,16 @@ Yes
 
 Unknown
 
+JobsPipe
+
+Live job postings from 30+ ATS feeds and job boards in one normalized JSON schema
+
+`apiKey`
+
+Yes
+
+Yes
+
 Jobven
 
 Job postings tracked as roles open and close, with webhooks on changes, from employer career pages
@@ -11214,6 +11410,16 @@ Job titles, skills and related jobs data
 No
 
 No
+
+Unknown
+
+RankFabrik Jobs
+
+Aggregated job postings search, deduplicated on identifier, with coverage per segment
+
+`apiKey`
+
+Yes
 
 Unknown
 
@@ -12192,6 +12398,16 @@ Yes
 
 No
 
+NewsMesh
+
+Premium news data from thousands of sources
+
+`apiKey`
+
+Yes
+
+No
+
 NewsX
 
 Get or Search Latest Breaking News with ML Powered Summaries 🤖
@@ -12337,6 +12553,16 @@ Yes
 
 No
 
+Big Data Explained
+
+Cloud data warehouse list prices, read daily from AWS and Azure pricing APIs, with price history
+
+No
+
+Yes
+
+Yes
+
 Black History Facts
 
 Contribute or search one of the largest black history fact databases on the web
@@ -12396,6 +12622,16 @@ No
 Yes
 
 Unknown
+
+CoworkingView
+
+Coworking spaces and offices in 63 European and Gulf cities with operator-published prices
+
+No
+
+Yes
+
+No
 
 CuttingToolsAI
 
@@ -12526,6 +12762,16 @@ No
 Yes
 
 Unknown
+
+Microburbs
+
+Australian property and suburb data: valuations, sales, rents, schools, demographics, risk, zoning
+
+`apiKey`
+
+Yes
+
+No
 
 Microlink.io
 
@@ -13182,6 +13428,16 @@ Yes
 
 Yes
 
+PositiveQuotation
+
+Source-verified public-domain English proverbs with provenance
+
+No
+
+Yes
+
+Yes
+
 Programming Quotes
 
 Programming Quotes API for open source projects
@@ -13541,6 +13797,16 @@ No
 Yes
 
 Unknown
+
+Kavel
+
+Generate and edit images with AI, no key or account required
+
+No
+
+Yes
+
+No
 
 Lorem Picsum
 
@@ -13942,6 +14208,16 @@ No
 
 Unknown
 
+MyGene.info
+
+Gene annotation queries and ID lookup
+
+No
+
+Yes
+
+Yes
+
 NASA
 
 NASA data, including imagery
@@ -14052,6 +14328,16 @@ Yes
 
 Yes
 
+Open Ephemeris
+
+Sub-arcsecond planetary positions, natal charts, transits, and Human Design from NASA JPL DE440
+
+`apiKey`
+
+Yes
+
+No
+
 OrbitalWiki
 
 Catalog of 16,000+ satellites merging CelesTrak, GCAT, Wikidata; free tier included
@@ -14071,6 +14357,16 @@ No
 Yes
 
 Unknown
+
+RCSB PDB
+
+3D structures of proteins and nucleic acids
+
+No
+
+Yes
+
+Yes
 
 Remote Calc
 
@@ -14300,6 +14596,16 @@ Yes
 Complete Criminal Checks
 
 Provides data of offenders from all U.S. States and Pureto Rico
+
+`apiKey`
+
+Yes
+
+Yes
+
+CompliAPI
+
+Screen crypto addresses, emails, websites, IDs and countries against OFAC, EU, UK sanctions lists
 
 `apiKey`
 
@@ -14587,6 +14893,16 @@ Yes
 
 Unknown
 
+Presend
+
+Security and developer utility API -- malware, vulnerability, and domain checks, no signup
+
+No
+
+Yes
+
+Yes
+
 Privacy.com
 
 Generate merchant-specific and one-time use credit card numbers that link back to your bank
@@ -14667,6 +14983,16 @@ Yes
 
 Unknown
 
+ThreatCluster
+
+Threat intelligence: incident clusters, validated IOCs, CVEs, ransomware leak-site victims
+
+`apiKey`
+
+Yes
+
+No
+
 UK Police
 
 UK Police data
@@ -14735,6 +15061,16 @@ Unknown
 BuyWhere
 
 Real-time product catalog API for AI agents across merchants in 7 countries (SG, MY, TH, VN, PH, ID, US)
+
+`apiKey`
+
+Yes
+
+Unknown
+
+CartScout
+
+Price, stock, variants and GTIN from Shopify, WooCommerce, Walmart and eBay product pages
 
 `apiKey`
 
@@ -14845,6 +15181,16 @@ Unknown
 OLX Poland
 
 Integrate with local sites by posting, managing adverts and communicating with OLX users
+
+`apiKey`
+
+Yes
+
+Unknown
+
+Pangolinfo Amazon Data
+
+Amazon product, review, search and Best Sellers data across 20+ marketplaces
 
 `apiKey`
 
@@ -15299,6 +15645,16 @@ Yes
 
 No
 
+SwarmMemo
+
+Public bulletin board where AI agents and humans read, post and reply, no account or key needed
+
+No
+
+Yes
+
+Yes
+
 TamTam
 
 Bot API to interact with TamTam
@@ -15524,6 +15880,16 @@ Yes
 
 No
 
+Cito UFC API
+
+UFC and MMA fight data: fighters, cards, round stats, rankings and live state
+
+`apiKey`
+
+Yes
+
+No
+
 City Bikes
 
 City Bikes around the world
@@ -15573,6 +15939,16 @@ No
 Yes
 
 Unknown
+
+FanLine Wire
+
+Real-time FanDuel Sportsbook odds — live & in-play and pre-match, with a keyless public snapshot
+
+No
+
+Yes
+
+Yes
 
 Fitbit
 
@@ -15704,6 +16080,16 @@ Yes
 
 Yes
 
+OddsBench
+
+Independent monthly latency benchmark of sports odds APIs, with free JSON and CSV data
+
+No
+
+Yes
+
+Yes
+
 Oddsmagnet
 
 Odds history from multiple UK bookmakers
@@ -15713,6 +16099,16 @@ No
 Yes
 
 Yes
+
+OddsRadarWire
+
+Live and prematch Betradar odds with raw no-vig probabilities, REST and SSE
+
+`apiKey`
+
+Yes
+
+No
 
 OpenF1
 
@@ -15754,6 +16150,26 @@ Yes
 
 Yes
 
+Parlay
+
+Real-time sports odds and player props from 45+ sportsbooks and sources across 90+ sports
+
+`apiKey`
+
+Yes
+
+Yes
+
+PinnWire
+
+Real-time Pinnacle odds for 13 sports — live and prematch over REST, WebSocket and SSE drop alerts
+
+`apiKey`
+
+Yes
+
+No
+
 PlayerElo
 
 Player-level Elo ratings, predictions and history for 176 football leagues
@@ -15783,6 +16199,16 @@ Real-time player-props betting odds with graded prop resolution across 13 books
 Yes
 
 Unknown
+
+QiuXiaoCe Football
+
+Football teams, leagues, standings, scorers and match intelligence data
+
+`No`
+
+`Yes`
+
+`Unknown`
 
 RacingHub
 
@@ -16189,6 +16615,16 @@ Yes
 
 Unknown
 
+Sampuli
+
+Format-true synthetic test data for 90 countries: IDs, IBANs, cards, addresses
+
+No
+
+Yes
+
+Yes
+
 Spanish random names
 
 Generate spanish names (with gender) randomly
@@ -16248,6 +16684,16 @@ No
 Yes
 
 No
+
+Waldrand Avatar
+
+Deterministic SVG/PNG/WebP avatars from any string, four styles
+
+No
+
+Yes
+
+Yes
 
 What The Commit
 
@@ -16634,6 +17080,16 @@ Yes
 
 Unknown
 
+Aether-X Port Congestion
+
+Real-time port congestion risk scores, ETA delays and waiting vessels for 15 global ports
+
+`apiKey`
+
+Yes
+
+Yes
+
 airportsapi
 
 Get name and website-URL for airports by ICAO code
@@ -16643,6 +17099,16 @@ No
 Yes
 
 Unknown
+
+Aether-X Port Congestion Oracle
+
+Predictive port congestion, ETA delay and freight volatility signals for 16 global ports
+
+`apiKey`
+
+Yes
+
+Yes
 
 AIS Hub
 
@@ -16853,6 +17319,16 @@ A-to-B routing with turn-by-turn instructions
 Yes
 
 Unknown
+
+GTFS Scorecard
+
+Data-quality grades and prioritized fixes for 2,400+ public transit GTFS feed records
+
+No
+
+Yes
+
+Yes
 
 Icelandic APIs
 
@@ -17569,6 +18045,16 @@ Yes
 
 Yes
 
+Lix.li
+
+URL shortener with analytics, QR codes, UTM tags and custom domains
+
+`apiKey`
+
+Yes
+
+Yes
+
 Mgnet.me
 
 Torrent URL shorten API
@@ -17769,6 +18255,16 @@ Smartcar
 Lock and unlock vehicles and get data like odometer reading and location. Works on most new cars
 
 `OAuth`
+
+Yes
+
+Yes
+
+TransparentCars
+
+Fair-price valuation and yearly road tax (IUC) for used cars in Portugal
+
+No
 
 Yes
 

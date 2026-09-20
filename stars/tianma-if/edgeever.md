@@ -1,6 +1,6 @@
 ---
 project: edgeever
-stars: 1407
+stars: 1455
 description: Open-source, AI-native knowledge base & Evernote alternative with native MCP. Zero-cost on Cloudflare or Docker.
 url: https://github.com/tianma-if/edgeever
 ---
@@ -8,7 +8,7 @@ url: https://github.com/tianma-if/edgeever
 EdgeEver
 ========
 
-简体中文 | English
+简体中文 | 繁體中文 | English | 日本語
 
 > **EdgeEver: An open-source, AI-native knowledge base & portable Evernote alternative.**
 
@@ -27,7 +27,7 @@ Many long-time **Evernote** users simply want a **reliable, open, and fast** per
 -   **Obsidian**: Open files, closed-source core. Official Sync is paid and third-party sync is tedious; storing images and attachments alongside notes quickly bloats vaults, making mobile sync sluggish and leaving orphaned files behind; and it is overly heavy for lightweight, capture-anywhere use.
 -   **Memos & Stream Notes**: Clean and simple, but their social-timeline layouts differ fundamentally from the structured productivity of a classic three-pane workflow.
 
-**EdgeEver fills this gap**: The entire stack is open source, including sync and self-hosting. It keeps the three-pane layout you know, with native AI agents and zero-cost deployment.
+**EdgeEver fills this gap**: The entire stack is open source, including sync and self-hosting. It keeps the three-pane layout you know, stays silky-smooth and lightweight even with 10,000+ notes, and ships native AI agents with zero-cost deployment.
 
 > 💡 **Recommended Workflow:** Capture inspiration seamlessly across all devices and organize deeply in the classic three-pane view. Powered by native MCP, it not only lets AI agents retrieve and synthesize your knowledge, but also connects with your favorite productivity tools like Notion and Feishu. Publish anywhere with one-click formatting—100% self-hosted at zero cost, building an open and truly owned second brain.
 
@@ -56,6 +56,7 @@ Features
 -   **Rich Plugin API**: Extend EdgeEver with the Plugin API.
 -   **Unlimited Multi-Device Sync**: No commercial device caps or paywalls. Enjoy seamless synchronization across PC, tablet, and mobile via web, PWA, or browser.
 -   **Classic Three-Pane Layout & Focus Mode**: Clean navigation featuring notebook trees, note lists, and an expansive editor, with a desktop focus mode to eliminate distractions.
+-   **Light, Lasting Desktop Performance**: Switching notes does not keep old images and documents in memory, and the desktop app stays responsive after sitting in the background.
 -   **Unlimited Nested Notebooks**: Organize your knowledge with arbitrary folder depth.
 -   **One-Click Rich Copy for Newsletters & Blogs**: Designed for creators to convert notes into beautifully formatted rich text with inline CSS, ready to paste directly into Substack, Medium, WordPress, or newsletter editors without extra tools.
 -   **Seamless Dual-View Editor**: Switch effortlessly between intuitive rich text editing and Markdown source code on desktop.
@@ -63,7 +64,7 @@ Features
 -   **Native Mermaid Diagram Rendering**: Render clear flowcharts, sequence diagrams, and mind maps directly in notes, preserving clean, editable source code across Markdown and rich text views.
 -   **Visual Diagram Notes**: Create and edit mind maps, flowcharts, and architecture diagrams on Web and desktop with semantic components, system boundaries, labeled connections, automatic layout, revision history, and PNG/SVG export. The Android and iOS apps preserve the same diagram data and render a semantic read-only view. See the visual diagram notes design.
 -   **Revision History**: Inspect and restore previous iterations of your notes with built-in version tracking.
--   **Public Note Sharing**: Share a note publicly and stop sharing it at any time.
+-   **Public Note Sharing**: Share a note publicly and stop sharing it at any time. Optionally protect the link with an auto-generated access password.
 -   **WeChat Article Clipping on Mobile**: Share a WeChat Official Account article to EdgeEver on your phone to extract its content and save it as an editable note.
 -   **Smart Local Image Compression**: Client-side WebP compression reduces file sizes by 50%-90% before uploading, saving storage and speeding up page loads without extra server costs.
 -   **Universal File Attachments**: Attach and preview PDFs, Office documents, zip files, audio, and video directly within notes. Chunked uploads and streaming safely support files up to 1 GiB.
@@ -71,7 +72,7 @@ Features
 -   **Offline Drafts & Queueing**: Draft and edit uninterrupted while offline; changes automatically sync once reconnected.
 -   **Brute-Force Login Protection**: Server-side account- and IP-based failed-login throttling with automatic cooldowns helps protect private notes against brute-force and password-spraying attacks.
 -   **Multi-Tenant Account Isolation**: Host multiple user accounts on a single instance with strictly partitioned spaces and clean admin account management.
--   **Everywhere You Need It**: Available on the Web, Android, macOS, Windows, Linux x86\_64 Preview, and iOS; the Web Clipper supports Chrome, Edge, and Firefox.
+-   **Everywhere You Need It**: Available on the Web, Android, macOS, Windows, Linux, and iOS; the Web Clipper supports Chrome, Edge, and Firefox.
 
 Deployment
 ----------
@@ -159,20 +160,20 @@ Welcome to the EdgeEver community. Join us to discuss the EdgeEver experience, r
 Plugins and Themes
 ------------------
 
-EdgeEver supports device-local plugins and code-free themes on Web and desktop, installable from the Plugin Marketplace, GitHub, or a Manifest URL. The official marketplace only lists free and open-source plugins; this requirement does not apply to direct installation from GitHub or a Manifest URL. Developers can use `@edgeever/plugin-api`; see the plugin development guide and marketplace submission policy.
+EdgeEver supports plugins and code-free themes on Web and desktop, installable from the Plugin Marketplace, GitHub, or a Manifest URL. The install list follows the current workspace across browsers and desktop apps; each client downloads and verifies packages locally. Native Android and iOS apps do not run plugins. Settings and secrets stay on the current device. The official marketplace only lists free and open-source plugins; this requirement does not apply to direct installation from GitHub or a Manifest URL. Developers can use `@edgeever/plugin-api`; see the plugin development guide and marketplace submission policy.
 
 Tech Stack
 ----------
 
 -   Bun workspace monorepo with Web, API, official site, and shared type package.
--   Official site: Astro static site in `apps/site`, deployable to Cloudflare Pages.
 -   Frontend: Vite, React, React Router, TanStack Query, Tailwind CSS, shadcn/ui, and Radix UI.
 -   Editor: TipTap / ProseMirror with Markdown support; PWA uses vite-plugin-pwa, Workbox, and Dexie.
 -   Android app: Expo + React Native in `apps/mobile`, with SQLite local storage and incremental sync.
 -   iOS app: Native SwiftUI in `apps/ios` (iOS 17+), with a packaged TipTap EditorBundle, GRDB local mirror/outbox, and Android-aligned shell chrome.
 -   Native desktop app: Electron + Rust sidecar combines a consistent cross-platform experience with high-performance local data services; SQLite enables offline editing, incremental sync when back online, and local backups.
 -   Web clipper: Manifest V3, Mozilla Readability, and Turndown for Chrome, Microsoft Edge, and Firefox.
--   Backend: one Hono/Zod business application with REST API, OpenAPI, and Remote MCP; Cloudflare uses Workers/D1/R2, while Docker uses Bun/SQLite/local files or S3.
+-   Backend: one Hono/Zod business application with REST API and Remote MCP; Cloudflare uses Workers/D1/R2, while Docker uses Bun/SQLite/local files or S3.
+-   Official site: Astro static site in `apps/site`, deployable to Cloudflare Pages.
 
 Quick Start
 -----------
@@ -188,7 +189,7 @@ Project Structure
 ```
 apps/web          Vite + React frontend, PWA, offline drafts, and sync queue
 apps/extension    Chrome/Edge/Firefox Manifest V3 web clipper
-apps/api          Cloudflare Worker + Hono API, OpenAPI, MCP endpoint
+apps/api          Cloudflare Worker + Hono API, MCP endpoint
 apps/mobile       Expo + React Native Android app
 apps/ios          Native SwiftUI iOS app (TipTap EditorBundle, GRDB)
 apps/desktop      Electron desktop shell, preload bridge, and native packaging
@@ -199,7 +200,7 @@ crates/desktop-sidecar
                    Rust sidecar for local SQLite, offline data, backups, and resources
 scripts           Wrangler wrapper, password hash, CLI, MCP stdio bridge, Evernote ENEX import
 migrations        Shared append-only D1/SQLite database migrations
-docs              OpenAPI schema, architecture, migration, and deployment docs
+docs              Architecture, migration, and deployment docs
 .github/workflows CI for web, mobile, iOS, desktop packaging, deployment, and releases
 wrangler.toml     Cloudflare Workers, Assets, D1, R2 configuration
 ```
@@ -216,17 +217,6 @@ content_text      Search, summary, and indexing text
 ```
 
 Open **Profile** -> **Import and export** to export or import an EdgeEver ZIP. Its `notes/` directory is directly readable and portable as Markdown, while its structured data supports complete recovery between EdgeEver instances. Import preserves unrelated target data and overwrites records with matching EdgeEver IDs.
-
-API
----
-
-OpenAPI schema:
-
-```
-https://your-domain/api/openapi.json
-```
-
-Repository file: docs/openapi.json.
 
 MCP
 ---
@@ -272,9 +262,7 @@ Acknowledgements
 
 -   EdgeEver's note-taking product design was also informed by the publicly available product experiences of mature note-taking tools such as Evernote. The related features were independently designed and implemented by EdgeEver.
 -   The product design of mind-map and visual-diagram notes was informed by the publicly available product experiences of XMind and ProcessOn. These features were independently designed and implemented by EdgeEver.
--   The "Minimal Emerald" theme typography layout is inspired by obsidian-minimal.
--   The "Outline Emerald" theme typography layout is inspired by Outline.
--   The "Classic Blue & White" theme is inspired by the early StackEdit/Bootstrap Markdown typography style, with Chinese typography details informed by Marxico.
+-   Editor theme typography, heading hierarchy, and chapter structure draw from the public work of obsidian-minimal, Outline, and 墨格. Names, assets, and implementations are original to EdgeEver.
 
 Trademark and Brand Use
 -----------------------

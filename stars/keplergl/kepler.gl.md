@@ -1,6 +1,6 @@
 ---
 project: kepler.gl
-stars: 12007
+stars: 12016
 description: Kepler.gl is a powerful open source geospatial analysis tool for large-scale data sets.
 url: https://github.com/keplergl/kepler.gl
 ---
@@ -57,6 +57,8 @@ Develop kepler.gl
 -----------------
 
 Take a look at the development guide to develop kepler.gl locally.
+
+The SQLRooms demo tests a collapsible application shell and modular panel layout using `@kepler.gl/sqlrooms`. Run it with `yarn start:sqlrooms` (port 8083), alongside the original main demo with `yarn start` (port 8080). The website continues to serve the original app at `/demo`.
 
 Basic Usage
 -----------

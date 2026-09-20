@@ -1,6 +1,6 @@
 ---
 project: windows95
-stars: 24228
+stars: 24232
 description: Windows 95 in an app. Runs on macOS, Linux, and Windows.
 url: https://github.com/felixrieseberg/windows95
 ---

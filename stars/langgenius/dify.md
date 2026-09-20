@@ -1,6 +1,6 @@
 ---
 project: dify
-stars: 155550
+stars: 156485
 description: Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.
 url: https://github.com/langgenius/dify
 ---
@@ -45,7 +45,7 @@ Key features
 
 **4\. RAG Pipeline**: Extensive RAG capabilities that cover everything from document ingestion to retrieval, with out-of-box support for text extraction from PDFs, PPTs, and other common document formats.
 
-**5\. Agent capabilities**: You can define agents based on LLM Function Calling or ReAct, and add pre-built or custom tools for the agent. Dify provides 50+ built-in tools for AI agents, such as Google Search, DALL·E, Stable Diffusion and WolframAlpha.
+**5\. Agent**: Autonomous agents with a sandbox of their own: they run commands, install software, and handle files to get open-ended tasks done. Describe the agent you want and it builds itself. Give it skills, connect tools from Dify Marketplace, MCP servers, or your own APIs, and put it to work as a chat app or as a step in any workflow.
 
 **6\. LLMOps**: Monitor and analyze application logs and performance over time. You could continuously improve prompts, datasets, and models based on production data and annotations.
 
@@ -60,8 +60,8 @@ Using Dify
 -   **Self-hosting Dify Community Edition  
     **Quickly get Dify running in your environment with this starter guide. Use our documentation for further references and more in-depth instructions.
     
--   **Dify for enterprise / organizations  
-    **We provide additional enterprise-centric features. Send us an email to discuss your enterprise needs.  
+-   **Dify Enterprise  
+    **For organizations requiring self-hosting, SSO, RBAC Security and Enterprise Support SLAs, please fill out this form to speak to a solution representative.  
     
 
 Staying ahead

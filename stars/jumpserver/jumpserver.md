@@ -1,30 +1,30 @@
 ---
 project: jumpserver
-stars: 31523
-description: JumpServer is an open-source Privileged Access Management (PAM) platform that provides DevOps and IT teams with on-demand and secure access to SSH, RDP, Kubernetes, Database and RemoteApp endpoints through a web browser.
+stars: 31568
+description: JumpServer is an Open-source Privileged Access Management (PAM) platform with AI-powered capabilities, providing DevOps and IT teams a unified workspace to securely access SSH, RDP, Kubernetes, databases, websites, RemoteApp, VirtualApp, and more.
 url: https://github.com/jumpserver/jumpserver
 ---
 
 An open-source PAM platform (Bastion Host)
 ------------------------------------------
 
-English · 中文(简体) · 中文(繁體) · 日本語 · Português (Brasil) · Español · Русский · 한국어
+English · 中文(简体) · 中文(繁體) · 日本語 · Português (Brasil) · Español · Русский · 한국어 · Tiếng Việt
 
   
 
 What is JumpServer?
 -------------------
 
-JumpServer is an open-source Privileged Access Management (PAM) platform that provides DevOps and IT teams with on-demand and secure access to SSH, RDP, Kubernetes, Database and RemoteApp endpoints through a web browser.
+JumpServer is an open-source Privileged Access Management (PAM) platform with AI-powered capabilities. It gives DevOps and IT teams a unified workspace for secure access to SSH, RDP, Kubernetes, databases, websites, RemoteApp, VirtualApp, and more.
 
 Quickstart
 ----------
 
-Prepare a clean Linux Server ( 64 bit, >= 4c8g )
+Prepare a clean 64-bit Linux server with at least 4 CPU cores and 8 GB of RAM.
 
 curl -sSL https://github.com/jumpserver/jumpserver/releases/latest/download/quick\_start.sh | bash
 
-Access JumpServer in your browser at `http://your-jumpserver-ip/`
+Open JumpServer in your browser at `http://your-jumpserver-ip/`
 
 -   Username: `admin`
 -   Password: `ChangeMe`
@@ -32,76 +32,107 @@ Access JumpServer in your browser at `http://your-jumpserver-ip/`
 Screenshots
 -----------
 
-          
-
 Components
 ----------
 
-JumpServer consists of multiple key components, which collectively form the functional framework of JumpServer, providing users with comprehensive capabilities for operations management and security control.
+JumpServer groups its components by role. Core projects provide the platform, web interface, terminal, protocol connections, and AI capabilities. Enterprise components extend application and protocol access. Supporting services handle session recordings and host operations, while deployment tools simplify installation and web delivery.
+
+### Core Projects
 
 Project
 
-Status
+Version
 
 Description
 
+JumpServer
+
+Open-source Privileged Access Management platform
+
 Lina
 
-JumpServer Web UI
+JumpServer web interface
 
 Luna
 
-JumpServer Web Terminal
+JumpServer web terminal and native client
 
 KoKo
 
-JumpServer Character Protocol Connector
-
-Lion
-
-JumpServer Graphical Protocol Connector
+JumpServer general-purpose protocol connector and proxy
 
 Chen
 
-JumpServer Web DB
+JumpServer web database connector
 
-Client
+Kael
 
-JumpServer Client
+JumpServer AI component
+
+### Enterprise Components
+
+Project
+
+Version
+
+Description
 
 Tinker
 
-JumpServer Remote Application Connector (Windows)
+JumpServer Windows application connector (free for Community Edition)
 
 Panda
 
-JumpServer EE Remote Application Connector (Linux)
+JumpServer Enterprise Edition Linux application connector
 
 Razor
 
-JumpServer EE RDP Proxy Connector
+JumpServer Enterprise Edition RDP protocol proxy
 
 Magnus
 
-JumpServer EE Database Proxy Connector
+JumpServer Enterprise Edition database protocol proxy
 
 Nec
 
-JumpServer EE VNC Proxy Connector
+JumpServer Enterprise Edition VNC protocol proxy
 
-Facelive
+### Supporting Services
 
-JumpServer EE Facial Recognition
+Project
 
-Third-party projects
---------------------
+Version
 
--   jumpserver-grafana-dashboard JumpServer with grafana dashboard
+Description
+
+Video Worker
+
+JumpServer Enterprise Edition session recording transcoding worker
+
+JDMC
+
+JumpServer Enterprise Edition host operations and management service
+
+### Deployment & Tooling
+
+Project
+
+Version
+
+Description
+
+Installer
+
+JumpServer installation and management tool
+
+Docker Web
+
+JumpServer web gateway and static assets
 
 Contributing
 ------------
 
-Welcome to submit PR to contribute. Please refer to CONTRIBUTING.md for guidelines.
+Contributions are welcome. See CONTRIBUTING.md for guidelines.
 
 License
 -------

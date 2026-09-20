@@ -1,16 +1,27 @@
 ---
 project: plyr
-stars: 29992
+stars: 29999
 description: A simple HTML5, YouTube and Vimeo player
 url: https://github.com/sampotts/plyr
 ---
 
+Plyr
+====
+
+Important
+
+**Plyr, meet Video.js 👋**
+
+The folks behind Plyr, Vidstack and Media Chrome have joined forces to build the latest version of Video.js: one modern, accessible player with the best of all three. Plyr will soon be deprecated, so give Video.js a try.
+
+**Try Video.js →**
+
 Plyr is a simple, lightweight, accessible and customizable HTML5, YouTube and Vimeo media player that supports _modern_ browsers.
 
-Checkout the demo - Donate - Slack - Video hosting
+Need video hosting? Check out Mux!
 
 Features
-========
+--------
 
 -   📼 **HTML Video & Audio, YouTube & Vimeo** - support for the major formats
 -   💪 **Accessible** - full support for VTT captions and screen readers
@@ -32,20 +43,18 @@ Features
 -   🤟 **No frameworks** - written in "vanilla" ES6 JavaScript, no jQuery required
 -   💁‍♀️ **Sass** - to include in your build processes
 
-Demos
------
+### Demos
 
 You can try Plyr in Codepen using our minimal templates: HTML5 video, HTML5 audio, YouTube, Vimeo. For Streaming we also have example integrations with: Dash.js, Hls.js and Shaka Player
 
 Quick setup
-===========
+-----------
 
-HTML
-----
+### HTML
 
 Plyr extends upon the standard HTML5 media element markup so that's all you need for those types.
 
-### HTML5 Video
+#### HTML5 Video
 
 <video id\="player" playsinline controls data-poster\="/path/to/poster.jpg"\>
   <source src\="/path/to/video.mp4" type\="video/mp4" />
@@ -57,7 +66,7 @@ Plyr extends upon the standard HTML5 media element markup so that's all you need
 
 **Note**: The poster image should be specified using `data-poster`. This is to prevent it being downloaded twice. If you're sure the image will be cached, you can still use the `poster` attribute for true progressive enhancement.
 
-### HTML5 Audio
+#### HTML5 Audio
 
 <audio id\="player" controls\>
   <source src\="/path/to/audio.mp3" type\="audio/mp3" />
@@ -66,7 +75,7 @@ Plyr extends upon the standard HTML5 media element markup so that's all you need
 
 For YouTube and Vimeo players, Plyr uses progressive enhancement to enhance the default `<iframe>` embeds. Below are some examples. The `plyr__video-embed` classname will make the embed responsive. You can add the `autoplay`, `loop`, `hl` (YouTube only) and `playsinline` (YouTube only) query parameters to the URL and they will be set as config options automatically. For YouTube, the `origin` should be updated to reflect the domain you're hosting the embed on, or you can opt to omit it.
 
-### YouTube
+#### YouTube
 
 We recommend progressive enhancement with the embedded players. You can elect to use an `<iframe>` as the source element (which Plyr will progressively enhance) or a bog standard `<div>` with two essential data attributes - `data-plyr-provider` and `data-plyr-embed-id`.
 
@@ -87,7 +96,7 @@ Or the `<div>` non progressively enhanced method:
 
 _Note_: The `data-plyr-embed-id` can either be the video ID or URL for the media.
 
-### Vimeo
+#### Vimeo
 
 Much the same as YouTube above.
 
@@ -104,8 +113,7 @@ Or the `<div>` non progressively enhanced method:
 
 <div id\="player" data-plyr-provider\="vimeo" data-plyr-embed-id\="76979871"\></div\>
 
-JavaScript
-----------
+### JavaScript
 
 You can use Plyr as an ES6 module as follows:
 
@@ -130,8 +138,7 @@ You can use our CDN (provided by Cloudflare) for the JavaScript. There's 2 versi
 
 <script src\="https://cdn.plyr.io/3.8.4/plyr.polyfilled.js"\></script\>
 
-CSS
----
+### CSS
 
 Include the `plyr.css` stylesheet into your `<head>`.
 
@@ -141,12 +148,11 @@ If you want to use our CDN (provided by Cloudflare) for the default CSS, you can
 
 <link rel\="stylesheet" href\="https://cdn.plyr.io/3.8.4/plyr.css" />
 
-SVG Sprite
-----------
+### SVG Sprite
 
 The SVG sprite is loaded automatically from our CDN (provided by Cloudflare). To change this, see the options below. For reference, the CDN hosted SVG sprite can be found at `https://cdn.plyr.io/3.8.4/plyr.svg`.
 
-### Self hosting
+#### Self hosting
 
 If you don't want to create a build system to include Plyr as an npm module, you can use the pre-built files. You have a few options:
 
@@ -155,7 +161,7 @@ If you don't want to create a build system to include Plyr as an npm module, you
 -   Build the project yourself using `npm i && npm run build`, which installs the dependencies and spits out a build to `dist`.
 
 Ads
-===
+---
 
 Plyr has partnered up with vi.ai to offer monetization options for your videos. Getting setup is easy:
 
@@ -168,10 +174,9 @@ Any questions regarding the ads can be sent straight to vi.ai and any issues wit
 If you do not wish to use Vi, you can set your own `ads.tagUrl` option.
 
 Advanced
-========
+--------
 
-Customizing the CSS
--------------------
+### Customizing the CSS
 
 If you want to change any design tokens used for the rendering of the player, you can do so using CSS Custom Properties.
 
@@ -569,18 +574,17 @@ You can set them in your CSS for all players:
 
 <video class\="player" style\="\--plyr-color-main: #1ac266;"\>...</video\>
 
-### Sass
+#### Sass
 
 You can use `plyr.scss` file included in `/src/sass` as part of your build and change variables to suit your design. The Sass requires you to use autoprefixer (you should be already!) as all declarations use the W3C definitions.
 
 The HTML markup uses the BEM methodology with `plyr` as the block, e.g. `.plyr__controls`. You can change the class hooks in the options to match any custom CSS you write. Check out the JavaScript source for more on this.
 
-SVG
----
+### SVG
 
 The icons used in the Plyr controls are loaded in an SVG sprite. The sprite is automatically loaded from our CDN by default. If you already have an icon build system in place, you can include the source plyr icons (see `/src/sprite` for source icons).
 
-### Using the `iconUrl` option
+#### Using the `iconUrl` option
 
 You can however specify your own `iconUrl` option and Plyr will determine if the url is absolute and requires loading by AJAX/CORS due to current browser limitations or if it's a relative path, just use the path directly.
 
@@ -588,8 +592,7 @@ If you're using the `<base>` tag on your site, you may need to use something lik
 
 More info on SVG sprites here: http://css-tricks.com/svg-sprites-use-better-icon-fonts/ and the AJAX technique here: http://css-tricks.com/ajaxing-svg-sprite/
 
-Cross Origin (CORS)
--------------------
+### Cross Origin (CORS)
 
 You'll notice the `crossorigin` attribute on the example `<video>` elements. This is because the TextTrack captions are loaded from another domain. If your TextTrack captions are also hosted on another domain, you will need to add this attribute and make sure your host has the correct headers setup. For more info on CORS checkout the MDN docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Access\_control\_CORS
 
@@ -603,15 +606,13 @@ const player \= new Plyr(video, {
   },
 });
 
-Captions
---------
+### Captions
 
 WebVTT captions are supported. To add a caption track, check the HTML example above and look for the `<track>` element. Be sure to validate your caption files.
 
-JavaScript
-----------
+### JavaScript
 
-### Initializing
+#### Initializing
 
 You can specify a range of arguments for the constructor to use:
 
@@ -621,7 +622,7 @@ You can specify a range of arguments for the constructor to use:
 
 _Note_: If a `NodeList`, `Array`, or jQuery object are passed, the first element will be used for setup. To setup multiple players, see multiple players below.
 
-#### Single player
+##### Single player
 
 Passing a CSS string selector that's compatible with `querySelector`:
 
@@ -635,7 +636,7 @@ const player \= new Plyr(document.querySelector('.js-player'));
 
 The HTMLElement or string selector can be the target `<video>`, `<audio>`, or `<div>` wrapper for embeds.
 
-#### Multiple players
+##### Multiple players
 
 You have two choices here. You can either use a simple array loop to map the constructor:
 
@@ -647,7 +648,7 @@ const players \= Plyr.setup('.js-player');
 
 Both options will also return an array of instances in the order of they were in the DOM for the string selector or the source NodeList or Array.
 
-#### Options
+##### Options
 
 The second argument for the constructor is the options object:
 
@@ -1002,18 +1003,15 @@ Object
 -   Set `playsinline` to `false` and/or `fullscreen.iosNative` to `true` - either option hides the fullscreen toggle in the UI (because of the above API issue) and means iOS will play the video in it's native player.
 
 API
-===
+---
 
 There are methods, setters and getters on a Plyr object.
 
-Object
-------
+### Object
 
 The easiest way to access the Plyr object is to set the return value from your call to the constructor to a variable. For example:
 
-const player \= new Plyr('#player', {
-  /\* options \*/
-});
+const player \= new Plyr('#player', {/\* options \*/});
 
 You can also access the object through any events:
 
@@ -1021,8 +1019,7 @@ element.addEventListener('ready', (event) \=> {
   const player \= event.detail.plyr;
 });
 
-Methods
--------
+### Methods
 
 Example method use:
 
@@ -1163,8 +1160,7 @@ Destroy the instance and garbage collect any elements.
 
 1.  For HTML5 players, `play()` will return a `Promise` for most browsers - e.g. Chrome, Firefox, Opera, Safari and Edge according to MDN at time of writing.
 
-Getters and Setters
--------------------
+### Getters and Setters
 
 Example setters:
 
@@ -1403,7 +1399,7 @@ Gets or sets the URL for the download button. The setter accepts a string contai
 
 1.  HTML5 only
 
-### The `.source` setter
+#### The `.source` setter
 
 This allows changing the player source and type on the fly.
 
@@ -1533,7 +1529,7 @@ The same object like in the `previewThumbnails` constructor option. This means y
 1.  HTML5 only
 
 Events
-======
+------
 
 You can listen for events on the target element you setup Plyr on (see example under the table). Some events only apply to HTML5 audio and video. Using your reference to the instance, you can use the `on()` API method or `addEventListener()`. Access to the API can be obtained this way through the `event.detail.plyr` property. Here's an example:
 
@@ -1541,8 +1537,7 @@ player.on('ready', (event) \=> {
   const instance \= event.detail.plyr;
 });
 
-Standard Media Events
----------------------
+### Standard Media Events
 
 Event Type
 
@@ -1620,7 +1615,7 @@ Sent when the controls are shown.
 
 Triggered when the instance is ready for API calls.
 
-### HTML5 only
+#### HTML5 only
 
 Event Type
 
@@ -1670,7 +1665,7 @@ Sent when a `TextTrack` has changed the currently displaying cues.
 
 Sent when an error occurs. The element's `error` attribute contains more information.
 
-### YouTube only
+#### YouTube only
 
 Event Type
 
@@ -1685,7 +1680,7 @@ _Note:_ These events also bubble up the DOM. The event target will be the contai
 Some event details borrowed from MDN.
 
 Embeds
-======
+------
 
 YouTube and Vimeo are currently supported and function much like a HTML5 video. Similar events and API methods are available for all types. However if you wish to access the API's directly. You can do so via the `embed` property of your player object - e.g. `player.embed`. You can then use the relevant methods from the third party APIs. More info on the respective API's here:
 
@@ -1695,7 +1690,7 @@ YouTube and Vimeo are currently supported and function much like a HTML5 video. 
 _Note_: Not all API methods may work 100%. Your mileage may vary. It's better to use the Plyr API where possible.
 
 Shortcuts
-=========
+---------
 
 By default, a player will bind the following keyboard shortcuts when it has focus. If you have the `global` option to `true` and there's only one player in the document then the shortcuts will work when any element has focus, apart from an element that requires input.
 
@@ -1748,19 +1743,19 @@ Toggle captions
 Toggle loop
 
 Preview thumbnails
-==================
+------------------
 
 It's possible to display preview thumbnails as per the demo when you hover over the scrubber or while you are scrubbing in the main video area. This can be used for all video types but is easiest with HTML5 of course. You will need to generate the sprite or images yourself. This is possible using something like AWS transcoder to generate the frames and then combine them into a sprite image. Sprites are recommended for performance reasons - they will be much faster to download and easier to compress into a small file size making them load faster.
 
 You can see the example VTT files here and here for how the sprites are done. The coordinates are set as the `xywh` hash on the URL in the order X Offset, Y Offset, Width, Height (e.g. `240p-00001.jpg#xywh=1708,480,427,240` is offset `1708px` from the left, `480px` from the top and is `427x240px`. If you want to include images per frame, this is also possible but will be slower, resulting in a degraded experience.
 
 Fullscreen
-==========
+----------
 
 Fullscreen in Plyr is supported by all browsers that currently support it.
 
 Browser support
-===============
+---------------
 
 Plyr supports the last 2 versions of most _modern_ browsers.
 
@@ -1804,13 +1799,11 @@ IE10
 2.  Native player used (no support for `<progress>` or `<input type="range">`) but the API is supported. No native fullscreen support, fallback can be used (see options).
 3.  Polyfills required. See below.
 
-Polyfills
----------
+### Polyfills
 
 Plyr uses ES6 which isn't supported in all browsers quite yet. This means some features will need to be polyfilled to be available otherwise you'll run into issues. We've elected to not burden the ~90% of users that do support these features with extra JS and instead leave polyfilling to you to work out based on your needs.
 
-Checking for support
---------------------
+### Checking for support
 
 You can use the static method to check for support. For example
 
@@ -1821,8 +1814,7 @@ The arguments are:
 -   Media type (`'audio' | 'video'`)
 -   Provider (`'html5' | 'youtube' | 'vimeo'`)
 
-Disable support programmatically
---------------------------------
+### Disable support programmatically
 
 The `enabled` option can be used to disable certain User Agents. For example, if you don't want to use Plyr for smartphones, you could use:
 
@@ -1833,7 +1825,7 @@ The `enabled` option can be used to disable certain User Agents. For example, if
 If a User Agent is disabled but supports `<video>` and `<audio>` natively, it will use the native player.
 
 Plugins & Components
-====================
+--------------------
 
 Some awesome folks have made plugins for CMSs and Components for JavaScript frameworks:
 
@@ -1892,25 +1884,17 @@ Ben Woodward / benwoodward (@benwoodward)
 https://github.com/benwoodward/svelte-plyr
 
 Issues
-======
+------
 
 If you find anything weird with Plyr, please let us know using the GitHub issues tracker.
 
 Author
-======
+------
 
-Plyr is developed by @sam\_potts / sampotts.me with help from the awesome contributors
-
-Donate
-======
-
-Plyr costs money to run, not only my time. I donate my time for free as I enjoy building Plyr but unfortunately have to pay for domains, hosting, and more. Any help with costs is appreciated...
-
--   Donate via Patreon
--   Donate via PayPal
+Plyr is developed by @sam\_potts / sampotts.dev with help from the awesome contributors
 
 Mentions
-========
+--------
 
 -   ProductHunt
 -   The Changelog
@@ -1925,7 +1909,7 @@ Mentions
 -   noupe.com
 
 Used by
-=======
+-------
 
 -   Selz.com
 -   Peugeot.fr
@@ -1948,35 +1932,29 @@ Used by
 If you want to be added to the list, open a pull request. It'd be awesome to see how you're using Plyr 😎
 
 Useful links and credits
-========================
+------------------------
 
 -   PayPal's Accessible HTML5 Video Player (which Plyr was originally ported from)
 -   An awesome guide for Plyr in Japanese! by @arayutw
 
 Thanks
-======
+------
 
--   Cloudflare for providing the CDN services.
+-   Cloudflare for providing the CDN and DNS services.
 -   Sentry for error logging service on the demo website.
+-   Fastly for CDN services in the past.
 
-Contributors
-------------
+### Contributors
 
-### Code Contributors
+#### Code Contributors
 
 This project exists thanks to all the people who contribute. \[Contribute\].
 
-### Financial Contributors
+##### Individuals
 
-Become a financial contributor and help us sustain our community. \[Contribute\]
-
-#### Individuals
-
-#### Organizations
-
-Support this project with your organization. Your logo will show up here with a link to your website. \[Contribute\]
+##### Organizations
 
 Copyright and License
-=====================
+---------------------
 
 The MIT license

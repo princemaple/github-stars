@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 1318
+stars: 1319
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -87,7 +87,7 @@ Monitor anything with custom metrics
 
 Note: Monitoring NVIDIA GPUs might require additional setup. Check GPU monitoring.
 
-The dashboard's **System Info** button opens a dedicated current-hardware page: motherboard and firmware, CPU topology and caches, memory modules, drives and filesystem usage, network addresses and utilization, PCI/USB devices, sensors, and power supplies. A friendly summary comes first, while low-level identifiers and counters stay available under technical details. It refreshes while open and works independently of chart history. See System Info.
+The dashboard's **System Info** button opens a dedicated current-hardware page: motherboard and firmware, CPU topology and caches, memory modules, drives and filesystem usage, network interfaces, PCI/USB devices, sensors, and power supplies. A friendly summary comes first, while low-level identifiers and counters stay available under technical details. It refreshes while open and works independently of chart history. Storage, network, devices and sensors require `global.show_system_details: true`; IP and MAC addresses are never collected. See System Info.
 
 * * *
 
@@ -134,13 +134,13 @@ To maximize efficiency, Kula employs a multi-tiered architecture that intelligen
 -   **Tier 1** — 1-minute metric rollups (default 150 MB)
 -   **Tier 2** — 5-minute metric rollups (default 50 MB)
 
-Rollups use explicit per-field policies: sampled gauges and rates are duration-weighted, monotonic counters and metadata retain their latest value, and Min/Max are per-series extrema. Dynamic devices and applications are matched by stable identity, so a missing member is not fabricated as zero. Legacy rollups remain readable but do not advertise Min/Max as valid.
+Rollups use explicit per-field policies: sampled gauges and rates are duration-weighted, monotonic counters and metadata retain their latest value, and Min/Max are per-series extrema. Dynamic devices and applications are matched by stable identity, so a missing member is not fabricated as zero. Existing binary history needs no migration: a compatibility layer exposes legacy Min/Max for supported CPU, load, used-memory and used-swap fields. Unsupported series or intervals appear as gaps when Min/Max is selected, with an explanation on the chart. Newly collected extrema remain available even in views that also contain older history. Unavailable readings remain gaps in every aggregation, and filesystem tooltip percentages and byte counts use the same selected aggregation.
 
 Scheduled backups are optional: `backup.enabled` copies the tier files into a timestamped directory under `<storage.directory>/backup` on a crontab schedule, with a configurable per-tier depth, retention window, and gzip compression.
 
 ### HTTP server
 
-The HTTP server on backend exposes a REST API and a WebSocket endpoint for live streaming. Authentication is optional. When enabled, Kula uses Argon2id password hashing, secure session cookies, token-only session validation with sliding expiration bounded by an absolute session lifetime (`session_max_lifetime`, 7 days by default), and hashed-at-rest session persistence. Authenticated API access can also use a bearer session token via the `Authorization` header.
+The HTTP server on backend exposes a REST API and a WebSocket endpoint for live streaming. Authentication is optional. When enabled, Kula uses Argon2id password hashing, secure session cookies, token-only session validation with sliding expiration bounded by an absolute session lifetime (`session_max_lifetime`, 7 days by default), and hashed-at-rest session persistence. Authenticated API access can also use a bearer session token via the `Authorization` header. An expired live session returns the dashboard to login; signing in reloads the selected history range.
 
 ### Dashboard
 
@@ -205,9 +205,9 @@ rm -f ${KULA\_INSTALL}
 
 ### Standalone
 
-wget https://github.com/c0m4r/kula/releases/download/0.19.0/kula-0.19.0-amd64.tar.gz
-echo "5ce7ef7a17448d31ea0828d0125bc517c4f241cba4973458c646919bc921f701 kula-0.19.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.19.0-amd64.tar.gz
-tar -xvf kula-0.19.0-amd64.tar.gz
+wget https://github.com/c0m4r/kula/releases/download/0.20.1/kula-0.20.1-amd64.tar.gz
+echo "2ac30eea63bf97d57db37e0cfaf058cfa5d9b6d48935785fe1876c9a0fbed4f8 kula-0.20.1-amd64.tar.gz" | sha256sum -c || rm -f kula-0.20.1-amd64.tar.gz
+tar -xvf kula-0.20.1-amd64.tar.gz
 cd kula
 ./kula
 
@@ -224,16 +224,16 @@ docker logs -f kula
 
 ### Debian / Ubuntu (.deb)
 
-wget https://github.com/c0m4r/kula/releases/download/0.19.0/kula-0.19.0-amd64.deb
-echo "f2e3f74e33349789fff1b35cc27bfacb5696e70b38cdcf440f990eadc217dfac kula-0.19.0-amd64.deb" | sha256sum -c || rm -f kula-0.19.0-amd64.deb
-sudo dpkg -i kula-0.19.0-amd64.deb
+wget https://github.com/c0m4r/kula/releases/download/0.20.1/kula-0.20.1-amd64.deb
+echo "bc0fe393f111b4f97b5dbb0f42e262d9242fcdac4c6aa98d2b2272fcb126e0b1 kula-0.20.1-amd64.deb" | sha256sum -c || rm -f kula-0.20.1-amd64.deb
+sudo dpkg -i kula-0.20.1-amd64.deb
 journalctl -f -t kula
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-wget https://github.com/c0m4r/kula/releases/download/0.19.0/kula-0.19.0-x86\_64.rpm
-echo "be8a0ea56dda6d1614b983cb694f63e423d81793ee0fea69fbb0a26c0d580c3b kula-0.19.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.19.0-x86\_64.rpm
-sudo rpm -i kula-0.19.0-x86\_64.rpm
+wget https://github.com/c0m4r/kula/releases/download/0.20.1/kula-0.20.1-x86\_64.rpm
+echo "e8d0e388cb2bdeb74d4834710cc04c82ac1833cf44d27616c4dcb26a85d92fb5 kula-0.20.1-x86\_64.rpm" | sha256sum -c || rm -f kula-0.20.1-x86\_64.rpm
+sudo rpm -i kula-0.20.1-x86\_64.rpm
 journalctl -f -t kula
 
 ### Arch Linux / Manjaro (AUR)
@@ -301,7 +301,7 @@ Lists available disks and partitions supported by Kula with their persistent IDs
 
 See: Prometheus metrics for more info.
 
-Disk I/O and temperature metrics use the persistent disk ID as the `device` label value. `kula_disk_info{device="...",kernel_name="sda",identity_source="wwid"} 1` maps that ID to the current kernel name. Unidentified disks use `device="kernel:sda"` and `identity_source="kernel"`. Upgrading to 0.20.0 starts new disk metric series; update dashboards and alert rules that filter by old `device="sda"` values.
+Disk I/O and temperature metrics use the persistent disk ID as the `device` label value. `kula_disk_info{device="...",kernel_name="sda",identity_source="wwid"} 1` maps that ID to the current kernel name. Unidentified disks use `device="kernel:sda"` and `identity_source="kernel"`. Version 0.20.0 starts new disk metric series; update dashboards and alert rules that filter by old `device="sda"` values.
 
 ### Persistent disk identities
 

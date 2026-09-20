@@ -1,6 +1,6 @@
 ---
 project: goaccess
-stars: 20919
+stars: 20939
 description: GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 url: https://github.com/allinurl/goaccess
 ---
@@ -30,7 +30,7 @@ GoAccess parses the specified web log file and outputs the data to the X termina
     Track the time taken to serve the request. Extremely useful if you want to track pages that are slowing down your site.
     
 -   **WebSocket Authentication:**  
-    GoAccess offers enhanced WebSocket authentication, supporting local and external JWT verification, with secure token refresh capabilities and seamless integration with external authentication systems.
+    GoAccess offers enhanced WebSocket authentication, supporting local and external JWT verification, with secure token refresh capabilities and seamless integration with external authentication systems. Verified tokens are tracked to their `exp` claim and the connection is closed once they expire.
     
 -   **Nearly All Web Log Formats**  
     GoAccess allows any custom log format string. Predefined options include, Apache, Nginx, Amazon S3, Elastic Load Balancing, CloudFront, etc.
@@ -47,8 +47,17 @@ GoAccess parses the specified web log file and outputs the data to the X termina
 -   **Metrics per Virtual Host**  
     Have multiple Virtual Hosts (Server Blocks)? It features a panel that displays which virtual host is consuming most of the web server resources.
     
+-   **UTM Campaign Tracking**  
+    Breaks down campaign traffic by medium, source, campaign, content and term, all extracted from the requested URL.
+    
+-   **Bot and Crawler Classification**  
+    Keeps AI crawlers and Fediverse (ActivityPub) traffic in their own categories, separate from traditional search engine crawlers.
+    
+-   **TLS Settings**  
+    Reports the negotiated protocol, cipher suite and key exchange group when `%K`, `%k` and `%g` are part of the log format.
+    
 -   **ASN (Autonomous System Number mapping)**  
-    Great for detecting malicious traffic patterns and block them accordingly.
+    Great for detecting malicious traffic patterns and block them accordingly. Whole networks can also be dropped as they are parsed with `--exclude-asn`.
     
 -   **Color Scheme Customizable**  
     Tailor GoAccess to suit your own color taste/schemes. Either through the terminal, or by simply applying the stylesheet on the HTML output.
@@ -67,10 +76,11 @@ GoAccess allows any custom log format string. Predefined options include, but no
 -   Amazon CloudFront standard logs (legacy fixed schema).
 -   Amazon Simple Storage Service (S3)
 -   AWS Elastic Load Balancing
+-   Amazon Application Load Balancer
 -   Combined Log Format (XLF/ELF) Apache | Nginx
 -   Common Log Format (CLF) Apache
 -   Google Cloud Storage.
--   Apache virtual hosts
+-   Apache virtual hosts, with or without a colon-delimited port
 -   Squid Native Format.
 -   W3C format (IIS).
 -   Caddy's JSON Structured format.
@@ -97,9 +107,9 @@ GoAccess can be compiled and used on \*nix systems.
 Download, extract and compile GoAccess with:
 
 ```
-$ wget https://tar.goaccess.io/goaccess-1.11.tar.gz
-$ tar -xzvf goaccess-1.11.tar.gz
-$ cd goaccess-1.11/
+$ wget https://tar.goaccess.io/goaccess-1.12.tar.gz
+$ tar -xzvf goaccess-1.12.tar.gz
+$ cd goaccess-1.12/
 $ ./configure --enable-utf8 --enable-geoip=mmdb --with-zlib
 $ make
 # make install
@@ -468,7 +478,19 @@ Assuming your log contains the virtual host field. For instance:
 vhost.io:80 8.8.4.4 - - [02/Mar/2016:08:14:04 -0600] "GET /shop HTTP/1.1" 200 615 "-" "Googlebot-Image/1.0"
 ```
 
+Logs carrying the port next to the virtual host can be parsed with the `VCOMBINED_PORT` predefined format, or `VCOMMON_PORT` for the common flavor. Use `VCOMBINED` or `VCOMMON` when the field holds the virtual host alone:
+
+```
+# goaccess vhost_access.log --log-format=VCOMBINED_PORT
+```
+
 And you would like to append the virtual host to the request in order to see which virtual host the top urls belong to:
+
+```
+# goaccess vhost_access.log --log-format=VCOMBINED_PORT --concat-vhost-req
+```
+
+The same can be done before the log reaches GoAccess:
 
 ```
 awk '$8=$1$8' access.log | goaccess -a -
@@ -518,6 +540,16 @@ And to get an estimated overview of how many bots (crawlers) are hitting your se
 # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -
 ```
 
+#### Networks by ASN
+
+With a GeoIP2 ASN database in place, all traffic from a given network can be dropped as it is parsed. `--exclude-asn` can be repeated and takes either the numeric or the AS-prefixed form:
+
+```
+# goaccess access.log --geoip-database=/usr/local/share/GeoIP/GeoLite2-ASN.mmdb --exclude-asn=AS8075 --exclude-asn=15169
+```
+
+Exclusions apply to records as they are read, so they won't remove matching records already restored from persistent storage.
+
 ### Tips
 
 Also, it is worth pointing out that if we want to run GoAccess at lower priority, we can run it as:
@@ -550,7 +582,7 @@ GoAccess has the ability to process logs incrementally through its internal stor
 1.  A dataset must be persisted first with `--persist`, then the same dataset can be loaded with.
 2.  `--restore`. If new data is passed (piped or through a log file), it will append it to the original dataset.
 
-The `--http-method` and `--http-protocol` settings must match those used to create the database because they determine how request keys are grouped.
+The `--http-method` and `--http-protocol` settings must match those used to create the database because they determine how request keys are grouped. A restore with mismatched settings is rejected, while databases created before GoAccess recorded this metadata report a warning instead.
 
 ##### NOTES
 

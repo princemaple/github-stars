@@ -1,180 +1,98 @@
 ---
 project: github1s
-stars: 23292
+stars: 23293
 description: One second to read GitHub code with VS Code.
 url: https://github.com/conwnet/github1s
 ---
 
-github1s
+GitHub1s
 ========
 
-One second to read GitHub code with VS Code.
+GitHub1s is a browser-based code explorer built on VS Code. Browse files, search code, and review changes without cloning a repository. Connect your preferred model to the built-in AI chat for help understanding the code.
 
-Usage
------
+**🌐 Try it now** · 📖 Usage guide · 🔮 AI setup
 
-Just add `1s` after `github` and press `Enter` in the browser address bar for any repository you want to read.
+🚀 Quick start
+--------------
 
-For example, try it on the VS Code repo:
+Add **`1s` after `github`** in a repository URL:
 
+```
+https://github.com/microsoft/vscode
+        ↓
 https://github1s.com/microsoft/vscode
-
-You can also use https://gitlab1s.com or https://npmjs1s.com in the same way.
-
-For browser extensions, see Third-party Related Projects.
-
-Or save the following code snippet as a bookmarklet, you can use it to quickly switch between github.com and github1s.com (GitHub markdown doesn't allow js links, so just copy it into a bookmark).
-
-```
-javascript: window.location.href = window.location.href.replace(/github(1s)?.com/, function(match, p1) { return p1 ? 'github.com' : 'github1s.com' })
 ```
 
-### Develop in the cloud
+Public repositories can be browsed **without signing in**, subject to the upstream services' access and rate limits.
 
-To edit files, run Docker containers, create pull requests and more, click the "Develop your project on Gitpod" button in the status bar. You can also open the Command Palette (default shortcut `Ctrl+Shift+P`) and choose `GitHub1s: Edit files in Gitpod`.
+You can also browse GitLab repositories at gitlab1s.com and published npm packages at npmjs1s.com. See the usage guide for URL formats, authentication, and navigation.
 
-Documentation
--------------
+✨ Features
+----------
 
--   How it works
--   Roadmap
+-   **Explore a project.** Browse directories, find files, and search code in a familiar VS Code interface.
+-   **Trace a change.** Switch branches or tags, inspect commits and file history, and review pull or merge request diffs on GitHub and GitLab.
+-   **Understand complex code.** Ask GitHub1s AI about a file or selection, then follow up on implementation details.
+-   **Access private repositories.** Connect your GitHub or GitLab account, or supply an access token with the necessary permissions.
 
-Enabling Private Repositories
------------------------------
+Remote repositories are **read-only**. Search and code navigation depend on the repository platform and available upstream services; see capabilities and limits.
 
-If you want to view non-public repositories, you need to add an OAuth token. The token is stored only in your browser, and only send to GitHub when fetching your repository's files. Click on the icon near the bottom of the left-hand row of icons, and the dialog box will prompt you for it, and even take you to your GitHub settings page to generate one, if needed.
+🤖 GitHub1s AI
+--------------
 
-Screenshots
------------
+Get a repository overview, explain a file or selection, and ask follow-up questions. The assistant can look up relevant code as you chat.
+
+Click **Toggle Secondary Side Bar** in the layout controls at the top of GitHub1s to open the AI panel.
+
+Use a **model endpoint that accepts browser requests**. Messages and code context are sent to the selected endpoint. See the AI guide for configuration and data handling.
+
+📚 Documentation
+----------------
+
+Guide
+
+What you will find
+
+Using GitHub1s
+
+Navigation, authentication, search, and troubleshooting
+
+GitHub1s AI
+
+Model setup, context, tools, and data handling
 
 Development
------------
 
-### Cloud-based development
+Local setup, builds, and checks
 
-You can start an online development environment with Gitpod by clicking the following button:
+Architecture
 
-### Local development
+Components, data flow, and source layout
 
-git clone git@github.com:conwnet/github1s.git
-cd github1s
-npm install
-npm run watch
-# The cli will automatically open http://localhost:8080 once the build is completed.
-# You can visit http://localhost:8080/conwnet/github1s if it doesn't.
+Deployment
 
-#### Local development with full VS Code build
+Hosting, OAuth, and service configuration
 
-You need these prerequisites (the same ones as for VS Code) for development with full VS Code build. Please make sure you could build VS Code locally before the watch mode.
+Community
 
-To verify the build:
+Third-party extensions and star history
 
-cd github1s
-npm run build:vscode
-
-After the initial successful build, you could use the watch mode:
-
-cd github1s
-npm install
-npm run watch-with-vscode
-# The cli will automatically open http://localhost:8080 once the build is completed.
-# You can visit http://localhost:8080/conwnet/github1s if it doesn't.
-
-### ... or ... VS Code + Docker Development
-
-You can use the VS Code plugin Remote-Containers `Dev Container` to use a Docker container as a development environment.
-
-1.  Install the Remote-Containers plugin in VS Code & Docker
-    
-2.  Open the Command Palette (default shortcut `Ctrl+Shift+P`) and choose `Remote-Containers: Clone Repository in Container Volume...`
-    
-3.  Enter the repo, in this case `https://github.com/conwnet/github1s.git` or your forked repo
-    
-4.  Pick either, `Create a unique volume` or `Create a new volume`
-    
-    -   Now VS Code will create the docker container and connect to the new container so you can use this as a fully setup environment!
-5.  Open a new VS Code Terminal, then you can run the `npm install` commands listed above.
-    
-
-npm install
-npm run watch
-# The cli will automatically open http://localhost:8080 once the build is completed.
-# You can visit http://localhost:8080/conwnet/github1s if it doesn't.
-
-### Format all codes
-
-npm run format
-
-It uses `prettier` to format all possible codes.
-
-Build
------
-
-npm install
-npm run build
-
-Feedback
---------
-
--   If something is not working, create an issue
-
-Sponsors
---------
-
-The continued development and maintenance of GitHub1s is made possible by these generous sponsors:
-
-Partners
---------
-
-We are partnered with OSS Insight to get the Trending Repositories & some more Interesting Analytics. OSS Insight provides deep insights into GitHub repos, developers, and curated repo lists from billions of GitHub events. It’s built with TiDB Cloud.
-
-Maintainers! 😊
+🤝 Contributing
 ---------------
 
-  
-**netcon**  
-💻 🖋
+See the development guide to run GitHub1s locally. Report bugs and suggest improvements through GitHub Issues.
 
-  
-**xcv58**  
-💻 🖋
+👥 Maintainers
+--------------
 
-  
-**Siddhant Khare**  
-💻 🖋
+conwnet · xcv58 · Siddhant Khare
 
-Stargazers over time
---------------------
+💖 Acknowledgments
+------------------
 
-Third-party Related Projects  
+Thanks to everyone who has contributed to GitHub1s, and to Sourcegraph, searchcode, and OSS Insight for their support of the project.
 
-### Chrome Extensions
+📄 License
+----------
 
--   Repositree (chouglesaud/repositree)
--   github-code-viewer (febaoshan/edge-extensions-github-code-viewer)
--   Github1s Extension (Darkempire78/GitHub1s-Extension)
--   Github Web IDE (zvizvi/Github-Web-IDE)
--   shortcut to github1s (katsuhisa91/github1s-shortcut)
--   Github1s Shortut - Open source
--   ⚡️ 1s to GitHub1s!
--   github1s Google Chrome Extensions
-
-### Firefox Extensions
-
--   Repositree (chouglesaud/repositree)
--   Github1s Extension (Darkempire78/GitHub1s-Extension)
--   Github1s (mcherifi/github1s-firefox-addon)
--   Github Web IDE (zvizvi/Github-Web-IDE)
-
-### Microsoft Edge Extensions
-
--   github-code-viewer (febaoshan/edge-extensions-github-code-viewer)
--   Github Web IDE (zvizvi/Github-Web-IDE)
-
-### Safari Extension
-
--   GitHub1s-For-Safari-Extension (code4you2021/GitHub1s-For-Safari-Extension)
-
-### Tampermonkey scripts
-
--   Mr-B0b/TamperMonkeyScripts/vscode.js
+MIT

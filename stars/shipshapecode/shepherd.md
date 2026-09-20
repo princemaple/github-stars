@@ -1,6 +1,6 @@
 ---
 project: shepherd
-stars: 13813
+stars: 13815
 description: Guide your users through a tour of your app
 url: https://github.com/shipshapecode/shepherd
 ---

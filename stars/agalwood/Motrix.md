@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 55473
+stars: 55667
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---
@@ -27,7 +27,7 @@ The same core powers two ways to run Motrix:
 🧪 Beta testing
 ---------------
 
-Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.37 from GitHub Releases and read the full release notes before installing it.
+Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.39 from GitHub Releases and read the full release notes before installing it.
 
 Back up your existing Motrix data and downloads before testing. Migration from Motrix v1 data has not yet been validated, so do not use your only copy of v1 data with this beta. When practical, test v2 in parallel using a separate OS account, machine, or Docker data directory.
 
@@ -213,7 +213,7 @@ Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR
 
 mkdir -p motrix-data downloads
 sudo chown 1000:1000 motrix-data downloads
-export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.37'
+export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.39'
 export MOTRIX\_PUBLIC\_URL='http://nas.example.lan:8080'
 docker compose pull server
 docker compose up -d --wait

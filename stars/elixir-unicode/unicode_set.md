@@ -15,7 +15,7 @@ A Unicode Set is a representation of a set of Unicode characters or character st
 -   `Unicode.Set.to_utf8_char/1` that converts a unicode set into a form usable with nimble\_parsec
 -   `Unicode.Set.compile_pattern/1` which converts a unicode set into a string that is then compiled with `:binary.compile_pattern/1`.
 
-The implementation conforms closely to the Unicode Set specification but currently omits support for the `\N{codepoint_name}` syntax.
+The implementation follows the Unicode Set specification in CLDR TR35 and the draft UTS #61 Unicode Set Notation standard. See the UTS #61 conformance guide for the precise relationship.
 
 Usage
 -----
@@ -637,11 +637,7 @@ Character Quoting and Escaping in Unicode Set Patterns
 
 ### Single Quote
 
-Two single quotes represents a single quote, either inside or outside single quotes.
-
-Text within single quotes is not interpreted in any way (except for two adjacent single quotes). It is taken as literal text (special characters become non-special).
-
-These quoting conventions for ICU UnicodeSets differ from those of regular expression character set expressions. In regular expressions, single quotes have no special meaning and are treated like any other literal character.
+A single quote is an ordinary literal character, as in UTS #61: `['a']` is the set containing `'` and `a`. The CLDR TR35 and ICU convention in which text within `'...'` is quoted, and `''` is an escaped quote, is deliberately not implemented because it changes the meaning of valid UTS #61 expressions. To make a special character literal, escape it with a backslash instead.
 
 ### Backslash Escapes
 
@@ -715,7 +711,7 @@ Any character formed as the result of a backslash escape loses any special meani
 
 ### Whitespace
 
-Whitespace (as defined by the specification) is ignored unless it is quoted or backslashed.
+Whitespace (as defined by the specification) is ignored between elements unless it is backslashed or inside a `{...}` string member.
 
 Property Values
 ---------------
@@ -755,31 +751,31 @@ When these are processed, case is ignored and whitespace within a name or value 
 Conformance
 -----------
 
-This library implements the UnicodeSet syntax defined by CLDR TR35 and aligns with UTS #18 Level 1 and the draft UTS #61 formalization. It has been reviewed and tested against the ICU reference implementation. The following notes describe deliberate tailorings and current limitations.
+This library implements the UnicodeSet syntax defined by CLDR TR35 and aligns with UTS #18 Level 1 and the draft UTS #61 formalization. It has been reviewed and tested against the ICU reference implementation. The following notes summarise deliberate tailorings and current limitations; the UTS #61 conformance guide records every known divergence from that standard, section by section.
 
 ### Supported
 
--   Bracketed sets, character ranges, and union by juxtaposition.
+-   Bracketed sets, character ranges, and union by juxtaposition. `[]` is the empty set; a hyphen at the start or end of a set (`[-a]`, `[a-]`, `[-]`) is a literal hyphen.
 -   Complement (`[^...]`), applied to code points (not string members).
 -   Set operations — union, intersection (`&`), and set difference (`-`) — with equal precedence binding strictly left-to-right, matching TR35. Group with nested `[...]` to override.
 -   POSIX (`[:prop:]`, `[:^prop:]`) and Perl (`\p{...}`, `\P{...}`) property syntax, including `type=value`, the `≠` (U+2260) operator, and the `Is`/`In` prefixes. Property and value names are matched loosely (case, whitespace, `_` and `-` are ignored per UAX44-LM3).
 -   Properties: general category (including group categories such as `L`), script, block, canonical combining class (numeric and named), and the boolean/enumerated properties provided by the `unicode` library (`Word_Break`, `Grapheme_Cluster_Break`, `Line_Break`, `Sentence_Break`, `East_Asian_Width`, `Indic_Syllabic_Category`, `Indic_Conjunct_Break`, the binary properties, and more).
--   String members (`{abc}`), string ranges (`{ab}-{cd}`), and the empty-string member (`{}`).
--   Single-quote quoting: text within `'...'` is literal and `''` is a literal quote.
--   Escapes: `\uHHHH`, `\UHHHHHHHH`, `\xH`/`\xHH`, single- and multi-codepoint bracketed `\u{...}`/`\x{...}`, octal `\0ooo`, `\cX` control escapes, and the named control escapes `\a \b \e \f \n \r \t \v`. Any other `\<char>` is the literal character.
--   `\N{NAME}` named-codepoint escapes when built against `unicode ~> 2.0` (which provides the character-name table).
+-   String members (`{abc}`), string ranges (`{ab}-{cd}`), and the empty-string member (`{}`). Inside braces every character other than `\` and `}` is literal, including white space.
+-   Escapes: `\uHHHH`, `\UHHHHHHHH`, `\xH`/`\xHH`, single- and multi-codepoint bracketed `\u{...}`/`\x{...}`, octal `\ooo` (one to three digits), `\cX` control escapes (`X` is any of `@ A-Z [ \ ] ^ _`), and the named control escapes `\a \b \e \f \n \r \t \v`. Any other `\<char>` is the literal character.
+-   `\N{NAME}`, `\N{HEX:NAME}` and `\N{HEX:CHAR:NAME}` named elements, resolved through the character-name table in `unicode`.
 
 ### Tailorings
 
 -   Set operations use the single-character `&` and `-` operators (as in a standalone UnicodeSet), not the `&&`/`--` operators used inside ICU _regular-expression_ character classes.
--   `[]` and `[-]` are both the empty set. A hyphen elsewhere at the start or end of a set (`[-a]`, `[a-]`, `[a-z-]`) is a literal hyphen, matching ICU.
+-   A single quote is a literal character; the CLDR TR35 `'...'` quoting convention is not implemented (see "Single Quote" above).
 -   String ranges (`{ab}-{cd}`) are supported as an extension; their endpoints must be the same length.
 -   `[:punct:]` uses the UTS #18 POSIX-compatible definition (matching ICU's POSIX `[:punct:]`); see the note in the "Compatibility Property Names" section above.
 
 ### Current limitations
 
--   `\N{NAME}` is only resolved when the `unicode` dependency is version 2.0 or later; on earlier versions it returns a clean error. Names of algorithmically-named characters (CJK ideographs, Hangul syllables) and control characters are not resolvable.
--   The `Script_Extensions` (`scx`), `Age`, `Numeric_Value`, and `Numeric_Type` properties are not resolvable because the underlying `unicode` library does not yet provide their data.
+-   `\N{NAME}` resolves character names, including the algorithmically-named characters — CJK and Tangut ideographs, Hangul syllables, and the Seal and Jurchen characters — and, as of `unicode` 2.2, every name alias: control-character names such as `NULL`, abbreviations such as `LF`, corrections and alternates such as `BYTE ORDER MARK`.
+-   The `Script_Extensions` (`scx`), `Age` and `Numeric_Type` properties are resolvable as of `unicode` 2.1. `\p{Age=X}` is cumulative, matching every code point assigned in version `X` or earlier. `Numeric_Value` (`nv`) accepts `NaN`, a rational such as `1/6` (matched by rational equality, so `2/12` is the same set) or a decimal such as `0.5` (matched by binary64 equality). `Name` (`na`) and `Name_Alias` resolve the single character whose name or alias matches, as `\p{Name=SPACE}` or `\p{Name_Alias=NUL}`.
+-   The empty-string member `{}` is emitted as an empty alternative by `to_regex_string/1` but is dropped by `compile_pattern/1`, since a binary pattern cannot match the empty string.
 -   Malformed or unsupported syntax returns `{:error, _}` rather than raising.
 
 Installation
@@ -789,7 +785,7 @@ To install, add the package `unicode_set` to your list of dependencies in `mix.e
 
 def deps do
   \[
-    {:unicode\_set, "~> 1.0"}
+    {:unicode\_set, "~> 1.8"}
   \]
 end
 

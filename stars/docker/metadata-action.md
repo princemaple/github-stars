@@ -1,6 +1,6 @@
 ---
 project: metadata-action
-stars: 1146
+stars: 1148
 description: GitHub Action to extract metadata (tags, labels) from Git reference and GitHub events for Docker
 url: https://github.com/docker/metadata-action
 ---
@@ -339,7 +339,7 @@ Description
 
 String
 
-Where to get context data. Allowed options are: `workflow` (default), `git`.
+Where to get context data. Allowed options are: `workflow` (default), `git`, `git:<path>`.
 
 `images`
 
@@ -521,6 +521,19 @@ context: git
 
 -   `workflow`: Get context metadata from the workflow (GitHub context). See https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
 -   `git`: Get context metadata from the workflow and overrides some of them with current Git context, such as `ref` and `sha`.
+
+Use `context: git:<path>` when the repository is checked out to a custom path. The path can be absolute or relative to the current working directory (normally `$GITHUB_WORKSPACE`):
+
+\- uses: actions/checkout@v7
+  with:
+    path: source
+- uses: docker/metadata-action@v6
+  with:
+    context: git:source
+    images: name/app
+    tags: type=sha
+
+The selected checkout supplies the Git ref, SHA, and commit date. Other repository metadata still comes from the workflow repository.
 
 `images` input
 --------------

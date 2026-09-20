@@ -1,6 +1,6 @@
 ---
 project: volt
-stars: 198
+stars: 196
 description: Elixir-native frontend build tool — dev server, HMR, and production builds for JavaScript, TypeScript, Vue SFCs, and CSS. No Node.js required.
 url: https://github.com/elixir-volt/volt
 ---
@@ -88,13 +88,11 @@ Production builds
 ```
 $ mix volt.build
 
-Building Tailwind CSS...
-  app-1a2b3c4d.css  23.9 KB
-Built Tailwind in 43ms
-Building "assets/js/app.ts"...
+Building ["assets/js/app.ts"]...
   app-5e6f7a8b.js  128.4 KB  (gzip: 38.2 KB)
+  app-1a2b3c4d.css  23.9 KB
   manifest.json  2 entries
-Built in 15ms
+Built in 58ms
 ```
 
 Tree-shaking, minification, code splitting, configurable env prefixes and asset URL prefixes, source maps, content-hashed JavaScript/CSS/assets, and manifest output. `Volt.Preload.tags/2` can generate modulepreload tags from the manifest, and the build is ready for `mix phx.digest`.

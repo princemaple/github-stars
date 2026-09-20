@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83480
+stars: 83544
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -560,6 +560,7 @@ Courses
     -   CS 5140/6140 - Data Mining, Spring 2023, University of Utah by Prof. Ana Marasović (Youtube)
     -   CS 5955/6955 - Data Mining, University of Utah (YouTube)
     -   Statistics 202 - Statistical Aspects of Data Mining, Summer 2007 - Google (YouTube)
+    -   DSC 253/CSE 261 - Advanced Data-Driven Text Mining, Winter 2026, UC San Diego by Prof. Jingbo Shang
     -   MOOC - Text Mining and Analytics by ChengXiang Zhai
     -   Information Retrieval SS 2014, iTunes - HPI
     -   MOOC - Data Mining with Weka
@@ -568,6 +569,7 @@ Courses
     -   Information Retrieval - Spring 2018 - ETH Zurich
     -   Information Retrieval - WS 2022/23 - Universität Freiburg
     -   CAP6673 - Data Mining and Machine Learning - FAU(Video lectures)
+    -   DSC 148 - Introduction to Data Mining - UCSD
     -   CS 412 - Introduction to Data Mining - UIUC
     -   CS 512 - Data Mining Principles - UIUC (YouTube)
     -   MGTA 415 - Analyzing Unstructured Data - UCSD
@@ -1482,6 +1484,7 @@ Courses
 -   CMU 16-715 Robot Dynamics 2022 - CMU
 -   CMU 16-745 Optimal Control 2024 - CMU (Lecture notebooks) (YouTube-2023) (YouTube-2022)
 -   CMU 16-745 Optimal Control Recitations 2024 - CMU (YouTube-2023)
+-   CMU 16-831 Introduction to Robot Learning 2025 - CMU
 -   CE 356 Elements of Hydraulic Engineering Spring 2025 - UT Austin
 -   CE 397 Control Theory for Smart Infrastructure Spring 2023 - UT Austin
 -   CS235 - Applied Robot Design for Non-Robot-Designers - Stanford University

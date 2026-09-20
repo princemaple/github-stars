@@ -1,6 +1,6 @@
 ---
 project: milkdown
-stars: 11908
+stars: 11930
 description: 🍼 Plugin driven WYSIWYG  markdown editor framework.
 url: https://github.com/Milkdown/milkdown
 ---

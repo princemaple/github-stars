@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 389528
+stars: 390099
 description: The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -125,7 +125,7 @@ Special thanks to Mario Zechner for his support and for pi, and to Adam Doppelt 
 Donors and sponsors
 -------------------
 
-The Foundation is funded by donors including the University of Michigan, OpenAI, Amazon, Red Hat, Offline Holdings, and Lobster Computer Company, with infrastructure support from GitHub, NVIDIA, Vercel, Blacksmith, and Convex.
+The Foundation is funded by donors including Amazon, Lobster Computer Company, Offline Holdings, OpenAI, Red Hat, and the University of Michigan, with infrastructure support from Blacksmith, Convex, GitHub, NVIDIA, and Vercel.
 
 Contributors
 ------------

@@ -1,6 +1,6 @@
 ---
 project: AutoGPT
-stars: 187289
+stars: 187453
 description: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.
 url: https://github.com/Significant-Gravitas/AutoGPT
 ---
@@ -81,13 +81,9 @@ Note
 
 Self-hosting is the free path. You provide the infrastructure and model API keys, and you maintain the deployment. If you want zero setup, use the managed Platform.
 
-**macOS and Linux:**
+The Linux and macOS single-container release installer is coming with the next appliance release. Until the public installer endpoint and image tags pass the documented release gates, use the manual self-hosting guide.
 
-curl -fsSL https://setup.agpt.co/install.sh -o install.sh && bash install.sh
-
-**Windows PowerShell:**
-
-powershell \-c "iwr https://setup.agpt.co/install.bat -o install.bat; ./install.bat"
+The release installer will require an already-running local Docker daemon using Linux containers on `amd64` or `arm64`. It pulls the published appliance and runs its immutable digest; it does not install Docker or build from source. Windows users should continue with the manual self-hosting guide for now.
 
 Read the self-hosting guide →
 
@@ -104,7 +100,7 @@ Access
 
 Public signup
 
-Clone and install
+Operate the published appliance or a development checkout
 
 Cost
 
@@ -226,7 +222,7 @@ GitHub Issues
 
 Feature requests
 
-GitHub Discussions
+GitHub Issues
 
 Contributing
 

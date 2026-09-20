@@ -1,6 +1,6 @@
 ---
 project: goflyway
-stars: 4278
+stars: 4276
 description: An encrypted HTTP server
 url: https://github.com/coyove/goflyway
 ---

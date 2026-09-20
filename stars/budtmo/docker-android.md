@@ -1,7 +1,7 @@
 ---
 project: docker-android
-stars: 15842
-description: Android in docker solution with noVNC supported, video recording and mcp server
+stars: 15870
+description: Android in docker solution with noVNC supported, video recording, mcp server and AI-agent
 url: https://github.com/budtmo/docker-android
 ---
 
@@ -18,6 +18,7 @@ Advantages of using this project
 6.  It can be used to build Android project
 7.  It can be used to run unit and UI-Test with different test-frameworks, e.g. Appium, Espresso, etc.
 8.  It support mcp server (beta-version)
+9.  It support ai-agent (beta-version)
 
 List of Docker-Images
 ---------------------
@@ -277,6 +278,14 @@ No
 
 \-
 
+ai-agent
+
+No
+
+Yes
+
+Currently supported local AI-host/AI-provider: Ollama
+
 proxy
 
 No
@@ -299,7 +308,7 @@ No
 
 Yes
 
-Support other newer Android version e.g. Android 15, Android 16, etc
+Support other newer Android version e.g. Android 15, Android 16, Android 17, etc
 
 root-privileged
 
@@ -348,6 +357,218 @@ No
 Yes (soon)
 
 Helpful for debugging
+
+List pro-version images:
+
+Android
+
+API
+
+Type
+
+Image with latest release version
+
+Image with specific release version
+
+9.0
+
+28
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_9.0
+
+budtmo2/docker-android-pro:emulator\_9.0\_<release\_version>
+
+10.0
+
+29
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_10.0
+
+budtmo2/docker-android-pro:emulator\_10.0\_<release\_version>
+
+11.0
+
+30
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_11.0
+
+budtmo2/docker-android-pro:emulator\_11.0\_<release\_version>
+
+12.0
+
+32
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_12.0
+
+budtmo2/docker-android-pro:emulator\_12.0\_<release\_version>
+
+13.0
+
+33
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_13.0
+
+budtmo2/docker-android-pro:emulator\_13.0\_<release\_version>
+
+14.0
+
+34
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_14.0
+
+budtmo2/docker-android-pro:emulator\_14.0\_<release\_version>
+
+15.0
+
+35
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_15.0
+
+budtmo2/docker-android-pro:emulator\_15.0\_<release\_version>
+
+16.0
+
+36
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_16.0
+
+budtmo2/docker-android-pro:emulator\_16.0\_<release\_version>
+
+17.0
+
+37
+
+Normal
+
+budtmo2/docker-android-pro:emulator\_17.0
+
+budtmo2/docker-android-pro:emulator\_17.0\_<release\_version>
+
+9.0
+
+28
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_9.0
+
+budtmo2/docker-android-pro:emulator\_headless\_9.0\_<release\_version>
+
+10.0
+
+29
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_10.0
+
+budtmo2/docker-android-pro:emulator\_headless\_10.0\_<release\_version>
+
+11.0
+
+30
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_11.0
+
+budtmo2/docker-android-pro:emulator\_headless\_11.0\_<release\_version>
+
+12.0
+
+32
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_12.0
+
+budtmo2/docker-android-pro:emulator\_headless\_12.0\_<release\_version>
+
+13.0
+
+33
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_13.0
+
+budtmo2/docker-android-pro:emulator\_headless\_13.0\_<release\_version>
+
+14.0
+
+34
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_14.0
+
+budtmo2/docker-android-pro:emulator\_headless\_14.0\_<release\_version>
+
+15.0
+
+35
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_15.0
+
+budtmo2/docker-android-pro:emulator\_headless\_15.0\_<release\_version>
+
+16.0
+
+36
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_16.0
+
+budtmo2/docker-android-pro:emulator\_headless\_16.0\_<release\_version>
+
+17.0
+
+37
+
+Headless
+
+budtmo2/docker-android-pro:emulator\_headless\_17.0
+
+budtmo2/docker-android-pro:emulator\_headless\_17.0\_<release\_version>
+
+\-
+
+\-
+
+AI-Agent
+
+budtmo2/docker-android-pro:agent
+
+budtmo2/docker-android-pro:agent\_<release\_version>
+
+\-
+
+\-
+
+Selenium
+
+budtmo2/docker-android-pro:selenium
+
+budtmo2/docker-android-pro:selenium\_<release\_version>
 
 This document contains detail information about how to use docker-android-pro.
 

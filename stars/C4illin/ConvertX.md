@@ -1,6 +1,6 @@
 ---
 project: ConvertX
-stars: 18949
+stars: 19021
 description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 url: https://github.com/C4illin/ConvertX
 ---
@@ -271,6 +271,12 @@ Checks every n hours for files older then n hours and deletes them, set to 0 to 
 WEBROOT
 
 The address to the root path setting this to "/convert" will serve the website on "example.com/convert/"
+
+BRANDING
+
+ConvertX
+
+Custom string that allows you to change the display name of the website in the header (max 26 characters)
 
 FFMPEG\_ARGS
 

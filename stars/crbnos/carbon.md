@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 2400
+stars: 2544
 description: Carbon is an open source ERP, MES and QMS for manufacturing. Perfect for complex assembly, contract manufacturing, high volume, and configure to order manufacturing.
 url: https://github.com/crbnos/carbon
 ---
@@ -162,7 +162,7 @@ Inngest
 
 Email
 
-Resend
+SMTP (Nodemailer)
 
 i18n
 
@@ -308,7 +308,7 @@ Stripe
 
 Payments service
 
-Resend
+An SMTP provider (e.g. Resend)
 
 Email service
 
@@ -407,7 +407,7 @@ Then configure each service:
 
 Signing in requires you to set up one of two methods:
 
--   Email requires a Resend API key (you'll set this up later on)
+-   Email requires SMTP credentials (you'll set this up later on)
 -   Sign-in with Google requires a Google auth client with these variables. See the Supabase docs for instructions on how to set this up:
     -   Set `Authorized JavaScript origins` to `https://api.carbon.dev`
     -   Set `Authorized redirect URIs` to `https://api.carbon.dev/auth/v1/callback`
@@ -424,7 +424,7 @@ Backend services run inside the per-worktree docker stack — `crbn up` boots th
 -   `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` — keys minted per-worktree from a random `SUPABASE_JWT_SECRET`
 -   `SUPABASE_DB_URL` — direct Postgres URL on a dynamic port
 
-`.env.local` is generated; do not commit it or hand-edit values that came from `crbn up` (they are re-derived on each boot). Put genuine secrets (OAuth client IDs, Stripe keys, Resend) in `.env` only.
+`.env.local` is generated; do not commit it or hand-edit values that came from `crbn up` (they are re-derived on each boot). Put genuine secrets (OAuth client IDs, Stripe keys, SMTP credentials) in `.env` only.
 
 Run `crbn status` at any time to see the live port assignment and the URLs portless is serving.
 
@@ -445,15 +445,20 @@ Create a Stripe account, add a `STRIPE_SECRET_KEY` from the Stripe `Settings > D
 
 -   `STRIPE_SECRET_KEY="sk_test_*************"`
 
-**6\. Resend (email)**
+**6\. SMTP (email)**
 
-Create a Resend account and configure:
+Transactional email (user invitations, email verification, onboarding) is sent over SMTP. Any provider works — Resend, Amazon SES, or your own relay:
 
--   `RESEND_API_KEY="re_**********"`
--   `RESEND_DOMAIN="carbon.ms"` (or your domain, no trailing slashes or protocols)
+-   `SMTP_HOST="smtp.example.com"`
+-   `SMTP_PORT="587"` (465 uses implicit TLS, 587 uses STARTTLS)
+-   `SMTP_USER="********"`
+-   `SMTP_PASSWORD="********"`
+-   `SMTP_FROM="Carbon <no-reply@example.com>"`
+
+Leave them unset to disable email entirely — the apps boot and run fine without it.
+
+-   `RESEND_API_KEY="re_**********"` (Optional — Resend marketing contacts; also a legacy SMTP fallback when `SMTP_*` is unset)
 -   `RESEND_AUDIENCE_ID="*****"` (Optional — required for contact management in `packages/jobs`)
-
-Resend is used for transactional emails (user invitations, email verification, onboarding). All three variables are stored in `packages/auth/src/config/env.ts`.
 
   
 
@@ -512,7 +517,7 @@ For local development you don't need email or OAuth configured. `crbn up` seeds 
 
 You'll land on the authenticated dashboard (`/x`) — no inbox check required. The same session cookie works for the MES app at `https://<worktree>.mes.dev`.
 
-> The bypass only applies to the exact address in `DEV_BYPASS_EMAIL` and only when that user is active — it's a dev convenience, not present in production. Any other email falls back to the normal magic-link / verification flow (which needs Resend configured). To sign in as your own account instead, use the magic link and read it from the local mail catcher at `https://<worktree>.mail.dev`.
+> The bypass only applies to the exact address in `DEV_BYPASS_EMAIL` and only when that user is active — it's a dev convenience, not present in production. Any other email falls back to the normal magic-link / verification flow (which needs SMTP configured). To sign in as your own account instead, use the magic link and read it from the local mail catcher at `https://<worktree>.mail.dev`.
 
   
 

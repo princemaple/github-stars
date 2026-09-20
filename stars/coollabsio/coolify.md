@@ -1,6 +1,6 @@
 ---
 project: coolify
-stars: 61711
+stars: 62030
 description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
@@ -8,55 +8,71 @@ url: https://github.com/coollabsio/coolify
 Coolify
 =======
 
-An open-source & self-hostable Heroku / Netlify / Vercel alternative.
+**An open-source platform to deploy applications, databases, and services on your own servers.**
 
-About the Project
------------------
+Open source & free forever, backed by our philosophy.
 
-Coolify is an open-source & self-hostable alternative to Heroku / Netlify / Vercel / etc.
+Website · Documentation · Cloud · Discord · Community
 
-It helps you manage your servers, applications, and databases on your own hardware; you only need an SSH connection. You can manage VPS, Bare Metal, Raspberry PIs, and anything else.
+What is Coolify?
+----------------
 
-Imagine having the ease of a cloud but with your own servers. That is **Coolify**.
+Coolify is an open-source and self-hostable alternative to Heroku, Netlify, and Vercel. It helps you manage servers, applications, and databases on your own hardware. You only need an SSH connection.
 
-No vendor lock-in, which means that all the configurations for your applications/databases/etc are saved to your server. So, if you decide to stop using Coolify (oh nooo), you could still manage your running resources. You lose the automations and all the magic. 🪄️
+You can use a VPS, a bare-metal server, a Raspberry Pi, or any other server that accepts SSH connections. Coolify gives you the convenience of a cloud platform while you keep control of your infrastructure.
 
-For more information, take a look at our landing page at coolify.io.
+Your configurations stay on your servers. If you stop using Coolify, your running resources continue to work and remain manageable.
 
-Installation
-------------
+What can Coolify do?
+--------------------
+
+-   **Deploy any application:** Build from GitHub, GitLab, Bitbucket, or Gitea with Nixpacks, Railpack, Dockerfile, Docker Compose, or a prebuilt Docker image.
+-   **Run databases and services:** Deploy managed databases and more than 300 one-click services with persistent storage and generated credentials.
+-   **Automate deployments:** Deploy on every Git push, create pull-request previews, call deployment webhooks, and roll back to retained application images.
+-   **Manage networking:** Configure custom domains, automatic HTTPS certificates, reverse proxies, health checks, and container networks.
+-   **Operate your infrastructure:** Manage multiple servers, inspect deployment and runtime logs, open container terminals, and monitor resource status.
+-   **Protect your workloads:** Configure database and storage backups, scheduled tasks, environment variables, secrets, and notifications.
+-   **Integrate with your workflow:** Manage resources through the dashboard, API, CLI, MCP, and team-based access controls.
+
+Quick start
+-----------
+
+Install Coolify on a supported server with one command:
 
 curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
 
-You can find the installation script source here.
+Read the installation guide for requirements and detailed instructions. You can also review the installation script before you run it.
 
-Note
+Self-hosted or Cloud
+--------------------
 
-Please refer to the docs for more information about the installation.
+Self-hosted
 
-Support
--------
+Coolify Cloud
 
-Contact us at coolify.io/docs/contact.
+Install Coolify on your own server.
 
-Cloud
------
+Use a Coolify instance that we maintain.
 
-If you do not want to self-host Coolify, there is a paid cloud version available: app.coolify.io
+Control and maintain the complete platform.
 
-For more information & pricing, take a look at our landing page coolify.io.
+Get high availability and less maintenance.
 
-Why should I use the Cloud version?
------------------------------------
+Free and open source.
 
-The recommended way to use Coolify is to have one server for Coolify and one (or more) for the resources you are deploying. A server is around 4-5$/month.
+Paid service with email notifications and additional support.
 
-By subscribing to the cloud version, you get the Coolify server for the same price, but with:
+The recommended self-hosted setup uses one server for Coolify and one or more servers for deployed resources. If you do not want to maintain the Coolify server, use Coolify Cloud. See coolify.io for current pricing.
 
--   High-availability
--   Free email notifications
--   Better support
--   Less maintenance for you
+Community and support
+---------------------
+
+-   Read the documentation.
+-   Join the community on Discord.
+-   Ask questions in GitHub Discussions.
+-   Read the contribution guide before you submit a change.
+-   Review the code of conduct.
+-   Contact the team through the support page.
 
 Donations
 ---------
@@ -69,7 +85,9 @@ Thank you so much!
 
 ### Huge Sponsors
 
+-   CubePath - Premium dedicated servers and cloud VPS hosting
 -   Context.dev - Web scraping API for AI agents
+-   Ginernet - Hosting powerful servers in Spain
 -   SerpAPI - Google Search API — Scrape Google and other search engines from our fast, easy, and complete API.
 -   MVPS - Cheap VPS servers at the highest possible quality
 -   ScreenshotOne - Screenshot API for devs
@@ -79,6 +97,7 @@ Thank you so much!
 
 ### Big Sponsors
 
+-   Vanaways - New vans for sale and lease across the UK
 -   Cloudways - Managed cloud hosting platform by DigitalOcean
 -   ByteBase - Database CI/CD and Security at Scale
 -   Ramnode - High Performance Cloud VPS Hosting
@@ -107,7 +126,6 @@ Thank you so much!
 -   JuxtDigital - Digital PR & AI Authority Building Agency
 -   SaasyKit - Complete SaaS starter kit for developers
 -   American Cloud - US-based cloud infrastructure services
--   LiquidWeb - Premium managed hosting solutions
 -   Greptile - The AI Code Reviewer
 -   VPSDime - Cheap VPS Hosting - 4GB for $5/month
 -   dataforest Cloud - Deploy cloud servers as seeds independently in seconds. Enterprise hardware, premium network, 100% made in Germany.
@@ -118,19 +136,6 @@ Thank you so much!
 ### Small Sponsors
 
 ...and many more at GitHub Sponsors
-
-Recognitions
-------------
-
-Core Maintainers
-----------------
-
-Andras Bacsai
-
-🏔️ Peak
-
-Repo Activity
--------------
 
 Star History
 ------------

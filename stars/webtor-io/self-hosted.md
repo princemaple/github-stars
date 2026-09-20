@@ -1,6 +1,6 @@
 ---
 project: self-hosted
-stars: 680
+stars: 681
 description: Self-hosted version of webtor.io implemented as an all-in-one Docker image
 url: https://github.com/webtor-io/self-hosted
 ---
@@ -20,6 +20,8 @@ Features
     -   **Audio:** `mp3`, `wav`, `ogg`, `flac`, `m4a`
 -   **Download Entire Torrent as a ZIP Archive:** Download your torrent as a ZIP archive on-the-fly while preserving the original directory structure, without requiring a torrent client.
 -   **Personal Library:** Organize your own collection by adding torrents to your account. Movies and series will be detected automatically!
+-   **Subtitles from OpenSubtitles:** Matching subtitle tracks are found and offered in the player automatically (needs a free OpenSubtitles API key, see "Configuring OpenSubtitles").
+-   **AI subtitles:** Translate subtitle tracks -- embedded, uploaded or found on OpenSubtitles -- into your language on the fly, right in the player (needs an Anthropic API key, see "Configuring AI features").
 -   **Stremio integration** Just install the addon using the link from profile and start watching your library on TV with Stremio.
 -   **Developer-friendly** With the SDK you can provide your users with the ability to watch torrent-videos online on your website.
 
@@ -185,12 +187,21 @@ Enrichment is what turns a release name into a title, a poster and a plot. It as
 -   **OMDB\_API\_KEY** - key for OMDB API
 -   **KINOPOISK\_UNOFFICIAL\_API\_KEY** - key for KinoPoisk Unofficial API
 
+Configuring OpenSubtitles
+-------------------------
+
+With an OpenSubtitles API key the player offers subtitle tracks found for the exact file (by hash) in every language OpenSubtitles has. Like the enrichment providers above, the key alone enables the feature; without it the player only shows subtitles embedded in the file or uploaded by you. Search answers and fetched subtitle files are cached in the embedded S3 and Redis, so a film looked up once does not spend the key's quota again.
+
+-   **OSDB\_API\_KEY** - OpenSubtitles API key (default: unset, which disables the lookups). A free consumer key from https://www.opensubtitles.com/en/consumers is enough.
+-   **OSDB\_USER** / **OSDB\_PASS** - optional OpenSubtitles account login; a VIP account raises the daily download quota
+-   **OSDB\_RATE** - requests per second against the OpenSubtitles API (default: 1)
+
 Configuring AI features
 -----------------------
 
-Both features below are off by default and both need **ANTHROPIC\_API\_KEY**; setting the key alone enables nothing. Calls are billed to that key, which is why each has its own switch and its own quota.
+The features below are off by default and all need **ANTHROPIC\_API\_KEY**; setting the key alone enables nothing. Calls are billed to that key, which is why each has its own switch and its own quota.
 
--   **ANTHROPIC\_API\_KEY** - key for the Anthropic API (default: unset, which disables both features regardless of the switches below)
+-   **ANTHROPIC\_API\_KEY** - key for the Anthropic API (default: unset, which disables all features below regardless of their switches)
 
 AI enrichment is a fallback for the providers above: when TMDB, OMDB and KinoPoisk all fail to recognise a release name, Claude is asked to normalise it into title/year candidates, which are then searched again through those same providers. It never supplies metadata itself.
 
@@ -205,6 +216,13 @@ AI recommendations is the "describe what you want to watch" box on Discover. Wit
 -   **AI\_RECOMMENDATIONS\_MODEL** - model id, used for both tiers unless overridden (default: claude-haiku-4-5-20251001)
 -   **AI\_RECOMMENDATIONS\_FREE\_DAILY\_QUOTA** - requests per day for a free account (default: 100 in this image; upstream web-ui defaults to 1). Without a claims provider every account is free-tier, so this is the quota everyone gets here; the default matches the paid cap and only serves as a backstop against a runaway client loop burning your Anthropic bill
 -   **AI\_RECOMMENDATIONS\_PAID\_DAILY\_QUOTA** - requests per day for a paid account (default: 100). No account is paid without a claims provider, so this has no effect in this image
+
+AI subtitles is the "Translate to " track in the player's subtitle picker. It translates the film's subtitle tracks -- embedded, uploaded by you, or found through OpenSubtitles when that is configured (see above). A film is translated progressively while you watch, the finished translation is stored in the embedded S3, so any later viewing of the same file and language is served from cache and costs nothing.
+
+-   **SUBTITLE\_TRANSLATE\_ENABLED** - offer AI subtitle tracks (default: false)
+-   **SUBTITLE\_TRANSLATE\_MODEL** - model id (default: claude-haiku-4-5-20251001)
+
+With the switch on but no key, or the key set but the switch off, the track is not offered and the `subtitle-translate` service explains in `docker logs` which half is missing.
 
 Configring Stremio Addon Access
 -------------------------------

@@ -1,6 +1,6 @@
 ---
 project: blex
-stars: 42
+stars: 43
 description: Fast Bloom filter with concurrent accessibility, powered by :atomics module.
 url: https://github.com/gyson/blex
 ---

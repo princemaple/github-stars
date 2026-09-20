@@ -1,6 +1,6 @@
 ---
 project: shell360
-stars: 1156
+stars: 1157
 description: Shell360 is a cross-platform SSH and SFTP client.
 url: https://github.com/nashaofu/shell360
 ---
@@ -93,7 +93,7 @@ Your privacy is important to us. Please review our Privacy Policy to understand 
 Contributing
 ------------
 
-We welcome contributions from the community! Please read our Contribution Guidelines to get started.
+We welcome contributions from the community! Please read our Contribution Guidelines to get started. See the documentation center for platform and architecture guides.
 
 License
 -------

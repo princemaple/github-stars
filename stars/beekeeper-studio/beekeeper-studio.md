@@ -1,6 +1,6 @@
 ---
 project: beekeeper-studio
-stars: 23605
+stars: 23629
 description: Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows.
 url: https://github.com/beekeeper-studio/beekeeper-studio
 ---
@@ -242,6 +242,14 @@ DynamoDB
 Features, Docs
 
 Snowflake
+
+⭐ Full Support
+
+✅
+
+Docs
+
+SAP HANA
 
 ⏳ Coming Soon
 

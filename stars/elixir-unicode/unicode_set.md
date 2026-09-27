@@ -15,7 +15,7 @@ A Unicode Set is a representation of a set of Unicode characters or character st
 -   `Unicode.Set.to_utf8_char/1` that converts a unicode set into a form usable with nimble\_parsec
 -   `Unicode.Set.compile_pattern/1` which converts a unicode set into a string that is then compiled with `:binary.compile_pattern/1`.
 
-The implementation follows the Unicode Set specification in CLDR TR35 and the draft UTS #61 Unicode Set Notation standard. See the UTS #61 conformance guide for the precise relationship.
+The implementation follows the Unicode Set specification in CLDR TR35 and the draft UTS #61 Unicode Set Notation standard. The user guide walks through the syntax and each use, and the UTS #61 conformance guide records the precise relationship to the standard.
 
 Usage
 -----
@@ -85,9 +85,9 @@ For example:
 iex\> Unicode.Regex.compile("\\\\p{Zs}")
 {:ok, ~r/\[\\x{20}\\x{A0}\\x{1680}\\x{2000}\-\\x{200A}\\x{202F}\\x{205F}\\x{3000}\]/u}
 
-iex\> Unicode.Regex.compile("\[:graphic:\]")
+iex\> Unicode.Regex.compile("\[:graph:\]")
 {:ok,
- ~r/\[\\x{20}\-\\x{7E}\\x{A0}\-\\x{AC}\\x{AE}\-\\x{377}\\x{37A}\-\\x{37F}...\]/u}
+ ~r/\[^\\x{0}\-\\x{20}\\x{7F}\-\\x{A0}\\x{378}\-\\x{379}\\x{380}\-...\]/u}
 
 ### Other Examples
 

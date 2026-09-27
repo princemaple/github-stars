@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 22813
+stars: 22844
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -23,7 +23,7 @@ Yjs is **network agnostic** (p2p!), supports many existing **rich text editors**
 Sponsorship
 -----------
 
-Please contribute to the project financially - especially if your company relies on Yjs.
+Yjs is MIT licensed and free to use. However, if you use Yjs in a commercial application, there is a **social expectation to sponsor** the project financially. It's what keeps Yjs maintained.
 
 Professional Support
 --------------------
@@ -431,6 +431,7 @@ There are several Yjs-compatible ports to other programming languages.
 -   ycs - .Net compatible C# implementation.
 -   ygo - Go implementation.
 -   ygo (Deln0r/ygo) - Go implementation.
+-   go-yjs - Go implementation.
 
 Getting Started
 ---------------

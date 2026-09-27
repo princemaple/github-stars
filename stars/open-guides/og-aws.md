@@ -1,6 +1,6 @@
 ---
 project: og-aws
-stars: 36467
+stars: 36471
 description: 📙 Amazon Web Services — a practical guide
 url: https://github.com/open-guides/og-aws
 ---

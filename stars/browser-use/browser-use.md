@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 115330
+stars: 116413
 description: Agents that use the browser.
 url: https://github.com/browser-use/browser-use
 ---

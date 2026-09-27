@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 34832
+stars: 34997
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -17,6 +17,7 @@ One `weed` binary serves an S3 object store, a POSIX file system, and a lakehous
 
 -   Download Binaries for different platforms
 -   Wiki Documentation
+-   HTTP REST API for the filer, master, and volume servers
 -   Community: Slack, Twitter, Telegram, Reddit, Mailing List
 -   SeaweedFS White Paper and introduction slides: 2025.5, 2021.5, 2019.3
 

@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 35442
+stars: 35592
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -150,7 +150,7 @@ Because the agent runs inside the same process as the browser, every tool call i
 
 The output of an agent session is a PandaScript: vanilla JavaScript with a small set of native browser primitives built directly into Lightpanda. Run `/save` to export one from your current session, then replay it with `lightpanda run <script>.js`. Scripts are deterministic and token-free, so you can prototype with the LLM and ship the output to production without a model at runtime.
 
-It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Mistral, Hugging Face, the multi-lab gateways Vercel AI Gateway, OpenRouter and OrcaRouter (one key for hundreds of models), any OpenAI-compatible endpoint via `OPENAI_BASE_URL`, and local models via Ollama or llama.cpp. You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
+It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Mistral, Hugging Face, the multi-lab gateways Vercel AI Gateway and OpenRouter (one key for hundreds of models), any OpenAI-compatible endpoint via `OPENAI_BASE_URL`, and local models via Ollama or llama.cpp. You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
 
 ./lightpanda agent                                    # auto-detects API key from env
 ./lightpanda agent --task "top story on news.ycombinator.com?"
@@ -319,7 +319,7 @@ Lightpanda is tested against the standardized Web Platform Tests.
 
 We use a fork including a custom `testharnessreport.js`. Results are published daily.
 
-For reference, you can easily execute a WPT test case with your browser via wpt.live.
+For reference, you can execute a WPT test case with your browser via wpt.live.
 
 #### Configure WPT HTTP server
 
@@ -360,7 +360,14 @@ First start the WPT's HTTP server from your `wpt/` clone dir.
 Run a Lightpanda browser
 
 ```
-zig build run -- --insecure-disable-tls-host-verification
+zig build -Dwpt_extensions run -- serve \
+    --ws-max-concurrent 64 \
+    --insecure-disable-tls-host-verification \
+    --load-resources iframe \
+    --load-resources image \
+    --load-resources worker \
+    --load-resources stylesheet \
+    --experimental-features cors
 ```
 
 Then you can start the wptrunner from the demo's clone dir:
@@ -380,7 +387,7 @@ cd wptrunner && go run . Node-childNodes.html
 ⚠️ Running the whole test suite will take a long time. In this case, it's useful to build in `releaseFast` mode to make tests faster.
 
 ```
-zig build -Doptimize=ReleaseFast run
+zig build -Dwpt_extensions -Doptimize=ReleaseFast run -- serve ...
 ```
 
 Contributing

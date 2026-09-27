@@ -1,6 +1,6 @@
 ---
 project: BroadcastChannel
-stars: 2097
+stars: 2096
 description: Turn your Telegram Channel into a MicroBlog.
 url: https://github.com/miantiao-me/BroadcastChannel
 ---
@@ -31,38 +31,25 @@ English | 简体中文
 
 -   面条实验室
 -   Find Blog👁发现博客
--   Memos 广场 🎪
 -   APPDO 数字生活指南
 -   85.60×53.98卡粉订阅/提醒
--   新闻在花频道
 -   ALL About RSS
--   Charles Chin's Whisper
 -   PlayStation 新闻转发
 -   Yu's Life
--   Leslie 和朋友们
 -   OKHK 分享
--   gledos 的微型博客
--   Steve Studio
--   LiFePO4:沙雕吐槽
--   Hotspot Hourly
--   大河马中文财经新闻分享
 -   \_My. Tricks 🎩 Collection
--   小报童专栏精选
--   Fake news
 -   miyi23's Geekhub资源分享
 -   Magazine｜期刊杂志｜财新周刊
 -   Remote Jobs & Cooperation
 -   甬哥侃侃侃--频道发布
--   Fugoou.log
 -   Bboysoul的博客
 -   MakerHunter
--   ChatGPT/AI新闻聚合
--   Abner's memos
 -   Appinn Talk
 -   小报童优惠与排行榜
 -   热干面拌 10 号土豆泥
 -   万事屋工程部
 -   折腾啥 @xream
+-   北方的博客
 
 ### Platform
 
@@ -84,6 +71,7 @@ BroadcastChannel supports deployment on serverless platforms like Cloudflare Wor
 -   Optional theme visual inspiration: Hacker News by Y Combinator, independently implemented with no official affiliation
 -   Optional theme visual inspiration: Telegram public channel previews, independently implemented with no official affiliation with Telegram Messenger Inc.
 -   Optional theme visual inspiration: Zed's Agentic Engineering page, independently implemented with no official affiliation with Zed Industries, Inc.
+-   Original optional theme: Polar, a project-owned design with no external visual upstream
 
 🏗️ Deployment
 --------------
@@ -219,9 +207,13 @@ ZAE
 
 `/themes/zae.css`
 
-HEADER\_INJECT\='<link rel="stylesheet" href="/themes/aria.css">'
+Polar
 
-HN News, TG Channel, and ZAE are fixed-light themes. Do not load `/themes/terminal-base.css` directly; there is no `/themes/terminal.css`.
+`/themes/polar.css`
+
+HEADER\_INJECT\='<link rel="stylesheet" href="/themes/polar.css">'
+
+HN News, TG Channel, ZAE, and Polar are fixed-light themes. Do not load `/themes/terminal-base.css` directly; there is no `/themes/terminal.css`.
 
 Full configuration, light/dark behavior, platform dashboard values, custom CSS, and security notes: **THEMES.md**. Theme credits: **NOTICE.md**.
 

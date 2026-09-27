@@ -1,6 +1,6 @@
 ---
 project: codesandbox-client
-stars: 13645
+stars: 13650
 description: An online IDE for rapid web development
 url: https://github.com/codesandbox/codesandbox-client
 ---

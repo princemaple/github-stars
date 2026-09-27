@@ -1,6 +1,6 @@
 ---
 project: usql
-stars: 10117
+stars: 10127
 description: Universal command-line interface for SQL databases
 url: https://github.com/xo/usql
 ---
@@ -11,14 +11,14 @@ Installing | Building | Database Support | Using | Features and Compatibility | 
 
 `usql` is a universal command-line interface for PostgreSQL, MySQL, Oracle Database, SQLite3, Microsoft SQL Server, and many other databases including NoSQL and non-relational databases!
 
-`usql` provides a simple way to work with SQL and NoSQL databases via a command-line inspired by PostgreSQL's `psql`. `usql` supports most of the core `psql` features, such as variables, backticks, backslash commands and has additional features that `psql` does not, such as multiple database support, copying between databases, syntax highlighting, context-based completion, and terminal graphics.
+`usql` works with SQL and NoSQL databases from a command line modelled on PostgreSQL's `psql`. `usql` supports most of the core `psql` features, such as variables, backticks, backslash commands and has additional features that `psql` does not, such as multiple database support, copying between databases, syntax highlighting, context-based completion, and terminal graphics.
 
 Database administrators and developers that would prefer to work with a tool like `psql` with non-PostgreSQL databases, will find `usql` intuitive, easy-to-use, and a great replacement for the command-line clients/tools for other databases.
 
 Installing
 ----------
 
-`usql` can be installed via Release, via Homebrew, via AUR, via Scoop, via Go, or via Docker:
+`usql` can be installed via Release, via Homebrew, via AUR, via Go or via Docker:
 
 ### Installing via Release
 
@@ -46,31 +46,17 @@ $ brew install --with-odbc usql
 Install `usql` from the Arch Linux AUR in the usual way with the `yay` command:
 
 # install usql with most drivers
+$ yay -S usql-bin
+
+`usql-bin` installs the released binary. To build from source instead, use the `usql` package, which takes considerably longer because it compiles every driver:
+
+# build usql with most drivers from source
 $ yay -S usql
 
 Alternately, build and install using `makepkg`:
 
 $ git clone https://aur.archlinux.org/usql.git && cd usql
 $ makepkg -si
-==\> Making package: usql 0.12.10-1 (Fri 26 Aug 2022 05:56:09 AM WIB)
-==\> Checking runtime dependencies...
-==\> Checking buildtime dependencies...
-==\> Retrieving sources...
-  -\> Downloading usql-0.12.10.tar.gz...
-...
-
-### Installing via Scoop (Windows)
-
-Install `usql` using Scoop:
-
-# Optional: Needed to run a remote script the first time
-\> Set-ExecutionPolicy RemoteSigned \-Scope CurrentUser
-
-# install scoop if not already installed
-\> irm get.scoop.sh | iex
-
-# install usql with scoop
-\> scoop install usql
 
 ### Installing via Go
 
@@ -115,7 +101,7 @@ Type "help" for help.
 pg:postgres@localhost=\> \\q
 
 # run specific usql version
-$ docker run --rm -it docker.io/usql/usql:0.19.3
+$ docker run --rm -it docker.io/usql/usql:0.21.5
 
 Building
 --------
@@ -218,7 +204,15 @@ SQLite3
 
 `sq`, `sqlite`, `file`
 
-github.com/mattn/go-sqlite3 †
+github.com/mattn/go-sqlite3 † §
+
+DuckDB
+
+`duckdb`
+
+`dk`, `ddb`, `duck`, `file`
+
+github.com/duckdb/duckdb-go/v2 † §
 
 ClickHouse
 
@@ -234,7 +228,7 @@ CSVQ
 
 `cs`, `csv`, `tsv`, `json`
 
-github.com/mithrandie/csvq-driver
+github.com/mithrandie/csvq-driver §
 
 Alibaba MaxCompute
 
@@ -242,7 +236,7 @@ Alibaba MaxCompute
 
 `mc`
 
-sqlflow.org/gomaxcompute
+sqlflow.org/gomaxcompute ¶
 
 Alibaba Tablestore
 
@@ -250,7 +244,7 @@ Alibaba Tablestore
 
 `ot`, `tablestore`
 
-github.com/aliyun/aliyun-tablestore-go-sql-driver
+github.com/aliyun/aliyun-tablestore-go-sql-driver ¶
 
 Apache Avatica
 
@@ -272,7 +266,7 @@ Apache Hive
 
 `hi`, `hive2`
 
-sqlflow.org/gohive
+github.com/beltran/gohive/v2
 
 Apache Ignite
 
@@ -296,7 +290,7 @@ AWS Athena
 
 `s3`, `aws`, `awsathena`
 
-github.com/uber/athenadriver/go
+github.com/uber/athenadriver/go ¶
 
 Azure CosmosDB
 
@@ -304,7 +298,7 @@ Azure CosmosDB
 
 `cm`, `gocosmos`
 
-github.com/btnguyen2k/gocosmos
+github.com/btnguyen2k/gocosmos ¶
 
 Cassandra
 
@@ -320,7 +314,7 @@ ChaiSQL
 
 `ci`, `genji`, `chaisql`
 
-github.com/chaisql/chai
+github.com/chaisql/chai §
 
 Couchbase
 
@@ -336,15 +330,7 @@ Cznic QL
 
 `cznic`, `cznicql`
 
-modernc.org/ql
-
-Dameng DM8
-
-`dameng`
-
-`dm`, `dm8`
-
-github.com/godoes/gorm-dameng/dm8
+modernc.org/ql §
 
 Databend
 
@@ -360,23 +346,15 @@ Databricks
 
 `br`, `brick`, `bricks`, `databrick`
 
-github.com/databricks/databricks-sql-go
-
-DuckDB
-
-`duckdb`
-
-`dk`, `ddb`, `duck`, `file`
-
-github.com/duckdb/duckdb-go/v2 †
+github.com/databricks/databricks-sql-go ¶
 
 DynamoDb
 
 `dynamodb`
 
-`dy`, `dyn`, `dynamo`, `dynamodb`
+`dy`, `dyn`, `dynamo`, `godynamo`
 
-github.com/btnguyen2k/godynamo
+github.com/btnguyen2k/godynamo ¶
 
 Exasol
 
@@ -408,7 +386,7 @@ Google BigQuery
 
 `bq`
 
-gorm.io/driver/bigquery/driver
+gorm.io/driver/bigquery/driver ¶
 
 Google Spanner
 
@@ -416,7 +394,7 @@ Google Spanner
 
 `sp`
 
-github.com/googleapis/go-sql-spanner
+github.com/googleapis/go-sql-spanner ¶
 
 Microsoft ADODB
 
@@ -432,7 +410,7 @@ ModernC SQLite3
 
 `mq`, `modernsqlite`
 
-modernc.org/sqlite
+modernc.org/sqlite §
 
 MySQL MyMySQL
 
@@ -462,17 +440,9 @@ Presto
 
 `presto`
 
-`pr`, `prs`, `prestos`, `prestodb`, `prestodbs`
+`pr`, `prestodb`
 
 github.com/prestodb/presto-go-client/v2
-
-RamSQL
-
-`ramsql`
-
-`rm`, `ram`
-
-github.com/proullon/ramsql/driver
 
 SAP ASE
 
@@ -496,7 +466,7 @@ Snowflake
 
 `sf`
 
-github.com/snowflakedb/gosnowflake/v2
+github.com/snowflakedb/gosnowflake/v2 ¶
 
 Trino
 
@@ -552,7 +522,7 @@ Amazon Redshift
 
 `rs`, `redshift`
 
-github.com/lib/pq ‡
+github.com/lib/pq ‡ ¶
 
 CockroachDB
 
@@ -625,7 +595,9 @@ _bad drivers (broken/non-working drivers)_
 _exclude driver with `<tag>`_
 
 _† Requires CGO  
-‡ Wire compatible (see respective driver)_
+‡ Wire compatible (see respective driver)  
+§ Embedded, with no server to run  
+¶ Hosted service, with no server you can run_
 
 Any of the protocol schemes/aliases above can be used in conjunction when connecting to a database via the command-line or with the `\connect` and `\copy` commands:
 
@@ -906,7 +878,7 @@ pg:booktest@localhost=\> select \* from authors;
 
 pg:booktest@localhost=\>
 
-Commands may accept one or more parameter, and can be quoted using either `'` or `"`. Command parameters may also be backticked.
+A command takes one or more parameters. A parameter can be quoted with either `'` or `"`, and can also be backticked.
 
 ### Backslash Commands
 
@@ -1428,7 +1400,7 @@ Type "help" for help.
 my:root@=\> \\g<Tab\>
 \\g     \\gexec \\gset  \\gx
 
-Not all commands, contexts, or databases support completion. If you're interested in helping to make `usql`'s completion better, see the section below on contributing.
+Not all commands, contexts, or databases support completion. To help improve it, see the section below on contributing.
 
 Command completion can be canceled with `<Control-C>`.
 
@@ -1565,7 +1537,7 @@ _
 
 #### Host Connection Information
 
-By default, `usql` displays connection information when connecting to a database. This might cause problems with some databases or connections. This can be disabled by setting the system environment variable `USQL_SHOW_HOST_INFORMATION` to `false`:
+By default, `usql` displays connection information when it connects to a database. Some databases and connections do not work with this. Set the environment variable `USQL_SHOW_HOST_INFORMATION` to `false` to turn it off:
 
 $ export USQL\_SHOW\_HOST\_INFORMATION=false
 $ usql pg://booktest@localhost
@@ -1598,6 +1570,8 @@ When support is available, the logo will be displayed at the start of an interac
 The `\chart` command can be used to display a chart directly in the terminal:
 
 See the section on the `\chart` meta command for details.
+
+Charts are not part of a default build. The renderer runs Apache ECharts in a JavaScript engine and rasterizes the result with an SVG renderer, which together add about 12 MiB to the binary, so it is behind the `charts` build tag. Build with `-tags charts`, or with `-tags all`, to include it. A build without it reports that it has no chart renderer.
 
 ##### Enabling/Disabling Terminal Graphics
 
@@ -1660,7 +1634,7 @@ While the `.usqlpass` functionality will not be removed, it is recommended to de
 
 > **Note**
 > 
-> The `.usqlpass` file cannot be readable by other users, and the permissions should be set accordingly:
+> The `.usqlpass` file must not be readable by other users. Set its permissions to `0600`:
 
 chmod 0600 ~/.usqlpass
 
@@ -1732,4 +1706,4 @@ Related Projects
 ----------------
 
 -   dburl - Go package providing a standard, URL-style mechanism for parsing and opening database connection URLs
--   xo - Go command-line tool to generate Go code from a database schema
+-   dbtpl - Go command-line tool to generate Go code from a database schema

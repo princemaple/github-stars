@@ -1,6 +1,6 @@
 ---
 project: FreeCAD
-stars: 33637
+stars: 33776
 description: Official source code of FreeCAD, a free and opensource multiplatform 3D parametric modeler.
 url: https://github.com/FreeCAD/FreeCAD
 ---
@@ -12,9 +12,9 @@ Website • Documentation • Forum • Bug tracker • Git repository • Blog
 Overview
 --------
 
--   **Freedom to build what you want** FreeCAD is an open-source parametric 3D modeler made primarily to design real-life objects of any size. Parametric modeling allows you to easily modify your design by going back into your model history to change its parameters.
+-   **Freedom to build what you want** FreeCAD is an open-source parametric 3D modeler for designing real-life objects of any size. Parametric modeling lets you modify a design by changing parameters in its model history.
     
--   **Create 3D from 2D and back** FreeCAD lets you sketch geometry-constrained 2D shapes and use them as a base to build other objects. It contains many components to adjust dimensions or extract design details from 3D models to create high quality production-ready drawings.
+-   **Create 3D from 2D and back** FreeCAD lets you sketch geometry-constrained 2D shapes and use them as a base to build other objects. It also provides tools to adjust dimensions and create high-quality production drawings from 3D models.
     
 -   **Designed for your needs** FreeCAD is designed to fit a wide range of uses including product design, mechanical engineering and architecture, whether you are a hobbyist, programmer, experienced CAD user, student or teacher.
     
@@ -71,7 +71,7 @@ The FPA offers developers the opportunity to apply for a grant to work on projec
 Usage & Getting Help
 --------------------
 
-The FreeCAD wiki contains documentation on general FreeCAD usage, Python scripting, and development. View these pages for more information:
+The FreeCAD wiki contains documentation on general usage and Python scripting. View these pages for more information:
 
 -   Getting started
 -   Features list

@@ -1,6 +1,6 @@
 ---
 project: ConvertX
-stars: 19021
+stars: 19064
 description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 url: https://github.com/C4illin/ConvertX
 ---
@@ -215,6 +215,7 @@ services:
     ports:
       - "3000:3000"
     environment:
+      - PUID=1000 # user id for file permissions (should match your host user id)
       - JWT\_SECRET=aLongAndSecretStringUsedToSignTheJSONWebToken1234 # will use randomUUID() if unset
       # - HTTP\_ALLOWED=true # uncomment this if accessing it over a non-https connection
     volumes:
@@ -222,15 +223,19 @@ services:
 
 or
 
-docker run -p 3000:3000 -v ./data:/app/data ghcr.io/c4illin/convertx
+docker run -p 3000:3000 -e PUID=1000 -e PGID=1000 -v ./data:/app/data ghcr.io/c4illin/convertx
+
+Ensure `PUID` and `PGID` match your host user (`id -u` and `id -g`) to avoid permission issues on the mapped `./data` volume. If you get unable to open database file, verify the directory permissions or run `chown -R $USER:$USER path` on the path you choose.
 
 Then visit `http://localhost:3000` in your browser and create your account. Don't leave it unconfigured and open, as anyone can register the first account.
-
-If you get unable to open database file run `chown -R $USER:$USER path` on the path you choose.
 
 ### Environment variables
 
 All are optional, JWT\_SECRET is recommended to be set.
+
+Warning
+
+Never expose the service to the internet with ALLOW\_UNAUTHENTICATED or ACCOUNT\_REGISTRATION true. Only allow users you trust to access the service.
 
 Name
 
@@ -243,6 +248,24 @@ JWT\_SECRET
 when unset it will use the value from randomUUID()
 
 A long and secret string used to sign the JSON Web Token
+
+PUID
+
+0 (root)
+
+User ID to run the application process as (it first uses root to chown the files)
+
+PGID
+
+PUID if unset, root if both unset
+
+Group ID to run the application process as
+
+UMASK
+
+002 (when PUID is set)
+
+File creation mask for processes and created files
 
 ACCOUNT\_REGISTRATION
 

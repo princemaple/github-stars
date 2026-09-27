@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40386
+stars: 40451
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---

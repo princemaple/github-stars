@@ -1,6 +1,6 @@
 ---
 project: motion
-stars: 33657
+stars: 33741
 description: A modern animation library for React and JavaScript
 url: https://github.com/motiondivision/motion
 ---
@@ -24,10 +24,12 @@ Table of Contents
 1.  Why Motion?
 2.  🍦 Platforms
 3.  🎓 Examples
-4.  ⚡️ Motion+
-5.  👩🏻‍⚖️ License
-6.  💎 Contribute
-7.  ✨ Sponsors
+4.  🎨 Motion Studio
+5.  🤖 Using Motion with AI
+6.  ⚡️ Motion+
+7.  👩🏻‍⚖️ License
+8.  💎 Contribute
+9.  ✨ Sponsors
 
 Why Motion?
 -----------
@@ -74,20 +76,38 @@ Get started with Motion for Vue.
 🎓 Examples & tutorials
 -----------------------
 
-Browse 330+ official examples, with copy-paste code that'll level-up your animations whether you're a beginner or an expert.
+Browse 450+ official examples, with copy-paste code that'll level-up your animations whether you're a beginner or an expert.
 
-Over 100 examples come with a full step-by-step tutorial.
+Over 110 examples come with a full step-by-step tutorial on their example page.
+
+🤖 Using Motion with AI
+-----------------------
+
+Give your coding agent current Motion docs:
+
+-   **Agent skill:** `npx motion-ai` installs the free, MIT-licensed `/motion` skill and sets up Motion's MCP servers for Claude Code, Cursor, Amp, OpenCode, Gemini CLI and Copilot. Source on GitHub.
+-   **MCP server:** `https://mcp.motion.dev` searches the Motion docs and example metadata. It is free and needs no account.
+-   **llms.txt:** motion.dev/llms.txt indexes every docs page. Motion+ pages are labelled as paid, with their install and import.
+
+Motion+ adds example and Motion UI source, MotionScore performance audits and CSS spring generation for your agent.
+
+🎨 Motion Studio
+----------------
+
+A visual animation editor for your website. Edit keyframes, easing curves and springs on a live timeline, or describe changes to the Ultramotion agent, then apply the result straight to your code with Cursor, Codex or Claude.
+
+Explore Motion Studio
 
 ⚡️ Motion+
 ----------
 
-A one-time payment, lifetime-updates membership:
+A one-time Personal licence with lifetime updates, or an annual per-seat Business plan for teams:
 
--   **330+ examples**
--   **100+ tutorials**
+-   **450+ examples**
+-   **110+ tutorials**
 -   **Premium APIs** like Cursor and Ticker
 -   **Transition editor** for Cursor and VS Code
--   **AI skills**
+-   **AI Kit:** example and Motion UI source, MotionScore audits and CSS springs for your agent
 -   **Private Discord**
 -   **Early access content**
 

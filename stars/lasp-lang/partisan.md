@@ -1,6 +1,6 @@
 ---
 project: partisan
-stars: 1051
+stars: 1052
 description: High-performance, high-scalability distributed computing for the BEAM.
 url: https://github.com/lasp-lang/partisan
 ---
@@ -27,7 +27,7 @@ The full documentation is published at hexdocs.pm/partisan. The Installation tut
 In short, for an Erlang project add the dep:
 
 %% rebar.config
-{deps, \[{partisan, "6.2.0"}\]}.
+{deps, \[{partisan, "6.3.0"}\]}.
 
 For an Elixir project:
 

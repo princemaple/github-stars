@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 9569
+stars: 9663
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -325,6 +325,7 @@ Projects using Pocket TTS
 -   tts-audiobook-tool by @zeropointnine - Multi-model audiobook generator with automatic error detection, 48khz upscaling, synced browser reader, stand-alone server-mode.
 -   seshat-tts by @scriptriva - Accessibility tool that provides real-time audio synthesis for games and apps. It also features a voice manager capable of cloning voices based on user presets.
 -   LocalVocal.ai by @joshwhiton - Fully local conversational voice-harness for Macs with Apple Silicon. Includes voice-activity & turn detection, dictation, voice cloning, CLI to talk to Claude, Codex... and more.
+-   Libratory by @subev - Turns PDFs into read-along audiobooks with the narration highlighted on the printed page; Pocket TTS is one of its local narrators, with voice cloning from the picker.
 
 Prohibited use
 --------------

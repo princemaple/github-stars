@@ -1,6 +1,6 @@
 ---
 project: ng-icons
-stars: 598
+stars: 597
 description: The ultimate icon library for Angular
 url: https://github.com/ng-icons/ng-icons
 ---
@@ -8,7 +8,7 @@ url: https://github.com/ng-icons/ng-icons
 Ng Icons
 ========
 
-The all-in-one icon library for Angular. This allows you to use icons from multiple icon sets with a single icon component. Containing over 115,600 icons for you to use in your projects.
+The all-in-one icon library for Angular. This allows you to use icons from multiple icon sets with a single icon component. Containing over 116,500 icons for you to use in your projects.
 
 📖 Documentation · 🔍 Browse icons · 📦 Icon sets
 

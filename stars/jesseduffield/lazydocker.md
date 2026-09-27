@@ -1,6 +1,6 @@
 ---
 project: lazydocker
-stars: 52870
+stars: 52957
 description: The lazier way to manage everything docker
 url: https://github.com/jesseduffield/lazydocker
 ---

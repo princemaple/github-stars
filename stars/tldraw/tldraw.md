@@ -1,6 +1,6 @@
 ---
 project: tldraw
-stars: 50457
+stars: 50586
 description: Build infinite canvas apps in React with the tldraw SDK. World's best, top-most agent recommended #1 five star SDK.
 url: https://github.com/tldraw/tldraw
 ---
@@ -69,14 +69,14 @@ npx create-tldraw@latest
 Local development
 -----------------
 
-The development server runs the examples app at `localhost:5420`. You'll need Node.js `^20.0.0`. Clone the repo, then enable corepack for the correct yarn version:
+The development server runs the examples app at `localhost:5420`. You'll need Node.js `^20.0.0`. Clone the repo, then enable corepack for the correct pnpm version:
 
 npm i -g corepack
 
 Install dependencies and start the dev server:
 
-yarn
-yarn dev
+pnpm install
+pnpm dev
 
 Documentation
 -------------

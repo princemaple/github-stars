@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 1119
+stars: 1138
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -8,7 +8,7 @@ url: https://github.com/Zarestia-Dev/rclone-manager
 RClone Manager
 ==============
 
-🇺🇸 English • 🇹🇷 Türkçe • 🇨🇳 简体中文 • 🇫🇷 Français • 🇪🇸 Español • 🇧🇷 Português-Brasil • 🇷🇺 Русский • 🇯🇵 日本語 • Help to translate • Crowdin
+🇺🇸 English • 🇹🇷 Türkçe • 🇨🇳 简体中文 • 🇹🇼 繁體中文 • 🇫🇷 Français • 🇪🇸 Español • 🇧🇷 Português-Brasil • 🇷🇺 Русский • 🇯🇵 日本語 • Help to translate • Crowdin
 
 **A powerful, cross-platform GUI for managing Rclone remotes with style and ease.**  
 _Built with Angular 22 + Tauri · Linux • Windows • macOS • Android (Beta) • ARM Support_
@@ -22,16 +22,27 @@ Overview
 
 -   📂 **Nautilus File Manager:** Browse, edit, move, copy, rename, and delete remote files.
 -   👁️ **File Viewer:** Inline previews for videos, images, PDFs, audio, and text.
+-   ⚡ **Visual Workflows:** Design and automate multi-step cloud pipelines with an interactive node-based canvas, cron triggers, folder watchers, and instant alert notifications.
+-   🚀 **Quick Runs:** Trigger one-click cloud operations and custom CLI flag presets directly from a status-aware card grid.
 -   ⚙️ **Mount & Serve:** Easy mount controls and serve management (WebDAV, SFTP, HTTP, FTP).
 -   🔄 **Job Watcher:** Real-time transfer monitoring and bandwidth control.
+-   📱 **Android SAF & DocumentsProvider:** Access cloud remotes natively in system file pickers via Storage Access Framework and in-process VFS mount bridge without root.
 -   🌐 **Headless Mode:** Check out RClone Manager Headless to run as a web server on VPS/NAS!
 
 * * *
 
-Screenshot
-----------
+Screenshots
+-----------
 
   
+Dashboard - Quick Runs, Mounts & remote overview at a glance
+
+  
+Workflow Builder - Design and automate multi-step cloud pipelines on an interactive node canvas
+
+  
+Nautilus - Browse, transfer, and manage files across all your remotes
+
 _📖 Want to see more? Check out the **Wiki Gallery** for all features._
 
 * * *
@@ -123,7 +134,9 @@ Install Command / Download
 
 APK Downloads (arm64-v8a, armeabi-v7a, x86\_64, x86)
 
-> 📚 **Guide:** Wiki: Android Support (Beta) (Go engine / librclone details & setup)
+> 📱 **Storage Access Framework (SAF):** Features native `DocumentsProvider` (`RcloneDocumentsProvider`) integration and an in-process VFS mount bridge, exposing mounted cloud remotes directly to Android system file pickers and external apps without requiring root or `/dev/fuse`.
+> 
+> 📚 **Guide:** Wiki: Android Support (Beta) (Go engine / librclone details, SAF provider & setup)
 
 > 🛠️ **System Requirements:** Mounting drives requires WinFsp (Windows), macFUSE (macOS), or FUSE3 (Linux). Rclone itself is downloaded automatically if missing. See Wiki: System Requirements.
 

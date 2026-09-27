@@ -1,6 +1,6 @@
 ---
 project: pangolin
-stars: 22841
+stars: 22930
 description: Modern networking and security platform providing secure access and connectivity to apps, infrastructure, and AI workloads. Connect and protect your users.
 url: https://github.com/fosrl/pangolin
 ---

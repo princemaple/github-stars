@@ -1,6 +1,6 @@
 ---
 project: tinypdf
-stars: 1921
+stars: 1923
 description: Minimal PDF creation library. <400 LOC, zero dependencies, makes real PDFs.
 url: https://github.com/Lulzx/tinypdf
 ---

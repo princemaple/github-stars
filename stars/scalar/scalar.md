@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 16149
+stars: 16196
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -34,7 +34,7 @@ Scalar
 
 ### Quickstart
 
-All you need is a single HTML file to create an amazing API reference:
+All you need is a single HTML file. Load the ESM build from our CDN, with no build step required:
 
 <!doctype html\>
 <html\>
@@ -49,13 +49,11 @@ All you need is a single HTML file to create an amazing API reference:
   <body\>
     <div id\="app"\></div\>
 
-    <!-- Load the Script -->
-    <script src\="https://cdn.jsdelivr.net/npm/@scalar/api-reference"\></script\>
+    <script type\="module"\>
+      import { createApiReference } from 'https://cdn.jsdelivr.net/npm/@scalar/api-reference/esm.js'
 
-    <!-- Initialize the Scalar API Reference -->
-    <script\>
-      Scalar.createApiReference('#app', {
-        // The URL of the OpenAPI/Swagger document
+      createApiReference('#app', {
+        // The URL of the OpenAPI document
         url: 'https://registry.scalar.com/@scalar/apis/galaxy?format=json',
         // Avoid CORS issues
         proxyUrl: 'https://proxy.scalar.com',
@@ -100,6 +98,7 @@ And there's an ever-growing list of plugins and integrations:
 -   Rust
 -   Spring Boot
 -   SvelteKit
+-   Symfony
 -   Ts.ED
 -   Vue.js
 
@@ -250,13 +249,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **hanspagel**
 
   
-**xC0dex**
-
-  
 **amritk**
-
-  
-**antlio**
 
   
 **hwkr**
@@ -271,6 +264,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **cameronrohani**
 
   
+**xC0dex**
+
+  
 **geoffgscott**
 
   
@@ -278,6 +274,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **tmastrom**
+
+  
+**antlio**
 
   
 **inyourtime**
@@ -289,13 +288,22 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **bgrcs**
 
   
+**bielu**
+
+  
+**lazerg**
+
+  
 **AbdelhamidKhald**
+
+  
+**alonfaraj**
 
   
 **gevann**
 
   
-**alonfaraj**
+**AshishKumarPathak**
 
   
 **federicobond**
@@ -328,19 +336,22 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Edgaraszs**
 
   
+**guillaume-flambard**
+
+  
 **adjsky**
 
   
 **RemcoGoy**
 
   
+**TheVaan**
+
+  
 **mpminardi**
 
   
 **mcollina**
-
-  
-**TheVaan**
 
   
 **cobyfrombrooklyn-bot**
@@ -365,6 +376,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **ATREAY**
+
+  
+**SebastianBienert**
 
   
 **SimonVadier**
@@ -403,43 +417,46 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **soulchild**
 
   
-**SebastianBienert**
-
-  
-**cyphercodes**
-
-  
-**PrinceManfred**
-
-  
-**mouhannad-sh**
-
-  
-**mason-at-pieces**
-
-  
-**luc122c**
-
-  
-**luke-hagar-sp**
-
-  
-**handrews**
-
-  
-**gsmcdonald**
-
-  
-**Duncanma**
+**aqeelat**
 
   
 **WDaan**
 
   
-**STP5940**
+**Duncanma**
 
   
-**mirismaili**
+**silkfire**
+
+  
+**gsmcdonald**
+
+  
+**handrews**
+
+  
+**kou029w**
+
+  
+**luke-hagar-sp**
+
+  
+**luc122c**
+
+  
+**mason-at-pieces**
+
+  
+**mouhannad-sh**
+
+  
+**PrinceManfred**
+
+  
+**cyphercodes**
+
+  
+**ryux1**
 
   
 **rmp135**
@@ -463,6 +480,18 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **bobheadxi**
 
   
+**robert-dean**
+
+  
+**abdulamite**
+
+  
+**mirismaili**
+
+  
+**STP5940**
+
+  
 **captainsafia**
 
   
@@ -473,6 +502,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **SamyPesse**
+
+  
+**scottamain**
 
   
 **SergioChan**
@@ -487,7 +519,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **smoores-dev**
 
   
-**Chinlinlee**
+**MarioGK**
+
+  
+**not-my-profile**
 
   
 **tinchoz49**
@@ -509,6 +544,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **1571min**
+
+  
+**fitchmultz**
 
   
 **malinbranduse**
@@ -547,7 +585,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **rickihastings**
 
   
-**robert-dean**
+**soGit**
+
+  
+**Chinlinlee**
 
   
 **bsdayo**
@@ -560,6 +601,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **demingongo**
+
+  
+**eightdeekay**
 
   
 **FotieMConstant**
@@ -575,6 +619,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **kwaichanz**
+
+  
+**lavagri**
 
   
 **milksense**
@@ -604,13 +651,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Huliiiiii**
 
   
-**soGit**
+**sidsri14**
 
   
 **sinh117801**
 
   
 **stratosblue**
+
+  
+**taljeon**
 
   
 **yokeTH**
@@ -632,6 +682,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **Courtcircuits**
+
+  
+**ubay1**
 
   
 **mveselov-stack-wizard**
@@ -661,9 +714,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **bingbeann**
 
   
-**abdulamite**
-
-  
 **foxfriends**
 
   
@@ -691,6 +741,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **danp**
 
   
+**benedekdaniel**
+
+  
 **darekaze**
 
   
@@ -712,6 +765,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **DmitriiKhudiakov**
 
   
+**Garfielk**
+
+  
 **elliotnash**
 
   
@@ -719,6 +775,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **emmanuel-ferdman**
+
+  
+**froggy1014**
 
   
 **MathurAditya724**
@@ -737,6 +796,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **sigpwned**
+
+  
+**vixalien**
+
+  
+**AniketR10**
 
   
 **arashsheyda**
@@ -763,6 +828,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Borisich**
 
   
+**xmrfate**
+
+  
 **bmanth60**
 
   
@@ -775,10 +843,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Smyrcu**
 
   
-**cactysman**
+**cactyx**
 
   
-**froggy1014**
+**andthexi**
+
+  
+**JacobCoffee**
 
   
 **jan-krueger**
@@ -796,10 +867,19 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Jannchie**
 
   
+**Joab0**
+
+  
 **jonataw**
 
   
 **IHIutch**
+
+  
+**JosiahParry**
+
+  
+**Gulum**
 
   
 **jlnslv**
@@ -809,9 +889,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **KevSlashNull**
-
-  
-**kou029w**
 
   
 **krcm0209**
@@ -826,16 +903,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **ShadiestGoat**
 
   
+**momomuchu**
+
+  
 **da411d**
 
   
 **marikaner**
-
-  
-**MarioGK**
-
-  
-**not-my-profile**
 
   
 **facus26**
@@ -853,10 +927,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **fredrik-aschehoug**
 
   
-**silkfire**
+**galah92**
 
   
-**galah92**
+**GavinPizza**
+
+  
+**ff-gerard**
 
   
 **GreyXor**
@@ -865,7 +942,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **255kb**
 
   
+**haidargit**
+
+  
 **Hamidrzash**
+
+  
+**haydenbleasel**
 
   
 **HelgeSverre**
@@ -883,13 +966,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **IceyWu**
 
   
+**Poliklot**
+
+  
 **eltociear**
 
   
 **tltsutltsu**
 
   
-**kevinand11**
-
-  
-**JacobCoffee**
+**IsaacJenkinsTPZ**

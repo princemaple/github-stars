@@ -214,6 +214,12 @@ _none_
 
 Remove the redirect to the canonical host URL. Use with caution.
 
+`DISABLE_FRAME_ANCESTORS`
+
+_none_
+
+Only allow the webapp to be embedded by the same origin (`frame-ancestors 'self'`). Disables JIPT embedding in other apps.
+
 `STATIC_URL`
 
 _none_
@@ -525,7 +531,7 @@ $ npm --prefix webapp run build
 $ mix ecto.setup
 $ mix test
 
-The full check that runs in the CI environment can be executed with `./priv/scripts/ci-check.sh`.
+The full check that runs in the CI environment can be executed with `./priv/scripts/ci_check.exs`.
 
 🚀 Deploy on Heroku
 -------------------
@@ -563,7 +569,7 @@ Before opening a pull request, please open an issue first.
 
 Once you’ve made your additions and the test suite passes, go ahead and open a PR!
 
-Don’t forget to run the `./priv/scripts/ci-check.sh` script to make sure that the CI build will pass :)
+Don’t forget to run the `./priv/scripts/ci_check.exs` script to make sure that the CI build will pass :)
 
 License
 -------

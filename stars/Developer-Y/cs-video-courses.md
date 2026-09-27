@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83544
+stars: 83565
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -441,7 +441,7 @@ Courses
     -   Mediterranean Machine Learning summer school 2024 (YouTube-2023) (YouTube-2022) (YouTube-2021)
     -   LxMLS Lisbon Machine Learning School 2024 (YouTube-2023) (YouTube-2022) (YouTube-2021) (YouTube-2020)
     -   Applied Machine Learning (Cornell Tech CS 5787, Fall 2020)
-    -   Stanford CS229: Machine Learning Course | Summer 2019 (Anand Avati) (Spring 2022)
+    -   Stanford CS229: Machine Learning Course (Summer 2019) (Spring 2022) (Spring 2026)
     -   CMS 165 Foundations of Machine Learning - 2019 - Caltech (Youtube)
     -   CMS 165 Foundations of Machine Learning and Statistical Inference - 2020 - Caltech
     -   Microsoft Research - Machine Learning Course
@@ -733,6 +733,7 @@ Courses
     -   MIT 6.S184 Flow Matching and Diffusion Models, 2025
     -   Course on Diffusion Models for Generative AI - UT Austin
     -   CS 492(C) Diffusion and Flow Models - Fall 2025 - KAIST (YouTube)
+    -   Stanford CS329A Self-Improving AI Agents 2025 - Stanford (YouTube)
     -   Stanford CS336 Language Modeling from Scratch I 2025 - Stanford (2026)
     -   Stanford CME295 Transformers & LLMs - Autumn 2025 - Stanford
     -   Stanford CME296: Diffusion & Large Vision Models
@@ -1257,7 +1258,8 @@ Courses
 
 -   Internet Security (WT 2018/19) - HPI University of Potsdam
 -   6.1600 Foundations of Computer Security - MIT Fall 2023
--   6.858 Computer Systems Security - MIT OCW
+-   6.858 Computer Systems Security - MIT OCW Fall 2014
+-   6.566 Computer Systems Security - MIT OCW Spring 2026 (Videos)
 -   CS 253 Web Security - Stanford University
 -   CS 161: Computer Security, UC Berkeley (Videos - Fall 2023) (Videos - Fall 2025) (Spring 2025)
 -   6.875 - Cryptography - Fall 2021 - MIT (Spring 2018)
@@ -1328,6 +1330,7 @@ Courses
 -   CS 543 - Computer Vision – Spring 2017 (Recordings)
 -   CAP 5415 - Computer Vision - University of Central Florida(Video Lectures)
 -   EE637 - Digital Image Processing I - Purdue University (Videos - Sp 2011,Videos - Sp 2007)
+-   EE641 - Digital Image Processing II - Purdue University (Videos - Fa 2013,Videos - Fa 2020)
 -   Computer Vision I: Variational Methods - TU München (YouTube)
 -   Computer Vision II: Multiple View Geometry (IN2228), SS 2016 - TU München (YouTube)
 -   EENG 512/CSCI 512 - Computer Vision - Colorado School of Mines

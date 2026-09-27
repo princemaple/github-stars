@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1263
+stars: 1265
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -78,6 +78,7 @@ Tools
 -   BalatroLab - A bilingual (English/中文) Balatro database companion: 278 searchable cards, consumables, vouchers, decks, and poker hands with local media and source-reviewed relationships, plus a deterministic score calculator, joker synergy finder, unlock tracker, deck builder, and seed vault. by @Max179
 -   Balatro Mobile Maker - Create a mobile Balatro app from your Steam version of Balatro. by @blake502
 -   Balatro Modpack Manager - Install, update, and customize modpacks in one streamlined tool. by \[@Dimserene\]
+-   Balatro Save Editor - Desktop save editor for Windows, macOS and Linux: set money, beat the current blind, set hand mult, raise joker/consumable slots, and edit jokers (type, edition, stickers, sell value). Backs up and validates every write. Built on problemsalved's CLI editor. by @BurntToasters
 -   Balatro Seed Oracle - Balatro Seed Searcher with visual drag&drop filter builder coded in C# and AvaloniaUI. by @OptimusPi
 -   Balatro Ultimate Speedup Mod - A mod that speeds up the entire game. Doesn't need a mod loader. (Windows only) by @sse2
 -   balatro-completionist-plus-plus-tracker - Browser‑based Completionist++ tracker. by @blackfan321

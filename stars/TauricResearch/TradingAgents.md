@@ -1,6 +1,6 @@
 ---
 project: TradingAgents
-stars: 107616
+stars: 108774
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
@@ -19,12 +19,15 @@ TradingAgents: Multi-Agents LLM Financial Trading Framework
 News
 ----
 
--   \[2026-09\] **TradingAgents v0.5.0** released with point-in-time integrity across every dated path, SEC EDGAR fundamentals served as filed, backtesting over a ticker and date grid, portfolio-aware runs, and current model lineups across every provider. See CHANGELOG.md for the full list.
+-   \[2026-09\] **TradingAgents v0.5.1** released with a package layout organised by what each module holds (import paths moved), optional Jev screening of social posts, GPT-6 Sol and Luna as the default models, and fixes to run isolation and SEC EDGAR statements.
+-   \[2026-09\] **TradingAgents v0.5.0** released with point-in-time integrity across every dated path, SEC EDGAR fundamentals served as filed, backtesting over a ticker and date grid, portfolio-aware runs, and current model lineups across every provider.
 -   \[2026-08\] **TradingAgents v0.4.0** released with look-ahead / point-in-time fixes across FRED macro, social sentiment, and the decision-log memory; clearer decision signals; working CLI checkpoint resume; Trader price grounding; and the GPT-5.6 and GLM-5.3 models.
+
+Full release notes are in CHANGELOG.md.
+
+Earlier news
+
 -   \[2026-07\] **TradingAgents v0.3.1** released with correctness and stability fixes: Alpha Vantage look-ahead filtering, graph-router crash-safety, graph-shape-aware checkpoint resume, working crypto sentiment sources, a configurable LLM retry budget, Bedrock API-key auth, and Claude Sonnet 5 / Fable 5 support.
-
-Earlier releases
-
 -   \[2026-06\] **TradingAgents v0.3.0** released with a verified data-access contract, an expanded provider registry (NVIDIA, Kimi, Groq, Mistral, Bedrock, and any OpenAI-compatible endpoint), FRED and Polymarket data vendors, a current-generation model catalog, and a CI gate.
 -   \[2026-05\] **TradingAgents v0.2.5** released with the grounded Sentiment Analyst, GPT-5.5 etc. model coverage, Qwen/GLM/MiniMax dual-region support, `TRADINGAGENTS_*` env-var configurability with API-key auto-detection, remote Ollama support, non-US alpha benchmarks, and ticker path-traversal hardening.
 -   \[2026-04\] **TradingAgents v0.2.4** released with structured-output agents (Research Manager, Trader, Portfolio Manager), LangGraph checkpoint resume, persistent decision log, DeepSeek/Qwen/GLM/Azure provider support, Docker, and a Windows UTF-8 encoding fix.
@@ -127,6 +130,7 @@ export GROQ\_API\_KEY=...            # Groq
 export NVIDIA\_API\_KEY=...          # NVIDIA NIM
 export FRED\_API\_KEY=...            # FRED macro data (free, optional)
 export ALPHA\_VANTAGE\_API\_KEY=...   # Alpha Vantage
+export TYPESAFE\_API\_KEY=...        # Jev social-post screening (optional)
 
 For Azure OpenAI, copy `.env.enterprise.example` to `.env.enterprise` and fill in your credentials.
 
@@ -135,6 +139,8 @@ For AWS Bedrock, install the extra with `pip install ".[bedrock]"`, set `llm_pro
 For local models, configure Ollama with `llm_provider: "ollama"`. The default endpoint is `http://localhost:11434/v1`; set `OLLAMA_BASE_URL` to point at a remote `ollama-serve`. Pull models with `ollama pull <name>`, and pick "Custom model ID" in the CLI for any model not listed by default.
 
 For any other OpenAI-compatible server (vLLM, LM Studio, llama.cpp, or a custom relay), use `llm_provider: "openai_compatible"` and set the endpoint via `backend_url` (or `TRADINGAGENTS_LLM_BACKEND_URL`), e.g. `http://localhost:8000/v1` for vLLM or `http://localhost:1234/v1` for LM Studio. The model is whatever your server serves. No key is needed for local servers; set `OPENAI_COMPATIBLE_API_KEY` when the endpoint requires one.
+
+With `TYPESAFE_API_KEY` set, the Sentiment Analyst screens StockTwits and Reddit posts with TypeSafe's Jev before reading them. Posts that are not about the company are dropped, and each source opens with a count of the remaining posts by stance: bullish, bearish, neutral, or unclear. Without the key, posts pass through unscreened. `jev-latest` moves with new releases; set `TYPESAFE_DEFAULT_MODEL` to a versioned ID such as `jev-1.13.0` to hold it fixed across runs.
 
 Alternatively, copy `.env.example` to `.env` and fill in your keys:
 
@@ -188,8 +194,8 @@ from tradingagents.default\_config import DEFAULT\_CONFIG
 
 config \= DEFAULT\_CONFIG.copy()
 config\["llm\_provider"\] \= "openai"        \# e.g. openai, google, anthropic, deepseek, groq, ollama; openai\_compatible covers any OpenAI-compatible endpoint (vLLM, LM Studio, llama.cpp, ...)
-config\["deep\_think\_llm"\] \= "gpt-5.6"      \# Model for complex reasoning
-config\["quick\_think\_llm"\] \= "gpt-5.6-luna" \# Model for quick tasks
+config\["deep\_think\_llm"\] \= "gpt-6-sol"    \# Model for complex reasoning
+config\["quick\_think\_llm"\] \= "gpt-6-luna"   \# Model for quick tasks
 config\["max\_debate\_rounds"\] \= 2
 
 ta \= TradingAgentsGraph(debug\=True, config\=config)
@@ -260,11 +266,10 @@ Evaluating decisions over time
 One run gives one decision, which cannot tell you whether the system decides well. `run_backtest` runs the same pipeline over a grid of tickers and dates, writes to a decision log of its own, and scores the decisions whose holding window has since traded.
 
 from tradingagents.backtest import iter\_grid, run\_backtest, summarize
-from tradingagents.agents.utils.memory import TradingMemoryLog
 
 dates \= iter\_grid("2026-06-01", "2026-08-01", every\_n\_days\=7)
 result \= run\_backtest(\["NVDA", "AAPL"\], dates, config, selected\_analysts\=\["market", "news"\])
-print(summarize(TradingMemoryLog({"memory\_log\_path": str(result.log\_path)})).render())
+print(summarize(result).render())
 
 From the CLI:
 
@@ -277,7 +282,7 @@ Reproducibility
 
 TradingAgents is LLM-driven, so two runs of the same ticker and date can differ. This is expected for a research tool built on language models, not a defect. The variation comes from a few distinct sources, and it helps to separate them.
 
-Language model sampling is non-deterministic. Even at a fixed temperature, providers do not guarantee byte-identical output across calls, and reasoning models (the default GPT-5.x family, and any thinking-mode model) vary the most because their internal reasoning is itself sampled.
+Language model sampling is non-deterministic. Even at a fixed temperature, providers do not guarantee byte-identical output across calls, and reasoning models (the default GPT-6 family, and any thinking-mode model) vary the most because their internal reasoning is itself sampled.
 
 Live data moves. News, StockTwits, and Reddit return different content as time passes, so a run today sees different inputs than a run last week even for the same historical trade date. Pin the analysis date to hold the price and indicator window fixed, but the social and news sources still reflect "now".
 

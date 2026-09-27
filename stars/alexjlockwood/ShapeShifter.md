@@ -1,6 +1,6 @@
 ---
 project: ShapeShifter
-stars: 4065
+stars: 4066
 description: SVG icon animation tool for Android, iOS, and the web
 url: https://github.com/alexjlockwood/ShapeShifter
 ---
@@ -8,15 +8,13 @@ url: https://github.com/alexjlockwood/ShapeShifter
 Shape Shifter
 =============
 
-**Go to live version** or **ask a question on Slack**
+**Go to live version**
 
 * * *
 
 Shape Shifter is a web-app that simplifies the creation of icon animations for Android, iOS, and the web.
 
 This tool currently exports to standalone SVGs, SVG spritesheets, and CSS keyframe animations for the web, as well as to `AnimatedVectorDrawable` format for Android. I am totally open to adding support for other export formats as well, so if you have a format that you'd like to see added in the future, file a feature request!
-
-Try out the beta version, which adds the ability to draw/edit paths directly on the canvas (written using the amazing paper.js library)!
 
 Backers
 -------
@@ -63,7 +61,7 @@ To address these problems, Shape Shifter provides the following features:
 How does it work?
 -----------------
 
-Pretty much all of the graphics in this app are powered by bezier curve approximations under-the-hood. I learned most of what I needed to know from this excellent primer on bezier curves (especially sections 9 and 33, which explain how to split and project points onto bezier curves without altering their original appearance). Most of the interesting SVG-related code is located under `src/app/model/paths`.
+Pretty much all of the graphics in this app are powered by bezier curve approximations under-the-hood. I learned most of what I needed to know from this excellent primer on bezier curves (especially sections 9 and 33, which explain how to split and project points onto bezier curves without altering their original appearance). Most of the interesting SVG-related code is located under `src/app/modules/editor/model/paths`.
 
 Auto fix is powered by an adaptation of the Needleman-Wunsch algorithm, which is used in bioinformatics to align protein or nucleotide sequences. Instead of aligning DNA base-pairs, Shape Shifter aligns the individual SVG commands that make up each path instead. You can view the current implementation of the algorithm in the `AutoAwesome.ts` file.
 
@@ -79,7 +77,7 @@ Build instructions
 
 If you want to contribute, you can build and serve the web app locally as follows:
 
-1.  First install `Node.js` and `npm`.
+1.  First install `Node.js` 24 or later (see `.nvmrc`), and `npm` 11.10 or later. Older releases of Node 24 come with an older npm, so run `npm install -g npm` if `npm install` fails with `EBADENGINE`.
     
 2.  Clone the repository and in the root directory, run:
     
@@ -93,6 +91,21 @@ If you want to contribute, you can build and serve the web app locally as follow
     npm start
     ```
     
+4.  To run the tests, run:
+    
+    ```
+    npx playwright install chromium firefox webkit  # Only needed once.
+    npm run format:check  # Or `npm run format` to fix it.
+    npm run typecheck
+    npm run lint
+    npm run test:run
+    npm run e2e
+    ```
+    
+    The end-to-end tests run in Chromium, Firefox, and WebKit. To run them in one browser, pass its project name, e.g. `npm run e2e -- --project=chromium` (or `chromium-preview` for the tests that need a production build).
+    
+
+The app is built with React, TypeScript, and Vite.
 
 Special thanks
 --------------

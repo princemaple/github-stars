@@ -1,17 +1,9 @@
 ---
 project: anything-llm
-stars: 66227
+stars: 66502
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
-
-Note
-
-We are also working on Open Computer which gives an entire computer environment for AI Agents to use.
-
-This will bring AnythingLLM's agent capabilities to a new level and a novel UX paradigm for AI Agent use.
-
-⭐ Star the repo to stay updated!
 
 **AnythingLLM:** The all-in-one AI app you were looking for.  
 Chat with your docs, use AI Agents, hyper-configurable, multi-user, & no frustrating setup required.
@@ -21,6 +13,8 @@ Chat with your docs, use AI Agents, hyper-configurable, multi-user, & no frustra
 **English** · 简体中文 · 日本語
 
 👉 AnythingLLM for desktop (Mac, Windows, & Linux)! Download Now
+
+📱 AnythingLLM Mobile (Android) is open source! View the repo
 
 Chat with your docs. Automate complex workflows with AI Agents. Hyper-configurable, multi-user ready, battle-tested—and runs locally by default with zero setup friction.
 
@@ -256,7 +250,7 @@ Basically, if telemetry is disabled we don't collect anything. However, dependin
 🔗 More Products
 ----------------
 
--   **AnythingLLM Mobile (MIT Licensed):** A mobile application that allows you to use AnythingLLM on your mobile device.
+-   **AnythingLLM Mobile (Open-Source Licensed):** The same AnythingLLM on-device expierence, but on your phone.
 -   **AnythingLLM Browser Extension:** A browser extension that allows you to use AnythingLLM in your browser.
 -   **AnythingLLM Embed:** A widget that allows you to embed AnythingLLM in your website.
 

@@ -86,6 +86,7 @@ Sponsors
 
 -   Evrone, custom software development company
 -   Oficinaria, marketplace for in-person creative workshops in Brazil
+-   Tecotype, keyboard-first mail app
 
 License
 -------

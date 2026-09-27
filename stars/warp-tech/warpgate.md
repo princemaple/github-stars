@@ -1,6 +1,6 @@
 ---
 project: warpgate
-stars: 7938
+stars: 7977
 description: Fully transparent SSH, HTTPS, Kubernetes, database and RDP/VNC bastion/PAM that doesn't need additional client-side software
 url: https://github.com/warp-tech/warpgate
 ---

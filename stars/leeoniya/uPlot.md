@@ -1,6 +1,6 @@
 ---
 project: uPlot
-stars: 10502
+stars: 10516
 description: 📈 A small, fast chart for time series, lines, areas, ohlc & bars
 url: https://github.com/leeoniya/uPlot
 ---
@@ -38,6 +38,7 @@ In most sane cases, you can live-stream data with uPlot at 60fps, though it may 
 -   Focus closest series
 -   Data streaming (live update)
 -   High / Low bands
+-   Positive and negative stacking groups through `opts.stack.groups`. See "Stacked Area Graphs Are Not Your Friend".
 -   A lean, consistent, and powerful API with hooks & plugins
 
 * * *
@@ -46,11 +47,16 @@ In most sane cases, you can live-stream data with uPlot at 60fps, though it may 
 
 In order to stay lean, fast and focused the following features will not be added:
 
--   No data parsing, aggregation, summation or statistical processing - just do it in advance. e.g. simples-statistics, https://github.com/leeoniya/uDSV
+-   No general-purpose data parsing, aggregation, or statistical processing. Integrated stacking only computes configured cumulative series. Prepare other results in advance with tools such as simple-statistics or uDSV.
+    
 -   No transitions or animations - they're always pure distractions.
+    
 -   No collision avoidance for axis tick labels, so may require manual tweaking of spacing metrics if label customization significiantly increases default label widths.
--   No stacked series: see "Stacked Area Graphs Are Not Your Friend" and a horrific demo. While smooth spline interpolation is available, its use is strongly discouraged: Your data is misrepresented!. Both visualizations are terrible at accurately communicating information.
+    
+-   Smooth spline interpolation is available, but its use is strongly discouraged. See "Your data is misrepresented!".
+    
 -   No built-in drag scrolling/panning due to ambiguous native zoom/selection behavior. However, this can be added externally via the plugin/hooks API: zoom-wheel, zoom-touch.
+    
 
 * * *
 

@@ -1,6 +1,6 @@
 ---
 project: restic
-stars: 36137
+stars: 36276
 description: Fast, secure, efficient backup program
 url: https://github.com/restic/restic
 ---
@@ -52,7 +52,7 @@ Saving a backup on the same machine is nice but not a real backup strategy. Ther
 -   Local directory
 -   sftp server (via SSH)
 -   HTTP REST server (protocol, rest-server)
--   Amazon S3 (either from Amazon or using the Minio server)
+-   Amazon S3 (or any other S3-compatible storage)
 -   OpenStack Swift
 -   BackBlaze B2
 -   Microsoft Azure Blob Storage

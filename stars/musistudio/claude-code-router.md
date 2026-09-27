@@ -1,16 +1,16 @@
 ---
 project: claude-code-router
-stars: 37329
+stars: 37434
 description: One local control plane for every AI agent: route across models, fuse new capabilities, orchestrate tools, and stay fully in control.
 url: https://github.com/musistudio/claude-code-router
 ---
 
   
-**Kimi Code Subscription**  ·  **API Global**  ·  API China
+**Kimi Code plan** (中文站 | Global)  ·  **API** (中文站 | Global)
 
 **Thanks to Kimi for sponsoring this project!** Kimi K3 is Moonshot AI's most capable model and the world's first open 3T-class model. With 2.8 trillion parameters, native vision, and a 1-million-token context window, K3 delivers frontier performance across long-horizon coding, knowledge work, and reasoning. Inside CCR, Kimi ships as a built-in provider preset: import the pay-as-you-go API or Kimi Code subscription in one click and route your coding agent's requests to Kimi. The subscription endpoint passes through natively without protocol conversion, API endpoints are adapted automatically, and account balance and subscription usage are visible in the CCR dashboard.
 
-CCR already includes Kimi provider presets. Visit the Kimi Open Platform (中文站 | Global) to try the API, or explore the Kimi Code subscription.
+CCR already includes Kimi provider presets. Visit the Kimi Open Platform (中文站 | Global) to try the **API**, or explore the **Kimi Code plan** (中文站 | Global).
 
 Claude Code Router
 ==================

@@ -1,6 +1,6 @@
 ---
 project: wekan
-stars: 21090
+stars: 21096
 description: The Open Source kanban, built with Meteor. GitHub issues/PRs are only for FLOSS Developers, not for support, support is at https://wekan.fi/commercial-support/ . PR source translation to imports/i18n/data/en.i18n.json, other translations at https://app.transifex.com/wekan/wekan . No telemetry.
 url: https://github.com/wekan/wekan
 ---
@@ -117,7 +117,7 @@ We also welcome sponsors for features and bugfixes. By working directly with WeK
 Getting Started with Development
 --------------------------------
 
-The main branch uses Meteor 3.5 with Node.js 24.x. See CHANGELOG.md for the latest runtime updates.
+The main branch uses Meteor 3.6-beta.1 with Node.js 26.x. See CHANGELOG.md for the latest runtime updates.
 
 To contribute, create a fork and run `./build.sh` (or `./build.bat` on Windows) as detailed here. Once you're ready, please test your code and submit a pull request (PR).
 
@@ -131,7 +131,7 @@ First-Time Setup for Development
 Before building WeKan from source, ensure you have:
 
 -   **Git** - for cloning the repository
--   **Node.js 24.x** - WeKan requires Node.js 24.x
+-   **Node.js 26.x** - WeKan requires Node.js 26.x
 -   **Meteor** - the JavaScript framework WeKan is built with
 
 ### Building WeKan

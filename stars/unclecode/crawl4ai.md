@@ -1,39 +1,96 @@
 ---
 project: crawl4ai
-stars: 83875
-description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN
+stars: 84311
+description: Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key.
 url: https://github.com/unclecode/crawl4ai
 ---
 
-🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper.
-==============================================================
+🚀🤖 Crawl4AI: the open-source web crawler for LLMs and AI agents
+=================================================================
 
-* * *
+**Latest: v0.9.4 (23 Sep 2026)** · all releases →
 
-#### 🚀 Crawl4AI Cloud API — Closed Beta (Launching Soon)
+Crawl4AI turns any website into clean, LLM-ready Markdown for RAG, AI agents and data pipelines. Run the open-source web crawler and scraper yourself, free forever, or use it hosted with one key: scrape, search and extract through one API, with MCP for your agent.
 
-Reliable, large-scale web extraction, now built to be _**drastically more cost-effective**_ than any of the existing solutions.
+Two ways to use Crawl4AI
+------------------------
 
-👉 **Apply here for early access**  
-_We’ll be onboarding in phases and working closely with early users. Limited slots._
+### 🐍 Run it yourself: open source, forever
 
-* * *
+pip install -U crawl4ai
+crawl4ai-setup        # installs the browser, once
 
-Crawl4AI turns the web into clean, LLM ready Markdown for RAG, agents, and data pipelines. Fast, controllable, battle tested by a 50k+ star community.
+import asyncio
+from crawl4ai import AsyncWebCrawler
 
-✨ Check out latest update v0.9.3
+async def main():
+    async with AsyncWebCrawler() as crawler:
+        result \= await crawler.arun(url\="https://news.ycombinator.com")
+        print(result.markdown)
 
-✨ **New in v0.9.3**: Security release. Closes five coordinated-disclosure advisories: arbitrary file write, SSRF, and denial of service in the PDF processing path, plus two XSS issues in the Docker Playground. Also ships 33 bug fixes across the Docker server, crawler, and PDF handling. No new features, no breaking changes. Release notes →
+asyncio.run(main())
 
-✨ Recent v0.9.2: Maintenance patch release. Fixes a `MemoryAdaptiveDispatcher` task/page leak when a streaming crawl is closed, Docker Playground "Advanced Config" and Monitor WebSocket auth, Playwright headless-shell packaging, and GPU (`ENABLE_GPU=true`) Docker builds. Release notes →
+Docker server, CLI and every option: Installation · docs.crawl4ai.com
 
-✨ Recent v0.9.0: Major secure-by-default release of the Docker API server. Auth is on by default, the server binds loopback unless given a token, and the request body is now an untrusted trust boundary. Release notes →
+### ☁️ Or use the cloud: no browsers, no proxies
 
-✨ Recent v0.8.7: Security-hardening release. Fixes critical Docker API vulnerabilities (RCE, SSRF, auth bypass, file write, XSS, hardcoded JWT secret), adds DomainMapper, and ships scraping, deep-crawl, and LLM fixes. Release notes →
+1.    
+    Verify your email and your first $10 pack is on us (until 31 December 2026, then $5 to start). No card.
+    
+2.  Get any page as Markdown:
+    
+    curl -s https://api.crawl4ai.com/scrape \\
+      -H "Authorization: Bearer $CRAWL4AI\_KEY" \\
+      -H "Content-Type: application/json" \\
+      -d '{"url": "https://news.ycombinator.com"}' | jq -r .markdown
+    
+    The same key works for `/search`, `/answer`, `/extract` and many URLs at once (`/scrape/batch`, `/scrape/jobs`). Pay as you go: live prices.
+    
+3.  Give it to your AI agent. Claude Code shown; Codex, Cursor and OpenCode →
+    
+    claude mcp add --transport http crawl4ai https://api.crawl4ai.com/mcp \\
+      --header "Authorization: Bearer $CRAWL4AI\_KEY"
+    
 
-✨ Previous v0.8.0: Crash Recovery & Prefetch Mode! Deep crawl crash recovery with `resume_state` and `on_state_change` callbacks for long-running crawls. New `prefetch=True` mode for 5-10x faster URL discovery. Release notes →
+### Which one?
 
-✨ Previous v0.7.8: Stability & Bug Fix Release! 11 bug fixes addressing Docker API issues, LLM extraction improvements, URL handling fixes, and dependency updates. Release notes →
+🐍 Library
+
+🐳 Your own server
+
+☁️ Crawl4AI Cloud
+
+**Runs the browsers**
+
+you, in your Python process
+
+you, in Docker on your machine
+
+we do
+
+**JS-heavy pages and bot walls**
+
+your settings, your proxies
+
+your settings, your proxies
+
+handled for you, automatically
+
+**Web search**
+
+–
+
+–
+
+`/search` and `/answer`
+
+**Price**
+
+free, forever
+
+free (your hosting)
+
+pay as you go; your first $10 is on us
 
 🤓 **My Personal Story**
 
@@ -43,975 +100,243 @@ In 2023, I needed web-to-Markdown. The “open source” option wanted an accoun
 
 I made it open source for **availability**, anyone can use it without a gate. Now I’m building the platform for **affordability**, anyone can run serious crawls without breaking the bank. If that resonates, join in, send feedback, or just crawl something amazing.
 
+That platform is live now: Crawl4AI Cloud.
+
 Why developers pick Crawl4AI
 
--   **LLM ready output**, smart Markdown with headings, tables, code, citation hints
--   **Fast in practice**, async browser pool, caching, minimal hops
--   **Full control**, sessions, proxies, cookies, user scripts, hooks
--   **Adaptive intelligence**, learns site patterns, explores only what matters
--   **Deploy anywhere**, zero keys, CLI and Docker, cloud friendly
-
-🚀 Quick Start
---------------
-
-1.  Install Crawl4AI:
-
-# Install the package
-pip install -U crawl4ai
-
-# For pre release versions
-pip install crawl4ai --pre
-
-# Run post-installation setup
-crawl4ai-setup
-
-# Verify your installation
-crawl4ai-doctor
-
-If you encounter any browser-related issues, you can install them manually:
-
-python -m playwright install --with-deps chromium
-
-1.  Run a simple web crawl with Python:
-
-import asyncio
-from crawl4ai import \*
-
-async def main():
-    async with AsyncWebCrawler() as crawler:
-        result \= await crawler.arun(
-            url\="https://www.nbcnews.com/business",
-        )
-        print(result.markdown)
-
-if \_\_name\_\_ \== "\_\_main\_\_":
-    asyncio.run(main())
-
-1.  Or use the new command-line interface:
-
-# Basic crawl with markdown output
-crwl https://www.nbcnews.com/business -o markdown
-
-# Deep crawl with BFS strategy, max 10 pages
-crwl https://docs.crawl4ai.com --deep-crawl bfs --max-pages 10
-
-# Use LLM extraction with a specific question
-crwl https://www.example.com/products -q "Extract all product prices"
-
-💖 Support Crawl4AI
--------------------
-
-> 🎉 **Sponsorship Program Now Open!** After powering 51K+ developers and 1 year of growth, Crawl4AI is launching dedicated support for **startups** and **enterprises**. Be among the first 50 **Founding Sponsors** for permanent recognition in our Hall of Fame.
-
-Crawl4AI is the #1 trending open-source web crawler on GitHub. Your support keeps it independent, innovative, and free for the community — while giving you direct access to premium benefits.
-
-  
-
-### 🤝 Sponsorship Tiers
-
--   **🌱 Believer ($5/mo)** — Join the movement for data democratization
--   **🚀 Builder ($50/mo)** — Priority support & early access to features
--   **💼 Growing Team ($500/mo)** — Bi-weekly syncs & optimization help
--   **🏢 Data Infrastructure Partner ($2000/mo)** — Full partnership with dedicated support  
-    _Custom arrangements available - see SPONSORS.md for details & contact_
-
-**Why sponsor?**  
-No rate-limited APIs. No lock-in. Build and own your data pipeline with direct guidance from the creator of Crawl4AI.
-
-See All Tiers & Benefits →
+-   **LLM-ready output**: smart Markdown with headings, tables, code and citation hints
+-   **Fast in practice**: async browser pool, caching, minimal hops
+-   **Full control**: sessions, proxies, cookies, user scripts, hooks
+-   **Adaptive intelligence**: learns site patterns, explores only what matters
+-   **Deploy anywhere**: no keys needed, CLI and Docker, or the hosted cloud
 
 ✨ Features
 ----------
 
-📝 **Markdown Generation**
+📝 **Markdown generation**
 
--   🧹 **Clean Markdown**: Generates clean, structured Markdown with accurate formatting.
--   🎯 **Fit Markdown**: Heuristic-based filtering to remove noise and irrelevant parts for AI-friendly processing.
--   🔗 **Citations and References**: Converts page links into a numbered reference list with clean citations.
--   🛠️ **Custom Strategies**: Users can create their own Markdown generation strategies tailored to specific needs.
--   📚 **BM25 Algorithm**: Employs BM25-based filtering for extracting core information and removing irrelevant content.
+-   🧹 **Clean Markdown**: headings, lists, tables and code blocks, in a structure an LLM reads well.
+-   🎯 **Fit Markdown**: filters remove menus, footers and boilerplate: `PruningContentFilterLXML`, `BM25ContentFilter` (for a query) and `LLMContentFilter`.
+-   🔗 **Citations**: page links become a numbered reference list.
+-   🛠️ **Your own strategy**: plug in a custom Markdown generator.
 
-📊 **Structured Data Extraction**
+☁️ Same in the cloud: `POST /scrape` returns this Markdown, with no browser to run. Docs →
 
--   🤖 **LLM-Driven Extraction**: Supports all LLMs (open-source and proprietary) for structured data extraction.
--   🧱 **Chunking Strategies**: Implements chunking (topic-based, regex, sentence-level) for targeted content processing.
--   🌌 **Cosine Similarity**: Find relevant content chunks based on user queries for semantic extraction.
--   🔎 **CSS-Based Extraction**: Fast schema-based data extraction using XPath and CSS selectors.
--   🔧 **Schema Definition**: Define custom schemas for extracting structured JSON from repetitive patterns.
+📊 **Structured data extraction**
 
-🌐 **Browser Integration**
+-   🔎 **CSS and XPath schemas**: fast extraction with no LLM (`JsonCssExtractionStrategy`, `JsonXPathExtractionStrategy`, `RegexExtractionStrategy`).
+-   🪄 **Schema generator**: describe what you want once; `generate_schema` writes a reusable schema.
+-   🤖 **LLM extraction**: any LLM provider, open-source or hosted, into a typed JSON schema (`LLMExtractionStrategy`).
+-   🧱 **Chunking**: topic, regex and sentence chunking for long pages.
+-   🌌 **Cosine similarity**: find the chunks that match a query (`CosineStrategy`).
 
--   🖥️ **Managed Browser**: Use user-owned browsers with full control, avoiding bot detection.
--   🔄 **Remote Browser Control**: Connect to Chrome Developer Tools Protocol for remote, large-scale data extraction.
--   👤 **Browser Profiler**: Create and manage persistent profiles with saved authentication states, cookies, and settings.
--   🔒 **Session Management**: Preserve browser states and reuse them for multi-step crawling.
--   🧩 **Proxy Support**: Seamlessly connect to proxies with authentication for secure access.
--   ⚙️ **Full Browser Control**: Modify headers, cookies, user agents, and more for tailored crawling setups.
--   🌍 **Multi-Browser Support**: Compatible with Chromium, Firefox, and WebKit.
--   📐 **Dynamic Viewport Adjustment**: Automatically adjusts the browser viewport to match page content, ensuring complete rendering and capturing of all elements.
+☁️ Same in the cloud: `POST /extract`, with no LLM key of your own. Docs →
 
-🔎 **Crawling & Scraping**
+🌐 **Browser control**
 
--   🖼️ **Media Support**: Extract images, audio, videos, and responsive image formats like `srcset` and `picture`.
--   🚀 **Dynamic Crawling**: Execute JS and wait for async or sync for dynamic content extraction.
--   📸 **Screenshots**: Capture page screenshots during crawling for debugging or analysis.
--   📂 **Raw Data Crawling**: Directly process raw HTML (`raw:`) or local files (`file://`).
--   🔗 **Comprehensive Link Extraction**: Extracts internal, external links, and embedded iframe content.
--   🛠️ **Customizable Hooks**: Define hooks at every step to customize crawling behavior (supports both string and function-based APIs).
--   💾 **Caching**: Cache data for improved speed and to avoid redundant fetches.
--   📄 **Metadata Extraction**: Retrieve structured metadata from web pages.
--   📡 **IFrame Content Extraction**: Seamless extraction from embedded iframe content.
--   🕵️ **Lazy Load Handling**: Waits for images to fully load, ensuring no content is missed due to lazy loading.
--   🔄 **Full-Page Scanning**: Simulates scrolling to load and capture all dynamic content, perfect for infinite scroll pages.
+-   🖥️ **Your own browser**: persistent profiles with saved logins, cookies and settings.
+-   🔄 **Remote browsers**: connect over the Chrome DevTools Protocol (CDP).
+-   🔒 **Sessions**: keep a browser state across multi-step crawls.
+-   🧩 **Proxies**: with authentication and rotation.
+-   🕶️ **Stealth mode**: `enable_stealth`, and an undetected-browser adapter for sites that detect automation.
+-   ⚙️ **Full control**: headers, cookies, user agents, viewport.
+-   🌍 **Chromium, Firefox and WebKit**.
 
-🚀 **Deployment**
+🔎 **Crawling and scraping**
 
--   🐳 **Dockerized Setup**: Optimized Docker image with FastAPI server for easy deployment.
--   🔑 **Secure Authentication**: Built-in JWT token authentication for API security.
--   🔄 **API Gateway**: One-click deployment with secure token authentication for API-based workflows.
--   🌐 **Scalable Architecture**: Designed for mass-scale production and optimized server performance.
--   ☁️ **Cloud Deployment**: Ready-to-deploy configurations for major cloud platforms.
+-   🕸️ **Deep crawl**: BFS, DFS and best-first strategies, with crash recovery (`resume_state`) for long crawls.
+-   🧠 **Adaptive crawling**: `AdaptiveCrawler` stops when it has learned enough to answer your query.
+-   🌱 **URL discovery**: `AsyncUrlSeeder` (sitemaps, Common Crawl) and `DomainMapper`; `prefetch=True` finds URLs 5 to 10 times faster.
+-   🚀 **Dynamic pages**: run JavaScript, wait for elements, scroll the full page (`scan_full_page`) for infinite scroll and lazy images.
+-   📸 **Screenshots and PDFs** of any page.
+-   🖼️ **Media and links**: images, audio, video, `srcset`, internal and external links, iframes, metadata.
+-   📂 **Raw HTML and local files**: `raw:` and `file://`.
+-   🛠️ **Hooks** at every step of a crawl.
+-   💾 **Caching** to skip repeated fetches.
+-   ⚡ **Many URLs at once**: `arun_many` with a memory-adaptive dispatcher.
 
-🎯 **Additional Features**
+☁️ Same in the cloud: up to 50 URLs in one streamed call, or 10,000 in a background job. Docs →
 
--   🕶️ **Stealth Mode**: Avoid bot detection by mimicking real users.
--   🏷️ **Tag-Based Content Extraction**: Refine crawling based on custom tags, headers, or metadata.
--   🔗 **Link Analysis**: Extract and analyze all links for detailed data exploration.
--   🛡️ **Error Handling**: Robust error management for seamless execution.
--   🔐 **CORS & Static Serving**: Supports filesystem-based caching and cross-origin requests.
--   📖 **Clear Documentation**: Simplified and updated guides for onboarding and advanced usage.
--   🙌 **Community Recognition**: Acknowledges contributors and pull requests for transparency.
+🐳 **Self-hosting (Docker)**
 
-Try it Now!
------------
+-   🔐 **Secure by default**: every endpoint needs your `CRAWL4AI_API_TOKEN`.
+-   🧰 **REST API**: `/md`, `/html`, `/crawl`, `/crawl/stream`, `/screenshot`, `/pdf`, `/execute_js`.
+-   🤖 **MCP**: connect Claude Code and other agents to your own server.
+-   📊 **Monitoring dashboard and playground**, a browser pool with pre-warmed pages.
+-   🏗️ **AMD64 and ARM64** images.
 
-✨ Play around with this
+☁️ Rather not run a server? The cloud is the same idea, hosted. Get a key →
 
-✨ Visit our Documentation Website
+☁️ **What the cloud adds**
 
-Installation 🛠️
+-   🔍 **Web search API**: `GET /search`, browser-free, ranked and cleaned. Docs →
+-   💬 **Answers**: `GET /answer` gives a direct answer to a question (experimental). Docs →
+-   🧪 **Extraction without your own LLM key**: `POST /extract`. Docs →
+-   🧗 **JS-heavy pages and bot walls**: handled automatically; you never pick an engine. Docs →
+-   🤝 **MCP for your agent**: one line in Claude Code, Codex, Cursor or OpenCode. Docs →
+
+🛠️ Installation
 ----------------
 
-Crawl4AI offers flexible installation options to suit various use cases. You can install it as a Python package or use Docker.
+🐍 **pip**
 
-🐍 **Using pip**
+pip install -U crawl4ai
+crawl4ai-setup      # installs and sets up the browser
+crawl4ai-doctor     # checks the installation
 
-Choose the installation option that best fits your needs:
+If the browser setup fails, install it by hand:
 
-### Basic Installation
+python -m playwright install --with-deps chromium
 
-For basic web crawling and scraping tasks:
+Pre-release versions: `pip install crawl4ai --pre`
 
-pip install crawl4ai
-crawl4ai-setup # Setup the browser
-
-By default, this will install the asynchronous version of Crawl4AI, using Playwright for web crawling.
-
-👉 **Note**: When you install Crawl4AI, the `crawl4ai-setup` should automatically install and set up Playwright. However, if you encounter any Playwright-related errors, you can manually install it using one of these methods:
-
-1.  Through the command line:
-    
-    playwright install
-    
-2.  If the above doesn't work, try this more specific command:
-    
-    python -m playwright install chromium
-    
-
-This second method has proven to be more reliable in some cases.
-
-* * *
-
-### Installation with Synchronous Version
-
-The sync version is deprecated and will be removed in future versions. If you need the synchronous version using Selenium:
-
-pip install crawl4ai\[sync\]
-
-* * *
-
-### Development Installation
-
-For contributors who plan to modify the source code:
+**Development install**, for contributors:
 
 git clone https://github.com/unclecode/crawl4ai.git
 cd crawl4ai
-pip install -e .                    # Basic installation in editable mode
+pip install -e ".\[all\]"     # or: pip install -e .   (the core only)
 
-Install optional features:
+🐳 **Docker server**
 
-pip install -e ".\[torch\]"           # With PyTorch features
-pip install -e ".\[transformer\]"     # With Transformer features
-pip install -e ".\[cosine\]"          # With cosine similarity features
-pip install -e ".\[sync\]"            # With synchronous crawling (Selenium)
-pip install -e ".\[all\]"             # Install all optional features
+The server needs a token. Without one it answers only inside its container.
 
-🐳 **Docker Deployment**
+export CRAWL4AI\_API\_TOKEN="$(openssl rand -hex 32)"
+docker run -d -p 11235:11235 --name crawl4ai --shm-size=1g \\
+  -e CRAWL4AI\_API\_TOKEN="$CRAWL4AI\_API\_TOKEN" \\
+  unclecode/crawl4ai:latest
 
-> 🚀 **Now Available!** Our completely redesigned Docker implementation is here! This new solution makes deployment more efficient and seamless than ever.
+Test it (allow about 10 seconds for the start):
 
-### New Docker Features
+curl -s http://localhost:11235/md \\
+  -H "Authorization: Bearer $CRAWL4AI\_API\_TOKEN" \\
+  -H "Content-Type: application/json" \\
+  -d '{"url": "https://news.ycombinator.com"}' | jq -r .markdown
 
-The new Docker implementation includes:
+The dashboard is at `http://localhost:11235/dashboard`, the playground at `http://localhost:11235/playground`. LLM keys, MCP and every setting: Self-hosting guide.
 
--   **Real-time Monitoring Dashboard** with live system metrics and browser pool visibility
--   **Browser pooling** with page pre-warming for faster response times
--   **Interactive playground** to test and generate request code
--   **MCP integration** for direct connection to AI tools like Claude Code
--   **Comprehensive API endpoints** including HTML extraction, screenshots, PDF generation, and JavaScript execution
--   **Multi-architecture support** with automatic detection (AMD64/ARM64)
--   **Optimized resources** with improved memory management
+⌨️ **Command line (\`crwl\`)**
 
-### Getting Started
+# A page as Markdown
+crwl https://news.ycombinator.com -o markdown
 
-# Pull and run the latest release
-docker pull unclecode/crawl4ai:latest
-docker run -d -p 11235:11235 --name crawl4ai --shm-size=1g unclecode/crawl4ai:latest
+# Deep crawl, breadth first, at most 10 pages
+crwl https://docs.crawl4ai.com --deep-crawl bfs --max-pages 10
 
-# Visit the monitoring dashboard at http://localhost:11235/dashboard
-# Or the playground at http://localhost:11235/playground
+# Ask a question about a page (needs an LLM key: crwl config)
+crwl https://www.example.com/products -q "Extract all product prices"
 
-### Quick Test
+🔬 Advanced usage examples
+--------------------------
 
-Run a quick test (works for both Docker options):
+More in docs/examples.
 
-import requests
-
-\# Submit a crawl job
-response \= requests.post(
-    "http://localhost:11235/crawl",
-    json\={"urls": \["https://example.com"\], "priority": 10}
-)
-if response.status\_code \== 200:
-    print("Crawl job submitted successfully.")
-    
-if "results" in response.json():
-    results \= response.json()\["results"\]
-    print("Crawl job completed. Results:")
-    for result in results:
-        print(result)
-else:
-    task\_id \= response.json()\["task\_id"\]
-    print(f"Crawl job submitted. Task ID:: {task\_id}")
-    result \= requests.get(f"http://localhost:11235/task/{task\_id}")
-
-For more examples, see our Docker Examples. For advanced configuration, monitoring features, and production deployment, see our Self-Hosting Guide.
-
-* * *
-
-🔬 Advanced Usage Examples 🔬
------------------------------
-
-You can check the project structure in the directory docs/examples. Over there, you can find a variety of examples; here, some popular examples are shared.
-
-📝 **Heuristic Markdown Generation with Clean and Fit Markdown**
+📝 **Clean and fit Markdown**
 
 import asyncio
 from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode
-from crawl4ai.content\_filter\_strategy import PruningContentFilter, BM25ContentFilter
+from crawl4ai.content\_filter\_strategy import PruningContentFilterLXML
 from crawl4ai.markdown\_generation\_strategy import DefaultMarkdownGenerator
 
 async def main():
-    browser\_config \= BrowserConfig(
-        headless\=True,  
-        verbose\=True,
-    )
     run\_config \= CrawlerRunConfig(
-        cache\_mode\=CacheMode.ENABLED,
+        cache\_mode\=CacheMode.BYPASS,
         markdown\_generator\=DefaultMarkdownGenerator(
-            content\_filter\=PruningContentFilter(threshold\=0.48, threshold\_type\="fixed", min\_word\_threshold\=0)
+            content\_filter\=PruningContentFilterLXML(threshold\=0.48, threshold\_type\="fixed", min\_word\_threshold\=0)
         ),
-        \# markdown\_generator=DefaultMarkdownGenerator(
-        \#     content\_filter=BM25ContentFilter(user\_query="WHEN\_WE\_FOCUS\_BASED\_ON\_A\_USER\_QUERY", bm25\_threshold=1.0)
-        \# ),
     )
-    
-    async with AsyncWebCrawler(config\=browser\_config) as crawler:
-        result \= await crawler.arun(
-            url\="https://docs.micronaut.io/4.9.9/guide/",
-            config\=run\_config
-        )
-        print(len(result.markdown.raw\_markdown))
-        print(len(result.markdown.fit\_markdown))
+    async with AsyncWebCrawler(config\=BrowserConfig(headless\=True)) as crawler:
+        result \= await crawler.arun(url\="https://en.wikipedia.org/wiki/Web\_crawler", config\=run\_config)
+        print(len(result.markdown.raw\_markdown), "characters of raw Markdown")
+        print(len(result.markdown.fit\_markdown), "characters after the filter")
 
-if \_\_name\_\_ \== "\_\_main\_\_":
-    asyncio.run(main())
+asyncio.run(main())
 
-🖥️ **Executing JavaScript & Extract Structured Data without LLMs**
+🖥️ **A JavaScript page and structured data, without an LLM**
 
-import asyncio
-from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode
-from crawl4ai import JsonCssExtractionStrategy
-import json
+import asyncio, json
+from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode, JsonCssExtractionStrategy
 
-async def main():
-    schema \= {
-    "name": "KidoCode Courses",
-    "baseSelector": "section.charge-methodology .w-tab-content > div",
+schema \= {
+    "name": "Quotes",
+    "baseSelector": "div.quote",
     "fields": \[
-        {
-            "name": "section\_title",
-            "selector": "h3.heading-50",
-            "type": "text",
-        },
-        {
-            "name": "section\_description",
-            "selector": ".charge-content",
-            "type": "text",
-        },
-        {
-            "name": "course\_name",
-            "selector": ".text-block-93",
-            "type": "text",
-        },
-        {
-            "name": "course\_description",
-            "selector": ".course-content-text",
-            "type": "text",
-        },
-        {
-            "name": "course\_icon",
-            "selector": ".image-92",
-            "type": "attribute",
-            "attribute": "src"
-        }
-    \]
+        {"name": "text", "selector": "span.text", "type": "text"},
+        {"name": "author", "selector": "small.author", "type": "text"},
+        {"name": "tags", "selector": "a.tag", "type": "list", "fields": \[{"name": "tag", "type": "text"}\]},
+    \],
 }
 
-    extraction\_strategy \= JsonCssExtractionStrategy(schema, verbose\=True)
-
-    browser\_config \= BrowserConfig(
-        headless\=False,
-        verbose\=True
-    )
-    run\_config \= CrawlerRunConfig(
-        extraction\_strategy\=extraction\_strategy,
-        js\_code\=\["""(async () => {const tabs = document.querySelectorAll("section.charge-methodology .tabs-menu-3 > div");for(let tab of tabs) {tab.scrollIntoView();tab.click();await new Promise(r => setTimeout(r, 500));}})();"""\],
-        cache\_mode\=CacheMode.BYPASS
-    )
-        
-    async with AsyncWebCrawler(config\=browser\_config) as crawler:
-        
-        result \= await crawler.arun(
-            url\="https://www.kidocode.com/degrees/technology",
-            config\=run\_config
-        )
-
-        companies \= json.loads(result.extracted\_content)
-        print(f"Successfully extracted {len(companies)} companies")
-        print(json.dumps(companies\[0\], indent\=2))
-
-if \_\_name\_\_ \== "\_\_main\_\_":
-    asyncio.run(main())
-
-📚 **Extracting Structured Data with LLMs**
-
-import os
-import asyncio
-from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode, LLMConfig
-from crawl4ai import LLMExtractionStrategy
-from pydantic import BaseModel, Field
-
-class OpenAIModelFee(BaseModel):
-    model\_name: str \= Field(..., description\="Name of the OpenAI model.")
-    input\_fee: str \= Field(..., description\="Fee for input token for the OpenAI model.")
-    output\_fee: str \= Field(..., description\="Fee for output token for the OpenAI model.")
-
 async def main():
-    browser\_config \= BrowserConfig(verbose\=True)
     run\_config \= CrawlerRunConfig(
-        word\_count\_threshold\=1,
-        extraction\_strategy\=LLMExtractionStrategy(
-            \# Here you can use any provider that Litellm library supports, for instance: ollama/qwen2
-            \# provider="ollama/qwen2", api\_token="no-token", 
-            llm\_config \= LLMConfig(provider\="openai/gpt-4o", api\_token\=os.getenv('OPENAI\_API\_KEY')), 
-            schema\=OpenAIModelFee.schema(),
-            extraction\_type\="schema",
-            instruction\="""From the crawled content, extract all mentioned model names along with their fees for input and output tokens. 
-            Do not miss any models in the entire content. One extracted model JSON format should look like this: 
-            {"model\_name": "GPT-4", "input\_fee": "US$10.00 / 1M tokens", "output\_fee": "US$30.00 / 1M tokens"}."""
-        ),            
+        extraction\_strategy\=JsonCssExtractionStrategy(schema),
+        scan\_full\_page\=True,   \# scroll to the end, so the page loads every quote
+        scroll\_delay\=0.5,
         cache\_mode\=CacheMode.BYPASS,
     )
-    
-    async with AsyncWebCrawler(config\=browser\_config) as crawler:
-        result \= await crawler.arun(
-            url\='https://openai.com/api/pricing/',
-            config\=run\_config
-        )
+    async with AsyncWebCrawler(config\=BrowserConfig(headless\=True)) as crawler:
+        result \= await crawler.arun(url\="https://quotes.toscrape.com/scroll", config\=run\_config)
+        quotes \= json.loads(result.extracted\_content)
+        print(f"Extracted {len(quotes)} quotes")
+        print(json.dumps(quotes\[0\], indent\=2))
+
+asyncio.run(main())
+
+📚 **Structured data with an LLM**
+
+import os, asyncio
+from pydantic import BaseModel, Field
+from crawl4ai import AsyncWebCrawler, CrawlerRunConfig, CacheMode, LLMConfig, LLMExtractionStrategy
+
+class ModelFee(BaseModel):
+    model\_name: str \= Field(..., description\="Name of the model.")
+    input\_fee: str \= Field(..., description\="Fee for input tokens.")
+    output\_fee: str \= Field(..., description\="Fee for output tokens.")
+
+async def main():
+    run\_config \= CrawlerRunConfig(
+        cache\_mode\=CacheMode.BYPASS,
+        extraction\_strategy\=LLMExtractionStrategy(
+            \# any provider LiteLLM supports, e.g. "ollama/llama3.3" with api\_token="no-token"
+            llm\_config\=LLMConfig(provider\="openai/gpt-4o-mini", api\_token\=os.getenv("OPENAI\_API\_KEY")),
+            schema\=ModelFee.model\_json\_schema(),
+            extraction\_type\="schema",
+            instruction\="Extract every model name with its input and output token fee.",
+        ),
+    )
+    async with AsyncWebCrawler() as crawler:
+        result \= await crawler.arun(url\="https://openai.com/api/pricing/", config\=run\_config)
         print(result.extracted\_content)
 
-if \_\_name\_\_ \== "\_\_main\_\_":
-    asyncio.run(main())
+asyncio.run(main())
 
-🤖 **Using Your own Browser with Custom User Profile**
+🤖 **Your own browser with a saved profile**
 
-import os, sys
+import os, asyncio
 from pathlib import Path
-import asyncio, time
 from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig, CacheMode
 
-async def test\_news\_crawl():
-    \# Create a persistent user data directory
+async def main():
     user\_data\_dir \= os.path.join(Path.home(), ".crawl4ai", "browser\_profile")
     os.makedirs(user\_data\_dir, exist\_ok\=True)
-
-    browser\_config \= BrowserConfig(
-        verbose\=True,
-        headless\=True,
-        user\_data\_dir\=user\_data\_dir,
-        use\_persistent\_context\=True,
-    )
-    run\_config \= CrawlerRunConfig(
-        cache\_mode\=CacheMode.BYPASS
-    )
-    
+    browser\_config \= BrowserConfig(headless\=True, user\_data\_dir\=user\_data\_dir, use\_persistent\_context\=True)
+    run\_config \= CrawlerRunConfig(cache\_mode\=CacheMode.BYPASS, magic\=True)
     async with AsyncWebCrawler(config\=browser\_config) as crawler:
-        url \= "ADDRESS\_OF\_A\_CHALLENGING\_WEBSITE"
-        
-        result \= await crawler.arun(
-            url,
-            config\=run\_config,
-            magic\=True,
-        )
-        
-        print(f"Successfully crawled {url}")
-        print(f"Content length: {len(result.markdown)}")
+        result \= await crawler.arun(url\="ADDRESS\_OF\_A\_CHALLENGING\_WEBSITE", config\=run\_config)
+        print(result.success, len(result.markdown))
 
-* * *
+asyncio.run(main())
 
-✨ Recent Updates
+📖 Documentation
 ----------------
 
-**Version 0.9.3 Release Highlights - Security Release**
-
-A security release closing five coordinated-disclosure advisories. Four are in the PDF processing path: an arbitrary file write through `PDFContentScrapingStrategy` image-write fields, an SSRF where the PDF download followed redirects into internal addresses, a denial of service from unbounded PDF size and page count, and an XSS from unescaped PDF text in `cleaned_html`. The fifth is a DOM-based XSS in the Docker Playground that could expose the operator's API token.
-
-It also carries 33 bug fixes that accumulated since 0.9.2: PDF scraping now works out of the box on the Docker server, the egress proxy chains through an upstream proxy, failed crawl results are reported instead of dropped, a Playwright driver leak on failed browser launch is fixed, and PDF crawls are no longer wrongly flagged as anti-bot blocks.
-
-No new features, no breaking changes. Two defaults changed: PDF downloads now cap at 100 MiB and 2000 pages, and the Docker `limits.wall_clock_s` is now 300 seconds instead of 0.
-
-pip install -U crawl4ai
-
-Full v0.9.3 Release Notes →
-
-**Version 0.9.2 Release Highlights - Maintenance Bug Fixes**
-
-A maintenance patch release with bug fixes across the dispatcher, Docker, and GPU builds. `MemoryAdaptiveDispatcher` no longer leaks crawl tasks and browser pages when a streaming crawl is closed. Docker fixes cover the Playground "Advanced Config" 400, the Monitor WebSocket 500 under JWT auth, and Playwright headless-shell packaging. `ENABLE_GPU=true` Docker builds no longer fail on the CUDA toolkit.
-
-No new features, no breaking changes.
-
-pip install -U crawl4ai
-
-Full v0.9.2 Release Notes →
-
-**Version 0.9.1 Release Highlights - Bug Fixes & PruningContentFilter Whitelist**
-
-A patch release with 12 bug fixes and one new feature. The new `preserve_classes` / `preserve_tags` parameters for `PruningContentFilter` let you whitelist CSS classes or HTML tags that should never be pruned — useful for protecting short metadata elements like author names and timestamps.
-
-Bug fixes span Docker (auth gate UI, supervisord/redis dirs, FastAPI compatibility, redis auth), browser (Windows channel crash, context snapshot leak), core (HTTP timeout unit mismatch, best-first ordering), and extraction (html2text table attributes).
-
-pip install -U crawl4ai
-
-Full v0.9.1 Release Notes →
-
-**Version 0.9.0 Release Highlights - Secure-by-Default Docker Server**
-
-A major, secure-by-default release of the Docker API server. The out-of-the-box deployment is hardened with defense in depth: authentication is on by default, the server binds loopback unless you give it a token, and the network request body is treated as an untrusted trust boundary.
-
-pip install -U crawl4ai
-
-Migration Guide → · Full v0.9.0 Release Notes →
-
-**Version 0.8.7 Release Highlights - Security Hardening, DomainMapper & Community Fixes**
-
-A security-hardening release. Fixes critical Docker API vulnerabilities (AST sandbox escape RCE, hook sandbox RCE, hardcoded JWT secret, SSRF on webhook and crawl endpoints, arbitrary file write, monitor auth bypass, stored XSS, and unauthenticated JS execution), adds the DomainMapper feature, and ships a batch of scraping, deep-crawl, and LLM fixes. If you self-host the Docker API, upgrade immediately.
-
-pip install -U crawl4ai
-
-Full v0.8.7 Release Notes →
-
-**Version 0.8.6 - Security Hotfix: litellm Supply Chain Fix**
-
-Replaced `litellm` dependency with `unclecode-litellm` due to a PyPI supply chain compromise affecting the original package. If you're on v0.8.5 or earlier, upgrade immediately.
-
-pip install -U crawl4ai
-
-**Version 0.8.5 Release Highlights - Anti-Bot Detection, Shadow DOM & 60+ Bug Fixes**
-
-Our biggest release since v0.8.0. Anti-bot detection with proxy escalation, Shadow DOM flattening, deep crawl cancellation, and over 60 bug fixes.
-
--   **🛡️ Anti-Bot Detection & Proxy Escalation**:
-    
-    -   3-tier detection: known vendors, generic block indicators, structural integrity checks
-    -   Automatic retry with proxy chain and fallback fetch function
-    
-    from crawl4ai import CrawlerRunConfig
-    from crawl4ai.async\_configs import ProxyConfig
-    
-    config \= CrawlerRunConfig(
-        proxy\_config\=\[ProxyConfig.DIRECT, ProxyConfig(server\="http://my-proxy:8080")\],
-        max\_retries\=2,
-        fallback\_fetch\_function\=my\_web\_unlocker,
-    )
-    
--   **🌑 Shadow DOM Flattening**:
-    
-    -   Extract content hidden inside shadow DOM components
-    
-    config \= CrawlerRunConfig(flatten\_shadow\_dom\=True)
-    
--   **🛑 Deep Crawl Cancellation**:
-    
-    -   Stop long crawls gracefully with `cancel()` or `should_cancel` callback
-    -   Works with BFS, DFS, and BestFirst strategies
--   **⚙️ Config Defaults API**:
-    
-    -   `set_defaults()` / `get_defaults()` / `reset_defaults()` on BrowserConfig and CrawlerRunConfig
--   **🔒 Critical Security Fixes**:
-    
-    -   RCE via deserialization in Docker `/crawl` endpoint — removed `eval()`, added allowlist
-    -   Redis CVE-2025-49844 (CVSS 10.0) — upgraded to 7.2.7
--   **60+ Bug Fixes** across browser management, proxy, deep crawling, extraction, CLI, and Docker
-    
-
-Full v0.8.5 Release Notes →
-
-**Version 0.8.0 Release Highlights - Crash Recovery & Prefetch Mode**
-
-This release introduces crash recovery for deep crawls, a new prefetch mode for fast URL discovery, and critical security fixes for Docker deployments.
-
--   **🔄 Deep Crawl Crash Recovery**:
-    
-    -   `on_state_change` callback fires after each URL for real-time state persistence
-    -   `resume_state` parameter to continue from a saved checkpoint
-    -   JSON-serializable state for Redis/database storage
-    -   Works with BFS, DFS, and Best-First strategies
-    
-    from crawl4ai.deep\_crawling import BFSDeepCrawlStrategy
-    
-    strategy \= BFSDeepCrawlStrategy(
-        max\_depth\=3,
-        resume\_state\=saved\_state,  \# Continue from checkpoint
-        on\_state\_change\=save\_to\_redis,  \# Called after each URL
-    )
-    
--   **⚡ Prefetch Mode for Fast URL Discovery**:
-    
-    -   `prefetch=True` skips markdown, extraction, and media processing
-    -   5-10x faster than full processing
-    -   Perfect for two-phase crawling: discover first, process selectively
-    
-    config \= CrawlerRunConfig(prefetch\=True)
-    result \= await crawler.arun("https://example.com", config\=config)
-    \# Returns HTML and links only - no markdown generation
-    
--   **🔒 Security Fixes (Docker API)**:
-    
-    -   Hooks disabled by default (`CRAWL4AI_HOOKS_ENABLED=false`)
-    -   `file://` URLs blocked on API endpoints to prevent LFI
-    -   `__import__` removed from hook execution sandbox
-
-Full v0.8.0 Release Notes →
-
-**Version 0.7.8 Release Highlights - Stability & Bug Fix Release**
-
-This release focuses on stability with 11 bug fixes addressing issues reported by the community. No new features, but significant improvements to reliability.
-
--   **🐳 Docker API Fixes**:
-    
-    -   Fixed `ContentRelevanceFilter` deserialization in deep crawl requests (#1642)
-    -   Fixed `ProxyConfig` JSON serialization in `BrowserConfig.to_dict()` (#1629)
-    -   Fixed `.cache` folder permissions in Docker image (#1638)
--   **🤖 LLM Extraction Improvements**:
-    
-    -   Configurable rate limiter backoff with new `LLMConfig` parameters (#1269):
-        
-        from crawl4ai import LLMConfig
-        
-        config \= LLMConfig(
-            provider\="openai/gpt-4o-mini",
-            backoff\_base\_delay\=5,           \# Wait 5s on first retry
-            backoff\_max\_attempts\=5,          \# Try up to 5 times
-            backoff\_exponential\_factor\=3     \# Multiply delay by 3 each attempt
-        )
-        
-    -   HTML input format support for `LLMExtractionStrategy` (#1178):
-        
-        from crawl4ai import LLMExtractionStrategy
-        
-        strategy \= LLMExtractionStrategy(
-            llm\_config\=config,
-            instruction\="Extract table data",
-            input\_format\="html"  \# Now supports: "html", "markdown", "fit\_markdown"
-        )
-        
-    -   Fixed raw HTML URL variable - extraction strategies now receive `"Raw HTML"` instead of HTML blob (#1116)
--   **🔗 URL Handling**:
-    
-    -   Fixed relative URL resolution after JavaScript redirects (#1268)
-    -   Fixed import statement formatting in extracted code (#1181)
--   **📦 Dependency Updates**:
-    
-    -   Replaced deprecated PyPDF2 with pypdf (#1412)
-    -   Pydantic v2 ConfigDict compatibility - no more deprecation warnings (#678)
--   **🧠 AdaptiveCrawler**:
-    
-    -   Fixed query expansion to actually use LLM instead of hardcoded mock data (#1621)
-
-Full v0.7.8 Release Notes →
-
-**Version 0.7.7 Release Highlights - The Self-Hosting & Monitoring Update**
-
--   **📊 Real-time Monitoring Dashboard**: Interactive web UI with live system metrics and browser pool visibility
-    
-    \# Access the monitoring dashboard
-    \# Visit: http://localhost:11235/dashboard
-    
-    \# Real-time metrics include:
-    \# - System health (CPU, memory, network, uptime)
-    \# - Active and completed request tracking
-    \# - Browser pool management (permanent/hot/cold)
-    \# - Janitor cleanup events
-    \# - Error monitoring with full context
-    
--   **🔌 Comprehensive Monitor API**: Complete REST API for programmatic access to all monitoring data
-    
-    import httpx
-    
-    async with httpx.AsyncClient() as client:
-        \# System health
-        health \= await client.get("http://localhost:11235/monitor/health")
-    
-        \# Request tracking
-        requests \= await client.get("http://localhost:11235/monitor/requests")
-    
-        \# Browser pool status
-        browsers \= await client.get("http://localhost:11235/monitor/browsers")
-    
-        \# Endpoint statistics
-        stats \= await client.get("http://localhost:11235/monitor/endpoints/stats")
-    
--   **⚡ WebSocket Streaming**: Real-time updates every 2 seconds for custom dashboards
-    
--   **🔥 Smart Browser Pool**: 3-tier architecture (permanent/hot/cold) with automatic promotion and cleanup
-    
--   **🧹 Janitor System**: Automatic resource management with event logging
-    
--   **🎮 Control Actions**: Manual browser management (kill, restart, cleanup) via API
-    
--   **📈 Production Metrics**: 6 critical metrics for operational excellence with Prometheus integration
-    
--   **🐛 Critical Bug Fixes**:
-    
-    -   Fixed async LLM extraction blocking issue (#1055)
-    -   Enhanced DFS deep crawl strategy (#1607)
-    -   Fixed sitemap parsing in AsyncUrlSeeder (#1598)
-    -   Resolved browser viewport configuration (#1495)
-    -   Fixed CDP timing with exponential backoff (#1528)
-    -   Security update for pyOpenSSL (>=25.3.0)
-
-Full v0.7.7 Release Notes →
-
-**Version 0.7.5 Release Highlights - The Docker Hooks & Security Update**
-
--   **🔧 Docker Hooks System**: Complete pipeline customization with user-provided Python functions at 8 key points
-    
--   **✨ Function-Based Hooks API (NEW)**: Write hooks as regular Python functions with full IDE support:
-    
-    from crawl4ai import hooks\_to\_string
-    from crawl4ai.docker\_client import Crawl4aiDockerClient
-    
-    \# Define hooks as regular Python functions
-    async def on\_page\_context\_created(page, context, \*\*kwargs):
-        """Block images to speed up crawling"""
-        await context.route("\*\*/\*.{png,jpg,jpeg,gif,webp}", lambda route: route.abort())
-        await page.set\_viewport\_size({"width": 1920, "height": 1080})
-        return page
-    
-    async def before\_goto(page, context, url, \*\*kwargs):
-        """Add custom headers"""
-        await page.set\_extra\_http\_headers({'X-Crawl4AI': 'v0.7.5'})
-        return page
-    
-    \# Option 1: Use hooks\_to\_string() utility for REST API
-    hooks\_code \= hooks\_to\_string({
-        "on\_page\_context\_created": on\_page\_context\_created,
-        "before\_goto": before\_goto
-    })
-    
-    \# Option 2: Docker client with automatic conversion (Recommended)
-    client \= Crawl4aiDockerClient(base\_url\="http://localhost:11235")
-    results \= await client.crawl(
-        urls\=\["https://httpbin.org/html"\],
-        hooks\={
-            "on\_page\_context\_created": on\_page\_context\_created,
-            "before\_goto": before\_goto
-        }
-    )
-    \# ✓ Full IDE support, type checking, and reusability!
-    
--   **🤖 Enhanced LLM Integration**: Custom providers with temperature control and base\_url configuration
-    
--   **🔒 HTTPS Preservation**: Secure internal link handling with `preserve_https_for_internal_links=True`
-    
--   **🐍 Python 3.10+ Support**: Modern language features and enhanced performance
-    
--   **🛠️ Bug Fixes**: Resolved multiple community-reported issues including URL processing, JWT authentication, and proxy configuration
-    
-
-Full v0.7.5 Release Notes →
-
-**Version 0.7.4 Release Highlights - The Intelligent Table Extraction & Performance Update**
-
--   **🚀 LLMTableExtraction**: Revolutionary table extraction with intelligent chunking for massive tables:
-    
-    from crawl4ai import LLMTableExtraction, LLMConfig
-    
-    \# Configure intelligent table extraction
-    table\_strategy \= LLMTableExtraction(
-        llm\_config\=LLMConfig(provider\="openai/gpt-4.1-mini"),
-        enable\_chunking\=True,           \# Handle massive tables
-        chunk\_token\_threshold\=5000,     \# Smart chunking threshold
-        overlap\_threshold\=100,          \# Maintain context between chunks
-        extraction\_type\="structured"    \# Get structured data output
-    )
-    
-    config \= CrawlerRunConfig(table\_extraction\_strategy\=table\_strategy)
-    result \= await crawler.arun("https://complex-tables-site.com", config\=config)
-    
-    \# Tables are automatically chunked, processed, and merged
-    for table in result.tables:
-        print(f"Extracted table: {len(table\['data'\])} rows")
-    
--   **⚡ Dispatcher Bug Fix**: Fixed sequential processing bottleneck in arun\_many for fast-completing tasks
-    
--   **🧹 Memory Management Refactor**: Consolidated memory utilities into main utils module for cleaner architecture
-    
--   **🔧 Browser Manager Fixes**: Resolved race conditions in concurrent page creation with thread-safe locking
-    
--   **🔗 Advanced URL Processing**: Better handling of raw:// URLs and base tag link resolution
-    
--   **🛡️ Enhanced Proxy Support**: Flexible proxy configuration supporting both dict and string formats
-    
-
-Full v0.7.4 Release Notes →
-
-**Version 0.7.3 Release Highlights - The Multi-Config Intelligence Update**
-
--   **🕵️ Undetected Browser Support**: Bypass sophisticated bot detection systems:
-    
-    from crawl4ai import AsyncWebCrawler, BrowserConfig
-    
-    browser\_config \= BrowserConfig(
-        browser\_type\="undetected",  \# Use undetected Chrome
-        headless\=True,              \# Can run headless with stealth
-        extra\_args\=\[
-            "--disable-blink-features=AutomationControlled",
-            "--disable-web-security"
-        \]
-    )
-    
-    async with AsyncWebCrawler(config\=browser\_config) as crawler:
-        result \= await crawler.arun("https://protected-site.com")
-    \# Successfully bypass Cloudflare, Akamai, and custom bot detection
-    
--   **🎨 Multi-URL Configuration**: Different strategies for different URL patterns in one batch:
-    
-
-from crawl4ai import CrawlerRunConfig, MatchMode, CacheMode
-  
-  configs \= \[
-      \# Documentation sites - aggressive caching
-      CrawlerRunConfig(
-          url\_matcher\=\["\*docs\*", "\*documentation\*"\],
-          cache\_mode\=CacheMode.WRITE\_ONLY,
-          markdown\_generator\_options\={"include\_links": True}
-      ),
-      
-      \# News/blog sites - fresh content
-      CrawlerRunConfig(
-          url\_matcher\=lambda url: 'blog' in url or 'news' in url,
-          cache\_mode\=CacheMode.BYPASS
-      ),
-      
-      \# Fallback for everything else
-      CrawlerRunConfig()
-  \]
-  
-  results \= await crawler.arun\_many(urls, config\=configs)
-  \# Each URL gets the perfect configuration automatically
-
--   **🧠 Memory Monitoring**: Track and optimize memory usage during crawling:
-    
-    from crawl4ai.memory\_utils import MemoryMonitor
-    
-    monitor \= MemoryMonitor()
-    monitor.start\_monitoring()
-    
-    results \= await crawler.arun\_many(large\_url\_list)
-    
-    report \= monitor.get\_report()
-    print(f"Peak memory: {report\['peak\_mb'\]:.1f} MB")
-    print(f"Efficiency: {report\['efficiency'\]:.1f}%")
-    \# Get optimization recommendations
-    
--   **📊 Enhanced Table Extraction**: Direct DataFrame conversion from web tables:
-    
-    result \= await crawler.arun("https://site-with-tables.com")
-    
-    \# New way - direct table access
-    if result.tables:
-        import pandas as pd
-        for table in result.tables:
-            df \= pd.DataFrame(table\['data'\])
-            print(f"Table: {df.shape\[0\]} rows × {df.shape\[1\]} columns")
-    
--   **💰 GitHub Sponsors**: 4-tier sponsorship system for project sustainability
-    
--   **🐳 Docker LLM Flexibility**: Configure providers via environment variables
-    
-
-Full v0.7.3 Release Notes →
-
-**Version 0.7.0 Release Highlights - The Adaptive Intelligence Update**
-
--   **🧠 Adaptive Crawling**: Your crawler now learns and adapts to website patterns automatically:
-    
-    config \= AdaptiveConfig(
-        confidence\_threshold\=0.7, \# Min confidence to stop crawling
-        max\_depth\=5, \# Maximum crawl depth
-        max\_pages\=20, \# Maximum number of pages to crawl
-        strategy\="statistical"
-    )
-    
-    async with AsyncWebCrawler() as crawler:
-        adaptive\_crawler \= AdaptiveCrawler(crawler, config)
-        state \= await adaptive\_crawler.digest(
-            start\_url\="https://news.example.com",
-            query\="latest news content"
-        )
-    \# Crawler learns patterns and improves extraction over time
-    
--   **🌊 Virtual Scroll Support**: Complete content extraction from infinite scroll pages:
-    
-    scroll\_config \= VirtualScrollConfig(
-        container\_selector\="\[data-testid='feed'\]",
-        scroll\_count\=20,
-        scroll\_by\="container\_height",
-        wait\_after\_scroll\=1.0
-    )
-    
-    result \= await crawler.arun(url, config\=CrawlerRunConfig(
-        virtual\_scroll\_config\=scroll\_config
-    ))
-    
--   **🔗 Intelligent Link Analysis**: 3-layer scoring system for smart link prioritization:
-    
-    link\_config \= LinkPreviewConfig(
-        query\="machine learning tutorials",
-        score\_threshold\=0.3,
-        concurrent\_requests\=10
-    )
-    
-    result \= await crawler.arun(url, config\=CrawlerRunConfig(
-        link\_preview\_config\=link\_config,
-        score\_links\=True
-    ))
-    \# Links ranked by relevance and quality
-    
--   **🎣 Async URL Seeder**: Discover thousands of URLs in seconds:
-    
-    seeder \= AsyncUrlSeeder(SeedingConfig(
-        source\="sitemap+cc",
-        pattern\="\*/blog/\*",
-        query\="python tutorials",
-        score\_threshold\=0.4
-    ))
-    
-    urls \= await seeder.discover("https://example.com")
-    
--   **⚡ Performance Boost**: Up to 3x faster with optimized resource handling and memory efficiency
-    
-
-Read the full details in our 0.7.0 Release Notes or check the CHANGELOG.
-
-Version Numbering in Crawl4AI
------------------------------
-
-Crawl4AI follows standard Python version numbering conventions (PEP 440) to help users understand the stability and features of each release.
-
-📈 **Version Numbers Explained**
-
-Our version numbers follow this pattern: `MAJOR.MINOR.PATCH` (e.g., 0.4.3)
-
-#### Pre-release Versions
-
-We use different suffixes to indicate development stages:
-
--   `dev` (0.4.3dev1): Development versions, unstable
--   `a` (0.4.3a1): Alpha releases, experimental features
--   `b` (0.4.3b1): Beta releases, feature complete but needs testing
--   `rc` (0.4.3): Release candidates, potential final version
-
-#### Installation
-
--   Regular installation (stable version):
-    
-    pip install -U crawl4ai
-    
--   Install pre-release versions:
-    
-    pip install crawl4ai --pre
-    
--   Install specific version:
-    
-    pip install crawl4ai==0.4.3b1
-    
-
-#### Why Pre-releases?
-
-We use pre-releases to:
-
--   Test new features in real-world scenarios
--   Gather feedback before final releases
--   Ensure stability for production users
--   Allow early adopters to try new features
-
-For production environments, we recommend using the stable version. For testing new features, you can opt-in to pre-releases using the `--pre` flag.
-
-📖 Documentation & Roadmap
---------------------------
-
-> 🚨 **Documentation Update Alert**: We're undertaking a major documentation overhaul next week to reflect recent updates and improvements. Stay tuned for a more comprehensive and up-to-date guide!
-
-For current documentation, including installation instructions, advanced features, and API reference, visit our Documentation Website.
-
-To check our development plans and upcoming features, visit our Roadmap.
-
-📈 **Development TODOs**
-
--   0\. Graph Crawler: Smart website traversal using graph search algorithms for comprehensive nested page extraction
--   1\. Question-Based Crawler: Natural language driven web discovery and content extraction
--   2\. Knowledge-Optimal Crawler: Smart crawling that maximizes knowledge while minimizing data extraction
--   3\. Agentic Crawler: Autonomous system for complex multi-step crawling operations
--   4\. Automated Schema Generator: Convert natural language to extraction schemas
--   5\. Domain-Specific Scrapers: Pre-configured extractors for common platforms (academic, e-commerce)
--   6\. Web Embedding Index: Semantic search infrastructure for crawled content
--   7\. Interactive Playground: Web UI for testing, comparing strategies with AI assistance
--   8\. Performance Monitor: Real-time insights into crawler operations
--   9\. Cloud Integration: One-click deployment solutions across cloud providers
--   10\. Sponsorship Program: Structured support system with tiered benefits
--   11\. Educational Content: "How to Crawl" video series and interactive tutorials
+-   Library docs, guides and API reference: docs.crawl4ai.com
+-   Cloud docs: crawl4ai.com/docs
+-   Release notes: releases · Roadmap: ROADMAP.md
 
 🤝 Contributing
 ---------------
 
 We welcome contributions from the open-source community. Check out our contribution guidelines for more information.
-
-I'll help modify the license section with badges. For the halftone effect, here's a version with it:
-
-Here's the updated license section:
 
 📄 License & Attribution
 ------------------------
@@ -1087,37 +412,18 @@ UncleCode. (2024). Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper [Com
 GitHub. https://github.com/unclecode/crawl4ai
 ```
 
-📧 Contact
-----------
-
-For questions, suggestions, or feedback, feel free to reach out:
-
--   GitHub: unclecode
--   Twitter: @unclecode
--   Website: crawl4ai.com
-
-Happy Crawling! 🕸️🚀
-
 🗾 Mission
 ----------
 
-Our mission is to unlock the value of personal and enterprise data by transforming digital footprints into structured, tradeable assets. Crawl4AI empowers individuals and organizations with open-source tools to extract and structure data, fostering a shared data economy.
+Our mission is to unlock the value of personal and enterprise data by turning digital footprints into structured, useful assets. Crawl4AI gives individuals and organizations open-source tools to extract and structure data, and a fair way to benefit from it. Full mission statement →
 
-We envision a future where AI is powered by real human knowledge, ensuring data creators directly benefit from their contributions. By democratizing data and enabling ethical sharing, we are laying the foundation for authentic AI advancement.
+💖 Support Crawl4AI
+-------------------
 
-🔑 **Key Opportunities**
-
--   **Data Capitalization**: Transform digital footprints into measurable, valuable assets.
--   **Authentic AI Data**: Provide AI systems with real human insights.
--   **Shared Economy**: Create a fair data marketplace that benefits data creators.
-
-🚀 **Development Pathway**
-
-1.  **Open-Source Tools**: Community-driven platforms for transparent data extraction.
-2.  **Digital Asset Structuring**: Tools to organize and value digital knowledge.
-3.  **Ethical Data Marketplace**: A secure, fair platform for exchanging structured data.
-
-For more details, see our full mission statement.
+1.  ⭐ **Star the repo**: it helps more people find it.
+2.  ☁️ **Use the cloud**: crawl4ai.com. It funds the library.
+3.  💝 **Sponsor on GitHub**: github.com/sponsors/unclecode
+4.  🏢 **Companies**: the sponsor tiers and benefits are in SPONSORS.md.
 
 🌟 Current Sponsors
 -------------------
@@ -1169,6 +475,16 @@ Whether you’re a proxy provider, AI infrastructure company, cloud platform, or
 A heartfelt thanks to our individual supporters! Every contribution helps us keep our opensource mission alive and thriving!
 
 > Want to join them? Sponsor Crawl4AI →
+
+📧 Contact
+----------
+
+Discord · X @unclecode · GitHub @unclecode · hello@crawl4ai.com
+
+-   **Building crawlers or AI agents for a living?** DM me on X. I want to work with people like you, and we are hiring.
+-   **From a company?** We have an enterprise offer and we tailor it to your business. SOC 2 Type I is done, Type II is in progress. Write to hello@crawl4ai.com.
+
+Happy crawling! 🕸️🚀
 
 Star History
 ------------

@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 34096
+stars: 34320
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---
@@ -142,9 +142,10 @@ A text transcript is also available.
 GitHub Issues & Discussions
 ---------------------------
 
-Use GitHub Discussions for support and feature requests. GitHub Issues are not used for new reports.
+Report bugs in GitHub Issues. Use GitHub Discussions for questions and feature ideas.
 
--   Troubleshooting & Bug Reports: include a minimal config, the command you ran, expected behavior, and relevant error output. See the troubleshooting guide first.
+-   Issues: report a bug with a minimal config, the command you ran, expected behavior, and relevant error output. See the troubleshooting guide first.
+-   Troubleshooting: ask for help when you are not sure whether something is a bug.
 -   Ideas: suggest a feature or describe a workflow mise could support.
 -   Announcements: follow project updates.
 

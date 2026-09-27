@@ -1,6 +1,6 @@
 ---
 project: platform
-stars: 27722
+stars: 27781
 description: Huly — All-in-One Project Management Platform (alternative to Linear, Jira, Slack, Notion, Motion)
 url: https://github.com/hcengineering/platform
 ---
@@ -9,6 +9,12 @@ Huly Platform
 =============
 
 ⭐️ Your star shines on us. Star us on GitHub!
+
+Important
+
+**This repository is frozen and is no longer actively maintained.**
+
+Development continues in Platform-Collective/platform. Please use the new repository for current source code, issues, and pull requests.
 
 Important
 

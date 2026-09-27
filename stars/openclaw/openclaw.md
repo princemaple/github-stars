@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 390099
+stars: 390594
 description: The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -12,7 +12,7 @@ OpenClaw is an open-source AI assistant that runs on your own computer and meets
 
 **Yours, with no catch.** State, memory, and credentials live on your hardware. Models and agent harnesses (Claude, Codex, local models) are plugins you can swap without changing anything else. Your prompts go to the model provider and chat platforms you configure, plus any diagnostics export you enable yourself; by default OpenClaw itself phones home for nothing but a daily version check, anonymous feature statistics are opt-in, and `update.checkOnStart: false` disables both (what OpenClaw sends). OpenClaw is stewarded by the OpenClaw Foundation, an independent 501(c)(3), and has no paid tier, hosted service, or token. The architecture case — trusted gateway, untrusted execution, deterministic policy — is in Why OpenClaw.
 
-Website · Docs · Getting started · Why OpenClaw · Showcase · FAQ · Vision · DeepWiki
+Website · Docs · Getting started · Why OpenClaw · FAQ · Vision · DeepWiki
 
 Install
 -------

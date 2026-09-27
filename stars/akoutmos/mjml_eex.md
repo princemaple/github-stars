@@ -230,12 +230,12 @@ Using with Gettext
 Similarly to Phoenix live/dead views, you can leverage Gettext to produce translated emails. To use Gettext, you will need to have a Gettext module defined in your project (this should be created automatically for you when you create your Phoenix project via `mix phx.new MyApp`). Then your MjmlEEx module will look something like this:
 
 defmodule MyApp.GettextTemplate do
-    import MyApp.Gettext
+  import MyApp.Gettext
 
-    use MjmlEEx,
-      mjml\_template: "gettext\_template.mjml.eex",
-      mode: :compile
-  end
+  use MjmlEEx,
+    mjml\_template: "gettext\_template.mjml.eex",
+    mode: :compile
+end
 
 Make sure that you have the `import MyApp.Gettext` statement before the `use MjmlEEx` statement as you will get a compiler error that the `gettext` function that is being called in the `gettext_template.mjml.eex` has not been defined.
 

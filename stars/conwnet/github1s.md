@@ -1,6 +1,6 @@
 ---
 project: github1s
-stars: 23293
+stars: 23296
 description: One second to read GitHub code with VS Code.
 url: https://github.com/conwnet/github1s
 ---
@@ -87,10 +87,10 @@ See the development guide to run GitHub1s locally. Report bugs and suggest impro
 
 conwnet · xcv58 · Siddhant Khare
 
-💖 Acknowledgments
-------------------
+💖 Thanks
+---------
 
-Thanks to everyone who has contributed to GitHub1s, and to Sourcegraph, searchcode, and OSS Insight for their support of the project.
+Thanks to everyone who has contributed to GitHub1s, and to Sourcegraph, searchcode, and OSS Insight for the tools and services used by GitHub1s.
 
 📄 License
 ----------

@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 55667
+stars: 55892
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---
@@ -27,7 +27,7 @@ The same core powers two ways to run Motrix:
 🧪 Beta testing
 ---------------
 
-Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.39 from GitHub Releases and read the full release notes before installing it.
+Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.40 from GitHub Releases and read the full release notes before installing it.
 
 Back up your existing Motrix data and downloads before testing. Migration from Motrix v1 data has not yet been validated, so do not use your only copy of v1 data with this beta. When practical, test v2 in parallel using a separate OS account, machine, or Docker data directory.
 
@@ -191,6 +191,14 @@ Linux (Snap Store)
 
 Install the strictly confined beta with `sudo snap install motrix --edge`
 
+Linux (Flatpak)
+
+`x86_64`, `aarch64`
+
+`.flatpak`
+
+Install a versioned bundle from a release that includes it; see the Flatpak guide
+
 Arch Linux / Omarchy
 
 `x64`, `arm64`
@@ -199,7 +207,7 @@ Arch Linux / Omarchy
 
 Install the native Arch package with `sudo pacman -U ./Motrix-<version>-<arch>.pacman`; see the Arch installation guide
 
-The `.AppImage` asks on first launch whether to register its desktop entry and URL-scheme handlers under your user data directory; declining leaves your system untouched. You can enable or remove this desktop integration at any time from Settings → Integration. The Snap Store package is strictly confined. Its approved `personal-files` interface permits Motrix to register Native Messaging hosts for supported browsers; it does not grant general access to files outside the normal Snap interfaces. Flatpak is validated separately and is not published by the release tag. Windows `arm64` and all 32-bit packages are not available. Windows `x64` packages are unsigned and may trigger a Windows SmartScreen warning.
+The `.AppImage` asks on first launch whether to register its desktop entry and URL-scheme handlers under your user data directory; declining leaves your system untouched. You can enable or remove this desktop integration at any time from Settings → Integration. The Snap Store package is strictly confined. Its approved `personal-files` interface permits Motrix to register Native Messaging hosts for supported browsers; it does not grant general access to files outside the normal Snap interfaces. Release tags build and validate Flatpak application bundles for both architectures before publication. Older releases, including beta.39, contain only the Flatpak Native Host companion. These single-file bundles require manual upgrades; they do not configure a Motrix update repository. Windows `arm64` and all 32-bit packages are not available. Windows `x64` packages are unsigned and may trigger a Windows SmartScreen warning.
 
 ### Command-line client
 
@@ -213,7 +221,7 @@ Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR
 
 mkdir -p motrix-data downloads
 sudo chown 1000:1000 motrix-data downloads
-export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.39'
+export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.40'
 export MOTRIX\_PUBLIC\_URL='http://nas.example.lan:8080'
 docker compose pull server
 docker compose up -d --wait

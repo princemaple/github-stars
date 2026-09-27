@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 8136
+stars: 8159
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -267,6 +267,25 @@ Refresh after changes such as programmatic CSSOM edits
 
 All options include shadows, transforms, fonts, CORS, fallbacks and layout reconciliation.
 
+### Export a long page in pieces
+
+A canvas cannot be taller than 16,384px in Safari or 32,767px in Chrome and Firefox. Past that, a single image is scaled down to fit. To keep full resolution, capture once and export it in pieces with `crop`:
+
+const capture \= await snapdom(article);
+const { contentX, contentY, w0, h0 } \= capture.meta;
+const pieceHeight \= 4000; // CSS px
+
+for (let y \= 0; y < h0; y += pieceHeight) {
+  const canvas \= await capture.toCanvas({
+    scale: 2,
+    dpr: 1,
+    crop: { x: contentX, y: contentY + y, width: w0, height: Math.min(pieceHeight, h0 \- y) }
+  });
+  // save or upload this piece, then move on
+}
+
+`crop` is a rectangle, not a switch. It is in the coordinates of `capture.meta`, and each call returns one canvas. The capture runs once; only the rasterization repeats. Keep `pieceHeight × scale × dpr` under the limit, and set `dpr` yourself, since it defaults to the device pixel ratio. How tiling works.
+
 ### Export HTML or structured context
 
 Official plugins are published separately as `@zumer/snapdom-plugins` and must match the core major version; they declare a peer dependency on a v3 core. Their sources live in `packages/plugins/` in this checkout.
@@ -448,7 +467,7 @@ Limitations
 -   SnapDOM needs a browser DOM. A server-side Node.js process needs a browser environment to run it.
 -   Cross-origin images, fonts and stylesheets need readable resources or an appropriate proxy. `crossorigin` does not grant access unless the server also allows it. Cross-origin iframes use placeholders.
 -   SVG output includes HTML inside `<foreignObject>`. It is suitable for browsers; support varies in other SVG viewers and document tools.
--   Output depends on browser rendering and canvas limits. Safari may fall back to PNG when WebP encoding is unavailable.
+-   Output depends on browser rendering and canvas limits; for tall pages see Export a long page in pieces. Safari may fall back to PNG when WebP encoding is unavailable.
 -   Canvas, video and other changing surfaces are captured fresh. JavaScript CSSOM edits are not observable automatically; use `invalidate: true` after them.
 -   Core captures visible input values. Semantic plugins redact sensitive field values in their text/map output, but their attached image needs `redactInputs` or `exclude` if you want those pixels hidden too.
 

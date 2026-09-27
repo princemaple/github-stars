@@ -1,7 +1,7 @@
 ---
 project: spec-kit
-stars: 137969
-description: 💫 Toolkit to help you get started with Spec-Driven Development
+stars: 139011
+description: 💫 Toolkit to help you get started with SDD or any other process!
 url: https://github.com/github/spec-kit
 ---
 
@@ -10,7 +10,7 @@ url: https://github.com/github/spec-kit
 
 ### _Build with a spec, fix a bug, or assess an idea — with your coding agent._
 
-**English** · 简体中文
+**English** · 简体中文 · 日本語
 
 Spec Kit is an open source toolkit that gives AI coding agents structured processes, reusable templates, and documented outcomes. Start with one of the three processes below, customize it, or bring your own.
 
@@ -138,6 +138,11 @@ Documentation
 -   SDD philosophy, full methodology, and evolving existing specs
 -   Video overview and project history
 -   How Spec Kit uses Spec Kit
+
+Star history
+------------
+
+_Thanks to everyone who helps Spec Kit shine._
 
 Support and contributing
 ------------------------

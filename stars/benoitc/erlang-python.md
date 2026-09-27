@@ -185,7 +185,7 @@ def process(x):
 {ok, 21} \= py:call('\_\_main\_\_', process, \[10\]).
 %% 10 → double\_via\_python → double(10)=20 → +1 = 21
 
-The implementation uses a suspension/resume mechanism that frees the dirty scheduler while the Erlang callback executes, preventing deadlocks even with multiple levels of nesting.
+While the Erlang callback runs, the context thread keeps serving requests for its context, so the callback's own `py:call` runs there and nesting works at any depth. The callback shares the caller's Python namespace, which is how it can see `double`. No dirty scheduler is held meanwhile.
 
 Shared State Between Workers
 ----------------------------

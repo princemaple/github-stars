@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6244
+stars: 6275
 description: Copy/paste detector for source code. 220+ languages, Rust engine, SARIF/HTML/badge reporters, GitHub Action, MCP server for AI agents.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -153,7 +153,7 @@ jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime r
 -   **`--summary`** — refactoring hotspots straight from the scan: top files and folders by tokens, lines, size, and a complexity estimate (see docs)
 -   **`--complexity`** — the complexity ranking alone, without clone detection: most complex files and folders from one tokenizing pass, in the console, `ai` or `json` (see docs)
 -   **`--health`** — one 0-100 score with a grade, from the share of code that's duplicated, dead, or concentrated in complex files; size-aware, calibrated on 42 open-source projects, extensible with coverage, test or security metrics via `--health-input`. Console badge, JSON, SVG badge (see docs)
--   **`--dashboard`** — the whole picture on one screen, under the health badge: project size, duplication by clone kind with the most duplicated files, the most complex files, and dead code by category for JavaScript, TypeScript and Python (see docs)
+-   **`--dashboard`** — the whole picture on one screen, under the health badge: project size with the largest code files, duplication by clone kind with the most duplicated files, the most complex files, and dead code by category for JavaScript, TypeScript and Python (see docs)
 
 ### AI and operations
 

@@ -1,6 +1,6 @@
 ---
 project: pgbouncer
-stars: 4363
+stars: 4377
 description: lightweight connection pooler for PostgreSQL
 url: https://github.com/pgbouncer/pgbouncer
 ---
@@ -17,7 +17,7 @@ Sources, bug tracking: https://github.com/pgbouncer/pgbouncer
 Building
 --------
 
-PgBouncer can be built with either Meson (recommended) or the older Autoconf-based build system. Both are supported for now; the Autoconf build will eventually be removed. Compilation depends on a few things:
+PgBouncer can be built with either the Autoconf-based build system or the newer, still experimental, Meson build system. Autoconf is the recommended choice for production builds and packaging for now. The Meson build is expected to become the default and the Autoconf build to be removed in a future release, so testing it and reporting any issues is very welcome. Compilation depends on a few things:
 
 -   Libevent 2.0+
 -   pkg-config
@@ -29,20 +29,20 @@ PgBouncer can be built with either Meson (recommended) or the older Autoconf-bas
 
 The Meson build additionally needs Meson 0.58+ and Ninja; the Autoconf build needs GNU Make 3.81+.
 
-When dependencies are installed, build with Meson:
-
-```
-$ meson setup build --prefix=/usr/local
-$ meson compile -C build
-$ meson install -C build
-```
-
-or with Autoconf:
+When dependencies are installed, build with Autoconf:
 
 ```
 $ ./configure --prefix=/usr/local
 $ make
 $ make install
+```
+
+or with Meson (experimental):
+
+```
+$ meson setup build --prefix=/usr/local
+$ meson compile -C build
+$ meson install -C build
 ```
 
 If you are building from Git, or are building for Windows, please see separate build instructions below.
@@ -143,21 +143,11 @@ systemd support allows using `Type=notify` (or `Type=notify-reload` if you are u
 Building from Git
 -----------------
 
-With Meson you can build straight from a checkout; pandoc is required to build the man pages:
+The Autoconf build requires that you generate the header and configuration files before you can run `configure`:
 
 ```
 $ git clone https://github.com/pgbouncer/pgbouncer.git
 $ cd pgbouncer
-$ meson setup build
-$ meson compile -C build
-$ meson install -C build
-```
-
-Run `meson configure build` to list the available `-D` options.
-
-The Autoconf build instead requires that you generate the header and configuration files before you can run `configure`:
-
-```
 $ ./autogen.sh
 $ ./configure
 $ make
@@ -167,6 +157,16 @@ $ make install
 All files will be installed under `/usr/local` by default. You can supply one or more command-line options to `configure`. Run `./configure --help` to list the available options and the environment variables that customizes the configuration.
 
 Additional packages required for the Autoconf build from Git: autoconf, automake, libtool, pandoc
+
+With the Meson build you can build straight from a checkout; pandoc is required to build the man pages:
+
+```
+$ meson setup build
+$ meson compile -C build
+$ meson install -C build
+```
+
+Run `meson configure build` to list the available `-D` options.
 
 Testing
 -------
@@ -178,18 +178,18 @@ Building on Windows
 
 The only supported build environment on Windows is MinGW. Cygwin and Visual $ANYTHING are not supported.
 
-To build on MinGW, do the usual Meson build:
-
-```
-$ meson setup build
-$ meson compile -C build
-```
-
-or the Autoconf build:
+To build on MinGW, do the usual Autoconf build:
 
 ```
 $ ./configure
 $ make
+```
+
+or the experimental Meson build:
+
+```
+$ meson setup build
+$ meson compile -C build
 ```
 
 If cross-compiling from Unix with Autoconf:

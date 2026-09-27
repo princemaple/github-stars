@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 182286
+stars: 185139
 description: The web data API to search, scrape, and interact at scale. 🔥
 url: https://github.com/firecrawl/firecrawl
 ---

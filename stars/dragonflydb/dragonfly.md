@@ -1,6 +1,6 @@
 ---
 project: dragonfly
-stars: 31616
+stars: 31690
 description: A modern replacement for Redis and Memcached
 url: https://github.com/dragonflydb/dragonfly
 ---
@@ -18,7 +18,7 @@ The world's most efficient in-memory data store
 
 Dragonfly is an in-memory data store built for modern application workloads.
 
-Fully compatible with Redis and Memcached APIs, Dragonfly requires no code changes to adopt. Compared to legacy in-memory datastores, Dragonfly delivers 25X more throughput, higher cache hit rates with lower tail latency, and can run on up to 80% less resources for the same sized workload.
+Fully compatible with Redis and Memcached APIs, Dragonfly requires no code changes to adopt. Compared to legacy in-memory datastores, Dragonfly delivers 25X more throughput, higher cache hit rates with lower tail latency, and can run on up to 80% fewer resources for the same-sized workload.
 
 Contents
 --------
@@ -34,9 +34,9 @@ Contents
 Benchmarks
 ----------
 
-We first compare Dragonfly with Redis on `m5.large` instance which is commonly used to run Redis due to its single-threaded architecture. The benchmark program runs from another load-test instance (c5n) in the same AZ using `memtier_benchmark -c 20 --test-time 100 -t 4 -d 256 --distinct-client-seed`
+We first compare Dragonfly with Redis on an `m5.large` instance, which is commonly used to run Redis due to its single-threaded architecture. The benchmark program runs from another load-test instance (c5n) in the same AZ using `memtier_benchmark -c 20 --test-time 100 -t 4 -d 256 --distinct-client-seed`
 
-Dragonfly shows a comparable performance:
+Dragonfly shows comparable performance:
 
 1.  SETs (`--ratio 1:0`):
 
@@ -60,7 +60,7 @@ QPS: 191K, P99.9: 0.95ms, P99: 0.8ms
 
 The benchmark above shows that the algorithmic layer inside DF that allows it to scale vertically does not take a large toll when running single-threaded.
 
-However, if we take a bit stronger instance (m5.xlarge), the gap between DF and Redis starts growing. (`memtier_benchmark -c 20 --test-time 100 -t 6 -d 256 --distinct-client-seed`):
+However, if we use a slightly larger instance (m5.xlarge), the gap between DF and Redis starts growing. (`memtier_benchmark -c 20 --test-time 100 -t 6 -d 256 --distinct-client-seed`):
 
 1.  SETs (`--ratio 1:0`):
 
@@ -84,7 +84,7 @@ QPS: 305K, P99.9: 1.03ms, P99: 0.87ms
 
 Dragonfly throughput capacity continues to grow with instance size, while single-threaded Redis is bottlenecked on CPU and reaches local maxima in terms of performance.
 
-If we compare Dragonfly and Redis on the most network-capable instance c6gn.16xlarge, Dragonfly showed a 25X increase in throughput compared to Redis single process, crossing 3.8M QPS.
+If we compare Dragonfly and Redis on the most network-capable instance c6gn.16xlarge, Dragonfly showed a 25X increase in throughput compared to a single Redis process, crossing 3.8M QPS.
 
 Dragonfly's 99th percentile latency metrics at its peak throughput:
 
@@ -259,7 +259,7 @@ There are also some Dragonfly-specific arguments:
     
 -   `admin_nopass`: To enable open admin access to console on the assigned port, without auth token needed (`default: false`). Supports both HTTP and RESP protocols.
     
--   `cluster_mode`: Cluster mode supported (`default: ""`). Currently supports only `emulated`.
+-   `cluster_mode`: Enables cluster mode (`default: ""`). Supports `emulated` and `yes`.
     
 -   `cluster_announce_ip`: The IP that cluster commands announce to the client.
     
@@ -268,9 +268,9 @@ There are also some Dragonfly-specific arguments:
 
 ### Example start script with popular options:
 
-./dragonfly-x86\_64 --logtostderr --requirepass=youshallnotpass --cache\_mode=true -dbnum 1 --bind localhost --port 6379 --maxmemory=12gb --keys\_output\_limit=12288 --dbfilename dump.rdb
+./dragonfly-x86\_64 --logtostderr --requirepass=youshallnotpass --cache\_mode=true -dbnum 1 --bind localhost --port 6379 --maxmemory=12gb --keys\_output\_limit=12288 --dbfilename dump
 
-Arguments can be also provided via:
+Arguments can also be provided via:
 
 -   `--flagfile <filename>`: The file should list one flag per line, with equal signs instead of spaces for key-value flags. No quotes are needed for flag values.
 -   Setting environment variables. Set `DFLY_x`, where `x` is the exact name of the flag, case sensitive.
@@ -284,7 +284,7 @@ Design decisions
 
 Dragonfly has a single, unified, adaptive caching algorithm that is simple and memory efficient.
 
-You can enable caching mode by passing the `--cache_mode=true` flag. Once this mode is on, Dragonfly will evict items least likely to be stumbled upon in the future but only when it is near the `maxmemory` limit.
+You can enable caching mode by passing the `--cache_mode=true` flag. Once this mode is on, Dragonfly will evict items least likely to be accessed in the future, but only when it is near the `maxmemory` limit.
 
 ### Expiration deadlines with relative accuracy
 
@@ -300,9 +300,9 @@ By default, Dragonfly allows HTTP access via its main TCP port (6379). That's ri
 
 Go to the URL `:6379/metrics` to view Prometheus-compatible metrics.
 
-The Prometheus exported metrics are compatible with the Grafana dashboard, see here.
+The exported Prometheus metrics are compatible with the Grafana dashboard, see here.
 
-Important! The HTTP console is meant to be accessed within a safe network. If you expose Dragonfly's TCP port externally, we advise you to disable the console with `--http_admin_console=false` or `--nohttp_admin_console`.
+Important! The HTTP console is meant to be accessed within a safe network. If you expose Dragonfly's TCP port externally, we advise you to disable the console with `--primary_port_http_enabled=false` or `--noprimary_port_http_enabled`.
 
 Background
 ----------
@@ -313,7 +313,7 @@ Our first challenge was how to fully utilize CPU, memory, and I/O resources usin
 
 To provide atomicity guarantees for multi-key operations, we use the advancements from recent academic research. We chose the paper "VLL: a lock manager redesign for main memory database systems” to develop the transactional framework for Dragonfly. The choice of shared-nothing architecture and VLL allowed us to compose atomic multi-key operations without using mutexes or spinlocks. This was a major milestone for our PoC and its performance stood out from other commercial and open-source solutions.
 
-Our second challenge was to engineer more efficient data structures for the new store. To achieve this goal, we based our core hashtable structure on the paper "Dash: Scalable Hashing on Persistent Memory". The paper itself is centered around the persistent memory domain and is not directly related to main-memory stores, but it's still most applicable to our problem. The hashtable design suggested in the paper allowed us to maintain two special properties that are present in the Redis dictionary: The incremental hashing ability during datastore growth the ability to traverse the dictionary under changes using a stateless scan operation. In addition to these two properties, Dash is more efficient in CPU and memory use. By leveraging Dash's design, we were able to innovate further with the following features:
+Our second challenge was to engineer more efficient data structures for the new store. To achieve this goal, we based our core hashtable structure on the paper "Dash: Scalable Hashing on Persistent Memory". The paper itself is centered around the persistent memory domain and is not directly related to main-memory stores, but it's still most applicable to our problem. The hashtable design suggested in the paper allowed us to maintain two special properties that are present in the Redis dictionary: The incremental hashing ability during datastore growth and the ability to traverse the dictionary under changes using a stateless scan operation. In addition to these two properties, Dash is more efficient in CPU and memory use. By leveraging Dash's design, we were able to innovate further with the following features:
 
 -   Efficient record expiry for TTL records.
 -   A novel cache eviction algorithm that achieves higher hit rates than other caching strategies like LRU and LFU with **zero memory overhead**.
@@ -327,4 +327,4 @@ _Our mission is to build a well-designed, ultra-fast, cost-efficient in-memory d
 Contributors
 ------------
 
-Thanks to all the contributors to Dragonfly project!
+Thanks to all the contributors to the Dragonfly project!

@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 15177
+stars: 15260
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -41,13 +41,13 @@ Features
 
 **SSH Tunnels:** Local, remote, and dynamic SOCKS forwarding with auto reconnect and health checks. Client-to-server tunnels on the desktop app are stored on that machine, and you can save presets to the server to move a setup to another client.
 
-**File Manager:** Browse, edit, upload, download, rename, move, and delete files over SFTP, with sudo support. View and edit code, images, audio, and video. Copy files straight from one server to another, with the fastest route picked for you and transfers checked for integrity.
+**File Manager:** Browse, edit, upload, download, rename, move, and delete files over SFTP, with sudo support. View and edit code, images, audio, and video. Copy files straight from one server to another in a dedicated transfer tab, with the fastest route picked for you and transfers checked for integrity. The desktop app also has a side-by-side local and remote view.
 
 **Docker and Podman:** Start, stop, pause, and remove containers, watch their stats, and open a shell inside one. Works with both Docker and Podman. It is not meant to replace Portainer or Dockge, just to manage containers you already have.
 
 **Host Manager:** Save and organize hosts with tags and nested folders you can name and color. Reuse saved credentials across hosts, deploy SSH keys automatically, group hosts under a parent host, bulk edit and export, and use Quick Connect for one-off connections you do not want to save.
 
-**Host Metrics:** CPU, memory, disk, network, temperature, uptime, processes, ports, logins, and system info on most Linux servers, with history graphs. Manager cards let you handle services, cron jobs, packages, users, firewall rules, WireGuard, Tailscale, SSL certs, logs, and health checks without leaving Termix.
+**Host Metrics:** CPU, memory, disk, network, temperature, NVIDIA GPU, uptime, processes, ports, logins, and system info on most Linux servers, with history graphs. Manager cards let you handle services, cron jobs, packages, users, firewall rules, WireGuard, Tailscale, SSL certs, logs, and health checks without leaving Termix.
 
 **Automations:** Pick a trigger, then say what should happen. Triggers include a metric crossing a threshold, a host going up or down, a health check changing, a schedule, a container event, or an incoming webhook. Steps can run commands and snippets, control containers and tunnels, wake a host, call a URL, wait, branch on a condition, run another automation, and notify you over ntfy, Discord, or a webhook. Test runs let you try it safely first.
 
@@ -77,10 +77,6 @@ Features
 
 **Workspaces and Tabs:** Save a set of tabs with their split layout and reopen the whole thing in one click. Termix also remembers your last session, so your tabs come back across refreshes and devices.
 
-**Guided Setup:** A short setup walks you through picking an interface preset, your theme, the features you want, and your first host. Simple mode hides what you do not use, and you can rerun setup or switch presets any time.
-
-**Desktop Standalone and Sync:** The desktop app runs on its own with a local backend and database, no server needed. You can also connect it to a Termix server for two-way sync of hosts, credentials, snippets, and more, and choose whether connections start locally or through the server.
-
 **Command Line Interface:** A `termix` CLI for your shell and your scripts. Open terminals, run a command on one host or a whole fleet, move files over SFTP, and manage hosts, snippets, and credentials. Install with `npm install -g @termix-cli/cli` or grab a standalone binary. See the CLI docs.
 
 **Security:** Passwords, keys, and other secrets are encrypted per user, and the database files themselves can be encrypted on disk. See the docs for how it works.
@@ -102,8 +98,13 @@ Features
 -   **Keyboard Shortcuts** - Move between tabs, close tabs, and more, all rebindable
 -   **Wake-on-LAN** - Wake a machine from Termix or from an automation step
 -   **Trusted Proxy Auth** - Let a reverse proxy handle sign-in and pass the user through
--   **SSH Feature Rich** - Jump hosts, Warpgate, TOTP prompts, SOCKS5, host key verification, password autofill, OPKSSH, tmux, port knocking, terminal logging, agent forwarding, Bitwarden SSH agent, HashiCorp Vault SSH signing, and more
+-   **White Label** - Admins can rebrand the instance with their own name, logo, and colors
+-   **Web Endpoints** - Open a host's own web UI, like a router admin page, embedded inside Termix instead of a separate tab
+-   **Collaboration Rooms** - Persistent rooms where a group can jump between sessions together, with a presenter stage and invites
+-   **SSH Feature Rich** - Jump hosts, Warpgate, TOTP prompts, SOCKS5, host key verification, password autofill, OPKSSH, tmux, port knocking, terminal logging, agent forwarding, Bitwarden SSH agent, HashiCorp Vault SSH signing, Step CA, 1Password Connect, and more
 -   **Termix ID** - A built-in take on sshid.io. Claim a handle, publish your public keys at a resolver URL, and issue SSH certificates from the built-in CA
+-   **Command History Autosuggestions** - Inline suggestions in the terminal as you type, based on your command history
+-   **Desktop Standalone and Sync** - The desktop app runs on its own with a local backend and database, and can optionally sync with a Termix server
 
   
 

@@ -1,6 +1,6 @@
 ---
 project: openage
-stars: 14444
+stars: 14460
 description: Clone of the Age of Empires II engine 🚀 
 url: https://github.com/SFTtech/openage
 ---

@@ -1,6 +1,6 @@
 ---
 project: clooney
-stars: 1420
+stars: 1419
 description: Clooney is an actor library for the web. Use workers without thinking about workers.
 url: https://github.com/GoogleChromeLabs/clooney
 ---

@@ -1,6 +1,6 @@
 ---
 project: Clash
-stars: 354
+stars: 355
 description: null
 url: https://github.com/ClashConnectRules/Clash
 ---

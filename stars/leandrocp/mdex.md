@@ -1,6 +1,6 @@
 ---
 project: mdex
-stars: 447
+stars: 448
 description: Markdown for Elixir. Fast, Extensible, Phoenix-native. AI-ready. Built on top of comrak, ammonia, and lumis.
 url: https://github.com/leandrocp/mdex
 ---
@@ -81,9 +81,13 @@ Syntax highlight code blocks using either Lumis or Syntect, for example to use L
 def deps do
   \[
     {:mdex, "~> 0.12"},
-    {:lumis, "~> 0.1"}
+    {:lumis, "~> 0.9"},
+    \# one package per language you highlight, or a \`lumis\_wasm\_bundle\_\*\` package
+    {:lumis\_wasm\_elixir, "~> 0.26"}
   \]
 end
+
+Lumis no longer downloads parsers at runtime, so a language is only highlighted when its package is a dependency. See the Lumis languages reference for the full catalog and the available bundles.
 
 config :mdex\_native, syntax\_highlighter: :lumis
 

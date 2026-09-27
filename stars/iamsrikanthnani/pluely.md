@@ -1,6 +1,6 @@
 ---
 project: pluely
-stars: 2672
+stars: 2688
 description: The Open Source Alternative to Cluely - A lightning-fast, privacy-first AI assistant that works seamlessly during meetings, interviews, and conversations without anyone knowing. Built with Tauri for native performance, just 10MB. Completely undetectable in video calls, screen shares, and recordings.
 url: https://github.com/iamsrikanthnani/pluely
 ---
@@ -10,7 +10,7 @@ Pluely v1 🚀
 
 _One overlay, no tab, no trace._
 
-_The actual overlay in Listen mode, floating over the desktop. Invisible on screen shares._
+_The real overlay in Listen and Ask mode. Invisible on screen shares._
 
 * * *
 
@@ -84,6 +84,7 @@ Hit Start and Pluely transcribes your mic and system audio live, with speaker la
 --------------------------
 
 -   **200+ hosted models** on Pro plans: GPT, Gemini, Claude, Llama and more, searchable and switchable mid-conversation, no API keys to manage.
+-   **Upgrade from inside the app**: pick a plan, pay on the secure checkout, and Pro activates on that computer by itself. Bought on the website? Paste the emailed key once on the Dashboard.
 -   **Free forever with your own keys**: connect any LLM or speech-to-text provider through a curl template, or plug in the AI CLIs you already have (Claude Code, Gemini CLI, Codex, Qwen Code, Ollama). No limits from us; it's your account.
 -   **Real stealth**: excluded from screen capture, absent from recordings and screenshots, never steals focus from the app you're in, and the icon can disappear from the Dock or taskbar. Details in Stealth & privacy.
 -   **Keyboard-first**: global hotkeys for summon, capture, and listening; single keys scroll the answer and transcript once the overlay has focus. Full reference: Overlay shortcuts.

@@ -1,6 +1,6 @@
 ---
 project: spark-joy
-stars: 9788
+stars: 9785
 description: Archived — Spark Joy now lives on Forge.
 url: https://github.com/swyxio/spark-joy
 ---

@@ -1,6 +1,6 @@
 ---
 project: nanoid
-stars: 26985
+stars: 27005
 description: A tiny (118 bytes), secure, URL-friendly, unique string ID generator for JavaScript
 url: https://github.com/ai/nanoid
 ---

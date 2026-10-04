@@ -1,6 +1,6 @@
 ---
 project: WeChatMsg
-stars: 42086
+stars: 42094
 description: null
 url: https://github.com/LC044/WeChatMsg
 ---

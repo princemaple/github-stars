@@ -16,7 +16,7 @@ Installation
 ------------
 
 def deps do
-  \[{:quickbeam, "~> 0.11.1"}\]
+  \[{:quickbeam, "~> 0.11.2"}\]
 end
 
 Precompiled NIFs target Zig's baseline CPU for each supported architecture. Source builds require Zig 0.16 and default to the build machine's CPU; set `QUICKBEAM_CPU=baseline` alongside `QUICKBEAM_BUILD=1` for a portable build. When changing CPU or optimization settings, force recompilation with `mix compile --force`.

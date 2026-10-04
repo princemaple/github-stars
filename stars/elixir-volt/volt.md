@@ -34,7 +34,7 @@ mix igniter.install volt
 Or add the dep manually:
 
 def deps do
-  \[{:volt, "~> 0.17"}\]
+  \[{:volt, "~> 0.20"}\]
 end
 
 See the Getting Started guide for manual configuration.
@@ -110,7 +110,11 @@ Developer tools
 JS/TS formatting, linting, and testing run inside the BEAM. `mix format` handles Elixir and JavaScript together:
 
 \# .formatter.exs
-\[plugins: \[Volt.Formatter\], inputs: \["assets/\*\*/\*.{js,ts,jsx,tsx}"\]\]
+\[
+  plugins: \[Volt.Formatter\],
+  inputs: \["assets/\*\*/\*.{js,ts,jsx,tsx}"\],
+  volt: \[semi: false, single\_quote: true\]
+\]
 
 mix format           # Elixir + JS/TS
 mix volt.lint        # 650+ oxlint rules

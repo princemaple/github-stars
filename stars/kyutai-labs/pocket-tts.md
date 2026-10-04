@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 9663
+stars: 9768
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -29,7 +29,7 @@ Main takeaways
 -   Uses only 2 CPU cores
 -   Python API and CLI
 -   Voice cloning
--   Multi-language support: english, french, german, portuguese, italian, spanish
+-   Multi-language support: english, french, german, portuguese, italian, spanish, dutch
 -   Can handle infinitely long text inputs
 -   Can run on client-side in the browser
 
@@ -53,7 +53,7 @@ uvx pocket-tts generate
 # or if you installed it manually with pip:
 pocket-tts generate
 
-Modify the voice with `--voice` and the text with `--text`. We provide a small catalog of voices. Choose a pretrained language model with `--language` when running `generate`, `export-voice`, or `serve` (default: `english`). Non-english languages have also biggers 24 layers variants that are higher quality but slower. You can select them by using for example `--language italian_24l`. The `--config` option accepts a local YAML path, an `https://` URL, or an `hf://` path (e.g. `hf://<repo_id>/<path>[@revision]`) for custom weights.
+Modify the voice with `--voice` and the text with `--text`. We provide a small catalog of voices. Choose a pretrained language model with `--language` when running `generate`, `export-voice`, or `serve` (default: `english`). Non-english languages have also biggers 24 layers variants that are higher quality but slower. You can select them by using for example `--language italian_24l`. `--language english_drifting_26-09` selects an English model whose sampler head was trained with drifting instead of LSD (see training/README.md for the recipe). The `--config` option accepts a local YAML path, an `https://` URL, or an `hf://` path (e.g. `hf://<repo_id>/<path>[@revision]`) for custom weights.
 
 You can take a look at this page which details the licenses for each voice.
 
@@ -302,6 +302,13 @@ uvx pocket-tts generate \\
   --voice hf://shefowl/pocket-tts-polish-6l/reference.wav@a8630f2a39055d3e5a91acb7922e31bd0c506cfe \\
   --text "Dzień dobry. Nazywam się Krzysztof Wiśniewski i mówię po polsku."
 
+Pocket TTS Greek (Ελληνικά) by Myned AI, 6 layers
+
+uvx pocket-tts generate \\
+  --config hf://myned-ai/pocket-tts-greek/greek.yaml@c578b65949df101ac352e84ac5c236206e5bb348 \\
+  --voice hf://myned-ai/pocket-tts-greek/voices/eleni.wav@c578b65949df101ac352e84ac5c236206e5bb348 \\
+  --text "Καλημέρα! Θέλετε να κλείσουμε ένα ραντεβού για αύριο;"
+
 Want your model here? Head to the training Readme to get started!
 
 Projects using Pocket TTS
@@ -326,6 +333,7 @@ Projects using Pocket TTS
 -   seshat-tts by @scriptriva - Accessibility tool that provides real-time audio synthesis for games and apps. It also features a voice manager capable of cloning voices based on user presets.
 -   LocalVocal.ai by @joshwhiton - Fully local conversational voice-harness for Macs with Apple Silicon. Includes voice-activity & turn detection, dictation, voice cloning, CLI to talk to Claude, Codex... and more.
 -   Libratory by @subev - Turns PDFs into read-along audiobooks with the narration highlighted on the printed page; Pocket TTS is one of its local narrators, with voice cloning from the picker.
+-   ToBe SAID Android, iOS/Mac, Windows by @lookbe - Pocket TTS that integrate into OS system voice with low latency and realtime streaming. Support quick language addition by using only HuggingFace url.
 
 Prohibited use
 --------------

@@ -1,6 +1,6 @@
 ---
 project: TrafficMonitor
-stars: 46306
+stars: 46387
 description: 这是一个用于显示当前网速、CPU及内存利用率的桌面悬浮窗软件，并支持任务栏显示，支持更换皮肤。
 url: https://github.com/zhongyang219/TrafficMonitor
 ---
@@ -193,3 +193,12 @@ TrafficMonitor支持将信息显示到任务栏。但是TrafficMonitor默认只�
 ====
 
 **点击此处查看更新日志**
+
+声明
+==
+
+域名`www.trafficmonitor.cn`和作者本人**没有任何关系**，TrafficMonitor目前并没有官网，任何所谓的“TrafficMonitor官网”都是盗版网站，请不要访问此类网站，也不要通过此类网站下载TrafficMonitor。TrafficMonitor仅通过以下渠道向用户提供：
+
+-   GitHub页面（github.com/zhongyang219/TrafficMonitor）
+-   Gitee页面（gitee.com/zhongyang219/TrafficMonitor）
+-   作者本人的百度网盘共享链接 提取码：`ou0m`

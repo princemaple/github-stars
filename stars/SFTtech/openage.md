@@ -1,6 +1,6 @@
 ---
 project: openage
-stars: 14460
+stars: 14471
 description: Clone of the Age of Empires II engine 🚀 
 url: https://github.com/SFTtech/openage
 ---
@@ -115,7 +115,7 @@ Build status
 
 Debian Sid
 
-Ubuntu 24.04 LTS
+Ubuntu 26.04 LTS
 
 macOS
 

@@ -1,6 +1,6 @@
 ---
 project: rxdb
-stars: 23392
+stars: 23398
 description: The local-first database that runs on every JS runtime and replicates with your existing backend - no vendor, no lock-in - https://rxdb.info/
 url: https://github.com/pubkey/rxdb
 ---

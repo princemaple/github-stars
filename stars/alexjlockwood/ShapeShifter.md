@@ -1,6 +1,6 @@
 ---
 project: ShapeShifter
-stars: 4066
+stars: 4068
 description: SVG icon animation tool for Android, iOS, and the web
 url: https://github.com/alexjlockwood/ShapeShifter
 ---
@@ -12,9 +12,9 @@ Shape Shifter
 
 * * *
 
-Shape Shifter is a web-app that simplifies the creation of icon animations for Android, iOS, and the web.
+Shape Shifter is a web-app that simplifies the creation of icon animations for Android and the web.
 
-This tool currently exports to standalone SVGs, SVG spritesheets, and CSS keyframe animations for the web, as well as to `AnimatedVectorDrawable` format for Android. I am totally open to adding support for other export formats as well, so if you have a format that you'd like to see added in the future, file a feature request!
+This tool currently exports to standalone SVGs and SVG spritesheets for the web, as well as to `AnimatedVectorDrawable` format for Android. I am totally open to adding support for other export formats as well, so if you have a format that you'd like to see added in the future, file a feature request!
 
 Backers
 -------
@@ -56,7 +56,7 @@ To address these problems, Shape Shifter provides the following features:
 -   _The ability to reverse/shift the relative positions of each path's points._ While reordering points won't affect whether or not two paths are compatible, it often plays a huge role in determining the appearance of the resulting animation.
 -   _Shape Shifter automatically converts incompatible pairs of SVG commands into a compatible format._ There's no longer any need to convert `L`s into `Q`s and `A`s into `C`s by hand in order to make your paths compatible—Shape Shifter does this for you behind-the-scenes!
 -   _Shape Shifter provides a useful utility called 'auto fix', which takes two incompatible paths and attempts to make them compatible in an optimal way._ Depending on the complexity of the paths, auto fix may or may not generate a satisfying final result, so further modification may be necessary in order to achieve the animation you're looking for.
--   _The ability to export the results to SVG spritesheets, CSS keyframes, and `AnimatedVectorDrawable` format for use on the web and in Android applications._ I'm open to adding support for other export formats as well, so feel free to file a feature request!
+-   _The ability to export the results to SVG spritesheets and `AnimatedVectorDrawable` format for use on the web and in Android applications._ I'm open to adding support for other export formats as well, so feel free to file a feature request!
 
 How does it work?
 -----------------

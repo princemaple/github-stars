@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1265
+stars: 1267
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -123,6 +123,7 @@ Mods (Require **Steamodded**)
 ### Blinds
 
 -   MathBlinds | discord - This mod adds seventeen (and counting) new blinds based on mathematical symbols. by @Bazinga9000
+-   Final Boss - Bosses talk back in 15 languages, showdowns become cinematic boss fights with an HP bar and an explosive finale, and you decide when final bosses appear. by @SirMaiquis
 
 ### Challenges
 
@@ -615,6 +616,7 @@ Mods (Require **Lovely**)
 
 -   Advanced Screen Shake - Advanced Screen Shake is a mod that allows you to set the level of your screenshake unreasonably high. by @DeveloperRowan
 -   Alternative Speed Toggle - Adds a draggable HUD checkbox and rebindable shortcut to force an alternative game speed while playing a blind. by @PixeledLobster
+-   Balatro Seed Suite - Seed finder with odds and step-by-step routes to each hit, an in-run oracle that predicts shops, packs, tags and bosses (checked against real seeded runs), named save slots with card previews, and a run journal. by @r-metal
 -   Brainstorm | discord - Brainstorm allows for super-fast rerolling through the use of an in-game key bind. by @OceanRamen
 -   Green Needle - Green Needle is a powerful seed search mod inspired by Brainstorm, with multi-platform native search engine. by @lafiosca
 -   Quick Hand Selector - Adds an in-run panel with buttons to select any available poker hand, suit or combination in one click, with rebindable keyboard shortcuts for every action. by @PixeledLobster

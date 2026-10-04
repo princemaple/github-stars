@@ -1,6 +1,6 @@
 ---
 project: tiptap
-stars: 38540
+stars: 38633
 description: The headless rich text editor framework for web artisans.
 url: https://github.com/ueberdosis/tiptap
 ---
@@ -43,6 +43,13 @@ Have a look at the examples to see Tiptap in action or review and fork our codes
 -   Basic example of the Tiptap editor.
 -   Collaboration ready Tiptap CodeSandbox
 -   React notion-like block editor template: Demo
+
+Agent skill
+-----------
+
+Install the Tiptap skill in your application project to help coding agents set up, extend, and debug your editor:
+
+npx skills add ueberdosis/tiptap --skill tiptap
 
 About Tiptap
 ------------

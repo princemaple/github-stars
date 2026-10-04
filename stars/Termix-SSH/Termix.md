@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 15260
+stars: 15319
 description: Self-hosted SSH and remote desktop management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -204,9 +204,9 @@ GINERNET sponsors Termix, and the docs have a step by step guide for deploying t
 Telemetry
 ---------
 
-Termix sends a small anonymous ping once a day so I can see how many instances are running and which features get used. It contains a random instance ID, how many users and hosts you have, the app version, and which features (terminal, file manager, tunnels, docker, etc.) were used in the last 24 hours. It never contains usernames, hostnames, IP addresses, credentials, or anything else that identifies you or your servers.
+Termix sends a small anonymous report once a day so I can see how many instances are running and which features get used. It contains a random instance ID, the app version, and how many users and hosts you have. It can also include your platform (OS, architecture, Node.js version, database type, and whether you run Docker, the desktop app or a plain server), how often each kind of tab was opened and how many SSH logins happened, and which built-in features are running. It never contains usernames, hostnames, IP addresses, credentials, or anything else that identifies you or your servers.
 
-It is on by default. Turn it off in Admin Settings under General, or set `ENABLE_TELEMETRY=false` before you ever start Termix.
+It is on by default. Turn it off, or choose what it includes, in Admin Settings under Usage Statistics, where you can also preview the exact report. Each user can leave out their own feature usage in their profile. Setting `ENABLE_TELEMETRY=false` turns it off and locks the switch.
 
   
 

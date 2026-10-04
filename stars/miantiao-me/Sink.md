@@ -1,6 +1,6 @@
 ---
 project: Sink
-stars: 7168
+stars: 7195
 description: ⚡ A Simple, Speedy, Secure, and Serverless Link Shortener with Analytics, Running Entirely on Cloudflare.
 url: https://github.com/miantiao-me/Sink
 ---
@@ -107,27 +107,27 @@ npx skills add miantiao-me/sink
 🧰 MCP
 ------
 
-We currently do not support native MCP Server, but we have OpenAPI documentation, and you can use the following method to support MCP.
+Sink serves a built-in MCP endpoint at `POST /api/mcp`, using the official `@modelcontextprotocol/server` SDK v2, serving modern clients over the per-request transport and 2025-era clients over a stateless fallback with JSON responses.
 
-> Replace the domain name in `OPENAPI_SPEC_URL` and the `API_KEY` below with your own instance configuration.
-> 
-> The `API_KEY` is the same as the `NUXT_SITE_TOKEN` in your instance's environment variables.
+> Replace the domain below with your own instance, and use the `NUXT_SITE_TOKEN` from your instance's environment variables as the bearer token.
+
+claude mcp add --transport http sink https://sink.cool/api/mcp --header "Authorization: Bearer SinkCool"
+
+Any client that supports an HTTP transport with custom headers can connect the same way:
 
 {
   "mcpServers": {
     "sink": {
-      "command": "uvx",
-      "args": \[
-        "mcp-openapi-proxy"
-      \],
-      "env": {
-        "OPENAPI\_SPEC\_URL": "https://sink.cool/\_docs/openapi.json",
-        "API\_KEY": "SinkCool",
-        "TOOL\_WHITELIST": "/api/link"
+      "type": "http",
+      "url": "https://sink.cool/api/mcp",
+      "headers": {
+        "Authorization": "Bearer SinkCool"
       }
     }
   }
 }
+
+It exposes tools for managing links (list, search, read, count, tag, create, update, upsert, delete) and for reading analytics (counters, views over time, and top values per dimension). See the integrations documentation for the full list.
 
 🙋🏻 FAQs
 ---------

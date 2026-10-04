@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 7659
+stars: 7696
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -239,9 +239,9 @@ Apache 2.0, plus the OneUptime Enterprise License for the `ee/` directory
 
 **Features**
 
-Everything in the box above — monitoring, status pages, incidents, on-call, logs, traces, metrics, error tracking, workflows & AI
+Everything in the box above — monitoring, status pages, incidents, on-call, logs, traces, metrics, error tracking, workflows & AI — plus SAML & OIDC single sign-on
 
-Everything in Community + SAML & OIDC single sign-on, SCIM provisioning, audit logs, team compliance & instance health dashboards, with priority support, custom features & data residency
+Everything in Community + SCIM provisioning, audit logs, team compliance & instance health dashboards, with priority support, custom features & data residency
 
 Enterprise features live in the `ee/` directory and ship only in the Enterprise image. See Community vs. Enterprise Edition for the full comparison.
 

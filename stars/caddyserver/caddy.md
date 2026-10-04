@@ -1,6 +1,6 @@
 ---
 project: caddy
-stars: 76094
+stars: 76261
 description: Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
 url: https://github.com/caddyserver/caddy
 ---
@@ -80,7 +80,7 @@ Build from source
 
 Requirements:
 
--   Go 1.25.0 or newer
+-   Go 1.26.0 or newer
 
 ### For development
 

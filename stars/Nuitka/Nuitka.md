@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 15161
+stars: 15176
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.14. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -939,6 +939,11 @@ try:
 except NameError:
    open(os.path.join(os.path.dirname(sys.argv\[0\]), "user-provided-file.txt"))
 
+The directory that contains the running program's own files is `__compiled__.python_runtime_dir`. For standalone mode this is the `.dist` folder, for onefile mode the directory the onefile bootstrap unpacks to, and for DLL and module builds the directory of the loaded library. This is where files that Nuitka bundled with the program, e.g. the `tcl` and `tk` data folders, are located, unlike `containing_dir` above, which refers to the directory that contains the `.dist` folder or the onefile binary.
+
+\# This will find a bundled data file of the program
+open(os.path.join(\_\_compiled\_\_.python\_runtime\_dir, "some", "bundled-file.txt"))
+
 #### Onefile: Finding files
 
 There is a difference between `sys.argv[0]` and `__file__` of the main module for the onefile mode, that is caused by using a bootstrap to a temporary location. The first one will be the original executable path, whereas the second one will be the temporary or permanent path the bootstrap executable unpacks to. Data files will be in the later location, your original environment files will be in the former location.
@@ -975,6 +980,8 @@ assert \_\_compiled\_\_.original\_argv0 \== "bar"
 \# invoked as \`baz ...\`:
 assert sys.argv\[0\] \== "baz"
 assert \_\_compiled\_\_.original\_argv0 is None
+
+For spawning another copy of the compiled program, e.g. what `multiprocessing` does, the executable to use is `__compiled__.process_exe`. In accelerated and standalone mode this is the compiled binary, in onefile mode the unpacked executable, and in onefile DLL mode the outer launcher executable, which is the one that can be spawned, rather than the loaded DLL. In module and plain DLL mode the field is `None`, as there is no executable of the program itself.
 
 #### Windows Programs without console give no errors
 
@@ -1265,6 +1272,12 @@ Once the corresponding runtime libraries are installed on the target system, you
 #### Detecting Nuitka at run time
 
 Nuitka does _not_ `sys.frozen` unlike other tools because it usually triggers inferior code for no reason. For Nuitka, we have the module attribute `__compiled__` to test if a specific module was compiled, and the function attribute `__compiled__` to test if a specific function was compiled.
+
+Modules that Nuitka provides as bytecode are not compiled, and for those the module attribute `__uncompiled__` is set instead, e.g. for standard library modules included as bytecode. Both hold the same version information, so to detect that a module was provided by Nuitka, use:
+
+nuitka\_info \= globals().get("\_\_uncompiled\_\_", globals().get("\_\_compiled\_\_"))
+if nuitka\_info is not None:
+   ...
 
 #### Providing extra Options to Nuitka C compilation
 

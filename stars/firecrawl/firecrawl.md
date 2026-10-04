@@ -1,7 +1,7 @@
 ---
 project: firecrawl
-stars: 185139
-description: The web data API to search, scrape, and interact at scale. 🔥
+stars: 188288
+description: Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥
 url: https://github.com/firecrawl/firecrawl
 ---
 
@@ -12,7 +12,7 @@ url: https://github.com/firecrawl/firecrawl
 **🔥 Firecrawl**
 ================
 
-**The API to search, scrape, and interact with the web at scale. 🔥** The web data API to find sources, extract content, and turn it into clean Markdown or structured data your agents can ship with. Open source and available as a hosted service.
+**Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥** Open source and available as a hosted service.
 
 _Pst. Hey, you, join our stargazers :)_
 
@@ -373,47 +373,9 @@ result \= app.agent(
 
 Every effort level runs the `spark-2` model. Effort changes the reasoning budget, not the model.
 
-#### Model Selection (Legacy)
+#### Model
 
-`model` still works, and it stays supported. Send `model` or `effort`, not both. A request with both fields returns a 400 error.
-
-Model
-
-Cost
-
-Best For
-
-`spark-1-mini`
-
-60% cheaper
-
-Most tasks
-
-`spark-1-pro` (default)
-
-Standard
-
-Complex research, critical data gathering
-
-`spark-2`
-
-See pricing
-
-The model that `effort` runs
-
-result \= app.agent(
-    prompt\="Compare enterprise features across Firecrawl, Apify, and ScrapingBee",
-    model\="spark-1-pro"
-)
-
-A request without `model` and without `effort` runs `spark-1-pro`.
-
-**When to use Pro:**
-
--   Comparing data across multiple websites
--   Extracting from sites with complex navigation or auth
--   Research tasks where the agent needs to explore multiple paths
--   Critical data where accuracy is paramount
+Every agent run executes on `spark-2`, the default, so you don't need to set `model`. The retired `spark-1-pro` and `spark-1-mini` names are still accepted for backwards compatibility, but they are deprecated and run `spark-2`.
 
 Learn more about Spark models in our Agent documentation.
 

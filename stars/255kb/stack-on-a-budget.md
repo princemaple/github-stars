@@ -177,6 +177,7 @@ Table of Contents
     -   ExchangeRate-API
     -   FingerprintJS Pro
     -   Geocodio
+    -   Indexed
     -   ipapi.is
     -   Let's Encrypt
     -   ostr.io

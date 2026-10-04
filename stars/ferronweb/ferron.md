@@ -1,6 +1,6 @@
 ---
 project: ferron
-stars: 2154
+stars: 2159
 description: A fast, modern web server built for production debugging.
 url: https://github.com/ferronweb/ferron
 ---

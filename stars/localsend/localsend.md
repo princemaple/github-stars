@@ -1,6 +1,6 @@
 ---
 project: localsend
-stars: 92764
+stars: 93282
 description: An open-source cross-platform alternative to AirDrop
 url: https://github.com/localsend/localsend
 ---
@@ -121,15 +121,15 @@ Note
 
 Android
 
-5.0
+7.0
 
-\-
+The last version to support Android 5 and 6 is v1.17.0.
 
 iOS
 
-12.0
+13.0
 
-\-
+The last version to support iOS 12 is v1.17.0.
 
 macOS
 
@@ -141,7 +141,7 @@ Windows
 
 10
 
-The last version to support Windows 7 is v1.15.4. There might be backports of newer versions for Windows 7 in the future.
+The last version to support Windows 7 is v1.15.4.
 
 Linux
 

@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6275
+stars: 6331
 description: Copy/paste detector for source code. 220+ languages, Rust engine, SARIF/HTML/badge reporters, GitHub Action, MCP server for AI agents.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -12,7 +12,7 @@ jscpd
 
 **Documentation:** https://jscpd.dev
 
-jscpd tokenizes each of its 224 supported formats the way that language defines it — its own comment and string rules, not generic text — then finds duplicated token sequences across files with a rolling Rabin-Karp hash. Opt-in passes catch copies that differ only in names or values (Type-2) or that have a few edited lines (Type-3). See How detection works for the full mechanism, and Supported formats for the full list.
+jscpd tokenizes each of its 224 supported formats the way that language defines it — its own comment and string rules, not generic text — then finds duplicated token sequences across files with a rolling Rabin-Karp hash. Opt-in passes catch copies that differ only in names or values (Type-2) or that have a few edited lines (Type-3), and an experimental one uses a code embedding model for functions that do the same thing written differently (Type-4). See How detection works for the full mechanism, and Supported formats for the full list.
 
 Beyond duplicates, jscpd also finds dead code (`--dead-code`), ranks files by complexity (`--complexity`), tracks duplication over git history (`--history`), and rolls it all into one health score (`--health`) — see Features below.
 
@@ -105,6 +105,10 @@ AI-Ready
 
 AI reporter, agent skills, MCP server
 
+Editors
+
+`jscpd --lsp`, the language server: setup for Neovim, Helix, Sublime Text, Emacs and JetBrains IDEs
+
 Programming API
 
 Rust API (`cpd-finder` crate)
@@ -136,7 +140,9 @@ jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime r
 -   **224 language formats**, with cross-format detection (Vue SFC, Svelte, Astro, Markdown) and `--cross-formats` groups to match clones across JavaScript and TypeScript
 -   **Type-2 clones** — `--ignore-identifiers`, `--ignore-literals` and `--ignore-annotations` find blocks that differ only in names, literal values or annotations, reported as `renamed` (see docs)
 -   **Type-3 near-miss clones** — `--max-gap-lines N` merges a copy with a few inserted or changed lines into one `similar` clone with a similarity score; `--similarity 0.85` compares whole JavaScript/TypeScript functions by syntax-tree structure, catching renames and scattered edits too (see docs)
--   **Clone kinds everywhere** — `exact`, `renamed` or `similar` in the console, JSON (`kind`, `similarity`, `method`), XML, HTML, Xcode, SARIF (`jscpd/duplicate-code`, `jscpd/renamed-code`, `jscpd/similar-code`) and Code Climate output; default runs still report only `exact` clones
+-   **Type-4 semantic clones (experimental)** — `--semantic` embeds the functions of JavaScript, TypeScript, Vue, Svelte, Astro, Python, Rust, Go, Java, Kotlin, C#, C, C++, PHP, Ruby, Scala and Swift files with a code embedding model, either one jscpd runs itself (after `jscpd --semantic-download` once) or any OpenAI-compatible API, and reports functions that do the same thing written differently: the same feature implemented twice in one language, or a rule your Rust backend enforces and your Svelte frontend repeats (see Semantic clones below)
+-   **Port progress and parity (experimental)**: `jscpd --compare python/ typescript/` pairs the functions of two folders with the same model and lists which functions of each have a counterpart in the other: what is left to port to another language or platform, or what the Android version of an app has that the iOS one lacks (see Comparing two codebases below)
+-   **Clone kinds everywhere** — `exact`, `renamed` or `similar` in the console, JSON (`kind`, `similarity`, `method`), XML, HTML, Xcode, SARIF (`jscpd/duplicate-code`, `jscpd/renamed-code`, `jscpd/similar-code`, `jscpd/similar-function`, `jscpd/semantic-code`) and Code Climate output; default runs still report only `exact` clones
 -   **`--kind`** — keep only the clone kinds you care about: `--kind renamed`, or `--kind gap,ast` for near-miss clones only. Statistics and `--threshold` follow the filter; a kind whose detector is off warns, an unknown kind errors (see docs)
 -   **15 reporters**: `console`, `console-full`, `json`, `xml`, `csv`, `html`, `markdown`, `badge`, `sarif`, `codeclimate`, `openmetrics`, `ai`, `xcode`, `threshold`, `silent`
 -   **Clone baseline** — gate CI on _new_ duplication only. `--baseline .jscpd-baseline.json --fail-on-new-clones[=N]` tolerates legacy clones and fails the build on regressions; `--baseline-from-ref origin/main` does the same without a committed file (see docs)
@@ -158,6 +164,7 @@ jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime r
 ### AI and operations
 
 -   **`--mcp`** — built-in MCP server over stdio with fully described tools: point your AI assistant at the binary and it can check snippets for duplication against your codebase, or find structurally similar functions with a `similarity` argument (see docs)
+-   **`--lsp`**: a language server over stdio. Clones, similar functions, semantic clones, dead code and complexity show up as diagnostics in the files you edit and follow the text as you type, each analysis with a switch of its own (see Editors below)
 -   **AI reporter** — token-efficient output for LLM pipelines (~79% fewer tokens than console)
 -   **Prebuilt for 8 platforms** — macOS arm64/x64, Linux arm64/x64 (glibc and musl), Windows arm64/x64
 -   **`--workers`** — control parallelism for file tokenization and detection (default: all CPU cores)
@@ -233,6 +240,12 @@ cpd-reporter
 crates.io
 
 Output formatting (15 reporters, duplication and dead code)
+
+cpd-semantic
+
+crates.io
+
+Semantic clones (`--semantic`, experimental): function extraction, code embeddings from a model run in-process or an API, pairing
 
 basta
 
@@ -347,6 +360,62 @@ PMD CPD
 
 Methodology, cross-format detection and AI-token-efficiency comparisons: benchmark/BENCHMARK.md. Re-run with `benchmark/benchmark.sh`.
 
+Semantic clones (experimental)
+------------------------------
+
+Token matching finds code that someone copied. It cannot find two functions that do the same job with different code, such as a validation rule that a Rust backend enforces and a Svelte frontend writes again, or two helpers that two people wrote for the same task. `--semantic` looks for these pairs with a code embedding model. jscpd turns every function into a vector and reports two functions as a `semantic` clone when each is the other's closest match and their vectors are similar enough.
+
+jscpd --semantic-download                                    # once: CodeRankEmbed, 548 MB, into the jscpd cache
+jscpd --semantic src/                                        # pairs within one language and across languages
+jscpd --semantic --semantic-scope cross backend/ frontend/   # only pairs across languages
+jscpd --semantic --kind semantic -r ai .                     # only semantic clones, one line each
+
+The model runs inside jscpd on the CPU, so a scan makes no network call. The default model is CodeRankEmbed (MIT), and jscpd can also run jina-embeddings-v2-base-code. `jscpd --semantic-models` lists nine models with the thresholds jscpd calibrated for each one, and `--semantic-model` picks one of them. To use a model that jscpd does not run itself, point `--semantic-url` at an OpenAI-compatible embeddings API such as Ollama, LM Studio or `llama-server`. jscpd reads an API key only from the `JSCPD_SEMANTIC_API_KEY` environment variable.
+
+jscpd compares the functions of JavaScript, TypeScript, JSX, TSX, Vue, Svelte, Astro, Python, Rust, Go, Java, Kotlin, C#, C, C++, PHP, Ruby, Scala and Swift files. A pair within one language needs a higher similarity than a pair across languages, because code in one language resembles other code in that language whatever it does. With CodeRankEmbed the two thresholds are 0.4125 and 0.6375, and `--semantic-threshold` and `--semantic-same-threshold` change them. jscpd caches the vectors, so a second run embeds only the functions whose code changed.
+
+The console, `ai`, JSON, SARIF and Code Climate reporters mark these clones as kind `semantic` with their similarity. The mode is experimental. Besides real duplicates it reports related code, such as a client function and the server endpoint it calls, so review a pair before you merge the two functions. The docs describe the rules, `fixtures/semantic-demo` is a runnable example with a Rust backend and a SvelteKit frontend, and Embedding Models compares the nine models.
+
+Comparing two codebases (experimental)
+--------------------------------------
+
+`--compare` takes two folders and pairs their functions with the `--semantic` model. During a port, such as a library moving to another language or an iOS app moving to Android, it shows which functions of the source already have a version in the target and which are still to port. For two implementations of one app, such as the Android and the iOS one, it shows what both have and what only one of them has.
+
+jscpd --compare python typescript        # progress of a port: the source first, the target second
+jscpd --compare ios android -r console-full  # parity, with every pair and its similarity
+
+```
+Code
+ 71% 5 of 7 functions in python have a counterpart in typescript
+ 80% 4 of 5 functions in typescript have a counterpart in python
+
+Paired under other names (1):
+  python                        typescript              similarity
+  billing.py:28 tax_for_region  billing.ts:27 salesTax  0.87 high
+
+Only in python (2):
+  billing.py (1)
+    46  due_date                6 lines
+  shipping.py (1)
+    18  estimate_delivery_days  8 lines
+
+Tests
+ 75% 3 of 4 tests in python have a counterpart in typescript
+100% 3 of 3 tests in typescript have a counterpart in python
+```
+
+A function pairs with its counterpart when the model finds them each other's closest match. A short function the model cannot place pairs by name when the names match once case and underscores are ignored (`encodeBinary`, `encode_binary`) and the code is similar enough. jscpd measures tests and code in two blocks and pairs a test only with a test. It tells a test by the conventions of its language, such as `*_test.go`, `test_*.py`, `*.test.ts`, `src/test/` or Rust's `#[cfg(test)]`. Every pair has its similarity and a level, `high`, `medium` or `low`, on the scale of the model, and the report lists the pairs under other names on their own, since nobody finds those by searching for a name. The console, JSON and Markdown reporters print the totals per side and per file with the mean similarity, the functions with no counterpart, and the pairs. `-r html` writes a migration map, a page that draws both sides as dependency graphs with the pairs bridging them and marks the functions ready to port, the ones whose callees all have a counterpart already. A second tab lists the same pairs as a table you can sort. The docs describe the rules and how they did on two real codebases, and `fixtures/compare-demo` is a runnable example.
+
+Editors
+-------
+
+`jscpd --lsp` runs jscpd as a language server. An editor starts it for a workspace, and the files you edit get what jscpd finds as diagnostics, updated as you type: clones by default, and similar functions, semantic clones, dead code and complexity when `--lsp-analyses` or the `lsp` section of `.jscpd.json` turns them on. A clone comes with "Go to the other copy" and "Ignore this clone" actions. In Neovim 0.11:
+
+vim.lsp.config('jscpd', { cmd \= { 'jscpd', '\--lsp' }, root\_markers \= { '.jscpd.json', '.git' } })
+vim.lsp.enable('jscpd')
+
+Editors has the setup for Helix, Sublime Text, Emacs and JetBrains IDEs too, and `fixtures/lsp-demo` is a project that shows each analysis. Clients for VS Code and Zed will follow in a repository of their own.
+
 AI-Ready Features
 -----------------
 
@@ -382,13 +451,25 @@ Guided refactoring workflow — read clones, choose strategy, apply, verify
 
 `npx skills add kucherenko/jscpd --skill dry-refactoring`
 
+`compare-codebases`
+
+How `--compare` pairs the functions of two folders, and a step-by-step way to compare two folders and check the result
+
+`npx skills add kucherenko/jscpd --skill compare-codebases`
+
+`code-migration`
+
+Port a codebase to another language or framework, tests first and code second, with a coverage map binding functions to their tests and `--compare` as the progress measure; or check two implementations for parity
+
+`npx skills add kucherenko/jscpd --skill code-migration`
+
 `codebase-refactoring`
 
 Broader health pass — fix duplication, then remove/refactor dead code, then simplify the biggest/most complex files, prioritized from `--health`
 
 `npx skills add kucherenko/jscpd --skill codebase-refactoring`
 
-After installation, ask your agent to "find and fix code duplication" and it will invoke jscpd with the right options and act on the results — or "clean up this codebase" for the broader pass.
+After installation, ask your agent to "find and fix code duplication" and it will invoke jscpd with the right options and act on the results — or "clean up this codebase" for the broader pass, or "port this Python library to Rust" for a migration.
 
 ### MCP Server
 

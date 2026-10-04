@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 22844
+stars: 22875
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -90,6 +90,7 @@ Who is using Yjs
 -   ProtonMail | Proton Docs - E2E encrypted collaborative documents in Proton Drive.
 -   Theneo - AI-powered API docs with live team collaboration.
 -   ToolJet - Build full-stack enterprise internal apps in minutes.
+-   Stuga - Self-hosted collaborative documents and databases. AI agents' edits arrive as tracked changes that, by default, wait for a person to accept or reject them.
 
 Table of Contents
 -----------------
@@ -1019,7 +1020,7 @@ Computes the state vector and encodes it into an Uint8Array.
 
 **`Y.mergeUpdates(Array<Uint8Array>)`**
 
-Merge several document updates into a single document update while removing duplicate information. The merged document update is always smaller than the separate updates because of the compressed encoding.
+Merge several document updates into a single document update while removing duplicate information. The merged document update is always smaller than the separate updates because of the compressed encoding. If several updates contain the same content, the merged update retains the encoding of the update that comes first (e.g. if only one of them is garbage-collected). This is also how `Y.applyUpdate` behaves.
 
 **`Y.encodeStateVectorFromUpdate(Uint8Array): Uint8Array`**
 

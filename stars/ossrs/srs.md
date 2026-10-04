@@ -1,6 +1,6 @@
 ---
 project: srs
-stars: 29287
+stars: 29314
 description: SRS is a simple, high-performance, AI-driven real-time media server supporting RTMP, WebRTC, HLS, HTTP-FLV, HTTP-TS, SRT, MPEG-DASH, and GB28181, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711.
 url: https://github.com/ossrs/srs
 ---
@@ -21,8 +21,6 @@ Please check the Getting Started guide in English or Chinese. We highly recommen
 
 docker run --rm -it -p 1935:1935 -p 1985:1985 -p 8080:8080 \\
     -p 8000:8000/udp -p 10080:10080/udp ossrs/srs:6
-
-> Tips: If you're in China, use this image `registry.cn-hangzhou.aliyuncs.com/ossrs/srs:6` for faster speed.
 
 Open http://localhost:8080/ to verify, and then stream using the following FFmpeg command:
 

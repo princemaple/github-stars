@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40451
+stars: 40510
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -389,6 +389,19 @@ disco env:set \\
   --project croc
 
 `SITE_URL` must be the public website hostname without `https://`. Change the project name if it is not `croc`. The `web` service mounts the named `croc-store` volume at `/www/croc/storage`, which is also its configured `--store-dir`, so stored ciphertext and metadata survive container replacement and redeployment. The `web` service also reserves published TCP port 9020 and maps it to unused container port 65535. This deliberate port collision makes Disco stop the previous volume-owning web service before starting its replacement, avoiding concurrent access to the store. Port 9020 carries no application traffic and should remain blocked by the server firewall.
+
+Stored-upload policy can be set per deployment without editing `disco.json`:
+
+disco env:set \\
+  CROC\_STORE\_CREATE\_RATE=60 \\
+  CROC\_STORE\_ACTIVE\_UPLOADS=10 \\
+  CROC\_STORE\_UPLOAD\_TIMEOUT=5m \\
+  CROC\_STORE\_TRUSTED\_PROXY=VERIFIED\_PROXY\_IP/32 \\
+  --project croc --disco YOUR\_DISCO\_HOST
+
+Replace the proxy placeholder with the socket source address seen by croc. With Docker Swarm routing, this can be the `lb-disco-main` endpoint shown by `docker network inspect disco-main`, rather than Caddy's container address. Verify the source on each instance and again after Docker network changes. Caddy's normal forwarding configuration supplies `X-Forwarded-For`; verify that different external clients remain distinct and that a forged incoming header cannot choose their accounting IP. Do not edit Disco-generated Caddy configuration or trust an entire private network to work around a mismatch.
+
+The values above are deployment overrides; croc's defaults remain five creation attempts per hour and two unfinished uploads per IP. `CROC_STORE_DOWNLOADS` controls downloads from each link and does not raise upload limits. See the stored-transfer operator guide for timeout, cleanup, and rate-limit response behavior.
 
 The ports in `CROC_RELAY_PORTS` must match the `publishedPorts` entries in the `relay` service in `disco.json`; do not include the web service's deployment-only port 9020. Disco cannot generate host port mappings from an environment variable. Make sure the relay TCP ports are also open in the server's firewall or cloud security group.
 

@@ -1,6 +1,6 @@
 ---
 project: syslog-ng
-stars: 2376
+stars: 2378
 description: syslog-ng is an enhanced log daemon, supporting a wide range of input and output methods: syslog, unstructured text, queueing, SQL & NoSQL.
 url: https://github.com/syslog-ng/syslog-ng
 ---

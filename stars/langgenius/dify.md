@@ -1,6 +1,6 @@
 ---
 project: dify
-stars: 157288
+stars: 157781
 description: Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.
 url: https://github.com/langgenius/dify
 ---
@@ -28,7 +28,7 @@ docker compose up -d
 
 After running, you can access the Dify dashboard in your browser at http://localhost/install and start the initialization process.
 
-#### Seeking help
+### Seeking help
 
 Please refer to our FAQ if you encounter problems setting up Dify. Reach out to the community and us if you are still having issues.
 
@@ -55,7 +55,7 @@ Using Dify
 ----------
 
 -   **Cloud  
-    **We host a Dify Cloud service for anyone to try with zero setup. It provides all the capabilities of the self-deployed version, and includes 200 free GPT-4 calls in the sandbox plan. If you run into issues with Dify Cloud, contact our Cloud support team.
+    **We host Dify Cloud so you can try Dify without managing a server. See the pricing page for current plans and usage allowances. If you run into issues, contact our Cloud support team.
     
 -   **Self-hosting Dify Community Edition  
     **Quickly get Dify running in your environment with this starter guide. Use our documentation for further references and more in-depth instructions.
@@ -102,7 +102,7 @@ Star History
 Security disclosure
 -------------------
 
-To protect your privacy, please avoid posting security issues on GitHub. Instead, report issues to security@dify.ai, and our team will respond with detailed answer.
+Report vulnerabilities privately through GitHub Security Advisories, following our security policy. Do not disclose them in public issues, discussions, or pull requests.
 
 License
 -------

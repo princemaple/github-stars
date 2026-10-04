@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1195
+stars: 1226
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. OpenCode V2 support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -39,7 +39,7 @@ Features
 -   **Voice prompts** — send voice/audio messages, transcribe them via a Whisper-compatible API, and optionally enable spoken replies in `/settings`
 -   **File attachments** — send images, PDF documents, and text-based files to OpenCode, including multiple files in one Telegram album
 -   **Scheduled tasks** — schedule prompts to run later or on a recurring interval; see Scheduled Tasks
--   **Message queue** — messages sent while the agent is busy are held and sent one by one afterwards (Queue) or, on OpenCode V2, steered into the running task (Steer); each waiting message is a bottom-keyboard button you can tap to withdraw it
+-   **Message queue** — messages sent while the agent is busy are held and sent one by one afterwards (Queue) or, on OpenCode V2, steered into the running task (Steer); each waiting message is a bottom-keyboard button you can tap to withdraw it; `/detach` leaves waiting messages to the session they were sent to
 -   **Context control** — tap the bottom 📊 button to see context usage and the latest assistant message's tokens and cost; compact from the details with an inline confirmation
 -   **Input flow control** — when an interactive flow is active, the bot accepts only relevant input to keep context consistent and avoid accidental actions
 -   **Git worktree switching** — browse and switch between existing git worktrees for the current repository with `/worktree`
@@ -217,6 +217,10 @@ Start the local OpenCode server on the bot machine
 `/opencode_stop`
 
 Stop the local OpenCode server, including during a run
+
+`/reload`
+
+Reload the OpenCode configuration without restarting the server (V2 only)
 
 `/help`
 
@@ -726,6 +730,8 @@ Runtime preferences are changed from `/settings` and stored in `settings.json`:
 -   Message queue: `Off`, or what happens to text, voice, photos, rich formatted messages with photos, documents, and media groups sent while the agent is busy — on OpenCode V2 `Queue` or `Steer` (the default), on V1 `On` (the bot's own queue, off by default)
 
 With the message queue on, text, transcribed voice, photos, rich formatted messages with photos, supported documents, and media groups sent while the agent is busy are accepted instead of being turned down. At most `MAX_QUEUED_PROMPTS` (5) messages wait at a time. Waiting messages appear as buttons above the usual bottom-keyboard grid — tap one to withdraw it — and `/abort`, `/opencode_stop` or a session/project switch withdraws them all. When a waiting message is picked up, its button disappears and its text is quoted as external user input.
+
+`/detach` does not withdraw them: they stay with the detached session and reach it as if the bot had stayed attached, with the agent and model selected at `/detach` — a message still being transcribed or downloaded included. Their buttons leave the keyboard and they no longer count toward the limit. A later session or project switch leaves them alone; `/abort` after returning to that session, or `/opencode_stop`, withdraws them. Picked up while detached, they show nothing in the chat beyond the usual background notification; back in the session before pickup, each is quoted as external user input when it starts.
 
 On OpenCode V2 a waiting message is sent to OpenCode at once and waits in the session's inbox, not in the bot: with `Steer` the running task picks it up at its next step and keeps going in the same progress message with one footer at the end; with `Queue` it starts its own run once the task finishes. Nothing is held by the bot, so there is no queued-media size limit, and after a bot restart the buttons are gone while OpenCode still delivers the messages.
 

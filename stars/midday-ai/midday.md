@@ -1,6 +1,6 @@
 ---
 project: midday
-stars: 15041
+stars: 15060
 description: Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant made for Freelancers
 url: https://github.com/midday-ai/midday
 ---

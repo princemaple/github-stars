@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 5807
+stars: 5831
 description: Network diagrams that update themselves
 url: https://github.com/scanopy/scanopy
 ---
@@ -17,7 +17,7 @@ Scanopy replaces manual network diagrams with a continuously maintained model of
   
   
 
-> 💡 **Prefer not to self-host?** Get a free trial of Scanopy Cloud
+> 🏢 **Running Scanopy for your business?** The Commercial Edition adds a commercial license, more networks and seats, Confluence export, and support, all on your own infrastructure.
 
 **L2 (Physical)**  
 Every switch, every port, every link.
@@ -51,12 +51,17 @@ Services and their dependencies, grouped by application.
 -   **MSPs**: Per-client documentation with shareable live views.
 -   **Home labs**: Document your infrastructure without opening draw.io.
 
-📋 Licensing
-------------
+📋 Editions and Licensing
+-------------------------
 
-**Self-hosted (AGPL-3.0):** Free for all use. Requires source disclosure for network services and copyleft compliance.  
-**Self-hosted (Commercial license):** For those who cannot comply with AGPL-3.0 terms. Contact licensing@scanopy.net  
-**Hosted Solution:** **Scanopy Cloud** subscription for zero infrastructure management
+Every edition runs on your own infrastructure, so discovery data, topology and credentials stay inside your network.
+
+-   **Community Edition (AGPL-3.0):** free and open source. AGPL-3.0 requires source disclosure for network services and copyleft compliance.
+-   **Commercial Edition (Self-Hosted Standard, Self-Hosted Plus, Enterprise):** a commercial license for organizations that can't meet AGPL-3.0's terms or need more networks and seats. Adds Confluence export, invoice billing, procurement documents and support. Self-Hosted Plus adds multiple organizations, and Plus and Enterprise add offline license keys for air-gapped networks.
+
+**Compare editions and get a commercial license**, or email licensing@scanopy.net.
+
+Prefer not to run it yourself? Scanopy Cloud runs the same engine as a hosted service.
 
 🚀 Quick Start for Self Hosting
 -------------------------------
@@ -74,11 +79,11 @@ Use this helper script to create a Scanopy LXC.
 
 Available as an Unraid community app.
 
-> 💡 **Prefer not to self-host?** Get a free trial of Scanopy Cloud
-
 * * *
 
 Access the UI at `http://<your-server-ip>:60072`, create your account, and wait for the first discovery to complete.
+
+Have a commercial license? See Deploying the Commercial Edition.
 
 For detailed setup options and configuration, see the Installation Guide.
 

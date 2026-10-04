@@ -1,6 +1,6 @@
 ---
 project: docker-android
-stars: 15881
+stars: 15935
 description: Android in docker solution with noVNC supported, video recording, mcp server and AI-agent
 url: https://github.com/budtmo/docker-android
 ---
@@ -18,7 +18,7 @@ Advantages of using this project
 6.  It can be used to build Android project
 7.  It can be used to run unit and UI-Test with different test-frameworks, e.g. Appium, Espresso, etc.
 8.  It support mcp server (beta-version)
-9.  It support ai-agent (beta-version)
+9.  It support ai-agent (beta-version) - supported local-LLM server: Ollama, VLLM
 
 List of Docker-Images
 ---------------------
@@ -284,7 +284,7 @@ No
 
 Yes
 
-Currently supported local AI-host/AI-provider: Ollama
+Currently supported local-LLM server: Ollama, VLLM
 
 proxy
 

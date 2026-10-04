@@ -1,6 +1,6 @@
 ---
 project: plyr
-stars: 30018
+stars: 30017
 description: A simple HTML5, YouTube and Vimeo player
 url: https://github.com/sampotts/plyr
 ---
@@ -14,7 +14,7 @@ Important
 
 The folks behind Plyr, Vidstack and Media Chrome have joined forces to build the latest version of Video.js: one modern, accessible player with the best of all three. Plyr will soon be deprecated, so give Video.js a try.
 
-**Try Video.js →**
+**Try Video.js →** · **Migrate from Plyr →**
 
 Plyr is a simple, lightweight, accessible and customizable HTML5, YouTube and Vimeo media player that supports _modern_ browsers.
 

@@ -1,6 +1,6 @@
 ---
 project: dockhand
-stars: 6492
+stars: 6612
 description: Dockhand - Docker management you will like.
 url: https://github.com/Finsys/dockhand
 ---
@@ -81,13 +81,25 @@ License
 
 Dockhand is licensed under the Business Source License 1.1 (BSL 1.1).
 
-### What this means:
+### Free, no licence needed:
 
--   **Free for**: Personal use, internal business use, non-profits, education, evaluation
--   **Not allowed**: Offering Dockhand as a commercial SaaS/hosted service
--   **Converts to Apache 2.0**: On January 1, 2029
+-   A home lab, or anything else you run for yourself and not for a business
+-   A non-profit or charity, for its own activities
+-   A school, college, university or non-commercial research
+-   Working for yourself - a freelancer, self-employed individual or sole trader running infrastructure nobody else works on with you
+-   Development, testing, staging, CI/CD, evaluation, demos and training - this one applies to **everyone, including companies**, with no limit on users or environments
 
-See LICENSE.txt for full terms.
+### Needs a Commercial License:
+
+-   Running your organization's live systems on it - a company, public body or any other organization with employees
+
+### Needs a separate agreement:
+
+-   Offering Dockhand to third parties as a hosted, managed or SaaS product whose main value is Docker management - this is outside the Commercial License too
+
+Each version becomes Apache 2.0 four years after it is first published, so every version converts on its own date.
+
+This summary is not the licence - see LICENSE.txt for the exact terms, including the full definition of production use and the 30-day cure period.
 
 Links
 -----

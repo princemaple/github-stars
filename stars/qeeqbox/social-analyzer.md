@@ -1,6 +1,6 @@
 ---
 project: social-analyzer
-stars: 24119
+stars: 24171
 description: API, CLI, and Web App for analyzing and finding a person's profile in 1000 social media \ websites
 url: https://github.com/qeeqbox/social-analyzer
 ---

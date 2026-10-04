@@ -154,7 +154,7 @@ The package can be installed by adding `finch` to your list of dependencies in `
 
 def deps do
   \[
-    {:finch, "~> 0.23"}
+    {:finch, "~> 0.24"}
   \]
 end
 

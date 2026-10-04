@@ -1,6 +1,6 @@
 ---
 project: edgeever
-stars: 1524
+stars: 1993
 description: Open-source, AI-native knowledge base & Evernote alternative with native MCP. Zero-cost on Cloudflare or Docker.
 url: https://github.com/tianma-if/edgeever
 ---
@@ -32,7 +32,7 @@ Many long-time **Evernote** users simply want a **reliable, open, and fast** per
 
 **EdgeEver fills this gap**: The entire stack is open source, including sync and self-hosting. It keeps the three-pane layout you know, stays silky-smooth and lightweight even with 10,000+ notes, and ships native AI agents with zero-cost deployment.
 
-> 💡 **Recommended Workflow:** Capture inspiration seamlessly across all devices and organize deeply in the classic three-pane view. Powered by native MCP, it not only lets AI agents retrieve and synthesize your knowledge, but also connects with your favorite productivity tools like Notion and Feishu. Publish anywhere with one-click formatting—100% self-hosted at zero cost, building an open and truly owned second brain.
+> 💡 **Recommended Workflow:** Capture inspiration seamlessly across all devices and organize deeply in the classic three-pane view. Powered by native MCP and ACP, external agents can retrieve and organize your notes seamlessly, while the desktop app lets you collaborate deeply with local AI agents on your machine. Publish anywhere with one-click formatting—100% self-hosted at zero cost, building an open and truly owned second brain.
 
 Online Demo
 -----------
@@ -54,8 +54,8 @@ Features
 -   **Deploy Your Way**: Run on Cloudflare's free serverless platform or with Docker on a VPS, NAS, or home server. Based on Cloudflare's free storage allowances, a personal deployment can hold roughly 150,000 short notes and 50,000 images; Docker storage scales on demand to easily support millions of notes and a vast image library.
 -   **Open Data, No Vendor Lock-in**: Built on standard SQLite with complete REST API, MCP, and CLI access. Your knowledge is stored transparently and accessible anytime without being locked to a single app.
 -   **Lossless ZIP Backup & Portability**: Export your complete library as a clean archive containing Markdown, Front Matter, nested folders, relative attachment links, and version histories for instant restoration anywhere.
--   **Native AI Agent Synergy**: Deep integration with Model Context Protocol (MCP) allows AI Agents like Claude Code, Codex, Antigravity, and WorkBuddy to read, organize, and summarize your notes, or sync seamlessly with Notion and Feishu Bitable.
--   **Bring Your Own AI Models**: Connect OpenAI, Anthropic, or Gemini-compatible services and third-party API relays to empower your editor with smart note summarization, key point extraction, proofreading, translation, and text continuation on full notes or selected text.
+-   **Native AI Agent Synergy**: Built-in Model Context Protocol (MCP) support allows external AI Agents to directly read, organize, and summarize notes; the desktop app also connects directly to local AI Agents running on your machine (such as Codex, Antigravity, Claude Code, and WorkBuddy) via Agent Client Protocol (ACP) for collaborative writing.
+-   **Bring Your Own AI Models**: Connect OpenAI, Anthropic, or Gemini-compatible services and third-party API relays to power the built-in Agent and companion sidebar, bringing smart note summarization, key point extraction, proofreading, translation, and text continuation to full notes or selected text.
 -   **Rich Plugin API**: Extend EdgeEver with the Plugin API.
 -   **Unlimited Multi-Device Sync**: No commercial device caps or paywalls. Enjoy seamless synchronization across PC, tablet, and mobile via web, PWA, or browser.
 -   **Classic Three-Pane Layout & Focus Mode**: Clean navigation featuring notebook trees, note lists, and an expansive editor, with a desktop focus mode to eliminate distractions.
@@ -68,7 +68,8 @@ Features
 -   **Visual Diagram Notes**: Ditch external drawing tools and sketch mind maps, flowcharts, and architecture diagrams directly in notes. Backed by a structured IR, the built-in assistant and external AI agents can generate and refine diagrams from a single prompt, complete with smart auto-layout, cross-device sync, and vector export. See the visual diagram notes design.
 -   **Revision History**: Inspect and restore previous iterations of your notes with built-in version tracking.
 -   **Public Note Sharing**: Share a note publicly and stop sharing it at any time. Optionally protect the link with an auto-generated access password.
--   **WeChat Article Clipping on Mobile**: Share a WeChat Official Account article to EdgeEver on your phone to extract its content and save it as an editable note.
+-   **WeChat Article Clipping**: Share a WeChat Official Account article to EdgeEver on your phone to extract its content and save it as an editable note.
+-   **WeChat Chat Archive Import**: On macOS, share chat history from WeChat via "Forward to Other Apps → EdgeEver" to import the entire conversation into a structured note with one click, preserving senders, timelines, quoted replies, and WeChat emojis, with images embedded and videos/files attached automatically.
 -   **Smart Local Image Compression**: Client-side WebP compression reduces file sizes by 50%-90% before uploading, saving storage and speeding up page loads without extra server costs.
 -   **Universal File Attachments**: Attach and preview PDFs, Office documents, zip files, audio, and video directly within notes. Chunked uploads and streaming safely support files up to 1 GiB.
 -   **Batch Operations & Flexible Sorting**: Easily merge or relocate multiple notes, with drag-and-drop notebook reordering.
@@ -121,6 +122,8 @@ Complete setup in 6 web steps:
 
 > 📖 For full step-by-step instructions and configuration details, see the Online Deployment Guide.
 
+> 💡 **Custom Domain & Access**: After deployment, you can directly use the default `*.workers.dev` domain assigned by Cloudflare, or attach your own custom domain in the Worker settings under **Settings → Domains & Routes**.
+
 > 💡 **Cloudflare R2 Activation**: Although Cloudflare R2 offers a generous free storage allowance that note-taking workloads remain completely within, you must first activate an R2 subscription and add a payment method. Cloudflare officially supports UnionPay, Visa, Mastercard, and other cards, as well as PayPal, Apple Pay, Google Pay, and other payment methods.
 
 ### Option C: Docker on a VPS or NAS
@@ -129,9 +132,11 @@ Use the GitHub-hosted installer and the official GHCR image:
 
 curl -fsSL https://edgeever.org/install.sh | bash
 
-The command pulls the latest image, generates an administrator password, starts EdgeEver with Docker Compose, and schedules daily automatic updates.
+The command pulls the latest image, generates an administrator password, and starts EdgeEver with Docker Compose.
 
 See the Docker deployment guide for manual deployment and configuration.
+
+After installation, updates run automatically each day by default. To update manually, run `~/edgeever/update.sh` on the deployment server.
 
 * * *
 
@@ -145,9 +150,12 @@ The instance administrator can create, disable, or reset member accounts in **Pr
 Browser Web Clipper
 -------------------
 
-The Web Clipper is officially published for Chrome, Microsoft Edge, and Firefox. Install it from the store for your browser (Microsoft Edge users can install the Chrome Web Store version directly):
-
      
+
+-   **Smart Article Extraction**: Automatically extracts article content and converts it into clean Markdown, preserving the source URL and clipping timestamp.
+-   **Selection & Context Menu Clipping**: Save selected text or right-clicked images directly as notes without capturing the entire page.
+-   **Deep Social & Community Clipping**: Native support for X (Twitter), Xiaohongshu, Zhihu, Reddit, and GitHub with one-click sending.
+-   **Private Self-Hosted Direct Connection**: Sends clipped content directly to your personal EdgeEver instance without third-party relays.
 
 Community and Feedback
 ----------------------
@@ -225,9 +233,9 @@ Open **Profile** -> **Import and export** to export or import an EdgeEver ZIP. I
 MCP
 ---
 
-Create an API token in **Profile** -> **MCP settings** and give it to your AI Agent. The Agent can then securely manage your knowledge base within your account permissions. It supports both text notes and diagram notes (including mind maps, flowcharts, and architecture diagrams) with full CRUD capabilities. The Agent can also manage note templates and AI instructions, and connect with tools such as Notion databases and Feishu Bitable.
+Create an API token in **Profile** -> **API / MCP** and copy the Remote MCP configuration in one click to let AI Agents such as Claude Code, Cursor, Antigravity, and OpenClaw securely manage your knowledge base within account permissions. EdgeEver supports full CRUD for text notes, visual diagram notes (mind maps, flowcharts, and architecture diagrams), and structured table notes. Agents can also manage notebook hierarchies, tags, attachments, revision history, note templates, and AI instructions.
 
-> 💡 **Inspiration:** Make AI your true knowledge orchestrator and creative co-pilot—instantly turn concepts into interactive mind maps and architecture diagrams, while supplying private context to your AI Agents. Paired with EdgeEver’s powerful rich-text editing and elegant typography, AI-assisted content becomes beautifully structured, polished, and publication-ready knowledge assets.
+> 💡 **Inspiration:** Make AI your true knowledge orchestrator and creative co-pilot—instantly turn concepts into interactive mind maps, flowcharts, architecture diagrams, and structured tables, while supplying private context to your AI Agents. Paired with EdgeEver’s powerful rich-text editing and elegant typography, AI-assisted content becomes beautifully structured, polished, and publication-ready knowledge assets.
 
 Image Compression
 -----------------
@@ -264,9 +272,8 @@ Web, PWA, and desktop upload memo edits after 30 seconds of inactivity and check
 Acknowledgements
 ----------------
 
--   EdgeEver's note-taking product design was also informed by the publicly available product experiences of mature note-taking tools such as Evernote. The related features were independently designed and implemented by EdgeEver.
+-   EdgeEver's note-taking product design was also informed by the publicly available product experiences of mature note-taking tools such as Evernote and Notion. The related features were independently designed and implemented by EdgeEver.
 -   The product design of mind-map and visual-diagram notes was informed by the publicly available product experiences of XMind and ProcessOn. These features were independently designed and implemented by EdgeEver.
--   Editor theme typography, heading hierarchy, and chapter structure draw from the public work of obsidian-minimal, Outline, and 墨格. Names, assets, and implementations are original to EdgeEver.
 
 Trademark and Brand Use
 -----------------------

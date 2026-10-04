@@ -1,167 +1,393 @@
 ---
 project: Ciphey
-stars: 21634
+stars: 21648
 description: ⚡ Automatically decrypt encryptions without knowing the key or cipher, decode encodings, and crack hashes ⚡
 url: https://github.com/bee-san/Ciphey
 ---
 
-  
-  
-➡️ Discord | Documentation ⬅️
+Ciphey
+======
 
-Project ciphey
-==============
+**Paste in text that's been encoded or encrypted. Ciphey works out how and hands you the plaintext.**  
+No key, no cipher name, no hints. Base64, hex, Caesar/ROT13, Vigenère, Morse code and 19 more, several layers deep.
 
-ciphey is the next generation of decoding tools, built by the same people that brought you Ciphey.
+Install · Quick start · Features · Library · MCP · Docs · Discord  
+▶ Watch the one-minute tour (MP4, 61 s)
 
-We fully intend to replace Ciphey with ciphey.
+Install
+-------
 
-✨ You can read more about ciphey here https://skerritt.blog/introducing-ciphey/ ✨
+cargo install ciphey
 
-How to Use
-==========
+Prebuilt binaries for Linux (x86\_64), macOS (Intel and Apple silicon) and Windows (x86\_64) are on the releases page, each with a `.sha256` checksum.
 
-The simplest way to use ciphey is to join the Discord Server, head to the #bots channel and use ciphey with `$ciphey`. Type `$help` for helpful information!
+To build from source, you need a Rust toolchain:
 
-The second best way is to use `cargo install ciphey` and call it with `ciphey`.
+git clone https://github.com/bee-san/Ciphey
+cd Ciphey
+cargo build --release    # the binary is target/release/ciphey
 
-You can also `git clone` this repo and run `docker build .` it to get an image.
+Or skip installing: join the Discord server, go to `#bots` and type `$ciphey <your text>` (`$help` lists the commands).
+
+Quick start
+-----------
+
+$ ciphey -t 'aGVsbG8gdGhlcmUgZ2VuZXJhbA=='
+🕵️ I think the plaintext is Words.
+Possible plaintext: 'hello there general' (y/N):
+y
+
+🥳 ciphey has decoded 64 times.
+
+The plaintext is:
+hello there general
+the decoder used is Base64
+
+The first time you run it, a short setup asks for a colour theme, how you want results shown and whether to use a wordlist, and saves your answers to `~/.ciphey/config.toml`.
+
+ciphey -t 'NTA3NjYzNzU3MjZjMjA3NjY2MjA2OTcyNjU2YzIwNzM2ZTY2Njc='   # ROT13 → hex → Base64, nothing else needed
+ciphey -f secret.txt                    # read the input from a file
+ciphey -d -t '...'                      # no y/N prompt: take the first plaintext found (handy in scripts)
+ciphey -c 15 -t '...'                   # keep searching for up to 15 seconds (the default is 5)
+ciphey -r 'flag\\{' -t '...'             # only accept plaintext that matches a regex (a crib)
+ciphey --wordlist words.txt -t '...'    # also accept any exact match from a wordlist
+
+`ciphey --help` lists every option.
 
 Features
-========
+--------
 
-Some features that may interest you, and that we're proud of.
+### ⚡ Fast
 
-Fast
-----
+▶ Watch the clip (16 s)
 
-ciphey is fast. Very fast. Other decoders such as Ciphey require advance artifical intelligence to determine which path it should take to decode (whether to try Caesar next or Base64 etc).
+Three layers (ROT13, then hex, then Base64) come off in 0.16 s, measured by bash's `time` in a real recording. Here is the same comparison for more inputs, against Python Ciphey 5.14, the version Ciphey replaces:
 
-ciphey is so fast we don't need to worry about this currently. For every 1 decode Ciphey can do, ciphey can do ~7. That's a 700% increase in speed.
+Input
 
-Library First
--------------
+Ciphey
 
-There are 2 main parts to ciphey, the library and the CLI. The CLI simply uses the library which means you can build on-top of ciphey. Some features we've built are:
+Python Ciphey 5.14
 
--   A Discord Bot
--   Better testing of the whole program 💖
--   This CLI
+Base64
+
+0.11 s
+
+0.92 s
+
+Hex → Base64
+
+0.14 s
+
+1.02 s
+
+ROT13 → Hex → Base64
+
+0.19 s
+
+no answer within 60 s
+
+URL → Base64 → Hex
+
+0.24 s
+
+1.15 s
+
+Base64 ×4
+
+0.41 s
+
+0.78 s
+
+Hex → Base32 → Base64 → Hex
+
+0.54 s
+
+0.72 s, wrong answer
+
+ROT13 → Hex → Base64 → Base32
+
+1.15 s
+
+no answer within 60 s
+
+Wall-clock median of 10 runs per input (Python Ciphey: 3) on a shared 16-CPU Linux machine, Ciphey at 47bd16d6 with the y/N prompt off and a fresh `$HOME` per run so its cache can't help. Every run was capped at 60 s. The script and raw numbers are in `media/tui-video/bench` on the `media/readme-videos` branch.
+
+Where both get the right answer, Ciphey is 1.9 to 8.6 times faster. Where does the speed come from?
+
+-   It's Rust.
+-   An A\* search tries the most promising chains of decoders first.
+-   Every decoder runs in parallel with Rayon, on up to 10 candidate texts at a time.
+-   Answers are cached in `~/.ciphey/database.sqlite`, so the same input a second time comes back in milliseconds.
+
+### 🧅 Layer after layer, no key needed
+
+Ciphey doesn't need to be told what it's looking at. It searches chains of decoders (Base64 inside hex inside ROT13, four layers of Base64, and so on) and stops at the first candidate that looks like plaintext. By default it shows you that candidate and asks before accepting it (`-d` turns this off). The clip at the top of this page shows a four-layer decode.
+
+There is also a timer: if Ciphey hasn't found anything after 5 seconds, it stops and says so (`-c` changes the limit).
+
+It knows 24 decoders and crackers:
+
+Kind
 
 Decoders
---------
 
-ciphey currently supports 16 decoders and it is growing fast. Ciphey supports around ~50, and we are adding more everyday.
+Base encodings
 
-Timer
------
+Base64 (standard and URL-safe), Base32, Base58 (Bitcoin, Flickr, Monero, Ripple), Base91, Base65536, Z85
 
-One of the big issues with Ciphey is that it could run forever. If it couldn't decode your text, you'd never know!
+Other encodings
 
-ciphey has a timer (built into the library and the CLI) which means it will eventually expire. The CLI defaults to 5 seconds, the Discord Bot defaults to 10 (to account for network messages being sent across).
+Hexadecimal, binary, URL (percent-encoding), Morse code, Braille, A1Z26, Citrix CTX1
 
-Better Docs, Better Tests
--------------------------
+Ciphers
 
-ciphey already has ~120 tests, documentation tests (to ensure our docs are kept up to date) and we enforce documentation on all of our major components. This is beautiful.
+Caesar (including ROT13), ROT47, Atbash, Vigenère (it works out the key itself), rail fence, reversed text
 
-LemmeKnow
----------
+Oddities
 
-LemmeKnow is the Rust version of PyWhat. It's 33 times faster which means we can now decode and determine whether something is an IP address or whatnot 3300% faster than in Python.
+Brainfuck (it runs the program), Morse or binary written with other symbols
 
-Multithreading
---------------
+More are on the way: #1030 tracks 109 decoders that aren't in yet.
 
-Ciphey did not support multi-threading, it was quite slow. ciphey supports it natively using Rayon, one of the fastest multi-threading libraries out there.
+### 🕵️ Knows what it found
 
-While we do not entirely see the effects of it with only 16 decoders (and them being quite fast), as we add more decoders (and slower ones) we'll see it won't affect the overall programs speed as much.
+▶ Watch the clip (21 s)
 
-Multi level decodings
----------------------
+Every candidate plaintext also goes through LemmeKnow, the Rust port of pyWhat, which recognises more than 120 formats. So Ciphey doesn't just decode the string, it tells you what it is: a password in a `mount` or `sshpass` command, a TOTP secret, a GitHub token or Stripe key, an IP or MAC address, an email address or URL, a card number, a crypto wallet, an AWS ARN or a CTF flag.
 
-Ciphey did not support multi-level decryptions like a path of Rot13 -> Base64 -> Rot13 because it was so slow. ciphey is fast enough to support this, although we plan to turn it off eventually.
+$ ciphey -t '3139322e3136382e302e31'
+🕵️ I think the plaintext is Internet Protocol (IP) Address Version 4.
+Possible plaintext: '192.168.0.1' (y/N):
 
-Configurable Sensitivity for Plaintext Detection
-------------------------------------------------
+### 🎯 Crib and regex mode
 
-ciphey now supports configurable sensitivity levels for gibberish detection, allowing for more accurate plaintext identification across different types of encodings. Classical ciphers like Caesar use Low sensitivity to better handle English-like results, while most other decoders use Medium sensitivity by default.
+▶ Watch the clip (14.5 s)
 
-This feature helps reduce false positives and negatives in plaintext detection, making ciphey more reliable across a wider range of encoded texts.
+If you know part of the answer (the flag format, a word that has to be in there, how it starts), give it to Ciphey as a regex with `-r`. The other checkers switch off and only text that matches is accepted. This finds plaintext the English detection would pass over: Base64-encoded `picoCTF{b4s3_64_1s_fun}` comes back as gibberish by default, but with `-r 'picoCTF\{'` it's the first match.
 
-Enhanced Plaintext Detection with BERT
---------------------------------------
+`--wordlist words.txt` works the same way for exact matches: a candidate that is a line in the file counts as plaintext.
 
-ciphey now offers enhanced plaintext detection using a BERT-based model from the `gibberish-or-not` crate. This feature:
+### 🎨 Made for your terminal
 
--   Increases plaintext detection accuracy by approximately 40%
--   Reduces false positives and negatives when identifying plaintext
--   Can be enabled during first-run setup or later with `ciphey --enable-enhanced-detection`
--   Requires a one-time download of a 500MB AI model (requires a free Hugging Face account)
+The first-run setup lets you pick a colour theme (Capptucin, Darcula, GirlyPop, the default, or your own RGB values) and choose between being asked about each plaintext or getting a list of candidates at the end. You can see it in the tour from 0:32. Everything is saved to `~/.ciphey/config.toml`, which you can edit later.
 
-New Features
-============
+### 📚 Library first
 
-Better search algorithm
------------------------
+The `ciphey` binary is a thin wrapper around the `ciphey` crate. The Discord bot uses it as well, and so can your code.
 
-We now use A\* search. This is very fast.
+Use it as a library
+-------------------
 
-A\* works by using a heuristic to estimate the cost of reaching the goal from the current state.
+`perform_cracking` runs the whole search, as the `ciphey` binary does:
 
-First, we ignore the heuristic for very fast decoders like Base64 and ensure we run them first each time on each node.
+use ciphey::config::Config;
+use ciphey::{perform\_cracking, CipheyError};
 
-Then, we calculate the heuristic for the remaining decoders using `cipher_identifier` which can determine the probability a given string is a certain cipher.
+fn main() {
+    let mut config = Config::default();
+    config.timeout = 5; // seconds
+    config.human\_checker\_on = false; // never prompt on stdin
+    config.api\_mode = true; // don't print progress to stdout
+    // config.regex = Some(r"flag\\{".to\_string()); // only accept plaintext matching a crib
 
-We store previous results in a cache to avoid recalculating the same path.
+    match perform\_cracking("aGVsbG8gdGhlcmUgZ2VuZXJhbA==", config) {
+        Ok(Some(result)) => {
+            let path: Vec<&str\> = result.path.iter().map(|step| step.decoder).collect();
+            println!("{} (via {})", result.text\[0\], path.join(" → "));
+        }
+        Ok(None) => println!("no plaintext found"),
+        Err(CipheyError::Timeout { secs }) => println!("gave up after {secs}s"),
+        Err(e) => eprintln!("error: {e}"),
+    }
+}
 
-We prune the search tree to avoid unnecessary calculations and keep the memory usage down if it gets too bad.
+This prints `hello there general (via Base64)`.
 
-We also keep track of statistics on decoders to dynamically prioritise decoders that work better (example: caesar is popular, but Beaufort is not so Caesar will dynamically be prioritised over Beaufort)
+### One decoder
 
-Finally, we keep track of popular pairs. So base64 -> base64 is very popular, so we prioritise that path (among others).
+If you know what you're looking at, call that decoder. Each one is a function in `ciphey::decoders`: encodings come back decoded, ciphers are cracked, and the ones that take a key can decrypt with yours.
 
-Custom themes
--------------
+use ciphey::decoders;
 
-You can now set a custom theme for ciphey. This is useful if you want to make ciphey look different.
+let decoded = decoders::base64("aGVsbG8gd29ybGQ=");
+assert\_eq!(decoded.candidates\[0\].text, "hello world");
 
-This also helps with accessibility.
+// No key: Ciphey tries every shift and marks the one its checks accept
+let cracked = decoders::caesar("Uryyb jbeyq");
+let plaintext = cracked.plaintext().expect("a shift reads as English");
+assert\_eq!(plaintext.text, "Hello world");
+assert\_eq!(plaintext.key.as\_deref(), Some("13"));
 
-Vigenere
---------
+// With the key
+let decrypted = decoders::vigenere\_with\_key("Rijvs uyvjn", "KEY")?;
+assert\_eq!(decrypted.candidates\[0\].text, "Hello world");
 
-We now use perhaps the best algorithm for Vigenere.
+To choose the decoder at run time, `decode_with` takes its name or an alias, and `list_decoders` lists them all with their aliases, tags and the key they take:
 
-It's fast, accurate and handles non-letter characters better than any other algorithm.
+use ciphey::{decode\_with, list\_decoders, DecodeOptions};
 
-Better English checking
------------------------
+let cracked = decode\_with("rot13", "Uryyb jbeyq", &DecodeOptions::default())?;
+let decrypted = decode\_with("affine", "IHHWVC SWFRCP", &DecodeOptions::with\_key("a=5, b=8"))?;
 
-We use a qudgaram / trigram / english dict checker to calculate probability of plaintext.
+for decoder in list\_decoders() {
+    println!("{}: {}", decoder.name, decoder.key\_format.unwrap\_or("no key"));
+}
 
-We change the thresholds depending on the cipher. Example is that Caesar returns text that "looks" like english, whereas base64 does not.
+Nothing is filtered out: you get what the decoder hands on to the search. The candidate Ciphey's plaintext checks accept comes first and carries a `detection`; if they accept none, you get the decodings unmarked, for you to judge (all 25 Caesar shifts, say, though crackers with many keys hand on only their best few).
 
-As well as this, we have a database of popular regex (about 500) of api keys, mac addresses, etc.
+### Is it plaintext?
 
-We also have a `is_password` function to determine if a string is an exact password seen in a data dump.
+`detect_plaintext` runs the checks the search uses (a regex crib, a wordlist, LemmeKnow, common passwords and English) and says which one accepted the text and what it took it for:
 
-More ciphers
+use ciphey::detection::{detect\_plaintext, CheckerKind, DetectOptions, Sensitivity};
+
+let found = detect\_plaintext("192.168.0.1", &DetectOptions::default()).unwrap();
+assert\_eq!(found.checker, CheckerKind::LemmeKnow);
+assert\_eq!(found.description, "Internet Protocol (IP) Address Version 4");
+assert\_eq!(found.confidence, Some(0.7)); // the format's rarity in pyWhat
+
+// Pick the checkers and how strict the English checker is, or give a crib
+let english\_only = DetectOptions::new()
+    .checkers(\[CheckerKind::English\])
+    .sensitivity(Sensitivity::Low);
+let crib = DetectOptions::new().regex(r"^flag\\{")?;
+
+`cargo run --example decode` tours all of this, and `cargo run --example decode -- list` lists the decoders.
+
+-   `perform_cracking` returns `Result<Option<DecoderResult>, CipheyError>` on `master` (#915), and the single-decoder and detection functions are only on `master` so far. The last release on crates.io (0.12.0) still returns `Option<DecoderResult>`, so until the next release use the git version: `ciphey = { git = "https://github.com/bee-san/Ciphey" }`.
+-   The config is global to the process. The first call's `Config` is used for every later call, and the single decoders follow it too (a `regex` crib, a wordlist). They never prompt.
+-   The API is documented on docs.rs.
+
+MCP server (AI assistants)
+--------------------------
+
+▶ Watch the video (29.5 s). The chat replays a real Kiro CLI session with ciphey-mcp.
+
+`ciphey-mcp` is a Model Context Protocol server, so AI assistants such as Claude Desktop and Kiro can decode text with Ciphey. It's behind the `mcp` feature, so the normal `ciphey` build doesn't include it:
+
+cargo install ciphey --features mcp --bin ciphey-mcp
+# or, from a clone of this repository:
+cargo install --path . --features mcp --bin ciphey-mcp
+
+The `mcp` feature isn't in a crates.io release yet (0.12.0 is the latest), so until the next one, install from git: `cargo install --git https://github.com/bee-san/Ciphey ciphey --features mcp --bin ciphey-mcp`.
+
+It provides four tools:
+
+-   `decode` decodes `text` when you don't know how it was encoded, and returns the `plaintext` and the `path` of decoders used, with keys such as the Caesar shift. Optional arguments: `timeout_secs` (1 to 30, default 10) and `regex`, a crib the plaintext must match, such as `flag\{`.
+-   `decode_with` runs one decoder you choose on `text`: give it the `decoder`'s id, name or an alias (`base64`, `rot13`, `vigenere`, `xor_single_byte`, ...). Without a `key` it decodes the text, or cracks the cipher by trying every key; with one it decrypts, for ciphers that take a key (`13`, `LEMON`, `a=5, b=8`, `rails=3, offset=1`). It returns every candidate decoding and whether each passes Ciphey's plaintext check. `regex` works as for `decode`.
+-   `detect_plaintext` checks whether `text` already is plaintext, without decoding it, and says which checker accepted it, what it took it for and, for LemmeKnow's formats, how sure it is. Optional arguments: `checkers` (any of `lemmeknow`, `password` and `english`, by default all three), `sensitivity` of the English checker (`low`, `medium` or `high`) and a `regex` crib.
+-   `list_decoders` lists the encodings and ciphers Ciphey supports, with the ids and aliases `decode_with` takes and the key format of each cipher that takes one.
+
+A `decode` result looks like this. `status` is `decoded`, `not_found` or `timed_out`.
+
+{
+  "status": "decoded",
+  "plaintext": "hello there general",
+  "path": \[{ "decoder": "Base64", "key": null }\],
+  "checker": "English Checker",
+  "timeout\_secs": 10
+}
+
+`decode_with` with `{"decoder": "rot13", "text": "Uryyb jbeyq"}` gives the result below. `status` is `plaintext_found`, `no_plaintext` (none of the candidates passed the check, so judge them yourself) or `no_candidates` (the text isn't in that decoder's format). A result holds at most 100 candidates and 65,536 characters of their text; `total_candidates` says how many there were, and a candidate cut short has `truncated` set.
+
+{
+  "decoder": "caesar",
+  "status": "plaintext\_found",
+  "candidates": \[
+    {
+      "text": "Hello world",
+      "truncated": false,
+      "key": "13",
+      "is\_plaintext": true,
+      "detection": { "checker": "english", "description": "Words", "confidence": null }
+    }
+  \],
+  "total\_candidates": 1
+}
+
+`detect_plaintext` with `{"text": "192.168.0.1"}` gives:
+
+{
+  "is\_plaintext": true,
+  "detection": {
+    "checker": "lemmeknow",
+    "description": "Internet Protocol (IP) Address Version 4",
+    "confidence": 0.7
+  },
+  "checkers": \["lemmeknow", "password", "english"\]
+}
+
+Every call except `list_decoders` runs in its own short-lived process. Input is limited to 65,536 characters (keys too) and regexes to 1,000. A `decode` searches for at most 30 seconds and may use 1 GiB of memory; a `decode_with` call may run for 30 seconds and a `detect_plaintext` call for 10, with 256 MiB each. At most two decodes and four other calls run at once. The server doesn't read or write `~/.ciphey`, so there's no config file and no cache.
+
+### Claude Desktop
+
+Open Settings → Developer → Edit Config, add the server to `claude_desktop_config.json`, then restart Claude Desktop. Use the full path printed by `which ciphey-mcp` (`where ciphey-mcp` on Windows, for example `C:\\Users\\you\\.cargo\\bin\\ciphey-mcp.exe`), because Claude Desktop may not see your shell's `PATH`.
+
+{
+  "mcpServers": {
+    "ciphey": {
+      "command": "/Users/you/.cargo/bin/ciphey-mcp"
+    }
+  }
+}
+
+### Kiro
+
+kiro-cli mcp add --name ciphey --command ciphey-mcp
+
+Or add the entry below to `~/.kiro/settings/mcp.json` (all projects) or `.kiro/settings/mcp.json` (one project).
+
+### Other clients
+
+Most MCP clients take the same `mcpServers` entry: a stdio server started by `ciphey-mcp` with no arguments.
+
+{
+  "mcpServers": {
+    "ciphey": {
+      "command": "ciphey-mcp",
+      "args": \[\]
+    }
+  }
+}
+
+Good to know
 ------------
 
--   Braille
--   Atbash
--   Vigenere
+-   Plaintext detection isn't perfect. Very short phrases, text that isn't English, JSON and unusual flag formats can be missed or mistaken for something else. #1031 has the details and the planned fixes. If you know anything about the answer, a crib (`-r`) or a wordlist helps a lot.
+-   If a cached answer is wrong, delete `~/.ciphey/database.sqlite` to clear the cache.
+-   If you're stuck, ask in `#coded-messages` on Discord.
 
-Database
---------
+Documentation
+-------------
 
-We now store statistics in a database. This is useful for seeing how ciphey is doing over time.
+-   API docs on docs.rs
+-   The `docs/` folder, including an overview, the architecture, how the A\* search works and how plaintext is identified
+-   Ciphey 2 documentation on Notion
+-   Introducing Ares, the blog post about the Rust rewrite (it was called Ares before it became Ciphey)
 
-AI Use
-======
+Contributing
+------------
+
+Bug reports, ideas and pull requests are welcome in issues. A new decoder is a good first contribution: pick one from #1030, and copy the shape of an existing one in `src/decoders/`. You can also sponsor the project.
+
+Credits
+-------
+
+-   LemmeKnow by @swanandx identifies what Ciphey finds, and gibberish-or-not decides whether it's English.
+-   Rayon runs the decoders in parallel.
+-   Ciphey started as a Python project; Python Ciphey 5.x is still on PyPI. Thank you to everyone who worked on it.
+-   The videos are made with HyperFrames from real terminal recordings. The source, recordings and build script are in `media/tui-video` on the `media/readme-videos` branch.
+
+AI use
+------
 
 We use AI for 2 things:
 
 1.  The TUI is entirely vibe coded.
-2.  I made AI spend hours researching every single CTF challenge out there. It created a list of 15,071 CTFs. It then went through every single CTF and looked for writeups. In those writeups it looked for anything related to encoding / decoding. It then created tests out of those. This enabled us to increase our testing coverage and make sure all CTF encoding / decoding challenges are solveable with this tool.
+2.  I made AI spend hours researching every single CTF challenge out there. It created a list of 15,071 CTFs. It then went through every single CTF and looked for writeups. In those writeups it looked for anything related to encoding / decoding. It then created tests out of those. This enabled us to increase our testing coverage and make sure all CTF encoding / decoding challenges are solvable with this tool.
+
+License
+-------
+
+MIT. See LICENSE.

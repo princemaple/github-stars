@@ -1,6 +1,6 @@
 ---
 project: ruff
-stars: 49805
+stars: 49890
 description: An extremely fast Python linter and code formatter, written in Rust.
 url: https://github.com/astral-sh/ruff
 ---
@@ -17,7 +17,7 @@ _Linting the CPython codebase from scratch._
 -   ⚡️ 10-100x faster than existing linters (like Flake8) and formatters (like Black)
 -   🐍 Installable via `pip`
 -   🛠️ `pyproject.toml` support
--   🤝 Python 3.14 compatibility
+-   🤝 Python 3.15 compatibility
 -   ⚖️ Drop-in parity with Flake8, isort, and Black
 -   📦 Built-in caching, to avoid re-analyzing unchanged files
 -   🔧 Fix support, for automatic error correction (e.g., automatically remove unused imports)
@@ -90,8 +90,8 @@ Ruff is available as `ruff` on PyPI.
 
 Invoke Ruff directly with `uvx`:
 
-uvx ruff@0.16.9 check   # Lint all files in the current directory.
-uvx ruff@0.16.9 format  # Format all files in the current directory.
+uvx ruff@0.16.10 check   # Lint all files in the current directory.
+uvx ruff@0.16.10 format  # Format all files in the current directory.
 
 Or install Ruff with `uv` (recommended), `pip`, or `pipx`:
 
@@ -114,8 +114,8 @@ curl -LsSf https://astral.sh/ruff/install.sh | sh
 powershell -c "irm https://astral.sh/ruff/install.ps1 | iex"
 
 # For a specific version.
-curl -LsSf https://astral.sh/ruff/0.16.9/install.sh | sh
-powershell -c "irm https://astral.sh/ruff/0.16.9/install.ps1 | iex"
+curl -LsSf https://astral.sh/ruff/0.16.10/install.sh | sh
+powershell -c "irm https://astral.sh/ruff/0.16.10/install.ps1 | iex"
 
 You can also install Ruff via Homebrew, Conda, and with a variety of other package managers.
 
@@ -141,7 +141,7 @@ Ruff can also be used as a pre-commit hook via `ruff-pre-commit`:
 
 \- repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev: v0.16.9
+  rev: v0.16.10
   hooks:
     # Run the linter.
     - id: ruff-check

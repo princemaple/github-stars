@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 139011
+stars: 140017
 description: 💫 Toolkit to help you get started with SDD or any other process!
 url: https://github.com/github/spec-kit
 ---

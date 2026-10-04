@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 35592
+stars: 35934
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -73,7 +73,9 @@ Verify the binary before running anything:
 
 Linux aarch64 is also available
 
-> **Note:** The Linux release binaries are linked against glibc. On musl-based distros (Alpine, etc.) the binary fails with `cannot execute: required file not found` because the glibc dynamic linker is missing. Use a glibc-based base image (e.g., `FROM debian:bookworm-slim` or `FROM ubuntu:24.04`) or build from sources.
+> **Note:** The Linux release binaries are linked against glibc. On musl-based Linux distributions (Alpine, etc.) the binary fails with `cannot execute: required file not found` because the glibc dynamic linker is missing. Use a glibc-based base image (e.g., `FROM debian:bookworm-slim` or `FROM ubuntu:24.04`) or build from sources.
+> 
+> **Android / Termux:** there is no native Android build. The Linux aarch64 binary needs the glibc loader (`/lib/ld-linux-aarch64.so.1`), which Android's Bionic libc does not provide, so it fails with the same `cannot execute: required file not found` error.
 
 _For MacOS_
 
@@ -209,7 +211,7 @@ Status
 
 Here are the key features we have implemented. For full details, see our Web Platform Tests results.
 
--   CORS (enable with `--experimental-features cors`)
+-   CORS
 -   HTTP loader (Libcurl)
 -   HTML parser (html5ever)
 -   DOM tree
@@ -366,8 +368,7 @@ zig build -Dwpt_extensions run -- serve \
     --load-resources iframe \
     --load-resources image \
     --load-resources worker \
-    --load-resources stylesheet \
-    --experimental-features cors
+    --load-resources stylesheet
 ```
 
 Then you can start the wptrunner from the demo's clone dir:
@@ -383,6 +384,18 @@ cd wptrunner && go run . Node-childNodes.html
 ```
 
 `wptrunner` command accepts `--summary` and `--json` options modifying output. Also `--concurrency` define the concurrency limit.
+
+To check a single test case without the runner, `fetch --dump wpt` prints its results as JSON: the harness status, a pass/fail summary and the cases that did not pass. It relies on the fork's `testharnessreport.js`.
+
+```
+zig build -Dwpt_extensions run -- fetch \
+    --insecure-disable-tls-host-verification \
+    --load-resources worker \
+    --load-resources iframe \
+    --dump wpt \
+    --wait-script "window.report && report.complete" \
+    "http://web-platform.test:8000/dom/nodes/Node-childNodes.html"
+```
 
 ⚠️ Running the whole test suite will take a long time. In this case, it's useful to build in `releaseFast` mode to make tests faster.
 

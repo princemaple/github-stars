@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 1322
+stars: 1327
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -10,16 +10,14 @@ K U L A
 
 **Lightweight, self-contained Linux® server monitoring tool.**
 
-🌏 Website | 👀 Demo | 🐋 Docker Hub
+💾 Installation | 🌏 Website | 👀 Demo | 🐋 Docker Hub
 
 Zero dependencies. No external databases. Single binary. Just deploy and go.
-
-* * *
 
 📦 What It Does
 ---------------
 
-Kula collects system metrics every second by reading directly from `/proc` and `/sys`, stores them in a built-in tiered ring-buffer storage engine, and serves them through a real-time Web UI dashboard and a terminal TUI.
+Kula reads system metrics every second directly from `/proc` and `/sys`, stores them in a built-in tiered ring-buffer storage engine, and serves them through a real-time web dashboard, a terminal UI and a Prometheus endpoint.
 
 Metric
 
@@ -85,13 +83,19 @@ PostgreSQL, MySQL/MariaDB, nginx, apache2
 
 Monitor anything with custom metrics
 
-Note: Monitoring NVIDIA GPUs might require additional setup. Check GPU monitoring.
+Monitoring NVIDIA GPUs might require additional setup — see GPU troubleshooting.
 
-The dashboard's **System Info** button opens a dedicated current-hardware page: motherboard and firmware, CPU topology and caches, memory modules, drives and filesystem usage, network interfaces, PCI/USB devices, sensors, and power supplies. A friendly summary comes first, while low-level identifiers and counters stay available under technical details. It refreshes while open and works independently of chart history. Storage, network, devices and sensors require `global.show_system_details: true`; IP and MAC addresses are never collected. See System Info.
+-   **Web dashboard** — live charts, pan and zoom through history, Min–Max bands, Focus and TV modes, a System Info hardware page, and 26 languages.
+-   **Terminal UI** — a fast live read over SSH, including charts of stored history.
+-   **Tiered storage** — fixed-size ring-buffer files keep raw 1-second samples, then 1-minute and 5-minute rollups. No database to run.
+-   **Application monitoring** — nginx, Apache2, PostgreSQL, MySQL/MariaDB and containers, plus your own custom metrics.
+-   **Prometheus exporter** — scrape Kula into an existing observability stack.
+-   **AI assistant** — optional chat about your metrics, powered by a local Ollama model.
+-   **Authentication** — optional Argon2id login, with multiple users.
+-   **Backups** — scheduled snapshots of the storage tiers.
+-   **Secure by default** — strict headers, CSRF protection and rate limits, and a Landlock sandbox that confines file and network access. See the security model.
 
-* * *
-
-🪩 How It Works
+⚙️ How It Works
 ---------------
 
 ```
@@ -126,7 +130,7 @@ The dashboard's **System Info** button opens a dedicated current-hardware page: 
 
 ### Storage Engine
 
-Kula is powered by a custom-built, high-performance **ring-buffer** storage system that writes metrics directly into fixed-size binary files. Because the files have a strict maximum capacity, new data seamlessly wraps around to overwrite the oldest entries. On startup, Kula restores the latest-sample cache and reconstructs any pending aggregation buffers so it can resume serving recent data and continue tier rollups after a restart.
+Kula is powered by a custom-built, high-performance **ring-buffer** storage system that writes metrics directly into fixed-size binary files. Because the files have a strict maximum capacity, new data seamlessly wraps around to overwrite the oldest entries.
 
 To maximize efficiency, Kula employs a multi-tiered architecture that intelligently downsamples older data:
 
@@ -134,60 +138,10 @@ To maximize efficiency, Kula employs a multi-tiered architecture that intelligen
 -   **Tier 1** — 1-minute metric rollups (default 150 MB)
 -   **Tier 2** — 5-minute metric rollups (default 50 MB)
 
-Rollups use explicit per-field policies: sampled gauges and rates are duration-weighted, monotonic counters and metadata retain their latest value, and Min/Max are per-series extrema. Dynamic devices and applications are matched by stable identity, so a missing member is not fabricated as zero. Existing binary history needs no migration: a compatibility layer exposes legacy Min/Max for supported CPU, load, used-memory and used-swap fields. Unsupported series or intervals appear as gaps when Min/Max is selected, with an explanation on the chart. Newly collected extrema remain available even in views that also contain older history. Unavailable readings remain gaps in every aggregation, and filesystem tooltip percentages and byte counts use the same selected aggregation.
-
-Scheduled backups are optional: `backup.enabled` copies the tier files into a timestamped directory under `<storage.directory>/backup` on a crontab schedule, with a configurable per-tier depth, retention window, and gzip compression.
-
-### HTTP server
-
-The HTTP server on backend exposes a REST API and a WebSocket endpoint for live streaming. Authentication is optional. When enabled, Kula uses Argon2id password hashing, secure session cookies, token-only session validation with sliding expiration bounded by an absolute session lifetime (`session_max_lifetime`, 7 days by default), and hashed-at-rest session persistence. Authenticated API access can also use a bearer session token via the `Authorization` header. An expired live session returns the dashboard to login; signing in reloads the selected history range.
-
-### Dashboard
-
-The frontend is a single-page application embedded in the binary. Built on Chart.js with custom SVG gauges, it connects via WebSocket for live updates and falls back to history API for longer time ranges. Features include:
-
--   Live/Back/Forward/Zoom out navigation with exact shareable ranges
--   Straight historical lines with trusted Min–Max bands and explicit gaps
--   Bucket-aware tooltips and Local/UTC timestamps, with secondary choices in Customization
--   Drag, modifier-wheel, touch/pinch, and keyboard pan/zoom plus a shared pinnable crosshair
--   Accessible chart names and keyboard exploration; Data tables and CSV are opt-in
--   Chart updates limited to the viewport, with plot-width sampling and full-range live refreshes
--   Focus mode to display only specific charts and request only their history sections
--   Configurable Y-axis bounds (Manual limits or Auto-detect)
--   Per-device selectors for Network, Disk I/O, and Thermal monitoring
--   Grid / stacked list layout toggle
--   Alert system for clock sync, low entropy, load above core count, and high CPU/memory/swap usage
--   Modern aesthetics with light/dark theme support
--   Customization menu for per-browser appearance, accessibility, and chart options
--   26 UI languages with a header language selector
--   Optional AI assistant powered by a local Ollama model (see below)
--   Prometheus exporter endpoint for scraping into existing observability stacks
-
-### AI Assistant
-
-Kula features an AI assistant via Ollama.
-
-When Ollama is enabled in `config.yaml`, a 🤖 button appears in the dashboard header. The panel supports:
-
--   **Multi-session conversations** — open independent threads and switch between them
--   **Per-chart analysis** — click the 🤖 icon on any chart card to open a session pre-loaded with that chart's recent data as CSV
--   **Agentic tool calling** — the model can call `get_metrics` to pull metrics on demand (up to 5 rounds per turn)
--   **Model selector** — switch between any locally available Ollama model mid-session
--   **Draggable & resizable panel** — drag by the header, resize from the bottom-right grip
--   **Streaming responses** with markdown rendering
-
-All AI inference runs locally through Ollama API.
-
-* * *
-
 💾 Installation
 ---------------
 
-Kula was built to have everything in one binary file. You can just upload it to your server and not worry about installing anything else because Kula has no dependencies. It just works out of the box! It is a great tool when you need to quickly start real-time monitoring.
-
-Example installation methods for **amd64 (x86\_64)** GNU/Linux.
-
-Check Releases for **ARM** and **RISC-V** packages.
+Kula is a single binary with no dependencies: upload it to a server and run it. Release packages cover **amd64**, **arm64** and **riscv64** — see Releases.
 
 Note: Never thoughtlessly paste commands into the terminal. Even checking the checksum is no substitute for reviewing the code.
 
@@ -205,9 +159,9 @@ rm -f ${KULA\_INSTALL}
 
 ### Standalone
 
-wget https://github.com/c0m4r/kula/releases/download/0.20.2/kula-0.20.2-amd64.tar.gz
-echo "15240eaa0be35a0d7512a630263105c3fa596b5ec31c694a7c180494faf94c31 kula-0.20.2-amd64.tar.gz" | sha256sum -c || rm -f kula-0.20.2-amd64.tar.gz
-tar -xvf kula-0.20.2-amd64.tar.gz
+wget https://github.com/c0m4r/kula/releases/download/0.21.0/kula-0.21.0-amd64.tar.gz
+echo "270f63ce70262f1c21c0c27ea599fa793c4e6b0a43d404644a551bcd6dafe106 kula-0.21.0-amd64.tar.gz" | sha256sum -c || rm -f kula-0.21.0-amd64.tar.gz
+tar -xvf kula-0.21.0-amd64.tar.gz
 cd kula
 ./kula
 
@@ -224,16 +178,16 @@ docker logs -f kula
 
 ### Debian / Ubuntu (.deb)
 
-wget https://github.com/c0m4r/kula/releases/download/0.20.2/kula-0.20.2-amd64.deb
-echo "a56db3c6dea59e139874563b151a7e60689a9cf285340d677ca22b329f38ca1b kula-0.20.2-amd64.deb" | sha256sum -c || rm -f kula-0.20.2-amd64.deb
-sudo dpkg -i kula-0.20.2-amd64.deb
+wget https://github.com/c0m4r/kula/releases/download/0.21.0/kula-0.21.0-amd64.deb
+echo "db84f205eb4e0d17a7d2863d83a4a1ea2f801f7b579bbb04a0929c4b5e606a58 kula-0.21.0-amd64.deb" | sha256sum -c || rm -f kula-0.21.0-amd64.deb
+sudo dpkg -i kula-0.21.0-amd64.deb
 journalctl -f -t kula
 
 ### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
 
-wget https://github.com/c0m4r/kula/releases/download/0.20.2/kula-0.20.2-x86\_64.rpm
-echo "3f284d684d6bc87a5c61c420b775dcf97502bf15862b14fd8217a4f7df02efc2 kula-0.20.2-x86\_64.rpm" | sha256sum -c || rm -f kula-0.20.2-x86\_64.rpm
-sudo rpm -i kula-0.20.2-x86\_64.rpm
+wget https://github.com/c0m4r/kula/releases/download/0.21.0/kula-0.21.0-x86\_64.rpm
+echo "f244579293d35b185fec59eba3e5ae40073a1bc57061487fa1279ad7faf0bad4 kula-0.21.0-x86\_64.rpm" | sha256sum -c || rm -f kula-0.21.0-x86\_64.rpm
+sudo rpm -i kula-0.21.0-x86\_64.rpm
 journalctl -f -t kula
 
 ### Arch Linux / Manjaro (AUR)
@@ -254,11 +208,11 @@ See Snap Wiki for the full guide.
 
 ### Build from Source
 
+Requires Go.
+
 git clone https://github.com/c0m4r/kula.git
 cd kula
 ./addons/build.sh
-
-* * *
 
 💻 Usage
 --------
@@ -269,7 +223,7 @@ Starting Kula is as simple as running:
 
 ./kula
 
-Dashboard will be available at: http://localhost:27960 (or :8080 if you're using earlier versions)
+Dashboard will be available at: http://localhost:27960
 
 You can change default port and listen address in `config.yaml` or using environment variables:
 
@@ -279,55 +233,15 @@ export KULA\_PORT="27960"
 
 The default command is `serve` (`./kula serve`). Global flags are `-config <path>` to select another configuration file and `-version` (or `-v`) to print the version.
 
+Every command and flag: CLI reference.
+
 ### TUI
 
 ./kula tui
 
-The terminal monitor is designed for a fast live read rather than as a second web dashboard. Its overview keeps CPU, memory, traffic, storage pressure, host health, and short-term trends visible in a standard terminal. Numbered tabs switch between the Overview, CPU, Memory, Network, Storage, Processes, and GPU views.
-
-### Inspect storage
-
-./kula inspect
-
-The report includes each tier's configured resolution, current recorded range, estimated maximum coverage, and ETA until the tier first fills. Estimates assume continuous collection and use the average encoded record size observed so far. Use `./kula inspect --verbose` to also decode and print the latest recorded metrics from every tier.
-
-### List disks
-
-./kula disks
-
-Lists available disks and partitions supported by Kula with their persistent IDs. Copy IDs into `collection.devices` to select drives across reboots. The command ignores configured device filters and works without a config file or running daemon. Devices without a unique ID are marked `unavailable (unstable kernel name)`. Virtual, logical and optical devices excluded by the disk collector are omitted.
-
 ### Prometheus metrics
 
 See: Prometheus metrics for more info.
-
-Disk I/O and temperature metrics use the persistent disk ID as the `device` label value. `kula_disk_info{device="...",kernel_name="sda",identity_source="wwid"} 1` maps that ID to the current kernel name. Unidentified disks use `device="kernel:sda"` and `identity_source="kernel"`. Version 0.20.0 starts new disk metric series; update dashboards and alert rules that filter by old `device="sda"` values.
-
-### Persistent disk identities
-
-Kula tracks disk I/O and temperatures by hardware identity so history follows the drive when Linux changes names such as `sda` or `nvme0n1`. The JSON API retains `name` as the kernel name and adds `id`; selectors show the name with the ID in their tooltip. Discovery reads sysfs directly, preferring WWID, NVMe namespace UUID/NGUID/EUI, then vendor/model/serial. NVMe serial fallback includes the namespace number. No external tools or raw block-device access are required.
-
-Automatic discovery needs no configuration change. To monitor particular drives, copy IDs from `kula disks` (or `disk.devices[].id` in `/api/current`) into `collection.devices`. Legacy kernel names still work as filters but may select a different drive after reboot. Explicit partitions use the parent ID followed by `:part:<number>`; this tracks a numbered partition on that drive, not a filesystem across repartitioning. Filesystem capacity history continues to follow mount points.
-
-Disks without usable identifiers, or with duplicate identifiers, remain visible as **unstable** with a warning and kernel-name history. Their API `id` is absent; cross-reboot physical identity cannot be guaranteed for these devices. Duplicate paths to the same storage are treated as ambiguous, not combined as multipath I/O. Containers must expose the corresponding host sysfs metadata to obtain stable IDs.
-
-Existing tier files remain readable. Old records have no physical identity and stay in separate name-based series: Kula cannot safely assign their history to today's drives. New physical-disk series therefore begin at upgrade. The binary format extension is backward-readable by the new version; older binaries cannot read the newly extended records, so retain a pre-upgrade backup if downgrading.
-
-### Health endpoints
-
-Kula exposes lightweight liveness endpoints at:
-
-```
-http://localhost:27960/health
-http://localhost:27960/status
-```
-
-Both return:
-
-```
-200 OK
-kula is healthy
-```
 
 ### Authentication (Optional)
 
@@ -336,110 +250,32 @@ kula is healthy
 
 # Add the output to config.yaml under web.auth
 
-When authentication is enabled, Kula issues a random session token after login, stores only its hash on disk, and validates requests by token expiry/validity rather than binding sessions to client IP or User-Agent.
-
-### Service Management
-
-Init system files are provided in `addons/init/`:
-
-# systemd
-sudo cp addons/init/systemd/kula.service /etc/systemd/system/
-sudo systemctl enable --now kula
-
-# OpenRC
-sudo cp addons/init/openrc/kula /etc/init.d/
-sudo rc-update add kula default
-
-# runit
-sudo cp -r addons/init/runit/kula /etc/sv/
-sudo ln -s /etc/sv/kula /var/service/
-
-* * *
-
 ⚙️ Configuration
 ----------------
 
-All settings live in `config.yaml`. See `config.example.yaml` for defaults.
+All settings live in `config.yaml`. `config.example.yaml` lists every option with its default, and the configuration reference explains each one along with the environment variables that override them.
 
-* * *
+📚 Documentation
+----------------
+
+The documentation has a user guide and a developer guide:
+
+-   **Get started:** Introduction · Installation · Quick start · Configuration
+-   **Use:** Web dashboard · Terminal UI · CLI reference · Troubleshooting
+-   **Integrate:** Application monitoring · Custom metrics · Prometheus · AI assistant
+-   **Operate:** Authentication · Backups · Reverse proxy & TLS · Service management
+-   **Develop:** Architecture · Building · Testing · Adding a metric · Packaging · Contributing
+
+More operational guides are on the wiki.
 
 🧰 Development
 --------------
 
-# Lint + test suite
-./addons/check.sh
+./addons/check.sh         # full gate: govulncheck, gofmt, vet, race tests, golangci-lint
+./addons/build.sh         # build for the current architecture
+./addons/build.sh cross   # cross-compile amd64, arm64, riscv64
 
-# Build
-./addons/build.sh
-
-# Build dev (Binary size: ~21MB)
-CGO\_ENABLED=0 go build -o kula ./cmd/kula/
-
-# Build prod (Binary size: ~15MB, xz: ~5MB)
-CGO\_ENABLED=0 go build -trimpath -ldflags="\-s -w" -buildvcs=false -o kula ./cmd/kula/
-
-### Updating Dependencies
-
-To safely update only the Go modules used by Kula to their latest minor/patch versions, and prune any unused dependencies:
-
-./addons/go\_modules\_updates.py
-go get -u ./...
-go mod tidy
-
-### Testing & Benchmarks
-
-# Run unit tests with race detector
-go test -race ./...
-
-# Run the full storage benchmark suite (default: 3s per bench)
-./addons/benchmark.sh
-
-# Generate a repeatable realistic history fixture in an isolated directory
-KULA\_DIRECTORY=/tmp/kula-mock go run ./cmd/gen-mock-data \\
-  -config config.example.yaml -duration 6h -yes \\
-  -seed 1263881281 -start 2026-09-07T00:00:00Z
-
-# Python scripts formatter and linters
-black addons/\*.py
-pylint addons/\*.py
-mypy --strict addons/\*.py
-
-### Cross-Compile
-
-./addons/build.sh cross    # builds amd64, arm64, riscv64
-
-### Debian / Ubuntu (.deb)
-
-./addons/build\_deb.sh
-ls -1 dist/kula-\*.deb
-
-### Arch Linux / Manjaro (AUR)
-
-./addons/build\_aur.sh
-cd dist/aur && makepkg -si
-
-### RHEL / Fedora / CentOS / Rocky / Alma (.rpm)
-
-./addons/build\_rpm.sh
-ls -1 dist/kula-\*.rpm
-
-### Docker
-
-./addons/docker/build.sh
-docker compose -f addons/docker/docker-compose.yml up -d
-
-### Snap
-
-Requires snapcraft and a build backend (LXD recommended):
-
-snap install snapcraft --classic
-snap install lxd
-lxd init --auto
-./addons/build\_snap.sh            # host arch, into dist/
-./addons/build\_snap.sh cross      # cross-build amd64/arm64/riscv64 locally
-ls -1 dist/kula-\*.snap
-
-* * *
+Building & toolchain covers dependency updates and running the CI workflows locally; Packaging & release covers the .deb, .rpm, AUR, Snap and Docker builds.
 
 🔒 Privacy
 ----------
@@ -448,14 +284,10 @@ Privacy is a core pillar, not an afterthought.
 
 Kula is built for privacy-conscious infrastructure. It is a completely self-contained binary that requires no cloud connection and no third-party APIs. Designed to function perfectly in air-gapped networks, Kula never sends metadata to external servers, never serves advertisements, and requires no user registration. Your monitoring starts and ends on your infrastructure, exactly where it should be.
 
-* * *
-
 📖 License
 ----------
 
 GNU Affero General Public License v3.0
-
-* * *
 
 🫶 Attributions
 ---------------

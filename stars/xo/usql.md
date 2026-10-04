@@ -1,6 +1,6 @@
 ---
 project: usql
-stars: 10127
+stars: 10135
 description: Universal command-line interface for SQL databases
 url: https://github.com/xo/usql
 ---
@@ -172,7 +172,15 @@ PostgreSQL
 
 `pg`, `pgsql`, `postgresql`
 
-github.com/lib/pq
+github.com/jackc/pgx/v5/stdlib
+
+PostgreSQL PGX
+
+`pgx`
+
+`px`
+
+github.com/jackc/pgx/v5/stdlib
 
 MySQL
 
@@ -222,13 +230,53 @@ ClickHouse
 
 github.com/ClickHouse/clickhouse-go/v2
 
-CSVQ
+CockroachDB
 
-`csvq`
+`cockroachdb`
 
-`cs`, `csv`, `tsv`, `json`
+`cr`, `cdb`, `crdb`, `cockroach`
 
-github.com/mithrandie/csvq-driver §
+github.com/jackc/pgx/v5/stdlib
+
+CrateDB
+
+`cratedb`
+
+`ct`, `crate`
+
+github.com/jackc/pgx/v5/stdlib
+
+Amazon Redshift
+
+`redshift`
+
+`rs`
+
+github.com/jackc/pgx/v5/stdlib ¶
+
+SingleStore MemSQL
+
+`memsql`
+
+`me`
+
+github.com/go-sql-driver/mysql
+
+TiDB
+
+`tidb`
+
+`ti`
+
+github.com/go-sql-driver/mysql
+
+Vitess Database
+
+`vitess`
+
+`vt`
+
+github.com/go-sql-driver/mysql
 
 Alibaba MaxCompute
 
@@ -236,7 +284,7 @@ Alibaba MaxCompute
 
 `mc`
 
-sqlflow.org/gomaxcompute ¶
+github.com/aliyun/aliyun-odps-go-sdk/sqldriver ¶
 
 Alibaba Tablestore
 
@@ -254,12 +302,6 @@ Apache Avatica
 
 github.com/apache/calcite-avatica-go/v5
 
-Apache H2
-
-`h2`
-
-github.com/jmrobles/h2go
-
 Apache Hive
 
 `hive`
@@ -268,14 +310,6 @@ Apache Hive
 
 github.com/beltran/gohive/v2
 
-Apache Ignite
-
-`ignite`
-
-`ig`, `gridgain`
-
-github.com/amsokol/ignite-go-client/sql
-
 Apache Impala
 
 `impala`
@@ -283,6 +317,14 @@ Apache Impala
 `im`
 
 github.com/sclgo/impala-go
+
+ArangoDB
+
+`arangodb`
+
+`ar`, `arango`
+
+github.com/xo/dbimp/arangodb
 
 AWS Athena
 
@@ -306,7 +348,7 @@ Cassandra
 
 `ca`, `scy`, `scylla`, `datastax`, `cql`
 
-github.com/MichaelS11/go-cql-driver
+github.com/xo/cql
 
 ChaiSQL
 
@@ -322,7 +364,15 @@ Couchbase
 
 `n1`, `n1ql`
 
-github.com/couchbase/go\_n1ql
+github.com/xo/dbimp/couchbase
+
+CSVQ
+
+`csvq`
+
+`cs`, `csv`, `tsv`, `json`
+
+github.com/mithrandie/csvq-driver §
 
 Cznic QL
 
@@ -338,7 +388,7 @@ Databend
 
 `dd`, `bend`
 
-github.com/datafuselabs/databend-go
+github.com/xo/dbimp/databend
 
 Databricks
 
@@ -378,7 +428,7 @@ FlightSQL
 
 `fl`, `flight`
 
-github.com/apache/arrow/go/v17/arrow/flight/flightsql/driver
+github.com/apache/arrow-go/v18/arrow/flight/flightsql/driver
 
 Google BigQuery
 
@@ -396,13 +446,21 @@ Google Spanner
 
 github.com/googleapis/go-sql-spanner ¶
 
-Microsoft ADODB
+InfluxDB
 
-`adodb`
+`influxdb`
 
-`ad`, `ado`
+`in`, `influx`
 
-github.com/mattn/go-adodb
+github.com/xo/dbimp/influxdb
+
+InfluxDB InfluxQL
+
+`influxql`
+
+`iq`
+
+github.com/xo/dbimp/influxdb
 
 ModernC SQLite3
 
@@ -412,29 +470,21 @@ ModernC SQLite3
 
 modernc.org/sqlite §
 
-MySQL MyMySQL
+Neo4j
 
-`mymysql`
+`neo4j`
 
-`zm`, `mymy`
+`nj`, `neo`, `n4j`
 
-github.com/ziutek/mymysql/godrv
+github.com/xo/dbimp/neo4j
 
-Netezza
+PostgreSQL lib/pq
 
-`netezza`
+`libpq`
 
-`nz`, `nzgo`
+`pq`
 
-github.com/IBM/nzgo/v12
-
-PostgreSQL PGX
-
-`pgx`
-
-`px`
-
-github.com/jackc/pgx/v5/stdlib
+github.com/lib/pq
 
 Presto
 
@@ -444,13 +494,13 @@ Presto
 
 github.com/prestodb/presto-go-client/v2
 
-SAP ASE
+QuestDB
 
-`sapase`
+`questdb`
 
-`ax`, `ase`, `tds`
+`qs`
 
-github.com/thda/tds
+github.com/jackc/pgx/v5/stdlib
 
 SAP HANA
 
@@ -467,6 +517,14 @@ Snowflake
 `sf`
 
 github.com/snowflakedb/gosnowflake/v2 ¶
+
+SurrealDB
+
+`surrealdb`
+
+`sr`, `sur`, `surreal`
+
+github.com/xo/dbimp/surrealdb
 
 Trino
 
@@ -516,53 +574,19 @@ ODBC
 
 github.com/alexbrainman/odbc †
 
-Amazon Redshift
+Apache H2
 
-`postgres`
+`h2`
 
-`rs`, `redshift`
+github.com/jmrobles/h2go
 
-github.com/lib/pq ‡ ¶
+GizmoSQL
 
-CockroachDB
+`gizmosql`
 
-`postgres`
+`gz`, `gizmo`
 
-`cr`, `cdb`, `crdb`, `cockroach`, `cockroachdb`
-
-github.com/lib/pq ‡
-
-OLE ODBC
-
-`adodb`
-
-`oo`, `ole`, `oleodbc`
-
-github.com/mattn/go-adodb ‡
-
-SingleStore MemSQL
-
-`mysql`
-
-`me`, `memsql`
-
-github.com/go-sql-driver/mysql ‡
-
-TiDB
-
-`mysql`
-
-`ti`, `tidb`
-
-github.com/go-sql-driver/mysql ‡
-
-Vitess Database
-
-`mysql`
-
-`vt`, `vitess`
-
-github.com/go-sql-driver/mysql ‡
+github.com/apache/arrow-go/v18/arrow/flight/flightsql/driver
 
 **NO DRIVERS**
 
@@ -595,7 +619,6 @@ _bad drivers (broken/non-working drivers)_
 _exclude driver with `<tag>`_
 
 _† Requires CGO  
-‡ Wire compatible (see respective driver)  
 § Embedded, with no server to run  
 ¶ Hosted service, with no server you can run_
 
@@ -792,6 +815,14 @@ $ usql cassandra://host/keyspace
 $ usql cql://host/
 $ usql ca://
 
+# connect to an alibaba maxcompute project over https, or over http with mc+http:
+$ usql "mc://accessid:accesskey@service.cn-hangzhou.maxcompute.aliyun.com/api?project=myproject"
+$ usql "mc+http://accessid:accesskey@host/api?project=myproject"
+
+# Note: the project option is required. The curr\_project and scheme options of
+# the previous maxcompute driver no longer work, and any option the driver does
+# not recognize is sent to the server as an SQL hint.
+
 # connect to a sqlite database that exists on disk
 $ usql dbname.sqlite3
 
@@ -805,10 +836,6 @@ $ usql sq://path/to/dbname.sqlite3
 $ usql sqlite3://path/to/dbname.sqlite3
 $ usql file:/path/to/dbname.sqlite3
 
-# connect to a adodb ole resource (windows only)
-$ usql adodb://Microsoft.Jet.OLEDB.4.0/myfile.mdb
-$ usql "adodb://Microsoft.ACE.OLEDB.12.0/?Extended+Properties=\\"Text;HDR=NO;FMT=Delimited\\""
-
 # connect to a named connection in $HOME/.config/usql/config.yaml
 $ cat $HOME/.config/usql/config.yaml
 connections:
@@ -817,12 +844,6 @@ $ usql my\_named\_connection
 
 # connect with ODBC driver (requires building with odbc tag)
 $ cat /etc/odbcinst.ini
-\[DB2\]
-Description=DB2 driver
-Driver=/opt/db2/clidriver/lib/libdb2.so
-FileUsage = 1
-DontDLClose = 1
-
 \[PostgreSQL ANSI\]
 Description=PostgreSQL ODBC driver (ANSI version)
 Driver=psqlodbca.so
@@ -831,8 +852,7 @@ Debug=0
 CommLog=1
 UsageCount=1
 
-# connect to db2, postgres databases using odbc config above
-$ usql odbc+DB2://user:pass@localhost/dbname
+# connect to a postgres database using the odbc config above
 $ usql odbc+PostgreSQL+ANSI://user:pass@localhost/dbname?TraceFile=/path/to/trace.log
 
 See the section on connection variables for information on defining connection names.
@@ -1066,7 +1086,7 @@ The `init:` script is commonly used to set environment variables or other config
 
 ##### Other Options
 
-Please see `contrib/config.yaml` for an overview of available configuration options.
+Please see `_samples/config.yaml` for an overview of available configuration options.
 
 #### Variables
 
@@ -1628,6 +1648,10 @@ Type "help" for help.
 
 pg:booktest@=\>
 
+See `_samples/usqlpass` for a sample.
+
+An entry applies to a URL when each of its fields is `*` or equal to the URL's. An entry never replaces a user that the URL names, and an entry for one database applies only to that database. The protocol matches every scheme of the same database, so a `postgres:` entry also covers `pg://`, `pgx://` and `pq://`. A database that only speaks another's protocol is a database of its own, so CockroachDB, CrateDB and Redshift each need their own entry, and so do TiDB, SingleStore and Vitess. A `mysql:` entry does not cover `tidb://`.
+
 While the `.usqlpass` functionality will not be removed, it is recommended to define named connections preferably via the `config.yaml` file.
 
 * * *
@@ -1657,6 +1681,8 @@ Type "help" for help.
 (not connected)=\> \\set
 SYNTAX\_HL\_STYLE = 'paraiso-dark'
 (not connected)=\>
+
+See `_samples/usqlrc` for a sample.
 
 The `.usqlrc` file is read at startup in the same way as a file passed on the command-line with `-f` / `--file`. It is commonly used to set startup environment variables and settings.
 
@@ -1694,6 +1720,22 @@ Running \`brew update --auto-update\`...
 
 $ usql
 (not connected)=\>
+
+### Couchbase FAQ
+
+#### Why does a transaction fail to commit with error 17007?
+
+The server could not meet the durability that the transaction asked for. By default a transaction asks for `majority`, which a single-node server cannot meet. `usql` does not change the durability unless you ask it to. Set `durability_level=none` in the URL for a single-node server, such as a local development server:
+
+$ usql "couchbase://user:pass@localhost/?durability\_level=none"
+
+The other values are `majority`, `majorityAndPersistActive` and `persistToMajority`.
+
+#### Why does a transaction stay open longer than the server's default?
+
+The server ends a transaction after 15 seconds by default, which is too short for a person typing into one. `usql` sets `txtimeout=30m` when the URL does not set `txtimeout`. Set it in the URL to choose another value:
+
+$ usql "couchbase://user:pass@localhost/?txtimeout=2m"
 
 Contributing
 ------------

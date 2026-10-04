@@ -1,6 +1,6 @@
 ---
 project: gkd
-stars: 42252
+stars: 42463
 description: 基于无障碍，高级选择器，订阅规则的自定义屏幕点击安卓应用 | An Android APP with custom screen tapping based on Accessibility, Advanced Selectors, and Subscription Rules
 url: https://github.com/gkd-kit/gkd
 ---
@@ -58,6 +58,14 @@ https://gkd.li/guide/selector
 
 示例图片 - 选择器路径视图 (点击展开)
 
+开发
+--
+
+-   应用架构与依赖
+-   Desktop 启动与调试
+-   本地数据与产物
+-   开发约束
+
 衍生
 --
 
@@ -68,6 +76,8 @@ https://gkd.li/guide/selector
 -   android-api-diff
 -   remap
 -   priv-kit
+-   morph-compose
+-   compose-webview2
 
 捐赠
 --

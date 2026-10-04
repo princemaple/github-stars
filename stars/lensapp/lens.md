@@ -1,6 +1,6 @@
 ---
 project: lens
-stars: 23236
+stars: 23240
 description: Lens - The way the world runs Kubernetes
 url: https://github.com/lensapp/lens
 ---

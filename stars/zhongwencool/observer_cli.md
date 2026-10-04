@@ -1,6 +1,6 @@
 ---
 project: observer_cli
-stars: 1534
+stars: 1536
 description: Visualize Erlang/Elixir Nodes On The Command Line
 url: https://github.com/zhongwencool/observer_cli
 ---
@@ -140,6 +140,19 @@ TUI auto-load sends controller-compiled BEAM bytecode to the target without reco
 
 `observer_cli logs` returns sensitive, untrusted retained text. It reads only a selected handler's configured path, not the handler's private file descriptor or rotation archives, and deliberately rejects redaction flags.
 
+### Reading TUI measurements
+
+Home identifies its ranking mode using `recon:proc_count(Type, N)` or `recon:proc_window(Type, N, Interval)`, retaining the original Erlang metric names.
+
+-   **Memory** is a current value. **Mem change** (and other `change` columns) is a signed change between samples, not a total or a per-second rate.
+-   **Reds total** is cumulative. Home's window ranking shows **Reds/s**, using the measured monotonic elapsed time, not the configured refresh interval.
+-   **Refresh:1500ms** is a requested delay. **Sample** is the actual time between process-sample or socket-sample batches; collecting and rendering data takes additional time. Home's IO/GC `Total/Delta` is since its own previous sample, not necessarily the process ranking's window. Sampling metadata shares the navigation row; narrow layouts shorten `Refresh` to `Ref` or wrap to a plain line, preserving the recon expression and all warm-up or error states.
+-   Window views start with **warming up**. Home excludes newly observed, lost, or reset processes from that ranking and reports `missing` / `reset` counts. Negative memory, heap and queue changes are valid; decreasing reductions are a counter reset. Zero missing/reset counts stay hidden. Pausing is explicit, and resuming warms up again.
+-   Socket list `chg` columns are window changes (`chg` abbreviates `change`); **MaxPkt** is a lifetime maximum. Socket details show lifetime totals and `*_max` maxima. **warm** means a new baseline, **miss** means a missing sample/counter, and **reset** means a counter decreased. Optional sendfile counters absent in both samples are omitted; appearing or disappearing counters invalidate the affected delta. Sorting, paging and changing refresh keep the list's baseline. Returning to the list or reconnecting starts fresh; failed enumeration clears the baseline.
+-   Home's **Proc used / Atom used** retain `processes_used` / `atom_used`. System's **Size (allocated)** column retains `processes` / `atom`. These are different current-memory measurements, not interchangeable totals.
+
+These labels describe the interactive Home, Sockets and System views; the versioned CLI response schema is unchanged.
+
 Upgrading from 1.x
 ------------------
 
@@ -148,9 +161,15 @@ Version 2.0 changes the TUI plugin callbacks and replaces positional plugin sort
 Next steps
 ----------
 
+-   Agent workflows: keep trusted follow-up selectors separate from response-local aliases and share redacted evidence.
+    
 -   CLI: install both sides, connect, diagnose, automate, interpret output, and troubleshoot a complete first workflow.
+    
 -   TUI reference: start the interface and look up every page, field, source, and shortcut.
+    
 -   TUI plugins: add plugin sheets, row drill-down, and process formatters.
+    
 -   Core concepts: understand execution, compatibility, diagnostic evidence, and safety boundaries.
+    
 
 The generated ExDoc site provides `llms.txt`, a Markdown version of every page, and ExDoc's built-in **Copy Markdown** action. Build it locally with `rebar3 docs`.

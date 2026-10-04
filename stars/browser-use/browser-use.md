@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 116413
+stars: 117073
 description: Agents that use the browser.
 url: https://github.com/browser-use/browser-use
 ---
@@ -105,6 +105,36 @@ uv run agent.py
 The agent opens a browser, looks up the repository, and prints its answer.
 
 Python library docs ↗
+
+  
+
+Anthropic SDK × Browser Use
+===========================
+
+Use Claude's browser toolset with Browser Use as the driver. Browser Use implements all 31 browser actions and can control a local browser, a Browser Use Cloud browser, or an existing remote browser over CDP. Bash is included in the Browser Use integration for processing data and writing files.
+
+Requires an Anthropic SDK version that includes `anthropic.tools.browser`. Bash requires a Linux or macOS host with `/bin/bash`; use WSL on Windows. The snippet below runs inside an async function; see the quickstart for a complete script.
+
+import os
+
+from anthropic import AsyncAnthropic
+from browser\_use.integrations.anthropic import Bash, BrowserUse
+
+task \= 'Open example.com and report its page title.'
+driver \= BrowserUse()  \# Or BrowserUse(use\_cloud=True)
+bash \= Bash(output\_dir\='outputs')
+
+async with driver, AsyncAnthropic() as client:
+    runner \= client.beta.messages.tool\_runner(
+        model\=os.environ\['ANTHROPIC\_MODEL'\],
+        max\_tokens\=32\_768,
+        max\_iterations\=100,
+        tools\=\[driver, bash\],
+        messages\=\[{'role': 'user', 'content': task}\],
+    )
+    result \= await runner.until\_done()
+
+Quickstart ↗ · Integration docs ↗
 
   
 

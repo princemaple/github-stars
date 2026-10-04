@@ -1,6 +1,6 @@
 ---
 project: lapce
-stars: 38871
+stars: 38891
 description: Lightning-fast and Powerful Code Editor written in Rust
 url: https://github.com/lapce/lapce
 ---
@@ -31,8 +31,6 @@ You can find pre-built releases for Windows, Linux and macOS here, or installing
 
 Contributing
 ------------
-
-Lapdev, developed by the Lapce team, is a cloud dev env service similar to GitHub Codespaces. By clicking the button above, you'll be taken to a fully set up Lapce dev env where you can browse the code and start developing. All dependencies are pre-installed, so you can get straight to code.
 
 Guidelines for contributing to Lapce can be found in `CONTRIBUTING.md`.
 

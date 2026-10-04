@@ -1,6 +1,6 @@
 ---
 project: domainstack.io
-stars: 291
+stars: 292
 description: 🧰 All-in-one domain name intelligence as a service
 url: https://github.com/jakejarvis/domainstack.io
 ---
@@ -48,7 +48,7 @@ Tech Stack
 Development
 -----------
 
-This is a **Turborepo monorepo**.
+This is a **Turborepo monorepo**. You need Node.js 24+, pnpm, and Docker.
 
 ### 1\. Clone & install
 
@@ -56,25 +56,78 @@ git clone https://github.com/jakejarvis/domainstack.io.git
 cd domainstack.io
 pnpm install
 
-### 2\. Configure environment variables
+### 2\. Start local services and configure env
 
-Create `.env.local` in the `apps/web` directory and populate required variables:
+`compose.yml` runs Postgres and an Upstash-compatible Redis. The top block of `.env.example` already points at them:
 
+docker compose up -d
 cp apps/web/.env.example apps/web/.env.local
 
-At minimum, you'll need `DATABASE_URL` pointing to a Postgres database.
+Maintainers can use `vercel env pull apps/web/.env.local` instead to get real credentials.
 
 ### 3\. Set up the database
 
-Apply Drizzle migrations to initialize the database schema:
-
 pnpm db:migrate
+pnpm db:seed
+
+The seed creates two users, `free@dev.local` and `pro@dev.local` (password `password123`), with tracked domains in each verification state. It only runs against a local database unless you pass `--force` (`pnpm db:seed -- --force`).
 
 ### 4\. Start development
 
 pnpm dev
 
-Open http://localhost:3000.
+Open http://localhost:3000/login and use the **Dev sign-in** form. Email/password sign-in only exists when `NODE_ENV=development`.
+
+To fill in report data and change-detection baselines for the seeded domains, trigger the crons by hand:
+
+curl -H "Authorization: Bearer dev" http://localhost:3000/api/cron/warm-domains
+curl -H "Authorization: Bearer dev" http://localhost:3000/api/cron/monitor-domains
+
+If you pulled real env vars, replace `dev` with your `CRON_SECRET`.
+
+### Optional services
+
+Every other variable in `.env.example` is optional locally:
+
+Service
+
+Without it (in development)
+
+OAuth (GitHub, GitLab, Google, Vercel)
+
+Sign in as a seeded user with email/password
+
+Resend
+
+Emails are not sent: each send fails with "Resend is not configured"
+
+Vercel Blob
+
+Favicons, screenshots and OG images are stored in `apps/web/public/_dev-blob/`
+
+Vercel Sandbox
+
+Screenshots are skipped (not cached), so the screenshot slot stays empty
+
+Upstash Redis
+
+Rate limiting, session caching and monitor locks are skipped
+
+Polar
+
+Billing is disabled. When a token is set, Polar runs in sandbox outside production
+
+Global Config
+
+Provider detection falls back to "unknown"
+
+Dynadot, IPLocate, PostHog
+
+Pricing, geolocation and analytics are skipped
+
+Logo.dev
+
+Provider logos come from the other logo sources only
 
 License
 -------

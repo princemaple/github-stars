@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8233
+stars: 8239
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -542,7 +542,12 @@ Features supported:
 -   DRM support for Widevine, PlayReady, FairPlay and ClearKey, using the CMSF ContentProtection
 -   MP4 / CMAF support
 -   LoC draft-2 support
+-   LOCMAF draft-1 support (`locmafVersion` 0.3)
+-   MPEG-2 TS draft-gregoire-moq-msfts support
 -   Live
+-   Media timeline tracks and templates, with DVR and seeking behind the live edge
+-   MSF\_COMPRESSION (GZIP) for the catalog, media timeline and event timeline tracks (draft-18 and later)
+-   SCTE-35 over event timeline tracks, as defined in draft-wilaw-moq-scte35-event-timeline-00 (see SCTE-35 messages)
 -   For browsers that support WebTransport certificate fingerprints (e.g., Chrome), you can use self-signed certificates without installing them.
 
 Features **not** supported:

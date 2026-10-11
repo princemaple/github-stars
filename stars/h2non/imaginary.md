@@ -1,6 +1,6 @@
 ---
 project: imaginary
-stars: 6081
+stars: 6084
 description: Fast, simple, scalable, Docker-ready HTTP microservice for high-level image processing
 url: https://github.com/h2non/imaginary
 ---
@@ -86,17 +86,23 @@ Prerequisites
 Installation
 ------------
 
+```
 go get -u github.com/h2non/imaginary
+```
 
 Also, be sure you have the latest version of `bimg`:
 
+```
 go get -u github.com/h2non/bimg
+```
 
 ### libvips
 
 Run the following script as `sudo` (supports OSX, Debian/Ubuntu, Redhat, Fedora, Amazon Linux):
 
+```
 curl -s https://raw.githubusercontent.com/h2non/bimg/master/preinstall.sh | sudo bash -
+```
 
 The install script requires `curl` and `pkg-config`
 
@@ -154,6 +160,7 @@ All Docker images tags are available here.
 
 You can add `imaginary` to your `docker-compose.yml` file:
 
+```
 version: "3"
 services:
   imaginary:
@@ -163,9 +170,10 @@ services:
       - images:/mnt/data
     environment:
        PORT: 9000
-    command: \-enable-url-source -mount /mnt/data
+    command: -enable-url-source -mount /mnt/data
     ports:
       - "9000:9000"
+```
 
 ### Fly.io
 
@@ -369,11 +377,15 @@ Options:
 
 Start the server in a custom port:
 
+```
 imaginary -p 8080
+```
 
 Also, you can pass the port as environment variable:
 
+```
 PORT=8080 imaginary
+```
 
 Enable HTTP server throttle strategy (max 10 requests/second):
 
@@ -583,10 +595,12 @@ fmt.Println("sign=" + base64.RawURLEncoding.EncodeToString(buf))
 
 Here an example response error when the payload is empty:
 
+```
 {
   "message": "Cannot read payload: no such file",
   "code": 1
 }
+```
 
 See all the predefined supported errors here.
 
@@ -662,11 +676,13 @@ Serves as JSON the current `imaginary`, `bimg` and `libvips` versions.
 
 Example response:
 
+```
 {
   "imaginary": "0.1.28",
   "bimg": "1.0.5",
   "libvips": "8.4.1"
 }
+```
 
 #### GET /health
 
@@ -682,6 +698,7 @@ Provides some useful statistics about the server stats with the following struct
 
 Example response:
 
+```
 {
   "uptime": 1293,
   "allocatedMemory": 5.31,
@@ -689,6 +706,7 @@ Example response:
   "goroutines": 19,
   "cpus": 8
 }
+```
 
 #### GET /form
 
@@ -702,6 +720,7 @@ Accepts: `image/*, multipart/form-data`. Content-Type: `application/json`
 
 Returns the image metadata as JSON:
 
+```
 {
   "width": 550,
   "height": 740,
@@ -712,6 +731,7 @@ Returns the image metadata as JSON:
   "channels": 3,
   "orientation": 1
 }
+```
 
 #### GET | POST /crop
 
@@ -1116,10 +1136,12 @@ Internally, it operates pretty much as a sequential reducer pattern chain, where
 
 In imperative programming, this would be pretty much analog to the following code:
 
+```
 var image
 for operation in operations {
-  image \= operation.Run(image, operation.Options)
+  image = operation.Run(image, operation.Options)
 }
+```
 
 ##### Allowed params
 
@@ -1131,13 +1153,15 @@ for operation in operations {
 
 Self-documented JSON operation schema:
 
-\[
+```
+[
   {
     "operation": string, // Operation name identifier. Required.
-    "ignore\_failure": boolean, // Ignore error in case of failure and continue with the next operation. Optional.
-    "params": map\[string\]mixed, // Object defining operation specific image transformation params, same as supported URL query params per each endpoint.
+    "ignore_failure": boolean, // Ignore error in case of failure and continue with the next operation. Optional.
+    "params": map[string]mixed, // Object defining operation specific image transformation params, same as supported URL query params per each endpoint.
   }
-\]
+]
+```
 
 ###### Supported operations names
 
@@ -1159,7 +1183,8 @@ Self-documented JSON operation schema:
 
 ###### Example
 
-\[
+```
+[
   {
     "operation": "crop",
     "params": {
@@ -1188,7 +1213,8 @@ Self-documented JSON operation schema:
       "type": "webp"
     }
   }
-\]
+]
+```
 
 #### GET | POST /watermark
 

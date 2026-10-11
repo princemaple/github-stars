@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 43488
+stars: 43780
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -1117,11 +1117,15 @@ Ignore HTTPS certificate errors (useful for self-signed certs)
 
 `--ca-cert <path>`
 
-Trust a CA certificate or PEM bundle for locally launched Chromium on Linux; later commands in the same running session retain it when omitted (or `AGENT_BROWSER_CA_CERT` env)
+Trust a CA certificate or PEM bundle for the CLI's own HTTPS requests on every platform, and for locally launched Chromium on Linux; later commands in the same running session retain it when omitted (or `AGENT_BROWSER_CA_CERT` env)
 
 `--no-ca-cert`
 
 Clear CA trust retained by the running browser session (or `AGENT_BROWSER_CLEAR_CA_CERT`)
+
+`--use-system-ca`
+
+Use the operating system trust store for the CLI's own HTTPS requests: `read`, `install`, `upgrade`, `doctor` (or `AGENT_BROWSER_USE_SYSTEM_CA` env)
 
 `--allow-file-access`
 
@@ -1227,10 +1231,6 @@ Action categories requiring confirmation (or `AGENT_BROWSER_CONFIRM_ACTIONS` env
 
 Interactive confirmation prompts; auto-denies if stdin is not a TTY (or `AGENT_BROWSER_CONFIRM_INTERACTIVE` env)
 
-`--engine <name>`
-
-Browser engine: `chrome` (default), `lightpanda` (or `AGENT_BROWSER_ENGINE` env)
-
 `--input-mode <mode>`
 
 Session pointer movement: `instant` (default), `smooth`, or `human`
@@ -1238,6 +1238,14 @@ Session pointer movement: `instant` (default), `smooth`, or `human`
 `--idle-timeout <time>`
 
 Shut down the daemon after inactivity (`10s`, `3m`, `1h`, or raw ms). Defaults to `1h`; use `0` to disable (or `AGENT_BROWSER_IDLE_TIMEOUT_MS` env)
+
+`--engine <name>`
+
+Browser engine: `chrome` (default), `lightpanda`, `obscura` (experimental; rejects proxy bypass rules) (or `AGENT_BROWSER_ENGINE` env)
+
+`AGENT_BROWSER_OBSCURA_STEALTH` env
+
+Run the Obscura engine (`--engine obscura`) in stealth mode: consistent fingerprint, tracker blocking
 
 `--no-auto-dialog`
 
@@ -1371,6 +1379,8 @@ Create an `agent-browser.json` file to set persistent defaults instead of repeat
 }
 
 `caCert` remains effective for later commands in the same running session. Use `"clearCaCert": true`, `--no-ca-cert`, or `AGENT_BROWSER_CLEAR_CA_CERT=1` to remove it. Setting, changing, or clearing the CA relaunches Chromium without restarting the daemon. Repeating the same certificate content, including from a different path, reuses the current browser. On Linux, `agent-browser install --with-deps` installs the required `certutil`; otherwise install `libnss3-tools` on Debian/Ubuntu or `nss-tools` on RPM Linux.
+
+`read`, `install`, `upgrade`, and `doctor` make their own HTTPS requests and trust the built-in Mozilla roots by default. On every platform, `--ca-cert` adds the CA to those requests, and `--use-system-ca` switches them to the operating system trust store, which already holds a CA deployed by MDM or an enterprise image. `SSL_CERT_FILE` is used as a fallback CA file and is ignored with a warning when unusable. Neither option disables certificate or hostname verification. For `read`, a selection given on the command line stays in effect for the session until `close`, including across daemon restarts; `--no-ca-cert` or `--use-system-ca false` turns it off. `read` never launches or relaunches a browser because of these options. They do not yet change how agent-browser connects to a remote browser over `--cdp`, `--auto-connect`, or a provider.
 
 Use `--config <path>` or `AGENT_BROWSER_CONFIG` to load a specific config file instead of the defaults:
 
@@ -1839,7 +1849,7 @@ agent-browser uses a client-daemon architecture:
 
 The daemon starts automatically on first command and persists between commands for fast subsequent operations. After **1 hour** with no commands or dashboard input it saves configured restore state, closes the browser, and exits, so an integration that dies without calling `close` cannot leak the daemon and its browser indefinitely; the next command starts a fresh daemon and configured state restore works as usual. A session without `--restore` or another restore key does not save browser state, so its transient state and open tabs are discarded at shutdown. Set `--idle-timeout` to a duration such as `30s`, `5m`, or `1h`, or set `AGENT_BROWSER_IDLE_TIMEOUT_MS` to a value in milliseconds. Use `0` to disable idle shutdown entirely. The default never closes a headed browser, including Safari and iOS WebDriver sessions, or a user-attached browser because those may be in direct human use. Provider-owned cloud browsers remain eligible for cleanup. An explicitly set timeout applies to every browser.
 
-**Browser Engine:** Uses Chrome (from Chrome for Testing) by default. The `--engine` flag selects between `chrome` and `lightpanda`. Supported browsers: Chromium/Chrome (via CDP) and Safari (via WebDriver for iOS).
+**Browser Engine:** Uses Chrome (from Chrome for Testing) by default. The `--engine` flag selects between `chrome`, `lightpanda`, and `obscura`. Supported browsers: Chromium/Chrome (via CDP), Lightpanda and Obscura (via CDP), and Safari (via WebDriver for iOS).
 
 Platforms
 ---------
@@ -2250,3 +2260,8 @@ License
 -------
 
 Apache-2.0
+
+Obscura (experimental)
+----------------------
+
+Use `--engine obscura --executable-path /path/to/obscura` to launch a local Obscura binary. Obscura v0.2.2 has accessibility, iframe, and rendering limitations; use Chrome when fidelity matters. See the engine documentation for setup, configuration, and MCP usage, and the contributor guide for source-build testing.

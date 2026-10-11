@@ -1,6 +1,6 @@
 ---
 project: gitea
-stars: 58284
+stars: 58418
 description: Git with a cup of tea! Painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, package registry and CI/CD
 url: https://github.com/go-gitea/gitea
 ---
@@ -105,7 +105,7 @@ For static config options, you can edit your `app.ini` file and restart the inst
 
 **Where can I find the security patches?**
 
-In the release log or the change log, search for the keyword `SECURITY` to find the security patches.
+Check the release notes and security advisories for security patches.
 
 (more FAQs are listed in FAQ documentation)
 

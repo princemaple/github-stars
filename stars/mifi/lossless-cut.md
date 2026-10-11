@@ -1,6 +1,6 @@
 ---
 project: lossless-cut
-stars: 44251
+stars: 44446
 description: The swiss army knife of lossless video/audio editing
 url: https://github.com/mifi/lossless-cut
 ---

@@ -1,6 +1,6 @@
 ---
 project: nerd-fonts
-stars: 64809
+stars: 64866
 description: Iconic font aggregator, collection, & patcher. 3,600+ icons, 50+ patched fonts: Hack, Source Code Pro, more. Glyph collections: Font Awesome, Material Design Icons, Octicons, & more
 url: https://github.com/ryanoasis/nerd-fonts
 ---
@@ -745,18 +745,19 @@ The script is a standalone tool that you can download individually, use like the
 
 curl -s https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/install.sh -o install.sh
 chmod u+x install.sh
-./install.sh --help
+./install.sh help
 
 Examples:
 
 ./install.sh list
-./install.sh install <FontName\>
+./install.sh install                           # interactive mode
 ./install.sh install Hack
 ./install.sh install HeavyData
+./install.sh install Hack heAvYdatA            # not case sensitive
 ./install.sh install all
-./install.sh install # interactive mode
-VERBOSE=3 ./install.sh install DaddyTimeMono
-GH\_RELEASE\_TAG=v3.2.1 ./install.sh list
+./install.sh --verbose install DaddyTimeMono
+./install.sh list --release v3.2.1
+./install.sh remove --dry
 
 ### `Option 4: Unofficial Chocolatey or Scoop Repositories`
 

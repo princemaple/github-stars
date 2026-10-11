@@ -1,6 +1,6 @@
 ---
 project: VERT
-stars: 15673
+stars: 15840
 description: The next-generation file converter. Open source, fully local* and free forever.
 url: https://github.com/VERT-sh/VERT
 ---
@@ -29,7 +29,7 @@ Features
 -   Conversion settings
 -   User-friendly interface built with Svelte
 
-\* Non-local video conversion is available with our official instance, but the daemon is easily self-hostable to maintain privacy and fully local functionality.
+\* Local video conversion in-browser is supported, but some conversion may require server-side processing. Server video conversion is available with our official instance, but the daemon is easily self-hostable to maintain privacy and fully local functionality.
 
 Documentation
 -------------

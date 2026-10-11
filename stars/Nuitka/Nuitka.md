@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 15176
+stars: 15182
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.14. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -752,6 +752,8 @@ print("Done... splash should be gone.")
 ...
 
 \# Rest of your program goes here.
+
+The splash screen can be suppressed at runtime by setting the environment variable `NUITKA_SPLASH_SCREEN` to `0` or `off`. This is useful for automated tests or other situations, where the display would be disruptive. The application code signaling the splash screen removal keeps working the same way.
 
 #### Reports
 

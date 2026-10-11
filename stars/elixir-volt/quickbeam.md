@@ -1,6 +1,6 @@
 ---
 project: quickbeam
-stars: 423
+stars: 424
 description: JavaScript runtime for the BEAM — Web APIs backed by OTP, native DOM, and a built-in TypeScript toolchain.
 url: https://github.com/elixir-volt/quickbeam
 ---
@@ -16,10 +16,10 @@ Installation
 ------------
 
 def deps do
-  \[{:quickbeam, "~> 0.11.2"}\]
+  \[{:quickbeam, "~> 0.11.3"}\]
 end
 
-Precompiled NIFs target Zig's baseline CPU for each supported architecture. Source builds require Zig 0.16 and default to the build machine's CPU; set `QUICKBEAM_CPU=baseline` alongside `QUICKBEAM_BUILD=1` for a portable build. When changing CPU or optimization settings, force recompilation with `mix compile --force`.
+Precompiled NIFs target Zig's baseline CPU and cover x86-64 and ARM64 Linux with glibc or musl (Alpine included), ARM64 macOS, and x86-64 Windows. Source builds require Zig 0.16 and default to the build machine's CPU; set `QUICKBEAM_CPU=baseline` alongside `QUICKBEAM_BUILD=1` for a portable build. When changing CPU or optimization settings, force recompilation with `mix compile --force`.
 
 Quick start
 -----------

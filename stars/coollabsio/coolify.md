@@ -1,6 +1,6 @@
 ---
 project: coolify
-stars: 62558
+stars: 62834
 description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
@@ -130,8 +130,8 @@ Thank you so much!
 -   VPSDime - Cheap VPS Hosting - 4GB for $5/month
 -   dataforest Cloud - Deploy cloud servers as seeds independently in seconds. Enterprise hardware, premium network, 100% made in Germany.
 -   ISHosting - Hosting and VPS solutions
--   PetroSky Cloud - Open source cloud deployment solutions
 -   QuickSrv - Fast and reliable server hosting
+-   NodePlus.ai - AI that reads every system your business runs on
 
 ### Small Sponsors
 

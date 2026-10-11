@@ -1,6 +1,6 @@
 ---
 project: nanoid
-stars: 27005
+stars: 27095
 description: A tiny (118 bytes), secure, URL-friendly, unique string ID generator for JavaScript
 url: https://github.com/ai/nanoid
 ---
@@ -14,7 +14,7 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 > “An amazing level of senseless perfectionism, which is simply impossible not to respect.”
 
--   **Small.** 127 bytes (minified and brotlied). No dependencies. Size Limit controls the size.
+-   **Small.** 117 bytes (minified and brotlied). No dependencies. Size Limit controls the size.
 -   **Fast.** 50% faster than native `crypto.randomUUID()`.
 -   **Safe.** It uses hardware random generator. Can be used in clusters.
 -   **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`). So ID size was reduced from 36 to 21 symbols.
@@ -37,7 +37,6 @@ Table of Contents
 -   Benchmark
 -   Security
 -   Install
-    -   JSR
     -   CDN
 -   API
     -   Custom Alphabet or Size
@@ -103,19 +102,6 @@ Install
 -------
 
 npm install nanoid
-
-### JSR
-
-JSR is a replacement for npm with open governance and active development (in contrast to npm).
-
-npx jsr add @sitnik/nanoid
-
-You can use it in Node.js, Deno, Bun, etc.
-
-// Replace \`nanoid\` to \`@sitnik/nanoid\` in all imports
-import { nanoid } from "@sitnik/nanoid";
-
-For Deno install it by `deno add jsr:@sitnik/nanoid` or import from `jsr:@sitnik/nanoid`.
 
 ### CDN
 

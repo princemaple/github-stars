@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83603
+stars: 83647
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -690,6 +690,7 @@ Courses
     -   Information Retrieval in High Dimensional Data
     -   Trustworthy Machine Learning - Winter Semester 2023-2024, University of Tübingen
     -   Trustworthy Machine Learning - Winter Semester 2024-2025, University of Tübingen
+    -   Introduction to High Dimensional Statistics and Probability, by Christophe Giraud (Lecture videos)
     -   ETH Zürich Advanced Machine Learning fall 2019, by Joachim M. Buhmann
     -   CS 159 Advanced Topics in Machine Learning, Spring 2021 - Caltech
     -   CS 229br Advanced Topics in the theory of machine learning, Spring 2021 - Harvard

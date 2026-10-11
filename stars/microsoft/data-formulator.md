@@ -1,6 +1,6 @@
 ---
 project: data-formulator
-stars: 17521
+stars: 17552
 description: 🪄 Data Formulator is an interactive AI-powered data analysis system makes it easy to connect, explore and visualize data.
 url: https://github.com/microsoft/data-formulator
 ---

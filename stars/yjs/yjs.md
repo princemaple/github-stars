@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 22875
+stars: 22917
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -91,6 +91,7 @@ Who is using Yjs
 -   Theneo - AI-powered API docs with live team collaboration.
 -   ToolJet - Build full-stack enterprise internal apps in minutes.
 -   Stuga - Self-hosted collaborative documents and databases. AI agents' edits arrive as tracked changes that, by default, wait for a person to accept or reject them.
+-   Obsidian Collab - Real-time, end-to-end encrypted, peer-to-peer, collaborative editing across Obsidian vaults for files and folders.
 
 Table of Contents
 -----------------

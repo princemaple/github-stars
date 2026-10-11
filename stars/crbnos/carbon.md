@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 2670
+stars: 2715
 description: Open-source manufacturing ERP, MES and QMS. Quoting, MRP, inventory, shop floor, quality and lot/serial traceability on one Postgres schema, with a REST API and MCP server. Self-host or use Carbon Cloud.
 url: https://github.com/crbnos/carbon
 ---
@@ -165,6 +165,11 @@ Architecture
 ------------
 
 ERP and MES are React Router apps over a single Postgres database. Permissions (row-level security), computed totals and change events live in the database itself; background work runs through Inngest, which calls back into the ERP to execute jobs. The architecture guide follows one click all the way down.
+
+Building E2E Systems
+--------------------
+
+Carbon is intended to be the core of a bespoke end-to-end manufacturing system. We provide an `apps/starter` and allow you to build a custom sales and shop-floor engine with Carbon at the center.
 
   
 
@@ -463,7 +468,7 @@ The full command reference is in the local development guide.
 
 ### Restoring a production snapshot
 
-To restore a production database snapshot locally, use `crbn restore`. It handles both plain-text `.backup` and custom-format `.dump` archives, drops and rebuilds the public schema, realigns internal sequences, resets storage metadata, then applies any migrations the backup predates and regenerates types.
+To restore a production database snapshot locally, use `crbn restore`. It handles both plain-text `.backup` and custom-format `.dump` archives, drops and rebuilds the public schema, fits the backup to your stack's auth/storage/realtime schemas, verifies that every index, constraint, trigger and policy landed, realigns internal sequences, resets storage metadata, then applies any migrations the backup predates and regenerates types. If verification fails, it exits nonzero and applies no migrations.
 
 1.  Export a backup of your production database with `pg_dump`.
     

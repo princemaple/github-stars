@@ -1,6 +1,6 @@
 ---
 project: Deep-Live-Cam
-stars: 96907
+stars: 96969
 description: real time face swap and one-click video deepfake with only a single image
 url: https://github.com/hacksider/Deep-Live-Cam
 ---
@@ -236,7 +236,7 @@ pip install onnxruntime-directml==1.21.0
 
 1.  Usage:
 
-python run.py --execution-provider directml
+python run.py --execution-provider dml
 
 **OpenVINO™ Execution Provider (Intel)**
 

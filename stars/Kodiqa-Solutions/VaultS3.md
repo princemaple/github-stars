@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 1622
+stars: 1626
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -182,13 +182,18 @@ aws --endpoint-url http://localhost:9000 s3 mb s3://my-bucket
 aws --endpoint-url http://localhost:9000 s3 cp ./file.txt s3://my-bucket/
 open http://localhost:9000/dashboard/
 
-No config file is needed. VaultS3 starts on its built-in defaults, creates the directories it needs, and generates an admin secret that it prints once on first start. Set `VAULTS3_ACCESS_KEY` and `VAULTS3_SECRET_KEY` to use your own.
+No config file is needed. VaultS3 starts on its built-in defaults, creates the directories it needs, and generates an admin secret that it prints once on first start. Set `VAULTS3_ACCESS_KEY` and `VAULTS3_SECRET_KEY` before the first start to use your own.
 
-Prefer a package or a plain binary? Every release ships `.deb`, `.rpm` and `.apk` packages, static binaries for Linux, macOS and Windows, an SPDX SBOM per platform, and a Sigstore provenance bundle you can verify offline:
+The image also carries `vaults3-cli`, built from the same commit as the server, so day-2 work needs nothing else installed:
 
-sudo apt install ./vaults3\_4.4.77\_amd64.deb
+docker exec vaults3 vaults3-cli user create alice
+docker exec vaults3 vaults3-cli key create alice --bucket my-bucket   # prints the key pair once
+
+Prefer a package or a plain binary? Every release ships `.deb`, `.rpm` and `.apk` packages, static binaries for Linux, macOS and Windows, a `checksums.txt` signed with the project's release key, an SPDX SBOM per platform, and a Sigstore provenance bundle you can verify offline:
+
+sudo apt install ./vaults3\_5.0.2\_amd64.deb
 sudo systemctl enable --now vaults3
-gh attestation verify vaults3\_4.4.77\_amd64.deb --repo Kodiqa-Solutions/VaultS3
+gh attestation verify vaults3\_5.0.2\_amd64.deb --repo Kodiqa-Solutions/VaultS3
 
 Building from source is `make build`. Kubernetes is a Helm chart or a single manifest. All of it, plus the disk layout to use in production, is in the **installation guide**.
 

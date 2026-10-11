@@ -1,6 +1,6 @@
 ---
 project: dust
-stars: 12461
+stars: 12492
 description: A more intuitive version of du in rust
 url: https://github.com/bootandy/dust
 ---

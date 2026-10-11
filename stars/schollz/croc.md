@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40510
+stars: 40547
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -300,8 +300,6 @@ Relay hostnames are resolved by the proxy, so the client does not need a working
 For a network that only permits proxy traffic, use `--transport relay` on the sender to use the SOCKS5-capable relay transport for file data. The browser client uses the browser's proxy settings for its WebSocket gateway connection; the native CLI flag does not configure the browser.
 
 **Sponsored by SX.org.**
-
-**Sponsored by RapidProxy.**
 
 ### Data transport selection
 

@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 8170
+stars: 8182
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -16,7 +16,7 @@ Export images and canvas with the core. Use plugins for self-contained HTML, pag
 
 Documentation and demos · Technical features · Official plugins · 简体中文
 
-This checkout documents **v3.x.x**. The migration guide below compares it with **v2.x.x**. The v2 source and v2 documentation remain available.
+This checkout documents **v3.x.x**. The migration guide below compares it with **v2.x.x**. The v2 source remains available.
 
 What you can build
 ------------------
@@ -53,9 +53,15 @@ Text/JSON context, or an image with an element map
 
 Download a document or record changing content
 
-Image-based PDF, animated GIF or browser-encoded video
+Searchable, paginated PDF, animated GIF or browser-encoded video
 
-`pdf-image` / `gif-export` / `video-export` plugins
+`pdf` / `gif-export` / `video-export` plugins
+
+Export editable artwork or paste into Figma
+
+Native SVG shapes and text, or a Figma clipboard payload
+
+`vector` plugin
 
 Image, HTML and context exports use the captured state. GIF and video plugins record the live element over time.
 
@@ -82,9 +88,11 @@ The result keeps that capture even if the source element later changes. Call `sn
 Installation
 ------------
 
-Install the core and, when you need them, the official plugins; use matching major versions:
+Install the core and, when you need them, the official plugins; choose a core supported by the plugins’ peer dependency:
 
 npm i @zumer/snapdom@latest @zumer/snapdom-plugins@latest
+
+Plugins 4.x in this checkout require core 3.x. The full PDF and Vector exporters are open source under MIT here, but have not been published to npm; the `@latest` command above does not install these new exporters. Run `npm run compile` and `npm run site` to try them against the local build.
 
 Or load it in a browser:
 
@@ -301,7 +309,7 @@ for (let y \= 0; y < h0; y += pieceHeight) {
 
 ### Export HTML or structured context
 
-Official plugins are published separately as `@zumer/snapdom-plugins` and must match the core major version; they declare a peer dependency on a v3 core. Their sources live in `packages/plugins/` in this checkout.
+Official plugins are published separately as `@zumer/snapdom-plugins`. Plugins 4.x in this checkout require core 3.x and include the full PDF and Vector exporters under MIT. Their sources live in `packages/plugins/`.
 
 import { htmlExport, contextExport } from '@zumer/snapdom-plugins';
 
@@ -313,6 +321,23 @@ const html \= await result.toHtml();
 const context \= await result.toContext();
 
 The same plugin system supports overlays, redaction and custom exporters. Local plugins override global plugins by name. See the official plugin reference and plugin specification.
+
+### Export PDF and editable vectors
+
+These examples use plugins 4.x from this checkout. PDF returns a `Blob` with searchable, selectable text, links, pagination and optional form fields. Vector returns an SVG string without `<foreignObject>`, preserving supported shapes and editable text.
+
+import { snapdom } from '@zumer/snapdom';
+import { pdf } from '@zumer/snapdom-plugins/pdf';
+import { vector } from '@zumer/snapdom-plugins/vector';
+
+const documentCapture \= await snapdom(element, { plugins: \[pdf()\] });
+const blob \= await documentCapture.toPdf({ page: 'a4', margin: 36 });
+
+const artwork \= await snapdom(element, { plugins: \[vector()\] });
+const svg \= await artwork.toVector();
+copyButton.addEventListener('click', () \=> artwork.toFigma());
+
+Pass PDF capture settings to `pdf()` and paper, margin and download settings to `toPdf()`. `toFigma()` returns `Promise<void>` and needs the async clipboard API on HTTPS or localhost, called from a user action. Vector requires a connected source element; unsupported paint is diagnosed by the engine. See the PDF reference and Vector contract.
 
 ### Capture HTML strings
 
@@ -496,7 +521,8 @@ For a useful comparison, use the same scene, output format, scale and DPR. Compa
 Documentation
 -------------
 
--   Archived v2 documentation and v2 source
+-   Interactive Playground, PDF demos and Vector demos
+-   v2 source
 -   API and options
 -   Framework guides and how-to examples
 -   Official plugins, plugin specification and contributing plugins

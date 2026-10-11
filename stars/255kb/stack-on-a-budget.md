@@ -1,6 +1,6 @@
 ---
 project: stack-on-a-budget
-stars: 12454
+stars: 12460
 description: A collection of services with great free tiers for developers on a budget. Sponsored by Mockoon, the best mock API tool. https://mockoon.com
 url: https://github.com/255kb/stack-on-a-budget
 ---
@@ -123,6 +123,7 @@ Table of Contents
     -   Neon
     -   Openshift MongoDB
     -   Oracle Cloud
+    -   Prisma Postgres
     -   Railway
     -   Redis Cloud
     -   Supabase Postgres
@@ -176,6 +177,7 @@ Table of Contents
     -   Argonaut
     -   ExchangeRate-API
     -   FingerprintJS Pro
+    -   FXMacroData
     -   Geocodio
     -   Indexed
     -   ipapi.is
@@ -232,6 +234,7 @@ Table of Contents
     -   Netlify
     -   Render
     -   Catalyst Slate
+    -   Shipvela
     -   Surge
     -   Vercel
 -   **User authentication**

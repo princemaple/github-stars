@@ -1,6 +1,6 @@
 ---
 project: dozzle
-stars: 14539
+stars: 14600
 description: Realtime log viewer for containers.  Supports Docker, Swarm and K8s. 
 url: https://github.com/amir20/dozzle
 ---
@@ -101,9 +101,9 @@ Same as `latest`, but on an Alpine base instead of `scratch`.
 
 Alpine variants of the version tags above.
 
-`master`
+`main`
 
-Built from the `master` branch on every push. Unreleased and unstable.
+Built from the `main` branch on every push. Unreleased and unstable.
 
 `pr-1234`, `pr-1234-alpine`
 
@@ -111,7 +111,7 @@ Built from pull request #1234, for testing a fix before it ships.
 
 The default images are built `FROM scratch` and contain only the Dozzle binary, which is why they are around 7 MB compressed. That also means there is no shell inside them. Use the `alpine` variants only if something in your setup needs one, most commonly platforms that bind-mount a `#!/bin/sh` wrapper over the container entrypoint such as Unraid's per-container Tailscale toggle. See the FAQ for details.
 
-Avoid `latest` and `master` in production. `latest` moves on every release and `master` is unreleased code.
+Avoid `latest` and `main` in production. `latest` moves on every release and `main` is unreleased code.
 
 Swarm Mode
 ----------

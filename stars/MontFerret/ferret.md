@@ -65,7 +65,7 @@ Use `github.com/MontFerret/ferret/v2` and `ferret.New(opts...)` for Native embed
 Use the native v2 API built around the following flow:
 
 ```
-Engine -> compile query -> create session -> run
+Engine -> compile query -> create session -> run -> collect or consume
 ```
 
 package main
@@ -104,8 +104,17 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(string(output.Content))
+	defer output.Close()
+	content, err := output.Collect(ctx)
+	if content != nil {
+		fmt.Println(string(content.Data))
+	}
+	if err != nil {
+		log.Print(err)
+	}
 }
+
+`Run` executes and encodes eagerly. Its nil error means an output handle was obtained; `Collect` or `Consume` reports terminal execution and cleanup errors. Keep the invocation context alive through consumption. Available content may accompany an error. Consume outputs used only for side effects, and close outputs you abandon. See the consumable-output migration.
 
 ### Migration from v1
 

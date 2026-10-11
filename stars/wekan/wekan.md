@@ -1,7 +1,7 @@
 ---
 project: wekan
-stars: 21102
-description: The Open Source kanban, built with Meteor. GitHub issues/PRs are only for FLOSS Developers, not for support, support is at https://wekan.fi/commercial-support/ . PR source translation to imports/i18n/data/en.i18n.json, other translations at https://app.transifex.com/wekan/wekan . No telemetry.
+stars: 21111
+description: FLOSS kanban, built with Meteor. Official Public Support at GitHub issues only. Official Private Pre-Paid Support at https://wekan.fi/commercial-support/ only. Translation PRs to imports/i18n/data/en.i18n.json, other translations at https://app.transifex.com/wekan/wekan . No telemetry.
 url: https://github.com/wekan/wekan
 ---
 
@@ -12,6 +12,112 @@ Downloads
 ---------
 
 https://wekan.fi/install/
+
+Screenshot
+----------
+
+About WeKan ®
+-------------
+
+WeKan ® is a FLOSS collaborative kanban board application with MIT license.
+
+Whether you’re maintaining a personal todo list, planning your holidays with some friends, or working in a team on your next revolutionary idea, Kanban boards are an unbeatable tool to keep your things organized. They give you a visual overview of the current state of your project, and make you productive by allowing you to focus on the few items that matter the most.
+
+Since WeKan ® is a free software, you don’t have to trust us with your data and can install Wekan on your own computer or server. In fact we encourage you to do that by providing one-click installation on various platforms.
+
+-   WeKan ® is used in most countries of the world.
+-   WeKan ® largest user has 30k users using WeKan ® in their company.
+-   WeKan ® has been translated into 234 locale catalogs; 164 have non-English text for over 90% of source keys. This measures text coverage, not translation quality; language review and remaining translations are ongoing.
+-   Databases:
+    -   FerretDB v1 with SQLite, the default on every platform - bundle, Docker, Snap and Kubernetes - so no database server is needed.
+    -   FerretDB v1 with PostgreSQL works; with MySQL, MariaDB or SAP HANA it is experimental.
+    -   MongoDB 6, 7, 8 and 9. MongoDB refuses to start on Linux kernels 6.19 to 7.0.13, which FerretDB is not affected by.
+    -   All of them - SAP HANA only when asked - answer the same 110-query conformance catalogue the same way, checked by EVERYTHING in build.sh and build.bat.
+-   Features:
+    -   Real-time user interface
+    -   All Boards page, Drag drop reorder with one or Multi-Selection:
+        -   Board icons at Remaining, (Sub)Workspaces, Archive
+        -   Shared Templates: Boards, Lists, Cards
+        -   Add Board / Import (all import and export formats):
+            -   WeKan JSON/.zip, CSV/TSV, Excel, Markdown, Obsidian Kanban, Leo, OPML, Org mode, todo.txt
+            -   Trello, Jira, Asana, Zenkit, Focalboard, Todoist, Microsoft Planner, MeisterTask, Linear, TickTick, ClickUp, Nullboard, Kanri, Pivotal Tracker, Redmine, Tasks.org, monday.com, Super Productivity, Taiga, Vikunja, Wrike (Excel and workflow), Quire, Teamwork.com, Businessmap, Notion, Plane
+            -   Kanboard, Nextcloud Deck, OpenProject, Taskwarrior
+            -   GitHub, GitLab, Gitea, Forgejo
+            -   Import many boards at once: several export files, or a .zip of them, each its own board; One board per project splits an export of a whole app into a board per project
+    -   Change Color: Board theme and background image, Swimlane, List, Card
+        -   Overrides: 1 Admin Panel, 2 Board Settings, 3 Member Settings
+    -   Drag drop reorder with one or Multi-Selection:
+        -   Board icons to Workspaces at All Boards page
+        -   Swimlane, List, Minicard
+-   Board
+    -   Top header: Mobile/Desktop view, Show/Hide Drag Handles, Starred Boards Bookmarks, Sort Boards, Filter, Search, Notifications, Member Settings
+    -   Member Settings:
+        -   Show My Dependencies, Show Board Dependencies, Import/Export JSON/SVG
+            -   Dependencies are for SAFe PI Plannings, drawing colored lines between cards, like Kendis or Scaled Agile Framework. Import Export as JSON and SVG.
+        -   My Cards, Due Cards, My Attachments, Search All Boards, Date Settings, Change color - override theme, Nofications Settings (Tray, Email, etc), Font change and Font size change, Change Avatar, Change Language (250+ languages)
+        -   Change Settings: Show desktop drag handles, Submit editors with Enter, Open many cards at once, Play a sound when a checklist item is completed, Show cards count if list contains more than ... cards, Show rescue dialoque before closing for unsaved card descriptions
+    -   Board Views:
+    -   Swimlanes, Lists
+        -   Minicard: At list there is card, that has not been not opened yet
+        -   Card: Opened card popup of minicard
+            -   Attachments viewer for PDF and Office documents
+        -   Drag drop reorder one or Multi-Selection: Swimlanes, Lists, Minicards, Checklists, Checklist Items
+        -   Collapse/Uncollapse: Menus, Swimlanes, Lists, Cards
+    -   Table, Calendar, Multi Board Calendar, Time, Timeline
+    -   Statistics, Group by Assignee
+    -   Gantt, Frappe Gantt, DHTMLX Gantt
+    -   Scrum: Product Backlog, Sprints, Sprint Report, Velocity, Roadmap, Dashboard, Bigboard
+    -   Burndown, Burnup, Cumulative Flow, Control, Cycle Time, Flow Efficiency, Lead Time, Throughtput Histogram, WIP Run, Pulse, Aging WIP, Blocker Analysis, Monte Carlo Forecasts, Process Behavior (XmR), Work Item Size vs Cycle Time, Map
+    -   Right Sidebar / Board Settings:
+    -   Rules: like IFTTT like Trello Butler
+        -   Lists view for Rules
+        -   Workflow view: like Jira Workflows
+        -   Blocks: like Scratch or Jira AutoBlocks, shows same IFTTT Rules
+        -   Import / Export IFTTT Rules; import n8n, Node-RED and Trello Butler; import / export Wrike workflows
+    -   Export board :
+        -   Select what to include: Card details, Board, Activities, Labels, People (Creator, Owner, Members, Assignees), Board Info (Board, List, Swimlane), Dates (Created, Received, Start, Due, End), Description, Custom Fields, Checklists, Subtasks, Comments, Attachments, Votin, Plannin Poker, Stickers, Location (link to map based on coordinates), Dependencies, Sort, Scrum Settings
+    -   Export to (all formats): PDF, Excel, HTML, Calendar feed (iCal), Dependencies JSON/SVG, CSV , ; TSV, JSON with/without attachmeents, .zip (Attachments), Kanboard, Markdown, Leo, OPML, Org mode, todo.txt, Taskwarrior, Focalboard, Todoist, Microsoft Planner, MeisterTask, Obsidian Kanban, Linear, TickTick, ClickUp, Nullboard, Kanri, Pivotal Tracker, Redmine, Tasks.org, monday.com, Super Productivity, Taiga, Vikunja, Wrike (Excel and workflow), Quire, Teamwork.com, Businessmap, Notion, Trello, Jira, NextCloud Deck, OpenProject, GitHub, GitLab, Gitea, Forgejo, Asana, Zenkit
+    -   Export all boards at once (All Boards sidebar, or Multi-Selection): Excel as one workbook with a sheet per board, every other format as a .zip with a file per board
+    -   Scrum Settings
+    -   Change color theme, Change Background Image, Date settings
+    -   Settings:
+        -   Board View: Show/Hide and drag drop reorder what is shown atat Public Board and Private Board
+        -   Swimlane: Scrum settings, Lock resize swimlane height, WIP Limit Groups
+        -   Board View: Show/Hide and drag drop reorder what is shown at Minicard and Card
+-   Admin Panel
+    -   Settings
+        -   Version
+        -   Visibility: What is shown/hidden, Whitelabeling
+        -   Announcement
+        -   Accessibility
+        -   Translation: Add custom translation strings
+        -   PWA
+        -   Global Webhooks
+-   People
+    -   Email, Notifications, Domains, Organizations, Teams, People
+    -   Locked Users, Roles, Shared Templates
+    -   Login, SAML, LDAP, OAuth2 login providers, Passwordless login
+-   Attachments
+    -   Scheduled Backups, Continuous realtime backups, Move Attachments, Default Save Storage, Limits
+    -   Storage: MongoDB GridFS, Filesystem, S3/MinIO, Azure Blob, Google Cloud
+    -   Database migration
+-   Problems
+    -   Summary
+    -   Security
+    -   Delete: Optional enable permanent delete.
+        -   History Undo/Redo available at Board, List, Card, etc menus at Swimlanes and List views
+    -   Notifications
+    -   Reports
+        -   Security: shows any attempted attacks based on names from https://wekan.fi/hall-of-fame/ like built-in SIEM with country flag and city based of location of IP address based on location headers like CloudFlare etc
+        -   Impersonation
+        -   Performance, Speed, Tests, CPU usage, Instrumentation, Broken Cards, Files, Rules, Boards, Recovery, Offices, API, Database problems, Filesystem integrity
+-   Platforms:
+    -   Windows/Mac/Linux bundle .zip
+    -   Linux Snap: Automatic updates
+    -   Linux AppImage
+    -   Docker, Kubernetes
+    -   SaaS: Free with App or Paid with Admin Panel
+        -   Commercial Support
 
 Docker Containers
 -----------------
@@ -39,7 +145,7 @@ docker-compose.yml at https://github.com/wekan/wekan/blob/main/docker-compose.ym
 Standards
 ---------
 
--   WeKan and Standard for Public Code assessment was made at 2023-11. Currently Wekan meets 8 out of 16 criteria out of the box. Some others could be met with small changes.
+-   WeKan and Standard for Public Code assessment was made at 2023-11. At 2026 WeKan becameß full FLOSS with FerretDB v1 Fork, also see 2026 talk WeKan 10 years at https://wekan.fi/docs for more details. Currently Wekan meets 9 out of 16 criteria out of the box. Some others could be met with small changes.
 
 Code stats
 ----------
@@ -64,11 +170,6 @@ Discussions
 
 IRC
 
-Docker: Latest tag has newest release
--------------------------------------
-
-You can use latest tag to get newest release tag. See bottom of #3874
-
 FAQ
 ---
 
@@ -76,21 +177,6 @@ FAQ
 
 -   Please read the FAQ first
 -   Please don't feed the trolls and spammers that are mentioned in the FAQ :)
-
-About WeKan ®
--------------
-
-WeKan ® is a completely \[Open Source\]\[open\_source\] and \[Free software\]\[free\_software\] collaborative kanban board application with MIT license.
-
-Whether you’re maintaining a personal todo list, planning your holidays with some friends, or working in a team on your next revolutionary idea, Kanban boards are an unbeatable tool to keep your things organized. They give you a visual overview of the current state of your project, and make you productive by allowing you to focus on the few items that matter the most.
-
-Since WeKan ® is a free software, you don’t have to trust us with your data and can install Wekan on your own computer or server. In fact we encourage you to do that by providing one-click installation on various platforms.
-
--   WeKan ® is used in most countries of the world.
--   WeKan ® largest user has 30k users using WeKan ® in their company.
--   WeKan ® has been translated to 234 languages, 167 of them essentially complete.
--   \[Features\]\[https://github.com/wekan/wekan/tree/main/docs/Features\]: WeKan ® has real-time user interface.
--   Platforms: WeKan ® supports many platforms. WeKan ® is critical part of new platforms Wekan is currently being integrated to.
 
 Requirements
 ------------
@@ -117,7 +203,7 @@ We also welcome sponsors for features and bugfixes. By working directly with WeK
 Getting Started with Development
 --------------------------------
 
-The main branch uses Meteor 3.6-beta.1 with Node.js 26.x. See CHANGELOG.md for the latest runtime updates.
+The main branch uses Meteor 3.x with Node.js 26.x. See CHANGELOG.md for the latest runtime updates.
 
 To contribute, create a fork and run `./build.sh` (or `./build.bat` on Windows) as detailed here. Once you're ready, please test your code and submit a pull request (PR).
 
@@ -171,7 +257,7 @@ If a dev server is already running on that port, the **Dev server** options stop
 
 ### WSL Users
 
-WSL users can use Snap Candidate. See install docs.
+WSL users can use Snap. See install docs.
 
 License
 -------

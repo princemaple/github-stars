@@ -1,6 +1,6 @@
 ---
 project: karakeep
-stars: 29406
+stars: 29576
 description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 url: https://github.com/karakeep-app/karakeep
 ---
@@ -66,7 +66,7 @@ Stack
 
 -   NextJS for the web app. Using app router.
 -   Drizzle for the database and its migrations.
--   NextAuth for authentication.
+-   Better Auth for authentication.
 -   tRPC for client->server communication.
 -   Puppeteer for crawling the bookmarks.
 -   OpenAI because AI is so hot right now.

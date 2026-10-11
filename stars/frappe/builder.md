@@ -1,6 +1,6 @@
 ---
 project: builder
-stars: 2408
+stars: 2427
 description: Craft beautiful websites effortlessly with an intuitive visual builder and publish them instantly
 url: https://github.com/frappe/builder
 ---
@@ -116,6 +116,13 @@ yarn dev --host
 1.  Now, you can access the site on vite dev server at `http://builder.localhost:8080`
 
 **Note:** You'll find all the code related to Builder's frontend inside `frappe-bench/apps/builder/frontend`
+
+Manage Your Site With an AI Agent
+---------------------------------
+
+The `frappe-builder` skill lets your own coding agent (Claude Code, Codex, OpenCode and others) edit, build and publish Builder pages on any Frappe site through frappectl:
+
+npx skills add frappe/builder
 
 ### Links
 

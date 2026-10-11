@@ -1,6 +1,6 @@
 ---
 project: InvokeAI
-stars: 28340
+stars: 28541
 description: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.
 url: https://github.com/invoke-ai/InvokeAI
 ---
@@ -115,11 +115,17 @@ We very much thank the following sponsors:
 
 -   apokolypsse
 -   Romeotechguy
+-   Pynshe9
+-   CarstenD74
+-   zamjoor
+-   FusionBreak
+-   and 2 anonymous donors
 
 ### Power Users ($50/mo)
 
 -   mickr777
 -   Astroburner
+-   and 2 anonymous donors
 
 Thanks
 ------

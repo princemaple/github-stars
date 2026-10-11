@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 1099
+stars: 1133
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -21,6 +21,7 @@ It also offers something you will rarely find in other CAD viewers—**one-click
 -   X (Twitter): @mlightcad
 -   YouTube: @mlightcad
 -   Medium: @mlightcad
+-   DEV.to: @mlightcad
 -   Juejin(稀土掘金): @mlightcad
 
 ### Apps Built with cad-viewer
@@ -178,6 +179,18 @@ Export drawings to **self-contained offline HTML**
 **SVG export** and shared vector renderer (also used by PDF export)
 
 `csvg`
+
+`@mlightcad/cad-onedrive-plugin`
+
+**OneDrive data source** — open DWG/DXF from OneDrive / SharePoint
+
+Registers `AcApDataSource` (`onedrive`); two-step Sign in → Open (popup-safe)
+
+`@mlightcad/cad-google-drive-plugin`
+
+**Google Drive data source** — open DWG/DXF from Google Drive
+
+Registers `AcApDataSource` (`googledrive`); two-step Sign in → Open (popup-safe)
 
 ### `@mlightcad/cad-simple-ui-plugin` — UI chrome for the simple viewer
 
@@ -507,7 +520,7 @@ Legend:
 
 ### Platform Targets
 
--   ⏳ Google Drive Integration
+-   Google Drive Integration (Picker data source; Drive “Open with” optional follow-up)
 -   WeChat Mini Program viewer
 -   Mobile browser support (responsive layout & touch)
 

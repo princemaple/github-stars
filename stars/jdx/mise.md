@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 34561
+stars: 34891
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---
@@ -11,7 +11,7 @@ mise-en-place
 
 **Dev tools, env vars, and tasks in one CLI**
 
-Getting Started • Documentation • Dev Tools • Environments • Tasks
+Getting started • Docs • Dev tools • Environments • Tasks • Bootstrap
 
 Sponsored by  
   
@@ -24,14 +24,21 @@ View all sponsors
 What is mise?
 -------------
 
-mise manages your development tools, environment variables, and project tasks. Declare them in `mise.toml`, commit the file, and use the same setup in your shell, your editor, and CI.
+mise (pronounced "meez", short for _mise-en-place_) installs a project's tools, sets its environment variables, and runs its tasks from one `mise.toml` that works in your shell, editor, and CI. With `mise bootstrap`, it can also set up a whole machine: packages, dotfiles, and services.
 
--   **Tools:** install Node.js, Python, Go, and hundreds more, with different versions for each project.
--   **Environments:** set project environment variables and load `.env` files.
--   **Tasks:** run build, test, and other commands with the tools and environment they need.
--   **Bootstrap:** declare machine setup, including system packages, dotfiles, and services.
+-   Install tools such as Node.js, Python, and Terraform from a registry of 1,000+, with a different version in each project.
+-   Set environment variables and load `.env` files for each project.
+-   Run tasks, such as build and test, with the project's tools and environment variables.
+-   Set up a machine with `mise bootstrap`, which applies the system packages, dotfiles, repositories, and services you declare for it.
 
-Use the parts you need. Start with one tool or task and add more to the same config.
+Use only the parts you need. You can start with one tool or one task.
+
+Demo
+----
+
+Watch mise run a tool once with `mise exec`, set global defaults, and switch Node.js versions as you move into and out of a project.
+
+The demo transcript lists the commands with current versions.
 
 Quickstart
 ----------
@@ -43,21 +50,23 @@ On macOS or Linux:
 curl https://mise.run | sh
 ~/.local/bin/mise --version
 
-On Windows, install with `winget install jdx.mise`. See the installation guide for package managers and other installation methods.
+On Windows, run `winget install jdx.mise`. For Homebrew, apt, Scoop, and other methods, see Installing mise.
 
-The examples below use `mise`. If it isn't on your `PATH` yet, use `~/.local/bin/mise` instead on macOS or Linux.
+The installer puts mise in `~/.local/bin`. If that directory is not on your `PATH`, type `~/.local/bin/mise` wherever the steps below say `mise`, until you activate mise in step 4.
 
 ### 2\. Try a tool
 
 mise exec node@24 -- node --version
+# v24.x.x
 
-This installs Node.js if needed and runs it for this command, without changing your project configuration. No shell activation is required.
+`mise exec` installs Node.js 24 if needed and runs one command with it. It does not change your shell or any config file, and it works without activation.
 
-For an existing project that already has a reviewed `mise.toml`, run `mise install` from its directory and `mise tasks ls` to discover its tasks.
+### 3\. Set up a project
 
-### 3\. Give a project its own environment
+mkdir my-project && cd my-project
+mise use node@24
 
-In a project directory, create `mise.toml`:
+`mise use` installs Node.js 24 and writes it to a new `mise.toml`. Add an environment variable and a task to that file:
 
 \[tools\]
 node = "24"
@@ -66,90 +75,103 @@ node = "24"
 NODE\_ENV = "development"
 
 \[tasks.hello\]
-description = "Print the project's Node.js version and environment"
-run = '''node -e "console.log(process.version, process.env.NODE\_ENV)"'''
+description = "Print the Node.js version and NODE\_ENV"
+run = 'node -e "console.log(process.version, process.env.NODE\_ENV)"'
 
 Run the task:
 
 mise run hello
 
-mise installs the configured tool if needed, loads `NODE_ENV`, and runs the task. The output includes the Node.js version and `development`. Commit `mise.toml` so teammates and CI can run the same command.
+```
+[hello] $ node -e "console.log(process.version, process.env.NODE_ENV)"
+v24.x.x development
+```
 
-To add tools later, run `mise use python@3.14` from the project directory. Use `mise use --global` to set personal defaults. Version requests such as `"24"` select a release in that series; use exact pins or a lockfile when you need everyone to use the same resolved version.
+The task runs with the project's Node.js and `NODE_ENV`. Commit `mise.toml` so teammates and CI get the same setup. `"24"` is a version request for the Node.js 24 series, not an exact pin; to share exact versions, use a lockfile. Run `mise use python@3.14` to add another tool to the project, or `mise use --global node@24` to set a personal default in `~/.config/mise/config.toml`.
 
-### 4\. Activate your shell (optional)
+To see what mise loaded in this directory:
 
-Activation makes project tools and environment variables available directly when you enter a directory. For an installation from `mise.run`, add **one** of these lines to the corresponding shell config:
+mise config ls     # config files in use here
+mise ls --current  # tool versions selected by those files
+mise doctor        # checks the installation and shell activation
 
-# ~/.bashrc
-eval "$(~/.local/bin/mise activate bash)"
+### 4\. Activate mise in your shell (optional)
 
-# ~/.zshrc
-eval "$(~/.local/bin/mise activate zsh)"
+Activation puts a project's tools on your `PATH` and sets its environment variables when you enter the project, so you can run `node` without `mise exec`. If you installed with `mise.run`, run the commands for your shell once:
 
-# ~/.config/fish/config.fish
-~/.local/bin/mise activate fish | source
+# bash
+echo 'eval "$(~/.local/bin/mise activate bash)"' \>> ~/.bashrc
 
-Restart your shell, then run `node --version` inside the project. For PowerShell and other installation methods, follow the shell setup guide.
+# zsh
+echo 'eval "$(~/.local/bin/mise activate zsh)"' \>> "${ZDOTDIR:-$HOME}/.zshrc"
 
-Check your project setup
-------------------------
+# fish
+mkdir -p ~/.config/fish
+echo '~/.local/bin/mise activate fish | source' \>> ~/.config/fish/config.fish
 
-mise config ls
-mise ls --current
-mise exec -- node --version
-
-These show which configuration files are loaded, which versions are selected, and whether the tool runs in the project environment. If `mise exec` works but `node --version` does not, check shell activation with `mise doctor`.
+Open a new shell. In `my-project`, `node --version` now prints `v24.x.x`. For PowerShell, Nushell, and other shells, or for mise installed another way, see Shell setup.
 
 Where to go next
 ----------------
 
-I want to…
+To
 
 Read
 
-Set up mise for the first time
+Follow the full tutorial
 
 Getting started
 
-Add mise to an existing project
+Add mise to a project you already work on
 
-Walkthrough
+Existing projects
 
-Understand configuration and overrides
+Join a project that already has a `mise.toml`
 
-Configuration
+Review its config, then run `mise install` and `mise tasks ls` (details)
+
+Set up another shell or completions
+
+Shell setup
+
+Find a tool
+
+Registry
 
 Use mise in an editor or CI
 
-IDE integration · Continuous integration
+Editors and IDEs · Continuous integration
 
-Find a command or solve a problem
+Learn the main features
 
-CLI reference · Troubleshooting
+Dev tools · Environments · Tasks
 
-Contribute to mise
+Set up a new machine
+
+Bootstrap · Dotfiles
+
+Look up a command, setting, or config key
+
+CLI reference · Settings · mise.toml
+
+Fix a problem
+
+Troubleshooting · FAQ
+
+Contribute to mise or its docs
 
 Contributing · Writing docs
 
-Demo
-----
+Get help
+--------
 
-Watch mise install tools and switch Node.js versions as you change directories.
+-   Report bugs in GitHub Issues. Check Troubleshooting first, and include the command you ran, a minimal `mise.toml`, the expected and actual behavior, and your `mise doctor` output after you review it for private details.
+-   Ask questions and share ideas in GitHub Discussions.
+-   Chat with other users on Discord.
 
-A text transcript is also available.
+For security reports and other contacts, see Contact. Before you use AI to reply to an Issue or Discussion, read the AI reply policy.
 
-GitHub Issues & Discussions
----------------------------
-
-Report bugs in GitHub Issues. Use GitHub Discussions for questions and feature ideas.
-
--   Issues: report a bug with a minimal config, the command you ran, expected behavior, and relevant error output. See the troubleshooting guide first.
--   Troubleshooting: ask for help when you are not sure whether something is a bug.
--   Ideas: suggest a feature or describe a workflow mise could support.
--   Announcements: follow project updates.
-
-Special Thanks
+Special thanks
 --------------
 
   

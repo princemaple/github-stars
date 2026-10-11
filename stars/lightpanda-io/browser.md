@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 35934
+stars: 36221
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -302,6 +302,7 @@ TEST\_FILTER="WebApi: #selector\_all" make test   # Filter main + subtest (separ
 TEST\_VERBOSE=true make test
 TEST\_FAIL\_FIRST=true make test
 METRICS=true make test                          # Capture allocation/duration metrics as JSON
+TEST\_JOBS=1 make test                           # Run in one process (default: up to 4, or 1 when filtered)
 
 ### End to end tests
 
@@ -400,7 +401,7 @@ zig build -Dwpt_extensions run -- fetch \
 ⚠️ Running the whole test suite will take a long time. In this case, it's useful to build in `releaseFast` mode to make tests faster.
 
 ```
-zig build -Dwpt_extensions -Doptimize=ReleaseFast run -- serve ...
+zig build -Dwpt_extensions -Doptimize=fast run -- serve ...
 ```
 
 Contributing

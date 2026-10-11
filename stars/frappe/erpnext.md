@@ -1,6 +1,6 @@
 ---
 project: erpnext
-stars: 39770
+stars: 39985
 description: Free and Open Source Enterprise Resource Planning (ERP)
 url: https://github.com/frappe/erpnext
 ---

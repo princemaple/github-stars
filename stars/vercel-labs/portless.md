@@ -1,6 +1,6 @@
 ---
 project: portless
-stars: 12642
+stars: 12677
 description: Replace port numbers with stable, named local URLs. For humans and agents.
 url: https://github.com/vercel-labs/portless
 ---
@@ -397,7 +397,7 @@ portless list                    # Show active routes
 portless doctor                  # Check proxy, routes, DNS, and CA trust
 portless trust                   # Add local CA to system trust store
 portless clean                   # Remove state, CA trust entry, and hosts block
-portless prune                   # Kill orphaned dev servers from crashed sessions
+portless prune                   # Kill orphaned dev servers from crashed sessions (run also does this on start)
 portless hosts sync              # Reconcile routes with /etc/hosts (fixes Safari)
 portless hosts clean             # Remove portless entries from /etc/hosts
 

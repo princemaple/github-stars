@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 84701
+stars: 85164
 description: Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key.
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -35,7 +35,7 @@ Docker server, CLI and every option: Installation · docs.crawl4ai.com
 ### ☁️ Or use the cloud: no browsers, no proxies
 
 1.    
-    Verify your email and your first $10 pack is on us (until 31 December 2026, then $5 to start). No card.
+    Verify your email and free credit to start is yours. No card. Soft launch: prices can change, what you buy stays yours.
     
 2.  Get any page as Markdown:
     
@@ -90,7 +90,7 @@ free, forever
 
 free (your hosting)
 
-pay as you go; your first $10 is on us
+pay as you go; free credit to start
 
 🤓 **My Personal Story**
 

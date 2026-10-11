@@ -1,6 +1,6 @@
 ---
 project: self-hosted
-stars: 692
+stars: 699
 description: Self-hosted version of webtor.io implemented as an all-in-one Docker image
 url: https://github.com/webtor-io/self-hosted
 ---

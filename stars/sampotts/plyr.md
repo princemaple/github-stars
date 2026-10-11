@@ -1,7 +1,7 @@
 ---
 project: plyr
-stars: 30017
-description: A simple HTML5, YouTube and Vimeo player
+stars: 30002
+description: Deprecated in favour of Video.js 10; security updates only. Simple HTML5, YouTube and Vimeo player.
 url: https://github.com/sampotts/plyr
 ---
 
@@ -12,9 +12,11 @@ Important
 
 **Plyr, meet Video.js 👋**
 
-The folks behind Plyr, Vidstack and Media Chrome have joined forces to build the latest version of Video.js: one modern, accessible player with the best of all three. Plyr will soon be deprecated, so give Video.js a try.
+The folks behind Plyr, Vidstack and Media Chrome have joined forces to build the latest version of Video.js: one modern, accessible player with the best of all three. Plyr is now deprecated and receives security updates only. Use Video.js 10 for new projects.
 
 **Try Video.js →** · **Migrate from Plyr →**
+
+Using React? Follow the React migration guide instead. AI coding agents can install the Video.js skill or run `npx @videojs/cli agents init` for version-matched Video.js 10 docs.
 
 Plyr is a simple, lightweight, accessible and customizable HTML5, YouTube and Vimeo media player that supports _modern_ browsers.
 
@@ -132,11 +134,11 @@ See initialising for more information on advanced setups.
 
 You can use our CDN (provided by Cloudflare) for the JavaScript. There's 2 versions; one with and one without polyfills. My recommendation would be to manage polyfills separately as part of your application but to make life easier you can use the polyfilled build.
 
-<script src\="https://cdn.plyr.io/3.8.4/plyr.js"\></script\>
+<script src\="https://cdn.plyr.io/3.8.5/plyr.js"\></script\>
 
 ...or...
 
-<script src\="https://cdn.plyr.io/3.8.4/plyr.polyfilled.js"\></script\>
+<script src\="https://cdn.plyr.io/3.8.5/plyr.polyfilled.js"\></script\>
 
 ### CSS
 
@@ -146,11 +148,11 @@ Include the `plyr.css` stylesheet into your `<head>`.
 
 If you want to use our CDN (provided by Cloudflare) for the default CSS, you can use the following:
 
-<link rel\="stylesheet" href\="https://cdn.plyr.io/3.8.4/plyr.css" />
+<link rel\="stylesheet" href\="https://cdn.plyr.io/3.8.5/plyr.css" />
 
 ### SVG Sprite
 
-The SVG sprite is loaded automatically from our CDN (provided by Cloudflare). To change this, see the options below. For reference, the CDN hosted SVG sprite can be found at `https://cdn.plyr.io/3.8.4/plyr.svg`.
+The SVG sprite is loaded automatically from our CDN (provided by Cloudflare). To change this, see the options below. For reference, the CDN hosted SVG sprite can be found at `https://cdn.plyr.io/3.8.5/plyr.svg`.
 
 #### Self hosting
 
@@ -722,7 +724,7 @@ Load the SVG sprite specified as the `iconUrl` option (if a URL). If `false`, it
 
 String
 
-`https://cdn.plyr.io/3.8.4/plyr.svg`
+`https://cdn.plyr.io/3.8.5/plyr.svg`
 
 Specify a URL or path to the SVG sprite. See the SVG section for more info.
 

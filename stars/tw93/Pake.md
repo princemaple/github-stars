@@ -1,21 +1,21 @@
 ---
 project: Pake
-stars: 61895
-description: 🤱🏻 Turn any webpage into a desktop app with one command.
+stars: 61990
+description: 🤱🏻 Turn any website into a tiny, fast desktop app.
 url: https://github.com/tw93/Pake
 ---
-
-#### **English** | 简体中文
 
 Pake
 ====
 
-**Turn any webpage into a desktop app with one command, supports macOS, Windows, and Linux**
+**Turn any webpage into a desktop app with one command. Supports macOS, Windows, and Linux.**
+
+English · 中文 · 繁體 · 日本語 · 한국어 · Deutsch · Français
 
 Features
 --------
 
--   🎐 **Lightweight**: Installer is nearly 20 times smaller than Electron packages, typically under 10M on disk
+-   🎐 **Lightweight**: Installer is nearly 20 times smaller than Electron packages, typically under 10 MB on disk
 -   🚀 **Fast**: Built with Rust Tauri, much faster than traditional JS frameworks with lower memory usage
 -   ⚡ **Easy to use**: One-command packaging via CLI or online building, no complex configuration needed
 -   📦 **Feature-rich**: Supports shortcuts, immersive windows, drag & drop, style customization, ad removal
@@ -69,13 +69,13 @@ Function
 
 ⌘ + \[
 
-Ctrl + ←
+Ctrl + \[
 
 Return to the previous page
 
 ⌘ + \]
 
-Ctrl + →
+Ctrl + \]
 
 Go to the next page
 
@@ -91,15 +91,15 @@ Ctrl + ↓
 
 Auto scroll to bottom of page
 
-⌘ + r
+⌘ + R
 
-Ctrl + r
+Ctrl + R
 
-Refresh Page
+Refresh page
 
-⌘ + w
+⌘ + W
 
-Ctrl + w
+Ctrl + W
 
 Hide window, not quit
 
@@ -107,49 +107,49 @@ Hide window, not quit
 
 Ctrl + \-
 
-Zoom out the page
+Zoom out
 
 ⌘ + \=
 
 Ctrl + \=
 
-Zoom in the Page
+Zoom in
 
 ⌘ + 0
 
 Ctrl + 0
 
-Reset the page zoom
+Reset zoom
 
 ⌘ + L
 
 Ctrl + L
 
-Copy Current Page URL
+Copy current page URL
 
 ⌘ + ⇧ + ⌥ + V
 
 Ctrl + Shift + V
 
-Paste and Match Style
+Paste and match style
 
 ⌘ + ⇧ + H
 
 Ctrl + Shift + H
 
-Go to Home Page
+Go to home page
 
 ⌘ + ⌥ + I
 
 Ctrl + Shift + I
 
-Toggle Developer Tools (Debug Only)
+Toggle developer tools (debug only)
 
 ⌘ + ⇧ + ⌫
 
 Ctrl + Shift + Del
 
-Clear Cache & Restart
+Clear cache and restart
 
 ⌃ + ⌘ + F
 
@@ -157,7 +157,7 @@ F11
 
 Toggle native window fullscreen
 
-In addition, double-click the title bar to switch to full-screen mode. On Windows and Linux, use `--hide-window-decorations` for a frameless window with a top drag region. For Mac users, you can also use the gesture to go to the previous or next page and drag the title bar to move the window. The new menu also offers options for navigation, zoom, and window controls.
+Double-click the title bar to toggle fullscreen. On Windows and Linux, `--hide-window-decorations` gives a frameless window with a top drag region. On Mac, swipe to go back or forward and drag the title bar to move the window, and the menu bar has navigation, zoom and window controls.
 
 Command-Line Packaging
 ----------------------
@@ -165,15 +165,25 @@ Command-Line Packaging
 # Install Pake CLI
 pnpm install -g pake-cli
 
-# Basic usage - automatically fetches website icon
+# Basic usage, fetches the website icon automatically
 pake https://github.com --name GitHub
 
-# Advanced usage with custom options
+# Advanced usage, custom options
 pake https://weekly.tw93.fun --name Weekly --icon https://cdn.tw93.fun/pake/weekly.icns --width 1200 --height 800 --hide-title-bar
 
-First-time packaging requires environment setup and may be slower, subsequent builds are fast. For complete parameter documentation, see CLI Usage Guide. Don't want to use CLI? Try GitHub Actions Online Building.
+The first build sets up the environment and takes a while, later builds are fast. See the CLI Usage Guide for every option, or try GitHub Actions Online Building if you'd rather skip the command line.
 
-Using Pake from a script or AI agent? Pass `--json` for machine-readable results, describe apps declaratively with `--config app.json` (schema), and package local build output directly with `pake ./dist --name MyTool`. See llms.txt for the full agent contract. To install the official skill, run `/plugin marketplace add tw93/Pake` and `/plugin install pake@pake` in Claude Code, or `codex plugin marketplace add tw93/Pake` and `codex plugin add pake@pake` in Codex.
+Using Pake from a script or AI agent? Pass `--json` for machine-readable results, describe apps declaratively with `--config app.json` (schema), and package local build output directly with `pake ./dist --name MyTool`. See llms.txt for the full agent contract. The official skill installs like this:
+
+```
+# Claude Code
+/plugin marketplace add tw93/Pake
+/plugin install pake@pake
+
+# Codex
+codex plugin marketplace add tw93/Pake
+codex plugin add pake@pake
+```
 
 Copy this to your AI agent to get started:
 
@@ -184,7 +194,7 @@ Use Pake (npm i -g pake-cli) to package webpages as desktop apps. Read https://u
 Development
 -----------
 
-Requires Rust `>=1.85` and Node `>=22` (recommended LTS; `>=20` also works). For detailed installation guide, see Tauri documentation. If unfamiliar with development environment, use the CLI tool instead.
+Requires Rust `>=1.85` and Node `>=22` (recommended LTS; `>=20.9` also works), see the Tauri documentation for setup. If you are new to this toolchain, the CLI is the easier path.
 
 # Install dependencies
 pnpm i
@@ -200,14 +210,14 @@ For style customization, feature enhancement, container communication and other 
 Developers
 ----------
 
-Pake's development can not be without these Hackers. They contributed a lot of capabilities for Pake. Also, welcome to follow them! ❤️
+Pake wouldn't be possible without these incredible contributors. ❤️
 
 Support
 -------
 
--   The most direct way to support me is getting Mole for Mac, my paid Mac cleanup app.
--   If Pake helped you, give it a star, share it, or open an issue or PR.
--   I have two cats, TangYuan and Coke. If you think Pake delights your life, you can feed them canned food 🥩.
+-   The most direct way to support me is getting Mole for Mac, my paid Mac cleanup app
+-   If Pake helped you, give it a star, share it, or open an issue or PR, including sites that would make good desktop apps
+-   I have two cats, TangYuan and Coke, and if Pake makes your life a little easier, feel free to treat them to canned food 🥩
 
 These lovely people already did 🐱  
 

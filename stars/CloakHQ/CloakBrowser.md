@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 31879
+stars: 32025
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -118,12 +118,12 @@ page.goto("https://example.com")
 
 * * *
 
-Latest: v0.5.11 — 87 source-level stealth patches (Chromium 152.0.7977.82.1)
-----------------------------------------------------------------------------
+Latest: v0.6.0 — 87 source-level stealth patches (Chromium 154.0.8037.57.1)
+---------------------------------------------------------------------------
 
--   **CloakBrowser Pro Stable** — Chromium `152.0.7977.82.1` on Linux x64, Linux ARM64, and Windows x64; macOS on `151.0.7922.108.3`. Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest Stable build for your platform automatically. See CloakBrowser Pro
+-   **CloakBrowser Pro Stable** — Chromium `154.0.8037.57.1` on Linux x64, Linux ARM64, Windows x64, and macOS (Apple Silicon and Intel). Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest Stable build for your platform automatically. See CloakBrowser Pro
 -   **.NET 8 / C# client** — CloakBrowser now ships as a NuGet package (`CloakBrowser`), mirroring the Python and JS wrappers.
--   **Chromium 152 upgrade** — rebased the full patch set onto Chromium 152 for Linux and Windows; macOS stays on Chromium 151
+-   **Chromium 154 upgrade** — rebased the full patch set onto Chromium 154 on every platform; macOS moves up from Chromium 151
 -   **87 fingerprint patches** — rendering consistency improvements across Linux and Windows, corrected GPU/display/graphics parameters to match stock Chrome profiles
 -   **Windows native GPU passthrough** — real hardware values pass through directly instead of being spoofed, matching real browser behavior
 -   **HTTP proxy inline credentials** — new network-layer support for proxies with inline authentication
@@ -158,7 +158,7 @@ CloakBrowser Pro
 
 Anti-bot systems change every week and an older binary quietly degrades. The latest build is the one that keeps passing. **Try it free, then upgrade when you're running for real.**
 
--   **Free, latest build (Chromium 151)** — the newest binary, the exact one that stays green against live detection. Free with a GitHub sign-in, one concurrent session. Grab your key or run `cloakbrowser login`, then throw it at your hardest target.
+-   **Free, latest build (Chromium 154)** — the newest binary, the exact one that stays green against live detection. Free with a GitHub sign-in, one concurrent session. Grab your key or run `cloakbrowser login`, then throw it at your hardest target.
 -   **Pro** — when it's part of production scraping, QA, monitoring, or automation: scale to **5, 20, 200, 2,000, or more concurrent sessions**, always first on the newest patches, with hands-on support. Linux, Windows, macOS. **See plans and pricing →**
 -   **v146** — the older build stays free on GitHub Releases. A quick first look, but it ages fast as detection evolves.
 
@@ -188,7 +188,7 @@ It's also the fastest way to try the browser without writing any code: download,
 Test Results
 ------------
 
-All tests verified against live detection services. Results below are for the latest Pro/current build unless noted. Last tested: Aug 2026 (Chromium 151).
+All tests verified against live detection services. Results below are for the latest Pro/current build unless noted. Last tested: Oct 2026 (Chromium 154).
 
 Detection Service
 
@@ -554,6 +554,8 @@ asyncio.run(main())
 
 Same as `launch_context()`, but with a persistent user profile. Cookies, localStorage, and cache persist across sessions.
 
+A persistent profile keeps its fingerprint seed across launches (stored in `.cloakbrowser-seed` inside the profile; an explicit `--fingerprint=` in `args` overrides it, and a corrupt file is replaced with a warning). To rotate the identity, delete `.cloakbrowser-seed` and the next launch picks a new seed.
+
 Use this when you need to:
 
 -   **Stay logged in** across runs (cookies/sessions survive restarts)
@@ -872,7 +874,7 @@ Docker only: set to `1` to auto-fetch the Widevine CDM on container start (Linux
 
 —
 
-Pin to an exact Chromium version for rollback (e.g. `148.0.7778.215.2`). Works with Free and Pro binaries
+Pin to an exact Chromium version for rollback (e.g. `154.0.8037.57.1`). Works with Free and Pro binaries
 
 `CLOAKBROWSER_RELEASE_CHANNEL`
 
@@ -1246,7 +1248,7 @@ Linux x86\_64
 
 Chromium 146 (58 patches)
 
-Chromium 152 (87 patches)
+Chromium 154 (87 patches)
 
 ✅
 
@@ -1254,7 +1256,7 @@ Linux arm64 (RPi, Graviton)
 
 Chromium 146 (58 patches)
 
-Chromium 152 (87 patches)
+Chromium 154 (87 patches)
 
 ✅
 
@@ -1262,7 +1264,7 @@ macOS arm64 (Apple Silicon)
 
 Chromium 145 (26 patches)
 
-Chromium 151 (87 patches)
+Chromium 154 (87 patches)
 
 ✅
 
@@ -1270,7 +1272,7 @@ macOS x86\_64 (Intel)
 
 Chromium 145 (26 patches)
 
-Chromium 151 (87 patches)
+Chromium 154 (87 patches)
 
 ✅
 
@@ -1278,7 +1280,7 @@ Windows x86\_64
 
 Chromium 146 (58 patches)
 
-Chromium 152 (87 patches)
+Chromium 154 (87 patches)
 
 ✅
 
@@ -1648,8 +1650,8 @@ Two ways to go back to a working version:
 \# Free — pin a public release
 browser \= launch(browser\_version\="146.0.7680.177.5")
 
-\# Pro — pin a previous Pro version
-browser \= launch(license\_key\="cb\_xxxxxxxx", browser\_version\="148.0.7778.215.2")
+\# Pro — pin a specific Pro version
+browser \= launch(license\_key\="cb\_xxxxxxxx", browser\_version\="154.0.8037.57.1")
 
 export CLOAKBROWSER\_VERSION=146.0.7680.177.5   # env var for all launches
 
@@ -1747,7 +1749,7 @@ FAQ
 
 **Q: Will detection sites eventually catch this?** A: Possibly. Bot detection is an arms race. Source-level patches are harder to detect than config-level patches, but not impossible. We actively monitor and update when detection evolves.
 
-**Q: Can I use my own proxy?** A: Yes. Pass `proxy="http://user:pass@host:port"` or `proxy="socks5://user:pass@host:port"` to `launch()`. Both HTTP and SOCKS5 proxies are supported natively.
+**Q: Can I use my own proxy?** A: Yes. Pass `proxy="http://user:pass@host:port"` or `proxy="socks5://user:pass@host:port"` to `launch()`. Both HTTP and SOCKS5 proxies are supported natively. SOCKS5 and credentialed HTTP proxies are set on the browser, so Playwright's own request client (`context.request`, `page.request`, `route.fetch()`) does not use them and sends from your real IP. Make those calls from the page instead, e.g. `page.evaluate("url => fetch(url).then(r => r.text())", url)`, which goes through the proxy like any browser request.
 
 Links
 -----
@@ -1795,7 +1797,7 @@ Issues and PRs welcome. If something isn't working, open an issue — we respond
 Contributors
 ------------
 
--   @evelaa123 — humanize behavior, persistent contexts, Windows fix, .NET client
+-   @evelaa123 — humanize behavior and its unified engine, persistent contexts, Windows fix, .NET client
 -   @yahooguntu — persistent contexts
 -   @kitiho — null viewport fix
 -   @eofreternal — humanConfig type fix, humanized method option types, iframe pointer-events fix
@@ -1812,7 +1814,8 @@ Contributors
 -   @Kumario1 — cloakserve idle cleanup for seeded profiles
 -   @0xlally — security reports (cloakserve path traversal, WebSocket origin bypass)
 -   @ishiko732 — HTTP proxy credentials in GeoIP resolution
--   @Shub3am — horizontal scroll-into-view for humanized clicks
+-   @Shub3am — horizontal scroll-into-view for humanized clicks, safe concurrent first-run downloads
+-   @dstosch — cloakserve idle cleanup for browsers launched over HTTP
 
 Star History
 ------------

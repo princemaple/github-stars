@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 35226
+stars: 35381
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -73,6 +73,8 @@ AWS\_ACCESS\_KEY\_ID=admin AWS\_SECRET\_ACCESS\_KEY=secret \\
   aws --endpoint-url http://localhost:8333 s3 cp README.md s3://my-bucket/
 
 The same process also runs the master, a volume server, the filer, WebDAV, the Iceberg REST catalog, and the Admin UI. Add `S3_TABLE_BUCKET=warehouse` to also create an Iceberg table bucket, or `warehouse:LANCE` for a Lance one. Drop the AWS keys to run without authentication for development.
+
+Without Admin authentication or mTLS, `weed mini` binds the Admin UI/API and its worker gRPC control plane to loopback rather than `-ip.bind`. Set `WEED_ADMIN_PASSWORD` or configure `https.admin` mTLS to keep the network bind. Remote workers must opt in with `-admin.worker.ip=<address>` and should configure `grpc.admin` mTLS. `-admin.allowInsecureBind` restores the legacy unauthenticated network bind and should only be used on an isolated network.
 
 > macOS: if the binary is quarantined, run `xattr -d com.apple.quarantine ./weed` first.
 

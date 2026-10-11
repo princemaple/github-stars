@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3945
+stars: 3948
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -43,7 +43,7 @@ See the package README for installation, configuration, CLI usage, and programma
 Check pull requests
 -------------------
 
-The read-only Check PR action validates a pull request against the title or label conditions in Release Drafter categories. See `check-pr/README.md` for the workflow, permissions, supported events, and matching behavior.
+The read-only Check PR action validates base-branch and proposed configuration, then checks the pull request against the title or label conditions in both sets of Release Drafter categories. Failures identify the configuration source and report syntax, schema, or matching errors in GitHub annotations and logs. See `check-pr/README.md` for the workflow, permissions, supported events, and matching behavior.
 
 Configuration
 -------------
@@ -189,6 +189,12 @@ Optional
 
 Characters to escape in `$TITLE` when inserting into `change-template` so that they are not interpreted as Markdown format characters. Default: `""`
 
+`change-body-escapes`
+
+Optional
+
+Characters to escape in `$BODY` when inserting into `change-template`. Uses title escaping rules with multiline backtick matches. See Body escaping. Default: `""`.
+
 `no-changes-template`
 
 Optional
@@ -235,7 +241,7 @@ Groups pull requests whose titles share the same `group` into a single changelog
 
 Optional
 
-Searches and replaces content in the generated changelog body. See Replacers.
+Searches and replaces content in the generated release body or individual change titles and bodies. See Replacers.
 
 `sort-by`
 
@@ -580,7 +586,7 @@ The pull request author and associated commit authors, rendered with `change-aut
 
 `$BODY`
 
-The pull request body. Example: `Fixed spelling mistake`.
+The pull request body. Example: `Fixed spelling mistake`. Characters in `change-body-escapes` are escaped using the same rules as titles, with multiline backtick matches.
 
 `$URL`
 
@@ -613,6 +619,19 @@ change-author-template: '\- $AUTHOR'
 change-authors-separator: "\\n    "
 
 Use `$AUTHOR_MENTION` instead of `$AUTHOR` in `change-author-template` to create GitHub mentions. Release Drafter renders GitHub App bots as linked mentions, for example `[@dependabot[bot]](https://github.com/apps/dependabot)`. `$CATEGORY` preserves `categories[].title`; configure the title with the casing required by the output.
+
+### Body escaping
+
+Use `change-body-escapes` to escape selected characters in `$BODY` independently of `change-title-escapes`. For example, escape `<` to display HTML comments and tags as text:
+
+change-template: |-
+  \* $TITLE (#$NUMBER)
+  $BODY
+change-body-escapes: '<'
+
+Release Drafter prefixes selected characters with a backslash, preserving existing backslash escapes. As with title escaping, `@` and `#` receive an HTML comment to prevent mentions. As with title escaping, backtick-delimited text is skipped unless backticks are selected for escaping. In bodies, these matches can span multiple lines, preserving examples in backtick code fences. This setting escapes characters without parsing Markdown.
+
+This setting makes HTML comments visible; it does not remove their contents or filter instructions in pull request text. Use replacers with `target: change-body` to remove unwanted sections before escaping. Escaping applies only to `$BODY`, before insertion into `change-template`. Global replacers run on the generated release body afterward.
 
 Categorize changes
 ------------------
@@ -880,14 +899,28 @@ The value of the `<name>` capture group in the newest pull request of the entry.
 
 Release Drafter applies the first rule that matches, groups changes within each category separately, and orders the pull requests of an entry by merge date. An entry keeps the position of its newest pull request, which is also the source of `$NUMBER`, `$AUTHOR`, `$BODY`, and `$URL`. `$AUTHORS` lists the authors of every pull request of the entry. A capture group that did not participate in the match holds an empty value, and a group that matches a single pull request keeps its original title.
 
-`collapse-after` counts entries, so grouped changes count as one. Release Drafter matches `pattern` against the original pull request titles, before the changelog body exists. `replacers` run last, on the finished body, so their `search` sees the title that `title-template` built, not the original ones.
+`collapse-after` counts entries, so grouped changes count as one. Release Drafter matches `pattern` against the original pull request titles, before the changelog body exists. Global replacers run after assembling the body, so their `search` sees the title that `title-template` built, not the original ones. Replacers with `target: change-title` also see the grouped title, before escaping.
 
 Replacers
 ---------
 
-Use `replacers` to search and replace content in the generated changelog body. Release Drafter applies the regular expressions in configuration order.
+Use `replacers` to search and replace content. Each replacer accepts a `target`:
+
+-   `global` (default): the assembled release body, including templates and inserted change content. Existing replacers without a target keep this behavior.
+-   `change-body`: each pull request's `$BODY`, before `change-body-escapes` and insertion into `change-template`. Titles and release-template content are unaffected. For grouped entries, this uses the newest pull request's body.
+-   `change-title`: the `$TITLE` inserted into `change-template`, before `change-title-escapes`. For grouped entries, this uses the synthesized title. Category matching, grouping rules, sorting, and version resolution use the original pull request data.
+
+Release Drafter applies title and body rules first, then global rules after assembling the release body. Rules run in configuration order within each target.
+
+Version and tag placeholders, such as `$RESOLVED_VERSION` and `$RESOLVED_TAG`, expand in a final pass after global replacements. This includes placeholders introduced by replacers. Scoped rules see the literal placeholders, and their expanded values do not pass through change escaping or replacers again.
 
 replacers:
+  - target: change-title
+    search: '/^(?:feat|fix|chore)(?:\\(\[^)\]\*\\))?!?: (.\*)$/'
+    replace: '\\u$1' # Remove a conventional-commit prefix and capitalize the title
+  - target: change-body
+    search: '/<!--.\*?-->/gs'
+    replace: '' # Remove hidden PR-template sections, including multiline comments
   - search: '/CVE-(\\d{4})-(\\d+)/g'
     replace: 'https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-$1-$2'
   - search: 'myname'
@@ -895,7 +928,22 @@ replacers:
   - search: '/- (\[a-z\])/g'
     replace: '\- \\u$1' # Uppercase the first letter of each changelog entry
 
-Release Drafter parses `search` as a regular expression. `replace` supports the Visual Studio Code replacement syntax.
+Release Drafter parses `search` as a regular expression. `replace` supports the Visual Studio Code replacement syntax. Regex body replacers match raw text, including code examples; they do not parse Markdown.
+
+Each rule also accepts `not-found`: `full` (the default) retains the current target text when `search` has no match, while `empty` clears it. Later rules for the same target still run. A match with an empty capture is still a match.
+
+To select a section without writing a regex, use `section` in a `change-body` rule instead of `search` and `replace`:
+
+replacers:
+  - target: change-body
+    section: '\## Release information'
+    not-found: empty
+
+The rule selects the content under the first matching heading, excluding the heading itself. It retains nested headings and stops at the next heading of an equal or higher level, or the end of the body. Selectors use `#`\-style headings with one to six hashes and match the level and literal heading text case-sensitively. Optional closing hashes and surrounding spaces in heading text are ignored. Headings inside fenced code blocks and standalone HTML comment blocks are ignored.
+
+Section selection scans lines rather than parsing all Markdown. Underlined headings do not select or end a section. Inline heading formatting is matched literally, and list or block-quote nesting is not interpreted. Regex rules remain available for other extraction patterns.
+
+The selected content keeps its whitespace and line endings. `not-found: empty` clears the body when the heading is absent; `full` (the default) retains the current body. An empty selected section stays empty with either fallback. Bodies that are null or omitted are treated as empty when section rules are configured. Section and regex rules run in configuration order before body escaping and template insertion, so you can combine extraction and cleanup.
 
 Autolabeler
 -----------
@@ -1004,6 +1052,7 @@ Important
 
 -   `prerelease-identifier` is optional when `prerelease` is enabled. Without an identifier, the release tag might not be a valid Semantic Versioning prerelease tag.
 -   A configuration-file `prerelease-identifier` enables `prerelease: true` unless the workflow has a `prerelease: false` action input. A `prerelease-identifier` action input always enables `prerelease: true`.
+-   Prereleases always use `latest: false`, including when a prerelease identifier enables prerelease mode automatically.
 
 Set `include-pre-releases: true` to include changes since the last prerelease instead of the last stable release. The stable release body then contains only changes after the last prerelease.
 

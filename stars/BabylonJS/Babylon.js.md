@@ -1,6 +1,6 @@
 ---
 project: Babylon.js
-stars: 26128
+stars: 26153
 description: Babylon.js is a powerful, beautiful, simple, and open game and rendering engine packed into a friendly JavaScript framework.
 url: https://github.com/BabylonJS/Babylon.js
 ---
@@ -100,6 +100,8 @@ window.addEventListener('resize', function(){
 
 Contributing
 ------------
+
+Building and developing this repository requires Node.js 22.22.2 or newer within the Node 22 line, or Node.js 24.15.0 or newer within the Node 24 line, and npm 11.18.0 or newer. These are development-tool requirements; they do not change the runtime requirements of the published Babylon.js libraries.
 
 If you want to contribute, please read our contribution guidelines first.
 

@@ -1,6 +1,6 @@
 ---
 project: url-to-pdf-api
-stars: 7103
+stars: 7105
 description: Web page PDF/PNG rendering done right. Self-hosted service for rendering receipts, invoices, or any content.
 url: https://github.com/alvarcarto/url-to-pdf-api
 ---

@@ -1,6 +1,6 @@
 ---
 project: imagor
-stars: 4028
+stars: 4036
 description: Fast, secure image processing server and Go library, using libvips
 url: https://github.com/cshum/imagor
 ---

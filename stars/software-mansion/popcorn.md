@@ -1,6 +1,6 @@
 ---
 project: popcorn
-stars: 728
+stars: 730
 description: Running Elixir in the browser
 url: https://github.com/software-mansion/popcorn
 ---
@@ -22,7 +22,7 @@ Documentation
 
 The stable documentation is available at https://hexdocs.pm/popcorn.
 
-The versioned 0.4 prerelease documentation is available at https://popcorn.hexdocs.pm/0.4.0-next.0/.
+The versioned 0.4 prerelease documentation is available at https://popcorn.hexdocs.pm/0.4.0-next.4/.
 
 Examples
 --------

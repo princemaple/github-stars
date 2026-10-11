@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 7696
+stars: 7723
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -208,6 +208,7 @@ Drop in copy-paste, **OpenTelemetry-based** agents to watch everything your serv
 -   **Proxmox** — nodes, VMs, containers, storage, HA state, backup coverage & replication health. Docs →
 -   **VMware** — vCenter, ESXi hosts, virtual machines, datastores, clusters, resource pools & vSAN. Docs →
 -   **Ceph** — cluster health, capacity forecasts, and OSD/pool/PG/monitor visibility. Docs →
+-   **Storage Arrays** — Pure Storage FlashArray and FlashBlade: capacity, latency, volumes, hosts, replication, hardware health, file systems and buckets. Docs →
 -   **Databases** — PostgreSQL, MySQL, Redis, MongoDB and more, auto-detected from application traces, Kubernetes and Docker, with engine metrics, query samples and logs from a config-only collector agent. Docs →
 
 * * *

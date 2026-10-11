@@ -1,6 +1,6 @@
 ---
 project: docuseal
-stars: 18652
+stars: 18690
 description: Open source DocuSign alternative. Create, fill, and sign digital documents ✍️
 url: https://github.com/docusealco/docuseal
 ---
@@ -28,7 +28,7 @@ Features
 -   Files storage on disk or AWS S3, Google Storage, Azure Cloud
 -   Automatic PDF eSignature
 -   PDF signature verification
--   Users management
+-   User management
 -   Mobile-optimized
 -   7 UI languages with signing available in 14 languages
 -   API and Webhooks for integrations

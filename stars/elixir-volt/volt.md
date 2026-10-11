@@ -1,6 +1,6 @@
 ---
 project: volt
-stars: 196
+stars: 201
 description: Elixir-native frontend build tool — dev server, HMR, and production builds for JavaScript, TypeScript, Vue SFCs, and CSS. No Node.js required.
 url: https://github.com/elixir-volt/volt
 ---
@@ -34,7 +34,7 @@ mix igniter.install volt
 Or add the dep manually:
 
 def deps do
-  \[{:volt, "~> 0.20"}\]
+  \[{:volt, "~> 0.23"}\]
 end
 
 See the Getting Started guide for manual configuration.

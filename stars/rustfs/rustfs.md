@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 34361
+stars: 34694
 description: RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---

@@ -1,6 +1,6 @@
 ---
 project: embed-pdf-viewer
-stars: 4524
+stars: 4542
 description: A PDF viewer that seamlessly integrates with any JavaScript project
 url: https://github.com/embedpdf/embed-pdf-viewer
 ---

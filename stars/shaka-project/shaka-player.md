@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8239
+stars: 8244
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -535,7 +535,7 @@ MOQT Streaming Format (MSF) (Experimental)
 
 Features supported:
 
--   Media over QUIC Transport draft-18, draft-20 and draft-21 (plus draft-14 and draft-16, deprecated and removed in v6)
+-   Media over QUIC Transport draft-18, draft-20, draft-21 and draft-22
 -   MSF draft-1 and CMSF draft-1
 -   Audio, Video and Text
 -   ABR
@@ -546,7 +546,7 @@ Features supported:
 -   MPEG-2 TS draft-gregoire-moq-msfts support
 -   Live
 -   Media timeline tracks and templates, with DVR and seeking behind the live edge
--   MSF\_COMPRESSION (GZIP) for the catalog, media timeline and event timeline tracks (draft-18 and later)
+-   MSF\_COMPRESSION (GZIP) for the catalog, media timeline and event timeline tracks
 -   SCTE-35 over event timeline tracks, as defined in draft-wilaw-moq-scte35-event-timeline-00 (see SCTE-35 messages)
 -   For browsers that support WebTransport certificate fingerprints (e.g., Chrome), you can use self-signed certificates without installing them.
 

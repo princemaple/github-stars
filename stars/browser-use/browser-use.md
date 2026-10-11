@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 117073
+stars: 117574
 description: Agents that use the browser.
 url: https://github.com/browser-use/browser-use
 ---
@@ -108,8 +108,10 @@ Python library docs ↗
 
   
 
-Anthropic SDK × Browser Use
-===========================
+Browser Use toolsets for Claude
+===============================
+
+Maintained by Browser Use. Compatible with Claude.
 
 Use Claude's browser toolset with Browser Use as the driver. Browser Use implements all 31 browser actions and can control a local browser, a Browser Use Cloud browser, or an existing remote browser over CDP. Bash is included in the Browser Use integration for processing data and writing files.
 
@@ -118,7 +120,7 @@ Requires an Anthropic SDK version that includes `anthropic.tools.browser`. Bash 
 import os
 
 from anthropic import AsyncAnthropic
-from browser\_use.integrations.anthropic import Bash, BrowserUse
+from browser\_use.integrations.toolsets\_for\_claude import Bash, BrowserUse
 
 task \= 'Open example.com and report its page title.'
 driver \= BrowserUse()  \# Or BrowserUse(use\_cloud=True)

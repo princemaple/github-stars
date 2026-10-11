@@ -1,6 +1,6 @@
 ---
 project: glpi
-stars: 6420
+stars: 6446
 description: GLPI is a Free Asset and IT Management Software package, Data center management, ITIL Service Desk, licenses tracking and software auditing.
 url: https://github.com/glpi-project/glpi
 ---
@@ -70,8 +70,8 @@ Prerequisites
 -------------
 
 -   A web server (Apache, Nginx, IIS, etc.)
--   MariaDB >= 10.6 or MySQL >= 8.0
--   PHP >= 8.2
+-   MariaDB >= 10.11 or MySQL >= 8.0
+-   PHP >= 8.3
 -   Mandatory PHP extensions:
     -   dom, fileinfo, filter, libxml, simplexml, xmlreader, xmlwriter (these are enabled in PHP by default)
     -   bcmath (QRCode generation)

@@ -1,6 +1,6 @@
 ---
 project: pytorch
-stars: 103696
+stars: 104144
 description: Tensors and Dynamic neural networks in Python with strong GPU acceleration
 url: https://github.com/pytorch/pytorch
 ---
@@ -38,9 +38,6 @@ Our trunk health (Continuous Integration signals) can be found at hud.pytorch.or
     -   Docker Image
         -   Using pre-built images
         -   Building the image yourself
-    -   Building the Documentation
-        -   Troubleshooting CI Errors
-        -   Building a PDF
     -   Previous Versions
 -   Getting Started
 -   Resources
@@ -67,10 +64,6 @@ A Tensor library like NumPy, with strong GPU support
 **torch.autograd**
 
 A tape-based automatic differentiation library that supports all differentiable Tensor operations in torch
-
-**torch.jit**
-
-A compilation stack (TorchScript) to create serializable and optimizable models from PyTorch code
 
 **torch.nn**
 
@@ -372,90 +365,6 @@ You can also pass the `CMAKE_VARS="..."` environment variable to specify additio
 
 make -f docker.Makefile
 
-### Building the Documentation
-
-To build documentation in various formats, you will need Sphinx and the `pytorch_sphinx_theme2`.
-
-Before you build the documentation locally, ensure `torch` is installed in your environment. For small fixes, you can install the nightly version as described in Getting Started.
-
-For more complex fixes, such as adding a new module and docstrings for the new module, you might need to install torch from source. See Docstring Guidelines for docstring conventions.
-
-cd docs/
-pip install -r requirements.txt
-make html
-make serve
-
-Run `make` to get a list of all available output formats.
-
-If you get a katex error run `npm install katex`. If it persists, try `npm install -g katex`
-
-Note
-
-If you see a numpy incompatibility error, run:
-
-```
-pip install 'numpy<2'
-```
-
-#### Troubleshooting CI Errors
-
-Your build may show errors you didn't have locally - here's how to find the errors relevant to the docs.
-
-If the build has any errors, you will see something like this on the PR:
-
-Any doc-related errors will occur in jobs that include "doc" somewhere in the title. It doesn't look like any of these jobs are relevant to our docs.
-
-Let's take a look anyway. Click on the job to see the logs:
-
-And we can be sure that this job does not involve docs.
-
-Looking at this build, we can see these jobs are relevant to our docs - and they didn't have any errors:
-
-You might also see a comment on the PR like this:
-
-We can see that some of these issues are relevant to our docs.
-
-Open the logs by clicking on the `gh` link:
-
-And here we can see there is a doc-related error:
-
-You can always find the relevant doc builds by going to the `Checks` tab on your PR, and scrolling down to `pull`.
-
-You can either click through or toggle the accordion to see all of the jobs here, where you can see the docs jobs highlighted:
-
-If you click through, you'll see the doc jobs at the bottom, like this:
-
-#### Building a PDF
-
-To compile a PDF of all PyTorch documentation, ensure you have `texlive` and LaTeX installed. On macOS, you can install them using:
-
-```
-brew install --cask mactex
-```
-
-To create the PDF:
-
-1.  Run:
-    
-    ```
-    make latexpdf
-    ```
-    
-    This will generate the necessary files in the `build/latex` directory.
-    
-2.  Navigate to this directory and execute:
-    
-    ```
-    make LATEXOPTS="-interaction=nonstopmode"
-    ```
-    
-    This will produce a `pytorch.pdf` with the desired content. Run this command one more time so that it generates the correct table of contents and index.
-    
-
-Note
-
-To view the Table of Contents, switch to the **Table of Contents** view in your PDF viewer.
-
 ### Previous Versions
 
 Installation instructions and binaries for previous PyTorch versions may be found on our website.
@@ -496,18 +405,12 @@ Communication
 Releases and Contributing
 -------------------------
 
-Typically, PyTorch has three minor releases a year. Please let us know if you encounter a bug by filing an issue.
-
-We appreciate all contributions. Whether you plan to contribute a bug-fix or a new feature, please first open an issue (or find an existing one) and discuss it with us. Once a maintainer marks the issue "actionable", you can send a PR for it. Sending a PR without an actionable issue will result in the PR being automatically closed. See the Issue and PR Workflow for details.
-
-To learn more about making a contribution to PyTorch, please see our Contribution page. For more information about PyTorch releases, see Release page.
+To report issues or contribute changes to PyTorch, see CONTRIBUTING.md. For information about PyTorch releases, see RELEASE.md.
 
 The Team
 --------
 
 PyTorch is a community-driven project with several skillful engineers and researchers contributing to it.
-
-PyTorch is currently maintained by Soumith Chintala, Gregory Chanan, Dmytro Dzhulgakov, Edward Yang, Alban Desmaison, Piotr Bialecki and Nikita Shulga with major contributions coming from hundreds of talented individuals in various forms and means. A non-exhaustive but growing list needs to mention: Trevor Killeen, Sasank Chilamkurthy, Sergey Zagoruyko, Adam Lerer, Francisco Massa, Alykhan Tejani, Luca Antiga, Alban Desmaison, Andreas Koepf, James Bradbury, Zeming Lin, Yuandong Tian, Guillaume Lample, Marat Dukhan, Natalia Gimelshein, Christian Sarofeen, Martin Raison, Edward Yang, Zachary Devito.
 
 Note: This project is unrelated to hughperkins/pytorch with the same name. Hugh is a valuable contributor to the Torch community and has helped with many things Torch and PyTorch.
 

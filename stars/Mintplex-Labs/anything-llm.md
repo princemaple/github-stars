@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 66697
+stars: 66907
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---

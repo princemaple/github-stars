@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 9768
+stars: 9859
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -334,6 +334,7 @@ Projects using Pocket TTS
 -   LocalVocal.ai by @joshwhiton - Fully local conversational voice-harness for Macs with Apple Silicon. Includes voice-activity & turn detection, dictation, voice cloning, CLI to talk to Claude, Codex... and more.
 -   Libratory by @subev - Turns PDFs into read-along audiobooks with the narration highlighted on the printed page; Pocket TTS is one of its local narrators, with voice cloning from the picker.
 -   ToBe SAID Android, iOS/Mac, Windows by @lookbe - Pocket TTS that integrate into OS system voice with low latency and realtime streaming. Support quick language addition by using only HuggingFace url.
+-   Outmake by @DaneBentley - Free Mac app for running open models on the Mac itself. Pocket TTS is one of its built-in voices, run on device through the MLX port (mlx-community/pocket-tts) with no Python.
 
 Prohibited use
 --------------

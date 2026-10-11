@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 38224
+stars: 38716
 description: 🕵️‍♂️ Collect a dossier on a person by username from 6K websites
 url: https://github.com/soxoj/maigret
 ---
@@ -33,9 +33,6 @@ Sponsors
 
 **RapidProxy** provides high-performance residential proxies for Twitter scraping, Selenium automation, and web data extraction. 90M+ IPs • Smart rotation • Anti-block • Non-expiring traffic.  
 **Special Offer**: Try it free — Plans from $0.65/GB. Use code **RAPID10** for 10% off.
-
-**MangoProxy** is a Residential, ISP, Mobile and Datacenter proxy service designed for professional tasks where stability, speed, and anonymity matter.  
-**Promo code**: SOXOJ - 8% off Static ISP proxies
 
 **Thordata** provides reliable residential proxies for OSINT research, username lookup, and public data collection workflows. Access **100M+ real residential IPs** across **195+ countries** **unlimited concurrent connections**with 99.99% uptime and stable connections, Rotating + Sticky Sessions, and high success rates.  
 **Special Offer:** Free 3-day trial + **10% OFF** with code **SOXOJ10**.

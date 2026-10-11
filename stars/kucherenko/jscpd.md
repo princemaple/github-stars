@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6331
+stars: 6370
 description: Copy/paste detector for source code. 220+ languages, Rust engine, SARIF/HTML/badge reporters, GitHub Action, MCP server for AI agents.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -139,13 +139,14 @@ jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime r
 -   **Language-aware tokenization** — per-format comment and string syntax for all 224 formats, the oxc parser for JavaScript/TypeScript/JSX/TSX, embedded-language extraction for Vue, Svelte, Astro, Markdown and Razor, and keyword/identifier/literal classification, so a clone is a repeated sequence of _language tokens_, never a repeated run of text (see How detection works)
 -   **224 language formats**, with cross-format detection (Vue SFC, Svelte, Astro, Markdown) and `--cross-formats` groups to match clones across JavaScript and TypeScript
 -   **Type-2 clones** — `--ignore-identifiers`, `--ignore-literals` and `--ignore-annotations` find blocks that differ only in names, literal values or annotations, reported as `renamed` (see docs)
--   **Type-3 near-miss clones** — `--max-gap-lines N` merges a copy with a few inserted or changed lines into one `similar` clone with a similarity score; `--similarity 0.85` compares whole JavaScript/TypeScript functions by syntax-tree structure, catching renames and scattered edits too (see docs)
+-   **Type-3 near-miss clones** — `--max-gap-lines N` merges a copy with a few inserted or changed lines into one `similar` clone with a similarity score; `--similarity` compares whole functions of JavaScript, TypeScript, Python, Java, Kotlin, Scala, C#, Go, Rust, C, C++, PHP, Ruby, Swift and Clojure by the subtrees of their normalized syntax trees, in code blocks of Markdown and components as well: renamed locals and other literals match, other called functions or operators do not, and test files are left out; the `edn` reporter lists every pair with its score (see docs)
 -   **Type-4 semantic clones (experimental)** — `--semantic` embeds the functions of JavaScript, TypeScript, Vue, Svelte, Astro, Python, Rust, Go, Java, Kotlin, C#, C, C++, PHP, Ruby, Scala and Swift files with a code embedding model, either one jscpd runs itself (after `jscpd --semantic-download` once) or any OpenAI-compatible API, and reports functions that do the same thing written differently: the same feature implemented twice in one language, or a rule your Rust backend enforces and your Svelte frontend repeats (see Semantic clones below)
 -   **Port progress and parity (experimental)**: `jscpd --compare python/ typescript/` pairs the functions of two folders with the same model and lists which functions of each have a counterpart in the other: what is left to port to another language or platform, or what the Android version of an app has that the iOS one lacks (see Comparing two codebases below)
 -   **Clone kinds everywhere** — `exact`, `renamed` or `similar` in the console, JSON (`kind`, `similarity`, `method`), XML, HTML, Xcode, SARIF (`jscpd/duplicate-code`, `jscpd/renamed-code`, `jscpd/similar-code`, `jscpd/similar-function`, `jscpd/semantic-code`) and Code Climate output; default runs still report only `exact` clones
 -   **`--kind`** — keep only the clone kinds you care about: `--kind renamed`, or `--kind gap,ast` for near-miss clones only. Statistics and `--threshold` follow the filter; a kind whose detector is off warns, an unknown kind errors (see docs)
 -   **15 reporters**: `console`, `console-full`, `json`, `xml`, `csv`, `html`, `markdown`, `badge`, `sarif`, `codeclimate`, `openmetrics`, `ai`, `xcode`, `threshold`, `silent`
 -   **Clone baseline** — gate CI on _new_ duplication only. `--baseline .jscpd-baseline.json --fail-on-new-clones[=N]` tolerates legacy clones and fails the build on regressions; `--baseline-from-ref origin/main` does the same without a committed file (see docs)
+-   **Only the files you changed** — `jscpd --changed .` reports the clones of the files `git status` lists, matched against the whole project, and marks the ones HEAD didn't have as new; `--changed-only` compares the changed files only with one another. The baseline of HEAD is saved on the first run and built again after a commit (see docs)
 -   **Exit codes you can gate on** — an unknown `--format`, a missing scan path or a reporter that can't write its file now exit 1 instead of passing with an empty report; `--fail-on-empty` fails a scan that analyzed no files (see Exit codes)
 -   **GitLab-ready reporters** — `codeclimate` (`gl-code-quality-report.json`) and `openmetrics` (`jscpd-metrics.txt`) plug into `artifacts:reports`
 -   **Git blame** with side-by-side author comparison (`--blame --reporters console-full`)
@@ -163,7 +164,7 @@ jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime r
 
 ### AI and operations
 
--   **`--mcp`** — built-in MCP server over stdio with fully described tools: point your AI assistant at the binary and it can check snippets for duplication against your codebase, or find structurally similar functions with a `similarity` argument (see docs)
+-   **`--mcp`** — built-in MCP server over stdio with fully described tools: point your AI assistant at the binary and it can check a snippet against your codebase for all four types of clone (exact, renamed, near-miss and semantic), list a file's clones, and compare two folders function by function (see docs)
 -   **`--lsp`**: a language server over stdio. Clones, similar functions, semantic clones, dead code and complexity show up as diagnostics in the files you edit and follow the text as you type, each analysis with a switch of its own (see Editors below)
 -   **AI reporter** — token-efficient output for LLM pipelines (~79% fewer tokens than console)
 -   **Prebuilt for 8 platforms** — macOS arm64/x64, Linux arm64/x64 (glibc and musl), Windows arm64/x64
@@ -229,6 +230,12 @@ crates.io
 
 Source code tokenization (224 formats)
 
+cpd-similarity
+
+crates.io
+
+Structural similarity (`--similarity`): functions from tree-sitter syntax trees and a Clojure reader, normalized trees and their subtree fingerprints, and the exact search for pairs
+
 cpd-finder
 
 crates.io
@@ -282,6 +289,21 @@ The `jscpd` npm package is downloaded **10M+ times per month**, and ~5,000 repos
 -   Alibaba AppWorks — embeds jscpd as a library
 -   OVHcloud manager — OVHcloud's customer control panel
 -   KiroCrew — self-improving persistent development workspace
+
+### Recommended aggregator settings
+
+Super Linter and MegaLinter both run jscpd with `threshold: 0` by default, which fails a build on any duplication at all, including clones that were already there. That is the most common reason projects end up setting `VALIDATE_JSCPD: false`. Gate on _new_ duplication instead, and leave the threshold out:
+
+jscpd . --baseline-from-ref origin/main --fail-on-new-clones 0
+
+`--baseline-from-ref` scans the base ref's tree with the same configuration and marks the clones that are absent from it as new, and `--fail-on-new-clones 0` fails the run when there is one. Every clone is still reported, and `--threshold` still compares the duplication of the whole tree, so keep `threshold: 0` out of the config, or the old clones fail the build as before. The base ref has to be in the checkout: with `actions/checkout` set `fetch-depth: 0`, or run `git fetch origin main` first, otherwise jscpd stops with an error. jscpd needs the whole tree to find clones, so `VALIDATE_ALL_CODEBASE: false` does not narrow the scan.
+
+When several linters write into one reports directory, give jscpd its own file name so parallel runs cannot overwrite each other:
+
+jscpd . --reporters json --output reports --report-name megalinter-jscpd
+# -> reports/megalinter-jscpd.json
+
+`--report-name` sets the base name for the `json`, `xml`, `csv`, `html`, `markdown`, `sarif` and `edn` reports, and defaults to `jscpd-report`. It can also be set as `reportName` in `.jscpd.json`, or with the `report-name` input of the GitHub Action. The name is a plain file name, so a path, an extension or an empty name is an error. The badge, OpenMetrics and CodeClimate files (`jscpd-badge.svg`, `jscpd-metrics.txt`, `gl-code-quality-report.json`) keep their names, so the pipelines that read them keep working. When two runs write those too, give each run its own `--output`.
 
 Benchmark
 ---------
@@ -473,7 +495,7 @@ After installation, ask your agent to "find and fix code duplication" and it wil
 
 ### MCP Server
 
-`jscpd --mcp /path/to/project` scans once and serves the Model Context Protocol over stdio, so an assistant can check any snippet for duplication against the codebase on demand, list a file's clones, re-scan the working directory, and look for structurally similar functions by passing `similarity`.
+`jscpd --mcp /path/to/project` scans the project and serves the Model Context Protocol over stdio. An assistant can check a snippet against the codebase before writing it, list a file's clones, scan the working directory again and compare two folders function by function. The tools that find clones can look for exact (Type-1), renamed (Type-2), near-miss (Type-3) and semantic (Type-4) ones.
 
 See AI-Ready docs for full details.
 

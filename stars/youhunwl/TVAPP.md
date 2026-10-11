@@ -1,6 +1,6 @@
 ---
 project: TVAPP
-stars: 24284
+stars: 24761
 description:  收集全网 Android TV电视盒子应用，涵盖影视、直播、K歌、工具、游戏等类型，整理优质APK资源，支持便捷下载与自动更新。提供安全验证、分类索引与兼容性标注，助力用户打造家庭影音娱乐中心！              ✅ TVBox/影视仓等影音壳接口配置源。
 url: https://github.com/youhunwl/TVAPP
 ---
@@ -99,7 +99,7 @@ PLUS版本功能较全，支持点播+直播，内置宝盒没宝数据源
 
 FongMi影视
 
-v5.6.8
+v5.7.0
 
 下载
 
@@ -579,7 +579,7 @@ v3.8.4.1
 
 DongYuTvWeb
 
-v2.1.0
+v2.1.1
 
 下载
 
@@ -1079,7 +1079,7 @@ v1.5.7
 
 NewBox
 
-v2.0.5
+v2.0.7
 
 下载
 
@@ -1128,32 +1128,22 @@ v6.4.0
  https://17264.kstore.space/哈基米.png	# 哈基米
  https://www.yingm.cc/dm/dm.json  	# 动漫城接口
  http://home.jundie.top:81/top98.json	# 俊佬接口
- http://cdn.qiaoji8.com/tvbox.json		# 巧记
- http://ok213.top/tv		# OK影视内部接口 暂时不可用
- http://ok213.top/ok		# OK影视公开接口 暂时不可用
  https://cdn.gitmirror.com/bb/xduo/libs/master/index.json 	# 道长接口
- https://gitee.com/free-kingdom/dc/raw/main/T4.json			# T4接口
  https://raw.githubusercontent.com/yoursmile66/TVBox/main/XC.json		# 南风接口
  https://tv.菜妮丝.top			# 菜妮丝接口
  https://api.hgyx.vip/hgyx.json		# HG接口
  https://dxawi.github.io/0/0.json	# dxawi
  http://xhztv.top/xhz		# 小盒子单仓
  http://xhztv.top/4k.json		# 小盒子4K
- https://9877.kstore.space/ONE/one.json		# 潇洒接口
  https://raw.githubusercontent.com/xyq254245/xyqonlinerule/main/XYQTVBox.json	# 香雅情
- https://bitbucket.org/xduo/duoapi/raw/master/xpg.json		# 小苹果接口
  https://raw.githubusercontent.com/guot55/YGBH/main/vip2.json		# 宝盒VIP
- https://xn--anna-wn6lw489o.v.nxog.top/m/  # 欧歌
  https://www.252035.xyz/z/FongMi.json	# 真心
- http://www.meowtv.vip/tvbox.json	# 喵影视
- http://fmys.top/fmys.json	# 驸马
  https:/raw.githubusercontent.com/gaotianliuyun/gao/master/js.json		# 高天流云
  https://raw.githubusercontent.com/maoystv/6/main/000.json	# 分享
- https://cnb.cool/fish2018/duanju/-/git/raw/main/tvbox.json		# 短剧
+ http://box.ufuzi.com/tv/qq/短剧频道/api.json		# 短剧
  https://raw.githubusercontent.com/chitue/dongliTV/main/api.json	# 东篱线路
- https://cnb.cool/aooooowuuuuu/FreeSpider/-/git/raw/main/config	# 嗷呜线路
+ https://9763.kstore.vip/aowu.json	# 嗷呜线路
  https://android.lushunming.qzz.io/json/index.json	# L佬线路
- https://gitee.com/cpu-iy/iy/raw/master/%E5%A4%A9%E7%A5%9EIY.json	# 天神IY
  https://pastebin.com/raw/gtbKvnE1	# 苹果CMS资源站
 
 多仓：
@@ -1175,8 +1165,6 @@ v6.4.0
  https://www.iyouhun.com/tv/zb		# 游魂直播源
  https://live.zbds.top/tv/iptv4.txt  # 直播电视IPV4
  https://develop202.github.io/migu_video/interface.txt # 咪咕IPTV
- https://raw.githubusercontent.com/PizazzGY/TV/master/output/user_result.txt   # 潇洒AI直播
- https://raw.githubusercontent.com/PizazzGY/TV/master/output/user_result.m3u   # 潇洒AI直播
  https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u   # IPTV 默认源
  https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/ipv4/result.m3u   # IPTV IPv4
  https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/ipv6/result.m3u   # IPTV IPv6
@@ -1195,7 +1183,6 @@ v6.4.0
  https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u # 范明明直播源
  https://live.fanmingming.cn/tv/m3u/ipv6.m3u # 范明明直播源国内镜像加速地址
  https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u # YueChan 直播源
- https://gitee.com/xxy002/zhiboyuan/raw/master/dsy # （央视频道、卫视频道、港澳台、数字电视、动漫）
 
 部分 IPv4、部分 IPv6 源：
  https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u # Kimentanm源，有部分IPv6
@@ -1205,7 +1192,6 @@ v6.4.0
 部分海外源：
  https://php.946985.filegear-sg.me/jackTV.m3u # JackTV直播{翻}
  https://iptv-org.github.io/iptv/index.m3u # 海外TV直播{翻}
- https://web.utako.moe/jp.m3u # 日本TV直播{翻}
  https://epg.pw/test_channels.m3u # 中国大陆频道
  https://epg.pw/test_channels_hong_kong.m3u # 中国香港频道
  https://epg.pw/test_channels_macau.m3u # 中国澳门频道
@@ -1217,10 +1203,10 @@ v6.4.0
  https://iptv-org.github.io/iptv/index.m3u # 世界各地免费电视频道
 
 其他直播源：
- https://live.freetv.top/huyayqk.m3u # 虎牙一起看
- https://live.freetv.top/douyuyqk.m3u # 斗鱼一起看
- https://gongdian.top/tv/Mursor/yylunbo.m3u # YY轮播
- https://gongdian.top/tv/Mursor/bililive.m3u # 哔哩哔哩直播源
+ https://sub.ottiptv.cc/huyayqk.m3u # 虎牙一起看
+ https://sub.ottiptv.cc/douyuyqk.m3u # 斗鱼一起看
+ https://sub.ottiptv.cc/yylunbo.m3u # YY轮播
+ https://sub.ottiptv.cc/bililive.m3u # 哔哩哔哩直播源
 ```
 
 免责声明

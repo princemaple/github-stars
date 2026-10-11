@@ -1,6 +1,6 @@
 ---
 project: Leaflet
-stars: 45697
+stars: 45722
 description: 🍃 JavaScript library for mobile-friendly interactive maps 🇺🇦
 url: https://github.com/Leaflet/Leaflet
 ---

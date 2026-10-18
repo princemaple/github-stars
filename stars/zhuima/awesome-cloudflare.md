@@ -1,6 +1,6 @@
 ---
 project: awesome-cloudflare
-stars: 15520
+stars: 15541
 description: ⛅️ 精选的 Cloudflare 工具、开源项目、指南、博客和其他资源列表。/ ⛅️ A curated list of Cloudflare tools, open source projects, guides, blogs and other resources.
 url: https://github.com/zhuima/awesome-cloudflare
 ---
@@ -345,6 +345,14 @@ One Stroke Fan
 基于 Astro 构建并部署在 Cloudflare Pages 的多语言粉丝站。支持 9 种语言、100+ 页面、sitemap / hreflang / JSON-LD / llms.txt，纯静态零成本运行。
 
 https://one-stroke.savetimefor.fun
+
+维护中
+
+华夏音画 (China Culture Media)
+
+基于 Next.js 15 SSG + Cloudflare Pages 边缘托管的华夏先贤有声时空漫步画卷。纯静态预渲染 160+ 页面，结合 Leaflet 东方水墨地图交互与双语学者原声解说，零服务器成本。
+
+https://history.walkingchina.com
 
 维护中
 
@@ -897,6 +905,12 @@ shopify-attribution-gap-backend
 基于 Cloudflare Workers + D1 的边缘数据收集后端，用于构建开放、透明的 Shopify iOS 归因差距基准。服务端计算归因差距、人工审核机制、中位数聚合，无需服务器。
 
 https://stackarchitect.xyz/shopify-ios-attribution-gap-benchmark/
+
+维护中
+
+OpenConnector
+
+可部署到 Cloudflare Workers 的开源 Agent 连接网关，使用 D1 存储连接、授权状态和运行日志，R2 或 KV 暂存文件，通过 MCP、HTTP 和 OpenAPI 提供 SaaS 动作发现与执行。
 
 维护中
 

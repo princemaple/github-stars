@@ -1,6 +1,6 @@
 ---
 project: hls.js
-stars: 16969
+stars: 16988
 description: HLS.js is a JavaScript library that plays HLS in browsers with support for MSE.
 url: https://github.com/video-dev/hls.js
 ---
@@ -469,9 +469,7 @@ The following players integrate HLS.js for HLS playback:
 -   Fluid Player
 -   OpenPlayerJS, as part of the OpenPlayer project
 -   CDNBye, a p2p engine for hls.js powered by WebRTC Datachannel.
--   M3U IPTV
 -   ArtPlayer
--   IPTV Player, A free web-based HLS player that lets you play HLS,DASH and MP4 streams
 
 ### They use HLS.js in production!
 

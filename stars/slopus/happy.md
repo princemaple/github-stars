@@ -1,13 +1,15 @@
 ---
 project: happy
-stars: 24085
-description: Happy is the open-source desktop app for Claude Code, Codex, and Grok, with an iOS and Android app to control your coding agents from anywhere.
+stars: 24195
+description: Orchestrate Claude, Codex and Grok in one app. Open-source (MIT), reuses the subscriptions you already pay for.
 url: https://github.com/slopus/happy
 ---
 
 Any Model. Your Subscription.  
 _Happy Harness._
 ================================================
+
+Orchestrate Claude, Codex and Grok in one app
 
 Free and open source
 
@@ -18,8 +20,8 @@ readme-demo.mp4
 What you get
 ------------
 
-1.  **Multi-provider within one session.** Astra, Fable, and Grok in the same session. Switch models in the middle of a task or delegate to subagents.
-2.  **Reuse current subscriptions.** Sign in with the Claude, Codex, and Grok plans you already pay for. Happy adds a harness, not another bill.
+1.  **Multi-provider.** Astra, Fable, and Grok in one app, each with its vendor's own prompts and tools. Give every task the model that fits, and delegate to subagents on any of them.
+2.  **Reuse your subscriptions.** Sign in with the Claude, Codex, and Grok subscriptions you already pay for. Happy adds a harness, not another bill.
 3.  **Open source MIT.** It runs on your own hardware and your projects stay ordinary folders. Read the code, fork it, ship your own build.
 4.  **End-to-end encrypted mobile app.** Left your desk? The same sessions are already on your phone, and what moves between your devices is encrypted.
 5.  **Natively multiplayer.** Invite a colleague or a friend into the session. You both watch the same agent work, and either of you can steer it.

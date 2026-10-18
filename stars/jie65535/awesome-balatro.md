@@ -1,6 +1,6 @@
 ---
 project: awesome-balatro
-stars: 1279
+stars: 1286
 description: A list of Balatro Mods and Tools
 url: https://github.com/jie65535/awesome-balatro
 ---
@@ -91,6 +91,7 @@ Tools
 -   BalatroWebSiteTemplate - Use web pages to show your Jokers. like this. by @notmario
 -   Blueprint - An online seed analyzer inspired by the soul, with joker spoilers and queue support @miaklwalker
 -   BusDash - Win rate dashboard for gold stake players, by @Bus693
+-   GamePilot Blue Joker calculator - Calculate Blue Joker's additive Chips from cards remaining in the draw deck, with an illustrative Mult estimate and explicit limitations. by @yl124915300-dot
 -   Immolate - An OpenCL seed searcher for Balatro. by @MathIsFun\_
 -   JokerDeck - A mod manager for Balatro with mod browsing, one-click install, instant enable/disable on browser and locally, dependency detection and more. by @Ch3rryC0d3r
 -   Motely - A C# CPU SIMD seed searcher for Balatro. by @tacodiva

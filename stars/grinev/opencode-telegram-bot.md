@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1242
+stars: 1264
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. OpenCode V2 support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -537,7 +537,7 @@ No
 
 `BASH_TOOL_DISPLAY_MAX_LENGTH`
 
-Maximum displayed length for `bash` tool commands in Telegram summaries; longer commands are truncated
+Maximum displayed length for `bash` commands and `execute` code in Telegram summaries; longer ones are truncated
 
 No
 

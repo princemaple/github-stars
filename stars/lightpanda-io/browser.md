@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 36221
+stars: 36641
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -96,13 +96,13 @@ Your automation client (Puppeteer, Playwright, etc.) can run either inside WSL o
 
 Lightpanda provides official Docker images for both Linux amd64 and arm64 architectures. The following command fetches the Docker image and starts a new container exposing Lightpanda's CDP server on port `9222`.
 
-docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:nightly
+docker run -d --name lightpanda -p 127.0.0.1:9222:9222 lightpanda/browser:latest
 
 ### Dump a URL
 
 ./lightpanda fetch --obey-robots --dump html --log-format pretty  --log-level info https://demo-browser.lightpanda.io/campfire-commerce/
 
-You can use `--dump markdown` to convert directly into markdown, or `--dump png > page.png` or `--dump pdf > page.pdf` for a text-only rendering of the page. `--wait-until`, `--wait-ms`, `--wait-selector` and `--wait-script` are available to adjust waiting time before dump.
+You can use `--dump markdown` to convert directly into markdown, or `--dump png > page.png` or `--dump pdf > page.pdf` for a text-only rendering of the page. `--dump structured_data` prints the page's JSON-LD, OpenGraph, Twitter card, meta and link tags as JSON, like the MCP `structuredData` tool. `--wait-until`, `--wait-ms`, `--wait-selector` and `--wait-script` are available to adjust waiting time before dump.
 
 ### Start a CDP server
 
@@ -197,6 +197,14 @@ Clients POST JSON-RPC to `http://host:9223/mcp`. Each connection is routed to it
 Read full documentation
 
 A skill is available in lightpanda-io/agent-skill.
+
+### Shell completion
+
+`lightpanda completion <bash | fish | zsh>` prints a completion script for commands, flags and their values:
+
+lightpanda completion fish > ~/.config/fish/completions/lightpanda.fish
+lightpanda completion bash > ~/.local/share/bash-completion/completions/lightpanda
+lightpanda completion zsh > ~/.zfunc/\_lightpanda  # with fpath=(~/.zfunc $fpath) before compinit
 
 ### Telemetry
 

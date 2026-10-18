@@ -1,6 +1,6 @@
 ---
 project: mediapipe
-stars: 37216
+stars: 37310
 description: Cross-platform, customizable ML solutions for live and streaming media.
 url: https://github.com/google-ai-edge/mediapipe
 ---
@@ -37,7 +37,7 @@ Delight your customers with innovative machine learning features. MediaPipe cont
 Get started
 -----------
 
-You can get started with MediaPipe Solutions by by checking out any of the developer guides for vision, text, and audio tasks. If you need help setting up a development environment for use with MediaPipe Tasks, check out the setup guides for Android, web apps, and Python.
+You can get started with MediaPipe Solutions by checking out any of the developer guides for vision, text, and audio tasks. If you need help setting up a development environment for use with MediaPipe Tasks, check out the setup guides for Android, web apps, and Python.
 
 Solutions
 ---------

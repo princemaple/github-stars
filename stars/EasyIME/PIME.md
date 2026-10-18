@@ -1,6 +1,6 @@
 ---
 project: PIME
-stars: 1519
+stars: 1523
 description: Develop input methods for Windows easily with Python and node.js
 url: https://github.com/EasyIME/PIME
 ---
@@ -15,6 +15,11 @@ Implement input methods easily for Windows via Text Services Framework:
 -   The python server part requires python 3.x and pywin32 package.
 
 All parts are licensed under GNU LGPL v2.1 license.
+
+Contributing
+============
+
+Contributions using AI coding tools are welcomed! However, to ensure code quality, they must follow the rules in AGENTS.md to be accepted, and AI assistance must be clearly declared in pull requests, git commits, and file headers.
 
 Development
 ===========
@@ -127,10 +132,28 @@ Please report any issue to here.
 Debugging
 =========
 
-If you encounter issues, you can run PIMELauncher.exe with the /console argument:
+If you encounter issues, you can run `PIMELauncher.exe` with the following debugging options:
 
-```
-PIMELauncher.exe /console
-```
+-   **Live console output**:
+    
+    PIMELauncher.exe /console
+    
+    Opens a console window displaying live `DEBUG` level logs for troubleshooting backend communication and internal events.
+    
+-   **Log to file (headless)**:
+    
+    PIMELauncher.exe /log\-file C:\\path\\to\\pime.log
+    
+    Writes `DEBUG` level logs to the specified file while running silently in the background without popping up a console window.
+    
+-   **Quit running instance**:
+    
+    PIMELauncher.exe /quit
+    
+-   **Show help message**:
+    
+    PIMELauncher.exe /help
+    # or: PIMELauncher.exe /?
+    
 
-This opens a console window which displays debug logs, making it easier to troubleshoot backend communication and other internal events.
+When run normally without `/console` or `/log-file`, all debug logging is completely suppressed to avoid unnecessary I/O overhead.

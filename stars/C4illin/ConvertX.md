@@ -1,6 +1,6 @@
 ---
 project: ConvertX
-stars: 19126
+stars: 19150
 description: 💾 Self-hosted online file converter. Supports 1000+ formats ⚙️
 url: https://github.com/C4illin/ConvertX
 ---
@@ -100,6 +100,14 @@ Data Files
 5
 
 4
+
+DjVuLibre
+
+Documents
+
+2
+
+2
 
 Pandoc
 

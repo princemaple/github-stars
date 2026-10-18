@@ -1,6 +1,6 @@
 ---
 project: agent-browser
-stars: 43780
+stars: 44152
 description: Browser automation CLI for AI agents
 url: https://github.com/vercel-labs/agent-browser
 ---
@@ -1412,7 +1412,7 @@ Override the default timeout via environment variable:
 # Set a longer timeout for slow pages (in milliseconds)
 export AGENT\_BROWSER\_DEFAULT\_TIMEOUT=45000
 
-> **Note:** Setting this above 30000 (30s) may cause EAGAIN errors on slow operations because the CLI's read timeout will expire before the daemon responds. The CLI retries transient errors automatically, but response times will increase.
+> **Note:** Setting this above 30000 (30s) may cause EAGAIN errors on slow operations because the CLI's read timeout will expire before the daemon responds. Read-only commands (`snapshot`, `url`, `get text`, ...) are retried automatically. A command that changes the page or launches the browser is not re-sent once the daemon received it, since it may already have run; it fails with code `outcome_unknown` instead.
 
 Variable
 

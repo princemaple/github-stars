@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 140735
+stars: 141678
 description: 💫 Toolkit to help you get started with SDD or any other process!
 url: https://github.com/github/spec-kit
 ---
@@ -10,9 +10,9 @@ url: https://github.com/github/spec-kit
 
 ### _Build with a spec, fix a bug, or assess an idea — with your coding agent._
 
-**English** · 简体中文 · 日本語
+**English** · 简体中文 · 日本語 · 한국어
 
-Spec Kit is an open source toolkit that gives AI coding agents structured processes, reusable templates, and documented outcomes. Start with one of the three processes below, customize it, or bring your own.
+Spec Kit is an open source toolkit that gives AI coding agents structured processes, reusable templates, and documented outcomes. Start with a ready-made process, customize it, or bring your own.
 
 Choose your process
 -------------------
@@ -41,7 +41,88 @@ Idea assessment
 
 An evidence-backed go, clarify, or stop decision
 
-These are **independent entry points**, not three mandatory phases. SDD ships in core; bug fixing and assessment are bundled extensions you install when needed.
+Adopt or create a different process
+
+Your own process
+
+A process adapted or assembled from reusable primitives
+
+These are **independent entry points**, not mandatory phases. SDD ships in core; bug fixing and assessment are bundled extensions you install when needed, and the primitives below let you adopt or create other processes.
+
+Capabilities
+------------
+
+Spec Kit combines ready-to-use processes with composable mechanisms:
+
+Capability
+
+Spec Kit mechanism
+
+Connect to or switch between coding agents
+
+Integration
+
+Add a command, quality gate, or complete process
+
+Extension
+
+Connect a process to an external tool or service
+
+Extension
+
+React to coding-agent lifecycle events
+
+Extension event hook
+
+Adapt templates, commands, terminology, or methodology
+
+Preset
+
+Enforce organizational or regulatory standards
+
+Preset
+
+Override a template for one project
+
+Project-local override
+
+Automate prompts, commands, gates, and shell tasks
+
+Workflow
+
+Modify an installed workflow without forking it
+
+Workflow overlay
+
+Add reusable executable behavior to workflows
+
+Workflow step
+
+Install a curated setup for a role or team
+
+Bundle
+
+Discover community components
+
+Catalog
+
+Host a private catalog of approved components
+
+Catalog
+
+Access private catalogs and component downloads
+
+Authentication
+
+Work offline or behind a firewall
+
+Local sources and self-hosted catalogs
+
+Inspect which layer supplies a command, template, or script
+
+Artifact inventory
+
+Search the active catalogs with commands such as `specify extension search`, `specify preset search`, `specify workflow search`, and `specify bundle search`. Spec Kit includes community catalogs, and organizations can add their own curated sources. Catalog listings are not audits or endorsements, so review community source code before installing or running it.
 
 Get started
 -----------

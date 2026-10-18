@@ -1,13 +1,15 @@
 ---
 project: browser-use
-stars: 117574
-description: Agents that use the browser.
+stars: 118332
+description: Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.
 url: https://github.com/browser-use/browser-use
 ---
 
 * * *
 
   
+
+The open-source browser agent. Run it locally with any LLM, or on Browser Use Cloud: stealth browsers from $0.02/hour, top score (90.5%) on Stealth Bench V2.
 
   
 
@@ -39,7 +41,7 @@ Scale browser automation with our hosted agent, stealth browsers, and infrastruc
 
 Get started with the API ↗
 
-New Google, GitHub, or Microsoft signups get **$15 cloud credit**.
+New Google, GitHub, or Microsoft signups get **$1 cloud credit**.
 
   
 
@@ -103,6 +105,18 @@ To use BU2, replace the `ChatOpenAI` line with the commented `ChatBrowserUse` li
 uv run agent.py
 
 The agent opens a browser, looks up the repository, and prints its answer.
+
+**5\. Run the same agent on a cloud browser (no Chrome to install; works in Docker, CI, and serverless):**
+
+Set `BROWSER_USE_API_KEY` (get a key), then uncomment the `browser=` line in `agent.py` and run it again:
+
+    agent \= Agent(
+        task\="Find the number of stars of the browser-use repo",
+        llm\=llm,
+        browser\=Browser(use\_cloud\=True),
+    )
+
+Cloud browsers cost $0.02 per browser-hour plus network traffic (pricing), and add stealth, residential proxies, CAPTCHA solving, and a live view URL. Same code, no other changes.
 
 Python library docs ↗
 

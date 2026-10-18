@@ -1,6 +1,6 @@
 ---
 project: usql
-stars: 10137
+stars: 10147
 description: Universal command-line interface for SQL databases
 url: https://github.com/xo/usql
 ---
@@ -11,7 +11,7 @@ Installing | Building | Database Support | Using | Features and Compatibility | 
 
 `usql` is a universal command-line interface for PostgreSQL, MySQL, Oracle Database, SQLite3, Microsoft SQL Server, and many other databases including NoSQL and non-relational databases!
 
-`usql` works with SQL and NoSQL databases from a command line modelled on PostgreSQL's `psql`. `usql` supports most of the core `psql` features, such as variables, backticks, backslash commands and has additional features that `psql` does not, such as multiple database support, copying between databases, syntax highlighting, context-based completion, and terminal graphics.
+`usql` works with SQL and NoSQL databases from a command line modelled on PostgreSQL's `psql`. `usql` supports most of the core `psql` features, such as variables, backticks, backslash commands and has additional features that `psql` does not, such as multiple database support, copying between databases, context-based completion, and terminal graphics.
 
 Database administrators and developers that would prefer to work with a tool like `psql` with non-PostgreSQL databases, will find `usql` intuitive, easy-to-use, and a great replacement for the command-line clients/tools for other databases.
 
@@ -145,14 +145,14 @@ $ go build -tags 'no\_postgres no\_oracle no\_sqlserver no\_sqlite3 cassandra mo
 # show built driver support
 $ ./usql -c '\\drivers'
 Available Drivers:
-  cql \[ca, scy, scylla, datastax, cassandra\]
+  cassandra \[ca, cass, cql, datastax, scy, scylla\]
   memsql (mysql) \[me\]
   moderncsqlite \[mq, sq, file, sqlite, sqlite3, modernsqlite\]
   mysql \[my, maria, aurora, mariadb, percona\]
   tidb (mysql) \[ti\]
   vitess (mysql) \[vt\]
 
-The above shows that `usql` was built with only the `mysql`, `cassandra` (ie, `cql`), and `moderncsqlite` drivers. The output above reflects information about the drivers available to `usql`, specifically the internal driver name, its primary URL scheme, the driver's available scheme aliases (shown in `[...]`), and the real/underlying driver (shown in `(...)`) for wire compatible drivers.
+The above shows that `usql` was built with only the `mysql`, `cassandra`, and `moderncsqlite` drivers. The output above reflects information about the drivers available to `usql`, specifically the internal driver name, its primary URL scheme, the driver's available scheme aliases (shown in `[...]`), and the real/underlying driver (shown in `(...)`) for wire compatible drivers.
 
 ### Supported Database Schemes and Aliases
 
@@ -166,6 +166,14 @@ Scheme Aliases
 
 Driver Package / Notes
 
+Presto
+
+`presto`
+
+`pr`, `prestodb`
+
+github.com/xo/dbimp/trino
+
 PostgreSQL
 
 `postgres`
@@ -173,6 +181,14 @@ PostgreSQL
 `pg`, `pgsql`, `postgresql`
 
 github.com/jackc/pgx/v5/stdlib
+
+Trino
+
+`trino`
+
+`tr`
+
+github.com/xo/dbimp/trino
 
 PostgreSQL PGX
 
@@ -228,7 +244,7 @@ ClickHouse
 
 `ch`
 
-github.com/ClickHouse/clickhouse-go/v2
+github.com/xo/dbimp/clickhouse
 
 CockroachDB
 
@@ -294,13 +310,37 @@ Alibaba Tablestore
 
 github.com/aliyun/aliyun-tablestore-go-sql-driver ¶
 
+Amazon Athena
+
+`athena`
+
+`s3`, `aws`, `awsathena`
+
+github.com/xo/dbimp/athena ¶
+
 Apache Avatica
 
 `avatica`
 
 `av`, `phoenix`
 
-github.com/apache/calcite-avatica-go/v5
+github.com/xo/dbimp/avatica
+
+Apache Drill
+
+`drill`
+
+`dl`
+
+github.com/xo/dbimp/drill
+
+Apache Druid
+
+`druid`
+
+`dr`
+
+github.com/xo/dbimp/druid
 
 Apache Hive
 
@@ -318,6 +358,22 @@ Apache Impala
 
 github.com/sclgo/impala-go
 
+Apache Pinot
+
+`pinot`
+
+`pi`
+
+github.com/xo/dbimp/pinot
+
+Apache Solr
+
+`solr`
+
+`so`
+
+github.com/xo/dbimp/solr
+
 ArangoDB
 
 `arangodb`
@@ -326,29 +382,21 @@ ArangoDB
 
 github.com/xo/dbimp/arangodb
 
-AWS Athena
-
-`athena`
-
-`s3`, `aws`, `awsathena`
-
-github.com/uber/athenadriver/go ¶
-
-Azure CosmosDB
+Azure Cosmos DB
 
 `cosmos`
 
-`cm`, `gocosmos`
+`cm`
 
-github.com/btnguyen2k/gocosmos ¶
+github.com/xo/dbimp/cosmos ¶
 
 Cassandra
 
 `cassandra`
 
-`ca`, `scy`, `scylla`, `datastax`, `cql`
+`ca`, `cql`, `scy`, `cass`, `scylla`, `datastax`
 
-github.com/xo/cql
+github.com/xo/cassandra
 
 ChaiSQL
 
@@ -374,14 +422,6 @@ CSVQ
 
 github.com/mithrandie/csvq-driver §
 
-Cznic QL
-
-`ql`
-
-`cznic`, `cznicql`
-
-modernc.org/ql §
-
 Databend
 
 `databend`
@@ -396,15 +436,23 @@ Databricks
 
 `br`, `brick`, `bricks`, `databrick`
 
-github.com/databricks/databricks-sql-go ¶
+github.com/xo/dbimp/databricks ¶
 
-DynamoDb
+DynamoDB
 
 `dynamodb`
 
-`dy`, `dyn`, `dynamo`, `godynamo`
+`dy`, `dyn`, `dynamo`
 
-github.com/btnguyen2k/godynamo ¶
+github.com/xo/dbimp/dynamodb
+
+Elasticsearch
+
+`elasticsearch`
+
+`es`, `elastic`
+
+github.com/xo/dbimp/elasticsearch
 
 Exasol
 
@@ -412,7 +460,7 @@ Exasol
 
 `ex`, `exa`
 
-github.com/exasol/exasol-driver-go
+github.com/xo/dbimp/exasol
 
 Firebird
 
@@ -436,7 +484,7 @@ Google BigQuery
 
 `bq`
 
-gorm.io/driver/bigquery/driver ¶
+github.com/xo/dbimp/bigquery ¶
 
 Google Spanner
 
@@ -444,7 +492,7 @@ Google Spanner
 
 `sp`
 
-github.com/googleapis/go-sql-spanner ¶
+github.com/xo/dbimp/spanner ¶
 
 InfluxDB
 
@@ -462,6 +510,14 @@ InfluxDB InfluxQL
 
 github.com/xo/dbimp/influxdb
 
+libSQL
+
+`libsql`
+
+`ls`, `turso`
+
+github.com/xo/dbimp/libsql
+
 ModernC SQLite3
 
 `moderncsqlite`
@@ -478,6 +534,22 @@ Neo4j
 
 github.com/xo/dbimp/neo4j
 
+ODBC
+
+`odbc`
+
+`od`
+
+github.com/xo/odbc
+
+OpenSearch
+
+`opensearch`
+
+`os`, `open`
+
+github.com/xo/dbimp/opensearch
+
 PostgreSQL lib/pq
 
 `libpq`
@@ -486,14 +558,6 @@ PostgreSQL lib/pq
 
 github.com/lib/pq
 
-Presto
-
-`presto`
-
-`pr`, `prestodb`
-
-github.com/prestodb/presto-go-client/v2
-
 QuestDB
 
 `questdb`
@@ -501,6 +565,14 @@ QuestDB
 `qs`
 
 github.com/jackc/pgx/v5/stdlib
+
+rqlite
+
+`rqlite`
+
+`rq`
+
+github.com/xo/dbimp/rqlite
 
 SAP HANA
 
@@ -516,7 +588,7 @@ Snowflake
 
 `sf`
 
-github.com/snowflakedb/gosnowflake/v2 ¶
+github.com/xo/dbimp/snowflake ¶
 
 SurrealDB
 
@@ -525,14 +597,6 @@ SurrealDB
 `sr`, `sur`, `surreal`
 
 github.com/xo/dbimp/surrealdb
-
-Trino
-
-`trino`
-
-`tr`, `trs`, `trinos`
-
-github.com/trinodb/trino-go-client/trino
 
 Vertica
 
@@ -554,25 +618,9 @@ YDB
 
 `ydb`
 
-`yd`, `yds`, `ydbs`
+`yd`
 
 github.com/ydb-platform/ydb-go-sdk/v3
-
-GO DRiver for ORacle
-
-`godror`
-
-`gr`
-
-github.com/godror/godror †
-
-ODBC
-
-`odbc`
-
-`od`
-
-github.com/alexbrainman/odbc †
 
 Apache H2
 
@@ -670,7 +718,8 @@ Flags:
   -o, --out FILE                            output file
   -W, --password                            force password prompt (should happen automatically)
   -1, --single-transaction                  execute as a single transaction (if non-interactive)
-  -v, --set NAME=VALUE                      set variable NAME to VALUE (see \\set command, aliases: --var --variable)
+  -v, --set NAME=VALUE                      set script variable NAME to VALUE (see \\set command, aliases: --var --variable)
+      --uset NAME=VALUE                     set setting NAME of usql to VALUE (see \\uset command)
   -N, --cset NAME=DSN                       set named connection NAME to DSN (see \\cset command)
   -P, --pset VAR=ARG                        set printing option VAR to ARG (see \\pset command)
   -F, --field-separator FIELD-SEPARATOR     field separator for unaligned and CSV output (default "|" and ",")
@@ -812,12 +861,12 @@ $ usql or://
 # connect to a cassandra database
 $ usql ca://user:pass@host/keyspace
 $ usql cassandra://host/keyspace
-$ usql cql://host/
+$ usql cassandra://host/
 $ usql ca://
 
-# connect to an alibaba maxcompute project over https, or over http with mc+http:
+# connect to an alibaba maxcompute project over https, or over http with tls=false:
 $ usql "mc://accessid:accesskey@service.cn-hangzhou.maxcompute.aliyun.com/api?project=myproject"
-$ usql "mc+http://accessid:accesskey@host/api?project=myproject"
+$ usql "mc://accessid:accesskey@host/api?project=myproject&tls=false"
 
 # Note: the project option is required. The curr\_project and scheme options of
 # the previous maxcompute driver no longer work, and any option the driver does
@@ -842,7 +891,7 @@ connections:
   my\_named\_connection: sqlserver://user:pass@localhost/
 $ usql my\_named\_connection
 
-# connect with ODBC driver (requires building with odbc tag)
+# connect with ODBC driver (needs the ODBC driver manager of the system)
 $ cat /etc/odbcinst.ini
 \[PostgreSQL ANSI\]
 Description=PostgreSQL ODBC driver (ANSI version)
@@ -977,9 +1026,11 @@ Informational
   \\l\[+\]                             list databases
   \\ss\[+\] \[TABLE|QUERY\] \[k\]          show stats for a table or a query
 Variables
-  \\set \[NAME \[VALUE\]\]               set usql application variable, or show all usql application
-                                    variables if no parameters
-  \\unset NAME                       unset (delete) usql application variable
+  \\set \[NAME \[VALUE\]\]               set script variable, or show all script variables if no
+                                    parameters
+  \\uset \[NAME \[VALUE\]\]              set a setting of usql, show it if there is no value, or show
+                                    all settings if no parameters
+  \\unset NAME                       unset (delete) script variable
   \\pset \[NAME \[VALUE\]\]              set table print formatting option, or show all print
                                     formatting options if no parameters
   \\a                                toggle between unaligned and aligned output mode
@@ -1057,8 +1108,8 @@ Named connection DSNs can be defined under `connections:` as a string or as a ma
 connections:
   my\_couchbase\_conn: couchbase://Administrator:P4ssw0rd@localhost
   my\_clickhouse\_conn: clickhouse://clickhouse:P4ssw0rd@localhost
-  my\_godror\_conn:
-    protocol: godror
+  my\_oracle\_conn:
+    protocol: oracle
     username: system
     password: P4ssw0rd
     hostname: localhost
@@ -1067,11 +1118,11 @@ connections:
 
 Defined `connections:` can be used on the command-line with `\connect`, `\c`, `\copy`, and other commands:
 
-$ usql my\_godror\_conn
-Connected with driver godror (Oracle Database 23.0.0.0.0)
+$ usql my\_oracle\_conn
+Connected with driver oracle (Oracle Database 23.0.0.0.0)
 Type "help" for help.
 
-gr:system@localhost/free=\>
+or:system@localhost/free=\>
 
 ##### `init:`
 
@@ -1079,8 +1130,8 @@ An initialization script can be defined as `init:` as a string:
 
 init: |
   \\echo welcome to the jungle \`date\`
-  \\set SYNTAX\_HL\_STYLE paraiso-dark
-  \\set PROMPT1 '\\033\[32m%S%M%/%R%#\\033\[0m '
+  \\uset syntax\_hl\_style paraiso-dark
+  \\uset prompt1 '\\033\[32m%S%M%/%R%#\\033\[0m '
 
 The `init:` script is commonly used to set environment variables or other configuration, and can be disabled on the command-line using the `--no-init` / `-X` flag. The script will be executed prior to any `-c` / `--command` / `-f` / `--file` flag and before starting the interactive interpreter.
 
@@ -1090,23 +1141,23 @@ Please see `_samples/config.yaml` for an overview of available configuration opt
 
 #### Variables
 
-`usql` supports runtime, connection, and display formatting variables that can be `\set`, `\cset`, or `\pset` respectively.
+`usql` has script variables, connection variables, display formatting variables, and settings of its own. They are set with `\set`, `\cset`, `\pset` and `\uset` respectively, and `\set` is only for scripts: a setting such as `pager` is not a variable, and `\set pager less` is an error that says to use `\uset`.
 
 ##### Runtime Variables
 
-Runtime variables are managed with the `\set` and `\unset` commands:
+Script variables are managed with the `\set` and `\unset` commands:
 
 (not connected)=\> \\unset FOO
 (not connected)=\> \\set FOO bar
 
-Runtime variables can be displayed with `\set`:
+Script variables can be displayed with `\set`:
 
 (not connected)=\> \\set
 FOO = 'bar'
 
 ###### Variable Interpolation
 
-When a runtime variable `NAME` has been `\set`, then `:NAME`, `:'NAME'`, and `:"NAME"` will be interpolated into the query buffer:
+When a script variable `NAME` has been `\set`, then `:NAME`, `:'NAME'`, and `:"NAME"` will be interpolated into the query buffer:
 
 pg:booktest@localhost=\> \\set FOO bar
 pg:booktest@localhost=\> select \* from authors where name = :'FOO';
@@ -1176,11 +1227,25 @@ Display formatting variables can be displayed with `\pset`:
 (not connected)=\> \\pset
 time                     Kitchen
 
-##### Other Variables
+##### Settings
 
-Runtime behavior, such as enabling or disabling syntax highlighting can be modified through special variables like `SYNTAX_HL`.
+The settings of `usql`, such as the pager, the editor, the prompts and `on_error_stop`, are managed with the `\uset` command, which works as `\pset` does. Without arguments it shows every setting, with a name it shows that setting, and with a name and a value it sets it. The value is read as the other meta commands read an argument: it can be quoted, `:name` is interpolated and a backtick runs a command.
 
-Use the `\? variables` command to display variable help information and to list special variables recognized by `usql`:
+(not connected)=\> \\uset pager "less -R"
+pager is "less -R"
+(not connected)=\> \\uset on\_error\_stop on
+on\_error\_stop is on
+(not connected)=\> \\uset
+echo\_hidden           off
+editor                ""
+on\_error\_stop         on
+pager                 "less -R"
+prompt1               "%S%N%m%/%R%# "
+...
+
+A setting can also be given on the command line with `--uset NAME=VALUE`, and `-q` is `--uset quiet=on`. The environment variables `USQL_PAGER`, `PAGER`, `USQL_EDITOR`, `EDITOR`, `VISUAL`, `USQL_SSLMODE`, `USQL_SHOW_HOST_INFORMATION` and `USQL_TERM_GRAPHICS` give the first value of their settings.
+
+Use the `\? variables` command to display help information and to list the variables and the settings recognized by `usql`:
 
 (not connected)=\> \\? variables
 
@@ -1341,20 +1406,20 @@ For example:
 
 $ cat $HOME/.usqlpass
 postgres:\*:\*:\*:postgres:P4ssw0rd
-godror:\*:\*:\*:system:P4ssw0rd
+oracle:\*:\*:\*:system:P4ssw0rd
 $ usql
 Type "help" for help.
 
 (not connected)=\> \\set pglocal postgres://postgres@localhost:49153?sslmode=disable
-(not connected)=\> \\set orlocal godror://system@localhost:1521/orasid
+(not connected)=\> \\set orlocal oracle://system@localhost:1521/orasid
 (not connected)=\> \\copy :pglocal :orlocal 'select staff\_id, first\_name from staff' 'staff(staff\_id, first\_name)'
 COPY 18
 
 #### Syntax Highlighting
 
-Interactive queries will be syntax highlighted by default, using Chroma. There are a number of variables that control syntax highlighting:
+Interactive input is highlighted as you type it. `usql` parses the input with the grammar of transit, and the SQL of each statement with the grammar of the dialect of the connection. The colors come from a style of transit, which has the styles of Chroma. The settings that control highlighting are:
 
-Variable
+Setting
 
 Default
 
@@ -1362,43 +1427,45 @@ Values
 
 Description
 
-`SYNTAX_HL`
+`syntax_hl`
 
 `true`
 
 `true` or `false`
 
-enables syntax highlighting
+turns highlighting on and off
 
-`SYNTAX_HL_FORMAT`
+`syntax_hl_format`
 
 _dependent on terminal support_
 
-formatter name
+`noop`, `terminal`, `terminal256`, `terminal16m`
 
-Chroma formatter name
+the number of colors: none, 16, 256 or 24 bits
 
-`SYNTAX_HL_OVERRIDE_BG`
+`syntax_hl_override_bg`
 
 `true`
 
 `true` or `false`
 
-enables overriding the background color of the chroma styles
+keeps the background of the terminal, and not the style's
 
-`SYNTAX_HL_STYLE`
+`syntax_hl_style`
 
 `monokai`
 
 style name
 
-Chroma style name
+the name of a style
 
-The `SYNTAX_*` variables are regular `usql` variables, and can be `\set` and `\unset`:
+They are set with `\uset`. A terminal with no color, or a `NO_COLOR` variable, turns highlighting off by default:
 
 $ usql
-(not connected)=\> \\set SYNTAX\_HL\_STYLE dracula
-(not connected)=\> \\unset SYNTAX\_HL\_OVERRIDE\_BG
+(not connected)=\> \\uset syntax\_hl\_style dracula
+syntax\_hl\_style is dracula
+(not connected)=\> \\uset syntax\_hl off
+syntax\_hl is false
 
 #### Context Completion
 
@@ -1565,12 +1632,12 @@ Type "help" for help.
 
 pg:booktest@=\>
 
-`SHOW_HOST_INFORMATION` is a standard `usql` variable, and can be `\set` or `\unset`. Additionally, it can be passed via the command-line using `-v` or `--set`:
+`show_host_information` is a setting of `usql`, and is set with `\uset`. Additionally, it can be passed via the command-line using `--uset`:
 
-$ usql --set SHOW\_HOST\_INFORMATION=false pg://
+$ usql --uset show\_host\_information=false pg://
 Type "help" for help.
 
-pg:booktest@=\> \\set SHOW\_HOST\_INFORMATION true
+pg:booktest@=\> \\uset show\_host\_information true
 pg:booktest@=\> \\connect pg://
 Connected with driver postgres (PostgreSQL 9.6.9)
 pg:booktest@=\>
@@ -1670,16 +1737,16 @@ chmod 0600 ~/.usqlpass
 
 $ cat $HOME/.usqlrc
 \\echo WELCOME TO THE JUNGLE \`date\`
-\\set SYNTAX\_HL\_STYLE paraiso-dark
+\\uset syntax\_hl\_style paraiso-dark
 
 -- set color prompt (default is prompt is "%S%m%/%R%#" )
-\\set PROMPT1 "\\033\[32m%S%m%/%R%#\\033\[0m"
+\\uset prompt1 "\\033\[32m%S%m%/%R%#\\033\[0m"
 $ usql
 WELCOME TO THE JUNGLE Thu Jun 14 02:36:53 WIB 2018
 Type "help" for help.
 
-(not connected)=\> \\set
-SYNTAX\_HL\_STYLE = 'paraiso-dark'
+(not connected)=\> \\uset syntax\_hl\_style
+syntax\_hl\_style is "paraiso-dark"
 (not connected)=\>
 
 See `_samples/usqlrc` for a sample.
@@ -1744,8 +1811,6 @@ Contributing
 
 _Pick up an issue today, and submit a PR tomorrow!_
 
-Related Projects
-----------------
+  
 
--   dburl - Go package providing a standard, URL-style mechanism for parsing and opening database connection URLs
--   dbtpl - Go command-line tool to generate Go code from a database schema
+usql | dburl | dbmeta | dbimp | cassandra | dbtpl | tblfmt | rline | transit

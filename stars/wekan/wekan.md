@@ -1,6 +1,6 @@
 ---
 project: wekan
-stars: 21111
+stars: 21123
 description: FLOSS kanban, built with Meteor. Official Public Support at GitHub issues only. Official Private Pre-Paid Support at https://wekan.fi/commercial-support/ only. Translation PRs to imports/i18n/data/en.i18n.json, other translations at https://app.transifex.com/wekan/wekan . No telemetry.
 url: https://github.com/wekan/wekan
 ---
@@ -27,7 +27,7 @@ Since WeKan ® is a free software, you don’t have to trust us with your data a
 
 -   WeKan ® is used in most countries of the world.
 -   WeKan ® largest user has 30k users using WeKan ® in their company.
--   WeKan ® has been translated into 234 locale catalogs; 164 have non-English text for over 90% of source keys. This measures text coverage, not translation quality; language review and remaining translations are ongoing.
+-   WeKan ® has been translated into 234 locale catalogs; 234 have non-English text for over 90% of source keys. This measures text coverage, not translation quality; language review and remaining translations are ongoing.
 -   Databases:
     -   FerretDB v1 with SQLite, the default on every platform - bundle, Docker, Snap and Kubernetes - so no database server is needed.
     -   FerretDB v1 with PostgreSQL works; with MySQL, MariaDB or SAP HANA it is experimental.

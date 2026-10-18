@@ -1,6 +1,6 @@
 ---
 project: duplicati
-stars: 15077
+stars: 15123
 description: Store securely encrypted backups in the cloud!
 url: https://github.com/duplicati/duplicati
 ---
@@ -16,7 +16,7 @@ Duplicati is a free, open-source backup client that securely stores encrypted, i
 
    _Amazon S3, IDrive e2, Backblaze (B2), Box, Dropbox, FTP, Google Cloud and Drive, MEGA, Microsoft Azure and OneDrive, Rackspace Cloud Files, OpenStack Storage (Swift), Storj DCS, SSH (SFTP), WebDAV, Tencent Cloud Object Storage (COS), Aliyun OSS, and more!_
 
-Duplicati is licensed under the MIT license and is available for Windows, macOS, and Linux.
+The Duplicati core is licensed under the MIT license. The contents of the `proprietary/` folder are covered by the Duplicati Inc Software license instead. Duplicati is available for Windows, macOS, and Linux.
 
 Download
 ========
@@ -74,16 +74,4 @@ Contributing Code
 
 Instructions for setting up your development environment and building Duplicati are available in the documentation. Pull requests for bug fixes or improvements are highly appreciated.
 
-Looking for something to work on? Check out minor change issues or UI-related issues.
-
-Thank you to all our contributors:
-
-Backers
--------
-
-Thank you to all our backers! 🙏
-
-Sponsors
---------
-
-A special thanks to our sponsors for supporting this open-source project:
+Looking for something to work on? Check out minor change issues or UI-related issues. The web UI now lives in the separate duplicati/ngclient repository.

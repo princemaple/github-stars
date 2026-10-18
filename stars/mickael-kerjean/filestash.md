@@ -1,20 +1,23 @@
 ---
 project: filestash
-stars: 14780
-description: :file_folder: Universal File Storage Client
+stars: 14803
+description: :file_folder: Universal File Management Clients (for humans and agents)
 url: https://github.com/mickael-kerjean/filestash
 ---
 
 What is this?
 =============
 
-Filestash started as a storage agnostic Dropbox-like file manager that speaks every storage protocol (FTP, SFTP, S3, SMB, WebDAV, IPFS, and about 20 more). It grew into what we want to be the world's best file management platform, centered around **3 separate products**:
+Filestash started as a storage agnostic Dropbox-like file manager that speaks every storage protocol (SFTP, S3, SMB, WebDAV, IPFS, FTP, NFS, and about 20 more).
+
+It grew into what we want to be the world's best file management platform. The world has enough silos to lock your data in. What is missing is the tooling to give those existing silos the Dropbox++ treatment with:
 
 1.  **Web client** _(the file manager available from your browser)_: documentation / screenshot / demo
-2.  **Native client** _(to sync your data on your device)_: repo / screenshots for mac, windows, linux, android & iphone
-3.  **Gateways** _(to expose your storages over any protocol)_: showcase
+2.  **Native client for humans** _(the folder that syncs across your devices)_: repo / screenshots for mac, windows, linux, android
+3.  **Native client for agents** _(A shared folder that syncs for your agents)_: documentation / demo
+4.  **Gateways** _(to expose your data over any protocol)_: showcase
 
-The philosophy that guides this project is: "anything that's not a fundamental truth of the universe lives in a plugin". That keeps the core lean and fast, and the opinions replaceable, so when your requirements get deep or weird, the answer is a plugin, not a fork. You only carry the bloat you really need.
+The philosophy that guides this project is: "anything that's not a fundamental truth of the universe lives in a plugin". That keeps the core lean and fast, and the opinions replaceable, so when your requirements get deep or weird, the answer is a plugin.
 
 Key Features
 ============
@@ -120,4 +123,4 @@ Familiar with the infamous comment from Dropbox's launch on HN? In my memory it 
 Credits
 =======
 
-Filestash stands on the shoulder of: contributors, folks developing awesome libraries, BrandonM, a whole bunch of C stuff (the C standard library, libjpeg, libpng, libgif, libraw and many more), fontawesome, material, Browser stack to let us test on real devices, and the many guys from Nebraska and elsewhere who have been thanklessly maintaining the critical pieces that Filestash sits on top:
+Filestash stands on the shoulders of: contributors, folks developing awesome libraries, BrandonM, a whole bunch of C stuff (the C standard library, libjpeg, libpng, libgif, libraw and many more), fontawesome, material, Browser stack to let us test on real devices, and the many guys from Nebraska and elsewhere who have been thanklessly maintaining the critical pieces that Filestash sits on top:

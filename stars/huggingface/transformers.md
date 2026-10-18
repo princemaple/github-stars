@@ -1,6 +1,6 @@
 ---
 project: transformers
-stars: 167264
+stars: 167798
 description: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. 
 url: https://github.com/huggingface/transformers
 ---
@@ -165,7 +165,6 @@ When shouldn't I use Transformers?
 
 -   This library is not a modular toolbox of building blocks for neural nets. The code in the model files is not refactored with additional abstractions on purpose, so that researchers can quickly iterate on each of the models without diving into additional abstractions/files.
 -   The training API is optimized to work with PyTorch models provided by Transformers. For generic machine learning loops, you should use another library like Accelerate.
--   The example scripts are only _examples_. They may not necessarily work out-of-the-box on your specific use case and you'll need to adapt the code for it to work.
 
 100 projects using Transformers
 -------------------------------

@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 9859
+stars: 9915
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -295,6 +295,12 @@ uvx pocket-tts generate \\
   --config hf://EryriLabs/pocket-tts-cymraeg/config.yaml@1f23b3a8d1706b24a2faf3c77075a223ed69f57c \\
   --text "Mae'r tywydd yn braf yng Nghymru heddiw."
 
+Pocket TTS Turkish by @alperiox, 6 layers
+
+uvx pocket-tts generate \\
+  --config hf://alperiox/pocket-tts-turkish/turkish\_6l.yaml@13d9b4ad051ce9d5ef5bfb8af9724be01ad2fd31 \\
+  --text "Merhaba, bugün hava çok güzel."
+
 Pocket TTS Polish by @shefowl, 6 layers
 
 uvx pocket-tts generate \\
@@ -308,6 +314,19 @@ uvx pocket-tts generate \\
   --config hf://myned-ai/pocket-tts-greek/greek.yaml@c578b65949df101ac352e84ac5c236206e5bb348 \\
   --voice hf://myned-ai/pocket-tts-greek/voices/eleni.wav@c578b65949df101ac352e84ac5c236206e5bb348 \\
   --text "Καλημέρα! Θέλετε να κλείσουμε ένα ραντεβού για αύριο;"
+
+Pocket TTS Japanese (日本語) by @takuma104, 6 layers
+
+uvx pocket-tts generate \\
+  --config hf://takuma104/pocket-tts-ja/japanese.yaml@562a82cba331499b75a050b7e200f4ee3241b9e9 \\
+  --voice hf://takuma104/pocket-tts-ja/voices/female\_03.wav@119685fd7a51356429c6d25e37d570b423c17663 \\
+  --text "こんにちは。今日はいい天気ですね。"
+
+Pocket TTS Chinese (中文) by @hustfyb, 6 layers
+
+pip install pocket-tts soundfile wetext
+cd <本目录\>
+python demo.py --prompt your\_voice.wav --text "您的订单编号是20260918123456，退款368.5元预计三个工作日内到账。" --out out.wav
 
 Want your model here? Head to the training Readme to get started!
 

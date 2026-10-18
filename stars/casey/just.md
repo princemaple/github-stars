@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 36197
+stars: 36323
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -883,6 +883,8 @@ Causing it to receive the default when not passed in the invocation:
 
 $ just foo
 bar=goodbye
+
+If `--help` or `-h` is passed to a recipe that does not define that option, the recipe's help string is printed and execution stopsmaster.
 
 ### Avoiding Argument Splitting
 
@@ -2801,6 +2803,14 @@ Trying ../justfile
 echo bar
 bar
 
+### Global Fallback Justfile
+
+A global fallback justfile may be set with `--global-fallback-justfile <PATH>`, or by setting the `JUST_GLOBAL_FALLBACK_JUSTFILE` environment variable.
+
+If no justfile is found, or if the search for a fallback does not succeed, the global fallback justfile is used instead. The working directory is set to the root of the current project, as determined by the presence of a directory like `.git`, or the invocation directory if no such directory is found. The global fallback justfile may itself use `set fallback`.
+
+The global fallback justfile is ignored when `--justfile`, `--global-justfile`, or `--working-directory` is passed.
+
 ### Remote Justfiles
 
 If you wish to include a `mod` or `import` source file in many `justfiles` without needing to duplicate it, you can use an optional `mod` or `import`, along with a recipe to fetch the module source:
@@ -3385,7 +3395,7 @@ All keys other than `extra` and `inputs` are populated automatically.
 
 Cache key objects for invoked recipes can be printed to standard error with `just -vv`.
 
-The environment variables included in `environment` may be controlled with `[cache(environment = EXPRESSION])`master.
+The environment variables included in `environment` may be controlled with `[cache(environment = EXPRESSION])`1.59.0.
 
 The value of `extra` may be supplied with `[cache(extra = EXPRESSION)]`, where `EXPRESSION` is an arbitrary expression evaluated with recipe arguments in scope. Changes to the value of `extra` will cause a cache miss.
 
@@ -3427,7 +3437,7 @@ just --clean bar::bob
 
 By default, environment variables which are exported or unexported in the `justfile` are included in the cache key, and environment variables exported outside the `justfile` and inherited by `just` are not included.
 
-Environment variables can be added or removed from the cache key using `[cache(environment = EXPRESSION)]`master.
+Environment variables can be added or removed from the cache key using `[cache(environment = EXPRESSION)]`1.59.0.
 
 In this example, the environment variable `foo` will not be included in the cache key, but `PATH` will:
 
@@ -4628,6 +4638,60 @@ Of course, a shebang also works:
 hello:
   #!/usr/bin/env -S uv run --script
   print("Hello from Python!")
+
+### Integrating with `mise`
+
+`mise` is a tool for installing development tools, managing the environment, and running tasks.
+
+`just` and `mise` work well together, with `just` defining and running tasks and `mise` installing and managing development tools.
+
+To load the `mise` environment within `just`:
+
+set dotenv-command := 'mise env'
+set dotenv-override
+
+test:
+  node --version
+  echo $FOO
+
+The environment is loaded once, when `just` starts, and is available in all recipes. `set dotenv-override` is required, since `mise env` returns a value for the `PATH` variable, which is always already set.
+
+`mise` will interactively prompt and ask if `mise.toml` should be trusted. In non-interactive environments, `mise trust` should be run first.
+
+`mise env` does not install missing tools, so run `mise install` first, or install missing tools automatically with:
+
+set dotenv-command := 'mise install -q && mise env'
+
+Tool versions can be overridden for the entire justfile:
+
+set dotenv-command := 'mise env node@22'
+
+Or for individual recipes:
+
+\[script('mise', 'exec', 'node@22', '\--', 'node')\]
+version:
+  console.log(process.version);
+
+\[script('mise', 'exec', 'python@3.13', '\--', 'sh', '\-eu')\]
+test:
+  python -m pytest
+
+Alternatively, `set shell` can be used to run every line of every shell recipe with `mise exec`:
+
+set shell := \['mise', 'exec', '\--', 'sh', '\-cu'\]
+
+test:
+  node --version
+
+And the `[env]` attribute can be used to override tool versions on a per-recipe basis:
+
+set shell := \['mise', 'exec', '\--', 'sh', '\-cu'\]
+
+\[env('MISE\_NODE\_VERSION', '22')\]
+test:
+  node --version
+
+Note that `mise exec` takes longer to run than `sh`, so `set shell` may make shell recipes with many commands noticeably slower.
 
 ### Activating Environments
 

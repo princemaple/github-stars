@@ -1,7 +1,7 @@
 ---
 project: edge-tts
-stars: 12206
-description: Use Microsoft Edge's online text-to-speech service from Python WITHOUT needing Microsoft Edge or Windows or an API key
+stars: 12311
+description: Use Microsoft Edge's online text-to-speech service from Python WITHOUT needing Microsoft Edge
 url: https://github.com/rany2/edge-tts
 ---
 
@@ -82,6 +82,20 @@ You can change the rate, volume and pitch of the generated speech by using the `
 $ edge-tts --rate=-50% --text "Hello, world!" --write-media hello_with_rate_lowered.mp3 --write-subtitles hello_with_rate_lowered.srt
 $ edge-tts --volume=-50% --text "Hello, world!" --write-media hello_with_volume_lowered.mp3 --write-subtitles hello_with_volume_lowered.srt
 $ edge-tts --pitch=-50Hz --text "Hello, world!" --write-media hello_with_pitch_lowered.mp3 --write-subtitles hello_with_pitch_lowered.srt
+```
+
+### Progress
+
+When stderr is a terminal, a progress bar is drawn on it while the audio is generated:
+
+```
+ 42%|███████████████████▌                          | 1.5MB  00:03<00:04
+```
+
+The percentage is the audio received so far against the total length estimated from the service's boundary metadata, so it tracks how much work is left rather than how much text has been read out. The bar is suppressed when stderr is redirected, when subtitles are being written to stderr with `--write-subtitles -`, and when `--no-progress` is passed.
+
+```
+$ edge-tts --no-progress --text "Hello, world!" --write-media hello.mp3
 ```
 
 Python module

@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83647
+stars: 83689
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -395,7 +395,7 @@ Courses
 
 -   CS50 - Introduction to Artificial Intelligence with Python (and Machine Learning), Harvard OCW
 -   10-202: Introduction to Modern AI - CMU
--   CS 188 - Introduction to Artificial Intelligence, UC Berkeley - Spring 2025, by John Canny, Oliver Grillmeyer (Spring 2024) (Spring 2023)
+-   CS 188 - Introduction to Artificial Intelligence, UC Berkeley - Spring 2026, by Dan Klein, Stuart Russell (Spring 2025) (Spring 2024) (Spring 2023)
 -   6.034 Artificial Intelligence, MIT OCW
 -   CS221: Artificial Intelligence: Principles and Techniques - Autumn 2019 - Stanford University
 -   15-780 - Graduate Artificial Intelligence, Spring 14, CMU
@@ -633,7 +633,7 @@ Courses
     -   CMSC 828W Foundations of Deep Learning (Fall 2020) - UMD (YouTube)
     -   TUM IN2346 Introduction to Deep Learning Fall 2024, by Daniel Cremers (Summer 2023)
     -   UT Austin - Advances in Deep Learning
-    -   HKU - Data 8014 Principles of Deep Representation Learning Fall 2025, by Yi Ma
+    -   HKU - Data 8014 Principles of Deep Representation Learning Fall 2025, by Yi Ma (Fa 26, Bilibili)
     -   Local Explanations for Deep Learning Models (Fall 2023)
     -   CS 6966/5966 Interpretability of LLMs (Spring 2026) - University of Utah
     -   Deep Graph Learning (DGL, 2025) - Prof. Islem Rekik - Imperial College London

@@ -1,6 +1,6 @@
 ---
 project: Nuitka
-stars: 15182
+stars: 15188
 description: Nuitka is a Python compiler written in Python.  It's fully compatible with Python 2.6, 2.7, 3.4-3.14. You feed it your Python app, it does a lot of clever things, and spits out an executable or extension module. 
 url: https://github.com/Nuitka/Nuitka
 ---
@@ -817,7 +817,9 @@ For Linux standalone it is pretty difficult to build a binary that works on othe
 
 The solution is to build on the oldest OS that you want to see supported. Picking that and setting it up can be tedious, so can be login, and keeping it secure, as it's something you put your source code on.
 
-To aid that, Nuitka commercial has container based builds, that you can use. This uses dedicated optimized Python builds, targets CentOS 7 and supports even newest Pythons and very old OSes that way using recent C compiler chains all turn key solution. The effort needs to be compensated to support Nuitka development for Linux, there you need to purchase it https://nuitka.net/doc/commercial.html but even a sponsor license will be cheaper than doing it yourself.
+To aid that, Nuitka commercial has container based builds, that you can use. This uses dedicated optimized Python builds, targets CentOS 7, 8 and 9 and supports even newest Pythons and very old OSes that way using recent C compiler chains all turn key solution. The effort needs to be compensated to support Nuitka development for Linux, there you need to purchase it https://nuitka.net/doc/commercial.html but even a sponsor license will be cheaper than doing it yourself.
+
+Nuitka itself can also compile inside a container with `--container=CentOS8`, and plugins can provide additional containers. See `--help` for the container options.
 
 #### Program crashes system (fork bombs)
 

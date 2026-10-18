@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 28593
+stars: 28686
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -71,7 +71,7 @@ nix-shell -p '(import <nur> { pkgs = import <nixpkgs> {}; }).repos.charmbracelet
 
 ### NixOS & Home Manager Module Usage via NUR
 
-Crush provides NixOS and Home Manager modules via NUR. You can use these modules directly in your flake by importing them from NUR. Since it auto detects whether its a home manager or nixos context you can use the import the exact same way :)
+Crush provides NixOS and Home Manager modules via NUR. You can use these modules directly in your flake by importing them from NUR. Since it auto detects whether it's a home manager or nixos context you can use the import the exact same way :)
 
 {
   inputs \= {

@@ -1,21 +1,21 @@
 ---
 project: Pake
-stars: 61990
-description: 🤱🏻 Turn any website into a tiny, fast desktop app.
+stars: 62148
+description: Turn any website into a lightweight desktop app with one command, on macOS, Windows and Linux.
 url: https://github.com/tw93/Pake
 ---
 
 Pake
 ====
 
-**Turn any webpage into a desktop app with one command. Supports macOS, Windows, and Linux.**
+**Turn any website into a lightweight desktop app with one command. Supports macOS, Windows, and Linux.**
 
 English · 中文 · 繁體 · 日本語 · 한국어 · Deutsch · Français
 
 Features
 --------
 
--   🎐 **Lightweight**: Installer is nearly 20 times smaller than Electron packages, typically under 10 MB on disk
+-   🎐 **Lightweight**: Installer is nearly 20 times smaller than Electron packages, typically under 10 MB on disk, a lighter alternative to Nativefier and other Electron wrappers
 -   🚀 **Fast**: Built with Rust Tauri, much faster than traditional JS frameworks with lower memory usage
 -   ⚡ **Easy to use**: One-command packaging via CLI or online building, no complex configuration needed
 -   📦 **Feature-rich**: Supports shortcuts, immersive windows, drag & drop, style customization, ad removal

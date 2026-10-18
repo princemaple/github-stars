@@ -1,6 +1,6 @@
 ---
 project: fzf
-stars: 83532
+stars: 83622
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---
@@ -809,6 +809,8 @@ end
 
 Fuzzy completion in Nushell works via the external completer mechanism. There are some differences compared to bash and zsh:
 
+-   Nushell 0.116.1 or newer is required. The completion runs on the line-editor thread so fzf can take the terminal; a previously configured external completer (e.g. Carapace) is therefore invoked inline when the `**` trigger is absent.
+-   The script wraps whichever external completer is configured when it loads, so load it after any other external completer setup. The autoload setup described above runs after `config.nu`, so it already does this.
 -   On Nushell >= 0.103.0, the external completer is no longer called for built-in commands (e.g. `cd`, `ls`). Fuzzy completion with `**<TAB>` only works for external commands.
 -   Custom completers can be defined via the `$env.FZF_COMPLETERS` record in your `config.nu`. Each entry is a closure that receives the prefix and the command spans, and returns either a list of candidate strings or a record `{ candidates: [...], opts: [...] }` for custom fzf options:
     

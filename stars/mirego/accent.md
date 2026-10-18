@@ -1,6 +1,6 @@
 ---
 project: accent
-stars: 1495
+stars: 1493
 description: The first developer-oriented translation tool. True asynchronous flow between translators and your team.
 url: https://github.com/mirego/accent
 ---
@@ -349,6 +349,14 @@ _none_
 `OIDC_DISCOVERY_URI`
 
 _none_
+
+URL to openid-configuration. Deprecated, use `OIDC_ISSUER`
+
+`OIDC_ISSUER`
+
+_none_
+
+Issuer URL (e.g. `https://idp-website.example`, or `https://idp-website.example/realms/XXX`)
 
 `OIDC_UID_FIELD`
 

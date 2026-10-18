@@ -1,6 +1,6 @@
 ---
 project: plyr
-stars: 30002
+stars: 29994
 description: Deprecated in favour of Video.js 10; security updates only. Simple HTML5, YouTube and Vimeo player.
 url: https://github.com/sampotts/plyr
 ---

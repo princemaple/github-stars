@@ -1,6 +1,6 @@
 ---
 project: smhmd
-stars: 1831
+stars: 1829
 description: Software engineer. I design and build for the web.
 url: https://github.com/smhmd/smhmd
 ---

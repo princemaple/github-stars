@@ -1,6 +1,6 @@
 ---
 project: imagor
-stars: 4036
+stars: 4043
 description: Fast, secure image processing server and Go library, using libvips
 url: https://github.com/cshum/imagor
 ---
@@ -14,7 +14,7 @@ imagor uses one of the most efficient image processing libraries, libvips with t
 
 imagor supports a wide range of image-processing use cases, available as a HTTP server with first-class Docker support. It adopts the thumbor URL syntax representing a high-performance drop-in replacement.
 
-imagor is built with speed, security and extensibility in mind. Alongside there is imagorvideo bringing video thumbnail capability through ffmpeg C bindings.
+imagor is built with speed, security and extensibility in mind. Alongside there is imagorvideo bringing video thumbnail capability through ffmpeg C bindings, and Imagor MCP bringing template composition to agents.
 
 ### Quick Start
 
@@ -48,6 +48,13 @@ Full documentation is available at docs.imagor.net.
 -   Storage
 -   Security
 -   Configuration
+
+Templates
+---------
+
+**Imagor MCP** — an MCP server and a skill that add a template layer to imagor. An agent writes a layout: OG cards, product grids, quotes, testimonials, and it compiles to one imagor URL.
+
+**See the recipes »**
 
 Consulting
 ----------

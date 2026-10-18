@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40547
+stars: 40621
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -8,8 +8,6 @@ url: https://github.com/schollz/croc
   
 
 **This project’s future depends on community support. Become a sponsor today.**
-
-Supporting organizations:
 
 About
 -----
@@ -299,8 +297,6 @@ Relay hostnames are resolved by the proxy, so the client does not need a working
 
 For a network that only permits proxy traffic, use `--transport relay` on the sender to use the SOCKS5-capable relay transport for file data. The browser client uses the browser's proxy settings for its WebSocket gateway connection; the native CLI flag does not configure the browser.
 
-**Sponsored by SX.org.**
-
 ### Data transport selection
 
 The native CLI defaults to `--transport auto`. After the normal three-word-code PAKE handshake, two compatible native clients create PAKE-bound Tailcat node identities and open one or more TCP streams over an in-process Tailscale userspace WireGuard network. Magicsock starts through DERP and promotes the connection to a direct UDP path whenever NAT traversal succeeds. If the peer is a browser, an older client, or Tailcat setup fails, both clients use croc's existing relay data ports. The public spelling `--transport derp` is retained; in strict mode it requires Tailcat support and disables croc-relay fallback. Public DERP is best effort and may apply fairness limits; see Tailscale's DERP reference and performance guidance.
@@ -342,6 +338,12 @@ You can run your own relay:
 croc relay
 
 By default, it uses TCP ports 9009-9013. You can customize the ports (e.g., `croc relay --ports 1111,1112`), but at least **2** ports are required.
+
+Each relay port allows 64 incomplete handshakes in total and 32 per source IP. Clients must send their first complete protocol message within 60 seconds and finish the handshake within 5 minutes. Croc sends the first message automatically; these deadlines do not limit how long an authenticated sender can wait for a receiver or how long a transfer can run. Existing room and connection timeouts still apply.
+
+Use `--max-pending-handshakes`, `--max-pending-handshakes-per-source`, `--first-message-timeout`, and `--handshake-timeout` to adjust these limits. Their environment variables are `CROC_MAX_PENDING_HANDSHAKES`, `CROC_MAX_PENDING_HANDSHAKES_PER_SOURCE`, `CROC_FIRST_MESSAGE_TIMEOUT`, and `CROC_HANDSHAKE_TIMEOUT`. All values must be positive; the total limit and overall timeout always bound the per-source allowance and first-message timeout.
+
+Users behind the same NAT or proxy share a source allowance, including browser users connecting through the same croc-web bridge. Raising the per-source limit to the total limit removes the protection against one source filling the pool. These concurrent handshake limits are separate from the source and room join rate limits. Fast-admission tokens also use the bounded handshake pool; several source IPs can still fill it.
 
 To send files using your relay:
 

@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 62367
+stars: 62594
 description: Ultralytics YOLO27, YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking
 url: https://github.com/ultralytics/ultralytics
 ---

@@ -1,6 +1,6 @@
 ---
 project: obligator
-stars: 841
+stars: 842
 description: Simple and opinionated OpenID Connect server designed for self-hosters
 url: https://github.com/lastlogin-net/obligator
 ---

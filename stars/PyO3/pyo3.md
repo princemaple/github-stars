@@ -1,6 +1,6 @@
 ---
 project: pyo3
-stars: 16220
+stars: 16242
 description: Rust bindings for the Python interpreter
 url: https://github.com/PyO3/pyo3
 ---
@@ -24,7 +24,7 @@ PyO3 supports the following Python distributions:
 
 -   CPython 3.9 or greater
 -   PyPy 7.3 (Python 3.11+)
--   GraalPy 25.0 or greater (Python 3.12+)
+-   GraalPy 25.4 or greater (Python 3.13+)
 
 You can use PyO3 to write a native Python module in Rust, or to embed Python in a Rust binary. The following sections explain each of these in turn.
 
@@ -69,7 +69,7 @@ name = "string\_sum"
 crate-type = \["cdylib"\]
 
 \[dependencies\]
-pyo3 = "0.29.3"
+pyo3 = "0.30.0"
 
 **`src/lib.rs`**
 
@@ -126,7 +126,7 @@ To install the Python shared library on RPM based distributions (e.g. Fedora, Re
 Start a new project with `cargo new` and add `pyo3` to the `Cargo.toml` like this:
 
 \[dependencies.pyo3\]
-version = "0.29.3"
+version = "0.30.0"
 # Enabling this cargo feature will cause PyO3 to start a Python interpreter on first call to \`Python::attach\`
 features = \["auto-initialize"\]
 
@@ -211,6 +211,8 @@ Examples
 -   pycrdt _Python bindings for the Rust CRDT implementation Yrs._
 -   pydantic-core _Core validation logic for pydantic written in Rust._
 -   primp _The fastest python HTTP client that can impersonate web browsers by mimicking their headers and TLS/JA3/JA4/HTTP2 fingerprints._
+-   pyro-mysql _A high-performance MySQL driver for Python._
+-   pyro-postgres _A high-performance PostgreSQL driver for Python._
 -   quebec _A database-backed background job queue for Python, inspired by Rails' Solid Queue._
 -   radiate: _A high-performance evolution engine for genetic programming and evolutionary algorithms._
 -   rateslib _A fixed income library for Python using Rust extensions._

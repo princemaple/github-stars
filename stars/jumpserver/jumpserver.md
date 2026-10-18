@@ -1,6 +1,6 @@
 ---
 project: jumpserver
-stars: 31746
+stars: 31789
 description: JumpServer is an Open-source Privileged Access Management (PAM) platform with AI-powered capabilities, providing DevOps and IT teams a unified workspace to securely access SSH, RDP, Kubernetes, databases, websites, RemoteApp, VirtualApp, and more.
 url: https://github.com/jumpserver/jumpserver
 ---
@@ -8,7 +8,7 @@ url: https://github.com/jumpserver/jumpserver
 An open-source PAM platform (Bastion Host)
 ------------------------------------------
 
-English · 中文(简体) · 中文(繁體) · 日本語 · Português (Brasil) · Español · Русский · 한국어 · Tiếng Việt
+English · 中文(简体) · 中文(繁體) · 日本語 · Português (Brasil) · Español · Français · Русский · 한국어 · Tiếng Việt
 
   
 
@@ -24,7 +24,7 @@ Prepare a clean 64-bit Linux server with at least 4 CPU cores and 8 GB of RAM.
 
 curl -sSL https://github.com/jumpserver/jumpserver/releases/latest/download/quick\_start.sh | bash
 
-Open JumpServer in your browser at `http://your-jumpserver-ip/`
+Open `https://<jumpserver-host>/` in your browser, replacing `<jumpserver-host>` with the IP address or domain name of the host running JumpServer.
 
 -   Username: `admin`
 -   Password: `ChangeMe`

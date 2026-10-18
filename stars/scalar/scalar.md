@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 16249
+stars: 16279
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -35,6 +35,10 @@ Scalar
 ### Quickstart
 
 #### Set up with your coding agent
+
+Install the `scalar-api-reference` skill to give your coding agent guidance for framework integration, configuration, and troubleshooting:
+
+npx skills add scalar/scalar --skill scalar-api-reference
 
 Copy this prompt into your coding agent from your project:
 
@@ -320,19 +324,22 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **bgrcs**
 
   
-**bielu**
+**lazerg**
 
   
-**lazerg**
+**bielu**
 
   
 **AbdelhamidKhald**
 
   
-**alonfaraj**
+**gevann**
 
   
-**gevann**
+**charan-rathore**
+
+  
+**alonfaraj**
 
   
 **AshishKumarPathak**
@@ -377,13 +384,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **RemcoGoy**
 
   
-**TheVaan**
+**mcollina**
 
   
 **mpminardi**
 
   
-**mcollina**
+**TheVaan**
 
   
 **cobyfrombrooklyn-bot**
@@ -395,67 +402,70 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **paulomorgado**
 
   
-**nsychev**
-
-  
-**Mohib834**
-
-  
-**lc-soft**
+**ATREAY**
 
   
 **fuma-nama**
 
   
-**ATREAY**
+**AdzerKI**
 
   
-**SebastianBienert**
+**lc-soft**
 
   
-**SimonVadier**
+**Mohib834**
 
   
-**ledgersteve**
-
-  
-**timheuer**
-
-  
-**wilcoschoneveld**
-
-  
-**ykdojo**
-
-  
-**x-delfino**
-
-  
-**horpto**
-
-  
-**jpjpjp**
-
-  
-**trusta**
-
-  
-**hex0id**
+**nsychev**
 
   
 **yshrsmz**
 
   
+**hex0id**
+
+  
 **soulchild**
 
   
-**aqeelat**
+**trusta**
+
+  
+**jpjpjp**
+
+  
+**horpto**
+
+  
+**x-delfino**
+
+  
+**ykdojo**
+
+  
+**wilcoschoneveld**
+
+  
+**timheuer**
+
+  
+**ledgersteve**
+
+  
+**SimonVadier**
+
+  
+**SebastianBienert**
 
   
 **WDaan**
 
   
 **Duncanma**
+
+  
+**aqeelat**
 
   
 **silkfire**
@@ -467,55 +477,52 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **handrews**
 
   
-**kou029w**
-
-  
-**luke-hagar-sp**
-
-  
-**luc122c**
-
-  
-**mason-at-pieces**
-
-  
-**mouhannad-sh**
+**cyphercodes**
 
   
 **PrinceManfred**
 
   
-**cyphercodes**
+**mouhannad-sh**
 
   
-**ryux1**
+**mason-at-pieces**
 
   
-**rmp135**
+**luc122c**
 
   
-**roryschadler**
+**luke-hagar-sp**
 
   
-**rpmccarter**
-
-  
-**hrynevychroman**
-
-  
-**rbange**
-
-  
-**rcollas**
-
-  
-**bobheadxi**
+**kou029w**
 
   
 **robert-dean**
 
   
-**marikaner**
+**bobheadxi**
+
+  
+**rcollas**
+
+  
+**rbange**
+
+  
+**hrynevychroman**
+
+  
+**rpmccarter**
+
+  
+**roryschadler**
+
+  
+**rmp135**
+
+  
+**ryux1**
 
   
 **mirismaili**
@@ -551,6 +558,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **smoores-dev**
 
   
+**soGit**
+
+  
 **MarioGK**
 
   
@@ -570,6 +580,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **mvt147**
+
+  
+**theluckystrike**
 
   
 **michielbdejong**
@@ -615,9 +628,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **rickihastings**
-
-  
-**soGit**
 
   
 **Chinlinlee**
@@ -689,6 +699,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **sinh117801**
 
   
+**smrtfl**
+
+  
 **stratosblue**
 
   
@@ -746,7 +759,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **bingbeann**
 
   
-**abdulamite**
+**cactyx**
 
   
 **foxfriends**
@@ -756,9 +769,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **chadwhitacre**
-
-  
-**charan-rathore**
 
   
 **chrislearn**
@@ -815,6 +825,12 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **emmanuel-ferdman**
 
   
+**IsaacJenkinsTPZ**
+
+  
+**abdulamite**
+
+  
 **MathurAditya724**
 
   
@@ -825,6 +841,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **alewin**
+
+  
+**Anandb71**
 
   
 **gizero**
@@ -876,12 +895,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **Smyrcu**
-
-  
-**cactyx**
-
-  
-**IsaacJenkinsTPZ**
 
   
 **andthexi**
@@ -947,6 +960,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **da411d**
 
   
+**marikaner**
+
+  
 **froggy1014**
 
   
@@ -978,6 +994,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **255kb**
+
+  
+**gurkanceylan41**
 
   
 **haidargit**

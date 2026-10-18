@@ -1,6 +1,6 @@
 ---
 project: dozzle
-stars: 14600
+stars: 14654
 description: Realtime log viewer for containers.  Supports Docker, Swarm and K8s. 
 url: https://github.com/amir20/dozzle
 ---
@@ -9,8 +9,6 @@ Dozzle - dozzle.dev
 ===================
 
 Dozzle is a lightweight, web-based application for monitoring Docker logs in real time. It doesn't store any log files—it's designed purely for live log viewing.
-
-dozzle-dark.mp4
 
 Note
 

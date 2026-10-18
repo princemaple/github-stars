@@ -1,6 +1,6 @@
 ---
 project: datasette
-stars: 11512
+stars: 11515
 description: An open source multi-tool for exploring and publishing data
 url: https://github.com/simonw/datasette
 ---
@@ -37,7 +37,7 @@ You can also install it using `pip` or `pipx`:
 pip install datasette
 ```
 
-Datasette requires Python 3.10 or higher. We also have detailed installation instructions covering other options such as Docker.
+Datasette requires Python 3.11 or higher. We also have detailed installation instructions covering other options such as Docker.
 
 Basic usage
 -----------

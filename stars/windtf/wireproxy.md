@@ -1,6 +1,6 @@
 ---
 project: wireproxy
-stars: 5838
+stars: 5846
 description: Wireguard client that exposes itself as a socks5 proxy
 url: https://github.com/windtf/wireproxy
 ---
@@ -14,11 +14,6 @@ What is this
 ============
 
 `wireproxy` is a completely userspace application that connects to a wireguard peer, and exposes a socks5/http proxy or tunnels on the machine. This can be useful if you need to connect to certain sites via a wireguard peer, but can't be bothered to setup a new network interface for whatever reasons.
-
-Main Sponsor
-============
-
-RapidProxy is a residential proxy platform with 90M+ real IPs across 200+ countries. It supports rotation, geo-targeting, and high concurrency to improve scraping success and reduce bans. Start your free trial today!
 
 Why you might want this
 =======================
@@ -308,8 +303,3 @@ CheckAlive = 1.1.1.1
 If nothing is set for `CheckAlive`, an empty JSON object with 200 will be the response.
 
 The peer which the ICMP ping packet is routed to depends on the `AllowedIPs` set for each peers.
-
-Secondary sponsors
-==================
-
-This project is supported by the DigitalOcean Open Source Credits Program:

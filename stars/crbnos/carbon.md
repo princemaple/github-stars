@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 2715
+stars: 2741
 description: Open-source manufacturing ERP, MES and QMS. Quoting, MRP, inventory, shop floor, quality and lot/serial traceability on one Postgres schema, with a REST API and MCP server. Self-host or use Carbon Cloud.
 url: https://github.com/crbnos/carbon
 ---
@@ -310,10 +310,6 @@ Inngest background jobs: events, integrations, notifications, workflows
 `@carbon/planning`
 
 MRP and scheduling engines
-
-`@carbon/server-functions`
-
-Transactional writes shared by the apps, API and jobs (posting, issuing, converting)
 
 `@carbon/documents`
 

@@ -1,6 +1,6 @@
 ---
 project: opensource.builders
-stars: 1315
+stars: 1316
 description: Find and build open-source alternatives
 url: https://github.com/junaid33/opensource.builders
 ---

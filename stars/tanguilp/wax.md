@@ -1,6 +1,6 @@
 ---
 project: wax
-stars: 233
+stars: 234
 description: WebAuthn for Elixir
 url: https://github.com/tanguilp/wax
 ---
@@ -232,7 +232,7 @@ The `"UPDATE_AVAILABLE"` status is not whitelisted by default
 
 registration & authentication
 
-`20 * 60`
+`120`
 
 The validity duration of a challenge, in seconds
 

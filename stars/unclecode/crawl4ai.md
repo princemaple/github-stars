@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 85164
+stars: 85722
 description: Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key.
 url: https://github.com/unclecode/crawl4ai
 ---
@@ -8,9 +8,9 @@ url: https://github.com/unclecode/crawl4ai
 🚀🤖 Crawl4AI: the open-source web crawler for LLMs and AI agents
 =================================================================
 
-**Latest: v0.9.4 (23 Sep 2026)** · all releases →
+**Latest: v0.9.5 (14 Oct 2026)** · all releases →
 
-Crawl4AI turns any website into clean, LLM-ready Markdown for RAG, AI agents and data pipelines. Run the open-source web crawler and scraper yourself, free forever, or use it hosted with one key: scrape, search and extract through one API, with MCP for your agent.
+Crawl4AI turns any website into clean, LLM-ready Markdown for RAG, AI agents and data pipelines. Run the open-source web crawler and scraper yourself, free forever, or use it hosted with one key: `/scrape` a page to Markdown, `/extract` it to JSON, `/search` the web, `/serp` for Google's results page as data, `/answer` a question with sources; MCP for your agent. Free: 10 a minute, 2 at a time, 1,000 credits every month. Plans: 120 a minute, 10 at a time, from $10 a month.
 
 Two ways to use Crawl4AI
 ------------------------
@@ -35,7 +35,7 @@ Docker server, CLI and every option: Installation · docs.crawl4ai.com
 ### ☁️ Or use the cloud: no browsers, no proxies
 
 1.    
-    Verify your email and free credit to start is yours. No card. Soft launch: prices can change, what you buy stays yours.
+    Verify your email and 1,000 free credits are yours every month. No card. Soft launch: prices can change, what you buy stays yours.
     
 2.  Get any page as Markdown:
     
@@ -44,7 +44,7 @@ Docker server, CLI and every option: Installation · docs.crawl4ai.com
       -H "Content-Type: application/json" \\
       -d '{"url": "https://news.ycombinator.com"}' | jq -r .markdown
     
-    The same key works for `/search`, `/answer`, `/extract` and many URLs at once (`/scrape/batch`, `/scrape/jobs`). Pay as you go: live prices.
+    The same key works for `/extract`, `/search`, `/serp`, `/answer` and many URLs at once (`/scrape/batch`, `/scrape/jobs`). Pay as you go: live prices.
     
 3.  Give it to your AI agent. Claude Code shown; Codex, Cursor and OpenCode →
     
@@ -82,7 +82,7 @@ handled for you, automatically
 
 –
 
-`/search` and `/answer`
+`/search`, `/serp` and `/answer`
 
 **Price**
 
@@ -90,7 +90,7 @@ free, forever
 
 free (your hosting)
 
-pay as you go; free credit to start
+1,000 free credits every month; plans from $10 a month
 
 🤓 **My Personal Story**
 
@@ -170,6 +170,7 @@ Why developers pick Crawl4AI
 ☁️ **What the cloud adds**
 
 -   🔍 **Web search API**: `GET /search`, browser-free, ranked and cleaned. Docs →
+-   📊 **SERP API**: `GET /serp`, Google's results page as data: true ranks, every block, localised to a place. Beta. Docs →
 -   💬 **Answers**: `GET /answer` gives a direct answer to a question (experimental). Docs →
 -   🧪 **Extraction without your own LLM key**: `POST /extract`. Docs →
 -   🧗 **JS-heavy pages and bot walls**: handled automatically; you never pick an engine. Docs →

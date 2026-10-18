@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 1626
+stars: 1634
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---

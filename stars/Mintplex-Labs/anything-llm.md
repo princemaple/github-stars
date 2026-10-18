@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 66907
+stars: 67254
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -29,6 +29,7 @@ AnythingLLM supports multiple users as well where you can control the access and
 Cool Features of AnythingLLM
 ----------------------------
 
+-   Built-in local LLM engine - Run local models on your CPU or GPU (NVIDIA via CUDA, AMD and Intel via Vulkan) with no extra setup, powered by Lemonade and llama.cpp.
 -   Dynamic Model Routing - Automatically route chats to the best provider & model for the conversation based on rules you define.
 -   Automatic & User Managed Memories - Have your LLM remember important information about you or your workspace.
 -   Scheduled Tasks - Run recurring tasks or prompts on a cron schedule with full agent capabilities.
@@ -253,6 +254,7 @@ Basically, if telemetry is disabled we don't collect anything. However, dependin
 -   **AnythingLLM Mobile (Open-Source Licensed):** The same AnythingLLM on-device expierence, but on your phone.
 -   **AnythingLLM Browser Extension:** A browser extension that allows you to use AnythingLLM in your browser.
 -   **AnythingLLM Embed:** A widget that allows you to embed AnythingLLM in your website.
+-   **Open Computer:** A full computer environment for AI agents to use.
 
 * * *
 

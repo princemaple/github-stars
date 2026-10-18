@@ -1,6 +1,6 @@
 ---
 project: ruff
-stars: 49986
+stars: 50134
 description: An extremely fast Python linter and code formatter, written in Rust.
 url: https://github.com/astral-sh/ruff
 ---
@@ -29,7 +29,7 @@ Ruff aims to be orders of magnitude faster than alternative tools while integrat
 
 Ruff can be used to replace Flake8 (plus dozens of plugins), Black, isort, pydocstyle, pyupgrade, autoflake, and more, all while executing tens or hundreds of times faster than any individual tool.
 
-Ruff is extremely actively developed and used in major open-source projects like:
+Ruff is actively developed and used in major open-source projects like:
 
 -   Apache Airflow
 -   Apache Superset
@@ -90,8 +90,8 @@ Ruff is available as `ruff` on PyPI.
 
 Invoke Ruff directly with `uvx`:
 
-uvx ruff@0.17.0 check   # Lint all files in the current directory.
-uvx ruff@0.17.0 format  # Format all files in the current directory.
+uvx ruff@0.17.1 check   # Lint all files in the current directory.
+uvx ruff@0.17.1 format  # Format all files in the current directory.
 
 Or install Ruff with `uv` (recommended), `pip`, or `pipx`:
 
@@ -114,8 +114,8 @@ curl -LsSf https://astral.sh/ruff/install.sh | sh
 powershell -c "irm https://astral.sh/ruff/install.ps1 | iex"
 
 # For a specific version.
-curl -LsSf https://astral.sh/ruff/0.17.0/install.sh | sh
-powershell -c "irm https://astral.sh/ruff/0.17.0/install.ps1 | iex"
+curl -LsSf https://astral.sh/ruff/0.17.1/install.sh | sh
+powershell -c "irm https://astral.sh/ruff/0.17.1/install.ps1 | iex"
 
 You can also install Ruff via Homebrew, Conda, and with a variety of other package managers.
 
@@ -141,7 +141,7 @@ Ruff can also be used as a pre-commit hook via `ruff-pre-commit`:
 
 \- repo: https://github.com/astral-sh/ruff-pre-commit
   # Ruff version.
-  rev: v0.17.0
+  rev: v0.17.1
   hooks:
     # Run the linter.
     - id: ruff-check
@@ -310,7 +310,7 @@ Beyond the defaults, Ruff re-implements some of the most popular Flake8 plugins 
 -   tryceratops
 -   yesqa
 
-For a complete enumeration of the supported rules, see _Rules_.
+For the complete list of supported rules, see _Rules_.
 
 Contributing
 ------------

@@ -1,6 +1,6 @@
 ---
 project: pdf.js
-stars: 53990
+stars: 54015
 description: PDF Reader in JavaScript
 url: https://github.com/mozilla/pdf.js
 ---
@@ -213,6 +213,24 @@ Codecov flag
 `botbrowsertest`
 
 `browsertest`
+
+Benchmarks
+----------
+
+Run the benchmarks in `test/benchmarks/` locally:
+
+```
+$ npx gulp benchmark
+```
+
+To compare with `master`:
+
+```
+$ git checkout master
+$ npx gulp benchmark --output-json build/bench-master.json
+$ git checkout my-branch
+$ npx gulp benchmark --compare build/bench-master.json
+```
 
 Using PDF.js in a web application
 ---------------------------------

@@ -1,6 +1,6 @@
 ---
 project: langextract
-stars: 38934
+stars: 38966
 description: A Python library for extracting structured information from unstructured text using LLMs with precise source grounding and interactive visualization.
 url: https://github.com/google/langextract
 ---
@@ -126,7 +126,7 @@ lx.io.save\_annotated\_documents(\[result\], output\_name\="extraction\_results.
 
 \# Generate the visualization from the file
 html\_content \= lx.visualize("extraction\_results.jsonl")
-with open("visualization.html", "w") as f:
+with open("visualization.html", "w", encoding\="utf-8") as f:
     if hasattr(html\_content, 'data'):
         f.write(html\_content.data)  \# For Jupyter/Colab
     else:
@@ -143,6 +143,7 @@ For larger texts, you can process entire documents directly from URLs with paral
 \# Process Romeo & Juliet directly from Project Gutenberg
 result \= lx.extract(
     text\_or\_documents\="https://www.gutenberg.org/files/1513/1513-0.txt",
+    fetch\_urls\=True,
     prompt\_description\=prompt,
     examples\=examples,
     model\_id\="gemini-3.5-flash",

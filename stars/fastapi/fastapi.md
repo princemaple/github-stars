@@ -1,6 +1,6 @@
 ---
 project: fastapi
-stars: 102973
+stars: 103178
 description: FastAPI framework, high performance, easy to learn, fast to code, ready for production
 url: https://github.com/fastapi/fastapi
 ---
@@ -401,7 +401,7 @@ Used by Pydantic:
 
 Used by Starlette:
 
--   `httpx` - Required if you want to use the `TestClient`.
+-   `httpx2` (or `httpx`) - Used by the `TestClient`.
 -   `jinja2` - Required if you want to use the default template configuration.
 -   `python-multipart` - Required if you want to support form "parsing", with `request.form()`.
 

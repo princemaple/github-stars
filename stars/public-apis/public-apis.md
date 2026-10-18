@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 487289
+stars: 489782
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -117,26 +117,6 @@ Transport
 
 Install
 
-Monocrawl
-
-Public posts, profiles, comments and products from 70+ social, shopping and search platforms
-
-`apiKey`
-
-`stdio`, `HTTP`
-
-Glama
-
-OpenSwissData
-
-Swiss customs tariff (TARES), FINMA register and warnings, NOGA/NACE/ISIC code crosswalks
-
-No
-
-`stdio`, `HTTP`
-
-Glama
-
 IPstack MCP
 
 IP geolocation, threat and timezone lookups for agents
@@ -147,15 +127,15 @@ IP geolocation, threat and timezone lookups for agents
 
 Cursor · Glama
 
-Kuro
+Agent Nexus
 
-Create AI images, video clips, voice-overs, music and editable storyboard films
+Find agent-callable APIs, MCP servers and CLIs by capability, with live health and uptime data
 
-`OAuth`
+No
 
 `HTTP`
 
-–
+Glama
 
 Catastro GPS
 
@@ -177,9 +157,9 @@ No
 
 npm · MCP Registry
 
-Edgepedia
+Council of AI
 
-Search and read Edgepedia, a free and growing encyclopedia with citations
+Read a signed AI measurement board and verify its signed records and Merkle proofs
 
 No
 
@@ -187,13 +167,13 @@ No
 
 Glama
 
-GitHub
+Edgepedia
 
-Repos, issues, PRs, code search
+Search and read Edgepedia, a free and growing encyclopedia with citations
 
-`OAuth`
+No
 
-`stdio`, `HTTP`
+`HTTP`
 
 Glama
 
@@ -207,6 +187,66 @@ No
 
 –
 
+GitHub
+
+Repos, issues, PRs, code search
+
+`OAuth`
+
+`stdio`, `HTTP`
+
+Glama
+
+Kuro
+
+Create AI images, video clips, voice-overs, music and editable storyboard films
+
+`OAuth`
+
+`HTTP`
+
+–
+
+Master Setter
+
+Pokémon TCG cards, sets and printings in 14 languages, searchable by name in any language
+
+`apiKey`
+
+`HTTP`
+
+Glama · MCP Registry
+
+Monocrawl
+
+Public posts, profiles, comments and products from 70+ social, shopping and search platforms
+
+`apiKey`
+
+`stdio`, `HTTP`
+
+Glama
+
+Openpath
+
+US job listings and local businesses for agents, with apply links and owner inboxes
+
+No
+
+`HTTP`
+
+Anthropic · Glama · Smithery
+
+OpenSwissData
+
+Swiss customs tariff (TARES), FINMA register and warnings, NOGA/NACE/ISIC code crosswalks
+
+No
+
+`stdio`, `HTTP`
+
+Glama
+
 RegSentry
 
 Inspect authorized static tracking signals and review supplied consent evidence
@@ -216,6 +256,16 @@ No
 `HTTP`
 
 Glama
+
+ShapelessAI
+
+Write, schedule and publish social posts, carousels and short video to 8 networks
+
+`OAuth`
+
+`stdio`, `HTTP`
+
+Cursor · Glama
 
 Silicon Floor
 
@@ -227,6 +277,16 @@ No
 
 Anthropic · Glama
 
+SkyAccess
+
+Search 5,000+ live empty leg flights, get charter price estimates and booking links
+
+No
+
+`HTTP`
+
+Cursor · Glama
+
 Twinbay
 
 Spin up stateful API twins, read request logs and grade agent runs
@@ -236,6 +296,16 @@ Spin up stateful API twins, read request logs and grade agent runs
 `HTTP`
 
 –
+
+US Recalls
+
+Check US recalls from 9 agencies by UPC, model, NDC, lot or VIN; 4 read-only tools
+
+`apiKey`
+
+`HTTP`
+
+Glama · MCP Registry
 
 Vuntum
 
@@ -249,7 +319,6 @@ Glama
 
 Maintain an open-source MCP server? Add it.
 
-  
   
 
 Learn more about Public APIs
@@ -709,6 +778,16 @@ Yes
 
 Unknown
 
+MangaUpdates
+
+Manga database: series, releases, groups and reading lists
+
+No
+
+Yes
+
+Unknown
+
 MyAnimeList
 
 Anime and Manga Database and Community
@@ -884,16 +963,6 @@ Yes
 
 Unknown
 
-Metacert
-
-Metacert Link Flagging
-
-`apiKey`
-
-Yes
-
-Unknown
-
 NoPhishy
 
 Check links to see if they're known phishing attempts
@@ -989,6 +1058,16 @@ HTTPS
 
 CORS
 
+3DTexel
+
+Search free CC0 PBR materials, HDRIs, decals and 3D models for games
+
+No
+
+Yes
+
+Yes
+
 Améthyste
 
 Generate images for Discord users
@@ -1082,6 +1161,16 @@ Unknown
 Face Shape Guide Lookup
 
 Read-only lookup for published face-shape guide records
+
+No
+
+Yes
+
+Yes
+
+Favicondl
+
+Get any website's favicon by URL (SVG/PNG/ICO), with JSON metadata and fallbacks
 
 No
 
@@ -1594,16 +1683,6 @@ Yes
 
 Yes
 
-Bhagavad Gita
-
-Bhagavad Gita text
-
-`OAuth`
-
-Yes
-
-Yes
-
 Bhagavad Gita telugu
 
 Bhagavad Gita API in telugu and odia languages
@@ -1879,6 +1958,16 @@ Yes
 
 Unknown
 
+Compabase
+
+Polish company data: 3M+ KRS and CEIDG entities with financial statements, people and rankings
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Crustdata
 
 People and company data covering profiles, headcount, funding and contacts
@@ -1959,6 +2048,16 @@ Yes
 
 Unknown
 
+gstinapi
+
+Verify Indian GST numbers (GSTIN): legal name, status, address and return filing history; free tier
+
+`apiKey`
+
+Yes
+
+No
+
 Instatus
 
 Post to and update maintenance and incidents on your status page through an HTTP REST API
@@ -1989,15 +2088,15 @@ Yes
 
 No
 
-Katalis UK Company Enrichment
+Katalis
 
-Verified UK company profiles with an AI summary and accuracy score, from Companies House data
+UK company checks: payment practices, contracts won, registers, filed accounts, change feed
 
 `apiKey`
 
 Yes
 
-Unknown
+No
 
 KontragentPro
 
@@ -2108,6 +2207,16 @@ Access your queries and dashboards on Redash
 Yes
 
 Yes
+
+RegisterWire
+
+Real-time alerts on UK company register changes
+
+`apiKey`
+
+Yes
+
+No
 
 Signaliz
 
@@ -2357,6 +2466,16 @@ Unknown
 India Public Holidays
 
 Official Indian public holidays for the Central government and 36 states/UTs
+
+No
+
+Yes
+
+Yes
+
+Intellibook
+
+Appointment booking and availability API for salons and clinics
 
 No
 
@@ -3129,6 +3248,16 @@ Yes
 
 Unknown
 
+Coinmico
+
+Crypto prices, volume and liquidity measured from real trades on 50+ exchanges and DEXs
+
+`apiKey`
+
+Yes
+
+Yes
+
 CoinNudge
 
 Current crypto market breadth, funding and open-interest research datasets
@@ -3209,6 +3338,16 @@ Yes
 
 Unknown
 
+Crypto Vision
+
+Free crypto news aggregator with market context, JSON REST and RSS
+
+No
+
+Yes
+
+Yes
+
 CryptoCompare
 
 Cryptocurrencies Comparison
@@ -3258,6 +3397,16 @@ No
 Yes
 
 Yes
+
+Degenscan Intel
+
+Hyperliquid funding on every dex (HIP-3 incl.), cross-dex spreads, event feed; free trial key
+
+`apiKey`
+
+Yes
+
+No
 
 Dudelytics
 
@@ -3529,6 +3678,16 @@ Yes
 
 Unknown
 
+Paribu
+
+Turkish cryptocurrency exchange with real-time market data, trading and WebSocket streams
+
+`apiKey`
+
+Yes
+
+No
+
 Poloniex
 
 US based digital asset exchange
@@ -3548,6 +3707,16 @@ Historical Pump.fun and PumpSwap AMM swap data as hourly Parquet files
 Yes
 
 Unknown
+
+Shumi
+
+Crypto market data: prices, trends, funding rates, sentiment, narratives and market regime
+
+`apiKey`
+
+Yes
+
+Yes
 
 Solana JSON RPC
 
@@ -3676,9 +3845,9 @@ Unknown
 
 Exchangerate.host
 
-Free foreign exchange & crypto rates API
+Foreign exchange & crypto rates API (keyless access ended 2023)
 
-No
+`apiKey`
 
 Yes
 
@@ -3969,6 +4138,16 @@ Yes
 
 Yes
 
+invowerk
+
+Validate e-invoices (ZUGFeRD, Factur-X, XRechnung, Peppol BIS) and get a validation report
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Lob.com
 
 US Address Verification
@@ -4173,6 +4352,16 @@ No
 Yes
 
 Yes
+
+Allscreenshots
+
+Website screenshots and PDFs with full-page capture, dark mode and ad blocking
+
+`apiKey`
+
+Yes
+
+No
 
 Amazonscraperapi
 
@@ -4434,6 +4623,16 @@ Yes
 
 No
 
+Clair
+
+Live public web data as JSON: Google Search, Maps, News, Amazon, jobs, reviews & more, one API key
+
+`apiKey`
+
+Yes
+
+No
+
 claudecookie
 
 Convert cookie formats, check Claude sessions and generate Claude Code credentials
@@ -4457,6 +4656,16 @@ No
 Cloudflare Trace
 
 Get IP Address, Timestamp, User Agent, Country Code, IATA, HTTP Version, TLS/SSL Version & More
+
+No
+
+Yes
+
+Yes
+
+Codeberg
+
+Git hosting, repos and issues via Gitea API
 
 No
 
@@ -4524,6 +4733,16 @@ Yes
 
 Yes
 
+CurlShot
+
+Screenshots, PDFs and scrolling videos of any URL, HTML or Markdown; free tier
+
+`apiKey`
+
+Yes
+
+Yes
+
 Databricks
 
 Service to manage your databricks account,clusters, notebooks, jobs and workspaces
@@ -4574,6 +4793,16 @@ Yes
 
 Yes
 
+Domain Info by LifeStep
+
+DNS records, SPF/DMARC detection and TLS certificate expiry
+
+No
+
+Yes
+
+Yes
+
 DomainDb Info
 
 Domain name search to find all domains containing particular words/phrases/etc
@@ -4597,6 +4826,16 @@ Yes
 DownStatus
 
 Real-time status for GitHub, AWS, Discord and 90+ services
+
+No
+
+Yes
+
+Yes
+
+EndOfLife.date
+
+Software end-of-life dates and support lifecycles
 
 No
 
@@ -5194,6 +5433,16 @@ Yes
 
 No
 
+LiveOrDown
+
+Live up/down status of 240+ online services, checked every minute from 3 regions
+
+No
+
+Yes
+
+Yes
+
 Logs.to
 
 Generate logs
@@ -5219,6 +5468,16 @@ MAC address vendor lookup
 Retrieve vendor details and other information regarding a given MAC address or an OUI
 
 `apiKey`
+
+Yes
+
+Yes
+
+macadress
+
+MAC address and OUI vendor lookup synced from IEEE, with randomized-MAC detection
+
+No
 
 Yes
 
@@ -5564,6 +5823,16 @@ Yes
 
 Unknown
 
+QR Code by LifeStep
+
+Generate QR codes as PNG or SVG with size, border and color options
+
+No
+
+Yes
+
+Yes
+
 QR Code Crafter
 
 Generate static QR codes in SVG, PNG, JPG, WebP, PDF, or EPS
@@ -5593,6 +5862,16 @@ No
 Yes
 
 Unknown
+
+QRX
+
+Artistic, branded QR codes from a text prompt and a link, checked to scan
+
+`apiKey`
+
+Yes
+
+No
 
 QuickChart
 
@@ -5914,6 +6193,16 @@ Yes
 
 Unknown
 
+SolidPing
+
+Create and run uptime checks, read results and incidents, manage status pages, with a free tier
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Sonar
 
 Project Sonar DNS Enumeration API
@@ -6094,6 +6383,16 @@ Yes
 
 Yes
 
+W3C Validator
+
+Validate HTML and check markup errors
+
+No
+
+Yes
+
+Unknown
+
 Wandbox
 
 Code compiler supporting 35+ languages mentioned at wandbox.org
@@ -6238,16 +6537,6 @@ Dictionary and Thesaurus Data
 Yes
 
 Unknown
-
-OwlBot
-
-Definitions with example sentence and photo if available
-
-`apiKey`
-
-Yes
-
-Yes
 
 Oxford
 
@@ -6464,6 +6753,16 @@ Yes
 
 No
 
+Convert Online
+
+Online file converter for image, video, audio, document, ebook, font, archive and CAD formats
+
+`apiKey`
+
+Yes
+
+No
+
 CraftMyPDF
 
 Generate PDF documents from templates with a drop-and-drop editor and a simple API
@@ -6494,9 +6793,29 @@ Yes
 
 Yes
 
+Emboss
+
+Make PDF forms fillable, fill them from JSON or documents, and read filled forms back
+
+`apiKey`
+
+Yes
+
+No
+
 FaturaPDF
 
 Generate Brazilian invoice/receipt PDFs with checksum-validated CPF/CNPJ and PIX QR
+
+`apiKey`
+
+Yes
+
+Unknown
+
+flatmark
+
+Convert PDF, Word, PowerPoint, Excel and HTML documents to Markdown for RAG and agents
 
 `apiKey`
 
@@ -6634,6 +6953,16 @@ Yes
 
 No
 
+pdfrender
+
+HTML and CSS to PDF with page headers, footers and page numbers, no headless browser
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Pocket
 
 Bookmarking service
@@ -6743,6 +7072,16 @@ Manage stories, epics, iterations and objectives in a Shortcut workspace
 Yes
 
 No
+
+TeamSort
+
+Create a ranked-choice poll from a text prompt and get a shareable link
+
+No
+
+Yes
+
+Yes
 
 Todoist
 
@@ -6888,6 +7227,16 @@ Validate email addresses, phone numbers, VAT numbers and domain names
 Yes
 
 Yes
+
+Disban
+
+Classify email domains as disposable, free, alias, testing or parked to block fake signups
+
+`apiKey`
+
+Yes
+
+No
 
 Disify
 
@@ -7069,6 +7418,16 @@ Yes
 
 No
 
+MailSenpai DNS Check
+
+Check a domain's SPF, DKIM, DMARC and MX records and get what to fix, with the values to publish
+
+No
+
+Yes
+
+Yes
+
 Mailtrap
 
 Email API and SMTP for sending transactional and bulk emails, with email testing sandbox for safe development
@@ -7138,6 +7497,16 @@ Send transactional email, manage contacts and broadcasts, free 3,000 emails/mont
 Yes
 
 Yes
+
+TempMailGrab
+
+Disposable inboxes for email testing with OTP extraction and webhooks
+
+`apiKey`
+
+Yes
+
+No
 
 uchecker
 
@@ -7354,6 +7723,16 @@ Yes
 
 Unknown
 
+Yes or No Oracle
+
+Random yes/no/maybe answers in 7 themed oracle voices (Magic 8 Ball, Tarot, and more)
+
+No
+
+Yes
+
+Yes
+
 Yo Momma Jokes
 
 REST API for Yo Momma Jokes
@@ -7449,11 +7828,31 @@ Yes
 
 Unknown
 
+EIA Open Data
+
+US energy statistics: electricity, petroleum, gas
+
+`apiKey`
+
+Yes
+
+Unknown
+
 GridHub
 
 Live wholesale electricity prices and demand across 25 grid zones
 
 `apiKey`
+
+Yes
+
+Yes
+
+GridVigil
+
+Pressure scores, demand, generation mix and alerts for the 10 major U.S. power grids
+
+No
 
 Yes
 
@@ -7494,6 +7893,16 @@ Luchtmeetnet
 Predicted and actual air quality components for The Netherlands (RIVM)
 
 No
+
+Yes
+
+Unknown
+
+Mycelium
+
+Corporate carbon emissions disclosures (scope 1, 2 and 3), company-reported and estimated
+
+`apiKey`
 
 Yes
 
@@ -7569,6 +7978,16 @@ Yes
 
 Unknown
 
+sensor.community
+
+Community air quality sensor network data worldwide
+
+`User-Agent`
+
+Yes
+
+Yes
+
 Solematica
 
 Compare Italian solar (photovoltaic) installer offers, energy prices (PUN/ARERA) and satellite roof data
@@ -7594,6 +8013,16 @@ SustainMetrics
 18,000+ GHG emission factors from DEFRA, EPA, ADEME, Ember
 
 `apiKey`
+
+Yes
+
+Yes
+
+Sähkön hinta nyt
+
+Finnish and Nordic day-ahead electricity spot prices (15-minute), cheapest hours
+
+No
 
 Yes
 
@@ -7829,6 +8258,16 @@ Yes
 
 Yes
 
+CardBinCheck
+
+Card BIN/IIN lookup: network, issuer, country and card type for the first 6-8 digits
+
+No
+
+Yes
+
+Yes
+
 Citi
 
 All Citigroup account and statement data APIs
@@ -7858,6 +8297,16 @@ No
 Yes
 
 Yes
+
+Degenscan Intel Macro
+
+U.S. Treasury auctions, stablecoin supply, Brazil crypto-dollar premium vs BCB PTAX; free trial key
+
+`apiKey`
+
+Yes
+
+No
 
 Dino.markets
 
@@ -8139,6 +8588,16 @@ Yes
 
 Unknown
 
+India GST HSN & SAC
+
+Indian GST HSN and SAC classification code lookup and search
+
+No
+
+Yes
+
+Yes
+
 Indian Mutual Fund
 
 Get complete history of India Mutual Funds Data
@@ -8189,6 +8648,16 @@ Yes
 
 Yes
 
+Live SEC Form 4 Insider Trades
+
+Latest SEC Form 4 insider trading filings from EDGAR, by ticker or market-wide
+
+`apiKey`
+
+Yes
+
+Unknown
+
 matchwire.win
 
 Matched prediction-market games across Kalshi, Polymarket US/Intl and Predict.fun
@@ -8228,6 +8697,16 @@ The Moov API makes it simple for platforms to send, receive, and store money
 Yes
 
 Unknown
+
+Nigeria PAYE
+
+Nigerian income tax (PAYE) and take-home pay under the Nigeria Tax Act 2025
+
+No
+
+Yes
+
+Yes
 
 NORTH7 Agent
 
@@ -8354,6 +8833,16 @@ Segmara
 IPO calendars, filing stages and estimated lockup dates
 
 `User-Agent`
+
+Yes
+
+Yes
+
+Seiche
+
+Free public funding, FX and capital-market evidence with source clocks
+
+No
 
 Yes
 
@@ -8488,6 +8977,16 @@ Stock market data (real-time & historical)
 Yes
 
 Unknown
+
+Undertow
+
+Public market-depth and sized exit estimates, not executable quotes
+
+No
+
+Yes
+
+Yes
 
 US Mortgage Calculator
 
@@ -8663,6 +9162,16 @@ No
 Yes
 
 Yes
+
+DoughMatrix
+
+Sourdough and pizza dough formula calculators: true hydration, DDT, fermentation windows
+
+No
+
+Yes
+
+No
 
 Edamam nutrition
 
@@ -9569,6 +10078,16 @@ Yes
 
 Unknown
 
+Master Setter
+
+Pokémon TCG cards and sets in 14 languages, with every printing and variant
+
+`apiKey`
+
+Yes
+
+Yes
+
 Minecraft Server Status
 
 API to get Information about a Minecraft Server
@@ -9822,6 +10341,16 @@ Yes
 SeedFinder
 
 Minecraft Bedrock structures prediction
+
+No
+
+Yes
+
+Yes
+
+Social Casino Index
+
+Daily-checked US social casino toplist: signup bonuses, payout times, minimums, sources
 
 No
 
@@ -10854,6 +11383,16 @@ Yes
 
 Unknown
 
+PostalCodeCheck
+
+City, region and coordinates for 887,000+ postal codes across 95 countries
+
+No
+
+Yes
+
+Yes
+
 Postali
 
 Mexico Zip Codes API
@@ -11159,6 +11698,16 @@ Yes
 
 Unknown
 
+apipj
+
+Brazilian company data by CNPJ from Receita Federal open data, incl. alphanumeric CNPJ; free tier
+
+`apiKey`
+
+Yes
+
+Yes
+
 Ayes and Noes
 
 UK House of Commons MPs, parties and recorded votes
@@ -11198,6 +11747,16 @@ No
 Yes
 
 Yes
+
+Boletín Oficial del Estado (BOE)
+
+Official Spanish State Gazette open data: laws, summaries and XML/JSON APIs
+
+No
+
+Yes
+
+Unknown
 
 Brazil
 
@@ -11499,6 +12058,16 @@ Yes
 
 Yes
 
+Election
+
+Source-linked U.S. election and civic records with coverage limits
+
+No
+
+Yes
+
+Yes
+
 EPA
 
 Web services and data sets from the US Environmental Protection Agency
@@ -11609,6 +12178,16 @@ Yes
 
 Unknown
 
+India LGD Index
+
+Free, keyless Indian states, districts, sub-districts and development blocks with LGD codes
+
+No
+
+Yes
+
+Yes
+
 Indian Mandi Prices
 
 Free, keyless daily wholesale mandi prices for 5 Indian states, sourced from data.gov.in
@@ -11672,6 +12251,16 @@ Unknown
 LocalGov.jp
 
 Japan grants and subsidies (central J-Grants + 1,916 municipalities)
+
+No
+
+Yes
+
+Yes
+
+MORVS
+
+Source-linked US regulatory and public records: SEC filings, enforcement actions, recalls
 
 No
 
@@ -12189,6 +12778,16 @@ Yes
 
 Unknown
 
+OpenStates
+
+US state legislature bills and lawmakers
+
+`apiKey`
+
+Yes
+
+Unknown
+
 PRC Exam Schedule
 
 Unofficial Philippine Professional Regulation Commission's examination schedule
@@ -12208,6 +12807,16 @@ No
 Yes
 
 No
+
+Regulations.gov
+
+US federal rulemaking comments and dockets
+
+`apiKey`
+
+Yes
+
+Unknown
 
 Represent by Open North
 
@@ -12259,6 +12868,16 @@ Yes
 
 Yes
 
+Travel Risk
+
+Government travel advisories, disaster and conflict alerts and country risk scores
+
+`apiKey`
+
+Yes
+
+Yes
+
 UK Companies House
 
 UK Companies House Data from the UK government
@@ -12278,16 +12897,6 @@ No
 Yes
 
 Yes
-
-USA.gov
-
-Authoritative information on U.S. programs, events, services and more
-
-`apiKey`
-
-Yes
-
-Unknown
 
 USAspending.gov
 
@@ -12504,6 +13113,16 @@ Yes
 
 No
 
+DailyMed
+
+FDA drug labeling and package insert information
+
+No
+
+Yes
+
+Unknown
+
 Dataflow Kit COVID-19
 
 COVID-19 live statistics into sites per hour
@@ -12543,6 +13162,16 @@ Live Canadian emergency room closures and service disruptions, by province
 Yes
 
 Yes
+
+FDA Recalls
+
+Latest FDA food, drug and product recall notices as JSON with keyword search
+
+`apiKey`
+
+Yes
+
+Unknown
 
 FindSaunaPlunge
 
@@ -12654,6 +13283,16 @@ Yes
 
 Unknown
 
+NHS Health A-Z
+
+NHS conditions, medicines and guidance
+
+`apiKey`
+
+Yes
+
+Unknown
+
 NPPES
 
 National Plan & Provider Enumeration System, info on healthcare providers registered in US
@@ -12694,6 +13333,16 @@ Yes
 
 Yes
 
+Open Targets
+
+Gene-disease-drug target associations
+
+No
+
+Yes
+
+Yes
+
 openFDA
 
 Public FDA data about drugs, devices and foods
@@ -12724,6 +13373,16 @@ Yes
 
 Yes
 
+RxNorm
+
+Normalized drug names, RxCUIs and NDC codes
+
+No
+
+Yes
+
+Yes
+
 Stanza DSCSA Verifier
 
 Verify FDA DSCSA and EU FMD pharmaceutical serialization barcodes
@@ -12743,6 +13402,16 @@ Decode and validate FDA GUDID and EU MDR medical device UDI barcodes
 Yes
 
 No
+
+THC Open Mindfulness Resources
+
+Free mindfulness resources and research metadata
+
+No
+
+Yes
+
+Yes
 
 Urgences Québec
 
@@ -12974,6 +13643,16 @@ JobDataLake
 1M+ enriched job listings from 20,000+ companies with salary, skills, seniority
 
 `apiKey`
+
+Yes
+
+Yes
+
+Level
+
+Job listings rated by AI level, from Little AI to Builds AI; REST, RSS and MCP
+
+No
 
 Yes
 
@@ -13364,6 +14043,16 @@ Yes
 
 Unknown
 
+Lacuna
+
+Public board where AI agents post problems as seeks and agents who solved them offer help
+
+No
+
+Yes
+
+Unknown
+
 Laya Decision Gateway
 
 Sub-35ms AI gateway for prompt injection defense, support ticket triage & content moderation
@@ -13494,6 +14183,16 @@ Yes
 
 Unknown
 
+QuelLLM
+
+Open-weight language model catalogue with memory requirements and installation metadata
+
+No
+
+Yes
+
+Yes
+
 Requesty
 
 OpenAI compatible LLM router for 600+ models, with a free tier for free models
@@ -13559,6 +14258,16 @@ Statlyte
 Live pricing, context windows and model ids for major LLM APIs
 
 No
+
+Yes
+
+Yes
+
+Tanvo
+
+Image, video and song generation on 30 AI models (Nano Banana, Kling, Veo, Suno), with a free tier
+
+`apiKey`
 
 Yes
 
@@ -14289,6 +14998,16 @@ HTTPS
 
 CORS
 
+221
+
+Senegal reference data: public holidays, mobile operators, banks, communes, legal forms
+
+No
+
+Yes
+
+Yes
+
 49 Gallery Historical Data
 
 Normalized historical records and 25 daily-updated reference series
@@ -14579,6 +15298,16 @@ Yes
 
 Unknown
 
+Kvartiry-Phuket
+
+Russian-language Phuket real estate guides, asking prices, condo assessment rates, weather, beaches
+
+No
+
+Yes
+
+Yes
+
 LinkPreview
 
 Get JSON formatted summary with title, description and preview image for any requested URL
@@ -14624,6 +15353,16 @@ Microlink.io
 Extract structured data from any website
 
 No
+
+Yes
+
+Yes
+
+Monitly
+
+Official statistics from Eurostat, World Bank, OECD, IMF and WHO for 150+ countries
+
+`apiKey`
 
 Yes
 
@@ -14759,6 +15498,16 @@ Yes
 
 Unknown
 
+ProductGuru
+
+Consumer product-safety recall notices from 11 government registers, looked up by barcode (EAN/GTIN)
+
+No
+
+Yes
+
+Yes
+
 PublicDataHub
 
 US public schools, hospitals and federal agency budgets as JSON/CSV, with provenance
@@ -14801,7 +15550,7 @@ Unknown
 
 SlashYear
 
-86,902 historical events as JSON, each quoted from a cited Wikipedia revision
+Dated historical events as JSON, each quoted from a cited Wikipedia revision
 
 No
 
@@ -14938,6 +15687,16 @@ No
 No
 
 No
+
+Verified Handles
+
+Official social media handles and identifiers of 155,000+ notable people and organisations
+
+No
+
+Yes
+
+Yes
 
 Voidly
 
@@ -15754,6 +16513,16 @@ Yes
 
 No
 
+localscreenshot
+
+Screenshot or PDF rendering of any public page, from 227 countries
+
+`apiKey`
+
+Yes
+
+Yes
+
 Lorem Picsum
 
 Images from Unsplash
@@ -16044,6 +16813,16 @@ Yes
 
 Yes
 
+Chempirical
+
+Chemical compounds with physical data, reactions and substructure search
+
+No
+
+Yes
+
+Yes
+
 CodeCogs
 
 Render LaTeX equations in PNG, GIF, SVG, EMF, PDF, JSON, or download formats with styling options
@@ -16084,6 +16863,16 @@ Yes
 
 Yes
 
+ENA
+
+Nucleotide sequences, genomes and raw reads archive
+
+No
+
+Yes
+
+Yes
+
 Europe PMC
 
 Life-science literature search with abstracts, citations and full-text links
@@ -16113,6 +16902,16 @@ No
 Yes
 
 Unknown
+
+iNaturalist
+
+Citizen-science wildlife observations with species identification and mapping
+
+No
+
+Yes
+
+Yes
 
 inspirehep.net
 
@@ -16154,9 +16953,29 @@ Yes
 
 Unknown
 
+KEGG
+
+Genes, pathways, compounds and reactions
+
+No
+
+Yes
+
+Unknown
+
 Launch Library 2
 
 Spaceflight launches and events database
+
+No
+
+Yes
+
+Yes
+
+Macrostrat
+
+Geologic maps, rock columns and stratigraphy data
 
 No
 
@@ -16173,6 +16992,16 @@ Curated experimental data for materials science
 Yes
 
 No
+
+MathJS
+
+Evaluate math expressions via GET or POST as JSON
+
+No
+
+Yes
+
+Yes
 
 Minor Planet Center
 
@@ -16224,6 +17053,16 @@ Yes
 
 Yes
 
+NCBI E-utilities
+
+Biomedical literature, sequences and gene databases
+
+No
+
+Yes
+
+Yes
+
 Newton
 
 Symbolic and Arithmetic Math Calculator
@@ -16253,6 +17092,16 @@ Number of the day, random number, number facts and anything else you want to do 
 Yes
 
 No
+
+OBIS
+
+Global marine species occurrence and distribution data
+
+No
+
+Yes
+
+Yes
 
 Ocean Facts
 
@@ -16353,6 +17202,16 @@ No
 Yes
 
 Yes
+
+SatNOGS
+
+Satellite observations from open ground stations
+
+No
+
+Yes
+
+Unknown
 
 Semantic Scholar
 
@@ -16494,6 +17353,16 @@ Yes
 
 No
 
+WoRMS
+
+Marine species taxonomy, synonyms and distributions
+
+No
+
+Yes
+
+No
+
 xMath
 
 Random mathematical expressions
@@ -16588,6 +17457,16 @@ Search engine for Internet connected host and devices
 Yes
 
 No
+
+CISA Known Exploited Vulnerabilities
+
+CISA KEV catalog of actively exploited CVEs as JSON, filterable by vendor, with CWE and due dates
+
+`apiKey`
+
+Yes
+
+Unknown
 
 Classify
 
@@ -16824,6 +17703,16 @@ IPLogs
 Free VPN, proxy, Tor and datacenter IP detection. 13 sources, active probing
 
 No
+
+Yes
+
+Yes
+
+IPScanner
+
+IP network class (residential, mobile, hosting, VPN, residential proxy, Tor) with a confidence score
+
+`apiKey`
 
 Yes
 
@@ -17114,6 +18003,16 @@ HTTPS
 
 CORS
 
+ARC
+
+Open data on whether AI shopping agents can reach checkout at specific online stores
+
+No
+
+Yes
+
+Yes
+
 Best Buy
 
 Products, Buying Options, Categories, Recommendations, Stores and Commerce
@@ -17244,6 +18143,16 @@ Yes
 
 Unknown
 
+Nuvinty
+
+UK luxury list prices, price history, increases and partner pre-owned asking prices
+
+No
+
+Yes
+
+Yes
+
 Octopart
 
 Electronic part data for manufacturing, design, and sourcing
@@ -17294,6 +18203,16 @@ Yes
 
 Unknown
 
+Profitvana
+
+Seller fees for 31 marketplaces and payment processors, verified monthly
+
+No
+
+Yes
+
+Yes
+
 Rappi
 
 Manage orders from Rappi's app
@@ -17333,6 +18252,16 @@ Spare parts catalog, OEM cross-references & price comparison for garden power eq
 Yes
 
 Unknown
+
+Swanum Comps
+
+Sold resale prices from Vinted (7 European countries) and eBay US, with median and price range
+
+`apiKey`
+
+Yes
+
+No
 
 Tokopedia
 
@@ -17966,6 +18895,16 @@ Yes
 
 Yes
 
+AcesAPI
+
+ATP and WTA tennis since 2007: match results, draws, rankings, head to head, surface Elo and odds
+
+`apiKey`
+
+Yes
+
+Yes
+
 API-FOOTBALL
 
 Get information about Football Leagues & Cups
@@ -17986,6 +18925,16 @@ Yes
 
 Unknown
 
+Ball Ranks
+
+NFL and NBA fantasy rankings and player projections
+
+No
+
+Yes
+
+Yes
+
 balldontlie
 
 Balldontlie provides access to stats data from the NBA
@@ -18001,6 +18950,16 @@ Bet Better
 Sports model win probabilities and fair odds across 13 leagues
 
 No
+
+Yes
+
+Yes
+
+BirdieAPI
+
+PGA Tour golf since 2001: leaderboards, hole-by-hole scores, courses, ratings and major winner odds
+
+`apiKey`
 
 Yes
 
@@ -18066,6 +19025,16 @@ Yes
 
 Yes
 
+DunkAPI
+
+NBA, WNBA and college basketball: play-by-play, shot locations, box scores and sportsbook odds
+
+`apiKey`
+
+Yes
+
+Yes
+
 Ergast F1
 
 F1 data from the beginning of the world championships in 1950
@@ -18081,6 +19050,16 @@ FanLine Wire
 Real-time FanDuel Sportsbook odds — live & in-play and pre-match, with a keyless public snapshot
 
 No
+
+Yes
+
+Yes
+
+FastballAPI
+
+MLB since 2015 plus college baseball: pitches, plate appearances, box scores and sportsbook odds
+
+`apiKey`
 
 Yes
 
@@ -18155,6 +19134,16 @@ Football data with matches info, players, teams, and competitions
 Yes
 
 Unknown
+
+HaterPicks
+
+Australian sports odds and player props from every major Australian bookmaker, free tier
+
+`apiKey`
+
+Yes
+
+No
 
 JCDecaux Bike
 
@@ -18238,7 +19227,7 @@ Yes
 
 Odds-API
 
-Real-time sports betting odds from 265+ bookmakers across 34 sports via REST and WebSocket
+Real-time sports betting odds from 365+ bookmakers across 34 sports via REST and WebSocket
 
 `apiKey`
 
@@ -18386,6 +19375,16 @@ Yes
 
 Unknown
 
+Realtime Sports
+
+Live scores, play-by-play, schedules and odds for NFL, NBA, MLB, NHL, NCAA and soccer
+
+`apiKey`
+
+Yes
+
+Yes
+
 Sport Data
 
 Get sports data from all over the world
@@ -18475,6 +19474,16 @@ Connect with athletes, activities and more
 Yes
 
 Unknown
+
+StrikerAPI
+
+Football from 16 leagues incl. Premier League and MLS: lineups, shot maps, xG and odds
+
+`apiKey`
+
+Yes
+
+Yes
 
 SuredBits
 
@@ -18741,6 +19750,16 @@ Yes
 
 Unknown
 
+NovaFortix Dev
+
+Zero-auth REST endpoints for mock user profiles, UUIDs and HTTP status codes
+
+No
+
+Yes
+
+Yes
+
 QuickMocker
 
 API mocking tool to generate contextual, fake or random data
@@ -18834,6 +19853,16 @@ Unknown
 Supercrontab Mock Endpoints
 
 Mock endpoints in 8 formats, each returning any of 14 HTTP status codes
+
+No
+
+Yes
+
+Yes
+
+TestingAPIs
+
+Free fake REST API with products, posts, todos, any HTTP status code and request echo
 
 No
 
@@ -18975,6 +20004,16 @@ Detects text language
 Yes
 
 Unknown
+
+eidosSpeech
+
+Free text-to-speech API with 1,200+ neural voices in 75+ languages
+
+`apiKey`
+
+Yes
+
+Yes
 
 ELI
 
@@ -19271,6 +20310,16 @@ Aether-X Port Congestion
 Real-time port congestion risk scores, ETA delays and waiting vessels for 15 global ports
 
 `apiKey`
+
+Yes
+
+Yes
+
+AirportMiles
+
+Airport codes, distances, routes and passenger numbers as static JSON files
+
+No
 
 Yes
 
@@ -19656,6 +20705,16 @@ Yes
 
 Yes
 
+Pumperly
+
+Fuel prices and EV chargers near a point, in a map area or along a route, as GeoJSON
+
+No
+
+Yes
+
+No
+
 Railway Transport for France
 
 SNCF public API
@@ -19726,6 +20785,16 @@ Yes
 
 No
 
+Stadiq
+
+Road works, transit disruptions and air quality for Antwerp and Flanders
+
+`apiKey`
+
+Yes
+
+No
+
 Strait of Hormuz Ship Monitor
 
 Live AIS vessel traffic, crossings and oil flow through the Strait of Hormuz
@@ -19739,6 +20808,16 @@ No
 Tankerkoenig
 
 German realtime gas/diesel prices
+
+`apiKey`
+
+Yes
+
+Yes
+
+TransCAPI
+
+Live bus and rail departures, vehicles, disruptions and journey planning for Great Britain
 
 `apiKey`
 
@@ -20106,6 +21185,16 @@ Yes
 
 Yes
 
+Travel Risk Aviation
+
+Flight status, airports, airlines, airline safety and in-flight Wi-Fi data
+
+`apiKey`
+
+Yes
+
+Yes
+
 Tripadvisor
 
 Rating content for a hotel, restaurant, attraction or destination
@@ -20466,6 +21555,16 @@ Yes
 
 Unknown
 
+NHTSA Vehicle Recalls
+
+NHTSA safety recalls by model year, make and model with component, consequence and remedy
+
+`apiKey`
+
+Yes
+
+Unknown
+
 ProblemsByVin
 
 Owner complaints, recalls and failure-mileage statistics by vehicle make, model and year
@@ -20811,6 +21910,16 @@ Yes
 
 Yes
 
+RankFabrik Captions
+
+Extract transcripts and captions from YouTube videos
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Rendobar
 
 Hosted media processing over REST: transcode, caption, watermark video
@@ -20830,6 +21939,16 @@ No
 Yes
 
 Unknown
+
+ScaleReach
+
+Turn long videos into short vertical clips with AI captions and face-tracking crop
+
+`apiKey`
+
+Yes
+
+No
 
 Shotstack
 
@@ -21206,6 +22325,16 @@ Yes
 
 Unknown
 
+FMI Open Data
+
+Finnish weather, sea, climate and radar observations via open WFS
+
+No
+
+Yes
+
+Yes
+
 Foreca
 
 Weather
@@ -21276,6 +22405,16 @@ Yes
 
 No
 
+Met Office DataHub
+
+UK weather forecasts and climate data
+
+`apiKey`
+
+Yes
+
+Unknown
+
 Météo-France
 
 French weather forecasts and alerts
@@ -21315,6 +22454,16 @@ No
 Yes
 
 Yes
+
+NOAA CO-OPS
+
+US coastal tides, water levels, currents and meteorological observations
+
+No
+
+Yes
+
+Unknown
 
 ODWeather
 

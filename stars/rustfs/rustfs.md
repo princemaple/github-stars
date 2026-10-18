@@ -1,6 +1,6 @@
 ---
 project: rustfs
-stars: 34694
+stars: 35048
 description: RustFS is an open-source, S3-compatible high-performance object storage system supporting migration and coexistence with other S3-compatible platforms such as MinIO and Ceph.
 url: https://github.com/rustfs/rustfs
 ---
@@ -303,7 +303,7 @@ chown -R 10001:10001 data logs
 docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:latest
 
 # Using specific version
-docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.1
+docker run -d -p 9000:9000 -p 9001:9001 -v $(pwd)/data:/data -v $(pwd)/logs:/logs rustfs/rustfs:1.0.3
 
 If you use podman instead of docker, you can install the RustFS with the below command
 
@@ -367,7 +367,7 @@ For developers who want to build RustFS Docker images from source with multi-arc
 ./docker-buildx.sh --push
 
 # Build specific version
-./docker-buildx.sh --release 1.0.1 --push
+./docker-buildx.sh --release 1.0.3 --push
 
 # Build for custom registry
 ./docker-buildx.sh --registry your-registry.com --namespace yourname --push
@@ -383,7 +383,7 @@ You can also use Make targets for convenience:
 
 make docker-buildx                    # Build locally
 make docker-buildx-push               # Build and push
-make docker-buildx-version VERSION=1.0.1  # Build specific version
+make docker-buildx-version VERSION=1.0.3  # Build specific version
 make help-docker                      # Show all Docker-related commands
 
 > **Heads-up (macOS cross-compilation)**: macOS keeps the default `ulimit -n` at 256, so `cargo zigbuild` or `./build-rustfs.sh --platform ...` may fail with `ProcessFdQuotaExceeded` when targeting Linux. The build script attempts to raise the limit automatically, but if you still see the warning, run `ulimit -n 4096` (or higher) in your shell before building.

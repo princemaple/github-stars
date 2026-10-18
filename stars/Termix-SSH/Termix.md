@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 15369
+stars: 15578
 description: Self-hosted, plugin-based server management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -15,32 +15,32 @@ Self-hosted, plugin-based server management
 Overview
 --------
 
-Termix is a free, open source, self-hosted platform for managing your servers, built on plugins. The core is small. It keeps your hosts, credentials, users, sharing and sessions. Everything else, like the SSH terminal, remote desktop, file manager, Docker and metrics, is a plugin you can turn on, turn off or remove.
+Termix is a free, open source, self-hosted server management platform built on plugins. The core keeps your hosts, credentials, users, sharing and sessions. Everything else, like the SSH terminal, remote desktop, file manager, Docker and metrics, is a plugin you can turn on, off or remove.
 
-It runs on web, desktop and mobile, and it is a self-hosted alternative to Termius that stays free forever.
+It runs on web, desktop and mobile. Think of it as a free, self-hosted Termius.
 
   
 
 Try the Demo
 ------------
 
-Want to see it before you install it? Try the demo at demo.termix.site. Any username and password works.
+Try it at demo.termix.site. Any username and password works.
 
   
 
 Core
 ----
 
-What every Termix install has, with or without plugins:
+What every install has, with or without plugins:
 
--   **Hosts:** Save hosts in nested folders with tags and parent hosts, bulk edit, import and export, and use Quick Connect for one-off connections
--   **Credentials:** Reuse saved passwords and keys across hosts, with host defaults you can set for the server, a user or a folder
--   **Sharing and Roles:** Share hosts, credentials and folders with users or roles at four levels: connect, view, edit and manage
--   **Accounts:** Local accounts, sessions you can see and revoke, trusted devices, API keys and an audit log
--   **Security:** Passwords, keys and other secrets are encrypted per user, and the database can be encrypted on disk
--   **Desktop Sync:** The desktop app runs on its own and can link to a Termix server to keep an offline copy of your account
--   **Interface:** Tabs and split screen, a command palette (double tap left shift), rebindable shortcuts, themes, branding and around 30 languages
--   **Databases:** SQLite by default, with PostgreSQL and MySQL supported too
+-   Hosts: Save hosts in nested folders with tags and parent hosts, bulk edit, import and export, and use Quick Connect for one-off connections
+-   Credentials: Reuse saved passwords and keys across hosts, with host defaults you can set for the server, a user or a folder
+-   Sharing and Roles: Share hosts, credentials and folders with users or roles at four levels: connect, view, edit and manage
+-   Accounts: Local accounts, sessions you can see and revoke, trusted devices, API keys and an audit log
+-   Security: Passwords, keys and other secrets are encrypted per user, and the database can be encrypted on disk
+-   Desktop Sync: The desktop app runs on its own and can link to a Termix server to keep an offline copy of your account
+-   Interface: Tabs and split screen, a command palette (double tap left shift), rebindable shortcuts, themes, branding and around 30 languages
+-   Databases: SQLite by default, with PostgreSQL and MySQL supported too
 
   
 
@@ -189,7 +189,7 @@ Workspaces
 
 Save your open tabs and split layouts and reopen them in one click.
 
-Want to build your own? Start from the plugin template. Plugins you can install are listed in the registry. Its community registry is open for submissions now, and Termix will be able to install community plugins in a later update. See submitting a plugin.
+Want to build your own? Start from the plugin template. Plugins you can install are listed in the registry. Turn on the community registry in Plugins, Registries to install plugins made by other people, or add your own registry. See submitting a plugin and hosting your own registry.
 
   
 
@@ -229,7 +229,7 @@ Google Play Store | APK
 Installation
 ------------
 
-Visit the Termix Docs for full install steps on every platform.
+See the docs for install steps on every platform.
 
 Sample Docker Compose file (you can leave out `guacd` and the network if you don't plan to use the Remote Desktop plugin):
 
@@ -272,16 +272,16 @@ networks:
 
 ### Cloud Hosting
 
-You can run Termix on a VPS instead of inside your own network. If Termix runs on the network it manages, an outage takes Termix down with it, right when you need it to fix things. Running it somewhere else keeps it reachable, gives you a static IP and lets you get in from anywhere without a VPN or port forward.
+If Termix runs on the network it manages, an outage takes it down right when you need it. A VPS keeps it reachable, gives you a static IP and works from anywhere without a VPN or port forward.
 
-GINERNET sponsors Termix, and the docs have a step by step guide for their VPS platform.
+GINERNET sponsors Termix and the docs have a setup guide for their VPS.
 
   
 
 Donate
 ------
 
-Termix is free and open source with no subscriptions or paid plans. If you find it useful, consider donating to help cover server costs, domains and development time.
+Termix has no paid plans. Donations cover servers, domains and development time.
 
 Donate
 
@@ -290,7 +290,7 @@ Donate
 Sponsors
 --------
 
-Interested in a paid placement to support development? Email mail@termix.site.
+For a paid sponsor spot, email mail@termix.site.
 
   
                        
@@ -304,7 +304,7 @@ Bugs and ideas for Termix itself (login, hosts, credentials, sharing, sync, the 
 
 Every plugin has its own repo, so a problem with the terminal, file manager, Docker, remote desktop or any other plugin goes in that plugin's repo (see the table above, or use Report an issue on the plugin's page in the app, which fills in your versions for you). Not sure where it goes? Open it here and it will be moved.
 
-You need to be logged in to GitHub. Please be as detailed as possible, preferably in English.
+You need a GitHub account. Add as much detail as you can, in English if possible.
 
 For discussions and questions, join the Discord server. Update videos are on YouTube.
 
@@ -313,4 +313,4 @@ For discussions and questions, join the Discord server. Update videos are on You
 License
 -------
 
-Distributed under the Apache License Version 2.0. See LICENSE for more information.
+Apache License 2.0. See LICENSE.

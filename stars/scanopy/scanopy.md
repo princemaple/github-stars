@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 5854
+stars: 5877
 description: Network diagrams that update themselves
 url: https://github.com/scanopy/scanopy
 ---
@@ -8,14 +8,19 @@ url: https://github.com/scanopy/scanopy
 Scanopy
 =======
 
-**Network documentation, without the drawing.**
+**Never maintain another network diagram.** Scanopy scans your network on a schedule and draws it as four views: L2, L3, workloads and applications.
+
+curl -O https://raw.githubusercontent.com/scanopy/scanopy/refs/heads/main/docker-compose.yml
+docker compose up -d
+
+Open `http://<your-server-ip>:60072` and create your account. The first discovery starts on its own.
+
+Prefer a hosted version? Try **Scanopy Cloud**. Full setup options are in the **docs**.
+
+  
+  
 
 Scanopy replaces manual network diagrams with a continuously maintained model of what's actually running. A single daemon scans on a schedule and produces four views from each scan: L2 (physical), L3 (logical), workloads, and applications. Unlike diagrams drawn in draw.io that go stale the week they're saved, or IaC state that misses drift and resources provisioned outside the pipeline, Scanopy reflects the current state of your infrastructure. Export as SVG, Mermaid, or Confluence; embed live maps; or feed the model into your existing source of truth.
-
-  
-  
-  
-  
 
 > 🏢 **Running Scanopy for your business?** The Commercial Edition adds a commercial license, more networks and seats, Confluence export, and support, all on your own infrastructure.
 

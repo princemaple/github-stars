@@ -8,22 +8,22 @@ url: https://github.com/woylie/flop
 Flop
 ====
 
-Flop is an Elixir library designed to easily apply filtering, ordering, and pagination to your Ecto queries.
+Flop is an Elixir library that applies filtering, ordering, and pagination to Ecto queries.
 
 Features
 --------
 
--   **Offset-based pagination:** Allows pagination through `offset`/`limit` or `page`/`page_size` parameters.
--   **Cursor-based pagination:** Also known as key set pagination, provides a more efficient alternative to offset-based pagination. Compatible with Relay pagination arguments.
--   **Sorting:** Applies sort parameters on multiple fields in any direction.
--   **Filtering:** Allows complex data filtering using multiple conditions, operators, and fields.
--   **Parameter validation:** Ensures the validity of provided parameters.
--   **Configurable filterable and sortable fields:** Only applies parameters to the fields that were explicitly configured as filterable or sortable.
--   **Join fields:** Allows the application of pagination, sort, and filter parameters on any named binding. Provides functions to help you to avoid unnecessary join clauses.
--   **Compound fields:** Provides the ability to apply filter parameters on multiple string fields, for example for a full name filter.
--   **Custom fields:** Provides an escape hatch for filtering and ordering that Flop is not able to build on its own.
--   **Relay connection formatter:** Formats the connection in Relay style, providing edges, nodes, and page info.
--   **UI helpers and URL builders through Flop Phoenix:** Pagination, sortable tables and filter forms.
+-   **Offset pagination:** with `offset`/`limit` or `page`/`page_size` parameters.
+-   **Cursor pagination:** keyset pagination with `first`/`after` and `last`/`before`, the same arguments Relay uses.
+-   **Sorting:** by several fields, each in its own direction, with nulls first or last.
+-   **Filtering:** by a list of filters, each with a field, an operator and a value.
+-   **Parameter validation:** invalid parameters become errors you can show to the user.
+-   **Allow-lists:** only fields configured as filterable or sortable can be used.
+-   **Join fields:** filter and sort by fields of joined tables, and only add the joins needed for a request.
+-   **Compound fields:** filter several string fields as one, for example a full name.
+-   **Custom fields:** your own filter or order expression for anything the other field types do not cover.
+-   **Relay connections:** edges, nodes and page info in Relay format.
+-   **Flop Phoenix:** pagination links, sortable tables and filter forms.
 
 Installation
 ------------
@@ -32,11 +32,11 @@ To get started, add `flop` to your dependencies list in your project's `mix.exs`
 
 def deps do
   \[
-    {:flop, "~> 0.29.0"}
+    {:flop, "~> 0.29.1"}
   \]
 end
 
-Enable debug checks in `config/dev.exs` and `config/test.exs`:
+Enable diagnostics in `config/dev.exs` and `config/test.exs`:
 
 config :flop, diagnostics: true
 
@@ -44,7 +44,7 @@ You can also configure a default repo for Flop by adding the following line to `
 
 config :flop, repo: MyApp.Repo
 
-Instead of configuring Flop globally, you can also use a configuration module. Please refer to the Flop module documentation for more information.
+If you want to avoid global configuration, you can use a configuration module instead or pass the repo directly to the functions.
 
 ### Compatibility
 
@@ -108,7 +108,7 @@ defmodule MyApp.Pet do
   end
 end
 
-Besides sortable and filterable fields, `Flop.Schema` also allows the definition of join fields, compound fields, or custom fields. You can also set maximum or default limits, among other options. For a comprehensive list of available options, check the `Flop.Schema` documentation.
+Besides sortable and filterable fields, `Flop.Schema` also allows the definition of join fields, compound fields, custom fields, and alias fields. You can also set maximum or default limits, and more. For a comprehensive list of available options, read the `Flop.Schema` documentation.
 
 ### Query data
 
@@ -137,7 +137,7 @@ On success, `Flop.validate_and_run/3` returns an `:ok` tuple. The second element
 
 You can learn more about the `Flop.Meta` struct in the module documentation.
 
-Alternatively, you may separate parameter validation and data fetching into different steps using the Flop.validate/2, Flop.validate!/2, and Flop.run/3 functions. This allows you to manipulate the validated parameters, to modify the query depending on the parameters, or to move the parameter validation to a different layer of your application.
+Alternatively, you may separate parameter validation and data fetching into different steps using the `Flop.validate/2`, `Flop.validate!/2`, and `Flop.run/3` functions. This allows you to manipulate the validated parameters, to modify the query depending on the parameters, or to move the parameter validation to a different layer of your application.
 
 with {:ok, flop} <- Flop.validate(params, for: Pet) do
   Flop.run(Pet, flop, for: Pet)
@@ -151,7 +151,7 @@ Flop.validate\_and\_run(Pet, flop, repo: MyApp.Repo)
 Flop.all(Pet, flop, repo: MyApp.Repo)
 Flop.meta(Pet, flop, repo: MyApp.Repo)
 
-For more detailed information, refer the documentation.
+For more detailed information, refer to the documentation.
 
 Parameter format
 ----------------
@@ -361,7 +361,7 @@ Development
 
 Pull requests are welcome, but for non-trivial changes like new features or API changes, please open an issue first and describe what you plan to do. Otherwise, you risk spending time on development work that might not be accepted.
 
-The database tests require running Postgres and MySQL instances. SQLite runs from a file and needs nothing. There is a docker compose configuration you can use:
+The database tests require running Postgres and MySQL instances. There is a docker compose configuration you can use:
 
 docker compose up
 
@@ -377,14 +377,10 @@ mix dialyzer
 
 Note that the tests are split up. The common functionality is tested without database interaction, and each Ecto adapter has its own suite that runs the tests involving database queries.
 
-`mix test` runs the common tests and the adapters that are expected to pass, which is every adapter at the moment.
-
 -   `mix test` - common functionality and all supported adapters
 -   `mix test.base` - common functionality only (runs without database)
 -   `mix test.postgres`
 -   `mix test.mysql`
 -   `mix test.sqlite`
-
-`mix test` is required to pass.
 
 For general contribution guidelines, refer to https://github.com/woylie/.github/blob/main/CONTRIBUTING.md.

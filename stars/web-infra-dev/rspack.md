@@ -1,6 +1,6 @@
 ---
 project: rspack
-stars: 12932
+stars: 12940
 description: Fast Rust-based bundler for the web with a modernized webpack API 🦀
 url: https://github.com/web-infra-dev/rspack
 ---
@@ -157,6 +157,7 @@ Thanks to:
 -   The webpack-subresource-integrity project created by @jscheid, which inspires implement subresource integrity rspack plugin.
 -   The circular-dependency-plugin project created by @aackerman, which inspres implement circular dependency rspack plugin.
 -   The tracing-chrome project created by thoren-d, which inspires the implementation of Rspack tracing.
+-   The allocative project from Buck2, which provides the foundation for Rspack's Rust memory profiling.
 
 License
 -------

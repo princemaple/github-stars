@@ -1,6 +1,6 @@
 ---
 project: s3fs-fuse
-stars: 10008
+stars: 10012
 description: FUSE-based file system backed by Amazon S3
 url: https://github.com/s3fs-fuse/s3fs-fuse
 ---
@@ -8,9 +8,7 @@ url: https://github.com/s3fs-fuse/s3fs-fuse
 s3fs
 ====
 
-s3fs allows Linux, macOS, and FreeBSD to mount an S3 bucket via FUSE(Filesystem in Userspace).  
-s3fs makes you operate files and directories in S3 bucket like a local file system.  
-s3fs preserves the native object format for files, allowing use of other tools like AWS CLI.
+s3fs allows Linux, macOS, FreeBSD, and AIX to mount an S3 bucket via FUSE(Filesystem in Userspace). s3fs makes you operate files and directories in S3 bucket like a local file system. s3fs preserves the native object format for files, allowing use of other tools like AWS CLI.
 
 Features
 --------
@@ -32,6 +30,10 @@ Installation
 
 Many systems provide pre-built packages:
 
+-   AIX:
+    
+    See the s3fs for AIX project for RPM build instructions and its releases page for published packages.
+    
 -   Amazon Linux via EPEL:
     
     ```

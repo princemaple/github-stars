@@ -1,6 +1,6 @@
 ---
 project: self-hosted
-stars: 699
+stars: 701
 description: Self-hosted version of webtor.io implemented as an all-in-one Docker image
 url: https://github.com/webtor-io/self-hosted
 ---
@@ -57,7 +57,9 @@ docker exec webtor sh -c 'set -a; . /etc/webtor/common.env; cd /app/web-ui && ./
 
 Once a password is set, the web interface requires authentication for every page (`ONLY_AUTHORIZED=true`, the default) — a visitor without a valid session is redirected to `/login` instead of getting read access. Set `ONLY_AUTHORIZED=false` to turn that off and fall back to the old behavior: pages stay reachable without logging in, and only actions that were already password-gated (e.g. changing settings) still prompt for one.
 
-Embedding is handled separately, because a third-party `<iframe>` has no session with your instance — redirecting it to a login form would only render a broken player. Which sites may embed is decided by the embed domain list on your profile page: add a domain there and the player works on it. A site that is not on the list shows a short "not authorized" message inside the player instead. Your own domain, `localhost` and `127.0.0.1` always work. To let any site embed from your instance, set `EMBED_ONLY_AUTHORIZED=false`.
+Embedding is handled separately, because a third-party `<iframe>` has no session with your instance — redirecting it to a login form would only render a broken player. Which sites may embed is decided by the embed domain list on your profile page: add a domain there and the player works on it. A site that is not on the list shows a short "not authorized" message inside the player instead. Your own domain, `localhost` and `127.0.0.1` are always on the list. To let any site embed from your instance, set `EMBED_ONLY_AUTHORIZED=false`.
+
+Embedding on another site — and `localhost` and `127.0.0.1` count as different sites — needs the instance served over https with `DOMAIN=https://…` (see Setting a Custom Domain). Over plain http the browser keeps no session in a cross-site frame, so the player there cannot start.
 
 API Access
 ----------
@@ -73,9 +75,18 @@ curl -H "Authorization: Bearer <your-api-key>" http://localhost:8080/api/v1/reso
 Setting a Custom Domain
 -----------------------
 
-If you plan to access your instance from a different host or domain, set the `DOMAIN` environment variable like this:
+If you plan to access your instance from a different host or domain, set the `DOMAIN` environment variable to the address you open in the browser. Stream and download links are built from it, and its scheme decides how the login session is kept:
 
-docker run -e DOMAIN=https://example.com -d -p 8080:8080 -v data:/data -v pgdata:/pgdata -v storage:/storage --name webtor --restart=always ghcr.io/webtor-io/self-hosted:latest
+-   **Plain http on your network** (`http://192.168.1.10:8080`, `http://nas.local:8080`): set `DOMAIN` to exactly that address.
+    
+    docker run -e DOMAIN=http://192.168.1.10:8080 -d -p 8080:8080 -v data:/data -v pgdata:/pgdata -v storage:/storage --name webtor --restart=always ghcr.io/webtor-io/self-hosted:latest
+    
+    Embedding the player on _other_ sites needs https: browsers keep no session in a cross-site frame over plain http.
+-   **Behind an HTTPS reverse proxy**: set `DOMAIN=https://example.com` and always open the instance at that https address.
+    
+    docker run -e DOMAIN=https://example.com -d -p 8080:8080 -v data:/data -v pgdata:/pgdata -v storage:/storage --name webtor --restart=always ghcr.io/webtor-io/self-hosted:latest
+    
+    With an https `DOMAIN` the session cookie is `Secure`, so opening the same instance over plain `http://<ip>:8080` does not work: the browser drops the cookie and every action answers "CSRF token mismatch". Do not leave `DOMAIN` at an http value (such as the default) behind the proxy: links would point to that address, the session cookie would go without the `Secure` flag, and embedding on other sites would stay off.
 
 Setting Custom Port
 -------------------

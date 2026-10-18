@@ -1,6 +1,6 @@
 ---
 project: openpanel
-stars: 7118
+stars: 7158
 description: OpenPanel is an open-source web and product analytics platform, an open-source alternative to Mixpanel with optional self-hosting.
 url: https://github.com/Openpanel-dev/openpanel
 ---
@@ -223,24 +223,23 @@ Development
 
 -   Docker
 -   Docker Compose
--   Node
--   pnpm
+-   Bun
 
 ### Start
 
-pnpm install
+bun install
 cp .env.example .env
 echo "API\_URL=http://localhost:3333" \> apps/start/.env
 
-pnpm dock:up
-pnpm codegen
-pnpm migrate:deploy # once to setup the db
-pnpm dev
+bun run dock:up
+bun run codegen
+bun run migrate:deploy # once to setup the db
+bun run dev
 
 You can now access the following:
 
 -   Dashboard: https://localhost:3000
 -   API: https://api.localhost:3333
 -   Bullboard (queue): http://localhost:9999
--   `pnpm dock:ch` to access clickhouse terminal
--   `pnpm dock:redis` to access redis terminal
+-   `bun run dock:ch` to access clickhouse terminal
+-   `bun run dock:redis` to access redis terminal

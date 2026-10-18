@@ -1,6 +1,6 @@
 ---
 project: paperless-ngx
-stars: 46487
+stars: 46813
 description: A community-supported supercharged document management system: scan, index and archive all your documents
 url: https://github.com/paperless-ngx/paperless-ngx
 ---
@@ -12,7 +12,7 @@ Paperless-ngx is a document management system that transforms your physical docu
 
 Paperless-ngx is the official successor to the original Paperless & Paperless-ng projects and is designed to distribute the responsibility of advancing and supporting the project among a team of people. Consider joining us!
 
-Thanks to the generous folks at DigitalOcean, a demo is available at demo.paperless-ngx.com using login `demo` / `demo`. _Note: demo content is reset frequently and confidential information should not be uploaded._
+Thanks to the generous folks at Fyra Stack, a demo is available at demo.paperless-ngx.com using login `demo` / `demo`. _Note: demo content is reset frequently and confidential information should not be uploaded._
 
 -   Features
 -   Getting started
@@ -24,7 +24,8 @@ Thanks to the generous folks at DigitalOcean, a demo is available at demo.paperl
 -   Related Projects
 -   Important Note
 
-This project is supported by:  
+Demo hosting provided by:  
+Fyra Stack
 
 Features
 ========

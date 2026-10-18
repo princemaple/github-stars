@@ -1,6 +1,6 @@
 ---
 project: documenso
-stars: 15380
+stars: 15449
 description: The Open Source DocuSign Alternative.
 url: https://github.com/documenso/documenso
 ---
@@ -106,8 +106,6 @@ npm run d
     
     -   **Port**: 54320
     -   **Connection**: Use your favorite database client to connect using the provided port.
-4.  **S3 Storage Dashboard** - http://localhost:9001
-    
 
 Developer Setup
 ---------------

@@ -1,6 +1,6 @@
 ---
 project: nebulex
-stars: 1403
+stars: 1404
 description: In-memory and distributed caching toolkit for Elixir.
 url: https://github.com/elixir-nebulex/nebulex
 ---
@@ -12,9 +12,9 @@ url: https://github.com/elixir-nebulex/nebulex
 🚀 About
 --------
 
-Nebulex provides support for transparently adding caching to existing Elixir applications. Like Ecto, the caching abstraction allows consistent use of various caching solutions with minimal impact on your code.
+Nebulex adds caching to Elixir applications. Like Ecto, it is an abstraction: you use different caching backends through the same API, with little impact on your code.
 
-Nebulex's cache abstraction shields developers from directly interacting with underlying caching implementations, such as Redis, Memcached, or other Elixir cache implementations like Cachex. It also provides out-of-the-box features including declarative decorator-based caching, cache usage patterns, and distributed cache topologies, among others.
+You write against the Nebulex API instead of talking to Redis, Memcached, or an Elixir cache like Cachex directly. Nebulex also comes with declarative decorator-based caching, cache usage patterns, and distributed cache topologies.
 
 * * *
 
@@ -42,14 +42,14 @@ def deps do
   \]
 end
 
-To provide more flexibility and load only the needed dependencies, Nebulex makes all dependencies optional, including the adapters. For example:
+All dependencies are optional, including the adapters, so you only load what you need:
 
--   **For enabling declarative decorator-based caching**: Add `:decorator` to the dependency list (recommended).
+-   For declarative decorator-based caching, add `:decorator` (recommended).
     
--   **For enabling Telemetry events**: Add `:telemetry` to the dependency list (recommended). See the Info API guide for monitoring cache stats and metrics.
+-   For Telemetry events, add `:telemetry` (recommended). See the Info API guide for cache stats and metrics.
     
 
-Then run `mix deps.get` in your shell to fetch the dependencies. If you want to use another cache adapter, just choose the appropriate dependency from the table above.
+Then run `mix deps.get`. To use another cache adapter, pick its dependency from the adapters guide.
 
 Finally, in your cache definition, you'll need to specify the `adapter:` corresponding to the chosen dependency. For the local cache, it would be:
 
@@ -75,14 +75,14 @@ iex\> MyApp.Cache.put("foo", "bar")
 iex\> MyApp.Cache.fetch("foo")
 {:ok, "bar"}
 
-For more detailed information, see the getting started guide and online documentation.
+For more details, see the getting started guide and the online documentation.
 
 * * *
 
 ⚡ Quick Start Example with Caching Decorators
 ---------------------------------------------
 
-This example demonstrates how to use Nebulex with Ecto and declarative caching:
+This example uses Nebulex with Ecto and declarative caching:
 
 \# In config/config.exs
 config :my\_app, MyApp.Cache,
@@ -186,11 +186,11 @@ To run only the tests:
 
 $ mix test
 
-Additionally, to run all Nebulex checks:
+To run all the checks CI runs:
 
 $ mix precommit
 
-The `mix precommit` command will run the tests, coverage, credo, dialyzer, and more. This is the recommended way to test Nebulex.
+The `mix precommit` alias runs the tests, coverage, Credo, Dialyzer, and the other checks. Run it before opening a pull request.
 
 * * *
 
@@ -203,14 +203,14 @@ To run a benchmark test:
 
 $ mix bench
 
-> The benchmark uses the `Nebulex.Adapters.Nil` adapter; it is more focused on measuring the Nebulex abstraction layer performance rather than a specific adapter.
+> The benchmark uses the `Nebulex.Adapters.Nil` adapter, so it measures the Nebulex abstraction layer, not a specific adapter.
 
 * * *
 
 🤝 Contributing
 ---------------
 
-Contributions to Nebulex are very welcome and appreciated!
+Contributions are welcome.
 
 Use the issue tracker for bug reports or feature requests. Open a pull request when you're ready to contribute.
 

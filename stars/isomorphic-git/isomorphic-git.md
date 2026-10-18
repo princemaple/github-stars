@@ -1,6 +1,6 @@
 ---
 project: isomorphic-git
-stars: 8368
+stars: 8376
 description: A pure JavaScript implementation of git for node and browsers!
 url: https://github.com/isomorphic-git/isomorphic-git
 ---
@@ -696,6 +696,14 @@ Thanks goes to these wonderful people (emoji key):
   
 **Bruno Macabeus**  
 💻 ⚠️
+
+  
+**snowyukitty**  
+💻 ⚠️
+
+  
+**Shahab Ahmed**  
+💻 ⚠️ 📖
 
 This project follows the all-contributors specification. Contributions of any kind welcome!
 

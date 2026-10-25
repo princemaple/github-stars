@@ -1,6 +1,6 @@
 ---
 project: shimmy
-stars: 5982
+stars: 5990
 description: ⚡ Pure-Rust WebGPU inference engine — OpenAI-API compatible, GGUF native, runs on any GPU. No Python. No llama.cpp. Single binary.
 url: https://github.com/Michael-A-Kuykendall/shimmy
 ---
@@ -8,7 +8,7 @@ url: https://github.com/Michael-A-Kuykendall/shimmy
 Shimmy — Local Inference, OpenAI-Compatible
 ===========================================
 
-### 🔒 The 5MB alternative to Ollama — 100% Rust, zero dependencies 🚀
+### 🔒 Local GPU inference — one binary, 100% Rust 🚀
 
 **Languages:** 简体中文 · 繁體中文
 
@@ -23,7 +23,7 @@ What Is Shimmy?
 
 Shimmy is a **single-binary** OpenAI-compatible inference server for GGUF models. Point your existing AI tools at Shimmy and they just work — locally, privately, and free.
 
-**Shimmy is the server. Airframe is the engine.** Under the hood, Shimmy runs on **Airframe** (v0.4.0), a pure-Rust WebGPU (WGSL) transformer engine. No C++ toolchain, no Python runtime, no backend flags. 26 models certified across 12 families. Version history: CHANGELOG · Airframe CHANGELOG.
+**Shimmy is the server. Airframe is the engine.** Under the hood, Shimmy runs on **Airframe** (v0.4.4), a pure-Rust WebGPU (WGSL) transformer engine. No C++ toolchain, no Python runtime, no backend flags. 26 models certified across 12 families. Version history: CHANGELOG · Airframe CHANGELOG.
 
 **Why this matters:**
 
@@ -177,7 +177,9 @@ Features
 Quick Start
 -----------
 
-cargo install shimmy
+Local loopback access needs no key. Network binds require `SHIMMY_API_KEY`; browser clients must also be listed in `SHIMMY_ALLOWED_ORIGINS`. See the network-access instructions.
+
+cargo install shimmy --locked
 shimmy serve --model-path /absolute/path/to/model.gguf --bind 127.0.0.1:11435
 
 Then in another terminal:
@@ -252,10 +254,10 @@ Development Testing
 Shimmy maintains high code quality through comprehensive testing:
 
 # Full test suite (default features = GPU engine)
-cargo test --features airframe,huggingface
+cargo test --release --locked
 
 # Quick CPU-only tests (no GPU required)
-cargo test --lib --no-default-features --features huggingface -- --test-threads=1
+cargo test --release --locked --no-default-features --features fast
 
 See docs/ppt-invariant-testing.md for technical details.
 

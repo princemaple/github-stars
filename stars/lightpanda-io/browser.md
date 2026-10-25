@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 36641
+stars: 36942
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -107,6 +107,10 @@ You can use `--dump markdown` to convert directly into markdown, or `--dump png 
 ### Start a CDP server
 
 ./lightpanda serve --obey-robots --log-format pretty  --log-level info --host 127.0.0.1 --port 9222
+
+To listen on a Unix-domain socket (owner-only, mode 0600) instead of TCP:
+
+./lightpanda serve --unix-socket /run/user/1000/lightpanda.sock
 
 Once the CDP server started, you can run a Puppeteer script by configuring the `browserWSEndpoint`.
 

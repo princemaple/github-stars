@@ -1,11 +1,16 @@
 ---
 project: docker-android
-stars: 15985
+stars: 16021
 description: Android in docker solution with noVNC supported, video recording, mcp server and AI-agent
 url: https://github.com/budtmo/docker-android
 ---
 
 Docker-Android is a docker image built to be used for everything related to Android. It can be used for Application development and testing (native, web and hybrid-app).
+
+Sponsors
+--------
+
+Proxy-Seller gives you reliable proxy infrastructure for any workflow: private residential, mobile (4G/5G/LTE), ISP, and datacenter IPv4/IPv6 proxies, all with HTTP(S) and SOCKS5 support. Tap into 47M+ residential IPs across 220+ locations, target exactly the country, city, or ISP you need, and count on 99.7% uptime backed by 24/7 support. Get 15% off with promo code **BUDTMO**.
 
 Advantages of using this project
 --------------------------------

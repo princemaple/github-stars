@@ -1,6 +1,6 @@
 ---
 project: atuin
-stars: 32016
+stars: 32065
 description: ✨ Making your shell magical
 url: https://github.com/atuinsh/atuin
 ---

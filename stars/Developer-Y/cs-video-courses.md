@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83689
+stars: 83761
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -161,6 +161,7 @@ Courses
 -   COP 5536 Advanced Data Structures, Prof Sahni - UFL (Videos)
 -   CS 261 - A Second Course in Algorithms, Stanford University (Youtube)
 -   CS 224 - Advanced Algorithms, Harvard University (Lecture Videos) (Youtube)
+-   CS 627 - Advanced Algorithms, Marburg University (Videos - Su 2025)
 -   CS 6150 - Advanced Algorithms (Fall 2016), University of Utah
 -   CS 6150 - Advanced Algorithms (Fall 2017), University of Utah
 -   ECS 222A - Graduate Level Algorithm Design and Analysis, UC Davis
@@ -397,7 +398,7 @@ Courses
 -   10-202: Introduction to Modern AI - CMU
 -   CS 188 - Introduction to Artificial Intelligence, UC Berkeley - Spring 2026, by Dan Klein, Stuart Russell (Spring 2025) (Spring 2024) (Spring 2023)
 -   6.034 Artificial Intelligence, MIT OCW
--   CS221: Artificial Intelligence: Principles and Techniques - Autumn 2019 - Stanford University
+-   CS221: Artificial Intelligence: Principles and Techniques - Autumn 2025 - Stanford University (Slides - Autumn 2025) (Recordings - Autumn 2025) (Recordings - Autumn 2019)
 -   15-780 - Graduate Artificial Intelligence, Spring 14, CMU
 -   CSE 592 Applications of Artificial Intelligence, Winter 2003 - University of Washington
 -   CS322 - Introduction to Artificial Intelligence, Winter 2012-13 - UBC (YouTube)
@@ -1190,7 +1191,7 @@ Courses
 -   Stanford AA 203 Optimal and Learning-Based Control, by Marco Pavone, Daniele Gammelli (Videos - Sp 2026)
 -   FSU EML 4930 / 5930 Applied Optimal Control spring 2025, by Christian Hubicki (Spring 2023)
 -   UF EML 6934 Optimal Control spring 2012, by Anil V. Rao
--   Real-World Algorithms for IoT and Data Science - UIUC
+-   Real-World Algorithms for IoT and Data Science spring 2024 - UIUC (Spring 2023)
 
 * * *
 

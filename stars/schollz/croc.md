@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40621
+stars: 40749
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -142,7 +142,7 @@ You can also just paste it in the terminal for current session. On first run Doc
 
 ### Build from Source
 
-If you prefer, you can install Go and build from source (requires Go 1.27+):
+If you prefer, you can install Go and build from source (requires Go 1.27.1+):
 
 go install github.com/schollz/croc/v11@latest
 
@@ -365,7 +365,7 @@ docker run -d -p 9010-9011:9010-9011 -e CROC\_PORTS='9010,9011' -e CROC\_PASS='Y
 
 #### Web client
 
-The React/Vite client in `web/` can send and receive multiple files and join `croc ssh` sessions hosted by normal CLI peers. The production client and its WebAssembly protocol runtime are bundled only in the standalone `croc-web` server, keeping generated assets and web-server code out of the cross-platform `croc` binary. Linux amd64 builds of `croc-web` are published separately with each release. It serves both the site and its same-origin WebSocket relay:
+The React/Vite client in `web/` can send and receive multiple files and join `croc ssh` sessions hosted by normal CLI peers. File and text transfers use native TypeScript and browser APIs without WebAssembly. The production client and the separate SSH WebAssembly runtime are bundled only in the standalone `croc-web` server, keeping generated assets and web-server code out of the cross-platform `croc` binary. Linux amd64 builds of `croc-web` are published separately with each release. It serves both the site and its same-origin WebSocket relay:
 
 croc-web getcroc.com
 

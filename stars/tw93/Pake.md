@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 62148
+stars: 62299
 description: Turn any website into a lightweight desktop app with one command, on macOS, Windows and Linux.
 url: https://github.com/tw93/Pake
 ---
@@ -9,6 +9,8 @@ Pake
 ====
 
 **Turn any website into a lightweight desktop app with one command. Supports macOS, Windows, and Linux.**
+
+pake.run
 
 English · 中文 · 繁體 · 日本語 · 한국어 · Deutsch · Français
 
@@ -219,7 +221,7 @@ Support
 -   If Pake helped you, give it a star, share it, or open an issue or PR, including sites that would make good desktop apps
 -   I have two cats, TangYuan and Coke, and if Pake makes your life a little easier, feel free to treat them to canned food 🥩
 
-These lovely people already did 🐱  
+These lovely people already did 🐱
 
 License
 -------

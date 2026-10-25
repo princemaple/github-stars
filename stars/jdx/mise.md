@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 35117
+stars: 35340
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---

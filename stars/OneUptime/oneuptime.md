@@ -1,285 +1,89 @@
 ---
 project: oneuptime
-stars: 7745
+stars: 7754
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
 
-English · 简体中文 · 繁體中文 · 日本語 · 한국어 · Español · Français · Deutsch · Português · Italiano · Русский · हिन्दी · فارسی · Nederlands · Dansk · Svenska · Norsk
+English · 简⁠体⁠中⁠文 · 繁⁠體⁠中⁠文 · 日⁠本⁠語 · 한⁠국⁠어 · Español · Français · Deutsch · Português · Italiano · Русский · हिन्दी · فارسی · Nederlands · Dansk · Svenska · Norsk
 
-### Agentic observability — one open-source platform for uptime, incidents, on-call, status pages, logs, traces, metrics & APM.
+OneUptime is an open-source observability platform. It checks that your websites, APIs and servers work, collects the logs, metrics and traces your apps send, pages whoever is on call when something breaks, and tells your customers on a status page. It all happens in one product, so the tool that notices a problem is the one that pages your team.
 
-**When things go wrong, be the first to know — and the fastest to fix.**
+You can use it on OneUptime Cloud or run it on your own servers.
 
-OneUptime replaces a whole shelf of SaaS tools with one platform you can self-host for free. It catches the outage, pages the right person, updates your status page, finds the root cause, and even opens the fix PR.
+What it does
+------------
 
-**Website**  •  **Docs**  •  **Quick Start**  •  **Pricing**  •  **Contribute**
+-   **Monitoring**: Check websites, APIs, ports, DNS and certificates from probes around the world or from inside your own network. OneUptime also watches servers, Kubernetes, Docker, VMware, databases and network devices.
+-   **Incidents and on-call**: Work each incident on one timeline. Page whoever is on call by phone, SMS, email, push, Slack or Microsoft Teams, and escalate until someone responds.
+-   **Status pages**: Keep customers informed on public or private status pages, and announce scheduled maintenance there.
+-   **Logs, metrics and traces**: Send them with OpenTelemetry, search them and build dashboards. Exceptions, profiles, real user monitoring and security events live in the same place.
+-   **Workflows and runbooks**: Automate routine work, and connect Jira, ServiceNow and the other tools your team already uses.
+-   **OneUptime AI**: Investigates new incidents and alerts and posts a root cause analysis with citations. When you turn fixing on, it can open a pull request with a fix for your team to review.
+-   **API, CLI and Terraform**: Automate OneUptime from your scripts and CI, and manage monitors, status pages and on-call as code.
 
-**🚀 Try OneUptime Cloud — free forever plan, no credit card →**
+Everything else is in the docs.
 
-  
+Get started
+-----------
 
-* * *
+### OneUptime Cloud
 
-Replace your whole observability stack
---------------------------------------
+Sign up and create a project. The free plan needs no credit card.
 
-OneUptime brings monitoring, alerting, incident response, and observability into a single open-source app — so you stop paying for (and stitching together) a dozen separate tools.
+### Self-host with Docker Compose
 
-Instead of…
+You need a Linux server with at least 8 GB of memory, and Docker, Docker Compose, Git and Node.js.
 
-Use OneUptime for…
-
-Pingdom / UptimeRobot
-
-**Uptime Monitoring** — website, API, ping, port, SSL, DNS & synthetic checks from around the world
-
-StatusPage.io
-
-**Status Pages** — branded public & private status pages with subscribers
-
-PagerDuty / Opsgenie
-
-**On-Call & Alerts** — schedules, escalation policies, SMS / call / push / Slack
-
-Incident.io
-
-**Incident Management** — declare, triage, communicate, and post-mortem
-
-Datadog / New Relic
-
-**APM & Metrics** — traces, dashboards, and service performance
-
-Loggly
-
-**Log Management** — collect, search, and alert on logs
-
-Sentry
-
-**Error Tracking** — exceptions with full stack traces and context
-
-All of it is **open source (Apache 2.0)** and free to self-host in the Community Edition.
-
-* * *
-
-**🌙 One incident, handled end to end**  
-
-It's 2:47 AM. Checkout starts timing out. Here's what OneUptime does before most tools would even fire the first alert — and what the screenshots below actually show.
-
-### 1 · Detect — _know in seconds_
-
-Probes in multiple regions catch checkout latency blowing past your 5s threshold and open an incident automatically — before your customers hit refresh.
-
-### 2 · Respond — _the right person, paged_
-
-The on-call engineer for the Payments policy is called, texted, and push-notified, escalating to backup automatically until someone acknowledges.
-
-### 3 · Communicate — _customers in the loop_
-
-Your status page updates itself and every subscriber is notified by email and SMS — no one has to hand-write the update.
-
-### 4 · Diagnose — _root cause, found_
-
-Traces, logs, and metrics are correlated down to the exact span: a slow `SELECT … FOR UPDATE` on `orders`, stuck on a missing index.
-
-### 5 · Auto-Fix — _the fix, drafted for you_
-
-The AI agent opens a pull request with the fix, linked to the incident, verified against your repository's configured build and test commands before it opens — you review and merge. Like an SRE that never sleeps.
-
-* * *
-
-⚡ Quick Start
--------------
-
-### ☁️ OneUptime Cloud — the easy way
-
-Zero setup, always up to date, and it funds the open-source project.
-
-**→ Sign up free at oneuptime.com**
-
-### 🐳 Self-host with Docker Compose
-
-Everything you need on a single server (Debian / Ubuntu / RHEL, Docker + Docker Compose). Great for homelabs and small teams — a Raspberry Pi even works.
+Before step 3, set `HOST` in `config.env` to the domain name or IP address people will use to reach OneUptime, without `http://`. Keep `localhost` only to try OneUptime on your own computer.
 
 # 1. Clone the release branch
 git clone --depth 1 --single-branch --branch release https://github.com/OneUptime/oneuptime.git
 cd oneuptime
 
-# 2. Create your config (then edit it — set strong, random secrets!)
+# 2. Create your config
 cp config.example.env config.env
 
 # 3. Start everything
 npm start
 
-OneUptime is now running at **http://localhost** — open it and create your first account.
+`npm start` checks the server, gives every secret in `config.env` its own random value and starts OneUptime. When it prints **OneUptime is up!**, open `http://localhost`, or your server's address, and sign up. The first account becomes the instance's admin.
 
-📖 Full guide: Docker Compose install · Sizing & requirements
+The Docker Compose guide covers server sizes, HTTPS, backups and updates.
 
-### ☸️ Kubernetes with Helm — for production
+### Kubernetes with Helm
 
-helm repo add oneuptime https://helm-chart.oneuptime.com
-helm install oneuptime oneuptime/oneuptime
+For production at scale, or high availability, install the Helm chart. Set `host` to the domain name or IP address people will use to reach OneUptime:
 
-📖 Full install instructions & values on Artifact Hub →
+helm repo add oneuptime https://helm-chart.oneuptime.com/
+helm install my-oneuptime oneuptime/oneuptime --set host=oneuptime.example.com
 
-> **Upgrading an existing install?** See the upgrade guide.
+The chart's README covers storage, HTTPS, databases and upgrades.
 
-* * *
+Community and Enterprise
+------------------------
 
-✨ Everything in the box
------------------------
+-   **Community Edition**: Free and open source, with everything above, including SAML and OIDC single sign-on.
+-   **Enterprise Edition**: Adds SCIM provisioning, audit logs, team compliance and instance health dashboards, with priority support. Production use needs a license: contact sales.
 
-Feature
+The docs compare the two editions.
 
-What it does
+Get help
+--------
 
-📊
+-   Ask questions in the OneUptime community on Slack.
+-   Report bugs and request features in GitHub issues.
+-   Report a security vulnerability privately, as SECURITY.md explains.
+-   Email support@oneuptime.com about anything else.
 
-**Uptime Monitoring**
+Contributing
+------------
 
-Website, API, IP, port, SSL, DNS, and synthetic monitors from multiple global regions.
+Bug fixes, features, docs and tests are all welcome. The local development guide shows how to run OneUptime from source, and the contributing guidelines explain how pull requests and licensing work. Issues labeled good first issue are a good place to start.
 
-📋
+If OneUptime is useful to you, star this repository or sponsor the project.
 
-**Status Pages**
-
-Beautiful branded status pages, incident history, scheduled maintenance, and subscriber notifications.
-
-🚨
-
-**Incident Management**
-
-End-to-end incident workflow: declare, assign, communicate, resolve, and run post-mortems.
-
-📞
-
-**On-Call & Alerts**
-
-On-call schedules and escalation policies with SMS, phone call, push, email, and Slack alerts.
-
-📝
-
-**Log Management**
-
-Ingest, store, search, and alert on logs via OpenTelemetry.
-
-🔍
-
-**APM & Traces**
-
-Distributed traces, spans, and performance dashboards to find slow paths and bottlenecks.
-
-📈
-
-**Metrics & Dashboards**
-
-Custom dashboards over your telemetry — build the views your team needs.
-
-🐛
-
-**Error Tracking**
-
-Capture exceptions with full stack traces, context, and release tracking.
-
-⚡
-
-**Workflows**
-
-Automate and integrate with Slack, Jira, GitHub, Microsoft Teams, and 5,000+ apps.
-
-🤖
-
-**AI Copilot**
-
-An always-on agent that finds anomalies across logs, traces & metrics, spots root causes, and opens PRs with fixes.
-
-**⚡ Automate the busywork**  
-
-Wire up escalations, ticketing, and notifications on a visual, no-code canvas — or drop in custom code. The incident above paged on-call, opened a Jira ticket, and posted to Slack without anyone lifting a finger.
-
-### 🖥️ Infrastructure Monitoring
-
-Drop in copy-paste, **OpenTelemetry-based** agents to watch everything your services run on — with ready-made alert templates included:
-
--   **Servers & VMs** — CPU, memory, disk, network, processes, and logs from Linux, macOS & Windows. Docs →
--   **Kubernetes** — one `helm install` ships node/pod/container/cluster metrics, events, logs, and eBPF traces & service maps. Docs →
--   **Docker** — a single agent auto-discovers every container and ships metrics & logs. Docs →
--   **Podman** — same one-agent auto-discovery via Podman's Docker-compatible socket. Docs →
--   **Proxmox** — nodes, VMs, containers, storage, HA state, backup coverage & replication health. Docs →
--   **VMware** — vCenter, ESXi hosts, virtual machines, datastores, clusters, resource pools & vSAN. Docs →
--   **Ceph** — cluster health, capacity forecasts, and OSD/pool/PG/monitor visibility. Docs →
--   **Storage Arrays** — Pure Storage FlashArray and FlashBlade: capacity, latency, volumes, hosts, replication, hardware health, file systems and buckets. Docs →
--   **Databases** — PostgreSQL, MySQL, Redis, MongoDB and more, auto-detected from application traces, Kubernetes and Docker, with engine metrics, query samples and logs from a config-only collector agent. Docs →
-
-* * *
-
-💼 Community vs. Enterprise
----------------------------
-
-**Community**
-
-**Enterprise**
-
-**Best for**
-
-Self-hosters & small teams
-
-Regulated teams needing premium support
-
-**Cost**
-
-Free & open source
-
-Contact sales
-
-**License**
-
-Apache 2.0
-
-Apache 2.0, plus the OneUptime Enterprise License for the `ee/` directory
-
-**Features**
-
-Everything in the box above — monitoring, status pages, incidents, on-call, logs, traces, metrics, error tracking, workflows & AI — plus SAML & OIDC single sign-on
-
-Everything in Community + SCIM provisioning, audit logs, team compliance & instance health dashboards, with priority support, custom features & data residency
-
-Enterprise features live in the `ee/` directory and ship only in the Enterprise image. See Community vs. Enterprise Edition for the full comparison.
-
-* * *
-
-💡 Why OneUptime?
------------------
-
-Our mission is simple: **reduce downtime and help more products succeed.** Instead of duct-taping seven vendors together, you get one platform that helps you understand _why_ things break, respond to incidents fast, and cut operational toil — open source at its core (Apache 2.0), so you own your data and your stack.
-
-* * *
-
-🤝 Contributing
----------------
-
-We welcome contributions of every size. Start here:
-
--   🐛 **Open issues** — pick one up, or file a new one
--   ✅ **Help write tests** for the codebase
--   🧑‍💻 **Local development guide** to get set up
--   📖 Read the **contributing guidelines**
--   💬 Chat with us in the **Developer Slack** or **Community Slack**
-
-❤️ Support the project
-----------------------
-
-If OneUptime is useful to you:
-
--   ⭐ **Star this repo** — it genuinely helps others find us
--   💵 **Sponsor us** — every dollar ships new features
--   🛍️ **Grab some merch** — all proceeds fund open-source development
-
-* * *
-
-📄 License
-----------
+License
+-------
 
 OneUptime is open source under the Apache License 2.0, except for the `ee/` directory. That directory holds the Enterprise Edition and is licensed under the OneUptime Enterprise License. The Community Edition image contains no code from `ee/`. The root `LICENSE` file sets out this split.
-
-Made with ❤️ by the OneUptime team and contributors.

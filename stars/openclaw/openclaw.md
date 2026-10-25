@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 392284
+stars: 392957
 description: The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -116,7 +116,7 @@ Community
 
 See CONTRIBUTING.md for maintainers and contribution guidelines; AI-assisted PRs are welcome.
 
-Use the issue chooser for bugs and feature requests, ask setup questions in Discord, and report vulnerabilities through SECURITY.md. New capabilities usually belong in plugins built on the plugin SDK and shared through ClawHub.
+Use the issue chooser for bugs and feature requests, get official OpenClaw support at community.openclaw.ai, and report vulnerabilities through SECURITY.md. New capabilities usually belong in plugins built on the plugin SDK and shared through ClawHub.
 
 OpenClaw was built for **Molty**, a space lobster AI assistant, by Peter Steinberger and the community. Explore the project lore, soul.md, Peter's site, Star History, and @openclaw.
 

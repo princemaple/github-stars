@@ -1,6 +1,6 @@
 ---
 project: ghostty
-stars: 62329
+stars: 62570
 description: 👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.
 url: https://github.com/ghostty-org/ghostty
 ---

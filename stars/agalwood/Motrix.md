@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 56972
+stars: 57352
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---
@@ -24,12 +24,12 @@ The same core powers two ways to run Motrix:
 -   **Desktop app:** Runs on macOS, Windows, and Linux
 -   **Headless server:** Runs without a desktop environment, either directly on Node.js or in Docker, and includes a web UI for NAS devices and home servers
 
-🧪 Beta testing
----------------
+Motrix 2.0.0
+------------
 
-Motrix Turbo v2 is currently in beta. After its remaining release gates pass, download v2.0.0-beta.49 from GitHub Releases and read the full release notes before installing it.
+Motrix 2.0.0 is the first stable release of the rebuilt desktop app and headless server. Download v2.0.0 from GitHub Releases and read the full release notes.
 
-Back up your existing Motrix data and downloads before testing. The desktop Migration Assistant imports selected v1 tasks as paused records and preserves the original files. Resuming downloads requires a separate explicit action; legacy progress import is unavailable on Windows. Keep a backup of the v1 profile and the engine's pre-upgrade database snapshot. When practical, test v2 in parallel using a separate OS account, machine, or Docker data directory.
+Back up your existing Motrix profile and downloads before upgrading. The desktop Migration Assistant imports selected v1 tasks as paused records and preserves the original files. Resuming downloads requires a separate explicit action. Windows in-place BitTorrent activation requires a supported local NTFS volume and explicit authorization. See the migration guide for supported volumes, file permissions, and recovery. Keep the v1 profile and the engine's pre-upgrade database backup.
 
 Screenshots
 -----------
@@ -149,7 +149,7 @@ For installation and pairing, see the browser extension guide. Development build
 
 Download Motrix from motrix.app and choose the package for your operating system. Most Mac users should choose the Apple Silicon build; Intel builds are available for older Macs with Intel processors.
 
-After the remaining release gates pass, the current beta desktop packages will be distributed through the GitHub prerelease linked above. The protected release tag also publishes verified Snap builds to `latest/edge`. Choose the package that matches your operating system and architecture:
+Desktop packages are available from the GitHub Release linked above. Snap builds pass through `latest/edge` and `latest/candidate` before promotion to `latest/stable`. Choose the package that matches your operating system and architecture:
 
 Platform
 
@@ -167,9 +167,9 @@ macOS 13+
 
 Use the `.dmg` matching your Mac; choose `x64` only for an Intel-based Mac
 
-Windows
+Windows 10+
 
-`x64`
+`x64`, `arm64`
 
 `.exe` (NSIS installer) / `.zip`
 
@@ -187,9 +187,9 @@ Linux (Snap Store)
 
 `amd64`, `arm64`
 
-`latest/edge`
+`latest/stable`
 
-Install the strictly confined beta with `sudo snap install motrix --edge`
+Install the strictly confined package with `sudo snap install motrix` after stable promotion
 
 Linux (Flatpak)
 
@@ -207,7 +207,7 @@ Arch Linux / Omarchy
 
 Install the native Arch package with `sudo pacman -U ./Motrix-<version>-<arch>.pacman`; see the Arch installation guide
 
-The `.AppImage` asks on first launch whether to register its desktop entry and URL-scheme handlers under your user data directory; declining leaves your system untouched. You can enable or remove this desktop integration at any time from Settings → Integration. The Snap Store package is strictly confined. Its approved `personal-files` interface permits Motrix to register Native Messaging hosts for supported browsers; it does not grant general access to files outside the normal Snap interfaces. Release tags build and validate Flatpak application bundles for both architectures before publication. Older releases, including beta.39, contain only the Flatpak Native Host companion. These single-file bundles require manual upgrades; they do not configure a Motrix update repository. Windows `arm64` and all 32-bit packages are not available. Windows `x64` packages are unsigned and may trigger a Windows SmartScreen warning.
+The `.AppImage` asks on first launch whether to register its desktop entry and URL-scheme handlers under your user data directory; declining leaves your system untouched. You can enable or remove this desktop integration at any time from Settings → Integration. The Snap Store package is strictly confined. Its approved `personal-files` interface permits Motrix to register Native Messaging hosts for supported browsers; it does not grant general access to files outside the normal Snap interfaces. Release tags build and validate Flatpak application bundles for both architectures before publication. Older releases, including beta.39, contain only the Flatpak Native Host companion. These single-file bundles require manual upgrades; they do not configure a Motrix update repository. Windows ARM64 computers can use the native `arm64` installer or ZIP. All 32-bit packages remain unavailable. Windows `x64` and `arm64` packages are unsigned and may trigger a Windows SmartScreen warning.
 
 ### Command-line client
 
@@ -217,11 +217,11 @@ You can also install it from Settings → Integration → Command-line tools in 
 
 ### Headless server with Docker
 
-Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR. Beta releases publish only the immutable version tag and do not update `latest`; the included `compose.yaml` keeps Server state separate from downloaded resources:
+Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR. Stable releases also update `2.0`, `2`, `stable`, and `latest` after runtime verification; beta releases publish only their immutable version tag. The included `compose.yaml` keeps Server state separate from downloaded resources:
 
 mkdir -p motrix-data downloads
 sudo chown 1000:1000 motrix-data downloads
-export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0-beta.49'
+export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.0.0'
 export MOTRIX\_PUBLIC\_URL='http://nas.example.lan:8080'
 docker compose pull server
 docker compose up -d --wait

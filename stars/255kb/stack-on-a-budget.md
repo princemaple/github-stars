@@ -1,6 +1,6 @@
 ---
 project: stack-on-a-budget
-stars: 12485
+stars: 12488
 description: A collection of services with great free tiers for developers on a budget. Sponsored by Mockoon, the best mock API tool. https://mockoon.com
 url: https://github.com/255kb/stack-on-a-budget
 ---
@@ -45,7 +45,6 @@ Table of Contents
     -   Faable
     -   Fly
     -   GearHost
-    -   Glitch
     -   Google App Engine
     -   Google Compute Engine
     -   IBM Cloud
@@ -53,8 +52,10 @@ Table of Contents
     -   Netlify
     -   OpenShift
     -   Oracle
+    -   Prisma Compute
     -   Qoddi
     -   Render
+    -   The Vibe Hosting
     -   Vercel
 -   **Application performance monitoring**
     -   Datadog
@@ -226,6 +227,7 @@ Table of Contents
 -   **Security**
     -   IPASIS
     -   Snyk
+    -   Vetto
 -   **Serverless app hosting**
     -   Catalyst AppSail
     -   AWS Lambda
@@ -233,6 +235,7 @@ Table of Contents
 -   **Static app hosting**
     -   AWS S3
     -   Cloudflare Pages
+    -   deed.page
     -   Firebase hosting
     -   GitHub Pages
     -   GitLab Pages

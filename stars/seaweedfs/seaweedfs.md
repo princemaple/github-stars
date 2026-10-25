@@ -1,6 +1,6 @@
 ---
 project: seaweedfs
-stars: 35548
+stars: 35715
 description: SeaweedFS is a distributed storage system for object storage (S3), file systems, and Iceberg tables, designed to handle billions of files with O(1) disk access and effortless horizontal scaling.
 url: https://github.com/seaweedfs/seaweedfs
 ---
@@ -228,7 +228,7 @@ A data warehouse with S3 Tables
 
 SeaweedFS is a lakehouse in one system. S3 Table Buckets hold Apache Iceberg tables by default, or Lance tables for vectors and multimodal data, and the built-in Iceberg REST Catalog and Lance namespace serve them directly. There is no Hive Metastore, Glue, or separate catalog service to deploy, secure, and back up.
 
--   Query engines operate on the same tables at the same time: Spark, Trino, Dremio, DuckDB, Apache Doris, RisingWave, ClickHouse, and LanceDB. Catalog commits are atomic compare-and-swap, so concurrent writers are safe. Lakekeeper can front the same storage with STS-vended credentials.
+-   Query engines operate on the same tables at the same time: Spark, Trino, Dremio, DuckDB, Apache Doris, RisingWave, ClickHouse, and LanceDB. Catalog commits are atomic compare-and-swap, so concurrent writers are safe. Lakekeeper can front the same storage with STS-vended credentials. OLake Go is a high-performance, open-source EL (Extract–Load) platform that bridges operational databases and open lakehouse storage - writing Apache Iceberg tables or Parquet files on Amazon S3.
 -   Automated table maintenance: compaction, snapshot expiration, orphan file removal, and manifest rewriting, configured per bucket or table through the S3 Tables maintenance APIs, and the same for Lance.
 -   IAM at the bucket, namespace, and table level with standard bucket policies, see S3 Tables Security.
 -   A Hadoop compatible file system for Spark, Flink, and HBase.

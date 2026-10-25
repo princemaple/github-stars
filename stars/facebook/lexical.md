@@ -1,6 +1,6 @@
 ---
 project: lexical
-stars: 23961
+stars: 23980
 description: Lexical is an extensible text editor framework that provides excellent reliability, accessibility and performance.
 url: https://github.com/facebook/lexical
 ---

@@ -1,6 +1,6 @@
 ---
 project: goaccess
-stars: 21055
+stars: 21076
 description: GoAccess is a real-time web log analyzer and interactive viewer that runs in a terminal in *nix systems or through your browser.
 url: https://github.com/allinurl/goaccess
 ---
@@ -85,6 +85,10 @@ GoAccess allows any custom log format string. Predefined options include, but no
 -   W3C format (IIS).
 -   Caddy's JSON Structured format.
 -   Traefik's CLF flavor
+
+### Map data
+
+The HTML report uses Natural Earth map data, which is in the public domain. The bundled country map includes a local adjustment to show Crimea as part of Ukraine, consistent with UN General Assembly Resolution 68/262. Preserve this adjustment when updating `resources/countries-110m.json`. Country assignments for traffic come from the configured GeoIP database; changing the map outlines does not change report totals.
 
 Why GoAccess?
 -------------

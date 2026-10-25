@@ -1,6 +1,6 @@
 ---
 project: mint
-stars: 1416
+stars: 1417
 description: Functional HTTP client for Elixir with support for HTTP/1 and HTTP/2 🌱
 url: https://github.com/elixir-mint/mint
 ---

@@ -1,6 +1,6 @@
 ---
 project: mediapipe
-stars: 37310
+stars: 37395
 description: Cross-platform, customizable ML solutions for live and streaming media.
 url: https://github.com/google-ai-edge/mediapipe
 ---
@@ -11,7 +11,7 @@ forward
 
 target
 
-https://developers.google.com/mediapipe
+https://developers.google.com/edge/mediapipe
 
 title
 
@@ -23,9 +23,7 @@ nav\_order
 
 * * *
 
-**Attention:** _We have moved to https://developers.google.com/mediapipe as the primary developer documentation site for MediaPipe as of April 3, 2023._
-
-**Attention**: MediaPipe Solutions Preview is an early release. Learn more.
+**Attention:** _See https://developers.google.com/edge/mediapipe for the primary developer documentation site for MediaPipe._
 
 **On-device machine learning for everyone**
 
@@ -37,7 +35,21 @@ Delight your customers with innovative machine learning features. MediaPipe cont
 Get started
 -----------
 
-You can get started with MediaPipe Solutions by checking out any of the developer guides for vision, text, and audio tasks. If you need help setting up a development environment for use with MediaPipe Tasks, check out the setup guides for Android, web apps, and Python.
+You can get started with MediaPipe Solutions by following the developer guides for each solution, including:
+
+-   audio
+-   decision
+-   genai
+-   retrieval
+-   text
+-   vision
+
+If you need help setting up a development environment for use with MediaPipe Tasks, follow our setup guides for:
+
+-   Android
+-   iOS
+-   Python
+-   Web apps
 
 Solutions
 ---------
@@ -49,16 +61,7 @@ These libraries and resources provide the core functionality for each MediaPipe 
 -   **MediaPipe Tasks**: Cross-platform APIs and libraries for deploying solutions. Learn more.
 -   **MediaPipe models**: Pre-trained, ready-to-run models for use with each solution.
 
-These tools let you customize and evaluate solutions:
-
--   **MediaPipe Model Maker**: Customize models for solutions with your data. Learn more.
--   **MediaPipe Studio**: Visualize, evaluate, and benchmark solutions in your browser. Learn more.
-
-### Legacy solutions
-
-We have ended support for these MediaPipe Legacy Solutions as of March 1, 2023. All other MediaPipe Legacy Solutions will be upgraded to a new MediaPipe Solution. See the Solutions guide for details. The code repository and prebuilt binaries for all MediaPipe Legacy Solutions will continue to be provided on an as-is basis.
-
-For more on the legacy solutions, see the documentation.
+To customize and evaluate solutions, use **MediaPipe Studio**. It lets you visualize, test, and benchmark solutions in your browser. Learn more and see our demos.
 
 Framework
 ---------
@@ -76,7 +79,6 @@ Before using MediaPipe Framework, familiarize yourself with the following key Fr
 Community
 ---------
 
--   Slack community for MediaPipe users.
 -   Discuss - General community discussion around MediaPipe.
 -   Awesome MediaPipe - A curated list of awesome MediaPipe related frameworks, libraries and software.
 
@@ -98,11 +100,9 @@ MediaPipe Tasks APIs send metrics about the performance and utilization of the A
 
 **You are responsible for obtaining informed consent from your app users about Google's processing of MediaPipe metrics data as required by applicable law.**
 
-Resources
----------
+###Publications
 
-### Publications
-
+-   Bring multimodal semantic search to the edge with EmbeddingGemma 2 in Google Developers Blog
 -   Bringing artworks to life with AR in Google Developers Blog
 -   Prosthesis control via Mirru App using MediaPipe hand tracking in Google Developers Blog
 -   SignAll SDK: Sign language interface using MediaPipe is now available for developers in Google Developers Blog
@@ -120,7 +120,3 @@ Resources
 -   Object Detection and Tracking using MediaPipe in Google Developers Blog
 -   On-Device, Real-Time Hand Tracking with MediaPipe in Google AI Blog
 -   MediaPipe: A Framework for Building Perception Pipelines
-
-### Videos
-
--   YouTube Channel

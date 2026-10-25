@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 118332
+stars: 119060
 description: Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.
 url: https://github.com/browser-use/browser-use
 ---
@@ -256,6 +256,30 @@ Choose how much you want to manage:
 -   **Have us run the agent too:** Use the fully hosted Cloud API to submit tasks and retrieve results.
 
 You can also host the Python library and browsers on your own infrastructure.
+
+**Can I rerun a task without calling the model on every step?**
+
+Yes. Save a successful run, then replay its clicks and typing with new values. The snippet below runs inside an async function:
+
+from browser\_use import Agent, ChatBrowserUse
+
+llm \= ChatBrowserUse()
+agent \= Agent(task\='Open https://example.com/billing and request an invoice copy for Ada Lovelace, ada@example.com', llm\=llm)
+await agent.run()
+agent.save\_history('invoice\_run.json')
+print(agent.detect\_variables())  \# names come from the form's fields, e.g. 'name' and 'email'
+
+\# Later: the same clicks and typing with new values, no model call per step
+results \= await Agent(task\='', llm\=llm).load\_and\_rerun(
+    'invoice\_run.json', variables\={'name': 'Grace Hopper', 'email': 'grace@example.com'}, skip\_failures\=False
+)
+
+-   Use the variable names `detect_variables()` prints. An unknown name is skipped with a warning, and the recorded value is typed instead.
+-   Extract steps and the closing summary still call the model.
+-   If the page changed, the replay raises `RuntimeError` at the first step it cannot match. The steps before it already ran, so check whether the form was sent before you run the agent again.
+-   Keep the saved file private. With `sensitive_data`, typed secrets are saved as `<secret>key</secret>` placeholders, but page snapshots and results are saved as they were and can still contain them. Give the replaying agent the same `sensitive_data`; without it, the placeholder text is typed.
+
+Example
 
   
 

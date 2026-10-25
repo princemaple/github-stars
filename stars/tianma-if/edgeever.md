@@ -1,6 +1,6 @@
 ---
 project: edgeever
-stars: 2319
+stars: 2540
 description: AI-native knowledge base & Evernote/Obsidian alternative with instant sync & native MCP. Free on Cloudflare or self-hosted via Docker.
 url: https://github.com/tianma-if/edgeever
 ---
@@ -58,7 +58,7 @@ All-Platform Clients & Browser Extension
 Feature Matrix & Capabilities
 -----------------------------
 
-An all-in-one workspace connecting inspiration capture, deep creation, and knowledge compounding:
+An all-in-one workspace connecting inspiration capture, deep creation, and knowledge compounding (👉 **Explore 17 step-by-step showcases with screenshots**):
 
 Module
 
@@ -124,8 +124,6 @@ Advanced Features
 • **Zero Server Cost for Life**: 100% runnable on Cloudflare Free tier (~150k short notes & ~50k images)  
 • **Flexible Docker Self-Hosting**: One-click deployment for VPS, NAS, or home server with millions of notes & instant sync  
 • Server-side brute-force protection and tenant security
-
-👉 Explore all 14 step-by-step showcases with screenshots: **Complete Showcase & Workflows Guide**
 
 Deployment
 ----------
@@ -224,7 +222,7 @@ The instance administrator can create, disable, or reset member accounts in **Pr
 ### Storage Extension & Third-Party Image Hosting
 
 -   **OSS Object Storage**: The instance owner can configure S3-compatible object storage under **Settings → Advanced → OSS object storage**. Changing storage does not migrate or affect existing attachments.
--   **Desktop PicGo Integration**: The desktop app optionally integrates with a local PicGo client service, uploading inserted images directly to GitHub, SM.MS, Upyun, Qiniu, or custom image hosts to minimize self-hosted storage and bandwidth consumption.
+-   **Desktop PicGo integration**: The desktop app can hand inserted images to a PicGo or PicList server on this computer or on another machine you trust, such as a NAS. That server uploads them to GitHub, SM.MS, Upyun, Qiniu, or a custom image host.
 
 ### Plugins and Themes
 
@@ -313,6 +311,11 @@ Community and Feedback
 Welcome to the EdgeEver community, bringing together developers and creators exploring vibe coding and AI. Join us to discuss cutting-edge AI productivity and best practices for personal knowledge bases.
 
 👉 Join the EdgeEver Telegram group
+
+Friendly Links
+--------------
+
+-   LINUX DO — A community for sharing technology and open-source projects.
 
 Sponsor & Support
 -----------------

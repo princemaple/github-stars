@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 62594
+stars: 62811
 description: Ultralytics YOLO27, YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -191,9 +191,9 @@ YOLO26x
 194.4
 
 -   **mAPval** values refer to single-model single-scale performance on the COCO val2017 dataset. See YOLO Performance Metrics for details.  
-    Reproduce with `yolo val detect data=coco.yaml device=0`
+    Reproduce with `yolo val detect data=coco.yaml device=0`. Add `nms=False` to reproduce the e2e column.
 -   **Speed** metrics are averaged over COCO val images using an Amazon EC2 P4d instance. CPU speeds measured with ONNX export. GPU speeds measured with TensorRT export.  
-    Reproduce with `yolo val detect data=coco.yaml batch=1 device=0|cpu`
+    Reproduce with `yolo val detect data=coco.yaml batch=1 device=0|cpu nms=False`
 
 Segmentation (COCO)
 
@@ -305,9 +305,9 @@ YOLO26x-seg
 314.0
 
 -   **mAPval** values are for single-model single-scale on the COCO val2017 dataset. See YOLO Performance Metrics for details.  
-    Reproduce with `yolo val segment data=coco.yaml device=0`
+    Reproduce with `yolo val segment data=coco.yaml device=0 nms=False`
 -   **Speed** metrics are averaged over COCO val images using an Amazon EC2 P4d instance. CPU speeds measured with ONNX export. GPU speeds measured with TensorRT export.  
-    Reproduce with `yolo val segment data=coco.yaml batch=1 device=0|cpu`
+    Reproduce with `yolo val segment data=coco.yaml batch=1 device=0|cpu nms=False`
 
 Semantic Segmentation (Cityscapes)
 
@@ -745,9 +745,9 @@ YOLO26x-pose
 202.3
 
 -   **mAPval** values are for single-model single-scale on the COCO Keypoints val2017 dataset. See YOLO Performance Metrics for details.  
-    Reproduce with `yolo val pose data=coco-pose.yaml device=0`
+    Reproduce with `yolo val pose data=coco-pose.yaml device=0 nms=False`
 -   **Speed** metrics are averaged over COCO val images using an Amazon EC2 P4d instance. CPU speeds measured with ONNX export. GPU speeds measured with TensorRT export.  
-    Reproduce with `yolo val pose data=coco-pose.yaml batch=1 device=0|cpu`
+    Reproduce with `yolo val pose data=coco-pose.yaml batch=1 device=0|cpu nms=False`
 
 Oriented Bounding Boxes (DOTAv1)
 
@@ -859,9 +859,9 @@ YOLO26x-obb
 520.1
 
 -   **mAPtest** values are for single-model multiscale performance on the DOTAv1 test set.  
-    Reproduce by `yolo val obb data=DOTAv1.yaml device=0 split=test` and submit merged results to the DOTA evaluation server.
+    Reproduce by `yolo val obb data=DOTAv1.yaml device=0 split=test nms=False save_json=True` and submit merged results to the DOTA evaluation server.
 -   **Speed** metrics are averaged over DOTAv1 val images using an Amazon EC2 P4d instance. CPU speeds measured with ONNX export. GPU speeds measured with TensorRT export.  
-    Reproduce by `yolo val obb data=DOTAv1.yaml batch=1 device=0|cpu`
+    Reproduce by `yolo val obb data=DOTAv1.yaml batch=1 device=0|cpu nms=False`
 
 🧩 Integrations
 ---------------

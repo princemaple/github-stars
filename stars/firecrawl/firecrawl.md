@@ -1,6 +1,6 @@
 ---
 project: firecrawl
-stars: 192494
+stars: 195018
 description: Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥
 url: https://github.com/firecrawl/firecrawl
 ---
@@ -12,7 +12,7 @@ url: https://github.com/firecrawl/firecrawl
 **🔥 Firecrawl**
 ================
 
-**Supercharge your AI agents with data from the web and beyond. Building the library for superintelligence. 🔥** Open source and available as a hosted service.
+**The API to search, scrape, and interact with the web at scale. Firecrawl is the context API for AI agents. 🔥** Open source and available as a hosted service.
 
 _Pst. Hey, you, join our stargazers :)_
 
@@ -26,7 +26,7 @@ Why Firecrawl?
 -   **LLM-ready output**: Clean markdown, structured JSON, screenshots, and more — spend fewer tokens, build better AI apps
 -   **We handle the hard stuff**: Rotating proxies, orchestration, rate limits, JS-blocked content, and more — zero configuration
 -   **Agent ready**: Connect Firecrawl to any AI agent or MCP client with a single command
--   **Media parsing**: Parse and extract content from web-hosted PDFs, DOCX, and more
+-   **Document parsing**: Turn PDFs, DOCX, and other documents into clean Markdown or structured JSON
 -   **Actions**: Click, scroll, write, wait, and press before extracting content
 -   **Open source**: Developed transparently and collaboratively — join our community
 
@@ -59,6 +59,10 @@ Feature
 
 Description
 
+**Parse**
+
+Turn PDFs, DOCX, and other documents into clean Markdown or structured JSON
+
 **Agent**
 
 Automated data gathering, just describe what you need
@@ -74,6 +78,10 @@ Discover all URLs on a website instantly
 **Batch Scrape**
 
 Scrape thousands of URLs asynchronously
+
+**Monitor**
+
+Get notified when content on a website changes
 
 * * *
 
@@ -133,7 +141,7 @@ Output:
 
 ### Scrape
 
-Get LLM-ready data from any website — markdown, JSON, screenshots, and more.
+Get LLM-ready context from any website — markdown, JSON, screenshots, and more.
 
 from firecrawl import Firecrawl
 
@@ -436,7 +444,7 @@ Response:
 {
   "success": true,
   "links": \[
-    {"url": "https://firecrawl.dev", "title": "Firecrawl", "description": "Turn websites into LLM-ready data"},
+    {"url": "https://firecrawl.dev", "title": "Firecrawl", "description": "The context API for AI agents"},
     {"url": "https://firecrawl.dev/pricing", "title": "Pricing", "description": "Firecrawl pricing plans"},
     {"url": "https://firecrawl.dev/blog", "title": "Blog", "description": "Firecrawl blog"}
   \]
@@ -481,7 +489,7 @@ Our SDKs provide a convenient way to use all Firecrawl features and automaticall
 
 Install the SDK:
 
-pip install firecrawl-py
+pip install firecrawl
 
 from firecrawl import Firecrawl
 

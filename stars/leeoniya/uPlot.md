@@ -1,6 +1,6 @@
 ---
 project: uPlot
-stars: 10565
+stars: 10582
 description: 📈 A small, fast chart for time series, lines, areas, ohlc & bars
 url: https://github.com/leeoniya/uPlot
 ---
@@ -70,6 +70,7 @@ The docs are a perpetual work in progress, it seems. Start with /docs/README.md 
 
 -   React, Vue.js and Svelte (Sergey Kalinichev)
 -   Python (Stéphane Caron)
+-   Terminal (React Ink) (Jordi Planadecursach)
 
 * * *
 
@@ -108,7 +109,7 @@ Raw data: https://github.com/leeoniya/uPlot/blob/master/bench/results.json
 
 Some libraries provide their own performance demos:
 
--   https://echarts.apache.org/next/examples/en/index.html
+-   https://echarts.apache.org/examples/en/index.html
 -   https://github.com/sveinn-steinarsson/flot-downsample/
 -   https://dygraphs.com/tests/dygraph-many-points-benchmark.html
 -   https://www.chartjs.org/docs/latest/general/performance.html

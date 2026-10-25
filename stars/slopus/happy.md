@@ -1,6 +1,6 @@
 ---
 project: happy
-stars: 24195
+stars: 24299
 description: Orchestrate Claude, Codex and Grok in one app. Open-source (MIT), reuses the subscriptions you already pay for.
 url: https://github.com/slopus/happy
 ---

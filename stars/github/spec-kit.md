@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 141678
+stars: 142736
 description: 💫 Toolkit to help you get started with SDD or any other process!
 url: https://github.com/github/spec-kit
 ---
@@ -47,7 +47,7 @@ Your own process
 
 A process adapted or assembled from reusable primitives
 
-These are **independent entry points**, not mandatory phases. SDD ships in core; bug fixing and assessment are bundled extensions you install when needed, and the primitives below let you adopt or create other processes.
+These are independent entry points, not mandatory phases. SDD ships in core; bug fixing and assessment are bundled extensions you install when needed, and the primitives below let you adopt or create other processes.
 
 Capabilities
 ------------
@@ -72,7 +72,11 @@ Extension
 
 React to coding-agent lifecycle events
 
-Extension event hook
+Extension runtime event
+
+Run extension commands before or after Spec Kit commands
+
+Extension hook
 
 Adapt templates, commands, terminology, or methodology
 
@@ -127,26 +131,31 @@ Search the active catalogs with commands such as `specify extension search`, `sp
 Get started
 -----------
 
-You need **Python 3.11+**, **uv**, and a supported AI coding agent on Linux, macOS, or Windows. For **CLI setup only**, run this in your terminal to install Spec Kit and create a project:
+You need Python 3.11+, uv, and a supported AI coding agent on Linux, macOS, or Windows.
+
+Run these commands in your terminal to install Spec Kit and create a project. This example uses GitHub Copilot.
 
 uv tool install specify-cli
 specify init my-project --integration copilot
 cd my-project
 
-The examples use **GitHub Copilot's default skills mode**. Replace `copilot` with your integration key to use another supported agent.
+After installing the Specify CLI and creating your project, launch your coding agent in the project directory, then choose a process below.
 
-Already have code? Follow the existing-project guide. For pinned releases, other installers, CI, or troubleshooting, see Installation. To update an existing installation, see Upgrade.
+For other setups:
 
-Now **launch your coding agent in the project directory** and choose a process below. Invoke each `/speckit-*` **skill in your agent's chat**, one at a time, and review the result before continuing. These are agent skills, not terminal commands. Other agents and modes may use different invocation syntax.
+-   Installation for pinned releases, other installers, CI, and troubleshooting.
+-   Existing projects to start with code you already have.
+-   Other agents for integration keys and invocation syntax.
+-   Upgrade to update an existing installation.
 
 Spec-Driven Development
 -----------------------
 
-Define **what and why** before deciding **how** to build it. SDD turns your requirements into a specification, a technical plan, and actionable tasks, then guides implementation against those artifacts.
+Define what to build and why, then turn the specification into a plan, tasks, and working code.
 
-**Constitution once per project; specify → plan → tasks → implement → converge per feature.**
+The minimal flow is shown below. Create a constitution once per project and repeat the remaining steps for each feature. Run these skills in your agent's chat, not your terminal, one at a time, reviewing each result before continuing.
 
-Invoke these skills in your agent's chat:
+This example uses GitHub Copilot's default skills syntax. For another agent, use its equivalent invocation syntax.
 
 ```
 /speckit-constitution Create principles focused on code quality, testing, and maintainability.
@@ -157,20 +166,22 @@ Invoke these skills in your agent's chat:
 /speckit-converge
 ```
 
-Repeat **implement → converge** until convergence reports **Converged**. Add clarification, checklists, and consistency analysis when you need extra quality gates.
+Repeat implement and converge until convergence reports `Converged`. For clarification, checklists, and consistency analysis, see the SDD walkthrough.
 
 SDD walkthrough · Command reference
 
 Bug fixing
 ----------
 
-Keep diagnosis, repair, and verification separate so the agent fixes the assessed cause and checks the original symptom. No SDD feature workflow is required first.
+Assess the cause, fix the bug, and verify the original symptom is resolved. No SDD feature workflow is required first.
 
-**CLI setup (terminal):** install the opt-in extension from the project directory:
+Install the bug-fixing extension in your terminal, from the project directory:
 
 specify extension add bug
 
-Then invoke the **assess → fix → test** skills in your agent's chat:
+Run these skills in your agent's chat, not your terminal, one at a time, reviewing each result before continuing.
+
+This example uses GitHub Copilot's default skills syntax. For another agent, use its equivalent invocation syntax.
 
 ```
 /speckit-bug-assess "Submitting an empty password crashes the login form." slug=login-crash
@@ -178,20 +189,22 @@ Then invoke the **assess → fix → test** skills in your agent's chat:
 /speckit-bug-test slug=login-crash
 ```
 
-The reports live in `.specify/bugs/login-crash/`. Review the final verdict: `verified`, `partial`, or `failed`. Missing verification is not a successful fix.
+Review the reports in `.specify/bugs/login-crash/`. The final verdict is `verified`, `partial`, or `failed`; only `verified` confirms a successful fix.
 
 Bug-fixing walkthrough · Command reference
 
 Idea assessment
 ---------------
 
-Gather evidence before committing to an idea, whether or not it becomes software. This standalone process works even in a project with no source code.
+Gather evidence to decide whether an idea is worth pursuing. No source code or SDD feature workflow is required.
 
-**CLI setup (terminal):** install the opt-in extension from the project directory:
+Install the assessment extension in your terminal, from the project directory:
 
 specify extension add assess
 
-Then invoke the **intake → research → define → shape → decide** skills in your agent's chat:
+Run these skills in your agent's chat, not your terminal, one at a time, reviewing each result before continuing.
+
+This example uses GitHub Copilot's default skills syntax. For another agent, use its equivalent invocation syntax.
 
 ```
 /speckit-assess-intake "Let users work offline and sync when they reconnect." slug=offline-mode
@@ -201,24 +214,37 @@ Then invoke the **intake → research → define → shape → decide** skills i
 /speckit-assess-decide slug=offline-mode
 ```
 
-The artifacts live in `.specify/assessments/offline-mode/`, ending in a **go / needs-clarification / kill** decision. Resolve unknowns by refining the existing Markdown artifacts directly or with the agent, rather than regenerating whole stages. A `go` decision can be handed to `/speckit-specify` if you choose to build it; stopping with a documented reason is also a useful result.
+Review the artifacts in `.specify/assessments/offline-mode/` and the final decision: `go`, `needs-clarification`, or `kill`. Resolve unknowns by editing the existing Markdown artifacts, directly or with your agent, rather than rerunning whole stages. If you choose to build a software idea with a `go` decision, establish a project constitution if needed, then pass the handoff summary from `decision.md` to `/speckit-specify`. Stopping with a documented reason is also a useful outcome.
 
 Assessment walkthrough · Command reference
 
 Customize or bring your own process
 -----------------------------------
 
-**Extensions** add capabilities, **presets** adapt existing behavior, **workflows** automate steps, and **bundles** package a role-based setup. Use project-local overrides for one-off template changes.
+Customize Spec-Driven Development, bug fixing, or idea assessment to fit your team's standards. Or bring your own process without adopting any of them. Combine the capabilities above to match your goal:
 
-Customization guide · Community extensions, presets, bundles, and walkthroughs
+-   Adapt an existing process with a preset, such as requiring regulatory traceability in plans. Use a project-local override for a one-off template change.
+-   Bring your own process by adding its commands through an extension and exposing them to your coding agent through an integration.
+-   Automate commands and checks in a workflow. Use overlays to adapt an installed workflow without forking it, or add custom workflow steps when the built-in types are not enough.
+-   Share a reusable setup by packaging its extensions, presets, workflows, and workflow steps in a bundle.
+
+Start with the smallest change that meets your needs; you do not have to replace the whole process.
+
+Customization guide · Community components and walkthroughs
 
 Documentation
 -------------
 
 -   CLI reference and process commands
 -   SDD philosophy, full methodology, and evolving existing specs
--   Video overview and project history
+-   Project history
 -   How Spec Kit uses Spec Kit
+
+In the news
+-----------
+
+-   Open Source Friday: Spec Kit Part 2 (October 16, 2026) — Manfred Riem and Nicole Haugen discuss Spec Kit 1.0 and the expanded toolkit.
+-   Open Source Friday with Spec Kit (May 8, 2026) — An introduction and SDD demonstration with Manfred Riem.
 
 Star history
 ------------

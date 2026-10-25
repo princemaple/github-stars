@@ -1,6 +1,6 @@
 ---
 project: zx
-stars: 45801
+stars: 45813
 description: A tool for writing better scripts
 url: https://github.com/google/zx
 ---
@@ -54,7 +54,7 @@ Compatibility
 See also
 --------
 
--   MAML — JSON for config, with comments, multiline strings, unquoted keys, and optional commas.
+-   Ant - A small language with TypeScript-like syntax, and goroutine-style concurrency.
 
 License
 -------

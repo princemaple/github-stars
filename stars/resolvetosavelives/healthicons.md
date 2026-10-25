@@ -1,6 +1,6 @@
 ---
 project: healthicons
-stars: 869
+stars: 875
 description: A collection of open source icons for public health projects.
 url: https://github.com/resolvetosavelives/healthicons
 ---
@@ -46,7 +46,7 @@ This project uses Next.js.
 This is the intended way to contribute to the code base:
 
 1.  Fork the main repo so you have your own copy which will be at `https://github.com/{your-username}/healthicons/`
-2.  Check it your fork on your computer: `gh repo clone {your-username}}/healthicons`
+2.  Check out your fork on your computer: `gh repo clone {your-username}/healthicons`
 3.  Add a remote referencing the main repo: `git remote add upstream git@github.com:resolvetosavelives/healthicons.git`
 4.  Fetch the remote upstream using: `git fetch upstream`
 5.  Create a new branch based on the RTSL repo’s main branch: `git checkout -b my-branch-name upstream/main`
@@ -77,7 +77,7 @@ Publishing new icons to the website
 5.  Export as PNG: Select all of the icons and export all as `1x PNG` and `2x PNG`
 6.  Export as SVG: Select all of the icons and export all as `SVG`
 7.  In your terminal, type: `yarn update-icons`
-8.  Test the website locally at `localhost:4000`
+8.  Test the website locally at `localhost:3000`
 9.  Commit your changes to a new branch on Github
 10.  Raise a PR and request a review from another volunteer via Slack
 11.  Wait for review
@@ -161,4 +161,4 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 Hosted by Resolve to Save Lives
 -------------------------------
 
-The project is hosted by the public health not-for-profit Resolve to Save Lives as an expression of our committment to offer the icons for free, forever.
+The project is hosted by the public health not-for-profit Resolve to Save Lives as an expression of our commitment to offer the icons for free, forever.

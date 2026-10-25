@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 67254
+stars: 67519
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -39,6 +39,7 @@ Cool Features of AnythingLLM
 -   Multi-modal support (both closed and open-source LLMs!)
 -   Custom AI Agents
 -   👤 Multi-user instance support and permissioning _Docker version only_
+-   🎨 Custom color themes & white-labeling - Pick a built-in palette like True Dark or create your own from your brand colors, and set it for everyone on your instance. _Docker version only_
 -   🦾 Agents inside your workspace (browse the web, etc)
 -   💬 Custom Embeddable Chat widget for your website _Docker version only_
 -   📖 Multiple document type support (PDF, TXT, DOCX, etc)

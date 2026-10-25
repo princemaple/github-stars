@@ -1,7 +1,7 @@
 ---
 project: coolify
-stars: 63091
-description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 280+ one-click services on your own servers.
+stars: 63736
+description: An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 360+ one-click services on your own servers.
 url: https://github.com/coollabsio/coolify
 ---
 
@@ -27,7 +27,7 @@ What can Coolify do?
 --------------------
 
 -   **Deploy any application:** Build from GitHub, GitLab, Bitbucket, or Gitea with Nixpacks, Railpack, Dockerfile, Docker Compose, or a prebuilt Docker image.
--   **Run databases and services:** Deploy managed databases and more than 300 one-click services with persistent storage and generated credentials.
+-   **Run databases and services:** Deploy managed databases and more than 360 one-click services with persistent storage and generated credentials.
 -   **Automate deployments:** Deploy on every Git push, create pull-request previews, call deployment webhooks, and roll back to retained application images.
 -   **Manage networking:** Configure custom domains, automatic HTTPS certificates, reverse proxies, health checks, and container networks.
 -   **Operate your infrastructure:** Manage multiple servers, inspect deployment and runtime logs, open container terminals, and monitor resource status.
@@ -85,7 +85,6 @@ Thank you so much!
 
 ### Huge Sponsors
 
--   CubePath - Premium dedicated servers and cloud VPS hosting
 -   Context.dev - Web scraping API for AI agents
 -   Ginernet - Hosting powerful servers in Spain
 -   SerpAPI - Google Search API — Scrape Google and other search engines from our fast, easy, and complete API.
@@ -130,7 +129,6 @@ Thank you so much!
 -   VPSDime - Cheap VPS Hosting - 4GB for $5/month
 -   dataforest Cloud - Deploy cloud servers as seeds independently in seconds. Enterprise hardware, premium network, 100% made in Germany.
 -   ISHosting - Hosting and VPS solutions
--   QuickSrv - Fast and reliable server hosting
 -   NodePlus.ai - AI that reads every system your business runs on
 
 ### Small Sponsors

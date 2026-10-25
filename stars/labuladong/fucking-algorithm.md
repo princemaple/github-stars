@@ -1,6 +1,6 @@
 ---
 project: fucking-algorithm
-stars: 135922
+stars: 135957
 description: Crack LeetCode, not only how, but also why. 
 url: https://github.com/labuladong/fucking-algorithm
 ---
@@ -70,7 +70,6 @@ labuladong 刷题全家桶简介
     -   速成目录学习规划
     -   完整目录学习规划
     -   算法刷题的重点和坑
-    -   习题章节的练习/复习方法
 -   配套学习工具使用指南
     
     -   AI 助教随时答疑

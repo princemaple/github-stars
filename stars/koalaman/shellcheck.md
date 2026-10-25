@@ -1,6 +1,6 @@
 ---
 project: shellcheck
-stars: 40186
+stars: 40230
 description: ShellCheck, a static analysis tool for shell scripts
 url: https://github.com/koalaman/shellcheck
 ---
@@ -242,6 +242,10 @@ docker run --rm -v "$PWD:/mnt" koalaman/shellcheck:stable myscript
 
 or use `koalaman/shellcheck-alpine` if you want a larger Alpine Linux based image to extend. It works exactly like a regular Alpine image, but has shellcheck preinstalled.
 
+Using mise:
+
+mise use shellcheck
+
 Using the nix package manager:
 
 nix-env -iA nixpkgs.shellcheck
@@ -255,13 +259,12 @@ Alternatively, you can download pre-compiled binaries for the latest release her
 -   Linux, x86\_64 (statically linked)
 -   Linux, armv6hf, i.e. Raspberry Pi (statically linked)
 -   Linux, aarch64 aka ARM64 (statically linked)
+-   Linux, riscv64 (statically linked)
 -   macOS, aarch64
 -   macOS, x86\_64
 -   Windows, x86
 
 or see the GitHub Releases for other releases (including the latest meta-release for daily git builds).
-
-There are currently no official binaries for Apple Silicon, but third party builds are available via ShellCheck for Visual Studio Code.
 
 Distro packages already come with a `man` page. If you are building from source, it can be installed with:
 

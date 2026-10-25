@@ -1,7 +1,7 @@
 ---
 project: umami
-stars: 39442
-description: Umami is a privacy-first analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place — no cookies, no surveillance, self-hosted or in the cloud.
+stars: 39650
+description: Umami is a privacy-first web and product analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place. No cookies, no surveillance, self-hosted or in the cloud.
 url: https://github.com/umami-software/umami
 ---
 

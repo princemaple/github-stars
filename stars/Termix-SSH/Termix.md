@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 15578
+stars: 15650
 description: Self-hosted, plugin-based server management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -65,9 +65,33 @@ Alerts
 
 One inbox for every alert in Termix, with delivery to webhooks, ntfy, Discord and email.
 
+Audit Tools
+
+Send the audit log to your SIEM and export it as CSV or NDJSON.
+
 Automations
 
 Run steps on your hosts on a schedule or when something happens.
+
+Classic Layout
+
+The classic Termix layout with an icon rail, sidebar, tab bar and dock.
+
+Classic Themes
+
+Light, dark and seven more color themes for Termix.
+
+Cloud Providers
+
+Add hosts from AWS, Azure, Google Cloud, DigitalOcean, Hetzner and other clouds, and keep them in sync.
+
+Credential Tools
+
+Generate SSH keys, check them and copy a public key to a host.
+
+Databases
+
+Browse and edit MySQL, MariaDB, PostgreSQL and SQLite databases on your hosts from one tab.
 
 Docker
 
@@ -93,9 +117,29 @@ Host Metrics
 
 Live CPU, memory, disk, network and GPU stats, plus tools to manage your hosts.
 
+Host Status
+
+Shows if each host is online with a dot in the host list, checked by connecting to its port.
+
+Hosts Config
+
+Keep hosts, folders and sharing in a YAML or JSON file. Termix loads them as read only hosts and reloads when the file changes.
+
+Import and Export
+
+Import hosts from a JSON file or an SSH config file and export them to share or back up.
+
+Kubernetes
+
+Manage Kubernetes clusters from your hosts over SSH, with logs, metrics, YAML and a shell.
+
 LDAP
 
 Sign in with your LDAP or Active Directory username and password.
+
+Login Security
+
+Sign people out when idle, limit session length, turn off remember me and require a second factor at login.
 
 Network Topology
 
@@ -117,6 +161,14 @@ Remote Desktop
 
 RDP, VNC and Telnet sessions in your browser, with clipboard, file transfer, sharing and recording.
 
+Reverse Proxy
+
+Reverse proxy for TCP, UDP, HTTP and HTTPS with free certificates and Termix login, managed per host.
+
+Samba Shares
+
+Create and manage Samba (SMB) file shares, users and permissions on your hosts from one tab.
+
 Secret Sources
 
 Pull host passwords and keys from 1Password when you connect instead of storing them in Termix.
@@ -125,6 +177,10 @@ Serial
 
 Open a serial console to a router, switch or other device plugged into your computer.
 
+Services
+
+Manage services, timers and logs on your hosts over SSH.
+
 Session Recording
 
 Record terminal and remote desktop sessions and play them back or download them later.
@@ -132,6 +188,10 @@ Record terminal and remote desktop sessions and play them back or download them 
 Session Sharing
 
 Share live sessions by link or with another user, and present sessions to a group in meeting rooms.
+
+Simple Layout
+
+A simple Termix layout for small setups with a top bar, a Home screen and only the basics.
 
 Single sign-on
 
@@ -148,6 +208,10 @@ SSH terminal sessions with tabs, split screen, history, macros and a local termi
 Step CA
 
 Connect to hosts with short-lived SSH certificates from a smallstep step-ca server.
+
+Sync
+
+Sync the desktop app with one or more servers, and manage other Termix servers as remote sites from a master.
 
 Tailscale
 
@@ -231,7 +295,7 @@ Installation
 
 See the docs for install steps on every platform.
 
-Sample Docker Compose file (you can leave out `guacd` and the network if you don't plan to use the Remote Desktop plugin):
+Sample Docker Compose file. Remote desktop (RDP, VNC and Telnet) is built in, so nothing else needs to run next to it:
 
 services:
   termix:
@@ -244,31 +308,10 @@ services:
       - termix-data:/app/data
     environment:
       PORT: "8080"
-      GUACD\_HOST: "guacd"
-      GUACD\_TUNNEL\_HOST: "termix"
-      GUACD\_RECORDING\_PATH: "/termix-data/session\_recordings/guacamole"
-      GUACD\_DRIVE\_PATH: "/termix-data/rdp-drive"
-    depends\_on:
-      - guacd
-    networks:
-      - termix-net
-
-  guacd:
-    image: guacamole/guacd:1.6.0
-    container\_name: guacd
-    restart: unless-stopped
-    volumes:
-      - termix-data:/termix-data
-    networks:
-      - termix-net
 
 volumes:
   termix-data:
     driver: local
-
-networks:
-  termix-net:
-    driver: bridge
 
 ### Cloud Hosting
 

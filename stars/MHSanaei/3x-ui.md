@@ -1,6 +1,6 @@
 ---
 project: 3x-ui
-stars: 48182
+stars: 48509
 description: Supporting multi-protocol multi-user(Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun, MTProto، AmneziaWG) 
 url: https://github.com/MHSanaei/3x-ui
 ---
@@ -33,7 +33,7 @@ Features
 -   **RESTful API** with scoped, optionally expiring tokens and an in-panel API reference.
 -   **Installable panel (PWA)** — pin 3X-UI to a desktop or phone home screen.
 -   **Flexible storage** — SQLite (default) or PostgreSQL.
--   **13 UI languages** with dark and light themes.
+-   **14 UI languages** with dark and light themes.
 -   **Fail2ban integration** for enforcing per-client IP limits.
 
 Screenshots
@@ -235,9 +235,9 @@ The complete list is on the environment variables reference.
 Supported Languages
 -------------------
 
-The panel UI is available in 13 languages:
+The panel UI is available in 14 languages:
 
-English · فارسی · العربية · 中文（简体） · 中文（繁體） · Español · Русский · Українська · Türkçe · Tiếng Việt · 日本語 · Bahasa Indonesia · Português (Brasil)
+English · فارسی · العربية · 中文（简体） · 中文（繁體） · Español · Русский · Українська · Türkçe · Tiếng Việt · 日本語 · Bahasa Indonesia · Português (Brasil) · Slovenčina
 
 Contributing
 ------------

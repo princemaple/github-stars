@@ -1,12 +1,14 @@
 ---
 project: burrito
-stars: 1449
+stars: 1451
 description: Wrap your application in a BEAM Burrito!
 url: https://github.com/burrito-elixir/burrito
 ---
 
 Burrito 🌯
 ==========
+
+> ⚠️ NOTICE: This repo will be _archived_ on November 30th 2026 ⚠️
 
 Cross-Platform Elixir Deployments
 ---------------------------------

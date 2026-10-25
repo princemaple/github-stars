@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 22947
+stars: 22973
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -92,6 +92,8 @@ Who is using Yjs
 -   ToolJet - Build full-stack enterprise internal apps in minutes.
 -   Stuga - Self-hosted collaborative documents and databases. AI agents' edits arrive as tracked changes that, by default, wait for a person to accept or reject them.
 -   Obsidian Collab - Real-time, end-to-end encrypted, peer-to-peer, collaborative editing across Obsidian vaults for files and folders.
+-   Onplana - Project and portfolio management. Wiki pages are co-edited in real time with BlockNote over Yjs, synced through Hocuspocus.
+-   Doory - Open-source design editor (a Canva alternative). Designs are co-edited in real time with Yjs, synced by a pycrdt server. _(source)_
 
 Table of Contents
 -----------------

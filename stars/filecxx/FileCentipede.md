@@ -1,217 +1,235 @@
 ---
 project: FileCentipede
-stars: 10938
+stars: 10939
 description: Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos.  WebDAV client, FTP client, SSH client.
 url: https://github.com/filecxx/FileCentipede
 ---
 
-English | 简体中文 | 繁體中文 | 한국어 | Hindi | Arabic | Français | Русский | Latin | 日本語| Italian | Deutsch | Portuguese Br | Español | svenska | فارسی | Türkçe
+English
 
-File centipede is an All-In-One internet file upload/download manager, BitTorrent Client, WebDAV client, FTP client, and SSH client.
+* * *
 
-It is designed to be fast, customizable, and user-friendly.
+* * *
 
-It supports multi-protocols and contains many useful auxiliary tools such as HTTP requester, file merge, and encoders.
+File Centipede
+==============
 
-With the browser integration, you can download audio and videos from websites, even encrypted videos.
+A general-purpose download manager, network file manager, and file server.
 
-Website: http://filecxx.com
+Focused on making file transfers more efficient.
 
-Dashboard: https://w.filecxx.com
+No AI, no claims of 10x faster downloads, and no attempt to be the center of attention on your computer.
 
-Sponsors: http://www.filecxx.com/en\_US/sponsors.html
+Just a tool for solving practical problems.
 
-Screenshot
-----------
+* * *
 
-#### File Centipede
+**Website:** http://filecxx.com
 
-#### Add task
+**Dashboard:** https://w.filecxx.com
 
-#### Edit task
+* * *
 
-#### Confirm dialog
-
-#### Add catalog
-
-#### Settings
-
-#### Proxy settings
-
-#### Site rules
-
-#### Filter
-
-#### Refresh address
-
-#### Create torrent
-
-#### Speed limit
-
-#### Translate tool
-
-#### HTTP tool
-
-#### Checksum tool
-
-Browser extension screenshots
------------------------------
-
-#### Video bar
-
-#### Videos panel
-
-#### Audios panel
-
-#### Custom files panel
-
-#### Resource explorer - images
-
-#### Resource explorer - scripts
-
-#### Videos preview
-
-#### Videos collector
-
-#### Audios collector
-
-#### Settings
-
-features
---------
-
--   HTTP,HTTPS protocol (basic features like gzip, resumable, multi-connections will not be listed.) 1.0
--   FTP, FTPS protocol 1.0
--   Magnet, HASH address 1.0
--   BitTorrent 1.0
--   Other custom protocol like thunder, flashget, qqdl 1.0
--   JSON formatted address 1.0
--   m3u8 stream task 1.0
--   Stream task AES-128 decryption (SAMPLE-AES decryption is not supported yet) 1.0
--   HTTP cookie, header, user-agent with user customize 1.0
--   Torrent seeding limit 1.0
--   Dynamically edit transfer-task config 1.0
--   Anti leeches 1.0
--   Refresh expired address 1.0
--   Catalogs 1.0
--   Limit download, upload speed 1.0
--   Create custom address (filec, fileu) 1.0
--   Proxy management 1.0
--   Filter customize 1.0
--   Tracker management 1.0
--   Task details 1.0
--   Export torrent from task 1.0
--   Multi languages 1.0
--   Queue or Unlimited concurrency setting 1.0
--   Chrome Browser integration 1.0
--   Firefox Browser integration 1.0
--   Capture videos, audios from web page 1.0
--   Find all magnets from web page 1.0
--   Translate tool 1.0
--   HTTP tool 1.0
--   URI encode/decode tool 1.0
--   Base64 encode/decode tool 1.0
--   Regex test tool 1.0
--   Create torrent 1.0
--   Torrent to magnet tool 1.0
--   Magnet to torrent tool 1.0
--   File merge tool 1.0
--   Statistics 1.0
--   Download all links from webpage 1.6
--   SSH, SFTP protocol 2.0
--   curl, wget, aria2, axel command line 2.0
--   WebDAV protocol 2.0
--   Upload file 2.0
--   Upload directory 2.0
--   Download directory 2.0
--   Full-featured WebDAV(s) file manager 2.0
--   Full-featured FTP(s) file manager 2.0
--   Full-featured SSH(sftp) file manager 2.0
--   File browser persistent caches 2.0
--   Site rules 2.1
--   Checksum tool 2.3
--   Remote download 2.6
-
-Source code
+Screenshots
 -----------
 
-The full source code of FileU can be found in the "source\_code" directory.
+### Main Application and File Manager
 
-It's for demonstration purposes only, the dependent libraries used in the project are not open source.
+### Add Download Task
 
-It has proved that writing user interfaces in C++ could be significantly easier than HTML and JavaScript, without reducing performance.
+### Edit Download Task
 
-(as seen in the .sml files in the "UI" directory).
+### Task Confirmation Dialogs
 
-Translate
----------
+### Categories and Settings
 
-If you like this software, you can help by using the translation tool provided in the software to translate it into other languages.
+### Site Rules and Filters
 
-This will make the software more accessible to people who speak languages other than the one it was originally written in. Your contribution would be greatly appreciated.
+### Other Features
 
-Language files
+* * *
+
+Browser Extension Screenshots
+-----------------------------
+
+### Video Toolbar
+
+### Videos Panel
+
+### Audios Panel
+
+### Custom Files Panel
+
+### Resource Explorer: Images
+
+### Resource Explorer: Scripts
+
+### Video Preview
+
+### Video Collector
+
+### Audio Collector
+
+### Extension Settings
+
+* * *
+
+Features
+--------
+
+The following list highlights the major features introduced in each version. Basic HTTP and HTTPS download capabilities, such as Gzip support, resumable downloads, and multi-connection downloads, are not listed separately.
+
+### 1.0 — Core Download Features and Utilities
+
+-   HTTP and HTTPS downloads
+-   FTP and FTPS downloads
+-   Magnet links and hash addresses
+-   BitTorrent downloads
+-   Custom protocols such as Thunder, FlashGet, and QQDL
+-   JSON-formatted download addresses
+-   M3U8 stream downloads
+-   AES-128 decryption for stream downloads (SAMPLE-AES decryption is not supported yet)
+-   Custom HTTP cookies, request headers, and User-Agent
+-   Torrent seeding limits
+-   Dynamic modification of download task settings
+-   Anti-leeching protection
+-   Refresh expired download addresses
+-   Download categories
+-   Download and upload speed limits
+-   Custom address schemes (`filec`, `fileu`)
+-   Proxy management
+-   Custom filters
+-   Tracker management
+-   Download task details
+-   Export torrents from download tasks
+-   Multi-language support
+-   Queued downloads or unlimited concurrency
+-   Chrome browser integration
+-   Firefox browser integration
+-   Capture videos and audio from web pages
+-   Find all Magnet links on a web page
+-   Translation tool
+-   HTTP tool
+-   URI encoding and decoding
+-   Base64 encoding and decoding
+-   Regular expression testing tool
+-   Create torrents
+-   Convert torrents to Magnet links
+-   Convert Magnet links to torrent files
+-   File merging tool
+-   Statistics
+
+### 1.6 — Web Link Downloads
+
+-   Download all links from a web page
+
+### 2.0 — Remote File Management and Command-Line Integration
+
+-   SSH and SFTP protocols
+-   Command-line integration for curl, wget, aria2, and axel
+-   WebDAV protocol
+-   File uploads
+-   Directory uploads
+-   Directory downloads
+-   Full-featured WebDAV/WebDAVS file manager
+-   Full-featured FTP/FTPS file manager
+-   Full-featured SSH/SFTP file manager
+-   Persistent file browser caches
+
+### 2.1 — Site Rules
+
+-   Site rule management
+
+### 2.3 — File Verification
+
+-   Checksum tool
+
+### 2.6 — Remote Downloads
+
+-   Remote downloads
+
+### 2.9 — Streaming, Proxy, and Performance Enhancements
+
+-   TS video file transcoding and repair
+-   Built-in video and audio merging
+-   HTTPS proxy and SOCKS5 proxy support
+-   Batch proxy testing and extraction
+-   Use system proxy settings
+-   Multiple proxy modes: Always, If available, As Backup, and Round robin
+-   DASH (MPD) stream downloads
+-   Live stream downloads
+-   Stream task confirmation dialogs
+-   Multi-file stream tasks
+-   High-performance HTTP file server
+-   HTTP mirrors and CDN settings
+-   Automatic video and audio merging
+-   Gloryhole
+-   WebTorrent support
+
+* * *
+
+Help Improve Translations
+-------------------------
+
+If you like this software, you can help make it available to more people by using the built-in translation tool to translate it into other languages.
+
+Your contribution will help make the software accessible to users around the world. Every translation and improvement is appreciated.
+
+* * *
+
+Language Files
 --------------
 
--   Website: "lang/website/\*.lang"
--   Software: "lang/software/\*.lang"
--   Browser extension: "lang/browser\_extension/\*.lang"
+-   **Website:** `lang/website/*.lang`
+-   **Software:** `lang/software/*.lang`
+-   **Browser extension:** `lang/browser_extension/*.lang`
 
-#### How to translate the website?
+### How to Translate the Website
 
-Language
+* * *
 
-@
+Licensing and Source Code Policy
+--------------------------------
 
-Русский
+### 1\. Platform Availability and Licensing
 
-@vanja-san @Den1704
+This software is free to use on Linux and FreeBSD.
 
-繁體中文
+On Windows, macOS, and other platforms, the software is distributed as paid software.
 
-@bear0316 @postman1year
+### 2\. Website Templates and Localization
 
-Français
+The entire website is built using static templates, which are located in the `tpl` directory.
 
-@XIAA25
+You can use the built-in translation tool to generate a complete multilingual version of the website.
 
-Nederlands
+### 3\. Open-Source Scope and Limitations
 
-@XIAA25
+The frontend is open source and includes the SML source code used to implement the UI, along with the associated C++ source code. The backend remains closed source.
 
-한국어
+The publicly available frontend source code is primarily intended as a reference for software design and implementation. It cannot be used on its own to build the complete application.
 
-@VenusGirl
+This project depends on underlying C++ libraries that are commercially licensed, including the SML interpreter and other core libraries. These components are not provided as free, community-oriented software. Consequently, the publicly available source code alone is insufficient to build the complete application.
 
-Tiếng Việt
+### 4\. Requests for Additional Source Code
 
-@vuongtuha
+If you are developing a project from the ground up and genuinely need additional source code as a technical reference or foundation for your implementation, the developer may provide relevant source code free of charge, depending on the circumstances and within a reasonable scope, in an effort to help.
 
-Türkçe
+However, additional source code will not be provided free of charge when the primary purpose is merely to modify copyright notices and repackage the code as a new project, or to assemble and mix existing source code into a project that is then presented publicly as one's own work for personal recognition.
 
-@geeede @saurane
+### 5\. Licensing Boundaries
 
-Indonesian
+This statement clarifies the project's distribution model, the scope of its publicly available source code, and the principles governing additional source code assistance.
 
-@gigglylo Rangga S. Nugraha
+The actual permissions and restrictions applicable to the open-source components remain subject to their respective licenses and any explicit written authorization provided by the developer.
 
-Deutsch
+* * *
 
-@Vulcanraven91
+Third-Party Open-Source Libraries
+---------------------------------
 
-日本語
+-   Boost
+-   Qt
+-   libtorrent
 
-@wany-oh
-
-polski
-
-@RunoHawk
-
-فارسی
-
-@bananbenbadr
-
-Opensource libraries
---------------------
-
-boost Qt libtorrent
+* * *

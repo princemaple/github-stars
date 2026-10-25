@@ -1,6 +1,6 @@
 ---
 project: pdfcpu
-stars: 8869
+stars: 8882
 description: PDF tooling for Go and the command line.
 url: https://github.com/pdfcpu/pdfcpu
 ---
@@ -49,6 +49,13 @@ pdfcpu merge merged.pdf in1.pdf in2.pdf
 ### Go API
 
 See API documentation for usage examples.
+
+### Local images in create and form input
+
+Local images in `create`, `form fill`, and JSON/CSV `form multifill` are confined to an allowed directory.  
+API callers must set `conf.LocalImageRoot` to enable them. The CLI defaults to its working directory and `localImageRoot` in `config.yml` selects another root.
+
+See local image access for configuration examples, path restrictions, migration instructions and security limitations.
 
 * * *
 

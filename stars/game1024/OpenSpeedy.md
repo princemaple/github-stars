@@ -1,6 +1,6 @@
 ---
 project: OpenSpeedy
-stars: 19715
+stars: 20289
 description: 🎮 An open-source game speed modifier.
 url: https://github.com/game1024/OpenSpeedy
 ---
@@ -32,7 +32,8 @@ The Best Open-Source Game Speed Controller
 📦 **Method 1: Winget**
 
 # Install command
-winget install openspeedy
+# Specify the exact package ID and source to avoid Microsoft Store name conflicts.
+winget install \--id Game1024.OpenSpeedy \--exact \--source winget
 
 # Open a new terminal and run openspeedy
 openspeedy

@@ -1,14 +1,14 @@
 ---
 project: filestash
-stars: 14803
-description: :file_folder: Universal File Management Clients (for humans and agents)
+stars: 14824
+description: :file_folder: Universal File Management Platform (for humans and agents)
 url: https://github.com/mickael-kerjean/filestash
 ---
 
 What is this?
 =============
 
-Filestash started as a storage agnostic Dropbox-like file manager that speaks every storage protocol (SFTP, S3, SMB, WebDAV, IPFS, FTP, NFS, and about 20 more).
+Filestash started as a storage-agnostic Dropbox-like file manager that speaks every storage protocol: SFTP, S3, SMB, WebDAV, IPFS, FTP, NFS, and about 20 more (probably the oddest Babel fish in the Universe)
 
 It grew into what we want to be the world's best file management platform. The world has enough silos to lock your data in. What is missing is the tooling to give those existing silos the Dropbox++ treatment with:
 
@@ -88,7 +88,7 @@ impl Authorisation for Plugin {
 impl Plugin {
     fn check(&self, path: &str) -> Decision {
         if path.split("/").any(|segment| segment == "top\_secret") {
-            log::warn!("\[TOPSECRET\] access denied !!");
+            log::warn!("\[TOPSECRET\] access denied: beware of the leopard");
             return Decision::Deny;
         }
         Decision::Allow
@@ -104,7 +104,7 @@ And to be clear, code is the power-user path, there are no code options
 Getting Started
 ===============
 
-To install Filestash, head to the Getting started guide. If you want to leverage plugins, head over to the inventory, or learn about developing your own plugins.
+Standard installation procedurethe guide, plugin inventory Engineering manualcreate your own plugins, rust plugins, runtime plugin cookbook, plugin collection 🐟 Mostly harmless ROT13 transmission interceptedSvaq gur Onory svfu
 
 Support
 =======

@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 9132
+stars: 9179
 description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---
@@ -248,7 +248,7 @@ After installation, it is also recommended to backup your Databasus itself or, a
 
 Databasus works with sensitive data, so preventing vulnerabilities, unauthorised access and data leaks is a primary concern. We invest in this on both sides of the system: in the code itself (permission checks, encryption, careful handling of secrets) and in the infrastructure around it (dependency analysis, CVE response, DevSecOps best practices). The pipeline below runs automatically on every commit and PR. No single layer is enough on its own, but together they reduce the chance of vulnerable code, unsafe dependencies, broken images, or non-restorable backups reaching a release.
 
-For static analysis we combine several independent passes. CodeQL scans the full codebase for security issues. CodeRabbit reviews every PR and runs gitleaks for secret scanning and semgrep for security rules inline. Dockerfiles and CI workflows get extra rules of their own (pinned action references, least-privilege permissions, suspicious base images), so insecure patterns are flagged before they ever merge. On top of these per-PR checks, Codex Security from OpenAI runs regular, deeper audits of the whole codebase. It's a separate program that catches architectural and cross-cutting issues narrow PR-time scans can miss.
+For static analysis we combine several independent passes. CodeQL scans the full codebase for security issues. On every PR, gitleaks scans for leaked secrets and semgrep checks the code against security rules. Dockerfiles and CI workflows get extra rules of their own (pinned action references, least-privilege permissions, suspicious base images), so insecure patterns are flagged before they ever merge. On top of these per-PR checks, Codex Security from OpenAI runs regular, deeper audits of the whole codebase. It's a separate program that catches architectural and cross-cutting issues narrow PR-time scans can miss.
 
 On the dependency side, Dependabot watches all of our dependencies against the GitHub Advisory Database and surfaces CVEs within minutes of publication. Updates run through a cooldown so newly-published versions get a chance to mature before we adopt them. This is a deliberate defence against compromised-package incidents like supply-chain attack. The Dependency Review Action blocks any PR that introduces a new HIGH or CRITICAL CVE outright.
 
@@ -271,35 +271,3 @@ This project is licensed under the Apache 2.0 License - see the LICENSE file for
 Contributions are welcome! Read the contributing guide for more details, priorities and rules. If you want to contribute but don't know where to start, message me on Telegram @rostislav\_dugin
 
 Also you can join our large community of developers, DBAs and DevOps engineers on Telegram @databasus\_community.
-
-AI disclaimer
--------------
-
-There have been questions about AI usage in project development in issues and discussions. As the project focuses on security, reliability and production usage, it's important to explain how AI is used in the development process.
-
-First of all, we are proud to say that Databasus has been accepted into both Claude for Open Source by Anthropic and Codex for Open Source by OpenAI in March 2026. For us it is one more signal that the project was recognized as important open-source software and was as critical infrastructure worth supporting independently by two of the world's leading AI companies. Read more at databasus.com/faq.
-
-Despite of this, we have the following rules how AI is used in the development process:
-
-AI is used as a helper for:
-
--   verification of code quality and searching for vulnerabilities
--   cleaning up and improving documentation, comments and code
--   assistance during development
--   double-checking PRs and commits after human review
--   additional security analysis of PRs via Codex Security
-
-AI is not used for:
-
--   writing entire code
--   "vibe code" approach
--   code without line-by-line verification by a human
--   code without tests
-
-So AI is just an assistant and a tool for developers to increase productivity and ensure code quality. The work is done by developers.
-
-Moreover, it's important to note that we do not differentiate between bad human code and AI vibe code. There are strict requirements for any code to be merged to keep the codebase maintainable.
-
-Even if code is written manually by a human, it's not guaranteed to be merged. Vibe code is not allowed at all and all such PRs are rejected by default (see contributing guide).
-
-The engineering safeguards behind these rules (CI, static analysis, dependency scanning, test coverage and vulnerability response) are documented in Security & reliability engineering above.

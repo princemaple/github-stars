@@ -1,6 +1,6 @@
 ---
 project: karakeep
-stars: 29726
+stars: 29955
 description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 url: https://github.com/karakeep-app/karakeep
 ---
@@ -100,6 +100,11 @@ Karakeep Cloud ☁️
 -----------------
 
 If you're not comfortable with self-hosting, you can use our managed Karakeep cloud at cloud.karakeep.app. Cloud subscriptions support the development of Karakeep.
+
+One-click Deployment 🚀
+-----------------------
+
+Want to self-host without setting up a server by hand? Hostinger has a one-click Karakeep template that deploys the full stack on your own VPS. Use the code `KARAKEEP10` for 10% off annual plans. Check out the Hostinger guide for a walkthrough. Hostinger shares some of its revenue with the maintainer.
 
 Support
 -------

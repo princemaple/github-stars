@@ -1,6 +1,6 @@
 ---
 project: video.js
-stars: 39982
+stars: 40009
 description: Video.js v10 - open source media player framework for HTML and React.
 url: https://github.com/videojs/video.js
 ---

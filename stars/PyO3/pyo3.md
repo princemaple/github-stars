@@ -1,6 +1,6 @@
 ---
 project: pyo3
-stars: 16242
+stars: 16268
 description: Rust bindings for the Python interpreter
 url: https://github.com/PyO3/pyo3
 ---
@@ -185,6 +185,7 @@ Examples
 -   css-inline _CSS inlining for Python implemented in Rust._
 -   datafusion-python _A Python library that binds to Apache Arrow in-memory query engine DataFusion._
 -   deltalake-python _Native Delta Lake Python binding based on delta-rs with Pandas integration._
+-   epyxid _Fast, globally unique and sortable XID generator, a Python binding to xid-rs._
 -   fastbloom _A fast bloom filter | counting bloom filter implemented by Rust for Rust and Python!_
 -   fastuuid _Python bindings to Rust's UUID library._
 -   fast-paseto _High-performance PASETO (Platform-Agnostic Security Tokens) implementation with Python bindings._

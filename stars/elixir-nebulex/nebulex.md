@@ -38,7 +38,7 @@ def deps do
     {:nebulex, "~> 3.0"},
     {:nebulex\_local, "~> 3.0"}, \# Generational local cache adapter
     {:decorator, "~> 1.4"},     \# Required for caching decorators
-    {:telemetry, "~> 1.3"}      \# Required for telemetry events
+    {:telemetry, "~> 1.0"}      \# Required for telemetry events
   \]
 end
 
@@ -172,6 +172,7 @@ end
 
 -   Getting Started - Learn how to set up and use Nebulex.
 -   Documentation - Complete API reference.
+-   Upgrading to v3.1 - Migration guide for v3.1.
 -   Upgrading to v3.0 - Migration guide for v3.0.
 -   Declarative caching - Declarative Caching: Patterns and Best Practices.
 -   Nebulex Streams - Real-time event streaming for Nebulex caches via `Phoenix.PubSub`.
@@ -184,11 +185,11 @@ end
 
 To run only the tests:
 
-$ mix test
+mix test
 
 To run all the checks CI runs:
 
-$ mix precommit
+mix precommit
 
 The `mix precommit` alias runs the tests, coverage, Credo, Dialyzer, and the other checks. Run it before opening a pull request.
 
@@ -201,7 +202,7 @@ Nebulex provides a set of basic benchmark tests using the library benchee, locat
 
 To run a benchmark test:
 
-$ mix bench
+mix bench
 
 > The benchmark uses the `Nebulex.Adapters.Nil` adapter, so it measures the Nebulex abstraction layer, not a specific adapter.
 

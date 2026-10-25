@@ -1,234 +1,178 @@
 ---
 project: AutoGPT
-stars: 187628
+stars: 187729
 description: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.
 url: https://github.com/Significant-Gravitas/AutoGPT
 ---
 
-AutoGPT — AI agents that finish the work
-========================================
+AutoGPT — Your team of AI Experts
+=================================
 
-**Get 10 hours back every week.**  
-Describe what you want done. AutoGPT builds the agent, runs it, and reports back.
+Bring in specialists for content, sales, research, and recurring work.  
+Brief them in plain English. Let **Otto** coordinate.
 
-**Get started** · Tour · Pricing · Docs · Discord · Self-host
+**Sign up for a trial** · Watch the demo · Meet the Experts · Pricing · Self-host · Contribute
 
-* * *
-
-The open-source platform for AI agents
+One conversation. The right expertise.
 --------------------------------------
 
-AutoGPT lets you build, deploy, and run AI agents that carry out complete workflows. Describe an outcome in plain English or shape every step in the visual builder, then run the agent on demand, on a schedule, or from a trigger.
+Tell Otto what's on your plate. It brings in the right Experts, hands over the work, and keeps you up to date. Talk to a specialist directly when you want to get into the details.
 
-**185,000+ GitHub stars. Cited by:**
+Each Expert has a role you can shape with your instructions, context, skills, and connected apps. Start with a ready-made specialist or create your own.
 
-“Next frontier of prompt engineering imo: ‘AutoGPTs’.”
+Meet your team
 
-**Andrej Karpathy**, founding member of OpenAI
+Put them to work
 
-“If you have a phone you can run AutoGPT. You don't even need to learn how to code.”
+**Otto · Head of AI**
 
-**Amjad Masad**, co-founder & CEO of Replit
+Coordinate a job across specialists and bring their work back to you.
 
-“AutoGPT might be the next big step in AI.”
+**Maria · SEO Content Manager**
 
-**Lior Alexander**, CEO of AlphaSignal
+Turn a target keyword into a content brief and article draft.
 
-* * *
+**Max · Account Executive**
 
-Four surfaces, one platform
----------------------------
+Research prospects, draft outreach, and prepare the next conversation.
 
-  
-**AutoPilot**  
-Describe the job in plain English and turn the conversation into a working agent.
+**Frankie · Executive Assistant**
 
-  
-**Agents**  
-See every agent, run, cost, and action that needs your attention.
+Prepare meeting context, email drafts, and a digest for the day.
 
-  
-**Marketplace**  
-Start from proven agents, add one to your library, and customize it for your work.
+Explore the Experts →
 
-  
-**Build**  
-Drag, connect, branch, and inspect blocks for exact control over every step.
+See the team at work
+--------------------
 
-* * *
+One launch brief to Otto. Maria prepares the article, Max researches prospects, and Frankie prepares the launch review.
+
+experts-demo.mp4
+
+**Watch the full 45-second demo →** · Sign up for a trial
+
+A 15-second highlight of a real run, edited and sped up. In this example, the team prepares the work for review without sending or publishing it.
+
+From a first brief to a routine
+-------------------------------
+
+1.  **Choose your Expert.** Tell Otto what you need, pick a specialist, or create one for your own way of working.
+2.  **Brief them on the job.** Share the context, connect the apps they need, and agree on the first outcome.
+3.  **Review and refine.** Check the work and adjust the instructions. Activate routines for jobs that keep coming back.
+
+You choose which accounts each Expert can access, set spending controls, and follow progress in their activity.
+
+See how it works →
 
 Get started
 -----------
 
-### AutoGPT Platform — public, hosted, and managed
+### AutoGPT Platform
 
-The hosted Platform is publicly available. We manage the infrastructure, model access, credentials, reliability, and updates so you can focus on the work your agents perform.
+Use the hosted Platform to get your team running without managing the infrastructure or supplying model API keys.
 
-**Get started on AutoGPT Platform →**
+**Sign up for a trial →**
 
-Take the interactive tour →
-
--   AutoPilot, Agents, Marketplace, and Build
--   45+ connected platforms and hundreds of AI models
--   No model API keys or infrastructure setup
--   Agents that run on demand, on schedules, and from triggers
-
-The hosted Platform is a paid service with usage-based agent runs. Compare plans and pricing →
+The hosted Platform is a paid service. See current plans, trial terms, and usage pricing.
 
 ### Self-host AutoGPT
 
-Note
+Run AutoGPT on your own infrastructure. You provide model credentials, configure the deployment, and manage its updates and operation.
 
-Self-hosting is the free path. You provide the infrastructure and model API keys, and you maintain the deployment. If you want zero setup, use the managed Platform.
+The quickest way to self-host is the single-container image on Docker Hub, `significantgravitas/autogpt`:
 
-The Linux and macOS single-container release installer is coming with the next appliance release. Until the public installer endpoint and image tags pass the documented release gates, use the manual self-hosting guide.
+docker run -d \\
+  --name autogpt \\
+  --restart unless-stopped \\
+  --shm-size 2g \\
+  --ulimit nofile=65536:65536 \\
+  --log-driver json-file \\
+  --log-opt max-size=50m \\
+  --log-opt max-file=5 \\
+  -p 127.0.0.1:3000:3000 \\
+  -e AUTOGPT\_PUBLIC\_URL=http://localhost:3000 \\
+  -v autogpt-data:/data \\
+  significantgravitas/autogpt:latest
 
-The release installer will require an already-running local Docker daemon using Linux containers on `amd64` or `arm64`. It pulls the published appliance and runs its immutable digest; it does not install Docker or build from source. Windows users should continue with the manual self-hosting guide for now.
+Give the first boot a few minutes, then open http://localhost:3000, create your account, and make it the administrator:
 
-Read the self-hosting guide →
+docker exec autogpt autogpt-admin promote you@example.com
 
-* * *
+Requirements, closing signup, ports, model providers, backups, and upgrades are covered in the guide:
 
-Managed Platform vs. self-hosting
----------------------------------
+Read the single-container guide →
 
-**AutoGPT Platform**
+On Linux, macOS, and Windows, the installer sets up the same image with one command.
 
-**Self-hosted**
+To run each service in its own container with Docker Compose, or to develop from source, use the manual self-hosting guide.
 
-Access
+Hosted Platform
 
-Public signup
+Self-hosted
 
-Operate the published appliance or a development checkout
-
-Cost
-
-Paid plan plus agent usage
-
-No license fee; pay your own infrastructure and model providers
-
-Setup
-
-Managed
-
-Docker and configuration required
-
-Model access
-
-Built in
-
-Bring your own API keys
-
-Updates and operations
+Setup and operations
 
 Managed by AutoGPT
 
 Managed by you
 
-Core builder and agent runtime
+Model access
 
-Included
+Built in
 
-Included
+Bring your own model credentials or a local model
 
-Data and infrastructure control
+Cost
+
+Paid plan and usage
+
+Your infrastructure and model usage
+
+Data and infrastructure
 
 Hosted by AutoGPT
 
 Runs on your infrastructure
 
-Support
+See the license for the repository's usage terms.
 
-Plan-dependent
+Workflows when you need more control
+------------------------------------
 
-Community support
+Experts can use skills and workflows to do their jobs. The visual builder lets you define repeatable steps, connect tools, and inspect how work runs. Start with a workflow from the marketplace or build your own.
 
-Both paths use the same repository. Choose the managed Platform when you want agents running immediately; self-host when infrastructure control matters more than operational convenience.
+-   **Visual builder:** connect blocks, branch logic, and control the steps.
+-   **Marketplace:** discover workflows you can adapt to your work.
+-   **Integrations:** connect the tools your team uses.
 
-* * *
+Build with us
+-------------
 
-Why the hosted Platform is paid
--------------------------------
-
-Every agent run consumes real model usage, compute, storage, secrets management, and operational support. The managed Platform covers that infrastructure and funds continued development of the open-source project.
-
-Self-hosting remains available without a license fee for people and teams that want to provide and operate those resources themselves.
-
-* * *
-
-What you can automate
----------------------
-
-Area
-
-Example
-
-**Executive operations**
-
-Prepare a daily brief from internal and external signals
-
-**Sales**
-
-Research every account before tomorrow's meetings
-
-**Marketing**
-
-Turn a launch brief into campaign drafts across channels
-
-**Engineering**
-
-Triage incidents and start with a likely cause
-
-**Customer support**
-
-Draft replies, collect context, and flag escalations
-
-**Research**
-
-Monitor sources and return structured reports when something changes
-
-* * *
-
-Integrations
-------------
-
-Connect the apps that are yours. AutoGPT provides access to hundreds of AI models and connects agents to 45+ platforms, including:
-
-`Gmail` · `Google Calendar` · `Google Docs` · `Google Sheets` · `GitHub` · `Slack` · `Discord` · `Notion` · `HubSpot` · `Linear` · `Airtable` · `Jira` · `Salesforce` · `Stripe` · `Webflow`
-
-Explore the integrations →
-
-* * *
-
-Community and support
----------------------
+Explore the code, report a problem, or help improve AutoGPT.
 
 Resource
 
-Link
+Where to go
 
-Discord
+Platform source and development setup
 
-Join the AutoGPT community
+autogpt\_platform/
 
 Documentation
 
-docs.agpt.co
-
-Bug reports
-
-GitHub Issues
-
-Feature requests
-
-GitHub Issues
+agpt.co/docs
 
 Contributing
 
 CONTRIBUTING.md
 
-* * *
+Bugs and feature requests
+
+GitHub Issues
+
+Community and support
+
+Discord
 
 License
 -------
@@ -256,18 +200,12 @@ Permissive open-source use
 AutoGPT Classic
 ---------------
 
-Looking for the original standalone AutoGPT agent? It remains available in `classic/` under the MIT License.
-
--   Build an agent with Forge
--   Benchmark an agent with `agbenchmark`
--   Explore the Classic project
-
-* * *
+Looking for the original standalone AutoGPT? Explore Classic, Forge, or agbenchmark.
 
 Contributors
 ------------
 
-**Get started with AutoGPT →**
+**Sign up for a trial →**
 
 * * *
 

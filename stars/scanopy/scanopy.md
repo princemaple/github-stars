@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 5877
+stars: 5899
 description: Network diagrams that update themselves
 url: https://github.com/scanopy/scanopy
 ---
@@ -88,7 +88,7 @@ Available as an Unraid community app.
 
 Access the UI at `http://<your-server-ip>:60072`, create your account, and wait for the first discovery to complete.
 
-Have a commercial license? See Deploying the Commercial Edition.
+Have a commercial license? See Installing a Self-Hosted Server.
 
 For detailed setup options and configuration, see the Installation Guide.
 

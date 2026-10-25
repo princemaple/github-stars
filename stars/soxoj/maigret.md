@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 39171
+stars: 39342
 description: 🕵️‍♂️ Collect a dossier on a person by username from 6K websites
 url: https://github.com/soxoj/maigret
 ---
@@ -34,8 +34,8 @@ Sponsors
 **RapidProxy** provides high-performance residential proxies for Twitter scraping, Selenium automation, and web data extraction. 90M+ IPs • Smart rotation • Anti-block • Non-expiring traffic.  
 **Special Offer**: Try it free — Plans from $0.65/GB. Use code **RAPID10** for 10% off.
 
-**Thordata** provides reliable residential proxies for OSINT research, username lookup, and public data collection workflows. Access **100M+ real residential IPs** across **195+ countries** **unlimited concurrent connections**with 99.99% uptime and stable connections, Rotating + Sticky Sessions, and high success rates.  
-**Special Offer:** Free 3-day trial + **10% OFF** with code **SOXOJ10**.
+**ThorData** provides residential proxies and web data APIs for OSINT research, username lookup, and search reconnaissance. Access **100M+ residential IPs** across **190+ countries** to reduce failed requests, 403 errors, and location-based restrictions. Use SERP API for structured search results or Web Scraper API to collect public web data.  
+**Special Offer:** Get a free 3-day trial and **10% OFF** with code **SOXOJ10**.
 
 Contents
 --------

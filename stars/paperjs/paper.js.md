@@ -1,6 +1,6 @@
 ---
 project: paper.js
-stars: 15087
+stars: 15101
 description: The Swiss Army Knife of Vector Graphics Scripting – Scriptographer ported to JavaScript and the browser, using HTML5 Canvas. Created by @lehni & @puckey
 url: https://github.com/paperjs/paper.js
 ---
@@ -30,6 +30,28 @@ npm install paper
 Upon execution, you will find a `paper` folder inside the project's `node_modules` folder.
 
 For more information on how to install Node.js and NPM, read the chapter Installing Node.js and NPM.
+
+### Using Paper.js with a Bundler
+
+With a bundler such as webpack, Rollup, esbuild or Vite, import Paper.js and set it up with a canvas element:
+
+import paper from 'paper'
+// Or, with CommonJS: const paper = require('paper')
+
+paper.setup(document.getElementById('canvas'))
+
+const { Path } \= paper
+const circle \= new Path.Circle({
+  center: paper.view.center,
+  radius: 30,
+  fillColor: 'red'
+})
+
+paper.view.onFrame \= event \=> {
+  circle.rotate(1)
+}
+
+The module exports the global `paper` scope as its default export, with all classes as its properties. Use `paper.view` and `paper.project` after calling `paper.setup()`, rather than importing them, as they only exist from then on. To use the core version without PaperScript, import `'paper/dist/paper-core'` instead. With TypeScript, the default import requires `esModuleInterop`.
 
 ### Which Version to Use
 
@@ -154,12 +176,12 @@ git submodule update  --init --recursive
 
 Paper.js uses Gulp.js for building, and has a couple of dependencies as NPM modules. Read the chapter Installing Node.js and NPM if you still need to install these.
 
-Due to a conflict in Gulp 3 that could only be resolved using package resolution, we recently switched from NPM to `yarn` for development, which also needs to be installed now. See Installing Yarn for details.
+Development uses pnpm, which needs to be installed too. See Installing pnpm for details.
 
 In order to be able to build Paper.js, after checking out the repository, paper has dependencies that need to be installed. Install them by issuing the following commands from the Paper.js directory:
 
 ```
-yarn install
+pnpm install
 ```
 
 ### Building the Library
@@ -167,7 +189,7 @@ yarn install
 The Paper.js sources are distributed across many separate files, organised in subfolders inside the `src` folder. To compile them all into distributable files, you can run the `build` task:
 
 ```
-yarn build
+pnpm build
 ```
 
 You will then find the built library files inside the `dist` folder, named `paper-full.js` and `paper-core.js`, along with their minified versions. Read more about this in Which Version to Use?.
@@ -179,13 +201,13 @@ As a handy alternative to building the library after each change to try it out i
 This means you can switch between loading from sources and loading a built library simply by running.
 
 ```
-yarn load
+pnpm load
 ```
 
 And to go back to a built library
 
 ```
-yarn build
+pnpm build
 ```
 
 Note that your PaperScripts examples do not need to change, they can keep loading `dist/paper-full.js`, which will always do the right thing. Note also that `src/load.js` handles both browsers and Node.js, as supported by Prepro.js.
@@ -195,14 +217,14 @@ Note that your PaperScripts examples do not need to change, they can keep loadin
 Create a final zipped distribution file inside the `dist` folder:
 
 ```
-yarn dist
+pnpm dist
 ```
 
 ### Branch structure
 
-Since the release of version `0.9.22`, Paper.js has adopted aspects of the Git- Flow workflow. All development is taking place in the `develop` branch, which is only merged into `master` when a new release occurs.
+Since the release of version `0.9.22`, Paper.js has adopted aspects of the Git- Flow workflow. All development is taking place in the `develop` branch, which is only merged into `main` when a new release occurs.
 
-As of version `0.9.26`, the `dist` folder is excluded on all branches, and the building is now part of the `yarn publish` process by way of the `prepublish` script.
+As of version `0.9.26`, the `dist` folder is excluded on all branches, and the building is now part of the `pnpm publish` process by way of the `prepublish` script.
 
 We also offer prebuilt versions of the latest state of the `develop` branch on `prebuilt/module` and `prebuilt/dist`.
 
@@ -211,44 +233,51 @@ We also offer prebuilt versions of the latest state of the `develop` branch on `
 Similarly to building the library, you can run the `docs` task to build the documentation:
 
 ```
-yarn docs
+pnpm docs
 ```
 
 Your docs will then be located at `dist/docs`.
 
 ### Testing
 
-Paper.js was developed and tested from day 1 using proper unit testing through jQuery's Qunit. To run the tests after any change to the library's source, simply open `index.html` inside the `test` folder in your web browser. There should be a green bar at the top, meaning all tests have passed. If the bar is red, some tests have not passed. These will be highlighted and become visible when scrolling down.
-
-If you are testing on Chrome, some of the tests will fail due to the browser's CORS restrictions. In order to run the browser based tests on Chrome, you need to run a local web-server through Gulp.js. The following command will handle it for you, and will also open the browser at the right address straight away:
+The tests run with Vitest, on Node.js and in Chromium through Playwright, against the library built from the sources:
 
 ```
-yarn test:browser
+pnpm test
 ```
 
-You can also run the unit tests through PhantomJS in Gulp directly on the command line:
+To run them only on Node.js, or only in the browser:
 
 ```
-yarn test:phantom
+pnpm test:node
+pnpm test:browser
 ```
 
-To test the Node.js version of Paper.js, use this command:
+The browser tests need Chromium for Playwright, which this installs once:
 
 ```
-yarn test:node
+pnpm exec playwright install chromium
 ```
 
-And to test both the PhantomJS and Node.js environments together, simply run:
+Once the library is built in `dist`, the tests run against that instead. Select another build than `paper-full.js` with `PAPER_BUILD`, e.g. `PAPER_BUILD=hosted pnpm test:node`. Vitest also runs single files, and watches for changes with `pnpm exec vitest`.
+
+The screenshot tests in `test/screenshots` compare what the library draws with reference images. Rendering differs between systems, so they run in Playwright's Docker image, which needs Docker:
 
 ```
-yarn test
+pnpm test:screenshots
+```
+
+To write new reference images, after adding a test or changing what it draws, and review them in `test/screenshots/__screenshots__` before committing:
+
+```
+pnpm test:screenshots --update
 ```
 
 ### Contributing
 
 The main Paper.js source tree is hosted on GitHub, thus you should create a fork of the repository in which you perform development. See https://help.github.com/articles/fork-a-repo/.
 
-We prefer that you send a pull request on GitHub which will then be merged into the official main line repository. You need to sign the Paper.js CLA to be able to contribute (see below).
+We prefer that you send a pull request on GitHub which will then be merged into the official main line repository.
 
 Also, in your first contribution, add yourself to the end of `AUTHORS.md` (which of course is optional).
 
@@ -280,22 +309,14 @@ As mentioned above, we prefer that you send a pull request on GitHub:
     
 3.  This is important: Create a so-called _topic branch_ based on the `develop` branch: `git checkout -tb name-of-my-patch develop` where `name-of-my-patch` is a short but descriptive name of the patch you're about to create. Don't worry about the perfect name though -- you can change this name at any time later on.
     
-4.  Hack! Make your changes, additions, etc., commit them then push them to your GitHub fork: `git push origin name-of-my-patch`
+4.  Hack! Make your changes, additions, etc., and describe them for the changelog in a file of their own in `changelog/unreleased`, see its README. Commit them then push them to your GitHub fork: `git push origin name-of-my-patch`
     
-5.  Send a pull request to the upstream repository's owner by visiting your repository's site at GitHub (i.e. https://github.com/yourusername/paper.js) and press the "Pull Request" button. Make sure you are creating the pull request to the `develop` branch, not the `master` branch. Here's a good guide on pull requests: https://help.github.com/articles/about-pull-requests/
+5.  Send a pull request to the upstream repository's owner by visiting your repository's site at GitHub (i.e. https://github.com/yourusername/paper.js) and press the "Pull Request" button. Make sure you are creating the pull request to the `develop` branch, not the `main` branch. Here's a good guide on pull requests: https://help.github.com/articles/about-pull-requests/
     
 
 ##### Use one topic branch per feature:
 
 Don't mix different kinds of patches in the same branch. Instead, merge them all together into your `develop` branch (or develop everything in your `develop` branch and then cherry-pick-and-merge into the different topic branches). Git provides for an extremely flexible workflow, which in many ways causes more confusion than it helps you when new to collaborative software development. The guides provided by GitHub at https://help.github.com/ are a really good starting point and reference. If you are fixing an issue, a convenient way to name the branch is to use the issue number as a prefix, like this: `git checkout -tb issue-937-feature-add-text-styling`.
-
-#### Contributor License Agreement
-
-Before we can accept any contributions to Paper.js, you need to sign this CLA:
-
-Contributor License Agreement
-
-> The purpose of this agreement is to clearly define the terms under which intellectual property has been contributed to Paper.js and thereby allow us to defend the project should there be a legal dispute regarding the software at some future time.
 
 For a list of authors and contributors, please see AUTHORS.
 

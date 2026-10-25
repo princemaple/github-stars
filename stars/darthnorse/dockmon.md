@@ -1,6 +1,6 @@
 ---
 project: dockmon
-stars: 1540
+stars: 1544
 description: DockMon - Modern Docker container monitoring with auto-restart and alerts
 url: https://github.com/darthnorse/dockmon
 ---

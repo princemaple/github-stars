@@ -1,6 +1,6 @@
 ---
 project: popcorn
-stars: 731
+stars: 732
 description: Running Elixir in the browser
 url: https://github.com/software-mansion/popcorn
 ---
@@ -16,8 +16,6 @@ Documentation
 -   JavaScript package: bundler setup and JavaScript usage.
 -   Elixir package: application setup and packaging.
 -   LocalLiveView: Phoenix LiveView running in the browser.
-
-Popcorn 1.0 is a prerelease based on Erlang/OTP. The stable npm channel still uses Popcorn 0.3 and AtomVM; see the 0.3 documentation.
 
 Examples
 --------

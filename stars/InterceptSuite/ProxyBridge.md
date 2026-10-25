@@ -1,7 +1,7 @@
 ---
 project: ProxyBridge
-stars: 6809
-description: Proxifier Alternative to redirect any Windows/MacOS/Linux TCP and UDP traffic to HTTP/Socks5 proxy
+stars: 6878
+description: Force Proxy to any Windows/MacOS/Linux Application TCP and UDP traffic
 url: https://github.com/InterceptSuite/ProxyBridge
 ---
 
@@ -44,6 +44,25 @@ Table of Contents
 **💖 Support ProxyBridge Development**  
 _If you find ProxyBridge useful, consider sponsoring to support ongoing development and new features!_  
   
+
+Sponsored  
+
+**NodeMaven**: The most efficient proxy provider for Web Scraping and Automation with the Highest Quality IP on the market.
+
+**Why NodeMaven?**
+
+-   ZIP targeting
+-   99.9% uptime
+-   IP filtering: all proxies have fraud score <97%
+-   No KYC required
+-   Unique free tools: Proxy Bandwidth Checker, Meta Tag Checker, IP Lookup and others!
+
+**Special codes for ProxyBridge users:**
+
+-   `PB35` - 35% off Mobile and Residential Proxies
+-   `PB25` - 25% off ISP (Static) Proxies
+
+This is a paid sponsorship. ProxyBridge works with any SOCKS5 or HTTP proxy.
 
 Download
 --------
@@ -188,7 +207,7 @@ _Proxy Settings Configuration_
 _Proxy Rules Management_
 
   
-_Proxy Tester_
+_Live Connections - proxied connections and UDP flows right now_
 
 #### CLI
 

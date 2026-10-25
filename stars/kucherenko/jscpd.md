@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6408
+stars: 6447
 description: Copy/paste detector for source code. 220+ languages, Rust engine, SARIF/HTML/badge reporters, GitHub Action, MCP server for AI agents.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -138,10 +138,11 @@ jscpd v5 is a Rust engine that ships as a self-contained binary — no runtime r
 
 -   **Language-aware tokenization** — per-format comment and string syntax for all 224 formats, the oxc parser for JavaScript/TypeScript/JSX/TSX, embedded-language extraction for Vue, Svelte, Astro, Markdown and Razor, and keyword/identifier/literal classification, so a clone is a repeated sequence of _language tokens_, never a repeated run of text (see How detection works)
 -   **224 language formats**, with cross-format detection (Vue SFC, Svelte, Astro, Markdown) and `--cross-formats` groups to match clones across JavaScript and TypeScript
--   **Type-2 clones** — `--ignore-identifiers`, `--ignore-literals` and `--ignore-annotations` find blocks that differ only in names, literal values or annotations, reported as `renamed` (see docs)
--   **Type-3 near-miss clones** — `--max-gap-lines N` merges a copy with a few inserted or changed lines into one `similar` clone with a similarity score; `--similarity` compares whole functions of JavaScript, TypeScript, Python, Java, Kotlin, Scala, C#, Go, Rust, C, C++, PHP, Ruby, Swift and Clojure by the subtrees of their normalized syntax trees, in code blocks of Markdown and components as well: renamed locals and other literals match, other called functions or operators do not, and test files are left out; the `edn` reporter lists every pair with its score (see docs)
+-   **Type-2 clones** — `--ignore-identifiers`, `--ignore-literals` and `--ignore-annotations` find blocks that differ only in names, literal values or annotations, reported as `renamed`. A name must stand for one name on the other side, so `x = x + x` does not match `d = a + b`; `--ignore-identifiers=blind` matches any names, as 5.4 did (see docs)
+-   **Type-3 near-miss clones** — `--max-gap-lines N` merges a copy with a few inserted or changed lines into one `similar` clone with a similarity score; `--similarity` compares whole functions of JavaScript, TypeScript, Python, Java, Kotlin, Scala, C#, Go, Rust, C, C++, PHP, Ruby, Swift and Clojure by the subtrees of their normalized syntax trees, in code blocks of Markdown and components as well: renamed locals (each standing for one name on the other side) and other literals match, other called functions or operators do not, and test files are left out; the `edn` reporter lists every pair with its score (see docs)
 -   **Type-4 semantic clones (experimental)** — `--semantic` embeds the functions of JavaScript, TypeScript, Vue, Svelte, Astro, Python, Rust, Go, Java, Kotlin, C#, C, C++, PHP, Ruby, Scala and Swift files with a code embedding model, either one jscpd runs itself (after `jscpd --semantic-download` once) or any OpenAI-compatible API, and reports functions that do the same thing written differently: the same feature implemented twice in one language, or a rule your Rust backend enforces and your Svelte frontend repeats (see Semantic clones below)
 -   **Port progress and parity (experimental)**: `jscpd --compare python/ typescript/` pairs the functions of two folders with the same model and lists which functions of each have a counterpart in the other: what is left to port to another language or platform, or what the Android version of an app has that the iOS one lacks (see Comparing two codebases below)
+-   **Boundaries**: rules in `.jscpd.json` keep the code of a module, a folder, a file or a method inside its boundary, such as money that only the backend may calculate. A copy of it in a place a rule keeps it out of fails the run, whether someone copied it, edited the copy or wrote the logic again in another language (see Boundaries below)
 -   **Clone kinds everywhere** — `exact`, `renamed` or `similar` in the console, JSON (`kind`, `similarity`, `method`), XML, HTML, Xcode, SARIF (`jscpd/duplicate-code`, `jscpd/renamed-code`, `jscpd/similar-code`, `jscpd/similar-function`, `jscpd/semantic-code`) and Code Climate output; default runs still report only `exact` clones
 -   **`--kind`** — keep only the clone kinds you care about: `--kind renamed`, or `--kind gap,ast` for near-miss clones only. Statistics and `--threshold` follow the filter; a kind whose detector is off warns, an unknown kind errors (see docs)
 -   **15 reporters**: `console`, `console-full`, `json`, `xml`, `csv`, `html`, `markdown`, `badge`, `sarif`, `codeclimate`, `openmetrics`, `ai`, `xcode`, `threshold`, `silent`
@@ -298,6 +299,8 @@ jscpd . --baseline-from-ref origin/main --fail-on-new-clones 0
 
 `--baseline-from-ref` scans the base ref's tree with the same configuration and marks the clones that are absent from it as new, and `--fail-on-new-clones 0` fails the run when there is one. Every clone is still reported, and `--threshold` still compares the duplication of the whole tree, so keep `threshold: 0` out of the config, or the old clones fail the build as before. The base ref has to be in the checkout: with `actions/checkout` set `fetch-depth: 0`, or run `git fetch origin main` first, otherwise jscpd stops with an error. jscpd needs the whole tree to find clones, so `VALIDATE_ALL_CODEBASE: false` does not narrow the scan.
 
+Super Linter takes the same gate from `.github/linters/.jscpd.json`, on v9.0.0 or later: see Using jscpd with Super Linter.
+
 When several linters write into one reports directory, give jscpd its own file name so parallel runs cannot overwrite each other:
 
 jscpd . --reporters json --output reports --report-name megalinter-jscpd
@@ -427,6 +430,33 @@ Tests
 ```
 
 A function pairs with its counterpart when the model finds them each other's closest match. A short function the model cannot place pairs by name when the names match once case and underscores are ignored (`encodeBinary`, `encode_binary`) and the code is similar enough. jscpd measures tests and code in two blocks and pairs a test only with a test. It tells a test by the conventions of its language, such as `*_test.go`, `test_*.py`, `*.test.ts`, `src/test/` or Rust's `#[cfg(test)]`. Every pair has its similarity and a level, `high`, `medium` or `low`, on the scale of the model, and the report lists the pairs under other names on their own, since nobody finds those by searching for a name. The console, JSON and Markdown reporters print the totals per side and per file with the mean similarity, the functions with no counterpart, and the pairs. `-r html` writes a migration map, a page that draws both sides as dependency graphs with the pairs bridging them and marks the functions ready to port, the ones whose callees all have a counterpart already. A second tab lists the same pairs as a table you can sort. The docs describe the rules and how they did on two real codebases, and `fixtures/compare-demo` is a runnable example.
+
+Boundaries
+----------
+
+Some code must stay where it is. In a bank or a shop only the backend calculates money, and a frontend that calculates it too shows one price and charges another as soon as the formula changes. A boundary rule names that code and the places its copies must stay out of:
+
+{
+  "boundaries": \[
+    {
+      "name": "money",
+      "code": \["backend/billing", "backend/loans/Interest.kt#monthlyPayment"\],
+      "notIn": \["web/\*\*", "mobile/\*\*"\],
+      "allow": \["web/e2e/\*\*"\]
+    }
+  \]
+}
+
+`code` takes modules, folders, files or methods, by name (`#monthlyPayment`) or by a pattern of names (`#(*Payments)`). Without `notIn`, every place outside `code` counts. Every clone run checks the rules with every method jscpd has: token clones for copy-paste, `--similarity` for an edited copy, and the model of `--semantic` for the same logic written again in another language, such as the annuity formula of a Kotlin backend in a TypeScript widget. A copy fails the run with exit code 1:
+
+```
+Boundaries:
+money: 1 copy outside the boundary
+  web/src/loan/payment.ts:4-14 monthlyPayment
+    looks like backend/loans/Interest.kt:8-15 monthlyPayment (semantic ~0.82)
+```
+
+The logic written again in another language needs the embedding model, so run `jscpd --semantic-download` once, or point `--semantic-url` at an embeddings API. Without it jscpd prints a warning and still finds the copies and the edited copies. Each rule can set its own `thresholds`, and `disable` turns kinds of copies off: `"disable": ["semantic"]` for a rule that needs no model, or `["ast", "semantic"]` for one that reports copy-paste only. The docs describe the rules, and `fixtures/boundaries-demo` is a runnable example.
 
 Editors
 -------

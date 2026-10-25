@@ -1,11 +1,11 @@
 ---
 project: fil-c
-stars: 3879
+stars: 3889
 description: Fil-C: completely compatible memory safety for C and C++
 url: https://github.com/pizlonator/fil-c
 ---
 
-Fil-C 0.686
+Fil-C 0.687
 ===========
 
 Fil-C is a fanatically compatible memory-safe implementation of C and C++. Lots of software compiles and runs with Fil-C with zero or minimal changes. All memory safety errors are caught as Fil-C panics. Fil-C achieves this using a combination of concurrent garbage collection and invisible capabilities (each pointer in memory has a corresponding capability, not visible to the C address space). Every fundamental C operation (as seen in LLVM IR) is checked against the capability. Fil-C has no `unsafe` statement and only limited FFI to unsafe code.
@@ -24,16 +24,18 @@ Fil-C is special because:
 License
 -------
 
-The compiler (clang + LLVM) is covered by LLVM-LICENSE.txt. The runtime is covered by PAS-LICENSE.txt (see libpas/LICENSE.txt in the source distribution). In the case of the classic musl-based Fil-C distribution, the musl libc is covered by MUSL-LICENSE.txt (see projects/yolomusl/COPYRIGHT and projects/usermusl/COPYRIGHT in the source distribution). In the case of the /opt/fil distribution, glibc is covered by glibc-LICENSE.txt, and all other included programs are covered by the respective -LICENSE.txt files. The C++ libraries (libc++/libc++abi) are covered by LLVM-LICENSE.txt.
+The compiler (clang + LLVM) is covered by LLVM-LICENSE.txt. The runtime is covered by PAS-LICENSE.txt (see libpas/LICENSE.txt in the source distribution). In the case of the classic musl-based Fil-C distribution, the musl libc is covered by MUSL-LICENSE.txt (see projects/yolomusl/COPYRIGHT and projects/usermusl/COPYRIGHT in the source distribution). For Peregrine Fil-C, the cosmo libc and APE machinery is covered by COSMO-LICENSE.txt (see projects/yolocosmo/LICENSE and projects/usercosmo/LICENSE in the source distribution). In the case of the /opt/fil distribution, glibc is covered by glibc-LICENSE.txt, and all other included programs are covered by the respective -LICENSE.txt files. The C++ libraries (libc++/libc++abi) are covered by LLVM-LICENSE.txt.
 
 You can fetch the source for the compiler, runtime, libc++/libc++abi, libc (musl and glibc), and all included programs from github. The source distribution also includes many additional programs that have been ported to Fil-C in the `projects/` and `pizlix/` directories, and they have a variety of licenses. The /opt/fil distribution includes builds of a variety of additional programs and their licenses are in `additional-licenses/` in that distribution.
 
 Requirements
 ------------
 
-Fil-C only works on Linux/X86\_64 or Linux/ARM64.
+Fil-C works natively on Linux/X86\_64 or Linux/ARM64.
 
-Previous versions worked on Darwin/ARM64 and FreeBSD, but now I'm focusing just on Linux because it allows me to do a more faithful job of implementing libc. There's nothing fundamentally stopping Fil-C from working on other architectures or OSes other than Linux.
+Peregrine Fil-C uses APEs and a Cosmo-derived libs, which allows binaries it produces to run on Linux/X86\_64, Darwin/ARM64, and Windows/X86\_64. Peregrine Fil-C is still experimental and requires a Linux/x86\_64 host to build.
+
+Previous versions natively worked on Darwin/ARM64 and FreeBSD. At some point I switched to focusing on Linux because it allowed me to do a faithful job of implementing _all_ of libc. There's nothing fundamentally stopping Fil-C from working natively on other architectures or OSes other than Linux. Patches welcome.
 
 Getting Started
 ---------------
@@ -46,9 +48,9 @@ If you downloaded Fil-C binaries, run:
 
 This has a different effect depending on which binary distribution you selected:
 
--   In case of the classic musl-based distribution (`filc-0.686-linux-x86_64.tar.xz` or `filc-0.686-linux-aarch64.tar.xz`), this sets up Fil-C to run in the current directory.
+-   In case of the classic musl-based distribution (`filc-0.687-linux-x86_64.tar.xz` or `filc-0.687-linux-aarch64.tar.xz`) or the Peregrine Fil-C distribution (`perefil-0.687-linux-x86_64.tar.xz`), this sets up Fil-C to run in the current directory.
     
--   In case of the /opt/fil glibc-based distribution (`optfil-0.686-linux-x86_64.tar.xz`), this sets up Fil-C in `/opt/fil`.
+-   In case of the /opt/fil glibc-based distribution (`optfil-0.687-linux-x86_64.tar.xz` or `optfil-0.687-linux-aarch64.tar.xz`), this sets up Fil-C in `/opt/fil`.
     
 
 If you downloaded Fil-C source, run:
@@ -66,6 +68,8 @@ The binary distribution of Fil-C comes with musl as the libc. Using `./build_all
 -   `./build_all.sh` - full musl-based build (also builds lots of software that was ported to Fil-C).
     
 -   `./build_all_glibc.sh` - full glibc-based build (builds even more software that was ported to Fil-C).
+    
+-   `./build_all_fast_cosmo.sh` - builds Peregrine Fil-C.
     
 -   `cd pizlix && sudo ./build.sh` - builds the Pizlix Linux distribution.
     

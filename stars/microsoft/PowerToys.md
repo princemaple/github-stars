@@ -1,6 +1,6 @@
 ---
 project: PowerToys
-stars: 139428
+stars: 139825
 description: Microsoft PowerToys is a collection of utilities that supercharge productivity and customization on Windows
 url: https://github.com/microsoft/PowerToys
 ---
@@ -116,7 +116,7 @@ To see what's new, check out the release notes.
 🛣️ Roadmap
 -----------
 
-For v0.102, we're working on modernizing several utilities with WinUI 3, expanding Command Palette with tabs and JavaScript/TypeScript extensions, and adding new productivity improvements across PowerToys.
+For v0.103, we're working on a new Awake flyout, improving Screen Ruler, and continuing to modernize more utilities with WinUI 3.
 
 ❤️ PowerToys Community
 ----------------------

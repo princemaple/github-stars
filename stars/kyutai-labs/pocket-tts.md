@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 9915
+stars: 10047
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -16,13 +16,15 @@ Supports Python 3.10, 3.11, 3.12, 3.13 and 3.14. Requires PyTorch 2.5+. Does not
 
 Note
 
+**New (October 2026):** Small English models with 18.2M, 6.9M and 1.9M parameters (decoder included), up to 25x faster than real time on one CPU thread. Try them with `--language english_18m_2026-10`, `english_7m_2026-10` or `english_2m_2026-10`; see the blog post for how they were made.
+
 **New (August 2026):** We've released the training code! Check out `training/` to start training your own models. Open a PR to add your model to the Models trained by the community section.
 
 Main takeaways
 --------------
 
 -   Runs on CPU
--   Small model size, 100M parameters
+-   Small model size, 100M parameters, and English models down to 1.9M parameters
 -   Audio streaming
 -   Low latency, ~200ms to get the first audio chunk
 -   Faster than real-time, ~6x real-time on a CPU of MacBook Air M4
@@ -53,7 +55,7 @@ uvx pocket-tts generate
 # or if you installed it manually with pip:
 pocket-tts generate
 
-Modify the voice with `--voice` and the text with `--text`. We provide a small catalog of voices. Choose a pretrained language model with `--language` when running `generate`, `export-voice`, or `serve` (default: `english`). Non-english languages have also biggers 24 layers variants that are higher quality but slower. You can select them by using for example `--language italian_24l`. `--language english_drifting_26-09` selects an English model whose sampler head was trained with drifting instead of LSD (see training/README.md for the recipe). The `--config` option accepts a local YAML path, an `https://` URL, or an `hf://` path (e.g. `hf://<repo_id>/<path>[@revision]`) for custom weights.
+Modify the voice with `--voice` and the text with `--text`. We provide a small catalog of voices. Choose a pretrained language model with `--language` when running `generate`, `export-voice`, or `serve` (default: `english`). Non-english languages have also biggers 24 layers variants that are higher quality but slower. You can select them by using for example `--language italian_24l`. `--language english_drifting_26-09` selects an English model whose sampler head was trained with drifting instead of LSD (see training/README.md for the recipe). `--language english_18m_2026-10`, `english_7m_2026-10` and `english_2m_2026-10` select small English models with 18.2M, 6.9M and 1.9M parameters (decoder included). The `_refl` variants, such as `english_7m_refl_2026-10`, add reward fine-tuning. The `--config` option accepts a local YAML path, an `https://` URL, or an `hf://` path (e.g. `hf://<repo_id>/<path>[@revision]`) for custom weights.
 
 You can take a look at this page which details the licenses for each voice.
 
@@ -103,6 +105,15 @@ You can check out the serve documentation for more details and examples.
 ### The `export-voice` command
 
 Processing an audio file (e.g., a .wav or .mp3) for voice cloning is relatively slow, but loading a safetensors file -- a voice embedding converted from an audio file -- is very fast. You can use the `export-voice` command to do this conversion. See the export-voice documentation for more details and examples.
+
+### Standalone binaries, without Python
+
+Each release comes with a `pocket-tts` binary for Linux and macOS (x86 and ARM) and Windows (x86), which needs neither Python nor PyTorch. It has the same commands and options as the Python CLI, reads the same configs (community models included), voices and exported voice files, and shares the Hugging Face cache with it:
+
+tar xzf pocket-tts-\*\-x86\_64-unknown-linux-gnu.tar.gz
+./pocket-tts-\*/pocket-tts generate --text "Hello world." --voice marius
+
+It is a Rust port built on xn-ptts, whose sources are in `rust/`. It runs on the CPU only, cannot load training checkpoints (`--checkpoint`), and its audio is not bit-identical to the Python package's, as the sampling noise differs.
 
 Using it as a Python library
 ----------------------------
@@ -327,6 +338,15 @@ Pocket TTS Chinese (中文) by @hustfyb, 6 layers
 pip install pocket-tts soundfile wetext
 cd <本目录\>
 python demo.py --prompt your\_voice.wav --text "您的订单编号是20260918123456，退款368.5元预计三个工作日内到账。" --out out.wav
+
+Pocket TTS Multilingual by Thanush Thankachan, 6 layers
+
+English, Hindi, Marathi, Kannada, Tamil, Malayalam, and Telugu, including code mixing. Use an Indian voice for a better Indian accent.
+
+uvx pocket-tts generate \\
+  --config hf://Thanushttk/pocket-tts-multilingual/config.yaml@80c7f2835138c62750d76a93d4333c5c5bb6a754 \\
+  --voice my\_voice.wav \\
+  --text "Hello, नमस्ते, how are you?"
 
 Want your model here? Head to the training Readme to get started!
 

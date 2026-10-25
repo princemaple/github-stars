@@ -1,6 +1,6 @@
 ---
 project: CloakBrowser
-stars: 32271
+stars: 32459
 description: Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 50+ tests passed.
 url: https://github.com/CloakHQ/CloakBrowser
 ---
@@ -118,12 +118,12 @@ page.goto("https://example.com")
 
 * * *
 
-Latest: v0.6.3 — 87 source-level stealth patches (Chromium 154.0.8037.57.2)
+Latest: v0.6.4 — 87 source-level stealth patches (Chromium 155.0.8059.39.1)
 ---------------------------------------------------------------------------
 
--   **CloakBrowser Pro Stable** — Chromium `154.0.8037.57.2` on Linux x64 and Linux ARM64; `154.0.8037.57.1` on Windows x64 and macOS (Apple Silicon and Intel). Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest Stable build for your platform automatically. See CloakBrowser Pro
+-   **CloakBrowser Pro Stable** — Chromium `155.0.8059.39.1` on Linux x64, Linux ARM64, Windows x64, and macOS (Apple Silicon and Intel). Set a `license_key` (`licenseKey` in JS) or the `CLOAKBROWSER_LICENSE_KEY` env var and the wrapper fetches the latest Stable build for your platform automatically. See CloakBrowser Pro
 -   **.NET 8 / C# client** — CloakBrowser now ships as a NuGet package (`CloakBrowser`), mirroring the Python and JS wrappers.
--   **Chromium 154 upgrade** — rebased the full patch set onto Chromium 154 on every platform; macOS moves up from Chromium 151
+-   **Chromium 155 upgrade** — rebased the full patch set onto Chromium 155 on every platform
 -   **87 fingerprint patches** — rendering consistency improvements across Linux and Windows, corrected GPU/display/graphics parameters to match stock Chrome profiles
 -   **Windows native GPU passthrough** — real hardware values pass through directly instead of being spoofed, matching real browser behavior
 -   **HTTP proxy inline credentials** — new network-layer support for proxies with inline authentication
@@ -158,7 +158,7 @@ CloakBrowser Pro
 
 Anti-bot systems change every week and an older binary quietly degrades. The latest build is the one that keeps passing. **Try it free, then upgrade when you're running for real.**
 
--   **Free, latest build (Chromium 154)** — the newest binary, the exact one that stays green against live detection. Free with a GitHub sign-in, one concurrent session. Grab your key or run `cloakbrowser login`, then throw it at your hardest target.
+-   **Free, latest build (Chromium 155)** — the newest binary, the exact one that stays green against live detection. Free with a GitHub sign-in, one concurrent session. Grab your key or run `cloakbrowser login`, then throw it at your hardest target.
 -   **Pro** — when it's part of production scraping, QA, monitoring, or automation: scale to **5, 20, 200, 2,000, or more concurrent sessions**, always first on the newest patches, with hands-on support. Linux, Windows, macOS. **See plans and pricing →**
 -   **v146** — the older build stays free on GitHub Releases. A quick first look, but it ages fast as detection evolves.
 
@@ -188,7 +188,7 @@ It's also the fastest way to try the browser without writing any code: download,
 Test Results
 ------------
 
-All tests verified against live detection services. Results below are for the latest Pro/current build unless noted. Last tested: Oct 2026 (Chromium 154).
+All tests verified against live detection services. Results below are for the latest Pro/current build unless noted. Last tested: Oct 2026 (Chromium 155).
 
 Detection Service
 
@@ -945,9 +945,9 @@ Master seed for canvas, WebGL, audio, fonts
 
 `navigator.platform`, User-Agent OS, GPU pool selection
 
-The binary auto-generates everything else from the seed: GPU, hardware concurrency, device memory, and screen dimensions. Each seed produces a unique, consistent fingerprint. Override with explicit flags if needed.
+The binary auto-generates everything else from the seed: GPU, hardware concurrency, device memory, and screen dimensions. Each seed produces a unique, consistent fingerprint: those values are drawn together as one coherent package. Keep the seed as the source of identity, since changing single values by hand can break that coherence.
 
-> **Using the binary directly?** It works out of the box with zero flags -- the binary auto-spoofs everything. Pass `--fingerprint=seed` for a persistent identity, or use explicit flags like `--fingerprint-gpu-renderer` to override any auto-generated value.
+> **Using the binary directly?** It works out of the box with zero flags -- the binary auto-spoofs everything. Pass `--fingerprint=seed` for a persistent identity: the seed derives every value as one coherent package.
 
 ### Additional Flags
 
@@ -959,11 +959,7 @@ Controls
 
 `--fingerprint-gpu-vendor`
 
-WebGL `UNMASKED_VENDOR_WEBGL` (auto-generated from seed + platform)
-
-`--fingerprint-gpu-renderer`
-
-WebGL `UNMASKED_RENDERER_WEBGL` (auto-generated from seed + platform)
+**Switch the GPU family** — `NVIDIA` or `Intel`. The binary reports the matching Chrome vendor value, `Google Inc. (NVIDIA)` or `Google Inc. (Intel)`. Auto-generated from seed + platform when unset
 
 `--fingerprint-hardware-concurrency`
 
@@ -1035,7 +1031,7 @@ Disable noise injection (canvas, WebGL, audio) while keeping the deterministic f
 
 `--license-route=auto|direct|proxy`
 
-**Chromium 154.0.8037.57.2+ binary only.** How the Pro license and session calls leave the browser. `auto` (default): direct to cloakbrowser.dev first, and one retry through your `--proxy-server` if direct can't reach it. `direct`: never through the proxy. `proxy`: only through the proxy (needs `--proxy-server`).
+**Chromium 154.0.8037.57.2+ on Linux, 155+ on all platforms.** How the Pro license and session calls leave the browser. `auto` (default): direct to cloakbrowser.dev first, and one retry through your `--proxy-server` if direct can't reach it. `direct`: never through the proxy. `proxy`: only through the proxy (needs `--proxy-server`).
 
 `--license-through-proxy`
 
@@ -1044,6 +1040,10 @@ Disable noise injection (canvas, WebGL, audio) while keeping the deterministic f
 `--fingerprint-transparent-proxy`
 
 **Chromium 151+ binary only.** A stronger way of connecting through your `--proxy-server`, for sites and providers that block every proxy you try. Off by default; enable it alongside `--proxy-server`.
+
+`--fingerprint-transparent-proxy-dns=<url>|local`
+
+**Chromium 155.0.8059.39.1+ binary only, Linux and Windows.** DNS for `--fingerprint-transparent-proxy` mode. By default sites are resolved with Cloudflare's DNS over HTTPS, sent through your proxy. Pass your own DNS over HTTPS address, or `local` to resolve on your own machine as before.
 
 `--fingerprint-portable-cookies`
 
@@ -1105,10 +1105,10 @@ browser \= launch(stealth\_args\=False, args\=\[
     "--fingerprint-platform=windows",
 \])
 
-\# Override GPU to look like a specific machine
+\# Switch the GPU family
 browser \= launch(args\=\[
-    "--fingerprint-gpu-vendor=Intel Inc.",
-    "--fingerprint-gpu-renderer=Intel Iris OpenGL Engine",
+    "--fingerprint=42069",
+    "--fingerprint-gpu-vendor=Intel",
 \])
 
 Examples
@@ -1254,7 +1254,7 @@ Linux x86\_64
 
 Chromium 146 (58 patches)
 
-Chromium 154 (87 patches)
+Chromium 155 (87 patches)
 
 ✅
 
@@ -1262,7 +1262,7 @@ Linux arm64 (RPi, Graviton)
 
 Chromium 146 (58 patches)
 
-Chromium 154 (87 patches)
+Chromium 155 (87 patches)
 
 ✅
 
@@ -1270,7 +1270,7 @@ macOS arm64 (Apple Silicon)
 
 Chromium 145 (26 patches)
 
-Chromium 154 (87 patches)
+Chromium 155 (87 patches)
 
 ✅
 
@@ -1278,7 +1278,7 @@ macOS x86\_64 (Intel)
 
 Chromium 145 (26 patches)
 
-Chromium 154 (87 patches)
+Chromium 155 (87 patches)
 
 ✅
 
@@ -1286,7 +1286,7 @@ Windows x86\_64
 
 Chromium 146 (58 patches)
 
-Chromium 154 (87 patches)
+Chromium 155 (87 patches)
 
 ✅
 
@@ -1422,7 +1422,7 @@ b4 \= pw.chromium.connect\_over\_cdp(
     "&proxy=http://proxy:8080&geoip=true"
 )
 
-Supported query params: `fingerprint`, `timezone`, `locale`, `platform`, `platform-version`, `brand`, `brand-version`, `gpu-vendor`, `gpu-renderer`, `hardware-concurrency`, `device-memory`, `screen-width`, `screen-height`, `proxy`, `geoip`. Same seed reuses the same process (first connection's params win). No seed = shared default process (backward compatible).
+Supported query params: `fingerprint`, `timezone`, `locale`, `platform`, `platform-version`, `brand`, `brand-version`, `gpu-vendor`, `hardware-concurrency`, `device-memory`, `screen-width`, `screen-height`, `proxy`, `geoip`. Same seed reuses the same process (first connection's params win). No seed = shared default process (backward compatible).
 
 By default, per-seed processes stay alive until `cloakserve` exits; idle cleanup is disabled (`0`). If clients create many unique seeds, set `--idle-timeout=SECONDS` or `CLOAKSERVE_IDLE_TIMEOUT=SECONDS` to automatically terminate a seed's Chrome process after its last CDP WebSocket disconnects. `0`, `off`, `false`, `none`, or `disabled` disable idle cleanup. When cleanup runs, the seed's temporary profile directory under `--data-dir` is removed too. Check active processes at `GET /` (returns JSON with PIDs, ports, connection counts, idle timeout, and pending cleanup status).
 

@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 28686
+stars: 28800
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -35,7 +35,7 @@ Use a package manager:
 # Homebrew
 brew install charmbracelet/tap/crush
 
-# NPM
+# NPM (macOS, Linux, and Windows)
 npm install -g @charmland/crush
 
 # Arch Linux (btw)
@@ -98,8 +98,8 @@ Crush provides NixOS and Home Manager modules via NUR. You can use these modules
                   api\_key \= "sk-fake123456789abcdef...";
                   models \= \[
                     {
-                      id \= "gpt-4";
-                      name \= "GPT-4";
+                      id \= "gpt-5.6-sol";
+                      name \= "GPT-5.6 Sol";
                     }
                   \];
                 };
@@ -164,7 +164,7 @@ Getting Started
 
 The quickest way to get started is to choose a Hyper model from model picker. Follow the steps to authenticate and you'll be good to go.
 
-Hyper, from Charm, is the official Crush provider. It’s subscription-based, with a free tier, and optimized for Crush. It’s privacy focused, with zero data retention (ZDR) is and designed to comply with GDPR. More on Hyper.
+Hyper, from Charm, is the official Crush provider. It’s subscription-based and optimized for Crush. It’s privacy focused, with zero data retention (ZDR) and is designed to comply with GDPR. More on Hyper.
 
 API Keys
 --------
@@ -288,6 +288,10 @@ Azure OpenAI models
 `MOONSHOT_API_KEY`
 
 Moonshot
+
+`XAI_API_KEY`
+
+xAI
 
 Also note that Crush can support nearly any provider, including Local Models. For more info see Custom Providers below.
 
@@ -438,6 +442,10 @@ Charmtone Pantera
 Gruvbox Dark
 
 `gruvbox-dark`
+
+Keanu
+
+`keanu`
 
 ### LSPs
 
@@ -837,11 +845,11 @@ By default, Crush automatically checks for the latest and greatest list of provi
 
 You can also override Catwalk default URL (for testing, using a fork).
 
-You can do so by setting `CATWALK_URL` enviromental variable. (e.g. `export CATWALK_URL=http://localhost:8000`)
+You can do so by setting the `CATWALK_URL` environment variable. (e.g. `export CATWALK_URL=http://localhost:8000`)
 
 ### Disabling automatic provider updates
 
-For those with restricted internet access, or those who prefer to work in air-gapped environments, this might not be want you want, and this feature can be disabled.
+For those with restricted internet access, or those who prefer to work in air-gapped environments, this might not be what you want, and this feature can be disabled.
 
 To disable automatic provider updates in your `crushrc`:
 

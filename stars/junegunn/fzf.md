@@ -1,6 +1,6 @@
 ---
 project: fzf
-stars: 83622
+stars: 83768
 description: :cherry_blossom: A command-line fuzzy finder
 url: https://github.com/junegunn/fzf
 ---
@@ -12,7 +12,7 @@ url: https://github.com/junegunn/fzf
   
 Show your love for fzf -- T-shirts, mugs, and stickers now available!  
   
-commitgoods.com/collections/fzf  
+  
   
 
 * * *
@@ -1039,7 +1039,7 @@ Copyright (c) 2013-2026 Junegunn Choi
 Goods
 -----
 
-Grab fzf T-shirts, mugs, and stickers here: https://commitgoods.com/collections/fzf
+Grab fzf T-shirts, mugs, and stickers here: commitgoods.com/collections/fzf
 
 Sponsors ❤️
 -----------

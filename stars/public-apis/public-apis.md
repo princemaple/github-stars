@@ -1,6 +1,6 @@
 ---
 project: public-apis
-stars: 489782
+stars: 491881
 description: A collective list of free APIs
 url: https://github.com/public-apis/public-apis
 ---
@@ -137,6 +137,16 @@ No
 
 Glama
 
+BlockVectra
+
+Blockchain RPC and indexed data; keyless documentation and chain discovery
+
+`apiKey`
+
+`HTTP`
+
+–
+
 Catastro GPS
 
 Cadastral parcels in 29 European countries by reference, point or address
@@ -167,6 +177,16 @@ No
 
 Glama
 
+crawlbrulee
+
+EU-native web scraping for AI agents & developers: turn any page into markdown, screenshots and more
+
+`apiKey`
+
+`stdio`
+
+npm · MCP Registry · Glama
+
 Edgepedia
 
 Search and read Edgepedia, a free and growing encyclopedia with citations
@@ -196,6 +216,16 @@ Repos, issues, PRs, code search
 `stdio`, `HTTP`
 
 Glama
+
+IndiaInsurances
+
+Indian insurance policy wordings read clause by clause, with verbatim quotes
+
+No
+
+`HTTP`
+
+–
 
 Kuro
 
@@ -247,6 +277,16 @@ No
 
 Glama
 
+Refnusa
+
+Indonesian holidays, wages, regions, postal codes, tax, food prices and NIK/plate checks (31 tools)
+
+No
+
+`HTTP`
+
+Glama
+
 RegSentry
 
 Inspect authorized static tracking signals and review supplied consent evidence
@@ -254,6 +294,16 @@ Inspect authorized static tracking signals and review supplied consent evidence
 No
 
 `HTTP`
+
+Glama
+
+Scalekit
+
+Manage auth for AI agents and MCP servers: environments, orgs, users, SSO connections and roles
+
+`OAuth`
+
+`stdio`, `HTTP`
 
 Glama
 
@@ -1568,6 +1618,16 @@ Yes
 
 Unknown
 
+MELEK
+
+Graphene social blockchain (Steem family) with a keyless condenser\_api JSON-RPC
+
+No
+
+Yes
+
+Yes
+
 Nownodes
 
 Blockchain-as-a-service solution that provides high-quality connection via API
@@ -2108,6 +2168,16 @@ Yes
 
 Yes
 
+Leadgen Romania
+
+Romanian company registry, ANAF tax status and financial statements
+
+`apiKey`
+
+Yes
+
+Yes
+
 Legal Sandbox Georgia
 
 Find verified legal specialists in Georgia from natural-language queries
@@ -2211,6 +2281,16 @@ Yes
 RegisterWire
 
 Real-time alerts on UK company register changes
+
+`apiKey`
+
+Yes
+
+No
+
+RunDossier
+
+Pre-meeting briefing on a person from public professional and web sources, as JSON
 
 `apiKey`
 
@@ -2348,11 +2428,31 @@ Yes
 
 No
 
+Verif Entreprise FR
+
+French company checks by SIREN: status, insolvency (BODACC), VAT (VIES); free preview
+
+No
+
+Yes
+
+Yes
+
 Village
 
 Person and company enrichment plus warm introduction paths through your network
 
 `apiKey`
+
+Yes
+
+Yes
+
+W System EU Business Data
+
+EU VAT (VIES) and EORI validation, company registers, EU/UN/OFAC/UK sanctions screening
+
+No
 
 Yes
 
@@ -2372,6 +2472,16 @@ Auth
 HTTPS
 
 CORS
+
+Africa Compliance Data
+
+Public holidays and business days for all 54 African countries, from official sources
+
+`apiKey`
+
+Yes
+
+Yes
 
 caldays
 
@@ -2412,6 +2522,16 @@ No
 No
 
 Unknown
+
+CountdownsHQ
+
+Dates and timezone-correct countdowns for 150+ holidays and observances in 18 countries
+
+No
+
+Yes
+
+Yes
 
 Czech Namedays Calendar
 
@@ -3588,6 +3708,16 @@ Yes
 
 Yes
 
+MarginPad
+
+Crypto futures prices, candles, funding, open interest, long/short and liquidations, 9 exchanges
+
+No
+
+Yes
+
+Yes
+
 Mempool
 
 Bitcoin API Service focusing on the transaction fee
@@ -4732,6 +4862,16 @@ Check if AI crawlers (ChatGPT, Claude, Perplexity, 30+ others) can access any we
 Yes
 
 Yes
+
+crawlbrulee
+
+EU-native web scraping for AI agents & developers: turn any page into markdown, screenshots and more
+
+`apiKey`
+
+Yes
+
+No
 
 CurlShot
 
@@ -6353,6 +6493,16 @@ Yes
 
 Yes
 
+unfurlr
+
+Link-preview metadata for any URL: title, Open Graph, Twitter tags, favicon, oEmbed
+
+`apiKey`
+
+Yes
+
+Yes
+
 URLpipe
 
 Turn a URL into Markdown, screenshots, metadata or Lighthouse audits, rendered in real Chrome
@@ -6433,9 +6583,29 @@ Yes
 
 Yes
 
+WeInc
+
+AI website builder: manage clients, website projects, templates and webhooks
+
+`apiKey`
+
+Yes
+
+No
+
 XLSX Inspector
 
 Inspect XLSX/XLSM structure: sheets, formulas, macros and external links
+
+No
+
+Yes
+
+Yes
+
+Yumi Wheel Evidence
+
+Intersect wheel tags for explicit PyPI releases with caller-supplied tags
 
 No
 
@@ -7228,6 +7398,16 @@ Yes
 
 Yes
 
+ContactLint
+
+Validate email syntax, MX, disposable and role addresses with typo suggestions, plus phone numbers
+
+`apiKey`
+
+Yes
+
+Yes
+
 Disban
 
 Classify email domains as disposable, free, alias, testing or parked to block fake signups
@@ -7437,6 +7617,16 @@ Email API and SMTP for sending transactional and bulk emails, with email testing
 Yes
 
 Unknown
+
+Nitrosend
+
+Send marketing and transactional email; manage contacts, segments and flows
+
+`apiKey`
+
+Yes
+
+No
 
 PostStack
 
@@ -8102,6 +8292,16 @@ Search events, venues and performers
 Yes
 
 Unknown
+
+Things To Do
+
+Local events in plain words: concerts, pop-ups, markets, classes, gallery nights
+
+No
+
+Yes
+
+Yes
 
 Ticketmaster
 
@@ -8998,6 +9198,16 @@ Yes
 
 Yes
 
+USTariffRates
+
+US HTS lookup and origin-specific tariff breakdowns with source context
+
+`apiKey`
+
+Yes
+
+Unknown
+
 VAT Validation
 
 Validate VAT numbers and calculate VAT rates
@@ -9203,6 +9413,16 @@ Yes
 
 Yes
 
+FiberUp Fiber Database
+
+Dietary fiber per serving and per 100 g, split into soluble and insoluble, for ~200 common foods
+
+No
+
+Yes
+
+Yes
+
 Food Info
 
 Nutrition data for millions of foods from six national food composition datasets
@@ -9232,6 +9452,16 @@ No
 Yes
 
 Unknown
+
+IndiaRestros
+
+Indian restaurants, menus with rupee prices, dish search and timings across 9,000+ cities
+
+No
+
+Yes
+
+Yes
 
 Kroger
 
@@ -10138,6 +10368,16 @@ Yes
 
 Yes
 
+Online Sudoku - Sudokumax
+
+Free Sudoku puzzles, printable Sudoku worksheets and online play: https://sudokumax.com
+
+`apiKey`
+
+Yes
+
+Yes
+
 Open Trivia
 
 Trivia Questions
@@ -10507,6 +10747,16 @@ Wargaming.net info and stats
 Yes
 
 No
+
+weBump
+
+Connect games to nearby players' profiles, small saves and recent visitors with consent
+
+`OAuth`
+
+Yes
+
+Yes
 
 When is next MCU film
 
@@ -11133,6 +11383,16 @@ Yes
 
 Unknown
 
+IPKit
+
+IP lookup with location, ASN/ISP and VPN/proxy/Tor signals
+
+No
+
+Yes
+
+Yes
+
 ipstack
 
 Locate and identify website visitors by IP address
@@ -11262,6 +11522,16 @@ No
 Yes
 
 Yes
+
+MyPincode
+
+Indian PIN code and postal office lookup
+
+No
+
+Yes
+
+Unknown
 
 Network Data Labs
 
@@ -12898,6 +13168,16 @@ Yes
 
 Yes
 
+UK Public Tenders by Trade
+
+Live open UK public sector tenders by trade from Find a Tender and Contracts Finder (OGL v3.0)
+
+No
+
+Yes
+
+Yes
+
 USAspending.gov
 
 US federal spending data
@@ -13448,6 +13728,16 @@ Yes
 
 Yes
 
+AI Trainer Work
+
+Open AI training jobs (RLHF, data annotation, expert evaluation) from 20+ platforms, with pay
+
+No
+
+Yes
+
+Yes
+
 Adzuna
 
 Job board aggregator
@@ -13667,6 +13957,16 @@ No
 No
 
 Unknown
+
+Present of AI
+
+AI company profiles, open AI jobs and dated AI news, REST and MCP
+
+No
+
+Yes
+
+Yes
 
 RankFabrik Jobs
 
@@ -13935,7 +14235,7 @@ Yes
 
 GEN
 
-Create and edit video projects, with credit-based AI media generation
+Creative AI video engineer for ads, AI UGC and microdramas; free editor and social publishing
 
 `apiKey`
 
@@ -14658,6 +14958,16 @@ Yes
 
 Unknown
 
+StemConsole
+
+Split songs into vocals, drums, bass and other stems with AI
+
+`apiKey`
+
+Yes
+
+Yes
+
 Sunor
 
 AI music generation API via Suno, with pay-as-you-go credits
@@ -15057,6 +15367,16 @@ No
 Yes
 
 No
+
+Auregistre
+
+French company history from the official gazette (BODACC) since 2008, with insolvency counts
+
+No
+
+Yes
+
+Yes
 
 Band Atlas
 
@@ -15568,6 +15888,16 @@ Yes
 
 Yes
 
+StackRates
+
+VPS and cloud server prices from 46 providers, read daily from their own pricing pages and APIs
+
+No
+
+Yes
+
+Yes
+
 Statistics of the World
 
 Economic data for 218 countries — GDP, population, inflation, and 440+ indicators from IMF and World Bank
@@ -15711,6 +16041,16 @@ No
 Vuntum
 
 Sourced, dated facts on consumer robots and physical AI, licensed CC BY 4.0
+
+No
+
+Yes
+
+Yes
+
+w14n
+
+Brazilian company profiles by CNPJ, CNAE establishment counts and municipality coordinates
 
 No
 
@@ -16662,6 +17002,16 @@ Image management solutions like optimization, manipulation, hosting
 Yes
 
 Unknown
+
+snapWONDERS
+
+Photo and video forensic analysis, steganography and media format conversion
+
+`apiKey`
+
+Yes
+
+Yes
 
 Tinify.dev
 
@@ -17918,6 +18268,16 @@ Yes
 
 Unknown
 
+Tanod
+
+Pay-per-call scans of smart contracts, addresses and MCP/skill packages; small free daily tier
+
+No
+
+Yes
+
+No
+
 Threat Jammer
 
 Risk scoring service from curated threat intelligence data
@@ -18330,16 +18690,6 @@ Yes
 
 Yes
 
-aztro
-
-Daily horoscope info for yesterday, today, and tomorrow
-
-No
-
-Yes
-
-Unknown
-
 Blogger
 
 The Blogger APIs allows client applications to view and update Blogger content
@@ -18499,6 +18849,16 @@ No
 Yes
 
 Unknown
+
+InsightSocial
+
+Public profiles, posts, comments and followers from 25 social platforms, free tier
+
+`apiKey`
+
+Yes
+
+Yes
 
 Instagram
 
@@ -18839,6 +19199,16 @@ Twitter / X data API: search, profiles, timelines, followers, DMs, write actions
 Yes
 
 Unknown
+
+TwittrAPI
+
+Public Twitter/X data: profiles, tweets, replies, search, followers, lists, communities, trends
+
+`apiKey`
+
+Yes
+
+Yes
 
 vk
 
@@ -19384,16 +19754,6 @@ Live scores, play-by-play, schedules and odds for NFL, NBA, MLB, NHL, NCAA and s
 Yes
 
 Yes
-
-Sport Data
-
-Get sports data from all over the world
-
-`apiKey`
-
-Yes
-
-Unknown
 
 Sport List & Data
 
@@ -20605,6 +20965,16 @@ Yes
 
 No
 
+India EV Charging Stations
+
+Directory of public EV charging stations across India with connector and power specs
+
+No
+
+Yes
+
+Yes
+
 Izi
 
 Audio guide for travellers
@@ -20834,6 +21204,16 @@ No
 Yes
 
 Unknown
+
+TransitRadar
+
+Live GB train and bus departures, train positions, journey planning and a daily punctuality archive
+
+No
+
+Yes
+
+No
 
 Transport for Atlanta, US
 
@@ -21225,6 +21605,16 @@ Yes
 
 No
 
+Vessel Class Finder
+
+IACS class society, class status and survey dates for ships by IMO number
+
+`apiKey`
+
+Yes
+
+Yes
+
 Windsock
 
 Aircraft valuations, FAA registry lookups, cost of ownership and aviation market data
@@ -21500,6 +21890,16 @@ Brazilian Vehicles and Prices
 Vehicles information from Fundação Instituto de Pesquisas Econômicas - Fipe
 
 No
+
+Yes
+
+No
+
+CarSpecs
+
+Car specs for 70,000+ trims since 1945 (make, model, generation, trim) and a VIN decoder
+
+`apiKey`
 
 Yes
 
@@ -22608,6 +23008,16 @@ Unknown
 US Weather
 
 US National Weather Service
+
+No
+
+Yes
+
+Yes
+
+Veabird
+
+Beach (sargassum, waves, hurricanes) and ski snow forecasts for 1,900+ resorts, no key
 
 No
 

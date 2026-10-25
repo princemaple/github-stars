@@ -1,6 +1,6 @@
 ---
 project: Ciphey
-stars: 21684
+stars: 21698
 description: ⚡ Automatically decrypt encryptions without knowing the key or cipher, decode encodings, and crack hashes ⚡
 url: https://github.com/bee-san/Ciphey
 ---

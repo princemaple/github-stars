@@ -81,7 +81,6 @@ Syntax highlight code blocks using either Lumis or Syntect, for example to use L
 def deps do
   \[
     {:mdex, "~> 0.12"},
-    {:lumis, "~> 0.10"},
     \# one package per language you highlight, or a \`lumis\_wasm\_bundle\_\*\` package
     {:lumis\_wasm\_elixir, "~> 0.26"}
   \]
@@ -95,9 +94,13 @@ config :mdex\_native, syntax\_highlighter: :lumis
 
 _Using the `:html_multi_themes` syntax highlighting formatter is not required but you get light/dark using it._
 
-Mix.install(\[
-  {:mdex\_gfm, "~> 0.1"}
-\])
+Mix.install(
+  \[
+    {:mdex\_gfm, "~> 0.1"},
+    {:lumis\_wasm\_elixir, "~> 0.26"}
+  \],
+  config: \[mdex\_native: \[syntax\_highlighter: :lumis\]\]
+)
 
 markdown \= """
 \- \[x\] Set up project

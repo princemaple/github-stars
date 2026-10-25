@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 1634
+stars: 1640
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -191,9 +191,9 @@ docker exec vaults3 vaults3-cli key create alice --bucket my-bucket   # prints t
 
 Prefer a package or a plain binary? Every release ships `.deb`, `.rpm` and `.apk` packages, static binaries for Linux, macOS and Windows, a `checksums.txt` signed with the project's release key, an SPDX SBOM per platform, and a Sigstore provenance bundle you can verify offline:
 
-sudo apt install ./vaults3\_5.0.2\_amd64.deb
+sudo apt install ./vaults3\_5.0.3\_amd64.deb
 sudo systemctl enable --now vaults3
-gh attestation verify vaults3\_5.0.2\_amd64.deb --repo Kodiqa-Solutions/VaultS3
+gh attestation verify vaults3\_5.0.3\_amd64.deb --repo Kodiqa-Solutions/VaultS3
 
 Building from source is `make build`. Kubernetes is a Helm chart or a single manifest. All of it, plus the disk layout to use in production, is in the **installation guide**.
 

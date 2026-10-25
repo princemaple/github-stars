@@ -1,6 +1,6 @@
 ---
 project: uptime-kuma
-stars: 92578
+stars: 92865
 description: A fancy self-hosted monitoring tool
 url: https://github.com/louislam/uptime-kuma
 ---
@@ -120,7 +120,15 @@ https://github.com/louislam/uptime-kuma/milestones
 ❤️ Sponsors
 -----------
 
-Thank you so much! (GitHub Sponsors will be updated manually. OpenCollective sponsors will be updated automatically, the list will be cached by GitHub though. It may need some time to be updated)
+Thank you so much for supporting this project!
+
+### Special Sponsors
+
+Atlas Cloud (https://www.atlascloud.ai) is sponsoring this project USD 400 per month for using their AI models.
+
+### Open Collective and GitHub Sponsors
+
+(The list will be cached by GitHub, it may take up 24 hours to be updated)
 
 🖼 More Screenshots
 -------------------

@@ -1,6 +1,6 @@
 ---
 project: utoo
-stars: 2549
+stars: 2552
 description: A unified toolchain for web development
 url: https://github.com/utooland/utoo
 ---
@@ -71,6 +71,9 @@ ut install @utoo/web --save
 ut install          # Install dependencies (or use \`ut install\`)
 ut add lodash       # Add a package (or use \`ut add\`)
 ut x create-react   # Execute a package (npx style, or use \`ut x\`)
+ut pm-pack --pack-destination ./.tarballs # Collect a package tarball in one directory
+
+`pm-pack` writes the tarball into the package directory by default. Use `--pack-destination <dir>` to select another output directory; relative paths are resolved from the current working directory, including when packing a package at an explicit path. Missing output directories are created on a live run. `--dry-run` creates neither the output directory nor the tarball.
 
 Pin the project to an exact Utoo release so every contributor and CI runner uses the same package-manager implementation:
 

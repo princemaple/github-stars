@@ -1,6 +1,6 @@
 ---
 project: mkdocs-material
-stars: 27581
+stars: 27583
 description: Documentation that simply works
 url: https://github.com/squidfunk/mkdocs-material
 ---
@@ -9,43 +9,22 @@ url: https://github.com/squidfunk/mkdocs-material
 
 Write your documentation in Markdown and create a professional static site for your Open Source or commercial project in minutes – searchable, customizable, more than 60 languages, for all devices.
 
-_Check out the demo – squidfunk.github.io/mkdocs-material._
+* * *
 
-**Silver sponsors**
+Warning
 
-**Bronze sponsors**
+**Material for MkDocs reaches end of life on May 5, 2027.** Critical fixes and security updates continue until that date.
 
-Everything you would expect
----------------------------
+We're continuing our work with Zensical, a maintained successor built by the team behind Material for MkDocs. It carries forward what we've learned from building documentation tools with this community, with Markdown authoring, a familiar design, and full control over your content. Zensical is Open Source and MIT-licensed.
 
-### It's just Markdown
+You can evaluate Zensical alongside MkDocs using your existing `mkdocs.yml`. Check plugin compatibility and compare your pages, navigation, search, and customizations before switching. The `classic` theme variant preserves the appearance of Material for MkDocs. See the migration guide for the steps and current compatibility details.
 
-Focus on the content of your documentation and create a professional static site in minutes. No need to know HTML, CSS or JavaScript – let Material for MkDocs do the heavy lifting for you.
-
-### Works on all devices
-
-Serve your documentation with confidence – Material for MkDocs automatically adapts to perfectly fit the available screen estate, no matter the type or size of the viewing device. Desktop. Tablet. Mobile. All great.
-
-### Made to measure
-
-Make it yours – change the colors, fonts, language, icons, logo, and more with a few lines of configuration. Material for MkDocs can be easily extended and provides many options to alter appearance and behavior.
-
-### Fast and lightweight
-
-Don't let your users wait – get incredible value with a small footprint by using one of the fastest themes available with excellent performance, yielding optimal search engine rankings and happy users that return.
-
-### Maintain ownership
-
-Own your documentation's complete sources and outputs, guaranteeing both integrity and security – no need to entrust the backbone of your product knowledge to third-party platforms. Retain full control.
-
-### Open Source
-
-You're in good company – choose a mature and actively maintained solution built with state-of-the-art Open Source technologies, trusted by more than 50,000 individuals and organizations. Licensed under MIT.
+Upcoming changes on November 5
 
 Quick start
 -----------
 
-Material for MkDocs can be installed with `pip`:
+Material for MkDocs requires Python 3.11 or newer. Install it with `pip`:
 
 pip install mkdocs-material
 
@@ -54,18 +33,17 @@ Add the following lines to `mkdocs.yml`:
 theme:
   name: material
 
-For detailed installation instructions, configuration options, and a demo, visit squidfunk.github.io/mkdocs-material
+See the installation guide for detailed instructions and the documentation for configuration options.
 
-Trusted by ...
---------------
+Used by
+-------
 
-### ... industry leaders
+Material for MkDocs has been used by projects including FastAPI, Pydantic, Ruff, OpenSSL, AWS Copilot, and Google Accompanist.
 
-ArXiv, Atlassian, AWS, Bloomberg, CERN, Datadog, Google, Harvard, Hewlett Packard, HSBC, ING, Intel, JetBrains, LinkedIn, Microsoft, Mozilla, Netflix, OpenAI, Red Hat, Roboflow, Salesforce, SIEMENS, Slack, Square, Uber, Zalando
+Acknowledgments
+---------------
 
-### ... and successful Open Source projects
-
-Amp, Apache Iceberg, Arduino, Asahi Linux, Auto-GPT, AutoKeras, BFE, CentOS, Crystal, eBPF, ejabberd, Electron, FastAPI, FlatBuffers, {fmt}, Freqtrade, GoReleaser, GraphRAG, Headscale, HedgeDoc, Hummingbot, Knative, Kubernetes, kSQL, LeakCanary, LlamaIndex, NetBox, Nokogiri, OpenAI, OpenFaaS, OpenSSL, Orchard Core, Percona, Pi-Hole, Polars, Pydantic, PyPI, Quivr, Renovate, RetroPie, Ruff, Supervision, Textual, Traefik, Trivy, Typer, tinygrad, Ultralytics, UV, Vapor, WebKit, WTF, ZeroNet
+Thank you to everyone who sponsored Material for MkDocs. Your support made its development possible. We're grateful to the contributors, translators, and users who helped shape the project over the years.
 
 License
 -------

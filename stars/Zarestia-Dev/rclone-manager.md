@@ -1,6 +1,6 @@
 ---
 project: rclone-manager
-stars: 1171
+stars: 1191
 description: RClone Manager is a cross-platform GUI application designed to help users manage Rclone remotes efficiently.
 url: https://github.com/Zarestia-Dev/rclone-manager
 ---
@@ -27,7 +27,7 @@ Overview
 -   ⚙️ **Mount & Serve:** Easy mount controls and serve management (WebDAV, SFTP, HTTP, FTP).
 -   🔄 **Job Watcher:** Real-time transfer monitoring and bandwidth control.
 -   📱 **Android SAF & DocumentsProvider:** Access cloud remotes natively in system file pickers via Storage Access Framework and in-process VFS mount bridge without root.
--   🌐 **Headless Mode:** Check out RClone Manager Headless to run as a web server on VPS/NAS!
+-   🌐 **Headless Mode:** Run on a VPS/NAS with RClone Manager Server. Server documentation and the Linux service template live in `backend/server/`.
 
 * * *
 

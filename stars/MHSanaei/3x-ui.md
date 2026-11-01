@@ -1,6 +1,6 @@
 ---
 project: 3x-ui
-stars: 48509
+stars: 49025
 description: Supporting multi-protocol multi-user(Vmess, Vless, Trojan, ShadowSocks, Wireguard, Hysteria, Tunnel, Mixed, HTTP, Tun, MTProto، AmneziaWG) 
 url: https://github.com/MHSanaei/3x-ui
 ---

@@ -1,6 +1,6 @@
 ---
 project: lossless-cut
-stars: 45184
+stars: 45537
 description: The swiss army knife of lossless video/audio editing
 url: https://github.com/mifi/lossless-cut
 ---
@@ -59,7 +59,7 @@ If you prefer to download the executables manually, this will of course always b
 
 -   macOS: Intel / Apple Silicon DMG (note that PKG does **not** work)
 -   Windows: 7zip (Windows 7, 8 and 8.1 is no longer supported after v3.50.0)
--   Linux: x64 tar.bz2 / x64 AppImage / arm64 tar.bz2 / Raspberry Pi armv7l (armv7l doesn't include FFmpeg)
+-   Linux: x64 tar.bz2 / x64 AppImage / arm64 tar.bz2
 -   More releases - Note that APPX (Windows) and PKG (macOS) do **not** work
 -   Latest nightly builds 🧪
 

@@ -280,7 +280,7 @@ Passwordless email login
 
 ❌
 
-❓
+✅
 
 ❌
 
@@ -308,7 +308,7 @@ HTTP API
 
 ✅
 
-❓
+✅
 
 ✅
 
@@ -336,7 +336,7 @@ Forward auth
 
 ❓
 
-❓
+✅
 
 ❌
 
@@ -364,7 +364,7 @@ Trusted header auth
 
 ❓
 
-❓
+✅
 
 ✅
 
@@ -392,7 +392,7 @@ Upstream OIDC/OAuth2
 
 ✅
 
-❓
+✅
 
 ❌
 
@@ -420,7 +420,7 @@ Needs coding
 
 ✅
 
-❓
+✅
 
 ❌
 
@@ -448,7 +448,7 @@ Needs coding
 
 ✅
 
-❓
+✅
 
 ✅
 
@@ -476,7 +476,7 @@ MFA
 
 ✅
 
-❓
+✅
 
 ✅
 
@@ -504,7 +504,7 @@ Standalone reverse proxy
 
 ❓
 
-❓
+✅
 
 ❌
 
@@ -532,7 +532,7 @@ Admin GUI
 
 ✅
 
-❓
+✅
 
 ❌
 
@@ -560,7 +560,7 @@ Dynamic client registration
 
 ❌
 
-❓
+✅
 
 ❌
 
@@ -588,7 +588,7 @@ Passkey support
 
 ❓
 
-❓
+✅
 
 ✅
 

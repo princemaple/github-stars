@@ -1,6 +1,6 @@
 ---
 project: litgpt
-stars: 13726
+stars: 13739
 description: 20+ high-performance LLMs with recipes to pretrain, finetune and deploy at scale.
 url: https://github.com/Lightning-AI/litgpt
 ---
@@ -475,6 +475,14 @@ Qwen Team 2025
 R1 Distill Llama
 
 8B, 70B
+
+DeepSeek AI
+
+DeepSeek AI 2025
+
+R1 Distill Qwen
+
+1.5B, 7B, 14B, 32B
 
 DeepSeek AI
 

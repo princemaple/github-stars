@@ -1,6 +1,6 @@
 ---
 project: release-drafter
-stars: 3947
+stars: 3950
 description: Drafts your next release notes as pull requests are merged into master. 
 url: https://github.com/release-drafter/release-drafter
 ---
@@ -170,6 +170,12 @@ The template to use for each merged pull request. Use change template variables 
 Optional
 
 The template to use for each author in `$AUTHORS`. Supports `$AUTHOR` for the raw login/name and `$AUTHOR_MENTION` for a GitHub-formatted mention. Default: `"$AUTHOR_MENTION"`.
+
+`change-authors-exclude-bots`
+
+Optional
+
+Exclude bot co-authors from `$AUTHORS`. Pull request authors are always retained. Default: `false`.
 
 `change-authors-separator`
 
@@ -619,6 +625,8 @@ change-author-template: '\- $AUTHOR'
 change-authors-separator: "\\n    "
 
 Use `$AUTHOR_MENTION` instead of `$AUTHOR` in `change-author-template` to create GitHub mentions. Release Drafter renders GitHub App bots as linked mentions, for example `[@dependabot[bot]](https://github.com/apps/dependabot)`. `$CATEGORY` preserves `categories[].title`; configure the title with the casing required by the output.
+
+Set `change-authors-exclude-bots: true` to exclude bot co-authors from `$AUTHORS`. Commit authors identified as bots by the forge or whose logins end in `[bot]` are excluded. Unlinked commit authors are retained unless identified as bots. Pull request authors are always retained. This option does not change `$AUTHOR`, `$CONTRIBUTORS`, or `$NEW_CONTRIBUTORS`.
 
 ### Body escaping
 

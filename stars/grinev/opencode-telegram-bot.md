@@ -1,6 +1,6 @@
 ---
 project: opencode-telegram-bot
-stars: 1284
+stars: 1320
 description: OpenCode mobile client via Telegram: run and monitor AI coding tasks from your phone while everything runs locally on your machine. OpenCode V2 support.
 url: https://github.com/grinev/opencode-telegram-bot
 ---
@@ -727,7 +727,7 @@ Logs are written to `./logs` when running from sources and to the runtime config
 
 Runtime preferences are changed from `/settings` and stored in `settings.json`:
 
--   Compact output mode: one progress message per stretch of work between replies and prompts, from the moment the model starts thinking or writing in that stretch. It is removed or marked finished when the reply or prompt lands, or when the run ends if nothing followed
+-   Compact output mode: one progress message per stretch of work between replies and prompts, from the moment the model starts thinking or writing in that stretch. When the reply or prompt lands, or when the run ends if nothing followed, it turns into one line of what was done (`✅ commands: 3, reads: 4, changed files: 2`), or is removed when there is nothing to count
 -   Delete progress on finish: available while compact output mode is on, removes each of those progress messages when that stretch finishes
 -   Thinking content display
 -   Assistant run footer display

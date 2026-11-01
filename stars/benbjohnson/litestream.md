@@ -1,6 +1,6 @@
 ---
 project: litestream
-stars: 14522
+stars: 14559
 description: Streaming replication for SQLite.
 url: https://github.com/benbjohnson/litestream
 ---
@@ -22,6 +22,13 @@ When Litestream begins replicating a database, it creates an internal `_litestre
 The table is part of the source database, not a separate table in the replica destination. Because the source schema is backed up, restored databases also contain it. Its creation changes the source database schema and can change its page count or bytes, so a database under Litestream should not be expected to remain byte-identical to its pre-Litestream state.
 
 Do not drop `_litestream_lock` while Litestream is running. Synchronization around a checkpoint can fail until Litestream reinitializes the database. Restarting Litestream recreates the missing table automatically.
+
+Stopping replication
+--------------------
+
+`litestream replicate` attempts a graceful shutdown on SIGINT or SIGTERM. The top-level `shutdown-timeout` configuration setting limits the entire shutdown, including waiting for startup, an `exec` process, and closing databases and replicas. It defaults to `30s`; set a longer duration when final replication needs more time. Invalid or nonpositive values produce a warning and use the default.
+
+A second SIGINT or SIGTERM interrupts shutdown immediately. A timeout or interruption exits with an error because the final replica sync may be incomplete. This process-level bound also applies when a replica connection stops responding during startup. Cancellation of the calling context also starts a bounded graceful shutdown, using a fresh context for final replication. The existing `shutdown-sync-timeout` setting still controls each database's final replica sync retries within this overall limit. The process-level bound does not apply to callers of the Go library.
 
 Contributing
 ------------

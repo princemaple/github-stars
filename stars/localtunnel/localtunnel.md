@@ -1,6 +1,6 @@
 ---
 project: localtunnel
-stars: 22496
+stars: 22492
 description: expose yourself
 url: https://github.com/localtunnel/localtunnel
 ---

@@ -33,7 +33,9 @@ Quick: load pre-compiled into a running system
 
 Paste this one-liner into IEx to download and start the full Entrace library. It fetches pre-compiled `.beam` files matching your OTP version from GitHub releases:
 
-(fn \-> :inets.start(); :ssl.start(); otp \= System.otp\_release(); {:ok, {{\_, 200, \_}, \_, body}} \= :httpc.request(:get, {~c"https://github.com/underjord/entrace/releases/latest/download/entrace-otp-#{otp}.tar.gz", \[\]}, \[ssl: \[verify: :verify\_peer, cacerts: :public\_key.cacerts\_get(), depth: 3, customize\_hostname\_check: \[match\_fun: :public\_key.pkix\_verify\_hostname\_match\_fun(:https)\]\]\], body\_format: :binary); dir \= Path.join(System.tmp\_dir!(), "entrace"); File.rm\_rf!(dir); File.mkdir\_p!(dir); :ok \= :erl\_tar.extract({:binary, body}, \[:compressed, {:cwd, to\_charlist(dir)}\]); Code.prepend\_path(dir); Application.ensure\_all\_started(:entrace) end).()
+(fn \-> :inets.start(); :ssl.start(); otp \= System.otp\_release(); {:ok, {{\_, 200, \_}, \_, body}} \= :httpc.request(:get, {~c"https://github.com/underjord/entrace/releases/latest/download/entrace-otp-#{otp}.tar.gz", \[\]}, \[ssl: \[verify: :verify\_peer, cacerts: :public\_key.cacerts\_get(), depth: 3, customize\_hostname\_check: \[match\_fun: :public\_key.pkix\_verify\_hostname\_match\_fun(:https)\]\]\], body\_format: :binary); dir \= Path.join(System.tmp\_dir!(), "entrace"); File.rm\_rf!(dir); File.mkdir\_p!(dir); :ok \= :erl\_tar.extract({:binary, body}, \[:compressed, {:cwd, to\_charlist(dir)}\]); Code.prepend\_path(dir); for beam <- Path.wildcard(Path.join(dir, "\*.beam")), do: {:module, \_} \= :code.load\_abs(to\_charlist(Path.rootname(beam))); Application.ensure\_all\_started(:entrace) end).()
+
+The beams are loaded explicitly because a Mix release runs in embedded code-loading mode by default, where modules on the code path are not loaded on demand. Without that step `Application.ensure_all_started(:entrace)` finds the app but fails with `:undef` on `Entrace.Application.start/2`.
 
 Then use the full library:
 

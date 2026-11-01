@@ -1,6 +1,6 @@
 ---
 project: btop
-stars: 35113
+stars: 35195
 description: A monitor of resources
 url: https://github.com/aristocratos/btop
 ---
@@ -375,16 +375,21 @@ Installation
 
 **Binary release (from native os repo)**
 
--   **openSUSE**
-    -   **Tumbleweed:**
-        
-        sudo zypper in btop
-        
-    -   For all other versions, see openSUSE Software: btop
+-   **Ubuntu/Debian**
+    
+    sudo apt install btop
+    
+    -   A PPA supporting Ubuntu 22.04 and newer is provided by Quentin Lienhardt that offers an up-to-date version of `btop`.
 -   **Fedora**
     
     sudo dnf install btop
     
+-   **openSUSE**
+    -   **Tumbleweed:**
+        
+        sudo zypper install btop
+        
+    -   For all other versions, see openSUSE Software: btop
 -   **RHEL/Rocky/AlmaLinux 8+**
     
     sudo dnf install epel-release

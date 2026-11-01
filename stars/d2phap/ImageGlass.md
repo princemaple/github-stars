@@ -1,6 +1,6 @@
 ---
 project: ImageGlass
-stars: 14706
+stars: 14769
 description: 🏞 A fast, open-source, modern image viewer for 90+ formats – including WEBP, GIF, SVG, AVIF, JXL, HEIC and more – built for smooth browsing across Windows, macOS, and Linux.
 url: https://github.com/d2phap/ImageGlass
 ---
@@ -18,7 +18,7 @@ Built enterprise-ready, ImageGlass Pro supports managed deployment through prese
 
   
 
-**🌐 Website**  •  **📥 Pricing**  •  **📚 Docs**  •  **💬 Discord**  •  **💖 Donate**
+**🌐 Website**  •  **📥 Pricing**  •  **🧩 Plugins**  •  **📐 Tools**  •  **📚 Docs**  •  **💬 Support**
 
   
 
@@ -66,6 +66,79 @@ Primarily a photo viewer, ImageGlass offers a wide array of features geared towa
 -   Windows: Custom file type icon pack (Not available for Store release)
 
 👉 Visit https://imageglass.org/docs/features to explore all features of ImageGlass.
+
+  
+
+Plugins & Tools
+---------------
+
+Extend ImageGlass with codec plugins that open more image formats, and with tools that work alongside it.
+
+Plugin
+
+Author
+
+Description
+
+Platforms
+
+AVIF Codec
+
+aplefull
+
+Opens still and animated `.avif` files, using libavif, dav1d and libyuv
+
+Windows, macOS, Linux
+
+WIC Codec
+
+d2phap
+
+Brings the Windows Imaging Component in as a native codec, including JPEG XR (`.jxr`, `.hdp`, `.wdp`)
+
+Windows
+
+APNG Codec
+
+d2phap
+
+Plays animated `.apng` files
+
+Windows, macOS, Linux
+
+ITHMB Codec
+
+B67687
+
+Decodes `.ithmb` thumbnail files using Ithmb-Codec
+
+Windows, macOS, Linux
+
+Tool
+
+Author
+
+Description
+
+Platforms
+
+ExifGlass
+
+d2phap
+
+Reads the camera settings, lens, location, and color profile in any photo
+
+Windows, macOS, Linux
+
+FewerPhotos
+
+d2phap
+
+Cleans up the photo folders you already have: duplicates, blurry shots, and sorting by date
+
+Windows, macOS
+
+👉 Browse the plugins and tools, or build your own with ImageGlass.SDK.
 
   
 

@@ -1,6 +1,6 @@
 ---
 project: localsend
-stars: 95457
+stars: 96832
 description: An open-source cross-platform alternative to AirDrop
 url: https://github.com/localsend/localsend
 ---
@@ -228,7 +228,19 @@ To make development more consistent, LocalSend uses fvm to manage the project Fl
 Command Line Interface
 ----------------------
 
-The LocalSend CLI is a terminal client built on LocalSend Protocol v2. Run `localsend-cli --help` to see every available option and hotkey.
+The LocalSend CLI is a terminal client built on LocalSend Protocol v2.
+
+On macOS and Linux, install the CLI with Homebrew:
+
+brew update
+brew install localsend-cli
+
+To upgrade an existing installation:
+
+brew update
+brew upgrade localsend-cli
+
+Run `localsend-cli --help` to see every available option and hotkey.
 
 Use the `send` command with one or more files, directories, or a mixture of both:
 

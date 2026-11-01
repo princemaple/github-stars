@@ -1,6 +1,6 @@
 ---
 project: snapdom
-stars: 8209
+stars: 8216
 description: High-performance engine for capturing, modifying, and converting DOM elements into any format.
 url: https://github.com/zumerlab/snapdom
 ---
@@ -391,7 +391,7 @@ Image compression and resource caching remain automatic. They do not make raster
 
 SnapDOM has two rendering engines: **SVG**, the default, and **html-in-canvas**, which paints the same captured clone through the browser's native canvas API. Select the second with `engine: 'html-in-canvas'`.
 
-The second engine is experimental: it still needs a compatible browser with its canvas drawing flag enabled, plus a build compiled with `SNAPDOM_CANVAS_ENGINE=1`. The default build includes SVG only. Unsupported captures fall back to SVG. A successful native capture produces a bitmap, so its URL and `toRaw()` return PNG, not serialized SVG. See ARCHITECTURE.md for details.
+The second engine ships in the default build and runs where the browser has the API: Chrome 157 and newer, without a flag. Firefox and Safari have no implementation, so there, and on any capture it cannot paint, SnapDOM runs the SVG engine on the same clone and you get the same result object. Captures of `body` or `html`, transformed or zoomed roots, `clip`, `width`/`height` and `outerShadows` use SVG, and so do captures with a plugin that has a `beforeRender` or `afterRender` hook (html-export, pdf, vector, and redact-inputs with `blocks` or `attributes`); every other official plugin runs on the native engine. A successful native capture produces a bitmap, so its URL and `toRaw()` return PNG, not serialized SVG. SVG stays the default because it is faster (the native paint waits for a rendering update, about 35 ms on a small card where SVG takes 3, see BENCHMARKS.md); pick html-in-canvas when scrollbars, or anything else the SVG image draws differently, have to match the page. Both engines paint the same clone, so `<audio controls>`, `<progress>` and `<meter>` look the same with either one, and not quite like the page. See ARCHITECTURE.md and the guide.
 
 Migrating from v2
 -----------------
@@ -474,7 +474,7 @@ Plugins v2.x.x exposed `@zumer/snapdom-plugins/html-in-canvas`
 
 That subpath is removed
 
-Use the experimental core `engine: 'html-in-canvas'` with a compatible custom build; the default build uses SVG
+Use the core option `engine: 'html-in-canvas'`; browsers without the API get SVG
 
 TypeScript exported `PluginExportFacade`
 

@@ -1,6 +1,6 @@
 ---
 project: warpgate
-stars: 8134
+stars: 8175
 description: Fully transparent SSH, HTTPS, Kubernetes, database and RDP/VNC bastion/PAM that doesn't need additional client-side software
 url: https://github.com/warp-tech/warpgate
 ---
@@ -41,6 +41,8 @@ Full documentation is available at warpgate.null.page, including:
 -   Login Protection - Configure brute-force protection
 -   SSO - Single Sign-On with OpenID Connect
 -   Tickets - Temporary access credentials
+
+For `warpgate.yaml` file options, see the configuration schema. Setup-generated config files include a `yaml-language-server` schema reference for editor completion and validation.
 
 How is Warpgate different from a jump host / VPN / Teleport?
 ------------------------------------------------------------

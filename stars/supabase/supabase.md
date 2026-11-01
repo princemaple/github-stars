@@ -1,6 +1,6 @@
 ---
 project: supabase
-stars: 113890
+stars: 114383
 description: The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.
 url: https://github.com/supabase/supabase
 ---
@@ -18,10 +18,10 @@ Supabase is the Postgres development platform. We're building the features of Fi
     -   Realtime subscriptions. Docs
 -   Functions.
     -   Database Functions. Docs
-    -   Edge Functions Docs
+    -   Edge Functions. Docs
 -   File Storage. Docs
 -   AI + Vector/Embeddings Toolkit. Docs
--   Dashboard
+-   Dashboard.
 
 Watch "releases" of this repo to get notified of major updates.
 
@@ -53,8 +53,8 @@ Supabase is a hosted platform. You can sign up and start using Supabase without 
 -   Realtime is an Elixir server that allows you to listen to PostgreSQL inserts, updates, and deletes using websockets. Realtime polls Postgres' built-in replication functionality for database changes, converts changes to JSON, then broadcasts the JSON over websockets to authorized clients.
 -   PostgREST is a web server that turns your PostgreSQL database directly into a RESTful API.
 -   GoTrue is a JWT-based authentication API that simplifies user sign-ups, logins, and session management in your applications.
--   Storage a RESTful API for managing files in S3, with Postgres handling permissions.
--   pg\_graphql a PostgreSQL extension that exposes a GraphQL API.
+-   Storage is a RESTful API for managing files in S3, with Postgres handling permissions.
+-   pg\_graphql is a PostgreSQL extension that exposes a GraphQL API.
 -   postgres-meta is a RESTful API for managing your Postgres, allowing you to fetch tables, add roles, and run queries, etc.
 -   Envoy is a cloud-native, high-performance edge and service proxy.
 

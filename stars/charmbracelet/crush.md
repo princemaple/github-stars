@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 28800
+stars: 28902
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -39,7 +39,7 @@ brew install charmbracelet/tap/crush
 npm install -g @charmland/crush
 
 # Arch Linux (btw)
-yay -S crush-bin
+yay -S crush
 
 # Nix
 nix run github:numtide/nix-ai-tools#crush
@@ -561,6 +561,8 @@ By default, Crush will ask you for permission before running tool calls. If you'
 
 permissions allow view ls grep edit mcp\_context7\_get-library-doc
 
+The `bash` tool additionally runs a small set of read-only commands (`ls`, `pwd`, `git status`, `git log`, …) without prompting. Crush parses the command to decide, so it applies only when the whole command is provably inert: a redirection, a variable assignment, a command substitution, a pipeline, or an argument that mutates state (`git branch -D`, `git remote set-url`) all fall back to the normal permission prompt.
+
 ### Disabling Built-In Tools
 
 You can also deny tools, hiding then from the agent entirely:
@@ -685,16 +687,19 @@ Crush supports custom provider configurations for both OpenAI-compatible and Ant
 
 Note
 
-Note that we support two "types" for OpenAI. Make sure to choose the right one to ensure the best experience!
+The provider type describes the API format the provider speaks. Make sure to choose the right one to ensure the best experience!
 
--   `openai` should be used when proxying or routing requests through OpenAI.
--   `openai-compat` should be used when using non-OpenAI providers that have OpenAI-compatible APIs.
+-   `responses` should be used when proxying or routing requests through OpenAI.
+-   `completions` should be used when using non-OpenAI providers that have OpenAI-compatible APIs.
+-   `messages` should be used for Anthropic-compatible APIs.
+
+Legacy values (`openai`, `openai-compat`, `anthropic`) are still accepted and migrated automatically.
 
 #### OpenAI-Compatible APIs
 
 Here’s an example configuration for Deepseek, which uses an OpenAI-compatible API. Don't forget to set `DEEPSEEK_API_KEY` in your environment.
 
-provider add deepseek --type openai-compat \\
+provider add deepseek --type completions \\
   --base-url "https://api.deepseek.com/v1" \\
   --api-key "$DEEPSEEK\_API\_KEY"
 
@@ -712,7 +717,7 @@ model add deepseek/deepseek-chat \\
 Custom Anthropic-compatible providers follow this format:
 
 provider add custom-anthropic \\
-  --type anthropic \\
+  --type messages \\
   --base-url "https://api.anthropic.com/v1" \\
   --api-key "$ANTHROPIC\_API\_KEY" \\
   --extra-header anthropic-version 2023-06-01
@@ -721,7 +726,7 @@ model add custom-anthropic/claude-sonnet-4-20250514 \\
   --name "Claude Sonnet 4" \\
   --context-window 200000 \\
   --default-max-tokens 50000 \\
-  --can-reason true \\
+  --thinking toggleable \\
   --supports-images true \\
   --price-input 3 \\
   --price-output 15 \\
@@ -766,13 +771,13 @@ $ gcloud auth application-default login
 To add specific models to the configuration, configure as such:
 
 # crushrc — authentication still comes from gcloud and the VERTEXAI\_\* env vars.
-provider add vertexai --type google-vertex
+provider add vertexai
 
 model add vertexai/claude-sonnet-4@20250514 \\
   --name "VertexAI Sonnet 4" \\
   --context-window 200000 \\
   --default-max-tokens 50000 \\
-  --can-reason true \\
+  --thinking toggleable \\
   --supports-images true \\
   --price-input 3 \\
   --price-output 15 \\

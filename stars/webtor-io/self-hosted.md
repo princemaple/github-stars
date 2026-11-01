@@ -1,6 +1,6 @@
 ---
 project: self-hosted
-stars: 708
+stars: 713
 description: Self-hosted version of webtor.io implemented as an all-in-one Docker image
 url: https://github.com/webtor-io/self-hosted
 ---
@@ -261,3 +261,4 @@ Other Custom Variables
 
 -   **WAIT\_FOR\_VPN** - waits for VPN to start (in case you are using Gluetun) (default: false)
 -   **REQUEST\_URL\_MAPPINGS** - custom mappings for request urls
+-   **EXTERNAL\_PROXY\_PRIVATE\_NETWORK\_ORIGINS** - comma-separated origins (`scheme://host[:port]`) that posters and subtitles may be fetched from even at a private or loopback address, such as a site on your LAN that embeds the player. Your own `DOMAIN` is always on the list; any other url is fetched from public addresses only, and a refused one is logged by `[external-proxy]` with the host and the reason (default: empty)

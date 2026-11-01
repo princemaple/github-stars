@@ -1,6 +1,6 @@
 ---
 project: plate
-stars: 16667
+stars: 16683
 description: Rich-text editor with AI and shadcn/ui
 url: https://github.com/udecode/plate
 ---
@@ -53,11 +53,11 @@ You can learn more about Plate by checking out our documentation.
 Contributing
 ------------
 
-To get started, check out our contributing guide.
+Found a bug or want a feature? File an issue with a reproduction. The team writes every fix, as the contributing guide explains.
 
 ### Contributors
 
-We'd love for you to join us! Whether it's through giving us a 🌟 star, making a 📥 pull request, or **sharing your plugins**, your help is always appreciated.
+We'd love for you to join us! Whether it's through giving us a 🌟 star, filing an 🐛 issue with a reproduction, or **sharing your plugins**, your help is always appreciated.
 
 Need more help? Join us on Discord. We're always here to guide you.
 

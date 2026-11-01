@@ -69,6 +69,21 @@ For some encodings, an alias is set up for easier dispatch. The list of aliases 
     iex\> from\_string!("Hello æøåÆØÅ!", :iso\_8859\_1)
     <<72, 101, 108, 108, 111, 32, 230, 248, 229, 198, 216, 197, 33\>>
 
+Encodings in a module of your own
+---------------------------------
+
+A library can't change which encodings Codepagex has, as only the configuration of the application at the top counts. Instead it may compile the encodings it needs into a module of its own with `Codepagex.Backend`, with no configuration at all:
+
+    defmodule MyLib.Encodings do
+      use Codepagex.Backend,
+        encodings: \[:ascii, :iso\_8859\_1, :windows\_1251, :windows\_1252\]
+    end
+
+    iex\> MyLib.Encodings.to\_string(<<0xC0, 0xE1\>>, :windows\_1251)
+    {:ok, "Аб"}
+
+The module has the same functions as `Codepagex`, for its encodings only. The encodings are given as in the configuration below.
+
 Encoding selection
 ------------------
 

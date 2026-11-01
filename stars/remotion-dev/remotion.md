@@ -1,20 +1,13 @@
 ---
 project: remotion
-stars: 67117
+stars: 69456
 description: 🎥      Make videos programmatically with React
 url: https://github.com/remotion-dev/remotion
 ---
 
-Video tools for the agent era.
-
-Video Creation
---------------
-
--   **Make videos agentically**: Turn your idea into a video using your coding agent.
--   **Make videos interactively**: Edit and animate using drag and drop.
--   **Make videos programmatically**: Connect to data, and manage complexity with code.
-
-React Code is the source of truth. Switch your workflow at any point.
+-   **Make videos agentically**: Turn your idea into a video using your agent.
+-   **Make videos interactively**: Edit and animate like in a regular video editor.
+-   **Make videos programmatically**: Leverage web technology and own your video as code.
 
 Video Automation
 ----------------
@@ -35,21 +28,22 @@ to get started. Otherwise, read the installation page in the documentation.
 Discover Remotion
 -----------------
 
-Remotion is extensively documented over more than 1000 pages.
+Remotion is extensively documented over 1,200 pages.
 
 -   Get Started
     -   Installation
+    -   Your first video
     -   Agent Skills
-    -   Prompts
     -   Templates
--   Components
+-   Making videos
     -   Elements
     -   Effects
-    -   Shapes
     -   Transitions
     -   Sound Effects
     -   Captions
     -   Fonts
+    -   Color correction
+    -   Shapes
 -   Rendering
     -   Node.js APIs
     -   Lambda
@@ -57,6 +51,7 @@ Remotion is extensively documented over more than 1000 pages.
     -   Client-side rendering
     -   Comparison of options
 -   Making apps
+    -   SDK (coming soon)
     -   Player
     -   Editor Starter
     -   Mediabunny

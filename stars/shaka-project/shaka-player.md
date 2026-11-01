@@ -1,6 +1,6 @@
 ---
 project: shaka-player
-stars: 8261
+stars: 8266
 description: JavaScript player library / DASH & HLS client / MSE-EME player
 url: https://github.com/shaka-project/shaka-player
 ---
@@ -574,7 +574,7 @@ HEVC software fallback
 
 **Only supported on browsers with Media Source Extensions SourceBuffer support and WebCodecs**
 
--   HEVC (H.265) playback on browsers without native HEVC decoding support, such as Firefox or Chrome on Linux (transcoding to H.264 provided by @hevcjs/shaka-plugin, must be separately included)
+-   HEVC (H.265) playback on devices with no hardware HEVC decoder, where Chrome (Windows, Linux) and Firefox (Windows, without the HEVC extension) have no software fallback (transcoding to H.264 provided by @hevcjs/shaka-plugin, must be separately included)
     
 -   Live demo : hevcjs.dev/demo/shaka.html
     

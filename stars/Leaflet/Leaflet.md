@@ -1,27 +1,17 @@
 ---
 project: Leaflet
-stars: 45777
+stars: 45803
 description: 🍃 JavaScript library for mobile-friendly interactive maps 🇺🇦
 url: https://github.com/Leaflet/Leaflet
 ---
 
-Leaflet was created in September 2010, 15 years ago, by Volodymyr Agafonkin, a Ukrainian citizen living in Kyiv.
+Leaflet was created in 2010 by Volodymyr Agafonkin, a Ukrainian citizen living in Kyiv.
 
-Russian bombs are now falling over Volodymyr's hometown. His family, his friends, his neighbours, thousands and thousands of absolutely wonderful people, are either seeking refuge or fighting for their lives.
+Russia's full-scale invasion of Ukraine began in February 2022 and is still going. Russian troops have killed tens of thousands of civilians and committed mass war crimes. Missiles and drones still hit Kyiv and other Ukrainian cities day and night.
 
-Russian soldiers have already killed tens of thousands of civilians, including women and children, and are committing mass war crimes like gang rapes, executions, looting, and targeted bombings of civilian shelters and places of cultural significance. The death toll keeps rising, and Ukraine needs your help.
+Leaflet is used for documenting Russia's war crimes, tracking the front line and finding humanitarian aid. The future of Ukraine is the future of Leaflet.
 
-As Volodymyr expressed a few days before the invasion:
-
-> If you want to help, educate yourself and others on the Russian threat, follow reputable journalists, demand severe Russian sanctions and Ukrainian support from your leaders, protest the war, reach out to Ukrainian friends, donate to Ukrainian charities. Just don't be silent.
-
-Ukrainians recommend the Come Back Alive charity. For other options, see StandWithUkraine.
-
-If an appeal to humanity doesn't work for you, I'll appeal to your egoism: the future of Ukrainian citizens is the future of Leaflet.
-
-It is chilling to see Leaflet being used for documenting Russia's war crimes, factual reporting of the war and for coordination of humanitarian efforts across Europe. We commend these uses of Leaflet.
-
-If you support the actions of the Russian government (even after reading all this), do everyone else a favour and carry some seeds in your pocket.
+If you'd like to help, donate to Come Back Alive or another charity listed on StandWithUkraine, and keep asking your government to support Ukraine and pressure Russia. Just don't be silent.
 
 Yours truly,  
 Leaflet maintainers.

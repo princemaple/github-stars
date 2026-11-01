@@ -1,6 +1,6 @@
 ---
 project: OpenSpeedy
-stars: 20289
+stars: 20623
 description: 🎮 An open-source game speed modifier.
 url: https://github.com/game1024/OpenSpeedy
 ---

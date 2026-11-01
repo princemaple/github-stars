@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 1640
+stars: 1644
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -191,9 +191,9 @@ docker exec vaults3 vaults3-cli key create alice --bucket my-bucket   # prints t
 
 Prefer a package or a plain binary? Every release ships `.deb`, `.rpm` and `.apk` packages, static binaries for Linux, macOS and Windows, a `checksums.txt` signed with the project's release key, an SPDX SBOM per platform, and a Sigstore provenance bundle you can verify offline:
 
-sudo apt install ./vaults3\_5.0.3\_amd64.deb
+sudo apt install ./vaults3\_5.0.8\_amd64.deb
 sudo systemctl enable --now vaults3
-gh attestation verify vaults3\_5.0.3\_amd64.deb --repo Kodiqa-Solutions/VaultS3
+gh attestation verify vaults3\_5.0.8\_amd64.deb --repo Kodiqa-Solutions/VaultS3
 
 Building from source is `make build`. Kubernetes is a Helm chart or a single manifest. All of it, plus the disk layout to use in production, is in the **installation guide**.
 
@@ -208,11 +208,11 @@ The short version. Each row links to the guide that covers it, and the full list
 
 **Web dashboard**
 
-File browser, drag-and-drop upload, stats, IAM, audit, search, backups, in English, German, French, Russian and Chinese. Guide
+File browser, drag-and-drop upload, stats, IAM, audit, search, backups, in English, German, French, Russian and Chinese, light and dark theme. Settings shows how to turn each feature on. Guide
 
 **Access control**
 
-IAM users, groups and policies, OIDC/JWT SSO, STS, external authorization webhook, per-bucket CORS, IP allowlists, audit trail. Guide
+IAM users, groups and policies, OIDC/JWT SSO, STS, external authorization webhook, per-bucket CORS including exposed response headers for browser uploads, IP allowlists, audit trail. Guide
 
 **Encryption**
 
@@ -390,6 +390,8 @@ go test ./...                   # run the Go test suite
 go test -race ./internal/erasure/ ./internal/cluster/ ./internal/replication/
 
 The data-durability subsystems (`erasure`, `cluster`, `replication`) carry fault-injection tests, corrupt a shard and heal it, lose a node and re-route, partition two sites and resolve the conflict. New logic there should keep that bar.
+
+**Thank you to everyone who has contributed code:** @virgoone (CORS exposed headers for browser multipart uploads), @zhyc9de (streaming reads for encrypted and compressed objects, faster startup, dashboard fixes), @sweet0dream (Russian translation) and @idpcks (file browser grid view, login page). Issue reporters are credited in the CHANGELOG.
 
 License
 -------

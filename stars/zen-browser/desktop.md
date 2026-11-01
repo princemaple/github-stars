@@ -1,6 +1,6 @@
 ---
 project: desktop
-stars: 45243
+stars: 45484
 description: Welcome to a calmer internet
 url: https://github.com/zen-browser/desktop
 ---
@@ -24,4 +24,4 @@ Zen is an open-source project, and we welcome contributions from the community! 
 
 #### Partners
 
-Thanks to all the partners of Zen for their support and contributions:
+Thanks to all the sponsors of Zen for their support and contributions, including:

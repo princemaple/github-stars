@@ -1,6 +1,6 @@
 ---
 project: crawl4ai
-stars: 86186
+stars: 86668
 description: Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key. Join our Discord https://discord.gg/VuxzM8mtf
 url: https://github.com/unclecode/crawl4ai
 ---

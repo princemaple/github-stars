@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 36414
+stars: 36494
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -1424,6 +1424,17 @@ bar:
   cargo test
 
 Because `just` cannot determine when exported variables are used, assignments with `export` and assignments in a module with `set export` will always be evaluated.
+
+Assignments with the `eager`1.47.1 keyword are always evaluated.
+
+In the following `justfile`, `setup` is evaluated regardless of whether it is used:
+
+set lazy
+
+eager setup :\= \`echo 'setup: yes' > config.yaml\`
+
+test:
+  cargo test
 
 ### Expressions and Substitutions
 

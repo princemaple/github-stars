@@ -1,6 +1,6 @@
 ---
 project: scanopy
-stars: 5899
+stars: 5921
 description: Network diagrams that update themselves
 url: https://github.com/scanopy/scanopy
 ---
@@ -39,22 +39,38 @@ Services and their dependencies, grouped by application.
 ✨ Features
 ----------
 
--   **Automatic discovery**: Maps hosts and services by scanning the network. One scanner, no per-device agents.
--   **230+ service definitions**: Auto-detects databases, web servers, containers, network infrastructure, and enterprise applications.
--   **Four views from one scan**: L2 (physical), L3 (logical), workloads, and application dependencies.
--   **Distributed scanning**: Deploy daemons across segments to map multi-site and multi-VLAN topologies.
--   **Docker & SNMP integration**: Native discovery for containerized services and network hardware.
--   **Scheduled rescans**: Documentation stays current as infrastructure changes.
--   **Multi-user + RBAC**: Organization management, role-based access, and shareable live views for teammates or external stakeholders.
+**Map**
 
-🎯 Perfect For
---------------
+-   **Network topology**: Physical (L2) links port to port from LLDP, CDP, and switch forwarding tables, and logical (L3) topology subnet by subnet.
+-   **Workload mapping**: VMs nested in their hypervisor, and containers inside the host that runs them.
+-   **Application dependency mapping**: Tag each server with its application once and the map fills in its services. You mark the dependencies between them.
 
--   **Platform & DevOps teams**: Trace service dependencies without APM. Map containers, VMs, and hardware in one model.
--   **Network engineers**: Multi-VLAN, multi-site topology diagrams derived from SNMP, LLDP, and ARP. No manual drawing.
--   **IT operations**: Keep inventory, topology, and dependencies current across teams and sites.
--   **MSPs**: Per-client documentation with shareable live views.
--   **Home labs**: Document your infrastructure without opening draw.io.
+**Inventory**
+
+-   **Device inventory**: Every host with its IP and MAC addresses, interfaces, open ports, services, and SNMP hardware facts. Search everything with `/`, filter by site or tag, and export to CSV or read it through the REST API.
+-   **410+ service definitions**: Identifies databases, web servers, printers, cameras, and industrial devices (Modbus TCP, EtherNet/IP, OPC UA, BACnet) by open ports, service responses, and MAC vendor.
+-   **VLANs & subnets**: Reads VLAN tables from your switches over SNMP, shows native and tagged VLANs per port, and links each VLAN to its subnets.
+
+**Track & share**
+
+-   **Scan digests and snapshots**: An email after each scheduled scan lists new, stale, and changed hosts. Snapshots record the network on a date for audits and change windows.
+-   **Sharing, embeds & exports**: Read-only links with a password and expiry, live embeds in a wiki, and exports to image, document, diagram, and wiki formats.
+
+**Discovery**
+
+-   **No agent per device**: A daemon on Linux, macOS, Windows, or Docker scans the networks it can reach. Deploy as many as your segments need, each on its own schedule, at the rate and subnet scope you set.
+-   **Integrations**: Docker, Aruba Instant On, Podman, Proxmox VE, UniFi Controller, Wake-on-LAN, SNMP, SSH, and gNMI.
+-   **Multi-user + RBAC**: Admin, member, and viewer roles, scoped per site.
+
+🎯 Built for teams that manage infrastructure
+---------------------------------------------
+
+-   **IT operations**: Network architecture and physical topology, current after every scan, across every site.
+-   **MSPs**: Per-client documentation with read-only portals. No logins required.
+-   **Security & compliance**: Segmentation validation and audit-ready documentation for NIS2, ISO 27001, HIPAA, and CMMC.
+-   **Platform & DevOps**: Service dependencies and workload placement without APM instrumentation.
+
+Use cases: compliance, multi-site networks, shadow IT discovery, plant & OT networks, handover & onboarding.
 
 📋 Editions and Licensing
 -------------------------

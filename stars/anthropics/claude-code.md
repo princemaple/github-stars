@@ -1,6 +1,6 @@
 ---
 project: claude-code
-stars: 153287
+stars: 154080
 description: Claude Code is an agentic coding tool that lives in your terminal, understands your codebase, and helps you code faster by executing routine tasks, explaining complex code, and handling git workflows - all through natural language commands.
 url: https://github.com/anthropics/claude-code
 ---
@@ -49,7 +49,7 @@ For more installation options, uninstall steps, and troubleshooting, see the set
 Plugins
 -------
 
-This repository includes several Claude Code plugins that extend functionality with custom commands and agents. See the plugins directory for detailed documentation on available plugins.
+Anthropic's Claude Code plugins are developed in claude-plugins-official. See the plugins directory for more about plugins.
 
 Reporting Bugs
 --------------

@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 10047
+stars: 10154
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -347,6 +347,29 @@ uvx pocket-tts generate \\
   --config hf://Thanushttk/pocket-tts-multilingual/config.yaml@80c7f2835138c62750d76a93d4333c5c5bb6a754 \\
   --voice my\_voice.wav \\
   --text "Hello, नमस्ते, how are you?"
+
+Pocket TTS Gujarati by Meet Patel, 6 layers
+
+Gujarati language. Use an Indian voice for a better Indian accent.
+
+uvx pocket-tts generate \\
+  --config hf://meeeetxd/pocket-tts-gujarati/config.yaml \\
+  --voice my\_voice.wav \\
+  --text "નમસ્તે, તમે કેમ છો?" \\
+  --output-path out.wav
+
+Samuel TTS using Pink Trombone by @vvolhejn
+
+A model based on Pocket TTS that reads English text using Pink Trombone, a silly mouth simulator. Cannot be used directly with `uvx pocket-tts`, head over to the repo to use it.
+
+Pocket TTS Wolof by @abdazizsall, 6 layers
+
+uvx pocket-tts generate \\
+  --config hf://abdazizsall/wolof-pocket-tts/wolof.yaml@ad1de52ff6321c119d9160c738c41ddc32c1aac2 \\
+  --voice hf://abdazizsall/wolof-pocket-tts/voices/alffa\_10.wav@ad1de52ff6321c119d9160c738c41ddc32c1aac2 \\
+  --text "Salaam aleekum. Lii mooy jumtukaayu wax ci làkku wolof."
+
+The repository is gated: accept the terms on the model page and log in with `hf auth login` first.
 
 Want your model here? Head to the training Readme to get started!
 

@@ -1,18 +1,18 @@
 ---
 project: cad-viewer
-stars: 1197
+stars: 1221
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
 
-CAD-Viewer
-==========
+MLightCAD
+=========
 
 English | 简体中文 | 日本語 | 한국어 | Español | Português | Русский | Čeština
 
-cad-viewer is `the first web-based DXF/DWG viewer and editor in the world that operates entirely in browser, without relying on any backend services`. By performing DWG/DXF parsing, geometry processing, and rendering directly in the browser, cad-viewer enables true serverless CAD viewing and editing, ideal for cloud apps, offline usage, and privacy-sensitive workflows.
+MLightCAD is `the first web-based DXF/DWG viewer and editor in the world that operates entirely in browser, without relying on any backend services`. By performing DWG/DXF parsing, geometry processing, and rendering directly in the browser, MLightCAD enables true serverless CAD viewing and editing, ideal for cloud apps, offline usage, and privacy-sensitive workflows.
 
-It also offers something you will rarely find in other CAD viewers—**one-click export to a single, self-contained HTML file**. The downloaded `.html` embeds the drawing snapshot and a lightweight viewer runtime, so recipients can open, pan, zoom, toggle layers, and measure distances in any modern browser with **no CAD app, no server, and no install**. Most desktop and web CAD viewers only let you view inside their own product; cad-viewer turns a live drawing into a portable, offline artifact you can email, archive, or drop on a static file host—ideal for sharing with clients, compliance archives, and air-gapped workflows. The offline viewer also uses far less memory than traditional desktop tools when opening the same drawing (see memory comparison below).
+It also offers something you will rarely find in other CAD viewers—**one-click export to a single, self-contained HTML file**. The downloaded `.html` embeds the drawing snapshot and a lightweight viewer runtime, so recipients can open, pan, zoom, toggle layers, and measure distances in any modern browser with **no CAD app, no server, and no install**. Most desktop and web CAD viewers only let you view inside their own product; MLightCAD turns a live drawing into a portable, offline artifact you can email, archive, or drop on a static file host—ideal for sharing with clients, compliance archives, and air-gapped workflows. The offline viewer also uses far less memory than traditional desktop tools when opening the same drawing (see memory comparison below).
 
 -   **🌐 Home Page**
 -   **🌐 Live Demo**: Netlify · GitHub Pages
@@ -24,9 +24,9 @@ It also offers something you will rarely find in other CAD viewers—**one-click
 -   DEV.to: @mlightcad
 -   Juejin(稀土掘金): @mlightcad
 
-### Apps Built with cad-viewer
+### Apps Built with MLightCAD
 
-The Thingraph team builds production DWG/DXF viewers and platform integrations on top of cad-viewer, serving tens of thousands of users worldwide:
+The Thingraph team builds production DWG/DXF viewers and platform integrations on top of MLightCAD, serving tens of thousands of users worldwide:
 
 -   DWG Viewer Web App — Browser-based DWG/DXF viewer used by engineering teams worldwide for fast, serverless drawing access. Install for your platform:
     -   Google Drive — open DWG/DXF from Drive with **Open with**
@@ -48,10 +48,10 @@ Community Linux desktop packages:
 
 ### Demo Apps
 
-Official sample apps that show how to integrate cad-viewer into your own product:
+Official sample apps that show how to integrate MLightCAD into your own product:
 
--   cad-simple-viewer-example — Minimal vanilla TypeScript host for `@mlightcad/cad-simple-viewer`: open local or CDN DXF/DWG, drive commands from a small toolbar, and lazy-load HTML/PDF/SVG export plugins without the full Vue UI.
--   cad-viewer-example — Full-featured Vue 3 app built on `@mlightcad/cad-viewer` with menus, ribbons, dialogs, command line, and status bar (live demo).
+-   cad-simple-viewer-demo — Minimal vanilla TypeScript host for `@mlightcad/cad-simple-viewer`: open local or CDN DXF/DWG, drive commands from a small toolbar, and lazy-load HTML/PDF/SVG export plugins without the full Vue UI.
+-   cad-editor-demo — Full-featured Vue 3 app built on `@mlightcad/cad-viewer` with menus, ribbons, dialogs, command line, and status bar (live demo).
 -   cad-viewer-nextjs-demo — Next.js “CAD drive” demo: chunked resumable DWG/DXF upload, SQLite-backed file list with preview thumbnails, and open drawings either with **live browser parse** (`cad-simple-viewer`) or **server-side ACEX prerender** (faster load, lower memory).
 
 Features
@@ -64,7 +64,7 @@ Features
 -   Modular architecture for seamless third-party integration
 -   **Plugin system** — Extensible plugin architecture with official plugins for UI, AI assistant, and HTML/PDF/SVG export; see the Plugin System guide
 -   **Mobile layout & touch** — Responsive phone/tablet UI and touch gestures (pinch-to-zoom, single-finger pan, tap to select) built into `@mlightcad/cad-simple-viewer`, so mobile browsers work without a separate app
--   **Export to offline HTML** — Export the current drawing as one self-contained `.html` file with an embedded viewer (pan/zoom, zoom extents, layers, distance measure, EN/ZH UI). Opens offline in any browser; no cad-viewer instance or backend required.
+-   **Export to offline HTML** — Export the current drawing as one self-contained `.html` file with an embedded viewer (pan/zoom, zoom extents, layers, distance measure, EN/ZH UI). Opens offline in any browser; no MLightCAD instance or backend required.
 -   Offline and online editing workflows
 -   THREE.js 3D rendering engines with advanced optimization techniques
 -   Designed for extensibility and integration with platforms like CMS, Notion, and WeChat
@@ -119,7 +119,7 @@ pnpm preview:simple
 How to Use
 ----------
 
-New to CAD Viewer? The **User Guide** provides step-by-step instructions for the viewer interface, desktop and touch operations, markup, and measurement tools.
+New to MLightCAD? The **User Guide** provides step-by-step instructions for the viewer interface, desktop and touch operations, markup, and measurement tools.
 
 ### Desktop Browser Operations
 
@@ -137,7 +137,7 @@ New to CAD Viewer? The **User Guide** provides step-by-step instructions for the
 Performance
 -----------
 
-CAD-Viewer is engineered for **exceptional performance** and can handle very large DXF/DWG files while maintaining high frame rates. It employs multiple advanced rendering technologies to optimize performance:
+MLightCAD is engineered for **exceptional performance** and can handle very large DXF/DWG files while maintaining high frame rates. It employs multiple advanced rendering technologies to optimize performance:
 
 -   **Custom Shader Materials**: Uses GPU-accelerated shader materials to render complex line types and hatch fill patterns efficiently
 -   **Geometry Batching**: Merges points, lines, and areas with the same material to dramatically reduce draw calls
@@ -146,7 +146,7 @@ CAD-Viewer is engineered for **exceptional performance** and can handle very lar
 -   **Material Caching**: Reuses materials across similar entities to minimize state changes
 -   **WebGL Optimization**: Leverages modern WebGL features for hardware-accelerated rendering
 
-These optimizations enable CAD-Viewer to smoothly render complex CAD drawings with thousands of entities while maintaining responsive user interactions.
+These optimizations enable MLightCAD to smoothly render complex CAD drawings with thousands of entities while maintaining responsive user interactions.
 
 #### Self-contained HTML memory usage
 
@@ -444,7 +444,7 @@ Contributions are welcome! Please open issues or pull requests for bug fixes, ne
 License
 -------
 
-The cad-viewer monorepo is primarily MIT licensed.
+The MLightCAD monorepo is primarily MIT licensed.
 
 DXF loading uses the built-in MIT parser in `@mlightcad/data-model`. DWG loading is **opt-in**: `@mlightcad/cad-simple-viewer` does not depend on GPL LibreDWG packages. Hosts that want open-source DWG support add `@mlightcad/libredwg-converter` (GPL-3.0) themselves, deploy its worker + wasm, and register the converter. If you ship a closed-source product and cannot distribute GPL code to your customers, use the **proprietary DWG parser** instead.
 

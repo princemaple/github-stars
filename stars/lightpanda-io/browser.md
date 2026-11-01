@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 36942
+stars: 39260
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -73,7 +73,17 @@ Verify the binary before running anything:
 
 Linux aarch64 is also available
 
-> **Note:** The Linux release binaries are linked against glibc. On musl-based Linux distributions (Alpine, etc.) the binary fails with `cannot execute: required file not found` because the glibc dynamic linker is missing. Use a glibc-based base image (e.g., `FROM debian:bookworm-slim` or `FROM ubuntu:24.04`) or build from sources.
+If you use **Nix**, you can run Lightpanda directly from the flake without downloading a binary:
+
+nix run github:lightpanda-io/browser -- --help
+
+Or pin it as an input in your own flake:
+
+{
+  inputs.lightpanda.url \= "github:lightpanda-io/browser";
+}
+
+> **Note:** The Linux release binaries are linked against glibc. On musl-based Linux distributions (Alpine, etc.) the binary fails with `cannot execute: required file not found` because the glibc dynamic linker is missing. Use a glibc-based base image: the current release binaries need glibc **2.35** (`x86_64`) or **2.38** (`arm64`), so `debian:bookworm-slim` (2.36) is fine on `x86_64` but too old for `arm64` — use `FROM ubuntu:24.04`, `FROM debian:trixie-slim`, or `FROM debian:forky-slim` there — or build from sources.
 > 
 > **Android / Termux:** there is no native Android build. The Linux aarch64 binary needs the glibc loader (`/lib/ld-linux-aarch64.so.1`), which Android's Bionic libc does not provide, so it fails with the same `cannot execute: required file not found` error.
 
@@ -156,7 +166,7 @@ Because the agent runs inside the same process as the browser, every tool call i
 
 The output of an agent session is a PandaScript: vanilla JavaScript with a small set of native browser primitives built directly into Lightpanda. Run `/save` to export one from your current session, then replay it with `lightpanda run <script>.js`. Scripts are deterministic and token-free, so you can prototype with the LLM and ship the output to production without a model at runtime.
 
-It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Mistral, Hugging Face, the multi-lab gateways Vercel AI Gateway and OpenRouter (one key for hundreds of models), any OpenAI-compatible endpoint via `OPENAI_BASE_URL`, and local models via Ollama or llama.cpp. You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
+It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Mistral, Hugging Face, the multi-lab gateways Vercel AI Gateway and OpenRouter (one key for hundreds of models), any OpenAI-compatible endpoint via `OPENAI_BASE_URL`, and local models via Ollama, llama.cpp or LLMD. You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
 
 ./lightpanda agent                                    # auto-detects API key from env
 ./lightpanda agent --task "top story on news.ycombinator.com?"
@@ -197,6 +207,14 @@ Clients POST JSON-RPC to `http://host:9223/mcp`. Each connection is routed to it
 -   A client that `initialize`s without an `Mcp-Session-Id` header is assigned a fresh session; the id comes back in the response's `Mcp-Session-Id` header. Send it on subsequent requests to stay on that session (**isolation**).
 -   Two agents that send the **same** `Mcp-Session-Id` share one browsing context (**sharing** — e.g. a workflow where several agents work the same page).
 -   The `session_new`, `session_list` and `session_close` tools manage sessions explicitly. Sending `DELETE /mcp` with an `Mcp-Session-Id` closes that session.
+
+The `run` tool runs a PandaScript in the caller's session, as `lightpanda run` does, and returns its console output and the value it returns. It takes the source as `script`, or the `path` of a file that `save` wrote. Pages the script opens are closed when it ends; cookies and storage stay, so a login carries over to the next `run`. An optional `timeout` in milliseconds (default 60000) stops a stuck script. A backend can drive Lightpanda with one POST:
+
+curl -s http://127.0.0.1:9223/mcp -H 'Content-Type: application/json' -d '{
+  "jsonrpc": "2.0", "id": 1, "method": "tools/call",
+  "params": { "name": "run", "arguments": { "script":
+    "const page = new Page();\\nawait page.goto(\\"https://example.com\\");\\nreturn page.extract({ title: \\"title\\", links: \[\\"a\\"\] });" } }
+}'
 
 Read full documentation
 
@@ -249,7 +267,7 @@ Build from sources
 
 ### Prerequisites
 
-Lightpanda is written with Zig `0.15.2`. You have to install it with the right version in order to build the project.
+Lightpanda is written with Zig `0.17.0`. You have to install it with the right version in order to build the project.
 
 Lightpanda also depends on v8, Libcurl and html5ever.
 
@@ -265,7 +283,7 @@ sudo apt install xz-utils ca-certificates \
 
 You also need to install Rust.
 
-For systems with **Nix**, you can use the devShell:
+For systems with **Nix**, you can use the devShell.
 
 ```
 nix develop

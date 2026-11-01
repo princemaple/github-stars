@@ -1,6 +1,6 @@
 ---
 project: opendataloader-pdf
-stars: 29985
+stars: 30131
 description: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 url: https://github.com/opendataloader-project/opendataloader-pdf
 ---
@@ -27,7 +27,7 @@ OpenDataLoader PDF
 Get Started in 30 Seconds
 -------------------------
 
-**Requires**: Java 11+ and Python 3.10+ (Node.js | Java also available)
+**Requires**: Java 11+ and Python 3.11+ (Node.js | Java also available)
 
 > Before you start: run `java -version`. If not found, install JDK 11+ from Adoptium.
 
@@ -538,6 +538,21 @@ opendataloader\_pdf.convert(
     output\_dir\="output/",
     hybrid\="docling-fast"
 )
+
+**Python, without a second terminal** — `HybridServer` starts the backend server for the time of a `with` block, and stops it after the block:
+
+import opendataloader\_pdf
+
+\# The server loads its models once. The first start can take minutes while the models download
+with opendataloader\_pdf.HybridServer() as server:
+    opendataloader\_pdf.convert(
+        input\_path\=\["file1.pdf", "file2.pdf", "folder/"\],
+        output\_dir\="output/",
+        hybrid\="docling-fast",
+        hybrid\_url\=server.url
+    )
+
+Give server options in `args`, as for `opendataloader-pdf-hybrid`: `HybridServer(args=["--force-ocr", "--ocr-lang", "ko,en"])`. The server listens on 127.0.0.1 at a free port (`port=` sets the port). Its log goes to stderr.
 
 ### OCR for Scanned PDFs
 

@@ -1,6 +1,6 @@
 ---
 project: kerosene
-stars: 229
+stars: 230
 description: Pagination for Ecto and Pheonix.
 url: https://github.com/elixirdrops/kerosene
 ---

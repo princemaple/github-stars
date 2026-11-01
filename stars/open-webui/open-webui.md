@@ -1,6 +1,6 @@
 ---
 project: open-webui
-stars: 156657
+stars: 157409
 description: User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
 url: https://github.com/open-webui/open-webui
 ---
@@ -111,7 +111,7 @@ How to Install 🚀
 
 ### Installation via Python pip 🐍
 
-Open WebUI can be installed using pip, the Python package installer. Before proceeding, ensure you're using **Python 3.11** to avoid compatibility issues.
+Open WebUI can be installed using pip, the Python package installer. Before proceeding, ensure you're using **Python 3.12** to avoid compatibility issues.
 
 1.  **Install Open WebUI**: Open your terminal and run the following command to install Open WebUI:
     

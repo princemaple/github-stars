@@ -1,6 +1,6 @@
 ---
 project: AutoGPT
-stars: 187729
+stars: 187850
 description: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.
 url: https://github.com/Significant-Gravitas/AutoGPT
 ---
@@ -144,6 +144,7 @@ Experts can use skills and workflows to do their jobs. The visual builder lets y
 -   **Visual builder:** connect blocks, branch logic, and control the steps.
 -   **Marketplace:** discover workflows you can adapt to your work.
 -   **Integrations:** connect the tools your team uses.
+-   **API and MCP server:** run and build workflows from your own code, or from an AI coding agent.
 
 Build with us
 -------------

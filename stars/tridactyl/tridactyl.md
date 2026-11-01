@@ -1,6 +1,6 @@
 ---
 project: tridactyl
-stars: 6381
+stars: 6388
 description: A Vim-like interface for Firefox, inspired by Vimperator/Pentadactyl.
 url: https://github.com/tridactyl/tridactyl
 ---
@@ -237,6 +237,7 @@ Frequently asked questions (FAQ)
     -   midnight (authored by @karizma)
     -   vimium
     -   tokyonight
+    -   arc (authored by @C-Furber)
     
     Tridactyl can also load themes from disk or URL. You could use this for example to load one of the themes originally authored by @bezmi (tridactyl/base16-tridactyl). See `:help colors` for more information.
     

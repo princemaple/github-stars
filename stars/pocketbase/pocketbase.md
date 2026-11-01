@@ -1,9 +1,13 @@
 ---
 project: pocketbase
-stars: 61591
+stars: 61620
 description: Open Source realtime backend in 1 file
 url: https://github.com/pocketbase/pocketbase
 ---
+
+**⚠️ The repo has moved to https://ganigeorgiev.com/pocketbase/pocketbase.**
+
+* * *
 
 PocketBase is an open source Go backend that includes:
 

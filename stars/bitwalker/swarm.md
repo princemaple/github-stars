@@ -96,7 +96,7 @@ Swarm pre-2.0 included auto-clustering functionality, but that has been split ou
 You can explicitly whitelist or blacklist nodes to prevent certain nodes from being included in Swarm's consistent hash ring. This is done with either the `node_whitelist` and `node_blacklist` settings respectively. These settings must be lists containing either literal strings or valid Elixir regex patterns as either string or regex literals. If no whitelist is set, then the blacklist is used, and if no blacklist is provided, the default blacklist includes two patterns, in both cases to ignore nodes which are created by Relx/ExRM/Distillery when using releases, in order to setup remote shells (the first) and hot upgrade scripting (the second), the patterns can be found in this repo's `config/config.exs` file, and you can find a quick example below:
 
 config :swarm,
-  node\_whitelist: \[~r/^myapp-\[\\d\]@.\*$/\]
+  node\_whitelist: \[~r/^myapp\-\[\\d\]@.\*$/\]
 
 The above will only allow nodes named something like `myapp-1@somehost` to be included in Swarm's clustering. **NOTE**: It is important to understand that this does not prevent those nodes from connecting to the cluster, only that Swarm will not include those nodes in its distribution algorithm, or communicate with those nodes.
 

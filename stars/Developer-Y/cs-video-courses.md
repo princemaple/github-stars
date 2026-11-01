@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 83761
+stars: 84436
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -162,6 +162,7 @@ Courses
 -   CS 261 - A Second Course in Algorithms, Stanford University (Youtube)
 -   CS 224 - Advanced Algorithms, Harvard University (Lecture Videos) (Youtube)
 -   CS 627 - Advanced Algorithms, Marburg University (Videos - Su 2025)
+-   CS 650 - Advanced Data Structures, Marburg University (Videos - Su 2026)
 -   CS 6150 - Advanced Algorithms (Fall 2016), University of Utah
 -   CS 6150 - Advanced Algorithms (Fall 2017), University of Utah
 -   ECS 222A - Graduate Level Algorithm Design and Analysis, UC Davis
@@ -1396,6 +1397,7 @@ Courses
 
 -   ECS 124 - Foundations of Algorithms for Bioinformatics - Dan Gusfield, UC Davis (YouTube)
 -   CSE549 - Computational Biology - Steven Skiena - 2010 SBU
+-   CS 594 - Algorithms of Bioinformatics - Sebastian Wild - 2025 Marburg University (YouTube)
 -   7.32 Systems Biology, Fall 2014 - MIT OCW
 -   6.802J/ 6.874J Foundations of Computational and Systems Biology - MIT OCW
 -   6.S897 Machine Learning For Healthcare

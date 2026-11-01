@@ -1,6 +1,6 @@
 ---
 project: stack-on-a-budget
-stars: 12488
+stars: 12492
 description: A collection of services with great free tiers for developers on a budget. Sponsored by Mockoon, the best mock API tool. https://mockoon.com
 url: https://github.com/255kb/stack-on-a-budget
 ---
@@ -42,6 +42,7 @@ Table of Contents
     -   Alwaysdata
     -   AWS EC2
     -   Azure App Service
+    -   Cloady
     -   Faable
     -   Fly
     -   GearHost
@@ -120,6 +121,7 @@ Table of Contents
     -   Firebase database
     -   Google Cloud Datastore
     -   InfluxDB Cloud
+    -   Layerbase
     -   MongoDB Atlas
     -   Neon
     -   Nile
@@ -142,6 +144,7 @@ Table of Contents
 -   **DNS hosting**
     -   LuaDNS
 -   **Emailing**
+    -   AliasMail
     -   Elastic Email
     -   Emaillabs
     -   Mailazy
@@ -269,3 +272,4 @@ Table of Contents
 -   **Website audit**
     -   Checkbot
     -   RatedWithAI
+    -   Vaneform

@@ -1,6 +1,6 @@
 ---
 project: pipenv
-stars: 25018
+stars: 25019
 description:  Python Development Workflow for Humans.
 url: https://github.com/pypa/pipenv
 ---
@@ -74,7 +74,7 @@ Table Of Contents
 Installation
 ------------
 
-**Pipenv can be installed with Python 3.10 and above.**
+**Pipenv can be installed with Python 3.11 and above, including Python 3.15.**
 
 For most users, we recommend installing Pipenv using `pip`:
 

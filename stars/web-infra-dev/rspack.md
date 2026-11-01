@@ -1,6 +1,6 @@
 ---
 project: rspack
-stars: 12955
+stars: 12966
 description: Fast Rust-based bundler for the web with a modernized webpack API 🦀
 url: https://github.com/web-infra-dev/rspack
 ---
@@ -62,6 +62,10 @@ Testing framework
 Rslint
 
 Linter
+
+Rstack CLI
+
+Unified CLI
 
 Getting started
 ---------------

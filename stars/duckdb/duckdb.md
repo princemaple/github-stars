@@ -1,6 +1,6 @@
 ---
 project: duckdb
-stars: 42500
+stars: 42724
 description: DuckDB is a high-performance analytical database system
 url: https://github.com/duckdb/duckdb
 ---

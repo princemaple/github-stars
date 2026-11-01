@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 14824
+stars: 14854
 description: :file_folder: Universal File Management Platform (for humans and agents)
 url: https://github.com/mickael-kerjean/filestash
 ---
@@ -8,7 +8,7 @@ url: https://github.com/mickael-kerjean/filestash
 What is this?
 =============
 
-Filestash started as a storage-agnostic Dropbox-like file manager that speaks every storage protocol: SFTP, S3, SMB, WebDAV, IPFS, FTP, NFS, and about 20 more (probably the oddest Babel fish in the Universe)
+Actively developed since 2017, Filestash started its life as a Dropbox-like file manager that speaks every storage protocol: SFTP, S3, SMB, WebDAV, IPFS, FTP, NFS, and everything else (probably the oddest Babel fish in the Universe)
 
 It grew into what we want to be the world's best file management platform. The world has enough silos to lock your data in. What is missing is the tooling to give those existing silos the Dropbox++ treatment with:
 

@@ -1,6 +1,6 @@
 ---
 project: karakeep
-stars: 29955
+stars: 30203
 description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 url: https://github.com/karakeep-app/karakeep
 ---
@@ -47,7 +47,7 @@ Documentation
 Demo
 ----
 
-You can access the demo at https://try.karakeep.app. Login with the following creds:
+You can access the demo at https://try.karakeep.com. Login with the following creds:
 
 ```
 email: demo@karakeep.app

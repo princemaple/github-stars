@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 75711
+stars: 75807
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -593,6 +593,12 @@ TeleChat 2-2.5
 3B/7B/35B/115B
 
 telechat2
+
+Xing4.0-29B-A4B
+
+29B-A4B
+
+xing4\_0
 
 Yuan 2
 

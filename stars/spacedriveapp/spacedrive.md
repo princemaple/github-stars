@@ -1,6 +1,6 @@
 ---
 project: spacedrive
-stars: 39292
+stars: 39354
 description: Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.
 url: https://github.com/spacedriveapp/spacedrive
 ---
@@ -16,7 +16,7 @@ Spacedrive
 
 Important
 
-**Spacedrive 2.0 Beta is planned for November 1, 2026.**
+**Spacedrive 2.0 Beta is planned for November 15, 2026.**
 
 Beta commits to Spacedrive's data model and to preserving your library as it evolves. The release makes self-owned storage practical across your devices. It brings portable source indexes, private remote access, mounts, history, extensions, and one API for people and software.
 

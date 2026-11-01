@@ -196,7 +196,7 @@ Let's implement a parser that reads a special time string. Our string will repre
 
 defmodule MyParser do
   @behaviour DateTimeParser.Parser
-  @secret\_regex ~r|boomshakalaka:(?<time>\\d{2}:\\d{2})|
+  @secret\_regex ~r|boomshakalaka:(?<time\>\\d{2}:\\d{2})|
 
   def preflight(%{string: string} \= parser) do
     case Regex.named\_captures(@secret\_regex, string) do

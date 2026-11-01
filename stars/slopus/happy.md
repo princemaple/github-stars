@@ -1,27 +1,24 @@
 ---
 project: happy
-stars: 24299
+stars: 24437
 description: Orchestrate Claude, Codex and Grok in one app. Open-source (MIT), reuses the subscriptions you already pay for.
 url: https://github.com/slopus/happy
 ---
 
-Any Model. Your Subscription.  
-_Happy Harness._
-================================================
+Happy Engineering
+=================
 
-Orchestrate Claude, Codex and Grok in one app
+The fun way of making things :D
 
-Free and open source
-
-readme-demo.mp4
+happy-stem-demo.mp4
 
    
 
 What you get
 ------------
 
-1.  **Multi-provider.** Astra, Fable, and Grok in one app, each with its vendor's own prompts and tools. Give every task the model that fits, and delegate to subagents on any of them.
-2.  **Reuse your subscriptions.** Sign in with the Claude, Codex, and Grok subscriptions you already pay for. Happy adds a harness, not another bill.
+1.  **Any model: Claude, Codex, Grok, Gemini, and more.** Gemini runs through Antigravity, and OpenCode or any Agent Client Protocol agent plugs in as a harness. Give every task the model that fits, and delegate to subagents on any of them.
+2.  **Reuse your subscriptions.** Sign in with the Claude, Codex, and Grok subscriptions you already pay for; Antigravity, OpenCode, and ACP agents keep their own logins. Happy adds a harness, not another bill.
 3.  **Open source MIT.** It runs on your own hardware and your projects stay ordinary folders. Read the code, fork it, ship your own build.
 4.  **End-to-end encrypted mobile app.** Left your desk? The same sessions are already on your phone, and what moves between your devices is encrypted.
 5.  **Natively multiplayer.** Invite a colleague or a friend into the session. You both watch the same agent work, and either of you can steer it.
@@ -72,5 +69,6 @@ happy codex
 -   happy-cli: the original Happy CLI (`happy` on npm)
 -   happy-agent: remote session control for the original Happy CLI (not the Happy Agent runtime)
 -   happy-server: the relay server for encrypted sync
+-   happy-push-server: Cloudflare Worker that delivers push notifications via APNs/FCM (replaces the Expo push service)
 
 Migrated from the `happy-coder` package. Thanks to @franciscop for donating the `happy` package name!

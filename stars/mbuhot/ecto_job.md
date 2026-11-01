@@ -1,6 +1,6 @@
 ---
 project: ecto_job
-stars: 276
+stars: 275
 description: Transactional job queue with Ecto, PostgreSQL and GenStage
 url: https://github.com/mbuhot/ecto_job
 ---

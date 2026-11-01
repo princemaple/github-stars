@@ -1,6 +1,6 @@
 ---
 project: ProxyBridge
-stars: 6878
+stars: 6947
 description: Force Proxy to any Windows/MacOS/Linux Application TCP and UDP traffic
 url: https://github.com/InterceptSuite/ProxyBridge
 ---

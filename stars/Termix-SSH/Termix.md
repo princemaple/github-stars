@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 15650
+stars: 15759
 description: Self-hosted, plugin-based server management.
 url: https://github.com/Termix-SSH/Termix
 ---
@@ -270,15 +270,15 @@ Any modern browser (Chrome, Safari, Firefox) | PWA support
 
 **Windows** x64/ia32
 
-Portable | EXE and MSI Installer | Chocolatey
+Portable | EXE and MSI Installer | Full EXE (all plugins) | Chocolatey
 
 **Linux** x64/arm64/armv7l
 
-Portable | AUR | AppImage | Deb | Flatpak
+Portable | AUR | AppImage | Deb | Full AppImage and Deb (all plugins) | Flatpak
 
 **macOS** Universal/x64/arm64, v12.0+
 
-Apple App Store | DMG | Homebrew
+Apple App Store | DMG | Full DMG (all plugins) | Homebrew
 
 **iOS/iPadOS** v15.1+
 

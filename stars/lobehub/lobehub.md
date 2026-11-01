@@ -1,6 +1,6 @@
 ---
 project: lobehub
-stars: 83470
+stars: 83648
 description: 🤯 LobeHub is your Chief Agent Operator, organizing your agents into 7×24 operations by hiring, scheduling, and reporting on your entire AI team.
 url: https://github.com/lobehub/lobehub
 ---
@@ -371,3 +371,69 @@ Every bit counts and your one-time donation sparkles in our galaxy of support! Y
 
 Copyright © 2026 LobeHub.  
 This project is LobeHub Community License licensed.
+
+-   **OpenCode Zen**:
+
+See more providers (+-9)
+
+> 📊 Total providers: **1**
+
+Recent Submits
+
+Description
+
+Turtle Soup Host  
+By **CSY2022** on **2025-06-19**
+
+A turtle soup host needs to provide the scenario, the complete story (truth of the event), and the key point (the condition for guessing correctly).  
+`turtle-soup` `reasoning` `interaction` `puzzle` `role-playing`
+
+Academic Writing Assistant  
+By **swarfte** on **2025-06-17**
+
+Expert in academic research paper writing and formal documentation  
+`academic-writing` `research` `formal-style`
+
+Gourmet Reviewer🍟  
+By **renhai-lab** on **2025-06-17**
+
+Food critique expert  
+`gourmet` `review` `writing`
+
+Minecraft Senior Developer  
+By **iamyuuk** on **2025-06-17**
+
+Expert in advanced Java development and Minecraft mod and server plugin development  
+`development` `programming` `minecraft` `java`
+
+> 📊 Total agents: **505**
+
+Recent Submits
+
+Description
+
+Shopping tools  
+By **shoppingtools** on **2026-01-12**
+
+Search for products on eBay & AliExpress, find eBay events & coupons. Get prompt examples.  
+`shopping` `e-bay` `ali-express` `coupons`
+
+SEO Assistant  
+By **webfx** on **2026-01-12**
+
+The SEO Assistant can generate search engine keyword information in order to aid the creation of content.  
+`seo` `keyword`
+
+Video Captions  
+By **maila** on **2025-12-13**
+
+Convert Youtube links into transcribed text, enable asking questions, create chapters, and summarize its content.  
+`video-to-text` `youtube`
+
+WeatherGPT  
+By **steven-tey** on **2025-12-13**
+
+Get current weather information for a specific location.  
+`weather`
+
+> 📊 Total plugins: **40**

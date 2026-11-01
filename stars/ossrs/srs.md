@@ -1,6 +1,6 @@
 ---
 project: srs
-stars: 29367
+stars: 29408
 description: SRS is a simple, high-performance, AI-driven real-time media server supporting RTMP, WebRTC, HLS, HTTP-FLV, HTTP-TS, SRT, MPEG-DASH, and GB28181, with codec support for H.264, H.265, AV1, VP9, AAC, Opus, and G.711.
 url: https://github.com/ossrs/srs
 ---
@@ -82,9 +82,14 @@ SRS is licenced under MIT, and some third-party libraries are distributed under 
 Releases
 --------
 
+-   2026-10-30, Release v8.0-d3, v8.0-d3, 8.0 dev3, v8.0.74, 410579 lines.
+-   2026-10-30, Release v7.0-a4, v7.0-a4, 7.0 alpha4, v7.0.215, 333567 lines.
+-   2026-10-30, Release v6.0-r3, v6.0-r3, 6.0 release3, v6.0.195, 172562 lines.
+-   2026-10-25, Release v7.0-a3, v7.0-a3, 7.0 alpha3, v7.0.205, 329753 lines.
 -   2026-10-24, Release v8.0-d2, v8.0-d2, 8.0 dev2, v8.0.65, 360819 lines.
 -   2026-10-21, Release v8.0-d1, v8.0-d1, 8.0 dev1, v8.0.63, 356563 lines.
 -   2026-09-24, Release v8.0-d0, v8.0-d0, 8.0 dev0, v8.0.48, 328208 lines.
+-   2026-09-24, Release v6.0-r2, v6.0-r2, 6.0 release2, v6.0.193, 171424 lines.
 -   2026-09-18, Release v7.0-a0, v7.0-a0, 7.0 alpha0, v7.0.162, 314832 lines.
 -   2026-08-12, Release v7.0-d0, v7.0-d0, 7.0 dev0, v7.0.157, 313784 lines.
 -   2026-08-12, Release v6.0-r1, v6.0-r1, 6.0 release1, v6.0.191, 171396 lines.

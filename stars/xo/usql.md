@@ -1,6 +1,6 @@
 ---
 project: usql
-stars: 10159
+stars: 10167
 description: Universal command-line interface for SQL databases
 url: https://github.com/xo/usql
 ---
@@ -30,7 +30,7 @@ Installing
 
 Install `usql` from the `xo/xo` tap in the usual way with the `brew` command:
 
-# install usql with most drivers
+# install usql
 $ brew install xo/xo/usql
 
 Support for ODBC databases is available through the `--with-odbc` install flag:
@@ -45,12 +45,12 @@ $ brew install --with-odbc usql
 
 Install `usql` from the Arch Linux AUR in the usual way with the `yay` command:
 
-# install usql with most drivers
+# install usql
 $ yay -S usql-bin
 
 `usql-bin` installs the released binary. To build from source instead, use the `usql` package, which takes considerably longer because it compiles every driver:
 
-# build usql with most drivers from source
+# build usql from source
 $ yay -S usql
 
 Alternately, build and install using `makepkg`:
@@ -62,13 +62,10 @@ $ makepkg -si
 
 Install `usql` in the usual Go fashion:
 
-# install latest usql version with base drivers
+# install the latest usql version, with every driver
 $ go install github.com/xo/usql@latest
 
-# alternately, install usql with most drivers (see below for info about build tags)
-$ go install -tags most github.com/xo/usql@latest
-
-See below for information on `usql` build tags.
+See below for information on the build tags that leave drivers out.
 
 ### Installing via Docker
 
@@ -106,29 +103,25 @@ $ docker run --rm -it docker.io/usql/usql:0.21.5
 Building
 --------
 
-When building `usql` out-of-the-box with `go build` or `go install`, only the `base` drivers for PostgreSQL, MySQL, SQLite3, Microsoft SQL Server, Oracle, CSVQ will be included in the build:
+usql has one build. A `go build` or `go install` with no build tags includes every driver and the chart renderer:
 
-# build/install with base drivers (PostgreSQL, MySQL, SQLite3, Microsoft SQL Server,
-# Oracle, CSVQ)
+# build/install with every driver
 $ go install github.com/xo/usql@main
 
-Other databases can be enabled by specifying the build tag for their database driver.
+Each driver has a build tag, which the table of drivers lists in its `Scheme / Tag` column. The build tag `no_<tag>` leaves that driver out:
 
-# build/install with base, Avatica, and ODBC drivers
-$ go install -tags 'avatica odbc' github.com/xo/usql@main
+# build/install every driver except Avatica, Couchbase and PostgreSQL
+$ go install -tags 'no\_avatica no\_couchbase no\_postgres' github.com/xo/usql@main
 
-For every build tag `<driver>`, there is also a `no_<driver>` build tag that will disable the driver:
+The build tag `no_drivers` leaves out every driver. Name a driver by its tag to put it back:
 
-# build/install most drivers, excluding Avatica, Couchbase, and PostgreSQL
-$ go install -tags 'most no\_avatica no\_couchbase no\_postgres' github.com/xo/usql@main
+# build/install with only the SQLite3 driver
+$ go install -tags 'no\_drivers sqlite3' github.com/xo/usql@main
 
-By specifying the build tags `most` or `all`, the build will include most, and all SQL drivers, respectively:
+# build/install with only the PostgreSQL and MySQL drivers
+$ go install -tags 'no\_drivers pgx mysql' github.com/xo/usql@main
 
-# build/install with most drivers (excludes CGO drivers and problematic drivers)
-$ go install -tags most github.com/xo/usql@main
-
-# build/install all drivers (includes CGO drivers and problematic drivers)
-$ go install -tags all github.com/xo/usql@main
+`no_drivers` also leaves out the chart renderer. Add the tag `charts` to keep it. The tag `no_charts` leaves it out of any build.
 
 Database Support
 ----------------
@@ -139,8 +132,8 @@ The list of drivers that `usql` was built with can be displayed with the `\drive
 
 $ cd $GOPATH/src/github.com/xo/usql
 
-# build excluding the base drivers, and including cassandra, moderncsqlite and mysql
-$ go build -tags 'no\_base cassandra moderncsqlite mysql'
+# build with only the cassandra, moderncsqlite and mysql drivers
+$ go build -tags 'no\_drivers cassandra moderncsqlite mysql'
 
 # show built driver support
 $ ./usql -c '\\drivers'
@@ -193,7 +186,7 @@ Oracle Database
 
 `or`, `ora`, `oci`, `oci8`, `odpi`, `odpi-c`
 
-github.com/sijms/go-ora/v3
+github.com/xo/oracle
 
 SQLite3
 
@@ -210,78 +203,6 @@ DuckDB
 `dk`, `ddb`, `duck`, `file`
 
 github.com/duckdb/duckdb-go/v2 † §
-
-ClickHouse
-
-`clickhouse`
-
-`ch`
-
-github.com/xo/dbimp/clickhouse
-
-CockroachDB
-
-`cockroachdb`
-
-`cr`, `cdb`, `crdb`, `cockroach`
-
-github.com/jackc/pgx/v5/stdlib
-
-CrateDB
-
-`cratedb`
-
-`ct`, `crate`
-
-github.com/jackc/pgx/v5/stdlib
-
-SingleStore MemSQL
-
-`memsql`
-
-`me`
-
-github.com/go-sql-driver/mysql
-
-Presto
-
-`presto`
-
-`pr`, `prestodb`
-
-github.com/xo/dbimp/trino
-
-Amazon Redshift
-
-`redshift`
-
-`rs`
-
-github.com/jackc/pgx/v5/stdlib ¶
-
-TiDB
-
-`tidb`
-
-`ti`
-
-github.com/go-sql-driver/mysql
-
-Trino
-
-`trino`
-
-`tr`
-
-github.com/xo/dbimp/trino
-
-Vitess Database
-
-`vitess`
-
-`vt`
-
-github.com/go-sql-driver/mysql
 
 Alibaba MaxCompute
 
@@ -306,6 +227,14 @@ Amazon Athena
 `s3`, `aws`, `awsathena`
 
 github.com/xo/dbimp/athena ¶
+
+Amazon Redshift
+
+`redshift`
+
+`rs`
+
+github.com/jackc/pgx/v5/stdlib ¶
 
 Apache Avatica
 
@@ -395,6 +324,22 @@ ChaiSQL
 
 github.com/chaisql/chai §
 
+ClickHouse
+
+`clickhouse`
+
+`ch`
+
+github.com/xo/dbimp/clickhouse
+
+CockroachDB
+
+`cockroachdb`
+
+`cr`, `cdb`, `crdb`, `cockroach`
+
+github.com/jackc/pgx/v5/stdlib
+
 Couchbase
 
 `couchbase`
@@ -402,6 +347,14 @@ Couchbase
 `n1`, `n1ql`
 
 github.com/xo/dbimp/couchbase
+
+CrateDB
+
+`cratedb`
+
+`ct`, `crate`
+
+github.com/jackc/pgx/v5/stdlib
 
 CSVQ
 
@@ -547,6 +500,14 @@ PostgreSQL lib/pq
 
 github.com/lib/pq
 
+Presto
+
+`presto`
+
+`pr`, `prestodb`
+
+github.com/xo/dbimp/trino
+
 QuestDB
 
 `questdb`
@@ -571,6 +532,14 @@ SAP HANA
 
 github.com/SAP/go-hdb/driver
 
+SingleStore MemSQL
+
+`memsql`
+
+`me`
+
+github.com/go-sql-driver/mysql
+
 Snowflake
 
 `snowflake`
@@ -587,6 +556,22 @@ SurrealDB
 
 github.com/xo/dbimp/surrealdb
 
+TiDB
+
+`tidb`
+
+`ti`
+
+github.com/go-sql-driver/mysql
+
+Trino
+
+`trino`
+
+`tr`
+
+github.com/xo/dbimp/trino
+
 Vertica
 
 `vertica`
@@ -594,6 +579,14 @@ Vertica
 `ve`
 
 github.com/vertica/vertica-sql-go
+
+Vitess Database
+
+`vitess`
+
+`vt`
+
+github.com/go-sql-driver/mysql
 
 VoltDB
 
@@ -611,49 +604,17 @@ YDB
 
 github.com/ydb-platform/ydb-go-sdk/v3
 
-Apache H2
-
-`h2`
-
-github.com/jmrobles/h2go
-
-GizmoSQL
-
-`gizmosql`
-
-`gz`, `gizmo`
-
-github.com/apache/arrow-go/v18/arrow/flight/flightsql/driver
-
 **NO DRIVERS**
 
-`no_base`
+`no_drivers`
 
-_no base drivers (useful for development)_
-
-**MOST DRIVERS**
-
-`most`
-
-_all stable drivers_
-
-**ALL DRIVERS**
-
-`all`
-
-_all drivers, excluding bad drivers_
-
-**BAD DRIVERS**
-
-`bad`
-
-_bad drivers (broken/non-working drivers)_
+_leave out every driver that is not named by its tag_
 
 **NO <TAG>**
 
 `no_<tag>`
 
-_exclude driver with `<tag>`_
+_leave out the driver with `<tag>`_
 
 _† Requires CGO  
 § Embedded, with no server to run  
@@ -702,11 +663,11 @@ Arguments:
 Flags:
   -c, --command COMMAND                     run only single command (SQL or internal) and exit
   -f, --file FILE                           execute commands from file and exit
-  -w, --no-password                         never prompt for password
-  -X, --no-init                             do not execute initialization scripts (aliases: --no-rc --no-psqlrc --no-usqlrc)
+  -w, --no-password\[\=true|false\]            never prompt for password
+  -X, --no-init\[\=true|false\]                do not execute initialization scripts (aliases: --no-rc --no-psqlrc --no-usqlrc)
   -o, --out FILE                            output file
-  -W, --password                            force password prompt (should happen automatically)
-  -1, --single-transaction                  execute as a single transaction (if non-interactive)
+  -W, --password\[\=true|false\]               force password prompt (should happen automatically)
+  -1, --single-transaction\[\=true|false\]     execute as a single transaction (if non-interactive)
   -v, --set NAME=VALUE                      set script variable NAME to VALUE (see \\set command, aliases: --var --variable)
   -U, --uset NAME=VALUE                     set setting NAME of usql to VALUE (see \\uset command)
   -N, --cset NAME=DSN                       set named connection NAME to DSN (see \\cset command)
@@ -723,10 +684,11 @@ Flags:
   -J, --json                                JSON output mode
   -C, --csv                                 CSV output mode
   -G, --vertical                            vertical output mode
+  -M, --markdown                            markdown output mode
   -q, --quiet                               run quietly (no messages, only query output)
       --config string                       config file
-  -V, --version                             output version information, then exit
-  -?, --help                                show this help, then exit
+  -V, --version\[\=true|false\]                output version information, then exit
+  -?, --help\[\=true|false\]                   show this help, then exit
 
 ### Connecting to Databases
 
@@ -814,6 +776,44 @@ $ usql pg://
 
 See the relevant documentation on database drivers for more information.
 
+#### The `USQL_DSN` Environment Variable
+
+When the command line names no DSN, `usql` opens the DSN in the `USQL_DSN` environment variable. A program or a script that holds a password can use it to keep the password out of the argument list, which every user of the machine can read:
+
+$ USQL\_DSN="pg://app:$PASSWORD@localhost:15432/app" usql
+
+The variable holds a full DSN or the name of a connection. A DSN on the command line wins, and `usql` then does not read the variable. `usql` removes the variable from its own environment after it reads it, so that `\!`, the pager and the editor do not get the password. `\c` never reads the variable.
+
+`usql` has no environment variable for the password alone.
+
+#### Databases in Kubernetes
+
+`usql` opens a database that runs in Kubernetes through a port forward. The `dbfwd` package finds the database and its credentials, and runs `kubectl port-forward` to it. `kubectl` must be on the `PATH`, and it uses the current context of the kubeconfig, or the one that `?context=` names:
+
+# the Service, StatefulSet or pod pg in the namespace prod
+$ usql k://pg.prod/app
+
+# the CloudNativePG cluster pg, with another context
+$ usql 'k8s+cnpg://pg.prod/app?context=staging'
+
+The URL holds no password. `dbfwd` reads it from the Secret of the operator or of the pod, so `-W` does not apply. The banner and `\conninfo` name what the forward reached, such as `Service pg-rw in context kind-prod, namespace prod, owned by CloudNativePG Cluster pg`, and the prompt shows the host from the URL, such as `pg`, in place of the local address and port. When the pod restarts, the forward follows it, and the first statement after that fails as it does after a server restart. When no pod runs for two minutes, the forward is lost, and `\c` with no argument starts it again.
+
+`\k` lists the databases that `usql` can reach, with the URL that `\c` opens:
+
+\=> \\k -A
+    List of Kubernetes databases in context kind-prod, every namespace
+ Namespace | Name |   Type   |  Kind   |     Operator     |      URL
+-----------+------+----------+---------+------------------+----------------
+ prod      | pg   | postgres | Cluster | CloudNativePG    | k://pg.prod/
+ prod      | shop | mariadb  | MariaDB | mariadb-operator | k://shop.prod/
+(2 rows)
+
+`\k` lists the current namespace, `-A` every namespace, `-n NAMESPACE` one namespace, and `--context NAME` another context. A scope narrows the list, such as `pg*`, `pg*.prod` or `cnpg://*`, and its `k://` is optional. Only `*` is a wildcard. `\k+` adds the roles, the ready pods, the databases, and where the password comes from. `\k` reads no Secret.
+
+On Linux and FreeBSD, if `usql` is killed, `kubectl` stops with it. On other systems, a `kubectl port-forward` can keep running after `usql` is killed with `SIGKILL`, and it must be stopped by hand.
+
+See `dbfwd`'s URL rules for the types and the parts of the URL, and its lookup rules for how it finds a database from a name.
+
 ### Connection Examples
 
 The following are example connection strings and additional ways to connect to databases using `usql`:
@@ -874,7 +874,8 @@ $ usql sq://path/to/dbname.sqlite3
 $ usql sqlite3://path/to/dbname.sqlite3
 $ usql file:/path/to/dbname.sqlite3
 
-# connect to a named connection in $HOME/.config/usql/config.yaml
+# connect to a named connection in config.yaml (see Configuration below for
+# where it is on each system)
 $ cat $HOME/.config/usql/config.yaml
 connections:
   my\_named\_connection: sqlserver://user:pass@localhost/
@@ -903,28 +904,43 @@ $ usql sqlserver://sa:pass@localhost
 Connected with driver sqlserver (Microsoft SQL Server 2025 17.0.5005.3, RTM-CU9, Enterprise Developer Edition (64-bit))
 Type "help" for help.
 
-ms:sa@localhost=\> select \* from authors;
+ms:sa@localhost/master=\> select \* from authors;
  author\_id |     name
 -----------+--------------
          1 | Isaac Asimov
          2 | Stephen King
 (2 rows)
 
-ms:sa@localhost=\> select title from books
-ms:sa@localhost-\> where author\_id = 2
-ms:sa@localhost-\> \\p
+ms:sa@localhost/master=\> select title from books
+ms:sa@localhost/master-\> where author\_id = 2
+ms:sa@localhost/master-\> \\p
 select title from books
 where author\_id = 2
-ms:sa@localhost-\> \\g
+ms:sa@localhost/master-\> \\g
  title
 --------
  Carrie
  Cujo
 (2 rows)
 
-ms:sa@localhost=\>
+ms:sa@localhost/master=\>
 
 A command takes one or more parameters. A parameter can be quoted with either `'` or `"`, and can also be backticked.
+
+#### How input becomes statements
+
+`usql` reads input as `psql` does, on every database:
+
+-   A statement ends at a `;` that is outside a string, a quoted name and a comment, or at a meta command such as `\g`.
+-   Write `\;` for a `;` that must not end the statement. `usql` sends it as `;`.
+-   The body of a stored program between `BEGIN` and `END`, and on Oracle an anonymous block, stays in one statement, so its `;` need no escape. Inside a PL/SQL package, or in the declarations of a unit before its `BEGIN`, write each `;` as `\;`.
+-   A line with only `/` and SQL Server's `GO` are not separators. They are text of the statement, as in `psql`.
+-   Input that is not typed, from `-c`, `-f`, a pipe or `\i`, runs a last statement that has no `;`.
+-   `\if`, `\elif`, `\else` and `\endif` choose the lines that run, as in `psql`. A branch that does not run sends no statement, runs no other meta command and replaces no variable, and the prompt's `%R` shows `@` there.
+
+#### Line editing
+
+The interactive interpreter edits lines with `rline`, which reads `~/.inputrc` (or the file that `INPUTRC` names) as GNU Readline does. For example, `set editing-mode vi` turns on vi mode, and `"\e[A": history-search-backward` makes Up search the history for entries that start with what is typed. Settings inside `$if usql` ... `$endif` apply only to `usql`.
 
 ### Backslash Commands
 
@@ -955,6 +971,8 @@ Connection
   \\password \[USER\]                  change password for user
   \\conninfo \[-password\]             display information about the current database connection,
                                     with the password when -password is given
+  \\k\[+\] \[OPTIONS\] \[SCOPE\]           list databases in Kubernetes, with the URL for \\c (OPTIONS:
+                                    -A, -n NAMESPACE, --context NAME)
 Query Execute
   \\g \[(OPTIONS)\] \[FILE\] or ;        execute query (and send results to file or |pipe)
   \\G \[(OPTIONS)\] \[FILE\]             as \\g, but forces vertical output mode
@@ -975,6 +993,8 @@ Query Buffer
   \\w \[-raw|-exec\] FILE              write the contents of the query buffer, raw
                                     (non-interpolated) buffer, or exec buffer to file
   \\r                                reset (clear) the query buffer
+  \\ef \[FUNCNAME \[LINE\]\]             edit function definition with external editor
+  \\ev \[VIEWNAME \[LINE\]\]             edit view definition with external editor
 Informational
   \\d\[S+\] \[NAME\]                     list tables, views, and sequences or describe table, view,
                                     sequence, or index
@@ -1027,7 +1047,7 @@ Informational
   \\z\[S\] \[PATTERN\]                   same as \\dp
   \\sf\[+\] FUNCNAME                   show a function's definition
   \\sv\[+\] VIEWNAME                   show a view's definition
-  \\ss\[+\] \[TABLE|QUERY\] \[k\]          show stats for a table or a query
+  \\ss\[+\] TABLE \[k\]                  show stats for the columns of a table
 Variables
   \\set \[NAME \[VALUE\]\]               set script variable, or show all script variables if no
                                     parameters
@@ -1085,14 +1105,18 @@ An overview of `usql`'s features, functionality, and compatibility with `psql`:
 -   Time Formatting
 -   Context Completion
 -   Host Connection Information
--   Passwords
--   Runtime Configuration (RC) File
+-   Startup Script
+-   History
 
 The `usql` project's goal is to support as much of `psql`'s core features and functionality, and aims to be as compatible as possible - contributions are always appreciated!
 
 #### Configuration
 
-During its initialization phase, `usql` reads a standard YAML configuration file `config.yaml`. On Windows this is `%AppData%/usql/config.yaml`, on macOS this is `$HOME/Library/Application Support/usql/config.yaml`, and on Linux and other Unix systems this is normally `$HOME/.config/usql/config.yaml`.
+During its initialization phase, `usql` reads a standard YAML configuration file `config.yaml`. It reads the first of these:
+
+1.  The file that `--config` names.
+2.  The file that the `USQL_CONFIG` environment variable names.
+3.  `usql/config.yaml` in the configuration directory of the system: `%AppData%/usql/config.yaml` on Windows, `$HOME/Library/Application Support/usql/config.yaml` on macOS, and `$XDG_CONFIG_HOME/usql/config.yaml` on Linux and other Unix systems, which is `$HOME/.config/usql/config.yaml` when `XDG_CONFIG_HOME` is not set. macOS does not read `XDG_CONFIG_HOME`. Set `USQL_CONFIG` to use another file there.
 
 ##### `connections:`
 
@@ -1116,17 +1140,6 @@ Connected with driver oracle (Oracle Database 23.0.0.0.0)
 Type "help" for help.
 
 or:system@localhost/free=\>
-
-##### `init:`
-
-An initialization script can be defined as `init:` as a string:
-
-init: |
-  \\echo welcome to the jungle \`date\`
-  \\uset syntax\_hl\_style paraiso-dark
-  \\uset prompt1 '\\033\[32m%S%M%/%R%#\\033\[0m '
-
-The `init:` script is commonly used to set environment variables or other configuration, and can be disabled on the command-line using the `--no-init` / `-X` flag. The script will be executed prior to any `-c` / `--command` / `-f` / `--file` flag and before starting the interactive interpreter.
 
 ##### Other Options
 
@@ -1154,31 +1167,31 @@ FOO = 'bar'
 
 When a script variable `NAME` has been `\set`, then `:NAME`, `:'NAME'`, and `:"NAME"` will be interpolated into the query buffer:
 
-ms:sa@localhost=\> \\set FOO 'Stephen King'
-ms:sa@localhost=\> select \* from authors where name = :'FOO';
+ms:sa@localhost/master=\> \\set FOO 'Stephen King'
+ms:sa@localhost/master=\> select \* from authors where name = :'FOO';
  author\_id |     name
 -----------+--------------
          2 | Stephen King
 (1 row)
 
-ms:sa@localhost=\>
+ms:sa@localhost/master=\>
 
 Where a runtime variable is used as `:'NAME'` or `:"NAME"` the interpolated value will be quoted using `'` or `"` respectively:
 
-ms:sa@localhost=\> \\set TBLNAME authors
-ms:sa@localhost=\> \\set COLNAME name
-ms:sa@localhost=\> \\set FOO 'Isaac Asimov'
-ms:sa@localhost=\> select \* from :TBLNAME where :"COLNAME" = :'FOO'
-ms:sa@localhost-\>
+ms:sa@localhost/master=\> \\set TBLNAME authors
+ms:sa@localhost/master=\> \\set COLNAME name
+ms:sa@localhost/master=\> \\set FOO 'Isaac Asimov'
+ms:sa@localhost/master=\> select \* from :TBLNAME where :"COLNAME" = :'FOO'
+ms:sa@localhost/master-\>
 
 The query buffer and interpolated values can be displayed with `\p` and `\print`, or the raw query buffer can be displayed with `\raw`:
 
-ms:sa@localhost=\> select \* from :TBLNAME where :"COLNAME" = :'FOO'
-ms:sa@localhost-\> \\p
+ms:sa@localhost/master=\> select \* from :TBLNAME where :"COLNAME" = :'FOO'
+ms:sa@localhost/master-\> \\p
 select \* from authors where "name" = 'Isaac Asimov'
-ms:sa@localhost-\> \\raw
+ms:sa@localhost/master-\> \\raw
 select \* from :TBLNAME where :"COLNAME" = :'FOO'
-ms:sa@localhost-\>
+ms:sa@localhost/master-\>
 
 * * *
 
@@ -1186,15 +1199,15 @@ ms:sa@localhost-\>
 > 
 > Variables contained within other strings **will not** be interpolated:
 
-ms:sa@localhost=\> select ':FOO' as foo;
+ms:sa@localhost/master=\> select ':FOO' as foo;
  foo
 ------
  :FOO
 (1 row)
 
-ms:sa@localhost=\> \\p
+ms:sa@localhost/master=\> \\p
 select ':FOO' as foo;
-ms:sa@localhost=\>
+ms:sa@localhost/master=\>
 
 * * *
 
@@ -1205,7 +1218,7 @@ Connection variables work similarly to runtime variables, and are managed with `
 (not connected)=\> \\cset my\_conn sqlserver://sa:pass@localhost
 (not connected)=\> \\c my\_conn
 Connected with driver sqlserver (Microsoft SQL Server 2025 17.0.5005.3, RTM-CU9, Enterprise Developer Edition (64-bit))
-ms:sa@localhost=\>
+ms:sa@localhost/master=\>
 
 Connection variables are not interpolated into queries. See the configuration section for information on defining persistent connection variables.
 
@@ -1236,6 +1249,7 @@ fieldsep                 "|"
 fieldsep\_zero            off
 footer                   on
 format                   aligned
+header\_align             center
 json\_indent              0
 linestyle                ascii
 locale                   C
@@ -1266,6 +1280,8 @@ on\_error\_stop is on
 (not connected)=\> \\uset
 echo\_hidden           off
 editor                ""
+encoding              utf-8
+fetch\_count           0
 on\_error\_stop         on
 pager                 "less -R"
 prompt1               "%S%N%m%/%R%# "
@@ -1281,6 +1297,12 @@ term\_graphics
 (not connected)=\>
 
 A setting can also be given on the command line with `--uset NAME=VALUE`, or `-U NAME=VALUE`, and `-q` is `--uset quiet=on`. The environment variables `USQL_PAGER`, `PAGER`, `USQL_EDITOR`, `EDITOR`, `VISUAL`, `USQL_SSLMODE`, `USQL_SHOW_HOST_INFORMATION` and `USQL_TERM_GRAPHICS` give the first value of their settings.
+
+A script read with `-f`, `\i`, `\ir`, `init.sql` or from a pipe is UTF-8 unless it starts with the byte order mark of UTF-16 or UTF-32, as a file that Windows Notepad or PowerShell saved can. For a script in another encoding, set `encoding` to its name in the WHATWG Encoding Standard, such as `windows-1252`, `shift_jis`, `euc-kr` or `gb18030`:
+
+$ usql --uset encoding=windows-1252 -f legacy.sql pg://
+
+A file takes the setting when it is opened, and a pipe when it is first read. A script that is not valid UTF-8 in its encoding stops `usql` with an error that names the file and the line.
 
 Use the `\? variables` command to display help information and to list the variables and the settings recognized by `usql`:
 
@@ -1394,7 +1416,7 @@ Type "help" for help.
 (not connected)=\> \\set DESTINATION\_DSN sqlite3:booktest.db
 (not connected)=\> -- connecting to the destination and creating the schema
 (not connected)=\> \\c :DESTINATION\_DSN
-Connected with driver sqlite3 (SQLite 3.53.4)
+Connected with driver sqlite3 (SQLite 3.54.1)
 sq:booktest.db=\> create table authors (author\_id integer, name text);
 CREATE TABLE
 sq:booktest.db=\> create table books (book\_id integer not null primary key autoincrement, author\_id integer, title text);
@@ -1410,7 +1432,7 @@ COPY 2
 (not connected)=\> \\copy :SOURCE\_DSN :DESTINATION\_DSN 'select author\_id, title from books' 'books(author\_id, title)'
 COPY 3
 (not connected)=\> \\c :DESTINATION\_DSN
-Connected with driver sqlite3 (SQLite 3.53.4)
+Connected with driver sqlite3 (SQLite 3.54.1)
 sq:booktest.db=\> select \* from authors;
  author\_id |     name
 -----------+--------------
@@ -1439,21 +1461,20 @@ sq:booktest.db=\>
 
 ###### Reusing Connections with Copy
 
-The `\copy` command (and all `usql` commands) works with variables. When scripting, or when needing to perform multiple `\copy` operations from/to multiple sources/destinations, the best practice is to `\set` connection variables either in a script or in the `$HOME/.usqlrc` RC script.
+The `\copy` command (and all `usql` commands) works with variables. When scripting, or when needing to perform multiple `\copy` operations from/to multiple sources/destinations, the best practice is to `\set` connection variables either in a script or in the `init.sql` startup script.
 
-Similarly, passwords can be stored for easy reuse (and kept out of scripts) by storing in the `$HOME/.usqlpass` password file.
+Similarly, passwords can be kept out of scripts by defining named connections in the `config.yaml` file.
 
 For example:
 
-$ cat $HOME/.usqlpass
-postgres:\*:\*:\*:postgres:P4ssw0rd
-oracle:\*:\*:\*:system:P4ssw0rd
+$ cat $HOME/.config/usql/config.yaml
+connections:
+  pglocal: postgres://postgres:P4ssw0rd@localhost:49153?sslmode=disable
+  orlocal: oracle://system:P4ssw0rd@localhost:1521/orasid
 $ usql
 Type "help" for help.
 
-(not connected)=\> \\set pglocal postgres://postgres@localhost:49153?sslmode=disable
-(not connected)=\> \\set orlocal oracle://system@localhost:1521/orasid
-(not connected)=\> \\copy :pglocal :orlocal 'select staff\_id, first\_name from staff' 'staff(staff\_id, first\_name)'
+(not connected)=\> \\copy pglocal orlocal 'select staff\_id, first\_name from staff' 'staff(staff\_id, first\_name)'
 COPY 18
 
 #### Syntax Highlighting
@@ -1519,7 +1540,7 @@ $ usql sqlserver://sa:pass@localhost
 Connected with driver sqlserver (Microsoft SQL Server 2025 17.0.5005.3, RTM-CU9, Enterprise Developer Edition (64-bit))
 Type "help" for help.
 
-ms:sa@localhost=\> select \* f
+ms:sa@localhost/master=\> select \* f
  1 from
  2 fetch
  3 full outer join
@@ -1530,10 +1551,10 @@ $ usql sqlserver://sa:pass@localhost
 Connected with driver sqlserver (Microsoft SQL Server 2025 17.0.5005.3, RTM-CU9, Enterprise Developer Edition (64-bit))
 Type "help" for help.
 
-ms:sa@localhost=\> \\g
- 1 \\g        4 \\gexec
- 2 \\gx       5 \\getenv
- 3 \\gset
+ms:sa@localhost/master=\> \\g
+ 1 \\g        4 \\gset
+ 2 \\go       5 \\gexec
+ 3 \\gx       6 \\getenv
 
 Not all commands, contexts, or databases support completion. To help improve it, see the section below on contributing.
 
@@ -1547,21 +1568,21 @@ $ usql sqlserver://sa:pass@localhost
 Connected with driver sqlserver (Microsoft SQL Server 2025 17.0.5005.3, RTM-CU9, Enterprise Developer Edition (64-bit))
 Type "help" for help.
 
-ms:sa@localhost=\> \\pset time
+ms:sa@localhost/master=\> \\pset time
 Time display is "RFC3339Nano" ("2006-01-02T15:04:05.999999999Z07:00").
-ms:sa@localhost=\> select cast('2026-10-31 09:41:27.123456' as datetime2) as stamp;
+ms:sa@localhost/master=\> select cast('2026-10-31 09:41:27.123456' as datetime2) as stamp;
             stamp
 \-----------------------------
  2026-10-31T09:41:27.123456Z
 (1 row)
-ms:sa@localhost=> \\pset time Kitchen
+ms:sa@localhost/master=> \\pset time Kitchen
 Time display is "Kitchen" ("3:04PM").
-ms:sa@localhost=> select cast('2026-10-31 09:41:27.123456' as datetime2) as stamp;
+ms:sa@localhost/master=> select cast('2026-10-31 09:41:27.123456' as datetime2) as stamp;
  stamp
 \--------
  9:41AM
 (1 row)
-ms:sa@localhost=>
+ms:sa@localhost/master=>
 
 `usql`'s time format supports any Go supported time format, or can be any standard Go const name, such as `Kitchen` above. See below for an overview of the available time constants.
 
@@ -1676,18 +1697,18 @@ $ export USQL\_SHOW\_HOST\_INFORMATION=false
 $ usql sqlserver://sa:pass@localhost
 Type "help" for help.
 
-ms:sa@localhost=\>
+ms:sa@localhost/master=\>
 
 `show_host_information` is a setting of `usql`, and is set with `\uset`. Additionally, it can be passed via the command-line using `--uset`:
 
 $ usql --uset show\_host\_information=false sqlserver://sa:pass@localhost
 Type "help" for help.
 
-ms:sa@localhost=\> \\uset show\_host\_information true
+ms:sa@localhost/master=\> \\uset show\_host\_information true
 show\_host\_information is true
-ms:sa@localhost=\> \\connect sqlserver://sa:pass@localhost
+ms:sa@localhost/master=\> \\connect sqlserver://sa:pass@localhost
 Connected with driver sqlserver (Microsoft SQL Server 2025 17.0.5005.3, RTM-CU9, Enterprise Developer Edition (64-bit))
-ms:sa@localhost=\>
+ms:sa@localhost/master=\>
 
 #### Terminal Graphics
 
@@ -1705,7 +1726,7 @@ The `\chart` command can be used to display a chart directly in the terminal:
 
 See the section on the `\chart` meta command for details.
 
-Charts are not part of a default build. The renderer runs Apache ECharts in a JavaScript engine and rasterizes the result with an SVG renderer, which together add about 12 MiB to the binary, so it is behind the `charts` build tag. Build with `-tags charts`, or with `-tags all`, to include it. A build without it reports that it has no chart renderer.
+The renderer runs Apache ECharts in a JavaScript engine and rasterizes the result with an SVG renderer, which together add about 12 MiB to the binary. Every build has it, unless its build tags leave it out. The tag `no_charts` leaves it out, and so does `no_drivers` unless the tag `charts` is also given. A build without it reports that it has no chart renderer.
 
 ##### Enabling/Disabling Terminal Graphics
 
@@ -1748,41 +1769,17 @@ The following terminals have been tested with `usql`:
 
 Additional terminals that support Sixel graphics are catalogued on the Are We Sixel Yet? website.
 
-#### Passwords
+#### Startup Script
 
-`usql` supports reading passwords for databases from a `.usqlpass` file contained in the user's `HOME` directory at startup:
+`usql` runs the file `init.sql` in its configuration directory at startup, as `psql` runs `~/.psqlrc`. It runs after `usql` opens the connection named on the command line, and before any `-c` / `--command` or `-f` / `--file` flag and before the first prompt:
 
-$ cat $HOME/.usqlpass
-# format is:
-# protocol:host:port:dbname:user:pass
-postgres:\*:\*:\*:booktest:booktest
-$ usql pg://
-Connected with driver postgres (PostgreSQL 9.6.9)
-Type "help" for help.
+1.  `$XDG_CONFIG_HOME/usql/init.sql` on Linux and other Unix systems, which is `$HOME/.config/usql/init.sql` when `XDG_CONFIG_HOME` is not set.
+2.  `$HOME/Library/Application Support/usql/init.sql` on macOS.
+3.  `%AppData%\usql\init.sql` on Windows.
 
-pg:booktest@=\>
+The `USQLRC` environment variable names another file. `usql` reads the file as it reads a file passed with `-f` / `--file`, so it can hold any meta command and any SQL statement. A statement runs on the connection named on the command line, and fails with `error: not connected` when there is none. The file is commonly used to set variables and settings:
 
-See `_samples/usqlpass` for a sample.
-
-An entry applies to a URL when each of its fields is `*` or equal to the URL's. An entry never replaces a user that the URL names, and an entry for one database applies only to that database. The protocol matches every scheme of the same database, so a `postgres:` entry also covers `pg://`, `pgx://` and `pq://`. A database that only speaks another's protocol is a database of its own, so CockroachDB, CrateDB and Redshift each need their own entry, and so do TiDB, SingleStore and Vitess. A `mysql:` entry does not cover `tidb://`.
-
-While the `.usqlpass` functionality will not be removed, it is recommended to define named connections preferably via the `config.yaml` file.
-
-* * *
-
-> **Note**
-> 
-> The `.usqlpass` file must not be readable by other users. Set its permissions to `0600`:
-
-chmod 0600 ~/.usqlpass
-
-* * *
-
-#### Runtime Configuration (RC) File
-
-`usql` supports executing a `.usqlrc` runtime configuration (RC) file contained in the user's `HOME` directory:
-
-$ cat $HOME/.usqlrc
+$ cat $HOME/.config/usql/init.sql
 \\echo WELCOME TO THE JUNGLE \`date\`
 \\uset syntax\_hl\_style paraiso-dark
 
@@ -1796,15 +1793,23 @@ Type "help" for help.
 syntax\_hl\_style is "paraiso-dark"
 (not connected)=\>
 
-See `_samples/usqlrc` for a sample.
+See `_samples/init.sql` for a sample.
 
-The `.usqlrc` file is read at startup in the same way as a file passed on the command-line with `-f` / `--file`. It is commonly used to set startup environment variables and settings.
-
-RC-file execution can be temporarily disabled at startup by passing `-X` or `--no-init` on the command-line:
+Pass `-X` or `--no-init` on the command-line to skip the file:
 
 $ usql --no-init pg://
 
-While the `.usqlrc` functionality will not be removed, it is recommended to set an `init` script in the `config.yaml` file.
+`usql` no longer reads `$HOME/.usqlrc`, the `init:` script of `config.yaml` or the `$HOME/.usqlpass` password file. Move the script to `init.sql`, and define named connections in the `config.yaml` file in place of the password file.
+
+#### History
+
+At a terminal, `usql` keeps the history of what was typed in the file `history` in its state directory:
+
+1.  `$XDG_STATE_HOME/usql/history` on Linux and other Unix systems, which is `$HOME/.local/state/usql/history` when `XDG_STATE_HOME` is not set.
+2.  `$HOME/Library/Application Support/usql/history` on macOS.
+3.  `%LocalAppData%\usql\history` on Windows.
+
+The `USQL_HISTORY` environment variable names another file. `usql` prints a warning at startup when it cannot read the file, and then does not save the history. It does not read `$HOME/.usql_history`.
 
 Additional Notes
 ----------------
@@ -1813,7 +1818,7 @@ The following are additional notes and miscellania related to `usql`:
 
 ### Release Builds
 
-Release builds are built with the `most` build tag and with additional SQLite3 build tags (see: `build.sh`).
+Release builds include every driver, and are built with additional SQLite3 build tags (see: `build.sh`). The 32 bit arm build leaves out ChaiSQL and DuckDB.
 
 ### macOS
 
@@ -1835,6 +1840,22 @@ Running \`brew update --auto-update\`...
 $ usql
 (not connected)=\>
 
+### ODBC FAQ
+
+#### Why does the SQLite ODBC driver crash on Linux?
+
+On Linux, the first query through the SQLite ODBC driver crashes `usql` in a build that links both the `sqlite3` driver and DuckDB, as a build with every driver does. The DuckDB bindings export the `sqlite3_*` functions of the SQLite that the `sqlite3` driver carries. The SQLite ODBC driver then gets some of its `sqlite3_*` functions from `usql` and some from the system SQLite, and the two copies do not match. The odbc project explains it in full.
+
+If you need the SQLite ODBC driver, build with the tag `libsqlite3`. The `sqlite3` driver then uses the SQLite of the system, and exports no `sqlite3_*` function. Add the tag to a build with every driver, or build with only the ODBC driver:
+
+# every driver, with the SQLite of the system
+$ go install -tags libsqlite3 github.com/xo/usql@main
+
+# only the ODBC driver
+$ go install -tags 'no\_drivers odbc libsqlite3' github.com/xo/usql@main
+
+The other ODBC drivers work without the tag. The PostgreSQL Unicode driver was checked against PostgreSQL 18.
+
 ### Couchbase FAQ
 
 #### Why does a transaction fail to commit with error 17007?
@@ -1854,9 +1875,7 @@ $ usql "couchbase://user:pass@localhost/?txtimeout=2m"
 Contributing
 ------------
 
-`usql` is currently a WIP, and is aiming towards a 1.0 release soon. Well-written PRs are always welcome -- and there is a clear backlog of issues marked `help wanted` on the GitHub issue tracker! For technical details on contributing, see CONTRIBUTING.md.
-
-_Pick up an issue today, and submit a PR tomorrow!_
+`usql` is currently a WIP, and is aiming towards a 1.0 release soon. Report a bug, ask a question, or propose a feature in GitHub Discussions. The repository takes no issues and no pull requests. For technical details, see CONTRIBUTING.md.
 
   
 

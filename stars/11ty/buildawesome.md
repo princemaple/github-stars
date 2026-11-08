@@ -1,6 +1,6 @@
 ---
 project: buildawesome
-stars: 20001
+stars: 20024
 description: A simpler site generator. Transforms a directory of templates (of varying types) into HTML.
 url: https://github.com/11ty/buildawesome
 ---
@@ -45,8 +45,7 @@ npm test
 
 We have a few test suites, for various reasons:
 
--   ava JavaScript test runner (assertions docs) (primary test suite in `test/`)
--   Node.js Test runner (secondary test suite in `test_node/`)
+-   Node.js Test runner (`test/`)
 -   Vitest (in Browser Mode) (browser tests in `packages/browser/test/`)
 -   Benchmark for Performance Regressions
 

@@ -1,6 +1,6 @@
 ---
 project: cobalt
-stars: 45686
+stars: 45912
 description: best way to save what you love
 url: https://github.com/imputnet/cobalt
 ---

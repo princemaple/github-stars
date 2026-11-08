@@ -1,6 +1,6 @@
 ---
 project: LlamaFactory
-stars: 75807
+stars: 75929
 description: Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)
 url: https://github.com/hiyouga/LlamaFactory
 ---
@@ -1069,7 +1069,7 @@ pip install -r requirements/metrics.txt
 
 Optional dependencies available: `metrics`, `deepspeed`. Install with: `pip install -e . && pip install -r requirements/metrics.txt -r requirements/deepspeed.txt`
 
-Additional dependencies for specific features are available in `examples/requirements/`.
+Additional dependencies for specific features are available in `requirements/`.
 
 #### Install from Docker Image
 

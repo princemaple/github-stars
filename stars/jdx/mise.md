@@ -1,6 +1,6 @@
 ---
 project: mise
-stars: 35598
+stars: 35911
 description: dev tools, env vars, task runner
 url: https://github.com/jdx/mise
 ---
@@ -248,7 +248,7 @@ Get help
 -   Ask questions and share ideas in GitHub Discussions.
 -   Chat with the community on Discord.
 
-For security reports and other inquiries, see Contact. Before using AI to reply to an Issue or Discussion, read the AI reply policy.
+For security reports and other inquiries, see Contact.
 
 Special thanks
 --------------

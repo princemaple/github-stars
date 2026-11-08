@@ -1,6 +1,6 @@
 ---
 project: filestash
-stars: 14854
+stars: 14880
 description: :file_folder: Universal File Management Platform (for humans and agents)
 url: https://github.com/mickael-kerjean/filestash
 ---

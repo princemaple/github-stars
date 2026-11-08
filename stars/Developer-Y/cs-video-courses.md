@@ -1,6 +1,6 @@
 ---
 project: cs-video-courses
-stars: 84436
+stars: 84652
 description: List of Computer Science courses with video lectures.
 url: https://github.com/Developer-Y/cs-video-courses
 ---
@@ -161,6 +161,7 @@ Courses
 -   COP 5536 Advanced Data Structures, Prof Sahni - UFL (Videos)
 -   CS 261 - A Second Course in Algorithms, Stanford University (Youtube)
 -   CS 224 - Advanced Algorithms, Harvard University (Lecture Videos) (Youtube)
+-   COMP 526 - Efficient Algorithms, Marburg University (Videos - Fa 2023)
 -   CS 627 - Advanced Algorithms, Marburg University (Videos - Su 2025)
 -   CS 650 - Advanced Data Structures, Marburg University (Videos - Su 2026)
 -   CS 6150 - Advanced Algorithms (Fall 2016), University of Utah
@@ -1128,6 +1129,7 @@ Courses
 -   Analysis of Boolean Functions at CMU
 -   Theoretical Computer Science (Bridging Course)(Tutorial) - SS 2015
 -   Languages & Translators - UCLouvain LINFO2132
+-   Stochastic Optimization - UCLouvain LINMA2491
 -   Compiler Design by Sorav Bansal
 -   OCaml Programming: Correct + Efficient + Beautiful
 -   Columbia IEOR E4004 Introduction to Operations Research: Deterministic Models summer 2005, by Jay Sethuraman
@@ -1484,6 +1486,7 @@ Courses
 -   Autorob Winter 2022 - University of Michigan
 -   DeepRob Winter 2023 - University of Michigan
 -   CS 223A - Introduction to Robotics, Stanford University
+-   AA 274A - Principles of Robotic Autonomy, Stanford University (Youtube - Autumn 2019
 -   6.832 Underactuated Robotics - MIT OCW
 -   6.801 Machine Vision, MIT Fall 2020 - Berthold Horn (YouTube)
 -   CS287 Advanced Robotics at UC Berkeley Fall 2019 -- Instructor: Pieter Abbeel

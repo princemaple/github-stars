@@ -1,6 +1,6 @@
 ---
 project: DPlayer
-stars: 16530
+stars: 16535
 description: :lollipop: Wow, such a lovely HTML5 danmaku video player
 url: https://github.com/DIYgod/DPlayer
 ---

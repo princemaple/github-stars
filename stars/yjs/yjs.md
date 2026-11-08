@@ -1,6 +1,6 @@
 ---
 project: yjs
-stars: 23005
+stars: 23032
 description: Shared data types for building collaborative software
 url: https://github.com/yjs/yjs
 ---
@@ -94,6 +94,8 @@ Who is using Yjs
 -   Obsidian Collab - Real-time, end-to-end encrypted, peer-to-peer, collaborative editing across Obsidian vaults for files and folders.
 -   Onplana - Project and portfolio management. Wiki pages are co-edited in real time with BlockNote over Yjs, synced through Hocuspocus.
 -   Doory - Open-source design editor (a Canva alternative). Designs are co-edited in real time with Yjs, synced by a pycrdt server. _(source)_
+-   Breatic - A collaborative AI workspace with shared documents and canvases for creative teams, synchronized with Yjs and Hocuspocus.
+-   Oxynote - Self-hosted documentation with live metric charts inside pages and pull-request-style reviews.
 
 Table of Contents
 -----------------

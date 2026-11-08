@@ -1,6 +1,6 @@
 ---
 project: documenso
-stars: 15623
+stars: 15682
 description: The Open Source DocuSign Alternative.
 url: https://github.com/documenso/documenso
 ---

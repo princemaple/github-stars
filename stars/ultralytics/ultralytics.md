@@ -1,6 +1,6 @@
 ---
 project: ultralytics
-stars: 63009
+stars: 63197
 description: Ultralytics YOLO27, YOLO26, YOLO11, YOLOv8 — object detection, instance segmentation, semantic segmentation, image classification, pose estimation, object tracking
 url: https://github.com/ultralytics/ultralytics
 ---
@@ -90,11 +90,10 @@ Model
 size  
 (pixels)
 
-mAPval  
-50-95
+mAPval50-95
 
-mAPval  
-50-95(e2e)
+mAPval50-95  
+(e2e)
 
 Speed  
 CPU ONNX  
@@ -204,11 +203,11 @@ Model
 size  
 (pixels)
 
-mAPbox  
-50-95(e2e)
+mAPbox50-95  
+(e2e)
 
-mAPmask  
-50-95(e2e)
+mAPmask50-95  
+(e2e)
 
 Speed  
 CPU ONNX  
@@ -404,7 +403,7 @@ Model
 size  
 (pixels)
 
-delta1NYU
+δNYU1
 
 abs\_relNYU
 
@@ -514,8 +513,8 @@ YOLO26x-depth
 
 301.7
 
--   **delta1NYU** is the percentage of pixels where the predicted depth is within a factor of 1.25 of the ground truth, on the NYU Depth V2 Eigen test split (654 images) with multi-scale + horizontal-flip TTA and log-least-squares alignment.
--   Single-scale accuracy without TTA is reproducible with `yolo depth val model=yolo26n-depth.pt data=nyu-depth.yaml imgsz=768 device=0` (substitute `model=` for each size), which uses median (scale-only) alignment and scores lower: delta1 0.783 (n), 0.793 (s), 0.840 (m), 0.853 (l), 0.860 (x).
+-   **δNYU1** is the percentage of pixels where the predicted depth is within a factor of 1.25 of the ground truth, on the NYU Depth V2 Eigen test split (654 images) with multi-scale + horizontal-flip TTA and log-least-squares alignment.
+-   Single-scale accuracy without TTA is reproducible with `yolo depth val model=yolo26n-depth.pt data=nyu-depth.yaml imgsz=768 device=0` (substitute `model=` for each size), which uses median (scale-only) alignment and scores lower: δ1 0.783 (n), 0.793 (s), 0.840 (m), 0.853 (l), 0.860 (x).
 -   **abs\_rel** is the mean absolute relative error between predicted and ground-truth depth values.
 -   **rmse** is the root mean squared error in meters.
 -   **Speed** is inference-only latency (pre/post-processing excluded) at `imgsz=768`, `batch=1`, reported as mean ± std over timed runs after warmup. **CPU ONNX** is ONNX Runtime fp32 on a 32-core Intel Xeon (Skylake); **T4 TensorRT10** is TensorRT fp16 on a Tesla T4.
@@ -644,11 +643,11 @@ Model
 size  
 (pixels)
 
-mAPpose  
-50-95(e2e)
+mAPpose50-95  
+(e2e)
 
-mAPpose  
-50(e2e)
+mAPpose50  
+(e2e)
 
 Speed  
 CPU ONNX  
@@ -758,11 +757,11 @@ Model
 size  
 (pixels)
 
-mAPtest  
-50-95(e2e)
+mAPtest50-95  
+(e2e)
 
-mAPtest  
-50(e2e)
+mAPtest50  
+(e2e)
 
 Speed  
 CPU ONNX  

@@ -1,6 +1,6 @@
 ---
 project: gitea
-stars: 58802
+stars: 58949
 description: Git with a cup of tea! Painless self-hosted all-in-one software development service, including Git hosting, code review, team collaboration, package registry and CI/CD
 url: https://github.com/go-gitea/gitea
 ---
@@ -64,7 +64,7 @@ Get more information from the translation section of our contributing guide.
 Official and Third-Party Projects
 ---------------------------------
 
-We provide an official go-sdk, a CLI tool called tea and an action runner for Gitea Action.
+We provide an official go-sdk, a CLI tool called gt and an action runner for Gitea Action.
 
 We maintain a list of Gitea-related projects at gitea/awesome-gitea, where you can discover more third-party projects, including SDKs, plugins, themes, and more.
 

@@ -1,6 +1,6 @@
 ---
 project: Termix
-stars: 15759
+stars: 15878
 description: Self-hosted, plugin-based server management.
 url: https://github.com/Termix-SSH/Termix
 ---

@@ -1,6 +1,6 @@
 ---
 project: jscpd
-stars: 6472
+stars: 6515
 description: Copy/paste detector for source code. 220+ languages, Rust engine, SARIF/HTML/badge reporters, GitHub Action, MCP server for AI agents.
 url: https://github.com/kucherenko/jscpd
 ---
@@ -264,32 +264,133 @@ Dead code detection — unused files, exports, symbols and imports for JavaScrip
 Who Uses jscpd
 --------------
 
-The `jscpd` npm package is downloaded **10M+ times per month**, and ~5,000 repositories declare it on GitHub's dependents graph.
+The `jscpd` npm package is downloaded **10M+ times per month**, and 6,000+ repositories declare it on GitHub's dependents graph.
 
 **Bundled by analysis platforms:**
 
--   GitHub Super Linter — official GitHub linter aggregator, bundles jscpd as its copy/paste detector and runs it by default; 15,500+ workflow files on GitHub reference Super Linter (as of Sep 2026)
--   MegaLinter — open-source linter aggregator for CI, ships jscpd in every flavor including `ci_light`
--   Codacy — automated code analysis platform, jscpd powers the duplication engine
+-   GitHub Super Linter, the official GitHub linter aggregator, bundles jscpd as its copy/paste detector and runs it by default. 15,500+ workflow files on GitHub reference Super Linter (as of Sep 2026).
+-   MegaLinter, an open-source linter aggregator for CI, ships jscpd in every flavor, `ci_light` included.
+-   Codacy, an automated code analysis platform, uses jscpd for its duplication engine.
 
-**Explicitly enabled in Super Linter** (`VALIDATE_JSCPD: true`) **by dozens of public repositories, including:**
+**Runs in the public repositories of these teams and projects.** Each link opens the file that runs jscpd. jscpd.dev shows the same list with logos.
 
--   A2A — Google's Agent2Agent protocol (25k+ stars)
--   RimSort — mod manager for RimWorld (1.2k+ stars); also runs jscpd directly with its own `.jscpd.json`
--   Contact Center AI samples — official Google Cloud samples, with a dedicated jscpd config
--   Drifty — open-source download manager
+Project
 
-**Used in notable projects:**
+How it runs jscpd
 
--   OpenClaw — personal AI assistant, runs jscpd as a duplication gate in its check scripts
--   DeepSeek Harness — DeepSeek's plugin harness, jscpd config in CI
--   degit — Rich Harris's project scaffolder
--   MEGA webclient — the MEGA.nz web client
--   Microsoft TypeAgent
--   Salesforce DX VS Code
--   Alibaba AppWorks — embeds jscpd as a library
--   OVHcloud manager — OVHcloud's customer control panel
--   KiroCrew — self-improving persistent development workspace
+JetBrains IntelliJ IDEA
+
+Bazel pins jscpd 5.4.2 and runs it as the copy-paste test of several areas
+
+Microsoft MSTest
+
+A workflow scans the C# sources and has a model review the top findings
+
+AWS Toolkit for VS Code
+
+Every pull request runs jscpd and keeps the clones that touch the diff
+
+Google Cloud Document AI samples
+
+Super Linter with a jscpd config of its own
+
+IBM ContextForge
+
+The web lint workflow scans the gateway's static files and templates
+
+Salesforce Extensions for VS Code
+
+A `check:dupes` script with the repository's `.jscpd.json`
+
+Elastic CLI
+
+MegaLinter with `COPYPASTE_JSCPD` enabled and a 5% threshold
+
+REA
+
+The deep static checks job runs jscpd with a 4% threshold on every pull request
+
+OpenClaw
+
+`dup:check` scripts on jscpd 5.4.2
+
+n8n
+
+A workflow scans the monorepo and uploads the report
+
+DeepSeek Harness
+
+A duplication gate in CI over packages and scripts
+
+OmniRoute
+
+A duplication ratchet in CI fails when duplication goes up
+
+GitNexus
+
+The weekly test scenario map looks for exact, renamed and near-miss copies in test fixtures
+
+MiniMax Code
+
+A jscpd config with a 5% threshold in the local runtime package
+
+Kiro KiroCrew
+
+Copy/paste detection on the website code in CI
+
+A2A
+
+Super Linter with `VALIDATE_JSCPD=true`
+
+HyperDX
+
+A duplicate code analysis workflow
+
+Sveltia CMS
+
+`check:duplicates` in the `pnpm check` of its test workflow
+
+Deutsche Bahn DB UX Design System
+
+`lint:jscpd` exits with 1 when jscpd finds clones
+
+Callstack agent-device
+
+A baseline gate fails CI on new clones in the native code
+
+Evil Martians AgentPrism
+
+A jscpd job in CI
+
+Wire for Web
+
+A `lint-duplication` recipe
+
+MEGA web client
+
+An npm script over the client's JavaScript
+
+OVHcloud Manager
+
+A duplication check in its static analysis kit
+
+Kitware VolView
+
+A check script that reads jscpd's JSON report
+
+RudderStack JavaScript SDK
+
+`check:duplicates` in every package of the monorepo
+
+Prebid.js
+
+A duplicated code check on every pull request
+
+Eclipse Temurin build
+
+Super Linter with a jscpd config of its own
+
+jscpd also runs in degit, RimSort, Drifty and Microsoft TypeAgent, and AppWorks embeds it as a library.
 
 ### Recommended aggregator settings
 

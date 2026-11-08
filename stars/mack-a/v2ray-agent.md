@@ -1,6 +1,6 @@
 ---
 project: v2ray-agent
-stars: 22259
+stars: 22305
 description: Xray、Tuic、hysteria2、sing-box 八合一一键脚本
 url: https://github.com/mack-a/v2ray-agent
 ---
@@ -10,20 +10,26 @@ v2ray-agent
 
 -   感谢 JetBrains 提供的非商业开源软件开发授权
 
-Xray-core/sing-box 一键脚本快速安装
+基于 Bash 的 Xray-core / sing-box 安装与管理脚本，支持普通主机部署和 Docker Reality 独立部署。
 
 功能
 --
 
--   **多核心支持:** 支持 Xray-core 和 sing-box.
--   **多协议支持:** 支持 VLESS, VMess, Trojan, Hysteria2, Tuic, NaiveProxy 等多种协议.
--   **自动TLS:** 自动申请和续订 SSL 证书.
--   **易于管理:** 提供简单的菜单来管理用户、端口和配置.
--   **订阅支持:** 生成和管理订阅链接.
--   **分流管理:** 提供wireguard、IPv6、Socks5、DNS、VMess(ws)、SNI反向代理，可用于解锁流媒体、规避IP验证等作用.
--   **目标域名管理:** 提供域名黑名单管理，可用于禁止访问指定网站.
--   **BT下载管理:** 可用于禁止下载P2P相关内容.
+-   **多核心支持:** 支持 Xray-core 和 sing-box，可按需安装单核心或组合使用.
+-   **多协议支持:** 支持 VLESS（TLS、Reality、XHTTP）、VMess、Trojan、Hysteria2、Tuic、NaiveProxy、AnyTLS，以及独立 SOCKS5 入站.
+-   **TLS 与 Reality:** TLS 协议可通过 acme.sh 自动申请和续订证书；Reality 支持无域名部署.
+-   **易于管理:** 提供菜单管理用户、端口、配置、核心版本、日志和证书，并支持二维码及客户端节点信息输出.
+-   **订阅支持:** 生成和管理订阅链接，支持远程订阅配置.
+-   **分流管理:** 提供 WARP/WireGuard（IPv4/IPv6）、IPv6、SOCKS5、DNS、VMess+WS、SNI 反向代理等分流能力，可用于流媒体等场景.
+-   **网络策略管理:** 支持 Hysteria2 端口跳跃、域名黑名单和 BT/P2P 下载限制.
+-   **Docker Reality:** 无需域名即可通过 Docker 部署 VLESS-Reality，支持 Vision、XHTTP 或同时启用两种模式，并提供交互式和命令行参数模式.
 -   **更多内容请访问官方网站、备用、X**
+
+环境要求
+----
+
+-   **脚本版:** Linux、root 权限，支持 CentOS、Debian、Ubuntu 和 Alpine；支持 amd64/x86\_64、arm64/aarch64.
+-   **Docker Reality:** Linux、root 或 sudo 权限，以及正在运行的 Docker；脚本可在交互模式下提示安装 Docker.
 
 快速开始
 ----
@@ -61,15 +67,26 @@ vasmad
 文档和指南
 -----
 
+-   SOCKS5 入站与分流出站：简明教程
+    
 -   八合一脚本从入门到精通
+    
 -   脚本快速搭建教程
+    
 -   脚本使用注意事项
+    
 -   脚本异常处理
+    
 -   VPS选购攻略
+    
 -   垃圾VPS大救星，hysteria2最新协议一键搭建
+    
 -   RackNerd低价 联通AS4837套餐，年付10美起
+    
 -   搬瓦工优质套餐推荐
+    
 -   DMIT优质套餐推荐
+    
 
 社区与支持
 -----

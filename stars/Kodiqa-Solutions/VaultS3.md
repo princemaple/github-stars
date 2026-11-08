@@ -1,6 +1,6 @@
 ---
 project: VaultS3
-stars: 1644
+stars: 1700
 description: Lightweight, S3-compatible object storage server with built-in web dashboard. Single binary, low memory, encryption at rest.
 url: https://github.com/Kodiqa-Solutions/VaultS3
 ---
@@ -42,17 +42,17 @@ Garage
 
 GitHub stars³
 
-1.6k
+1.7k
 
 61k¹
 
-2.7k
+4.6k
 
-31k
+36k
 
-34k
+36k
 
-4.4k
+4.8k
 
 License
 
@@ -112,7 +112,7 @@ Components to run
 
 > ¹ MinIO removed the admin console from its Community Edition in 2025 and archived the open-source repository in February 2026, so its star count reflects a project that is no longer developed in the open. Full management now requires the paid AIStor product. ² Measured August 2026 on one host, all six idle with no traffic, Docker working set after a 110 second settle, second reading taken to confirm the figures had stopped moving. **Memory under load is higher for every one of them**: VaultS3 peaks around 185 MiB writing 64 MiB objects at concurrency 16. Reproduce it with `docker stats --no-stream`.
 
-> ³ Star counts read from each project's repository on 11 September 2026. Garage is developed on its own Forgejo instance, so its figure comes from the official GitHub mirror at `deuxfleurs-org/garage`.
+> ³ Star counts read from each project's repository on 7 November 2026, checked automatically every week. Garage is developed on its own Forgejo instance, so its figure comes from the official GitHub mirror at `deuxfleurs-org/garage`.
 
 ### When to pick something else
 
@@ -391,7 +391,7 @@ go test -race ./internal/erasure/ ./internal/cluster/ ./internal/replication/
 
 The data-durability subsystems (`erasure`, `cluster`, `replication`) carry fault-injection tests, corrupt a shard and heal it, lose a node and re-route, partition two sites and resolve the conflict. New logic there should keep that bar.
 
-**Thank you to everyone who has contributed code:** @virgoone (CORS exposed headers for browser multipart uploads), @zhyc9de (streaming reads for encrypted and compressed objects, faster startup, dashboard fixes), @sweet0dream (Russian translation) and @idpcks (file browser grid view, login page). Issue reporters are credited in the CHANGELOG.
+**Thank you to everyone who has contributed code:** @virgoone (CORS exposed headers for browser multipart uploads), @tyronecai (gzip and deflate for the dashboard and its API), @zhyc9de (streaming reads for encrypted and compressed objects, faster startup, dashboard fixes), @sweet0dream (Russian translation) and @idpcks (file browser grid view, login page). Issue reporters are credited in the CHANGELOG.
 
 License
 -------

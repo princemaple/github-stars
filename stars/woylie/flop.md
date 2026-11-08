@@ -1,6 +1,6 @@
 ---
 project: flop
-stars: 820
+stars: 821
 description: Filtering, ordering and pagination for Ecto
 url: https://github.com/woylie/flop
 ---

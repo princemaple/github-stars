@@ -1,12 +1,20 @@
 ---
 project: chatterbox
-stars: 27478
+stars: 27655
 description: SoTA open-source TTS
 url: https://github.com/resemble-ai/chatterbox
 ---
 
 Chatterbox TTS
 ==============
+
+Important
+
+**As of August 2026, Chatterbox is retired research and is no longer maintained.**
+
+Resemble AI does not sell text-to-speech, voice cloning, or any other voice AI product, and this repository is not a Resemble AI product. The code stays public as an archive under the MIT license, with no support, updates, or paid tier.
+
+Resemble AI now builds AI detection models for deepfakes, synthetic media, and AI agents. Read why we went all in on deepfake detection.
 
 _Made with ♥️ by_
 

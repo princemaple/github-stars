@@ -1,6 +1,6 @@
 ---
 project: eventstore
-stars: 1167
+stars: 1166
 description: Event store using PostgreSQL for persistence
 url: https://github.com/commanded/eventstore
 ---

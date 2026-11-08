@@ -1,6 +1,6 @@
 ---
 project: dify
-stars: 160110
+stars: 160634
 description: Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.
 url: https://github.com/langgenius/dify
 ---
@@ -19,14 +19,24 @@ Quick start
 
   
 
-The easiest way to start the Dify server is through Docker Compose. Before running Dify with the following commands, make sure that Docker and Docker Compose v2.24.0 or later are installed on your machine:
+The easiest way to start the Dify server is through Docker Compose. Install Docker with a running daemon, Docker Compose v2.35.0 or later, and OpenSSL.
 
-cd dify
+For a new deployment, run the following commands from the repository root. For an existing deployment, preserve your `.env` and follow the upgrade guidance.
+
 cd docker
 cp .env.example .env
-docker compose up -d
+openssl rand -hex 32
 
-After running, you can access the Dify dashboard in your browser at http://localhost/install and start the initialization process.
+Open `.env` and set `DIFY_AGENT_LOCAL_SANDBOX_AUTH_TOKEN` to the generated value. Keep the default `COMPOSE_PROFILES` value for the bundled services. Service defaults load automatically; no additional configuration files are required.
+
+From the same `docker` directory, start the services:
+
+docker compose up -d
+docker compose ps --all
+
+Once the services are running, open http://localhost/install to complete the initial setup. The one-time `init_permissions` service is expected to exit with code `0`.
+
+For optional settings and service overrides, see the Docker deployment guide.
 
 ### Seeking help
 

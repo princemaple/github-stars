@@ -1,6 +1,6 @@
 ---
 project: rrweb
-stars: 20333
+stars: 20359
 description: record and replay the web
 url: https://github.com/rrweb-io/rrweb
 ---
@@ -67,6 +67,8 @@ In addition to adding integration tests and unit tests, rrweb also provides a RE
 
 Using the REPL tool
 
+This project is tested with BrowserStack
+
 Sponsors
 --------
 
@@ -79,6 +81,8 @@ Become a sponsor and get your logo on our README on Github with a link to your s
 ### Bronze Sponsors 🥉
 
 ### Backers
+
+### Infrastructure Sponsors
 
 Core Team Members
 -----------------

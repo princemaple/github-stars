@@ -1,6 +1,6 @@
 ---
 project: paper-mono
-stars: 1503
+stars: 1518
 description: null
 url: https://github.com/paper-design/paper-mono
 ---

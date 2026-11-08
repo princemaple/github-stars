@@ -1,6 +1,6 @@
 ---
 project: croc
-stars: 40817
+stars: 40881
 description: Easily and securely send things from one computer to another :crocodile: :package:
 url: https://github.com/schollz/croc
 ---
@@ -39,7 +39,20 @@ You can download the latest release for your system, or install a release from t
 
 curl https://getcroc.com | bash
 
-When the CLI sends or receives a transfer, it checks for a newer croc release at most once every 24 hours. The check runs in the background and any update notice is shown after the transfer finishes. Run `croc update --check` at any time to check explicitly. Installations made by the command above can use `croc update` (`croc upgrade` is an alias) to verify and install a stable release when the executable is user-writable; pass `--yes` to skip confirmation. Package-managed and other installations are never overwritten; the command prints the appropriate upgrade guidance instead. Network and release-service failures in background checks are ignored; `--quiet` suppresses the notice.
+The installer places **croc** and **croc-update** in the same directory. Standalone release archives include both binaries too. To upgrade:
+
+croc update       # check croc and prepare the updater when needed
+croc-update       # update the croc active on PATH
+
+The updater shows download progress with transferred bytes. Each command asks before changing a binary. Pass `--yes` to each command to skip its confirmation. Protected directories such as `/usr/local/bin` may still require authentication: the command requests `sudo` or `doas` on Unix, or UAC approval on Windows. Writable custom prefixes work without elevation:
+
+curl https://getcroc.com | bash -s -- -p "$HOME/.local/bin"
+
+`croc update --check` reports croc release availability without installing; `croc-update --check` checks the croc active on `PATH`. Direct helper use selects that executable first, including a user-owned installation such as `$HOME/go/bin/croc`. If croc is absent from `PATH`, it installs beside the helper. Use `croc-update --path /path/to/croc` to select a particular installation. When croc is current, `croc update` prints only its up-to-date message. When a new release is available, it ensures the helper is ready and prints `Run: croc-update`. `croc upgrade` is an alias for `croc update`. Neither binary overwrites itself or automatically downgrades a newer installed version.
+
+If an older `croc update` reports that the running executable is not writable, run the installer once to obtain this pair. Subsequent upgrades use the commands above. Manually extracted standalone archives do not need installer registration. Package-managed installations use their owning package manager instead.
+
+When the CLI sends or receives a transfer, it checks for a newer croc release at most once every 24 hours. The check runs in the background and any update notice is shown after the transfer finishes. Network and release-service failures in background checks are ignored; `--quiet` suppresses the notice. Set `CROC_DO_CHECK=0` or `CROC_NO_UPDATE_CHECK=1` (`CROC_NO_UPDATE_CHECK` takes `1`, `0`, `true` or `false`), or run `croc --no-update-check send [filename]`, to skip the check. To keep skipping it, export `CROC_NO_UPDATE_CHECK=1`, or add `--remember` to a regular send or receive that uses `--no-update-check`. `--remember` saves all of that run's settings, including a receive code, and replaces earlier ones. Each side remembers them separately.
 
 ### On macOS
 
@@ -142,7 +155,7 @@ You can also just paste it in the terminal for current session. On first run Doc
 
 ### Build from Source
 
-If you prefer, you can install Go and build from source (requires Go 1.27.1+):
+If you prefer, you can install Go and build from source (requires Go 1.27.3+):
 
 go install github.com/schollz/croc/v11@latest
 
@@ -174,6 +187,8 @@ Code is: code-phrase
 Then, to receive the file (or folder) on another computer, run:
 
 croc code-phrase
+
+Folder transfers include Git repository metadata (`.git`) without an extra flag, using the normal acceptance and overwrite handling. Paths containing `.ssh` or `.gnupg` components are still rejected, including case variants.
 
 The code phrase is used to establish password-authenticated key agreement (PAKE) which generates a secret key for the sender and recipient to use for end-to-end encryption.
 

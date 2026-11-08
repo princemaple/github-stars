@@ -1,6 +1,6 @@
 ---
 project: kula
-stars: 1340
+stars: 1339
 description: Lightweight, self-contained Linux® server monitoring tool
 url: https://github.com/c0m4r/kula
 ---
@@ -85,7 +85,7 @@ Monitor anything with custom metrics
 
 Monitoring NVIDIA GPUs might require additional setup — see GPU troubleshooting.
 
--   **Web dashboard** — live charts, pan and zoom through history, Min–Max bands, Focus and TV modes, a System Info hardware page, and 26 languages.
+-   **Web dashboard** — live charts, pan and zoom through history, Min–Max bands, Focus and TV modes, rearrangeable cards, a System Info hardware page, and 26 languages.
 -   **Terminal UI** — a fast live read over SSH, including charts of stored history.
 -   **Tiered storage** — fixed-size ring-buffer files keep raw 1-second samples, then 1-minute and 5-minute rollups. No database to run.
 -   **Application monitoring** — nginx, Apache2, PostgreSQL, MySQL/MariaDB and containers, plus your own custom metrics.

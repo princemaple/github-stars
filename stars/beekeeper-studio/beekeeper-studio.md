@@ -1,7 +1,7 @@
 ---
 project: beekeeper-studio
-stars: 23823
-description: Modern and easy to use database GUI & SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows.
+stars: 23860
+description: Modern and easy to use database GUI & SQL client for MySQL, Postgres, SQLite, SQL Server, ClickHouse, and more. Linux, MacOS, and Windows.
 url: https://github.com/beekeeper-studio/beekeeper-studio
 ---
 
@@ -349,19 +349,20 @@ We have you covered, read our guide to contributing in 10 minutes without coding
 
 Want to write some code and improve Beekeeper Studio? Getting set-up is easy on Mac, Linux, or Windows.
 
-# First: Install NodeJS 20, NPM, and Yarn
-# ...
+We use mise to manage tool versions.
 
 # 1. Fork the Beekeeper Studio Repo (click fork button at top right of this screen)
 # 2. Check out your fork:
 git clone git@github.com:<your-username\>/beekeeper-studio.git beekeeper-studio
 cd beekeeper-studio/
-yarn set version classic
-nvm use 22
-yarn install # installs dependencies
+
+# Use mise to install toolchain
+mise install # Installs node 24 and pnpm 12
+
+pnpm install # installs dependencies
 
 # Now you can start the app:
-yarn run electron:serve #\# the app will now start
+pnpm run bks:dev #\# the app will now start
 
 **If you get `error:03000086:digital envelope routines::initialization error`, you'll have to update openssl.**
 

@@ -1,6 +1,6 @@
 ---
 project: anything-llm
-stars: 67797
+stars: 68047
 description: Stop renting your intelligence. Own it with AnythingLLM. Everything you need for a powerful local-first agent experience 
 url: https://github.com/Mintplex-Labs/anything-llm
 ---
@@ -8,7 +8,7 @@ url: https://github.com/Mintplex-Labs/anything-llm
 **AnythingLLM:** The all-in-one AI app you were looking for.  
 Chat with your docs, use AI Agents, hyper-configurable, multi-user, & no frustrating setup required.
 
-| | Docs | Hosted Instance
+| | | Docs | Hosted Instance
 
 **English** · 简体中文 · 日本語
 

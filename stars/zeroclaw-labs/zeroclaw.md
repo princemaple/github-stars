@@ -1,6 +1,6 @@
 ---
 project: zeroclaw
-stars: 33081
+stars: 33216
 description: Fast, small, and fully autonomous AI personal assistant infrastructure, any OS, any platform — deploy anywhere, swap anything 🦀
 url: https://github.com/zeroclaw-labs/zeroclaw
 ---
@@ -72,7 +72,7 @@ One TOML file at `~/.zeroclaw/config.toml`. Pointers:
 -   Security overview — autonomy, sandboxing, tool receipts
 -   Full config reference — generated from the live schema; every key documented
 
-A V3 config has at minimum four section headers (`<type>.<alias>` shaped) — a provider entry, an agent that references it, and a risk profile the agent gates against. See Provider Configuration → Minimal working example for the canonical four-section form with inline type/alias commentary.
+A V3 config has at minimum four section headers (`<type>.<alias>` shaped) — a provider entry, an agent that references it, and a risk profile the agent gates against. A hand-written file should also start with `schema_version = 4`, the current schema version. See Provider Configuration → Minimal working example for the canonical four-section form with inline type/alias commentary.
 
 For standard OpenAI Codex subscription auth, Quickstart can write the provider entry for you:
 
@@ -152,6 +152,11 @@ License
 -------
 
 Dual-licensed: MIT OR Apache 2.0. You may choose either. Contributors automatically grant rights under both — see CLA. The **ZeroClaw** name and logo are trademarks of ZeroClaw Labs.
+
+Sponsors
+--------
+
+Thanks to Blacksmith for sponsoring the CI infrastructure that builds and tests ZeroClaw.
 
 Credits
 -------

@@ -1,6 +1,6 @@
 ---
 project: overtype
-stars: 3703
+stars: 3705
 description: The markdown editor that's just a textarea https://overtype.dev
 url: https://github.com/panphora/overtype
 ---
@@ -8,7 +8,7 @@ url: https://github.com/panphora/overtype
 OverType
 ========
 
-A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~136KB minified with all features.
+A lightweight markdown editor library with perfect WYSIWYG alignment using an invisible textarea overlay technique. Includes optional toolbar. ~144KB minified with all features.
 
 Live Examples
 -------------
@@ -30,7 +30,7 @@ Features
 -   ⌨️ **Keyboard shortcuts** - Common markdown shortcuts (Cmd/Ctrl+B for bold, etc.)
 -   📱 **Mobile optimized** - Responsive design with mobile-specific styles
 -   🔄 **DOM persistence aware** - Recovers from existing DOM (perfect for HyperClay and similar platforms)
--   🚀 **Lightweight** - ~136KB minified
+-   🚀 **Lightweight** - ~144KB minified
 -   🎯 **Optional toolbar** - Clean, minimal toolbar with all essential formatting
 -   ✨ **Smart shortcuts** - Keyboard shortcuts with selection preservation
 -   📝 **Smart list continuation** - GitHub-style automatic list continuation on Enter
@@ -60,7 +60,7 @@ EasyMDE
 
 **Size**
 
-~136KB
+~144KB
 
 364.02 KB
 
@@ -627,6 +627,7 @@ new OverType(target, options)
   fontSize: '14px',
   lineHeight: 1.6,
   fontFamily: 'monospace',
+  proportional: false,  // Set true with a proportional fontFamily, see "Letter Widths"
   padding: '16px',
   
   // Theme - 'solar', 'cave', or custom theme object
@@ -696,6 +697,7 @@ new OverType(target, options)
 
   // Link tooltip
   transformLinkUrl: (url) \=> url,  // Rewrite the URL shown/opened in the link tooltip (per instance)
+  linkActions: null,      // Show the link tooltip for your own text patterns
 
   // Stats bar
   showStats: false,       // Enable/disable stats bar
@@ -829,6 +831,14 @@ Cmd/Ctrl + K
 
 Insert link
 
+Cmd/Ctrl + E
+
+Toggle inline code
+
+Cmd/Ctrl + Alt + 1, 2, 3
+
+Toggle heading 1, 2, 3
+
 Cmd/Ctrl + Shift + 7
 
 Toggle numbered list
@@ -836,6 +846,14 @@ Toggle numbered list
 Cmd/Ctrl + Shift + 8
 
 Toggle bullet list
+
+Cmd/Ctrl + Shift + 9
+
+Toggle task list
+
+Cmd/Ctrl + Shift + .
+
+Toggle quote
 
 Cmd/Ctrl + \]
 
@@ -849,7 +867,9 @@ Tab / Shift+Tab
 
 Indent or outdent selected lines
 
-When no text is selected, Tab and Shift+Tab use normal browser focus navigation.
+When no text is selected, Tab and Shift+Tab use normal browser focus navigation. Indenting and outdenting keep the cursor and selection on the same text.
+
+A toolbar button shows its shortcut in its tooltip. A custom button can do the same with `shortcut: 'Mod+Shift+S'`, where `Mod` is Cmd on a Mac and Ctrl elsewhere. The value only sets the label: handle the key yourself in `onKeydown`.
 
 Supported Markdown
 ------------------
@@ -964,9 +984,22 @@ Due to the transparent textarea overlay approach, OverType has some intentional 
 
 Images (`![alt](url)`) are not rendered. Variable-height images would break the character alignment between textarea and preview.
 
-### Monospace Font Required
+### Letter Widths Must Not Change With Style
 
-All text must use a monospace font to maintain alignment. Variable-width fonts would cause the textarea cursor position to drift from the visual text position.
+The textarea draws the cursor and the preview draws the text, so any style that changes a letter's width moves the two apart. The default font is monospace because its bold and italic keep the same widths.
+
+A proportional font works too, but real bold and slanted italic change letter widths. Turn on `proportional` so they do not while editing. Bold becomes a thin stroke, italic loses its slant, and preview mode keeps both:
+
+new OverType('#editor', { fontFamily: 'Georgia, serif', proportional: true });
+
+The option sets three CSS variables, which a stylesheet can set instead. Any other style that changes a letter's width, such as a real italic in your own CSS, moves the text away from the cursor too.
+
+.overtype-wrapper {
+  \--instance-font-family: Georgia, serif;
+  \--instance-bold-weight: normal;
+  \--instance-bold-stroke: 0.45px currentColor;
+  \--instance-italic-style: normal;
+}
 
 ### Fixed Font Size
 
@@ -994,6 +1027,19 @@ const \[editor\] \= new OverType('#editor', {
 });
 
 The transformed URL is passed through OverType's URL sanitizer before opening, so the tooltip can never open a dangerous scheme (`javascript:`, `data:`, and similar). If your function throws or returns a non-string, the original URL is used.
+
+Link Actions
+------------
+
+`linkActions` shows the same tooltip for your own text patterns. Each entry has a `pattern` with the `g` flag, a `label` that returns the tooltip text, and an `onClick` that runs when the tooltip is clicked. Matches inside code are skipped.
+
+const \[editor\] \= new OverType('#editor', {
+  linkActions: \[{
+    pattern: /\\\[\\\[(\\d{4}\-\\d{2}\-\\d{2})\\\]\\\]/g,
+    label: match \=> \`Go to ${match\[1\]}\`,
+    onClick: (match, editor) \=> goToDay(match\[1\])
+  }\]
+});
 
 Recipes
 -------
@@ -1045,7 +1091,7 @@ OverType uses a unique invisible textarea overlay approach:
     -   Styled preview div (bottom) - shows formatted markdown
 2.  **Character-perfect alignment:**
     
-    -   Monospace font required
+    -   Letter widths that do not change with style (monospace by default)
     -   No size changes in styling
     -   Syntax markers remain visible
 3.  **Single source of truth:**

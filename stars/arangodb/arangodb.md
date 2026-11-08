@@ -1,6 +1,6 @@
 ---
 project: arangodb
-stars: 14290
+stars: 14295
 description: 🥑 ArangoDB is a native multi-model database with flexible data models for documents, graphs, and key-values. Build high performance applications using a convenient SQL-like query language or JavaScript extensions.
 url: https://github.com/arangodb/arangodb
 ---
@@ -57,7 +57,7 @@ ArangoDB is available in a free and fully featured **Community Edition** as well
 -   **Powerful query language** (_AQL_) to retrieve and modify data - from simple CRUD operations, over complex filters and aggregations, all the way to joins, graphs, and ranked full-text search.
 -   **Transactions**: Run queries on multiple documents or collections with optional transactional consistency and isolation.
 -   **Fast access to your data**: Fine-tune your queries with a variety of index types for optimal performance. ArangoDB is written in C++ and can handle even very large datasets efficiently.
--   Easy to use **web interface** and **command-line tools** for interaction with the server.
+-   Easy to use **command-line tools** for interaction with the server.
 
 ### Scalability Features
 

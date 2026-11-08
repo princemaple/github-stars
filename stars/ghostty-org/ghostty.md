@@ -1,6 +1,6 @@
 ---
 project: ghostty
-stars: 63090
+stars: 63830
 description: 👻 Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.
 url: https://github.com/ghostty-org/ghostty
 ---
@@ -134,7 +134,7 @@ Due to the scope of this project, we're breaking libghostty down into separate l
 
 `libghostty` is already heavily in use. See `examples` for small examples of using `libghostty` in C and Zig or the Ghostling project for a complete example. See awesome-libghostty for a list of projects and resources related to `libghostty`.
 
-We haven't tagged libghostty with a version yet and we're still working on a better docs experience, but our Doxygen website is a good resource for the C API.
+`libghostty-vt` is released on its own, separately from Ghostty, with `vt-X.Y.Z` tags. To build or package it, see `PACKAGING-LIBGHOSTTY.md`. To use it from a CMake project, see `dist/cmake/README.md`. We're still working on a better docs experience, but our Doxygen website is a good resource for the C API.
 
 #### Ghostty-only Terminal Control Sequences
 

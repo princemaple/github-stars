@@ -1,6 +1,6 @@
 ---
 project: pig
-stars: 205
+stars: 206
 description: PostgreSQL Extension Package Manager
 url: https://github.com/pgsty/pig
 ---
@@ -10,16 +10,16 @@ PIG - Postgres Install Genius
 
 **pig** is an open-source PostgreSQL and extension package manager for mainstream (EL/Debian/Ubuntu) Linux.
 
-Install PostgreSQL 14–18 and explore a catalog of 620 packaged entries on `amd64` or `arm64` hosts through the native OS package manager.
+Install PostgreSQL 14–18 and explore a catalog of 626 packaged entries on `amd64` or `arm64` hosts through the native OS package manager.
 
 PIG-owned commands can emit self-describing structured results with `-o json` or `-o yaml`, making it an **Agent-Friendly** PostgreSQL CLI tool. Native passthrough commands retain their own interaction and output contract. Also explore the full **PGEXT.CLOUD directory** of 2,703 catalogued PostgreSQL extensions.
 
 Current catalog snapshot
 ------------------------
 
-The **2026-10-29** source catalog snapshot contains **620 packaged catalog records**: **617** are marked available and **3** are retained as removed records. They map to **512** distinct package names when PostgreSQL contrib modules are included; the package view used for availability reports covers **451** non-contrib package families. The full PGEXT.CLOUD directory contains **2,703** ecosystem entries, including packaged, source-only, and provider-specific extensions.
+The current source catalog contains **626 packaged catalog records**: **624** are marked available and **2** are retained as removed records. They map to **518** distinct package names when PostgreSQL contrib modules are included; the package view used for availability reports covers **457** non-contrib package families. The full PGEXT.CLOUD directory contains **2,703** ecosystem entries, including packaged, source-only, and provider-specific extensions.
 
-The count follows the catalog directory-entry contract: it measures coverage, while package names, platform availability, PostgreSQL-major support, and database enablement remain separate properties. The `v1.10.3` release artifact ships with this **620-record** catalog snapshot; later catalog data can be loaded with `pig ext reload`.
+The count follows the catalog directory-entry contract: it measures coverage, while package names, platform availability, PostgreSQL-major support, and database enablement remain separate properties. The `v1.10.4` release includes the **2026-11-06 626-record** catalog snapshot; later catalog data can be loaded with `pig ext reload`.
 
 * * *
 
@@ -36,7 +36,7 @@ $ pig repo add pgsql -u       # add pgdg & pigsty repo, then update repo cache
 $ pig install pg18              # install PostgreSQL 18 kernel packages
 $ pig ext add pg\_duckdb -v 18   # install the pg\_duckdb extension (for current pg18)
 
-These commands install host packages. Creating or configuring an extension inside a database is a separate PostgreSQL operation. Check the advanced usage for details and the full list of 620 catalog entries.
+These commands install host packages. Creating or configuring an extension inside a database is a separate PostgreSQL operation. Check the advanced usage for details and the full list of 626 catalog entries.
 
 * * *
 
@@ -338,7 +338,7 @@ vagrant@meta:~$ pig ext avail
 ✓ Found 444 packages available on u24.arm64
 
 Extension Availability on u24.aarch64 : https://pigsty.io/ext/os/u24.aarch64
-Showing 451 packages with 620 extensions  (green = PIGSTY, blue = PGDG)
+Showing 457 packages with 626 extensions  (green = PIGSTY, blue = PGDG)
 
 Pkg                     18          17          16          15          14
 timescaledb             2.31.0      2.31.0      2.31.0      2.28.3      2.19.3
@@ -357,7 +357,7 @@ pg\_when                 0.1.10      0.1.10      0.1.10      0.1.10      0.1.10
 edtf\_postgres           1.3.2       1.3.2       1.3.2       1.3.2       1.3.2
 pg\_stl                  1.0.0       1.0.0       1.0.0       -           -
 cron\_utils              0.1.0       0.1.0       0.1.0       0.1.0       0.1.0
-postgis                 3.6.4       3.6.4       3.6.4       3.6.4       3.6.4
+postgis                 3.7.0       3.7.0       3.7.0       3.7.0       3.7.0
 pgrouting               4.0.1       4.0.1       4.0.1       4.0.1       4.0.1
 pointcloud              1.2.5       1.2.5       1.2.5       1.2.5       1.2.5
 ...

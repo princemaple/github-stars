@@ -1,6 +1,6 @@
 ---
 project: pangolin
-stars: 23282
+stars: 23346
 description: Modern networking and security platform providing secure access and connectivity to apps, infrastructure, and AI workloads. Connect and protect your users.
 url: https://github.com/fosrl/pangolin
 ---
@@ -27,7 +27,9 @@ Installation
 
 -   Get started for free with Pangolin Cloud.
 -   Or, check out the quick install guide for how to self-host Pangolin.
-    -   Install from the DigitalOcean marketplace for a one-click pre-configured installer.
+-   Or, deploy in minutes from a prebuilt image on AWS or DigitalOcean:
+    -   **AWS:** Community and Enterprise AMIs for x86 and Graviton. Configure at launch with user-data or CloudFormation.
+    -   **DigitalOcean:** install from the DigitalOcean marketplace for a one-click pre-configured installer.
 
 Deployment Options
 ------------------

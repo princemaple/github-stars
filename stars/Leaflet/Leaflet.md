@@ -1,7 +1,7 @@
 ---
 project: Leaflet
-stars: 45803
-description: 🍃 JavaScript library for mobile-friendly interactive maps 🇺🇦
+stars: 45877
+description: 🍃 number one JavaScript library for interactive maps 🇺🇦
 url: https://github.com/Leaflet/Leaflet
 ---
 
@@ -20,11 +20,11 @@ Leaflet maintainers.
 
 Leaflet is the leading open-source JavaScript library for **building powerful interactive maps**.
 
-Weighing just about 40 kB of gzipped JS plus 3.2 kB of gzipped CSS code, it has all the mapping features most developers ever need.
+Weighing just about 40 kB of gzipped JS plus 2.4 kB of gzipped CSS code, it has all the mapping features most developers ever need.
 
-Leaflet is designed with _simplicity_, _performance_ and _usability_ in mind. It works efficiently across all major desktop and mobile platforms out of the box, taking advantage of modern browser features while being accessible on older ones too. It can be extended with a huge amount of plugins, has a beautiful, easy to use and well-documented API and a simple, readable source code that is a joy to contribute to.
+Leaflet is designed with _simplicity_, _performance_ and _usability_ in mind. It works efficiently across all major desktop and mobile platforms out of the box, taking advantage of modern browser features. It can be extended with a huge amount of plugins, has a beautiful, easy to use and well-documented API and a simple, readable source code that is a joy to contribute to.
 
 For more info, docs and tutorials, check out the official website.  
-For **Leaflet downloads** (including the built main version), check out the download page.
+For **Leaflet downloads** (including the built main version), check out the install page.
 
 We're happy to meet new contributors. If you want to **get involved** with Leaflet development, check out the contribution guide. Let's make the best mapping library that will ever exist, and push the limits of what's possible with online maps!

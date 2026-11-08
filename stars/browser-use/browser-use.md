@@ -1,6 +1,6 @@
 ---
 project: browser-use
-stars: 119680
+stars: 120271
 description: Open-source Python library for AI browser agents, plus Browser Use Cloud: stealth browsers and a hosted agent API.
 url: https://github.com/browser-use/browser-use
 ---

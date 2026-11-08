@@ -1,6 +1,6 @@
 ---
 project: tailwindcss-motion
-stars: 3336
+stars: 3335
 description: tailwindcss-motion is a Tailwind CSS Plugin made at RomboHQ. It’s a simple, yet powerful, animation library with a simple syntax.
 url: https://github.com/romboHQ/tailwindcss-motion
 ---
@@ -17,42 +17,49 @@ _Motion, without commotion._
 
 **1\. Install npm package**
 
+```
 npm i -D tailwindcss-motion
+```
 
 **2\. Add into your tailwind.config.js**
 
+```
 // tailwind.config.js
 
 export default {
-     content: \[...\],
+     content: [...],
      theme: {
         extend: {...},
      },
-     plugins: \[require('tailwindcss-motion')\],
+     plugins: [require('tailwindcss-motion')],
 };
+```
 
 **or,** to use ESM:
 
+```
 import tailwindcssMotion from "tailwindcss-motion";
 
-/\*\* @type {import('tailwindcss').Config} \*/
+/** @type {import('tailwindcss').Config} */
 export default {
-     content: \[...\],
+     content: [...],
      theme: {
           extend: {},
      },
-     plugins: \[tailwindcssMotion\],
+     plugins: [tailwindcssMotion],
 };
+```
 
 📝 TypeScript Support
 ---------------------
 
 The plugin includes TypeScript definitions out of the box. Theme customizations and plugin configuration are fully typed:
 
+```
 import type { Config } from "tailwindcss";
 import motion from "tailwindcss-motion";
 
-const config: Config \= {
+const config: Config = {
   theme: {
     extend: {
       motionScale: {
@@ -63,8 +70,9 @@ const config: Config \= {
       },
     },
   },
-  plugins: \[motion\],
+  plugins: [motion],
 };
+```
 
 How does it work?
 -----------------

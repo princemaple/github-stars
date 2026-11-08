@@ -1,6 +1,6 @@
 ---
 project: FreeDomain
-stars: 206599
+stars: 207470
 description: Free domain registration and practical DNS learning resources for everyone.
 url: https://github.com/DigitalPlatDev/FreeDomain
 ---

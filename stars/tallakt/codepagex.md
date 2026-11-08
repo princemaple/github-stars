@@ -79,8 +79,8 @@ A library can't change which encodings Codepagex has, as only the configuration 
         encodings: \[:ascii, :iso\_8859\_1, :windows\_1251, :windows\_1252\]
     end
 
-    iex\> MyLib.Encodings.to\_string(<<0xC0, 0xE1\>>, :windows\_1251)
-    {:ok, "Аб"}
+    MyLib.Encodings.to\_string(<<0xC0, 0xE1\>>, :windows\_1251)
+    #=> {:ok, "Аб"}
 
 The module has the same functions as `Codepagex`, for its encodings only. The encodings are given as in the configuration below.
 

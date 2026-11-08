@@ -1,6 +1,6 @@
 ---
 project: libcluster
-stars: 2162
+stars: 2161
 description: Automatic cluster formation/healing for Elixir applications
 url: https://github.com/bitwalker/libcluster
 ---
@@ -58,6 +58,8 @@ end
 
 The following section describes topology configuration in more detail.
 
+For Kubernetes shutdown, coordinate application draining with discovery. Withdrawing readiness alone can leave a departing node's own strategies reconnecting it. See the Kubernetes strategy's membership during shutdown guidance for stopping supervised discovery and observing membership withdrawal.
+
 Example Configuration
 ---------------------
 
@@ -90,6 +92,147 @@ Strategy Configuration
 ----------------------
 
 For instructions on configuring each strategy included with `libcluster`, please visit the docs on HexDocs, and look at the module doc for the strategy you want to use. The authoritative documentation for each strategy is kept up to date with the module implementing it.
+
+Kubernetes node naming
+----------------------
+
+With the default Erlang distribution callbacks, discovery must produce the **exact node name** used by each peer. libcluster does not rename the running VM or enable distribution for it. All three Kubernetes strategies use long names, but they build different host portions:
+
+Strategy
+
+Basename option
+
+Example discovered node
+
+`Cluster.Strategy.Kubernetes` with default `mode: :ip`
+
+`:kubernetes_node_basename`
+
+`myapp@10.0.0.12`
+
+`Cluster.Strategy.Kubernetes.DNS`
+
+`:application_name`
+
+`myapp@10.0.0.12`
+
+`Cluster.Strategy.Kubernetes.DNSSRV`
+
+`:application_name`
+
+`myapp@myapp-0.myapp-headless.default.svc.cluster.local`
+
+The API strategy also supports DNS and hostname modes; see its module documentation for their naming rules. DNS uses the returned IP addresses, while DNSSRV uses the returned SRV target names. A reachable hostname that resolves to the same IP is not a substitute for the peer's actual node identity.
+
+For a Mix release, run `mix release.init` in the application and configure `rel/env.sh.eex`. For the DNS strategy or the API strategy's IP mode:
+
+export RELEASE\_DISTRIBUTION=name
+export RELEASE\_NODE="<%= @release.name %>@${POD\_IP}"
+
+Expose the pod's address at runtime, and supply the same distribution cookie to all peers through a Kubernetes Secret managed by your deployment:
+
+# In the application container's env list
+- name: POD\_IP
+  valueFrom:
+    fieldRef:
+      fieldPath: status.podIP
+- name: RELEASE\_COOKIE
+  valueFrom:
+    secretKeyRef:
+      name: myapp-distribution
+      key: cookie
+
+For DNSSRV, use a StatefulSet with a headless service and a hostname matching its SRV target:
+
+export RELEASE\_DISTRIBUTION=name
+export RELEASE\_NODE="<%= @release.name %>@$(hostname -f)"
+
+These snippets use the release name as the basename. Match it with the appropriate basename option in the table. If the release is named differently, set the required basename explicitly in `RELEASE_NODE`; the release filename itself does not have to match. Configure names when the container starts, when its pod IP and hostname are known. Expanding a pod variable in a Dockerfile while building the image cannot provide that runtime identity.
+
+`RELEASE_DISTRIBUTION=name` selects long names. Mix releases default to `sname` (short names), which cannot connect to these IP/FQDN identities and can report `System NOT running to use fully qualified hostnames`. Setting `RELEASE_NODE` alone does not select long names. Let the release script supply `-name`; remove conflicting `-sname` settings from custom VM arguments. See Mix release environment variables.
+
+### Check the running node
+
+Inspect the deployed VM through its existing console, or use the release's `rpc` command:
+
+bin/myapp rpc 'IO.inspect(%{
+  node: Node.self(),
+  alive?: Node.alive?(),
+  longnames?: :net\_kernel.longnames(),
+  peers: Node.list()
+})'
+
+Check that distribution is running, `longnames?` is `true`, and each peer's `Node.self()` matches the exact target logged by libcluster, including the basename and the complete host portion. `nonode@nohost` means distribution is not running. If `rpc` cannot attach, inspect these values from the application's existing console or logs; `eval` or a separate `mix run` starts another VM and does not show the running application's identity. Do not print cookies or dump the container's environment while collecting diagnostics.
+
+After identities agree, try `Node.connect/1` with the **same target atom** shown in the discovery log from the running application node. A connection to a different name does not verify that target. Ensure DNS resolves the target's host portion from each pod, all peers use the same cookie, and pod-to-pod traffic permits EPMD (TCP 4369 by default) and the configured Erlang distribution listen ports. An application's HTTP port or a Kubernetes `containerPort` declaration alone does not establish that connectivity. NetworkPolicies, host firewalls and sidecars must permit the distribution traffic as well. For SRV query selection, per-Pod targets and mesh diagnostics, see the DNSSRV checklist.
+
+Kubernetes startup and readiness
+--------------------------------
+
+Starting `Cluster.Supervisor` before a database-dependent child does not guarantee that peers have been discovered when that child starts. A strategy may still be waiting for DNS, an API response or a connection retry. `Node.list()` at one instant is not a complete membership list or proof of database availability.
+
+For DNS-based discovery, distinguish an empty answer, `:nxdomain` and a connection failure. The DNS strategies log lookup errors and retry on their next poll. A failed lookup currently produces an empty discovery snapshot and can disconnect previously discovered peers; it does not mean the node's hostname or persisted database is corrupt. DNSSRV keeps the returned target hostname as the node identity rather than replacing it with a resolved IP address.
+
+Avoid a bootstrap cycle in which readiness requires database peers, while discovery DNS only publishes ready Pods. A discovery headless Service can opt into early publication:
+
+# In the discovery Service's spec, alongside clusterIP: None and its named ports
+publishNotReadyAddresses: true
+
+This exposes unready endpoints to consumers of that Service; use a separate client-facing Service when clients must only reach ready Pods. See Kubernetes DNS publication. It does not create missing replicas: StatefulSet ordering can still block a bootstrap that requires every replica before the first Pod becomes ready. Design the application bootstrap policy and controller ordering together.
+
+For a persistent Mnesia application, keep bootstrap coordination in the application:
+
+1.  Start distribution, discovery and a coordinator that can remain alive while peers are absent. Keep the node name and its persistent storage association stable across restarts.
+2.  Decide explicitly whether this is an authorized first cluster or a node joining an existing one. An empty discovery result, timeout or network partition cannot elect a new schema owner.
+3.  Retry joining the expected database cluster, then wait for the required tables with a bounded `:mnesia.wait_for_tables/2` call. Handle timeout as a retryable or operator-visible state, rather than treating any Erlang connection as database readiness.
+4.  Start dependent workers and mark the application ready only when its database checks pass. Recover existing persisted state through the application's documented backup/recovery policy.
+
+Do not delete Mnesia files, recreate schemas, force-load tables or insert an arbitrary boot sleep as a remedy for a DNS error. Table synchronization and recovery have their own consistency requirements; see the Mnesia reference. Use disposable storage when reproducing the bootstrap sequence.
+
+Keep startup, liveness and readiness probes distinct: allow legitimate startup time, check whether the process can make progress for liveness, and check whether it can serve requests for readiness. A temporary peer outage alone should not cause every otherwise healthy node to restart.
+
+When diagnosing a rollout, collect a bounded timeline of Pod creation/readiness, DNS answers, libcluster lookup/connect messages and database bootstrap attempts. Inspect the running node identity, configured Mnesia directory, `:mnesia.system_info(:is_running)`, `:mnesia.system_info(:db_nodes)` and `:mnesia.system_info(:running_db_nodes)` once Mnesia is started; avoid collecting table contents or credentials. A StatefulSet by itself does not establish correct schema initialization or explain a Pow/Mnesia crash loop.
+
+Kubernetes rolling deployments
+------------------------------
+
+libcluster connects Erlang nodes; it does not distribute application code or choose where application workers run. A new release can discover an older node successfully and still fail when a distributed supervisor places a worker whose module is absent on that node. For example, release A may contain only `MyApp.WorkerA`, while release B also contains `MyApp.WorkerB`. Connecting A and B does not make `MyApp.WorkerB.start_link/1` available on A. Horde.DynamicSupervisor manages its own membership and process placement; check the behavior of the Horde version and distribution strategy your application actually uses.
+
+Prefer a staged compatible rollout:
+
+1.  Deploy the new worker modules and any required message/data compatibility to all eligible nodes, with scheduling of the new worker still disabled.
+2.  Verify that every node eligible for placement supports the worker, then enable its scheduling. Membership changes and node restarts must preserve that eligibility policy; a one-time module check is not an atomic placement guarantee.
+3.  Keep rollback versions compatible with workers that may still be assigned to them. When removing functionality, stop scheduling it before removing its code from eligible nodes.
+
+For diagnosis, call `:code.ensure_loaded/1` and check `:erlang.function_exported/3` on the **target node**, for example via `:erpc.call/4`. Checking the caller's modules or connecting to a peer only establishes the caller's code or network reachability. A missing remote module is not evidence of a discovery failure.
+
+If incompatible releases must use separate clusters, the existing Kubernetes API strategy can scope discovery by a version label. For example, expose the Pod label at runtime through the Downward API:
+
+\- name: CLUSTER\_VERSION
+  valueFrom:
+    fieldRef:
+      fieldPath: metadata.labels\['app.kubernetes.io/version'\]
+
+Then configure a pods-mode topology in `config/runtime.exs` (and pass it to `Cluster.Supervisor` as described above):
+
+config :libcluster,
+  topologies: \[
+    version\_group: \[
+      strategy: Cluster.Strategy.Kubernetes,
+      config: \[
+        kubernetes\_ip\_lookup\_mode: :pods,
+        kubernetes\_node\_basename: "myapp",
+        kubernetes\_selector:
+          "app=myapp,app.kubernetes.io/version=#{System.fetch\_env!("CLUSTER\_VERSION")}"
+      \]
+    \]
+  \]
+
+Set a valid `app.kubernetes.io/version` label on the Pod template, and configure the local node identity and namespace as in the strategy's documentation. The selector requires no custom strategy. DNS strategies cannot filter arbitrary Pod labels; use distinct headless Services with the intended selectors and matching node identities instead.
+
+A discovery selector is not a connection admission rule. Other topologies, existing connections, manual connections and transitive Erlang connections through shared peers can bridge groups. Align discovery and the application's distributed supervisor/registry membership across all peers; changing a selector does not by itself establish isolation. Plan the complete transition before changing a running stateful cluster.
+
+Separate groups can each run a nominally unique worker or scheduled job. Plan duplicate work, external side effects, storage ownership, handoff, reduced capacity, readiness and communication between versions. Version isolation prevents direct state handoff through the shared Erlang cluster; it does not replace an application migration protocol. Do not change distribution cookies as an ad hoc rollout fix.
 
 Clustering
 ----------

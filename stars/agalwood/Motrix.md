@@ -1,6 +1,6 @@
 ---
 project: Motrix
-stars: 57638
+stars: 57941
 description: A full-featured download manager.
 url: https://github.com/agalwood/Motrix
 ---
@@ -24,12 +24,12 @@ The same core powers two ways to run Motrix:
 -   **Desktop app:** Runs on macOS, Windows, and Linux
 -   **Headless server:** Runs without a desktop environment, either directly on Node.js or in Docker, and includes a web UI for NAS devices and home servers
 
-Motrix 2.1.1
+Motrix 2.3.0
 ------------
 
-Motrix 2.1.1 raises the simultaneous-download limit to 200 and fixes false path conflicts caused by unresolved magnet tasks during legacy migration. The default remains 10 concurrent downloads. Download v2.1.1 from GitHub Releases and read the full release notes.
+Motrix 2.3.0 refreshes the application artwork, restores cloud-drive directory downloads with aria2 1.37.0-motrix.23, and improves Server media tools, settings and update checks. It also introduces native fnOS integration; FPK packages follow a separate verified publication workflow. Download v2.3.0 from GitHub Releases and read the full release notes.
 
-Back up your existing Motrix profile and downloads before upgrading. The desktop Migration Assistant imports selected v1 tasks as paused records and preserves the original files. Resuming downloads requires a separate explicit action. Windows in-place BitTorrent activation requires a supported local NTFS volume and explicit authorization. See the migration guide for supported volumes, file permissions, and recovery. Keep the v1 profile and the engine's pre-upgrade database backup.
+Back up your existing Motrix profile and downloads before upgrading. The bundled engine upgrades its SQLite database to schema 6 and keeps a pre-upgrade backup; older engines cannot open schema 6. Keep that backup if you may need to downgrade. The desktop Migration Assistant imports selected v1 tasks as paused records and preserves the original files. Resuming downloads requires a separate explicit action. Windows in-place BitTorrent activation requires a supported local NTFS volume and explicit authorization. See the migration guide for supported volumes, file permissions, and recovery. Keep the original v1 profile.
 
 Screenshots
 -----------
@@ -217,11 +217,11 @@ You can also install it from Settings → Integration → Command-line tools in 
 
 ### Headless server with Docker
 
-Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR. Stable releases also update `2.1`, `2`, `stable`, and `latest` after runtime verification; beta releases publish only their immutable version tag. The included `compose.yaml` keeps Server state separate from downloaded resources:
+Tagged releases publish a multi-architecture Server image to Docker Hub and GHCR. Stable releases also update `2.3`, `2`, `stable`, and `latest` after runtime verification; beta releases publish only their immutable version tag. The included `compose.yaml` keeps Server state separate from downloaded resources:
 
 mkdir -p motrix-data downloads
 sudo chown 1000:1000 motrix-data downloads
-export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.1.1'
+export MOTRIX\_IMAGE='docker.io/motrixapp/motrix-server:2.3.0'
 export MOTRIX\_PUBLIC\_URL='http://nas.example.lan:8080'
 docker compose pull server
 docker compose up -d --wait

@@ -1,6 +1,6 @@
 ---
 project: oneuptime
-stars: 7773
+stars: 7801
 description: Complete open-source monitoring and observability platform.
 url: https://github.com/OneUptime/oneuptime
 ---
@@ -21,6 +21,7 @@ What it does
 -   **Workflows and runbooks**: Automate routine work, and connect Jira, ServiceNow and the other tools your team already uses.
 -   **OneUptime AI**: Investigates new incidents and alerts and posts a root cause analysis with citations. When you turn fixing on, it can open a pull request with a fix for your team to review.
 -   **API, CLI and Terraform**: Automate OneUptime from your scripts and CI, and manage monitors, status pages and on-call as code.
+-   **MCP server** (`https://oneuptime.com/mcp`): Connect Claude, Cursor, VS Code with GitHub Copilot or any other client of the Model Context Protocol (MCP), and ask it to look into an incident, query logs and traces, acknowledge an alert or set up a monitor.
 
 Everything else is in the docs.
 

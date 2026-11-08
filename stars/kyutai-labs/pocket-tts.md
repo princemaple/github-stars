@@ -1,6 +1,6 @@
 ---
 project: pocket-tts
-stars: 10154
+stars: 10229
 description: A TTS that fits in your CPU (and pocket)
 url: https://github.com/kyutai-labs/pocket-tts
 ---
@@ -370,6 +370,16 @@ uvx pocket-tts generate \\
   --text "Salaam aleekum. Lii mooy jumtukaayu wax ci làkku wolof."
 
 The repository is gated: accept the terms on the model page and log in with `hf auth login` first.
+
+Africa TTS by AfriSpeech, 6 layers
+
+92 African languages and English in one model, with a default voice per language, 2.4x faster than real time on 4 CPU cores. The model reads IPA, not spelling: convert text with africa-g2p (English: espeak-ng), or use the africa-tts package, which does it for you. Live demo · samples in 53 languages.
+
+# Twi: "Welcome! My name is Kofi, and I am from Kumasi."
+uvx pocket-tts generate \\
+  --config hf://AfriSpeech/africa-tts/config.yaml@c5229a271b4362bf7c9667eaf8249e5e40454d8e \\
+  --voice hf://AfriSpeech/africa-tts/voices/twi.wav@c5229a271b4362bf7c9667eaf8249e5e40454d8e \\
+  --text "akʷaaba! jɛfɾɛ me kofi, na mefiɾi kumase."
 
 Want your model here? Head to the training Readme to get started!
 

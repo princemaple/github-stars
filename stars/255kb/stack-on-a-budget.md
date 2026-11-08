@@ -1,6 +1,6 @@
 ---
 project: stack-on-a-budget
-stars: 12492
+stars: 12493
 description: A collection of services with great free tiers for developers on a budget. Sponsored by Mockoon, the best mock API tool. https://mockoon.com
 url: https://github.com/255kb/stack-on-a-budget
 ---
@@ -42,7 +42,6 @@ Table of Contents
     -   Alwaysdata
     -   AWS EC2
     -   Azure App Service
-    -   Cloady
     -   Faable
     -   Fly
     -   GearHost
@@ -155,6 +154,7 @@ Table of Contents
     -   SparkPost
 -   **Error Reporting**
     -   Bugsnag
+    -   LogBrew
     -   LogRocket
     -   Muscula
     -   Rollbar
@@ -211,12 +211,14 @@ Table of Contents
     -   Librato
     -   MonitorMonk
     -   New Relic
+    -   NoCert
     -   OnlineOrNot
     -   PingPong
     -   Phare
     -   Sematext SPM
     -   SolidPing
     -   Uptime Robot
+    -   Waitcher
 -   **Push notifications**
     -   Azure Notification Hubs
     -   Batch
@@ -264,6 +266,7 @@ Table of Contents
 -   **Web Scraping**
     -   Apify
     -   Crawlbase
+    -   LurkAPI
     -   PageShot
     -   Scraper API
     -   SearchApi

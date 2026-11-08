@@ -1,6 +1,6 @@
 ---
 project: carbon
-stars: 2788
+stars: 2811
 description: Open-source manufacturing ERP, MES and QMS. Quoting, MRP, inventory, shop floor, quality and lot/serial traceability on one Postgres schema, with a REST API and MCP server. Self-host or use Carbon Cloud.
 url: https://github.com/crbnos/carbon
 ---
@@ -396,7 +396,7 @@ Shared Vitest, TypeScript and Tailwind configuration
 Local Development
 -----------------
 
-**Prerequisites:** Docker, Node.js 22 and pnpm (via Corepack). On Windows, use WSL or Git Bash.
+**Prerequisites:** Docker, Node.js 24.22.1+ and pnpm (via Corepack). On Windows, use WSL or Git Bash.
 
 git clone https://github.com/crbnos/carbon.git && cd carbon
 corepack enable && pnpm install

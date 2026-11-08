@@ -1,6 +1,6 @@
 ---
 project: ProxyBridge
-stars: 6947
+stars: 7033
 description: Force Proxy to any Windows/MacOS/Linux Application TCP and UDP traffic
 url: https://github.com/InterceptSuite/ProxyBridge
 ---
@@ -59,10 +59,9 @@ Sponsored
 
 **Special codes for ProxyBridge users:**
 
+-   `PB2X` - 2X traffic for Black Friday
 -   `PB35` - 35% off Mobile and Residential Proxies
 -   `PB25` - 25% off ISP (Static) Proxies
-
-This is a paid sponsorship. ProxyBridge works with any SOCKS5 or HTTP proxy.
 
 Download
 --------

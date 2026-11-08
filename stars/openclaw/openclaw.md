@@ -1,6 +1,6 @@
 ---
 project: openclaw
-stars: 393560
+stars: 394147
 description: The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 
 url: https://github.com/openclaw/openclaw
 ---
@@ -8,7 +8,7 @@ url: https://github.com/openclaw/openclaw
 OpenClaw 🦞 — Your assistant, on your devices, in your chats
 ============================================================
 
-OpenClaw is an open-source AI assistant that runs on your own computer and meets you in the channels you already use: Discord, iMessage, Slack, Teams, Telegram, WhatsApp, and 20+ more, plus native apps for macOS, iOS, Android, Windows, and Linux. One Gateway runs it as a personal assistant on a laptop or as a shared team deployment; configuration is the only difference.
+OpenClaw is an open-source AI assistant that runs on your own computer and meets you in the channels you already use: Discord, iMessage, Slack, Teams, Telegram, WhatsApp, and 20+ more, plus native apps for macOS, iOS, Android, Windows, and Linux. One Gateway runs it as a personal claw on a laptop or as a shared multiplayer claw; configuration is the only difference.
 
 **Yours, with no catch.** State, memory, and credentials live on your hardware. Models and agent harnesses (Claude, Codex, local models) are plugins you can swap without changing anything else. Your prompts go to the model provider and chat platforms you configure, plus any diagnostics export you enable yourself; by default OpenClaw itself phones home for nothing but a daily version check, anonymous feature statistics are opt-in, and `update.checkOnStart: false` disables both (what OpenClaw sends). OpenClaw is stewarded by the OpenClaw Foundation, an independent 501(c)(3), and has no paid tier, hosted service, or token. The architecture case — trusted gateway, untrusted execution, policy enforced by code — is in Why OpenClaw.
 
@@ -25,7 +25,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 # Windows PowerShell
 iwr \-useb https://openclaw.ai/install.ps1 | iex
 
-Already manage Node.js? Install the published package instead (Node 24.22.1+ or 26.12.1+; Node 26 recommended):
+Already manage Node.js? Install the published package instead (Node 24.16.0+ on 24.x or 26.1.0+; 24.22.1+/26.12.1+ strongly recommended for security):
 
 npm install -g openclaw@latest --allow-scripts=openclaw
 

@@ -1,6 +1,6 @@
 ---
 project: html-to-image
-stars: 7272
+stars: 7274
 description: ✂️ Generates an image from a DOM node using HTML5 canvas and SVG.
 url: https://github.com/bubkoo/html-to-image
 ---
@@ -27,7 +27,7 @@ import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 /\* ES5 \*/
 var htmlToImage \= require('html-to-image');
 
-All the top level functions accept DOM node and rendering options, and return a promise fulfilled with corresponding dataURL:
+All the top level functions accept a DOM node and rendering options, and return a promise with the requested output:
 
 -   toPng
 -   toSvg
@@ -35,6 +35,57 @@ All the top level functions accept DOM node and rendering options, and return a 
 -   toBlob
 -   toCanvas
 -   toPixelData
+
+### Reuse and customization (v2 branch)
+
+The existing functions remain the shortest path for one image. Create a renderer when several captures share defaults, and create a capture when the same DOM snapshot needs several formats:
+
+import { createRenderer } from 'html-to-image'
+
+const renderer \= createRenderer({ pixelRatio: 2, skipFonts: false })
+const capture \= await renderer.capture(document.querySelector('#receipt')!)
+try {
+  const png \= await capture.toPng()
+  const jpeg \= await capture.toJpeg({ quality: 0.85 })
+  const blob \= await capture.toBlob({ type: 'image/webp', quality: 0.8 })
+  // All three outputs use the same frozen DOM snapshot and rasterization.
+} finally {
+  capture.dispose()
+  renderer.dispose()
+}
+
+For a one-off change, `onClone` edits the detached copy before resource discovery. For reusable behavior, register a named plugin. A resource resolver returns a `Blob` to handle a URL, or `undefined` to continue to the next resolver and then normal `fetch`:
+
+const renderer \= createRenderer({
+  onClone: ({ root }) \=> {
+    root.querySelectorAll('\[data-private\]').forEach((node) \=> node.remove())
+  },
+  plugins: \[{
+    name: 'app-assets',
+    resolveResource: async ({ url, kind }, { signal }) \=> {
+      if (!url.startsWith('app:')) return undefined
+      return fetch(\`/assets/${url.slice(4)}\`, { signal }).then((res) \=> res.blob())
+    },
+  }\],
+})
+
+For a change tied to each source element, use `onCloneNode(original, copy)`. It runs synchronously after that element's children, computed styles, pseudo elements and form state have been copied. Children run before parents. It runs before `onClone`, plugins, and resource embedding, so edit `copy`, not `original`. Filtered nodes and text nodes do not call it. A thrown error rejects the capture.
+
+const png \= await htmlToImage.toPng(node, {
+  onCloneNode(original, copy) {
+    if (original.matches('\[data-private\]')) copy.textContent \= 'Hidden'
+  },
+})
+
+`stylePropertiesForNode(source)` chooses computed CSS properties before they are copied. Its array applies to that element and its pseudo elements; `[]` copies none, and `undefined` copies the full computed style even when a global `includeStyleProperties` list exists. Inline styles already on the DOM clone remain. Include `content` if a selected pseudo element needs its generated text. The callback runs synchronously and must return an array or `undefined`.
+
+Each capture has its own cancellation signal and resource cache. `capture.dispose()` releases the snapshot; `renderer.dispose()` cancels outstanding work and releases its captures. Per-call `signal` and `timeout` are supported. `exclude` accepts CSS selectors for subtrees. See v2 architecture for extension order, migration details, and current limits.
+
+On WebKit, a large embedded image can be blank on the first rasterization. If affected, opt into repeated rasterization of the same snapshot:
+
+const png \= await htmlToImage.toPng(node, { stabilizationAttempts: 3 });
+
+This adds rendering time and is capped at 10 attempts. The default is one.
 
 Go with the following examples.
 
@@ -114,21 +165,15 @@ htmlToImage
 
 #### toPixelData
 
-Get the raw pixel data as a Uint8Array with every 4 array elements representing the RGBA data of a pixel:
+Get the raw RGBA pixel data. `toPixelData` returns a `Uint8ClampedArray`; `toImageData` also provides the actual output width and height, which account for `pixelRatio` and canvas scaling:
 
-var node \= document.getElementById('my-node');
-
-htmlToImage
-  .toPixelData(node)
-  .then(function (pixels) {
-    for (var y \= 0; y < node.scrollHeight; ++y) {
-      for (var x \= 0; x < node.scrollWidth; ++x) {
-        pixelAtXYOffset \= (4 \* y \* node.scrollHeight) + (4 \* x);
-        /\* pixelAtXY is a Uint8Array\[4\] containing RGBA values of the pixel at (x, y) in the range 0..255 \*/
-        pixelAtXY \= pixels.slice(pixelAtXYOffset, pixelAtXYOffset + 4);
-      }
-    }
-  });
+const { width, height, data } \= await htmlToImage.toImageData(node);
+for (let y \= 0; y < height; y++) {
+  for (let x \= 0; x < width; x++) {
+    const offset \= 4 \* (y \* width + x);
+    const rgba \= data.slice(offset, offset + 4);
+  }
+}
 
 #### React
 
@@ -219,9 +264,7 @@ Defaults to `false`
 
 ### includeQueryParams
 
-Set false to use all URL as cache key. If the value has falsy value, it will exclude query params from the provided URL.
-
-Defaults to `false`
+Full URLs, including query parameters, identify resources by default. Set `false` only to opt into the legacy behavior that treats query variants as the same resource within one capture.
 
 ### imagePlaceholder
 
@@ -232,6 +275,10 @@ Defaults to an empty string and will render empty areas for failed images.
 ### pixelRatio
 
 The pixel ratio of the captured image. Default use the actual pixel ratio of the device. Set `1` to use as initial-scale `1` for the image.
+
+### stabilizationAttempts
+
+Rasterize the frozen SVG this many times and use the last result. This can help when Safari/WebKit produces a blank embedded image on an initial draw. Set an integer from `1` to `10`; the default is `1`. It does not re-read the source DOM. Extra attempts cost time and remain subject to `timeout`.
 
 ### preferredFontFormat
 
@@ -260,13 +307,17 @@ Defaults to `false`
 
 ### type
 
-A string indicating the image format. The default type is image/png; that type is also used if the given type isn't supported. When supplied, the toCanvas function will return a blob matching the given image type and quality.
+A string indicating the image format. The default type is image/png; that type is also used if the given type isn't supported. When supplied, `toBlob` returns a blob matching the given image type and quality.
 
 Defaults to `image/png`
 
 ### includeStyleProperties
 
 An array of style property names. Can be used to manually specify which style properties are included when cloning nodes. This can be useful for performance-critical scenarios.
+
+### stylePropertiesForNode
+
+A synchronous callback that selects computed style property names for each source element and its pseudo elements. Returning `[]` copies no computed properties; returning `undefined` copies all of them, overriding `includeStyleProperties` for that element. Existing inline styles on the copy remain.
 
 Browsers
 --------
@@ -276,7 +327,7 @@ Only standard lib is currently used, but make sure your browser supports:
 -   Promise
 -   SVG `<foreignObject>` tag
 
-It's tested on latest Chrome, Firefox and Safari (49, 45 and 16 respectively at the time of writing), with Chrome performing significantly better on big DOM trees, possibly due to it's more performant SVG support, and the fact that it supports `CSSStyleDeclaration.cssText` property.
+The V2 branch runs source and built-package browser tests in Chromium, Firefox, and Playwright WebKit on every pull request. Playwright WebKit is not a real iPhone/iPad Safari device. See the test architecture and release readiness for the exact validation scope. Large DOM performance varies by browser and fixture; the measured V2 comparison is recorded here.
 
 _Internet Explorer is not (and will not be) supported, as it does not support SVG `<foreignObject>` tag._
 

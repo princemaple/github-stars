@@ -1,6 +1,6 @@
 ---
 project: spec-kit
-stars: 144450
+stars: 148430
 description: 💫 Toolkit to help you get started with SDD or any other process!
 url: https://github.com/github/spec-kit
 ---
@@ -236,6 +236,7 @@ Documentation
 -------------
 
 -   CLI reference and process commands
+-   How-to guides for applying Spec Kit to your project work
 -   SDD philosophy, full methodology, and evolving existing specs
 -   Project history
 -   How Spec Kit uses Spec Kit
@@ -244,6 +245,9 @@ In the news
 -----------
 
 -   Open Source Friday: Spec Kit Part 2 (October 16, 2026) — Manfred Riem and Nicole Haugen discuss Spec Kit 1.0 and the expanded toolkit.
+-   Living Specs in SpecKit (October 15, 2026) — Alfredo Perez explores maintaining capability-level specifications as a project evolves.
+-   Spec Kit Customization Series (October 8–10, 2026) — Jesse Liberty walks through presets and extension authoring, including testing and publishing.
+-   From Spec-First to Enterprise-Ready: Extending GitHub Spec Kit (October 7, 2026) — Apoorv Gupta explains enterprise customization through presets, extensions, bundles, workflows, and governed catalogs.
 -   Open Source Friday with Spec Kit (May 8, 2026) — An introduction and SDD demonstration with Manfred Riem.
 
 Star history

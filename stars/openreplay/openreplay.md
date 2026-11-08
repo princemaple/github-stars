@@ -1,6 +1,6 @@
 ---
 project: openreplay
-stars: 13083
+stars: 13115
 description: Session replay, cobrowsing and product analytics you can self-host. Best for reproducing issues and iterating on your product.
 url: https://github.com/openreplay/openreplay
 ---

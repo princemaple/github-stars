@@ -1,6 +1,6 @@
 ---
 project: just
-stars: 36494
+stars: 36603
 description: 🤖 Just a command runner
 url: https://github.com/casey/just
 ---
@@ -3365,7 +3365,7 @@ Cached Recipes
 
 `just` will skip invocations of recipes with the `[cache]` attribute1.54.0 if it finds an entry matching the invocation in the cache. The `[cache]` attribute may only be used with script recipes and is currently unstable.
 
-For example, this recipe will be skipped if `image.jpg` exists and the contents of `image.png` and the output of `convert -version` haven't changed since the last run:
+For example, this recipe will be skipped if the contents of `image.png` and `image.jpg` and the output of `convert -version` haven't changed since the last run:
 
 set unstable
 
@@ -3382,7 +3382,7 @@ Unlike many other features of `just`, which are, hopefully, well thought-out and
 
 In particular, there are many details about the context in which a recipe runs that are not captured by cache keys.
 
-These include the time, input files, output files, system binaries, operating system version, databases, systems over the network, the DNS, and any of the myriad other things which may change the execution of a computer program.
+These include the time, unlisted input and output files, system binaries, operating system version, databases, systems over the network, the DNS, and any of the myriad other things which may change the execution of a computer program.
 
 Attempting to skip execution based on the type of crude heuristics that `just` employs has a long and sordid history. However, it is an undeniably convenient and powerful tool, and it is provided in the hopes that you find it useful.
 
@@ -3397,7 +3397,7 @@ The keys of the cache key object are:
 -   `executor`: script interpreter or shebang
 -   `extension`: script file extension
 -   `extra`: user-supplied value
--   `inputs`: map of file paths to content hashs
+-   `inputs`: map of file paths to content hashes
 -   `positional`: positional arguments
 -   `recipe`: `::`\-separated module path to invoked recipe
 -   `working_directory`: current working directory
@@ -3406,17 +3406,18 @@ All keys other than `extra` and `inputs` are populated automatically.
 
 Cache key objects for invoked recipes can be printed to standard error with `just -vv`.
 
-The environment variables included in `environment` may be controlled with `[cache(environment = EXPRESSION])`1.59.0.
+The environment variables included in `environment` may be controlled with `[cache(environment = EXPRESSION)]`1.59.0.
 
 The value of `extra` may be supplied with `[cache(extra = EXPRESSION)]`, where `EXPRESSION` is an arbitrary expression evaluated with recipe arguments in scope. Changes to the value of `extra` will cause a cache miss.
 
 Before `just` runs a cached recipe, it creates a cache key, hashes it, and looks for the corresponding cache entry.
 
-If the cache entry is non-empty, it skips the invocation.
+If the cache entry is non-empty and outputs in the cache entry match their current state, it skips the invocation. Otherwise it runs the invocation and writes a JSON object with the following keys:
 
-If the cache entry does not exist or is empty, it runs the invocation and writes `{}` to the cache entry.
+-   `outputs`: map of output path to state
+-   `recipe`: recipe path
 
-File locks are taken on cache entries, so concurrent execution of cached recipes by multiple `just` processes is safe. If two processes run a recipe invocation with the same cache key, the first will take the lock, run the recipe, write to the cache entry, and relinquish the lock. The second will block until the first relinquishes the lock, see that the entry is non-empty, and skip the invocation.
+File locks are taken on cache entries, so concurrent execution of cached recipes by multiple `just` processes is safe. If two processes run a recipe invocation with the same cache key, the first will take the lock, run the recipe, write to the cache entry, and relinquish the lock. The second will block until the first relinquishes the lock, see that the entry is non-empty and that outputs in the entry match their current state, and skip the invocation.
 
 The cache can be bypassed entirely with the `--no-cache` flag.
 
@@ -3486,11 +3487,11 @@ build:
 
 Output files can be provided with `[cache(outputs = FILES)]`, where `FILES` is an expression that is evaluated with recipe arguments in scope and whose evaluated elements are paths. Paths may be absolute or relative to the recipe's working directory.
 
-Outputs are not part of the cache key.
+After an invocation, the current state of outputs is recorded in the invocation's cache entry. This includes whether they are files or directories, and for files, the BLAKE3 hash of their contents.
 
-All output files must exist for an invocation to be skipped, and after an invocation runs successfully, it is an error if any output file does not exist.
+All outputs must exist and match their recorded state in the cache entry for an invocation to be skipped, and after an invocation runs successfully, it is an error if any outputs do not exist.
 
-In this example, `build` re-runs whenever `main` is missing, and errors if it runs without producing `main`:
+In this example, `build` re-runs whenever `main` is missing or modified, and errors if it runs without producing `main`:
 
 set unstable
 set lists
@@ -3871,6 +3872,14 @@ boolean
 `false`
 
 Error if a `.env` file isn't found.
+
+`dry-run`master
+
+string
+
+`"all"`
+
+What to skip when invoked with `--dry-run`. `"all"` skips recipe bodies, backticks, `shell()`, and `dotenv-command`. `"recipes"` only skips recipe bodies.
 
 `export`
 

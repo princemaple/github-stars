@@ -1,6 +1,6 @@
 ---
 project: spacedrive
-stars: 39354
+stars: 39460
 description: Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.
 url: https://github.com/spacedriveapp/spacedrive
 ---
@@ -149,7 +149,7 @@ Core operations are registered at compile time with type-safe inputs and outputs
 Install a nightly
 -----------------
 
-The nightly release carries `sd` and `sd-daemon` for macOS ARM64 (`macos-aarch64`) and Linux x86-64 (`linux-x86_64`), each with a `.sha256` file. Download both binaries for your platform, verify them, and put them in a directory on your `PATH`:
+The nightly release carries `sd` and `sd-daemon` for macOS ARM64 (`macos-aarch64`), Linux x86-64 (`linux-x86_64`) and Windows x86-64 (`windows-x86_64`, as `.exe` files), each with a `.sha256` file. macOS and Linux are the supported platforms. Windows is a preview: the CLI and daemon build and pass their unit tests there, but the file operation, source and drive acceptance suites have not run on Windows, there is no desktop app, and `sd daemon install` does not set up auto-start, so run `sd-daemon` yourself. Download both binaries for your platform, verify them, and put them in a directory on your `PATH`:
 
 shasum -a 256 -c sd-macos-aarch64.sha256 sd-daemon-macos-aarch64.sha256   # sha256sum -c on Linux
 chmod +x sd-macos-aarch64 sd-daemon-macos-aarch64

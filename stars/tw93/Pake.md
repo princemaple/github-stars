@@ -1,6 +1,6 @@
 ---
 project: Pake
-stars: 62707
+stars: 62877
 description: Turn any website into a lightweight desktop app with one command, on macOS, Windows and Linux.
 url: https://github.com/tw93/Pake
 ---
@@ -8,24 +8,24 @@ url: https://github.com/tw93/Pake
 Pake
 ====
 
-**Turn any website into a lightweight desktop app with one command. Supports macOS, Windows, and Linux.**
-
-pake.run
+**Turn any website into a lightweight desktop app with one command. Supports macOS, Windows and Linux. Free open-source CLI, plus a desktop app.**
 
 English · 中文 · 繁體 · 日本語 · 한국어 · Deutsch · Français
+
+> This repo is the free open-source Pake CLI, and everything below stays free. Prefer a graphical app? The Pake desktop app is a separate download from pake.run, its only official site. It makes apps from a ready-made gallery or any URL without Node.js or Rust, with settings, updates and separate apps for other accounts in one window. `pnpm install -g pake-cli` installs the CLI only.
 
 Features
 --------
 
--   🎐 **Lightweight**: Installer is nearly 20 times smaller than Electron packages, typically under 10 MB on disk, a lighter alternative to Nativefier and other Electron wrappers
--   🚀 **Fast**: Built with Rust Tauri, much faster than traditional JS frameworks with lower memory usage
--   ⚡ **Easy to use**: One-command packaging via CLI or online building, no complex configuration needed
--   📦 **Feature-rich**: Supports shortcuts, immersive windows, drag & drop, style customization, ad removal
+-   **Lightweight**: Installers are typically under 10 MB, nearly 20 times smaller than Electron packages, a lighter alternative to Nativefier and other Electron wrappers
+-   **Fast**: Built with Rust Tauri on the system WebView instead of a bundled Chromium, so each app carries no browser engine of its own
+-   **Easy to use**: One-command packaging via CLI or online building, no complex configuration needed
+-   **Feature-rich**: Supports shortcuts, immersive windows, drag & drop, style customization, ad removal
 
 Getting Started
 ---------------
 
--   **Beginners**: Download ready-made Popular Packages or use Online Building with no environment setup required
+-   **Beginners**: Make apps without a command line in the Pake desktop app, download ready-made Popular Packages or use Online Building with no environment setup required
 -   **Developers**: Install CLI Tool for one-command packaging of any website with customizable icons, window settings, and more
 -   **Advanced Users**: Clone the project locally for Custom Development, or check Advanced Usage for style customization and feature enhancement
 -   **Troubleshooting**: Check FAQ for common issues and solutions
@@ -35,7 +35,7 @@ Popular Packages
 
 WeRead Mac Windows Linux
 
-Twitter Mac Windows Linux
+X Mac Windows Linux
 
 Grok Mac Windows Linux
 
@@ -61,7 +61,9 @@ Notion Mac Windows Linux
 
 Flomo Mac Windows Linux
 
-🏂 You can download more applications from Releases. **Click here to expand the shortcuts reference!**  
+More apps are on the Releases page.
+
+**Keyboard shortcuts**  
 
 Mac
 
@@ -201,7 +203,7 @@ Requires Rust `>=1.85` and Node `>=22` (recommended LTS; `>=20.9` also works), s
 # Install dependencies
 pnpm i
 
-# Local development \[right-click to open debug mode\]
+# Local development, right-click to open the debug tools
 pnpm run dev
 
 # Build application
@@ -209,21 +211,21 @@ pnpm run build
 
 For style customization, feature enhancement, container communication and other advanced features, see Advanced Usage Documentation.
 
-Developers
-----------
+Contributors
+------------
 
-Pake wouldn't be possible without these incredible contributors. ❤️
+Pake wouldn't be possible without these incredible contributors.
 
 Support
 -------
 
--   The most direct way to support me is getting Mole for Mac, my paid Mac cleanup app
+-   Getting the Pake desktop app is the most direct way to support Pake's development
 -   If Pake helped you, give it a star, share it, or open an issue or PR, including sites that would make good desktop apps
--   I have two cats, TangYuan and Coke, and if Pake makes your life a little easier, feel free to treat them to canned food 🥩
+-   I have two cats, TangYuan and Coke, and if Pake makes your life a little easier, feel free to treat them to canned food
 
-These lovely people already did 🐱
+These lovely people already did
 
 License
 -------
 
-Pake is open source under GPL-3.0, see LICENSE and Pake Output Exception; apps you build with Pake are entirely yours to use and distribute. If you fork Pake into your own product, to avoid confusion please give it a different name and credit Pake as the source.
+Pake is open source under GPL-3.0, see LICENSE and Pake Output Exception; apps you build with Pake are entirely yours to use and distribute. If you fork Pake into your own product, to avoid confusion please give it a different name and credit Pake as the source. Pake CLI stays open source for the long run.

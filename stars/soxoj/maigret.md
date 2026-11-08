@@ -1,6 +1,6 @@
 ---
 project: maigret
-stars: 39580
+stars: 39809
 description: 🕵️‍♂️ Collect a dossier on a person by username from 6K websites
 url: https://github.com/soxoj/maigret
 ---
@@ -27,7 +27,10 @@ Maigret
 Sponsors
 --------
 
-**Noimosiny** is a comprehensive OSINT platform for professional investigators and analysts. Reverse email, phone number, and username search across 250+ modules. Automate your intelligence gathering with our powerful tools.
+  
+  
+_**Go beyond account enumeration.** WebVetted turns an email or username into a complete identity investigation with deep OSINT enrichment, breach intel, AI analysis, and an interactive identity graph._  
+**Start an Investigation →**
 
   
 

@@ -1,6 +1,6 @@
 ---
 project: localsend
-stars: 96832
+stars: 97755
 description: An open-source cross-platform alternative to AirDrop
 url: https://github.com/localsend/localsend
 ---
@@ -129,15 +129,15 @@ The last version to support Android 5 and 6 is v1.17.0.
 
 iOS
 
-13.0
+15.0
 
-The last version to support iOS 12 is v1.17.0. Sharing from other apps requires iOS 14 or later.
+The last version to support iOS 13 and 14 is v1.18.2 (sharing from other apps requires iOS 14), and iOS 12 is v1.17.0.
 
 macOS
 
-11 Big Sur
+12 Monterey
 
-Use OpenCore Legacy Patcher 2.0.2 (See #1005)
+The last version to support macOS 11 is v1.18.2. Use OpenCore Legacy Patcher 2.0.2 (See #1005)
 
 Windows
 
@@ -232,33 +232,43 @@ The LocalSend CLI is a terminal client built on LocalSend Protocol v2.
 
 On macOS and Linux, install the CLI with Homebrew:
 
+```
 brew update
 brew install localsend-cli
+```
 
 To upgrade an existing installation:
 
+```
 brew update
 brew upgrade localsend-cli
+```
 
 Run `localsend-cli --help` to see every available option and hotkey.
 
 Use the `send` command with one or more files, directories, or a mixture of both:
 
+```
 localsend-cli send report.pdf photo.jpg ./project-backup
+```
 
 The command opens the discovered-device list; select the destination interactively and press Enter to start the transfer.
 
 To select the destination without an interactive device list, pass its exact alias or IP address:
 
+```
 localsend-cli send --to "Cute Tomato" report.pdf
 localsend-cli send --to 192.168.27.26 report.pdf
+```
 
 An alias must uniquely identify a discovered device. An IP address is probed directly over HTTPS on LocalSend's default port (`53317`).
 
 To send a text message instead of files, use `--text` together with `--to`. Pass `-` to read the text from stdin:
 
+```
 localsend-cli send --to "Cute Tomato" --text "https://localsend.org"
 echo "Hello" | localsend-cli send --to "Cute Tomato" --text -
+```
 
 A single trailing line break is dropped from stdin. Text longer than 64 KB is sent as a `.txt` file instead. Stdin must be UTF-8 and at most 16 MB; send other data as a file.
 
@@ -362,43 +372,61 @@ These commands are intended for maintainers only. Make sure to run them from the
 
 Traditional APK
 
+```
 flutter build apk
+```
 
 AppBundle for Google Play
 
+```
 flutter build appbundle
+```
 
 ### iOS
 
+```
 flutter build ipa
+```
 
 ### macOS
 
+```
 flutter build macos
+```
 
 ### Windows
 
 **Traditional**
 
+```
 flutter build windows
+```
 
 **Local MSIX App**
 
+```
 flutter pub run msix:create
+```
 
 **Store ready**
 
+```
 flutter pub run msix:create --store
+```
 
 ### Linux
 
 **Traditional**
 
+```
 flutter build linux
+```
 
 **AppImage**
 
+```
 appimage-builder --recipe AppImageBuilder.yml
+```
 
 **Snap**
 

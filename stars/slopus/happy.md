@@ -1,6 +1,6 @@
 ---
 project: happy
-stars: 24437
+stars: 24533
 description: Orchestrate Claude, Codex and Grok in one app. Open-source (MIT), reuses the subscriptions you already pay for.
 url: https://github.com/slopus/happy
 ---
@@ -65,9 +65,10 @@ happy claude
 # Or start Codex
 happy codex
 
--   happy-app: the Happy mobile app and web client (Expo)
+-   happy-ios: native Swift/UIKit iOS app
+-   happy-android: native Kotlin/Jetpack Compose Android app
+-   happy-i18n: shared JSON translations
 -   happy-cli: the original Happy CLI (`happy` on npm)
--   happy-agent: remote session control for the original Happy CLI (not the Happy Agent runtime)
 -   happy-server: the relay server for encrypted sync
 -   happy-push-server: Cloudflare Worker that delivers push notifications via APNs/FCM (replaces the Expo push service)
 

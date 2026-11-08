@@ -1,6 +1,6 @@
 ---
 project: opendataloader-pdf
-stars: 30131
+stars: 30213
 description: PDF Parser for AI-ready data. Automate PDF accessibility. Open-source.
 url: https://github.com/opendataloader-project/opendataloader-pdf
 ---

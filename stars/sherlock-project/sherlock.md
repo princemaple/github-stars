@@ -1,6 +1,6 @@
 ---
 project: sherlock
-stars: 95335
+stars: 100513
 description: Hunt down social media accounts by username across social networks
 url: https://github.com/sherlock-project/sherlock
 ---
@@ -13,6 +13,10 @@ Installation    •    Usage    •    Contributing
 
 Installation
 ------------
+
+  
+
+  
 
 Warning
 

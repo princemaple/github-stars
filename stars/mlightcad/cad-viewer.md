@@ -1,6 +1,6 @@
 ---
 project: cad-viewer
-stars: 1221
+stars: 1234
 description: The world’s first fully web-based DXF/DWG viewer and editor that runs entirely in the browser — no backend server required.
 url: https://github.com/mlightcad/cad-viewer
 ---
@@ -51,7 +51,7 @@ Community Linux desktop packages:
 Official sample apps that show how to integrate MLightCAD into your own product:
 
 -   cad-simple-viewer-demo — Minimal vanilla TypeScript host for `@mlightcad/cad-simple-viewer`: open local or CDN DXF/DWG, drive commands from a small toolbar, and lazy-load HTML/PDF/SVG export plugins without the full Vue UI.
--   cad-editor-demo — Full-featured Vue 3 app built on `@mlightcad/cad-viewer` with menus, ribbons, dialogs, command line, and status bar (live demo).
+-   cad-editor-demo — Full-featured Vue 3 app built on `@mlightcad/cad-editor` with menus, ribbons, dialogs, command line, and status bar (live demo).
 -   cad-viewer-nextjs-demo — Next.js “CAD drive” demo: chunked resumable DWG/DXF upload, SQLite-backed file list with preview thumbnails, and open drawings either with **live browser parse** (`cad-simple-viewer`) or **server-side ACEX prerender** (faster load, lower memory).
 
 Features
@@ -231,8 +231,6 @@ The goal of this project is to create a full-featured **2D AutoCAD-like system i
 Legend:
 
 -   Completed
--   Planned
--   ⏳ In progress
 
 ### Core File & Data Layer
 
@@ -242,15 +240,15 @@ Legend:
 -   DWG loading
 -   Export to self-contained offline HTML (embedded viewer)
 -   Large file streaming / incremental loading
--   ⏳ File version compatibility (R12–Latest)
+-   File version compatibility (R12–Latest)
 
 #### Data Model
 
 -   Unified entity data model
 -   Layer table support
 -   Block / insert structure
--   ⏳ Handle & object ID management: currently objectId is same as handle and represented as one string instead of bigint (int64).
--   ⏳ XData / extension dictionary support
+-   Handle & object ID management: currently objectId is same as handle and represented as one string instead of bigint (int64).
+-   XData / extension dictionary support
 -   Proxy entity handling
 
 ### Rendering & Performance
@@ -394,6 +392,7 @@ Legend:
 -   Framework-agnostic core
 -   React integration example
 -   Vue integration example
+-   Next.js integration example
 -   OpenLayers / Map integration
 -   CMS / Notion embedding
 
@@ -423,6 +422,7 @@ Legend:
 ### Platform Targets
 
 -   Google Drive Integration (Picker data source; Drive “Open with” optional follow-up)
+-   OneDrive Integration (Microsoft OneDrive / SharePoint data source)
 -   WeChat Mini Program viewer
 -   Mobile browser support (responsive layout & touch)
 

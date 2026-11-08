@@ -1,6 +1,6 @@
 ---
 project: stripe-cli
-stars: 2216
+stars: 2227
 description: A command-line tool for Stripe
 url: https://github.com/stripe/stripe-cli
 ---
@@ -21,6 +21,24 @@ Installation
 ------------
 
 Stripe CLI is available for macOS, Windows, and Linux for distros like Ubuntu, Debian, RedHat and CentOS.
+
+### Installation script (recommended)
+
+Use the installation script for your operating system to enable automatic updates by default.
+
+**macOS or Linux:**
+
+curl -fsSL https://cli.stripe.com/install.sh | sh
+
+**Windows (PowerShell):**
+
+irm https://cli.stripe.com/install.ps1 | iex
+
+After installation, open a new terminal to use `stripe`.
+
+### Package managers
+
+Package-manager installations don't support automatic updates. Use your package manager to upgrade the CLI, as described in Upgrading.
 
 ### npm (macOS, Linux, Windows)
 
@@ -139,6 +157,16 @@ Unzip `stripe_X.X.X_windows_x86_64.zip` and add the path containing `stripe.exe`
 
 Upgrading
 ---------
+
+### Automatic updates
+
+When you install using a script, the CLI checks for updates as you use it and automatically installs updates within the same major version.
+
+To disable automatic updates, set `STRIPE_NO_AUTO_UPDATE=1` or add `auto_update = false` to `~/.config/stripe/config.toml`.
+
+### Manual upgrades
+
+If you installed using a package manager, use the matching upgrade command.
 
 ### npm (macOS, Linux, Windows)
 

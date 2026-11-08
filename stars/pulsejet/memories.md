@@ -1,6 +1,6 @@
 ---
 project: memories
-stars: 3872
+stars: 3876
 description: Fast, modern and advanced photo management suite. Runs as a Nextcloud app.
 url: https://github.com/pulsejet/memories
 ---
@@ -21,6 +21,7 @@ Memories is a _batteries-included_ photo management solution for Nextcloud with 
 -   **📱 Mobile Support**: Work from any device, of any shape and size through the web app.
 -   **✏️ Edit Metadata**: Edit dates and other metadata on photos quickly and in bulk.
 -   **📦 Archive**: Store photos you don't want to see in your timeline in a separate folder.
+-   **📸 Advanced Formats**: Support for Ultra-HDR and RAW image formats.
 -   **📹 Video Transcoding**: Transcode videos and use HLS for maximal performance.
 -   **🗺️ Map**: View your photos on a map, tagged with accurate reverse geocoding.
 -   **📦 Migration**: Migrate easily from Nextcloud Photos and Google Takeout.
@@ -37,7 +38,7 @@ Memories is a _batteries-included_ photo management solution for Nextcloud with 
 📱 Mobile Apps
 --------------
 
--   An Android client for Memories is available in early access on Google Play, F-Droid or GitHub Releases.
+-   An Android client for Memories is available on Google Play, F-Droid or GitHub Releases.
 -   For automatic uploads, you can use the official Nextcloud mobile apps.
     -   Android: Google Play, F-Droid
     -   iOS: App Store.
@@ -50,13 +51,13 @@ You can use the dev container to quickly fire up an instance of Nextcloud with M
 To set up a development instance manually, follow these steps:
 
 1.  ☁ Clone this monorepo into the `custom_apps` folder of your Nextcloud.
-2.  📥 Install Composer and Node.js 18
+2.  📥 Install Composer and Node.js
 3.  👩‍💻 In a terminal, run the command `make dev-setup` to install the dependencies.
 4.  🏗 To build/watch the UI, run `make watch-js`.
 5.  ✅ Enable the app through the app management of your Nextcloud.
 6.  ⚒️ (Strongly recommended) use VS Code for development and install these extensions (`Ctrl+Shift+P` > `Show Recommended Extensions`).
     -   PHP Intelephense: For PHP intellisense and static analysis
-    -   PHP-CS-Fixer: For PHP formatting (alternatively, `make php-cs-fixer`)
+    -   PHP-CS-Fixer: For PHP formatting (alternatively, `make php-format`)
     -   Psalm: For PHP static analysis (alternatively, `make psalm`)
     -   Prettier: For autoformatting Vue and Typescript
     -   Volar: For Vue intellisense and static analysis
@@ -67,7 +68,7 @@ This monorepo is organized into the following packages:
 -   lib: Backend and database migrations (PHP).
 -   src: Frontend for all platforms (Vue)
 -   go-vod: On-demand video transcoder (Go)
--   android: Android implemention of NativeX (Kotlin)
+-   android: Android implementation of NativeX (Kotlin)
 -   l10n: Translations (Transifex)
 
 Releases are organized with these tags:
@@ -97,7 +98,7 @@ For the full changelog, see CHANGELOG.md.
 
 To the great folks building Nextcloud, PHP, Vue and all the other dependencies that make this project possible.
 
-Thanks to GitHub, CircleCI and BrowserStack for sponsorship for Open Source projects for CI / testing on different devices.
+Thanks to GitHub and BrowserStack for sponsorship for Open Source projects for CI / testing on different devices.
 
 📄 License
 ----------

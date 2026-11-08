@@ -1,6 +1,6 @@
 ---
 project: wysiwyg-editor
-stars: 5394
+stars: 5393
 description: The next generation Javascript WYSIWYG HTML Editor.
 url: https://github.com/froala/wysiwyg-editor
 ---

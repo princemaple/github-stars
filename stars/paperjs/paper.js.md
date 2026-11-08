@@ -1,6 +1,6 @@
 ---
 project: paper.js
-stars: 15177
+stars: 15192
 description: The Swiss Army Knife of Vector Graphics Scripting – Scriptographer ported to JavaScript and the browser, using HTML5 Canvas. Created by @lehni & @puckey
 url: https://github.com/paperjs/paper.js
 ---
@@ -192,7 +192,7 @@ The Paper.js sources are distributed across many separate files, organised in su
 pnpm build
 ```
 
-You will then find the built library files inside the `dist` folder, named `paper-full.js` and `paper-core.js`, along with their minified versions. Read more about this in Which Version to Use?.
+You will then find the built library files inside the `dist` folder, named `paper-full.js` and `paper-core.js`, along with their minified versions and source maps. Read more about this in Which Version to Use?.
 
 ### Running Directly from Separate Source Files
 

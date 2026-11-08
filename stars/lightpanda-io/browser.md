@@ -1,6 +1,6 @@
 ---
 project: browser
-stars: 39260
+stars: 41571
 description: Lightpanda: the headless browser designed for AI and automation
 url: https://github.com/lightpanda-io/browser
 ---
@@ -166,7 +166,7 @@ Because the agent runs inside the same process as the browser, every tool call i
 
 The output of an agent session is a PandaScript: vanilla JavaScript with a small set of native browser primitives built directly into Lightpanda. Run `/save` to export one from your current session, then replay it with `lightpanda run <script>.js`. Scripts are deterministic and token-free, so you can prototype with the LLM and ship the output to production without a model at runtime.
 
-It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Mistral, Hugging Face, the multi-lab gateways Vercel AI Gateway and OpenRouter (one key for hundreds of models), any OpenAI-compatible endpoint via `OPENAI_BASE_URL`, and local models via Ollama, llama.cpp or LLMD. You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
+It supports Anthropic, OpenAI, Gemini, Google Vertex AI, Mistral, Hugging Face, the multi-lab gateways Vercel AI Gateway and OpenRouter (one key for hundreds of models), any OpenAI-compatible endpoint via `OPENAI_BASE_URL`, local models via Ollama, llama.cpp or LLMD, and OpenAI Codex with a ChatGPT subscription instead of an API key (run `/provider codex` in the REPL to log in). You can also run without an LLM using `--no-llm`, which drops you into the REPL. See the agent documentation for the full reference.
 
 ./lightpanda agent                                    # auto-detects API key from env
 ./lightpanda agent --task "top story on news.ycombinator.com?"
@@ -271,8 +271,6 @@ Lightpanda is written with Zig `0.17.0`. You have to install it with the right v
 
 Lightpanda also depends on v8, Libcurl and html5ever.
 
-To be able to build the v8 engine, you have to install some libs:
-
 For **Debian/Ubuntu based Linux**:
 
 ```
@@ -281,7 +279,7 @@ sudo apt install xz-utils ca-certificates \
     clang make curl git
 ```
 
-You also need to install Rust.
+`pkg-config` and `libglib2.0-dev` are only needed to build V8 from source (see below). You also need to install Rust.
 
 For systems with **Nix**, you can use the devShell.
 
@@ -297,13 +295,15 @@ brew install cmake
 
 ### Build and run
 
-You can build the entire browser with `make build` or `make build-dev` for debug env.
+Run `make download-v8` once first to fetch the prebuilt V8 archive; both `make` and `zig build` pick it up. Without it, or on a platform with no published archive (the download then fails), the build compiles V8 from source, which takes several minutes. See CONTRIBUTING.md for details.
+
+Then build the entire browser with `make build` or `make build-dev` for debug env.
 
 But you can directly use the zig command: `zig build run`.
 
 #### Embed v8 snapshot
 
-Lighpanda uses v8 snapshot. By default, it is created on startup but you can embed it by using the following commands:
+Lightpanda uses a v8 snapshot. `make build` builds and embeds it. With a plain `zig build`, it is created on startup instead, unless you embed it by using the following commands:
 
 Generate the snapshot.
 

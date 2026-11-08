@@ -1,6 +1,6 @@
 ---
 project: tabler-icons
-stars: 22516
+stars: 22579
 description: A set of over 6200 free MIT-licensed high-quality SVG icons for you to use in your web projects.
 url: https://github.com/tabler/tabler-icons
 ---

@@ -1,6 +1,6 @@
 ---
 project: zx
-stars: 45828
+stars: 45834
 description: A tool for writing better scripts
 url: https://github.com/google/zx
 ---
@@ -44,10 +44,11 @@ Compatibility
 
 -   Linux, macOS, or Windows
 -   JavaScript Runtime:
-    -   Node.js >= 12.17.0
+    -   Node.js >= 12.20.0
     -   Bun >= 1.0.0
     -   Deno 1.x, 2.x
     -   GraalVM Node.js
+    -   Electron >= 11
 -   Bash or PowerShell
 -   Both CJS or ESM modules in JS or TS
 

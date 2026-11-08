@@ -1,6 +1,6 @@
 ---
 project: crush
-stars: 28902
+stars: 28993
 description: Glamourous agentic coding for all 💘
 url: https://github.com/charmbracelet/crush
 ---
@@ -162,9 +162,11 @@ Productivity may increase when using Crush and you may find yourself nerd sniped
 Getting Started
 ---------------
 
-The quickest way to get started is to choose a Hyper model from model picker. Follow the steps to authenticate and you'll be good to go.
+The quickest way to get started is to choose a Hyper model from the little model picker. Follow the steps to authenticate and you're ready to go.
 
-Hyper, from Charm, is the official Crush provider. It’s subscription-based and optimized for Crush. It’s privacy focused, with zero data retention (ZDR) and is designed to comply with GDPR. More on Hyper.
+Hyper, from Charm, is the official model provider for Crush. It’s built on open-weight models and is optimized for Crush, with an emphasis on high-quality inference. There are subscription and prepaid options, including zero data retention (ZDR). It's also GDPR compliant!
+
+More on Hyper.
 
 API Keys
 --------
@@ -370,6 +372,7 @@ You can override the user and data config locations by setting:
 
 -   `CRUSH_GLOBAL_CONFIG`
 -   `CRUSH_GLOBAL_DATA`
+-   `CRUSH_DATA_DIR` (overrides the per-project `.crush` directory)
 
 As an additional note, Crush also stores ephemeral data, such as application state, in one additional location. This is state and should not be edited by hand, nor should it be considered configuration.
 
@@ -890,7 +893,9 @@ Crush records pseudonymous usage metrics (tied to a device-specific hash), which
 
 Details on exactly what’s collected are in the source code (here and here).
 
-You can opt out of metrics collection at any time by setting the environment variable by setting the following in your environment:
+Also, when you use Crush with Hyper, your Crush usage metrics may be associated with your Hyper account to help us improve the service and diagnose issues. For more information, see the Hyper Privacy Policy.
+
+Either way, you can opt out of metrics collection at any time by setting the following in your environment:
 
 export CRUSH\_DISABLE\_METRICS=1
 

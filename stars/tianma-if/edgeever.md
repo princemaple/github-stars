@@ -1,6 +1,6 @@
 ---
 project: edgeever
-stars: 3059
+stars: 3151
 description: AI-native knowledge base & Evernote/Obsidian alternative with instant sync & native MCP. Free on Cloudflare or self-hosted via Docker.
 url: https://github.com/tianma-if/edgeever
 ---
@@ -10,9 +10,9 @@ EdgeEver
 
 **AI-native knowledge base & Evernote/Obsidian alternative with instant sync & native MCP. Free on Cloudflare or self-hosted via Docker.**
 
-简体中文 | 繁體中文 | **English** | 日本語 | Polski
+简体中文 | 繁體中文 | **English** | Español | Deutsch | Français | 日本語 | Polski | Русский
 
-Telegram Group  |  🌐 Live Demo  |  📱 Clients & Extension  |  Feature Matrix & Capabilities
+Telegram Group  |  🌐 Live Demo  |  📱 Clients & Extension  |  Feature Matrix & Capabilities  |  📥 Note Migration
 
 EdgeEver is a modern, open-source notes and knowledge base workspace. It preserves the classic, high-efficiency three-pane productivity workflow (Tree View · Note List · Editor) while offering an open data architecture and seamless AI Agent integration for complete ownership and smart productivity.
 
@@ -111,7 +111,7 @@ Advanced Features
 • Companion sidebar AI assistant for summaries, proofreading & translations  
 • BYOK (Bring Your Own Key): compatible with OpenAI, Claude, Gemini & custom endpoints
 
-• **Native Agent Protocols (MCP & ACP)**: Built-in MCP for external agent read/write; ACP in desktop app to drive local coding agents directly  
+• **Native Agent Protocols (MCP & ACP)**: Built-in MCP for external agent read/write; ACP in desktop app to drive local agents such as Codex, Claude Code and CodeBuddy directly  
 • **AI RSS Daily Digest**: Automated feed aggregation, AI noise filtering, and structured digest generation  
 • Extensible Plugin Development API
 
@@ -141,34 +141,33 @@ Copy the prompt below directly into an AI Agent (such as Codex, Claude, Cursor, 
 Deploy EdgeEver entirely through GitHub and Cloudflare:
 1. Fork https://github.com/tianma-if/edgeever.
 2. Create D1 `edgeever` and R2 `edgeever-resources` in Cloudflare.
-3. In Workers & Pages, create a Worker named `edgeever` from the Fork's `main` branch.
-   Use the repository root, keep Cloudflare's default Workers Builds deploy command,
-   and ensure its API token can read and edit D1. Select Save and Deploy.
-4. After the Worker is created, add the user's chosen password as the runtime Secret
-   `EDGE_EVER_AUTH_PASSWORD` (preferably at least 32 characters).
-   The username defaults to `admin`.
-   If the user specifies another, set `EDGE_EVER_AUTH_USERNAME` as a Workers Builds
-   variable before the next build.
-5. Run the build again, verify `/api/health` and `/api/openapi.json`, then log in
-   with that administrator username and password.
-6. Enable and manually run the GitHub Actions workflow named `Update deployed EdgeEver`
-   once so the Fork can automatically receive future stable releases and fixes.
+3. In Workers & Pages, select "Start with Hello World!" and create a Worker named `edgeever`.
+4. Add the user's chosen password as the runtime Secret `EDGE_EVER_AUTH_PASSWORD`
+   under Settings → Variables and Secrets, and deploy the Secret (preferably at least
+   32 characters). The username defaults to `admin`.
+5. Only after the Secret is deployed, open this Worker's Settings → Builds → Connect
+   and connect the Fork's `main` branch.
+6. In this Worker's Settings → Builds → API token, select or create the Cloudflare API token used for deployment, with D1 read/edit permission for the target account.
+7. In the Fork's GitHub repository, open Actions → Update deployed EdgeEver, enable the workflow if prompted, and select Run workflow on `main`. After confirming in Cloudflare that the corresponding build succeeded and deployment completed, verify `/api/health` and `/api/openapi.json`, then log in with the administrator
+   username and password.
+   This workflow will automatically sync future stable releases and fixes.
 ```
 
 > Detailed requirements: AI Agent Cloudflare Deployment.
 
 ### Option B: Manual Online Deployment
 
-📖 Click to expand: 6-Step Web Manual Deployment Guide
+📖 Click to expand: 7-Step Web Manual Deployment Guide
 
-Complete setup in 6 web steps:
+Complete the following 7 web steps strictly in order:
 
 1.  **Fork the Repository**: Click **Fork** at the top right of GitHub to fork EdgeEver into your personal account.
 2.  **Create Cloudflare Resources**: Create D1 `edgeever` and R2 `edgeever-resources`.
-3.  **Import & Configure the Project**: Create a Worker named `edgeever` from the Fork's `main` branch in Cloudflare **Workers & Pages**. Use the repository root and keep Cloudflare's default Workers Builds deploy command, which runs in Cloudflare. Ensure its API token can read and edit D1. The deploy command creates the bindings; do not edit Fork files.
-4.  **Choose the Administrator Password**: Choose an administrator password, preferably at least 32 characters. Once the Worker is created, save it as the runtime Secret `EDGE_EVER_AUTH_PASSWORD`.
-5.  **Build & Verify**: Save and Deploy creates the Worker and starts a build. The initial build primarily initializes the Worker instance; if it fails due to missing administrator Secret, this is expected behavior. Simply add the runtime Secret `EDGE_EVER_AUTH_PASSWORD` from Step 4 and click retry. The username defaults to `admin`; to use another, set `EDGE_EVER_AUTH_USERNAME` as a Workers Builds variable before retrying. Once deployed, confirm `/api/health` returns `200`, then log in with the configured username and password.
-6.  **Enable Automatic Updates**: Open the Fork's **Actions** tab, click **I understand my workflows, go ahead and enable them**, then manually run **Update deployed EdgeEver** once so the Fork can automatically receive future stable releases and fixes.
+3.  **Create the Worker**: In Cloudflare Workers & Pages, select Create application → Start with Hello World!, name the Worker `edgeever`, and deploy it. This creates a placeholder; EdgeEver is deployed in Step 7.
+4.  **Set the Administrator Password**: Under the Worker’s Settings → Variables and Secrets, add `EDGE_EVER_AUTH_PASSWORD` as type Secret and click Deploy. Its value is your chosen login password, preferably at least 32 characters. Complete this before connecting the Fork.
+5.  **Connect the Fork**: In the existing Worker’s Settings → Builds → Connect, select the Fork and production branch `main`.
+6.  **Configure Deployment Permissions**: In this Worker's Settings → Builds → API token, select or create the Cloudflare API token used for deployment, with D1 read/edit permission for the target account.
+7.  **Build & Verify**: In the Fork's GitHub repository, open Actions → Update deployed EdgeEver, enable the workflow if prompted, and select Run workflow on `main`. After confirming in Cloudflare that the corresponding build succeeded and deployment completed, confirm `/api/health` returns `200` and verify login. This workflow will automatically sync future stable releases and fixes.
 
 > 📖 For full step-by-step instructions and configuration details, see the Online Deployment Guide.
 
@@ -202,15 +201,13 @@ Advanced Configuration & Management
 Whether for routine data backups, seamless cross-instance migration, or switching from existing note platforms, EdgeEver provides reliable, complete data mobility:
 
 -   **EdgeEver Native Backup & Restore**: In the app, go to **Profile** -> **Import and export** to export or import an EdgeEver ZIP archive at any time. The extracted `notes/` directory keeps clean plaintext Markdown files and attachments for local archival or direct reading, while internal structured metadata enables lossless full restoration across different EdgeEver instances. Importing preserves existing unrelated data on the target instance and automatically overwrites records with matching IDs.
--   **Smooth Migration from Third-Party Apps**:
-    -   **Evernote Migration**: Please refer to docs/evernote-migration-guide.md
-    -   **flomo Migration**: Please refer to docs/flomo-migration-guide.md
-    -   **Memos Migration**: Please refer to docs/memos-migration-guide.md
-    -   **Notion Migration**: Please refer to docs/notion-migration-guide.md
+-   **Smooth Migration from Third-Party Apps**: Whether importing via the native one-click GUI (supporting complete notes, hierarchies, and attachments from Evernote, Obsidian, and Joplin) or migrating from Notion, flomo, Memos, and other platforms via AI Agent & MCP, EdgeEver provides seamless, verified data mobility. See the Third-Party Notes Migration Guide.
 
 ### AI & MCP Protocol Integration
 
 Create an API token in **Profile** -> **API / MCP** and copy the Remote MCP configuration in one click to let AI Agents such as Claude Code, Cursor, Antigravity, and OpenClaw securely manage your knowledge base within account permissions. EdgeEver supports full CRUD for text notes, visual diagram notes (mind maps, flowcharts, and architecture diagrams), structured table notes, and native poster notes. Agents can also manage notebook hierarchies, tags, attachments, revision history, note templates, and AI instructions.
+
+For client setup, token access levels, troubleshooting and suggested rules for agents, see Using EdgeEver with MCP clients.
 
 > 💡 **Inspiration:** Make AI your true knowledge orchestrator and creative co-pilot—instantly turn concepts into interactive mind maps, flowcharts, architecture diagrams, and structured tables, while supplying private context to your AI Agents. Paired with EdgeEver’s powerful rich-text editing and elegant typography, AI-assisted content becomes beautifully structured, polished, and publication-ready knowledge assets.
 
@@ -334,6 +331,7 @@ Acknowledgements
 -   The product design of mind-map and visual-diagram notes was informed by the publicly available product experiences of XMind and ProcessOn. These features were independently designed and implemented by EdgeEver.
 -   EdgeEver's poster design workspace draws inspiration from Qiaomu Design by 向阳乔木 (joeseesun), and adapts its templates and typography engine under the MIT license.
 -   The visual themes and typography of EdgeEver's image-sharing cards were inspired by Firefly Card (流光卡片). Thank you for the design inspiration.
+-   EdgeEver's one-click WeChat publishing and featured article typography draw inspiration from gzh-design-skill by isjiamu. Thank you for the layout and design inspiration.
 
 Trademark and Brand Use
 -----------------------

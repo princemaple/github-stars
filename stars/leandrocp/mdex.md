@@ -1,7 +1,7 @@
 ---
 project: mdex
 stars: 457
-description: Markdown for Elixir. Fast, Extensible, Phoenix-native. AI-ready. Built on top of comrak, ammonia, and lumis.
+description: Markdown for Elixir. Fast, Extensible, Phoenix-native. AI-ready. Built on top of comrak, ammonia, lumis, and syntect.
 url: https://github.com/leandrocp/mdex
 ---
 
@@ -163,6 +163,19 @@ Examples and Guides
 
 In docs you can find Livebook examples covering options and usage, and Guides for more info.
 
+Agent Skills
+------------
+
+Install the mdex skill so coding agents use MDEx correctly:
+
+npx skills add leandrocp/mdex
+
+Writing a plugin or contributing to MDEx? Install the mdex-write-plugin skill:
+
+npx skills add leandrocp/mdex --skill mdex-write-plugin
+
+The same rules ship in the Hex package as `usage-rules.md` for usage\_rules.
+
 Foundation
 ----------
 
@@ -177,6 +190,7 @@ Used By
 
 -   00
 -   Algora
+-   Arcana
 -   Ash AI
 -   BeaconCMS
 -   BeamLens Web

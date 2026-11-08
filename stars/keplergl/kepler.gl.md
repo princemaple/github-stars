@@ -1,6 +1,6 @@
 ---
 project: kepler.gl
-stars: 12075
+stars: 12085
 description: Kepler.gl is a powerful open source geospatial analysis tool for large-scale data sets.
 url: https://github.com/keplergl/kepler.gl
 ---

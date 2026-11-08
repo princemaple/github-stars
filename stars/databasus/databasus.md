@@ -1,6 +1,6 @@
 ---
 project: databasus
-stars: 9219
+stars: 9250
 description: PostgreSQL backup tool with Point-In-Time-Recovery and restore verification
 url: https://github.com/databasus/databasus
 ---
@@ -11,9 +11,9 @@ Databasus is a free, open source and self-hosted tool to backup PostgreSQL. Make
 
   
 
-**English** • Русский • Español • Português • 中文 • Français
+**English** • Русский • Español • Português • 中文 • Français • Bahasa Indonesia
 
-Features • Installation • Usage • License • Contributing
+Features • Installation • Usage • License
 
 **🌐 Databasus website**
 
@@ -246,15 +246,15 @@ After installation, it is also recommended to backup your Databasus itself or, a
 🛡️ Security & reliability engineering
 --------------------------------------
 
-Databasus works with sensitive data, so preventing vulnerabilities, unauthorised access and data leaks is a primary concern. We invest in this on both sides of the system: in the code itself (permission checks, encryption, careful handling of secrets) and in the infrastructure around it (dependency analysis, CVE response, DevSecOps best practices). The pipeline below runs automatically on every commit and PR. No single layer is enough on its own, but together they reduce the chance of vulnerable code, unsafe dependencies, broken images, or non-restorable backups reaching a release.
+Databasus works with sensitive data, so preventing vulnerabilities, unauthorised access and data leaks is a primary concern. We invest in this on both sides of the system: in the code itself (permission checks, encryption, careful handling of secrets) and in the infrastructure around it (dependency analysis, CVE response, DevSecOps best practices). The pipeline below runs automatically before every release. No single layer is enough on its own, but together they reduce the chance of vulnerable code, unsafe dependencies, broken images, or non-restorable backups reaching a release.
 
-For static analysis we combine several independent passes. CodeQL scans the full codebase for security issues. On every PR, gitleaks scans for leaked secrets and semgrep checks the code against security rules. Dockerfiles and CI workflows get extra rules of their own (pinned action references, least-privilege permissions, suspicious base images), so insecure patterns are flagged before they ever merge. On top of these per-PR checks, Codex Security from OpenAI runs regular, deeper audits of the whole codebase. It's a separate program that catches architectural and cross-cutting issues narrow PR-time scans can miss.
+For static analysis we combine several independent passes. CodeQL scans the full codebase for security issues. Before every release, gitleaks scans for leaked secrets and semgrep checks the code against security rules. Dockerfiles and CI workflows get extra rules of their own (pinned action references, least-privilege permissions, suspicious base images), so insecure patterns are flagged before a release. On top of these release checks, Codex Security from OpenAI runs regular, deeper audits of the whole codebase. It's a separate program that catches architectural and cross-cutting issues narrower automated scans can miss.
 
-On the dependency side, Dependabot watches all of our dependencies against the GitHub Advisory Database and surfaces CVEs within minutes of publication. Updates run through a cooldown so newly-published versions get a chance to mature before we adopt them. This is a deliberate defence against compromised-package incidents like supply-chain attack. The Dependency Review Action blocks any PR that introduces a new HIGH or CRITICAL CVE outright.
+On the dependency side, Dependabot watches all of our dependencies against the GitHub Advisory Database and surfaces CVEs within minutes of publication. Updates run through a cooldown so newly-published versions get a chance to mature before we adopt them. This is a deliberate defence against compromised-package incidents like supply-chain attack. The Dependency Review Action blocks a release that introduces a new HIGH or CRITICAL CVE. For the Go code, govulncheck fails the release check when our code calls a function with a known vulnerability, and `go mod verify` checks every downloaded module against its recorded checksum.
 
-Container images are scanned with Trivy on every build. A separate Trivy pass on the Dockerfile catches misconfigurations before they make it into an image. All GitHub Actions are pinned to full commit SHAs rather than floating tags like `@v4` or `@main`, which have been an active attack vector in 2025. Workflows default to least-privilege permissions and only elevate per-job when genuinely needed.
+Before a release, Trivy scans the application image on both architectures. A separate Trivy pass on the Dockerfile catches misconfigurations before they make it into an image. All GitHub Actions are pinned to full commit SHAs rather than floating tags like `@v4` or `@main`, which have been an active attack vector in 2025. Workflows default to least-privilege permissions and only elevate per-job when genuinely needed.
 
-Critical paths are covered by both unit and integration tests, run against real database containers for every supported engine and major version. Restore is the path that matters most for a backup tool, so we test it explicitly: every PR runs full backup-then-restore cycles against those same real containers, verifying that backups can actually be restored end-to-end, not just written successfully. The rest of the CI/CD pipeline runs lint, type-check, the full test suite, image smoke tests and multi-architecture builds on every PR. A release only ships if all of it passes.
+Critical paths are covered by both unit and integration tests, run against real database containers for every supported engine and major version. Restore is the path that matters most for a backup tool, so we test it explicitly: before every release, we run full backup-then-restore cycles against those same real containers, verifying that backups can actually be restored end-to-end, not just written successfully. The rest of the CI/CD pipeline runs lint, type-check, the full test suite, image smoke tests and multi-architecture builds before every release. A release ships only after all of it and the security scans pass, with no open critical CodeQL alert.
 
 Found a vulnerability? Report it via the GitHub Security tab. See SECURITY.md. Security reports are the highest-priority work queue. For runtime application security (AES-256-GCM at rest, zero-trust storage, encrypted secrets, read-only DB user by default) see Enterprise-grade security in the Features section above.
 
@@ -265,9 +265,7 @@ Found a vulnerability? Report it via the GitHub Security tab. See SECURITY.md. S
 
 This project is licensed under the Apache 2.0 License - see the LICENSE file for details
 
-🤝 Contributing
----------------
+💬 Community
+------------
 
-Contributions are welcome! Read the contributing guide for more details, priorities and rules. If you want to contribute but don't know where to start, message me on Telegram @rostislav\_dugin
-
-Also you can join our large community of developers, DBAs and DevOps engineers on Telegram @databasus\_community.
+Join our large community of developers, DBAs and DevOps engineers on Telegram @databasus\_community.

@@ -1,6 +1,6 @@
 ---
 project: dockhand
-stars: 6957
+stars: 7009
 description: Dockhand - Docker management you will like.
 url: https://github.com/Finsys/dockhand
 ---

@@ -1,6 +1,6 @@
 ---
 project: scalar
-stars: 16356
+stars: 16384
 description: Scalar is an open-source API platform:　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　🌐 Modern REST API Client　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　📖 Beautiful API References　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　✨ 1st-Class OpenAPI/Swagger Support
 url: https://github.com/scalar/scalar
 ---
@@ -333,22 +333,25 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **AbdelhamidKhald**
 
   
-**gevann**
+**alonfaraj**
 
   
 **charan-rathore**
 
   
-**alonfaraj**
-
-  
-**AshishKumarPathak**
+**gevann**
 
   
 **federicobond**
 
   
+**AshishKumarPathak**
+
+  
 **ahmedrangel**
+
+  
+**AdzerKI**
 
   
 **matthyk**
@@ -384,13 +387,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **RemcoGoy**
 
   
-**mcollina**
+**TheVaan**
 
   
 **mpminardi**
 
   
-**TheVaan**
+**mcollina**
 
   
 **cobyfrombrooklyn-bot**
@@ -402,70 +405,67 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **paulomorgado**
 
   
-**ATREAY**
-
-  
-**fuma-nama**
-
-  
-**AdzerKI**
-
-  
-**lc-soft**
+**nsychev**
 
   
 **Mohib834**
 
   
-**nsychev**
+**lc-soft**
 
   
-**yshrsmz**
+**fuma-nama**
 
   
-**hex0id**
-
-  
-**soulchild**
-
-  
-**trusta**
-
-  
-**jpjpjp**
-
-  
-**horpto**
-
-  
-**x-delfino**
-
-  
-**ykdojo**
-
-  
-**wilcoschoneveld**
-
-  
-**timheuer**
-
-  
-**ledgersteve**
-
-  
-**SimonVadier**
+**ATREAY**
 
   
 **SebastianBienert**
 
   
-**WDaan**
+**SimonVadier**
+
+  
+**ledgersteve**
+
+  
+**timheuer**
+
+  
+**wilcoschoneveld**
+
+  
+**ykdojo**
+
+  
+**x-delfino**
+
+  
+**horpto**
+
+  
+**jpjpjp**
+
+  
+**trusta**
+
+  
+**hex0id**
+
+  
+**yshrsmz**
+
+  
+**soulchild**
 
   
 **Duncanma**
 
   
 **aqeelat**
+
+  
+**WDaan**
 
   
 **silkfire**
@@ -477,52 +477,58 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **handrews**
 
   
-**cyphercodes**
-
-  
-**PrinceManfred**
-
-  
-**mouhannad-sh**
-
-  
-**mason-at-pieces**
-
-  
-**luc122c**
+**kou029w**
 
   
 **luke-hagar-sp**
 
   
-**kou029w**
+**luc122c**
 
   
-**robert-dean**
+**mason-at-pieces**
 
   
-**bobheadxi**
+**cyphercodes**
 
   
-**rcollas**
+**mouhannad-sh**
 
   
-**rbange**
+**PrinceManfred**
 
   
-**hrynevychroman**
-
-  
-**rpmccarter**
-
-  
-**roryschadler**
+**ryux1**
 
   
 **rmp135**
 
   
-**ryux1**
+**roryschadler**
+
+  
+**rpmccarter**
+
+  
+**hrynevychroman**
+
+  
+**rbange**
+
+  
+**rcollas**
+
+  
+**bobheadxi**
+
+  
+**robert-dean**
+
+  
+**rickihastings**
+
+  
+**MarioGK**
 
   
 **mirismaili**
@@ -556,12 +562,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **smoores-dev**
-
-  
-**soGit**
-
-  
-**MarioGK**
 
   
 **not-my-profile**
@@ -609,6 +609,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **pkucmus**
 
   
+**neo-f**
+
+  
 **petercinibulk**
 
   
@@ -621,13 +624,16 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **pdjohntony**
 
   
+**RaphaelFakhri**
+
+  
 **Fjandin**
 
   
 **rhuanbarreto**
 
   
-**rickihastings**
+**soGit**
 
   
 **Chinlinlee**
@@ -759,7 +765,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **bingbeann**
 
   
-**cactyx**
+**abdulamite**
 
   
 **foxfriends**
@@ -825,10 +831,10 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **emmanuel-ferdman**
 
   
-**IsaacJenkinsTPZ**
+**froggy1014**
 
   
-**abdulamite**
+**facus26**
 
   
 **MathurAditya724**
@@ -897,7 +903,7 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **Smyrcu**
 
   
-**andthexi**
+**cactyx**
 
   
 **JacobCoffee**
@@ -948,7 +954,13 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 **kyllian**
 
   
+**kyrregjerstad**
+
+  
 **sanscontext**
+
+  
+**mrIubos**
 
   
 **ShadiestGoat**
@@ -961,12 +973,6 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **marikaner**
-
-  
-**froggy1014**
-
-  
-**facus26**
 
   
 **filiabel**
@@ -1030,3 +1036,9 @@ Contributions are welcome! Read the `CONTRIBUTING` guide.
 
   
 **tltsutltsu**
+
+  
+**IsaacJenkinsTPZ**
+
+  
+**andthexi**

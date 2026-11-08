@@ -1,32 +1,32 @@
 ---
 project: TradingAgents
-stars: 119063
+stars: 121192
 description: TradingAgents: Multi-Agents LLM Financial Trading Framework
 url: https://github.com/TauricResearch/TradingAgents
 ---
 
-  
-
-  
-
-Deutsch | Español | français | 日本語 | 한국어 | Português | Русский | 中文
-
-* * *
-
 TradingAgents: Multi-Agents LLM Financial Trading Framework
 ===========================================================
+
+  
+
+Latest: Trading-R1 is now in early access
+-----------------------------------------
+
+After so many requests from the community, Trading-R1 has officially launched!
+
+### Register for early access ↗
 
 News
 ----
 
+-   \[2026-11\] **Trading-R1 v0.1.0** released, and early access is open.
 -   \[2026-10\] **TradingAgents v0.7.1** released with decisions scored only on final closes and settled across long market holidays, a fix for model dates that could read filings made after the run date, and fixes to portfolios, prices, SEC statements and reports.
 -   \[2026-10\] **TradingAgents v0.7.0** released with runs on your own ChatGPT Plus or Pro plan, backtests scored from the first close after each decision, a note at start-up when a newer release is out, and a wheel attached to each GitHub release.
--   \[2026-10\] **TradingAgents v0.6.0** released with reports saved as one HTML page, a provider per model tier so the managers and analysts can run on different models, past decisions settled for every ticker while the analysts work, and company news read from Yahoo search while Yahoo's news feed is down.
-
-Full release notes are in CHANGELOG.md.
 
 Earlier news
 
+-   \[2026-10\] **TradingAgents v0.6.0** released with reports saved as one HTML page, a provider per model tier so the managers and analysts can run on different models, past decisions settled for every ticker while the analysts work, and company news read from Yahoo search while Yahoo's news feed is down.
 -   \[2026-09\] **TradingAgents v0.5.2** released with parallel analysts for a faster analysis, a CLI that runs without prompts from flags such as `--ticker` and `--date`, the run's settings recorded in every report, and backtests that see only data published by each analysis date.
 -   \[2026-09\] **TradingAgents v0.5.1** released with a package layout organised by what each module holds (import paths moved), optional Jev screening of social posts, GPT-6 Sol and Luna as the default models, and fixes to run isolation and SEC EDGAR statements.
 -   \[2026-09\] **TradingAgents v0.5.0** released with point-in-time integrity across every dated path, SEC EDGAR fundamentals served as filed, backtesting over a ticker and date grid, portfolio-aware runs, and current model lineups across every provider.

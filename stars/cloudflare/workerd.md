@@ -1,6 +1,6 @@
 ---
 project: workerd
-stars: 9110
+stars: 9140
 description: The JavaScript / Wasm runtime that powers Cloudflare Workers
 url: https://github.com/cloudflare/workerd
 ---
@@ -100,7 +100,7 @@ bazel build --config=thin-lto //src/workerd/server:workerd
 
 `workerd` is configured using a config file written in Cap'n Proto text format.
 
-For simple projects, `workerd serve wrangler.jsonc` also accepts a Wrangler config. `main` is bundled with esbuild, as Wrangler does. The supported fields are `name`, `main`, `compatibility_date`, `compatibility_flags`, `vars`, `durable_objects`, `exports`, `migrations`, `no_bundle` and `$schema`; any other field is an error.
+For simple projects, `workerd serve wrangler.jsonc` also accepts a Wrangler config. `main` is bundled with esbuild, as Wrangler does. The supported fields are `name`, `main`, `compatibility_date`, `compatibility_flags`, `vars`, `durable_objects`, `exports`, `migrations`, `no_bundle`, `$schema` and, with `--experimental`, `kv_namespaces`; any other field is an error. Each KV namespace is one Durable Object, so its throughput is that of one object.
 
 A simple "Hello World!" config file might look like:
 

@@ -1,6 +1,6 @@
 ---
 project: postal
-stars: 16913
+stars: 16934
 description: 📮 A fully featured open source mail delivery platform for incoming & outgoing e-mail
 url: https://github.com/postalserver/postal
 ---

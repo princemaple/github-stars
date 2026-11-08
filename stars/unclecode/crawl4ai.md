@@ -1,21 +1,98 @@
 ---
 project: crawl4ai
-stars: 86668
-description: Open-source web crawler and scraper for LLMs and AI agents: any website into clean, LLM-ready Markdown. Run it yourself, or use Crawl4AI Cloud with one key. Join our Discord https://discord.gg/VuxzM8mtf
+stars: 87065
+description: Official Crawl4AI Cloud: a hosted web scraping, extraction, and search API for AI agents. Free API key, 1,000 credits a month, no card. Fully open source: this repo is the Apache-2.0 crawler that powers it, and you can self-host it.
 url: https://github.com/unclecode/crawl4ai
 ---
 
-🚀🤖 Crawl4AI: the open-source web crawler for LLMs and AI agents
-=================================================================
+Crawl4AI
+========
+
+**Crawl4AI Cloud is a hosted web scraping, extraction, and search API for AI agents and data pipelines.** Turn pages into clean Markdown for RAG, extract structured JSON, or search the live web with one API key. Crawl4AI runs the browsers and manages the proxies.
+
+**Get a free API key** · 1,000 free credits every month. No credit card required.
+
+Try a URL in the playground · Set up Crawl4AI Cloud in Claude Code, Cursor, or Codex
+
+This repository is home to the Apache-2.0 crawler that powers Crawl4AI Cloud. Run it yourself with Python or Docker.
+
+Cloud quickstart
+----------------
+
+Hosted API base URL: `https://api.crawl4ai.com`.
+
+Cloud API reference · Agent setup and MCP
+
+Set `CRAWL4AI_KEY` to your API key, then scrape a page as Markdown:
+
+curl -s https://api.crawl4ai.com/scrape \\
+  -H "Authorization: Bearer $CRAWL4AI\_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"url": "https://news.ycombinator.com"}' | jq -r .markdown
+
+Python 3
+
+import json
+import os
+from urllib.request import Request, urlopen
+
+request \= Request(
+    "https://api.crawl4ai.com/scrape",
+    data\=json.dumps({"url": "https://news.ycombinator.com"}).encode("utf-8"),
+    headers\={
+        "Authorization": f"Bearer {os.environ\['CRAWL4AI\_KEY'\]}",
+        "Content-Type": "application/json",
+    },
+    method\="POST",
+)
+
+with urlopen(request) as response:
+    print(json.load(response)\["markdown"\])
+
+Node.js (18+)
+
+async function main() {
+  const key \= process.env.CRAWL4AI\_KEY;
+  if (!key) throw new Error("Set CRAWL4AI\_KEY first.");
+
+  const response \= await fetch("https://api.crawl4ai.com/scrape", {
+    method: "POST",
+    headers: {
+      Authorization: \`Bearer ${key}\`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ url: "https://news.ycombinator.com" }),
+  });
+
+  if (!response.ok) {
+    throw new Error(\`Scrape failed (HTTP ${response.status}): ${await response.text()}\`);
+  }
+
+  const { markdown } \= await response.json();
+  console.log(markdown);
+}
+
+main().catch((error) \=> {
+  console.error(error.message);
+  process.exitCode \= 1;
+});
+
+Example Markdown output (illustrative excerpt):
+
+\# Hacker News
+
+1. \[Example story title\](https://example.com/story)
+2. \[Another story title\](https://example.com/another-story)
+
+The same key works for `/extract`, `/search`, `/serp`, `/answer` and many URLs at once (`/scrape/batch`, `/scrape/jobs`). Pay as you go: live prices. For Claude Code, connect to the hosted MCP server:
+
+claude mcp add --transport http crawl4ai https://api.crawl4ai.com/mcp \\
+  --header "Authorization: Bearer $CRAWL4AI\_KEY"
+
+Run Crawl4AI yourself
+---------------------
 
 **Latest: v0.9.5 (14 Oct 2026)** · all releases →
-
-Crawl4AI turns any website into clean, LLM-ready Markdown for RAG, AI agents and data pipelines. Run the open-source web crawler and scraper yourself, free forever, or use it hosted with one key: `/scrape` a page to Markdown, `/extract` it to JSON, `/search` the web, `/serp` for Google's results page as data, `/answer` a question with sources; MCP for your agent. Free: 1,000 credits every month, 10 a minute, 2 at a time. Paid: 120 a minute, 10 at a time, from $10 a month.
-
-Two ways to use Crawl4AI
-------------------------
-
-### 🐍 Run it yourself: open source, forever
 
 pip install -U crawl4ai
 crawl4ai-setup        # installs the browser, once
@@ -30,73 +107,53 @@ async def main():
 
 asyncio.run(main())
 
-Docker server, CLI and every option: Installation · docs.crawl4ai.com
-
-### ☁️ Or use the cloud: no browsers, no proxies
-
-1.    
-    Verify your email and 1,000 free credits are yours every month. No card.
-    
-2.  Get any page as Markdown:
-    
-    curl -s https://api.crawl4ai.com/scrape \\
-      -H "Authorization: Bearer $CRAWL4AI\_KEY" \\
-      -H "Content-Type: application/json" \\
-      -d '{"url": "https://news.ycombinator.com"}' | jq -r .markdown
-    
-    The same key works for `/extract`, `/search`, `/serp`, `/answer` and many URLs at once (`/scrape/batch`, `/scrape/jobs`). Pay as you go: live prices.
-    
-3.  Give it to your AI agent. Claude Code shown; Codex, Cursor and OpenCode →
-    
-    claude mcp add --transport http crawl4ai https://api.crawl4ai.com/mcp \\
-      --header "Authorization: Bearer $CRAWL4AI\_KEY"
-    
+Docker server, CLI and every option: Installation · Self-hosted docs
 
 ### Which one?
+
+☁️ Crawl4AI Cloud
 
 🐍 Library
 
 🐳 Your own server
 
-☁️ Crawl4AI Cloud
-
 **Runs the browsers**
+
+we do
 
 you, in your Python process
 
 you, in Docker on your machine
 
-we do
-
 **JS-heavy pages and bot walls**
-
-your settings, your proxies
-
-your settings, your proxies
 
 handled for you, automatically
 
+your settings, your proxies
+
+your settings, your proxies
+
 **Web search**
-
-–
-
-–
 
 `/search`, `/serp` and `/answer`
 
+–
+
+–
+
 **Price**
 
-free, forever
-
-free (your hosting)
-
 1,000 free credits a month; plans from $10
+
+Free, Apache-2.0. You cover infrastructure.
+
+Free, Apache-2.0. You cover hosting.
 
 🤓 **My Personal Story**
 
 I grew up on an Amstrad, thanks to my dad, and never stopped building. In grad school I specialized in NLP and built crawlers for research. That’s where I learned how much extraction matters.
 
-In 2023, I needed web-to-Markdown. The “open source” option wanted an account, API token, and $16, and still under-delivered. I went turbo anger mode, built Crawl4AI in days, and it went viral. Now it’s the most-starred crawler on GitHub.
+In 2023, I needed web-to-Markdown. The “open source” option wanted an account, API token, and $16, and still under-delivered. I went turbo anger mode, built Crawl4AI in days, and it went viral.
 
 I made it open source for **availability**, anyone can use it without a gate. Now I’m building the platform for **affordability**, anyone can run serious crawls without breaking the bank. If that resonates, join in, send feedback, or just crawl something amazing.
 
@@ -108,7 +165,7 @@ Why developers pick Crawl4AI
 -   **Fast in practice**: async browser pool, caching, minimal hops
 -   **Full control**: sessions, proxies, cookies, user scripts, hooks
 -   **Adaptive intelligence**: learns site patterns, explores only what matters
--   **Deploy anywhere**: no keys needed, CLI and Docker, or the hosted cloud
+-   **Deploy anywhere**: run locally with Python or the CLI, secure your Docker server with a self-managed token, or use a Crawl4AI Cloud API key.
 
 ✨ Features
 ----------
@@ -437,7 +494,7 @@ Company
 
 About
 
-Massive is a web access API backed by millions of volunteer devices in 195+ countries. AI agents, models, and data pipelines use it to reach any site on the internet, reliably, in real time, and at scale.
+Massive provides a web access API for AI agents and data pipelines. Partnership details.
 
 ### 🏢 Enterprise Sponsors
 
@@ -483,7 +540,7 @@ A heartfelt thanks to our individual supporters! Every contribution helps us kee
 Discord · X @unclecode · GitHub @unclecode · hello@crawl4ai.com
 
 -   **Building crawlers or AI agents for a living?** DM me on X. I want to work with people like you, and we are hiring.
--   **From a company?** We have an enterprise offer and we tailor it to your business. SOC 2 Type I is done, Type II is in progress. Write to hello@crawl4ai.com.
+-   **From a company?** We have an enterprise offer and we tailor it to your business. See our security and compliance page for current details. Write to hello@crawl4ai.com.
 
 Happy crawling! 🕸️🚀
 

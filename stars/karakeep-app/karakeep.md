@@ -1,6 +1,6 @@
 ---
 project: karakeep
-stars: 30203
+stars: 30387
 description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search
 url: https://github.com/karakeep-app/karakeep
 ---
@@ -99,7 +99,7 @@ Translations live in `apps/web/lib/i18n/locales`, one `translation.json` per lan
 Karakeep Cloud ☁️
 -----------------
 
-If you're not comfortable with self-hosting, you can use our managed Karakeep cloud at cloud.karakeep.app. Cloud subscriptions support the development of Karakeep.
+If you're not comfortable with self-hosting, you can use our managed Karakeep cloud at cloud.karakeep.com. Cloud subscriptions support the development of Karakeep.
 
 One-click Deployment 🚀
 -----------------------

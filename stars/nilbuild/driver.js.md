@@ -1,6 +1,6 @@
 ---
 project: driver.js
-stars: 26997
+stars: 27038
 description: A lightweight, dependency-free JavaScript library for guiding user focus across the page.
 url: https://github.com/nilbuild/driver.js
 ---

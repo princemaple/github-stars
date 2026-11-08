@@ -5,15 +5,6 @@ description: Python GUIs for Humans! Create any GUI simple or complicated in a w
 url: https://github.com/PySimpleGUI/PySimpleGUI
 ---
 
-FREE Udemy Course
-=================
-
-The Udemy course makes $10's a month, usually less. I've decided to give away the course for a while. This coupon is good for the next 30 days.
-
-https://www.udemy.com/course/pysimplegui/?couponCode=033334A16163C571B739
-
-Or use code: 033334A16163C571B739
-
 Open Source Once Again...
 =========================
 
@@ -70,6 +61,20 @@ PySimpleGUI has been a once-in-a-lifetime experience. It’s been amazing to see
 
 * * *
 
+The PySimpleGUI Playground
+==========================
+
+The PySimpleGUI Playground is a collection of the programs I run on my own PCs every day - desktop widgets, tools, things I use to work on PySimpleGUI itself, and a set of piano practice programs for a MIDI keyboard. I wrote them with Claude over the past 10 weeks. Each one is a single file you can run, read and take apart.
+
+One pip command installs all of them, along with the Toybox, a program that shows you what's there and runs it:
+
+python -m pip install --upgrade https://github.com/PySimpleGUI/psgplayground/zipball/main
+psgplayground
+
+The repo also has a prompts folder - one page per trick (the frameless window, draggable panes, drag-to-reorder, dropping a file) with a prompt you can paste into any AI chatbot to get the same thing in your own program.
+
+* * *
+
 What is PySimpleGUI?
 ====================
 
@@ -121,26 +126,35 @@ PySimpleGUI has always been developed more like a proprietary product than an op
 What's new...
 =============
 
-Features & Fixes in version 6.2
+Features & Fixes in version 6.4
 -------------------------------
 
--   Fixed bug in Window.settings\_save
--   Added ability to "print" an image inline in a Multiline element
--   The ability to upgrade to the latest Maint Release is once again built into PSG. You can use the Home Window or the command line command`psgupgrade`. You can see the release notes and install a new version.
--   Fix for bug #5750. Graph events was going into an infinite loop when write\_event\_value events were received. Fix was to clear the realtime button flag. Potential for regression problems should be minimal since only the Graph element conditional was changed.
--   Added Enhancement #6671. Added parameter select select\_node\_keys to Tree.update. Enables nodes in the tree to be programmatically selected as if the user selected them.
--   Fixed Multiline echo\_stdout\_stderr feature/parameter. Was not correctly echoing out to sys.stdout, stderr. Edited docstring to document the correct behavior. It will only echo if you've rerouted stdout or stderr to the element. It will not do the reroute for you.
--   Fix for Issue #6686 - Calendar chooser button clearing fields that should only be cleared when window.read returns. Used the newly added element\_that\_generated\_event variable from the Graph element fix above (already came in handy).
--   Display the Maint Release version number in the Home Window. Moved the install button
--   Added ability to specify timers using string "H:M:S" when calling Window.start\_timer.
--   Enhancement - support for horizontal scroll only for scrollable column element
--   Fixed Multiline echo\_stdout\_stderr feature/parameter. Was not correctly echoing out to sys.stdout, stderr. Edited docstring to document the correct behavior. It will only echo if you've rerouted stdout or stderr to the element. It will not do the reroute for you.
--   Fix for Issue #6686 - Calendar chooser button clearing fields that should only be cleared when window.read returns. Used the newly added element\_that\_generated\_event variable from the Graph element fix above (already came in handy).
--   Added ability to specify timers using string "H:M:S" when calling Window.start\_timer.
--   Enhancement - ability to set the Frame border color. Added border\_color and border\_width\_no\_relief parms to the Frame element
-    -   Frame border color to default to the text element color if no color is set
+**New**
 
-The documentation has been updated. The call ref section matches the version 6.2 release.
+-   `resizable` can be a tuple to allow resizing in one direction only, e.g. `resizable=(False, True)` for vertical only
+-   Pane element - new `sash_width` and `sash_cursor` parameters
+-   Each PySimpleGUI program now gets its own taskbar identity on Windows, so the right icon shows when several are running
+-   Windows with a custom titlebar get a taskbar icon, including after minimize / restore
+-   `popup_error_with_traceback` shows the full traceback in a Multiline so the whole error can be copied
+-   `set_options(tooltip_text_color=, tooltip_background_color=)` to color tooltips application-wide
+-   `set_options(set_tooltip_to_element_key=True)` - debugging aid that shows each element's key as its tooltip
+-   `set_options` ignores options it doesn't recognize instead of crashing
+-   `Window.frame_extents()` and `Window.current_frame_location()`
+-   `fname()` debugging aid - `print(f'[{fname()}] starting')` prints the name of the function it's in
+-   Ctrl+C in a program using `read_all_windows` exits cleanly
+
+**Fixes**
+
+-   `Button.update(image_data=...)` crashed on a button that didn't have an image
+-   `Input.update` with `COLOR_SYSTEM_DEFAULT`
+-   Mouse wheel stopped scrolling a scrollable Column when the pointer was over an element inside it
+-   `auto_save_location` crashed reading a location of `[None, None]` (#6904) and crept down by the titlebar height on Linux
+-   Window creation reworked for Linux and Wayland (#3507)
+-   `disable_minimize=True` crashed on Linux
+-   Right-click menus didn't close when clicking away on Linux (#6664)
+-   Windows: hiding or changing the menubar with `Menu.update` left a blank strip at the bottom of the window
+-   PyCharm "Edit" opened at the wrong line (file now comes before `--line`)
+-   Many color checks reworked so bad colors no longer crash element creation
 
 Drag and Drop!
 --------------
@@ -151,48 +165,24 @@ Drag and Drop support has been a wish for many years. We finally may have found 
 
 `psgdnd` is a new package posted on GitHub that adds drag and drop to PySimpleGUI. You can pip install it and try drag and drop for yourself. More information and examples can be found in that repo.
 
-Version 6.0.1 was released to PyPI. It's working on Windows. Version 6.0.2 on GitHub has the fixes that were needed for Linux (so far... there could be more to come). The Mac is still an unknown.
-
-New repo - PSGMicroPython
--------------------------
-
-Created a new repo and added code for interfacing to a MicroPython-based microcontroller. It works with Raspberry Pi Pico and ESP32. It may work with other boards too. Not meant to be robust or significant. It's just some code I threw together that could maybe be useful to someone else... or not...
+Version 6.1 is on PyPI (`python -m pip install --upgrade psgdnd`). It works on Windows and Linux. The Mac is still an unknown.
 
 * * *
 
-PSGWeb
-------
+AI
+--
 
--   PSGWeb - PySimpleGUI running in a browser window
-    -   Works with most demo programs
-    -   To try it, go to any PySimpleGUI application on GitHub, add `psgweb.us` onto the front of the url, press enter
-    -   https://github.com/PySimpleGUI/PySimpleGUI/blob/master/DemoPrograms/Demo\_All\_Elements.py becomes https://psgweb.us/github.com/PySimpleGUI/PySimpleGUI/blob/master/DemoPrograms/Demo\_All\_Elements.py
-    -   There are no plans to release or expand this prototype. It was created as part of the larger PSG 5 effort, but not released.
+It's been an exhausting process coming to terms with the changes in software over the past 4 years. After spending a few months seeing for myself what it can do, and what I can do with it, I've concluded that I can do a better job developing software with AI than without. It can also be fun and a learning experience too.
 
-Here's that Demo Program running in browser:
-
-* * *
-
-AI....
-------
-
-Seems most projects have something to say about AI usage now. This is my **opinion** and how I've decided to use AI. It's what's right for me. It might not be right for you or anyone else.
-
-I use LLMs to search and summarize documentation, lookup errors, do research, get knowledge, analyze data, and prototype. I don't use LLMs to write PySimpleGUI code. My reason is very simple.
-
-### **I like to write code.**
-
-I fell in love with programming 50 years ago. Writing software is my happy place. It's an "I **get to** write software" thing. AI can generate lots of things. The feeling I get writing software is not one of the things AI can generate. I'm not in a hurry and can take time to enjoy the process.
-
-I've heard several software engineers talk about the addictive pull that they feel when using LLMs to write code. One side effect in particular I want to avoid... lack of engagement with the product being developed. When LLMs are used to write large amounts of code, some engineers have reported they don't feel as committed, don't a sense of ownership, and lack the passion they normally feel for projects they've devloped in the past. That doesn't sound like fun to me,
+I now use Claude to help write code, PySimpleGUI core code included. Changes Claude made are marked "Claude:" in the changelog.
 
 ### PySimpleGUI in the AI era
 
-A common question in software today is whether a library is still relevant. I think for PySimpleGUI the answer is yes. People discover and install PySimpleGUI every day. Doesn't matter **how many** people use it. More than one is good enough. It's a thrill that other programmers want to use what I create.
+A common question today is whether a GUI library still matters when an AI can write the code. I think PySimpleGUI may matter more now than before.
 
-I use PySimpleGUI regularly. I can’t imagine building a Windows app without it. I’ve recently been working on a 6502 breadboard computer. I built a bus analyzer using a couple of Raspberry Pi Picos and a PySimpleGUI app to control everything from Windows. Coding up a windows application to be the front-end to my tools is very easy for me to do using PySimpleGUI.
+The idea came from Claude: a PySimpleGUI program is short and always follows the same pattern - a layout, a window, an event loop. The same window written directly in tkinter takes more lines and more decisions, and that's more for an AI to get wrong. Short code is also easier for a person to read and check.
 
-That’s reason enough for me to keep working to clean up the ecosystem and keep it running.
+That's a hypothesis, not a result. Claude also proposed a test that has an AI write the same programs both ways and compares how often they work. I'm planning to run it and post what I find. Details may change. I'm certainly aware that these LLMs are particularlyi skilled at making users feel right, smart, on the right track, when that may not match up with reality.
 
 * * *
 
